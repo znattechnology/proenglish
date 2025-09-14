@@ -1,16 +1,27 @@
 """
-URL configuration for courses app.
+URL configuration for courses app with versioning support.
 
-This module defines all URL patterns for course-related endpoints,
-maintaining the same structure and paths as the Express API.
+This module defines URL patterns with version routing for backward compatibility
+and API evolution. Maintains Express API compatibility in v1 while adding
+new features in v2.
 """
 
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 app_name = 'courses'
 
+# Version-specific URL patterns
 urlpatterns = [
+    # API v1 - Backward compatibility with original Express API
+    path('v1/', include('apps.courses.urls_v1', namespace='v1')),
+    
+    # API v2 - Enhanced features and new functionality
+    path('v2/', include('apps.courses.urls_v2', namespace='v2')),
+    
+    # Default routes (v1 for backward compatibility)
+    # These maintain compatibility with existing frontend code
+    
     # Course management - matches Express /courses endpoints
     path('', views.CourseListCreateView.as_view(), name='course_list_create'),
     path('<uuid:courseId>/', views.CourseDetailView.as_view(), name='course_detail'),
@@ -27,7 +38,7 @@ urlpatterns = [
     path('chapters/<uuid:chapterId>/comments/', views.ChapterCommentListCreateView.as_view(), name='chapter_comments'),
     
     # Transactions - matches Express /transactions endpoints
-    path('transactions/', views.list_transactions, name='transaction_list'),
+    path('transactions/', views.TransactionListView.as_view(), name='transaction_list'),
     path('transactions/create/', views.create_transaction, name='transaction_create'),
     
     # User course progress - matches Express /users/course-progress endpoints
@@ -45,23 +56,26 @@ urlpatterns = [
     # Image upload for course cover
     path('<uuid:courseId>/upload-image/', views.upload_course_image, name='upload_course_image'),
     
-    # 🆕 PHASE 1 BRIDGE ENDPOINTS - Chapter Enhancement API
-    
-    # Chapter resources
+    # Chapter resources (Phase 1 Bridge - maintained for compatibility)
     path('chapters/<uuid:chapterId>/resources/', 
          views.ChapterResourceListCreateView.as_view(), name='chapter_resources'),
     path('chapters/<uuid:chapterId>/resources/<uuid:resourceId>/', 
          views.ChapterResourceDetailView.as_view(), name='chapter_resource_detail'),
     
-    # Chapter quizzes
+    # Chapter quizzes (Phase 1 Bridge - maintained for compatibility)
     path('chapters/<uuid:chapterId>/quiz/', 
          views.ChapterQuizListCreateView.as_view(), name='chapter_quiz'),
     path('chapters/<uuid:chapterId>/quiz/<uuid:quizId>/', 
          views.ChapterQuizDetailView.as_view(), name='chapter_quiz_detail'),
     
-    # Quiz attempts
+    # Quiz attempts (Phase 1 Bridge - maintained for compatibility)
     path('chapters/<uuid:chapterId>/quiz/attempts/', 
          views.StudentQuizAttemptListCreateView.as_view(), name='quiz_attempts'),
     path('chapters/<uuid:chapterId>/quiz/summary/', 
          views.get_student_quiz_summary, name='quiz_summary'),
+]
+
+# Add version discovery endpoint
+urlpatterns += [
+    path('_versions/', views.api_versions, name='api_versions'),
 ]
