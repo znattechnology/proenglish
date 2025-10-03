@@ -119,17 +119,24 @@ class CourseListCreateView(generics.ListCreateAPIView):
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
         
-        # Prepare serializer context for conditional fields
-        context = {'request': request}
-        context['include_description'] = request.query_params.get('include_description', 'true').lower() == 'true'
-        context['include_enrollment_count'] = request.query_params.get('include_enrollment_count', 'false').lower() == 'true'
+        # Check if this is for teacher's own course management (bypass pagination)
+        view_mode = request.query_params.get('view_mode', 'public')
         
-        serializer = self.get_serializer(queryset, many=True, context=context)
-        
-        return Response({
-            'message': 'Cursos recuperados com sucesso',
-            'data': serializer.data
-        })
+        if view_mode == 'teacher_courses' and request.user.is_authenticated and getattr(request.user, 'role', None) == 'teacher':
+            # For teacher course management, return all courses without pagination
+            context = {'request': request}
+            context['include_description'] = request.query_params.get('include_description', 'true').lower() == 'true'
+            context['include_enrollment_count'] = request.query_params.get('include_enrollment_count', 'false').lower() == 'true'
+            
+            serializer = self.get_serializer(queryset, many=True, context=context)
+            
+            return Response({
+                'message': 'Cursos recuperados com sucesso',
+                'data': serializer.data
+            })
+        else:
+            # For public exploration, use normal pagination
+            return super().list(request, *args, **kwargs)
 
 
 class CourseDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -739,6 +746,120 @@ def get_upload_video_url(request, courseId, sectionId, chapterId):
     except Exception as e:
         return Response({
             'error': f'Erro ao gerar URL de upload: {str(e)}'
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@api_view(['POST'])
+@permission_classes([permissions.IsAuthenticated])
+def get_resource_upload_url(request, courseId, sectionId, chapterId):
+    """
+    Generate presigned URL for resource upload to S3.
+    
+    POST /api/v1/courses/{courseId}/sections/{sectionId}/chapters/{chapterId}/get-resource-upload-url/
+    """
+    # Debug logging
+    print(f"🔍 Django DEBUG - Resource upload request data: {request.data}")
+    print(f"🔍 Django DEBUG - Content type: {request.content_type}")
+    print(f"🔍 Django DEBUG - Method: {request.method}")
+    
+    # Try both camelCase and snake_case (RTK Query may be converting)
+    fileName = request.data.get('fileName')
+    if not fileName:
+        fileName = request.data.get('file_name')
+    
+    fileType = request.data.get('fileType') 
+    if not fileType:
+        fileType = request.data.get('file_type')
+    
+    resourceType = request.data.get('resourceType', 'PDF')
+    if not resourceType:
+        resourceType = request.data.get('resource_type', 'PDF')
+        
+    print(f"🔍 Django DEBUG - Extracted fileName: '{fileName}', fileType: '{fileType}', resourceType: '{resourceType}'")
+    
+    if not fileName or not fileType:
+        return Response({
+            'message': 'O nome e o tipo do ficheiro são obrigatórios'
+        }, status=status.HTTP_400_BAD_REQUEST)
+    
+    try:
+        # Verify course ownership
+        course = get_object_or_404(Course, id=courseId)
+        if course.teacher != request.user:
+            from rest_framework.exceptions import PermissionDenied
+            raise PermissionDenied("Apenas o professor pode fazer upload de recursos")
+        
+        import boto3
+        import uuid
+        from django.conf import settings
+        from botocore.exceptions import ClientError
+        
+        if not all([settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY, settings.AWS_STORAGE_BUCKET_NAME]):
+            return Response({
+                'error': 'Configuração S3 incompleta'
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        # Create S3 client
+        s3_client = boto3.client(
+            's3',
+            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+            region_name=settings.AWS_S3_REGION_NAME
+        )
+        
+        # Generate unique ID and S3 key based on resource type
+        unique_id = str(uuid.uuid4())
+        
+        # Determine folder based on resource type
+        resource_folder_map = {
+            'PDF': 'documents',
+            'AUDIO': 'audio', 
+            'VIDEO': 'videos',
+            'IMAGE': 'images',
+            'CODE': 'code',
+            'WORKSHEET': 'worksheets'
+        }
+        folder = resource_folder_map.get(resourceType, 'resources')
+        
+        s3_key = f'chapter_resources/{folder}/{unique_id}/{fileName}'
+        
+        # Generate presigned URL for PUT operation
+        upload_url = s3_client.generate_presigned_url(
+            'put_object',
+            Params={
+                'Bucket': settings.AWS_STORAGE_BUCKET_NAME,
+                'Key': s3_key,
+                'ContentType': fileType,
+            },
+            ExpiresIn=3600  # 1 hour expiration
+        )
+        
+        # Generate final resource URL (using CloudFront if available)
+        if settings.AWS_CLOUDFRONT_DOMAIN:
+            resource_url = f"{settings.AWS_CLOUDFRONT_DOMAIN}/chapter_resources/{folder}/{unique_id}/{fileName}"
+        else:
+            resource_url = f"https://{settings.AWS_S3_CUSTOM_DOMAIN}/chapter_resources/{folder}/{unique_id}/{fileName}"
+        
+        return Response({
+            'message': 'URL de upload de recurso gerado com sucesso',
+            'data': {
+                'uploadUrl': upload_url,
+                'resourceUrl': resource_url,
+                'resourceType': resourceType
+            }
+        })
+        
+    except ClientError as e:
+        return Response({
+            'error': f'Erro S3: {str(e)}'
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    except ImportError:
+        return Response({
+            'error': 'Biblioteca boto3 não instalada'
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    except Exception as e:
+        return Response({
+            'error': f'Erro ao gerar URL de upload de recurso: {str(e)}'
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 

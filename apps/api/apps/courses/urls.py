@@ -53,6 +53,10 @@ urlpatterns = [
     path('<uuid:courseId>/sections/<uuid:sectionId>/chapters/<uuid:chapterId>/get-upload-url/', 
          views.get_upload_video_url, name='get_upload_video_url'),
     
+    # Resource upload - for PDFs, audio, images, etc.
+    path('<uuid:courseId>/sections/<uuid:sectionId>/chapters/<uuid:chapterId>/get-resource-upload-url/', 
+         views.get_resource_upload_url, name='get_resource_upload_url'),
+    
     # Image upload for course cover
     path('<uuid:courseId>/upload-image/', views.upload_course_image, name='upload_course_image'),
     
