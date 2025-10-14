@@ -42,6 +42,7 @@ class ChapterSerializer(serializers.ModelSerializer):
     """
     Serializer for chapters - matches Express chapter structure.
     Optimized for performance with conditional field loading.
+    SUPPORTS: Quiz, Exercise, Text, Video chapters with complete data.
     """
     comments = serializers.SerializerMethodField()
     
@@ -49,7 +50,13 @@ class ChapterSerializer(serializers.ModelSerializer):
         model = Chapter
         fields = [
             'chapterId', 'title', 'content', 'type', 'video', 
-            'order', 'comments', 'created_at'
+            'order', 'comments', 'created_at',
+            # ✅ QUIZ FIELDS - para chapters tipo Quiz
+            'quiz_enabled', 'quiz_data',
+            # ✅ EXERCISE FIELDS - para chapters tipo Exercise  
+            'practice_selection', 'practice_lesson',
+            # ✅ RESOURCE FIELDS - para todos os tipos (Text, Quiz, Exercise, Video)
+            'resources_data', 'transcript'
         ]
         read_only_fields = ['chapterId', 'created_at']
     
