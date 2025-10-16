@@ -40,7 +40,7 @@ export const uploadAudioToS3 = async (audioFile: File, lessonId: string, challen
     });
 
     if (!uploadResponse.ok) {
-      const errorText = await uploadResponse.text();
+      await uploadResponse.text();
       throw new Error(`Failed to get audio upload URL: ${uploadResponse.status}`);
     }
 
@@ -95,7 +95,7 @@ export const uploadImageToS3 = async (imageFile: File, lessonId: string, challen
     });
 
     if (!uploadResponse.ok) {
-      const errorText = await uploadResponse.text();
+      await uploadResponse.text();
       throw new Error(`Failed to get image upload URL: ${uploadResponse.status}`);
     }
 
