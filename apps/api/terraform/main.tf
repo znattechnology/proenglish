@@ -1,372 +1,98 @@
 # =============================================================================
-# VPC MODULE - NETWORK INFRASTRUCTURE
+# AWS BASIC INFRASTRUCTURE - PROENGLISH PLATFORM
+# Budget: $40/month | Configuração econômica para teste
 # =============================================================================
 
-module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 5.0"
+# Usar VPC padrão para economizar custos
+data "aws_vpc" "default" {
+  default = true
+}
 
-  name = "${var.project}-${var.environment}-vpc"
-  cidr = var.vpc_cidr
+data "aws_subnets" "default" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.default.id]
+  }
+}
 
-  azs             = var.availability_zones
-  public_subnets  = var.public_subnets
-  private_subnets = var.private_subnets
+data "aws_subnet" "default" {
+  id = data.aws_subnets.default.ids[0]
+}
 
-  enable_nat_gateway     = true
-  single_nat_gateway     = true
-  enable_vpn_gateway     = false
-  enable_dns_hostnames   = true
-  enable_dns_support     = true
+# =============================================================================
+# SSH KEY PAIR
+# =============================================================================
+
+resource "aws_key_pair" "main" {
+  key_name   = "${var.project}-key"
+  public_key = file(var.ssh_public_key_path)
 
   tags = merge(var.common_tags, {
-    Name = "${var.project}-${var.environment}-vpc"
+    Name = "${var.project}-ssh-key"
   })
 }
 
 # =============================================================================
-# ECR REPOSITORY - CONTAINER REGISTRY
+# SECURITY GROUP - SIMPLES E ECONÔMICO
 # =============================================================================
 
-resource "aws_ecr_repository" "app" {
-  name                 = "${var.project}-backend"
-  image_tag_mutability = "MUTABLE"
+resource "aws_security_group" "app" {
+  name_prefix = "${var.project}-"
+  vpc_id      = data.aws_vpc.default.id
+  description = "Security group for ProEnglish application"
 
-  image_scanning_configuration {
-    scan_on_push = true
+  # SSH access
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]  # ALTERAR para IP específico
+    description = "SSH access"
   }
 
-  encryption_configuration {
-    encryption_type = "AES256"
-  }
-
-  tags = merge(var.common_tags, {
-    Name = "${var.project}-backend-ecr"
-  })
-}
-
-resource "aws_ecr_lifecycle_policy" "app" {
-  repository = aws_ecr_repository.app.name
-
-  policy = jsonencode({
-    rules = [
-      {
-        rulePriority = 1
-        description  = "Keep last 10 images"
-        selection = {
-          tagStatus     = "tagged"
-          tagPrefixList = ["v"]
-          countType     = "imageCountMoreThan"
-          countNumber   = 10
-        }
-        action = {
-          type = "expire"
-        }
-      },
-      {
-        rulePriority = 2
-        description  = "Delete untagged images older than 1 day"
-        selection = {
-          tagStatus   = "untagged"
-          countType   = "sinceImagePushed"
-          countUnit   = "days"
-          countNumber = 1
-        }
-        action = {
-          type = "expire"
-        }
-      }
-    ]
-  })
-}
-
-# =============================================================================
-# SECURITY GROUPS
-# =============================================================================
-
-resource "aws_security_group" "alb" {
-  name_prefix = "${var.project}-alb-"
-  vpc_id      = module.vpc.vpc_id
-
+  # HTTP access
   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+    description = "HTTP access"
   }
 
+  # HTTPS access
   ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+    description = "HTTPS access"
   }
 
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = merge(var.common_tags, {
-    Name = "${var.project}-alb-sg"
-  })
-}
-
-resource "aws_security_group" "ec2" {
-  name_prefix = "${var.project}-ec2-"
-  vpc_id      = module.vpc.vpc_id
-
+  # Django dev server (temporário)
   ingress {
-    from_port       = 8000
-    to_port         = 8000
-    protocol        = "tcp"
-    security_groups = [aws_security_group.alb.id]
-  }
-
-  ingress {
-    from_port   = 22
-    to_port     = 22
+    from_port   = 8000
+    to_port     = 8000
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Restringir depois
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Django dev server"
   }
 
+  # All outbound traffic
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+    description = "All outbound traffic"
   }
 
   tags = merge(var.common_tags, {
-    Name = "${var.project}-ec2-sg"
+    Name = "${var.project}-security-group"
   })
 }
 
 # =============================================================================
-# IAM ROLES & POLICIES
-# =============================================================================
-
-resource "aws_iam_role" "ec2_role" {
-  name = "${var.project}-ec2-role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-      }
-    ]
-  })
-
-  tags = var.common_tags
-}
-
-resource "aws_iam_role_policy" "ec2_ecr_policy" {
-  name = "${var.project}-ec2-ecr-policy"
-  role = aws_iam_role.ec2_role.id
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = [
-          "ecr:BatchCheckLayerAvailability",
-          "ecr:GetDownloadUrlForLayer",
-          "ecr:BatchGetImage"
-        ]
-        Resource = aws_ecr_repository.app.arn
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "ecr:GetAuthorizationToken"
-        ]
-        Resource = "*"
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "secretsmanager:GetSecretValue"
-        ]
-        Resource = aws_secretsmanager_secret.django_secrets.arn
-      }
-    ]
-  })
-}
-
-resource "aws_iam_instance_profile" "ec2_profile" {
-  name = "${var.project}-ec2-profile"
-  role = aws_iam_role.ec2_role.name
-}
-
-# =============================================================================
-# LAUNCH TEMPLATE
-# =============================================================================
-
-resource "aws_launch_template" "app" {
-  name_prefix   = "${var.project}-"
-  image_id      = data.aws_ami.amazon_linux.id
-  instance_type = var.instance_type
-
-  vpc_security_group_ids = [aws_security_group.ec2.id]
-  
-  iam_instance_profile {
-    name = aws_iam_instance_profile.ec2_profile.name
-  }
-
-  user_data = base64encode(templatefile("${path.module}/userdata.sh", {
-    ECR_REPOSITORY = aws_ecr_repository.app.repository_url
-    AWS_REGION     = var.aws_region
-    SECRET_ARN     = aws_secretsmanager_secret.django_secrets.arn
-  }))
-
-  tag_specifications {
-    resource_type = "instance"
-    tags = merge(var.common_tags, {
-      Name = "${var.project}-instance"
-    })
-  }
-
-  tags = var.common_tags
-}
-
-# =============================================================================
-# AUTO SCALING GROUP
-# =============================================================================
-
-resource "aws_autoscaling_group" "app" {
-  name                = "${var.project}-asg"
-  vpc_zone_identifier = module.vpc.private_subnets
-  target_group_arns   = [aws_lb_target_group.app.arn]
-  health_check_type   = "ELB"
-  
-  min_size         = var.min_size
-  max_size         = var.max_size
-  desired_capacity = var.desired_capacity
-
-  launch_template {
-    id      = aws_launch_template.app.id
-    version = "$Latest"
-  }
-
-  tag {
-    key                 = "Name"
-    value               = "${var.project}-asg"
-    propagate_at_launch = false
-  }
-
-  dynamic "tag" {
-    for_each = var.common_tags
-    content {
-      key                 = tag.key
-      value               = tag.value
-      propagate_at_launch = true
-    }
-  }
-}
-
-# =============================================================================
-# APPLICATION LOAD BALANCER
-# =============================================================================
-
-resource "aws_lb" "app" {
-  name               = "${var.project}-alb"
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.alb.id]
-  subnets            = module.vpc.public_subnets
-
-  enable_deletion_protection = false
-
-  tags = merge(var.common_tags, {
-    Name = "${var.project}-alb"
-  })
-}
-
-resource "aws_lb_target_group" "app" {
-  name     = "${var.project}-tg"
-  port     = 8000
-  protocol = "HTTP"
-  vpc_id   = module.vpc.vpc_id
-
-  health_check {
-    enabled             = true
-    healthy_threshold   = 2
-    unhealthy_threshold = 2
-    timeout             = 5
-    interval            = 30
-    path                = "/"
-    matcher             = "200"
-    port                = "traffic-port"
-    protocol            = "HTTP"
-  }
-
-  tags = merge(var.common_tags, {
-    Name = "${var.project}-tg"
-  })
-}
-
-resource "aws_lb_listener" "app" {
-  load_balancer_arn = aws_lb.app.arn
-  port              = "80"
-  protocol          = "HTTP"
-
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.app.arn
-  }
-}
-
-# =============================================================================
-# SECRETS MANAGER - APPLICATION SECRETS
-# =============================================================================
-
-resource "aws_secretsmanager_secret" "django_secrets" {
-  name                    = "${var.project}/${var.environment}/django-v2"
-  description             = "Django application secrets"
-  recovery_window_in_days = 7
-
-  tags = merge(var.common_tags, {
-    Name = "${var.project}-${var.environment}-django-secrets"
-  })
-}
-
-resource "aws_secretsmanager_secret_version" "django_secrets" {
-  secret_id = aws_secretsmanager_secret.django_secrets.id
-  secret_string = jsonencode({
-    DATABASE_URL           = var.neon_database_url
-    SECRET_KEY            = var.django_secret_key
-    DEBUG                 = var.django_debug
-    ALLOWED_HOSTS         = var.allowed_hosts
-    CORS_ALLOWED_ORIGINS  = var.cors_allowed_origins
-    CSRF_TRUSTED_ORIGINS  = var.csrf_trusted_origins
-  })
-}
-
-# =============================================================================
-# CLOUDWATCH - LOGGING
-# =============================================================================
-
-resource "aws_cloudwatch_log_group" "app_logs" {
-  count = var.enable_logging ? 1 : 0
-  
-  name              = "/aws/ec2/${var.project}-${var.environment}"
-  retention_in_days = var.log_retention_days
-
-  tags = merge(var.common_tags, {
-    Name = "${var.project}-${var.environment}-app-logs"
-  })
-}
-
-# =============================================================================
-# DATA SOURCES
+# EC2 INSTANCE - SERVIDOR PRINCIPAL (t3.small ~$15/mês)
 # =============================================================================
 
 data "aws_ami" "amazon_linux" {
@@ -383,3 +109,78 @@ data "aws_ami" "amazon_linux" {
     values = ["hvm"]
   }
 }
+
+resource "aws_instance" "app" {
+  ami                    = data.aws_ami.amazon_linux.id
+  instance_type          = var.instance_type
+  key_name              = aws_key_pair.main.key_name
+  vpc_security_group_ids = [aws_security_group.app.id]
+  subnet_id             = data.aws_subnet.default.id
+  
+  # Enable detailed monitoring (free for basic)
+  monitoring = true
+  
+  # Root volume configuration (pequeno para economizar)
+  root_block_device {
+    volume_type           = "gp3"
+    volume_size           = 20  # 20GB suficiente
+    delete_on_termination = true
+    encrypted             = true
+    
+    tags = merge(var.common_tags, {
+      Name = "${var.project}-root-volume"
+    })
+  }
+
+  # User data for initial setup
+  user_data = base64encode(templatefile("${path.module}/userdata-simple.sh", {
+    project_name = var.project
+    neon_db_url  = var.neon_database_url
+    secret_key   = var.django_secret_key
+  }))
+
+  tags = merge(var.common_tags, {
+    Name = "${var.project}-server"
+    Type = "Application"
+  })
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+# =============================================================================
+# S3 BUCKET - USANDO BUCKET EXISTENTE
+# Bucket: lms-s3-backet (já configurado e funcionando)
+# CloudFront: https://d13552ljikd29j.cloudfront.net
+# =============================================================================
+
+# Usando bucket S3 existente - não precisa criar novo
+# lms-s3-backet já está configurado e funcionando
+# Economiza custos e mantém configurações existentes
+
+# =============================================================================
+# CLOUDWATCH ALARMS BÁSICOS (GRATUITO)
+# =============================================================================
+
+resource "aws_cloudwatch_metric_alarm" "high_cpu" {
+  alarm_name          = "${var.project}-high-cpu"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "CPUUtilization"
+  namespace           = "AWS/EC2"
+  period              = "300"
+  statistic           = "Average"
+  threshold           = "80"
+  alarm_description   = "This metric monitors ec2 cpu utilization"
+
+  dimensions = {
+    InstanceId = aws_instance.app.id
+  }
+
+  tags = var.common_tags
+}
+
+
+
+
