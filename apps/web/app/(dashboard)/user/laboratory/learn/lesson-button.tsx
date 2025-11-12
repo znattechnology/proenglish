@@ -38,7 +38,7 @@ export const LessonButton = ({
 
   const isFirst = index === 0;
   const isLast = index === totalCount;
-  const isCompleted = !current && !locked;
+  const isCompleted = false; // TODO: This should come from lesson props
 
   const Icon = isCompleted ? CheckIcon : isLast ? Crown : Star;
 
