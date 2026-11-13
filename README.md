@@ -59,4 +59,4 @@ Secrets necessários no repositório GitHub: `VERCEL_TOKEN`, `VERCEL_ORG_ID`,
 - **API**: corre no servidor `mambo-labtic` em `/opt/proenglish`, com PostgreSQL próprio em
   Docker e o Caddy partilhado à frente. Instalação, passagem dos dados do Neon, cópias de
   segurança e deploy em [`apps/api/deploy/vps/README.md`](apps/api/deploy/vps/README.md).
-- **Base de dados local**: `docker compose -f apps/api/docker-compose.dev.yml up -d` (porta 5433).
+- **Base de dados local**: `docker compose -f apps/api/docker-compose.dev.yml up -d` (porta 5435).
