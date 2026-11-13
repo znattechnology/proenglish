@@ -1,0 +1,17 @@
+{
+  "name": "proenglish",
+  "private": true,
+  "description": "ProEnglish monorepo: Next.js web client (apps/web) and Django API (apps/api)",
+  "scripts": {
+    "web:install": "npm --prefix apps/web install",
+    "web:dev": "npm --prefix apps/web run dev",
+    "web:build": "npm --prefix apps/web run build",
+    "web:start": "npm --prefix apps/web run start",
+    "web:lint": "npm --prefix apps/web run lint",
+    "api:install": "cd apps/api && pip install -r requirements.txt",
+    "api:dev": "cd apps/api && python manage.py runserver 0.0.0.0:8000",
+    "api:migrate": "cd apps/api && python manage.py migrate",
+    "api:test": "cd apps/api && python manage.py test --settings=core.test_settings",
+    "dev": "echo 'Run \"npm run web:dev\" and \"npm run api:dev\" in separate terminals'"
+  }
+}

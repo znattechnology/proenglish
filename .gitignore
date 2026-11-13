@@ -1,0 +1,21 @@
+# Root-level ignores. Each app keeps its own .gitignore in apps/<app>/.gitignore.
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Dependencies (root tooling)
+node_modules/
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Logs
+*.log

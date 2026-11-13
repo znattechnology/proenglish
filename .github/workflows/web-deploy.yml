@@ -1,9 +1,17 @@
-name: Frontend CD (Deploy to Vercel)
+name: Web CD (Deploy to Vercel)
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'apps/web/**'
+      - '.github/workflows/web-deploy.yml'
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: apps/web
 
 jobs:
   deploy:
@@ -23,7 +31,7 @@ jobs:
         run: npm install -g vercel
 
       - name: 🚀 Deploy to Vercel (Production)
-        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
         env:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
