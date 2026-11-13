@@ -1,0 +1,1043 @@
+"""
+Views for user authentication and profile management.
+"""
+
+import secrets
+import uuid
+from datetime import datetime, timedelta
+from rest_framework import generics, status, permissions
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.contrib.auth import authenticate
+from django.utils import timezone
+from django.core.mail import send_mail
+from django.conf import settings
+from django.urls import reverse
+from django.db import models
+from django_ratelimit.decorators import ratelimit
+from django.utils.decorators import method_decorator
+
+# S3 imports for avatar upload
+try:
+    import boto3
+    from botocore.exceptions import ClientError
+    S3_AVAILABLE = True
+except ImportError:
+    S3_AVAILABLE = False
+
+from apps.cms.views import AdminWritePermissionMixin
+from .models import User, UserAddress, NotificationSettings, EmailVerification
+from .serializers import (
+    UserRegistrationSerializer, CustomTokenObtainPairSerializer,
+    UserProfileSerializer, PasswordChangeSerializer,
+    UserAddressSerializer, NotificationSettingsSerializer,
+    PasswordResetRequestSerializer, PasswordResetConfirmSerializer,
+    EmailVerificationSerializer, GoogleOAuthSerializer,
+    GoogleOAuthURLSerializer
+)
+# from .services import GoogleOAuthService  # Temporarily disabled
+from .email_service import EmailVerificationService
+
+
+@method_decorator(ratelimit(key='ip', rate='5/m', method='POST', block=True), name='post')
+class UserRegistrationView(generics.CreateAPIView):
+    """
+    View for user registration with rate limiting (5 registrations per minute per IP).
+    """
+    queryset = User.objects.all()
+    serializer_class = UserRegistrationSerializer
+    permission_classes = [permissions.AllowAny]
+    
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        
+        # User starts with email_verified = False (default)
+        # Create and send verification code
+        try:
+            verification = EmailVerificationService.create_verification_code(user)
+            email_sent = EmailVerificationService.send_verification_email(verification)
+            print(f"DEBUG: Email verification created for {user.email}, code: {verification.code}")
+            print(f"DEBUG: Email verification sent to {user.email}: {email_sent}")
+            if not email_sent:
+                print(f"ERROR: Failed to send verification email to {user.email}")
+        except Exception as e:
+            print(f"ERROR: Exception sending verification email to {user.email}: {e}")
+            import traceback
+            traceback.print_exc()
+            # Continue with registration even if email fails
+        
+        # Do NOT generate JWT tokens - user must verify email first
+        
+        return Response({
+            'message': 'Usuário registrado com sucesso. Verifique seu email para ativar a conta.',
+            'email': user.email,
+            'requires_verification': True
+        }, status=status.HTTP_201_CREATED)
+    
+    def send_verification_email(self, user):
+        """
+        Send email verification email.
+        """
+        verification_url = f"{settings.FRONTEND_URL}/verify-email/{user.email_verification_token}/"
+        
+        subject = 'Verify your ProEnglish account'
+        message = f"""
+        Welcome to ProEnglish!
+        
+        Please click the link below to verify your email address:
+        {verification_url}
+        
+        If you didn't create this account, please ignore this email.
+        """
+        
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [user.email],
+            fail_silently=False,
+        )
+
+
+@method_decorator(ratelimit(key='ip', rate='10/m', method='POST', block=True), name='post')
+class CustomTokenObtainPairView(TokenObtainPairView):
+    """
+    Custom JWT token obtain view with additional user data and rate limiting (10 attempts per minute per IP).
+    Sets HttpOnly cookies for cross-domain authentication.
+    """
+    serializer_class = CustomTokenObtainPairSerializer
+
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+
+        if response.status_code == 200:
+            # Get tokens from response data
+            access_token = response.data.get('access')
+            refresh_token = response.data.get('refresh')
+
+            # Cookie settings for cross-domain authentication
+            # SameSite=None requires Secure=True (HTTPS)
+            is_secure = not settings.DEBUG
+            samesite = 'None' if is_secure else 'Lax'
+
+            # Set access token cookie (short-lived)
+            if access_token:
+                response.set_cookie(
+                    key='access_token',
+                    value=access_token,
+                    max_age=60 * 60,  # 1 hour
+                    httponly=True,
+                    secure=is_secure,
+                    samesite=samesite,
+                    path='/',
+                )
+
+            # Set refresh token cookie (long-lived)
+            if refresh_token:
+                response.set_cookie(
+                    key='refresh_token',
+                    value=refresh_token,
+                    max_age=60 * 60 * 24 * 7,  # 7 days
+                    httponly=True,
+                    secure=is_secure,
+                    samesite=samesite,
+                    path='/',
+                )
+
+        return response
+
+
+class CustomTokenRefreshView(TokenRefreshView):
+    """
+    Custom JWT token refresh view that sets HttpOnly cookies.
+    Also supports reading refresh token from cookie if not in request body.
+    """
+
+    def post(self, request, *args, **kwargs):
+        # If refresh token not in body, try to get from cookie
+        if 'refresh' not in request.data and request.COOKIES.get('refresh_token'):
+            request._full_data = request.data.copy()
+            request._full_data['refresh'] = request.COOKIES.get('refresh_token')
+
+        response = super().post(request, *args, **kwargs)
+
+        if response.status_code == 200:
+            access_token = response.data.get('access')
+
+            # Cookie settings for cross-domain authentication
+            is_secure = not settings.DEBUG
+            samesite = 'None' if is_secure else 'Lax'
+
+            # Set new access token cookie
+            if access_token:
+                response.set_cookie(
+                    key='access_token',
+                    value=access_token,
+                    max_age=60 * 60,  # 1 hour
+                    httponly=True,
+                    secure=is_secure,
+                    samesite=samesite,
+                    path='/',
+                )
+
+        return response
+
+
+class UserProfileView(generics.RetrieveUpdateAPIView):
+    """
+    View for user profile management.
+    """
+    serializer_class = UserProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
+
+    def update(self, request, *args, **kwargs):
+        """Override update to add detailed logging for avatar uploads."""
+        print("\n" + "="*80)
+        print("📸 USER PROFILE UPDATE REQUEST")
+        print("="*80)
+        print(f"Method: {request.method}")
+        print(f"User: {request.user.email}")
+        print(f"Content-Type: {request.content_type}")
+        print(f"Request DATA keys: {request.data.keys()}")
+        print(f"Request FILES keys: {request.FILES.keys()}")
+
+        if 'avatar' in request.FILES:
+            avatar_file = request.FILES['avatar']
+            print(f"\n✅ Avatar file detected:")
+            print(f"  - Name: {avatar_file.name}")
+            print(f"  - Size: {avatar_file.size} bytes")
+            print(f"  - Content-Type: {avatar_file.content_type}")
+        else:
+            print("\n❌ No avatar file in request.FILES")
+
+        if 'avatar' in request.data:
+            print(f"✅ Avatar in request.data: {type(request.data['avatar'])}")
+
+        print("="*80 + "\n")
+
+        return super().update(request, *args, **kwargs)
+
+
+@api_view(['POST'])
+@permission_classes([permissions.IsAuthenticated])
+def get_avatar_upload_url(request):
+    """
+    Generate presigned URL for user avatar upload to S3.
+
+    POST /api/v1/users/get-avatar-upload-url/
+
+    Request body:
+    {
+        "fileName": "profile.jpg",
+        "fileType": "image/jpeg"
+    }
+
+    Response:
+    {
+        "message": "URL de upload de avatar gerado com sucesso",
+        "data": {
+            "uploadUrl": "https://s3.amazonaws.com/...",
+            "avatarUrl": "https://cloudfront.net/avatars/..."
+        }
+    }
+    """
+    print(f"🖼️ Avatar upload URL request for user: {request.user.email}")
+
+    fileName = request.data.get('fileName')
+    fileType = request.data.get('fileType')
+
+    if not fileName or not fileType:
+        return Response({
+            'message': 'O nome e o tipo do ficheiro são obrigatórios'
+        }, status=status.HTTP_400_BAD_REQUEST)
+
+    # Validate image file type
+    allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
+    if fileType not in allowed_types:
+        return Response({
+            'message': 'Tipo de arquivo não suportado. Use JPG, PNG ou WebP.'
+        }, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        if not S3_AVAILABLE:
+            return Response({
+                'error': 'Biblioteca boto3 não instalada'
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        if not all([settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY, settings.AWS_STORAGE_BUCKET_NAME]):
+            return Response({
+                'error': 'Configuração S3 incompleta'
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        # Create S3 client
+        s3_client = boto3.client(
+            's3',
+            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+            region_name=settings.AWS_S3_REGION_NAME
+        )
+
+        # Generate unique filename and S3 key
+        file_extension = fileName.split('.')[-1].lower()
+        unique_filename = f"{uuid.uuid4()}.{file_extension}"
+        s3_key = f'avatars/{request.user.id}/{unique_filename}'
+
+        print(f"📁 Generating presigned URL for: {s3_key}")
+
+        # Generate presigned URL for PUT operation
+        upload_url = s3_client.generate_presigned_url(
+            'put_object',
+            Params={
+                'Bucket': settings.AWS_STORAGE_BUCKET_NAME,
+                'Key': s3_key,
+                'ContentType': fileType,
+                'CacheControl': 'max-age=86400'
+            },
+            ExpiresIn=3600  # 1 hour expiration
+        )
+
+        # Generate final avatar URL (using CloudFront if available)
+        if getattr(settings, 'AWS_CLOUDFRONT_DOMAIN', ''):
+            avatar_url = f"{settings.AWS_CLOUDFRONT_DOMAIN}/avatars/{request.user.id}/{unique_filename}"
+        else:
+            avatar_url = f"https://{settings.AWS_S3_CUSTOM_DOMAIN}/avatars/{request.user.id}/{unique_filename}"
+
+        print(f"✅ Presigned URL generated successfully")
+        print(f"📸 Avatar URL: {avatar_url}")
+
+        return Response({
+            'message': 'URL de upload de avatar gerado com sucesso',
+            'data': {
+                'uploadUrl': upload_url,
+                'avatarUrl': avatar_url
+            }
+        })
+
+    except ClientError as e:
+        print(f"❌ S3 Error: {str(e)}")
+        return Response({
+            'error': f'Erro S3: {str(e)}'
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    except Exception as e:
+        print(f"❌ Unexpected error: {str(e)}")
+        return Response({
+            'error': f'Erro inesperado: {str(e)}'
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class PasswordChangeView(generics.GenericAPIView):
+    """
+    View for password change.
+    """
+    serializer_class = PasswordChangeSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        
+        return Response({
+            'message': 'Password changed successfully.'
+        })
+
+
+class UserAddressListCreateView(generics.ListCreateAPIView):
+    """
+    View for listing and creating user addresses.
+    """
+    serializer_class = UserAddressSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def get_queryset(self):
+        return UserAddress.objects.filter(user=self.request.user).order_by('address_type', '-is_default', 'created_at')
+
+
+class UserAddressDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    View for managing individual user addresses.
+    """
+    serializer_class = UserAddressSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def get_queryset(self):
+        return UserAddress.objects.filter(user=self.request.user).order_by('address_type', '-is_default', 'created_at')
+
+
+class NotificationSettingsView(generics.RetrieveUpdateAPIView):
+    """
+    View for notification settings management.
+    """
+    serializer_class = NotificationSettingsSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def get_object(self):
+        settings, created = NotificationSettings.objects.get_or_create(
+            user=self.request.user
+        )
+        return settings
+
+
+@method_decorator(ratelimit(key='ip', rate='3/m', method='POST', block=True), name='post')
+class PasswordResetRequestView(generics.GenericAPIView):
+    """
+    View for password reset request with rate limiting (3 requests per minute per IP).
+    """
+    serializer_class = PasswordResetRequestSerializer
+    permission_classes = [permissions.AllowAny]
+    
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        
+        try:
+            user = User.objects.get(
+                email=serializer.validated_data['email'],
+                is_active=True
+            )
+            
+            # Create password reset code using EmailVerificationService
+            from .models import EmailVerification
+            
+            # Invalidate any existing password reset codes for this user
+            EmailVerification.objects.filter(
+                user=user,
+                email=user.email,
+                is_used=False,
+                code__isnull=False
+            ).update(is_used=True)
+            
+            # Generate new 6-digit code
+            code = EmailVerificationService.generate_verification_code()
+            expires_at = timezone.now() + timedelta(minutes=30)  # 30 minutes expiry
+            
+            # Create verification record for password reset
+            verification = EmailVerification.objects.create(
+                user=user,
+                code=code,
+                email=user.email,
+                expires_at=expires_at
+            )
+            
+            # Send password reset email with code
+            EmailVerificationService.send_password_reset_email(verification)
+            
+        except User.DoesNotExist:
+            pass  # Don't reveal if email exists
+        
+        return Response({
+            'message': 'Se o email estiver cadastrado, você receberá um código de verificação para redefinir sua senha.'
+        })
+
+
+class PasswordResetConfirmView(generics.GenericAPIView):
+    """
+    View for password reset confirmation using 6-digit code.
+    """
+    permission_classes = [permissions.AllowAny]
+    
+    def post(self, request):
+        email = request.data.get('email')
+        code = request.data.get('code')
+        new_password = request.data.get('newPassword')
+        
+        if not email or not code or not new_password:
+            return Response({
+                'error': 'Email, código e nova senha são obrigatórios.'
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Verify the code manually without marking as used
+        try:
+            from .models import EmailVerification
+            
+            # Find the verification record
+            verification = EmailVerification.objects.filter(
+                email=email,
+                code=code,
+                is_used=False
+            ).order_by('-created_at').first()
+            
+            if not verification:
+                return Response({
+                    'error': 'Código inválido ou não encontrado'
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            # Check if code is expired
+            if verification.is_expired():
+                return Response({
+                    'error': 'Código expirado. Solicite um novo código.'
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            # Check max attempts
+            if verification.attempts >= verification.max_attempts:
+                return Response({
+                    'error': 'Muitas tentativas. Solicite um novo código.'
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            user = verification.user
+            
+            # Reset password
+            user.set_password(new_password)
+            user.save()
+            
+            # Mark the verification code as used
+            verification.is_used = True
+            verification.save()
+            
+            return Response({
+                'message': 'Senha alterada com sucesso.'
+            })
+            
+        except Exception as e:
+            print(f"Error in password reset confirm: {e}")
+            return Response({
+                'error': 'Erro ao alterar a senha. Tente novamente.'
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@method_decorator(ratelimit(key='ip', rate='10/m', method='POST', block=True), name='post')
+class EmailVerificationView(generics.GenericAPIView):
+    """
+    View for email verification with 6-digit code and rate limiting (10 attempts per minute per IP).
+    """
+    permission_classes = [permissions.AllowAny]
+    
+    def post(self, request):
+        email = request.data.get('email')
+        code = request.data.get('code')
+        
+        if not email or not code:
+            return Response({
+                'error': 'Email e código são obrigatórios.'
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Verify the code
+        result = EmailVerificationService.verify_code(email, code)
+        
+        if result['success']:
+            # Generate JWT tokens for the user
+            from rest_framework_simplejwt.tokens import RefreshToken
+            user = result['user']
+            refresh = RefreshToken.for_user(user)
+            access = refresh.access_token
+            
+            # Send welcome email
+            try:
+                EmailVerificationService.send_welcome_email(user)
+            except Exception as e:
+                # Don't fail the verification if welcome email fails
+                print(f"Failed to send welcome email: {e}")
+            
+            return Response({
+                'message': 'Email verificado com sucesso! Bem-vindo(a) ao ProEnglish!',
+                'user': {
+                    'id': str(user.id),
+                    'email': user.email,
+                    'name': user.name,
+                    'role': user.role,
+                    'avatar': user.avatar or None,
+                    'email_verified': user.email_verified,
+                },
+                'access': str(access),
+                'refresh': str(refresh),
+            })
+        else:
+            return Response({
+                'error': result['error']
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+@permission_classes([permissions.AllowAny])
+def resend_verification_email(request):
+    """
+    Resend email verification code.
+    """
+    email = request.data.get('email')
+    
+    if not email:
+        return Response({
+            'error': 'Email é obrigatório.'
+        }, status=status.HTTP_400_BAD_REQUEST)
+    
+    # Resend verification code
+    result = EmailVerificationService.resend_verification_code(email)
+    
+    if result['success']:
+        return Response({
+            'message': 'Novo código enviado para seu email!'
+        })
+    else:
+        return Response({
+            'error': result['error']
+        }, status=status.HTTP_400_BAD_REQUEST)
+
+
+# Temporarily disabled - Google OAuth views
+"""
+class GoogleOAuthURLView(generics.GenericAPIView):
+    # Generate Google OAuth authorization URL.
+    pass
+
+class GoogleOAuthLoginView(generics.GenericAPIView):
+    # Authenticate user with Google OAuth.
+    pass
+"""
+
+
+class LogoutView(generics.GenericAPIView):
+    """
+    View for user logout - blacklists the refresh token and clears HttpOnly cookies.
+    """
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        try:
+            # Try to get refresh token from request body or cookie
+            refresh_token = request.data.get("refresh_token") or request.COOKIES.get('refresh_token')
+            if refresh_token:
+                token = RefreshToken(refresh_token)
+                token.blacklist()
+
+            # Create response and clear HttpOnly cookies
+            response = Response({
+                'message': 'Logout realizado com sucesso.'
+            })
+
+            # Clear cookies with same settings used to set them
+            is_secure = not settings.DEBUG
+            samesite = 'None' if is_secure else 'Lax'
+
+            response.delete_cookie(
+                key='access_token',
+                path='/',
+                samesite=samesite,
+            )
+            response.delete_cookie(
+                key='refresh_token',
+                path='/',
+                samesite=samesite,
+            )
+
+            return response
+        except Exception as e:
+            # Still clear cookies even on error
+            response = Response({
+                'message': 'Logout realizado com sucesso.'
+            })
+            response.delete_cookie('access_token', path='/')
+            response.delete_cookie('refresh_token', path='/')
+            return response
+
+
+class AdminUsersListView(generics.ListAPIView):
+    """
+    Admin view to list all users with pagination and filtering.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def get(self, request, *args, **kwargs):
+        # Check if user is admin
+        if request.user.role != 'admin':
+            return Response({
+                'error': 'Access denied. Admin privileges required.'
+            }, status=status.HTTP_403_FORBIDDEN)
+        
+        # Get query parameters
+        page = int(request.query_params.get('page', 1))
+        limit = int(request.query_params.get('limit', 20))
+        search = request.query_params.get('search', '')
+        role = request.query_params.get('role', '')
+        status_filter = request.query_params.get('status', '')  # active, inactive, all
+        
+        # Base queryset
+        queryset = User.objects.all().order_by('-date_joined')
+        
+        # Apply filters
+        if search:
+            queryset = queryset.filter(
+                models.Q(name__icontains=search) |
+                models.Q(email__icontains=search) |
+                models.Q(phone__icontains=search)
+            )
+        
+        if role and role != 'all':
+            queryset = queryset.filter(role=role)
+        
+        if status_filter == 'active':
+            queryset = queryset.filter(is_active=True)
+        elif status_filter == 'inactive':
+            queryset = queryset.filter(is_active=False)
+        
+        # Calculate pagination
+        total = queryset.count()
+        start = (page - 1) * limit
+        end = start + limit
+        users_page = queryset[start:end]
+        
+        # Serialize users
+        users_data = []
+        for user in users_page:
+            users_data.append({
+                'id': str(user.id),
+                'name': user.name,
+                'email': user.email,
+                'phone': user.phone or '',
+                'role': user.role,
+                'is_active': user.is_active,
+                'email_verified': user.email_verified,
+                'date_joined': user.date_joined.isoformat(),
+                'last_login': user.last_login.isoformat() if user.last_login else None,
+                'avatar': user.avatar or None,
+            })
+        
+        # Calculate stats for dashboard
+        stats = {
+            'total_users': total,
+            'active_users': queryset.filter(is_active=True).count(),
+            'student_users': queryset.filter(role='student').count(),
+            'teacher_users': queryset.filter(role='teacher').count(),
+            'admin_users': queryset.filter(role='admin').count(),
+            'verified_users': queryset.filter(email_verified=True).count(),
+        }
+        
+        return Response({
+            'users': users_data,
+            'pagination': {
+                'page': page,
+                'limit': limit,
+                'total': total,
+                'total_pages': (total + limit - 1) // limit,
+                'has_next': end < total,
+                'has_prev': page > 1
+            },
+            'stats': stats
+        })
+
+
+class AdminUserDetailView(generics.RetrieveAPIView):
+    """
+    Admin view to get user details by ID.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'id'
+    
+    def get(self, request, *args, **kwargs):
+        # Check if user is admin
+        if request.user.role != 'admin':
+            return Response({
+                'error': 'Access denied. Admin privileges required.'
+            }, status=status.HTTP_403_FORBIDDEN)
+        
+        try:
+            user = self.get_object()
+            
+            user_data = {
+                'id': str(user.id),
+                'name': user.name,
+                'email': user.email,
+                'phone': user.phone or '',
+                'role': user.role,
+                'is_active': user.is_active,
+                'email_verified': user.email_verified,
+                'date_joined': user.date_joined.isoformat(),
+                'last_login': user.last_login.isoformat() if user.last_login else None,
+                'avatar': user.avatar or None,
+                'google_id': user.google_id if hasattr(user, 'google_id') else None,
+            }
+            
+            return Response({'user': user_data})
+            
+        except User.DoesNotExist:
+            return Response({
+                'error': 'User not found.'
+            }, status=status.HTTP_404_NOT_FOUND)
+
+
+class AdminUserUpdateView(generics.UpdateAPIView):
+    """
+    Admin view to update user basic information.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'id'
+    
+    def dispatch(self, request, *args, **kwargs):
+        # Check if user is admin for all HTTP methods
+        if request.user.is_authenticated and request.user.role != 'admin':
+            return Response({
+                'error': 'Access denied. Admin privileges required.'
+            }, status=status.HTTP_403_FORBIDDEN)
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request, *args, **kwargs):
+        # Return 403 for non-admin users instead of 405
+        if request.user.role != 'admin':
+            return Response({
+                'error': 'Access denied. Admin privileges required.'
+            }, status=status.HTTP_403_FORBIDDEN)
+        # This endpoint doesn't support GET, but we want 403 not 405 for non-admins
+        return Response({
+            'error': 'Method not allowed.'
+        }, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
+    def patch(self, request, *args, **kwargs):
+        
+        try:
+            user = self.get_object()
+            
+            # Get update data
+            name = request.data.get('name')
+            email = request.data.get('email')
+            phone = request.data.get('phone')
+            
+            # Validate required fields
+            if not name or not name.strip():
+                return Response({
+                    'error': 'Name is required.'
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            if not email or not email.strip():
+                return Response({
+                    'error': 'Email is required.'
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            # Check if email is already taken by another user
+            if email != user.email:
+                if User.objects.filter(email=email).exclude(id=user.id).exists():
+                    return Response({
+                        'error': 'This email is already registered by another user.'
+                    }, status=status.HTTP_400_BAD_REQUEST)
+            
+            # Update user data
+            user.name = name.strip()
+            user.email = email.strip()
+            user.phone = phone.strip() if phone else None
+            user.save()
+            
+            # Return updated user data
+            user_data = {
+                'id': str(user.id),
+                'name': user.name,
+                'email': user.email,
+                'phone': user.phone or '',
+                'role': user.role,
+                'is_active': user.is_active,
+                'email_verified': user.email_verified,
+                'date_joined': user.date_joined.isoformat(),
+                'last_login': user.last_login.isoformat() if user.last_login else None,
+                'avatar': user.avatar or None,
+            }
+            
+            return Response({
+                'message': 'User updated successfully.',
+                'user': user_data
+            })
+            
+        except User.DoesNotExist:
+            return Response({
+                'error': 'User not found.'
+            }, status=status.HTTP_404_NOT_FOUND)
+
+
+class AdminUserRoleUpdateView(generics.UpdateAPIView):
+    """
+    Admin view to update user role.
+    """
+    queryset = User.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'id'
+    
+    def dispatch(self, request, *args, **kwargs):
+        # Check if user is admin for all HTTP methods
+        if request.user.is_authenticated and request.user.role != 'admin':
+            return Response({
+                'error': 'Access denied. Admin privileges required.'
+            }, status=status.HTTP_403_FORBIDDEN)
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request, *args, **kwargs):
+        # Return 403 for non-admin users instead of 405
+        if request.user.role != 'admin':
+            return Response({
+                'error': 'Access denied. Admin privileges required.'
+            }, status=status.HTTP_403_FORBIDDEN)
+        # This endpoint doesn't support GET, but we want 403 not 405 for non-admins
+        return Response({
+            'error': 'Method not allowed.'
+        }, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
+    def patch(self, request, *args, **kwargs):
+        
+        try:
+            user = self.get_object()
+            new_role = request.data.get('role')
+            
+            # Validate role
+            valid_roles = ['student', 'teacher', 'admin']
+            if not new_role or new_role not in valid_roles:
+                return Response({
+                    'error': f'Invalid role. Must be one of: {", ".join(valid_roles)}'
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            # Prevent admin from changing their own role
+            if user.id == request.user.id:
+                return Response({
+                    'error': 'You cannot change your own role.'
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            # Update role
+            old_role = user.role
+            user.role = new_role
+            user.save()
+            
+            return Response({
+                'message': f'User role updated from {old_role} to {new_role}.',
+                'user': {
+                    'id': str(user.id),
+                    'name': user.name,
+                    'email': user.email,
+                    'role': user.role,
+                    'is_active': user.is_active,
+                }
+            })
+            
+        except User.DoesNotExist:
+            return Response({
+                'error': 'User not found.'
+            }, status=status.HTTP_404_NOT_FOUND)
+
+
+class AdminUserToggleStatusView(generics.UpdateAPIView):
+    """
+    Admin view to toggle user active status.
+    """
+    queryset = User.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'id'
+    
+    def dispatch(self, request, *args, **kwargs):
+        # Check if user is admin for all HTTP methods
+        if request.user.is_authenticated and request.user.role != 'admin':
+            return Response({
+                'error': 'Access denied. Admin privileges required.'
+            }, status=status.HTTP_403_FORBIDDEN)
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request, *args, **kwargs):
+        # Return 403 for non-admin users instead of 405
+        if request.user.role != 'admin':
+            return Response({
+                'error': 'Access denied. Admin privileges required.'
+            }, status=status.HTTP_403_FORBIDDEN)
+        # This endpoint doesn't support GET, but we want 403 not 405 for non-admins
+        return Response({
+            'error': 'Method not allowed.'
+        }, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
+    def patch(self, request, *args, **kwargs):
+        
+        try:
+            user = self.get_object()
+            
+            # Prevent admin from deactivating themselves
+            if user.id == request.user.id:
+                return Response({
+                    'error': 'You cannot deactivate your own account.'
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            # Toggle status
+            old_status = user.is_active
+            user.is_active = not user.is_active
+            user.save()
+            
+            action = 'activated' if user.is_active else 'deactivated'
+            
+            return Response({
+                'message': f'User {action} successfully.',
+                'user': {
+                    'id': str(user.id),
+                    'name': user.name,
+                    'email': user.email,
+                    'role': user.role,
+                    'is_active': user.is_active,
+                }
+            })
+            
+        except User.DoesNotExist:
+            return Response({
+                'error': 'User not found.'
+            }, status=status.HTTP_404_NOT_FOUND)
+
+
+class AdminUserDeleteView(generics.DestroyAPIView):
+    """
+    Admin view to delete user with cascade handling.
+    """
+    queryset = User.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'id'
+    
+    def dispatch(self, request, *args, **kwargs):
+        # Check if user is admin for all HTTP methods
+        if request.user.is_authenticated and request.user.role != 'admin':
+            return Response({
+                'error': 'Access denied. Admin privileges required.'
+            }, status=status.HTTP_403_FORBIDDEN)
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get(self, request, *args, **kwargs):
+        # Return 403 for non-admin users instead of 405
+        if request.user.role != 'admin':
+            return Response({
+                'error': 'Access denied. Admin privileges required.'
+            }, status=status.HTTP_403_FORBIDDEN)
+        # This endpoint doesn't support GET, but we want 403 not 405 for non-admins
+        return Response({
+            'error': 'Method not allowed.'
+        }, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
+    def delete(self, request, *args, **kwargs):
+        
+        try:
+            user = self.get_object()
+            
+            # Prevent admin from deleting themselves
+            if user.id == request.user.id:
+                return Response({
+                    'error': 'You cannot delete your own account.'
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            # Store user info for response
+            user_info = {
+                'id': str(user.id),
+                'name': user.name,
+                'email': user.email,
+                'role': user.role,
+            }
+            
+            # Delete user (will cascade to related objects)
+            user.delete()
+            
+            return Response({
+                'message': f'User {user_info["name"]} deleted successfully.',
+                'user_info': user_info
+            })
+            
+        except User.DoesNotExist:
+            return Response({
+                'error': 'User not found.'
+            }, status=status.HTTP_404_NOT_FOUND)
