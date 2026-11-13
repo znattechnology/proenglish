@@ -1,0 +1,29 @@
+# Base de dados local para desenvolvimento (substitui o Neon e o SQLite).
+#
+#   docker compose -f docker-compose.dev.yml up -d
+#   .env:  DATABASE_URL=postgresql://proenglish:proenglish@localhost:5433/proenglish_dev
+#   python manage.py migrate
+#
+# 5433 no hospedeiro: a 5432 costuma estar ocupada por outro projecto.
+name: proenglish-dev
+
+services:
+  postgres:
+    image: postgres:18-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: proenglish_dev
+      POSTGRES_USER: proenglish
+      POSTGRES_PASSWORD: proenglish
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "proenglish", "-d", "proenglish_dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:

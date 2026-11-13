@@ -128,3 +128,6 @@ coverage.xml
 # Optimized versions (remove after decision)
 Dockerfile.optimized
 Dockerfile.multistage
+# Deployment files (may sit next to a real .env)
+deploy/
+docker-compose*.yml
