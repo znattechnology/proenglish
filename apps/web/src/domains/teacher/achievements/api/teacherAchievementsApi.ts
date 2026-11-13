@@ -5,7 +5,7 @@
  * for their students through the gamification system.
  */
 
-import { apiSlice } from "../../../../redux/features/api/apiSlice";
+import { apiSlice } from "@/redux/features/api/apiSlice";
 
 // Interface for teacher achievement management
 export interface TeacherAchievement {

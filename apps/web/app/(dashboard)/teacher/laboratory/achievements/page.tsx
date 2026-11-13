@@ -50,7 +50,7 @@ import {
   useGetTeacherAchievementStatsQuery,
   type TeacherAchievement,
   type CreateAchievementData
-} from '@/src/modules2/teacher/services/teacherAchievementsApi';
+} from '@/src/domains/teacher/achievements/api/teacherAchievementsApi';
 
 // Using TeacherAchievement interface from API
 type Achievement = TeacherAchievement;

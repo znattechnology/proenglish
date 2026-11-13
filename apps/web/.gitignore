@@ -23,3 +23,7 @@ build
 *.log
 *.mp4
 *.zip
+# Local/build artifacts
+*.tsbuildinfo
+dev.pid
+*.bak

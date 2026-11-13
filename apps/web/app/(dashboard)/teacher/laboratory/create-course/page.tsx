@@ -10,8 +10,6 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ChevronLeft, Brain } from "lucide-react";
 import { courseToasts } from "@/components/ui/enhanced-toast";
-import "@/utils/testCourseCreation"; // Load test utilities
-import "@/utils/testApiDirect"; // Load direct API test utilities
 
 const CreateCoursePage = () => {
   const router = useRouter();
