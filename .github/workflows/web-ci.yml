@@ -1,10 +1,20 @@
-name: Frontend CI (Next.js)
+name: Web CI (Next.js)
 
 on:
   push:
     branches: [ develop, main ]
+    paths:
+      - 'apps/web/**'
+      - '.github/workflows/web-ci.yml'
   pull_request:
     branches: [ develop, main ]
+    paths:
+      - 'apps/web/**'
+      - '.github/workflows/web-ci.yml'
+
+defaults:
+  run:
+    working-directory: apps/web
 
 jobs:
   ci:
@@ -23,6 +33,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
+          cache-dependency-path: apps/web/package-lock.json
 
       - name: Install dependencies
         run: npm ci

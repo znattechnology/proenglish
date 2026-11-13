@@ -1,8 +1,11 @@
-name: Deploy to Hostinger VPS
+name: API Deploy (Hostinger VPS)
 
 on:
   push:
     branches: [main]
+    paths:
+      - 'apps/api/**'
+      - '.github/workflows/api-deploy.yml'
   workflow_dispatch:
     inputs:
       force_rebuild:
@@ -14,7 +17,10 @@ on:
 env:
   VPS_HOST: 72.61.190.180
   VPS_USER: root
-  PROJECT_PATH: /opt/tuwi-backend
+  # Monorepo checkout on the VPS. The backend lives in $PROJECT_PATH/apps/api.
+  PROJECT_PATH: /opt/proenglish
+  # Previous standalone checkout, used once to migrate the .env file.
+  LEGACY_PATH: /opt/tuwi-backend
 
 jobs:
   deploy:
@@ -27,11 +33,14 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          PROJECT_PATH: ${{ env.PROJECT_PATH }}
+          LEGACY_PATH: ${{ env.LEGACY_PATH }}
         with:
           host: ${{ env.VPS_HOST }}
           username: ${{ env.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
-          envs: GH_TOKEN
+          envs: GH_TOKEN,GH_REPO,PROJECT_PATH,LEGACY_PATH
           script_stop: true
           timeout: 300s
           command_timeout: 30m
@@ -39,10 +48,19 @@ jobs:
           script: |
             echo "=== TUWI BACKEND DEPLOY ==="
             echo "Step 1: Setup"
-            cd /opt/tuwi-backend || mkdir -p /opt/tuwi-backend && cd /opt/tuwi-backend
+            # Keep the original compose project name so existing containers and
+            # volumes (tuwi-backend_static_volume, tuwi-backend_media_volume, ...) are reused.
+            export COMPOSE_PROJECT_NAME=tuwi-backend
+            mkdir -p "$PROJECT_PATH" && cd "$PROJECT_PATH"
+            APP_DIR="$PROJECT_PATH/apps/api"
 
             echo "Step 2: Backup .env"
-            test -f .env && cp .env /tmp/.env.backup
+            if [ -f "$APP_DIR/.env" ]; then
+              cp "$APP_DIR/.env" /tmp/.env.backup
+            elif [ -f "$LEGACY_PATH/.env" ]; then
+              echo "Migrating .env from legacy path $LEGACY_PATH"
+              cp "$LEGACY_PATH/.env" /tmp/.env.backup
+            fi
 
             echo "Step 3: Git setup"
             if [ ! -d ".git" ]; then
@@ -52,7 +70,7 @@ jobs:
 
             echo "Configuring remote..."
             git remote remove origin 2>/dev/null || true
-            git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/znattechnology/Pro-Ingles-server.git"
+            git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git"
             echo "Remote configured"
 
             echo "Step 4: Git pull"
@@ -60,6 +78,7 @@ jobs:
             git reset --hard origin/main
 
             echo "Step 5: Restore .env"
+            cd "$APP_DIR"
             test -f /tmp/.env.backup && cp /tmp/.env.backup .env && rm /tmp/.env.backup
 
             echo "Step 6: SSL setup"
