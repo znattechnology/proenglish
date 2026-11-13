@@ -1,0 +1,1 @@
+# Empty init file - no Celery configuration needed for clean setup

@@ -1,0 +1,36 @@
+# python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ambiente virtual
+venv/
+.env/
+.venv/
+
+# arquivos de configuração sensíveis
+.env
+.env.local
+.env.production
+# Arquivos de ambiente
+
+.env.*
+!.env.example
+!.env.production.example
+
+# IDEs e configs
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# banco de dados local
+db.sqlite3
+
+# logs
+*.log
+
+# static e media gerados
+/media
+/staticfiles

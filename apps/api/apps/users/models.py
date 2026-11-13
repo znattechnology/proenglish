@@ -1,0 +1,678 @@
+"""
+User models for the ProEnglish platform.
+
+Following Django best practices with AbstractUser and proper role management.
+"""
+
+import uuid
+from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.db import models
+from django.utils import timezone
+from django.core.validators import RegexValidator
+from apps.core.models import BaseModel, Address
+from .managers import UserManager
+
+
+class User(AbstractUser):
+    """
+    Custom user model extending AbstractUser.
+    
+    Improvements over original schema:
+    - Uses AbstractUser instead of extending User (cleaner approach)
+    - Proper role management with choices
+    - Better field organization
+    """
+    
+    ROLE_CHOICES = [
+        ('student', 'Student'),
+        ('teacher', 'Teacher'),
+        ('admin', 'Administrator'),
+    ]
+    
+    # Override id to use UUID
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+    
+    # Required fields
+    email = models.EmailField(
+        unique=True,
+        help_text="User's email address - used for login"
+    )
+    name = models.CharField(
+        max_length=255,
+        help_text="User's full name"
+    )
+    
+    # Optional profile fields
+    phone = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True,
+        validators=[
+            RegexValidator(
+                # Updated regex for better international phone validation
+                # Supports Angola (+244), Brazil (+55), Portugal (+351), etc.
+                regex=r'^\+(?:[1-9]\d{0,3})?[1-9]\d{8,14}$',
+                message="Número de telefone deve estar no formato internacional: '+244912345678' (Angola) ou '+351912345678' (Portugal)."
+            )
+        ],
+        help_text="Número de telefone no formato internacional (ex: +244912345678 para Angola)"
+    )
+    avatar = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        help_text="User's profile picture URL (S3/CloudFront)"
+    )
+    
+    # Role and status
+    role = models.CharField(
+        max_length=20,
+        choices=ROLE_CHOICES,
+        default='student',
+        help_text="User's role in the system"
+    )
+    is_active = models.BooleanField(
+        default=True,
+        help_text="Designates whether this user should be treated as active."
+    )
+    
+    # Email verification
+    email_verified = models.BooleanField(
+        default=False,
+        help_text="Whether the user's email has been verified"
+    )
+    email_verification_token = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="Token for email verification"
+    )
+    
+    # Password reset
+    reset_password_token = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="Token for password reset"
+    )
+    reset_password_expires = models.DateTimeField(
+        blank=True,
+        null=True,
+        help_text="When the password reset token expires"
+    )
+    
+    # OAuth fields
+    google_id = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        unique=True,
+        help_text="Google OAuth user ID"
+    )
+    
+    # Timestamps
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
+    last_login_at = models.DateTimeField(blank=True, null=True)
+    
+    # JSON fields for preferences (using JSONField is better than JSONB reference)
+    preferences = models.JSONField(
+        default=dict,
+        blank=True,
+        help_text="User preferences and settings"
+    )
+    
+    # Use email as the username field
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['name']
+    
+    # Custom manager
+    objects = UserManager()
+    
+    # Fix related_name conflicts
+    groups = models.ManyToManyField(
+        Group,
+        verbose_name='groups',
+        blank=True,
+        help_text='The groups this user belongs to.',
+        related_name='tuwi_users',
+        related_query_name='tuwi_user',
+    )
+    user_permissions = models.ManyToManyField(
+        Permission,
+        verbose_name='user permissions',
+        blank=True,
+        help_text='Specific permissions for this user.',
+        related_name='tuwi_users',
+        related_query_name='tuwi_user',
+    )
+    
+    class Meta:
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
+        db_table = 'users'
+        indexes = [
+            models.Index(fields=['email']),
+            models.Index(fields=['role']),
+            models.Index(fields=['is_active']),
+            models.Index(fields=['created_at']),
+            models.Index(fields=['email_verified']),
+        ]
+    
+    def __str__(self):
+        return f"{self.name} ({self.email})"
+    
+    def save(self, *args, **kwargs):
+        # Sempre definir username como email para evitar problemas
+        if self.email:
+            self.username = self.email
+        super().save(*args, **kwargs)
+    
+    @property
+    def is_teacher(self):
+        """Check if user is a teacher."""
+        return self.role == 'teacher'
+    
+    @property
+    def is_student(self):
+        """Check if user is a student."""
+        return self.role == 'student'
+    
+    @property
+    def is_platform_admin(self):
+        """Check if user is a platform admin."""
+        return self.role == 'admin'
+    
+    def get_full_name(self):
+        """Return the user's full name."""
+        return self.name
+    
+    def get_short_name(self):
+        """Return the user's short name."""
+        return self.name.split()[0] if self.name else self.email
+
+
+class UserAddress(BaseModel):
+    """
+    User addresses - improved approach vs storing in JSON field.
+    
+    Benefits:
+    - Proper validation
+    - Easier querying
+    - Better normalization
+    - Supports multiple addresses per user
+    """
+    
+    ADDRESS_TYPES = [
+        ('billing', 'Billing Address'),
+        ('shipping', 'Shipping Address'),
+        ('home', 'Home Address'),
+        ('work', 'Work Address'),
+    ]
+    
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='addresses'
+    )
+    address = models.ForeignKey(
+        Address,
+        on_delete=models.CASCADE
+    )
+    address_type = models.CharField(
+        max_length=20,
+        choices=ADDRESS_TYPES,
+        default='home'
+    )
+    is_default = models.BooleanField(
+        default=False,
+        help_text="Whether this is the user's default address for this type"
+    )
+    
+    class Meta:
+        verbose_name = 'User Address'
+        verbose_name_plural = 'User Addresses'
+        db_table = 'user_addresses'
+        unique_together = ['user', 'address_type', 'is_default']
+        indexes = [
+            models.Index(fields=['user', 'address_type']),
+            models.Index(fields=['is_default']),
+        ]
+        ordering = ['user', 'address_type', '-is_default', 'created_at']
+    
+    def __str__(self):
+        return f"{self.user.name} - {self.get_address_type_display()}"
+    
+    def save(self, *args, **kwargs):
+        # Ensure only one default address per type per user
+        if self.is_default:
+            UserAddress.objects.filter(
+                user=self.user,
+                address_type=self.address_type,
+                is_default=True
+            ).update(is_default=False)
+        super().save(*args, **kwargs)
+
+
+class NotificationSettings(BaseModel):
+    """
+    User notification preferences.
+    
+    Improvements over original:
+    - Better field organization
+    - More granular control
+    - Proper defaults
+    """
+    
+    DIGEST_FREQUENCY_CHOICES = [
+        ('realtime', 'Real-time'),
+        ('hourly', 'Hourly'),
+        ('daily', 'Daily'),
+        ('weekly', 'Weekly'),
+        ('never', 'Never'),
+    ]
+    
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='notification_settings'
+    )
+    
+    # Email notifications
+    email_bookings = models.BooleanField(
+        default=True,
+        help_text="Receive email notifications for booking updates"
+    )
+    email_messages = models.BooleanField(
+        default=True,
+        help_text="Receive email notifications for new messages"
+    )
+    email_ratings = models.BooleanField(
+        default=True,
+        help_text="Receive email notifications for new ratings"
+    )
+    email_orders = models.BooleanField(
+        default=True,
+        help_text="Receive email notifications for order updates"
+    )
+    email_marketing = models.BooleanField(
+        default=False,
+        help_text="Receive marketing emails"
+    )
+    
+    # Push notifications (for future mobile app)
+    push_bookings = models.BooleanField(default=True)
+    push_messages = models.BooleanField(default=True)
+    push_ratings = models.BooleanField(default=True)
+    push_orders = models.BooleanField(default=True)
+    
+    # Digest settings
+    digest_frequency = models.CharField(
+        max_length=20,
+        choices=DIGEST_FREQUENCY_CHOICES,
+        default='daily',
+        help_text="How often to receive digest emails"
+    )
+    
+    # Quiet hours
+    quiet_hours_start = models.TimeField(
+        blank=True,
+        null=True,
+        help_text="Start of quiet hours (no notifications)"
+    )
+    quiet_hours_end = models.TimeField(
+        blank=True,
+        null=True,
+        help_text="End of quiet hours"
+    )
+    
+    timezone = models.CharField(
+        max_length=50,
+        default='Europe/Lisbon',
+        help_text="User's timezone for notification timing"
+    )
+    
+    class Meta:
+        verbose_name = 'Notification Settings'
+        verbose_name_plural = 'Notification Settings'
+        db_table = 'notification_settings'
+    
+    def __str__(self):
+        return f"Notification settings for {self.user.name}"
+
+
+class EmailVerification(BaseModel):
+    """
+    Email verification codes for new user registration.
+    
+    Stores verification codes that are sent to users' emails
+    during registration to verify email ownership.
+    """
+    
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='email_verifications'
+    )
+    code = models.CharField(
+        max_length=6,
+        help_text="6-digit verification code"
+    )
+    email = models.EmailField(
+        help_text="Email address this verification is for"
+    )
+    is_used = models.BooleanField(
+        default=False,
+        help_text="Whether this verification code has been used"
+    )
+    expires_at = models.DateTimeField(
+        help_text="When this verification code expires"
+    )
+    attempts = models.PositiveIntegerField(
+        default=0,
+        help_text="Number of verification attempts"
+    )
+    max_attempts = models.PositiveIntegerField(
+        default=5,
+        help_text="Maximum number of attempts allowed"
+    )
+    
+    class Meta:
+        verbose_name = 'Email Verification'
+        verbose_name_plural = 'Email Verifications'
+        db_table = 'email_verifications'
+        indexes = [
+            models.Index(fields=['user']),
+            models.Index(fields=['email']),
+            models.Index(fields=['code']),
+            models.Index(fields=['expires_at']),
+            models.Index(fields=['is_used']),
+        ]
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return f"Email verification for {self.email} - {self.code}"
+    
+    def is_expired(self):
+        """Check if the verification code has expired."""
+        return timezone.now() > self.expires_at
+    
+    def is_valid(self):
+        """Check if the verification code is valid (not used, not expired, not max attempts)."""
+        return (
+            not self.is_used and 
+            not self.is_expired() and 
+            self.attempts < self.max_attempts
+        )
+    
+    def increment_attempts(self):
+        """Increment the number of attempts."""
+        self.attempts += 1
+        self.save(update_fields=['attempts'])
+
+
+class UserFeedback(BaseModel):
+    """
+    User feedback submissions.
+
+    Stores feedback from users about their experience with the platform.
+    """
+
+    FEEDBACK_TYPE_CHOICES = [
+        ('general', 'General Feedback'),
+        ('feature', 'Feature Request'),
+        ('bug', 'Bug Report'),
+        ('lesson', 'Lesson Feedback'),
+        ('ai_tutor', 'AI Tutor Feedback'),
+        ('content', 'Content Quality'),
+        ('testimonial', 'Testimonial'),
+    ]
+
+    TRIGGER_CHOICES = [
+        ('first_lesson', 'After First Lesson'),
+        ('milestone_lessons', 'Milestone Lessons Completed'),
+        ('course_complete', 'Course Completed'),
+        ('ai_sessions', 'AI Tutor Sessions'),
+        ('days_active', 'Days Active'),
+        ('manual', 'User Initiated'),
+        ('prompt', 'System Prompt'),
+    ]
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='feedbacks'
+    )
+
+    # Feedback content
+    feedback_type = models.CharField(
+        max_length=20,
+        choices=FEEDBACK_TYPE_CHOICES,
+        default='general'
+    )
+    rating = models.PositiveSmallIntegerField(
+        help_text="Rating from 1 to 5",
+        null=True,
+        blank=True
+    )
+    nps_score = models.PositiveSmallIntegerField(
+        help_text="Net Promoter Score (0-10)",
+        null=True,
+        blank=True
+    )
+    comment = models.TextField(
+        blank=True,
+        help_text="User's feedback comment"
+    )
+
+    # Context
+    trigger = models.CharField(
+        max_length=30,
+        choices=TRIGGER_CHOICES,
+        default='manual',
+        help_text="What triggered this feedback request"
+    )
+    context_data = models.JSONField(
+        default=dict,
+        blank=True,
+        help_text="Additional context (lessons completed, course, etc.)"
+    )
+
+    # Permissions
+    allow_public = models.BooleanField(
+        default=False,
+        help_text="User allows this feedback to be used as testimonial"
+    )
+    allow_contact = models.BooleanField(
+        default=False,
+        help_text="User allows follow-up contact"
+    )
+
+    # Status
+    is_reviewed = models.BooleanField(
+        default=False,
+        help_text="Whether admin has reviewed this feedback"
+    )
+    admin_notes = models.TextField(
+        blank=True,
+        help_text="Admin notes about this feedback"
+    )
+
+    class Meta:
+        verbose_name = 'User Feedback'
+        verbose_name_plural = 'User Feedbacks'
+        db_table = 'user_feedbacks'
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['user']),
+            models.Index(fields=['feedback_type']),
+            models.Index(fields=['rating']),
+            models.Index(fields=['trigger']),
+            models.Index(fields=['allow_public']),
+            models.Index(fields=['is_reviewed']),
+            models.Index(fields=['created_at']),
+        ]
+
+    def __str__(self):
+        return f"Feedback from {self.user.name} - {self.feedback_type} ({self.rating}/5)"
+
+
+class FeedbackPromptLog(BaseModel):
+    """
+    Tracks when feedback prompts were shown to users.
+
+    Used to prevent showing prompts too frequently and track engagement.
+    """
+
+    PROMPT_STATUS_CHOICES = [
+        ('shown', 'Prompt Shown'),
+        ('dismissed', 'User Dismissed'),
+        ('completed', 'Feedback Completed'),
+        ('skipped', 'User Skipped'),
+    ]
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='feedback_prompt_logs'
+    )
+
+    trigger = models.CharField(
+        max_length=30,
+        help_text="What triggered this prompt"
+    )
+    status = models.CharField(
+        max_length=20,
+        choices=PROMPT_STATUS_CHOICES,
+        default='shown'
+    )
+
+    # Related feedback if completed
+    feedback = models.ForeignKey(
+        UserFeedback,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='prompt_logs'
+    )
+
+    # Context when prompt was shown
+    context_data = models.JSONField(
+        default=dict,
+        blank=True,
+        help_text="Context when prompt was shown (lessons count, etc.)"
+    )
+
+    class Meta:
+        verbose_name = 'Feedback Prompt Log'
+        verbose_name_plural = 'Feedback Prompt Logs'
+        db_table = 'feedback_prompt_logs'
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['user']),
+            models.Index(fields=['trigger']),
+            models.Index(fields=['status']),
+            models.Index(fields=['created_at']),
+        ]
+
+    def __str__(self):
+        return f"Prompt for {self.user.name} - {self.trigger} ({self.status})"
+
+
+class UserEngagementMetrics(BaseModel):
+    """
+    Tracks user engagement metrics for smart feedback triggers.
+
+    Updated automatically as user interacts with the platform.
+    """
+
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='engagement_metrics'
+    )
+
+    # Lesson metrics
+    total_lessons_completed = models.PositiveIntegerField(default=0)
+    total_courses_completed = models.PositiveIntegerField(default=0)
+
+    # AI Tutor metrics
+    total_ai_sessions = models.PositiveIntegerField(default=0)
+    total_ai_minutes = models.PositiveIntegerField(default=0)
+
+    # Activity metrics
+    total_days_active = models.PositiveIntegerField(default=0)
+    current_streak = models.PositiveIntegerField(default=0)
+    longest_streak = models.PositiveIntegerField(default=0)
+
+    # Feedback metrics
+    total_feedbacks_given = models.PositiveIntegerField(default=0)
+    last_feedback_at = models.DateTimeField(null=True, blank=True)
+    last_prompt_at = models.DateTimeField(null=True, blank=True)
+
+    # Timestamps
+    first_lesson_at = models.DateTimeField(null=True, blank=True)
+    last_activity_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'User Engagement Metrics'
+        verbose_name_plural = 'User Engagement Metrics'
+        db_table = 'user_engagement_metrics'
+        indexes = [
+            models.Index(fields=['total_lessons_completed']),
+            models.Index(fields=['total_ai_sessions']),
+            models.Index(fields=['total_days_active']),
+            models.Index(fields=['last_feedback_at']),
+            models.Index(fields=['last_prompt_at']),
+        ]
+
+    def __str__(self):
+        return f"Engagement metrics for {self.user.name}"
+
+    def should_show_feedback_prompt(self):
+        """
+        Determine if user should see a feedback prompt.
+
+        Returns tuple: (should_show, trigger_type)
+        """
+        from datetime import timedelta
+
+        now = timezone.now()
+
+        # Don't show if gave feedback in last 7 days
+        if self.last_feedback_at and (now - self.last_feedback_at) < timedelta(days=7):
+            return False, None
+
+        # Don't show if prompt shown in last 3 days
+        if self.last_prompt_at and (now - self.last_prompt_at) < timedelta(days=3):
+            return False, None
+
+        # Trigger: First lesson completed
+        if self.total_lessons_completed == 1 and self.total_feedbacks_given == 0:
+            return True, 'first_lesson'
+
+        # Trigger: Milestone lessons (5, 10, 25, 50, 100)
+        milestones = [5, 10, 25, 50, 100]
+        for milestone in milestones:
+            if self.total_lessons_completed == milestone:
+                return True, 'milestone_lessons'
+
+        # Trigger: First course completed
+        if self.total_courses_completed == 1 and self.total_feedbacks_given == 0:
+            return True, 'course_complete'
+
+        # Trigger: AI Tutor usage (5, 10, 20 sessions)
+        ai_milestones = [5, 10, 20]
+        for milestone in ai_milestones:
+            if self.total_ai_sessions == milestone:
+                return True, 'ai_sessions'
+
+        # Trigger: Days active (7, 14, 30 days)
+        day_milestones = [7, 14, 30]
+        for milestone in day_milestones:
+            if self.total_days_active == milestone:
+                return True, 'days_active'
+
+        return False, None
