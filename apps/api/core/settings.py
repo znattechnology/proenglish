@@ -265,6 +265,7 @@ CORS_ALLOW_HEADERS = [
     'user-agent',
     'x-csrftoken',
     'x-requested-with',
+    'x-cliente',
 ]
 
 # WebSocket CORS settings
@@ -382,6 +383,8 @@ AVISOS_PUSH_SINCRONO = config('AVISOS_PUSH_SINCRONO', default=False, cast=bool)
 
 # Google OAuth2 configuration
 GOOGLE_OAUTH2_CLIENT_ID = config('GOOGLE_OAUTH2_CLIENT_ID', default='')
+# Client ids da app móvel (Android, iOS), separados por vírgulas: os id_tokens deles também são aceites.
+GOOGLE_OAUTH2_CLIENT_IDS_APP = [c.strip() for c in config('GOOGLE_OAUTH2_CLIENT_IDS_APP', default='').split(',') if c.strip()]
 GOOGLE_OAUTH2_CLIENT_SECRET = config('GOOGLE_OAUTH2_CLIENT_SECRET', default='')
 GOOGLE_OAUTH2_REDIRECT_URI = config('GOOGLE_OAUTH2_REDIRECT_URI', default='http://localhost:3000/auth/google/callback')
 

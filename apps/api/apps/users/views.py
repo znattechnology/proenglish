@@ -99,8 +99,20 @@ class UserRegistrationView(generics.CreateAPIView):
         }, status=status.HTTP_201_CREATED)
 
 
-def definir_cookies_sessao(response, access_token, refresh_token):
-    """Grava a sessão (JWT) em cookies HttpOnly. Em produção, Secure + SameSite=None."""
+def pedido_da_app(request):
+    """A app móvel (Expo) identifica-se com `X-Cliente: app` e guarda a sessão no cofre do telemóvel."""
+    return bool(request) and request.headers.get('X-Cliente', '').lower() == 'app'
+
+
+def definir_cookies_sessao(response, access_token, refresh_token, request=None):
+    """
+    Grava a sessão (JWT) em cookies HttpOnly. Em produção, Secure + SameSite=None.
+    Para a app móvel (`X-Cliente: app`) não há cookies: os tokens vão no corpo, em `tokens`.
+    """
+    if pedido_da_app(request):
+        if isinstance(response.data, dict):
+            response.data['tokens'] = {'access': access_token, 'refresh': refresh_token}
+        return response
     is_secure = not settings.DEBUG
     samesite = 'None' if is_secure else 'Lax'
     if access_token:
@@ -165,7 +177,7 @@ class CustomTokenObtainPairView(TokenObtainPairView):
             # Os tokens vão só nos cookies HttpOnly; o corpo leva apenas o utilizador.
             access_token = response.data.pop('access', None)
             refresh_token = response.data.pop('refresh', None)
-            definir_cookies_sessao(response, access_token, refresh_token)
+            definir_cookies_sessao(response, access_token, refresh_token, request)
 
         return response
 
@@ -192,7 +204,7 @@ class CustomTokenRefreshView(TokenRefreshView):
             # ficar no cookie, senão a sessão morre no refresh seguinte. Nada vai no corpo.
             access_token = response.data.pop('access', None)
             refresh_token = response.data.pop('refresh', None)
-            definir_cookies_sessao(response, access_token, refresh_token)
+            definir_cookies_sessao(response, access_token, refresh_token, request)
             response.data['message'] = 'Sessão renovada.'
 
         return response
@@ -343,7 +355,7 @@ class PasswordChangeView(generics.GenericAPIView):
         else:
             mensagem = 'Palavra-passe mudada. As sessões nos outros dispositivos foram terminadas.'
         resposta = Response({'message': mensagem, 'has_password': True, 'deve_mudar_senha': False})
-        return definir_cookies_sessao(resposta, access, refresh)
+        return definir_cookies_sessao(resposta, access, refresh, request)
 
 
 def _acesso_da_sessao_actual(user, refresh_actual):
@@ -648,7 +660,7 @@ class EmailVerificationView(generics.GenericAPIView):
             })
             # A sessão vai nos cookies HttpOnly, como no login (antes só ia no corpo e a pessoa
             # ficava sem sessão logo a seguir a confirmar o email).
-            definir_cookies_sessao(response, access, refresh)
+            definir_cookies_sessao(response, access, refresh, request)
             return response
         else:
             return Response({
@@ -766,7 +778,7 @@ class GoogleOAuthLoginView(generics.GenericAPIView):
             'message': 'Entrou com o Google.',
             'user': {**dados_utilizador(user), 'google_id': user.google_id},
         })
-        definir_cookies_sessao(response, access, refresh)
+        definir_cookies_sessao(response, access, refresh, request)
         return response
 
 
