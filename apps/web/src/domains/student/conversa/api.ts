@@ -92,6 +92,27 @@ export type Progresso = {
   frases_sozinho: { total: number; recentes: { texto: string; traducao: string; vezes: number; dias: number; ultima_vez: string | null }[] };
 };
 
+/** Teste de nível falado da primeira entrada (fase 6). */
+export type ResultadoDiagnostico = {
+  id: string;
+  estado: Resumo["estado"];
+  avaliado: boolean;
+  nivel: Nivel | null;
+  niveis: { falar: Nivel | null; ouvir: Nivel | null; gramatica: Nivel | null; vocabulario: Nivel | null } | null;
+  explicacoes: Partial<Record<"falar" | "ouvir" | "gramatica" | "vocabulario", string>>;
+  resumo: string | null;
+  feito_em: string;
+};
+export type EstadoDiagnostico = {
+  disponivel: boolean;
+  feitos_30_dias: number;
+  limite: number;
+  proximo_em: string | null;
+  max_segundos: number;
+  ultimo: ResultadoDiagnostico | null;
+  modo: "vapi" | "simulado";
+};
+
 /** A fala contém a frase? (aproximado, só para o painel ao vivo: quem decide é o servidor no fim). */
 export function disseFrase(frase: string, fala: string) {
   const norm = (t: string) =>
@@ -138,8 +159,22 @@ export const conversaApi = createApi({
       query: (body) => ({ url: `${BASE}/sessoes/`, method: "POST", body }),
     }),
     /** A chamada ligou de facto: o tempo cobrado começa aqui (não ao criar a sessão). */
-    ligada: build.mutation<unknown, string>({
-      query: (id) => ({ url: `${BASE}/sessoes/${id}/ligada/`, method: "POST", body: {} }),
+    ligada: build.mutation<unknown, string | { id: string; call_id?: string }>({
+      query: (a) => {
+        const { id, call_id } = typeof a === "string" ? { id: a, call_id: undefined } : a;
+        return { url: `${BASE}/sessoes/${id}/ligada/`, method: "POST", body: call_id ? { call_id } : {} };
+      },
+    }),
+    diagnostico: build.query<EstadoDiagnostico, void>({
+      query: () => `${BASE}/diagnostico/`,
+      keepUnusedDataFor: 0,
+    }),
+    comecarDiagnostico: build.mutation<{ sessao: NovaSessao; modo: "vapi" | "simulado"; chave_publica: string | null }, void>({
+      query: () => ({ url: `${BASE}/diagnostico/comecar/`, method: "POST", body: {} }),
+    }),
+    resultadoDiagnostico: build.query<ResultadoDiagnostico, string>({
+      query: (id) => `${BASE}/diagnostico/${id}/`,
+      keepUnusedDataFor: 0,
     }),
     responder: build.mutation<{ tutor: string }, { id: string; texto: string }>({
       query: ({ id, texto }) => ({ url: `${BASE}/sessoes/${id}/responder/`, method: "POST", body: { texto } }),
@@ -163,7 +198,7 @@ export const conversaApi = createApi({
   }),
 });
 
-export const { usePrepararQuery, useComecarMutation, useLigadaMutation, useResponderMutation, useAjusteMutation, useTerminarMutation, useResumoQuery, useProgressoQuery } = conversaApi;
+export const { useDiagnosticoQuery, useComecarDiagnosticoMutation, useLazyResultadoDiagnosticoQuery, usePrepararQuery, useComecarMutation, useLigadaMutation, useResponderMutation, useAjusteMutation, useTerminarMutation, useResumoQuery, useProgressoQuery } = conversaApi;
 
 export const URL_TERMINAR = (id: string) => `${process.env.NEXT_PUBLIC_DJANGO_API_URL || "http://localhost:8000/api/v1"}${BASE}/sessoes/${id}/terminar/`;
 

@@ -4,6 +4,8 @@
  * O acesso a cada curso vem do plano (não há compras de cursos).
  */
 import { createApi } from "@reduxjs/toolkit/query/react";
+import type { ExameOral } from "@/src/domains/shared/exameOral";
+import type { ConversaLicao } from "@/src/domains/student/laboratorio/api";
 import { aposCurso, quandoCorrerBem } from "@/src/domains/student/sincronizar";
 import { sharedBaseQuery } from "@/src/domains/shared/api/baseQuery";
 
@@ -98,7 +100,19 @@ export type Notas = {
     conversation: { score: number; sessions: number; minutes: number; required: boolean };
   };
   final_grade: { percentage: number; letter: string };
-  weight_info: { quiz_weight: number; practice_weight: number; conversation_weight: number; active_components: string[] };
+  weight_info: {
+    quiz_weight: number;
+    practice_weight: number;
+    conversation_weight: number;
+    /** Fase 6: exame oral, frases do curso ditas sozinho e estudo (questionários + prática). */
+    exam_weight?: number;
+    phrases_weight?: number;
+    study_weight?: number;
+    study_score?: number | null;
+    active_components: string[];
+  };
+  exame_oral?: { score: number | null; passed: boolean; attempts: number; min_score: number | null };
+  frases_curso?: { score: number; total: number; mastered: number };
   certificate_eligibility: {
     is_eligible: boolean;
     /** Elegível e o plano inclui certificados. */
@@ -111,6 +125,27 @@ export type Notas = {
   nota_minima?: number;
   plano_inclui_certificados?: boolean;
 };
+
+export type EstadoExame = {
+  disponivel: boolean;
+  motivo: null | "progresso" | "aprovado" | "aguardar" | "tentativas" | "curso_pratica";
+  mensagem: string | null;
+  progresso: number;
+  limiar_progresso: number;
+  duracao_minutos: number;
+  nota_minima: number;
+  nivel_alvo: string | null;
+  area: string | null;
+  temas: { titulo: string; descricao: string }[];
+  frases: { en: string; pt: string }[];
+  frases_total: number;
+  aprovado: boolean;
+  pode_repetir_em: string | null;
+  em_curso: string | null;
+  tentativas: ExameOral[];
+};
+
+export type ExameComecado = ConversaLicao & { exame_id: string; gravacao: boolean };
 
 export type NotasDeTodos = {
   courses: {
@@ -133,7 +168,7 @@ const dados = <T,>(r: Envelope<T> | T) => (r && typeof r === "object" && "data" 
 export const cursoApi = createApi({
   reducerPath: "cursoApi",
   baseQuery: sharedBaseQuery,
-  tagTypes: ["Curso", "Progresso", "Inscricao", "Quiz", "Notas"],
+  tagTypes: ["Curso", "Progresso", "Inscricao", "Quiz", "Notas", "Exame"],
   endpoints: (build) => ({
     curso: build.query<DetalheCurso, string>({
       query: (id) => `${BASE}/${id}/`,
@@ -202,6 +237,22 @@ export const cursoApi = createApi({
       transformResponse: dados<Notas>,
       providesTags: (_r, _e, id) => [{ type: "Notas", id }],
     }),
+    exame: build.query<EstadoExame, string>({
+      query: (courseId) => `${BASE}/${courseId}/exame/`,
+      providesTags: (_r, _e, id) => [{ type: "Exame", id }],
+      keepUnusedDataFor: 0,
+    }),
+    comecarExame: build.mutation<ExameComecado, { courseId: string; consentimento: boolean }>({
+      query: ({ courseId, consentimento }) => ({ url: `${BASE}/${courseId}/exame/`, method: "POST", body: { consentimento } }),
+    }),
+    resultadoExame: build.query<ExameOral, string>({
+      query: (id) => `${BASE}/exames/${id}/`,
+      keepUnusedDataFor: 0,
+    }),
+    apagarGravacaoExame: build.mutation<ExameOral, { id: string; courseId: string }>({
+      query: ({ id }) => ({ url: `${BASE}/exames/${id}/gravacao/`, method: "DELETE" }),
+      invalidatesTags: (_r, _e, a) => [{ type: "Exame", id: a.courseId }],
+    }),
   }),
 });
 
@@ -218,6 +269,11 @@ export const {
   useResponderQuizMutation,
   useNotasQuery,
   useNotasDeTodosQuery,
+  useExameQuery,
+  useComecarExameMutation,
+  useResultadoExameQuery,
+  useLazyResultadoExameQuery,
+  useApagarGravacaoExameMutation,
 } = cursoApi;
 
 /* ------------------------------------------------------------------ */

@@ -52,7 +52,9 @@ class Base(APITestCase):
         self.curso = Course.objects.create(teacher=self.prof, teacherName='Prof', title='Reuniões em inglês',
                                            description='Reuniões de segurança', category='Petróleo',
                                            course_type='video', status='Published', access_level='premium')
-        CourseGradingConfig.objects.create(course=self.curso, practice_enabled=False, conversation_enabled=False)
+        # Só os questionários contam (sem exame oral da fase 6: tem testes próprios em test_fase6_fala).
+        CourseGradingConfig.objects.create(course=self.curso, practice_enabled=False, conversation_enabled=False,
+                                           exam_enabled=False)
         self.sec = CourseSection.objects.create(course=self.curso, sectionTitle='S1', order=1)
         self.video = Chapter.objects.create(section=self.sec, title='Vídeo', content='x', type='Video',
                                             video='https://example.com/v.mp4', order=1)

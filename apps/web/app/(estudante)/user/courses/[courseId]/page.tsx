@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { SobreProfessor } from "@/components/pe/curso/SobreProfessor";
+import { CartaoExame } from "@/components/pe/curso/Exame";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { ArrowLeft, Check, Lock } from "lucide-react";
@@ -167,6 +168,7 @@ function CursoInscrito({ curso }: { curso: Curso }) {
             </span>
             <span className="font-semibold text-pe-azul-vivo underline underline-offset-[3px]">Ver as notas</span>
           </Link>
+          <CartaoExame courseId={curso.courseId} />
           {curso.description ? (
             <section className="flex flex-col gap-2 rounded-pe-md border border-pe-linha p-[22px]">
               <h2 className="m-0 font-pe-titulo text-[18px] font-semibold leading-6">Sobre o curso</h2>

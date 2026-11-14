@@ -19,6 +19,12 @@ class CourseGradingConfig(BaseModel):
     """
     Configuration for course grading weights and certificate eligibility requirements.
     Each course can have custom grading configuration.
+
+    Nota do curso (fase 6, "só conta o que o aluno diz"):
+      exame oral 40 % + frases do curso ditas sozinho 25 % + conversas do curso 20 %
+      + estudo (questionários e prática) 15 %.
+    quiz_weight / practice_weight passam a ser só a proporção interna do componente "estudo"
+    (50:30 por omissão). Um componente que não existe no curso sai e os pesos são renormalizados.
     """
     course = models.OneToOneField(
         'courses.Course',
@@ -41,6 +47,30 @@ class CourseGradingConfig(BaseModel):
         default=20,
         validators=[MinValueValidator(0), MaxValueValidator(100)],
         help_text="Weight of Vapi conversations in final grade (%)"
+    )
+    exam_weight = models.PositiveIntegerField(
+        default=40,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        help_text="Peso do exame oral na nota final (%)"
+    )
+    phrases_weight = models.PositiveIntegerField(
+        default=25,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        help_text="Peso das frases do curso ditas sozinho na nota final (%)"
+    )
+    study_weight = models.PositiveIntegerField(
+        default=15,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        help_text="Peso do estudo (questionários + prática, na proporção quiz_weight:practice_weight) (%)"
+    )
+    exam_enabled = models.BooleanField(
+        default=True,
+        help_text="Exame oral obrigatório para o certificado"
+    )
+    min_exam_score = models.FloatField(
+        default=60.0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        help_text="Nota mínima do exame oral para passar (%)"
     )
 
     # ===== MINIMUM REQUIREMENTS FOR CERTIFICATE =====
@@ -144,8 +174,10 @@ class CourseGradingConfig(BaseModel):
             )
 
         # If auto_adjust_weights is disabled, require weights to sum to 100
+        # (componentes de topo: exame, frases, conversas e estudo).
         if not getattr(self, 'auto_adjust_weights', True):
-            full_total = (self.quiz_weight or 0) + (self.practice_weight or 0) + (self.conversation_weight or 0)
+            full_total = ((self.exam_weight or 0) + (self.phrases_weight or 0) + (self.conversation_weight or 0)
+                          + (self.study_weight or 0))
             if full_total != 100:
                 raise ValidationError(
                     f"Component weights must sum to 100%. Current total: {full_total}%"
@@ -318,6 +350,22 @@ class StudentCourseGrade(BaseModel):
         help_text="Whether course requires conversation practice"
     )
 
+    # ===== EXAME ORAL E FRASES DO CURSO (fase 6) =====
+    exam_score = models.FloatField(
+        null=True, blank=True,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        help_text="Melhor nota do exame oral (a do professor ganha à da IA); vazio sem exame"
+    )
+    exam_passed = models.BooleanField(default=False)
+    exam_details = models.JSONField(default=dict, blank=True)
+    phrases_score = models.FloatField(
+        default=0.0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        help_text="% das frases aprovadas do curso que o aluno já disse sozinho"
+    )
+    phrases_total = models.PositiveIntegerField(default=0)
+    phrases_mastered = models.PositiveIntegerField(default=0)
+
     # ===== CALCULATED FINAL GRADE =====
     final_grade_percentage = models.FloatField(
         default=0.0,
@@ -448,6 +496,7 @@ class GradeHistory(BaseModel):
             ('quiz_retake', 'Quiz Retake'),
             ('practice_completed', 'Practice Completed'),
             ('conversation_session', 'Conversation Session'),
+            ('oral_exam', 'Oral Exam'),
             ('manual_adjustment', 'Manual Adjustment'),
             ('recalculation', 'Automatic Recalculation'),
             ('config_change', 'Grading Config Changed'),

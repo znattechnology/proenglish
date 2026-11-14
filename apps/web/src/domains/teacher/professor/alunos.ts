@@ -1,5 +1,7 @@
 /** Alunos e resultados do professor: só os alunos dos seus cursos, sem emails nem telefones. */
 import { tokenRefreshCoordinator } from "@/lib/token-refresh-coordinator";
+import type { ExameOral } from "@/src/domains/shared/exameOral";
+import type { NivelCefr } from "@/src/domains/shared/niveis";
 import { diaMesCurto, professorApi, type TipoCurso } from "./api";
 
 export type EstadoAluno = "activo" | "pouco_activo" | "em_risco" | "novo";
@@ -45,17 +47,39 @@ export type Resultados = {
   perguntas_dificeis: { challenge_id: string; licao_id?: string; unidade_id?: string; frase: string; tipo: string; curso_id: string; curso: string; onde: string; acerto: number; respostas: number }[];
 };
 
-const alunosApi = professorApi.injectEndpoints({
+/** Fase 6: perfil de fala do aluno e exames orais nos cursos do professor. */
+export type ExameDoAluno = ExameOral & { aluno: { id: string; nome: string } };
+export type FalaDoAluno = {
+  perfil: {
+    niveis: Record<"falar" | "ouvir" | "vocabulario" | "gramatica", NivelCefr | null>;
+    conversas_avaliadas: number;
+    padroes: { chave: string; descricao: string; errado: string; certo: string; ocorrencias: number }[];
+    frases_sozinho: number;
+    frases_sozinho_cursos: number;
+  };
+  exames: ExameDoAluno[];
+};
+export type RevisaoExame = { id: string; alunoId: string } & ({ confirmar: true } | { nota: number; comentario: string });
+
+const alunosApi = professorApi.enhanceEndpoints({ addTagTypes: ["FalaAluno"] }).injectEndpoints({
   endpoints: (build) => ({
     alunos: build.query<ListaAlunos, FiltroAlunos>({
       query: ({ filtro, curso, q, pagina }) => ({ url: "/teacher/alunos/", params: { filtro, pagina, ...(curso ? { curso } : {}), ...(q ? { q } : {}) } }),
     }),
     aluno: build.query<DetalheAluno, string>({ query: (id) => `/teacher/alunos/${id}/` }),
+    falaAluno: build.query<FalaDoAluno, string>({
+      query: (id) => `/teacher/alunos/${id}/fala/`,
+      providesTags: (_r, _e, id) => [{ type: "FalaAluno", id }],
+    }),
+    reverExame: build.mutation<ExameDoAluno, RevisaoExame>({
+      query: (a) => ({ url: `/teacher/exames/${a.id}/rever/`, method: "POST", body: "confirmar" in a ? { confirmar: true } : { nota: a.nota, comentario: a.comentario } }),
+      invalidatesTags: (_r, _e, a) => [{ type: "FalaAluno", id: a.alunoId }],
+    }),
     resultados: build.query<Resultados, number>({ query: (periodo) => ({ url: "/teacher/resultados/", params: { periodo } }) }),
   }),
 });
 
-export const { useAlunosQuery, useAlunoQuery, useResultadosQuery } = alunosApi;
+export const { useAlunosQuery, useAlunoQuery, useResultadosQuery, useFalaAlunoQuery, useReverExameMutation } = alunosApi;
 
 const API = process.env.NEXT_PUBLIC_DJANGO_API_URL || "http://localhost:8000/api/v1";
 

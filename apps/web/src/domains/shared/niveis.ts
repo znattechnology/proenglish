@@ -95,7 +95,7 @@ export function sugerirPorNivel<T extends { level?: string | null }>(cursos: T[]
 /**
  * Nível do teste de 5 perguntas da primeira entrada (dificuldade A1, A2, B1, B2, C1).
  * 0 certas: A1; 1 ou 2: A2; 3: B1; 4 ou 5: B2. Não passa de B2: uma só pergunta de C1 não chega
- * para o confirmar (o teste falado da fase 6 substitui este).
+ * para o confirmar. Desde a fase 6 é a alternativa ao teste de nível falado (components/pe/acolhimento/TesteFalado).
  */
 export function nivelDoTeste(certas: number): NivelCefr {
   if (certas <= 0) return "A1";

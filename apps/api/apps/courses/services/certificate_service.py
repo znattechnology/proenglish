@@ -216,7 +216,27 @@ class CertificateGenerationService:
         }
         for en, pt in months_pt.items():
             issue_date = issue_date.replace(en, pt)
-        c.drawCentredString(center_x, self.PAGE_HEIGHT - 380, f"Emitido em {issue_date}")
+        # Fase 6: nível de fala atingido no exame oral e notas por competência.
+        from apps.courses.certificados import frase_nivel_fala, notas_fala_lista
+        fala = frase_nivel_fala(self.certificate)
+        y_data = self.PAGE_HEIGHT - 380
+        if fala:
+            c.setFillColor(self.PRIMARY_COLOR)
+            c.setFont("Helvetica-Bold", 13)
+            c.drawCentredString(center_x, self.PAGE_HEIGHT - 374, fala)
+            partes = [f"{n['nome']} {n['nota']}" for n in notas_fala_lista(self.certificate)]
+            exame = (self.certificate.notas_fala or {}).get('exame')
+            if exame is not None:
+                partes.insert(0, f"Exame oral {exame}%")
+            if partes:
+                c.setFillColor(self.TEXT_COLOR)
+                c.setFont("Helvetica", 10)
+                c.drawCentredString(center_x, self.PAGE_HEIGHT - 392, "  ·  ".join(partes))
+            y_data = self.PAGE_HEIGHT - 418
+
+        c.setFillColor(self.LIGHT_TEXT)
+        c.setFont("Helvetica", 12)
+        c.drawCentredString(center_x, y_data, f"Emitido em {issue_date}")
 
     def _draw_footer(self, c: canvas.Canvas):
         """Draw the certificate footer with signatures."""

@@ -98,11 +98,19 @@ def validar_pedido(data, user=None, situacao=None):
     return situacao
 
 
-def criar_sessao(user, data, situacao=None, objectivos=None, max_segundos=None, config_extra=None):
+def criar_sessao(user, data, situacao=None, objectivos=None, max_segundos=None, config_extra=None,
+                 isenta_quota=False, gravar=False, instrucoes=None):
     """
     Opcionais (conversa curta de uma lição, conversa/licao.py): `situacao` já montada (em vez do
     slug em data), `objectivos` explícitos [{en, pt}], `max_segundos` (nunca acima da quota) e
     `config_extra` (guardado em full_session_data.config).
+
+    Fase 6 (teste de nível falado, conversa/diagnostico.py, e exame oral, conversa/exame.py):
+    - `isenta_quota`: não precisa de minutos do dia, não gasta minutos (minutos_cobrados = 0) e o
+      limite é só `max_segundos`; fica em config.isenta_quota;
+    - `gravar`: liga a gravação do áudio no Vapi (artifactPlan.recordingEnabled). SÓ o exame oral
+      com o consentimento do aluno usa isto; em qualquer outra conversa nunca se grava;
+    - `instrucoes`: o prompt do tutor já montado (o examinador e o diagnóstico têm o seu).
     """
     situacao = validar_pedido(data, user, situacao=situacao)
     nivel, correcao, area = data['nivel'], data['correcao'], data['area']
@@ -117,6 +125,7 @@ def criar_sessao(user, data, situacao=None, objectivos=None, max_segundos=None, 
         quota = estado_quota(user, sub)
     for antiga, segundos in fechadas:
         _efeitos_cobranca(antiga, segundos)
+        depois_de_fechar(antiga)
         if antiga.status == VapiSession.STATUS_A_AVALIAR:
             # Sem esperar pelo Claude: avaliação por regras (rápida). No modo de voz, a transcrição
             # de uma conversa abandonada só existe se o end-of-call-report do Vapi já chegou.
@@ -124,13 +133,13 @@ def criar_sessao(user, data, situacao=None, objectivos=None, max_segundos=None, 
                 avaliar_pendente(antiga.pk, so_regras=True)
             except Exception:
                 logger.exception('conversa: falha ao avaliar a sessão abandonada %s', antiga.pk)
-    if not quota['pode_comecar']:
+    if not quota['pode_comecar'] and not isenta_quota:
         raise ErroConversa(403, quota['motivo'], MENSAGENS[quota['motivo']])
 
     with transaction.atomic():
         sub = obter_assinatura(user, bloquear=True)
         quota = estado_quota(user, sub)
-        if not quota['pode_comecar']:
+        if not quota['pode_comecar'] and not isenta_quota:
             raise ErroConversa(403, quota['motivo'], MENSAGENS[quota['motivo']])
 
         nome = nome_aluno(user)
@@ -138,8 +147,11 @@ def criar_sessao(user, data, situacao=None, objectivos=None, max_segundos=None, 
         if objectivos is None:
             objectivos = _objectivos(user, situacao)
         vapi = config_vapi()
-        limite_quota = quota['max_minutos_sessao'] * 60
-        max_segundos = min(limite_quota, max_segundos) if max_segundos else limite_quota
+        if isenta_quota and max_segundos:
+            pass  # fora da quota: só o limite da própria sessão
+        else:
+            limite_quota = quota['max_minutos_sessao'] * 60
+            max_segundos = min(limite_quota, max_segundos) if max_segundos else limite_quota
         agora = timezone.now()
         sessao = VapiSession.objects.create(
             session_id=str(uuid.uuid4()), user=user, level=nivel, domain=area, duration_minutes=0,
@@ -150,7 +162,9 @@ def criar_sessao(user, data, situacao=None, objectivos=None, max_segundos=None, 
                 'versao': VERSAO,
                 'config': {'situacao': situacao['id'], 'nivel': nivel, 'correcao': correcao, 'area': area,
                            'curso_id': str(situacao['curso_id']) if situacao.get('curso_id') else None,
-                           'objectivos': objectivos, **(config_extra or {})},
+                           'objectivos': objectivos, **(config_extra or {}),
+                           **({'isenta_quota': True} if isenta_quota else {}),
+                           'gravar': bool(gravar and vapi)},
                 'historico': [{'quem': 'tutor', 'texto': fala}],
             },
         )
@@ -170,8 +184,9 @@ def criar_sessao(user, data, situacao=None, objectivos=None, max_segundos=None, 
         'vapi': None,
     }
     if vapi:
-        instrucoes = instrucoes_tutor(situacao, nivel, correcao, area, nome,
-                                      contexto=_contexto(user, situacao), objectivos=objectivos)
+        if instrucoes is None:
+            instrucoes = instrucoes_tutor(situacao, nivel, correcao, area, nome,
+                                          contexto=_contexto(user, situacao), objectivos=objectivos)
         resposta['vapi'] = {
             'assistant_id': vapi['assistant_id'],
             'assistant_overrides': {
@@ -186,7 +201,8 @@ def criar_sessao(user, data, situacao=None, objectivos=None, max_segundos=None, 
                 'firstMessageMode': 'assistant-speaks-first',
                 'maxDurationSeconds': max_segundos,
                 # Sem gravação do áudio no Vapi (vem ligada por omissão): só precisamos da transcrição.
-                'artifactPlan': {'recordingEnabled': False},
+                # A única excepção é o exame oral com o consentimento do aluno (conversa/exame.py).
+                'artifactPlan': {'recordingEnabled': bool(gravar)},
                 'metadata': {'sessao_id': sessao.session_id},
             },
         }
@@ -267,17 +283,27 @@ def _registar_actividade(sessao, agora=None):
     sessao.connected_at = sessao.connected_at or agora
 
 
-def ligada(user, sessao_id):
-    """A chamada ligou (Vapi call-start; no simulado, ao começar). Idempotente."""
+def ligada(user, sessao_id, call_id=None):
+    """A chamada ligou (Vapi call-start; no simulado, ao começar). Idempotente.
+    call_id (opcional): o id da chamada no Vapi, para ir buscar a gravação de um exame oral
+    quando o end-of-call-report não chega (conversa/exame.py)."""
     with transaction.atomic():
         sessao = obter_sessao(user, sessao_id, bloquear=True)
         if sessao.status != VapiSession.STATUS_EM_CURSO:
             raise ErroConversa(409, 'conversa_terminada', 'Esta conversa já terminou.')
+        campos = []
         if sessao.connected_at is None:
             agora = timezone.now()
             sessao.connected_at = agora
             sessao.last_activity_at = agora
-            sessao.save(update_fields=['connected_at', 'last_activity_at'])
+            campos += ['connected_at', 'last_activity_at']
+        dados = _dados(sessao)
+        if isinstance(call_id, str) and call_id.strip() and not dados.get('vapi_call_id') and sessao.mode == 'vapi':
+            dados['vapi_call_id'] = call_id.strip()[:100]
+            sessao.full_session_data = dados
+            campos.append('full_session_data')
+        if campos:
+            sessao.save(update_fields=campos)
     termina = sessao.connected_at + timedelta(seconds=sessao.max_seconds) if sessao.max_seconds else None
     return {
         'id': sessao.session_id,
@@ -392,8 +418,9 @@ def _terminar_bloqueado(sessao, transcricao_enviada, sub, segundos_max=None):
         segundos = min(segundos, max(0, int(segundos_max)))
     do_dia = dia_da_sessao(sessao) == hoje_luanda(agora)
 
+    isenta = sessao_isenta(sessao)
     quota = estado_quota(sessao.user, sub)
-    restantes = quota['minutos_restantes'] if do_dia else None  # dia passado: não gasta a quota de hoje
+    restantes = quota['minutos_restantes'] if do_dia and not isenta else None  # dia passado: não gasta a quota de hoje
     if restantes is not None:
         segundos = min(segundos, restantes * 60)
     minutos = minutos_a_cobrar(segundos)
@@ -403,7 +430,7 @@ def _terminar_bloqueado(sessao, transcricao_enviada, sub, segundos_max=None):
     transcricao = _escolher_transcricao(sessao, transcricao_enviada)
     dados = _dados(sessao)
     dados['transcricao'] = transcricao
-    dados['minutos_cobrados'] = minutos
+    dados['minutos_cobrados'] = 0 if isenta else minutos
     m = analise.metricas(transcricao, segundos)
     dados.update({'notas': None, 'correccoes': [], 'palavras_bem_usadas': [], 'resumo': None, 'metricas': m})
 
@@ -422,10 +449,16 @@ def _terminar_bloqueado(sessao, transcricao_enviada, sub, segundos_max=None):
     sessao.full_session_data = dados
     sessao.save()
 
-    if minutos and do_dia:
+    if minutos and do_dia and not isenta:
         UserSubscription.objects.filter(pk=sub.pk).update(
             daily_speaking_minutes_used=F('daily_speaking_minutes_used') + minutos)
     return sessao, segundos
+
+
+def sessao_isenta(sessao):
+    """Teste de nível falado e exame oral: fora da quota diária de minutos."""
+    cfg = _dados(sessao).get('config')
+    return bool(isinstance(cfg, dict) and cfg.get('isenta_quota'))
 
 
 def _efeitos_cobranca(sessao, segundos):
@@ -439,7 +472,7 @@ def _efeitos_avaliacao(sessao):
     """Pontos, resumo diário e notas dos cursos de uma sessão acabada de avaliar."""
     user = sessao.user
     pontos = 0
-    if sessao.duration_minutes > 0:  # 0 minutos cobrados: sem pontos
+    if sessao.duration_minutes > 0 and not sessao_isenta(sessao):  # 0 minutos cobrados: sem pontos
         pontos = min(MAX_PONTOS_SESSAO, PONTOS_POR_MINUTO * sessao.duration_minutes)
         progresso, _ = UserProgress.objects.get_or_create(user=user, defaults={'points': 0})
         curso_id = (_dados(sessao).get('config') or {}).get('curso_id')
@@ -482,9 +515,14 @@ def avaliar_pendente(sessao_pk, so_regras=False):
     except Exception:
         logger.exception('conversa: falha ao ler os padrões de erro do aluno')
         conhecidos = []
-    resultado = analise.avaliar(transcricao, situacao, sessao.level, sessao.domain, sessao.duration_seconds,
-                                simulado=so_regras or sessao.mode == 'simulado' or modo_simulado(),
-                                objectivos=objectivos, padroes_conhecidos=conhecidos)
+    especial = _avaliacao_especial(sessao)
+    simulado = so_regras or sessao.mode == 'simulado' or modo_simulado()
+    if especial is not None:
+        resultado = especial.avaliar(sessao, transcricao, situacao, simulado=simulado,
+                                     objectivos=objectivos, padroes_conhecidos=conhecidos)
+    else:
+        resultado = analise.avaliar(transcricao, situacao, sessao.level, sessao.domain, sessao.duration_seconds,
+                                    simulado=simulado, objectivos=objectivos, padroes_conhecidos=conhecidos)
 
     with transaction.atomic():
         sessao = VapiSession.objects.select_for_update().select_related('user').get(pk=sessao_pk)
@@ -500,6 +538,8 @@ def avaliar_pendente(sessao_pk, so_regras=False):
             'padroes': resultado.get('padroes') or [], 'nivel_cefr': resultado.get('nivel_cefr'),
             'objectivos_usados': resultado.get('objectivos_usados'),
         })
+        if especial is not None and resultado.get('extra') is not None:
+            dados[especial.CHAVE] = resultado['extra']
         sessao.status = VapiSession.STATUS_AVALIADA
         sessao.fluency_score = notas['fluencia']
         sessao.grammar_score = notas['gramatica']
@@ -515,8 +555,36 @@ def avaliar_pendente(sessao_pk, so_regras=False):
         perfil_servico.registar_conversa(sessao)
     except Exception:
         logger.exception('conversa: falha ao actualizar o perfil de fala (sessão %s)', sessao.pk)
+    if especial is not None:
+        try:
+            sessao.refresh_from_db()  # registar_conversa guardou full_session_data['perfil']
+            especial.depois_de_avaliar(sessao)
+        except Exception:
+            logger.exception('conversa: falha no registo depois da avaliação (sessão %s)', sessao.pk)
     sessao.refresh_from_db()
     return sessao
+
+
+def _avaliacao_especial(sessao):
+    """O módulo que avalia o teste de nível (diagnostico) ou o exame oral (exame); None nas outras."""
+    slug = sessao.situation or ''
+    if slug.startswith('diagnostico-'):
+        from . import diagnostico
+        return diagnostico
+    if slug.startswith('exame-'):
+        from . import exame
+        return exame
+    return None
+
+
+def depois_de_fechar(sessao):
+    """Uma sessão especial acabou de fechar: não ligou, falou pouco ou vai ser avaliada."""
+    especial = _avaliacao_especial(sessao)
+    if especial is not None and sessao.status != VapiSession.STATUS_EM_CURSO:
+        try:
+            especial.depois_de_avaliar(sessao)
+        except Exception:
+            logger.exception('conversa: falha ao fechar a sessão especial %s', sessao.pk)
 
 
 def terminar(user, sessao_id, transcricao_bruta):
@@ -533,6 +601,7 @@ def terminar(user, sessao_id, transcricao_bruta):
     # Cobrança já gravada (commit): o resto corre sem bloqueios.
     if fechada_agora:
         _efeitos_cobranca(sessao, segundos)
+        depois_de_fechar(sessao)
     if sessao.status == VapiSession.STATUS_A_AVALIAR:
         sessao = avaliar_pendente(sessao.pk)
     return resumo(sessao)

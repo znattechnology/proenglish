@@ -36,11 +36,29 @@ def curso_tem_conversa(course) -> bool:
 
 
 def sessoes_de_conversa_do_curso(user, course):
-    """Conversas avaliadas do aluno que contam para este curso."""
+    """Conversas avaliadas do aluno que contam para este curso (o exame oral conta à parte)."""
     from apps.practice.models import Situacao
     slugs = Situacao.objects.filter(curso=course).values('slug')
     return VapiSession.objects.filter(user=user, status=VapiSession.STATUS_AVALIADA).filter(
-        Q(situation__in=slugs) | Q(full_session_data__config__curso_id=str(course.id)))
+        Q(situation__in=slugs) | Q(full_session_data__config__curso_id=str(course.id))).exclude(
+        situation__startswith='exame-')
+
+
+def frases_do_curso(course):
+    """As frases aprovadas (FraseAula, tipo frase) das aulas visíveis do curso, sem repetidas: [(texto, traducao)].
+    As palavras soltas ficam de fora: nunca chegam a 'sozinho' (apps/perfil, MIN_PALAVRAS_BANCO)."""
+    from apps.courses.models import FraseAula
+    from apps.perfil.servico import normalizar
+    vistas, out = set(), []
+    for texto, traducao in (FraseAula.objects.filter(q_aula_visivel('chapter__'), chapter__section__course=course,
+                                                     estado=FraseAula.APROVADA, tipo=FraseAula.TIPO_FRASE)
+                            .order_by('chapter__section__order', 'chapter__order', 'ordem', 'id')
+                            .values_list('texto', 'traducao')):
+        chave = normalizar(texto)
+        if chave and chave not in vistas:
+            vistas.add(chave)
+            out.append((texto, traducao))
+    return out
 
 
 def curso_da_sessao(vapi_session):
@@ -81,13 +99,15 @@ class GradeCalculatorService:
     """
     Service for calculating student grades in video courses.
 
-    The grading system combines three components:
-    1. Quiz scores (default 50%) - From chapter quizzes
-    2. Practice scores (default 30%) - From practice exercises linked to quizzes
-    3. Conversation scores (default 20%) - From Vapi conversation sessions
+    Componentes (fase 6, pesos por omissão em CourseGradingConfig):
+    1. Exame oral (40%) - ExameOral avaliado; a nota revista pelo professor ganha à da IA
+    2. Frases do curso ditas sozinho (25%) - FraseAula aprovadas no estado 'sozinho' do perfil
+    3. Conversas do curso (20%) - VapiSession do curso (regras da fase 1, sem o exame)
+    4. Estudo (15%) - questionários e prática, na proporção interna quiz_weight:practice_weight
+    Passar no exame oral é requisito do certificado (exam_enabled).
     """
 
-    CALCULATION_VERSION = 1
+    CALCULATION_VERSION = 2  # fase 6: exame oral, frases do curso, conversas, estudo
 
     def __init__(self, user: User, course: Course):
         self.user = user
@@ -96,15 +116,70 @@ class GradeCalculatorService:
 
     def _get_or_create_config(self) -> CourseGradingConfig:
         """Get or create grading configuration for the course."""
-        config, _ = CourseGradingConfig.objects.get_or_create(
-            course=self.course,
-            defaults={
-                'quiz_weight': 50,
-                'practice_weight': 30,
-                'conversation_weight': 20,
-            }
-        )
+        config, _ = CourseGradingConfig.objects.get_or_create(course=self.course)
         return config
+
+    # ------------------------------------------------------------------
+    # Fase 6: exame oral e frases do curso
+    # ------------------------------------------------------------------
+
+    def calculate_exam_scores(self) -> Dict:
+        """
+        Exame oral: a melhor nota efectiva (a revista pelo professor ganha à da IA) das tentativas
+        avaliadas; passou = alguma tentativa com nota efectiva >= nota mínima.
+        """
+        from apps.courses.models import ExameOral
+        if not self.config.exam_enabled:
+            return {'score': None, 'passed': False, 'attempts': 0, 'details': {}, 'component_disabled': True}
+        exames = list(ExameOral.objects.filter(user=self.user, course=self.course, estado=ExameOral.AVALIADO)
+                      .order_by('-created_at'))
+        if not exames:
+            return {'score': None, 'passed': False, 'attempts': 0, 'details': {},
+                    'min_score': self.config.min_exam_score}
+        melhor = max(exames, key=lambda e: (e.nota_efectiva or 0, e.created_at))
+        passou = any(e.aprovado for e in exames)
+        aprovado = next((e for e in exames if e.aprovado), None)
+        ref = aprovado if aprovado is not None and (aprovado.nota_efectiva or 0) >= (melhor.nota_efectiva or 0) else melhor
+        return {
+            'score': round(melhor.nota_efectiva or 0, 2),
+            'passed': passou,
+            'attempts': len(exames),
+            'min_score': self.config.min_exam_score,
+            'details': {
+                'exame_id': str(ref.id),
+                'nota': ref.nota_efectiva,
+                'nota_ia': ref.nota_final,
+                'nota_revista': ref.nota_revista,
+                'nivel_cefr': ref.nivel_cefr,
+                'notas': ref.notas(),
+                'data': ref.created_at.isoformat(),
+            },
+        }
+
+    def calculate_phrase_scores(self) -> Dict:
+        """% das frases aprovadas do curso que o aluno já disse sozinho numa conversa (apps/perfil)."""
+        from apps.perfil.models import ItemBanco
+        from apps.perfil.servico import normalizar
+        frases = frases_do_curso(self.course)
+        if not frases:
+            return {'score': 0.0, 'total': 0, 'mastered': 0}
+        chaves = [normalizar(t) for t, _ in frases]
+        sozinho = ItemBanco.objects.filter(user=self.user, chave__in=chaves, estado=ItemBanco.SOZINHO).count()
+        return {'score': round(sozinho * 100.0 / len(frases), 2), 'total': len(frases), 'mastered': sozinho}
+
+    def study_score(self, quiz_data: Dict, practice_data: Dict):
+        """Estudo = questionários e prática na proporção quiz_weight:practice_weight (só os que existem)."""
+        partes = []
+        if quiz_data.get('count', 0) > 0 and self.config.quiz_enabled:
+            partes.append((quiz_data['score'], self.config.quiz_weight))
+        if practice_data.get('count', 0) > 0 and self.config.practice_enabled:
+            partes.append((practice_data['score'], self.config.practice_weight))
+        total = sum(p for _, p in partes)
+        if not partes:
+            return None
+        if total <= 0:
+            return sum(v for v, _ in partes) / len(partes)
+        return sum(v * p for v, p in partes) / total
 
     def calculate_quiz_scores(self) -> Dict:
         """
@@ -393,22 +468,28 @@ class GradeCalculatorService:
         self,
         quiz_data: Dict,
         practice_data: Dict,
-        conversation_data: Dict
+        conversation_data: Dict,
+        exam_data: Optional[Dict] = None,
+        phrase_data: Optional[Dict] = None,
     ) -> Tuple[float, str, Dict]:
         """
-        Calculate final weighted grade with dynamic weight adjustment.
+        Nota final (fase 6): exame oral 40 %, frases do curso ditas sozinho 25 %, conversas do
+        curso 20 % e estudo (questionários + prática) 15 %, com os pesos de CourseGradingConfig.
 
-        This method automatically adjusts weights when components don't exist:
-        - If quiz_count = 0, quiz weight is redistributed to other components
-        - If practice_count = 0, practice weight is redistributed
-        - If no conversation sessions, conversation weight is redistributed
+        Componentes que não existem saem e os pesos dos outros são renormalizados:
+        - exame: desligado no curso (exam_enabled=False). Ligado conta sempre (0 até haver nota);
+        - frases: o curso não tem frases aprovadas;
+        - conversas: as regras da fase 1 (situação de conversa do curso e pelo menos uma conversa);
+        - estudo: sem questionários nem prática.
 
         Returns:
         - final_percentage: Weighted average (0-100)
         - final_letter: Letter grade (A+, A, B+, etc.)
         - weight_info: Dict with actual weights used (for transparency)
         """
-        # Determine which components are active (have content)
+        exam_data = exam_data if exam_data is not None else self.calculate_exam_scores()
+        phrase_data = phrase_data if phrase_data is not None else self.calculate_phrase_scores()
+
         quiz_active = quiz_data.get('count', 0) > 0 and self.config.quiz_enabled
         practice_active = practice_data.get('count', 0) > 0 and self.config.practice_enabled
         conversation_active = (
@@ -417,60 +498,72 @@ class GradeCalculatorService:
             self.config.conversation_enabled and
             not conversation_data.get('component_disabled', False)
         )
+        exam_active = self.config.exam_enabled and not exam_data.get('component_disabled', False)
+        phrases_active = phrase_data.get('total', 0) > 0
+        estudo = self.study_score(quiz_data, practice_data)
+        study_active = estudo is not None
 
-        # Get configured weights
-        quiz_weight = self.config.quiz_weight if quiz_active else 0
-        practice_weight = self.config.practice_weight if practice_active else 0
-        conversation_weight = self.config.conversation_weight if conversation_active else 0
+        pesos = {
+            'exam': self.config.exam_weight if exam_active else 0,
+            'phrases': self.config.phrases_weight if phrases_active else 0,
+            'conversation': self.config.conversation_weight if conversation_active else 0,
+            'study': self.config.study_weight if study_active else 0,
+        }
+        total = sum(pesos.values())
 
-        total_active_weight = quiz_weight + practice_weight + conversation_weight
-
-        # If no components are active, return 0
-        if total_active_weight == 0:
+        if total == 0:
             return 0.0, 'N/A', {
-                'quiz_weight': 0,
-                'practice_weight': 0,
-                'conversation_weight': 0,
+                'quiz_weight': 0, 'practice_weight': 0, 'conversation_weight': 0,
+                'exam_weight': 0, 'phrases_weight': 0, 'study_weight': 0,
                 'mode': 'no_content',
+                'active_components': [],
                 'message': 'Nenhum componente de avaliação disponível no curso'
             }
 
-        # Normalize weights to sum to 100
-        normalized_quiz = (quiz_weight / total_active_weight) * 100 if quiz_active else 0
-        normalized_practice = (practice_weight / total_active_weight) * 100 if practice_active else 0
-        normalized_conversation = (conversation_weight / total_active_weight) * 100 if conversation_active else 0
-
-        # Calculate weighted components
-        quiz_component = quiz_data['score'] * (normalized_quiz / 100)
-        practice_component = practice_data['score'] * (normalized_practice / 100)
-        conversation_component = conversation_data['score'] * (normalized_conversation / 100) if conversation_active else 0
-
-        final_percentage = round(quiz_component + practice_component + conversation_component, 2)
-
-        # Get letter grade
+        norm = {k: (v / total) * 100 for k, v in pesos.items()}
+        valores = {
+            'exam': exam_data.get('score') or 0.0,
+            'phrases': phrase_data.get('score') or 0.0,
+            'conversation': conversation_data.get('score') or 0.0,
+            'study': estudo or 0.0,
+        }
+        final_percentage = round(sum(valores[k] * norm[k] / 100 for k in norm), 2)
         final_letter = self.config.get_grade_with_plus_minus(final_percentage)
 
-        # Build weight info for transparency
-        active_components = []
+        # Dentro do estudo: a parte de cada um (para os ecrãs antigos que mostram quiz/practice).
+        qw = self.config.quiz_weight if quiz_active else 0
+        pw = self.config.practice_weight if practice_active else 0
+        if qw + pw == 0 and study_active:
+            qw, pw = (1 if quiz_active else 0), (1 if practice_active else 0)
+        quiz_share = norm['study'] * qw / (qw + pw) if (qw + pw) else 0
+        practice_share = norm['study'] * pw / (qw + pw) if (qw + pw) else 0
+
+        active_components = [k for k in ('exam', 'phrases', 'conversation') if pesos[k]]
         if quiz_active:
             active_components.append('quizzes')
         if practice_active:
             active_components.append('practice')
-        if conversation_active:
-            active_components.append('conversation')
+        if study_active:
+            active_components.append('study')
 
         weight_info = {
-            'quiz_weight': round(normalized_quiz, 1),
-            'practice_weight': round(normalized_practice, 1),
-            'conversation_weight': round(normalized_conversation, 1),
+            'exam_weight': round(norm['exam'], 1),
+            'phrases_weight': round(norm['phrases'], 1),
+            'conversation_weight': round(norm['conversation'], 1),
+            'study_weight': round(norm['study'], 1),
+            'quiz_weight': round(quiz_share, 1),
+            'practice_weight': round(practice_share, 1),
+            'study_score': round(estudo, 2) if estudo is not None else None,
+            'original_exam_weight': self.config.exam_weight,
+            'original_phrases_weight': self.config.phrases_weight,
+            'original_conversation_weight': self.config.conversation_weight,
+            'original_study_weight': self.config.study_weight,
             'original_quiz_weight': self.config.quiz_weight,
             'original_practice_weight': self.config.practice_weight,
-            'original_conversation_weight': self.config.conversation_weight,
-            'mode': 'full' if len(active_components) == 3 else 'simplified',
+            'mode': 'full' if all(pesos.values()) else 'simplified',
             'active_components': active_components,
-            'weights_adjusted': total_active_weight != 100
+            'weights_adjusted': total != 100,
         }
-
         return final_percentage, final_letter, weight_info
 
     def check_certificate_eligibility(
@@ -479,7 +572,8 @@ class GradeCalculatorService:
         practice_data: Dict,
         conversation_data: Dict,
         final_percentage: float,
-        weight_info: Dict = None
+        weight_info: Dict = None,
+        exam_data: Optional[Dict] = None,
     ) -> Tuple[bool, Dict]:
         """
         Check if student meets all requirements for certificate.
@@ -588,7 +682,28 @@ class GradeCalculatorService:
                 'skipped': True
             }
 
-        # 5. Check minimum final grade
+        # 5. Exame oral (fase 6): passar no exame é obrigatório para o certificado.
+        if exam_data is None:
+            exam_data = self.calculate_exam_scores()
+        if self.config.exam_enabled and not exam_data.get('component_disabled'):
+            passou = bool(exam_data.get('passed'))
+            if passou:
+                msg = f"Exame oral: aprovado com {round(exam_data.get('score') or 0)}% (mínimo: {self.config.min_exam_score:.0f}%)"
+            elif exam_data.get('attempts'):
+                msg = (f"Exame oral: {round(exam_data.get('score') or 0)}% "
+                       f"(mínimo para passar: {self.config.min_exam_score:.0f}%)")
+            else:
+                msg = "Exame oral: ainda não fez o exame deste curso"
+            eligibility_details['oral_exam'] = {
+                'met': passou,
+                'required': self.config.min_exam_score,
+                'actual': exam_data.get('score') or 0,
+                'message': msg,
+            }
+            if not passou:
+                all_met = False
+
+        # 6. Check minimum final grade
         final_grade_met = final_percentage >= self.config.min_final_grade
         eligibility_details['final_grade'] = {
             'met': final_grade_met,
@@ -616,12 +731,16 @@ class GradeCalculatorService:
         quiz_data = self.calculate_quiz_scores()
         practice_data = self.calculate_practice_scores()
         conversation_data = self.calculate_conversation_scores()
+        exam_data = self.calculate_exam_scores()
+        phrase_data = self.calculate_phrase_scores()
         final_percentage, final_letter, weight_info = self.calculate_final_grade(
-            quiz_data, practice_data, conversation_data
+            quiz_data, practice_data, conversation_data, exam_data, phrase_data
         )
         is_eligible, eligibility_details = self.check_certificate_eligibility(
-            quiz_data, practice_data, conversation_data, final_percentage, weight_info
+            quiz_data, practice_data, conversation_data, final_percentage, weight_info, exam_data
         )
+        # O exame e as frases seguem em weight_info (o _preencher guarda-os nos campos próprios).
+        weight_info = dict(weight_info, _exam=exam_data, _phrases=phrase_data)
         return (quiz_data, practice_data, conversation_data, final_percentage, final_letter,
                 weight_info, is_eligible, eligibility_details)
 
@@ -644,6 +763,16 @@ class GradeCalculatorService:
         grade.conversation_minutes = conversation_data['minutes']
         grade.conversation_details = conversation_data['details']
         grade.has_conversation_requirement = conversation_data['has_requirement']
+
+        weight_info = dict(weight_info)
+        exam_data = weight_info.pop('_exam', None) or {}
+        phrase_data = weight_info.pop('_phrases', None) or {}
+        grade.exam_score = exam_data.get('score')
+        grade.exam_passed = bool(exam_data.get('passed'))
+        grade.exam_details = {k: v for k, v in exam_data.items() if k != 'score'}
+        grade.phrases_score = phrase_data.get('score') or 0.0
+        grade.phrases_total = phrase_data.get('total') or 0
+        grade.phrases_mastered = phrase_data.get('mastered') or 0
 
         grade.final_grade_percentage = final_percentage
         grade.final_grade_letter = final_letter
@@ -726,8 +855,13 @@ class GradeCalculatorService:
                         'quiz_weight': self.config.quiz_weight,
                         'practice_weight': self.config.practice_weight,
                         'conversation_weight': self.config.conversation_weight,
+                        'exam_weight': self.config.exam_weight,
+                        'phrases_weight': self.config.phrases_weight,
+                        'study_weight': self.config.study_weight,
                     },
-                    'weight_info': weight_info
+                    'exam_score': grade.exam_score,
+                    'phrases_score': grade.phrases_score,
+                    'weight_info': grade.weight_info
                 }
             )
 

@@ -9,6 +9,7 @@ import { cnPe } from "@/lib/pe";
 import { useCatalogoCursosQuery } from "@/src/domains/student/inicio/api";
 import { useCursosPraticaQuery, useEscolherCursoMutation } from "@/src/domains/student/laboratorio/api";
 import { nivelDoTeste, nomeCompletoNivel, sugerirPorNivel } from "@/src/domains/shared/niveis";
+import { TesteFalado } from "@/components/pe/acolhimento/TesteFalado";
 import { AREAS, NIVEIS, errosDoServidor, useGuardarPerfilMutation, useMetaQuery, useMudarMetaMutation, usePerfilQuery, type Nivel } from "@/src/domains/student/perfil/api";
 
 const ICONES: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -39,7 +40,8 @@ const PERGUNTAS: { frase: [string, string]; opcoes: string[]; certa: number }[] 
 
 
 /**
- * Primeira entrada: área e meta diária, 5 perguntas para o nível e a primeira lição.
+ * Primeira entrada: área e meta diária, o teste de nível falado (3 a 4 minutos com o tutor; as
+ * 5 perguntas escritas ficam como alternativa) e a primeira lição.
  * Ocupa o ecrã inteiro, sem a navegação, como as lições.
  */
 export default function PrimeiraEntrada() {
@@ -50,11 +52,24 @@ export default function PrimeiraEntrada() {
   const [metaEscolhida, setMeta] = useState<number | null>(null);
   const meta = metaEscolhida ?? metaGuardada?.daily_goal_minutes ?? 10;
   const [nivel, setNivel] = useState<Nivel | null>(null);
+  // O teste falado é o caminho principal; as perguntas escritas são a alternativa.
+  const [porPerguntas, setPorPerguntas] = useState(false);
   const [guardar, { isLoading: aGuardar }] = useGuardarPerfilMutation();
   const [mudarMeta] = useMudarMetaMutation();
   const [erro, setErro] = useState<string | null>(null);
   const areaEscolhida = area ?? perfil?.preferences.area ?? null;
   const primeiroNome = perfil?.name?.trim().split(/\s+/)[0];
+
+  const terminarTeste = async (n: Nivel) => {
+    setErro(null);
+    try {
+      await guardar({ preferences: { nivel: n, acolhimento: "concluido" } }).unwrap();
+      setNivel(n);
+      setPasso(3);
+    } catch (e) {
+      setErro(errosDoServidor(e).geral ?? "Não foi possível guardar. Tente outra vez.");
+    }
+  };
 
   return (
     <div className="flex min-h-dvh flex-col bg-pe-fundo">
@@ -121,7 +136,7 @@ export default function PrimeiraEntrada() {
               <span className="text-[14px] leading-5 text-pe-tinta-suave">Pode mudar isto nas definições.</span>
             </fieldset>
 
-            <p className="m-0 text-pe-tinta-suave">A seguir: 5 perguntas rápidas para saber o seu nível. Depois começa a primeira lição.</p>
+            <p className="m-0 text-pe-tinta-suave">A seguir: uma conversa curta com o tutor para saber o seu nível. Depois começa a primeira lição.</p>
             {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
             <Botao
               className="self-start"
@@ -141,19 +156,11 @@ export default function PrimeiraEntrada() {
             {!areaEscolhida ? <span className="-mt-4 text-[14px] text-pe-tinta-suave">Escolha a área para continuar.</span> : null}
           </>
         ) : passo === 2 ? (
-          <Teste
-            aoTerminar={async (n) => {
-              setErro(null);
-              try {
-                await guardar({ preferences: { nivel: n, acolhimento: "concluido" } }).unwrap();
-                setNivel(n);
-                setPasso(3);
-              } catch (e) {
-                setErro(errosDoServidor(e).geral ?? "Não foi possível guardar. Tente outra vez.");
-              }
-            }}
-            erro={erro}
-          />
+          porPerguntas ? (
+            <Teste aoTerminar={terminarTeste} erro={erro} aoPreferirConversa={() => setPorPerguntas(false)} />
+          ) : (
+            <TesteFalado aoTerminar={terminarTeste} aoPreferirPerguntas={() => setPorPerguntas(true)} erro={erro} />
+          )
         ) : (
           <Pronto area={areaEscolhida} nivel={nivel ?? "B1"} />
         )}
@@ -162,7 +169,7 @@ export default function PrimeiraEntrada() {
   );
 }
 
-function Teste({ aoTerminar, erro }: { aoTerminar: (n: Nivel) => void; erro: string | null }) {
+function Teste({ aoTerminar, erro, aoPreferirConversa }: { aoTerminar: (n: Nivel) => void; erro: string | null; aoPreferirConversa: () => void }) {
   const [i, setI] = useState(0);
   // Uma resposta por pergunta: carregar outra vez na última (se gravar falhou) não conta a dobrar.
   const [respostas, setRespostas] = useState<boolean[]>([]);
@@ -242,9 +249,14 @@ function Teste({ aoTerminar, erro }: { aoTerminar: (n: Nivel) => void; erro: str
           Não sei
         </Botao>
       </div>
-      <button type="button" onClick={() => setEscolherAMao(true)} className="min-h-11 self-start bg-transparent px-0 text-[15px] font-semibold text-pe-azul-marca underline underline-offset-[3px]">
-        Já sei o meu nível
-      </button>
+      <div className="flex flex-wrap gap-x-6">
+        <button type="button" onClick={() => setEscolherAMao(true)} className="min-h-11 self-start bg-transparent px-0 text-[15px] font-semibold text-pe-azul-marca underline underline-offset-[3px]">
+          Já sei o meu nível
+        </button>
+        <button type="button" onClick={aoPreferirConversa} className="min-h-11 self-start bg-transparent px-0 text-[15px] font-semibold text-pe-azul-marca underline underline-offset-[3px]">
+          Fazer o teste a falar
+        </button>
+      </div>
     </>
   );
 }

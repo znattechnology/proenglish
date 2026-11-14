@@ -375,6 +375,24 @@ class DefinicoesTests(Base):
         self.assertEqual(self.client.patch(f'{PROF}cursos/{curso.id}/', {'titulo': 'Roubado'},
                                            format='json').status_code, 404)
 
+    def test_exame_oral_nas_definicoes(self):
+        curso = self.curso_video()
+        self.entrar(self.prof)
+        r = self.client.get(f'{PROF}cursos/{curso.id}/')
+        self.assertTrue(r.json()['definicoes']['exame_oral'])
+        self.assertEqual(r.json()['definicoes']['nota_minima_exame'], 60)
+        r = self.client.patch(f'{PROF}cursos/{curso.id}/', {'exame_oral': False, 'nota_minima_exame': 70},
+                              format='json')
+        self.assertEqual(r.status_code, 200, r.content)
+        self.assertFalse(r.json()['definicoes']['exame_oral'])
+        self.assertEqual(r.json()['definicoes']['nota_minima_exame'], 70)
+        config = CourseGradingConfig.objects.get(course=curso)
+        self.assertEqual((config.exam_enabled, config.min_exam_score), (False, 70.0))
+        r = self.client.patch(f'{PROF}cursos/{curso.id}/', {'nota_minima_exame': 20}, format='json')
+        self.assertEqual(r.status_code, 400)
+        r = self.client.patch(f'{PROF}cursos/{curso.id}/', {'exame_oral': 'sim'}, format='json')
+        self.assertEqual(r.status_code, 400)
+
     def test_visivel_catalogo_e_maximo_alunos(self):
         curso = self.curso_video(status='Published', visivel_catalogo=False)
         self.entrar(self.aluno)

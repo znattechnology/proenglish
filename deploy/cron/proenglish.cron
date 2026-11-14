@@ -34,3 +34,10 @@ PATH=/usr/local/bin:/usr/bin:/bin
 # relógio do VPS estiver em UTC). Idempotente (nunca altera meses já pagos); o pagamento
 # aos professores é feito à mão no dia 5 e marcado em /api/v1/admin/ganhos/<id>/pago/.
 0 2 1 * * cd __PROJECT_DIR__ && flock -n /tmp/proenglish-ganhos.lock __VENV__/bin/python manage.py fechar_ganhos >> __LOG_DIR__/cron-ganhos.log 2>&1
+
+# Transcrição automática dos vídeos das aulas (de hora a hora, ao minuto 11): apanha as aulas
+# pendentes e as que ficaram a meio por um reinício do servidor (máx. 20 por execução).
+11 * * * * cd __PROJECT_DIR__ && flock -n /tmp/proenglish-transcricao.lock __VENV__/bin/python manage.py transcrever_aulas --limite 20 >> __LOG_DIR__/cron-transcricao.log 2>&1
+
+# Gravações dos exames orais: apaga as que passaram os 12 meses (todos os dias às 03:30 UTC).
+30 3 * * * cd __PROJECT_DIR__ && flock -n /tmp/proenglish-gravacoes.lock __VENV__/bin/python manage.py apagar_gravacoes_exames >> __LOG_DIR__/cron-gravacoes.log 2>&1

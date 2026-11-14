@@ -38,6 +38,7 @@ from .resources import (
 )
 
 from .frases import FraseAula
+from .exame import ExameOral
 
 from .student_engagement import (
     CourseWishlist,
@@ -78,6 +79,7 @@ __all__ = [
     # Resource models
     'ChapterResource',
     'FraseAula',
+    'ExameOral',
 
     # Student engagement models
     'CourseWishlist',

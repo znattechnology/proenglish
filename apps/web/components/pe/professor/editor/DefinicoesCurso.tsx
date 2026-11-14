@@ -33,6 +33,7 @@ export function FormDefinicoes({ curso }: { curso: DetalheCurso }) {
     if (!titulo.trim()) er.titulo = "Escreva o título do curso.";
     else if (titulo.trim().length > 60) er.titulo = "O título tem mais de 60 caracteres.";
     if (d.nota_minima < 50 || d.nota_minima > 100) er.nota = "Escolha um valor entre 50 e 100.";
+    if (d.exame_oral && (d.nota_minima_exame < 40 || d.nota_minima_exame > 100)) er.notaExame = "Escolha um valor entre 40 e 100.";
     const max = maximo.trim() ? Number(maximo) : null;
     if (max != null && (!Number.isInteger(max) || max < 1)) er.maximo = "Escreva um número inteiro, ou deixe vazio para não ter limite.";
     setErros(er);
@@ -119,6 +120,26 @@ export function FormDefinicoes({ curso }: { curso: DetalheCurso }) {
           erro={erros.nota}
           ajuda="Em percentagem, entre 50 e 100."
         />
+        <Interruptor
+          rotulo="Exame oral obrigatório"
+          descricao="O aluno faz uma conversa de 8 a 10 minutos com o tutor sobre as situações do curso. Vale 40% da nota. Desligado, a nota vem das frases, das conversas e do estudo."
+          ligado={d.exame_oral}
+          aoMudar={(v) => muda({ exame_oral: v })}
+        />
+        {d.exame_oral ? (
+          <Campo
+            className="max-w-[240px]"
+            rotulo="Nota mínima do exame oral"
+            type="number"
+            min={40}
+            max={100}
+            step={5}
+            value={d.nota_minima_exame}
+            onChange={(e) => muda({ nota_minima_exame: Number(e.target.value) })}
+            erro={erros.notaExame}
+            ajuda="Em percentagem, entre 40 e 100. Com menos, o aluno pode repetir ao fim de 7 dias."
+          />
+        ) : null}
         <Interruptor
           rotulo="Certificado automático"
           descricao="Emitido quando o aluno chega à nota mínima. Desligado, o aluno pede-o na página do curso."

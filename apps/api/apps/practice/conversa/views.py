@@ -77,7 +77,7 @@ def sessao(request, sessao_id):
 @permission_classes([IsAuthenticated])
 def ligada(request, sessao_id):
     try:
-        return Response(servico.ligada(request.user, sessao_id))
+        return Response(servico.ligada(request.user, sessao_id, _corpo(request).get('call_id')))
     except ErroConversa as e:
         return _erro(e)
 
@@ -115,3 +115,35 @@ def terminar(request, sessao_id):
 @permission_classes([IsAuthenticated])
 def progresso(request):
     return Response(servico.progresso(request.user))
+
+
+# ---------------------------------------------------------------------------
+# Teste de nível falado (primeira entrada, conversa/diagnostico.py)
+# ---------------------------------------------------------------------------
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def diagnostico_estado(request):
+    from . import diagnostico
+    return Response({**diagnostico.estado(request.user), 'modo': servico.modo()})
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+@throttle_classes([LimiteSessoes])
+def diagnostico_comecar(request):
+    from . import diagnostico
+    try:
+        return Response(diagnostico.comecar(request.user), status=status.HTTP_201_CREATED)
+    except ErroConversa as e:
+        return _erro(e)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def diagnostico_resultado(request, sessao_id):
+    from . import diagnostico
+    try:
+        return Response(diagnostico.resultado(request.user, sessao_id))
+    except ErroConversa as e:
+        return _erro(e)

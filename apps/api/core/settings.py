@@ -604,6 +604,9 @@ RESPONDER_CLAUDE_MODELO = config('RESPONDER_CLAUDE_MODELO', default='claude-haik
 CONVERSA_LICAO_MAX_SEGUNDOS = config('CONVERSA_LICAO_MAX_SEGUNDOS', default=120, cast=int)
 # Conversa de 3 minutos no fim de uma aula em vídeo ("Usar isto numa conversa").
 CONVERSA_AULA_MAX_SEGUNDOS = config('CONVERSA_AULA_MAX_SEGUNDOS', default=180, cast=int)
+# Fase 6: teste de nível falado (primeira entrada) e exame oral do curso. Fora da quota diária.
+CONVERSA_DIAGNOSTICO_MAX_SEGUNDOS = config('CONVERSA_DIAGNOSTICO_MAX_SEGUNDOS', default=240, cast=int)
+CONVERSA_EXAME_MAX_SEGUNDOS = config('CONVERSA_EXAME_MAX_SEGUNDOS', default=600, cast=int)
 # Aulas em vídeo: transcrição automática (ffmpeg + Whisper) quando o professor carrega o vídeo,
 # e frases da aula propostas pelo Claude. TRANSCRICAO_AUTOMATICA=False: só o comando
 # transcrever_aulas (cron) ou o botão do professor transcrevem.

@@ -16,6 +16,7 @@ os outros recebem 404. Um professor marcado com PerfilProfessor.publica_sem_revi
 Os números são calculados com poucas consultas agregadas (sem N+1).
 """
 from collections import defaultdict
+import logging
 from datetime import timedelta
 
 from django.db import transaction
@@ -31,6 +32,8 @@ from apps.courses import ciclo, niveis
 from apps.courses.models import (
     Chapter, Course, CourseEnrollment, CourseSection, UserCourseProgress,
 )
+
+logger = logging.getLogger(__name__)
 
 
 class EProfessorOuStaff(permissions.BasePermission):
@@ -433,6 +436,16 @@ SINONIMOS = {
 ACESSO_API = {'free': 'todos', 'premium': 'premium', 'premium_plus': 'premium'}
 
 
+def _definicoes_exame(c):
+    """Exame oral do curso (fase 6): obrigatório para o certificado e nota mínima para passar."""
+    from apps.courses.models import CourseGradingConfig
+    config = CourseGradingConfig.objects.filter(course=c).first()
+    return {
+        'exame_oral': config.exam_enabled if config else True,
+        'nota_minima_exame': int(round(config.min_exam_score)) if config else 60,
+    }
+
+
 def detalhe_curso(c, mc=None):
     from apps.courses.certificados import nota_minima
     mc = mc or metricas([c])[c.id]
@@ -452,6 +465,7 @@ def detalhe_curso(c, mc=None):
             'inscricao_livre': c.inscricao_livre,
             'maximo_alunos': c.maximo_alunos,
             'nota_minima': int(round(nota_minima(c))),
+            **_definicoes_exame(c),
             **ciclo.definicoes(c),
         },
     })
@@ -567,6 +581,19 @@ def curso_detalhe(request, curso_id):
         if nota is None and 'nota_minima' not in erros:
             erros['nota_minima'] = ['Indique um valor entre 50 e 100.']
 
+    exame = {}
+    if 'exame_oral' in entrada:
+        if isinstance(entrada['exame_oral'], bool):
+            exame['exam_enabled'] = entrada['exame_oral']
+        else:
+            erros['exame_oral'] = ['Use verdadeiro ou falso.']
+    if 'nota_minima_exame' in entrada:
+        n = _inteiro_ou_nulo(entrada['nota_minima_exame'], 40, 100, 'nota_minima_exame', erros)
+        if n is None and 'nota_minima_exame' not in erros:
+            erros['nota_minima_exame'] = ['Indique um valor entre 40 e 100.']
+        elif n is not None:
+            exame['min_exam_score'] = float(n)
+
     if erros:
         primeiro = next(iter(erros.values()))[0]
         return _erro(primeiro, 'validation_error', details=erros)
@@ -585,12 +612,32 @@ def curso_detalhe(request, curso_id):
             if config.min_final_grade != nota:
                 config.min_final_grade = nota
                 config.save(update_fields=['min_final_grade'])
+        if exame:
+            from apps.courses.models import CourseGradingConfig
+            config, _ = CourseGradingConfig.objects.get_or_create(course=curso)
+            mudou = [k for k, v in exame.items() if getattr(config, k) != v]
+            if mudou:
+                for k in mudou:
+                    setattr(config, k, exame[k])
+                config.save(update_fields=mudou)
+                # As notas dos alunos mudam com estas regras: recalcula depois de gravar.
+                transaction.on_commit(lambda: _recalcular_notas(curso.pk))
         if 'image' in campos and imagem_anterior and imagem_anterior != curso.image:
             from .envios import apagar_depois_do_commit
             apagar_depois_do_commit([imagem_anterior])
         return Response(detalhe_curso(curso))
 
     return guardar_publicado(curso, _gravar)
+
+
+def _recalcular_notas(curso_id):
+    from apps.courses.models import CourseEnrollment
+    from apps.courses.services.grade_calculator import GradeCalculatorService
+    for insc in CourseEnrollment.objects.filter(course_id=curso_id, is_active=True).select_related('user', 'course'):
+        try:
+            GradeCalculatorService(insc.user, insc.course).calculate_and_save(change_reason='recalculation')
+        except Exception:
+            logger.exception('Falha ao recalcular a nota de %s no curso %s', insc.user_id, curso_id)
 
 
 # ---------------------------------------------------------------------------

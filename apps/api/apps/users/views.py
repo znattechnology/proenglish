@@ -456,6 +456,14 @@ class ApagarContaView(generics.GenericAPIView):
             user.set_unusable_password()
             user.save()
 
+        # Gravações dos exames orais (fase 6): apagadas com a conta (no Vapi e o URL aqui).
+        try:
+            from apps.practice.conversa.exame import apagar_gravacoes_do_aluno
+            apagar_gravacoes_do_aluno(user)
+        except Exception:
+            import logging
+            logging.getLogger(__name__).exception('Falha ao apagar as gravações dos exames da conta %s', user.pk)
+
         response = Response({'message': 'A sua conta foi apagada.'})
         return apagar_cookies_sessao(response)
 

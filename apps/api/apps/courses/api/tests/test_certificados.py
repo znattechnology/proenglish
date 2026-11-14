@@ -45,8 +45,9 @@ class CertificadosBase(APITestCase):
         self.curso = Course.objects.create(teacher=self.prof, teacherName='Prof', title='E-mails em inglês',
                                            description='d', course_type='video', status='Published')
         # Só quizzes contam (sem prática nem conversação), para o teste ser determinístico.
+        # (sem o exame oral da fase 6, que tem testes próprios em test_fase6_fala)
         CourseGradingConfig.objects.create(course=self.curso, practice_enabled=False,
-                                           conversation_enabled=False)
+                                           conversation_enabled=False, exam_enabled=False)
         sec = CourseSection.objects.create(course=self.curso, order=1, sectionTitle='S1')
         self.cap1 = Chapter.objects.create(section=sec, order=1, title='Texto', type='Text', content='x')
         self.cap2 = Chapter.objects.create(section=sec, order=2, title='Quiz', type='Quiz', content='x')
@@ -214,7 +215,9 @@ class VerificacaoPublicaTests(CertificadosBase):
         r = self.client.get(f'/api/v1/certificados/verificar/{self.cert.certificate_number}/')
         self.assertEqual(r.status_code, 200)
         self.assertEqual(set(r.data), {'valido', 'estado', 'numero', 'nome_aluno', 'curso', 'emitido_em',
-                                       'nota_final', 'revogado_em'})
+                                       'nota_final', 'revogado_em',
+                                       # fase 6: nível de fala e notas do exame oral (vazios sem exame)
+                                       'nivel_fala', 'nivel_fala_texto', 'nota_exame_oral', 'notas_fala'})
         self.assertTrue(r.data['valido'])
         self.assertEqual(r.data['nome_aluno'], 'Ana Maria Santos')
         self.assertEqual(r.data['curso'], 'E-mails em inglês')

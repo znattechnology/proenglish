@@ -9,6 +9,7 @@ from django.urls import path
 from . import views
 from . import certificados_views
 from . import fala_aula
+from . import exame_views
 
 app_name = 'student_video_courses'
 
@@ -74,4 +75,9 @@ urlpatterns = [
     path('certificados/', certificados_views.listar_certificados, name='certificados'),
     path('certificados/<uuid:certificadoId>/pdf/', certificados_views.descarregar_pdf, name='certificado_pdf'),
     path('<uuid:courseId>/certificado/', certificados_views.emitir_certificado, name='emitir_certificado'),
+
+    # Exame oral do curso (fase 6)
+    path('<uuid:courseId>/exame/', exame_views.ExameDoCurso.as_view(), name='exame_oral'),
+    path('exames/<uuid:exameId>/', exame_views.ExameDetalhe.as_view(), name='exame_oral_detalhe'),
+    path('exames/<uuid:exameId>/gravacao/', exame_views.ApagarGravacao.as_view(), name='exame_oral_gravacao'),
 ]

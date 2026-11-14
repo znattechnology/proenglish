@@ -91,6 +91,14 @@ function CartaoCertificado({ c }: { c: Certificados["certificados"][number] }) {
             </dd>
           </div>
         </dl>
+        {c.nivel_fala_texto ? (
+          <div className="flex flex-col gap-1">
+            <span className="font-semibold">{c.nivel_fala_texto}</span>
+            {c.notas_fala?.length ? (
+              <span className="text-pe-legenda text-pe-tinta-suave">{c.notas_fala.map((n) => `${n.nome} ${n.nota}`).join(", ")}</span>
+            ) : null}
+          </div>
+        ) : null}
         {revogado ? (
           <Aviso tipo="errado">Este certificado foi revogado e já não é válido. Fale com o apoio se tiver dúvidas.</Aviso>
         ) : (

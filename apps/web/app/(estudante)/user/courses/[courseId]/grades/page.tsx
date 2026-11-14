@@ -13,6 +13,7 @@ const NOMES_REQUISITOS: Record<string, string> = {
   all_quizzes_passed: "Passar em todos os questionários",
   practice_completion: "Prática no laboratório concluída",
   conversation_score: "Conversa com o tutor",
+  oral_exam: "Passar no exame oral",
   final_grade: "Nota final",
 };
 
@@ -59,12 +60,27 @@ function Conteudo({ notas, courseId }: { notas: Notas; courseId: string }) {
   const requisitos = Object.entries(notas.certificate_eligibility.details).filter(
     ([chave, r]) => !r.info_only && !(chave === "conversation_score" && !notas.weight_info.conversation_weight)
   );
-  const activos = new Set(notas.weight_info.active_components);
+  const w = notas.weight_info;
+  const activos = new Set(w.active_components);
+  const exame = notas.exame_oral;
+  const frases = notas.frases_curso;
+  const estudo: string[] = [];
+  if (g.quizzes.count) estudo.push(`${g.quizzes.passed} de ${g.quizzes.count} questionários aprovados`);
+  if (g.practice.count) estudo.push(`${g.practice.completed} de ${g.practice.count} exercícios feitos`);
+  // Fase 6: exame oral 40, frases do curso 25, conversas 20, estudo 15 (renormalizados quando falta algum).
   const partes = [
-    { chave: "quizzes", nome: "Questionários", nota: g.quizzes.score, peso: notas.weight_info.quiz_weight, texto: `${g.quizzes.passed} de ${g.quizzes.count} aprovados` },
-    { chave: "practice", nome: "Prática no laboratório", nota: g.practice.score, peso: notas.weight_info.practice_weight, texto: `${g.practice.completed} de ${g.practice.count} lições feitas` },
-    { chave: "conversation", nome: "Conversa com o tutor", nota: g.conversation.score, peso: notas.weight_info.conversation_weight, texto: `${g.conversation.sessions} conversas, ${g.conversation.minutes} min` },
-  ].filter((p) => p.peso > 0 || p.chave === "quizzes");
+    {
+      chave: "exam",
+      nome: "Exame oral",
+      nota: exame?.score ?? 0,
+      peso: w.exam_weight ?? 0,
+      texto: !exame?.attempts ? "Ainda por fazer" : exame.passed ? "Aprovado" : `Ainda não aprovado (mínimo ${Math.round(exame.min_score ?? 60)}%)`,
+      href: `/user/courses/${courseId}/exame`,
+    },
+    { chave: "phrases", nome: "Frases do curso ditas sozinho", nota: frases?.score ?? 0, peso: w.phrases_weight ?? 0, texto: `${frases?.mastered ?? 0} de ${frases?.total ?? 0} frases` },
+    { chave: "conversation", nome: "Conversas do curso", nota: g.conversation.score, peso: w.conversation_weight, texto: `${g.conversation.sessions} conversas, ${g.conversation.minutes} min` },
+    { chave: "study", nome: "Questionários e prática", nota: w.study_score ?? 0, peso: w.study_weight ?? 0, texto: estudo.join(", ") || "Sem questionários nem prática" },
+  ].filter((p) => p.peso > 0);
 
   return (
     <>
@@ -84,7 +100,7 @@ function Conteudo({ notas, courseId }: { notas: Notas; courseId: string }) {
         </span>
       </section>
 
-      <section aria-label="Como a nota é feita" className={cnPe("grid gap-3", partes.length >= 3 ? "md:grid-cols-3" : "md:grid-cols-2")}>
+      <section aria-label="Como a nota é feita" className={cnPe("grid gap-3", partes.length >= 4 ? "md:grid-cols-2 xl:grid-cols-4" : partes.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2")}>
         {partes.map((p) => (
           <div key={p.chave} className={cnPe("flex flex-col gap-2 rounded-pe-md border border-pe-linha p-5", !activos.has(p.chave) && "opacity-70")}>
             <div className="flex items-baseline justify-between gap-3">
@@ -95,6 +111,11 @@ function Conteudo({ notas, courseId }: { notas: Notas; courseId: string }) {
             <span className="text-pe-legenda text-pe-tinta-suave">
               {p.texto}. Vale {Math.round(p.peso)}% da nota.
             </span>
+            {"href" in p && p.href ? (
+              <Link href={p.href} className="self-start text-[15px] font-semibold text-pe-azul-marca underline-offset-[3px]">
+                {exame?.passed ? "Ver o resultado" : "Ir para o exame"}
+              </Link>
+            ) : null}
           </div>
         ))}
       </section>

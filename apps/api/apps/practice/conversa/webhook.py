@@ -2,7 +2,8 @@
 Webhook do Vapi: POST /api/v1/practice/vapi/webhook/
 
 Só trata o `end-of-call-report` (o relatório que o Vapi envia quando a chamada acaba):
-guarda a transcrição e a duração do lado do Vapi na VapiSession e, se o aluno fechou o
+guarda a transcrição e a duração do lado do Vapi na VapiSession (e o URL da gravação, só no exame
+oral com consentimento: config.gravar, ver conversa/exame.py) e, se o aluno fechou o
 separador sem terminar (a sessão ainda está «em_curso»), fecha-a, cobra os minutos com as
 regras de servico._terminar_bloqueado e manda avaliar. Idempotente: um segundo relatório da
 mesma sessão não muda nada.
@@ -129,6 +130,22 @@ def _duracao(msg):
     return None
 
 
+def url_gravacao(msg):
+    """O URL da gravação no end-of-call-report (artifact.recordingUrl, ou o formato antigo)."""
+    artifact = _d(msg.get('artifact'))
+    for valor in (artifact.get('recordingUrl'), _d(artifact.get('recording')).get('url'),
+                  _d(_d(artifact.get('recording')).get('mono')).get('combinedUrl'), msg.get('recordingUrl')):
+        if isinstance(valor, str) and valor.startswith('https://'):
+            return valor[:1000]
+    return None
+
+
+def _gravacao_permitida(dados):
+    """Só se guarda a gravação de uma sessão criada com gravar=True (exame oral com consentimento)."""
+    cfg = dados.get('config') if isinstance(dados.get('config'), dict) else {}
+    return bool(cfg.get('gravar'))
+
+
 def executar_em_fundo(funcao, *args):
     """A avaliação (Claude) pode demorar até 60 s, mais do que o Vapi espera pela resposta.
     Os testes substituem esta função para correr de imediato."""
@@ -162,6 +179,9 @@ def registar_fim_chamada(sessao_id, msg):
         if dados.get('vapi_fim'):
             return 'repetido'
         dados['transcricao_servidor'] = transcricao
+        gravacao = url_gravacao(msg)
+        if gravacao and _gravacao_permitida(dados):
+            dados['gravacao_url'] = gravacao
         dados['vapi_fim'] = {
             'call_id': str(_d(msg.get('call')).get('id') or ''),
             'motivo': str(msg.get('endedReason') or '')[:120],
@@ -191,6 +211,13 @@ def registar_fim_chamada(sessao_id, msg):
 
     if fechada_agora:
         servico._efeitos_cobranca(sessao, segundos)
+        servico.depois_de_fechar(sessao)
+    if dados.get('gravacao_url'):
+        try:
+            from .exame import guardar_gravacao_da_sessao
+            guardar_gravacao_da_sessao(sessao.pk, dados['gravacao_url'])
+        except Exception:
+            logger.exception('vapi webhook: falha ao guardar a gravação do exame')
     if sessao.status == VapiSession.STATUS_A_AVALIAR:
         executar_em_fundo(servico.avaliar_pendente, sessao.pk)
     return 'fechada' if fechada_agora else 'registada'

@@ -178,6 +178,24 @@ def actualizar_niveis(perfil, estimativas):
     return mudancas
 
 
+def definir_niveis(perfil, estimativas):
+    """
+    Colocação inicial (teste de nível falado da primeira entrada, conversa/diagnostico.py): os
+    níveis passam a ser as estimativas, sem média móvel nem o limite de um nível por conversa.
+    Devolve as mudanças, no formato de actualizar_niveis.
+    """
+    mudancas = {}
+    for comp, nivel in (estimativas or {}).items():
+        if comp not in COMPETENCIA_EN or nivel not in NIVEIS:
+            continue
+        antes = getattr(perfil, f'nivel_{comp}')
+        setattr(perfil, f'nivel_{comp}', nivel)
+        setattr(perfil, f'pontos_{comp}', float(NIVEIS.index(nivel)))
+        if nivel != antes:
+            mudancas[comp] = {'antes': antes, 'depois': nivel}
+    return mudancas
+
+
 # ---------------------------------------------------------------------------
 # Banco de frases
 # ---------------------------------------------------------------------------
@@ -562,7 +580,10 @@ def registar_conversa(sessao, avaliacao=None):
 
         # 5. Níveis
         perfil = PerfilFala.objects.select_for_update().get(pk=obter_perfil(user).pk)
-        mudancas = actualizar_niveis(perfil, av.get('nivel_cefr') or {})
+        if cfg.get('niveis_directos'):  # teste de nível falado: colocação directa
+            mudancas = definir_niveis(perfil, av.get('nivel_cefr') or {})
+        else:
+            mudancas = actualizar_niveis(perfil, av.get('nivel_cefr') or {})
         perfil.conversas_avaliadas += 1
         perfil.save()
 

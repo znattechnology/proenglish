@@ -124,6 +124,7 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
   const [avisarLigada] = useLigadaMutation();
 
   const vapi = useRef<VapiCliente | null>(null);
+  const idChamada = useRef<string | null>(null);
   const reconhecedor = useRef<Reconhecedor | null>(null);
   const falasRef = useRef<FalaViva[]>([]);
   const terminada = useRef(false);
@@ -229,7 +230,9 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
         vapi.current = v;
         v.on("call-start", () => {
           setEstado("em_curso");
-          void avisarLigada(sessao.id); // o tempo cobrado começa agora
+          // O tempo cobrado começa agora. O id da chamada serve para ir buscar a gravação de um
+          // exame oral (só com consentimento) se o relatório do Vapi não chegar ao servidor.
+          void avisarLigada({ id: sessao.id, call_id: idChamada.current ?? undefined });
         });
         v.on("speech-start", () => setTutorAFalar(true));
         v.on("speech-end", () => setTutorAFalar(false));
@@ -251,6 +254,12 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
         }) as never);
         const chamada = await v.start(sessao.vapi.assistant_id, sessao.vapi.assistant_overrides);
         if (!chamada && !cancelado) throw new Error("vapi_recusou");
+        const id = (chamada as { id?: unknown } | null)?.id;
+        if (typeof id === "string" && id !== idChamada.current) {
+          idChamada.current = id;
+          // call-start pode ter chegado antes de start() acabar: avisa outra vez (é idempotente).
+          void avisarLigada({ id: sessao.id, call_id: id });
+        }
       } catch (e) {
         if (cancelado) return;
         const negado = e instanceof DOMException && e.name === "NotAllowedError";
