@@ -20,6 +20,7 @@ import hashlib
 import hmac
 import logging
 import threading
+from contextlib import contextmanager
 from urllib.parse import urlencode
 
 from django.conf import settings
@@ -94,17 +95,52 @@ def transcricao_vapi(mensagens, escritos=None):
 url_gravacao = chamada.url_gravacao
 
 
-def executar_em_fundo(funcao, *args):
-    """A avaliação (Claude) pode demorar até 60 s, mais do que o Vapi espera pela resposta.
-    Os testes substituem esta função para correr de imediato."""
-    def correr():
-        try:
+# Tarefas em segundo plano (avaliação das conversas, pronúncia do exame) ao mesmo tempo, por
+# processo: as outras threads esperam pela vez. No VPS (2 workers do Gunicorn) são no máximo
+# 2 x AVALIACOES_EM_SIMULTANEO pedidos ao Claude/Azure de uma vez, e a memória fica previsível.
+AVALIACOES_EM_SIMULTANEO = threading.BoundedSemaphore(max(1, int(getattr(settings, 'AVALIACOES_EM_SIMULTANEO', 2))))
+_local = threading.local()
+
+
+@contextmanager
+def no_proprio_processo():
+    """Dentro deste bloco, executar_em_fundo corre de imediato (sem thread). Para os comandos do
+    cron: uma thread daemon morreria com o processo do comando antes de acabar."""
+    antes = getattr(_local, 'sincrono', False)
+    _local.sincrono = True
+    try:
+        yield
+    finally:
+        _local.sincrono = antes
+
+
+def _correr_limitado(funcao, *args, thread=True):
+    try:
+        with AVALIACOES_EM_SIMULTANEO:
             funcao(*args)
-        except Exception:
-            logger.exception('conversa: falha na avaliação em segundo plano')
-        finally:
+    except Exception:
+        logger.exception('conversa: falha na avaliação em segundo plano')
+    finally:
+        if thread:  # a ligação à base é desta thread; no próprio processo é de quem chamou
             close_old_connections()
-    t = threading.Thread(target=correr, name='conversa-avaliar', daemon=True)
+
+
+def executar_em_fundo(funcao, *args):
+    """
+    A avaliação (Claude) pode demorar até 60 s, mais do que o Vapi espera pela resposta: corre numa
+    thread à parte, no máximo AVALIACOES_EM_SIMULTANEO de cada vez por processo.
+
+    Sem fila de tarefas (ver o relatório da auditoria): uma thread daemon perde-se quando o Gunicorn
+    recicla o worker (--max-requests) ou reinicia. Nada se perde de vez: a sessão fica 'a_avaliar'
+    com avaliacao_iniciada_em e volta a ser avaliada passados AVALIACAO_BLOQUEIO_SEGUNDOS, na próxima
+    consulta do cliente ou no comando verificar_conversas_vapi (cron de 5 em 5 minutos), que também
+    apanha a pronúncia do exame oral por fazer.
+    Os testes substituem esta função para correr de imediato.
+    """
+    if getattr(_local, 'sincrono', False):
+        _correr_limitado(funcao, *args, thread=False)
+        return None
+    t = threading.Thread(target=_correr_limitado, args=(funcao, *args), name='conversa-avaliar', daemon=True)
     t.start()
     return t
 

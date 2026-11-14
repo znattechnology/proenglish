@@ -677,6 +677,42 @@ def avaliar_pendente(sessao_pk, so_regras=False):
     return sessao
 
 
+PARADA_SEGUNDOS = 120  # 'a_avaliar' há mais do que isto sem avaliação em curso: a thread perdeu-se
+
+
+def avaliacoes_paradas(agora=None, limite=20):
+    """
+    Sessões 'a_avaliar' que já podiam estar avaliadas e não estão: a thread da avaliação perdeu-se
+    (o Gunicorn reciclou ou reiniciou o worker) ou nunca chegou a correr. Só as que não precisam do
+    Vapi (as que precisam são de verificacao.pendentes) e:
+    - com avaliacao_iniciada_em há mais de AVALIACAO_BLOQUEIO_SEGUNDOS (o bloqueio já não vale), ou
+    - sem avaliação iniciada, fechadas (ou verificadas pelo Vapi) há mais de PARADA_SEGUNDOS.
+    Devolve os ids, das mais antigas para as mais recentes.
+    """
+    agora = agora or timezone.now()
+    corte = agora - timedelta(seconds=PARADA_SEGUNDOS)
+    qs = (VapiSession.objects.filter(status=VapiSession.STATUS_A_AVALIAR)
+          .filter(~Q(mode='vapi') | Q(full_session_data__has_key='vapi_verificada'))
+          .filter(Q(ended_at__lte=corte) | Q(ended_at__isnull=True, created_at__lte=corte))
+          .order_by('ended_at', 'created_at'))
+    out = []
+    for pk, dados in qs.values_list('pk', 'full_session_data').iterator():
+        dados = dados if isinstance(dados, dict) else {}
+        iniciada = parse_datetime(dados.get('avaliacao_iniciada_em') or '')
+        if iniciada is not None:
+            if agora - iniciada < timedelta(seconds=AVALIACAO_BLOQUEIO_SEGUNDOS):
+                continue  # avaliação em curso noutro processo
+        else:
+            verificada = dados.get('vapi_verificada') if isinstance(dados.get('vapi_verificada'), dict) else {}
+            em = parse_datetime(verificada.get('em') or '') if isinstance(verificada.get('em'), str) else None
+            if em is not None and em > corte:
+                continue  # o Vapi acabou de confirmar: a avaliação deve estar a começar
+        out.append(pk)
+        if len(out) >= limite:
+            break
+    return out
+
+
 def avaliar_sem_bloquear(sessao):
     """
     Avalia uma sessão 'a_avaliar' sem prender o pedido HTTP: a avaliação (Claude) pode demorar até

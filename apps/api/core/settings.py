@@ -582,6 +582,8 @@ CONVERSA_SIMULADA = config(
 CONVERSA_MAX_MINUTOS_SESSAO = config('CONVERSA_MAX_MINUTOS_SESSAO', default=15, cast=int)
 # Avaliação das conversas (Claude, até 60 s) em segundo plano, fora do pedido HTTP; o cliente sonda.
 AVALIACAO_EM_FUNDO = config('AVALIACAO_EM_FUNDO', default=True, cast=bool)
+# No máximo estas avaliações em segundo plano ao mesmo tempo, por processo (conversa/webhook.py).
+AVALIACOES_EM_SIMULTANEO = config('AVALIACOES_EM_SIMULTANEO', default=2, cast=int)
 # Claude (Anthropic): ajustes, respostas escritas do tutor e avaliação das conversas.
 ANTHROPIC_API_KEY = config('ANTHROPIC_API_KEY', default='')
 # Modelos Claude: o mais barato que chega para cada tarefa (Haiku 5.5 < Sonnet 5.5 < Opus 5.5).
