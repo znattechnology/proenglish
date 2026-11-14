@@ -31,77 +31,77 @@ User = get_user_model()
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 @subscription_required('lesson')
-def test_lesson_view(request):
+def vista_lesson(request):
     return Response({'message': 'Lesson accessed'})
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 @subscription_required('speaking')
-def test_speaking_view(request):
+def vista_speaking(request):
     return Response({'message': 'Speaking accessed'})
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 @subscription_required('listening')
-def test_listening_view(request):
+def vista_listening(request):
     return Response({'message': 'Listening accessed'})
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 @subscription_required('hearts')
-def test_hearts_view(request):
+def vista_hearts(request):
     return Response({'message': 'Hearts accessed'})
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 @premium_required()
-def test_premium_view(request):
+def vista_premium(request):
     return Response({'message': 'Premium feature accessed'})
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 @premium_plus_required()
-def test_premium_plus_view(request):
+def vista_premium_plus(request):
     return Response({'message': 'Premium Plus feature accessed'})
 
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 @track_usage('lesson', 1)
-def test_track_lesson_view(request):
+def vista_track_lesson(request):
     return Response({'message': 'Lesson completed'})
 
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 @lesson_required()
-def test_combined_lesson_view(request):
+def vista_combined_lesson(request):
     return Response({'message': 'Lesson with combined decorator'})
 
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 @speaking_required(5)
-def test_combined_speaking_view(request):
+def vista_combined_speaking(request):
     return Response({'message': 'Speaking with 5 minutes'})
 
 
 # URLs de teste
 test_urlpatterns = [
-    path('test/lesson/', test_lesson_view, name='test_lesson'),
-    path('test/speaking/', test_speaking_view, name='test_speaking'),
-    path('test/listening/', test_listening_view, name='test_listening'),
-    path('test/hearts/', test_hearts_view, name='test_hearts'),
-    path('test/premium/', test_premium_view, name='test_premium'),
-    path('test/premium-plus/', test_premium_plus_view, name='test_premium_plus'),
-    path('test/track-lesson/', test_track_lesson_view, name='test_track_lesson'),
-    path('test/combined-lesson/', test_combined_lesson_view, name='test_combined_lesson'),
-    path('test/combined-speaking/', test_combined_speaking_view, name='test_combined_speaking'),
+    path('test/lesson/', vista_lesson, name='test_lesson'),
+    path('test/speaking/', vista_speaking, name='test_speaking'),
+    path('test/listening/', vista_listening, name='test_listening'),
+    path('test/hearts/', vista_hearts, name='test_hearts'),
+    path('test/premium/', vista_premium, name='test_premium'),
+    path('test/premium-plus/', vista_premium_plus, name='test_premium_plus'),
+    path('test/track-lesson/', vista_track_lesson, name='test_track_lesson'),
+    path('test/combined-lesson/', vista_combined_lesson, name='test_combined_lesson'),
+    path('test/combined-speaking/', vista_combined_speaking, name='test_combined_speaking'),
 ]
 
 
