@@ -76,10 +76,9 @@ def _dados(sessao):
 # Criar
 # ---------------------------------------------------------------------------
 
-def validar_pedido(data, user=None):
+def validar_pedido(data, user=None, situacao=None):
     erros = {}
-    situacao = None
-    slug = data.get('situacao')
+    slug = data.get('situacao') if situacao is None else None
     if isinstance(slug, str) and slug:
         if user is None:
             situacao = obter_situacao(slug)
@@ -99,8 +98,13 @@ def validar_pedido(data, user=None):
     return situacao
 
 
-def criar_sessao(user, data):
-    situacao = validar_pedido(data, user)
+def criar_sessao(user, data, situacao=None, objectivos=None, max_segundos=None, config_extra=None):
+    """
+    Opcionais (conversa curta de uma lição, conversa/licao.py): `situacao` já montada (em vez do
+    slug em data), `objectivos` explícitos [{en, pt}], `max_segundos` (nunca acima da quota) e
+    `config_extra` (guardado em full_session_data.config).
+    """
+    situacao = validar_pedido(data, user, situacao=situacao)
     nivel, correcao, area = data['nivel'], data['correcao'], data['area']
 
     fechadas = []
@@ -131,9 +135,11 @@ def criar_sessao(user, data):
 
         nome = nome_aluno(user)
         fala = primeira_fala(situacao, nivel, nome)
-        objectivos = _objectivos(user, situacao)
+        if objectivos is None:
+            objectivos = _objectivos(user, situacao)
         vapi = config_vapi()
-        max_segundos = quota['max_minutos_sessao'] * 60
+        limite_quota = quota['max_minutos_sessao'] * 60
+        max_segundos = min(limite_quota, max_segundos) if max_segundos else limite_quota
         agora = timezone.now()
         sessao = VapiSession.objects.create(
             session_id=str(uuid.uuid4()), user=user, level=nivel, domain=area, duration_minutes=0,
@@ -144,7 +150,7 @@ def criar_sessao(user, data):
                 'versao': VERSAO,
                 'config': {'situacao': situacao['id'], 'nivel': nivel, 'correcao': correcao, 'area': area,
                            'curso_id': str(situacao['curso_id']) if situacao.get('curso_id') else None,
-                           'objectivos': objectivos},
+                           'objectivos': objectivos, **(config_extra or {})},
                 'historico': [{'quem': 'tutor', 'texto': fala}],
             },
         )

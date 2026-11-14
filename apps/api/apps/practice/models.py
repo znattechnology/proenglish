@@ -92,6 +92,8 @@ class PracticeChallenge(models.Model):
         ('TRUE_FALSE', 'True/False Questions'),
         ('LISTENING', 'Listening Comprehension'),
         ('SPEAKING', 'Speaking Practice'),
+        # Responder em voz alta a uma pergunta de trabalho (avaliado com Whisper + Claude).
+        ('RESPONDER', 'Answer aloud'),
 
         # 🚀 VAPI AI CONVERSATION TYPES
         ('VAPI_CONVERSATION', 'AI Conversation Practice'),

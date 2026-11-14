@@ -133,7 +133,7 @@ function Editor() {
         ) : null;
       })()}
       {lista.some((e) => e.tipo === "conversa") ? (
-        <Aviso tipo="neutro">A conversa com o tutor dentro das lições está desligada por agora: os alunos saltam esses exercícios. Pode apagá-los.</Aviso>
+        <Aviso tipo="neutro">A conversa curta aparece sempre no fim da lição, seja qual for a ordem aqui. É opcional: o aluno pode saltá-la sem perder vidas, e gasta minutos de conversa do plano dele.</Aviso>
       ) : null}
       {estrutura?.curso.estado === "publicado" && lista.length < 3 ? (
         <Aviso tipo="neutro">O curso está publicado. Uma lição nova só aparece aos alunos quando tiver pelo menos 3 exercícios completos; as que já existiam continuam visíveis.</Aviso>
@@ -257,7 +257,7 @@ function Editor() {
           ) : (
             <div className="flex flex-col items-start gap-2 rounded-pe-md bg-pe-fundo-suave p-6">
               <h2 className="m-0 font-pe-titulo text-[22px] font-semibold leading-7">Acrescente o primeiro exercício</h2>
-              <p className="m-0 text-pe-tinta-suave">Misture tipos: por exemplo pares para o vocabulário, completar e ordenar para a gramática, escuta e pronúncia no fim.</p>
+              <p className="m-0 text-pe-tinta-suave">Vá do reconhecer ao dizer: pares e escolher para o vocabulário, completar e traduzir para a gramática, depois pronúncia e responder em voz alta. Pelo menos metade da lição deve ser falada.</p>
               <div className="flex flex-wrap gap-2">
                 <Botao tamanho="pequeno" onClick={() => setEscolher(true)}>
                   Escolher o tipo
@@ -342,7 +342,7 @@ function Editor() {
 
 /** Só os campos que o professor edita, numa ordem fixa: diz se há alterações por guardar. */
 function assinatura(e: Exercicio) {
-  return JSON.stringify([e.tipo, e.enunciado, e.frase, e.opcoes.map((o) => [o.texto, o.certa]), e.pares.map((p) => [p.a, p.b]), e.resposta, e.explicacao, e.audio_url ?? null]);
+  return JSON.stringify([e.tipo, e.enunciado, e.frase, e.opcoes.map((o) => [o.texto, o.certa]), e.pares.map((p) => [p.a, p.b]), e.resposta, e.explicacao, e.audio_url ?? null, e.contexto ?? "", e.frases_alvo ?? []]);
 }
 
 function TituloLicao({ inicial, aoGuardar }: { inicial: string; aoGuardar: (t: string) => Promise<boolean> }) {

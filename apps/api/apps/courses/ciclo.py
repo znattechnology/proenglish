@@ -95,7 +95,8 @@ TIPOS_EXERCICIO = {
     'TRUE_FALSE': 'Verdadeiro ou falso',
     'LISTENING': 'Ouvir',
     'SPEAKING': 'Falar',
-    'VAPI_CONVERSATION': 'Conversa',
+    'RESPONDER': 'Responder',
+    'VAPI_CONVERSATION': 'Conversa curta',
 }
 
 
@@ -422,9 +423,21 @@ def exercicio_valido(challenge, opcoes):
     """opcoes: lista de ChallengeOption do exercício. Devolve (ok, motivo)."""
     certas = [o for o in opcoes if o.is_correct]
     tipo = challenge.type
+    contexto = challenge.conversation_context if isinstance(challenge.conversation_context, dict) else {}
     if tipo == 'VAPI_CONVERSATION':
-        # A conversa dentro da lição está desligada: o aluno salta-a e o professor não a pode criar.
-        return False, 'conversa indisponível: apague este exercício'
+        # Conversa curta no fim da lição: situação e 2 a 3 frases-alvo.
+        from apps.courses.api.teacher.pratica_formato import MIN_FRASES_CONVERSA, frases_da_conversa
+        if not (challenge.question or '').strip():
+            return False, 'sem situação'
+        if len(frases_da_conversa(contexto)) < MIN_FRASES_CONVERSA:
+            return False, f'menos de {MIN_FRASES_CONVERSA} frases para o aluno usar'
+        return True, ''
+    if tipo == 'RESPONDER':
+        if not (challenge.question or '').strip():
+            return False, 'sem pergunta'
+        if not str(contexto.get('frase_alvo') or '').strip():
+            return False, 'sem frase-alvo'
+        return True, ''
     if not (challenge.question or '').strip() and tipo != 'SPEAKING':
         return False, 'sem enunciado'
     if tipo == 'LISTENING' and not (challenge.reference_audio_url or '').strip():

@@ -241,7 +241,7 @@ AJUSTE_SYSTEM = (
     'would correct, and only the most important one. If the sentence is acceptable, set tem_erro to false '
     'and leave the other fields empty. Otherwise: disse = the wrong fragment exactly as the learner said '
     'it (a few words, not the whole sentence), certo = the corrected fragment, porque = a very short reason '
-    'in European Portuguese (pt-PT, "você"), at most 12 words.'
+    'in European Portuguese (pt-PT, "você", pre-2009 spelling as used in this app: "correcto", "actual", "objectivo"; never the Brazilian forms "correto", "atual", "objetivo"), at most 12 words.'
 )
 
 AJUSTE_ESQUEMA = {
@@ -294,7 +294,7 @@ AVALIACAO_SYSTEM = (
     'certo = the corrected fragment, porque = a short reason. Do not list sentences that are already '
     'correct, style preferences, short but correct answers ("Yes.", "Excel file."), or lines that are only '
     'cut off or split by the speech recognition; if there are no real errors, return an empty list. palavras_bem_usadas: at most 8 words or expressions the learner '
-    'actually said and used correctly. "porque" and "resumo" in European Portuguese (pt-PT, "você"); '
+    'actually said and used correctly. "porque" and "resumo" in European Portuguese (pt-PT, "você", pre-2009 spelling as used in this app: "correcto", "actual", "objectivo"; never the Brazilian forms "correto", "atual", "objetivo"); '
     'resumo has at most 3 short sentences. '
     'padroes: the learner\'s recurring kinds of error in this conversation (at most 5, only real and clear '
     'errors, empty list if none). chave = a stable English snake_case key naming the rule, e.g. '

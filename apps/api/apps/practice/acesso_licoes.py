@@ -16,8 +16,8 @@ Lições escondidas (licoes_visiveis): as alterações a um curso publicado fica
 uma lição só aparece aos alunos quando está completa. Uma lição sem exercícios nunca aparece; uma
 lição criada depois da última aprovação do curso (Course.aprovado_em) só aparece quando tem pelo
 menos 3 exercícios e todos passam a lista de verificação (apps.courses.ciclo.exercicio_valido:
-resposta certa, escuta com áudio, sem conversa). As lições que já estavam no curso quando foi
-aprovado continuam visíveis (os exercícios de conversa e de escuta sem áudio são saltados); a
+resposta certa, escuta com áudio, conversa curta com pelo menos 2 frases-alvo). As lições que já
+estavam no curso quando foi aprovado continuam visíveis (os exercícios incompletos são saltados); a
 guarda do editor (apps/courses/api/teacher/pratica.py) não deixa partir as que os alunos vêem.
 """
 from django.db.models import Count, Prefetch, Q

@@ -596,6 +596,12 @@ CONVERSA_LIMITE_SESSOES = config('CONVERSA_LIMITE_SESSOES', default='10/hour')
 # Geração de lições de prática com o Claude (área do professor) e limite diário por professor.
 PRATICA_CLAUDE_MODELO = config('PRATICA_CLAUDE_MODELO', default='claude-opus-5-5')
 PRATICA_GERAR_LIMITE_DIA = config('PRATICA_GERAR_LIMITE_DIA', default=30, cast=int)
+# Revisão de hoje: exercícios curtos para os padrões de erro (gerados uma vez por padrão e reutilizados).
+REVISAO_CLAUDE_MODELO = config('REVISAO_CLAUDE_MODELO', default='claude-haiku-5-5')
+# Exercício "Responder" (resposta livre em voz alta): um pedido curto por gravação, modelo rápido.
+RESPONDER_CLAUDE_MODELO = config('RESPONDER_CLAUDE_MODELO', default='claude-haiku-5-5')
+# Conversa curta no fim de uma lição (exercício VAPI_CONVERSATION): duração máxima em segundos.
+CONVERSA_LICAO_MAX_SEGUNDOS = config('CONVERSA_LICAO_MAX_SEGUNDOS', default=120, cast=int)
 # Nota: os limites acima (e os throttles/ratelimits) usam a cache 'default' (ver CACHES).
 
 # =============================================================================

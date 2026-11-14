@@ -392,6 +392,25 @@ class UserProgressView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+def solucao(challenge):
+    """A resposta certa em texto, para mostrar depois de um erro (o exercício volta no fim da lição)."""
+    opcoes = list(challenge.options.order_by('order'))
+    certas = [o.text for o in opcoes if o.is_correct]
+    tipo = challenge.type
+    if tipo == 'SENTENCE_ORDER':
+        return ' '.join(o.text for o in opcoes) or None
+    if tipo == 'MATCH_PAIRS':
+        return '; '.join(o.text for o in opcoes) or None
+    if tipo == 'FILL_BLANK':
+        import re
+        fila = list(certas)
+        frase = re.sub(r'_{2,}|\[\s*\]', lambda _m: fila.pop(0) if fila else '___', challenge.question or '')
+        return frase if certas else None
+    if tipo in ('SELECT', 'ASSIST', 'TRUE_FALSE', 'TRANSLATION', 'LISTENING'):
+        return certas[0] if certas else None
+    return None
+
+
 class ChallengeProgressView(APIView):
     """
     POST /api/v1/practice/challenge-progress/
@@ -542,8 +561,10 @@ class ChallengeProgressView(APIView):
                     }
                 }, status=status_module.HTTP_200_OK)
 
-        # Check hearts for new challenges (skip for users with unlimited hearts subscription)
-        if user_progress.hearts == 0 and not is_practice and not has_unlimited_hearts(request.user):
+        # Check hearts for new challenges (skip for users with unlimited hearts subscription).
+        # A conversa curta do fim da lição nunca custa vidas: não precisa delas.
+        if (user_progress.hearts == 0 and not is_practice and challenge.type != 'VAPI_CONVERSATION'
+                and not has_unlimited_hearts(request.user)):
             logger.info("User has no hearts and this is not practice mode")
             return Response(
                 {'error': 'hearts', 'message': 'Ficou sem vidas. Espere pela recarga ou recarregue com pontos.'},
@@ -911,13 +932,25 @@ class ChallengeProgressView(APIView):
             logger.info(f"Match pairs validation: paired_options={paired_options}, is_correct: {is_correct}")
 
         elif challenge_type == 'VAPI_CONVERSATION':
-            # A conversa dentro da lição está desligada: o exercício só pode ser saltado
-            # ({saltar: true}), sem pontos e sem perder vidas.
+            # Conversa curta no fim da lição: conta quando a conversa {sessao_id} deste exercício
+            # terminou com pelo menos 2 falas do aluno. Senão não é um erro (sem perder vidas):
+            # pode fazer outra conversa ou saltar ({saltar: true}).
+            from apps.practice.conversa.licao import conversa_concluida, MIN_FALAS_ALUNO
+            ok, motivo = conversa_concluida(request.user, challenge, request.data.get('sessao_id'))
+            if not ok:
+                mensagem = (f'A conversa precisa de pelo menos {MIN_FALAS_ALUNO} respostas suas. '
+                            'Pode tentar outra vez ou saltar, sem perder vidas.'
+                            if motivo == 'poucas_falas' else 'Termine primeiro a conversa com o tutor.')
+                return Response({'codigo': 'conversa_incompleta', 'motivo': motivo, 'mensagem': mensagem,
+                                 'pode_saltar': True}, status=status_module.HTTP_400_BAD_REQUEST)
+            is_correct = True
+
+        elif challenge_type == 'RESPONDER':
+            # Avaliado no servidor a partir da gravação (Whisper + Claude).
             return Response(
-                {'error': 'conversa_indisponivel', 'codigo': 'conversa_indisponivel',
-                 'message': 'A conversa dentro da lição não está disponível. Salte este exercício.',
-                 'mensagem': 'A conversa dentro da lição não está disponível. Salte este exercício.',
-                 'pode_saltar': True},
+                {'error': 'RESPONDER challenges must use the answer evaluation endpoint',
+                 'codigo': 'usar_gravacao',
+                 'endpoint': f'/api/v1/student/practice-courses/challenges/{challenge.id}/responder/'},
                 status=status_module.HTTP_400_BAD_REQUEST
             )
 
@@ -1006,8 +1039,10 @@ class ChallengeProgressView(APIView):
             response_data = {
                 'success': True,
                 'correct': False,
-                # Dica para tentar outra vez, sem dar a resposta.
                 'dica': challenge.hint or None,
+                # O exercício volta no fim da lição: mostra-se já a resposta certa e a explicação.
+                'solucao': solucao(challenge),
+                'explicacao': challenge.explanation or None,
                 'user_progress': {
                     'hearts': user_progress.hearts if not user_has_unlimited else 999,
                     'points': user_progress.points
@@ -1032,16 +1067,20 @@ class ChallengeProgressView(APIView):
         """
         Exercício saltado: conta como feito, sem pontos e sem perder vidas.
         - pronúncia (SPEAKING) com a análise indisponível (apps.practice.saltar_pronuncia, com token);
-        - conversa (VAPI_CONVERSATION), que está desligada, e escuta (LISTENING) sem áudio:
-          sempre (o ecrã de jogar/ marca-os com modo "indisponivel").
+        - responder em voz alta (RESPONDER) com a avaliação indisponível (o mesmo token);
+        - conversa curta (VAPI_CONVERSATION): é opcional, pode ser sempre saltada (sem minutos,
+          Vapi em baixo, ou o aluno não quer);
+        - escuta (LISTENING) sem áudio e exercícios incompletos: sempre (o ecrã de jogar/ marca-os
+          com modo "indisponivel").
         """
         from apps.practice.saltar_pronuncia import pode_saltar
         from .jogar import motivo_saltar
-        if challenge.type != 'SPEAKING' and not motivo_saltar(challenge):
+        com_token = challenge.type in ('SPEAKING', 'RESPONDER')
+        if not com_token and challenge.type != 'VAPI_CONVERSATION' and not motivo_saltar(challenge):
             return Response({'codigo': 'saltar_invalido',
                              'mensagem': 'Este exercício não pode ser saltado.'},
                             status=status_module.HTTP_400_BAD_REQUEST)
-        if challenge.type == 'SPEAKING' and not pode_saltar(request.data.get('token_saltar'), request.user, challenge):
+        if com_token and not pode_saltar(request.data.get('token_saltar'), request.user, challenge):
             return Response({'codigo': 'analise_disponivel',
                              'mensagem': 'A análise de pronúncia está disponível: grave a frase.'},
                             status=status_module.HTTP_409_CONFLICT)

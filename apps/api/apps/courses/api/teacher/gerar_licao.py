@@ -7,7 +7,9 @@ Gerar uma lição de prática com o Claude (área do professor).
 
 Nada é guardado: o professor revê e grava com POST unidades/<id>/licoes/com-exercicios/.
 Cada exercício gerado passa pelas mesmas validações da API (pratica_formato.validar); os inválidos
-são descartados e contados. Limite diário por professor (PRATICA_GERAR_LIMITE_DIA) -> 429.
+são descartados e contados. Depois (equilibrar): pelo menos metade da lição é falada (pronuncia +
+responder; se o Claude não cumprir, os exercícios escritos a mais são descartados) e a ordem vai do
+reconhecer ao produzir: reconhecer -> completar -> traduzir -> dizer em voz alta -> responder em voz alta. Limite diário por professor (PRATICA_GERAR_LIMITE_DIA) -> 429.
 O cliente e o tratamento de erros seguem apps/practice/conversa/analise.py (Anthropic SDK,
 saída estruturada com JSON schema, fallbacks no servidor). Falha do Claude -> 503 ia_indisponivel.
 """
@@ -42,8 +44,11 @@ ESFORCO = 'medium'
 BETA_FALLBACK = 'server-side-fallback-2026-07-01'
 MODELOS_COM_FALLBACK = ('claude-fable-5-2', 'claude-fable-5-1', 'claude-opus-5-5', 'claude-opus-5',
                         'claude-sonnet-5-5')
-TIPOS_GERADOS = ['completar', 'escolher', 'traduzir', 'ordenar', 'pronuncia', 'escuta', 'pares',
+TIPOS_GERADOS = ['completar', 'escolher', 'traduzir', 'ordenar', 'pronuncia', 'responder', 'escuta', 'pares',
                  'verdadeiro_falso']
+# Do reconhecer ao produzir (ordem dos exercícios na lição gerada).
+ETAPA = {'pares': 0, 'escolher': 0, 'assistir': 0, 'verdadeiro_falso': 0, 'escuta': 0,
+         'completar': 1, 'ordenar': 1, 'traduzir': 2, 'pronuncia': 3, 'responder': 4}
 
 
 
@@ -86,9 +91,11 @@ ESQUEMA = {
                         },
                     },
                     'resposta': {'type': 'string'},
+                    'contexto': {'type': 'string'},
                     'explicacao': {'type': 'string'},
                 },
-                'required': ['tipo', 'enunciado', 'frase', 'opcoes', 'pares', 'resposta', 'explicacao'],
+                'required': ['tipo', 'enunciado', 'frase', 'opcoes', 'pares', 'resposta', 'contexto',
+                             'explicacao'],
                 'additionalProperties': False,
             },
         },
@@ -129,12 +136,19 @@ question about what is heard; "opcoes" = 3 options, exactly one certa=true. (Lea
 dictation, then "enunciado" is "".)
 - pronuncia: "frase" = a short English sentence the learner says aloud (max 12 words), useful at work; \
 "enunciado" = "".
+- responder: the learner hears a workplace question and answers it aloud in their own words. "enunciado" = \
+the question in English, as a colleague, manager or client would ask it (max 20 words); "frase" = the target \
+phrase or structure from this lesson that the answer must use (e.g. "Could you ... by ...?" or "I'll have it \
+ready by"); "resposta" = a short example answer in English that uses the target phrase (max 25 words); \
+"contexto" = optional short pt-PT context of the scene (e.g. "O seu supervisor pergunta pelo relatório.") or "".
+- "contexto" is "" for every type except responder.
 
 Lesson rules:
-- Produce exactly the requested number of exercises, mixing types sensibly: start with recognition \
-(pares, escolher, verdadeiro_falso), then production (completar, ordenar, traduzir), and include at least one \
-pronuncia and one escuta when the lesson has 8 or more exercises. Do not use the same type more than 3 times. \
-Never repeat the same sentence.
+- Produce exactly the requested number of exercises. At least HALF of them must be spoken (pronuncia + \
+responder), and include at least one of each. Order them from recognition to production: recognition first \
+(pares, escolher, verdadeiro_falso, escuta), then completar and ordenar, then traduzir, then pronuncia, and \
+responder last. The phrases the learner says aloud and uses in responder are the phrases practised earlier in \
+the lesson. Do not use the same type more than 3 times. Never repeat the same sentence.
 - Use the target words; keep the vocabulary and grammar at the course level.
 - Do not repeat what the existing lessons of the unit already cover; build on them.
 - "titulo_sugerido": a short pt-PT lesson title (max 60 characters).
@@ -217,6 +231,29 @@ def mensagem_utilizador(curso, unidade, objectivo, palavras, quantos):
     return '\n'.join(linhas)
 
 
+def falados(exercicios):
+    return sum(1 for e in exercicios if e.get('tipo') in formato.TIPOS_FALADOS)
+
+
+def metade_falada(exercicios):
+    """A regra da lição gerada: pelo menos metade dos exercícios são falados."""
+    return bool(exercicios) and 2 * falados(exercicios) >= len(exercicios)
+
+
+def equilibrar(exercicios, quantos):
+    """
+    No máximo `quantos` exercícios, pelo menos metade falados (corta os escritos a mais) e pela
+    ordem do reconhecer ao produzir. Devolve (lista, descartados).
+    """
+    falados_ = [e for e in exercicios if e['tipo'] in formato.TIPOS_FALADOS]
+    escritos = [e for e in exercicios if e['tipo'] not in formato.TIPOS_FALADOS]
+    n_falados = min(len(falados_), max((quantos + 1) // 2, quantos - len(escritos)))
+    n_escritos = min(len(escritos), quantos - n_falados, n_falados)
+    escolhidos = falados_[:n_falados] + escritos[:n_escritos]
+    escolhidos.sort(key=lambda e: ETAPA.get(e['tipo'], 1))  # estável: mantém a ordem do Claude em cada etapa
+    return escolhidos, len(exercicios) - len(escolhidos)
+
+
 def limpar_gerados(dados, quantos):
     """Valida cada exercício gerado; devolve (exercicios normalizados, descartados)."""
     brutos = dados.get('exercicios') if isinstance(dados.get('exercicios'), list) else []
@@ -231,8 +268,8 @@ def limpar_gerados(dados, quantos):
             descartados += 1
             continue
         bons.append(limpo)
-    descartados += max(0, len(bons) - quantos)
-    bons = bons[:quantos]
+    bons, a_mais = equilibrar(bons, quantos)
+    descartados += a_mais
     for i, ex in enumerate(bons, start=1):
         ex['ordem'] = i
         ex['acerto'] = None

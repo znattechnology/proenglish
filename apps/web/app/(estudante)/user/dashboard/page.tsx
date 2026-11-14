@@ -13,6 +13,7 @@ import { Pagina } from "@/components/pe/estudante/Pagina";
 import { contextoCurso, LinhaCursoInscrito, ListaCursos } from "@/components/pe/estudante/Cursos";
 import { SinoNotificacoes } from "@/components/pe/estudante/Navegacao";
 import { PedidoOpiniao } from "@/components/pe/opiniao/PedidoOpiniao";
+import { CartaoRevisao } from "@/components/pe/revisao/CartaoRevisao";
 import { usePerfilQuery } from "@/src/domains/student/perfil/api";
 
 /** A API representa "vidas ilimitadas" (planos pagos) com 999. */
@@ -101,6 +102,7 @@ export default function Inicio() {
               <h2 id="titulo-praticar" className="m-0 text-pe-titulo-s">
                 Praticar hoje
               </h2>
+              <CartaoRevisao />
               <AtalhoPratica
                 href="/user/laboratory/speaking/real-time"
                 icone={<Mic />}

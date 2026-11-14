@@ -128,7 +128,7 @@ function Gerador() {
           {curso.titulo}
         </Link>
         <h1 className="m-0 font-pe-titulo text-[26px] font-bold leading-8 tracking-[-0.015em] md:text-[32px] md:leading-[38px]">Gerar lição com IA</h1>
-        <p className="m-0 text-pe-tinta-suave">Descreva o objectivo e a IA propõe exercícios. Nada chega aos alunos sem a sua revisão.</p>
+        <p className="m-0 text-pe-tinta-suave">Descreva o objectivo e a IA propõe exercícios, do reconhecer ao dizer: pelo menos metade da lição é falada (pronúncia e responder em voz alta). Nada chega aos alunos sem a sua revisão.</p>
       </div>
 
       {!estrutura.unidades.length ? (
@@ -202,7 +202,7 @@ function Gerador() {
                 </div>
                 <Aviso tipo="info" icone={<TriangleAlert aria-hidden />}>
                   Reveja cada frase antes de guardar. A IA pode errar no vocabulário técnico. Os exercícios de escuta precisam de áudio: gere-o no editor da lição depois de guardar, senão os alunos saltam-nos.
-                  {descartados ? ` ${descartados} ${descartados === 1 ? "exercício veio incompleto e foi tirado" : "exercícios vieram incompletos e foram tirados"}.` : ""}
+                  {descartados ? ` ${descartados} ${descartados === 1 ? "exercício foi tirado (incompleto, ou escrito a mais para metade da lição ser falada)" : "exercícios foram tirados (incompletos, ou escritos a mais para metade da lição ser falada)"}.` : ""}
                 </Aviso>
                 <ul className={cnPe("m-0 flex list-none flex-col p-0", aGerar && "opacity-60")}>
                   {itens.map((it, k) => (

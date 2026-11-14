@@ -1,7 +1,7 @@
 /** Cursos de prática do professor: unidades, lições, exercícios e a geração de lições com IA. */
 import { professorApi, type DetalheCurso } from "./api";
 
-export type TipoExercicio = "escolher" | "assistir" | "completar" | "traduzir" | "ordenar" | "pares" | "verdadeiro_falso" | "escuta" | "pronuncia" | "conversa";
+export type TipoExercicio = "escolher" | "assistir" | "completar" | "traduzir" | "ordenar" | "pares" | "verdadeiro_falso" | "escuta" | "pronuncia" | "responder" | "conversa";
 
 export type Exercicio = {
   id?: string;
@@ -14,6 +14,10 @@ export type Exercicio = {
   resposta: string;
   explicacao: string;
   audio_url: string | null;
+  /** Responder: o contexto curto da cena (pt), opcional. */
+  contexto?: string;
+  /** Conversa curta: 2 a 3 frases da lição para o aluno usar. */
+  frases_alvo?: string[];
   acerto?: number | null;
   tentativas?: number;
 };
@@ -121,9 +125,10 @@ export const TIPOS: { valor: TipoExercicio; nome: string; texto: string }[] = [
   { valor: "verdadeiro_falso", nome: "Verdadeiro ou falso", texto: "Uma afirmação para o aluno dizer se é certa." },
   { valor: "escuta", nome: "Escuta", texto: "O aluno ouve uma frase e responde ou escreve o que ouviu." },
   { valor: "pronuncia", nome: "Pronúncia", texto: "O aluno diz uma frase em voz alta." },
+  { valor: "responder", nome: "Responder", texto: "O aluno ouve uma pergunta de trabalho e responde em voz alta, usando uma frase da lição." },
+  { valor: "conversa", nome: "Conversa curta", texto: "No fim da lição, 1 a 2 minutos de conversa com o tutor a usar 2 ou 3 frases da lição. Opcional para o aluno." },
 ];
-// "Conversa com o tutor" dentro das lições fica de fora até estar ligada ao tutor: os alunos saltam os que existirem.
-export const nomeTipo = (t: string) => TIPOS.find((x) => x.valor === t)?.nome ?? (t === "assistir" ? "Escolher com imagem" : t === "conversa" ? "Conversa (desligada)" : t);
+export const nomeTipo = (t: string) => TIPOS.find((x) => x.valor === t)?.nome ?? (t === "assistir" ? "Escolher com imagem" : t);
 
 export const exercicioVazio = (tipo: TipoExercicio): Exercicio => ({
   tipo,
@@ -134,6 +139,8 @@ export const exercicioVazio = (tipo: TipoExercicio): Exercicio => ({
   resposta: tipo === "verdadeiro_falso" ? "verdadeiro" : "",
   explicacao: "",
   audio_url: null,
+  contexto: "",
+  frases_alvo: tipo === "conversa" ? ["", ""] : [],
 });
 
 /** Uma linha curta para listas: o que o aluno vê primeiro. */
@@ -147,6 +154,10 @@ export function resumoExercicio(e: Exercicio) {
       return e.resposta || e.enunciado;
     case "pares":
       return e.pares.map((p) => p.a).filter(Boolean).join(", ");
+    case "responder":
+      return e.enunciado ? `${e.enunciado} (${e.frase})` : e.frase;
+    case "conversa":
+      return e.enunciado || (e.frases_alvo ?? []).join("; ");
     case "escolher":
     case "assistir": {
       const ops = e.opcoes.map((o) => o.texto).filter(Boolean).join(" / ");

@@ -18,6 +18,7 @@ import re
 from django.db import IntegrityError, transaction
 from django.utils import timezone
 
+from . import agenda
 from .models import NIVEIS, ItemBanco, PadraoErro, PerfilFala
 
 logger = logging.getLogger(__name__)
@@ -248,6 +249,12 @@ def registar_frase_licao(user, challenge, texto):
         curso_id = getattr(unidade, 'course_id', None)
     return registar_item(user, texto, estado=ItemBanco.COM_AJUDA, origem='licao',
                          licao_id=getattr(licao, 'pk', None), curso_id=curso_id)
+
+
+def _rever_por_conversa(item, agora):
+    """Dita sozinho numa conversa: revisão forte na agenda da revisão espaçada."""
+    agenda.rever_por_conversa(item, agora)
+    item.save(update_fields=agenda.CAMPOS)
 
 
 # ---------------------------------------------------------------------------
@@ -522,9 +529,11 @@ def registar_conversa(sessao, avaliacao=None):
         res_obj, chaves_obj = [], set()
         for i, o in enumerate(objectivos):
             uso = uso_da_frase(o['en'], transcricao, None if marcadas is None else i in marcadas)
-            registar_item(user, o['en'], o.get('pt') or '', estado=uso or ItemBanco.VISTA,
-                          origem='situacao' if situacao_pk else 'conversa', situacao_id=situacao_pk,
-                          curso_id=curso_id, sessao=s.session_id, quando=agora)
+            item = registar_item(user, o['en'], o.get('pt') or '', estado=uso or ItemBanco.VISTA,
+                                 origem='situacao' if situacao_pk else 'conversa', situacao_id=situacao_pk,
+                                 curso_id=curso_id, sessao=s.session_id, quando=agora)
+            if item is not None and uso == ItemBanco.SOZINHO:
+                _rever_por_conversa(item, agora)
             chaves_obj.add(normalizar(o['en']))
             res_obj.append({'en': o['en'], 'pt': o.get('pt') or '', 'usado': uso == ItemBanco.SOZINHO,
                             'com_ajuda': uso == ItemBanco.COM_AJUDA})
@@ -537,6 +546,7 @@ def registar_conversa(sessao, avaliacao=None):
                 continue
             if uso_da_frase(item.texto, transcricao, limiar=LIMIAR_BANCO) == ItemBanco.SOZINHO:
                 _subir(item, ItemBanco.SOZINHO, agora)
+                agenda.rever_por_conversa(item, agora)
                 item.save()
                 outras.append(item.texto)
 

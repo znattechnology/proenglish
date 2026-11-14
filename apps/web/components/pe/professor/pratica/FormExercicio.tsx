@@ -114,10 +114,53 @@ export function FormExercicio({ e, aoMudar, erros = {} }: { e: Exercicio; aoMuda
           <Campo rotulo="Frase que o aluno diz" value={e.frase} onChange={(x) => muda({ frase: x.target.value })} erro={erros.frase} placeholder="Please wear your safety glasses." />
           <Campo rotulo="Instrução (opcional)" value={e.enunciado} onChange={(x) => muda({ enunciado: x.target.value })} erro={erros.enunciado} placeholder="Diga em voz alta." />
         </>
+      ) : e.tipo === "responder" ? (
+        <>
+          <Campo
+            rotulo="Pergunta, em inglês"
+            value={e.enunciado}
+            onChange={(x) => muda({ enunciado: x.target.value })}
+            erro={erros.enunciado}
+            ajuda="O aluno ouve e lê a pergunta, e responde em voz alta com as suas palavras."
+            placeholder="When can you send me the shift report?"
+          />
+          <Campo
+            rotulo="Frase-alvo"
+            value={e.frase}
+            onChange={(x) => muda({ frase: x.target.value })}
+            erro={erros.frase}
+            ajuda='A frase ou estrutura da lição que a resposta deve usar. Pode usar "..." para a parte livre.'
+            placeholder="I'll have it ready by ..."
+          />
+          <Campo
+            rotulo="Exemplo de resposta"
+            value={e.resposta}
+            onChange={(x) => muda({ resposta: x.target.value })}
+            erro={erros.resposta}
+            ajuda="Uma resposta boa que usa a frase-alvo. O aluno vê-a depois de responder."
+            placeholder="I'll have it ready by five o'clock."
+          />
+          <Campo rotulo="Contexto (opcional)" value={e.contexto ?? ""} onChange={(x) => muda({ contexto: x.target.value })} erro={erros.contexto} placeholder="O seu supervisor pergunta pelo relatório do turno." />
+        </>
       ) : e.tipo === "conversa" ? (
         <>
-          <AreaTexto rotulo="Situação" rows={3} value={e.enunciado} onChange={(x) => muda({ enunciado: x.target.value })} erro={erros.enunciado} placeholder="O tutor é o supervisor e pede o relatório do turno." />
-          <Campo rotulo="Objectivo do aluno" value={e.frase} onChange={(x) => muda({ frase: x.target.value })} erro={erros.frase} placeholder="Confirmar o prazo e dizer o que o relatório inclui." />
+          <AreaTexto
+            rotulo="Situação"
+            rows={3}
+            value={e.enunciado}
+            onChange={(x) => muda({ enunciado: x.target.value })}
+            erro={erros.enunciado}
+            ajuda="Quem é o tutor e o que acontece. A conversa dura 1 a 2 minutos e aparece no fim da lição."
+            placeholder="O tutor é o supervisor e pede o relatório do turno."
+          />
+          <Lista
+            rotulo="Frases da lição que o aluno deve usar (2 ou 3)"
+            valores={e.frases_alvo ?? []}
+            aoMudar={(v) => muda({ frases_alvo: v })}
+            maximo={3}
+            acrescentar="Acrescentar frase"
+            erro={erros.frases_alvo}
+          />
         </>
       ) : null}
 

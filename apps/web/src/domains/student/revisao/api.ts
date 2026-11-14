@@ -1,0 +1,119 @@
+/**
+ * Revisão de hoje (repetição espaçada do banco de frases). API Django: /api/v1/student/revisao/.
+ * Fica na fatia do laboratório para partilhar a cache (vidas, sequência, meta do dia).
+ */
+import { aposEstudo, quandoCorrerBem } from "@/src/domains/student/sincronizar";
+import { DJANGO_BASE_URL } from "@/src/domains/shared/api/baseQuery";
+import { studentPracticeApiSlice } from "../practice-courses/api/studentPracticeApiSlice";
+
+const R = `${DJANGO_BASE_URL}/student/revisao`;
+
+export type FormaRevisao = "escolher" | "completar" | "traduzir" | "ouvir_repetir";
+export type EstadoItem = "vista" | "reconhecida" | "com_ajuda" | "sozinho";
+
+export type ExercicioRevisao = {
+  id: string;
+  origem: "item" | "padrao";
+  forma: FormaRevisao;
+  item_id: number | null;
+  estado: EstadoItem | null;
+  nova: boolean;
+  padrao: { chave: string; descricao: string } | null;
+  titulo: string;
+  texto_en: string | null;
+  traducao: string | null;
+  frase_com_espaco: string | null;
+  opcoes: string[] | null;
+  audio_texto: string | null;
+};
+
+export type SessaoRevisao = {
+  dia: string;
+  total: number;
+  para_rever: number;
+  novos: number;
+  minutos: number;
+  exercicios: ExercicioRevisao[];
+};
+
+export type ResumoRevisao = { para_rever: number; minutos: number; feitas_hoje: number };
+
+export type ResultadoRevisao = {
+  correcta: boolean;
+  nota: "errei" | "dificil" | "certo" | "facil";
+  contou: boolean;
+  resposta_certa: string;
+  texto: string;
+  traducao: string | null;
+  explicacao: string | null;
+  estado_antes: EstadoItem | null;
+  estado_depois: EstadoItem | null;
+  subiu: boolean;
+  pontos: number;
+  proxima_revisao: string | null;
+  intervalo_dias: number | null;
+  semelhanca?: number;
+  analise?: { nota: number; aceite: boolean; transcricao: string; palavras: string[]; mensagem: string | null };
+};
+
+export type FimRevisao = {
+  respondidos: number;
+  acertos: number;
+  pontos: number;
+  minutos: number;
+  subiram: { texto: string; traducao: string | null; antes: EstadoItem; depois: EstadoItem; depois_rotulo: string }[];
+  restam_hoje: number;
+  amanha: number;
+  meta: { minutos_hoje: number; meta_minutos: number; cumprida: boolean; sequencia: number };
+};
+
+export const revisaoApi = studentPracticeApiSlice.injectEndpoints({
+  endpoints: (build) => ({
+    resumoRevisao: build.query<ResumoRevisao, void>({
+      query: () => `${R}/resumo/`,
+      providesTags: ["Revisao"],
+    }),
+    sessaoRevisao: build.query<SessaoRevisao, void>({
+      query: () => `${R}/hoje/`,
+      // A sessão é lida uma vez ao abrir; não recarrega por baixo do jogador.
+      keepUnusedDataFor: 0,
+    }),
+    responderRevisao: build.mutation<ResultadoRevisao, { exercicioId: string; forma: FormaRevisao; resposta: string; segundos: number; pistas?: number }>({
+      query: ({ exercicioId, forma, resposta, segundos, pistas }) => ({
+        url: `${R}/responder/`,
+        method: "POST",
+        body: { exercicio_id: exercicioId, forma, resposta, segundos, pistas: pistas ?? 0 },
+      }),
+    }),
+    falarRevisao: build.mutation<ResultadoRevisao, { exercicioId: string; audio: Blob; segundos: number }>({
+      // fetch próprio: a base desta fatia força JSON e a gravação vai em multipart.
+      queryFn: async ({ exercicioId, audio, segundos }) => {
+        const corpo = new FormData();
+        corpo.append("audio", audio, "gravacao.webm");
+        corpo.append("exercicio_id", exercicioId);
+        corpo.append("segundos", String(segundos));
+        try {
+          const r = await fetch(`${R}/falar/`, { method: "POST", body: corpo, credentials: "include" });
+          const dados = await r.json().catch(() => ({}));
+          if (!r.ok) return { error: { status: r.status, data: dados } };
+          return { data: dados as ResultadoRevisao };
+        } catch (e) {
+          return { error: { status: "FETCH_ERROR", error: String(e) } };
+        }
+      },
+    }),
+    terminarRevisao: build.mutation<FimRevisao, { inicio: string }>({
+      query: ({ inicio }) => ({ url: `${R}/terminar/`, method: "POST", body: { inicio } }),
+      invalidatesTags: ["Revisao", "StudentProgress", "StudentStreak"],
+      onQueryStarted: quandoCorrerBem(aposEstudo),
+    }),
+  }),
+  overrideExisting: process.env.NODE_ENV === "development",
+});
+
+export const { useResumoRevisaoQuery, useSessaoRevisaoQuery, useResponderRevisaoMutation, useFalarRevisaoMutation, useTerminarRevisaoMutation } = revisaoApi;
+
+/** "7 frases" / "1 frase". */
+export function nFrases(n: number) {
+  return `${n} ${n === 1 ? "frase" : "frases"}`;
+}

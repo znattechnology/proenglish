@@ -4,6 +4,7 @@
  */
 import { aposEstudo, quandoCorrerBem } from "@/src/domains/student/sincronizar";
 import { studentPracticeApiSlice } from "../practice-courses/api/studentPracticeApiSlice";
+import type { NovaSessao } from "@/src/domains/student/conversa/api";
 
 const API = process.env.NEXT_PUBLIC_DJANGO_API_URL || "http://localhost:8000/api/v1";
 
@@ -30,11 +31,19 @@ export type Opcao = { id: string; texto: string; imagem: string | null; audio: s
 
 export type Exercicio = {
   id: string;
-  tipo: "SELECT" | "ASSIST" | "TRUE_FALSE" | "FILL_BLANK" | "TRANSLATION" | "LISTENING" | "SENTENCE_ORDER" | "MATCH_PAIRS" | "SPEAKING" | "VAPI_CONVERSATION";
-  /** "indisponivel": o aluno não pode fazer este exercício e salta-o (saltarExercicio, sem pontos nem vidas). */
-  modo: "escolha" | "banco" | "escrever" | "ordenar" | "pares" | "falar" | "indisponivel";
-  /** Só com modo "indisponivel": conversa desligada ou escuta sem áudio. */
-  motivo?: "conversa" | "sem_audio";
+  tipo: "SELECT" | "ASSIST" | "TRUE_FALSE" | "FILL_BLANK" | "TRANSLATION" | "LISTENING" | "SENTENCE_ORDER" | "MATCH_PAIRS" | "SPEAKING" | "RESPONDER" | "VAPI_CONVERSATION";
+  /**
+   * "responder": ouvir a pergunta e responder em voz alta (frase = frase-alvo).
+   * "conversa": conversa curta com o tutor no fim da lição (frases = frases-alvo).
+   * "indisponivel": o aluno não pode fazer este exercício e salta-o (saltarExercicio, sem pontos nem vidas).
+   */
+  modo: "escolha" | "banco" | "escrever" | "ordenar" | "pares" | "falar" | "responder" | "conversa" | "indisponivel";
+  /** Só com modo "indisponivel": conversa incompleta, responder incompleto ou escuta sem áudio. */
+  motivo?: "conversa" | "incompleto" | "sem_audio";
+  /** Responder: o contexto curto da cena (pt). */
+  contexto?: string | null;
+  /** Conversa curta: as frases da lição para usar. */
+  frases?: string[];
   pergunta: string;
   instrucao: string | null;
   audio: string | null;
@@ -62,12 +71,16 @@ export type Resposta =
   | { text_answer: string }
   | { text_answers: string[] }
   | { ordered_options: string[] }
-  | { paired_options: Record<string, string> };
+  | { paired_options: Record<string, string> }
+  /** Conversa curta: a sessão terminada (o servidor confere que teve pelo menos 2 falas do aluno). */
+  | { sessao_id: string };
 
 export type ResultadoResposta = {
   correct: boolean;
   explicacao?: string | null;
   dica?: string | null;
+  /** Depois de errar: a resposta certa (o exercício volta no fim da lição). */
+  solucao?: string | null;
   user_progress?: { hearts: number; points: number };
   heartsUsed?: number;
   feedback?: { similarity?: number; hint?: string };
@@ -80,6 +93,23 @@ export type ResultadoPronuncia = {
   dica?: string | null;
   user_progress?: { hearts: number; points: number };
 };
+
+export type ResultadoResponder = {
+  aceite: boolean;
+  transcricao: string;
+  responde: "sim" | "parcial" | "nao";
+  usou_frase: boolean;
+  correccao: { disse: string; certo: string; porque: string } | null;
+  comentario: string | null;
+  frase_alvo: string;
+  exemplo: string | null;
+  explicacao?: string | null;
+  dica?: string | null;
+  heartsUsed: number;
+  user_progress?: { hearts: number; points: number };
+};
+
+export type ConversaLicao = { sessao: NovaSessao; modo: "vapi" | "simulado"; chave_publica: string | null };
 
 export type ConclusaoLicao = {
   first_completion: boolean;
@@ -162,6 +192,25 @@ export const laboratorioApi = studentPracticeApiSlice.injectEndpoints({
         }
       },
     }),
+    /** Responder em voz alta: a gravação é transcrita e avaliada no servidor (Whisper + Claude). */
+    responderEmVoz: build.mutation<ResultadoResponder, { challengeId: string; audio: Blob }>({
+      queryFn: async ({ challengeId, audio }) => {
+        const corpo = new FormData();
+        corpo.append("audio", audio, "resposta.webm");
+        try {
+          const r = await fetch(`${API}/student/practice-courses/challenges/${challengeId}/responder/`, { method: "POST", body: corpo, credentials: "include" });
+          const dados = await r.json().catch(() => ({}));
+          if (!r.ok) return { error: { status: r.status, data: dados } };
+          return { data: dados as ResultadoResponder };
+        } catch (e) {
+          return { error: { status: "FETCH_ERROR", error: String(e) } };
+        }
+      },
+    }),
+    /** Começa a conversa curta do fim da lição (gasta minutos de conversa do dia). */
+    comecarConversaLicao: build.mutation<ConversaLicao, string>({
+      query: (challengeId) => ({ url: `/challenges/${challengeId}/conversa/`, method: "POST", body: {} }),
+    }),
     concluirLicao: build.mutation<ConclusaoLicao, { lessonId: string; segundos: number }>({
       query: ({ lessonId, segundos }) => ({
         url: "/complete-lesson/",
@@ -206,6 +255,8 @@ export const {
   useLicaoParaJogarQuery,
   useResponderMutation,
   useAnalisarPronunciaMutation,
+  useResponderEmVozMutation,
+  useComecarConversaLicaoMutation,
   useSaltarExercicioMutation,
   useConcluirLicaoMutation,
   useEstadoVidasQuery,

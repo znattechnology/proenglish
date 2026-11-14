@@ -71,7 +71,9 @@ class JogarLicaoTests(StudyTrackingTestBase):
         errada = self.client.post(url, {"challenge_id": str(self.ch1.id), "selected_option": str(self.ch1.wrong.id)}, format="json").json()
         self.assertFalse(errada["correct"])
         self.assertEqual(errada["dica"], "Pense no cumprimento.")
-        self.assertNotIn("explicacao", errada)
+        # O exercício volta no fim da lição: o erro já mostra a resposta certa e a explicação.
+        self.assertEqual(errada["solucao"], self.ch1.right.text)
+        self.assertEqual(errada["explicacao"], "Hello é o cumprimento neutro.")
         certa = self.client.post(url, {"challenge_id": str(self.ch1.id), "selected_option": str(self.ch1.right.id)}, format="json").json()
         self.assertTrue(certa["correct"])
         self.assertEqual(certa["explicacao"], "Hello é o cumprimento neutro.")

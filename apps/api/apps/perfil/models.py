@@ -84,12 +84,15 @@ class ItemBanco(models.Model):
     sessao_origem = models.CharField(max_length=100, blank=True, default='',
                                      help_text='Conversa (VapiSession.session_id) onde apareceu')
 
-    # Repetição espaçada (fase 4; por agora não usados).
+    # Repetição espaçada (revisão de hoje, apps/perfil/agenda.py). proxima_revisao vazia = item novo,
+    # ainda fora da agenda; entra na revisão (no máximo N novos por dia).
     proxima_revisao = models.DateTimeField(null=True, blank=True)
-    estabilidade = models.FloatField(null=True, blank=True)
-    dificuldade = models.FloatField(null=True, blank=True)
+    estabilidade = models.FloatField(null=True, blank=True, help_text='Dias até a memória cair para 90%')
+    dificuldade = models.FloatField(null=True, blank=True, help_text='1 (fácil) a 10 (difícil)')
     repeticoes = models.PositiveIntegerField(default=0)
     lapsos = models.PositiveIntegerField(default=0)
+    ultima_revisao = models.DateTimeField(null=True, blank=True)
+    introduzida_em = models.DateTimeField(null=True, blank=True, help_text='Primeira vez na revisão')
 
     criado_em = models.DateTimeField(auto_now_add=True)
     actualizado_em = models.DateTimeField(auto_now=True)
@@ -133,3 +136,51 @@ class PadraoErro(models.Model):
 
     def __str__(self):
         return f'{self.chave} x{self.ocorrencias}{" (superado)" if self.superado else ""}'
+
+
+class RespostaRevisao(models.Model):
+    """
+    Cada resposta na revisão de hoje. Só a primeira resposta a um exercício em cada dia (Luanda)
+    conta (contou=True): mexe na agenda, dá pontos e minutos. Serve também o resumo do fim.
+    """
+    NOTAS = [('errei', 'Errei'), ('dificil', 'Difícil'), ('certo', 'Certo'), ('facil', 'Fácil')]
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='respostas_revisao')
+    item = models.ForeignKey(ItemBanco, on_delete=models.CASCADE, null=True, blank=True, related_name='respostas')
+    chave_exercicio = models.CharField(max_length=120, help_text="'item:<id>' ou 'padrao:<chave>:<n>'")
+    forma = models.CharField(max_length=20)
+    dia = models.DateField(help_text='Dia de Angola')
+    correcta = models.BooleanField()
+    nota = models.CharField(max_length=8, choices=NOTAS, blank=True, default='')
+    contou = models.BooleanField(default=False)
+    estado_antes = models.CharField(max_length=12, blank=True, default='')
+    estado_depois = models.CharField(max_length=12, blank=True, default='')
+    resposta = models.CharField(max_length=300, blank=True, default='')
+    segundos = models.FloatField(default=0)
+    pontos = models.PositiveSmallIntegerField(default=0)
+    criada_em = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    class Meta:
+        ordering = ['-criada_em']
+        indexes = [models.Index(fields=['user', 'dia']), models.Index(fields=['user', 'chave_exercicio', 'dia'])]
+        verbose_name = 'resposta da revisão'
+        verbose_name_plural = 'respostas da revisão'
+
+    def __str__(self):
+        return f'{self.user_id} {self.chave_exercicio} {self.nota or "-"}'
+
+
+class ExerciciosPadrao(models.Model):
+    """Exercícios curtos gerados (Claude) para um padrão de erro. Genéricos: partilhados por todos os alunos."""
+    chave = models.CharField(max_length=60, unique=True)
+    descricao = models.CharField(max_length=160, blank=True, default='')
+    exercicios = models.JSONField(default=list)
+    modelo = models.CharField(max_length=60, blank=True, default='')
+    criado_em = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'exercícios de um padrão'
+        verbose_name_plural = 'exercícios dos padrões'
+
+    def __str__(self):
+        return f'{self.chave} ({len(self.exercicios or [])})'

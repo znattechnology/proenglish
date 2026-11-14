@@ -427,6 +427,7 @@ CATEGORY_BY_TYPE = {
     'TRANSLATION': 'Tradução',
     'LISTENING': 'Compreensão',
     'SPEAKING': 'Pronúncia',
+    'RESPONDER': 'Conversação',
     'VAPI_CONVERSATION': 'Conversação',
 }
 

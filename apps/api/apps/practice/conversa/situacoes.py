@@ -378,6 +378,9 @@ def obter_situacao(slug):
 
     if not slug:
         return None
+    if slug.startswith('licao-'):  # conversa curta no fim de uma lição (conversa/licao.py)
+        from .licao import situacao_por_slug
+        return situacao_por_slug(slug)
     obj = Situacao.objects.filter(slug=slug).first()
     if obj is not None:
         return situacao_dict(obj)

@@ -113,7 +113,11 @@ export function BalaoEnunciado({ autor, children, audio }: { autor?: string | nu
 export type EstadoRodape =
   | { tipo: "verificar"; pronto: boolean; aVerificar: boolean }
   | { tipo: "certo"; explicacao?: string | null }
-  | { tipo: "errado"; dica?: string | null; perdeuVida: boolean };
+  /**
+   * errado: `solucao` é a resposta certa; `repetir` = falha técnica (gravar outra vez já).
+   * Sem `repetir`, "Continuar" passa à frente e o exercício volta no fim da lição.
+   */
+  | { tipo: "errado"; dica?: string | null; perdeuVida: boolean; solucao?: string | null; explicacao?: string | null; repetir?: boolean };
 
 export function RodapeLicao({
   estado,
@@ -155,7 +159,14 @@ export function RodapeLicao({
                 {certo ? "Certo" : estado.tipo === "errado" && estado.perdeuVida ? "Ainda não. Perdeu uma vida" : "Ainda não"}
               </span>
               {certo && estado.explicacao ? <span className="text-[15px] leading-[22px] md:text-pe-corpo">{estado.explicacao}</span> : null}
-              {errado && estado.tipo === "errado" && estado.dica ? <span className="text-[15px] leading-[22px] md:text-pe-corpo">{estado.dica}</span> : null}
+              {estado.tipo === "errado" && estado.solucao ? (
+                <span className="text-[15px] leading-[22px] md:text-pe-corpo">
+                  Resposta certa: <span className="font-semibold">{estado.solucao}</span>
+                </span>
+              ) : null}
+              {estado.tipo === "errado" && estado.explicacao ? <span className="text-[15px] leading-[22px] md:text-pe-corpo">{estado.explicacao}</span> : null}
+              {estado.tipo === "errado" && estado.dica && !estado.solucao ? <span className="text-[15px] leading-[22px] md:text-pe-corpo">{estado.dica}</span> : null}
+              {estado.tipo === "errado" && !estado.repetir ? <span className="text-pe-legenda text-pe-tinta-suave">Este exercício volta no fim da lição.</span> : null}
             </div>
           </div>
         ) : (
@@ -166,7 +177,7 @@ export function RodapeLicao({
             <Botao larguraTotal className="md:w-auto md:min-w-[200px]" disabled={!estado.pronto || estado.aVerificar} onClick={aoVerificar}>
               {estado.aVerificar ? "A verificar…" : textoVerificar}
             </Botao>
-          ) : certo ? (
+          ) : certo || (estado.tipo === "errado" && !estado.repetir) ? (
             <Botao larguraTotal className="md:w-auto md:min-w-[200px]" onClick={aoContinuar} autoFocus>
               {textoContinuar}
             </Botao>

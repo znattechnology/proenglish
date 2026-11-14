@@ -54,6 +54,7 @@ export const studentPracticeApiSlice = createApi({
     'StudentAnalytics',
     'StudentSession',
     'StudentAchievement',
+    'Revisao',
   ],
   endpoints: (builder) => ({
     

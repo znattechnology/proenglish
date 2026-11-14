@@ -40,6 +40,7 @@ urlpatterns = [
     # Student APIs (organized)
     path('api/v1/student/video-courses/', include('apps.courses.api.student.video_courses.urls')),
     path('api/v1/student/practice-courses/', include('apps.courses.api.student.practice_courses.urls')),
+    path('api/v1/student/revisao/', include('apps.perfil.urls_revisao')),  # revisão de hoje
     
     # Teacher APIs (organized)
     path('api/v1/teacher/video-courses/', include('apps.courses.api.teacher.video_courses.urls')),
