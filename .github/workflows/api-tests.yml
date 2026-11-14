@@ -118,7 +118,7 @@ jobs:
           DJANGO_SETTINGS_MODULE: core.test_settings
         run: |
           echo "🧪 Running Users app tests..."
-          python manage.py test apps.users.tests --keepdb --parallel --verbosity=1 --settings=core.test_settings
+          python manage.py test apps.users --keepdb --parallel --verbosity=1 --settings=core.test_settings
 
       - name: Run Subscriptions App Tests
         env:

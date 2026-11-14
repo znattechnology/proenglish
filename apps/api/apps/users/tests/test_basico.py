@@ -1,5 +1,8 @@
 """
-Tests for users app including OAuth functionality.
+Testes básicos da app users (modelo, registo, Google, perfil, mudar palavra-passe).
+
+Vieram do antigo apps/users/tests.py, que chocava com o pacote apps/users/tests/
+(por isso era preciso correr `apps.users.tests` em vez de `apps.users`).
 """
 
 from django.test import TestCase
@@ -54,15 +57,14 @@ class UserModelTest(TestCase):
         self.assertEqual(str(user), expected)
     
     def test_email_normalization(self):
-        """Test email is normalized."""
-        email = 'TEST@EXAMPLE.COM'
+        """O email guarda-se todo em minúsculas e sem espaços (evita contas duplicadas)."""
+        email = '  TEST@EXAMPLE.COM '
         user = User.objects.create_user(
             email=email,
             name='Test User',
             password='testpass123'
         )
-        # Django normalizes email domain to lowercase automatically
-        self.assertEqual(user.email, 'TEST@example.com')
+        self.assertEqual(user.email, 'test@example.com')
 
 
 class UserRegistrationAPITest(APITestCase):
@@ -75,7 +77,7 @@ class UserRegistrationAPITest(APITestCase):
             'name': 'New User',
             'password': 'newpass123',
             'password_confirm': 'newpass123',
-            'role': 'customer'
+            'role': 'admin',  # ignorado: quem se regista é sempre aluno
         }
     
     def test_valid_registration(self):
@@ -88,13 +90,14 @@ class UserRegistrationAPITest(APITestCase):
         user = User.objects.get(email=self.valid_data['email'])
         self.assertEqual(user.name, self.valid_data['name'])
         self.assertTrue(user.check_password(self.valid_data['password']))
+        self.assertEqual(user.role, 'student')
+        self.assertFalse(user.is_staff)
     
     def test_password_mismatch(self):
-        """Test registration with mismatched passwords."""
+        """Se a confirmação vier e for diferente, o registo é recusado."""
         data = self.valid_data.copy()
         data['password_confirm'] = 'differentpass'
-        del data['password_confirm']  # Remove invalid field for model
-        
+
         response = self.client.post(self.url, data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertFalse(User.objects.filter(email=data['email']).exists())
@@ -125,26 +128,26 @@ class GoogleOAuthTest(APITestCase):
     
     @patch('apps.users.services.GoogleOAuthService.authenticate_user')
     def test_oauth_login_with_code(self, mock_auth):
-        """Test OAuth login with authorization code."""
-        # Mock the OAuth service response
+        """Entrada com o Google: a sessão vai em cookies HttpOnly, nunca no corpo."""
+        # O serviço devolve só o utilizador; a view cria a sessão.
         mock_user = User.objects.create_user(
             email='oauth@example.com',
             name='OAuth User',
             google_id='123456789'
         )
-        mock_tokens = {
-            'access': 'mock_access_token',
-            'refresh': 'mock_refresh_token'
-        }
-        mock_auth.return_value = (mock_user, mock_tokens)
-        
+        mock_auth.return_value = mock_user
+
         response = self.client.post(self.oauth_login_url, {
             'code': 'mock_authorization_code'
         })
-        
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('tokens', response.data)
         self.assertIn('user', response.data)
+        self.assertEqual(response.data['user']['email'], 'oauth@example.com')
+        self.assertNotIn('tokens', response.data)
+        for nome in ('access_token', 'refresh_token'):
+            self.assertIn(nome, response.cookies)
+            self.assertTrue(response.cookies[nome]['httponly'])
         mock_auth.assert_called_once()
 
 
