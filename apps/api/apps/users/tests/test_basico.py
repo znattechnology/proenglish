@@ -5,7 +5,7 @@ Vieram do antigo apps/users/tests.py, que chocava com o pacote apps/users/tests/
 (por isso era preciso correr `apps.users.tests` em vez de `apps.users`).
 """
 
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework.test import APITestCase
@@ -119,12 +119,11 @@ class GoogleOAuthTest(APITestCase):
         self.oauth_url = reverse('users:google_oauth_url')
         self.oauth_login_url = reverse('users:google_oauth_login')
     
+    @override_settings(OAUTH2_SETTINGS={'GOOGLE': {}})
     def test_oauth_url_generation(self):
-        """Test Google OAuth URL generation."""
+        """Sem o Google configurado, pedir o endereço de entrada falha com 400 (independente do .env)."""
         response = self.client.post(self.oauth_url, {})
-        
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        # Should fail without Google credentials configured
     
     @patch('apps.users.services.GoogleOAuthService.authenticate_user')
     def test_oauth_login_with_code(self, mock_auth):
