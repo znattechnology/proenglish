@@ -1,0 +1,94 @@
+# ProEnglish API — servidor mambo-labtic (2.31.122.170), em /opt/proenglish/app/apps/api/deploy/vps.
+# Base de dados própria (sem Neon) e API isoladas numa rede interna; só a API entra
+# na rede do Caddy (publica), com o nome proenglish-api. Nada publica portas no servidor.
+#
+#   docker compose up -d                 arrancar
+#   docker compose build api             reconstruir a API
+#   docker compose run --rm api python manage.py migrate
+#
+# Os limites de memória contam: o servidor (4 GB) é partilhado com o LabTIC e O Mambo.
+name: proenglish
+
+x-logging: &logging
+  driver: json-file
+  options: { max-size: "10m", max-file: "3" }
+
+services:
+  postgres:
+    image: postgres:18-alpine
+    restart: always
+    logging: *logging
+    environment:
+      POSTGRES_DB: proenglish
+      POSTGRES_USER: proenglish
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env}
+    command:
+      - postgres
+      - -c
+      - shared_buffers=64MB
+      - -c
+      - max_connections=40
+      - -c
+      - work_mem=4MB
+      - -c
+      - timezone=UTC
+    volumes:
+      # Postgres 18: o volume monta em /var/lib/postgresql (não em .../data).
+      - pgdata:/var/lib/postgresql
+    networks: [interna]
+    mem_limit: 256m
+    memswap_limit: 512m
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "proenglish", "-d", "proenglish"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ../..
+    image: proenglish/api:latest
+    restart: always
+    logging: *logging
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file: .env
+    environment:
+      DEBUG: "False"
+      DJANGO_SETTINGS_MODULE: core.settings
+      # Sempre a base local; sobrepõe-se a qualquer DATABASE_URL que venha no .env.
+      DATABASE_URL: postgresql://proenglish:${POSTGRES_PASSWORD}@postgres:5432/proenglish
+    # 2 workers x 2 threads: cabe nos 512 MB. O Dockerfile traz 3 por omissão.
+    command:
+      - gunicorn
+      - core.wsgi:application
+      - --bind=0.0.0.0:8000
+      - --workers=2
+      - --worker-class=gthread
+      - --threads=2
+      - --timeout=120
+      - --max-requests=1000
+      - --max-requests-jitter=100
+      - --access-logfile=-
+      - --error-logfile=-
+    volumes:
+      - media:/app/media
+    networks:
+      interna:
+      publica:
+        aliases: [proenglish-api]
+    mem_limit: 512m
+    memswap_limit: 768m
+
+volumes:
+  pgdata:
+  media:
+
+networks:
+  # Sem saída para fora: a base não fica à vista dos outros projectos nem da Internet.
+  interna:
+    internal: true
+  # Rede do Caddy (/opt/proxy). Dá também à API saída para OpenAI, S3, email e Vapi.
+  publica:
+    external: true

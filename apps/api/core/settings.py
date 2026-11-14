@@ -70,6 +70,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # static files (admin, API docs) without nginx
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -105,14 +106,19 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # DATABASE
 # =============================================================================
 
-# Database configuration with Neon support
+# Database configuration: PostgreSQL via DATABASE_URL (own server in production,
+# docker-compose.dev.yml locally), SQLite as a last-resort fallback.
 DATABASE_URL = config('DATABASE_URL', default='')
 
 if DATABASE_URL:
-    # Parse Neon DATABASE_URL
     import dj_database_url
     DATABASES = {
-        'default': dj_database_url.parse(DATABASE_URL)
+        'default': dj_database_url.parse(
+            DATABASE_URL,
+            # Reuse connections between requests instead of reconnecting every time.
+            conn_max_age=config('DB_CONN_MAX_AGE', default=60, cast=int),
+            conn_health_checks=True,
+        )
     }
 elif config('USE_POSTGRESQL', default=False, cast=bool):
     # Manual PostgreSQL configuration
@@ -299,7 +305,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [BASE_DIR / 'static'] if (BASE_DIR / 'static').is_dir() else []
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'

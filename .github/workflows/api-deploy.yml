@@ -1,4 +1,14 @@
-name: API Deploy (Hostinger VPS)
+name: API Deploy (VPS mambo-labtic)
+
+# Publica a API em /opt/proenglish no servidor partilhado com o LabTIC e O Mambo.
+# Só mexe no projecto compose "proenglish": nunca toca no Caddy nem nos outros projectos.
+#
+# Secrets necessários:
+#   VPS_HOST      2.31.122.170
+#   VPS_SSH_KEY   chave privada cuja pública está em ~deploy/.ssh/authorized_keys
+#
+# O primeiro arranque faz-se à mão (ver apps/api/deploy/vps/README.md); este workflow
+# só actualiza uma instalação que já existe.
 
 on:
   push:
@@ -7,181 +17,67 @@ on:
       - 'apps/api/**'
       - '.github/workflows/api-deploy.yml'
   workflow_dispatch:
-    inputs:
-      force_rebuild:
-        description: 'Force rebuild containers'
-        required: false
-        default: false
-        type: boolean
 
-env:
-  VPS_HOST: 72.61.190.180
-  VPS_USER: root
-  # Monorepo checkout on the VPS. The backend lives in $PROJECT_PATH/apps/api.
-  PROJECT_PATH: /opt/proenglish
-  # Previous standalone checkout, used once to migrate the .env file.
-  LEGACY_PATH: /opt/tuwi-backend
+concurrency:
+  group: api-deploy
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
-          PROJECT_PATH: ${{ env.PROJECT_PATH }}
-          LEGACY_PATH: ${{ env.LEGACY_PATH }}
+          GH_SHA: ${{ github.sha }}
         with:
-          host: ${{ env.VPS_HOST }}
-          username: ${{ env.VPS_USER }}
-          password: ${{ secrets.VPS_PASSWORD }}
-          envs: GH_TOKEN,GH_REPO,PROJECT_PATH,LEGACY_PATH
+          host: ${{ secrets.VPS_HOST }}
+          username: deploy
+          key: ${{ secrets.VPS_SSH_KEY }}
+          envs: GH_TOKEN,GH_REPO,GH_SHA
           script_stop: true
-          timeout: 300s
           command_timeout: 30m
-          debug: true
           script: |
-            echo "=== TUWI BACKEND DEPLOY ==="
-            echo "Step 1: Setup"
-            # Keep the original compose project name so existing containers and
-            # volumes (tuwi-backend_static_volume, tuwi-backend_media_volume, ...) are reused.
-            export COMPOSE_PROJECT_NAME=tuwi-backend
-            mkdir -p "$PROJECT_PATH" && cd "$PROJECT_PATH"
-            APP_DIR="$PROJECT_PATH/apps/api"
+            set -eu
+            APP=/opt/proenglish/app
+            VPS="$APP/apps/api/deploy/vps"
 
-            echo "Step 2: Backup .env"
-            if [ -f "$APP_DIR/.env" ]; then
-              cp "$APP_DIR/.env" /tmp/.env.backup
-            elif [ -f "$LEGACY_PATH/.env" ]; then
-              echo "Migrating .env from legacy path $LEGACY_PATH"
-              cp "$LEGACY_PATH/.env" /tmp/.env.backup
-            fi
+            test -d "$APP/.git" || { echo "ERRO: $APP não existe. Fazer a instalação inicial (README)."; exit 1; }
+            test -f "$VPS/.env" || { echo "ERRO: falta $VPS/.env"; exit 1; }
 
-            echo "Step 3: Git setup"
-            if [ ! -d ".git" ]; then
-              echo "Initializing new git repo..."
-              git init
-            fi
+            echo "== Código ($GH_SHA)"
+            cd "$APP"
+            # O token só vive neste comando: não fica guardado na configuração do git.
+            git fetch --quiet "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "$GH_SHA"
+            git reset --hard --quiet FETCH_HEAD
 
-            echo "Configuring remote..."
-            git remote remove origin 2>/dev/null || true
-            git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git"
-            echo "Remote configured"
+            echo "== Imagem"
+            cd "$VPS"
+            docker compose build api
 
-            echo "Step 4: Git pull"
-            git fetch origin
-            git reset --hard origin/main
+            echo "== Base de dados e migrações"
+            docker compose up -d postgres
+            docker compose run --rm api python manage.py migrate --noinput
 
-            echo "Step 5: Restore .env"
-            cd "$APP_DIR"
-            test -f /tmp/.env.backup && cp /tmp/.env.backup .env && rm /tmp/.env.backup
+            echo "== API"
+            docker compose up -d api
 
-            echo "Step 6: SSL setup"
-            mkdir -p nginx/ssl nginx/certbot/conf nginx/certbot/www
-            # Create temporary self-signed cert if none exists (needed for nginx to start)
-            if [ ! -f "nginx/ssl/fullchain.pem" ]; then
-              openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx/ssl/privkey.pem -out nginx/ssl/fullchain.pem -subj "/CN=proenglish.cloud/O=ProEnglish/C=PT"
-            fi
-
-            echo "Step 7: Check .env"
-            test -f .env || { echo "ERROR: .env not found"; exit 1; }
-
-            echo "Step 8: Stop conflicting services"
-            systemctl stop nginx 2>/dev/null || true
-            systemctl stop apache2 2>/dev/null || true
-            systemctl stop httpd 2>/dev/null || true
-            systemctl disable nginx 2>/dev/null || true
-            systemctl disable apache2 2>/dev/null || true
-            systemctl disable httpd 2>/dev/null || true
-            sleep 2
-            echo "Services stopped"
-
-            echo "Step 9: Docker"
-            docker compose -f docker-compose.prod.yml down --remove-orphans || true
-            docker compose -f docker-compose.prod.yml build
-            docker compose -f docker-compose.prod.yml up -d
-
-            echo "Step 10: Wait for containers"
-            sleep 10
-            echo "Waiting for backend to be healthy..."
-            for i in 1 2 3 4 5 6; do
-              if docker compose -f docker-compose.prod.yml exec -T backend echo "OK" 2>/dev/null; then
-                echo "Backend container is ready"
-                break
-              fi
-              echo "Waiting... attempt $i"
-              sleep 10
+            echo "== Saúde"
+            ok=0
+            for i in $(seq 1 24); do
+              estado=$(docker inspect -f '{{.State.Health.Status}}' proenglish-api-1 2>/dev/null || echo "?")
+              if [ "$estado" = "healthy" ]; then ok=1; break; fi
+              sleep 5
             done
-
-            echo "Step 11: Migrations"
-            docker compose -f docker-compose.prod.yml exec -T backend python manage.py migrate --noinput || echo "Migration warning"
-            docker compose -f docker-compose.prod.yml exec -T backend python manage.py collectstatic --noinput || echo "Collectstatic warning"
-
-            echo "Step 12: Status"
-            docker compose -f docker-compose.prod.yml ps
-            echo "=== BACKEND LOGS ==="
-            docker compose -f docker-compose.prod.yml logs --tail=100 backend 2>&1 || true
-            echo "=== END BACKEND LOGS ==="
-
-            echo "Step 13: Health check"
-            curl -sf http://localhost:8000/api/health/ && echo "Backend OK" || echo "Backend check failed"
-
-            echo "Step 14: Let's Encrypt SSL"
-            # Check if we already have a valid Let's Encrypt certificate
-            if [ -f "/etc/letsencrypt/live/proenglish.cloud/fullchain.pem" ]; then
-              echo "Let's Encrypt certificate exists, copying..."
-              cp /etc/letsencrypt/live/proenglish.cloud/fullchain.pem nginx/ssl/fullchain.pem
-              cp /etc/letsencrypt/live/proenglish.cloud/privkey.pem nginx/ssl/privkey.pem
-              docker compose -f docker-compose.prod.yml exec -T nginx nginx -s reload || true
-            else
-              echo "Obtaining new Let's Encrypt certificate..."
-
-              # Install certbot if not present
-              if ! command -v certbot &> /dev/null; then
-                echo "Installing certbot..."
-                apt-get update
-                apt-get install -y certbot
-              fi
-
-              # Stop nginx container to free port 80
-              echo "Stopping nginx to free port 80..."
-              docker compose -f docker-compose.prod.yml stop nginx || true
-              sleep 3
-
-              # Kill any process using port 80
-              fuser -k 80/tcp 2>/dev/null || true
-              sleep 2
-
-              # Get certificate using standalone mode
-              echo "Running certbot..."
-              certbot certonly --standalone --non-interactive --agree-tos \
-                --email admin@proenglish.cloud \
-                -d proenglish.cloud -d api.proenglish.cloud \
-                --preferred-challenges http \
-                || echo "Certbot warning - may need manual setup"
-
-              # Copy certificates if obtained
-              if [ -f "/etc/letsencrypt/live/proenglish.cloud/fullchain.pem" ]; then
-                cp /etc/letsencrypt/live/proenglish.cloud/fullchain.pem nginx/ssl/fullchain.pem
-                cp /etc/letsencrypt/live/proenglish.cloud/privkey.pem nginx/ssl/privkey.pem
-                echo "SSL certificates installed successfully"
-              else
-                echo "WARNING: Let's Encrypt certificate not obtained. Using self-signed certificate."
-              fi
-
-              # Restart nginx
-              echo "Starting nginx..."
-              docker compose -f docker-compose.prod.yml start nginx || true
+            docker compose ps
+            if [ "$ok" != "1" ]; then
+              echo "ERRO: a API não ficou saudável"
+              docker compose logs --tail=80 api
+              exit 1
             fi
 
-            echo "Step 15: Final health check"
-            sleep 5
-            curl -sf http://localhost:8000/api/health/ && echo "Backend OK" || echo "Backend check failed"
-            curl -sk https://proenglish.cloud/api/health/ && echo "HTTPS OK" || echo "HTTPS check - may need DNS propagation"
-
-            echo "=== DEPLOY COMPLETE ==="
+            # Só as imagens antigas deste projecto que ficaram sem etiqueta.
+            docker image prune -f --filter "label=com.docker.compose.project=proenglish" >/dev/null || true
+            echo "== Deploy concluído"
