@@ -7,6 +7,8 @@ Quando uma aula de um curso em vídeo conta como concluída.
   fica guardado em ChapterProgress.video_visto; passar o questionário depois conclui a aula.
 
 Uma aula já concluída não volta atrás por o professor lhe acrescentar um questionário.
+
+Ver o vídeo também põe as frases aprovadas da aula (FraseAula) no banco de frases do aluno.
 """
 from django.utils import timezone
 
@@ -37,6 +39,8 @@ def registar(progresso, chapter, vista=False, desmarcar=False):
 
     registo, _ = ChapterProgress.objects.get_or_create(user_progress=progresso, chapter=chapter)
     antes = registo.completed
+    if vista and not desmarcar and chapter.video:
+        _frases_para_o_banco(progresso.user, chapter)
     if desmarcar:
         registo.completed = False
         registo.video_visto = False
@@ -54,6 +58,16 @@ def registar(progresso, chapter, vista=False, desmarcar=False):
         registo.completed_at = timezone.now()
     registo.save()
     return registo.completed != antes
+
+
+def _frases_para_o_banco(user, chapter):
+    """Vídeo visto: as frases aprovadas da aula entram no banco do aluno como 'vista' (fase 5)."""
+    import logging
+    from apps.courses import frases_aula
+    try:
+        frases_aula.registar_vistas(user, chapter)
+    except Exception:  # o banco nunca impede de marcar a aula
+        logging.getLogger(__name__).exception('conclusão: falha ao registar as frases da aula %s', chapter.pk)
 
 
 def actualizar_progresso(progresso):

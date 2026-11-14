@@ -37,6 +37,8 @@ from .resources import (
     ChapterResource
 )
 
+from .frases import FraseAula
+
 from .student_engagement import (
     CourseWishlist,
     CourseReview,
@@ -75,6 +77,7 @@ __all__ = [
     
     # Resource models
     'ChapterResource',
+    'FraseAula',
 
     # Student engagement models
     'CourseWishlist',

@@ -26,7 +26,7 @@ export type LicaoPratica = { id: string; titulo: string; ordem: number; exercici
 export type UnidadePratica = { id: string; titulo: string; descricao: string; ordem: number; licoes: LicaoPratica[] };
 export type EstruturaPratica = { curso: DetalheCurso; unidades: UnidadePratica[] };
 export type LicaoComExercicios = { licao: { id: string; titulo: string; unidade: { id: string; titulo: string; ordem: number } }; curso: { id: string; titulo: string }; exercicios: Exercicio[] };
-export type LicaoGerada = { titulo_sugerido: string; exercicios: Exercicio[]; descartados: number };
+export type LicaoGerada = { titulo_sugerido: string; exercicios: Exercicio[]; descartados: number; aula?: { id: string; titulo: string } | null };
 
 const P = "/teacher/pratica";
 
@@ -86,7 +86,7 @@ export const praticaApi = professorApi.enhanceEndpoints({ addTagTypes: ["Pratica
       query: (id) => ({ url: `${P}/exercicios/${id}/audio/`, method: "POST", body: {} }),
       invalidatesTags: ["Exercicios"],
     }),
-    gerarLicao: build.mutation<LicaoGerada, { curso: string; unidade: string; objectivo: string; palavras: string[]; quantos: number }>({
+    gerarLicao: build.mutation<LicaoGerada, { curso: string; unidade: string; objectivo: string; palavras: string[]; quantos: number; aula?: string }>({
       query: ({ curso, ...body }) => ({ url: `${P}/${curso}/gerar-licao/`, method: "POST", body }),
     }),
     guardarLicaoGerada: build.mutation<{ licao: LicaoPratica; exercicios: Exercicio[] }, { unidade: string; titulo: string; exercicios: Exercicio[] }>({

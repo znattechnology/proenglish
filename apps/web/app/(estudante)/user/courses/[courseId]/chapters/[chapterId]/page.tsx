@@ -7,9 +7,11 @@ import { ArrowLeft, ArrowRight, Check, Dumbbell, ExternalLink, FileText } from "
 import { Aviso, Botao, Etiqueta, Osso } from "@/components/pe";
 import { Questionario } from "@/components/pe/curso/Questionario";
 import { TextoRico } from "@/components/pe/curso/TextoRico";
+import { ConversaDaAula, RepetirEmVozAlta } from "@/components/pe/curso/FalaDaAula";
 import { cnPe } from "@/lib/pe";
 import { useDjangoAuth } from "@/hooks/useDjangoAuth";
 import { mensagemErro } from "@/src/domains/student/subscricao/api";
+import { useFalaDaAulaQuery } from "@/src/domains/student/curso/fala";
 import {
   capitulosPorOrdem,
   concluidos,
@@ -178,6 +180,10 @@ function Conteudo({
   const segundos = useRef(0);
   const { data: recursos } = useRecursosQuery(cap.chapterId);
   const linhas = useMemo(() => lerTranscricao(cap.transcript), [cap.transcript]);
+  const video = useRef<HTMLVideoElement>(null);
+  const comVideo = cap.type === "Video" && !!cap.video;
+  // Frases aprovadas pelo professor: repetir em voz alta e conversa no fim da aula.
+  const { data: fala } = useFalaDaAulaQuery(cap.chapterId, { skip: !comVideo });
 
   const concluir = async () => {
     setErro(null);
@@ -218,7 +224,7 @@ function Conteudo({
   return (
     <>
       {cap.type === "Video" && cap.video ? (
-        <Video src={cap.video} titulo={cap.title} linhas={linhas} aoAvancar={(s) => (segundos.current += s)} aoTerminar={() => !visto && !(comQuiz && videoFeito) && void concluir()} />
+        <Video videoRef={video} src={cap.video} titulo={cap.title} linhas={linhas} aoAvancar={(s) => (segundos.current += s)} aoTerminar={() => !visto && !(comQuiz && videoFeito) && void concluir()} />
       ) : null}
 
       <div className="flex flex-col gap-4 md:flex-row md:flex-wrap md:items-start md:justify-between">
@@ -234,6 +240,8 @@ function Conteudo({
 
       {soQuiz && cap.content ? <p className="m-0 text-pe-corpo-l">{cap.content}</p> : null}
       {cap.content && !soQuiz ? <TextoRico texto={cap.content} /> : null}
+
+      {comVideo && fala?.frases.length ? <RepetirEmVozAlta chapterId={cap.chapterId} video={video} dados={fala} /> : null}
 
       {soQuiz ? (
         cap.quiz_data?.questions?.length ? (
@@ -271,6 +279,8 @@ function Conteudo({
         </div>
       ) : null}
 
+      {comVideo && fala?.frases.length ? <ConversaDaAula chapterId={cap.chapterId} dados={fala} /> : null}
+
       {recursos?.length ? (
         <section aria-labelledby="titulo-recursos" className="flex flex-col gap-2">
           <h2 id="titulo-recursos" className="m-0 font-pe-titulo text-[19px] font-semibold leading-[26px]">
@@ -306,8 +316,21 @@ function Conteudo({
 /* ------------------------------------------------------------------ */
 /* Vídeo com transcrição sincronizada                                   */
 /* ------------------------------------------------------------------ */
-function Video({ src, titulo, linhas, aoAvancar, aoTerminar }: { src: string; titulo: string; linhas: Linha[]; aoAvancar: (s: number) => void; aoTerminar: () => void }) {
-  const video = useRef<HTMLVideoElement>(null);
+function Video({
+  videoRef: video,
+  src,
+  titulo,
+  linhas,
+  aoAvancar,
+  aoTerminar,
+}: {
+  videoRef: React.RefObject<HTMLVideoElement | null>;
+  src: string;
+  titulo: string;
+  linhas: Linha[];
+  aoAvancar: (s: number) => void;
+  aoTerminar: () => void;
+}) {
   const ultimo = useRef(0);
   const [tempo, setTempo] = useState(0);
   const actual = linhas.findIndex((l) => tempo >= l.start && tempo < l.end);
@@ -329,7 +352,7 @@ function Video({ src, titulo, linhas, aoAvancar, aoTerminar }: { src: string; ti
       v.removeEventListener("timeupdate", aoTempo);
       v.removeEventListener("ended", aoTerminar);
     };
-  }, [aoAvancar, aoTerminar]);
+  }, [video, aoAvancar, aoTerminar]);
 
   return (
     <div className="flex flex-col gap-3">

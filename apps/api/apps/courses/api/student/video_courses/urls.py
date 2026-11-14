@@ -8,6 +8,7 @@ maintaining the same structure and response format as the Express API.
 from django.urls import path
 from . import views
 from . import certificados_views
+from . import fala_aula
 
 app_name = 'student_video_courses'
 
@@ -28,6 +29,12 @@ urlpatterns = [
     path('chapters/<uuid:chapterId>/', views.ChapterDetailView.as_view(), name='chapter_detail'),
     
     # Chapter comments
+    # Falar depois do vídeo (frases da aula, repetir em voz alta, conversa de 3 minutos)
+    path('chapters/<uuid:chapterId>/fala/', fala_aula.FalaDaAula.as_view(), name='chapter_fala'),
+    path('chapters/<uuid:chapterId>/frases/<int:fraseId>/falar/', fala_aula.FalarFrase.as_view(),
+         name='chapter_frase_falar'),
+    path('chapters/<uuid:chapterId>/conversa/', fala_aula.ConversaDaAula.as_view(), name='chapter_conversa'),
+
     path('chapters/<uuid:chapterId>/comments/', views.ChapterCommentListCreateView.as_view(), name='chapter_comments'),
     
     # Transactions

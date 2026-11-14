@@ -524,9 +524,32 @@ def verificar_pratica(course):
     return itens
 
 
-def verificar(course, so_visiveis=False):
+def avisos_video(course):
+    """
+    Recomendações que não impedem a publicação (fase 5): aulas com vídeo sem frases aprovadas
+    (os alunos não têm o "Repetir em voz alta" nem a conversa no fim da aula).
+    """
+    from apps.courses.models import Chapter, FraseAula, CourseSection
+    seccoes = list(CourseSection.objects.filter(course=course).order_by('order', 'created_at').values_list('id', flat=True))
+    numero = {s: i for i, s in enumerate(seccoes, start=1)}
+    com_frases = set(FraseAula.objects.filter(chapter__section__course=course, estado=FraseAula.APROVADA)
+                     .values_list('chapter_id', flat=True))
+    sem = [(numero.get(a.section_id), a.title) for a in
+           Chapter.objects.filter(section__course=course).exclude(video='').exclude(type='Quiz')
+           .order_by('section__order', 'section__created_at', 'order', 'created_at').only('id', 'title', 'section_id')
+           if a.id not in com_frases]
+    if not sem:
+        return []
+    return [{'chave': 'frases_aula', 'titulo': 'Frases da aula aprovadas (recomendado)',
+             'detalhe': (f'{_plural(len(sem), "aula com vídeo sem frases aprovadas", "aulas com vídeo sem frases aprovadas")}: '
+                         f'{_agrupar(sem, "Secção")}. Sem frases, os alunos não repetem em voz alta nem conversam '
+                         'sobre a aula. Não impede a publicação.')}]
+
+
+def verificar(course, so_visiveis=False, com_avisos=True):
     itens = verificar_pratica(course) if course.course_type == 'practice' else verificar_video(course, so_visiveis)
-    return {'itens': itens, 'pode_submeter': all(i['ok'] for i in itens)}
+    avisos = avisos_video(course) if com_avisos and course.course_type != 'practice' else []
+    return {'itens': itens, 'pode_submeter': all(i['ok'] for i in itens), 'avisos': avisos}
 
 
 # ---------------------------------------------------------------------------

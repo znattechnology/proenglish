@@ -103,6 +103,18 @@ export type Aula = {
   questionario: { activo: boolean; perguntas: number; nota_minima: number };
   /** Lição de prática a seguir a esta aula (de um curso de prática do mesmo professor). */
   licao_pratica?: LicaoLigada | null;
+  /** Transcrição automática do vídeo (null sem vídeo). */
+  transcricao?: EstadoTranscricao | null;
+};
+export type EstadoTranscricao = {
+  estado: "pendente" | "a_processar" | "pronta" | "erro" | "manual" | null;
+  erro: string | null;
+  origem: "whisper" | "professor" | "existente" | null;
+  em: string | null;
+  /** Quando foi pedida (pendente/a_processar). */
+  desde: string | null;
+  /** Transcrição escrita à mão para um vídeo que entretanto foi trocado. */
+  video_mudou: boolean;
 };
 export type LicaoLigada = {
   id: string;
@@ -123,7 +135,9 @@ export type Pergunta = { id?: string; enunciado: string; opcoes: string[]; corre
 export type Questionario = { activo: boolean; nota_minima: number; perguntas: Pergunta[] };
 
 export type ItemVerificacao = { chave: string; titulo: string; ok: boolean; detalhe: string };
-export type Verificacao = { itens: ItemVerificacao[]; pode_submeter: boolean };
+/** Recomendações que não impedem a publicação (p.ex. aulas com vídeo sem frases aprovadas). */
+export type AvisoVerificacao = { chave: string; titulo: string; detalhe: string };
+export type Verificacao = { itens: ItemVerificacao[]; pode_submeter: boolean; avisos?: AvisoVerificacao[] };
 
 export const professorApi = createApi({
   reducerPath: "professorApi",

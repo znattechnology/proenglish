@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useRef, useState } from "react";
-import { CheckCircle2, ImagePlus, XCircle } from "lucide-react";
+import { CheckCircle2, ImagePlus, TriangleAlert, XCircle } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { Aviso, Botao, Etiqueta, Osso } from "@/components/pe";
 import { Pagina } from "@/components/pe/estudante/Pagina";
@@ -93,6 +93,23 @@ export default function ReverCurso() {
                       {i.titulo}
                     </span>
                     {i.detalhe ? <span className="text-pe-legenda text-pe-tinta-suave">{i.detalhe}</span> : null}
+                  </span>
+                </li>
+              ))}
+              {(v.avisos ?? []).map((a) => (
+                <li key={a.chave} className="flex gap-3 border-b border-pe-fundo-forte py-3">
+                  <TriangleAlert aria-hidden className="mt-0.5 size-[22px] shrink-0 text-pe-tinta-suave" />
+                  <span className="flex flex-col">
+                    <span className="font-semibold leading-[22px]">
+                      <span className="sr-only">Recomendação: </span>
+                      {a.titulo}
+                    </span>
+                    <span className="text-pe-legenda text-pe-tinta-suave">
+                      {a.detalhe}{" "}
+                      <Link href={editor} className="font-semibold">
+                        Abrir o editor
+                      </Link>
+                    </span>
                   </span>
                 </li>
               ))}

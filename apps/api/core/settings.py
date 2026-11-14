@@ -602,6 +602,18 @@ REVISAO_CLAUDE_MODELO = config('REVISAO_CLAUDE_MODELO', default='claude-haiku-5-
 RESPONDER_CLAUDE_MODELO = config('RESPONDER_CLAUDE_MODELO', default='claude-haiku-5-5')
 # Conversa curta no fim de uma lição (exercício VAPI_CONVERSATION): duração máxima em segundos.
 CONVERSA_LICAO_MAX_SEGUNDOS = config('CONVERSA_LICAO_MAX_SEGUNDOS', default=120, cast=int)
+# Conversa de 3 minutos no fim de uma aula em vídeo ("Usar isto numa conversa").
+CONVERSA_AULA_MAX_SEGUNDOS = config('CONVERSA_AULA_MAX_SEGUNDOS', default=180, cast=int)
+# Aulas em vídeo: transcrição automática (ffmpeg + Whisper) quando o professor carrega o vídeo,
+# e frases da aula propostas pelo Claude. TRANSCRICAO_AUTOMATICA=False: só o comando
+# transcrever_aulas (cron) ou o botão do professor transcrevem.
+TRANSCRICAO_AUTOMATICA = config('TRANSCRICAO_AUTOMATICA', default=True, cast=bool)
+TRANSCRICAO_MODELO = config('TRANSCRICAO_MODELO', default='whisper-1')
+TRANSCRICAO_MAX_BYTES = config('TRANSCRICAO_MAX_BYTES', default=2200 * 1024 * 1024, cast=int)  # vídeo descarregado
+TRANSCRICAO_PEDACO_SEGUNDOS = config('TRANSCRICAO_PEDACO_SEGUNDOS', default=600, cast=int)  # 10 min (~2.4 MB a 32 kb/s)
+FFMPEG_BIN = config('FFMPEG_BIN', default='ffmpeg')
+FFPROBE_BIN = config('FFPROBE_BIN', default='ffprobe')
+FRASES_AULA_CLAUDE_MODELO = config('FRASES_AULA_CLAUDE_MODELO', default='claude-opus-5-5')
 # Nota: os limites acima (e os throttles/ratelimits) usam a cache 'default' (ver CACHES).
 
 # =============================================================================

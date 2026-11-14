@@ -159,3 +159,6 @@ import sys
 if 'test' in sys.argv or 'pytest' in sys.modules:
     # Ensure all apps run their migrations in tests
     pass
+# Aulas em vídeo: nada de ffmpeg/Whisper em segundo plano nos testes (os testes da fase 5 ligam-no
+# com o executor substituído).
+TRANSCRICAO_AUTOMATICA = False

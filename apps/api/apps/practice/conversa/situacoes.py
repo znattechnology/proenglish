@@ -381,6 +381,9 @@ def obter_situacao(slug):
     if slug.startswith('licao-'):  # conversa curta no fim de uma lição (conversa/licao.py)
         from .licao import situacao_por_slug
         return situacao_por_slug(slug)
+    if slug.startswith('aula-'):  # conversa no fim de uma aula em vídeo (conversa/aula.py)
+        from .aula import situacao_por_slug as situacao_da_aula
+        return situacao_da_aula(slug)
     obj = Situacao.objects.filter(slug=slug).first()
     if obj is not None:
         return situacao_dict(obj)

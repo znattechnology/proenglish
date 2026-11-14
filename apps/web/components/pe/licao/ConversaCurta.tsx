@@ -85,16 +85,16 @@ export function ConversaCurta({ ex, bloqueado, aoMudar, aoSaltar }: { ex: Exerci
   );
 }
 
-function ditasNoResumo(resumo: Resumo, frases: string[]) {
+export function ditasNoResumo(resumo: Resumo, frases: string[]) {
   const usadas = new Set(resumo.objectivos.filter((o) => o.usado || o.com_ajuda).map((o) => o.en));
   return new Set(frases.filter((f) => usadas.has(f)));
 }
 
-function ListaFrases({ frases, ditas }: { frases: string[]; ditas?: Set<string> }) {
+export function ListaFrases({ frases, ditas, titulo = "Use estas frases da lição" }: { frases: string[]; ditas?: Set<string>; titulo?: string }) {
   if (!frases.length) return null;
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-pe-legenda text-pe-tinta-suave">Use estas frases da lição</span>
+      <span className="text-pe-legenda text-pe-tinta-suave">{titulo}</span>
       <ul className="m-0 flex list-none flex-col gap-1.5 p-0">
         {frases.map((f) => {
           const dita = ditas?.has(f);
@@ -113,7 +113,7 @@ function ListaFrases({ frases, ditas }: { frases: string[]; ditas?: Set<string> 
 }
 
 /** A conversa a decorrer: falas, frases já ditas, tempo e controlos. */
-function Viva({ dados, frases, aoTerminar, aoSaltar }: { dados: ConversaLicao; frases: string[]; aoTerminar: (r: Resumo) => void; aoSaltar?: () => void }) {
+export function Viva({ dados, frases, aoTerminar, aoSaltar, tituloFrases }: { dados: ConversaLicao; frases: string[]; aoTerminar: (r: Resumo) => void; aoSaltar?: () => void; tituloFrases?: string }) {
   const c = useConversa(dados.sessao, dados.modo, dados.chave_publica);
   const [texto, setTexto] = useState("");
   const fim = useRef<HTMLDivElement>(null);
@@ -148,7 +148,10 @@ function Viva({ dados, frases, aoTerminar, aoSaltar }: { dados: ConversaLicao; f
   if (c.estado === "erro") {
     return (
       <div className="flex flex-col gap-3">
-        <Aviso tipo="errado">{c.erro ?? "A ligação ao tutor falhou."} Pode saltar esta conversa: não perde vidas nem pontos.</Aviso>
+        <Aviso tipo="errado">
+          {c.erro ?? "A ligação ao tutor falhou."}
+          {aoSaltar ? " Pode saltar esta conversa: não perde vidas nem pontos." : ""}
+        </Aviso>
         {aoSaltar ? (
           <Botao tipo="secundario" tamanho="medio" className="self-start" onClick={aoSaltar}>
             Saltar esta conversa
@@ -166,7 +169,7 @@ function Viva({ dados, frases, aoTerminar, aoSaltar }: { dados: ConversaLicao; f
 
   return (
     <div className="flex flex-col gap-4">
-      <ListaFrases frases={frases} ditas={ditas} />
+      <ListaFrases frases={frases} ditas={ditas} titulo={tituloFrases} />
 
       <div className="flex flex-col gap-3 rounded-pe-md border-[1.5px] border-pe-linha p-3 md:p-4">
         <div className="flex items-center justify-between gap-3 text-pe-legenda">

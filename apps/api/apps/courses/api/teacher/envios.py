@@ -519,6 +519,9 @@ def confirmar(request):
                 campos.append('type')
             alvo.save(update_fields=campos + ['updated_at'])
             _tocar(alvo.section.course_id)
+            # Vídeo novo: transcrição automática em segundo plano (nunca por cima de uma manual).
+            from apps.courses import transcricao
+            transcricao.agendar(alvo)
             resposta = aula_dict(alvo)
         elif destino == 'material':
             existente = ChapterResource.objects.filter(chapter=alvo, external_url=url).first()

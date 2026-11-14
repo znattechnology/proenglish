@@ -63,7 +63,7 @@ class _QuebraCurso(Exception):
 
 def _lista_guarda(curso):
     # Num curso publicado as aulas escondidas (sem vídeo) não contam: os alunos não as vêem.
-    return ciclo.verificar(curso, so_visiveis=curso.status == ciclo.PUBLICADO)
+    return ciclo.verificar(curso, so_visiveis=curso.status == ciclo.PUBLICADO, com_avisos=False)
 
 
 def guardar_publicado(curso, alterar):

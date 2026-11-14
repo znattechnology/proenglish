@@ -18,6 +18,7 @@ Editor de cursos em vídeo da área do professor (base nova).
   GET    /api/v1/teacher/aulas/<id>/questionario/
   PUT    /api/v1/teacher/aulas/<id>/questionario/              substitui o questionário inteiro
   DELETE /api/v1/teacher/materiais/<id>/
+A transcrição e as frases da aula estão em aula_video.py.
 
 Só o professor dono do curso (ou um administrador); para os outros o recurso não existe (404).
 
@@ -45,6 +46,7 @@ from rest_framework.response import Response
 from apps.courses import ciclo, niveis
 from apps.courses.models import Chapter, ChapterResource, Course, CourseSection
 from apps.courses.tempo_video import duracao_do_video
+from apps.courses.transcricao import estado_para_ecra
 
 from .cursos import ACESSO_API, PERMISSOES, _curso_do_professor, _erro, detalhe_curso, guardar_publicado
 
@@ -231,6 +233,7 @@ def aula_dict(chapter, materiais=None):
         'materiais': [material_dict(m) for m in materiais],
         'questionario': resumo_questionario(chapter),
         'licao_pratica': licao_pratica_dict(chapter.practice_lesson) if chapter.practice_lesson_id else None,
+        'transcricao': estado_para_ecra(chapter) if chapter.video else None,
     }
 
 

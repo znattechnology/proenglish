@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
-import { ChevronLeft, Sparkles, TriangleAlert } from "lucide-react";
+import { ChevronLeft, Film, Sparkles, TriangleAlert } from "lucide-react";
 import { AreaTexto, Aviso, Botao, Campo, Escolha, Etiqueta, Osso } from "@/components/pe";
 import { Dialogo } from "@/components/pe/Dialogo";
 import { Pagina } from "@/components/pe/estudante/Pagina";
@@ -19,6 +19,8 @@ import {
   useGuardarLicaoGeradaMutation,
   type Exercicio,
 } from "@/src/domains/teacher/professor/pratica";
+import { useMudarAulaMutation } from "@/src/domains/teacher/professor/api";
+import { useFrasesAulaQuery } from "@/src/domains/teacher/professor/aulaVideo";
 
 export default function GerarLicao() {
   return (
@@ -41,8 +43,18 @@ function Gerador() {
   const [guardar, { isLoading: aGuardar }] = useGuardarLicaoGeradaMutation();
 
   const [unidadeEscolhida, setUnidade] = useState(sp.get("unidade") ?? "");
-  const [objectivo, setObjectivo] = useState("");
-  const [palavras, setPalavras] = useState("");
+  // A partir de uma aula em vídeo (?aula=<id>): objectivo e frases vêm da aula, e a lição pode ficar ligada a ela.
+  const aulaId = sp.get("aula") ?? "";
+  const { data: fonte, isError: erroFonte } = useFrasesAulaQuery(aulaId, { skip: !aulaId });
+  const [ligar, setLigar] = useState(true);
+  const [mudarAula] = useMudarAulaMutation();
+  const sugerido = fonte ? `Praticar as frases da aula em vídeo «${fonte.aula.titulo}» e usá-las em voz alta em situações de trabalho.`.slice(0, 500) : "";
+  const frasesFonte = (fonte?.frases ?? []).filter((f) => f.estado === "aprovada").map((f) => f.texto);
+  // null = o professor ainda não mexeu: mostra o que vem da aula.
+  const [objectivoEscrito, setObjectivo] = useState<string | null>(null);
+  const [palavrasEscritas, setPalavras] = useState<string | null>(null);
+  const objectivo = objectivoEscrito ?? sugerido;
+  const palavras = palavrasEscritas ?? frasesFonte.join(", ");
   const [quantos, setQuantos] = useState(8);
   const [titulo, setTitulo] = useState("");
   const [itens, setItens] = useState<Item[] | null>(null);
@@ -88,6 +100,7 @@ function Gerador() {
           .map((p) => p.trim())
           .filter(Boolean),
         quantos,
+        ...(aulaId && fonte ? { aula: aulaId } : {}),
       }).unwrap();
       setItens(r.exercicios.map((e) => ({ e, manter: true })));
       setDescartados(r.descartados);
@@ -102,6 +115,13 @@ function Gerador() {
     if (!titulo.trim()) return setErro("Escreva o título da lição.");
     try {
       const r = await guardar({ unidade, titulo: titulo.trim(), exercicios: mantidos.map((i) => i.e) }).unwrap();
+      if (fonte && ligar) {
+        try {
+          await mudarAula({ id: fonte.aula.id, licao_pratica: r.licao.id }).unwrap();
+        } catch {
+          // A lição ficou guardada; ligar à aula pode fazer-se depois no editor do curso em vídeo.
+        }
+      }
       router.push(`/teacher/practice/${id}/lessons/${r.licao.id}`);
     } catch (x) {
       const d = (x as { data?: { details?: { exercicios?: Record<string, unknown> } } })?.data?.details?.exercicios;
@@ -128,6 +148,16 @@ function Gerador() {
           {curso.titulo}
         </Link>
         <h1 className="m-0 font-pe-titulo text-[26px] font-bold leading-8 tracking-[-0.015em] md:text-[32px] md:leading-[38px]">Gerar lição com IA</h1>
+        {aulaId ? (
+          fonte ? (
+            <Aviso tipo="neutro" icone={<Film aria-hidden />}>
+              A partir da aula em vídeo <strong>{fonte.aula.titulo}</strong> ({fonte.aula.curso.titulo}): a IA usa{" "}
+              {frasesFonte.length ? `as ${frasesFonte.length} frases aprovadas` : "a transcrição (ainda não há frases aprovadas)"} e a transcrição do vídeo.
+            </Aviso>
+          ) : erroFonte ? (
+            <Aviso tipo="errado">Não conseguimos abrir a aula em vídeo. Pode gerar a lição na mesma, sem os dados da aula.</Aviso>
+          ) : null
+        ) : null}
         <p className="m-0 text-pe-tinta-suave">Descreva o objectivo e a IA propõe exercícios, do reconhecer ao dizer: pelo menos metade da lição é falada (pronúncia e responder em voz alta). Nada chega aos alunos sem a sua revisão.</p>
       </div>
 
@@ -225,6 +255,14 @@ function Gerador() {
                     </li>
                   ))}
                 </ul>
+                {fonte ? (
+                  <label className="flex min-h-11 items-center gap-3 border-t border-pe-linha pt-4">
+                    <input type="checkbox" checked={ligar} onChange={(e) => setLigar(e.target.checked)} className="size-5 shrink-0 accent-pe-azul-marca" />
+                    <span>
+                      Mostrar esta lição aos alunos a seguir à aula <strong>{fonte.aula.titulo}</strong>
+                    </span>
+                  </label>
+                ) : null}
                 <div className="flex flex-col gap-3 border-t border-pe-linha pt-4 sm:flex-row sm:items-end">
                   <Campo className="flex-1" rotulo="Título da lição" value={titulo} maxLength={120} onChange={(e) => setTitulo(e.target.value)} />
                   <div className="flex flex-wrap gap-3">

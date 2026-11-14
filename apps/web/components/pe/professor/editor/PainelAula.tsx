@@ -17,6 +17,7 @@ import {
 } from "@/src/domains/teacher/professor/api";
 import { erroProfessor } from "@/src/domains/teacher/professor/api";
 import { useDispatch } from "react-redux";
+import { FalaDaAulaProfessor } from "./FalaDaAula";
 import { EditorQuestionario } from "./Questionario";
 
 const TIPOS_VIDEO = "video/mp4,video/webm,video/quicktime";
@@ -265,6 +266,8 @@ export function PainelAula({
           {aula.questionario.perguntas ? "Editar perguntas" : "Criar perguntas"}
         </button>
       </div>
+
+      {aula.video && !envio ? <FalaDaAulaProfessor key={aula.id} cursoId={cursoId} aula={aula} /> : null}
 
       <EscolhaPratica cursoId={cursoId} aula={aula} aoEscolher={(licao) => void guardar({ id: aula.id, licao_pratica: licao })} />
 
