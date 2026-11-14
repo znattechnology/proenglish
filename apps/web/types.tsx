@@ -1,7 +1,10 @@
+import type React from "react";
+
+
 export type SideNavItem = {
   title: string;
   path: string;
-  icon?: JSX.Element;
+  icon?: React.JSX.Element;
   submenu?: boolean;
   subMenuItems?: SideNavItem[];
 };

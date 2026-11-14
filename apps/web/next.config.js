@@ -1,10 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  serverExternalPackages: ["mongoose"],
   experimental: {
-    serverComponentsExternalPackages: ["mongoose"],
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
+    // O disco desta máquina está quase cheio; sem esta cache o Turbopack não grava centenas de MB em .next/dev.
+    turbopackFileSystemCacheForDev: false,
   },
   typescript: {
     ignoreBuildErrors: true,

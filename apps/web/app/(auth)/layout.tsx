@@ -1,32 +1,40 @@
-import React from "react";
+import Link from "next/link";
+import { Logo } from "@/components/pe";
+import { fraseDeHoje } from "@/src/domains/auth/frases";
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+// A frase muda todos os dias: a página é refeita de hora a hora.
+export const revalidate = 3600;
+
+/**
+ * Páginas de entrada e conta (base visual `.pe`). No desktop, à esquerda, a frase de hoje;
+ * à direita, o formulário. No telemóvel, só o formulário.
+ */
+export default function LayoutConta({ children }: { children: React.ReactNode }) {
+  const f = fraseDeHoje();
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-violet-950 relative overflow-hidden">
-      {/* Static background to prevent flash */}
-      <div className="fixed inset-0 bg-gradient-to-br from-black via-gray-900 to-violet-950 -z-10" />
-      
-      {/* Enhanced background effects */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-violet-600/5 to-transparent rounded-full blur-3xl animate-pulse will-change-transform" />
-        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-blue-600/5 to-transparent rounded-full blur-3xl animate-pulse will-change-transform" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-violet-500/10 rounded-full blur-2xl animate-bounce will-change-transform" style={{ animationDuration: '4s' }} />
-        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl animate-bounce will-change-transform" style={{ animationDuration: '3s', animationDelay: '2s' }} />
-      </div>
-      
-      {/* Animated grid pattern */}
-      <div className="fixed inset-0 opacity-[0.02] z-0">
-        <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
-      </div>
-      
-      {/* Main content with smooth transitions */}
-      <main className="relative z-10 min-h-screen flex items-center justify-center p-4 transition-opacity duration-300 ease-in-out">
-        <div className="w-full max-w-md transform transition-all duration-300 ease-in-out">
+    <div className="pe flex min-h-dvh bg-pe-fundo text-pe-tinta">
+      <section aria-label="A frase de hoje" className="hidden flex-1 flex-col items-center justify-center bg-pe-fundo-suave p-12 lg:flex">
+        <div className="flex w-full max-w-[480px] flex-col gap-6">
+        <figure className="pe-sobre-marca m-0 flex max-w-[480px] flex-col gap-4 rounded-[28px_28px_28px_0] bg-pe-azul-marca p-10 text-pe-sobre-marca">
+          <figcaption className="text-[15px] font-semibold leading-5">A frase de hoje</figcaption>
+          <blockquote lang="en" className="m-0 font-pe-titulo text-[32px] font-light italic leading-[44px]">
+            {f.antes}
+            <mark className="rounded-[2px] bg-pe-realce px-1.5 font-semibold not-italic text-pe-tinta">{f.destaque}</mark>
+            {f.depois}
+          </blockquote>
+          <p className="m-0 text-[16px] leading-6">{f.pt}</p>
+        </figure>
+        <p className="m-0 max-w-[480px] text-[15px] leading-[22px] text-pe-tinta-suave">Todos os dias há uma frase nova do trabalho à sua espera aqui.</p>
+        </div>
+      </section>
+      <main className="flex flex-1 flex-col items-center justify-center px-5 py-10 md:p-12">
+        <div className="flex w-full max-w-[400px] flex-col gap-7">
+          <Link href="/" aria-label="ProEnglish, página inicial" className="self-start">
+            <Logo altura={44} />
+          </Link>
           {children}
         </div>
       </main>
     </div>
   );
-};
-
-export default Layout;
+}

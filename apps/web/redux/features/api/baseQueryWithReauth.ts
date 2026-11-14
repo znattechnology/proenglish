@@ -62,6 +62,7 @@ export const createBaseQueryWithReauth = (baseUrl: string): BaseQueryFn<
         if (typeof window !== 'undefined') {
           // Use a slight delay to avoid immediate redirect issues
           setTimeout(() => {
+            // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- recarregar a página toda limpa o estado da sessão
             window.location.href = '/signin?reason=session_expired';
           }, 100);
         }

@@ -1,10 +1,12 @@
-import PasswordReset from "@/components/PasswordReset";
+import { Suspense } from "react";
+import { RecuperarSenha } from "@/components/pe/conta/Codigos";
 
-export default function ForgotPasswordPage() {
-  return <PasswordReset />;
+export const metadata = { title: "Recuperar a palavra-passe | ProEnglish", description: "Crie uma palavra-passe nova com um código enviado por email." };
+
+export default function Page() {
+  return (
+    <Suspense>
+      <RecuperarSenha />
+    </Suspense>
+  );
 }
-
-export const metadata = {
-  title: "Recuperar Senha | ProEnglish",
-  description: "Redefina sua senha usando verificação por email",
-};

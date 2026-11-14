@@ -1,0 +1,198 @@
+/*
+ * ProEnglish: base visual nova (sistema de design "ProEnglish", tema claro).
+ *
+ * Tudo o que está aqui só se aplica dentro de um elemento com a classe `.pe`,
+ * para que as páginas antigas (tema escuro) não mudem até serem refeitas.
+ * Os valores vêm de tokens.json do sistema de design; não inventar cores novas.
+ */
+
+/* Letras alojadas no próprio site (funcionam sem Internet na app instalada). */
+@font-face {
+  font-family: "PE Atkinson";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/atkinson-next.woff2") format("woff2");
+}
+@font-face {
+  font-family: "PE Atkinson";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/atkinson-next-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "PE Montserrat";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/montserrat.woff2") format("woff2");
+}
+@font-face {
+  font-family: "PE Montserrat";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/montserrat-italic.woff2") format("woff2");
+}
+/* Regra do sistema: todos os algarismos em Montserrat, mesmo dentro do texto corrido. */
+@font-face {
+  font-family: "PE Numeros";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/montserrat.woff2") format("woff2");
+  unicode-range: U+0030-0039;
+}
+
+.pe {
+  --pe-azul-marca: #000066;
+  --pe-azul-vivo: #2f46e8;
+  --pe-realce: #ffc72c;
+  --pe-realce-suave: #fff1c2;
+  --pe-fundo: #ffffff;
+  --pe-fundo-suave: #f2f3fa;
+  --pe-fundo-forte: #e3e5f4;
+  --pe-tinta: #14143f;
+  --pe-tinta-suave: #54577a;
+  --pe-sobre-marca: #ffffff;
+  --pe-linha: #cfd2e6;
+  --pe-linha-forte: #7479a3;
+  --pe-certo: #007268;
+  --pe-certo-suave: #d9f2ee;
+  --pe-errado: #c2330f;
+  --pe-errado-suave: #fde4dc;
+  --pe-vida: #e5385a;
+
+  color-scheme: light;
+  min-height: 100dvh;
+  background-color: var(--pe-fundo);
+  color: var(--pe-tinta);
+  font-family: "PE Numeros", "PE Atkinson", "Atkinson Hyperlegible", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pe h1,
+.pe h2,
+.pe h3,
+.pe h4 {
+  font-family: "PE Montserrat", system-ui, sans-serif;
+  color: inherit;
+}
+
+.pe a {
+  color: var(--pe-azul-vivo);
+  text-underline-offset: 3px;
+}
+.pe a:hover {
+  color: var(--pe-azul-marca);
+}
+
+/* Foco sempre visível: azul-vivo sobre fundos claros, realce sobre azul-marca. */
+.pe :focus-visible {
+  outline: 3px solid var(--pe-azul-vivo);
+  outline-offset: 2px;
+}
+.pe .pe-sobre-marca :focus-visible,
+.pe .pe-sobre-marca:focus-visible {
+  outline-color: var(--pe-realce);
+}
+
+.pe ::selection {
+  background: var(--pe-realce);
+  color: var(--pe-tinta);
+}
+
+/* Esqueletos de carregamento: pulsam devagar, e param para quem pediu menos movimento. */
+@keyframes pe-pulso {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+.pe .pe-osso {
+  background: var(--pe-fundo-forte);
+  animation: pe-pulso 1.6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pe .pe-osso {
+    animation: none;
+  }
+}
+
+/* Texto dos capítulos (Markdown ou HTML do professor): leitura confortável, até ~70 caracteres. */
+.pe .pe-texto-rico {
+  max-width: 68ch;
+  font-size: 18px;
+  line-height: 30px;
+}
+.pe .pe-texto-rico > * + * {
+  margin-top: 16px;
+}
+.pe .pe-texto-rico h1,
+.pe .pe-texto-rico h2 {
+  font-family: var(--pe-fonte-titulo, "PE Montserrat", system-ui, sans-serif);
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 700;
+  margin-top: 32px;
+}
+.pe .pe-texto-rico h3 {
+  font-family: var(--pe-fonte-titulo, "PE Montserrat", system-ui, sans-serif);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  margin-top: 24px;
+}
+.pe .pe-texto-rico > :first-child {
+  margin-top: 0;
+}
+.pe .pe-texto-rico ul,
+.pe .pe-texto-rico ol {
+  padding-left: 24px;
+}
+.pe .pe-texto-rico li + li {
+  margin-top: 6px;
+}
+.pe .pe-texto-rico em {
+  color: var(--pe-azul-marca);
+}
+.pe .pe-texto-rico blockquote {
+  margin-left: 0;
+  padding: 12px 20px;
+  border-radius: 20px 20px 20px 0;
+  background: var(--pe-azul-marca);
+  color: var(--pe-sobre-marca);
+}
+.pe .pe-texto-rico blockquote em {
+  color: inherit;
+}
+.pe .pe-texto-rico table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  line-height: 24px;
+  display: block;
+  overflow-x: auto;
+}
+.pe .pe-texto-rico th,
+.pe .pe-texto-rico td {
+  text-align: left;
+  padding: 8px 12px 8px 0;
+  border-bottom: 1px solid var(--pe-linha);
+}
+.pe .pe-texto-rico th {
+  font-weight: 600;
+}
+.pe .pe-texto-rico code {
+  background: var(--pe-fundo-suave);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.92em;
+}

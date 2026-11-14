@@ -290,7 +290,7 @@ class DjangoAuthService {
   // Helper method to get user role redirect URL
   getUserRedirectUrl(user: User, isCheckoutPage: boolean = false, courseId?: string): string {
     if (isCheckoutPage && courseId) {
-      return `/checkout?step=2&id=${courseId}`;
+      return `/user/courses/${courseId}`;
     }
 
     switch (user.role) {

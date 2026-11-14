@@ -3,7 +3,6 @@ import { studentPracticeCoursesBaseQuery } from '../../../shared/api/baseQuery';
 import type {
   StudentPracticeCourse,
   StudentUserProgress,
-  PracticeLesson,
   ChallengeSubmission,
   ChallengeResult,
   CourseSelectionData,
@@ -136,7 +135,7 @@ export const studentPracticeApiSlice = createApi({
           });
           
           console.log('🔍 selectActiveCourse: Update result:', updateResult);
-          return updateResult.error ? { error: updateResult.error } : { data: updateResult.data };
+          return updateResult.error ? { error: updateResult.error } : { data: updateResult.data as StudentUserProgress };
         } catch (error) {
           console.error('🔍 selectActiveCourse: Caught error:', error);
           return { error: { status: 500, data: { message: 'Failed to update active course' } } };
@@ -361,24 +360,6 @@ export const studentPracticeApiSlice = createApi({
 
 
     // ===== LEARNING SESSIONS =====
-    
-    startLearningSession: builder.mutation<LearningSession, { courseId: string; lessonId?: string }>({
-      query: (data) => ({
-        url: '/learning-sessions/',
-        method: 'POST',
-        body: data,
-      }),
-      invalidatesTags: ['StudentSession'],
-    }),
-
-    endLearningSession: builder.mutation<SessionSummary, string>({
-      query: (sessionId) => ({
-        url: `/learning-sessions/${sessionId}/end/`,
-        method: 'POST',
-      }),
-      invalidatesTags: ['StudentSession', 'StudentProgress', 'StudentAnalytics'],
-    }),
-
     // ===== ACHIEVEMENTS & GAMIFICATION =====
     
     getStudentAchievements: builder.query<StudentAchievement[], void>({
@@ -392,19 +373,15 @@ export const studentPracticeApiSlice = createApi({
     }),
 
     getLeaderboard: builder.query<StudentLeaderboard, { timeframe?: 'week' | 'month' | 'all' }>({
+      // A rota real é leaderboard/global/; o período ainda não é suportado pela API.
       query: ({ timeframe = 'week' } = {}) => ({
-        url: '/leaderboard/',
+        url: '/leaderboard/global/',
         params: { timeframe },
       }),
       providesTags: ['StudentLeaderboard'],
     }),
 
     // ===== PERSONALIZED RECOMMENDATIONS =====
-    
-    getPracticeRecommendations: builder.query<PracticeRecommendation[], void>({
-      query: () => '/recommendations/',
-      providesTags: ['StudentAnalytics'],
-    }),
 
     getStudentAnalytics: builder.query<StudentAnalytics, void>({
       query: () => '/student-analytics/',
@@ -412,11 +389,6 @@ export const studentPracticeApiSlice = createApi({
     }),
 
     // ===== REVIEW & PRACTICE =====
-    
-    getWeakSkills: builder.query<Array<{ skill: string; accuracy: number; recommendation: string }>, void>({
-      query: () => '/weak-skills/',
-      providesTags: ['StudentAnalytics'],
-    }),
 
     markLessonCompleted: builder.mutation<any, { lessonId: string; score?: number; timeSpent?: number }>({
       query: (data) => ({
@@ -430,27 +402,6 @@ export const studentPracticeApiSlice = createApi({
       }),
       invalidatesTags: ['StudentProgress', 'StudentUnit', 'StudentLesson', 'StudentCourse'],
     }),
-
-    // ===== SOCIAL FEATURES =====
-    
-    followUser: builder.mutation<any, string>({
-      query: (userId) => ({
-        url: '/follow-user/',
-        method: 'POST',
-        body: { user_id: userId },
-      }),
-      invalidatesTags: ['StudentLeaderboard'],
-    }),
-
-    unfollowUser: builder.mutation<any, string>({
-      query: (userId) => ({
-        url: '/unfollow-user/',
-        method: 'POST',
-        body: { user_id: userId },
-      }),
-      invalidatesTags: ['StudentLeaderboard'],
-    }),
-
   }),
 });
 
@@ -479,24 +430,16 @@ export const {
   useSubmitChallengeMutation,
   
   // Learning sessions
-  useStartLearningSessionMutation,
-  useEndLearningSessionMutation,
-  
   // Achievements & gamification
   useGetStudentAchievementsQuery,
   useGetStudyStreakQuery,
   useGetLeaderboardQuery,
   
   // Recommendations
-  useGetPracticeRecommendationsQuery,
   useGetStudentAnalyticsQuery,
   
   // Review & practice
-  useGetWeakSkillsQuery,
   useMarkLessonCompletedMutation,
   
   // Social features
-  useFollowUserMutation,
-  useUnfollowUserMutation,
-  
 } = studentPracticeApiSlice;

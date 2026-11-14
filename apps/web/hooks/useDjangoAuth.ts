@@ -14,6 +14,7 @@ import { fetchUserFromBackend } from "@/lib/django-middleware";
 import { djangoAuth } from "@/lib/django-auth";
 import { migrateLocalStorage } from "@/lib/migrate-storage";
 import { tokenRefreshCoordinator } from "@/lib/token-refresh-coordinator";
+import { markAuthenticated } from "@/src/domains/auth/services/authApi";
 
 export interface AuthHookReturn {
   // Authentication state
@@ -63,12 +64,16 @@ export function useDjangoAuth(): AuthHookReturn {
       // Check if user appears to be authenticated
       const hasAuthState = tokenRefreshCoordinator.isAuthenticated();
       const userInfoStr = localStorage.getItem('user_info');
+      // Nas áreas protegidas o proxy já confirmou a sessão (cookie HttpOnly): pede sempre o perfil,
+      // mesmo que falte o cookie auth_state ou a cópia em localStorage (ex.: limpos noutro separador).
+      const areaProtegida = /^\/(user|teacher|admin)(\/|$)/.test(window.location.pathname);
 
-      if (hasAuthState || userInfoStr) {
+      if (hasAuthState || userInfoStr || areaProtegida) {
         // Try to use cached user info first for immediate UI
         if (userInfoStr) {
           try {
             const cachedUser = JSON.parse(userInfoStr);
+            // eslint-disable-next-line react-hooks/set-state-in-effect -- o estado vem do browser (cookies, localStorage), que só existe depois de montar
             setClientUser(cachedUser);
             setClientIsAuthenticated(true);
             dispatch(userLoggedIn({
@@ -85,6 +90,8 @@ export function useDjangoAuth(): AuthHookReturn {
         fetchUserFromBackend()
           .then(currentUser => {
             if (currentUser) {
+              // Renova os cookies de estado (auth_state, user_role): a sessão HttpOnly dura mais do que os 7 dias deles.
+              markAuthenticated(currentUser);
               dispatch(userLoggedIn({
                 accessToken: '',
                 refreshToken: '',
@@ -116,9 +123,11 @@ export function useDjangoAuth(): AuthHookReturn {
   // Sync with Redux state changes
   useEffect(() => {
     if (authState) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- o estado vem do browser (cookies, localStorage), que só existe depois de montar
       setClientIsAuthenticated(authState.isAuthenticated);
       setClientUser(authState.user);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- authState é um objecto novo quando a fatia não existe; só interessam estes dois campos
   }, [authState?.isAuthenticated, authState?.user]);
 
   // Check authentication status by fetching user profile
@@ -156,6 +165,20 @@ export function useDjangoAuth(): AuthHookReturn {
 
   // Logout function
   const logout = async () => {
+    // Num telemóvel partilhado, a pessoa seguinte não deve receber os avisos desta conta.
+    try {
+      const { cancelarPushLocal } = await import('@/src/domains/student/avisos/api');
+      const endpoint = await Promise.race([cancelarPushLocal(), new Promise<null>((r) => setTimeout(() => r(null), 2000))]);
+      if (endpoint) {
+        const base = process.env.NEXT_PUBLIC_DJANGO_API_URL || 'http://localhost:8000/api/v1';
+        await fetch(`${base}/users/avisos/push/`, {
+          method: 'DELETE',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ endpoint }),
+        }).catch(() => {});
+      }
+    } catch {}
     try {
       await djangoAuth.logout();
     } catch (error) {
@@ -180,7 +203,7 @@ export function useDjangoAuth(): AuthHookReturn {
     }
 
     if (isCheckout && courseId) {
-      return `/checkout?step=2&id=${courseId}`;
+      return `/user/courses/${courseId}`;
     }
 
     switch (targetUser.role) {
@@ -238,6 +261,7 @@ export function useAuthGuard(requiredRole?: 'student' | 'teacher' | 'admin') {
       return;
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- o estado vem do browser (cookies, localStorage), que só existe depois de montar
     setIsAuthorized(true);
   }, [isAuthenticated, user, requiredRole, router, isLoading]);
 
@@ -302,12 +326,12 @@ export function useLoginRedirect() {
       return;
     }
 
-    // Check for checkout context
-    const isCheckout = searchParams?.get('showSignUp') !== null;
+    // Veio de um curso escolhido: vai direto ao curso (o plano decide o acesso).
+    const vemDeCurso = searchParams?.get('showSignUp') !== null;
     const courseId = searchParams?.get('id');
 
-    if (isCheckout && courseId) {
-      router.push(`/checkout?step=2&id=${courseId}`);
+    if (vemDeCurso && courseId) {
+      router.push(`/user/courses/${courseId}`);
       return;
     }
 

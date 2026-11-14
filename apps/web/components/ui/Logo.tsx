@@ -29,7 +29,7 @@ const Logo: React.FC<LogoProps> = ({
     ? `/logo/Logo_${variant === "white" ? "Branco" : variant === "dark" ? "Preto" : "azul"}_com_assinatura.png`
     : `/logo/Logo_${variant === "white" ? "Branco" : variant === "dark" ? "Preto" : "azul"}.png`;
 
-  const LogoImage = () => (
+  const imagem = (
     <div className={cn(
       "relative flex items-center justify-center",
       sizeClasses[size],
@@ -52,12 +52,12 @@ const Logo: React.FC<LogoProps> = ({
         href="/" 
         className="transition-transform hover:scale-105 duration-200 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-transparent rounded-lg"
       >
-        <LogoImage />
+        {imagem}
       </Link>
     );
   }
 
-  return <LogoImage />;
+  return imagem;
 };
 
 export default Logo;

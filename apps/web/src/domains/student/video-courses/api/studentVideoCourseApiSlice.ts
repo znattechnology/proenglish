@@ -114,33 +114,6 @@ export const studentVideoCourseApiSlice = createApi({
         { type: 'StudentVideoCourse', id: courseId },
       ],
     }),
-
-    getFeaturedVideoCourses: builder.query<StudentVideoCourse[], void>({
-      query: () => ({
-        url: '/courses/featured/',
-      }),
-      providesTags: ['StudentVideoCourse'],
-    }),
-
-    getPopularVideoCourses: builder.query<StudentVideoCourse[], { limit?: number }>({
-      query: ({ limit = 10 } = {}) => ({
-        url: '/courses/popular/',
-        params: { limit },
-      }),
-      providesTags: ['StudentVideoCourse'],
-    }),
-
-    searchVideoCourses: builder.query<{ data: StudentVideoCourse[]; total: number }, { query: string; filters?: CourseSearchParams }>({
-      query: ({ query, filters = {} }) => ({
-        url: '/courses/search/',
-        params: {
-          q: query,
-          ...filters,
-        },
-      }),
-      providesTags: ['StudentVideoCourse'],
-    }),
-
     // ===== COURSE ENROLLMENT =====
     
     enrollInVideoCourse: builder.mutation<CourseEnrollment, CourseEnrollmentRequest>({
@@ -156,14 +129,6 @@ export const studentVideoCourseApiSlice = createApi({
       query: (userId) => `/users/${userId}/enrolled/`,
       providesTags: ['CourseEnrollment'],
     }),
-
-    getVideoCourseEnrollment: builder.query<CourseEnrollment, string>({
-      query: (courseId) => `/enrollments/course/${courseId}/`,
-      providesTags: (result, error, courseId) => [
-        { type: 'CourseEnrollment', id: courseId },
-      ],
-    }),
-
     // ===== COURSE PROGRESS =====
     
     getVideoCourseProgress: builder.query<{message: string, data: StudentCourseProgress}, {courseId: string, userId: string}>({
@@ -171,24 +136,6 @@ export const studentVideoCourseApiSlice = createApi({
       providesTags: (result, error, {courseId}) => [
         { type: 'VideoProgress', id: courseId },
       ],
-    }),
-
-    updateVideoProgress: builder.mutation<StudentCourseProgress, VideoProgressUpdate>({
-      query: ({ chapterId, ...data }) => ({
-        url: `/chapters/${chapterId}/progress/`,
-        method: 'POST',
-        body: data,
-      }),
-      invalidatesTags: ['VideoProgress', 'StudentVideoAnalytics'],
-      // Optimistic update
-      async onQueryStarted({ chapterId }, { dispatch, queryFulfilled }) {
-        try {
-          await queryFulfilled;
-          // Could update local progress here
-        } catch {
-          // Handle error
-        }
-      },
     }),
 
     markChapterComplete: builder.mutation<{ message: string; success: boolean }, ChapterCompletion>({
@@ -221,7 +168,7 @@ export const studentVideoCourseApiSlice = createApi({
 
     // Chapter Resources
     getChapterResources: builder.query<{ message: string; data: ChapterResource[] }, string>({
-      query: (chapterId) => `/courses/chapters/${chapterId}/resources/`,
+      query: (chapterId) => `/chapters/${chapterId}/resources/`,
       providesTags: (result, error, chapterId) => [
         { type: 'ChapterResource', id: chapterId },
       ],
@@ -229,18 +176,13 @@ export const studentVideoCourseApiSlice = createApi({
 
     // Chapter Quiz  
     getChapterQuiz: builder.query<{ message: string; data: ChapterQuiz | null }, string>({
-      query: (chapterId) => `/courses/chapters/${chapterId}/quiz/`,
+      query: (chapterId) => `/chapters/${chapterId}/quiz/`,
       providesTags: (result, error, chapterId) => [
         { type: 'ChapterQuiz', id: chapterId },
       ],
     }),
 
     // ===== NOTES & BOOKMARKS =====
-    
-    getCourseNotes: builder.query<StudentNote[], string>({
-      query: (courseId) => `/courses/${courseId}/notes/`,
-      providesTags: ['StudentNote'],
-    }),
 
     createNote: builder.mutation<StudentNote, Omit<StudentNote, 'id' | 'userId' | 'createdAt' | 'updatedAt'>>({
       query: (noteData) => ({
@@ -251,28 +193,6 @@ export const studentVideoCourseApiSlice = createApi({
       invalidatesTags: ['StudentNote'],
     }),
 
-    updateNote: builder.mutation<StudentNote, { noteId: string; data: Partial<StudentNote> }>({
-      query: ({ noteId, data }) => ({
-        url: `/notes/${noteId}/`,
-        method: 'PATCH',
-        body: data,
-      }),
-      invalidatesTags: ['StudentNote'],
-    }),
-
-    deleteNote: builder.mutation<void, string>({
-      query: (noteId) => ({
-        url: `/notes/${noteId}/`,
-        method: 'DELETE',
-      }),
-      invalidatesTags: ['StudentNote'],
-    }),
-
-    getCourseBookmarks: builder.query<StudentBookmark[], string>({
-      query: (courseId) => `/courses/${courseId}/bookmarks/`,
-      providesTags: ['StudentBookmark'],
-    }),
-
     createBookmark: builder.mutation<StudentBookmark, Omit<StudentBookmark, 'id' | 'userId' | 'createdAt'>>({
       query: (bookmarkData) => ({
         url: '/bookmarks/',
@@ -281,24 +201,7 @@ export const studentVideoCourseApiSlice = createApi({
       }),
       invalidatesTags: ['StudentBookmark'],
     }),
-
-    deleteBookmark: builder.mutation<void, string>({
-      query: (bookmarkId) => ({
-        url: `/bookmarks/${bookmarkId}/`,
-        method: 'DELETE',
-      }),
-      invalidatesTags: ['StudentBookmark'],
-    }),
-
     // ===== REVIEWS & RATINGS =====
-    
-    getCourseReviews: builder.query<{ data: CourseReview[]; average: number; total: number }, { courseId: string; page?: number }>({
-      query: ({ courseId, page = 1 }) => ({
-        url: `/courses/${courseId}/reviews/`,
-        params: { page },
-      }),
-      providesTags: ['CourseReview'],
-    }),
 
     createCourseReview: builder.mutation<CourseReview, CreateReviewData>({
       query: (reviewData) => ({
@@ -308,72 +211,14 @@ export const studentVideoCourseApiSlice = createApi({
       }),
       invalidatesTags: ['CourseReview', 'StudentVideoCourse'],
     }),
-
-    updateCourseReview: builder.mutation<CourseReview, { reviewId: string; data: Partial<CreateReviewData> }>({
-      query: ({ reviewId, data }) => ({
-        url: `/reviews/${reviewId}/`,
-        method: 'PATCH',
-        body: data,
-      }),
-      invalidatesTags: ['CourseReview'],
-    }),
-
-    deleteCourseReview: builder.mutation<void, string>({
-      query: (reviewId) => ({
-        url: `/reviews/${reviewId}/`,
-        method: 'DELETE',
-      }),
-      invalidatesTags: ['CourseReview'],
-    }),
-
     // ===== CERTIFICATES =====
     
     getMyCertificates: builder.query<CourseCertificate[], void>({
       query: () => '/certificates/',
       providesTags: ['CourseCertificate'],
     }),
-
-    getCourseCertificate: builder.query<CourseCertificate, string>({
-      query: (courseId) => `/courses/${courseId}/certificate/`,
-      providesTags: (result, error, courseId) => [
-        { type: 'CourseCertificate', id: courseId },
-      ],
-    }),
-
-    generateCertificate: builder.mutation<CourseCertificate, string>({
-      query: (courseId) => ({
-        url: `/courses/${courseId}/generate-certificate/`,
-        method: 'POST',
-      }),
-      invalidatesTags: ['CourseCertificate', 'StudentVideoAnalytics'],
-    }),
-
     // ===== RECOMMENDATIONS =====
-    
-    getCourseRecommendations: builder.query<CourseRecommendation[], { courseId?: string; limit?: number }>({
-      query: ({ courseId, limit = 5 } = {}) => ({
-        url: '/courses/recommendations/',
-        params: { courseId, limit },
-      }),
-      providesTags: ['CourseRecommendation'],
-    }),
-
     // ===== ANALYTICS =====
-    
-    getStudentVideoAnalytics: builder.query<StudentVideoAnalytics, void>({
-      query: () => '/analytics/video-learning/',
-      providesTags: ['StudentVideoAnalytics'],
-    }),
-
-    updateLearningGoals: builder.mutation<{ message: string; success: boolean }, { daily?: number; weekly?: number }>({
-      query: (goals) => ({
-        url: '/analytics/learning-goals/',
-        method: 'POST',
-        body: goals,
-      }),
-      invalidatesTags: ['StudentVideoAnalytics'],
-    }),
-
     // ===== WISHLIST =====
     
     getWishlist: builder.query<StudentVideoCourse[], void>({
@@ -389,15 +234,6 @@ export const studentVideoCourseApiSlice = createApi({
       }),
       invalidatesTags: ['StudentVideoCourse'],
     }),
-
-    removeFromWishlist: builder.mutation<void, string>({
-      query: (courseId) => ({
-        url: `/wishlist/${courseId}/`,
-        method: 'DELETE',
-      }),
-      invalidatesTags: ['StudentVideoCourse'],
-    }),
-
   }),
 });
 
@@ -406,18 +242,11 @@ export const {
   // Course discovery
   useGetAvailableVideoCoursesQuery,
   useGetVideoCourseByIdQuery,
-  useGetFeaturedVideoCoursesQuery,
-  useGetPopularVideoCoursesQuery,
-  useSearchVideoCoursesQuery,
-  
   // Enrollment
   useEnrollInVideoCourseMutation,
   useGetMyVideoEnrollmentsQuery,
-  useGetVideoCourseEnrollmentQuery,
-  
   // Progress
   useGetVideoCourseProgressQuery,
-  useUpdateVideoProgressMutation,
   useMarkChapterCompleteMutation,
   
   // Content
@@ -428,35 +257,15 @@ export const {
   useGetChapterQuizQuery,
   
   // Notes & Bookmarks
-  useGetCourseNotesQuery,
   useCreateNoteMutation,
-  useUpdateNoteMutation,
-  useDeleteNoteMutation,
-  useGetCourseBookmarksQuery,
   useCreateBookmarkMutation,
-  useDeleteBookmarkMutation,
-  
   // Reviews
-  useGetCourseReviewsQuery,
   useCreateCourseReviewMutation,
-  useUpdateCourseReviewMutation,
-  useDeleteCourseReviewMutation,
-  
   // Certificates
   useGetMyCertificatesQuery,
-  useGetCourseCertificateQuery,
-  useGenerateCertificateMutation,
-  
   // Recommendations
-  useGetCourseRecommendationsQuery,
-  
   // Analytics
-  useGetStudentVideoAnalyticsQuery,
-  useUpdateLearningGoalsMutation,
-  
   // Wishlist
   useGetWishlistQuery,
   useAddToWishlistMutation,
-  useRemoveFromWishlistMutation,
-  
 } = studentVideoCourseApiSlice;
