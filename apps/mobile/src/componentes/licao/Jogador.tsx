@@ -32,7 +32,7 @@ type Fase =
   | { tipo: "responder" }
   | { tipo: "certo"; explicacao?: string | null }
   /** repetir: falha técnica (grava-se já outra vez); senão o exercício volta no fim da lição. */
-  | { tipo: "errado"; dica?: string | null; perdeuVida: boolean; solucao?: string | null; explicacao?: string | null; repetir?: boolean };
+  | { tipo: "errado"; dica?: string | null; perdeuVida: boolean; solucao?: string | null; explicacao?: string | null; repetir?: boolean; falado?: boolean };
 
 /** Respostas da gravação que pedem para gravar outra vez (silêncio, ficheiro recusado ou grande demais). */
 const GRAVAR_OUTRA_VEZ = new Set(["sem_fala", "gravacao_invalida", "gravacao_grande"]);
@@ -153,7 +153,8 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         if (d.user_progress) setVidas(d.user_progress.hearts);
         setAvaliacao(d);
         if (d.aceite) acertou(d.explicacao);
-        else errou(d.heartsUsed > 0, d.user_progress?.hearts, { dica: d.dica ?? null });
+        // Uma resposta falada não aceite nunca tira vidas (o servidor decide; heartsUsed é sempre 0).
+        else errou(false, d.user_progress?.hearts, { dica: d.dica ?? null, falado: true });
         return;
       }
 
@@ -164,7 +165,8 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         if (d.user_progress) setVidas(d.user_progress.hearts);
         setFala({ nota: d.ai_analysis.overall_score, palavras: d.feedback?.problematic_words ?? [], mensagem: d.feedback?.message ?? null, detalhe: d.detalhe ?? null });
         if (d.ai_analysis.is_acceptable) acertou(d.explicacao);
-        else errou((d.heartsUsed ?? 0) > 0, d.user_progress?.hearts, { dica: d.dica ?? null });
+        // Uma gravação não aceite nunca tira vidas (o reconhecimento de fala pode errar com o sotaque).
+        else errou(false, d.user_progress?.hearts, { dica: d.dica ?? null, falado: true });
         return;
       }
 

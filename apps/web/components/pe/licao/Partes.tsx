@@ -116,8 +116,9 @@ export type EstadoRodape =
   /**
    * errado: `solucao` é a resposta certa; `repetir` = falha técnica (gravar outra vez já).
    * Sem `repetir`, "Continuar" passa à frente e o exercício volta no fim da lição.
+   * `falado`: gravação não aceite (pronúncia, Responder): nunca tira vidas, e o rodapé diz isso.
    */
-  | { tipo: "errado"; dica?: string | null; perdeuVida: boolean; solucao?: string | null; explicacao?: string | null; repetir?: boolean };
+  | { tipo: "errado"; dica?: string | null; perdeuVida: boolean; solucao?: string | null; explicacao?: string | null; repetir?: boolean; falado?: boolean };
 
 export function RodapeLicao({
   estado,
@@ -166,7 +167,11 @@ export function RodapeLicao({
               ) : null}
               {estado.tipo === "errado" && estado.explicacao ? <span className="text-[15px] leading-[22px] md:text-pe-corpo">{estado.explicacao}</span> : null}
               {estado.tipo === "errado" && estado.dica && !estado.solucao ? <span className="text-[15px] leading-[22px] md:text-pe-corpo">{estado.dica}</span> : null}
-              {estado.tipo === "errado" && !estado.repetir ? <span className="text-pe-legenda text-pe-tinta-suave">Este exercício volta no fim da lição.</span> : null}
+              {estado.tipo === "errado" && !estado.repetir ? (
+                <span className="text-pe-legenda text-pe-tinta-suave">
+                  {estado.falado ? "A falar não perde vidas. Este exercício volta no fim da lição e entra na sua revisão." : "Este exercício volta no fim da lição."}
+                </span>
+              ) : null}
             </div>
           </div>
         ) : (

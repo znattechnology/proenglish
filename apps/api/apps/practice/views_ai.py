@@ -492,7 +492,11 @@ class AIPronunciationAnalysisView(APIView):
 
     Response:
         - ai_analysis, feedback, detalhe, fala
-        - user_progress: hearts (999 com vidas ilimitadas) and points; heartsUsed
+        - user_progress: hearts (999 com vidas ilimitadas) and points; heartsUsed (sempre 0)
+
+    Uma gravação não aceite NÃO tira vidas: o reconhecimento de fala pode falhar com o sotaque
+    e o aluno não pode aprender a evitar falar. O exercício volta no fim da lição e o
+    ChallengeAttempt errado leva a frase à revisão de amanhã (apps/perfil/signals.py).
     """
     permission_classes = [IsAuthenticated]
     throttle_classes = [AIAnaliseThrottle]
@@ -582,9 +586,9 @@ class AIPronunciationAnalysisView(APIView):
             'fala': pronuncia.fala_publica(tentativa),
         }
 
-        # Progresso, pontos e vidas decididos com o progresso do aluno trancado: dois envios ao
-        # mesmo tempo não dão pontos duas vezes nem tiram duas vidas.
-        points_earned, perdeu = 0, 0
+        # Progresso e pontos decididos com o progresso do aluno trancado: dois envios ao mesmo
+        # tempo não dão pontos duas vezes. Não aceite: sem vidas perdidas (ver a docstring).
+        points_earned = 0
         with transaction.atomic():
             user_progress = UserProgress.objects.select_for_update().get(pk=user_progress.pk)
             existente = ChallengeProgress.objects.filter(user=request.user, challenge=challenge).first()
@@ -607,9 +611,6 @@ class AIPronunciationAnalysisView(APIView):
                     'completed': progress.completed,
                     'completed_at': progress.completed_at
                 }
-            elif existente is None and not ilimitadas and user_progress.hearts > 0:
-                user_progress.reduce_hearts()
-                perdeu = 1
         user_progress.refresh_from_db(fields=['points'])
 
         response_data['points_earned'] = points_earned
@@ -617,7 +618,7 @@ class AIPronunciationAnalysisView(APIView):
             response_data['explicacao'] = challenge.explanation or None
         else:
             response_data['dica'] = challenge.hint or None
-        response_data['heartsUsed'] = perdeu
+        response_data['heartsUsed'] = 0  # os exercícios falados não tiram vidas
         response_data['user_progress'] = {'hearts': 999 if ilimitadas else user_progress.hearts,
                                           'points': user_progress.points}
         response_data['ai_analyses_remaining'] = -1  # as lições não contam para o limite de análises

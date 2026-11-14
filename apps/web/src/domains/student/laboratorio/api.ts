@@ -96,7 +96,7 @@ export type ResultadoPronuncia = {
   fala?: MetricasGravacao | null;
   explicacao?: string | null;
   dica?: string | null;
-  /** Vidas que esta gravação tirou (0 em prática, com vidas ilimitadas ou se aceite). */
+  /** Sempre 0: os exercícios falados não tiram vidas (campo mantido por compatibilidade). */
   heartsUsed?: number;
   user_progress?: { hearts: number; points: number };
 };

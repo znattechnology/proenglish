@@ -154,12 +154,29 @@ class FalarNaLicao(Fase4BBase):
         self.assertEqual((r.json()['heartsUsed'], r.json()['user_progress']['hearts']), (0, 999))
         self.assertEqual(UserProgress.objects.get(user=self.aluno).hearts, 0)
 
-    def test_speaking_perde_vida_e_diz_quantas(self):
+    def test_speaking_nao_aceite_nao_tira_vida_e_entra_na_revisao(self):
+        """Auditoria: o reconhecimento de fala pode falhar com o sotaque; errar a falar não tira vidas."""
+        from apps.perfil.models import ItemBanco
+        from apps.practice.models import ChallengeAttempt
         patch, _ = self._claude(NOTA_BAIXA)
-        with patch, mock.patch('apps.practice.services.transcricao_fala.transcrever', return_value=Transcricao(texto='hello')):
+        with self.captureOnCommitCallbacks(execute=True), patch, \
+                mock.patch('apps.practice.services.transcricao_fala.transcrever', return_value=Transcricao(texto='hello')):
             r = self._pron()
         self.assertEqual(r.status_code, 200, r.content)
-        self.assertEqual(r.json()['heartsUsed'], 1)
+        self.assertEqual((r.json()['heartsUsed'], r.json()['user_progress']['hearts']), (0, 3))
+        self.assertEqual(self.progresso(), (3, 0))
+        # Volta no fim da lição (sem progresso) e entra na revisão como os outros erros.
+        self.assertFalse(ChallengeProgress.objects.filter(user=self.aluno, challenge_id=self.fala['id']).exists())
+        self.assertFalse(ChallengeAttempt.objects.get(user=self.aluno, challenge_id=self.fala['id']).is_correct)
+        self.assertTrue(ItemBanco.objects.filter(user=self.aluno, origem='licao').exists())
+
+    def test_speaking_sem_vidas_continua_bloqueado(self):
+        """Sem vidas a lição pára (as vidas perdem-se nos outros exercícios), como antes."""
+        p = UserProgress.objects.get(user=self.aluno)
+        p.hearts = 0
+        p.save()
+        r = self._pron()
+        self.assertEqual((r.status_code, r.json()['error']), (400, 'hearts'))
 
     def test_speaking_pontos_com_curso(self):
         patch, _ = self._claude(NOTA_BOA)

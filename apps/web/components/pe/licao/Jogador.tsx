@@ -31,7 +31,7 @@ type Fase =
   | { tipo: "responder" }
   | { tipo: "certo"; explicacao?: string | null }
   /** repetir: falha técnica (tenta-se já outra vez); senão o exercício volta no fim da lição. */
-  | { tipo: "errado"; dica?: string | null; perdeuVida: boolean; solucao?: string | null; explicacao?: string | null; repetir?: boolean };
+  | { tipo: "errado"; dica?: string | null; perdeuVida: boolean; solucao?: string | null; explicacao?: string | null; repetir?: boolean; falado?: boolean };
 
 /** Respostas da gravação que pedem para gravar outra vez (silêncio, ficheiro recusado ou grande demais). */
 const GRAVAR_OUTRA_VEZ = new Set(["sem_fala", "gravacao_invalida", "gravacao_grande"]);
@@ -141,10 +141,9 @@ export function Jogador({ lessonId }: { lessonId: string }) {
           setFase({ tipo: "certo", explicacao: d.explicacao ?? null });
           setAcertados((a) => new Set(a).add(ex.id));
         } else {
-          const perdeu = d.heartsUsed > 0;
-          setFase({ tipo: "errado", dica: d.dica ?? null, perdeuVida: perdeu });
+          // Uma resposta falada não aceite nunca tira vidas (o servidor decide; heartsUsed é sempre 0).
+          setFase({ tipo: "errado", dica: d.dica ?? null, perdeuVida: false, falado: true });
           marcarErrado(ex.id);
-          if (perdeu && d.user_progress && d.user_progress.hearts <= 0) setSemVidas(true);
         }
         return;
       }
@@ -160,11 +159,9 @@ export function Jogador({ lessonId }: { lessonId: string }) {
           setFase({ tipo: "certo", explicacao: d.explicacao ?? null });
           setAcertados((a) => new Set(a).add(ex.id));
         } else {
-          // As vidas são as do servidor (prática, vidas ilimitadas e envios repetidos não tiram).
-          const perdeu = (d.heartsUsed ?? 0) > 0;
-          setFase({ tipo: "errado", dica: d.dica ?? null, perdeuVida: perdeu });
+          // Uma gravação não aceite nunca tira vidas (o reconhecimento de fala pode errar com o sotaque).
+          setFase({ tipo: "errado", dica: d.dica ?? null, perdeuVida: false, falado: true });
           marcarErrado(ex.id);
-          if (perdeu && d.user_progress && d.user_progress.hearts <= 0) setSemVidas(true);
         }
         return;
       }

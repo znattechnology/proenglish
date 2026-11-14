@@ -164,14 +164,15 @@ class ResponderAvaliacaoTests(Fase4BBase):
         item = ItemBanco.objects.get(user=self.aluno, chave=normalizar(RESPONDER['frase']))
         self.assertEqual(item.estado, ItemBanco.COM_AJUDA)
 
-    def test_nao_aceite_tira_vida_sem_progresso(self):
+    def test_nao_aceite_nao_tira_vida_sem_progresso(self):
+        # Auditoria: uma resposta falada não aceite não tira vidas (o reconhecimento pode errar).
         patch, _ = self._claude(VEREDICTO_MAU)
         with patch, mock.patch('apps.practice.responder.transcrever', return_value='I like football very much.'):
             r = self.enviar()
         self.assertEqual(r.status_code, 200, r.content)
         self.assertFalse(r.json()['aceite'])
-        self.assertEqual(r.json()['heartsUsed'], 1)
-        self.assertEqual(self.progresso(), (2, 0))
+        self.assertEqual((r.json()['heartsUsed'], r.json()['user_progress']['hearts']), (0, 3))
+        self.assertEqual(self.progresso(), (3, 0))
         self.assertFalse(ChallengeProgress.objects.filter(user=self.aluno, challenge_id=self.resp['id']).exists())
         self.assertFalse(ChallengeAttempt.objects.get(user=self.aluno, challenge_id=self.resp['id']).is_correct)
 

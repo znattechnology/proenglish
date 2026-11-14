@@ -11,8 +11,10 @@ em voz alta, livremente; a resposta deve usar uma frase-alvo/estrutura da liçã
    responde à pergunta (sim/parcial/nao), usou a frase-alvo, no máximo 1 correcção com explicação
    em pt-PT, aceite.
 3. Fica guardada como ChallengeAttempt (certo = aceite) + TentativaPronuncia (transcrição, veredicto).
-   Aceite: ChallengeProgress concluído (+10 pontos num exercício novo). Não aceite: perde uma vida
-   num exercício novo (regras de challenge-progress/). Frase-alvo usada: entra no perfil de fala
+   Aceite: ChallengeProgress concluído (+10 pontos num exercício novo). Não aceite: NÃO tira vidas
+   (o reconhecimento de fala pode falhar com o sotaque e o aluno não pode aprender a evitar falar);
+   o exercício volta no fim da lição e, pelo ChallengeAttempt errado, entra na revisão de amanhã
+   (apps/perfil/signals.py), como os outros erros. Frase-alvo usada: entra no perfil de fala
    como 'com_ajuda' (a pergunta pediu-a: não foi dita sozinha numa conversa).
 
 Não conta para o limite diário de análises com IA do plano (decisão do dono: nas lições o limite
@@ -277,9 +279,9 @@ class ResponderEmVozView(APIView):
             logger.exception('responder: falha ao guardar a tentativa')
 
         aceite = veredicto['aceite']
-        perdeu = 0
         # Tudo decidido com o progresso do aluno trancado: dois envios ao mesmo tempo dão os +10
-        # pontos no máximo uma vez (só quem cria o progresso do exercício) e tiram no máximo uma vida.
+        # pontos no máximo uma vez (só quem cria o progresso do exercício). Uma resposta falada não
+        # aceite nunca tira vidas (ver a docstring do módulo).
         with transaction.atomic():
             progresso = UserProgress.objects.select_for_update().get(pk=progresso.pk)
             existente = ChallengeProgress.objects.filter(user=request.user, challenge=ch).first()
@@ -290,9 +292,6 @@ class ResponderEmVozView(APIView):
                 elif not existente.completed:
                     existente.completed = True
                     existente.save()
-            elif existente is None and not ilimitadas and progresso.hearts > 0:
-                progresso.reduce_hearts()
-                perdeu = 1
         progresso.refresh_from_db(fields=['points'])
 
         return Response({
@@ -308,7 +307,7 @@ class ResponderEmVozView(APIView):
             'exemplo': ex['exemplo'] or None,
             'explicacao': (ch.explanation or None) if aceite else None,
             'dica': None if aceite else (ch.hint or None),
-            'heartsUsed': perdeu,
+            'heartsUsed': 0,  # os exercícios falados não tiram vidas (campo mantido para os clientes)
             'user_progress': {'hearts': 999 if ilimitadas else progresso.hearts, 'points': progresso.points},
             'ai_analyses_remaining': -1,  # as lições não contam para o limite de análises
             'simulada': simulada,

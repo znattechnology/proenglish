@@ -139,7 +139,7 @@ export function Dica({ texto }: { texto: string }) {
 export type EstadoRodape =
   | { tipo: "verificar"; pronto: boolean; aVerificar: boolean }
   | { tipo: "certo"; explicacao?: string | null }
-  | { tipo: "errado"; dica?: string | null; perdeuVida: boolean; solucao?: string | null; explicacao?: string | null; repetir?: boolean };
+  | { tipo: "errado"; dica?: string | null; perdeuVida: boolean; solucao?: string | null; explicacao?: string | null; repetir?: boolean; falado?: boolean };
 
 export function RodapeLicao({
   estado,
@@ -180,7 +180,7 @@ export function RodapeLicao({
               {estado.dica && !estado.solucao ? <Linha>{estado.dica}</Linha> : null}
               {!estado.repetir ? (
                 <Texto v="legenda" suave>
-                  Este exercício volta no fim da lição.
+                  {estado.falado ? "A falar não perde vidas. Este exercício volta no fim da lição e entra na sua revisão." : "Este exercício volta no fim da lição."}
                 </Texto>
               ) : null}
             </>
