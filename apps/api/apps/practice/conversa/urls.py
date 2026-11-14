@@ -15,4 +15,5 @@ urlpatterns = [
     path('sessoes/<str:sessao_id>/responder/', views.responder, name='conversa-responder'),
     path('sessoes/<str:sessao_id>/ajuste/', views.ajuste, name='conversa-ajuste'),
     path('sessoes/<str:sessao_id>/terminar/', views.terminar, name='conversa-terminar'),
+    path('sessoes/<str:sessao_id>/ajuda/', views.ajuda, name='conversa-ajuda'),
 ]

@@ -18,7 +18,7 @@ from apps.practice.tests.test_seguranca_fase1 import Base as PraticaBase
 OBJECTIVOS_RELATORIO = ['Could you send me the report by Friday?', 'When is the deadline?',
                         "I'll have it ready on Thursday."]
 VAPI = dict(CONVERSA_SIMULADA=False, VAPI_PUBLIC_KEY='pk_test', VAPI_ENGLISH_ASSISTANT_ID='asst_1',
-            ANTHROPIC_API_KEY='x')
+            ANTHROPIC_API_KEY='x', VAPI_PRIVATE_KEY='sk_test_falsa')
 
 
 class PrepararCriarTests(Base):
@@ -148,10 +148,16 @@ class AvaliacaoClaudeTests(Base):
         return r
 
     def _conversa(self, resposta):
+        # A avaliação usa a chamada verificada no Vapi (falso), não o que o browser manda.
+        from apps.practice.tests.vapi_falso import VapiFalso
+        vapi = VapiFalso()
         sid = self.criar().data['id']
         self.recuar_inicio(sid, 130)
-        with mock.patch('apps.practice.conversa.analise._json', return_value=resposta) as j:
-            r = self.terminar(sid, self.TRANSCRICAO).data
+        cid = vapi.chamada(sid, [(t['quem'], t['texto']) for t in self.TRANSCRICAO], duracao=130)
+        with mock.patch('apps.practice.conversa.analise._json', return_value=resposta) as j, \
+                mock.patch('apps.practice.conversa.chamada.pedir', vapi):
+            r = self.client.post(f'{C}sessoes/{sid}/terminar/', {'transcricao': self.TRANSCRICAO, 'call_id': cid},
+                                 format='json').data
         return sid, r, j
 
     def test_campos_novos_guardados_e_perfil_actualizado(self):

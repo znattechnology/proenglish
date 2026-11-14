@@ -10,7 +10,8 @@ export type Nivel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 export type Correcao = "suave" | "directa";
 export type Frase = { en: string; pt: string };
 export type Ajuste = { disse: string; certo: string; porque: string };
-export type Fala = { quem: "tutor" | "aluno"; texto: string };
+/** escrito: o aluno escreveu em vez de falar (as frases-alvo dessa fala contam só "com ajuda"). */
+export type Fala = { quem: "tutor" | "aluno"; texto: string; escrito?: boolean };
 /** Frase-alvo da conversa (perfil de fala). pt pode vir vazio. */
 export type Objectivo = { en: string; pt: string };
 export type ObjectivoResultado = Objectivo & { usado: boolean; com_ajuda: boolean };
@@ -74,6 +75,8 @@ export type Resumo = {
   estado: "avaliada" | "sem_avaliacao" | "em_curso" | "a_avaliar" | "nao_ligou";
   notas: Notas | null;
   transcricao: Fala[];
+  /** Voz: o que o browser mostrou, enquanto a chamada não é confirmada pelo serviço de voz (sem valor de nota). */
+  transcricao_provisoria?: boolean;
   correccoes: Ajuste[];
   palavras_bem_usadas: string[];
   resumo: string | null;
@@ -178,14 +181,18 @@ export const conversaApi = createApi({
       query: (id) => `${BASE}/diagnostico/${id}/`,
       keepUnusedDataFor: 0,
     }),
-    responder: build.mutation<{ tutor: string }, { id: string; texto: string }>({
-      query: ({ id, texto }) => ({ url: `${BASE}/sessoes/${id}/responder/`, method: "POST", body: { texto } }),
+    responder: build.mutation<{ tutor: string }, { id: string; texto: string; escrito?: boolean }>({
+      query: ({ id, texto, escrito }) => ({ url: `${BASE}/sessoes/${id}/responder/`, method: "POST", body: { texto, escrito: Boolean(escrito) } }),
+    }),
+    /** Só baixa o resultado: o aluno escreveu em vez de falar, ou viu a frase-alvo em inglês. */
+    ajuda: build.mutation<{ ok: boolean }, { id: string; escrito?: string; revelada?: string }>({
+      query: ({ id, ...body }) => ({ url: `${BASE}/sessoes/${id}/ajuda/`, method: "POST", body }),
     }),
     ajuste: build.mutation<{ ajuste: Ajuste | null }, { id: string; frase: string }>({
       query: ({ id, frase }) => ({ url: `${BASE}/sessoes/${id}/ajuste/`, method: "POST", body: { frase } }),
     }),
-    terminar: build.mutation<Resumo, { id: string; transcricao: Fala[] }>({
-      query: ({ id, transcricao }) => ({ url: `${BASE}/sessoes/${id}/terminar/`, method: "POST", body: { transcricao } }),
+    terminar: build.mutation<Resumo, { id: string; transcricao: Fala[]; call_id?: string | null; reveladas?: string[] }>({
+      query: ({ id, ...body }) => ({ url: `${BASE}/sessoes/${id}/terminar/`, method: "POST", body }),
       invalidatesTags: ["Preparar", "Progresso"],
       onQueryStarted: quandoCorrerBem(aposEstudo),
     }),
@@ -200,7 +207,7 @@ export const conversaApi = createApi({
   }),
 });
 
-export const { useDiagnosticoQuery, useComecarDiagnosticoMutation, useLazyResultadoDiagnosticoQuery, usePrepararQuery, useComecarMutation, useLigadaMutation, useResponderMutation, useAjusteMutation, useTerminarMutation, useResumoQuery, useProgressoQuery } = conversaApi;
+export const { useDiagnosticoQuery, useComecarDiagnosticoMutation, useLazyResultadoDiagnosticoQuery, usePrepararQuery, useComecarMutation, useLigadaMutation, useResponderMutation, useAjusteMutation, useAjudaMutation, useTerminarMutation, useResumoQuery, useProgressoQuery } = conversaApi;
 
 export const URL_TERMINAR = (id: string) => `${process.env.NEXT_PUBLIC_DJANGO_API_URL || "http://localhost:8000/api/v1"}${BASE}/sessoes/${id}/terminar/`;
 

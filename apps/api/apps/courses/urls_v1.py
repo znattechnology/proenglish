@@ -7,6 +7,9 @@ maintaining backward compatibility with the original Express API structure.
 
 from django.urls import path
 from . import views
+# O PUT de progresso usa a view dos alunos (regras do questionário, do vídeo visto, da
+# inscrição e do plano); a antiga deixava o browser marcar qualquer aula como concluída.
+from apps.courses.api.student.video_courses import views as progresso_aluno
 from apps.courses.legado import rota_removida
 
 app_name = 'courses_v1'
@@ -34,7 +37,7 @@ urlpatterns = [
     # User course progress - matches Express /users/course-progress endpoints
     path('users/<uuid:userId>/enrolled/', views.get_user_enrolled_courses, name='user_enrolled_courses'),
     path('users/<uuid:userId>/progress/<uuid:courseId>/', views.get_user_course_progress, name='user_course_progress'),
-    path('users/<uuid:userId>/progress/<uuid:courseId>/update/', views.update_user_course_progress, name='update_user_course_progress'),
+    path('users/<uuid:userId>/progress/<uuid:courseId>/update/', progresso_aluno.update_user_course_progress, name='update_user_course_progress'),
     
     # Stripe payments - matches Express /transactions/stripe-payment-intent
     

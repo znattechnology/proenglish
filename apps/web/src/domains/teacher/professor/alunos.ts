@@ -81,11 +81,16 @@ const alunosApi = professorApi.enhanceEndpoints({ addTagTypes: ["FalaAluno"] }).
       query: (a) => ({ url: `/teacher/exames/${a.id}/rever/`, method: "POST", body: "confirmar" in a ? { confirmar: true } : { nota: a.nota, comentario: a.comentario } }),
       invalidatesTags: (_r, _e, a) => [{ type: "FalaAluno", id: a.alunoId }],
     }),
+    /** Um exame: o servidor procura a gravação no serviço de voz, se ainda não chegou (as listas nunca o fazem). */
+    procurarGravacaoExame: build.mutation<ExameDoAluno, { id: string; alunoId: string }>({
+      query: (a) => ({ url: `/teacher/exames/${a.id}/` }),
+      invalidatesTags: (r, _e, a) => (r?.gravacao_url ? [{ type: "FalaAluno", id: a.alunoId }] : []),
+    }),
     resultados: build.query<Resultados, number>({ query: (periodo) => ({ url: "/teacher/resultados/", params: { periodo } }) }),
   }),
 });
 
-export const { useAlunosQuery, useAlunoQuery, useResultadosQuery, useFalaAlunoQuery, useReverExameMutation } = alunosApi;
+export const { useAlunosQuery, useAlunoQuery, useResultadosQuery, useFalaAlunoQuery, useReverExameMutation, useProcurarGravacaoExameMutation } = alunosApi;
 
 const API = process.env.NEXT_PUBLIC_DJANGO_API_URL || "http://localhost:8000/api/v1";
 

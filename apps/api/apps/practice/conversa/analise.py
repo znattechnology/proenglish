@@ -445,5 +445,8 @@ def limpar_transcricao(bruta, max_turnos=200, max_chars=1000):
             continue
         texto = re.sub(r'\s+', ' ', texto).strip()[:max_chars]
         if texto:
-            limpa.append({'quem': quem, 'texto': texto})
+            turno = {'quem': quem, 'texto': texto}
+            if quem == 'aluno' and t.get('escrito') is True:
+                turno['escrito'] = True  # escrito em vez de dito: só pode baixar o resultado
+            limpa.append(turno)
     return limpa

@@ -128,7 +128,7 @@ export type Notas = {
 
 export type EstadoExame = {
   disponivel: boolean;
-  motivo: null | "progresso" | "aprovado" | "aguardar" | "tentativas" | "curso_pratica";
+  motivo: null | "progresso" | "aprovado" | "aguardar" | "tentativas" | "curso_pratica" | "desligado";
   mensagem: string | null;
   progresso: number;
   limiar_progresso: number;

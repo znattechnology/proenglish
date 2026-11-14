@@ -11,7 +11,7 @@ aprovadas da aula (FraseAula) são as palavras-alvo e um excerto da transcriçã
 (etiquetas <lesson_phrases> e <lesson_transcript>, como DADOS). Sem objectivo, usa-se um feito a
 partir do título da aula.
 Cada exercício gerado passa pelas mesmas validações da API (pratica_formato.validar); os inválidos
-são descartados e contados. Depois (equilibrar): pelo menos metade da lição é falada (pronuncia +
+são descartados e contados (menos de MIN_EXERCICIOS no fim -> 503). Depois (equilibrar): pelo menos metade da lição é falada (pronuncia +
 responder; se o Claude não cumprir, os exercícios escritos a mais são descartados) e a ordem vai do
 reconhecer ao produzir: reconhecer -> completar -> traduzir -> dizer em voz alta -> responder em voz alta. Limite diário por professor (PRATICA_GERAR_LIMITE_DIA) -> 429.
 O cliente e o tratamento de erros seguem apps/practice/conversa/analise.py (Anthropic SDK,
@@ -36,6 +36,7 @@ from .pratica import _curso_pratica, _dados, _ids, _validacao
 logger = logging.getLogger(__name__)
 
 QUANTOS = (6, 8, 10, 12)
+MIN_EXERCICIOS = 3  # menos do que isto depois de equilibrar -> 503 (não é uma lição)
 MAX_PALAVRAS = 20
 # Tempos (têm de ficar por esta ordem): cliente Anthropic 90 s, sem novas tentativas
 # < nginx proxy_read_timeout 110 s em /api/v1/teacher/pratica/<curso>/gerar-licao/ (nginx/nginx.conf)
@@ -424,7 +425,9 @@ def gerar_licao(request, curso_id):
                      'ou crie os exercícios à mão.', 'ia_indisponivel', status_http=503)
 
     exercicios, descartados = limpar_gerados(resposta, quantos)
-    if not exercicios:
+    if len(exercicios) < MIN_EXERCICIOS:
+        # Depois de validar e equilibrar ficou uma lição pequena demais (p.ex. o Claude quase só
+        # escreveu exercícios escritos): não se devolve uma "lição" de 1 ou 2 exercícios.
         devolver_geracao(request.user)
         return _erro('A IA não conseguiu gerar exercícios válidos. Tente reformular o objectivo.',
                      'ia_indisponivel', status_http=503, descartados=descartados)

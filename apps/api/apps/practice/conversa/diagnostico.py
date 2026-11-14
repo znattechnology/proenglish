@@ -7,7 +7,10 @@ passado no trabalho, uma opinião ou hipótese), adaptando-se às respostas.
 
 - Usa o serviço normal da conversa (servico.criar_sessao) com a situação "diagnostico-v1",
   isenta_quota=True: não gasta os minutos do dia (nem precisa deles) e não dá pontos.
-- No máximo LIMITE_30_DIAS testes ligados por aluno em 30 dias.
+- No máximo LIMITE_30_DIAS testes por aluno em 30 dias: contam todos os começados, menos os que o
+  Vapi confirmou que não chegaram a ligar (duração 0) e, no simulado, os que nunca ligaram.
+  (connected_at vem do browser: não serve para contar.)
+- Só a chamada verificada do Vapi conta (verificacao.py), com pelo menos MIN_SEGUNDOS_VERIFICADOS.
 - Avaliação própria (avaliar): Claude com saída estruturada (nível CEFR por competência:
   falar, ouvir, gramática, vocabulário) e, sem Claude, uma estimativa por regras.
 - Os níveis do PerfilFala passam a ser os do teste (config.niveis_directos: colocação directa,
@@ -29,6 +32,7 @@ PREFIXO = 'diagnostico-'
 SLUG = 'diagnostico-v1'
 CHAVE = 'diagnostico'
 LIMITE_30_DIAS = 2
+MIN_SEGUNDOS_VERIFICADOS = 60   # menos do que isto de chamada confirmada pelo Vapi: sem resultado
 NIVEL_INICIAL = 'A2'  # o tutor começa simples (A1-A2) e sobe
 
 
@@ -109,13 +113,15 @@ def sessoes(user):
 
 def estado(user):
     """{disponivel, feitos_30_dias, limite, proximo_em, ultimo}."""
+    from apps.practice.models import VapiSession
     agora = timezone.now()
-    ligadas = list(sessoes(user).filter(connected_at__isnull=False, created_at__gte=agora - timedelta(days=30))
-                   .order_by('created_at').values_list('created_at', flat=True))
+    ligadas = [criado for criado, status, modo, dados in
+               sessoes(user).filter(created_at__gte=agora - timedelta(days=30)).order_by('created_at')
+               .values_list('created_at', 'status', 'mode', 'full_session_data')
+               if not _nao_contou(status, modo, dados)]
     proximo = None
     if len(ligadas) >= LIMITE_30_DIAS:
         proximo = ligadas[len(ligadas) - LIMITE_30_DIAS] + timedelta(days=30)
-    from apps.practice.models import VapiSession
     ultima = sessoes(user).filter(status=VapiSession.STATUS_AVALIADA).order_by('-created_at').first()
     return {
         'disponivel': len(ligadas) < LIMITE_30_DIAS,
@@ -127,21 +133,40 @@ def estado(user):
     }
 
 
+def _nao_contou(status, modo, dados):
+    """Um teste que não gasta uma das tentativas: o Vapi confirmou que a chamada não ligou (ou, no
+    simulado e nas sessões antigas, nunca ligou)."""
+    from apps.practice.models import VapiSession
+    if status != VapiSession.STATUS_NAO_LIGOU:
+        return False
+    if modo != 'vapi':
+        return True
+    verificada = dados.get('vapi_verificada') if isinstance(dados, dict) else None
+    return isinstance(verificada, dict) and not verificada.get('duracao_segundos')
+
+
 def comecar(user):
     """Cria a sessão do teste (servico.criar_sessao). Levanta ErroConversa."""
+    from django.core.cache import cache
     from . import servico
     from .servico import ErroConversa
-    e = estado(user)
-    if not e['disponivel']:
-        raise ErroConversa(429, 'limite_diagnostico',
-                           f'Já fez {LIMITE_30_DIAS} testes de nível nos últimos 30 dias. '
-                           'Pode responder às perguntas escritas ou tentar outra vez mais tarde.')
-    prefs = preferencias_padrao(user)
-    dados = {'nivel': NIVEL_INICIAL, 'correcao': 'suave', 'area': prefs['area']}
-    sessao = servico.criar_sessao(
-        user, dados, situacao=situacao_dict(), objectivos=[], max_segundos=max_segundos(),
-        config_extra={'tipo': 'diagnostico', 'niveis_directos': True},
-        isenta_quota=True, instrucoes=instrucoes(user, prefs['area']))
+    chave = f'diagnostico:comecar:{user.pk}'
+    if not cache.add(chave, 1, 30):  # um pedido de cada vez: dois «Começar» seguidos não passam o limite
+        raise ErroConversa(429, 'limite_diagnostico', 'O teste já está a começar. Aguarde um momento.')
+    try:
+        e = estado(user)
+        if not e['disponivel']:
+            raise ErroConversa(429, 'limite_diagnostico',
+                               f'Já fez {LIMITE_30_DIAS} testes de nível nos últimos 30 dias. '
+                               'Pode responder às perguntas escritas ou tentar outra vez mais tarde.')
+        prefs = preferencias_padrao(user)
+        dados = {'nivel': NIVEL_INICIAL, 'correcao': 'suave', 'area': prefs['area']}
+        sessao = servico.criar_sessao(
+            user, dados, situacao=situacao_dict(), objectivos=[], max_segundos=max_segundos(),
+            config_extra={'tipo': 'diagnostico', 'niveis_directos': True},
+            isenta_quota=True, instrucoes=instrucoes(user, prefs['area']))
+    finally:
+        cache.delete(chave)
     vapi = servico.config_vapi()
     return {'sessao': sessao, 'modo': servico.modo(), 'chave_publica': vapi['public_key'] if vapi else None}
 

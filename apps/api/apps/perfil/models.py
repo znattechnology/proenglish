@@ -175,14 +175,22 @@ class RespostaRevisao(models.Model):
 
 
 class ExerciciosPadrao(models.Model):
-    """Exercícios curtos gerados (Claude) para um padrão de erro. Genéricos: partilhados por todos os alunos."""
-    chave = models.CharField(max_length=60, unique=True)
+    """
+    Exercícios curtos gerados (Claude) para um padrão de erro, guardados por (chave, descrição).
+    As chaves conhecidas (regras.CHAVES_REGRAS e as da lista curada em revisao.DESCRICOES_CANONICAS)
+    usam sempre a nossa descrição: o mesmo registo serve todos os alunos. As outras chaves (escritas
+    livremente pelo Claude) só partilham o registo com quem tiver exactamente a mesma descrição.
+    Regenerados ao fim de revisao.VALIDADE_PADRAO_DIAS (criado_em = data da geração).
+    """
+    chave = models.CharField(max_length=60)
+    descricao_hash = models.CharField(max_length=64, default='', help_text='sha256 da descrição normalizada')
     descricao = models.CharField(max_length=160, blank=True, default='')
     exercicios = models.JSONField(default=list)
     modelo = models.CharField(max_length=60, blank=True, default='')
     criado_em = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        constraints = [models.UniqueConstraint(fields=['chave', 'descricao_hash'], name='perfil_exercicios_padrao_unico')]
         verbose_name = 'exercícios de um padrão'
         verbose_name_plural = 'exercícios dos padrões'
 
@@ -237,3 +245,26 @@ class PalavraDificil(models.Model):
 
     def __str__(self):
         return f'{self.palavra} ({self.falhas}/{self.tentativas})'
+
+
+class SessaoRevisao(models.Model):
+    """
+    Os exercícios servidos a um aluno num dia de Luanda (revisão de hoje). A forma de cada item e o
+    conteúdo de cada exercício de padrão ficam fixos para o dia: a resposta é corrigida contra o que
+    foi mostrado (nunca contra a forma enviada pelo cliente) e um padrão regenerado não muda um
+    exercício já servido. exercicios: {id: {'forma': ..., 'padrao': {...}, 'e': {...}, 'saltado': bool}}
+    """
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='sessoes_revisao')
+    dia = models.DateField(help_text='Dia de Angola')
+    exercicios = models.JSONField(default=dict, blank=True)
+    criada_em = models.DateTimeField(auto_now_add=True)
+    actualizada_em = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-dia']
+        constraints = [models.UniqueConstraint(fields=['user', 'dia'], name='perfil_sessao_revisao_unica')]
+        verbose_name = 'sessão da revisão'
+        verbose_name_plural = 'sessões da revisão'
+
+    def __str__(self):
+        return f'{self.user_id} {self.dia} ({len(self.exercicios or {})})'

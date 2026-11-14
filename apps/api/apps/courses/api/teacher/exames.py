@@ -6,7 +6,10 @@
                                               por semana e palavras a treinar, e exames orais
                                               do aluno nos cursos do professor
   GET  /api/v1/teacher/exames/?curso=<id>     exames orais avaliados de um curso (ou de todos)
+  GET  /api/v1/teacher/exames/<id>/           um exame (pede a gravação ao Vapi, se ainda não chegou)
   POST /api/v1/teacher/exames/<id>/rever/     {"confirmar": true} ou {"nota": 0-100, "comentario"}
+
+As listas nunca falam com o Vapi (usam o URL guardado); só a vista de um exame o faz.
 
 Só o professor do curso (ou a administração) vê e revê os exames desse curso; para os outros os
 exames não existem (404). A nota revista ganha à da IA e a nota do curso é recalculada.
@@ -23,10 +26,24 @@ from apps.courses.models import ExameOral
 from .alunos import _cursos_visiveis, _nome, _pares
 
 
-def _exame_professor(e):
+def _exame_professor(e, buscar=False):
     from apps.practice.conversa.exame import buscar_gravacao, exame_dict
-    buscar_gravacao(e)
+    if buscar:
+        buscar_gravacao(e)  # nunca levanta
     return {**exame_dict(e), 'aluno': {'id': str(e.user_id), 'nome': _nome(e.user.name)}}
+
+
+def _exame_visivel(request, exame_id):
+    e = ExameOral.objects.select_related('course', 'user', 'sessao', 'revisto_por').filter(pk=exame_id).first()
+    if e is None or not ciclo.e_dono_ou_staff(request.user, e.course):
+        raise NotFound('Exame não encontrado.')
+    return e
+
+
+@api_view(['GET'])
+@permission_classes(PERMISSOES)
+def exame_detalhe(request, exame_id):
+    return Response(_exame_professor(_exame_visivel(request, exame_id), buscar=True))
 
 
 @api_view(['GET'])
@@ -86,9 +103,7 @@ def exames_dos_cursos(request):
 @permission_classes(PERMISSOES)
 def rever_exame(request, exame_id):
     from apps.practice.conversa import exame as svc
-    e = ExameOral.objects.select_related('course', 'user', 'sessao', 'revisto_por').filter(pk=exame_id).first()
-    if e is None or not ciclo.e_dono_ou_staff(request.user, e.course):
-        raise NotFound('Exame não encontrado.')
+    e = _exame_visivel(request, exame_id)
     if e.estado != ExameOral.AVALIADO:
         return _erro('Este exame ainda não tem nota da IA.', 'exame_sem_nota', status_http=409)
     corpo = request.data if isinstance(request.data, dict) else {}

@@ -26,10 +26,12 @@ e a avaliação é a normal, pelo texto.
 A chave nunca vai para os registos (só o código HTTP e o tipo de erro).
 """
 import base64
+import io
 import json
 import logging
 import shutil
 import subprocess
+import wave
 
 import requests
 from django.conf import settings
@@ -40,8 +42,10 @@ from .base import NOTA_ACEITE, ErroProvedor, Provedor, ResultadoPronuncia, credi
 
 logger = logging.getLogger(__name__)
 
-TIMEOUT = 15
-TIMEOUT_FFMPEG = 15
+# Curtos: a avaliação detalhada vem antes do Whisper + Claude e o pedido todo tem de caber nos
+# ~45 s do orçamento (services/pronuncia.ORCAMENTO_SEGUNDOS), abaixo dos 60 s do nginx.
+TIMEOUT = 8
+TIMEOUT_FFMPEG = 5
 MAX_SEGUNDOS = 30
 TICKS_POR_SEGUNDO = 10_000_000
 MAX_BYTES_WAV = 16000 * 2 * MAX_SEGUNDOS + 44   # 16 kHz, 16 bits, mono, 30 s
@@ -101,7 +105,13 @@ def cabecalho_avaliacao(texto_esperado, idioma='en-US'):
 
 
 def para_wav(audio_bytes, mime=''):
-    """Qualquer gravação do browser (webm/opus, ogg, mp4) -> WAV PCM 16 kHz mono (ffmpeg)."""
+    """
+    Qualquer gravação do browser (webm/opus, ogg, mp4) -> WAV PCM 16 kHz mono.
+
+    O ffmpeg dá só as amostras (s16le, sem cabeçalho) e o cabeçalho WAV é escrito aqui com os
+    tamanhos certos: um WAV escrito pelo ffmpeg para um pipe não pode voltar atrás para os
+    preencher (fica com tamanhos inválidos/0xFFFFFFFF) nem leva metadados que não pedimos.
+    """
     if (mime or '').startswith('audio/wav') and audio_bytes[:4] == b'RIFF':
         return audio_bytes
     ffmpeg = shutil.which(getattr(settings, 'FFMPEG_BIN', 'ffmpeg') or 'ffmpeg')
@@ -109,13 +119,23 @@ def para_wav(audio_bytes, mime=''):
         raise ErroProvedor('ffmpeg em falta')
     try:
         r = subprocess.run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-i', 'pipe:0', '-t', str(MAX_SEGUNDOS + 1),
-                            '-ac', '1', '-ar', '16000', '-acodec', 'pcm_s16le', '-f', 'wav', 'pipe:1'],
+                            '-map_metadata', '-1', '-vn', '-ac', '1', '-ar', '16000', '-acodec', 'pcm_s16le',
+                            '-f', 's16le', 'pipe:1'],
                            input=audio_bytes, capture_output=True, timeout=TIMEOUT_FFMPEG, check=False)
     except subprocess.TimeoutExpired as e:
         raise ErroProvedor('ffmpeg demorou demasiado') from e
-    if r.returncode != 0 or len(r.stdout) <= 44:
+    pcm = r.stdout or b''
+    if r.returncode != 0 or len(pcm) < 320:  # menos de 10 ms de som
         raise ErroProvedor('ffmpeg não converteu a gravação')
-    return r.stdout
+    if len(pcm) % 2:
+        pcm = pcm[:-1]
+    saida = io.BytesIO()
+    with wave.open(saida, 'wb') as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(16000)
+        w.writeframes(pcm)
+    return saida.getvalue()
 
 
 def _pa(obj, chave):

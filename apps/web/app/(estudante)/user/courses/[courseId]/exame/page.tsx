@@ -31,8 +31,8 @@ export default function PaginaExame() {
   const mostrar = async (id: string) => {
     setFase({ tipo: "a_avaliar" });
     setErro(null);
-    // A avaliação acontece ao terminar; se ainda estiver a correr, tenta mais algumas vezes.
-    for (let i = 0; i < 6; i++) {
+    // A nota sai da chamada confirmada pelo serviço de voz e da avaliação: pode demorar até um minuto.
+    for (let i = 0; i < 25; i++) {
       try {
         const e = await lerExame(id).unwrap();
         if (e.estado !== "em_curso" && e.estado !== "a_avaliar") {
@@ -61,11 +61,11 @@ export default function PaginaExame() {
           <div className="flex flex-col gap-1">
             <h1 className="m-0 font-pe-titulo text-[26px] font-bold leading-8">Exame oral a decorrer</h1>
             <p className="m-0 text-pe-tinta-suave">
-              Fale o mais que conseguir. O examinador não corrige durante o exame.
+              Fale o mais que conseguir: o exame é só falado. O examinador não corrige durante o exame.
               {fase.dados.gravacao ? " Esta conversa está a ser gravada." : ""}
             </p>
           </div>
-          <Viva dados={fase.dados} frases={[]} aoTerminar={() => void mostrar(fase.dados.exame_id)} />
+          <Viva dados={fase.dados} frases={[]} semTexto aoTerminar={() => void mostrar(fase.dados.exame_id)} />
         </>
       ) : fase.tipo === "a_avaliar" ? (
         <div role="status" className="flex flex-col items-start gap-3 py-8">
@@ -220,7 +220,7 @@ function Introducao({ estado: e, courseId, erro, aoComecar, aoAbrir }: { estado:
             <span>
               Autorizo a gravação desta prova para o professor a poder ouvir.
               <span className="block text-pe-legenda text-pe-tinta-suave">
-                Só o professor do curso e você a podem ouvir. É apagada ao fim de 12 meses e pode apagá-la antes. Ver a{" "}
+                Ouvem-na você e o professor do curso; a equipa ProEnglish só lhe acede se for preciso para resolver um problema ou uma reclamação sobre a nota. É apagada ao fim de 12 meses e pode apagá-la antes. Ver a{" "}
                 <Link href="/privacidade#gravacoes" className="font-semibold text-pe-azul-marca">
                   política de privacidade
                 </Link>

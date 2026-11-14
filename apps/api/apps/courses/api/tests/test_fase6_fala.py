@@ -2,7 +2,9 @@
 Fase 6: teste de nível falado, exame oral do curso, nova nota do curso, certificado com o nível
 de fala, revisão do professor e gravações (só exame + consentimento).
 
-O Claude e o Vapi são sempre simulados aqui (analise._json e exame._vapi substituídos).
+O Claude e o Vapi são sempre simulados aqui (analise._json e chamada.pedir substituídos: VapiFalso).
+No modo de voz só a chamada verificada conta: os helpers registam a chamada no Vapi falso e mandam
+o id dela em terminar/ (como o browser depois do call-start).
 
     ./venv/bin/python manage.py test apps.courses.api.tests.test_fase6_fala --settings=core.test_settings
 """
@@ -27,6 +29,7 @@ from apps.perfil.servico import registar_item
 from apps.practice.conversa import diagnostico, exame
 from apps.practice.limite_licoes import hoje_luanda
 from apps.practice.models import VapiSession
+from apps.practice.tests.vapi_falso import VapiFalso
 from apps.subscriptions.models import UserSubscription
 
 User = get_user_model()
@@ -81,7 +84,7 @@ def _claude(exame_dados=EXAME_BOM, diag=DIAGNOSTICO):
 
 @override_settings(CONVERSA_SIMULADA=False, VAPI_PUBLIC_KEY='pk_test', VAPI_ENGLISH_ASSISTANT_ID='asst_1',
                    VAPI_WEBHOOK_SECRET=SEGREDO, VAPI_WEBHOOK_URL='https://api.exemplo.ao/api/v1/practice/vapi/webhook/',
-                   CONVERSA_MAX_MINUTOS_SESSAO=15, VAPI_PRIVATE_KEY=None)
+                   CONVERSA_MAX_MINUTOS_SESSAO=15, VAPI_PRIVATE_KEY='sk_test_falsa')
 class Base(APITestCase):
 
     def setUp(self):
@@ -116,10 +119,12 @@ class Base(APITestCase):
         for nome, alvo, kw in (
                 ('claude', 'apps.practice.conversa.analise._json', {'side_effect': _claude()}),
                 ('fundo', 'apps.practice.conversa.webhook.executar_em_fundo', {'side_effect': lambda f, *a: f(*a)}),
-                ('vapi', 'apps.practice.conversa.exame._vapi', {'return_value': {}})):
+                ('vapi', 'apps.practice.conversa.chamada.pedir', {'side_effect': VapiFalso()})):
             p = mock.patch(alvo, **kw)
             self.addCleanup(p.stop)
             setattr(self, nome, p.start())
+        self.falso = self.vapi.side_effect
+        self.chamadas = {}
 
     # -- helpers ------------------------------------------------------------
     def entrar(self, user):
@@ -137,9 +142,21 @@ class Base(APITestCase):
             started_at=agora - timedelta(seconds=segundos), connected_at=agora - timedelta(seconds=segundos),
             last_activity_at=agora)
 
-    def terminar(self, sessao_id, falas=FALAS_EXAME):
-        return self.client.post(f'{C}sessoes/{sessao_id}/terminar/', {'transcricao': _transcricao(falas)},
-                                format='json')
+    def chamada(self, sessao_id, falas=FALAS_EXAME, duracao=None, **kw):
+        """Regista no Vapi falso a chamada da sessão (a duração por omissão: desde connected_at)."""
+        if duracao is None:
+            s = VapiSession.objects.get(pk=sessao_id)
+            duracao = int((timezone.now() - s.connected_at).total_seconds()) if s.connected_at else 0
+        cid = self.falso.chamada(sessao_id, falas, duracao=duracao, **kw)
+        self.chamadas[sessao_id] = cid
+        return cid
+
+    def terminar(self, sessao_id, falas=FALAS_EXAME, duracao=None, cliente=None):
+        """O Vapi tem a chamada `falas` (verificada por GET /call); o browser manda `cliente`
+        (por omissão as mesmas falas) e o id da chamada."""
+        cid = self.chamadas.get(sessao_id) or self.chamada(sessao_id, falas, duracao=duracao)
+        corpo = {'transcricao': _transcricao(falas if cliente is None else cliente), 'call_id': cid}
+        return self.client.post(f'{C}sessoes/{sessao_id}/terminar/', corpo, format='json')
 
     def usados(self):
         self.sub.refresh_from_db()
@@ -159,13 +176,10 @@ class Base(APITestCase):
         return ExameOral.objects.get(pk=r.data['exame_id']), r
 
     def webhook(self, sessao_id, recording=GRAVACAO):
-        msg = {'type': 'end-of-call-report', 'endedReason': 'customer-ended-call', 'call': {'id': 'f6-call'},
-               'artifact': {'messages': [{'role': 'bot', 'message': t} if q == 'tutor' else {'role': 'user', 'message': t}
-                                         for q, t in FALAS_EXAME]}}
-        if recording:
-            msg['artifact']['recordingUrl'] = recording
-        msg['call']['assistantOverrides'] = {'metadata': {'sessao_id': sessao_id}}
-        return self.client.post(WEBHOOK, {'message': msg}, format='json', HTTP_X_VAPI_SECRET=SEGREDO)
+        """O end-of-call-report (segredo global) da chamada da sessão."""
+        cid = self.chamadas.get(sessao_id) or self.chamada(sessao_id, duracao=300)
+        return self.client.post(WEBHOOK, self.falso.relatorio(cid, gravacao=recording), format='json',
+                                HTTP_X_VAPI_SECRET=SEGREDO)
 
 
 # ---------------------------------------------------------------------------
@@ -222,8 +236,12 @@ class DiagnosticoTests(Base):
         r = self.client.post(f'{C}diagnostico/comecar/', {}, format='json')
         self.assertEqual(r.status_code, 429)
         self.assertEqual(r.data['codigo'], 'limite_diagnostico')
-        # Um que nunca ligou não conta.
+        # connected_at (vem do browser) não serve para contar: só não conta um que o Vapi confirmou
+        # que não ligou (duração 0).
         VapiSession.objects.filter(pk='f6-diag-0').update(connected_at=None)
+        self.assertFalse(self.client.get(f'{C}diagnostico/').data['disponivel'])
+        VapiSession.objects.filter(pk='f6-diag-0').update(
+            status=VapiSession.STATUS_NAO_LIGOU, full_session_data={'vapi_verificada': {'duracao_segundos': 0}})
         self.assertTrue(self.client.get(f'{C}diagnostico/').data['disponivel'])
 
 
@@ -328,13 +346,11 @@ class ExameTests(Base):
         self.concluir()
         ex, _ = self.fazer_exame()
         self.webhook(ex.sessao_id)
-        VapiSession.objects.filter(pk=ex.sessao_id).update(
-            full_session_data={**VapiSession.objects.get(pk=ex.sessao_id).full_session_data, 'vapi_call_id': 'f6-call'})
         r = self.client.delete(f'{V}/exames/{ex.pk}/gravacao/')
         self.assertEqual(r.status_code, 200)
         self.assertIsNone(r.data['gravacao_url'])
         self.assertTrue(r.data['gravacao_apagada'])
-        self.vapi.assert_called_with('DELETE', '/call/f6-call')
+        self.vapi.assert_called_with('DELETE', f'/call/{self.chamadas[ex.sessao_id]}')
         # Um novo relatório não a volta a pôr.
         exame.guardar_gravacao_da_sessao(ex.sessao_id, GRAVACAO)
         ex.refresh_from_db()

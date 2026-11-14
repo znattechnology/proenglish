@@ -32,12 +32,31 @@ from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
-TIMEOUT = 30
+# Os pedidos com gravações têm de acabar antes dos 60 s do nginx (e o Claude ainda vem depois):
+# um pedido ao Whisper, sem repetições automáticas.
+TIMEOUT = 20
+MAX_RETRIES = 0
 MAX_PALAVRAS = 400
+# Respostas do fornecedor que querem dizer "esta gravação não serve" (formato, ficheiro estragado,
+# demasiado grande): grava-se outra vez. Tudo o resto (rede, timeout, 5xx, 401, 429, chave em
+# falta) é o serviço indisponível.
+ESTADOS_AUDIO_INVALIDO = (400, 413, 415, 422)
 
 
 class ErroTranscricao(Exception):
-    """O serviço de transcrição falhou (não é culpa do aluno)."""
+    """
+    A transcrição falhou. audio_invalido=False: o serviço falhou (não é culpa do aluno; 503 e pode
+    saltar). audio_invalido=True: o fornecedor recusou a gravação (grava-se outra vez; 422).
+    """
+
+    def __init__(self, mensagem='', audio_invalido=False):
+        super().__init__(mensagem)
+        self.audio_invalido = audio_invalido
+
+
+def _erro_do_fornecedor(e):
+    estado = getattr(e, 'status_code', None)
+    return ErroTranscricao(f'whisper: {type(e).__name__}', audio_invalido=estado in ESTADOS_AUDIO_INVALIDO)
 
 
 @dataclass
@@ -126,7 +145,7 @@ class WhisperOpenAI(Adaptador):
             chave = getattr(settings, 'OPENAI_API_KEY', '')
             if not chave or chave in ('dummy', 'sk-dummy'):
                 raise ErroTranscricao('transcrição sem chave configurada')
-            self._cliente = openai.OpenAI(api_key=chave, timeout=TIMEOUT, max_retries=1)
+            self._cliente = openai.OpenAI(api_key=chave, timeout=TIMEOUT, max_retries=MAX_RETRIES)
         return self._cliente
 
     def transcrever(self, audio_bytes, mime, idioma, palavras, nome=None):
@@ -159,13 +178,13 @@ class WhisperOpenAI(Adaptador):
                 ficheiro.seek(0)
             except Exception as e:
                 if not _pedido_invalido(e):
-                    raise ErroTranscricao(f'whisper: {type(e).__name__}') from e
+                    raise _erro_do_fornecedor(e) from e
                 logger.info('transcrição: o modelo %s não devolve tempos; a pedir só o texto', modelo)
                 ficheiro.seek(0)
         try:
             texto = cliente.audio.transcriptions.create(response_format='text', **kwargs)
         except Exception as e:
-            raise ErroTranscricao(f'whisper: {type(e).__name__}') from e
+            raise _erro_do_fornecedor(e) from e
         texto = texto if isinstance(texto, str) else (_campo(texto, 'text') or '')
         return Transcricao(texto=' '.join(str(texto).split())[:2000], fonte=self.nome)
 

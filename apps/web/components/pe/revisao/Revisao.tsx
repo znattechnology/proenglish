@@ -10,6 +10,7 @@ import {
   nFrases,
   useFalarRevisaoMutation,
   useResponderRevisaoMutation,
+  useSaltarRevisaoMutation,
   useSessaoRevisaoQuery,
   useTerminarRevisaoMutation,
   type FimRevisao,
@@ -35,8 +36,9 @@ type Fase =
 /** A revisão de hoje: um exercício de cada vez, sem vidas; no fim, o resumo. */
 export function Revisao() {
   const router = useRouter();
-  const { data: sessao, isLoading, isError, refetch } = useSessaoRevisaoQuery();
+  const { data: sessao, isLoading, isFetching, isError, refetch } = useSessaoRevisaoQuery();
   const [responder] = useResponderRevisaoMutation();
+  const [saltarNoServidor] = useSaltarRevisaoMutation();
   const [falar] = useFalarRevisaoMutation();
   const [terminar, { isLoading: aTerminar }] = useTerminarRevisaoMutation();
 
@@ -94,6 +96,20 @@ export function Revisao() {
     else setI(i + 1);
   }, [i, total, acabar]);
 
+  // Saltar (sem microfone, sem análises, análise em baixo): o servidor tira-o de hoje sem pontos e a
+  // frase volta amanhã. Se o pedido falhar, segue na mesma (a frase fica para hoje).
+  const [aSaltar, setASaltar] = useState(false);
+  const saltar = useCallback(async () => {
+    if (!ex || aSaltar) return;
+    setASaltar(true);
+    try {
+      if (ex.forma === "ouvir_repetir") await saltarNoServidor({ exercicioId: ex.id });
+    } finally {
+      setASaltar(false);
+    }
+    seguinte();
+  }, [ex, aSaltar, saltarNoServidor, seguinte]);
+
   const outraVez = useCallback(() => {
     setResposta(null);
     setFase({ tipo: "responder" });
@@ -124,7 +140,8 @@ export function Revisao() {
     return () => window.removeEventListener("keydown", tecla);
   }, [fase, verificar, seguinte, fim]);
 
-  if (isLoading) return <Esqueleto />;
+  // Também ao recarregar ("Rever mais"): nunca mostrar o exercício antigo enquanto chega a sessão nova.
+  if (isLoading || isFetching) return <Esqueleto />;
   if (isError || !sessao) {
     return (
       <main className="mx-auto flex max-w-[560px] flex-col items-start gap-4 px-5 py-16">
@@ -170,7 +187,14 @@ export function Revisao() {
           ) : ex?.nova ? (
             <p className="m-0 self-start rounded-pe-sm bg-pe-fundo-suave px-3 py-1.5 text-pe-legenda">Frase nova na revisão</p>
           ) : null}
-          {ex ? <ExercicioRevisaoUI key={`${ex.id}-${tentativa}`} ex={ex} bloqueado={fase.tipo !== "responder"} visual={visual} aoMudar={setResposta} /> : null}
+          {ex ? <ExercicioRevisaoUI
+              key={`${ex.id}-${tentativa}`}
+              ex={ex}
+              bloqueado={fase.tipo !== "responder" || aSaltar}
+              visual={visual}
+              aoMudar={setResposta}
+              aoSaltar={() => void saltar()}
+            /> : null}
           {erroFim ? (
             <div role="alert" className="flex flex-col gap-3 rounded-pe-md bg-pe-errado-suave px-4 py-3">
               <p className="m-0">Não conseguimos fechar a revisão. As respostas já estão guardadas.</p>
@@ -184,10 +208,11 @@ export function Revisao() {
       <Rodape
         fase={fase}
         pronto={!!resposta}
-        aVerificar={aVerificar || aTerminar}
+        aVerificar={aVerificar || aTerminar || aSaltar}
         ultimo={i + 1 >= total}
         aoVerificar={() => void verificar()}
         aoContinuar={seguinte}
+        aoSaltar={() => void saltar()}
         aoTentar={outraVez}
       />
     </div>
@@ -201,6 +226,7 @@ function Rodape({
   ultimo,
   aoVerificar,
   aoContinuar,
+  aoSaltar,
   aoTentar,
 }: {
   fase: Fase;
@@ -209,6 +235,7 @@ function Rodape({
   ultimo: boolean;
   aoVerificar: () => void;
   aoContinuar: () => void;
+  aoSaltar: () => void;
   aoTentar: () => void;
 }) {
   const r = fase.tipo === "resultado" ? fase.r : null;
@@ -265,7 +292,7 @@ function Rodape({
                 Tentar outra vez
               </Botao>
               {fase.podeSaltar ? (
-                <Botao tipo="secundario" larguraTotal className="md:w-auto md:min-w-[160px]" onClick={aoContinuar}>
+                <Botao tipo="secundario" larguraTotal className="md:w-auto md:min-w-[160px]" onClick={aoSaltar} disabled={aVerificar}>
                   Saltar
                 </Botao>
               ) : null}

@@ -345,16 +345,21 @@ class TerminarTests(Base):
 
     @override_settings(CONVERSA_SIMULADA=False, VAPI_PUBLIC_KEY='pk_test', VAPI_ENGLISH_ASSISTANT_ID='asst_1',
                        ANTHROPIC_API_KEY='')
-    def test_transcricao_do_cliente_e_validada(self):
-        # No modo de voz o servidor não ouve a chamada: usa a transcrição enviada, depois de validada.
+    def test_transcricao_do_cliente_e_validada_mas_so_provisoria(self):
+        # No modo de voz a transcrição do browser é validada e mostrada, mas nunca avaliada nem cobrada:
+        # a sessão espera pela chamada verificada do Vapi (verificacao.py).
         sid = self.criar().data['id']
         self.recuar_inicio(sid, 120)
         lixo = [{'quem': 'admin', 'texto': 'x'}, 'texto', {'quem': 'aluno', 'texto': 5}]
         boas = [{'quem': 'aluno', 'texto': f} for f in FALAS_BOAS]
-        with mock.patch('apps.practice.conversa.analise.avaliar_claude', side_effect=RuntimeError('sem rede')):
+        with mock.patch('apps.practice.conversa.analise.avaliar_claude', side_effect=RuntimeError('sem rede')) as c:
             r = self.terminar(sid, lixo + boas).data
-        self.assertEqual(r['estado'], 'avaliada')
+        c.assert_not_called()
+        self.assertEqual(r['estado'], 'a_avaliar')
+        self.assertTrue(r['transcricao_provisoria'])
+        self.assertIsNone(r['notas'])
         self.assertEqual(len(r['transcricao']), len(FALAS_BOAS))
+        self.assertEqual(self.usados(), 0)
 
     def test_responder_depois_de_terminar_409(self):
         sid = self.criar().data['id']
@@ -383,8 +388,8 @@ class DonoTests(Base):
         self.assertEqual(d['estado'], 'em_curso')
         self.assertIsNone(d['notas'])
         self.assertEqual(set(d), {'id', 'situacao', 'iniciada_em', 'minutos', 'minutos_cobrados', 'segundos',
-                                  'estado', 'notas', 'transcricao', 'correccoes', 'palavras_bem_usadas', 'resumo',
-                                  'objectivos', 'padroes', 'fala'})
+                                  'estado', 'notas', 'transcricao', 'transcricao_provisoria', 'correccoes',
+                                  'palavras_bem_usadas', 'resumo', 'objectivos', 'padroes', 'fala'})
 
     def test_legado_nao_quebra(self):
         VapiSession.objects.create(session_id='legado-1', user=self.aluno, level='B1', domain='general',

@@ -202,25 +202,16 @@ class ResponderAvaliacaoTests(Fase4BBase):
         self.assertEqual(r.json()['codigo'], 'sem_fala')
         self.assertEqual(self.progresso(), (3, 0))
 
-    def test_limite_diario_de_analises(self):
-        sub = SimpleNamespace(can_use_ai_analysis=lambda: False, plan=SimpleNamespace(daily_ai_analyses_limit=5))
-        with mock.patch('apps.practice.responder._assinatura', return_value=sub), \
-                mock.patch('apps.practice.responder.transcrever') as whisper:
-            r = self.enviar()
-        self.assertEqual(r.status_code, 429)
-        self.assertEqual(r.json()['codigo'], 'ai_limit')
-        whisper.assert_not_called()
-
-    def test_conta_uma_analise(self):
-        usar = mock.MagicMock()
-        sub = SimpleNamespace(can_use_ai_analysis=lambda: True, use_ai_analysis=usar,
-                              get_ai_analyses_remaining=lambda: 4)
+    def test_licao_nao_usa_o_limite_diario_de_analises(self):
+        """Decisão do dono: o Responder das lições não é bloqueado nem conta para o limite de análises."""
         patch, _ = self._claude(VEREDICTO_BOM)
-        with patch, mock.patch('apps.practice.responder._assinatura', return_value=sub), \
+        with patch, mock.patch('apps.subscriptions.models.UserSubscription.can_use_ai_analysis', return_value=False), \
+                mock.patch('apps.subscriptions.models.UserSubscription.use_ai_analysis') as usar, \
                 mock.patch('apps.practice.responder.transcrever', return_value="I'll have it ready by five."):
             r = self.enviar()
-        usar.assert_called_once()
-        self.assertEqual(r.json()['ai_analyses_remaining'], 4)
+        self.assertEqual(r.status_code, 200, r.content)
+        usar.assert_not_called()
+        self.assertEqual(r.json()['ai_analyses_remaining'], -1)
 
     @override_settings(PRONUNCIA_SIMULADA=True, DEBUG=True)
     def test_modo_simulado_sem_ia(self):

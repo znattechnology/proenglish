@@ -162,3 +162,6 @@ if 'test' in sys.argv or 'pytest' in sys.modules:
 # Aulas em vídeo: nada de ffmpeg/Whisper em segundo plano nos testes (os testes da fase 5 ligam-no
 # com o executor substituído).
 TRANSCRICAO_AUTOMATICA = False
+
+# Notas dos alunos recalculadas no próprio pedido (sem thread) nos testes: ver apps.courses.recalculo.
+RECALCULO_NOTAS_EM_FUNDO = False

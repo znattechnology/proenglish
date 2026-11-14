@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { CheckCircle2, Circle, Loader2, Mic, MicOff, Send } from "lucide-react";
 import { Aviso, BalaoFala, Botao } from "@/components/pe";
 import { cnPe } from "@/lib/pe";
+import { FrasesAlvo, REGRA_FRASES } from "@/components/pe/conversa/FrasesAlvo";
 import { reconhecimentoDisponivel, useConversa } from "@/components/pe/conversa/useConversa";
 import { disseFrase, type Resumo } from "@/src/domains/student/conversa/api";
 import { useComecarConversaLicaoMutation, type ConversaLicao, type Exercicio } from "@/src/domains/student/laboratorio/api";
@@ -112,9 +113,15 @@ export function ListaFrases({ frases, ditas, titulo = "Use estas frases da liç�
   );
 }
 
-/** A conversa a decorrer: falas, frases já ditas, tempo e controlos. */
-export function Viva({ dados, frases, aoTerminar, aoSaltar, tituloFrases }: { dados: ConversaLicao; frases: string[]; aoTerminar: (r: Resumo) => void; aoSaltar?: () => void; tituloFrases?: string }) {
-  const c = useConversa(dados.sessao, dados.modo, dados.chave_publica);
+/**
+ * A conversa a decorrer: falas, frases já ditas, tempo e controlos.
+ * As frases-alvo aparecem só em português ("Ver em inglês" mostra-as, mas passam a contar com ajuda).
+ * semTexto (exame oral e teste de nível): sem caixa para escrever e sem ajustes durante a conversa.
+ */
+export function Viva({ dados, frases, aoTerminar, aoSaltar, tituloFrases, semTexto: pedidoSemTexto = false }: { dados: ConversaLicao; frases: string[]; aoTerminar: (r: Resumo) => void; aoSaltar?: () => void; tituloFrases?: string; semTexto?: boolean }) {
+  // No modo simulado (desenvolvimento, sem voz real) escreve-se sempre.
+  const semTexto = pedidoSemTexto && dados.modo === "vapi";
+  const c = useConversa(dados.sessao, dados.modo, dados.chave_publica, { semTexto, semAjustes: pedidoSemTexto });
   const [texto, setTexto] = useState("");
   const fim = useRef<HTMLDivElement>(null);
   const semVoz = dados.modo === "simulado" && !reconhecimentoDisponivel();
@@ -140,10 +147,16 @@ export function Viva({ dados, frases, aoTerminar, aoSaltar, tituloFrases }: { da
     return new Set(frases.filter((f) => falas.some((x) => disseFrase(f, x))));
   }, [frases, chave]);
 
+  // O sentido em português de cada frase (vem da sessão: objectivos e frases da situação).
+  const comSentido = useMemo(() => {
+    const pt = new Map([...(dados.sessao.frases ?? []), ...(dados.sessao.objectivos ?? [])].filter((f) => f.pt).map((f) => [f.en, f.pt]));
+    return frases.map((en) => ({ en, pt: pt.get(en) ?? "" }));
+  }, [frases, dados.sessao.frases, dados.sessao.objectivos]);
+
   const restante = dados.sessao.max_segundos - c.segundos;
   const aTerminar = c.estado === "a_terminar" || c.estado === "terminada";
   const estadoTexto =
-    c.estado === "a_ligar" ? "A ligar ao tutor…" : aTerminar ? "A guardar a conversa…" : c.tutorAFalar ? "O tutor está a falar" : c.microfone ? "A ouvir" : semVoz ? "Escreva a sua resposta" : "Toque no microfone para falar";
+    c.estado === "a_ligar" ? "A ligar ao tutor…" : aTerminar ? "A guardar a conversa…" : c.tutorAFalar ? "O tutor está a falar" : c.microfone ? "A ouvir" : semVoz && !semTexto ? "Escreva a sua resposta" : "Toque no microfone para falar";
 
   if (c.estado === "erro") {
     return (
@@ -169,7 +182,13 @@ export function Viva({ dados, frases, aoTerminar, aoSaltar, tituloFrases }: { da
 
   return (
     <div className="flex flex-col gap-4">
-      <ListaFrases frases={frases} ditas={ditas} titulo={tituloFrases} />
+      {comSentido.length ? (
+        <div className="flex flex-col gap-1">
+          <span className="text-pe-legenda text-pe-tinta-suave">{tituloFrases ?? "Use estas frases da lição"}</span>
+          <FrasesAlvo frases={comSentido} ditas={ditas} reveladas={c.reveladas} aoRevelar={c.revelar} compacta />
+          <span className="text-pe-legenda text-pe-tinta-suave">{REGRA_FRASES}</span>
+        </div>
+      ) : null}
 
       <div className="flex flex-col gap-3 rounded-pe-md border-[1.5px] border-pe-linha p-3 md:p-4">
         <div className="flex items-center justify-between gap-3 text-pe-legenda">
@@ -216,6 +235,7 @@ export function Viva({ dados, frases, aoTerminar, aoSaltar, tituloFrases }: { da
               {c.microfone ? <MicOff aria-hidden className="size-6" /> : <Mic aria-hidden className="size-6" />}
             </button>
           )}
+          {semTexto ? null : (
           <form
             className="flex min-w-0 flex-1 items-center gap-2"
             onSubmit={(e) => {
@@ -237,6 +257,7 @@ export function Viva({ dados, frases, aoTerminar, aoSaltar, tituloFrases }: { da
               <Send aria-hidden className="size-5" />
             </button>
           </form>
+          )}
         </div>
       </div>
 

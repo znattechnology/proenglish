@@ -87,7 +87,8 @@ def ligada(request, sessao_id):
 @throttle_classes([LimiteResponder])
 def responder(request, sessao_id):
     try:
-        return Response(servico.responder(request.user, sessao_id, _corpo(request).get('texto')))
+        corpo = _corpo(request)
+        return Response(servico.responder(request.user, sessao_id, corpo.get('texto'), corpo.get('escrito') is True))
     except ErroConversa as e:
         return _erro(e)
 
@@ -106,7 +107,23 @@ def ajuste(request, sessao_id):
 @permission_classes([IsAuthenticated])
 def terminar(request, sessao_id):
     try:
-        return Response(servico.terminar(request.user, sessao_id, _corpo(request).get('transcricao')))
+        corpo = _corpo(request)
+        return Response(servico.terminar(request.user, sessao_id, corpo.get('transcricao'),
+                                         call_id=corpo.get('call_id'), reveladas=corpo.get('reveladas')))
+    except ErroConversa as e:
+        return _erro(e)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+@throttle_classes([LimiteAjuste])
+def ajuda(request, sessao_id):
+    """Durante a conversa: {escrito: texto} (o aluno escreveu em vez de falar) ou {revelada: frase}
+    (viu a frase-alvo em inglês). Só baixa o resultado dessas frases (no máximo 'com_ajuda')."""
+    corpo = _corpo(request)
+    try:
+        return Response(servico.registar_ajuda(request.user, sessao_id, escrito=corpo.get('escrito'),
+                                               revelada=corpo.get('revelada')))
     except ErroConversa as e:
         return _erro(e)
 

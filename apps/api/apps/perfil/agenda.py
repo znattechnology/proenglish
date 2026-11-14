@@ -99,8 +99,19 @@ def revisto_hoje(item, agora=None):
 
 
 def aplicar(item, nota, agora=None):
-    """Aplica uma revisão ao item (sem gravar). Devolve o intervalo em dias."""
+    """
+    Aplica uma revisão ao item (sem gravar). Devolve o intervalo em dias.
+
+    Segunda revisão (acerto) no mesmo dia de Luanda: a memória não ficou mais estável por se repetir
+    a frase horas depois (sem isto, três conversas no mesmo dia multiplicavam a estabilidade). A
+    estabilidade e a dificuldade ficam como estão e a próxima revisão nunca fica mais longe do que S
+    dias; quem chama pode subir o estado na mesma (uma conversa sozinho continua a dar 'sozinho').
+    Um erro aplica-se sempre.
+    """
     agora = agora or timezone.now()
+    if (nota != ERREI and revisto_hoje(item, agora) and item.estabilidade is not None
+            and item.dificuldade is not None):
+        return _manter_no_mesmo_dia(item, agora)
     dias = None
     if item.ultima_revisao is not None:
         dias = max(0.0, (agora - item.ultima_revisao).total_seconds() / 86400.0)
@@ -111,6 +122,18 @@ def aplicar(item, nota, agora=None):
     item.repeticoes += 1
     item.ultima_revisao = agora
     item.proxima_revisao = para_o_dia(intervalo, agora)
+    return intervalo
+
+
+def _manter_no_mesmo_dia(item, agora):
+    intervalo = int(_limitar(round(item.estabilidade), 1, INTERVALO_MAX))
+    destino = para_o_dia(intervalo, agora)
+    if item.proxima_revisao is None or item.proxima_revisao < para_o_dia(1, agora):
+        item.proxima_revisao = destino  # estava para hoje (ou atrasado): sai de hoje
+    elif item.proxima_revisao > destino:
+        item.proxima_revisao = destino
+    else:
+        intervalo = max(1, (hoje_luanda(item.proxima_revisao) - hoje_luanda(agora)).days)
     return intervalo
 
 

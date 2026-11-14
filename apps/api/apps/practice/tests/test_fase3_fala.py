@@ -203,7 +203,8 @@ class TempoFalaTests(SimpleTestCase):
 
 
 @override_settings(CONVERSA_SIMULADA=False, VAPI_PUBLIC_KEY='pk_test', VAPI_ENGLISH_ASSISTANT_ID='asst_1',
-                   VAPI_WEBHOOK_SECRET=SEGREDO, VAPI_WEBHOOK_URL='https://api.exemplo.ao/api/v1/practice/vapi/webhook/')
+                   VAPI_WEBHOOK_SECRET=SEGREDO, VAPI_WEBHOOK_URL='https://api.exemplo.ao/api/v1/practice/vapi/webhook/',
+                   VAPI_PRIVATE_KEY=None)
 class WebhookTempoFalaTests(ConversaBase):
     """O end-of-call-report com tempos grava o tempo de fala medido e os minutos do dia."""
 
@@ -248,7 +249,9 @@ class WebhookTempoFalaTests(ConversaBase):
         sid = self.criar().data['id']
         self.recuar_inicio(sid, 130)
         r = self.terminar(sid, [{'quem': 'aluno', 'texto': t} for t in FALAS_BOAS])
-        self.assertEqual(r.data['fala']['fonte'], 'estimado')
+        # A transcrição do browser é só provisória: sem tempo de fala até à chamada verificada.
+        self.assertEqual(r.data['estado'], 'a_avaliar')
+        self.assertIsNone(r.data['fala'])
         self.enviar_com_tempos(sid)
         s = VapiSession.objects.get(pk=sid)
         self.assertEqual((s.fonte_tempo, s.segundos_aluno), ('medido', 24.0))
@@ -325,7 +328,7 @@ class AzureInterpretarTests(SimpleTestCase):
         h = post.call_args.kwargs['headers']
         self.assertEqual(h['Ocp-Apim-Subscription-Key'], 'chave-secreta')
         self.assertEqual(h['Content-Type'], 'audio/wav; codecs=audio/pcm; samplerate=16000')
-        self.assertEqual(post.call_args.kwargs['timeout'], 15)
+        self.assertEqual(post.call_args.kwargs['timeout'], azure.TIMEOUT)
         self.assertEqual(r.nota, 80)
 
     @override_settings(AZURE_SPEECH_KEY='chave-secreta', AZURE_SPEECH_REGION='westeurope')
@@ -339,13 +342,22 @@ class AzureInterpretarTests(SimpleTestCase):
             azure.ProvedorAzure().avaliar(b'x', 'audio/webm', None, modo='livre')
 
     def test_ffmpeg_converte(self):
-        feito = SimpleNamespace(returncode=0, stdout=b'RIFF' + b'\x00' * 200)
+        import io
+        import wave
+        feito = SimpleNamespace(returncode=0, stdout=b'\x01\x00' * 800)  # PCM s16le, sem cabeçalho
         with mock.patch.object(azure.shutil, 'which', return_value='/usr/bin/ffmpeg'), \
                 mock.patch.object(azure.subprocess, 'run', return_value=feito) as run:
-            self.assertEqual(azure.para_wav(b'webm', 'audio/webm'), feito.stdout)
+            wav = azure.para_wav(b'webm', 'audio/webm')
         args = run.call_args.args[0]
         self.assertIn('16000', args)
         self.assertIn('pcm_s16le', args)
+        self.assertEqual(args[args.index('-f') + 1], 's16le')
+        self.assertIn('-map_metadata', args)
+        # Cabeçalho WAV verdadeiro, com os tamanhos certos (o ffmpeg num pipe não os consegue escrever).
+        self.assertEqual(wav[:4], b'RIFF')
+        self.assertEqual(int.from_bytes(wav[4:8], 'little'), len(wav) - 8)
+        with wave.open(io.BytesIO(wav)) as w:
+            self.assertEqual((w.getnchannels(), w.getsampwidth(), w.getframerate(), w.getnframes()), (1, 2, 16000, 800))
         with mock.patch.object(azure.shutil, 'which', return_value='/usr/bin/ffmpeg'), \
                 mock.patch.object(azure.subprocess, 'run', return_value=SimpleNamespace(returncode=1, stdout=b'')):
             with self.assertRaises(ErroProvedor):

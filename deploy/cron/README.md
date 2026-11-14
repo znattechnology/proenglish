@@ -15,6 +15,21 @@ pagos terminados não voltam ao Gratuito e os lembretes da meta não saem.
 
 Ambos são idempotentes: correr duas vezes seguidas não duplica avisos.
 
+## Depois de cada deploy (não é cron)
+
+Quando o deploy muda as regras da nota dos cursos (`GradeCalculatorService.CALCULATION_VERSION`
+sobe), as notas guardadas ficam com a versão antiga. A emissão de certificados já não confia nelas
+(recalcula sempre antes de emitir) e as páginas das notas recalculam as antigas quando o aluno as
+abre, mas o painel do professor e as listas lêem a nota guardada. Depois de `migrate`, correr uma
+vez (idempotente; só toca nas notas de versão antiga):
+
+```bash
+cd /opt/proenglish/apps/api
+./venv/bin/python manage.py recalcular_notas_cursos --so-antigas
+```
+
+Não está numa migração porque recalcula cada aluno em cada curso (pode demorar com muitos alunos).
+
 ## Instalar no VPS
 
 1. Entrar no VPS com o utilizador que corre a API (não root, se possível).

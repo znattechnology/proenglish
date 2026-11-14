@@ -56,9 +56,10 @@ function Conteudo({ notas, courseId }: { notas: Notas; courseId: string }) {
   const elegivel = notas.certificate_eligibility.is_eligible;
   const minimo = notas.nota_minima ?? notas.certificate_eligibility.nota_minima ?? 70;
   const semCertificados = notas.plano_inclui_certificados === false;
-  // A conversa só conta quando tem peso neste curso.
+  // Sem peso, a conversa não entra na nota, mas um requisito de conversa por cumprir continua a
+  // impedir o certificado: só se esconde quando está cumprido.
   const requisitos = Object.entries(notas.certificate_eligibility.details).filter(
-    ([chave, r]) => !r.info_only && !(chave === "conversation_score" && !notas.weight_info.conversation_weight)
+    ([chave, r]) => !r.info_only && !(chave === "conversation_score" && !notas.weight_info.conversation_weight && r.met)
   );
   const w = notas.weight_info;
   const activos = new Set(w.active_components);

@@ -520,6 +520,11 @@ class AnalyticsAndHooksTests(StudyTrackingTestBase):
         cap = Chapter.objects.create(section=CourseSection.objects.create(course=self.course, sectionTitle='S', order=1),
                                      title='Vídeo', content='x', type='Video', order=1,
                                      video='https://cdn.exemplo.ao/videos/v.mp4')  # sem vídeo ficava escondida
+        # O aluno abre a aula (o crédito não passa do tempo real desde a abertura).
+        from datetime import timedelta as _td
+        from apps.courses.tempo_video import _chave_aberta
+        from django.core.cache import cache
+        cache.set(_chave_aberta(self.student.pk, cap.pk), (timezone.now() - _td(minutes=10)).timestamp(), 3600)
         resp = self.client.put(url, {'sections': [], 'watched_seconds': 240, 'chapter_id': str(cap.id)}, format='json')
         self.assertEqual(resp.status_code, 200, resp.content)
         log = DailyStudyLog.objects.get(user=self.student)

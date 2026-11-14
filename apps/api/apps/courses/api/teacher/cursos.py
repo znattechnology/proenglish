@@ -440,9 +440,15 @@ def _definicoes_exame(c):
     """Exame oral do curso (fase 6): obrigatório para o certificado e nota mínima para passar."""
     from apps.courses.models import CourseGradingConfig
     config = CourseGradingConfig.objects.filter(course=c).first()
+    if config is None:
+        config = CourseGradingConfig(course=c)  # valores por omissão, não gravado
+    pesos = ((config.exam_weight or 0) + (config.phrases_weight or 0) + (config.conversation_weight or 0)
+             + (config.study_weight or 0))
     return {
-        'exame_oral': config.exam_enabled if config else True,
-        'nota_minima_exame': int(round(config.min_exam_score)) if config else 60,
+        'exame_oral': config.exam_enabled,
+        'nota_minima_exame': int(round(config.min_exam_score)),
+        # Só leitura: quanto vale o exame na nota (peso configurado sobre o total dos pesos).
+        'peso_exame': round((config.exam_weight or 0) * 100 / pesos) if pesos else 0,
     }
 
 
@@ -631,13 +637,11 @@ def curso_detalhe(request, curso_id):
 
 
 def _recalcular_notas(curso_id):
-    from apps.courses.models import CourseEnrollment
-    from apps.courses.services.grade_calculator import GradeCalculatorService
-    for insc in CourseEnrollment.objects.filter(course_id=curso_id, is_active=True).select_related('user', 'course'):
-        try:
-            GradeCalculatorService(insc.user, insc.course).calculate_and_save(change_reason='recalculation')
-        except Exception:
-            logger.exception('Falha ao recalcular a nota de %s no curso %s', insc.user_id, curso_id)
+    """Recalcula as notas dos inscritos numa thread à parte (fora do pedido; ver apps.courses.recalculo)."""
+    from apps.courses.recalculo import recalcular_notas_em_fundo
+    from apps.practice.conversa.exame import sincronizar_aprovacao
+    sincronizar_aprovacao(Course.objects.get(pk=curso_id))  # passou/não passou segue a nota mínima de agora
+    recalcular_notas_em_fundo(curso_id)
 
 
 # ---------------------------------------------------------------------------

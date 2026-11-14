@@ -15,9 +15,13 @@ em voz alta, livremente; a resposta deve usar uma frase-alvo/estrutura da liçã
    num exercício novo (regras de challenge-progress/). Frase-alvo usada: entra no perfil de fala
    como 'com_ajuda' (a pergunta pediu-a: não foi dita sozinha numa conversa).
 
-Usa o limite diário de análises com IA do plano (como analyze-ai-pronunciation/), e o modo
-simulado (PRONUNCIA_SIMULADA, só com DEBUG) não chama nem o Whisper nem o Claude.
+Não conta para o limite diário de análises com IA do plano (decisão do dono: nas lições o limite
+diário de lições já limita o custo; o limite fica na revisão e no "Repetir em voz alta" das aulas).
+O modo simulado (PRONUNCIA_SIMULADA, só com DEBUG) não chama nem o Whisper nem o Claude.
 Falha técnica (Whisper/Claude): 503 analise_indisponivel com token para saltar o exercício.
+Silêncio: 422 sem_fala; gravação recusada pelo fornecedor: 422 gravacao_invalida; mais de
+services/gravacao.MAX_BYTES: 413. Nenhum destes tira vidas.
+Tempo: Whisper (20 s, sem repetições) + Claude (TIMEOUT) ficam abaixo dos 50 s.
 """
 import io
 import logging
@@ -79,6 +83,10 @@ ESQUEMA = {
 
 class Indisponivel(Exception):
     """Falha técnica (transcrição ou avaliação): não é erro do aluno."""
+
+
+class GravacaoInvalida(Exception):
+    """O fornecedor recusou a gravação (formato, ficheiro estragado): grava-se outra vez."""
 
 
 def dados_do_exercicio(ch):
@@ -147,11 +155,15 @@ def modo_simulado():
 
 def transcrever(audio):
     """Fala transcrita (services/transcricao_fala: texto + tempos das palavras). Levanta Indisponivel
-    se o serviço falhar; texto '' se não houve fala."""
+    se o serviço falhar, GravacaoInvalida se o fornecedor recusar a gravação; texto '' se não houve fala."""
     from .services import transcricao_fala
     try:
         audio.seek(0)
         t = transcricao_fala.transcrever(audio.getvalue(), 'audio/webm', 'en', True, getattr(audio, 'name', None))
+    except transcricao_fala.ErroTranscricao as e:
+        if getattr(e, 'audio_invalido', False):
+            raise GravacaoInvalida(str(e)) from e
+        raise Indisponivel(f'transcrição: {type(e).__name__}') from e
     except Exception as e:
         raise Indisponivel(f'transcrição: {type(e).__name__}') from e
     t.texto = ' '.join(str(t.texto or '').split())[:2000]
@@ -195,12 +207,6 @@ def guardar(user, ch, ex, transcricao, veredicto, simulada, tempos=None):
     return tentativa
 
 
-def _assinatura(user):
-    from apps.subscriptions.models import UserSubscription
-    sub = UserSubscription.objects.select_related('plan').filter(user=user).first()
-    return sub if sub is not None and sub.is_active() else None
-
-
 def _fala_da_tentativa(tentativa):
     from .services.metricas_fala import resumo_publico
     if tentativa is None:
@@ -218,6 +224,7 @@ class ResponderEmVozView(APIView):
 
     def post(self, request, challenge_id):
         from apps.courses.api.student.practice_courses.views import has_unlimited_hearts
+        from .services import gravacao
         from .views_ai import _analise_indisponivel, _exercicio_do_aluno
 
         ch, erro = _exercicio_do_aluno(challenge_id, 'RESPONDER', request.user)
@@ -228,16 +235,12 @@ class ResponderEmVozView(APIView):
         if not audio_file:
             return Response({'codigo': 'audio_em_falta', 'mensagem': 'Grave a sua resposta antes de enviar.'},
                             status=status_http.HTTP_400_BAD_REQUEST)
+        if gravacao.demasiado_grande(audio_file):
+            return gravacao.resposta_grande()
         if not ex['pergunta'] or not ex['frase_alvo']:
-            return Response({'codigo': 'exercicio_incompleto', 'mensagem': 'Este exercício está incompleto.'},
+            return Response({'codigo': 'exercicio_incompleto', 'pode_saltar': True,
+                             'mensagem': 'Este exercício está incompleto. Pode saltá-lo.'},
                             status=status_http.HTTP_400_BAD_REQUEST)
-
-        sub = _assinatura(request.user)
-        if sub is not None and not sub.can_use_ai_analysis():
-            return Response({'error': 'ai_limit', 'codigo': 'ai_limit',
-                             'mensagem': 'Já usou as análises com IA de hoje. Amanhã há mais.',
-                             'ai_analyses_remaining': 0, 'limit': sub.plan.daily_ai_analyses_limit},
-                            status=status_http.HTTP_429_TOO_MANY_REQUESTS)
 
         progresso, _ = UserProgress.objects.get_or_create(user=request.user, defaults={'hearts': 5, 'points': 0})
         is_practice = ChallengeProgress.objects.filter(user=request.user, challenge=ch).exists()
@@ -256,10 +259,13 @@ class ResponderEmVozView(APIView):
             else:
                 transcricao, tempos = _texto_e_tempos(transcrever(audio))
             if not transcricao.strip():
-                # Silêncio ou só ruído: grava-se outra vez, sem perder vidas.
+                # Silêncio ou só ruído: grava-se outra vez, sem perder vidas e sem chamar o Claude.
                 return Response({'codigo': 'sem_fala', 'mensagem': 'Não ouvimos a sua resposta. Grave outra vez, mais perto do microfone.'},
                                 status=status_http.HTTP_422_UNPROCESSABLE_ENTITY)
             veredicto = veredicto_simulado(ex) if simulada else avaliar_claude(ex, transcricao)
+        except GravacaoInvalida as e:
+            logger.info('responder: gravação recusada pelo fornecedor: %s', e)
+            return gravacao.resposta_invalida()
         except Indisponivel as e:
             logger.warning('responder: avaliação indisponível: %s', e)
             return _analise_indisponivel(request.user, ch)
@@ -272,27 +278,22 @@ class ResponderEmVozView(APIView):
 
         aceite = veredicto['aceite']
         perdeu = 0
+        # Tudo decidido com o progresso do aluno trancado: dois envios ao mesmo tempo dão os +10
+        # pontos no máximo uma vez (só quem cria o progresso do exercício) e tiram no máximo uma vida.
         with transaction.atomic():
             progresso = UserProgress.objects.select_for_update().get(pk=progresso.pk)
+            existente = ChallengeProgress.objects.filter(user=request.user, challenge=ch).first()
             if aceite:
-                cp, criado = ChallengeProgress.objects.get_or_create(user=request.user, challenge=ch,
-                                                                     defaults={'completed': True})
-                if not criado and not cp.completed:
-                    cp.completed = True
-                    cp.save()
-                if not is_practice:
+                if existente is None:
+                    ChallengeProgress.objects.create(user=request.user, challenge=ch, completed=True)
                     progresso.add_points(10, reason='challenge', curso_id=ch.lesson.unit.course_id)
-            elif not is_practice and not ilimitadas and progresso.hearts > 0:
+                elif not existente.completed:
+                    existente.completed = True
+                    existente.save()
+            elif existente is None and not ilimitadas and progresso.hearts > 0:
                 progresso.reduce_hearts()
                 perdeu = 1
-
-        restantes = -1
-        if sub is not None:
-            try:
-                sub.use_ai_analysis()
-                restantes = sub.get_ai_analyses_remaining()
-            except Exception:
-                logger.exception('responder: falha ao contar a análise com IA')
+        progresso.refresh_from_db(fields=['points'])
 
         return Response({
             'success': True,
@@ -309,7 +310,7 @@ class ResponderEmVozView(APIView):
             'dica': None if aceite else (ch.hint or None),
             'heartsUsed': perdeu,
             'user_progress': {'hearts': 999 if ilimitadas else progresso.hearts, 'points': progresso.points},
-            'ai_analyses_remaining': restantes,
+            'ai_analyses_remaining': -1,  # as lições não contam para o limite de análises
             'simulada': simulada,
             'fala': _fala_da_tentativa(tentativa),
         }, status=status_http.HTTP_200_OK)

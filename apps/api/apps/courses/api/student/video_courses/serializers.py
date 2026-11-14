@@ -751,6 +751,7 @@ class UserCourseProgressUpdateSerializer(serializers.Serializer):
     sections = serializers.ListField(child=serializers.DictField())
     
     def update(self, instance, validated_data):
+        from apps.courses.ciclo import q_aula_visivel
         from apps.courses.conclusao import actualizar_progresso, registar
         sections_data = validated_data.get('sections', [])
         
@@ -764,8 +765,8 @@ class UserCourseProgressUpdateSerializer(serializers.Serializer):
                 completed = chapter_data.get('completed', False)
                 
                 try:
-                    # Só capítulos deste curso (senão o progresso podia passar de 100%).
-                    chapter = Chapter.objects.get(id=chapter_id, section__course=instance.course)
+                    # Só capítulos visíveis deste curso (senão o progresso podia passar de 100%).
+                    chapter = Chapter.objects.get(q_aula_visivel(), id=chapter_id, section__course=instance.course)
                 except (Chapter.DoesNotExist, ValueError, TypeError, ValidationError):
                     continue
                 # Um vídeo com duração conhecida só conta como visto quando o servidor registou a

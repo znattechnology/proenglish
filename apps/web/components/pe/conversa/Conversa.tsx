@@ -2,10 +2,11 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { CheckCircle2, ChevronLeft, Circle, Keyboard, Loader2, Mic, MicOff, Send, Volume2 } from "lucide-react";
+import { ChevronLeft, Keyboard, Loader2, Mic, MicOff, Send, Volume2 } from "lucide-react";
 import { Aviso, BalaoFala, Botao } from "@/components/pe";
 import { cnPe } from "@/lib/pe";
 import { disseFrase, type NovaSessao } from "@/src/domains/student/conversa/api";
+import { FrasesAlvo, REGRA_FRASES } from "./FrasesAlvo";
 import { falarNoBrowser, reconhecimentoDisponivel, useConversa, type FalaViva } from "./useConversa";
 
 const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
@@ -230,26 +231,9 @@ export function Conversa({ sessao, modo, chavePublica, minutosUsadosHoje, minuto
               Objectivos desta conversa
             </h2>
             <p className="m-0 text-[14px] leading-5 text-pe-tinta-suave" aria-live="polite">
-              Já disse {ditos.size} de {objectivos.length}. Diga-as sozinho, quando fizer sentido.
+              Já disse {ditos.size} de {objectivos.length}. {REGRA_FRASES}
             </p>
-            <ul className="m-0 flex list-none flex-col p-0">
-              {objectivos.map((o) => {
-                const dito = ditos.has(o.en);
-                return (
-                  <li key={o.en} className="border-b border-pe-fundo-forte last:border-b-0">
-                    <button type="button" onClick={() => falarNoBrowser(o.en)} className="flex w-full items-start gap-2.5 bg-transparent py-2.5 text-left" aria-label={`${dito ? "Já disse" : "Ainda não disse"}. Ouvir: ${o.en}${o.pt ? `. ${o.pt}` : ""}`}>
-                      {dito ? <CheckCircle2 aria-hidden className="mt-0.5 size-5 shrink-0 text-pe-certo" /> : <Circle aria-hidden className="mt-0.5 size-5 shrink-0 text-pe-tinta-suave" />}
-                      <span className="flex flex-col">
-                        <span lang="en" className={cnPe("font-semibold leading-[22px]", dito && "text-pe-certo")}>
-                          {o.en}
-                        </span>
-                        {o.pt ? <span className="text-[14px] leading-5 text-pe-tinta-suave">{o.pt}</span> : null}
-                      </span>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
+            <FrasesAlvo frases={objectivos} ditas={ditos} reveladas={c.reveladas} aoRevelar={c.revelar} />
           </section>
         ) : null}
         {outrasFrases.length ? (
@@ -257,18 +241,7 @@ export function Conversa({ sessao, modo, chavePublica, minutosUsadosHoje, minuto
             <h2 id="titulo-frases" className="m-0 font-pe-titulo text-pe-titulo-s">
               {objectivos.length ? "Outras frases que pode usar" : "Frases que pode usar"}
             </h2>
-            <ul className="m-0 flex list-none flex-col p-0">
-              {outrasFrases.map((f) => (
-                <li key={f.en} className="border-b border-pe-fundo-forte py-2.5">
-                  <button type="button" onClick={() => falarNoBrowser(f.en)} className="flex w-full flex-col items-start bg-transparent p-0 text-left" aria-label={`Ouvir: ${f.en}. ${f.pt}`}>
-                    <span lang="en" className="font-semibold leading-[22px]">
-                      {f.en}
-                    </span>
-                    <span className="text-[14px] leading-5 text-pe-tinta-suave">{f.pt}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <FrasesAlvo frases={outrasFrases} ditas={new Set()} reveladas={c.reveladas} aoRevelar={c.revelar} />
           </section>
         ) : null}
         <section aria-labelledby="titulo-nesta" className="flex flex-col gap-1.5 rounded-pe-md bg-pe-fundo-suave p-5">

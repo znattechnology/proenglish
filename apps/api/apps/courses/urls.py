@@ -8,6 +8,10 @@ new features in v2.
 
 from django.urls import path, include
 from . import views
+# O PUT de progresso e as tentativas dos questionários usam as views dos alunos (regras do
+# questionário, do vídeo visto, da inscrição e do plano; nota corrigida no servidor). As antigas
+# deixavam o browser marcar qualquer aula como concluída e dar a si próprio 100% no questionário.
+from apps.courses.api.student.video_courses import views as progresso_aluno
 from apps.courses.legado import rota_removida
 
 app_name = 'courses'
@@ -45,7 +49,7 @@ urlpatterns = [
     # User course progress - matches Express /users/course-progress endpoints
     path('users/<uuid:userId>/enrolled/', views.get_user_enrolled_courses, name='user_enrolled_courses'),
     path('users/<uuid:userId>/progress/<uuid:courseId>/', views.get_user_course_progress, name='user_course_progress'),
-    path('users/<uuid:userId>/progress/<uuid:courseId>/update/', views.update_user_course_progress, name='update_user_course_progress'),
+    path('users/<uuid:userId>/progress/<uuid:courseId>/update/', progresso_aluno.update_user_course_progress, name='update_user_course_progress'),
     
     # Stripe payments - matches Express /transactions/stripe-payment-intent
     
@@ -80,9 +84,9 @@ urlpatterns = [
     
     # Quiz attempts (Phase 1 Bridge - maintained for compatibility)
     path('chapters/<uuid:chapterId>/quiz/attempts/', 
-         views.StudentQuizAttemptListCreateView.as_view(), name='quiz_attempts'),
+         progresso_aluno.StudentQuizAttemptListCreateView.as_view(), name='quiz_attempts'),
     path('chapters/<uuid:chapterId>/quiz/summary/', 
-         views.get_student_quiz_summary, name='quiz_summary'),
+         progresso_aluno.get_student_quiz_summary, name='quiz_summary'),
     
     # Admin Analytics - Course performance and insights
     path('admin/analytics/overview/', 

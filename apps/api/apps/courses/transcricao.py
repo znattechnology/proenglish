@@ -151,12 +151,19 @@ def guardar_manual(chapter, linhas_limpas):
 # Agendar (pedido do professor / vídeo novo)
 # ---------------------------------------------------------------------------
 
+# No máximo 2 transcrições ao mesmo tempo por processo (ffmpeg + Whisper pesam na CPU, no disco e
+# na memória); as outras threads esperam pela vez.
+TRANSCRICOES_EM_SIMULTANEO = threading.BoundedSemaphore(2)
+
+
 def executar_em_fundo(funcao, *args):
     """Corre numa thread à parte (sem fila de tarefas; o comando transcrever_aulas apanha o que se
-    perder num reinício). Os testes substituem esta função para correr de imediato."""
+    perder num reinício), no máximo TRANSCRICOES_EM_SIMULTANEO de cada vez. Os testes substituem
+    esta função para correr de imediato."""
     def correr():
         try:
-            funcao(*args)
+            with TRANSCRICOES_EM_SIMULTANEO:
+                funcao(*args)
         except Exception:
             logger.exception('transcrição: falha em segundo plano')
         finally:
@@ -264,9 +271,13 @@ def _url_permitido(url):
     return any(url.startswith(b) for b in _bases_s3())
 
 
+def _maximo_bytes():
+    return getattr(settings, 'TRANSCRICAO_MAX_BYTES', 2200 * 1024 * 1024)
+
+
 def descarregar(url, pasta, maximo=None):
     import requests
-    maximo = maximo or getattr(settings, 'TRANSCRICAO_MAX_BYTES', 2200 * 1024 * 1024)
+    maximo = maximo or _maximo_bytes()
     destino = Path(pasta) / 'video'
     recebidos = 0
     try:
@@ -289,6 +300,9 @@ def descarregar(url, pasta, maximo=None):
 def ficheiro_do_video(url, pasta):
     local = _caminho_media(url)
     if local is not None:
+        # O mesmo limite dos vídeos descarregados vale para os envios locais (/media/...).
+        if local.stat().st_size > _maximo_bytes():
+            raise ErroTranscricao('O vídeo é demasiado grande para transcrever automaticamente.')
         return local
     if url.startswith(('http://', 'https://')) and _url_permitido(url):
         return descarregar(url, pasta)
@@ -445,7 +459,11 @@ def depois_da_transcricao(chapter):
 
 
 def relocalizar_frases(chapter):
-    """Procura cada frase da aula na transcrição e actualiza inicio/fim (sem transcrição: não mexe)."""
+    """
+    Procura cada frase da aula na transcrição e actualiza inicio/fim (sem transcrição: não mexe).
+    Uma frase que já não aparece na transcrição nova perde os tempos (inicio/fim = None): os
+    antigos apontavam para o vídeo anterior.
+    """
     from apps.courses import frases_aula
     segs = linhas(chapter)
     if not segs:
@@ -453,7 +471,7 @@ def relocalizar_frases(chapter):
     n = 0
     for f in chapter.frases_aula.all():
         inicio, fim = frases_aula.localizar(f.texto, segs)
-        if inicio is not None and (inicio, fim) != (f.inicio, f.fim):
+        if (inicio, fim) != (f.inicio, f.fim):
             f.inicio, f.fim = inicio, fim
             f.save(update_fields=['inicio', 'fim', 'actualizada_em'])
             n += 1

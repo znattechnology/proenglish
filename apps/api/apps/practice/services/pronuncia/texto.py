@@ -20,7 +20,8 @@ def de_pronunciation_result(r, fonte='texto'):
         sugestoes=list(g('suggestions', []) or []), palavras_problematicas=list(g('problematic_words', []) or []),
         nota_pronuncia=g('pronunciation_score', 0) or 0, nota_clareza=g('clarity_score', 0) or 0,
         credito=g('partial_credit', 0) or 0, confianca=g('confidence_level', 0.5),
-        indisponivel=bool(g('indisponivel', False)), tempos=g('transcricao_fala'),
+        indisponivel=bool(g('indisponivel', False)), sem_fala=g('sem_fala', False) is True,
+        audio_invalido=g('audio_invalido', False) is True, tempos=g('transcricao_fala'),
     )
 
 

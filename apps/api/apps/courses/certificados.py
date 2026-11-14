@@ -144,8 +144,13 @@ def emitir_certificado(user, course, grade=None):
     Emite (ou devolve o existente) certificado. Devolve (certificado, criado).
     Levanta CertificadoIndisponivel se não for possível.
 
-    `grade`: StudentCourseGrade já calculada (os signals passam-na para não recalcular e
-    não entrar em recursão); sem ela a nota é recalculada aqui.
+    `grade` é ignorada para decidir: a elegibilidade guardada pode ser de uma versão antiga do
+    cálculo (antes do exame oral, por exemplo) e emitia certificados sem exame. Por isso a nota é
+    sempre recalculada aqui com as regras actuais:
+    - sem `grade` (pedido do aluno, progresso a 100%): calculate_and_save (a nota guardada fica
+      actualizada; o signal da nota pode emitir durante o cálculo);
+    - com `grade` (signal da nota guardada): calcular_sem_guardar, para não voltar a gravar a
+      nota e disparar o signal outra vez (recursão).
     """
     from apps.courses.models import CourseCertificate, CourseEnrollment
     from apps.courses.services.grade_calculator import GradeCalculatorService
@@ -170,6 +175,8 @@ def emitir_certificado(user, course, grade=None):
         existente = CourseCertificate.objects.filter(user=user, course=course).first()
         if existente:
             return existente, True
+    else:
+        grade = GradeCalculatorService(user, course).calcular_sem_guardar()
 
     em_falta = requisitos_em_falta(grade, progresso)
     if em_falta:

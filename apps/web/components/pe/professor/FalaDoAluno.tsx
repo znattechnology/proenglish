@@ -5,7 +5,7 @@ import { Aviso, Botao, Etiqueta, Osso } from "@/components/pe";
 import { NotasDoExame } from "@/components/pe/curso/Exame";
 import { dataCurta } from "@/src/domains/shared/exameOral";
 import { MinutosPorDia } from "@/components/pe/estatisticas/MinutosPorDia";
-import { useFalaAlunoQuery, useReverExameMutation, type ExameDoAluno, type FalaDoAluno as DadosFala } from "@/src/domains/teacher/professor/alunos";
+import { useFalaAlunoQuery, useProcurarGravacaoExameMutation, useReverExameMutation, type ExameDoAluno, type FalaDoAluno as DadosFala } from "@/src/domains/teacher/professor/alunos";
 
 const COMPETENCIAS = [
   ["falar", "Falar"],
@@ -81,6 +81,7 @@ export function FalaDoAluno({ alunoId }: { alunoId: string }) {
 
 function CartaoExame({ e, alunoId }: { e: ExameDoAluno; alunoId: string }) {
   const [rever, { isLoading }] = useReverExameMutation();
+  const [procurar, { isLoading: aProcurar, data: procurado }] = useProcurarGravacaoExameMutation();
   const [aRever, setARever] = useState(false);
   const [nota, setNota] = useState(String(Math.round(e.nota ?? e.nota_ia ?? 0)));
   const [comentario, setComentario] = useState(e.revisao?.comentario ?? "");
@@ -133,9 +134,22 @@ function CartaoExame({ e, alunoId }: { e: ExameDoAluno; alunoId: string }) {
           O seu browser não toca áudio.
         </audio>
       ) : (
-        <p className="m-0 text-pe-legenda text-pe-tinta-suave">
-          {e.consentimento_gravacao ? (e.gravacao_apagada ? "A gravação foi apagada." : "A gravação ainda não está disponível.") : "O aluno não autorizou a gravação deste exame."}
-        </p>
+        <div className="flex flex-wrap items-center gap-3">
+          <p className="m-0 text-pe-legenda text-pe-tinta-suave">
+            {e.consentimento_gravacao
+              ? e.gravacao_apagada
+                ? "A gravação foi apagada."
+                : procurado && !procurado.gravacao_url
+                  ? "A gravação ainda não chegou do serviço de voz. Tente daqui a alguns minutos."
+                  : "A gravação ainda não está disponível."
+              : "O aluno não autorizou a gravação deste exame."}
+          </p>
+          {e.consentimento_gravacao && !e.gravacao_apagada ? (
+            <Botao tipo="ligacao" tamanho="pequeno" disabled={aProcurar} onClick={() => void procurar({ id: e.id, alunoId })}>
+              {aProcurar ? "A procurar…" : "Procurar a gravação"}
+            </Botao>
+          ) : null}
+        </div>
       )}
 
       {avaliado ? (

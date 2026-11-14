@@ -62,6 +62,8 @@ export type DefinicoesCurso = {
   /** Exame oral obrigatório para o certificado (fase 6) e nota mínima para o passar. */
   exame_oral: boolean;
   nota_minima_exame: number;
+  /** Só leitura: quanto vale o exame na nota do curso (%), com os pesos configurados. */
+  peso_exame?: number;
   pode_repetir: boolean;
   mostrar_progresso: boolean;
   resumo_semanal: boolean;

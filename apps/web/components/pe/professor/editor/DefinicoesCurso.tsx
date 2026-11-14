@@ -122,7 +122,7 @@ export function FormDefinicoes({ curso }: { curso: DetalheCurso }) {
         />
         <Interruptor
           rotulo="Exame oral obrigatório"
-          descricao="O aluno faz uma conversa de 8 a 10 minutos com o tutor sobre as situações do curso. Vale 40% da nota. Desligado, a nota vem das frases, das conversas e do estudo."
+          descricao={`O aluno faz uma conversa de 8 a 10 minutos com o tutor sobre as situações do curso.${d.peso_exame != null ? ` Vale ${d.peso_exame}% da nota.` : ""} Desligado, a nota vem das frases, das conversas e do estudo.`}
           ligado={d.exame_oral}
           aoMudar={(v) => muda({ exame_oral: v })}
         />

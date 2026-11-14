@@ -365,7 +365,8 @@ def _ultima_conversa(user):
         return None
     dados = s.full_session_data if isinstance(s.full_session_data, dict) else {}
     sit = obter_situacao(s.situation) if s.situation else None
-    quando = timezone.localtime(s.started_at or s.created_at).strftime('%d %b %Y')
+    from apps.practice.limite_licoes import FUSO_ANGOLA
+    quando = timezone.localtime(s.started_at or s.created_at, FUSO_ANGOLA).strftime('%d %b %Y')  # dia de Luanda
     linha = f'{quando}, situation "{_limpo(sit["titulo"] if sit else "free conversation", 80)}", overall score {s.overall_score}/100'
     corr = next((c for c in dados.get('correccoes') or [] if isinstance(c, dict) and c.get('disse')), None)
     if corr:
@@ -426,28 +427,32 @@ def _turnos(transcricao):
             and isinstance(t.get('texto'), str)]
 
 
+ECO_TURNOS_TUTOR = 2  # o tutor disse a frase num dos 2 turnos dele anteriores: foi com ajuda
+
+
 def uso_da_frase(frase, transcricao, assinalada=None, limiar=None):
     """
-    'sozinho' | 'com_ajuda' | None. Só as falas do aluno contam; se o tutor disse a frase no
-    turno imediatamente antes, foi com ajuda. assinalada: opinião do Claude (None = sem opinião).
+    'sozinho' | 'com_ajuda' | None. Só as falas do aluno contam. 'sozinho' só numa fala DITA (não
+    escrita: {'escrito': True}) em que o tutor não disse a frase em nenhum dos ECO_TURNOS_TUTOR turnos
+    dele anteriores (eco); se só aparece escrita ou em eco, 'com_ajuda'.
+    assinalada: opinião do Claude (None = sem opinião).
     """
     if limiar is None:
         limiar = (LIMIAR_USO if assinalada is None else LIMIAR_USO_ASSINALADO if assinalada
                   else LIMIAR_USO_NAO_ASSINALADO)
     turnos = _turnos(transcricao)
-    melhor, idx = 0.0, None
+    encontrada = False
     for i, t in enumerate(turnos):
-        if t['quem'] != 'aluno':
+        if t['quem'] != 'aluno' or cobertura(frase, t['texto']) < limiar:
             continue
-        c = cobertura(frase, t['texto'])
-        if c > melhor:
-            melhor, idx = c, i
-    if idx is None or melhor < limiar:
-        return None
-    anterior = next((turnos[j]['texto'] for j in range(idx - 1, -1, -1) if turnos[j]['quem'] == 'tutor'), '')
-    if anterior and cobertura(frase, anterior) >= LIMIAR_ECO:
-        return ItemBanco.COM_AJUDA
-    return ItemBanco.SOZINHO
+        encontrada = True
+        if t.get('escrito'):
+            continue
+        anteriores = [turnos[j]['texto'] for j in range(i - 1, -1, -1) if turnos[j]['quem'] == 'tutor']
+        if any(cobertura(frase, a) >= LIMIAR_ECO for a in anteriores[:ECO_TURNOS_TUTOR]):
+            continue
+        return ItemBanco.SOZINHO
+    return ItemBanco.COM_AJUDA if encontrada else None
 
 
 def _assinaladas(objectivos, usados_claude):
@@ -519,6 +524,10 @@ def registar_conversa(sessao, avaliacao=None):
     """
     Depois da avaliação: objectivos usados, outras frases do banco ditas sozinho, correcções
     para o banco, padrões de erro e níveis. Idempotente por sessão (full_session_data.perfil_registado).
+    Só corre com uma transcrição em que se confia: a chamada de voz verificada no Vapi
+    (dados.vapi_verificada, conversa/verificacao.py) ou o histórico do servidor no modo simulado;
+    nunca com a transcrição que o browser mandou. As frases que o aluno viu em inglês durante a
+    conversa (dados.reveladas) ficam no máximo 'com_ajuda'.
     `avaliacao` (opcional) é o resultado de analise.avaliar; por omissão usa o que está na sessão.
     Devolve o registo guardado em full_session_data['perfil'].
     """
@@ -530,6 +539,8 @@ def registar_conversa(sessao, avaliacao=None):
         dados = dict(s.full_session_data) if isinstance(s.full_session_data, dict) else {}
         if dados.get('perfil_registado') or s.status != VapiSession.STATUS_AVALIADA:
             return dados.get('perfil')
+        if s.mode == 'vapi' and not dados.get('vapi_verificada'):
+            return None  # voz sem chamada verificada: não conta para o perfil
         av = avaliacao if avaliacao is not None else dados
         user = s.user
         agora = timezone.now()
@@ -544,9 +555,12 @@ def registar_conversa(sessao, avaliacao=None):
         # 1. Objectivos da sessão
         objectivos = [o for o in cfg.get('objectivos') or [] if isinstance(o, dict) and o.get('en')]
         marcadas = _assinaladas(objectivos, av.get('objectivos_usados'))
+        reveladas = {normalizar(t) for t in dados.get('reveladas') or [] if isinstance(t, str)}
         res_obj, chaves_obj = [], set()
         for i, o in enumerate(objectivos):
             uso = uso_da_frase(o['en'], transcricao, None if marcadas is None else i in marcadas)
+            if uso == ItemBanco.SOZINHO and normalizar(o['en']) in reveladas:
+                uso = ItemBanco.COM_AJUDA  # viu a frase em inglês durante a conversa
             item = registar_item(user, o['en'], o.get('pt') or '', estado=uso or ItemBanco.VISTA,
                                  origem='situacao' if situacao_pk else 'conversa', situacao_id=situacao_pk,
                                  curso_id=curso_id, sessao=s.session_id, quando=agora)
@@ -559,7 +573,7 @@ def registar_conversa(sessao, avaliacao=None):
         # 2. Outras frases do banco que disse sozinho (correspondência quase exacta)
         outras = []
         for item in banco_a_aprender(user, limite=150):
-            if item.chave in chaves_obj or item.tipo != ItemBanco.TIPO_FRASE \
+            if item.chave in chaves_obj or item.chave in reveladas or item.tipo != ItemBanco.TIPO_FRASE \
                     or len(tokens(item.texto)) < MIN_PALAVRAS_BANCO:
                 continue
             if uso_da_frase(item.texto, transcricao, limiar=LIMIAR_BANCO) == ItemBanco.SOZINHO:

@@ -5,6 +5,10 @@ Quando uma aula de um curso em vídeo conta como concluída.
 - Aula com questionário activo (ChapterQuiz.is_active, qualquer tipo de aula): só quando o
   questionário está passado E, se a aula tem vídeo, o vídeo foi visto. Ver o vídeo antes de passar
   fica guardado em ChapterProgress.video_visto; passar o questionário depois conclui a aula.
+- Rede de segurança: quem gastou as tentativas todas sem passar também conclui a aula (com o vídeo
+  visto), para não ficar preso sem poder acabar o curso. O questionário falhado continua a contar
+  na nota do curso (média e "todos os questionários aprovados" nas notas e no certificado), e o
+  professor pode dar mais tentativas ao aluno (TentativasExtraQuestionario).
 
 Uma aula já concluída não volta atrás por o professor lhe acrescentar um questionário.
 
@@ -21,6 +25,18 @@ def questionario_activo(chapter):
 def passou_questionario(user, chapter_quiz):
     from apps.courses.models import StudentQuizAttempt
     return StudentQuizAttempt.objects.filter(student=user, chapter_quiz=chapter_quiz, is_passed=True).exists()
+
+
+def esgotou_tentativas(user, chapter_quiz):
+    """Gastou as tentativas todas (max_attempts + as extra do professor) sem passar."""
+    from apps.courses.models import StudentQuizAttempt
+    feitas = StudentQuizAttempt.objects.filter(student=user, chapter_quiz=chapter_quiz).count()
+    return feitas >= chapter_quiz.limite_tentativas(user)
+
+
+def questionario_feito(user, chapter_quiz):
+    """Passou, ou esgotou as tentativas (rede de segurança: ver o topo do módulo)."""
+    return passou_questionario(user, chapter_quiz) or esgotou_tentativas(user, chapter_quiz)
 
 
 def precisa_de_video(chapter):
@@ -52,7 +68,7 @@ def registar(progresso, chapter, vista=False, desmarcar=False):
             if quiz is None:
                 registo.completed = bool(vista)
             else:
-                registo.completed = (passou_questionario(progresso.user, quiz)
+                registo.completed = (questionario_feito(progresso.user, quiz)
                                      and (registo.video_visto or not precisa_de_video(chapter)))
     if registo.completed and not registo.completed_at:
         registo.completed_at = timezone.now()
@@ -82,7 +98,10 @@ def actualizar_progresso(progresso):
 
 
 def apos_questionario_passado(user, chapter):
-    """O aluno passou o questionário da aula: conclui-a se o resto também está feito."""
+    """
+    O aluno passou o questionário da aula (ou gastou as tentativas todas): conclui-a se o resto
+    também está feito.
+    """
     from apps.courses.models import UserCourseProgress
     course = chapter.section.course
     progresso, _ = UserCourseProgress.objects.get_or_create(

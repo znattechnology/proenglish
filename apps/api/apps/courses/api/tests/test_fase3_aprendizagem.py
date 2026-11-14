@@ -303,6 +303,13 @@ class ProgressoTests(Base):
 # 8 ---------------------------------------------------------------------------
 class MinutosDeVideoTests(Base):
 
+    def setUp(self):
+        super().setUp()
+        # O crédito nunca passa do tempo real desde que o aluno abriu a aula (tempo_video).
+        from apps.courses.tempo_video import _chave_aberta
+        from django.core.cache import cache
+        cache.set(_chave_aberta(self.aluno.pk, self.video.pk), (timezone.now() - timedelta(hours=1)).timestamp(), 3600)
+
     def put(self, segundos, **extra):
         corpo = {'sections': [{'sectionId': str(self.sec.id), 'chapters': [
             {'chapterId': str(self.video.id), 'completed': False}]}], 'watched_seconds': segundos, **extra}

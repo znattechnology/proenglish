@@ -33,16 +33,21 @@ type Fase =
   /** repetir: falha técnica (tenta-se já outra vez); senão o exercício volta no fim da lição. */
   | { tipo: "errado"; dica?: string | null; perdeuVida: boolean; solucao?: string | null; explicacao?: string | null; repetir?: boolean };
 
+/** Respostas da gravação que pedem para gravar outra vez (silêncio, ficheiro recusado ou grande demais). */
+const GRAVAR_OUTRA_VEZ = new Set(["sem_fala", "gravacao_invalida", "gravacao_grande"]);
+
 type CorpoErro = { status?: number; data?: { codigo?: string; error?: string; mensagem?: string; pode_saltar?: boolean; token_saltar?: string } };
 
 /**
- * A ordem da lição: começa no primeiro exercício por fazer (retoma uma lição deixada a meio) e a
- * conversa curta fica sempre no fim. Os exercícios errados voltam ao fim da fila (como no Duolingo);
+ * A ordem da lição: começa no primeiro exercício por fazer (retoma uma lição deixada a meio, sem
+ * repetir os que já foram feitos depois dele) e a conversa curta fica sempre no fim. Os exercícios errados voltam ao fim da fila (como no Duolingo);
  * a lição acaba quando todos foram acertados uma vez.
  */
 function filaInicial(licao: LicaoParaJogar) {
   const inicio = licao.repeticao ? 0 : Math.max(0, licao.exercicios.findIndex((e) => !e.feito));
-  const resto = licao.exercicios.slice(inicio);
+  const porFazer = licao.exercicios.slice(inicio).filter((e) => licao.repeticao || !e.feito);
+  // Tudo feito mas a lição por fechar (p.ex. o fim falhou): mostra-se tudo outra vez.
+  const resto = porFazer.length ? porFazer : licao.exercicios;
   return [...resto.filter((e) => e.modo !== "conversa"), ...resto.filter((e) => e.modo === "conversa")].map((e) => e.id);
 }
 
@@ -115,7 +120,12 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         }
         setFase({
           tipo: "errado",
-          dica: e.status === 429 ? limite : e.data?.codigo === "sem_fala" && e.data.mensagem ? e.data.mensagem : "Não conseguimos analisar a gravação agora. Grave outra vez.",
+          dica:
+            e.status === 429
+              ? limite
+              : GRAVAR_OUTRA_VEZ.has(e.data?.codigo ?? "") && e.data?.mensagem
+                ? e.data.mensagem
+                : "Não conseguimos analisar a gravação agora. Grave outra vez.",
           perdeuVida: false,
           repetir: true,
         });
@@ -150,8 +160,11 @@ export function Jogador({ lessonId }: { lessonId: string }) {
           setFase({ tipo: "certo", explicacao: d.explicacao ?? null });
           setAcertados((a) => new Set(a).add(ex.id));
         } else {
-          setFase({ tipo: "errado", dica: d.dica ?? null, perdeuVida: !repeticao && !ilimitadas });
+          // As vidas são as do servidor (prática, vidas ilimitadas e envios repetidos não tiram).
+          const perdeu = (d.heartsUsed ?? 0) > 0;
+          setFase({ tipo: "errado", dica: d.dica ?? null, perdeuVida: perdeu });
           marcarErrado(ex.id);
+          if (perdeu && d.user_progress && d.user_progress.hearts <= 0) setSemVidas(true);
         }
         return;
       }
@@ -182,7 +195,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
     } finally {
       setAVerificar(false);
     }
-  }, [ex, resposta, aVerificar, analisar, responderEmVoz, saltar, responder, repeticao, ilimitadas, marcarErrado]);
+  }, [ex, resposta, aVerificar, analisar, responderEmVoz, saltar, responder, marcarErrado]);
 
   const terminar = useCallback(async () => {
     setErroConcluir(false);

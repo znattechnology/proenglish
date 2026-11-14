@@ -5,7 +5,13 @@ Revisão de hoje (só alunos). Montado em /api/v1/student/revisao/.
   GET  hoje/        sessão de hoje (até 12 exercícios)
   POST responder/   {exercicio_id, forma, resposta, segundos, pistas}
   POST falar/       multipart {exercicio_id, audio, segundos}   análise de pronúncia + resposta
+  POST saltar/      {exercicio_id}                              saltar um exercício falado (sem pontos)
   POST terminar/    {inicio}                                    resumo do fim
+
+As gravações (falar/ aqui e o "Repetir em voz alta" das aulas) contam para o limite diário de
+análises com IA do plano (sem assinatura activa: o do plano Gratuito, contado pelas gravações de
+hoje). Com o limite atingido, a análise em baixo ou sem microfone, o exercício pode ser saltado
+(saltar/): sem pontos e sem nota.
 """
 import io
 import logging
@@ -36,6 +42,36 @@ class LimiteRevisao(UserRateThrottle):
 
 class Base(APIView):
     permission_classes = [IsAuthenticated, SoAlunos]
+
+
+def estado_analises(user):
+    """
+    (pode_analisar, assinatura_activa_ou_None) para a revisão e o "Repetir em voz alta" das aulas.
+    Sem assinatura activa (sem registo, ou expirada) aplica-se o limite do plano Gratuito, contado
+    pelas gravações de hoje (Luanda) da revisão e das aulas.
+    """
+    from apps.practice.limite_licoes import hoje_luanda, inicio_do_dia
+    from apps.practice.models import TentativaPronuncia
+    from apps.subscriptions.models import SubscriptionPlan, UserSubscription
+    sub = UserSubscription.objects.select_related('plan').filter(user=user).first()
+    if sub is not None and sub.is_active():
+        return sub.can_use_ai_analysis(), sub
+    limite = SubscriptionPlan.objects.filter(plan_type='FREE').values_list('daily_ai_analyses_limit', flat=True).first()
+    if not limite:  # ilimitado (a convenção do plano), ou sem plano Gratuito configurado
+        return True, None
+    usadas = TentativaPronuncia.objects.filter(
+        user=user, origem__in=(TentativaPronuncia.ORIGEM_REVISAO, TentativaPronuncia.ORIGEM_AULA),
+        criada_em__gte=inicio_do_dia(hoje_luanda())).count()
+    return usadas < limite, None
+
+
+def contar_analise(sub, onde='revisão'):
+    if sub is None:
+        return  # sem assinatura activa: conta a própria TentativaPronuncia
+    try:
+        sub.use_ai_analysis()
+    except Exception:
+        logger.exception('%s: falha ao contar a análise', onde)
 
 
 def _invalido():
@@ -114,7 +150,7 @@ class Falar(Base):
         return [AIAnaliseThrottle()]
 
     def post(self, request):
-        from apps.subscriptions.models import UserSubscription
+        from apps.practice.services import gravacao
         from apps.practice.views_ai import _nota
 
         exercicio_id = request.data.get('exercicio_id')
@@ -126,12 +162,15 @@ class Falar(Base):
         if not audio:
             return Response({'codigo': 'audio_em_falta', 'mensagem': 'Grave a frase antes de enviar.'},
                             status=status.HTTP_400_BAD_REQUEST)
+        if gravacao.demasiado_grande(audio):
+            return gravacao.resposta_grande()
         frase = d['texto']
 
-        sub = UserSubscription.objects.select_related('plan').filter(user=request.user).first()
-        if sub is not None and sub.is_active() and not sub.can_use_ai_analysis():
+        pode, sub = estado_analises(request.user)
+        if not pode:
             return Response({'codigo': 'limite_analises', 'pode_saltar': True,
-                             'mensagem': 'Já usou as análises de pronúncia de hoje. Pode saltar este exercício.'},
+                             'mensagem': 'Já usou as análises de pronúncia de hoje. Pode saltar este exercício: '
+                                         'não perde nada e a frase volta amanhã.'},
                             status=status.HTTP_429_TOO_MANY_REQUESTS)
         try:
             dados = io.BytesIO(audio.read())
@@ -140,24 +179,34 @@ class Falar(Base):
         except Exception:
             logger.exception('revisão: análise de pronúncia falhou')
             return _indisponivel()
-        if getattr(result, 'indisponivel', False):
+        if getattr(result, 'indisponivel', False) is True:
             return _indisponivel()
+        sem_avaliacao = gravacao.resposta_do_resultado(result)
+        if sem_avaliacao is not None:
+            return sem_avaliacao
         tentativa = None
         try:
             tentativa = _guardar_tentativa(request.user, result, simulada)
         except Exception:
             logger.exception('revisão: falha ao guardar a tentativa de pronúncia')
-        if sub is not None and sub.is_active():
-            try:
-                sub.use_ai_analysis()
-            except Exception:
-                logger.exception('revisão: falha ao contar a análise')
+        contar_analise(sub)
 
         nota_geral = _nota(result.overall_score)
         r = revisao.registar_fala(request.user, d, exercicio_id, bool(result.is_acceptable), nota_geral,
                                   request.data.get('segundos'))
         r['analise'] = analise_publica(result, tentativa)
         return Response(r)
+
+
+class Saltar(Base):
+    """Saltar um exercício falado (sem microfone, sem análises, análise em baixo): sem pontos."""
+    throttle_classes = [LimiteRevisao]
+
+    def post(self, request):
+        try:
+            return Response(revisao.saltar(request.user, request.data.get('exercicio_id')))
+        except revisao.ExercicioInvalido:
+            return _invalido()
 
 
 class Terminar(Base):

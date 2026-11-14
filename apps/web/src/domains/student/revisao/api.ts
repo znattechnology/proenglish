@@ -6,6 +6,7 @@ import { aposEstudo, quandoCorrerBem } from "@/src/domains/student/sincronizar";
 import { DJANGO_BASE_URL } from "@/src/domains/shared/api/baseQuery";
 import type { AnaliseGravacao } from "@/src/domains/student/curso/fala";
 import { studentPracticeApiSlice } from "../practice-courses/api/studentPracticeApiSlice";
+import { enviarGravacao } from "../laboratorio/enviarGravacao";
 
 const R = `${DJANGO_BASE_URL}/student/revisao`;
 
@@ -87,21 +88,19 @@ export const revisaoApi = studentPracticeApiSlice.injectEndpoints({
       }),
     }),
     falarRevisao: build.mutation<ResultadoRevisao, { exercicioId: string; audio: Blob; segundos: number }>({
-      // fetch próprio: a base desta fatia força JSON e a gravação vai em multipart.
-      queryFn: async ({ exercicioId, audio, segundos }) => {
-        const corpo = new FormData();
-        corpo.append("audio", audio, "gravacao.webm");
-        corpo.append("exercicio_id", exercicioId);
-        corpo.append("segundos", String(segundos));
-        try {
-          const r = await fetch(`${R}/falar/`, { method: "POST", body: corpo, credentials: "include" });
-          const dados = await r.json().catch(() => ({}));
-          if (!r.ok) return { error: { status: r.status, data: dados } };
-          return { data: dados as ResultadoRevisao };
-        } catch (e) {
-          return { error: { status: "FETCH_ERROR", error: String(e) } };
-        }
-      },
+      // fetch próprio (multipart), com renovação da sessão num 401.
+      queryFn: ({ exercicioId, audio, segundos }) =>
+        enviarGravacao<ResultadoRevisao>(`${R}/falar/`, () => {
+          const corpo = new FormData();
+          corpo.append("audio", audio, "gravacao.webm");
+          corpo.append("exercicio_id", exercicioId);
+          corpo.append("segundos", String(segundos));
+          return corpo;
+        }),
+    }),
+    /** Saltar um exercício falado (sem microfone, sem análises, análise em baixo): sem pontos; a frase volta amanhã. */
+    saltarRevisao: build.mutation<{ saltado: boolean; pontos: number; proxima_revisao: string | null }, { exercicioId: string }>({
+      query: ({ exercicioId }) => ({ url: `${R}/saltar/`, method: "POST", body: { exercicio_id: exercicioId } }),
     }),
     terminarRevisao: build.mutation<FimRevisao, { inicio: string }>({
       query: ({ inicio }) => ({ url: `${R}/terminar/`, method: "POST", body: { inicio } }),
@@ -112,7 +111,7 @@ export const revisaoApi = studentPracticeApiSlice.injectEndpoints({
   overrideExisting: process.env.NODE_ENV === "development",
 });
 
-export const { useResumoRevisaoQuery, useSessaoRevisaoQuery, useResponderRevisaoMutation, useFalarRevisaoMutation, useTerminarRevisaoMutation } = revisaoApi;
+export const { useResumoRevisaoQuery, useSessaoRevisaoQuery, useResponderRevisaoMutation, useFalarRevisaoMutation, useSaltarRevisaoMutation, useTerminarRevisaoMutation } = revisaoApi;
 
 /** "7 frases" / "1 frase". */
 export function nFrases(n: number) {

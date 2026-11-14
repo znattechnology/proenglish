@@ -45,7 +45,9 @@ class ResultadoPronuncia:
     nota_clareza: int = 0
     credito: int = 0
     confianca: object = 0.5
-    indisponivel: bool = False
+    indisponivel: bool = False          # o serviço falhou: 503, pode saltar, não conta
+    sem_fala: bool = False              # transcrição vazia: grava outra vez (422), não conta
+    audio_invalido: bool = False        # o fornecedor recusou a gravação: grava outra vez (422), não conta
     tempos: object = None               # transcricao_fala.Transcricao (tempos das palavras), ou None
     detalhada: bool = False             # True quando há notas por palavra (palavras)
 

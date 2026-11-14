@@ -4,6 +4,7 @@
  */
 import { aposEstudo, quandoCorrerBem } from "@/src/domains/student/sincronizar";
 import { studentPracticeApiSlice } from "../practice-courses/api/studentPracticeApiSlice";
+import { enviarGravacao } from "./enviarGravacao";
 import type { NovaSessao } from "@/src/domains/student/conversa/api";
 import type { DetalhePronuncia, MetricasGravacao } from "@/src/domains/student/fala/api";
 
@@ -95,6 +96,8 @@ export type ResultadoPronuncia = {
   fala?: MetricasGravacao | null;
   explicacao?: string | null;
   dica?: string | null;
+  /** Vidas que esta gravação tirou (0 em prática, com vidas ilimitadas ou se aceite). */
+  heartsUsed?: number;
   user_progress?: { hearts: number; points: number };
 };
 
@@ -181,35 +184,23 @@ export const laboratorioApi = studentPracticeApiSlice.injectEndpoints({
     }),
     analisarPronuncia: build.mutation<ResultadoPronuncia, { challengeId: string; frase: string; audio: Blob }>({
       // fetch próprio: a base desta fatia força JSON e a gravação tem de ir em multipart.
-      queryFn: async ({ challengeId, frase, audio }) => {
-        const corpo = new FormData();
-        corpo.append("audio", audio, "gravacao.webm");
-        corpo.append("challenge_id", challengeId);
-        corpo.append("expected_text", frase);
-        try {
-          const r = await fetch(`${API}/practice/analyze-ai-pronunciation/`, { method: "POST", body: corpo, credentials: "include" });
-          const dados = await r.json().catch(() => ({}));
-          if (!r.ok) return { error: { status: r.status, data: dados } };
-          return { data: dados as ResultadoPronuncia };
-        } catch (e) {
-          return { error: { status: "FETCH_ERROR", error: String(e) } };
-        }
-      },
+      queryFn: ({ challengeId, frase, audio }) =>
+        enviarGravacao<ResultadoPronuncia>(`${API}/practice/analyze-ai-pronunciation/`, () => {
+          const corpo = new FormData();
+          corpo.append("audio", audio, "gravacao.webm");
+          corpo.append("challenge_id", challengeId);
+          corpo.append("expected_text", frase);
+          return corpo;
+        }),
     }),
     /** Responder em voz alta: a gravação é transcrita e avaliada no servidor (Whisper + Claude). */
     responderEmVoz: build.mutation<ResultadoResponder, { challengeId: string; audio: Blob }>({
-      queryFn: async ({ challengeId, audio }) => {
-        const corpo = new FormData();
-        corpo.append("audio", audio, "resposta.webm");
-        try {
-          const r = await fetch(`${API}/student/practice-courses/challenges/${challengeId}/responder/`, { method: "POST", body: corpo, credentials: "include" });
-          const dados = await r.json().catch(() => ({}));
-          if (!r.ok) return { error: { status: r.status, data: dados } };
-          return { data: dados as ResultadoResponder };
-        } catch (e) {
-          return { error: { status: "FETCH_ERROR", error: String(e) } };
-        }
-      },
+      queryFn: ({ challengeId, audio }) =>
+        enviarGravacao<ResultadoResponder>(`${API}/student/practice-courses/challenges/${challengeId}/responder/`, () => {
+          const corpo = new FormData();
+          corpo.append("audio", audio, "resposta.webm");
+          return corpo;
+        }),
     }),
     /** Começa a conversa curta do fim da lição (gasta minutos de conversa do dia). */
     comecarConversaLicao: build.mutation<ConversaLicao, string>({

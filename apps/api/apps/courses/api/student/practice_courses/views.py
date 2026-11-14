@@ -1075,7 +1075,8 @@ class ChallengeProgressView(APIView):
         """
         from apps.practice.saltar_pronuncia import pode_saltar
         from .jogar import motivo_saltar
-        com_token = challenge.type in ('SPEAKING', 'RESPONDER')
+        # Um responder incompleto (sem pergunta ou frase-alvo) não pode ser gravado: salta sem token.
+        com_token = challenge.type in ('SPEAKING', 'RESPONDER') and not motivo_saltar(challenge)
         if not com_token and challenge.type != 'VAPI_CONVERSATION' and not motivo_saltar(challenge):
             return Response({'codigo': 'saltar_invalido',
                              'mensagem': 'Este exercício não pode ser saltado.'},

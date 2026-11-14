@@ -674,49 +674,56 @@ def update_user_course_progress(request, userId, courseId):
         )
     
     serializer = UserCourseProgressUpdateSerializer(
-        progress, 
-        data=request.data, 
+        progress,
+        data=request.data,
         context={'request': request}
     )
     serializer.is_valid(raise_exception=True)
 
     # Opcional: segundos vistos desde o último envio -> registo diário + sequência.
     # O capítulo é `chapter_id` ou o único capítulo enviado em `sections`. Os segundos são
-    # limitados (ver apps.courses.tempo_video): só o que é novo conta. Creditam-se ANTES de
-    # gravar, para "marcar como vista" já contar com o que o aluno acabou de ver.
+    # limitados (ver apps.courses.tempo_video): só o que é novo conta e nunca mais do que o tempo
+    # real desde que o aluno abriu a aula. Creditam-se ANTES de gravar, para "marcar como vista"
+    # já contar com o que o aluno acabou de ver.
     watched_seconds = request.data.get('watched_seconds')
     segundos_creditados = 0
-    aula_concluida = False
     capitulo = None
-    if watched_seconds not in (None, ''):
-        chapter_id = request.data.get('chapter_id')
-        if not chapter_id:
-            ids = [c.get('chapterId') for sec in (request.data.get('sections') or []) if isinstance(sec, dict)
-                   for c in (sec.get('chapters') or []) if isinstance(c, dict) and c.get('chapterId')]
-            chapter_id = ids[0] if len(ids) == 1 else None
-        capitulo = None
-        if chapter_id:
-            try:
-                capitulo = Chapter.objects.filter(ciclo.q_aula_visivel(), id=chapter_id, section__course=course).first()
-            except (ValueError, TypeError, DjangoValidationError):
-                capitulo = None
-        if capitulo is not None:
-            try:
-                from ....tempo_video import creditar_segundos
-                segundos_creditados = creditar_segundos(request.user, capitulo, watched_seconds)
-            except Exception:
-                import logging
-                logging.getLogger(__name__).exception("Failed to log video study minutes")
+    chapter_id = request.data.get('chapter_id')
+    if not chapter_id:
+        ids = [c.get('chapterId') for sec in (request.data.get('sections') or []) if isinstance(sec, dict)
+               for c in (sec.get('chapters') or []) if isinstance(c, dict) and c.get('chapterId')]
+        chapter_id = ids[0] if len(ids) == 1 else None
+    if chapter_id:
+        try:
+            capitulo = Chapter.objects.filter(ciclo.q_aula_visivel(), id=chapter_id, section__course=course).first()
+        except (ValueError, TypeError, DjangoValidationError):
+            capitulo = None
+    if capitulo is not None and watched_seconds not in (None, ''):
+        try:
+            from ....tempo_video import creditar_segundos
+            segundos_creditados = creditar_segundos(request.user, capitulo, watched_seconds)
+        except Exception:
+            import logging
+            logging.getLogger(__name__).exception("Failed to log video study minutes")
 
-    updated_progress = serializer.save()
+    def _concluida():
+        return capitulo is not None and ChapterProgress.objects.filter(
+            user_progress=progress, chapter=capitulo, completed=True).exists()
 
-    if capitulo is not None:
-        # A aula conta como vista quando o aluno viu a percentagem que o professor escolheu
-        # (Chapter.percentagem_vista), salvo se este pedido a desmarcou explicitamente.
-        if _pode_marcar_vista(request.data, capitulo):
-            from ....tempo_video import aula_vista
-            if aula_vista(request.user, capitulo):
-                aula_concluida = _marcar_vista(updated_progress, capitulo)
+    concluida_antes = _concluida()
+    # Várias aulas no mesmo pedido: ou ficam todas gravadas ou nenhuma (um erro a meio, como um
+    # vídeo por ver, não deixa metade do pedido gravado).
+    with transaction.atomic():
+        updated_progress = serializer.save()
+        if capitulo is not None and watched_seconds not in (None, ''):
+            # A aula conta como vista quando o aluno viu a percentagem que o professor escolheu
+            # (Chapter.percentagem_vista), salvo se este pedido a desmarcou explicitamente.
+            if _pode_marcar_vista(request.data, capitulo):
+                from ....tempo_video import aula_vista
+                if aula_vista(request.user, capitulo):
+                    _marcar_vista(updated_progress, capitulo)
+    # aula_concluida: a aula passou a concluída com este pedido (estado antes vs. depois).
+    aula_concluida = not concluida_antes and _concluida()
 
     # Return updated progress
     response_serializer = UserCourseProgressSerializer(updated_progress)
@@ -880,6 +887,11 @@ class ChapterDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIView):
         obj = super().get_object()
         course = self.get_course_from_chapter(obj)
         self.check_enrollment(course)
+        # Hora a que o aluno abriu a aula: o tempo de vídeo creditado não passa do tempo real
+        # desde aqui (apps.courses.tempo_video).
+        if course.teacher_id != self.request.user.id:
+            from ....tempo_video import marcar_aberta
+            marcar_aberta(self.request.user, obj)
         return obj
 
 
@@ -1162,9 +1174,10 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
             chapter_quiz=chapter_quiz
         ).count()
         
-        if student_attempts >= chapter_quiz.max_attempts:
+        limite = chapter_quiz.limite_tentativas(self.request.user)
+        if student_attempts >= limite:
             from rest_framework.exceptions import ValidationError
-            raise ValidationError(f"Já usou as {chapter_quiz.max_attempts} tentativas deste questionário.")
+            raise ValidationError(f"Já usou as {limite} tentativas deste questionário.")
         
         # is_passed é decidido pelo servidor (StudentQuizAttempt.save compara com passing_score);
         # as estatísticas do quiz também são actualizadas no save() do modelo.
@@ -1186,7 +1199,7 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
             minhas = [a for a in queryset if a.student_id == request.user.id]
             revela = (chapter_quiz.chapter.section.course.teacher_id == request.user.id
                       or pode_revelar_respostas(chapter_quiz, any(a.is_passed for a in minhas),
-                                                chapter_quiz.max_attempts - len(minhas)))
+                                                chapter_quiz.limite_tentativas(request.user) - len(minhas)))
             for item, tentativa in zip(dados, queryset):
                 item['correccao'] = correccao_para_aluno(
                     (tentativa.answers_data or {}).get('correccao'), revela)
@@ -1232,14 +1245,15 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
         # Guarda as respostas e a correcção completa (para a revisão quando puder ser revelada).
         attempt.answers_data = {'respostas': respostas, 'correccao': correccao}
         StudentQuizAttempt.objects.filter(pk=attempt.pk).update(answers_data=attempt.answers_data)
+        minhas = StudentQuizAttempt.objects.filter(student=request.user, chapter_quiz=attempt.chapter_quiz)
+        restantes = max(0, attempt.chapter_quiz.limite_tentativas(request.user) - minhas.count())
         aula_concluida = False
-        if attempt.is_passed:
-            # Passar o questionário conclui a aula (se o vídeo, quando o há, já foi visto).
+        if attempt.is_passed or restantes <= 0:
+            # Passar o questionário conclui a aula (se o vídeo, quando o há, já foi visto). Gastar
+            # as tentativas todas sem passar também (rede de segurança: a aula não fica presa para
+            # sempre; a nota do questionário continua a contar na nota do curso).
             from apps.courses.conclusao import apos_questionario_passado
             aula_concluida = apos_questionario_passado(request.user, chapter)
-
-        minhas = StudentQuizAttempt.objects.filter(student=request.user, chapter_quiz=attempt.chapter_quiz)
-        restantes = max(0, attempt.chapter_quiz.max_attempts - minhas.count())
         revela = pode_revelar_respostas(attempt.chapter_quiz, minhas.filter(is_passed=True).exists(), restantes)
 
         response_serializer = StudentQuizAttemptSerializer(attempt, context={'request': request})
@@ -1297,7 +1311,7 @@ def get_student_quiz_summary(request, chapterId):
                 'attempts_count': 0,
                 'best_score': 0,
                 'is_passed': False,
-                'attempts_remaining': chapter_quiz.max_attempts,
+                'attempts_remaining': chapter_quiz.limite_tentativas(request.user),
                 'revela_respostas': False,
                 'last_attempt': None
             }
@@ -1306,7 +1320,7 @@ def get_student_quiz_summary(request, chapterId):
     best_attempt = attempts.filter(is_completed=True).order_by('-score').first()
     last_attempt = attempts.first()
     passed_attempt = attempts.filter(is_passed=True).first()
-    restantes = max(0, chapter_quiz.max_attempts - attempts.count())
+    restantes = max(0, chapter_quiz.limite_tentativas(request.user) - attempts.count())
     revela = pode_revelar_respostas(chapter_quiz, bool(passed_attempt), restantes)
 
     def _tentativa(t):
@@ -2187,6 +2201,10 @@ def get_grade_history(request, courseId):
             user=request.user,
             course_id=courseId
         )
+        from ....services import GradeCalculatorService
+        if (grade.calculation_version or 0) < GradeCalculatorService.CALCULATION_VERSION:
+            grade = GradeCalculatorService(request.user, enrollment.course).calculate_and_save(
+                change_reason='recalculation')
     except StudentCourseGrade.DoesNotExist:
         return Response({
             'message': 'Nenhum histórico de notas encontrado',
@@ -2299,8 +2317,9 @@ def get_all_student_grades(request):
 
         # Use prefetched grade if available, otherwise calculate
         grade = existing_grades.get(course.id)
-        if grade is None:
-            # Calculate if not exists
+        if grade is None or (grade.calculation_version or 0) < GradeCalculatorService.CALCULATION_VERSION:
+            # Sem nota, ou nota de uma versão antiga do cálculo (a elegibilidade guardada podia
+            # não contar com o exame oral): calcula agora com as regras actuais.
             calculator = GradeCalculatorService(request.user, course)
             grade = calculator.calculate_and_save(change_reason='recalculation')
         # Elegibilidade com as regras da emissão (inclui a conclusão do curso).

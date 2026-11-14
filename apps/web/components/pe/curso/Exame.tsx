@@ -4,14 +4,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { BarraProgresso, Botao, Etiqueta, Osso } from "@/components/pe";
 import { cnPe } from "@/lib/pe";
-import { COMPETENCIAS_EXAME, dataCurta, type ExameOral } from "@/src/domains/shared/exameOral";
+import { COMPETENCIAS_EXAME, dataCurta, dataHoraLuanda, type ExameOral } from "@/src/domains/shared/exameOral";
 import { useApagarGravacaoExameMutation, useExameQuery } from "@/src/domains/student/curso/api";
 
 /** Cartão na página do curso: o estado do exame oral e a ligação para ele. */
 export function CartaoExame({ courseId }: { courseId: string }) {
   const { data: e, isLoading } = useExameQuery(courseId);
   if (isLoading) return <Osso className="h-[150px] rounded-pe-md" />;
-  if (!e || e.motivo === "curso_pratica") return null;
+  if (!e || e.motivo === "curso_pratica" || e.motivo === "desligado") return null;
   const ultimo = e.tentativas.find((t) => t.estado === "avaliado");
   const texto = e.aprovado
     ? `Passou${ultimo?.nivel_cefr ? ` com nível de fala ${ultimo.nivel_cefr}` : ""}.`
@@ -65,7 +65,7 @@ export function ResultadoExame({ exame, courseId, aoRepetir }: { exame: ExameOra
       <section className="flex flex-col gap-3 rounded-pe-md bg-pe-fundo-suave p-5">
         <h2 className="m-0 font-pe-titulo text-[22px] font-bold leading-7">Este exame não teve nota</h2>
         <p className="m-0">
-          {exame.estado === "anulado" ? "A chamada não chegou a ligar." : "Não ouvimos respostas suficientes para avaliar."} Esta tentativa não conta: pode fazer o exame outra vez.
+          {exame.estado === "anulado" ? "A chamada não chegou a ligar." : "Não ouvimos respostas suficientes para avaliar (o exame precisa de pelo menos 2 minutos de conversa)."} Esta tentativa não conta: pode fazer o exame outra vez.
         </p>
         {aoRepetir ? (
           <Botao className="self-start" onClick={aoRepetir}>
@@ -94,7 +94,7 @@ export function ResultadoExame({ exame, courseId, aoRepetir }: { exame: ExameOra
             {exame.nivel_cefr ? `Nível de fala atingido: ${exame.nivel_cefr}. ` : ""}
             {exame.aprovado
               ? "Conta para a nota e para o certificado do curso."
-              : `Precisa de ${Math.round(exame.nota_minima)}%.${exame.pode_repetir_em ? ` Pode repetir a partir de ${dataCurta(exame.pode_repetir_em)}.` : ""}`}
+              : `Precisa de ${Math.round(exame.nota_minima)}%.${exame.pode_repetir_em ? ` Pode repetir a partir de ${dataHoraLuanda(exame.pode_repetir_em)}.` : ""}`}
           </span>
           {exame.revisao ? (
             <span className="text-[15px] leading-[22px]">
@@ -160,7 +160,7 @@ export function ResultadoExame({ exame, courseId, aoRepetir }: { exame: ExameOra
               <audio controls preload="none" src={gravacao} className="w-full max-w-[520px]">
                 O seu browser não toca áudio.
               </audio>
-              <p className="m-0 text-pe-legenda text-pe-tinta-suave">Só o professor do curso e você a podem ouvir. É apagada ao fim de 12 meses.</p>
+              <p className="m-0 text-pe-legenda text-pe-tinta-suave">Ouvem-na você e o professor do curso (a equipa ProEnglish só se for preciso para resolver uma reclamação). É apagada ao fim de 12 meses.</p>
               {confirmar ? (
                 <div className="flex flex-wrap items-center gap-3">
                   <Botao

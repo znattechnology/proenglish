@@ -30,7 +30,8 @@ from .transactions import (
 
 from .quizzes import (
     ChapterQuiz,
-    StudentQuizAttempt
+    StudentQuizAttempt,
+    TentativasExtraQuestionario,
 )
 
 from .resources import (
@@ -68,6 +69,7 @@ __all__ = [
     'UserCourseProgress',
     'ChapterProgress',
     'VideoWatchLog',
+    'TentativasExtraQuestionario',
     
     # Transaction models
     'Transaction',

@@ -80,7 +80,11 @@ def situacao_por_slug(slug):
 def falas_do_aluno(sessao):
     from .analise import textos_aluno, limpar_transcricao
     dados = sessao.full_session_data if isinstance(sessao.full_session_data, dict) else {}
-    transcricao = dados.get('transcricao') or limpar_transcricao(dados.get('historico') or [])
+    # A provisória (voz à espera da chamada verificada) serve só para dar o exercício por feito: o
+    # exercício pode ser saltado sem perder nada, por isso não dá mais do que saltar. Notas, perfil e
+    # minutos vêm só da chamada verificada (verificacao.py).
+    transcricao = (dados.get('transcricao') or dados.get('transcricao_provisoria')
+                   or limpar_transcricao(dados.get('historico') or []))
     return len(textos_aluno(transcricao))
 
 

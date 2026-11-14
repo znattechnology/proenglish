@@ -75,12 +75,15 @@ class TentativaPronunciaTests(PraticaBase):
         self.assertFalse(ChallengeAttempt.objects.exists())
 
 
-def _relatorio(sessao_id=None, falas=FALAS_BOAS, duracao=None, **extra):
+CALL_ID = '6f1c9a2e-1b2c-4d3e-8f90-0a1b2c3d4e5f'
+
+
+def _relatorio(sessao_id=None, falas=FALAS_BOAS, duracao=None, assistente='asst_1', call_id=CALL_ID, **extra):
     mensagens = [{'role': 'system', 'message': 'prompt'}]
     for f in falas:
         mensagens += [{'role': 'bot', 'message': 'Tell me more.'}, {'role': 'user', 'message': f}]
     msg = {'type': 'end-of-call-report', 'endedReason': 'customer-ended-call',
-           'artifact': {'messages': mensagens}, 'call': {'id': 'call_1'}, **extra}
+           'artifact': {'messages': mensagens}, 'call': {'id': call_id, 'assistantId': assistente}, **extra}
     if sessao_id:
         msg['call']['assistantOverrides'] = {'metadata': {'sessao_id': sessao_id}}
     if duracao is not None:
@@ -89,15 +92,19 @@ def _relatorio(sessao_id=None, falas=FALAS_BOAS, duracao=None, **extra):
 
 
 @override_settings(CONVERSA_SIMULADA=False, VAPI_PUBLIC_KEY='pk_test', VAPI_ENGLISH_ASSISTANT_ID='asst_1',
-                   VAPI_WEBHOOK_SECRET=SEGREDO, VAPI_WEBHOOK_URL='https://api.exemplo.ao/api/v1/practice/vapi/webhook/')
+                   VAPI_WEBHOOK_SECRET=SEGREDO, VAPI_WEBHOOK_URL='https://api.exemplo.ao/api/v1/practice/vapi/webhook/',
+                   VAPI_PRIVATE_KEY='sk_test_falsa')
 class WebhookFimChamadaTests(ConversaBase):
 
     def setUp(self):
         super().setUp()
-        # Avaliação sem Claude (cai nas regras) e sem thread.
+        from apps.practice.tests.vapi_falso import VapiFalso
+        self.vapi = VapiFalso()
+        # Avaliação sem Claude (cai nas regras), sem thread e com o Vapi falso.
         for alvo, kw in (('apps.practice.conversa.analise.avaliar_claude', {'side_effect': RuntimeError('sem claude')}),
                          ('apps.practice.conversa.webhook.executar_em_fundo',
-                          {'side_effect': lambda f, *a: f(*a)})):
+                          {'side_effect': lambda f, *a: f(*a)}),
+                         ('apps.practice.conversa.chamada.pedir', {'side_effect': self.vapi})):
             p = mock.patch(alvo, **kw)
             p.start()
             self.addCleanup(p.stop)
@@ -106,19 +113,15 @@ class WebhookFimChamadaTests(ConversaBase):
         extra = {'HTTP_X_VAPI_SECRET': segredo} if segredo else {}
         return self.client.post(WEBHOOK + query, corpo, format='json', **extra)
 
-    def test_overrides_pedem_o_relatorio_ao_webhook(self):
+    def test_overrides_sem_url_nem_token_por_sessao(self):
         d = self.criar().data
         ov = d['vapi']['assistant_overrides']
         self.assertEqual(ov['serverMessages'], ['end-of-call-report'])
-        self.assertTrue(ov['server']['url'].startswith('https://api.exemplo.ao/api/v1/practice/vapi/webhook/?sessao='))
-        self.assertNotIn(SEGREDO, str(ov))  # vai pelo browser: nunca o segredo
+        self.assertNotIn('server', ov)  # o URL e o segredo ficam no painel do Vapi
+        self.assertNotIn(SEGREDO, str(ov))
+        self.assertNotIn(webhook.token_sessao(d['id']), str(ov))
         self.assertEqual(ov['artifactPlan'], {'recordingEnabled': False})
-
-    @override_settings(VAPI_WEBHOOK_URL='http://localhost:8000/api/v1/practice/vapi/webhook/')
-    def test_sem_url_publica_nao_ha_server(self):
-        ov = self.criar().data['vapi']['assistant_overrides']
-        self.assertNotIn('server', ov)
-        self.assertNotIn('serverMessages', ov)
+        self.assertEqual(VapiSession.objects.get(pk=d['id']).full_session_data['config']['assistant_id'], 'asst_1')
 
     def test_autenticacao(self):
         sid = self.criar().data['id']
@@ -132,35 +135,49 @@ class WebhookFimChamadaTests(ConversaBase):
         with override_settings(VAPI_WEBHOOK_SECRET=''):
             self.assertEqual(self.enviar(corpo).status_code, 404)
 
-    def test_token_da_sessao_no_url(self):
-        d = self.criar().data
-        self.recuar_inicio(d['id'], 130)
-        url = d['vapi']['assistant_overrides']['server']['url']
-        r = self.client.post(url.replace('https://api.exemplo.ao', ''), _relatorio(), format='json')
+    def test_token_antigo_so_serve_de_pista(self):
+        # O URL antigo (com o token da sessão) passava pelo browser: o conteúdo é ignorado e a
+        # chamada é pedida ao Vapi. Um relatório forjado não fecha nem avalia nada.
+        sid = self.criar().data['id']
+        url = webhook.url_servidor(sid).replace('https://api.exemplo.ao', '')
+        forjado = _relatorio(sid, falas=['FORGED perfect answer one two three', 'FORGED again four five six'],
+                             duracao=900)
+        r = self.client.post(url, forjado, format='json')
         self.assertEqual(r.status_code, 200, r.content)
+        self.assertEqual(r.json()['status'], 'recusada')  # o Vapi não conhece a chamada
+        s = VapiSession.objects.get(pk=sid)
+        self.assertEqual(s.status, 'em_curso')
+        self.assertEqual(self.usados(), 0)
+        # A chamada real existe no Vapi: o pedido com token só faz o servidor ir buscá-la.
+        cid = self.vapi.chamada(sid, [x for f in FALAS_BOAS for x in (('tutor', 'Tell me more.'), ('aluno', f))],
+                                duracao=125)
+        r = self.client.post(url, _relatorio(sid, falas=['FORGED'], duracao=900, call_id=cid), format='json')
         self.assertEqual(r.json()['status'], 'fechada')
+        s = VapiSession.objects.get(pk=sid)
+        self.assertEqual(s.duration_seconds, 125)
+        self.assertNotIn('FORGED', str(s.full_session_data['transcricao']))
 
     def test_abandonada_fecha_cobra_e_avalia_uma_vez(self):
         sid = self.criar().data['id']
-        self.recuar_inicio(sid, 130)
+        # Sem ligada/ (o browser saltou-o): a duração do Vapi conta na mesma.
         r = self.enviar(_relatorio(sid, duracao=125))
         self.assertEqual(r.status_code, 200, r.content)
         self.assertEqual(r.json()['status'], 'fechada')
         s = VapiSession.objects.get(pk=sid)
         self.assertEqual(s.status, 'avaliada')
-        self.assertEqual(s.duration_seconds, 125)  # limitado pela duração do Vapi
+        self.assertEqual(s.duration_seconds, 125)  # a duração do Vapi
         self.assertEqual(s.duration_minutes, 3)
         self.assertEqual(self.usados(), 3)
         dados = s.full_session_data
         self.assertEqual([t['texto'] for t in dados['transcricao'] if t['quem'] == 'aluno'], FALAS_BOAS)
-        self.assertEqual(dados['vapi_fim']['duracao_segundos'], 125)
-        self.assertEqual(dados['vapi_fim']['call_id'], 'call_1')
+        self.assertEqual(dados['vapi_verificada']['duracao_segundos'], 125)
+        self.assertEqual(dados['vapi_verificada']['call_id'], CALL_ID)
         self.assertGreater(dados['pontos'], 0)
         pontos = UserProgress.objects.get(user=self.aluno).points
 
         # Repetido: nada muda (nem minutos, nem pontos).
         r = self.enviar(_relatorio(sid, duracao=125))
-        self.assertEqual(r.json()['status'], 'repetido')
+        self.assertEqual(r.json()['status'], 'ja_verificada')
         self.assertEqual(self.usados(), 3)
         s2 = VapiSession.objects.get(pk=sid)
         self.assertEqual(s2.full_session_data['pontos'], dados['pontos'])
@@ -171,19 +188,32 @@ class WebhookFimChamadaTests(ConversaBase):
         self.assertEqual(r.data['estado'], 'avaliada')
         self.assertEqual(self.usados(), 3)
 
-    def test_transcricao_do_servidor_ganha_a_do_cliente(self):
+    def test_duracao_limitada_ao_maximo_da_sessao(self):
+        sid = self.criar().data['id']
+        self.enviar(_relatorio(sid, duracao=99999))  # o browser podia mudar maxDurationSeconds
+        s = VapiSession.objects.get(pk=sid)
+        self.assertEqual(s.duration_seconds, s.max_seconds)
+
+    def test_outro_assistente_ou_sessao_recusados(self):
+        sid = self.criar().data['id']
+        self.assertEqual(self.enviar(_relatorio(sid, duracao=125, assistente='asst_do_aluno')).json()['status'],
+                         'recusada')
+        self.assertEqual(VapiSession.objects.get(pk=sid).status, 'em_curso')
+
+    def test_cliente_fecha_primeiro_e_o_relatorio_avalia_depois(self):
         sid = self.criar().data['id']
         self.recuar_inicio(sid, 130)
-        # O cliente já terminou com uma transcrição curta: sem avaliação.
+        # O cliente termina primeiro (sem id da chamada): fica à espera do Vapi, sem cobrar nem avaliar.
         r = self.terminar(sid, [{'quem': 'aluno', 'texto': 'Hello.'}])
-        self.assertEqual(r.data['estado'], 'sem_avaliacao')
-        self.assertEqual(self.usados(), 3)
-        r = self.enviar(_relatorio(sid))
-        self.assertEqual(r.json()['status'], 'registada')
+        self.assertEqual(r.data['estado'], 'a_avaliar')
+        self.assertTrue(r.data['transcricao_provisoria'])
+        self.assertEqual(self.usados(), 0)
+        r = self.enviar(_relatorio(sid, duracao=125))
+        self.assertEqual(r.json()['status'], 'fechada')
         s = VapiSession.objects.get(pk=sid)
         self.assertEqual(s.status, 'avaliada')
         self.assertIn(FALAS_BOAS[0], [t['texto'] for t in s.full_session_data['transcricao']])
-        self.assertEqual(self.usados(), 3)  # minutos já cobrados: não mudam
+        self.assertEqual(self.usados(), 3)
 
     def test_sessao_desconhecida_ou_outro_tipo(self):
         self.assertEqual(self.enviar(_relatorio('nao-existe')).json()['status'], 'sessao_desconhecida')

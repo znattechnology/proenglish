@@ -7,6 +7,10 @@ including new features like resources, quizzes, and enhanced functionality.
 
 from django.urls import path
 from . import views
+# O PUT de progresso e as tentativas dos questionários usam as views dos alunos (regras do
+# questionário, do vídeo visto, da inscrição e do plano; nota corrigida no servidor). As antigas
+# deixavam o browser marcar qualquer aula como concluída e dar a si próprio 100% no questionário.
+from apps.courses.api.student.video_courses import views as progresso_aluno
 from apps.courses.legado import rota_removida
 
 app_name = 'courses_v2'
@@ -41,9 +45,9 @@ urlpatterns = [
     
     # 🆕 NEW IN V2: Quiz Attempts and Analytics
     path('chapters/<uuid:chapterId>/quiz/attempts/', 
-         views.StudentQuizAttemptListCreateView.as_view(), name='quiz_attempts'),
+         progresso_aluno.StudentQuizAttemptListCreateView.as_view(), name='quiz_attempts'),
     path('chapters/<uuid:chapterId>/quiz/summary/', 
-         views.get_student_quiz_summary, name='quiz_summary'),
+         progresso_aluno.get_student_quiz_summary, name='quiz_summary'),
     
     # Transactions - enhanced with better tracking
     path('transactions/', views.TransactionListView.as_view(), name='transaction_list'),
@@ -52,7 +56,7 @@ urlpatterns = [
     # 🆕 NEW IN V2: Enhanced User Progress Tracking
     path('users/<uuid:userId>/enrolled/', views.get_user_enrolled_courses, name='user_enrolled_courses'),
     path('users/<uuid:userId>/progress/<uuid:courseId>/', views.get_user_course_progress, name='user_course_progress'),
-    path('users/<uuid:userId>/progress/<uuid:courseId>/update/', views.update_user_course_progress, name='update_user_course_progress'),
+    path('users/<uuid:userId>/progress/<uuid:courseId>/update/', progresso_aluno.update_user_course_progress, name='update_user_course_progress'),
     
     # Enhanced payments with Stripe
     

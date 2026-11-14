@@ -42,3 +42,11 @@ export const COMPETENCIAS_EXAME: { chave: keyof NotasExame; nome: string; ajuda:
 ];
 
 export const dataCurta = (iso: string) => new Date(iso).toLocaleDateString("pt-PT", { day: "numeric", month: "long" });
+
+/** Dia e hora na hora de Luanda (ex.: "21 de novembro às 14:30"), para quando o aluno pode repetir. */
+export const dataHoraLuanda = (iso: string) => {
+  const d = new Date(iso);
+  const dia = d.toLocaleDateString("pt-PT", { day: "numeric", month: "long", timeZone: "Africa/Luanda" });
+  const hora = d.toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit", timeZone: "Africa/Luanda" });
+  return `${dia} às ${hora} (hora de Luanda)`;
+};

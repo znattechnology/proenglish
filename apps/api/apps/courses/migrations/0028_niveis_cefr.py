@@ -10,11 +10,16 @@ PARA_ANTIGO = {'A1': 'Beginner', 'A2': 'Beginner', 'B1': 'Intermediate',
 
 
 def para_cefr(apps, schema_editor):
+    from apps.courses.niveis import normalizar
+
     Course = apps.get_model('courses', 'Course')
     for antigo, novo in PARA_CEFR.items():
         Course.objects.filter(level=antigo).update(level=novo)
-    # Valores fora da escala (minúsculas, vazios) ficam no nível por omissão.
-    Course.objects.exclude(level__in=list(PARA_ANTIGO)).update(level='A2')
+    # Os restantes valores fora da escala exacta normalizam-se um a um ('intermediate' -> B1,
+    # 'b1' -> B1, ' Advanced ' -> B2); só os que não se reconhecem (vazios, lixo) ficam no nível
+    # por omissão (A2).
+    for curso_id, nivel in Course.objects.exclude(level__in=list(PARA_ANTIGO)).values_list('id', 'level'):
+        Course.objects.filter(pk=curso_id).update(level=normalizar(nivel) or 'A2')
 
 
 def para_antigo(apps, schema_editor):

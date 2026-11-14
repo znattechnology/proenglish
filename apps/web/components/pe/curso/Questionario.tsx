@@ -7,6 +7,9 @@ import { cnPe } from "@/lib/pe";
 import { mensagemErro } from "@/src/domains/student/subscricao/api";
 import { useResponderQuizMutation, useResumoQuizQuery, type QuizData, type ResultadoQuiz } from "@/src/domains/student/curso/api";
 
+// Sem tentativas e sem passar, a aula conclui-se na mesma (com o vídeo visto); a nota fica.
+const SEM_TENTATIVAS = "Já não tem mais tentativas. A aula conta como concluída depois de ver o vídeo, mas esta nota fica na nota do curso. O professor pode dar-lhe outra tentativa.";
+
 /**
  * Questionário de um capítulo. O estudante escolhe uma opção por pergunta e envia;
  * a correcção (nota, respostas certas e explicações) vem do servidor.
@@ -62,14 +65,14 @@ export function Questionario({ chapterId, courseId, quiz, aoPassar }: { chapterI
           </div>
           <p className="m-0">
             Acertou {resultado.correccao.filter((c) => c.certa).length} de {resultado.correccao.length}. Precisa de {minimo}% para passar.
-            {!resultado.is_passed ? (restantes ? ` Tem mais ${restantes} ${restantes === 1 ? "tentativa" : "tentativas"}.` : " Já não tem mais tentativas.") : ""}
+            {!resultado.is_passed ? (restantes ? ` Tem mais ${restantes} ${restantes === 1 ? "tentativa" : "tentativas"}.` : ` ${SEM_TENTATIVAS}`) : ""}
             {!resultado.revela_respostas && !resultado.is_passed && restantes ? " As respostas certas aparecem quando passar ou quando acabarem as tentativas." : ""}
           </p>
         </div>
       ) : resumo && resumo.attempts_count > 0 ? (
         <Aviso tipo={resumo.is_passed ? "certo" : "neutro"}>
           {resumo.is_passed ? `Já passou neste questionário (melhor nota: ${Math.round(resumo.best_score)}%). ` : `Melhor nota até agora: ${Math.round(resumo.best_score)}%. `}
-          {restantes ? `Tem ${restantes} ${restantes === 1 ? "tentativa" : "tentativas"}.` : "Já não tem mais tentativas."}
+          {restantes ? `Tem ${restantes} ${restantes === 1 ? "tentativa" : "tentativas"}.` : resumo.is_passed ? "Já não tem mais tentativas." : SEM_TENTATIVAS}
         </Aviso>
       ) : (
         <p className="m-0 text-pe-tinta-suave">

@@ -8,6 +8,7 @@ import type { Exercicio, Resposta, ResultadoResponder } from "@/src/domains/stud
 import { BalaoEnunciado, BotaoOuvir, Enunciado } from "./Partes";
 import { ConversaCurta } from "./ConversaCurta";
 import { PalavrasComNota } from "@/components/pe/fala/Fala";
+import { MAX_SEGUNDOS_GRAVACAO, MENSAGEM_SEM_GRAVACAO, motivoSemGravacao, type EstadoMicrofone } from "@/components/pe/fala/gravacao";
 import type { DetalhePronuncia } from "@/src/domains/student/fala/api";
 
 export type RespostaExercicio = { tipo: "texto"; resposta: Resposta } | { tipo: "audio"; audio: Blob } | null;
@@ -458,16 +459,25 @@ function ResultadoPronuncia({ frase, fala }: { frase: string; fala: ResultadoFal
   );
 }
 
-type EstadoGravacao = "parado" | "a-gravar" | "gravado" | "sem-permissao" | "sem-suporte";
+type EstadoGravacao = EstadoMicrofone;
 
-/** Grava com o MediaRecorder; cada gravação acabada vai para aoMudar como {tipo: "audio"}. */
+/** Grava com o MediaRecorder; cada gravação acabada vai para aoMudar como {tipo: "audio"}. Pára sozinha aos 45 s. */
 function useGravador(aoMudar: Props["aoMudar"]) {
   // Só é montado no browser (a lição carrega depois dos dados), por isso pode ver-se já o suporte.
-  const [estado, setEstado] = useState<EstadoGravacao>(() => (typeof window !== "undefined" && !("MediaRecorder" in window) ? "sem-suporte" : "parado"));
+  const [estado, setEstado] = useState<EstadoGravacao>(() =>
+    typeof window !== "undefined" && (!("MediaRecorder" in window) || !navigator.mediaDevices?.getUserMedia) ? "sem-suporte" : "parado"
+  );
   const gravador = useRef<MediaRecorder | null>(null);
   const pedacos = useRef<Blob[]>([]);
+  const limite = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => () => gravador.current?.stream.getTracks().forEach((t) => t.stop()), []);
+  useEffect(
+    () => () => {
+      if (limite.current) clearTimeout(limite.current);
+      gravador.current?.stream.getTracks().forEach((t) => t.stop());
+    },
+    []
+  );
 
   const comecar = async () => {
     try {
@@ -476,6 +486,7 @@ function useGravador(aoMudar: Props["aoMudar"]) {
       pedacos.current = [];
       rec.ondataavailable = (e) => e.data.size && pedacos.current.push(e.data);
       rec.onstop = () => {
+        if (limite.current) clearTimeout(limite.current);
         stream.getTracks().forEach((t) => t.stop());
         const audio = new Blob(pedacos.current, { type: rec.mimeType || "audio/webm" });
         setEstado("gravado");
@@ -483,10 +494,11 @@ function useGravador(aoMudar: Props["aoMudar"]) {
       };
       gravador.current = rec;
       rec.start();
+      limite.current = setTimeout(() => rec.state === "recording" && rec.stop(), MAX_SEGUNDOS_GRAVACAO * 1000);
       setEstado("a-gravar");
       aoMudar(null);
-    } catch {
-      setEstado("sem-permissao");
+    } catch (e) {
+      setEstado(motivoSemGravacao(e));
     }
   };
   const parar = () => gravador.current?.state === "recording" && gravador.current.stop();
@@ -496,9 +508,9 @@ function useGravador(aoMudar: Props["aoMudar"]) {
 function BotaoGravar({ estado, comecar, parar, bloqueado }: ReturnType<typeof useGravador> & { bloqueado: boolean }) {
   return (
     <>
-      {estado === "sem-permissao" ? (
+      {estado === "sem-permissao" || estado === "sem-microfone" ? (
         <p role="alert" className="m-0 max-w-[420px] rounded-pe-md bg-pe-realce-suave px-4 py-3 text-center text-[15px]">
-          O navegador não deixou usar o microfone. Permita o microfone nas definições do navegador e volte a tocar em gravar.
+          {MENSAGEM_SEM_GRAVACAO[estado]}
         </p>
       ) : null}
       {estado === "sem-suporte" ? (
@@ -522,7 +534,7 @@ function BotaoGravar({ estado, comecar, parar, bloqueado }: ReturnType<typeof us
 }
 
 function textoGravacao(estado: EstadoGravacao) {
-  return estado === "a-gravar" ? "A gravar… toque para parar" : estado === "gravado" ? "Gravado. Pode verificar ou gravar outra vez." : "Toque para gravar";
+  return estado === "a-gravar" ? `A gravar… toque para parar (no máximo ${MAX_SEGUNDOS_GRAVACAO} segundos)` : estado === "gravado" ? "Gravado. Pode verificar ou gravar outra vez." : "Toque para gravar";
 }
 
 function Falar({ ex, bloqueado, aoMudar, fala }: Props) {

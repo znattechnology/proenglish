@@ -126,13 +126,18 @@ def criar_sessao(user, data, situacao=None, objectivos=None, max_segundos=None, 
     for antiga, segundos in fechadas:
         _efeitos_cobranca(antiga, segundos)
         depois_de_fechar(antiga)
-        if antiga.status == VapiSession.STATUS_A_AVALIAR:
-            # Sem esperar pelo Claude: avaliação por regras (rápida). No modo de voz, a transcrição
-            # de uma conversa abandonada só existe se o end-of-call-report do Vapi já chegou.
-            try:
-                avaliar_pendente(antiga.pk, so_regras=True)
-            except Exception:
-                logger.exception('conversa: falha ao avaliar a sessão abandonada %s', antiga.pk)
+    # As que ainda esperam pela chamada do Vapi (esta e as que ficaram para trás): verificadas
+    # agora, para os minutos delas contarem antes de se decidir a quota desta conversa.
+    # (O exame e o teste de nível não gastam minutos: ficam para o ecrã deles e para o comando.)
+    pendentes = list(VapiSession.objects.filter(user=user, status=VapiSession.STATUS_A_AVALIAR)
+                     .exclude(situation__startswith='exame-').exclude(situation__startswith='diagnostico-')
+                     .order_by('-created_at').values_list('pk', flat=True)[:3])
+    for pk in pendentes:
+        # Sem esperar pelo Claude: avaliação por regras (rápida).
+        try:
+            avaliar_pendente(pk, so_regras=True)
+        except Exception:
+            logger.exception('conversa: falha ao avaliar a sessão pendente %s', pk)
     if not quota['pode_comecar'] and not isenta_quota:
         raise ErroConversa(403, quota['motivo'], MENSAGENS[quota['motivo']])
 
@@ -164,6 +169,8 @@ def criar_sessao(user, data, situacao=None, objectivos=None, max_segundos=None, 
                            'curso_id': str(situacao['curso_id']) if situacao.get('curso_id') else None,
                            'objectivos': objectivos, **(config_extra or {}),
                            **({'isenta_quota': True} if isenta_quota else {}),
+                           # O assistente a que a chamada tem de pertencer (chamada.motivo_recusa).
+                           **({'assistant_id': vapi['assistant_id']} if vapi else {}),
                            'gravar': bool(gravar and vapi)},
                 'historico': [{'quem': 'tutor', 'texto': fala}],
             },
@@ -206,12 +213,12 @@ def criar_sessao(user, data, situacao=None, objectivos=None, max_segundos=None, 
                 'metadata': {'sessao_id': sessao.session_id},
             },
         }
-        # O Vapi manda o end-of-call-report (transcrição e duração) ao nosso webhook: assim uma
-        # conversa abandonada (separador fechado) fica com transcrição, cobrada e avaliada.
-        from .webhook import url_servidor
-        url = url_servidor(sessao.session_id)
-        if url:
-            resposta['vapi']['assistant_overrides']['server'] = {'url': url}
+        # O end-of-call-report vai para o URL do servidor configurado no painel do Vapi (assistente
+        # ou organização), com o segredo global (webhook.py). Nada de URL nem token por sessão aqui:
+        # os overrides passam pelo browser do aluno. A transcrição, a duração e a gravação só valem
+        # quando vêm do Vapi (chamada.py, verificacao.py).
+        from .webhook import webhook_configurado
+        if webhook_configurado():
             resposta['vapi']['assistant_overrides']['serverMessages'] = ['end-of-call-report']
     return resposta
 
@@ -285,8 +292,10 @@ def _registar_actividade(sessao, agora=None):
 
 def ligada(user, sessao_id, call_id=None):
     """A chamada ligou (Vapi call-start; no simulado, ao começar). Idempotente.
-    call_id (opcional): o id da chamada no Vapi, para ir buscar a gravação de um exame oral
-    quando o end-of-call-report não chega (conversa/exame.py)."""
+    No modo de voz NÃO conta para cobrar: os minutos vêm da duração que o Vapi confirma
+    (verificacao.py). call_id (opcional): o id da chamada no Vapi, guardado como «reclamado»
+    até um GET /call o confirmar (chamada.py); um id que o Vapi já confirmou nunca muda."""
+    from . import verificacao
     with transaction.atomic():
         sessao = obter_sessao(user, sessao_id, bloquear=True)
         if sessao.status != VapiSession.STATUS_EM_CURSO:
@@ -298,8 +307,7 @@ def ligada(user, sessao_id, call_id=None):
             sessao.last_activity_at = agora
             campos += ['connected_at', 'last_activity_at']
         dados = _dados(sessao)
-        if isinstance(call_id, str) and call_id.strip() and not dados.get('vapi_call_id') and sessao.mode == 'vapi':
-            dados['vapi_call_id'] = call_id.strip()[:100]
+        if sessao.mode == 'vapi' and verificacao.reclamar_call_id(dados, call_id):
             sessao.full_session_data = dados
             campos.append('full_session_data')
         if campos:
@@ -313,7 +321,9 @@ def ligada(user, sessao_id, call_id=None):
     }
 
 
-def responder(user, sessao_id, texto):
+def responder(user, sessao_id, texto, escrito=False):
+    """Resposta do tutor no modo simulado. escrito=True: o aluno escreveu em vez de falar (a fala fica
+    marcada e as frases-alvo que tiver só contam 'com_ajuda')."""
     texto = (texto or '').strip()
     if not texto:
         raise ErroConversa(400, 'texto_vazio', 'Escreva uma frase.')
@@ -332,7 +342,7 @@ def responder(user, sessao_id, texto):
         cfg = dados.get('config', {})
         historico = list(dados.get('historico') or [])
         indice = sum(1 for t in historico if t.get('quem') == 'aluno')
-        historico.append({'quem': 'aluno', 'texto': texto})
+        historico.append({'quem': 'aluno', 'texto': texto, **({'escrito': True} if escrito is True else {})})
         tutor = regras.resposta_simulada(situacao, cfg.get('correcao', 'suave'), nome_aluno(user), texto, indice)
         historico.append({'quem': 'tutor', 'texto': tutor})
         dados['historico'] = historico[-200:]
@@ -341,11 +351,19 @@ def responder(user, sessao_id, texto):
     return {'tutor': tutor}
 
 
+def sessao_sem_ajuda(sessao):
+    """Exame oral e teste de nível: sem ajustes (Claude) durante a conversa nem texto escrito."""
+    return (sessao.situation or '').startswith(('exame-', 'diagnostico-'))
+
+
 def ajuste(user, sessao_id, frase):
     frase = ' '.join((frase or '').split())[:300]
     sessao = obter_sessao(user, sessao_id)
     _exigir_em_curso(sessao)  # 409 também quando o tempo acabou: não se chama o Claude depois disso
     _registar_actividade(sessao)
+    # No exame e no teste de nível não há ajustes: o pedido só serve de sinal de vida.
+    if sessao_sem_ajuda(sessao):
+        return {'ajuste': None}
     # O cliente manda um pedido por cada fragmento final do reconhecimento de voz: os muito curtos
     # ("Yes.", "OK, sure") não têm o que corrigir e não vão ao Claude.
     if len(regras.palavras(frase)) < MIN_PALAVRAS_AJUSTE:
@@ -360,25 +378,57 @@ def ajuste(user, sessao_id, frase):
     return {'ajuste': resultado}
 
 
+MAX_AJUDAS = 60
+
+
+def _juntar_lista(dados, chave, texto):
+    """Junta um texto a dados[chave] (sem repetidos, no máximo MAX_AJUDAS). True se mudou."""
+    if not isinstance(texto, str):
+        return False
+    texto = ' '.join(texto.split())[:500]
+    if not perfil_servico.normalizar(texto):
+        return False
+    lista = [t for t in dados.get(chave) or [] if isinstance(t, str)]
+    chaves = {perfil_servico.normalizar(t) for t in lista}
+    if perfil_servico.normalizar(texto) in chaves or len(lista) >= MAX_AJUDAS:
+        return False
+    dados[chave] = lista + [texto]
+    return True
+
+
+def juntar_ajudas(dados, escritos=(), reveladas=()):
+    """O cliente diz o que o aluno ESCREVEU (em vez de falar) e que frases-alvo REVELOU em inglês.
+    Só pode baixar o resultado (essas frases ficam no máximo 'com_ajuda'), nunca subir. True se mudou."""
+    if dados.get('perfil_registado'):
+        return False
+    mudou = False
+    for t in list(escritos or [])[:MAX_AJUDAS]:
+        mudou = _juntar_lista(dados, 'escritos', t) or mudou
+    for t in list(reveladas or [])[:MAX_AJUDAS]:
+        mudou = _juntar_lista(dados, 'reveladas', t) or mudou
+    return mudou
+
+
+def registar_ajuda(user, sessao_id, escrito=None, revelada=None):
+    """POST sessoes/<id>/ajuda/ durante a conversa: {escrito: texto} ou {revelada: frase em inglês}."""
+    with transaction.atomic():
+        sessao = obter_sessao(user, sessao_id, bloquear=True)
+        dados = _dados(sessao)
+        if juntar_ajudas(dados, [escrito] if escrito else (), [revelada] if revelada else ()):
+            sessao.full_session_data = dados
+            sessao.save(update_fields=['full_session_data'])
+    return {'ok': True}
+
+
 # ---------------------------------------------------------------------------
 # Terminar
 # ---------------------------------------------------------------------------
 
-def _escolher_transcricao(sessao, enviada):
-    historico = analise.limpar_transcricao(_dados(sessao).get('historico') or [])
-    # No simulado o servidor conhece a conversa toda: é a única fonte (não se confia no cliente).
-    if sessao.mode == 'simulado':
-        return historico
-    # Na voz, a transcrição do Vapi (end-of-call-report, conversa/webhook.py) ganha à do cliente.
-    servidor = analise.limpar_transcricao(_dados(sessao).get('transcricao_servidor') or [])
-    return servidor or enviada or historico
-
-
 def segundos_ligada(sessao, agora=None):
     """
-    Segundos que contam: desde connected_at até ao fim, que é o mais cedo entre agora e
-    30 s depois do último sinal de vida (uma conversa abandonada não conta até ao máximo),
-    e nunca mais do que max_seconds. Sem ligação (connected_at vazio): 0.
+    Segundos que contam no modo simulado (e, no modo de voz, só quando o Vapi nunca confirmou a
+    chamada: verificacao.expirar): desde connected_at até ao fim, que é o mais cedo entre agora e
+    30 s depois do último sinal de vida, e nunca mais do que max_seconds. Sem ligação: 0.
     """
     if sessao.connected_at is None:
         return 0
@@ -404,58 +454,106 @@ def dia_da_sessao(sessao):
     return hoje_luanda(sessao.connected_at or sessao.started_at or sessao.created_at)
 
 
-def _terminar_bloqueado(sessao, transcricao_enviada, sub, segundos_max=None):
+def minimo_segundos(sessao):
+    """No modo de voz, o exame e o teste de nível só têm nota com uma duração mínima confirmada pelo Vapi."""
+    if sessao.mode != 'vapi':
+        return 0
+    slug = sessao.situation or ''
+    if slug.startswith('exame-'):
+        from .exame import MIN_SEGUNDOS_VERIFICADOS
+        return MIN_SEGUNDOS_VERIFICADOS
+    if slug.startswith('diagnostico-'):
+        from .diagnostico import MIN_SEGUNDOS_VERIFICADOS
+        return MIN_SEGUNDOS_VERIFICADOS
+    return 0
+
+
+def fechar(sessao, sub, segundos, transcricao, ligou, agora=None, avaliavel=True, ja_cobrados=0):
     """
-    Fecha e cobra uma sessão em curso, SEM avaliar (a avaliação é depois, fora da transacção).
+    Fecha e cobra uma sessão com uma duração e uma transcrição em que se confia (simulado: relógio
+    e histórico do servidor; voz: a chamada verificada do Vapi). SEM avaliar.
     Chamar dentro de transaction.atomic com a sessão e a assinatura bloqueadas.
-    segundos_max: a duração que o Vapi diz que a chamada teve (webhook); nunca se cobra mais.
+    avaliavel=False: fecha sem avaliação (o Vapi nunca confirmou a chamada).
+    ja_cobrados: minutos já descontados antes (fecho sem o Vapi corrigido depois): só se cobra a diferença.
     """
     from apps.practice.limite_licoes import hoje_luanda
-    agora = timezone.now()
-    ligou = sessao.connected_at is not None
-    segundos = segundos_ligada(sessao, agora)
-    if segundos_max is not None:
-        segundos = min(segundos, max(0, int(segundos_max)))
+    agora = agora or timezone.now()
+    segundos = max(0, int(segundos or 0))
+    if sessao.max_seconds:
+        segundos = min(segundos, sessao.max_seconds)
     do_dia = dia_da_sessao(sessao) == hoje_luanda(agora)
 
     isenta = sessao_isenta(sessao)
     quota = estado_quota(sessao.user, sub)
     restantes = quota['minutos_restantes'] if do_dia and not isenta else None  # dia passado: não gasta a quota de hoje
     if restantes is not None:
-        segundos = min(segundos, restantes * 60)
-    minutos = minutos_a_cobrar(segundos)
+        restantes += ja_cobrados
+        segundos_cobrar = min(segundos, restantes * 60)
+    else:
+        segundos_cobrar = segundos
+    minutos = minutos_a_cobrar(segundos_cobrar)
     if restantes is not None:
         minutos = min(minutos, restantes)
 
-    transcricao = _escolher_transcricao(sessao, transcricao_enviada)
     dados = _dados(sessao)
+    dados.pop('aguarda_vapi', None)
     dados['transcricao'] = transcricao
     dados['minutos_cobrados'] = 0 if isenta else minutos
-    m = analise.metricas(transcricao, segundos)
+    m = analise.metricas(transcricao, segundos_cobrar)
     dados.update({'notas': None, 'correccoes': [], 'palavras_bem_usadas': [], 'resumo': None, 'metricas': m})
 
     if not ligou:
         sessao.status = VapiSession.STATUS_NAO_LIGOU
-    elif analise.tem_conteudo_suficiente(transcricao):
+    elif avaliavel and analise.tem_conteudo_suficiente(transcricao) and segundos >= minimo_segundos(sessao):
         sessao.status = VapiSession.STATUS_A_AVALIAR
     else:
         sessao.status = VapiSession.STATUS_SEM_AVALIACAO
 
     sessao.total_words = m['total_palavras']
     sessao.words_per_minute = m['palavras_por_minuto']
-    sessao.duration_seconds = segundos
+    sessao.duration_seconds = segundos_cobrar
     sessao.duration_minutes = minutos
-    sessao.ended_at = agora
+    sessao.ended_at = sessao.ended_at or agora
     if ligou:  # fase 3: tempo de fala do aluno (medido com os tempos do Vapi, ou estimado)
         from . import tempo_fala
         tempo_fala.aplicar(sessao, dados, transcricao)
     sessao.full_session_data = dados
     sessao.save()
 
-    if minutos and do_dia and not isenta:
+    a_cobrar = minutos - ja_cobrados
+    if a_cobrar > 0 and do_dia and not isenta:
         UserSubscription.objects.filter(pk=sub.pk).update(
-            daily_speaking_minutes_used=F('daily_speaking_minutes_used') + minutos)
-    return sessao, segundos
+            daily_speaking_minutes_used=F('daily_speaking_minutes_used') + a_cobrar)
+    return sessao, segundos_cobrar
+
+
+def _suspender(sessao, transcricao_enviada, agora):
+    """Modo de voz sem chamada verificada: a sessão fica 'a_avaliar' à espera do Vapi (aguarda_vapi),
+    sem cobrar nem avaliar. A transcrição do cliente fica só como provisória, para mostrar."""
+    dados = _dados(sessao)
+    dados['aguarda_vapi'] = agora.isoformat()
+    dados['transcricao_provisoria'] = transcricao_enviada
+    juntar_ajudas(dados, escritos=[t['texto'] for t in transcricao_enviada if t.get('escrito')])
+    sessao.status = VapiSession.STATUS_A_AVALIAR
+    sessao.ended_at = agora
+    sessao.full_session_data = dados
+    sessao.save(update_fields=['status', 'ended_at', 'full_session_data'])
+    return sessao
+
+
+def _terminar_bloqueado(sessao, transcricao_enviada, sub):
+    """
+    Fecha uma sessão em curso, SEM avaliar (a avaliação é depois, fora da transacção).
+    Chamar dentro de transaction.atomic com a sessão e a assinatura bloqueadas.
+    - simulado (e sessões antigas): duração do relógio do servidor e o histórico do servidor;
+    - voz: nunca se confia no cliente. Fica à espera da chamada verificada (verificacao.py), que
+      fecha, cobra e manda avaliar com a duração e a transcrição do Vapi.
+    """
+    agora = timezone.now()
+    if sessao.mode == 'vapi':
+        return _suspender(sessao, transcricao_enviada, agora), 0
+    historico = analise.limpar_transcricao(_dados(sessao).get('historico') or [])
+    return fechar(sessao, sub, segundos_ligada(sessao, agora), historico, sessao.connected_at is not None, agora)
 
 
 def sessao_isenta(sessao):
@@ -491,6 +589,11 @@ def _efeitos_avaliacao(sessao):
     VapiSession.objects.filter(pk=sessao.pk).update(full_session_data=dados)
 
 
+def precisa_do_vapi(sessao):
+    """Sessão de voz cuja chamada o Vapi ainda não confirmou: não se avalia nem conta para nada."""
+    return sessao.mode == 'vapi' and not _dados(sessao).get('vapi_verificada')
+
+
 def avaliar_pendente(sessao_pk, so_regras=False):
     """
     Avalia uma sessão 'a_avaliar' FORA de qualquer transacção (o Claude pode demorar até 60 s).
@@ -498,9 +601,15 @@ def avaliar_pendente(sessao_pk, so_regras=False):
     devolve a sessão ainda 'a_avaliar'. Devolve a sessão actualizada.
     """
     agora = timezone.now()
+    sessao = VapiSession.objects.get(pk=sessao_pk)
+    if sessao.status == VapiSession.STATUS_A_AVALIAR and precisa_do_vapi(sessao):
+        # Voz sem chamada verificada: nunca se avalia a transcrição do cliente. Pede-se a chamada
+        # ao Vapi (que avalia, se já terminou); passado o prazo, fecha sem nota (verificacao.py).
+        from . import verificacao
+        return verificacao.resolver(sessao_pk, so_regras=so_regras)
     with transaction.atomic():
         sessao = VapiSession.objects.select_for_update().select_related('user').get(pk=sessao_pk)
-        if sessao.status != VapiSession.STATUS_A_AVALIAR:
+        if sessao.status != VapiSession.STATUS_A_AVALIAR or precisa_do_vapi(sessao):
             return sessao
         dados = _dados(sessao)
         iniciada = parse_datetime(dados.get('avaliacao_iniciada_em') or '')
@@ -590,14 +699,30 @@ def depois_de_fechar(sessao):
             logger.exception('conversa: falha ao fechar a sessão especial %s', sessao.pk)
 
 
-def terminar(user, sessao_id, transcricao_bruta):
+def terminar(user, sessao_id, transcricao_bruta, call_id=None, reveladas=None):
+    """
+    O aluno terminou (ou fechou o separador). No simulado fecha, cobra e avalia já. Na voz, a
+    transcrição do cliente é só provisória (para mostrar): a sessão espera pela chamada verificada
+    do Vapi, pedida aqui mesmo (call_id reclamado) e, se ainda não terminou lá, pelo webhook ou por
+    uma nova tentativa (resumo, comando verificar_conversas_vapi).
+    """
+    from . import verificacao
     transcricao = analise.limpar_transcricao(transcricao_bruta)
     with transaction.atomic():
         # Ordem de bloqueio igual à de criar_sessao (assinatura primeiro) para evitar deadlocks.
         sub = obter_assinatura(user, bloquear=True)
         sessao = obter_sessao(user, sessao_id, bloquear=True)
+        dados = _dados(sessao)
+        mudou = juntar_ajudas(dados, escritos=[t['texto'] for t in transcricao if t.get('escrito')],
+                              reveladas=reveladas if isinstance(reveladas, list) else ())
+        if sessao.mode == 'vapi':
+            mudou = verificacao.reclamar_call_id(dados, call_id) or mudou
+        if mudou:
+            sessao.full_session_data = dados
         if sessao.status != VapiSession.STATUS_EM_CURSO:
             fechada_agora = False
+            if mudou:
+                sessao.save(update_fields=['full_session_data'])
         else:
             sessao, segundos = _terminar_bloqueado(sessao, transcricao, sub)
             fechada_agora = True
@@ -660,8 +785,13 @@ def resumo(sessao):
             'gramatica': sessao.grammar_score, 'pronuncia': sessao.pronunciation_score,
             'vocabulario': sessao.vocabulary_score,
         }
+    provisoria = False
     if 'versao' in dados:
-        transcricao = dados.get('transcricao') or analise.limpar_transcricao(dados.get('historico') or [])
+        transcricao = dados.get('transcricao')
+        if not transcricao and dados.get('transcricao_provisoria'):
+            # Voz ainda sem a chamada verificada (ou fechada sem ela): o que o browser mostrou, sem valor de nota.
+            transcricao, provisoria = dados['transcricao_provisoria'], True
+        transcricao = transcricao or analise.limpar_transcricao(dados.get('historico') or [])
         correccoes = dados.get('correccoes') or []
         bem = dados.get('palavras_bem_usadas') or []
         texto_resumo = dados.get('resumo')
@@ -682,6 +812,7 @@ def resumo(sessao):
         'estado': estado,
         'notas': notas,
         'transcricao': transcricao,
+        'transcricao_provisoria': provisoria,
         'correccoes': correccoes,
         'palavras_bem_usadas': bem,
         'resumo': texto_resumo or None,

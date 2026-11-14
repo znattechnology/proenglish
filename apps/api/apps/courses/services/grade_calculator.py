@@ -126,7 +126,8 @@ class GradeCalculatorService:
     def calculate_exam_scores(self) -> Dict:
         """
         Exame oral: a melhor nota efectiva (a revista pelo professor ganha à da IA) das tentativas
-        avaliadas; passou = alguma tentativa com nota efectiva >= nota mínima.
+        avaliadas; passou = alguma tentativa com nota efectiva >= nota mínima ACTUAL do curso
+        (config.min_exam_score de agora, não a guardada no momento do exame).
         """
         from apps.courses.models import ExameOral
         if not self.config.exam_enabled:
@@ -137,8 +138,10 @@ class GradeCalculatorService:
             return {'score': None, 'passed': False, 'attempts': 0, 'details': {},
                     'min_score': self.config.min_exam_score}
         melhor = max(exames, key=lambda e: (e.nota_efectiva or 0, e.created_at))
-        passou = any(e.aprovado for e in exames)
-        aprovado = next((e for e in exames if e.aprovado), None)
+        minima = self.config.min_exam_score
+        aprovados = [e for e in exames if e.nota_efectiva is not None and e.nota_efectiva >= minima]
+        passou = bool(aprovados)
+        aprovado = aprovados[0] if aprovados else None
         ref = aprovado if aprovado is not None and (aprovado.nota_efectiva or 0) >= (melhor.nota_efectiva or 0) else melhor
         return {
             'score': round(melhor.nota_efectiva or 0, 2),
@@ -341,10 +344,12 @@ class GradeCalculatorService:
                 continue
 
             # Count completed challenges for this user
+            # Exercícios saltados (análise indisponível, sem microfone) não contam como prática feita.
             chapter_completed = ChallengeProgress.objects.filter(
                 user=self.user,
                 challenge__in=challenges,
-                completed=True
+                completed=True,
+                skipped=False
             ).count()
 
             total_challenges += chapter_total

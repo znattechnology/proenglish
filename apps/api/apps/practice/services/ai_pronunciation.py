@@ -16,7 +16,7 @@ from typing import Dict, List, Optional, Tuple
 from django.conf import settings
 from dataclasses import dataclass
 
-TIMEOUT_ANALISE = 20
+TIMEOUT_ANALISE = 18          # com o Whisper (20 s), abaixo dos 50 s do pedido
 MAX_TOKENS_ANALISE = 2048     # inclui o raciocínio (adaptive)
 TIMEOUT_EXERCICIO = 30
 MAX_TOKENS_EXERCICIO = 2048
@@ -117,6 +117,10 @@ class PronunciationResult:
     # Fase 3: a transcrição com os tempos das palavras (services/transcricao_fala.Transcricao), para
     # as métricas de fluência. None quando não houve transcrição.
     transcricao_fala: Optional[object] = None
+    # Transcrição vazia (silêncio, só ruído): grava-se outra vez (422), sem Claude e sem custos.
+    sem_fala: bool = False
+    # O fornecedor recusou a gravação (formato, ficheiro estragado; HTTP 400/413): grava-se outra vez (422).
+    audio_invalido: bool = False
 
 
 class AIPronunciationAnalyzer:
@@ -159,10 +163,31 @@ class AIPronunciationAnalyzer:
             PronunciationResult with detailed analysis
         """
         
+        from .transcricao_fala import ErroTranscricao
         try:
-            # Step 1: Transcribe audio (services/transcricao_fala: fornecedor de fala -> texto)
+            # Step 1: Transcribe audio (services/transcricao_fala: fornecedor de fala -> texto).
+            # Sem transcrição o Claude não é chamado: serviço em baixo -> indisponível (503, sem
+            # tirar vidas); gravação recusada ou silêncio -> grava-se outra vez (422).
             self.ultima_transcricao = None
-            transcribed_text = await self._transcribe_audio(audio_file)
+            try:
+                transcribed_text = await self._transcribe_audio(audio_file)
+            except ErroTranscricao as e:
+                resultado = self._create_fallback_result(expected_text)
+                resultado.audio_invalido = bool(getattr(e, 'audio_invalido', False))
+                resultado.indisponivel = not resultado.audio_invalido
+                return resultado
+            except Exception:
+                resultado = self._create_fallback_result(expected_text)
+                resultado.indisponivel = True
+                return resultado
+            if not transcribed_text:
+                resultado = self._create_fallback_result(expected_text)
+                resultado.indisponivel = False
+                resultado.sem_fala = True
+                resultado.feedback = 'Não ouvimos nada na gravação. Grave outra vez, mais perto do microfone.'
+                resultado.suggestions = []
+                resultado.transcricao_fala = self.ultima_transcricao
+                return resultado
 
             # Step 2: análise do texto dito (Claude)
             analysis = await self._analyze_with_gpt4(
@@ -177,19 +202,16 @@ class AIPronunciationAnalyzer:
     
     async def _transcribe_audio(self, audio_file: io.BytesIO) -> str:
         """Texto dito, pela interface única de fala -> texto (services/transcricao_fala.py),
-        com os tempos das palavras guardados em self.ultima_transcricao."""
+        com os tempos das palavras guardados em self.ultima_transcricao. Levanta ErroTranscricao (ou
+        outra excepção) quando o serviço falha; '' quando não houve fala."""
         from . import transcricao_fala
 
-        try:
-            audio_file.seek(0)
-            t = await asyncio.to_thread(
-                transcricao_fala.transcrever, audio_file.getvalue(), 'audio/webm', 'en', True,
-                getattr(audio_file, 'name', None))
-            self.ultima_transcricao = t
-            return (t.texto or '').strip()
-        except Exception as e:
-            print(f"Speech-to-text error: {type(e).__name__}")
-            return ""
+        audio_file.seek(0)
+        t = await asyncio.to_thread(
+            transcricao_fala.transcrever, audio_file.getvalue(), 'audio/webm', 'en', True,
+            getattr(audio_file, 'name', None))
+        self.ultima_transcricao = t
+        return ' '.join(str(getattr(t, 'texto', '') or '').split())
     
     async def _analyze_with_gpt4(self,
                                 transcribed: str,

@@ -488,6 +488,10 @@ class PercentagemVistaTests(Base):
                                               completed=True).exists()
 
     def test_conta_como_vista_ao_chegar_a_percentagem(self):
+        # O aluno abriu a aula há 10 minutos (o crédito não passa do tempo real desde a abertura).
+        from apps.courses.tempo_video import _chave_aberta
+        from django.core.cache import cache
+        cache.set(_chave_aberta(self.aluno.pk, self.aula.pk), (timezone.now() - timedelta(minutes=10)).timestamp(), 3600)
         r = self.enviar(40)
         self.assertEqual(r.status_code, 200, r.content)
         self.assertFalse(r.data['aula_concluida'])

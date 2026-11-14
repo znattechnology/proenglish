@@ -8,31 +8,38 @@ Regras (decididas na fase 6):
 - Depois de uma tentativa avaliada e reprovada, só se repete DIAS_REPETIR (7) dias depois.
   Tentativas sem nota (não ligou, ou o aluno quase não falou) não bloqueiam, mas no máximo
   MAX_TENTATIVAS_SEMANA sessões de exame começadas em 7 dias.
-- Nota para passar: CourseGradingConfig.min_exam_score (60 por omissão).
+- Nota para passar: CourseGradingConfig.min_exam_score (60 por omissão), SEMPRE a actual: passou =
+  nota efectiva (a do professor ganha) >= min_exam_score de agora (aprovado_de). O campo guardado
+  ExameOral.aprovado acompanha (sincronizar_aprovacao, chamado quando o professor muda a nota mínima).
+- Exame desligado no curso (CourseGradingConfig.exam_enabled=False): estado() diz 'desligado' e
+  comecar() recusa.
+- Só a chamada verificada do Vapi conta (verificacao.py): a nota sai da transcrição do Vapi e só com
+  pelo menos MIN_SEGUNDOS_VERIFICADOS de chamada; a transcrição do browser nunca é avaliada.
 - Nota final = média de fluência, gramática, vocabulário e cumprimento das tarefas (25 % cada);
   a pronúncia (vazia até haver um serviço de pronúncia) entra com o mesmo peso quando existir.
 - Gravação: SÓ com o consentimento do aluno, e só aqui (servico.criar_sessao(gravar=True) ->
-  artifactPlan.recordingEnabled). O URL chega no end-of-call-report (webhook.py) ou, se o webhook
-  não chegar, é pedido ao Vapi com o id da chamada (buscar_gravacao). Quem ouve: o aluno, o
-  professor do curso e a administração. Apaga-se ao fim de RETENCAO_GRAVACOES_DIAS (365 dias,
-  comando apagar_gravacoes_exames), quando o aluno pede (apagar_gravacao) ou quando apaga a conta.
+  artifactPlan.recordingEnabled). O URL só vem da chamada verificada (end-of-call-report com o
+  segredo global ou GET /call com o id confirmado: buscar_gravacao). Quem ouve: o aluno, o professor
+  do curso e, só quando é preciso (problema ou reclamação), a administração. Apaga-se ao fim de
+  RETENCAO_GRAVACOES_DIAS (365 dias, comando apagar_gravacoes_exames), quando o aluno pede
+  (apagar_gravacao) ou quando apaga a conta. gravacao_apagada_em só fica marcado quando o Vapi
+  confirma (2xx ou 404); até lá o URL já não aparece e o pedido fica pendente (o comando repete).
 - O professor do curso (ou a administração) confirma ou revê a nota (rever); a nota revista ganha
   à da IA na nota do curso e no "passou".
 
 Situação "exame-<hex do ExameOral>" (cabe nos 40 caracteres de VapiSession.situation).
 """
-import json
 import logging
 import uuid
 from datetime import timedelta
-from urllib import request as urlrequest
+from zoneinfo import ZoneInfo
 
 from django.conf import settings
 from django.core.cache import cache
 from django.db import transaction
 from django.utils import timezone
 
-from . import analise
+from . import analise, chamada
 from .situacoes import NIVEIS, _limpar_prompt, nome_aluno, preferencias_padrao
 
 logger = logging.getLogger(__name__)
@@ -47,7 +54,8 @@ RETENCAO_GRAVACOES_DIAS = 365
 MAX_FRASES_PROMPT = 12
 MAX_SITUACOES_PROMPT = 4
 COMPETENCIAS_NOTA = ('fluencia', 'gramatica', 'vocabulario', 'tarefa', 'pronuncia')
-TIMEOUT_VAPI = 8
+MIN_SEGUNDOS_VERIFICADOS = 120   # menos do que isto de chamada confirmada pelo Vapi: sem nota
+LUANDA = ZoneInfo('Africa/Luanda')
 
 
 def max_segundos():
@@ -69,12 +77,50 @@ def frases_do_curso(course):
     return [{'en': t, 'pt': p} for t, p in frases(course)]
 
 
-def nota_minima(course):
+def _config(course):
     from apps.courses.models import CourseGradingConfig
-    try:
-        return float(course.grading_config.min_exam_score)
-    except CourseGradingConfig.DoesNotExist:
-        return NOTA_MINIMA_PADRAO
+    return CourseGradingConfig.objects.filter(course=course).first()
+
+
+def nota_minima(course):
+    """A nota para passar de AGORA (CourseGradingConfig.min_exam_score)."""
+    config = _config(course)
+    return float(config.min_exam_score) if config is not None else NOTA_MINIMA_PADRAO
+
+
+def exame_ligado(course):
+    config = _config(course)
+    return bool(config.exam_enabled) if config is not None else True
+
+
+def aprovado_de(exame, minima=None):
+    """Passou: avaliado e nota efectiva (a do professor ganha) >= nota mínima actual do curso."""
+    from apps.courses.models import ExameOral
+    if exame.estado != ExameOral.AVALIADO or exame.nota_efectiva is None:
+        return False
+    minima = nota_minima(exame.course) if minima is None else minima
+    return exame.nota_efectiva >= minima
+
+
+def sincronizar_aprovacao(course):
+    """A nota mínima do curso mudou: aprovado, nota_minima e pode_repetir_em dos exames avaliados
+    passam a seguir a de agora. Devolve quantos mudaram."""
+    from apps.courses.models import ExameOral
+    minima = nota_minima(course)
+    n = 0
+    for exame in ExameOral.objects.select_related('course').filter(course=course, estado=ExameOral.AVALIADO):
+        antes = (exame.aprovado, exame.nota_minima, exame.pode_repetir_em)
+        exame.nota_minima = minima
+        _decidir(exame)
+        if (exame.aprovado, exame.nota_minima, exame.pode_repetir_em) != antes:
+            exame.save(update_fields=['aprovado', 'nota_minima', 'pode_repetir_em', 'updated_at'])
+            n += 1
+    return n
+
+
+def data_hora_luanda(d):
+    """'dd/mm/aaaa às hh:mm' na hora de Luanda."""
+    return d.astimezone(LUANDA).strftime('%d/%m/%Y às %H:%M')
 
 
 def nivel_do_curso(course):
@@ -215,15 +261,20 @@ def estado(user, course, progresso=None):
     from apps.courses.models import ExameOral
     agora = timezone.now()
     progresso = progresso_actual(user, course) if progresso is None else progresso
-    exames = list(ExameOral.objects.filter(user=user, course=course).order_by('-created_at'))
-    aprovado = next((e for e in exames if e.estado == ExameOral.AVALIADO and e.aprovado), None)
-    bloqueio = max((e.pode_repetir_em for e in exames if e.pode_repetir_em and not e.aprovado), default=None)
+    exames = list(ExameOral.objects.select_related('course', 'revisto_por').filter(user=user, course=course)
+                  .order_by('-created_at'))
+    minima = nota_minima(course)
+    aprovado = next((e for e in exames if aprovado_de(e, minima)), None)
+    bloqueio = max((e.pode_repetir_em for e in exames if e.pode_repetir_em and not aprovado_de(e, minima)),
+                   default=None)
     recentes = sum(1 for e in exames if e.created_at >= agora - timedelta(days=7))
     em_curso = next((e for e in exames if e.estado in (ExameOral.EM_CURSO, ExameOral.A_AVALIAR)), None)
 
     motivo, mensagem = None, None
     if course.course_type == 'practice':
         motivo, mensagem = 'curso_pratica', 'Os cursos de prática não têm exame oral.'
+    elif not exame_ligado(course):
+        motivo, mensagem = 'desligado', 'Este curso não tem exame oral.'
     elif aprovado is not None:
         motivo, mensagem = 'aprovado', 'Já passou no exame oral deste curso.'
     elif progresso < LIMIAR_PROGRESSO:
@@ -232,7 +283,7 @@ def estado(user, course, progresso=None):
                     f'(tem {progresso:.0f}%).')
     elif bloqueio and bloqueio > agora:
         motivo = 'aguardar'
-        mensagem = f'Pode repetir o exame a partir de {timezone.localtime(bloqueio).strftime("%d/%m/%Y")}.'
+        mensagem = f'Pode repetir o exame a partir de {data_hora_luanda(bloqueio)} (hora de Luanda).'
     elif recentes >= MAX_TENTATIVAS_SEMANA:
         motivo = 'tentativas'
         mensagem = f'Já começou {MAX_TENTATIVAS_SEMANA} exames nos últimos 7 dias. Tente outra vez mais tarde.'
@@ -246,7 +297,7 @@ def estado(user, course, progresso=None):
         'progresso': round(progresso, 1),
         'limiar_progresso': LIMIAR_PROGRESSO,
         'duracao_minutos': max_segundos() // 60,
-        'nota_minima': nota_minima(course),
+        'nota_minima': minima,
         'nivel_alvo': nivel_do_curso(course),
         'area': area_pt(course),
         'temas': [{'titulo': s.nome, 'descricao': _limpar_prompt(s.descricao, 200)} for s in situacoes],
@@ -255,7 +306,7 @@ def estado(user, course, progresso=None):
         'aprovado': aprovado is not None,
         'pode_repetir_em': _iso(bloqueio) if bloqueio and bloqueio > agora else None,
         'em_curso': str(em_curso.pk) if em_curso else None,
-        'tentativas': [exame_dict(e) for e in exames[:10]],
+        'tentativas': [exame_dict(e, minima=minima) for e in exames[:10]],
     }
 
 
@@ -265,12 +316,15 @@ def comecar(user, course, consentimento):
     from . import servico
     from .servico import ErroConversa
 
-    e = estado(user, course)
-    if not e['disponivel']:
-        raise ErroConversa(409, e['motivo'], e['mensagem'])
+    from django.contrib.auth import get_user_model
     agora = timezone.now()
     consentimento = bool(consentimento)
     with transaction.atomic():
+        # Um pedido de cada vez por aluno: dois «Começar» seguidos não criam dois exames.
+        get_user_model().objects.select_for_update().filter(pk=user.pk).first()
+        e = estado(user, course)
+        if not e['disponivel']:
+            raise ErroConversa(409, e['motivo'], e['mensagem'])
         exame = ExameOral.objects.create(
             user=user, course=course, estado=ExameOral.EM_CURSO, nota_minima=nota_minima(course),
             consentimento_gravacao=consentimento, consentimento_em=agora if consentimento else None,
@@ -465,7 +519,8 @@ def depois_de_avaliar(sessao):
         exame.estado = ExameOral.AVALIADO
         exame.avaliado_em = agora
         _decidir(exame, agora)
-        if not exame.gravacao_url and dados.get('gravacao_url') and exame.consentimento_gravacao:
+        if (not exame.gravacao_url and dados.get('gravacao_url') and exame.consentimento_gravacao
+                and exame.gravacao_apagada_em is None and not dados.get('gravacao_apagada')):
             exame.gravacao_url, exame.gravada_em = dados['gravacao_url'], agora
     else:
         return exame
@@ -481,6 +536,7 @@ def _decidir(exame, agora=None):
     """aprovado e pode_repetir_em a partir da nota efectiva (a revista ganha)."""
     agora = agora or timezone.now()
     nota = exame.nota_efectiva
+    exame.nota_minima = nota_minima(exame.course)
     exame.aprovado = nota is not None and nota >= exame.nota_minima
     if exame.aprovado:
         exame.pode_repetir_em = None
@@ -519,7 +575,6 @@ def rever(exame, professor, nota, comentario=''):
         exame.comentario_revisao = ' '.join(str(comentario or '').split())[:1000]
         exame.revisto_por = professor
         exame.revisto_em = agora
-        exame.pode_repetir_em = None if exame.nota_revista >= exame.nota_minima else exame.pode_repetir_em
         _decidir(exame, agora)
         exame.save()
     recalcular_nota(exame)
@@ -530,103 +585,130 @@ def rever(exame, professor, nota, comentario=''):
 # Gravação
 # ---------------------------------------------------------------------------
 
+def _dados_sessao(sessao):
+    return sessao.full_session_data if sessao is not None and isinstance(sessao.full_session_data, dict) else {}
+
+
 def guardar_gravacao_da_sessao(sessao_pk, url):
-    """Webhook: guarda o URL da gravação no exame da sessão, só se o aluno deu consentimento."""
+    """Chamada verificada (verificacao.aplicar): guarda o URL da gravação no exame da sessão, só com
+    consentimento e nunca depois de o aluno a ter apagado."""
     from apps.courses.models import ExameOral
     from apps.practice.models import VapiSession
     sessao = VapiSession.objects.filter(pk=sessao_pk).first()
-    if sessao is None:
+    if sessao is None or _dados_sessao(sessao).get('gravacao_apagada'):
         return 0
     exame = _exame_da_sessao(sessao)
     if exame is None or not exame.consentimento_gravacao or exame.gravacao_url or exame.gravacao_apagada_em:
         return 0
-    return ExameOral.objects.filter(pk=exame.pk).update(gravacao_url=url[:1000], gravada_em=timezone.now())
-
-
-def _vapi(metodo, caminho):
-    chave = getattr(settings, 'VAPI_PRIVATE_KEY', None)
-    if not chave:
-        return None
-    base = (getattr(settings, 'VAPI_BASE_URL', '') or 'https://api.vapi.ai').rstrip('/')
-    pedido = urlrequest.Request(f'{base}{caminho}', method=metodo,
-                                headers={'Authorization': f'Bearer {chave}', 'Accept': 'application/json'})
-    with urlrequest.urlopen(pedido, timeout=TIMEOUT_VAPI) as r:  # noqa: S310 (URL fixo das settings)
-        corpo = r.read()
-    return json.loads(corpo) if corpo else {}
+    return ExameOral.objects.filter(pk=exame.pk, gravacao_apagada_em__isnull=True, gravacao_url='').update(
+        gravacao_url=url[:1000], gravada_em=timezone.now())
 
 
 def _call_id(exame):
-    sessao = exame.sessao
-    dados = sessao.full_session_data if sessao is not None and isinstance(sessao.full_session_data, dict) else {}
-    return dados.get('vapi_call_id') or (dados.get('vapi_fim') or {}).get('call_id') or None
+    """O id da chamada que o Vapi CONFIRMOU para a sessão do exame (nunca o reclamado pelo cliente)."""
+    return chamada.call_id_valido(_dados_sessao(exame.sessao).get('vapi_call_id'))
 
 
 def buscar_gravacao(exame):
-    """Sem webhook (ou antes de ele chegar): pede o URL da gravação ao Vapi. No máximo 1 vez/2 min."""
+    """Só na vista de UM exame (aluno ou professor): o relatório ainda não trouxe o URL, pede-se a
+    chamada confirmada ao Vapi. No máximo 1 vez/2 min por exame. Falhas do Vapi nunca partem a página."""
     from apps.courses.models import ExameOral
-    if (not exame.consentimento_gravacao or exame.gravacao_url or exame.gravacao_apagada_em
-            or exame.estado not in (ExameOral.AVALIADO, ExameOral.A_AVALIAR, ExameOral.INSUFICIENTE)):
-        return exame
-    call_id = _call_id(exame)
-    if not call_id or not cache.add(f'exame:gravacao:{exame.pk}', 1, 120):
-        return exame
     try:
-        dados = _vapi('GET', f'/call/{call_id}') or {}
+        if (not exame.consentimento_gravacao or exame.gravacao_url or exame.gravacao_apagada_em
+                or exame.estado not in (ExameOral.AVALIADO, ExameOral.A_AVALIAR, ExameOral.INSUFICIENTE)):
+            return exame
+        sessao = exame.sessao
+        dados = _dados_sessao(sessao)
+        if sessao is None or dados.get('gravacao_apagada'):
+            return exame
+        url = dados.get('gravacao_url')
+        call_id = _call_id(exame)
+        if not url and call_id and chamada.configurado() and cache.add(f'exame:gravacao:{exame.pk}', 1, 120):
+            call = chamada.obter_chamada(call_id)
+            v = chamada.ler_chamada(call) if call else None
+            if v and v['id'] == call_id and chamada.motivo_recusa(v, sessao) is None:
+                url = v['gravacao_url']
+        if url and guardar_gravacao_da_sessao(sessao.pk, url):
+            exame.refresh_from_db(fields=['gravacao_url', 'gravada_em'])
     except Exception as e:
-        logger.warning('exame oral: não foi possível pedir a gravação ao Vapi: %s', e)
-        return exame
-    from .webhook import url_gravacao
-    url = url_gravacao(dados) or url_gravacao({'artifact': dados.get('artifact') or {}})
-    if url:
-        exame.gravacao_url, exame.gravada_em = url, timezone.now()
-        ExameOral.objects.filter(pk=exame.pk).update(gravacao_url=url, gravada_em=exame.gravada_em)
+        logger.warning('exame oral: não foi possível obter a gravação do exame %s: %s', exame.pk, e)
     return exame
 
 
 def apagar_gravacao(exame):
-    """Esquece o URL e pede ao Vapi que apague a chamada (com a gravação). Idempotente."""
+    """
+    Esquece o URL (no exame e na sessão) e pede ao Vapi que apague a chamada (com a gravação).
+    gravacao_apagada_em só fica marcado quando o Vapi responde 2xx ou 404; senão fica pendente
+    (dados da sessão: gravacao_apagar_pendente) e o comando apagar_gravacoes_exames repete.
+    Idempotente; nunca levanta.
+    """
     from apps.courses.models import ExameOral
-    call_id = _call_id(exame)
-    if call_id and (exame.gravacao_url or exame.consentimento_gravacao):
-        try:
-            _vapi('DELETE', f'/call/{call_id}')
-        except Exception as e:
-            logger.warning('exame oral: o Vapi não apagou a chamada %s: %s', call_id, e)
+    from apps.practice.models import VapiSession
     agora = timezone.now()
-    ExameOral.objects.filter(pk=exame.pk).update(gravacao_url='', gravacao_apagada_em=agora)
-    exame.gravacao_url, exame.gravacao_apagada_em = '', agora
+    sessao = exame.sessao
+    call_id = _call_id(exame)
+    ok = True
+    if call_id and exame.consentimento_gravacao:
+        ok = chamada.apagar_chamada(call_id)
+    if sessao is not None:
+        with transaction.atomic():
+            s = VapiSession.objects.select_for_update().filter(pk=sessao.pk).first()
+            if s is not None:
+                dados = dict(_dados_sessao(s))
+                dados.pop('gravacao_url', None)
+                dados['gravacao_apagada'] = True
+                if ok:
+                    dados.pop('gravacao_apagar_pendente', None)
+                else:
+                    dados['gravacao_apagar_pendente'] = dados.get('gravacao_apagar_pendente') or agora.isoformat()
+                VapiSession.objects.filter(pk=s.pk).update(full_session_data=dados)
+                sessao.full_session_data = dados
+    apagada_em = (exame.gravacao_apagada_em or agora) if ok else None
+    ExameOral.objects.filter(pk=exame.pk).update(gravacao_url='', gravacao_apagada_em=apagada_em)
+    exame.gravacao_url, exame.gravacao_apagada_em = '', apagada_em
     return exame
 
 
+def _apagar_varios(qs):
+    n = 0
+    for exame in qs:
+        try:
+            apagar_gravacao(exame)
+            n += 1
+        except Exception:
+            logger.exception('exame oral: falha ao apagar a gravação do exame %s', exame.pk)
+    return n
+
+
 def apagar_gravacoes_antigas(agora=None):
-    """Gravações com mais de RETENCAO_GRAVACOES_DIAS: apagadas. Devolve quantas."""
+    """Gravações com mais de RETENCAO_GRAVACOES_DIAS e pedidos de apagar que o Vapi ainda não
+    confirmou: apagadas (ou tentadas outra vez). Devolve quantas foram tratadas."""
     from apps.courses.models import ExameOral
     limite = (agora or timezone.now()) - timedelta(days=RETENCAO_GRAVACOES_DIAS)
-    n = 0
-    for exame in (ExameOral.objects.select_related('sessao').filter(consentimento_gravacao=True,
-                                                                     gravacao_apagada_em__isnull=True,
-                                                                     created_at__lt=limite)):
-        apagar_gravacao(exame)
-        n += 1
-    return n
+    base = ExameOral.objects.select_related('sessao').filter(consentimento_gravacao=True,
+                                                             gravacao_apagada_em__isnull=True)
+    antigas = base.filter(created_at__lt=limite)
+    pendentes = base.filter(sessao__full_session_data__has_key='gravacao_apagar_pendente').exclude(
+        pk__in=antigas.values('pk'))
+    return _apagar_varios(antigas) + _apagar_varios(pendentes)
 
 
 def apagar_gravacoes_do_aluno(user):
     from apps.courses.models import ExameOral
-    n = 0
-    for exame in ExameOral.objects.select_related('sessao').filter(user=user, consentimento_gravacao=True,
-                                                                    gravacao_apagada_em__isnull=True):
-        apagar_gravacao(exame)
-        n += 1
-    return n
+    return _apagar_varios(ExameOral.objects.select_related('sessao').filter(
+        user=user, consentimento_gravacao=True, gravacao_apagada_em__isnull=True))
 
 
 # ---------------------------------------------------------------------------
 # Leitura
 # ---------------------------------------------------------------------------
 
-def exame_dict(exame, gravacao=True):
-    """Para o aluno e para o professor do curso (nunca a transcrição)."""
+def exame_dict(exame, gravacao=True, minima=None):
+    """Para o aluno e para o professor do curso (nunca a transcrição). nota_minima e aprovado são os
+    de agora (a nota mínima actual do curso)."""
+    minima = nota_minima(exame.course) if minima is None else minima
+    aprovado = aprovado_de(exame, minima)
+    pendente = bool(_dados_sessao(exame.sessao).get('gravacao_apagar_pendente')) if exame.sessao_id else False
     revisao = None
     if exame.nota_revista is not None:
         revisao = {'nota': exame.nota_revista, 'comentario': exame.comentario_revisao or '',
@@ -641,17 +723,17 @@ def exame_dict(exame, gravacao=True):
         'notas': exame.notas(),
         'nota_ia': exame.nota_final,
         'nota': exame.nota_efectiva,
-        'nota_minima': exame.nota_minima,
-        'aprovado': exame.aprovado,
+        'nota_minima': minima,
+        'aprovado': aprovado,
         'nivel_cefr': exame.nivel_cefr or None,
         'frases_usadas': exame.frases_usadas or [],
         'frases_total': exame.frases_total,
         'relatorio': exame.relatorio or None,
         'a_treinar': exame.a_treinar or [],
-        'pode_repetir_em': _iso(exame.pode_repetir_em) if not exame.aprovado else None,
+        'pode_repetir_em': _iso(exame.pode_repetir_em) if not aprovado else None,
         'consentimento_gravacao': exame.consentimento_gravacao,
         'gravacao_url': (exame.gravacao_url or None) if gravacao else None,
-        'gravacao_apagada': exame.gravacao_apagada_em is not None,
+        'gravacao_apagada': exame.gravacao_apagada_em is not None or pendente,
         'revisao': revisao,
         'sessao_id': exame.sessao_id,
     }

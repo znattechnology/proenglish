@@ -171,8 +171,8 @@ class ChapterQuiz(BaseModel, StatisticsModelMixin, TimestampedModelMixin, Metada
         
         # Check attempt limit
         user_attempts = self.attempts.filter(student=user).count()
-        if user_attempts >= self.max_attempts:
-            return False, f"Maximum attempts ({self.max_attempts}) reached"
+        if user_attempts >= self.limite_tentativas(user):
+            return False, f"Maximum attempts ({self.limite_tentativas(user)}) reached"
         
         # Check if user has access to this chapter
         if not self.chapter.is_accessible_by(user):
@@ -192,7 +192,40 @@ class ChapterQuiz(BaseModel, StatisticsModelMixin, TimestampedModelMixin, Metada
     def get_remaining_attempts(self, user):
         """Get the number of remaining attempts for a user."""
         used = self.get_user_attempts_count(user)
-        return max(0, self.max_attempts - used)
+        return max(0, self.limite_tentativas(user) - used)
+
+    def tentativas_extra(self, user):
+        """Tentativas a mais que o professor deu a este aluno (TentativasExtraQuestionario)."""
+        if user is None or not getattr(user, 'pk', None):
+            return 0
+        return (TentativasExtraQuestionario.objects.filter(chapter_quiz=self, user=user)
+                .values_list('extra', flat=True).first() or 0)
+
+    def limite_tentativas(self, user):
+        """max_attempts + as tentativas extra dadas pelo professor a este aluno."""
+        return self.max_attempts + self.tentativas_extra(user)
+
+
+class TentativasExtraQuestionario(models.Model):
+    """
+    Tentativas a mais num questionário, dadas pelo professor a um aluno que gastou as que tinha
+    sem passar (POST /api/v1/teacher/alunos/<aluno>/questionarios/<quiz>/tentativas/).
+    O limite do aluno passa a ser ChapterQuiz.max_attempts + extra.
+    """
+    chapter_quiz = models.ForeignKey(ChapterQuiz, on_delete=models.CASCADE, related_name='tentativas_extra_alunos')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tentativas_extra_questionarios')
+    extra = models.PositiveIntegerField(default=0)
+    concedido_por = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+    actualizado_em = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'chapter_quiz_tentativas_extra'
+        constraints = [
+            models.UniqueConstraint(fields=['chapter_quiz', 'user'], name='unique_tentativas_extra_por_aluno'),
+        ]
+
+    def __str__(self):
+        return f'{self.user_id} - {self.chapter_quiz_id}: +{self.extra}'
 
 
 class StudentQuizAttempt(BaseModel, TimestampedModelMixin, MetadataModelMixin):

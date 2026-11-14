@@ -69,6 +69,11 @@ def transcricao_aula(request, aula_id):
 # Frases
 # ---------------------------------------------------------------------------
 
+def _notas_mudam(aula):
+    """As frases aprovadas contam na nota do curso: recalcula as notas dos inscritos em fundo."""
+    from apps.courses.recalculo import recalcular_notas_depois_do_commit
+    recalcular_notas_depois_do_commit(aula.section.course_id, 'frases_do_curso')
+
 def _frase_do_professor(request, frase_id):
     frase = FraseAula.objects.select_related('chapter__section__course').filter(pk=frase_id).first()
     if frase is None or not ciclo.e_dono_ou_staff(request.user, frase.chapter.section.course):
@@ -149,6 +154,8 @@ def frases(request, aula_id):
     ordem = (aula.frases_aula.aggregate(m=Max('ordem'))['m'] or 0) + 1
     f = FraseAula.objects.create(chapter=aula, ordem=ordem, criada_por_ia=False,
                                  estado=campos.pop('estado', FraseAula.APROVADA), **campos)
+    if f.estado == FraseAula.APROVADA:
+        _notas_mudam(aula)
     return Response(frases_aula.frase_dict(f), status=201)
 
 
@@ -174,7 +181,8 @@ def propor_frases(request, aula_id):
 @permission_classes(PERMISSOES)
 def aprovar_todas(request, aula_id):
     aula = _aula_do_professor(request, aula_id)
-    aula.frases_aula.filter(estado=FraseAula.PROPOSTA).update(estado=FraseAula.APROVADA)
+    if aula.frases_aula.filter(estado=FraseAula.PROPOSTA).update(estado=FraseAula.APROVADA):
+        _notas_mudam(aula)
     return Response(_frases_dict(aula))
 
 
@@ -183,16 +191,27 @@ def aprovar_todas(request, aula_id):
 def frase(request, frase_id):
     f = _frase_do_professor(request, frase_id)
     if request.method == 'DELETE':
+        aprovada = f.estado == FraseAula.APROVADA
         f.delete()
+        if aprovada:
+            _notas_mudam(f.chapter)
         return Response(status=204)
     campos, erros = _validar_frase(_dados(request), parcial=True)
     if erros:
         return _validacao(erros)
+    if 'texto' in campos and campos['texto'] != f.texto and 'inicio' not in campos and 'fim' not in campos:
+        # O texto mudou e o professor não mandou tempos: procura a frase nova na transcrição
+        # (os tempos antigos eram os da frase anterior; sem a encontrar ficam vazios).
+        campos['inicio'], campos['fim'] = frases_aula.localizar(campos['texto'], transcricao.linhas(f.chapter))
     ini = campos.get('inicio', f.inicio)
     fim = campos.get('fim', f.fim)
     if ini is not None and fim is not None and fim <= ini:
         return _validacao({'fim': ['O fim tem de ser depois do início.']})
+    estado_antes, texto_antes = f.estado, f.texto
     for k, v in campos.items():
         setattr(f, k, v)
     f.save()
+    if (f.estado != estado_antes
+            or (f.estado == FraseAula.APROVADA and f.texto != texto_antes)):
+        _notas_mudam(f.chapter)
     return Response(frases_aula.frase_dict(f))

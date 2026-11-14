@@ -84,12 +84,22 @@ export function TesteFalado({ aoTerminar, aoPreferirPerguntas, erro }: { aoTermi
   const terminou = async (id: string) => {
     setFase({ tipo: "a_avaliar" });
     try {
-      const r = await lerResultado(id).unwrap();
+      // O nível sai da chamada confirmada pelo serviço de voz: pode demorar alguns segundos a chegar.
+      let r = await lerResultado(id).unwrap();
+      for (let i = 0; i < 20 && r.estado === "a_avaliar"; i++) {
+        await new Promise((ok) => setTimeout(ok, 3000));
+        r = await lerResultado(id).unwrap();
+      }
       if (r.avaliado && eNivel(r.nivel)) setFase({ tipo: "resultado", r });
       else
         setFase({
           tipo: "sem_resultado",
-          mensagem: r.estado === "nao_ligou" ? "A chamada não chegou a ligar." : "Não ouvimos respostas suficientes para dar um nível.",
+          mensagem:
+            r.estado === "nao_ligou"
+              ? "A chamada não chegou a ligar."
+              : r.estado === "a_avaliar"
+                ? "O resultado ainda não chegou. Volte a esta página daqui a alguns minutos."
+                : "Não ouvimos respostas suficientes para dar um nível. O teste precisa de pelo menos um minuto de conversa.",
         });
     } catch {
       setFase({ tipo: "sem_resultado", mensagem: "Não conseguimos calcular o resultado." });
@@ -109,7 +119,7 @@ export function TesteFalado({ aoTerminar, aoPreferirPerguntas, erro }: { aoTermi
           <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9">Converse com o tutor</h1>
           <p className="m-0 text-pe-tinta-suave">Responda com calma e diga o máximo que conseguir. As perguntas vão ficando mais difíceis: é normal.</p>
         </div>
-        <Viva dados={fase.dados} frases={[]} aoTerminar={(r) => void terminou(r.id)} aoSaltar={aoPreferirPerguntas} />
+        <Viva dados={fase.dados} frases={[]} semTexto aoTerminar={(r) => void terminou(r.id)} aoSaltar={aoPreferirPerguntas} />
       </>
     );
 

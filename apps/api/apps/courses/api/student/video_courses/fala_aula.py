@@ -93,8 +93,9 @@ class FalarFrase(_BaseAula):
     def post(self, request, chapterId, fraseId):
         from apps.perfil.models import ItemBanco
         from apps.perfil.servico import registar_item
-        from apps.perfil.views_revisao import _analisar, _guardar_tentativa, _indisponivel, analise_publica
-        from apps.subscriptions.models import UserSubscription
+        from apps.perfil.views_revisao import (_analisar, _guardar_tentativa, _indisponivel, analise_publica,
+                                               contar_analise, estado_analises)
+        from apps.practice.services import gravacao
 
         chapter = self.aula()
         frase = FraseAula.objects.filter(pk=fraseId, chapter=chapter, estado=FraseAula.APROVADA).first()
@@ -106,10 +107,15 @@ class FalarFrase(_BaseAula):
             return Response({'codigo': 'audio_em_falta', 'mensagem': 'Grave a frase antes de enviar.'},
                             status=status.HTTP_400_BAD_REQUEST)
 
-        sub = UserSubscription.objects.select_related('plan').filter(user=request.user).first()
-        if sub is not None and sub.is_active() and not sub.can_use_ai_analysis():
-            return Response({'codigo': 'limite_analises',
-                             'mensagem': 'Já usou as análises de pronúncia de hoje. Volte amanhã ou mude de plano.'},
+        if gravacao.demasiado_grande(audio):
+            return gravacao.resposta_grande()
+        # Limite diário de análises (sem assinatura activa: o do Gratuito). Atingido: a frase pode
+        # ser saltada (não há progresso nem vidas a perder; passa-se à seguinte).
+        pode, sub = estado_analises(request.user)
+        if not pode:
+            return Response({'codigo': 'limite_analises', 'pode_saltar': True,
+                             'mensagem': 'Já usou as análises de pronúncia de hoje. Pode passar à frase seguinte '
+                                         'sem perder nada; amanhã há mais.'},
                             status=status.HTTP_429_TOO_MANY_REQUESTS)
         try:
             dados = io.BytesIO(audio.read())
@@ -118,18 +124,17 @@ class FalarFrase(_BaseAula):
         except Exception:
             logger.exception('aula: análise de pronúncia falhou')
             return _indisponivel()
-        if getattr(result, 'indisponivel', False):
+        if getattr(result, 'indisponivel', False) is True:
             return _indisponivel()
+        sem_avaliacao = gravacao.resposta_do_resultado(result)
+        if sem_avaliacao is not None:
+            return sem_avaliacao
         tentativa = None
         try:
             tentativa = _guardar_tentativa(request.user, result, simulada, origem='aula')
         except Exception:
             logger.exception('aula: falha ao guardar a tentativa de pronúncia')
-        if sub is not None and sub.is_active():
-            try:
-                sub.use_ai_analysis()
-            except Exception:
-                logger.exception('aula: falha ao contar a análise')
+        contar_analise(sub, 'aula')
 
         aceite = bool(result.is_acceptable)
         item = registar_item(request.user, frase.texto, frase.traducao,

@@ -4,7 +4,7 @@ Métricas de fluência de uma gravação, a partir dos tempos das palavras (tran
 Definições (todas em segundos):
 - palavras: número de palavras ditas (com tempos; sem tempos, contadas no texto).
 - duração da fala ("span"): do início da primeira palavra ao fim da última.
-- pausa: o intervalo entre o fim de uma palavra e o início da seguinte.
+- pausa: o intervalo entre o fim mais tardio das palavras anteriores e o início da seguinte.
   Pausa longa: mais de PAUSA_LONGA (1,0 s).
 - segundos_fala: o span MENOS a duração das pausas longas, i.e. o tempo em que o aluno esteve
   realmente a falar. É o que soma nos "minutos a falar" do dia (FalaDiaria).
@@ -45,7 +45,12 @@ def metricas_de_palavras(palavras, texto='', duracao_audio=None):
         palavras = sorted(palavras, key=lambda p: p['inicio'])
         n = len(palavras)
         span = max(0.0, max(p['fim'] for p in palavras) - palavras[0]['inicio'])
-        pausas = [max(0.0, b['inicio'] - a['fim']) for a, b in zip(palavras, palavras[1:])]
+        # Pausa = o silêncio antes de cada palavra: o início dela menos o fim MAIS TARDIO de todas
+        # as anteriores (as palavras podem sobrepor-se; uma palavra longa cobre as seguintes).
+        pausas, fim_ate_agora = [], palavras[0]['fim']
+        for p in palavras[1:]:
+            pausas.append(max(0.0, p['inicio'] - fim_ate_agora))
+            fim_ate_agora = max(fim_ate_agora, p['fim'])
         longas = [p for p in pausas if p > PAUSA_LONGA]
         segundos = max(0.0, span - sum(longas))
         ppm = (n / (span / 60.0)) if n >= MIN_PALAVRAS_PPM and span >= MIN_SPAN_PPM else None

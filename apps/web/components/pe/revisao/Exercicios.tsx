@@ -5,6 +5,7 @@ import { Mic, Square, Volume2 } from "lucide-react";
 import { cnPe } from "@/lib/pe";
 import { falarNoBrowser } from "@/components/pe/conversa/useConversa";
 import type { ExercicioRevisao } from "@/src/domains/student/revisao/api";
+import { MAX_SEGUNDOS_GRAVACAO, MENSAGEM_SEM_GRAVACAO, motivoSemGravacao, type EstadoMicrofone } from "@/components/pe/fala/gravacao";
 
 export type RespostaRevisao = { tipo: "texto"; valor: string } | { tipo: "audio"; audio: Blob } | null;
 export type Visual = "livre" | "certo" | "errado";
@@ -14,6 +15,8 @@ type Props = {
   bloqueado: boolean;
   visual: Visual;
   aoMudar: (r: RespostaRevisao) => void;
+  /** Exercícios falados: saltar quando não se consegue gravar (sem pontos; a frase volta amanhã). */
+  aoSaltar?: () => void;
 };
 
 const ESPACO = /_{2,}/;
@@ -180,13 +183,20 @@ function Traduzir({ ex, bloqueado, visual, aoMudar }: Props) {
 }
 
 /* Ouvir e repetir: grava a frase (como o exercício Falar das lições). */
-function Falar({ ex, bloqueado, aoMudar }: Props) {
-  const [estado, setEstado] = useState<"parado" | "a-gravar" | "gravado" | "sem-permissao" | "sem-suporte">(() =>
-    typeof window !== "undefined" && !("MediaRecorder" in window) ? "sem-suporte" : "parado"
+function Falar({ ex, bloqueado, aoMudar, aoSaltar }: Props) {
+  const [estado, setEstado] = useState<EstadoMicrofone>(() =>
+    typeof window !== "undefined" && (!("MediaRecorder" in window) || !navigator.mediaDevices?.getUserMedia) ? "sem-suporte" : "parado"
   );
   const gravador = useRef<MediaRecorder | null>(null);
   const pedacos = useRef<Blob[]>([]);
-  useEffect(() => () => gravador.current?.stream.getTracks().forEach((t) => t.stop()), []);
+  const limite = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(
+    () => () => {
+      if (limite.current) clearTimeout(limite.current);
+      gravador.current?.stream.getTracks().forEach((t) => t.stop());
+    },
+    []
+  );
 
   const comecar = async () => {
     try {
@@ -195,6 +205,7 @@ function Falar({ ex, bloqueado, aoMudar }: Props) {
       pedacos.current = [];
       rec.ondataavailable = (e) => e.data.size && pedacos.current.push(e.data);
       rec.onstop = () => {
+        if (limite.current) clearTimeout(limite.current);
         stream.getTracks().forEach((t) => t.stop());
         setEstado("gravado");
         aoMudar({ tipo: "audio", audio: new Blob(pedacos.current, { type: rec.mimeType || "audio/webm" }) });
@@ -202,13 +213,15 @@ function Falar({ ex, bloqueado, aoMudar }: Props) {
       gravador.current = rec;
       window.speechSynthesis?.cancel();
       rec.start();
+      limite.current = setTimeout(() => rec.state === "recording" && rec.stop(), MAX_SEGUNDOS_GRAVACAO * 1000);
       setEstado("a-gravar");
       aoMudar(null);
-    } catch {
-      setEstado("sem-permissao");
+    } catch (e) {
+      setEstado(motivoSemGravacao(e));
     }
   };
   const parar = () => gravador.current?.state === "recording" && gravador.current.stop();
+  const semGravar = estado === "sem-permissao" || estado === "sem-microfone" || estado === "sem-suporte";
 
   return (
     <div className="flex flex-col gap-5 md:gap-7">
@@ -218,16 +231,24 @@ function Falar({ ex, bloqueado, aoMudar }: Props) {
       </Balao>
       {ex.traducao ? <p className="m-0 -mt-2 text-pe-legenda text-pe-tinta-suave">{ex.traducao}</p> : null}
       <div className="flex flex-col items-center gap-3 pt-2">
-        {estado === "sem-permissao" ? (
-          <p role="alert" className="m-0 max-w-[420px] rounded-pe-md bg-pe-realce-suave px-4 py-3 text-center text-[15px]">
-            O navegador não deixou usar o microfone. Permita o microfone nas definições do navegador e volte a tocar em gravar.
-          </p>
+        {semGravar ? (
+          <div role="alert" className="flex max-w-[460px] flex-col items-center gap-3 rounded-pe-md bg-pe-realce-suave px-4 py-3 text-center text-[15px]">
+            <p className="m-0">
+              {MENSAGEM_SEM_GRAVACAO[estado]} {aoSaltar ? "Pode saltar este exercício: não perde nada e a frase volta amanhã." : null}
+            </p>
+            {aoSaltar ? (
+              <button
+                type="button"
+                disabled={bloqueado}
+                onClick={aoSaltar}
+                className="min-h-11 bg-transparent px-2 font-semibold text-pe-azul-marca underline underline-offset-[3px] disabled:opacity-60"
+              >
+                Saltar este exercício
+              </button>
+            ) : null}
+          </div>
         ) : null}
-        {estado === "sem-suporte" ? (
-          <p role="alert" className="m-0 rounded-pe-md bg-pe-realce-suave px-4 py-3 text-center text-[15px]">
-            Este navegador não consegue gravar áudio. Pode saltar este exercício.
-          </p>
-        ) : (
+        {estado !== "sem-suporte" ? (
           <button
             type="button"
             disabled={bloqueado}
@@ -240,9 +261,15 @@ function Falar({ ex, bloqueado, aoMudar }: Props) {
           >
             {estado === "a-gravar" ? <Square aria-hidden className="size-8 fill-current" /> : <Mic aria-hidden className="size-9" />}
           </button>
-        )}
+        ) : null}
         <span aria-live="polite" className="text-pe-legenda text-pe-tinta-suave">
-          {estado === "a-gravar" ? "A gravar… toque para parar" : estado === "gravado" ? "Gravado. Pode verificar ou gravar outra vez." : "Toque para gravar"}
+          {estado === "a-gravar"
+            ? `A gravar… toque para parar (no máximo ${MAX_SEGUNDOS_GRAVACAO} segundos)`
+            : estado === "gravado"
+              ? "Gravado. Pode verificar ou gravar outra vez."
+              : semGravar
+                ? ""
+                : "Toque para gravar"}
         </span>
       </div>
     </div>

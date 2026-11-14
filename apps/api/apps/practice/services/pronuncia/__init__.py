@@ -11,10 +11,15 @@ Escolha do fornecedor:
    contado por dia de Luanda em AvaliacaoDetalhadaDia);
 3. senão, ou se a detalhada falhar (rede, formato, resposta) -> avaliação pelo texto, sem aviso.
 
+Tempo: o pedido todo cabe em ORCAMENTO_SEGUNDOS (abaixo dos 60 s do nginx). Se a detalhada falhar
+depois de gastar tanto tempo que já não cabe a avaliação pelo texto (Whisper + Claude), o resultado
+é "indisponível" (503, o aluno pode saltar) em vez de um pedido que o nginx cortaria.
+
 Outro fornecedor (SpeechAce, ELSA, um modelo nosso): uma classe Provedor nova e uma entrada em
 DETALHADOS; os chamadores não mudam.
 """
 import logging
+import time
 
 from django.conf import settings
 from django.db import IntegrityError, transaction
@@ -102,9 +107,19 @@ def estado_detalhada(user):
 # Avaliar
 # ---------------------------------------------------------------------------
 
+ORCAMENTO_SEGUNDOS = 45
+
+
+def _segundos_para_o_texto():
+    """Pior caso da avaliação pelo texto: um pedido ao Whisper + um ao Claude."""
+    from apps.practice.services import ai_pronunciation, transcricao_fala
+    return transcricao_fala.TIMEOUT + ai_pronunciation.TIMEOUT_ANALISE
+
+
 def avaliar(audio_bytes, mime='audio/webm', texto_esperado=None, idioma='en-US', modo='lido', user=None,
             nivel='intermediate', nome=None):
     """ResultadoPronuncia (ver o topo). Falhas técnicas da avaliação pelo texto vêm como indisponivel=True."""
+    inicio = time.monotonic()
     if hasattr(audio_bytes, 'getvalue'):
         nome = nome or getattr(audio_bytes, 'name', None)
         audio_bytes = audio_bytes.getvalue()
@@ -122,6 +137,9 @@ def avaliar(audio_bytes, mime='audio/webm', texto_esperado=None, idioma='en-US',
             devolver(user)
         except Exception:
             logger.exception('pronúncia: falha a devolver a avaliação detalhada')
+        if time.monotonic() - inicio > ORCAMENTO_SEGUNDOS - _segundos_para_o_texto():
+            logger.warning('pronúncia: sem tempo para a avaliação pelo texto depois da detalhada')
+            return ResultadoPronuncia(fonte='texto', texto_esperado=texto_esperado or '', indisponivel=True)
     return ProvedorTexto().avaliar(audio_bytes, mime, texto_esperado, idioma.split('-')[0] if idioma else 'en',
                                    modo, nivel, nome=nome)
 

@@ -7,6 +7,7 @@ import { Aviso, BarraProgresso, Etiqueta, Osso } from "@/components/pe";
 import { Pagina } from "@/components/pe/estudante/Pagina";
 import { FalaDoAluno } from "@/components/pe/professor/FalaDoAluno";
 import { Numeros } from "@/components/pe/professor/Partes";
+import { QuestionariosDoAluno } from "@/components/pe/professor/QuestionariosDoAluno";
 import { num, pct } from "@/src/domains/teacher/professor/api";
 import { useAlunoQuery, type DetalheAluno } from "@/src/domains/teacher/professor/alunos";
 
@@ -147,6 +148,8 @@ function Conteudo({ d }: { d: DetalheAluno }) {
           )}
         </section>
       </div>
+
+      <QuestionariosDoAluno alunoId={a.id} />
 
       <FalaDoAluno alunoId={a.id} />
     </>

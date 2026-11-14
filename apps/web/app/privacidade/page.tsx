@@ -142,9 +142,10 @@ const SECCOES: Seccao[] = [
         <Tabela
           cabecalho={["Serviço", "Para quê e que dados"]}
           linhas={[
-            ["Vapi", "A conversa por voz com o tutor: o áudio em tempo real, a transcrição e o seu primeiro nome. Guarda a gravação do exame oral, só quando a autoriza."],
+            ["Vapi", "A conversa por voz com o tutor: o áudio em tempo real, a transcrição e o seu primeiro nome. Guarda o registo de cada chamada (a transcrição e a duração), que usamos para confirmar a conversa, os minutos e as notas. Guarda a gravação do exame oral, só quando a autoriza."],
             ["Anthropic (Claude)", "As correcções das suas frases, as respostas escritas do tutor e a avaliação das conversas, do teste de nível e do exame oral: o texto das conversas e o nível."],
             ["OpenAI", "A análise da pronúncia (o áudio das respostas) e o assistente de dúvidas (o texto das perguntas)."],
+            ["Microsoft (Azure Speech)", "A avaliação detalhada da pronúncia, quando está ligada: o áudio de cada resposta e o texto que devia dizer. Não guardamos esse áudio."],
             ["Google", "Entrar com o Google, se escolher essa opção, e o envio dos emails da plataforma."],
             ["Amazon Web Services", "A transmissão dos vídeos das aulas. Não recebe dados do seu perfil."],
             ["Cloudflare", "As cópias de segurança da base de dados, cifradas."],
