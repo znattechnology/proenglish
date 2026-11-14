@@ -116,7 +116,10 @@ class CourseListCreateView(generics.ListCreateAPIView):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        course = serializer.save()
+        # Passa pelo perform_create: é aí que se exige o papel de professor e se fixa
+        # course_type='video' (antes, um estudante conseguia criar cursos por aqui).
+        self.perform_create(serializer)
+        course = serializer.instance
         
         # Return course with full details
         response_serializer = CourseDetailSerializer(course, context={'request': request})
