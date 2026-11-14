@@ -58,7 +58,9 @@ LOCAL_APPS = [
     'apps.courses',
     'apps.practice',  # Temporarily enabled for testing - functionality moved to courses/api structure
     'apps.subscriptions',
-    'apps.cms',
+    'apps.pagamentos',  # Pagamentos Multicaixa Express (AOA)
+    'apps.cms',  # antigo: as rotas /api/v1/cms/ respondem 410
+    'apps.site',  # conteúdo do site público (rascunho + publicado)
     'apps.platform_admin',  # Platform admin dashboard and management
     'apps.chatbot',  # Intelligent landing page chatbot
 ]
@@ -75,6 +77,8 @@ MIDDLEWARE = [
     'apps.users.middleware.JWTCookieAuthenticationMiddleware',  # JWT from HttpOnly cookies
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Vistas Django (fora do DRF) com @ratelimit(block=True): 429 em JSON (RATELIMIT_VIEW)
+    'django_ratelimit.middleware.RatelimitMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -279,7 +283,12 @@ CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=not DEBUG, cast=bool)
 # INTERNATIONALIZATION
 # =============================================================================
 
-LANGUAGE_CODE = 'en-us'
+# Português europeu/angolano: as mensagens do Django, do DRF e do simplejwt saem em pt-PT.
+# O catálogo do Django para pt-PT tem falhas e palavras do pt-BR; locale/pt_PT corrige-as
+# (grafia anterior ao Acordo de 1990, como no site). Não há LocaleMiddleware: é sempre pt-PT.
+LANGUAGE_CODE = 'pt-pt'
+LANGUAGES = [('pt-pt', 'Português')]
+LOCALE_PATHS = [BASE_DIR / 'locale']
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
@@ -348,8 +357,18 @@ EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=False, cast=bool)
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='noreply@proenglish.com')
 CONTACT_EMAIL = config('CONTACT_EMAIL', default='contact@proenglish.com')
 
-# Frontend URL for email links
-FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:3000')
+# Endereço do site (links nos emails e lista de origens aceites para pedidos com cookie)
+FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:3000').rstrip('/')
+# Email de apoio mostrado nos emails enviados aos alunos
+SUPPORT_EMAIL = config('SUPPORT_EMAIL', default='suporte@proenglish.ao')
+
+# Web Push (avisos do aluno). Sem as chaves, o push fica desligado
+# (push.disponivel=false) e os avisos in-app continuam a funcionar.
+# Gerar: ./venv/bin/python manage.py gerar_chaves_vapid
+VAPID_PUBLIC_KEY = config('VAPID_PUBLIC_KEY', default='')
+VAPID_PRIVATE_KEY = config('VAPID_PRIVATE_KEY', default='')
+VAPID_CLAIMS_EMAIL = config('VAPID_CLAIMS_EMAIL', default='')
+AVISOS_PUSH_SINCRONO = config('AVISOS_PUSH_SINCRONO', default=False, cast=bool)
 
 # =============================================================================
 # GOOGLE OAUTH SETTINGS
@@ -578,3 +597,111 @@ BACKEND_BASE_URL = config('BACKEND_BASE_URL', default='http://localhost:8000')
 # Default Assistant ID (create one in Vapi dashboard and put ID here)
 VAPI_DEFAULT_ASSISTANT_ID = config('VAPI_DEFAULT_ASSISTANT_ID', default=None)
 VAPI_ENGLISH_ASSISTANT_ID = config('VAPI_ENGLISH_ASSISTANT_ID', default=None)
+
+# =============================================================================
+# CONVERSA COM O TUTOR (api/v1/practice/conversa/)
+# =============================================================================
+
+# Modo simulado: sem chamadas Vapi nem OpenAI (tutor com guião fixo e avaliação
+# determinística a partir do texto). Liga-se sozinho quando faltam as chaves Vapi.
+CONVERSA_SIMULADA = config(
+    'CONVERSA_SIMULADA',
+    default=not (VAPI_PUBLIC_KEY and (VAPI_ENGLISH_ASSISTANT_ID or VAPI_DEFAULT_ASSISTANT_ID)),
+    cast=bool,
+)
+# Duração máxima de uma conversa (minutos), além do que resta da quota diária.
+CONVERSA_MAX_MINUTOS_SESSAO = config('CONVERSA_MAX_MINUTOS_SESSAO', default=15, cast=int)
+# Modelo barato (o mesmo do chatbot) para avaliação, respostas escritas e ajustes.
+# Claude (Anthropic): ajustes, respostas escritas do tutor e avaliação das conversas.
+ANTHROPIC_API_KEY = config('ANTHROPIC_API_KEY', default='')
+CONVERSA_CLAUDE_MODELO = config('CONVERSA_CLAUDE_MODELO', default='claude-opus-5-5')  # avaliação e respostas escritas
+# Correcção em tempo real (ajuste/): um pedido por frase, por isso um modelo rápido e barato.
+CONVERSA_CLAUDE_MODELO_AJUSTE = config('CONVERSA_CLAUDE_MODELO_AJUSTE', default='claude-haiku-5-5')
+# Se o modelo recusar um pedido, a Anthropic repete-o noutro modelo no mesmo pedido.
+CONVERSA_CLAUDE_FALLBACKS = config('CONVERSA_CLAUDE_FALLBACKS', default=True, cast=bool)
+# Modelo que o Vapi usa durante a chamada de voz. Tem de estar na lista do Vapi
+# (docs.vapi.ai/providers/model/anthropic); o claude-opus-5-5 ainda não está.
+CONVERSA_VAPI_PROVEDOR = config('CONVERSA_VAPI_PROVEDOR', default='anthropic')
+CONVERSA_VAPI_MODELO = config('CONVERSA_VAPI_MODELO', default='claude-sonnet-5')
+CONVERSA_LIMITE_AJUSTE = config('CONVERSA_LIMITE_AJUSTE', default='30/min')
+CONVERSA_LIMITE_RESPONDER = config('CONVERSA_LIMITE_RESPONDER', default='30/min')
+CONVERSA_LIMITE_SESSOES = config('CONVERSA_LIMITE_SESSOES', default='10/hour')
+# Geração de lições de prática com o Claude (área do professor) e limite diário por professor.
+PRATICA_CLAUDE_MODELO = config('PRATICA_CLAUDE_MODELO', default='claude-opus-5-5')
+PRATICA_GERAR_LIMITE_DIA = config('PRATICA_GERAR_LIMITE_DIA', default=30, cast=int)
+# Nota: os limites acima (e os throttles/ratelimits) usam a cache 'default' (ver CACHES).
+
+# =============================================================================
+# PAGAMENTOS (Multicaixa Express, AOA)
+# =============================================================================
+
+# Provedor usado para novos pagamentos: "simulado" (MulticaixaSimulado) ou
+# "emis" (MulticaixaEMIS - ainda não implementado, aguarda acordo com a EMIS).
+PAGAMENTOS_PROVEDOR = config('PAGAMENTOS_PROVEDOR', default='simulado')
+
+# Permite o provedor simulado e o endpoint POST pagamentos/<id>/simular/.
+# Por omissão só fica ativo com DEBUG=True. NUNCA ativar em produção: com o
+# simulador qualquer número de telefone "paga" ao fim de 6 segundos.
+PAGAMENTOS_SIMULADOS = config('PAGAMENTOS_SIMULADOS', default=DEBUG, cast=bool)
+
+# Análise de pronúncia simulada: só em desenvolvimento e quando não há chave real da OpenAI.
+# Nunca ligar em produção (dava pontos sem ouvir a pessoa).
+PRONUNCIA_SIMULADA = config(
+    'PRONUNCIA_SIMULADA',
+    default=DEBUG and (not OPENAI_API_KEY or OPENAI_API_KEY in ('dummy', 'sk-dummy')),
+    cast=bool,
+)
+
+# Limite de criação de pagamentos por utilizador (formato DRF, ex.: "10/min").
+PAGAMENTOS_LIMITE_CRIACAO = config('PAGAMENTOS_LIMITE_CRIACAO', default='10/min')
+
+# Ganhos dos professores (apps/pagamentos/ganhos.py): esta percentagem da receita de
+# subscrições confirmada no mês é dividida pelos professores segundo o tempo que os
+# alunos com plano pago passaram nos seus cursos; paga no dia GANHOS_DIA_PAGAMENTO do mês seguinte.
+GANHOS_PERCENTAGEM_PROFESSORES = config('GANHOS_PERCENTAGEM_PROFESSORES', default=30, cast=int)
+GANHOS_DIA_PAGAMENTO = config('GANHOS_DIA_PAGAMENTO', default=5, cast=int)
+# Tempo estimado por resposta num exercício de prática (não há tempo medido por exercício).
+GANHOS_SEGUNDOS_POR_EXERCICIO = config('GANHOS_SEGUNDOS_POR_EXERCICIO', default=20, cast=int)
+# Cada exercício conta uma vez por aluno e dia; por aluno e dia (somando os professores) conta
+# no máximo este tempo de prática e de vídeo. Acima do limite, reparte-se em proporção.
+GANHOS_MAX_PRATICA_SEGUNDOS_DIA = config('GANHOS_MAX_PRATICA_SEGUNDOS_DIA', default=3600, cast=int)
+GANHOS_MAX_VIDEO_SEGUNDOS_DIA = config('GANHOS_MAX_VIDEO_SEGUNDOS_DIA', default=4 * 3600, cast=int)
+
+# =============================================================================
+# CACHE E LIMITES DE PEDIDOS
+# =============================================================================
+
+# Os limites de pedidos (django_ratelimit e throttles do DRF) contam na cache 'default'.
+# Com REDIS_URL (ex.: redis://redis:6379/1) a contagem é partilhada por todos os workers e
+# instâncias; sem ela fica em memória, por processo (serve para desenvolvimento).
+REDIS_URL = config('REDIS_URL', default='')
+if REDIS_URL:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': REDIS_URL,
+            'KEY_PREFIX': config('CACHE_KEY_PREFIX', default='proenglish'),
+            'TIMEOUT': 300,
+        }
+    }
+else:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            'LOCATION': 'proenglish-default',
+        }
+    }
+
+# Atrás de um proxy (nginx), REMOTE_ADDR é o IP do proxy. Com TRUSTED_PROXY=True os limites
+# usam X-Real-IP (ou a entrada TRUSTED_PROXY_COUNT a contar do fim de X-Forwarded-For).
+# Só ligar quando há mesmo um proxy à frente: sem ele, o cliente podia inventar o IP.
+TRUSTED_PROXY = config('TRUSTED_PROXY', default=False, cast=bool)
+TRUSTED_PROXY_COUNT = config('TRUSTED_PROXY_COUNT', default=1, cast=int)
+RATELIMIT_IP_META_KEY = 'apps.core.ip.ip_do_cliente'
+# django_ratelimit com block=True devolve 429 (e não 403) através de apps.core.exceptions.
+RATELIMIT_VIEW = 'apps.core.exceptions.ratelimit_view'
+
+# Pedidos que alteram dados autenticados pelo cookie access_token só são aceites se vierem
+# destas origens (defesa contra CSRF: em produção os cookies são SameSite=None).
+# Por omissão: CORS_ALLOWED_ORIGINS + FRONTEND_URL.
+COOKIE_AUTH_ALLOWED_ORIGINS = config('COOKIE_AUTH_ALLOWED_ORIGINS', default='', cast=Csv())

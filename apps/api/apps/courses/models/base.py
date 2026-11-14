@@ -18,9 +18,17 @@ class CourseChoices:
         ('Advanced', 'Advanced'),
     ]
 
+    # Ciclo de vida (ver apps/courses/ciclo.py): rascunho -> em revisão -> publicado -> arquivado.
     STATUS_CHOICES = [
-        ('Draft', 'Draft'),
-        ('Published', 'Published'),
+        ('Draft', 'Rascunho'),
+        ('InReview', 'Em revisão'),
+        ('Published', 'Publicado'),
+        ('Archived', 'Arquivado'),
+    ]
+
+    ARCHIVE_MODE_CHOICES = [
+        ('manter', 'Manter acesso dos inscritos'),
+        ('fechar', 'Fechar o curso aos inscritos'),
     ]
 
     TEMPLATE_CHOICES = [

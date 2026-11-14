@@ -6,12 +6,13 @@ Most functionality has been migrated to:
 - apps/courses/api/teacher/practice_courses/ (teacher endpoints)
 
 This file maintains:
-1. Vapi integration endpoints
+1. Vapi webhook (old flow; student routes removed)
 2. Teacher course creation (CreateCourseView)
 3. Legacy compatibility routes
 """
 
-from django.urls import path
+from django.urls import include, path
+from apps.courses.api.teacher.progresso_alunos import alunos_curso_pratica
 from django.http import JsonResponse
 
 # Import minimal teacher dashboard views
@@ -23,22 +24,11 @@ from .views_course_management import PracticeCourseManagementView
 # Import CreateCourseView from essential views (only view not in new API)
 from .views_essential import CreateCourseView
 
-# Import VAPI views
-from .vapi_views import (
-    VapiSessionView,
-    vapi_templates,
-    vapi_simulate,
-    vapi_webhook,
-    vapi_assistant_manager,
-    vapi_session_summary,
-    vapi_user_progress,
-    vapi_complete_session,
-    vapi_dashboard_analytics,
-    # Quota management
-    vapi_check_quota,
-    vapi_quota_status,
-    vapi_available_plans,
-)
+# Fluxo antigo da Vapi: só fica o webhook (protegido por segredo). As rotas de sessão,
+# resumo, progresso, painel, assistentes e quota foram retiradas; a conversa com o tutor
+# vive em apps/practice/conversa/.
+from .vapi_views import vapi_webhook
+from . import competicoes_views
 
 # Import shared views from the NEW API (avoiding duplication)
 from apps.courses.api.student.practice_courses.views import (
@@ -53,6 +43,7 @@ from apps.courses.api.student.practice_courses.views import (
     # Upload views for audio/image
     GetAudioUploadUrlView,
     GetImageUploadUrlView,
+    ChallengeOptionCreateView,
     ChallengeOptionUpdateView,
     # Leaderboard views
     get_global_leaderboard,
@@ -87,40 +78,25 @@ def test_view(request):
     return JsonResponse({'status': 'OK', 'message': 'Backend funcionando!'})
 
 
-def vapi_test(request):
-    return JsonResponse({'vapi': 'ready', 'message': 'Vapi integration ready'})
-
-
 app_name = 'practice'
 
 urlpatterns = [
     # Basic test endpoints
     path('test/', test_view, name='test'),
-    path('vapi/test/', vapi_test, name='vapi-test'),
 
     # Teacher dashboard endpoints
     path('courses/', CoursesListView.as_view(), name='courses-list'),
     path('analytics/', get_practice_analytics, name='analytics'),
+    # Progresso dos alunos de um curso de prática, para o professor do curso.
+    path('student-progress/', alunos_curso_pratica, name='student-progress'),
 
-    # Full Vapi integration endpoints
-    path('vapi/session/', VapiSessionView.as_view(), name='vapi-session'),
-    path('vapi/templates/', vapi_templates, name='vapi-templates'),
-    path('vapi/simulate/', vapi_simulate, name='vapi-simulate'),
+    # Conversa com o tutor (contrato novo, DRF): apps/practice/conversa/
+    path('conversa/', include('apps.practice.conversa.urls')),
+    # Certificado de mérito de uma competição (página imprimível do vencedor)
+    path('competicoes/<uuid:competicao_id>/certificado/', competicoes_views.certificado, name='competicao-certificado'),
+
+    # Webhook da Vapi (fluxo antigo). Só responde com VAPI_WEBHOOK_SECRET configurado.
     path('vapi/webhook/', vapi_webhook, name='vapi-webhook'),
-    path('vapi/assistants/', vapi_assistant_manager, name='vapi-assistants'),
-    path('vapi/session/<str:session_id>/summary/', vapi_session_summary, name='vapi-session-summary'),
-
-    # Progress tracking endpoints
-    path('vapi/progress/', vapi_user_progress, name='vapi-user-progress'),
-    path('vapi/complete/', vapi_complete_session, name='vapi-complete-session'),
-
-    # Dashboard analytics
-    path('vapi/dashboard/', vapi_dashboard_analytics, name='vapi-dashboard-analytics'),
-
-    # Quota management endpoints
-    path('vapi/quota/check/', vapi_check_quota, name='vapi-check-quota'),
-    path('vapi/quota/status/', vapi_quota_status, name='vapi-quota-status'),
-    path('vapi/quota/plans/', vapi_available_plans, name='vapi-available-plans'),
 
     # ========================================================================
     # TEACHER CRUD ENDPOINTS - Course, Unit, Lesson, Challenge management
@@ -155,6 +131,7 @@ urlpatterns = [
     path('challenges/<uuid:challenge_id>/get-image-upload-url/', GetImageUploadUrlView.as_view(), name='get-image-upload-url'),
 
     # Challenge options update (for updating with S3 URLs after upload)
+    path('challenge-options/', ChallengeOptionCreateView.as_view(), name='challenge-options-create'),
     path('challenge-options/<uuid:option_id>/', ChallengeOptionUpdateView.as_view(), name='challenge-options-update'),
 
     # ========================================================================

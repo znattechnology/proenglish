@@ -144,7 +144,7 @@ class AdminPermissionsTest(APITestCase):
         })
         
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertIn('cannot change your own role', response.data['error'])
+        self.assertIn('Não pode mudar o seu próprio perfil', response.data['error'])
     
     def test_admin_cannot_deactivate_themselves(self):
         """Test that admin cannot deactivate their own account."""
@@ -154,7 +154,7 @@ class AdminPermissionsTest(APITestCase):
         response = self.client.patch(admin_status_toggle_url)
         
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertIn('cannot deactivate your own account', response.data['error'])
+        self.assertIn('Não pode desactivar a sua própria conta', response.data['error'])
     
     def test_admin_cannot_delete_themselves(self):
         """Test that admin cannot delete their own account."""
@@ -164,7 +164,7 @@ class AdminPermissionsTest(APITestCase):
         response = self.client.delete(admin_delete_url)
         
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertIn('cannot delete your own account', response.data['error'])
+        self.assertIn('Não pode apagar a sua própria conta', response.data['error'])
     
     def test_admin_user_statistics(self):
         """Test admin user statistics functionality."""

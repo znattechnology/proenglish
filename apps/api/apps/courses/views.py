@@ -10,7 +10,10 @@ from django.utils import timezone
 from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
+from apps.core.permissions import e_administrador as _e_admin
 from rest_framework.views import APIView
+from apps.courses.legado import SemEscritaMixin, apagar_curso, resposta_removida
+from apps.courses.api.teacher.posse import exigir_dono_curso, exigir_dono_seccao, exigir_dono_capitulo
 from django.db import transaction
 from django.db.models import Q
 
@@ -73,7 +76,9 @@ class CourseListCreateView(generics.ListCreateAPIView):
             queryset = Course.objects.filter(teacher=self.request.user, course_type='video')
         else:
             # Public exploration - everyone sees only published VIDEO courses
-            queryset = Course.objects.filter(status='Published', course_type='video')
+            # Só o catálogo: publicados e visíveis (os escondidos abrem-se por ligação, não aparecem aqui).
+            from apps.courses import ciclo
+            queryset = Course.objects.filter(ciclo.q_catalogo(), course_type='video')
         
         # Apply category filter
         category = self.request.query_params.get('category')
@@ -131,7 +136,7 @@ class CourseListCreateView(generics.ListCreateAPIView):
             serializer = self.get_serializer(queryset, many=True, context=context)
             
             return Response({
-                'message': 'Cursos recuperados com sucesso',
+                'message': 'Cursos obtidos com sucesso',
                 'data': serializer.data
             })
         else:
@@ -168,7 +173,7 @@ class CourseDetailView(generics.RetrieveUpdateDestroyAPIView):
         if request.method in ['PUT', 'PATCH', 'DELETE']:
             if obj.teacher != request.user:
                 from rest_framework.exceptions import PermissionDenied
-                raise PermissionDenied("Apenas o professor pode editar/deletar este curso")
+                raise PermissionDenied("Apenas o professor pode editar ou apagar este curso")
     
     def retrieve(self, request, *args, **kwargs):
         # Get base queryset and apply optimizations
@@ -179,6 +184,18 @@ class CourseDetailView(generics.RetrieveUpdateDestroyAPIView):
         include_enrollments = request.query_params.get('include_enrollments', 'true').lower() == 'true'
         include_chapters = request.query_params.get('include_chapters', 'true').lower() == 'true'
         include_comments = request.query_params.get('include_chapter_comments', 'false').lower() == 'true'
+
+        # Quem não é dono nem administrador só vê cursos publicados e, sem acesso ao
+        # conteúdo (inscrição + plano), só a estrutura sem capítulos.
+        from apps.courses import ciclo
+        if not ciclo.e_dono_ou_staff(request.user, instance):
+            if instance.status != ciclo.PUBLICADO:
+                from rest_framework.exceptions import NotFound
+                raise NotFound('Curso não encontrado.')
+            from apps.courses.api.student.video_courses.conteudo import pode_ver_conteudo
+            if not pode_ver_conteudo(request.user, instance):
+                include_chapters = False
+                include_comments = False
         
         # Re-fetch with optimizations
         optimized_queryset = CourseDetailSerializer.optimize_queryset(
@@ -208,33 +225,20 @@ class CourseDetailView(generics.RetrieveUpdateDestroyAPIView):
         serializer = self.get_serializer(instance, context=context)
         
         return Response({
-            'message': 'Curso recuperado com sucesso',
+            'message': 'Curso obtido com sucesso',
             'data': serializer.data
         })
     
-    def update(self, request, *args, **kwargs):
-        partial = kwargs.pop('partial', False)
-        instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data, partial=partial)
-        serializer.is_valid(raise_exception=True)
-        course = serializer.save()
-        
-        # Return updated course with full details
-        response_serializer = CourseDetailSerializer(course, context={'request': request})
-        
-        return Response({
-            'message': 'Curso atualizado com sucesso',
-            'data': response_serializer.data
-        })
-    
+    def put(self, request, *args, **kwargs):
+        # Edição antiga sem validação do questionário/vídeo: use o editor novo (teacher/cursos/).
+        return resposta_removida()
+
+    def patch(self, request, *args, **kwargs):
+        return resposta_removida()
+
     def destroy(self, request, *args, **kwargs):
-        instance = self.get_object()
-        course_title = instance.title
-        self.perform_destroy(instance)
-        
-        return Response({
-            'message': f'Curso "{course_title}" deletado com sucesso'
-        }, status=status.HTTP_200_OK)
+        # Só cursos em rascunho, sem inscritos nem certificados (ver apps.courses.legado).
+        return apagar_curso(self.get_object())
 
 
 @api_view(['POST'])
@@ -249,10 +253,24 @@ def create_transaction(request):
     """
     serializer = TransactionCreateSerializer(data=request.data, context={'request': request})
     serializer.is_valid(raise_exception=True)
+
+    # Mesmas regras do student/video-courses/transactions/create/: estado do curso, inscrições
+    # abertas, vagas e plano.
+    from apps.courses import ciclo
+    from apps.core.exceptions import corpo_erro
+    course = Course.objects.filter(id=serializer.validated_data['course']['id']).first()
+    if course is None:
+        return Response(corpo_erro('Curso não encontrado.', 'not_found'), status=status.HTTP_404_NOT_FOUND)
+    bloqueio = ciclo.bloqueio_inscricao(request.user, course)
+    if bloqueio:
+        return Response(corpo_erro(bloqueio[1], bloqueio[0]), status=bloqueio[2])
+    if not course.user_has_access(request.user):
+        return Response(corpo_erro('Não tem a subscrição necessária para este curso.', 'SUBSCRIPTION_REQUIRED'),
+                        status=status.HTTP_403_FORBIDDEN)
     
     with transaction.atomic():
-        # Create transaction
-        new_transaction = serializer.save()
+        # Create transaction (os cursos estão incluídos nos planos: valor sempre 0)
+        new_transaction = serializer.save(amount=0)
         
         # Create enrollment
         enrollment, created = CourseEnrollment.objects.get_or_create(
@@ -309,7 +327,7 @@ class TransactionListView(generics.ListAPIView):
     def get_queryset(self):
         user_id = self.request.query_params.get('userId')
         
-        if user_id and self.request.user.role == 'admin':
+        if user_id and _e_admin(self.request.user):
             # Admin can view transactions for specific user
             queryset = Transaction.objects.filter(user_id=user_id)
         elif user_id and str(self.request.user.id) == user_id:
@@ -356,7 +374,7 @@ def get_user_enrolled_courses(request, userId):
     """
     # userId is already a UUID object from Django URL converter
     # Check if user can access this data - direct UUID comparison
-    if request.user.id != userId and request.user.role != 'admin':
+    if request.user.id != userId and not _e_admin(request.user):
         from rest_framework.exceptions import PermissionDenied
         raise PermissionDenied("Acesso negado")
     
@@ -373,7 +391,7 @@ def get_user_enrolled_courses(request, userId):
     serializer = CourseListSerializer(courses, many=True)
     
     return Response({
-        'message': 'Cursos inscritos recuperados com sucesso',
+        'message': 'Cursos inscritos obtidos com sucesso',
         'data': serializer.data
     })
 
@@ -390,7 +408,7 @@ def get_user_course_progress(request, userId, courseId):
     """
     # userId and courseId are already UUID objects from Django URL converter
     # Check if user can access this data
-    if request.user.id != userId and request.user.role != 'admin':
+    if request.user.id != userId and not _e_admin(request.user):
         from rest_framework.exceptions import PermissionDenied
         raise PermissionDenied("Acesso negado")
     
@@ -402,12 +420,12 @@ def get_user_course_progress(request, userId, courseId):
     except (User.DoesNotExist, Course.DoesNotExist):
         return Response({'error': 'Usuário ou curso não encontrado'}, status=404)
     except UserCourseProgress.DoesNotExist:
-        return Response({'error': 'Progresso do curso não encontrado para este usuário'}, status=404)
+        return Response({'error': 'Progresso do curso não encontrado para este utilizador'}, status=404)
     
     serializer = UserCourseProgressSerializer(progress)
     
     return Response({
-        'message': 'Progresso do curso recuperado com sucesso',
+        'message': 'Progresso do curso obtido com sucesso',
         'data': serializer.data
     })
 
@@ -456,14 +474,14 @@ def update_user_course_progress(request, userId, courseId):
     response_serializer = UserCourseProgressSerializer(updated_progress)
     
     return Response({
-        'message': 'Progresso atualizado com sucesso',
+        'message': 'Progresso actualizado com sucesso',
         'data': response_serializer.data
     })
 
 
 # Course Section Management Views
 
-class CourseSectionListCreateView(generics.ListCreateAPIView):
+class CourseSectionListCreateView(SemEscritaMixin, generics.ListCreateAPIView):
     """
     List sections for a course or create new section.
     """
@@ -472,6 +490,7 @@ class CourseSectionListCreateView(generics.ListCreateAPIView):
     
     def get_queryset(self):
         course_id = self.kwargs['courseId']
+        exigir_dono_curso(self.request, course_id)
         include_comments = self.request.query_params.get('include_comments', 'false').lower() == 'true'
         
         queryset = CourseSection.objects.filter(course__id=course_id)
@@ -496,12 +515,12 @@ class CourseSectionListCreateView(generics.ListCreateAPIView):
         # Check if user owns this course
         if course.teacher != self.request.user:
             from rest_framework.exceptions import PermissionDenied
-            raise PermissionDenied("Apenas o professor pode adicionar seções")
+            raise PermissionDenied("Apenas o professor pode adicionar secções")
         
         serializer.save(course=course)
 
 
-class CourseSectionDetailView(generics.RetrieveUpdateDestroyAPIView):
+class CourseSectionDetailView(SemEscritaMixin, generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a course section.
     """
@@ -515,12 +534,12 @@ class CourseSectionDetailView(generics.RetrieveUpdateDestroyAPIView):
     def check_object_permissions(self, request, obj):
         if obj.course.teacher != request.user:
             from rest_framework.exceptions import PermissionDenied
-            raise PermissionDenied("Apenas o professor pode editar seções")
+            raise PermissionDenied("Apenas o professor pode editar secções")
 
 
 # Chapter Management Views
 
-class ChapterListCreateView(generics.ListCreateAPIView):
+class ChapterListCreateView(SemEscritaMixin, generics.ListCreateAPIView):
     """
     List chapters for a section or create new chapter.
     """
@@ -529,6 +548,7 @@ class ChapterListCreateView(generics.ListCreateAPIView):
     
     def get_queryset(self):
         section_id = self.kwargs['sectionId']
+        exigir_dono_seccao(self.request, section_id)
         return Chapter.objects.filter(section__id=section_id).order_by('order')
     
     def get_serializer_class(self):
@@ -548,7 +568,7 @@ class ChapterListCreateView(generics.ListCreateAPIView):
         serializer.save(section=section)
 
 
-class ChapterDetailView(generics.RetrieveUpdateDestroyAPIView):
+class ChapterDetailView(SemEscritaMixin, generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a chapter.
     """
@@ -586,589 +606,24 @@ class ChapterCommentListCreateView(generics.ListCreateAPIView):
     
     def get_queryset(self):
         chapter_id = self.kwargs['chapterId']
+        exigir_dono_capitulo(self.request, chapter_id)
         queryset = ChapterComment.objects.filter(chapter__id=chapter_id)
         return ChapterCommentSerializer.optimize_queryset(queryset)
     
     def perform_create(self, serializer):
         chapter_id = self.kwargs['chapterId']
+        exigir_dono_capitulo(self.request, chapter_id)
         chapter = get_object_or_404(Chapter, id=chapter_id)
         serializer.save(chapter=chapter)
 
 
 # Stripe Payment Intent View
 
-@api_view(['POST'])
-@permission_classes([permissions.IsAuthenticated])
-def create_stripe_payment_intent(request):
-    """
-    Create Stripe payment intent.
-    
-    POST /api/v1/courses/payments/stripe/intent/
-    
-    Maps to Express: POST /transactions/stripe-payment-intent
-    """
-    amount = request.data.get('amount', 0)
-    
-    if not amount or amount <= 0:
-        amount = 50  # Default minimum amount
-    
-    try:
-        import stripe
-        from django.conf import settings
-        
-        stripe.api_key = getattr(settings, 'STRIPE_SECRET_KEY', '')
-        
-        if not stripe.api_key:
-            return Response({
-                'error': 'Stripe não configurado'
-            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
-        payment_intent = stripe.PaymentIntent.create(
-            amount=amount,
-            currency='eur',
-            automatic_payment_methods={'enabled': True}
-        )
-        
-        return Response({
-            'message': 'Payment intent criado com sucesso',
-            'data': {
-                'clientSecret': payment_intent.client_secret
-            }
-        })
-    
-    except ImportError:
-        return Response({
-            'error': 'Biblioteca Stripe não instalada'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    except Exception as e:
-        return Response({
-            'error': f'Erro ao criar intenção de pagamento: {str(e)}'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
 # =============================================================================
 # AWS S3 VIDEO UPLOAD ENDPOINTS
 # =============================================================================
 
-@api_view(['POST'])
-@permission_classes([permissions.IsAuthenticated])
-def get_upload_video_url(request, courseId, sectionId, chapterId):
-    """
-    Generate presigned URL for video upload to S3.
-    
-    POST /api/v1/courses/{courseId}/sections/{sectionId}/chapters/{chapterId}/get-upload-url/
-    
-    Maps to Express: POST /:courseId/sections/:sectionId/chapters/:chapterId/get-upload-url
-    """
-    # Debug logging
-    print(f"🔍 Django DEBUG - Request data: {request.data}")
-    print(f"🔍 Django DEBUG - Content type: {request.content_type}")
-    print(f"🔍 Django DEBUG - Method: {request.method}")
-    
-    # Try both camelCase and snake_case (RTK Query may be converting)
-    fileName = request.data.get('fileName')
-    if not fileName:
-        fileName = request.data.get('file_name')
-    
-    fileType = request.data.get('fileType') 
-    if not fileType:
-        fileType = request.data.get('file_type')
-    
-    print(f"🔍 Django DEBUG - Extracted fileName: '{fileName}', fileType: '{fileType}'")
-    
-    if not fileName or not fileType:
-        return Response({
-            'message': 'O nome e o tipo do ficheiro são obrigatórios'
-        }, status=status.HTTP_400_BAD_REQUEST)
-    
-    try:
-        # Verify course ownership
-        course = get_object_or_404(Course, id=courseId)
-        if course.teacher != request.user:
-            from rest_framework.exceptions import PermissionDenied
-            raise PermissionDenied("Apenas o professor pode fazer upload de vídeos")
-        
-        import boto3
-        import uuid
-        from django.conf import settings
-        from botocore.exceptions import ClientError
-        
-        if not all([settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY, settings.AWS_STORAGE_BUCKET_NAME]):
-            return Response({
-                'error': 'Configuração S3 incompleta'
-            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
-        # Create S3 client
-        s3_client = boto3.client(
-            's3',
-            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-            region_name=settings.AWS_S3_REGION_NAME
-        )
-        
-        # Generate unique ID and S3 key (same pattern as Express)
-        unique_id = str(uuid.uuid4())
-        s3_key = f'videos/{unique_id}/{fileName}'
-        
-        # Generate presigned URL for PUT operation
-        upload_url = s3_client.generate_presigned_url(
-            'put_object',
-            Params={
-                'Bucket': settings.AWS_STORAGE_BUCKET_NAME,
-                'Key': s3_key,
-                'ContentType': fileType,
-            },
-            ExpiresIn=3600  # 1 hour expiration
-        )
-        
-        # Generate final video URL (using CloudFront if available)
-        if settings.AWS_CLOUDFRONT_DOMAIN:
-            video_url = f"{settings.AWS_CLOUDFRONT_DOMAIN}/videos/{unique_id}/{fileName}"
-        else:
-            video_url = f"https://{settings.AWS_S3_CUSTOM_DOMAIN}/videos/{unique_id}/{fileName}"
-        
-        return Response({
-            'message': 'URL de upload gerado com sucesso',
-            'data': {
-                'uploadUrl': upload_url,
-                'videoUrl': video_url
-            }
-        })
-        
-    except ClientError as e:
-        return Response({
-            'error': f'Erro S3: {str(e)}'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    except ImportError:
-        return Response({
-            'error': 'Biblioteca boto3 não instalada'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    except Exception as e:
-        return Response({
-            'error': f'Erro ao gerar URL de upload: {str(e)}'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
-@api_view(['POST'])
-@permission_classes([permissions.IsAuthenticated])
-def get_course_image_upload_url(request, courseId):
-    """
-    Generate presigned URL for course image upload to S3.
-    
-    POST /api/v1/courses/{courseId}/get-image-upload-url/
-    
-    Similar to video upload but for course cover images
-    """
-    print(f"🖼️ Course image upload URL request for course: {courseId}")
-    print(f"   Request data: {request.data}")
-    
-    # Get file details
-    fileName = request.data.get('fileName') or request.data.get('file_name')
-    fileType = request.data.get('fileType') or request.data.get('file_type')
-    
-    if not fileName or not fileType:
-        return Response({
-            'message': 'O nome e o tipo do ficheiro são obrigatórios'
-        }, status=status.HTTP_400_BAD_REQUEST)
-    
-    # Validate image file type
-    allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
-    if fileType not in allowed_types:
-        return Response({
-            'message': 'Tipo de arquivo não suportado. Use JPG, PNG ou WebP.'
-        }, status=status.HTTP_400_BAD_REQUEST)
-    
-    try:
-        # Verify course ownership
-        course = get_object_or_404(Course, id=courseId)
-        if course.teacher != request.user:
-            from rest_framework.exceptions import PermissionDenied
-            raise PermissionDenied("Apenas o professor pode alterar a imagem do curso")
-        
-        import boto3
-        import uuid
-        from django.conf import settings
-        from botocore.exceptions import ClientError
-        
-        if not all([settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY, settings.AWS_STORAGE_BUCKET_NAME]):
-            return Response({
-                'error': 'Configuração S3 incompleta'
-            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
-        # Create S3 client
-        s3_client = boto3.client(
-            's3',
-            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-            region_name=settings.AWS_S3_REGION_NAME
-        )
-        
-        # Generate unique filename and S3 key
-        file_extension = fileName.split('.')[-1].lower()
-        unique_filename = f"{uuid.uuid4()}.{file_extension}"
-        s3_key = f'courses/images/{unique_filename}'
-        
-        # Generate presigned URL for PUT operation
-        upload_url = s3_client.generate_presigned_url(
-            'put_object',
-            Params={
-                'Bucket': settings.AWS_STORAGE_BUCKET_NAME,
-                'Key': s3_key,
-                'ContentType': fileType,
-                'CacheControl': 'max-age=86400'
-            },
-            ExpiresIn=3600  # 1 hour expiration
-        )
-        
-        # Generate final image URL (using CloudFront if available)
-        if getattr(settings, 'AWS_CLOUDFRONT_DOMAIN', ''):
-            image_url = f"{settings.AWS_CLOUDFRONT_DOMAIN}/courses/images/{unique_filename}"
-        else:
-            image_url = f"https://{settings.AWS_S3_CUSTOM_DOMAIN}/courses/images/{unique_filename}"
-        
-        return Response({
-            'message': 'URL de upload de imagem gerado com sucesso',
-            'data': {
-                'uploadUrl': upload_url,
-                'imageUrl': image_url
-            }
-        })
-        
-    except ClientError as e:
-        return Response({
-            'error': f'Erro S3: {str(e)}'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    except ImportError:
-        return Response({
-            'error': 'Biblioteca boto3 não instalada'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    except Exception as e:
-        return Response({
-            'error': f'Erro ao gerar URL de upload de imagem: {str(e)}'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
-@api_view(['PUT'])
-@permission_classes([permissions.IsAuthenticated])
-def update_course_image_url(request, courseId):
-    """
-    Update course image URL in database after successful S3 upload.
-    
-    PUT /api/v1/courses/{courseId}/update-image-url/
-    """
-    try:
-        course = get_object_or_404(Course, id=courseId)
-        if course.teacher != request.user:
-            from rest_framework.exceptions import PermissionDenied
-            raise PermissionDenied("Apenas o professor pode alterar a imagem do curso")
-        
-        image_url = request.data.get('imageUrl')
-        if not image_url:
-            return Response({
-                'message': 'URL da imagem é obrigatória'
-            }, status=status.HTTP_400_BAD_REQUEST)
-        
-        # Delete old image from S3 if exists
-        if course.image and 'amazonaws.com' in course.image:
-            try:
-                import boto3
-                from django.conf import settings
-                
-                s3_client = boto3.client(
-                    's3',
-                    aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-                    aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-                    region_name=settings.AWS_S3_REGION_NAME
-                )
-                
-                # Extract filename from old URL
-                old_filename = course.image.split('/')[-1]
-                old_s3_key = f'courses/images/{old_filename}'
-                s3_client.delete_object(Bucket=settings.AWS_STORAGE_BUCKET_NAME, Key=old_s3_key)
-                print(f"✅ Deleted old image from S3: {old_s3_key}")
-            except Exception as e:
-                print(f"⚠️ Failed to delete old image: {e}")
-        
-        # Update course with new image URL
-        course.image = image_url
-        course.save()
-        
-        return Response({
-            'message': 'URL da imagem atualizada com sucesso',
-            'data': {
-                'imageUrl': image_url,
-                'course': CourseDetailSerializer(course, context={'request': request}).data
-            }
-        })
-        
-    except Exception as e:
-        return Response({
-            'error': f'Erro ao atualizar URL da imagem: {str(e)}'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
-@api_view(['POST'])
-@permission_classes([permissions.IsAuthenticated])
-def get_resource_upload_url(request, courseId, sectionId, chapterId):
-    """
-    Generate presigned URL for resource upload to S3.
-    
-    POST /api/v1/courses/{courseId}/sections/{sectionId}/chapters/{chapterId}/get-resource-upload-url/
-    """
-    # Debug logging
-    print(f"🔍 Django DEBUG - Resource upload request data: {request.data}")
-    print(f"🔍 Django DEBUG - Content type: {request.content_type}")
-    print(f"🔍 Django DEBUG - Method: {request.method}")
-    
-    # Try both camelCase and snake_case (RTK Query may be converting)
-    fileName = request.data.get('fileName')
-    if not fileName:
-        fileName = request.data.get('file_name')
-    
-    fileType = request.data.get('fileType') 
-    if not fileType:
-        fileType = request.data.get('file_type')
-    
-    resourceType = request.data.get('resourceType', 'PDF')
-    if not resourceType:
-        resourceType = request.data.get('resource_type', 'PDF')
-        
-    print(f"🔍 Django DEBUG - Extracted fileName: '{fileName}', fileType: '{fileType}', resourceType: '{resourceType}'")
-    
-    if not fileName or not fileType:
-        return Response({
-            'message': 'O nome e o tipo do ficheiro são obrigatórios'
-        }, status=status.HTTP_400_BAD_REQUEST)
-    
-    try:
-        # Verify course ownership
-        course = get_object_or_404(Course, id=courseId)
-        if course.teacher != request.user:
-            from rest_framework.exceptions import PermissionDenied
-            raise PermissionDenied("Apenas o professor pode fazer upload de recursos")
-        
-        import boto3
-        import uuid
-        from django.conf import settings
-        from botocore.exceptions import ClientError
-        
-        if not all([settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY, settings.AWS_STORAGE_BUCKET_NAME]):
-            return Response({
-                'error': 'Configuração S3 incompleta'
-            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
-        # Create S3 client
-        s3_client = boto3.client(
-            's3',
-            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-            region_name=settings.AWS_S3_REGION_NAME
-        )
-        
-        # Generate unique ID and S3 key based on resource type
-        unique_id = str(uuid.uuid4())
-        
-        # Determine folder based on resource type
-        resource_folder_map = {
-            'PDF': 'documents',
-            'AUDIO': 'audio', 
-            'VIDEO': 'videos',
-            'IMAGE': 'images',
-            'CODE': 'code',
-            'WORKSHEET': 'worksheets'
-        }
-        folder = resource_folder_map.get(resourceType, 'resources')
-        
-        s3_key = f'chapter_resources/{folder}/{unique_id}/{fileName}'
-        
-        # Generate presigned URL for PUT operation
-        upload_url = s3_client.generate_presigned_url(
-            'put_object',
-            Params={
-                'Bucket': settings.AWS_STORAGE_BUCKET_NAME,
-                'Key': s3_key,
-                'ContentType': fileType,
-            },
-            ExpiresIn=3600  # 1 hour expiration
-        )
-        
-        # Generate final resource URL (using CloudFront if available)
-        if settings.AWS_CLOUDFRONT_DOMAIN:
-            resource_url = f"{settings.AWS_CLOUDFRONT_DOMAIN}/chapter_resources/{folder}/{unique_id}/{fileName}"
-        else:
-            resource_url = f"https://{settings.AWS_S3_CUSTOM_DOMAIN}/chapter_resources/{folder}/{unique_id}/{fileName}"
-        
-        return Response({
-            'message': 'URL de upload de recurso gerado com sucesso',
-            'data': {
-                'uploadUrl': upload_url,
-                'resourceUrl': resource_url,
-                'resourceType': resourceType
-            }
-        })
-        
-    except ClientError as e:
-        return Response({
-            'error': f'Erro S3: {str(e)}'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    except ImportError:
-        return Response({
-            'error': 'Biblioteca boto3 não instalada'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    except Exception as e:
-        return Response({
-            'error': f'Erro ao gerar URL de upload de recurso: {str(e)}'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
-@api_view(['POST'])
-@permission_classes([permissions.IsAuthenticated])
-def upload_course_image(request, courseId):
-    """
-    Upload course cover image to S3.
-    
-    POST /api/v1/courses/{courseId}/upload-image/
-    
-    Handles image upload similar to Express multer approach but with S3 storage
-    """
-    print(f"🖼️ Upload image request for course: {courseId}")
-    print(f"   User: {request.user}")
-    print(f"   Files in request: {list(request.FILES.keys())}")
-    
-    if 'image' not in request.FILES:
-        print("❌ No image file in request")
-        return Response({
-            'message': 'Nenhuma imagem fornecida'
-        }, status=status.HTTP_400_BAD_REQUEST)
-    
-    try:
-        print("📝 Step 1: Verify course ownership")
-        # Verify course ownership
-        course = get_object_or_404(Course, id=courseId)
-        print(f"   Found course: {course.title}")
-        print(f"   Course teacher: {course.teacher}")
-        print(f"   Request user: {request.user}")
-        
-        if course.teacher != request.user:
-            print("❌ Permission denied - user is not course teacher")
-            from rest_framework.exceptions import PermissionDenied
-            raise PermissionDenied("Apenas o professor pode alterar a imagem do curso")
-        
-        print("📝 Step 2: Get image file")
-        image_file = request.FILES['image']
-        print(f"   Image file: {image_file.name}")
-        print(f"   Content type: {image_file.content_type}")
-        print(f"   Size: {image_file.size} bytes")
-        
-        print("📝 Step 3: Validate image file")
-        # Validate image file type
-        allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
-        if image_file.content_type not in allowed_types:
-            print(f"❌ Invalid file type: {image_file.content_type}")
-            return Response({
-                'message': 'Tipo de arquivo não suportado. Use JPG, PNG ou WebP.'
-            }, status=status.HTTP_400_BAD_REQUEST)
-        
-        # Check file size (max 2MB)
-        if image_file.size > 2 * 1024 * 1024:
-            print(f"❌ File too large: {image_file.size} bytes")
-            return Response({
-                'message': 'Arquivo muito grande. Máximo 2MB.'
-            }, status=status.HTTP_400_BAD_REQUEST)
-        
-        print("📝 Step 4: Import libraries and check settings")
-        import boto3
-        import uuid
-        from django.conf import settings
-        from botocore.exceptions import ClientError
-        
-        if not all([settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY, settings.AWS_STORAGE_BUCKET_NAME]):
-            print("❌ S3 configuration incomplete")
-            return Response({
-                'error': 'Configuração S3 incompleta'
-            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
-        print("📝 Step 5: Create S3 client")
-        # Create S3 client
-        s3_client = boto3.client(
-            's3',
-            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-            region_name=settings.AWS_S3_REGION_NAME
-        )
-        print("✅ S3 client created successfully")
-        
-        print("📝 Step 6: Generate filename and upload to S3")
-        # Generate unique filename
-        file_extension = image_file.name.split('.')[-1].lower()
-        unique_filename = f"{uuid.uuid4()}.{file_extension}"
-        s3_key = f'courses/images/{unique_filename}'
-        
-        print(f"   Generated filename: {unique_filename}")
-        print(f"   S3 key: {s3_key}")
-        
-        # Upload file to S3
-        print("📤 Uploading to S3...")
-        s3_client.upload_fileobj(
-            image_file,
-            settings.AWS_STORAGE_BUCKET_NAME,
-            s3_key,
-            ExtraArgs={
-                'ContentType': image_file.content_type,
-                'CacheControl': 'max-age=86400'
-            }
-        )
-        print("✅ Upload to S3 successful")
-        
-        # Generate final image URL
-        if settings.AWS_CLOUDFRONT_DOMAIN:
-            image_url = f"{settings.AWS_CLOUDFRONT_DOMAIN}/courses/images/{unique_filename}"
-        else:
-            image_url = f"https://{settings.AWS_S3_CUSTOM_DOMAIN}/courses/images/{unique_filename}"
-        
-        # Delete old image if exists
-        if course.image:
-            try:
-                # Extract key from old URL
-                old_key = course.image.split('/')[-2:]  # Get last 2 parts: ['images', 'filename.jpg']
-                if len(old_key) == 2 and old_key[0] == 'images':
-                    old_s3_key = f'courses/images/{old_key[1]}'
-                    s3_client.delete_object(Bucket=settings.AWS_STORAGE_BUCKET_NAME, Key=old_s3_key)
-            except Exception as e:
-                # Log but don't fail the request
-                print(f"Failed to delete old image: {e}")
-        
-        # Update course with new image URL
-        course.image = image_url
-        course.save()
-        
-        return Response({
-            'message': 'Imagem do curso atualizada com sucesso',
-            'data': {
-                'imageUrl': image_url,
-                'course': CourseDetailSerializer(course, context={'request': request}).data
-            }
-        })
-        
-    except ClientError as e:
-        return Response({
-            'error': f'Erro S3: {str(e)}'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    except ImportError:
-        return Response({
-            'error': 'Biblioteca boto3 não instalada'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    except Exception as e:
-        return Response({
-            'error': f'Erro ao fazer upload da imagem: {str(e)}'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
-# =============================================================================
-# 🆕 PHASE 1 BRIDGE ENDPOINTS - Chapter Enhancement API
-# =============================================================================
-
-class ChapterResourceListCreateView(generics.ListCreateAPIView):
+class ChapterResourceListCreateView(SemEscritaMixin, generics.ListCreateAPIView):
     """
     List resources for a chapter or create new resource.
     
@@ -1185,6 +640,7 @@ class ChapterResourceListCreateView(generics.ListCreateAPIView):
     
     def get_queryset(self):
         chapter_id = self.kwargs['chapterId']
+        exigir_dono_capitulo(self.request, chapter_id)
         queryset = ChapterResource.objects.filter(chapter__id=chapter_id)
         queryset = queryset.select_related('chapter', 'created_by')
         return optimize_paginated_queryset(queryset, self.request, 'order')
@@ -1210,7 +666,7 @@ class ChapterResourceListCreateView(generics.ListCreateAPIView):
         serializer = self.get_serializer(queryset, many=True)
         
         return Response({
-            'message': 'Recursos do capítulo recuperados com sucesso',
+            'message': 'Recursos do capítulo obtidos com sucesso',
             'data': serializer.data
         })
     
@@ -1227,7 +683,7 @@ class ChapterResourceListCreateView(generics.ListCreateAPIView):
         }, status=status.HTTP_201_CREATED)
 
 
-class ChapterResourceDetailView(generics.RetrieveUpdateDestroyAPIView):
+class ChapterResourceDetailView(SemEscritaMixin, generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a chapter resource.
     
@@ -1242,6 +698,7 @@ class ChapterResourceDetailView(generics.RetrieveUpdateDestroyAPIView):
     
     def get_queryset(self):
         chapter_id = self.kwargs['chapterId']
+        exigir_dono_capitulo(self.request, chapter_id)
         return ChapterResource.objects.filter(chapter__id=chapter_id)
     
     def check_object_permissions(self, request, obj):
@@ -1260,7 +717,7 @@ class ChapterResourceDetailView(generics.RetrieveUpdateDestroyAPIView):
         serializer = self.get_serializer(instance)
         
         return Response({
-            'message': 'Recurso recuperado com sucesso',
+            'message': 'Recurso obtido com sucesso',
             'data': serializer.data
         })
     
@@ -1272,7 +729,7 @@ class ChapterResourceDetailView(generics.RetrieveUpdateDestroyAPIView):
         resource = serializer.save()
         
         return Response({
-            'message': 'Recurso atualizado com sucesso',
+            'message': 'Recurso actualizado com sucesso',
             'data': serializer.data
         })
     
@@ -1282,11 +739,11 @@ class ChapterResourceDetailView(generics.RetrieveUpdateDestroyAPIView):
         self.perform_destroy(instance)
         
         return Response({
-            'message': f'Recurso "{resource_title}" deletado com sucesso'
+            'message': f'Recurso "{resource_title}" apagado'
         }, status=status.HTTP_200_OK)
 
 
-class ChapterQuizListCreateView(generics.ListCreateAPIView):
+class ChapterQuizListCreateView(SemEscritaMixin, generics.ListCreateAPIView):
     """
     Get quiz for a chapter or create new quiz.
     
@@ -1297,6 +754,7 @@ class ChapterQuizListCreateView(generics.ListCreateAPIView):
     
     def get_queryset(self):
         chapter_id = self.kwargs['chapterId']
+        exigir_dono_capitulo(self.request, chapter_id)
         return ChapterQuiz.objects.filter(chapter__id=chapter_id)
     
     def get_serializer_class(self):
@@ -1338,7 +796,7 @@ class ChapterQuizListCreateView(generics.ListCreateAPIView):
         serializer = self.get_serializer(quiz)
         
         return Response({
-            'message': 'Quiz do capítulo recuperado com sucesso',
+            'message': 'Quiz do capítulo obtido com sucesso',
             'data': serializer.data
         })
     
@@ -1355,7 +813,7 @@ class ChapterQuizListCreateView(generics.ListCreateAPIView):
         }, status=status.HTTP_201_CREATED)
 
 
-class ChapterQuizDetailView(generics.RetrieveUpdateDestroyAPIView):
+class ChapterQuizDetailView(SemEscritaMixin, generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a chapter quiz.
     
@@ -1370,6 +828,7 @@ class ChapterQuizDetailView(generics.RetrieveUpdateDestroyAPIView):
     
     def get_queryset(self):
         chapter_id = self.kwargs['chapterId']
+        exigir_dono_capitulo(self.request, chapter_id)
         return ChapterQuiz.objects.filter(chapter__id=chapter_id)
     
     def check_object_permissions(self, request, obj):
@@ -1382,7 +841,7 @@ class ChapterQuizDetailView(generics.RetrieveUpdateDestroyAPIView):
         serializer = self.get_serializer(instance)
         
         return Response({
-            'message': 'Quiz recuperado com sucesso',
+            'message': 'Quiz obtido com sucesso',
             'data': serializer.data
         })
     
@@ -1394,7 +853,7 @@ class ChapterQuizDetailView(generics.RetrieveUpdateDestroyAPIView):
         quiz = serializer.save()
         
         return Response({
-            'message': 'Quiz atualizado com sucesso',
+            'message': 'Quiz actualizado com sucesso',
             'data': serializer.data
         })
     
@@ -1410,7 +869,7 @@ class ChapterQuizDetailView(generics.RetrieveUpdateDestroyAPIView):
         chapter.save(update_fields=['quiz_enabled'])
         
         return Response({
-            'message': f'Quiz "{quiz_title}" deletado com sucesso'
+            'message': f'Quiz "{quiz_title}" apagado'
         }, status=status.HTTP_200_OK)
 
 
@@ -1565,7 +1024,7 @@ def get_student_quiz_summary(request, chapterId):
     }
     
     return Response({
-        'message': 'Resumo do quiz recuperado com sucesso',
+        'message': 'Resumo do quiz obtido com sucesso',
         'data': summary_data
     })
 
@@ -1582,8 +1041,9 @@ import calendar
 
 
 def is_admin_user(user):
-    """Check if user has admin permissions"""
-    return user.is_authenticated and user.role == 'admin'
+    """Administrador activo (papel admin ou superutilizador); is_staff sozinho não chega."""
+    from apps.core.permissions import e_administrador
+    return e_administrador(user)
 
 
 @api_view(['GET'])
@@ -1601,7 +1061,7 @@ def course_analytics_overview(request):
     
     if not is_admin_user(request.user):
         return Response(
-            {'error': 'Acesso negado. Apenas administradores podem acessar.'}, 
+            {'error': 'Acesso negado. Só os administradores podem aceder.'}, 
             status=status.HTTP_403_FORBIDDEN
         )
     
@@ -1626,9 +1086,11 @@ def course_analytics_overview(request):
         
         return Response(analytics_data)
         
-    except Exception as e:
+    except Exception:
+        import logging
+        logging.getLogger(__name__).exception('Falha ao calcular as estatísticas dos cursos')
         return Response(
-            {'error': f'Erro ao calcular analytics: {str(e)}'}, 
+            {'error': 'Não foi possível calcular as estatísticas. Tente de novo.'}, 
             status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
 
@@ -1856,7 +1318,7 @@ def course_analytics_real_time(request):
     
     if not is_admin_user(request.user):
         return Response(
-            {'error': 'Acesso negado. Apenas administradores podem acessar.'}, 
+            {'error': 'Acesso negado. Só os administradores podem aceder.'}, 
             status=status.HTTP_403_FORBIDDEN
         )
     
@@ -1888,7 +1350,7 @@ def export_course_data(request):
     
     if not is_admin_user(request.user):
         return Response(
-            {'error': 'Acesso negado. Apenas administradores podem acessar.'}, 
+            {'error': 'Acesso negado. Só os administradores podem aceder.'}, 
             status=status.HTTP_403_FORBIDDEN
         )
     
@@ -1923,7 +1385,7 @@ def clear_analytics_cache(request):
     
     if not is_admin_user(request.user):
         return Response(
-            {'error': 'Acesso negado. Apenas administradores podem acessar.'}, 
+            {'error': 'Acesso negado. Só os administradores podem aceder.'}, 
             status=status.HTTP_403_FORBIDDEN
         )
     
@@ -1948,7 +1410,7 @@ def admin_courses_list(request):
     
     if not is_admin_user(request.user):
         return Response(
-            {'error': 'Acesso negado. Apenas administradores podem acessar.'}, 
+            {'error': 'Acesso negado. Só os administradores podem aceder.'}, 
             status=status.HTTP_403_FORBIDDEN
         )
     
@@ -2009,8 +1471,10 @@ def admin_courses_list(request):
             'message': 'Cursos carregados com sucesso'
         })
         
-    except Exception as e:
+    except Exception:
+        import logging
+        logging.getLogger(__name__).exception('Falha ao carregar a lista de cursos (admin)')
         return Response(
-            {'error': f'Erro ao carregar cursos: {str(e)}'}, 
+            {'error': 'Não foi possível carregar os cursos. Tente de novo.'}, 
             status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )

@@ -201,11 +201,41 @@ class UpgradeSubscriptionTest(APITestCase):
             }
         )
         
+        # Planos pagos sem pagamento confirmado só podem ser ativados por admin
+        # (os alunos pagam via apps.pagamentos - ver apps/pagamentos/tests.py)
+        self.admin = User.objects.create_user(
+            email='admin-upgrade@example.com',
+            name='Admin',
+            password='password123',
+            role='admin',
+        )
+
         self.upgrade_url = reverse('subscriptions:upgrade-subscription')
+
+    def test_upgrade_paid_plan_requires_payment_for_students(self):
+        """SEGURANÇA: aluno não ativa plano pago sem pagamento confirmado."""
+        self.client.force_authenticate(user=self.user)
+        response = self.client.post(self.upgrade_url, {
+            'plan_id': str(self.premium_plan.id),
+            'billing_cycle': 'MONTHLY'
+        })
+        self.assertEqual(response.status_code, status.HTTP_402_PAYMENT_REQUIRED)
+        self.assertFalse(UserSubscription.objects.filter(
+            user=self.user, plan=self.premium_plan).exists())
+
+    def test_upgrade_free_plan_refused_for_students(self):
+        """O aluno não escolhe o Gratuito: volta a ele só quando o período pago termina."""
+        self.client.force_authenticate(user=self.user)
+        response = self.client.post(self.upgrade_url, {
+            'plan_id': str(self.free_plan.id),
+            'billing_cycle': 'MONTHLY'
+        })
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.data['code'], 'FREE_NOT_ALLOWED')
     
     def test_upgrade_monthly_success(self):
         """Testa upgrade mensal bem-sucedido."""
-        self.client.force_authenticate(user=self.user)
+        self.client.force_authenticate(user=self.admin)
         
         data = {
             'plan_id': str(self.premium_plan.id),
@@ -220,13 +250,13 @@ class UpgradeSubscriptionTest(APITestCase):
         self.assertEqual(response.data['amount_paid'], Decimal('2500.00'))
         
         # Verificar que assinatura foi atualizada
-        subscription = UserSubscription.objects.get(user=self.user)
+        subscription = UserSubscription.objects.get(user=self.admin)
         self.assertEqual(subscription.plan, self.premium_plan)
         self.assertEqual(subscription.status, 'ACTIVE')
     
     def test_upgrade_yearly_success(self):
         """Testa upgrade anual bem-sucedido."""
-        self.client.force_authenticate(user=self.user)
+        self.client.force_authenticate(user=self.admin)
         
         data = {
             'plan_id': str(self.premium_plan.id),
@@ -251,7 +281,7 @@ class UpgradeSubscriptionTest(APITestCase):
             valid_until=timezone.now() + timedelta(days=30)
         )
         
-        self.client.force_authenticate(user=self.user)
+        self.client.force_authenticate(user=self.admin)
         
         data = {
             'plan_id': str(self.premium_plan.id),
@@ -270,13 +300,13 @@ class UpgradeSubscriptionTest(APITestCase):
         
         # Verificar que código foi marcado como usado
         self.assertTrue(PromoCodeUsage.objects.filter(
-            user=self.user, 
+            user=self.admin,
             promo_code=promo
         ).exists())
     
     def test_upgrade_with_invalid_promo_code(self):
         """Testa upgrade com código promocional inválido."""
-        self.client.force_authenticate(user=self.user)
+        self.client.force_authenticate(user=self.admin)
         
         data = {
             'plan_id': str(self.premium_plan.id),
@@ -315,7 +345,7 @@ class UpgradeSubscriptionTest(APITestCase):
     
     def test_upgrade_creates_history(self):
         """Testa que upgrade cria histórico."""
-        self.client.force_authenticate(user=self.user)
+        self.client.force_authenticate(user=self.admin)
         
         data = {
             'plan_id': str(self.premium_plan.id),
@@ -327,7 +357,7 @@ class UpgradeSubscriptionTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         
         # Verificar histórico
-        subscription = UserSubscription.objects.get(user=self.user)
+        subscription = UserSubscription.objects.get(user=self.admin)
         history = SubscriptionHistory.objects.filter(subscription=subscription).first()
         
         self.assertIsNotNone(history)

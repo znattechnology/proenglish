@@ -2,14 +2,55 @@
 Email service for user verification and notifications.
 """
 
-import random
+import logging
+import secrets
 from datetime import timedelta
-from django.core.mail import send_mail, EmailMultiAlternatives
+from urllib.parse import urlencode
+
 from django.conf import settings
-from django.utils import timezone
+from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
+from django.utils import timezone
 from django.utils.html import strip_tags
+
 from .models import EmailVerification
+
+logger = logging.getLogger(__name__)
+
+
+def _link(caminho, **params):
+    """Endereço do site (FRONTEND_URL) com os parâmetros codificados (ex.: o email com '+')."""
+    base = (getattr(settings, 'FRONTEND_URL', '') or '').rstrip('/')
+    url = f'{base}{caminho}'
+    if params:
+        url = f'{url}?{urlencode(params)}'
+    return url
+
+
+def _contexto_base(user, email):
+    return {
+        'user_name': (getattr(user, 'name', '') or '').strip(),
+        'user_email': email,
+        'current_year': timezone.now().year,
+        'frontend_url': _link(''),
+        'support_email': getattr(settings, 'SUPPORT_EMAIL', '') or 'suporte@proenglish.ao',
+    }
+
+
+def _enviar(assunto, template, context, destino):
+    """Envia o email (HTML + texto). Devolve True/False; nunca regista o conteúdo (tem códigos)."""
+    try:
+        html = render_to_string(template, context)
+        texto = strip_tags(html)
+        msg = EmailMultiAlternatives(subject=assunto, body=texto,
+                                     from_email=settings.DEFAULT_FROM_EMAIL, to=[destino])
+        msg.attach_alternative(html, 'text/html')
+        msg.send()
+        logger.debug('Email "%s" enviado (%s)', assunto, template)
+        return True
+    except Exception:
+        logger.exception('Falha ao enviar o email "%s" (%s)', assunto, template)
+        return False
 
 
 class EmailVerificationService:
@@ -18,10 +59,10 @@ class EmailVerificationService:
     @staticmethod
     def generate_verification_code():
         """Generate a 6-digit verification code."""
-        return str(random.randint(100000, 999999))
+        return f'{secrets.randbelow(900000) + 100000}'
     
     @staticmethod
-    def create_verification_code(user, email=None):
+    def create_verification_code(user, email=None, finalidade=EmailVerification.FINALIDADE_VERIFICAR):
         """
         Create a new verification code for a user.
         
@@ -34,11 +75,13 @@ class EmailVerificationService:
         """
         if email is None:
             email = user.email
-        
-        # Invalidate any existing verification codes for this user/email
+        email = email.strip().lower()
+
+        # Invalidate any existing codes with the same purpose for this user/email
         EmailVerification.objects.filter(
             user=user,
-            email=email,
+            email__iexact=email,
+            finalidade=finalidade,
             is_used=False
         ).update(is_used=True)
         
@@ -51,7 +94,8 @@ class EmailVerificationService:
             user=user,
             code=code,
             email=email,
-            expires_at=expires_at
+            expires_at=expires_at,
+            finalidade=finalidade,
         )
         
         return verification
@@ -59,178 +103,59 @@ class EmailVerificationService:
     @staticmethod
     def send_verification_email(verification):
         """
-        Send verification email to user with multiple backend fallback.
-        
-        Args:
-            verification: EmailVerification instance
-            
-        Returns:
-            bool: True if email sent successfully
+        Envia o código de confirmação do email. Devolve True se o email saiu.
+        O código nunca vai para os registos (logs).
         """
-        try:
-            print(f"DEBUG: Preparing to send verification email to {verification.email}")
-            print(f"DEBUG: EMAIL_BACKEND: {settings.EMAIL_BACKEND}")
-            print(f"DEBUG: EMAIL_HOST: {settings.EMAIL_HOST}")
-            print(f"DEBUG: DEFAULT_FROM_EMAIL: {settings.DEFAULT_FROM_EMAIL}")
-            
-            subject = 'Verificação de Email - ProEnglish'
-            
-            # Create email context
-            context = {
-                'user_name': verification.user.name,
-                'user_email': verification.email,
-                'verification_code': verification.code,
-                'verification_url': f"{settings.FRONTEND_URL}/verify-email?email={verification.email}",
-                'current_year': timezone.now().year,
-                'frontend_url': settings.FRONTEND_URL,
-            }
-            
-            print(f"DEBUG: Email context: {context}")
-            
-            # Render HTML template
-            html_message = render_to_string('emails/email_verification.html', context)
-            # Create plain text version
-            text_message = strip_tags(html_message)
-            
-            print(f"DEBUG: Email template rendered successfully")
-            
-            # Try primary email method
-            try:
-                print(f"DEBUG: Attempting primary email method...")
-                msg = EmailMultiAlternatives(
-                    subject=subject,
-                    body=text_message,
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    to=[verification.email],
-                )
-                msg.attach_alternative(html_message, "text/html")
-                
-                result = msg.send()
-                print(f"DEBUG: Primary email send result: {result}")
-                return True
-                
-            except Exception as primary_error:
-                print(f"WARNING: Primary email method failed: {primary_error}")
-                
-                # Fallback: Try AWS SES if configured
-                try:
-                    print(f"DEBUG: Attempting AWS SES fallback...")
-                    import boto3
-                    from botocore.exceptions import ClientError
-                    
-                    # Get AWS region
-                    region = getattr(settings, 'AWS_REGION', 'eu-west-1')
-                    
-                    # Create SES client
-                    ses_client = boto3.client('ses', region_name=region)
-                    
-                    # Send via SES
-                    response = ses_client.send_email(
-                        Source=settings.DEFAULT_FROM_EMAIL,
-                        Destination={'ToAddresses': [verification.email]},
-                        Message={
-                            'Subject': {'Data': subject, 'Charset': 'UTF-8'},
-                            'Body': {
-                                'Text': {'Data': text_message, 'Charset': 'UTF-8'},
-                                'Html': {'Data': html_message, 'Charset': 'UTF-8'}
-                            }
-                        }
-                    )
-                    
-                    print(f"DEBUG: AWS SES response: {response}")
-                    return True
-                    
-                except Exception as ses_error:
-                    print(f"WARNING: AWS SES fallback failed: {ses_error}")
-                    
-                    # Final fallback: Console backend for debugging
-                    print(f"DEBUG: Using console backend for debugging")
-                    print(f"EMAIL TO: {verification.email}")
-                    print(f"SUBJECT: {subject}")
-                    print(f"VERIFICATION CODE: {verification.code}")
-                    print(f"VERIFICATION URL: {context['verification_url']}")
-                    
-                    # Return True to continue registration process
-                    return True
-            
-        except Exception as e:
-            print(f"ERROR: Exception sending verification email: {e}")
-            import traceback
-            traceback.print_exc()
-            return False
-    
+        context = {
+            **_contexto_base(verification.user, verification.email),
+            'verification_code': verification.code,
+            'verification_url': _link('/verify-email', email=verification.email),
+        }
+        return _enviar('Confirme o seu email - ProEnglish', 'emails/email_verification.html',
+                       context, verification.email)
+
+    CODIGO_INVALIDO = 'O código não está certo ou já expirou. Peça um código novo.'
+
     @staticmethod
     def verify_code(email, code):
         """
-        Verify an email verification code.
-        
-        Args:
-            email: Email address
-            code: Verification code
-            
+        Confirma o email com o código de 6 dígitos.
+
+        Só servem códigos de confirmação de email (nunca os de recuperar a palavra-passe), e só
+        o último ainda não usado desse email. Um código errado conta como tentativa nesse código
+        (no limite de max_attempts deixa de servir). Uma conta já confirmada não volta a ser
+        "confirmada" (antes isso devolvia uma sessão a quem tivesse um código qualquer).
+        A mensagem de erro é sempre a mesma, para não revelar que contas existem.
+
         Returns:
-            dict: Result with success status and user if valid
+            dict: {'success', 'error', 'user'}
         """
+        invalido = {'success': False, 'error': EmailVerificationService.CODIGO_INVALIDO, 'user': None}
+        email = (email or '').strip().lower()
+        code = str(code or '').strip()
+        if not email or not code:
+            return invalido
         try:
-            # Find the verification record
-            verification = EmailVerification.objects.filter(
-                email=email,
-                code=code,
-                is_used=False
-            ).order_by('-created_at').first()
-            
-            if not verification:
-                return {
-                    'success': False,
-                    'error': 'Código inválido ou não encontrado',
-                    'user': None
-                }
-            
-            # Increment attempts
-            verification.increment_attempts()
-            
-            # Check if code is valid
-            if not verification.is_valid():
-                if verification.is_expired():
-                    return {
-                        'success': False,
-                        'error': 'Código expirado. Solicite um novo código.',
-                        'user': None
-                    }
-                elif verification.attempts >= verification.max_attempts:
-                    return {
-                        'success': False,
-                        'error': 'Muitas tentativas. Solicite um novo código.',
-                        'user': None
-                    }
-                else:
-                    return {
-                        'success': False,
-                        'error': 'Código inválido',
-                        'user': None
-                    }
-            
-            # Mark as used
-            verification.is_used = True
-            verification.save()
-            
-            # Mark user email as verified
+            verification = (EmailVerification.objects
+                            .filter(email__iexact=email, finalidade=EmailVerification.FINALIDADE_VERIFICAR,
+                                    is_used=False)
+                            .select_related('user').order_by('-created_at').first())
+            if not verification or verification.is_expired() or verification.attempts >= verification.max_attempts:
+                return invalido
             user = verification.user
+            if user.email_verified or not user.is_active:
+                return invalido
+            if verification.code != code:
+                verification.increment_attempts()
+                return invalido
+
+            verification.is_used = True
+            verification.save(update_fields=['is_used'])
             user.email_verified = True
-            user.save()
-            
-            return {
-                'success': True,
-                'error': None,
-                'user': user
-            }
-            
-        except Exception as e:
-            return {
-                'success': False,
-                'error': 'Erro interno. Tente novamente.',
-                'user': None
-            }
+            user.save(update_fields=['email_verified'])
+            return {'success': True, 'error': None, 'user': user}
+        except Exception:
+            return {'success': False, 'error': 'Ocorreu um erro. Tente outra vez.', 'user': None}
     
     @staticmethod
     def resend_verification_code(email):
@@ -246,7 +171,7 @@ class EmailVerificationService:
         try:
             # Find user by email
             from .models import User
-            user = User.objects.filter(email=email).first()
+            user = User.objects.filter(email__iexact=(email or '').strip()).first()
             
             if not user:
                 return {
@@ -257,11 +182,11 @@ class EmailVerificationService:
             if user.email_verified:
                 return {
                     'success': False,
-                    'error': 'Email já verificado'
+                    'error': 'Este email já está confirmado.'
                 }
             
             # Create new verification code
-            verification = EmailVerificationService.create_verification_code(user, email)
+            verification = EmailVerificationService.create_verification_code(user, user.email)
             
             # Send email
             if EmailVerificationService.send_verification_email(verification):
@@ -272,105 +197,33 @@ class EmailVerificationService:
             else:
                 return {
                     'success': False,
-                    'error': 'Erro ao enviar email'
+                    'error': 'Não conseguimos enviar o email.'
                 }
                 
         except Exception as e:
             return {
                 'success': False,
-                'error': 'Erro interno. Tente novamente.'
+                'error': 'Ocorreu um erro. Tente outra vez.'
             }
     
     @staticmethod
     def send_welcome_email(user):
-        """
-        Send welcome email to user after successful verification.
-        
-        Args:
-            user: User instance
-            
-        Returns:
-            bool: True if email sent successfully
-        """
-        try:
-            subject = '🎉 Bem-vindo(a) ao ProEnglish!'
-            
-            # Create email context
-            context = {
-                'user_name': user.name,
-                'user_email': user.email,
-                'platform_url': f"{settings.FRONTEND_URL}/braiders",
-                'profile_url': f"{settings.FRONTEND_URL}/profile",
-                'current_year': timezone.now().year,
-                'frontend_url': settings.FRONTEND_URL,
-            }
-            
-            # Render HTML template
-            html_message = render_to_string('emails/welcome_email.html', context)
-            # Create plain text version
-            text_message = strip_tags(html_message)
-            
-            # Create email message
-            msg = EmailMultiAlternatives(
-                subject=subject,
-                body=text_message,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                to=[user.email],
-            )
-            msg.attach_alternative(html_message, "text/html")
-            
-            # Send email
-            msg.send()
-            
-            return True
-            
-        except Exception as e:
-            print(f"Error sending welcome email: {e}")
-            return False
-    
+        """Email de boas-vindas depois de confirmar o email. Devolve True se o email saiu."""
+        context = {
+            **_contexto_base(user, user.email),
+            'platform_url': _link('/user/dashboard'),
+            'profile_url': _link('/user/settings'),
+        }
+        return _enviar('Bem-vindo(a) ao ProEnglish', 'emails/welcome_email.html', context, user.email)
+
     @staticmethod
     def send_password_reset_email(verification):
-        """
-        Send password reset email with 6-digit code.
-        
-        Args:
-            verification: EmailVerification instance
-            
-        Returns:
-            bool: True if email sent successfully
-        """
-        try:
-            subject = 'Redefinir Senha - ProEnglish'
-            
-            # Create email context
-            context = {
-                'user_name': verification.user.name,
-                'user_email': verification.email,
-                'verification_code': verification.code,
-                'verification_url': f"{settings.FRONTEND_URL}/reset-password/verify?email={verification.email}",
-                'current_year': timezone.now().year,
-                'frontend_url': settings.FRONTEND_URL,
-            }
-            
-            # Render HTML template (reuse verification template for now)
-            html_message = render_to_string('emails/password_reset.html', context)
-            # Create plain text version
-            text_message = strip_tags(html_message)
-            
-            # Create email message
-            msg = EmailMultiAlternatives(
-                subject=subject,
-                body=text_message,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                to=[verification.email],
-            )
-            msg.attach_alternative(html_message, "text/html")
-            
-            # Send email
-            msg.send()
-            
-            return True
-            
-        except Exception as e:
-            print(f"Error sending password reset email: {e}")
-            return False
+        """Código para criar uma palavra-passe nova. Devolve True se o email saiu."""
+        context = {
+            **_contexto_base(verification.user, verification.email),
+            'verification_code': verification.code,
+            # A página do site lê ?email= e mostra os campos do código e da palavra-passe nova.
+            'verification_url': _link('/forgot-password', email=verification.email),
+        }
+        return _enviar('Criar uma palavra-passe nova - ProEnglish', 'emails/password_reset.html',
+                       context, verification.email)

@@ -1,0 +1,7 @@
+{% extends "emails/base.html" %}
+{% block titulo %}Pedido de mudança do email - ProEnglish{% endblock %}
+{% block conteudo %}
+<p style="margin:0 0 16px;">A equipa ProEnglish recebeu um pedido para mudar o email da sua conta para <strong>{{ email_novo }}</strong>.</p>
+<p style="margin:0 0 16px;">A mudança só acontece quando o código enviado para esse endereço for confirmado. Até lá, continua a entrar com este email ({{ user_email }}).</p>
+<p style="margin:0;font-size:13px;color:#6b7280;">Se não pediu esta mudança, escreva-nos já para {{ support_email }}.</p>
+{% endblock %}

@@ -5,6 +5,8 @@ This module contains all serializers for student video course-related models,
 following the same structure and response format as the Express API.
 """
 
+from django.core.exceptions import ValidationError
+from django.utils import timezone
 from rest_framework import serializers
 from ....models import (
     Course, CourseSection, Chapter, ChapterComment,
@@ -27,7 +29,8 @@ class ChapterCommentSerializer(serializers.ModelSerializer):
         fields = [
             'commentId', 'text', 'timestamp', 'user', 'user_name'
         ]
-        read_only_fields = ['commentId', 'timestamp', 'user_name']
+        # 'user' vem sempre do pedido (create); se fosse obrigatório no corpo o POST dava 400.
+        read_only_fields = ['commentId', 'timestamp', 'user', 'user_name']
     
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
@@ -56,7 +59,9 @@ class ChapterSerializer(serializers.ModelSerializer):
             # ✅ EXERCISE FIELDS - para chapters tipo Exercise  
             'practice_selection', 'practice_lesson',
             # ✅ RESOURCE FIELDS - para todos os tipos (Text, Quiz, Exercise, Video)
-            'resources_data', 'transcript'
+            'resources_data', 'transcript',
+            # Duração do vídeo (segundos) e % que tem de ser vista para a aula contar como vista
+            'duracao_s', 'percentagem_vista',
         ]
         read_only_fields = ['chapterId', 'created_at']
     
@@ -77,6 +82,20 @@ class ChapterSerializer(serializers.ModelSerializer):
             obj.comments.all()
         )
         return ChapterCommentSerializer(comments, many=True).data
+
+    def to_representation(self, instance):
+        from .conteudo import CAMPOS_DE_CONTEUDO, quiz_sem_respostas
+        dados = super().to_representation(instance)
+        # Quem não está inscrito vê só a estrutura do curso (títulos, tipos, ordem).
+        if self.context.get('so_estrutura'):
+            for campo in CAMPOS_DE_CONTEUDO:
+                dados.pop(campo, None)
+            dados.pop('comments', None)
+            return dados
+        # As respostas certas nunca vão para o browser: a correcção é feita no servidor.
+        if 'quiz_data' in dados:
+            dados['quiz_data'] = quiz_sem_respostas(dados['quiz_data'])
+        return dados
 
 
 class ChapterCreateSerializer(serializers.ModelSerializer):
@@ -119,12 +138,10 @@ class CourseSectionSerializer(serializers.ModelSerializer):
         if not self.context.get('include_chapters', True):
             return []
         
-        # Use prefetched chapters if available, otherwise query directly
-        if hasattr(obj, '_prefetched_chapters') or hasattr(obj, '_prefetched_objects_cache'):
-            chapters_queryset = obj.chapters.all().order_by('order')
-        else:
-            # Fallback to direct query if not prefetched
-            chapters_queryset = obj.chapters.all().order_by('order')
+        # Só as aulas visíveis aos alunos (uma aula de vídeo sem vídeo ainda não está pronta).
+        from apps.courses.ciclo import aula_visivel
+        chapters_queryset = [c for c in sorted(obj.chapters.all(), key=lambda c: (c.order, c.created_at))
+                             if aula_visivel(c)]
         
         context = self.context.copy()
         context['include_comments'] = context.get('include_chapter_comments', False)
@@ -286,8 +303,13 @@ class CourseDetailSerializer(serializers.ModelSerializer):
         Return enrollments in the same format as Express - array of userId objects.
         Optimized to avoid N+1 queries.
         """
+        # Quem está inscrito só interessa ao professor do curso e aos administradores.
+        from .conteudo import e_staff
+        user = getattr(self.context.get('request'), 'user', None)
+        if not user or not user.is_authenticated or not (obj.teacher_id == user.id or e_staff(user)):
+            return []
         if hasattr(obj, '_prefetched_enrollments'):
-            return [{'userId': str(enrollment.user.id)} 
+            return [{'userId': str(enrollment.user.id)}
                    for enrollment in obj.enrollments.all()]
         return []
     
@@ -321,6 +343,7 @@ class CourseDetailSerializer(serializers.ModelSerializer):
     def optimize_queryset(cls, queryset, include_sections=True, include_enrollments=True):
         """Optimize queryset for detail view."""
         from django.db.models import Count
+        from apps.courses.ciclo import q_aula_visivel
         
         # Always select related teacher
         queryset = queryset.select_related('teacher')
@@ -328,7 +351,8 @@ class CourseDetailSerializer(serializers.ModelSerializer):
         # Add counts as annotations to avoid property calculations
         queryset = queryset.annotate(
             _sections_count=Count('sections', distinct=True),
-            _chapters_count=Count('sections__chapters', distinct=True),
+            _chapters_count=Count('sections__chapters', distinct=True,
+                                  filter=q_aula_visivel('sections__chapters__')),
             _enrollments_count=Count('enrollments', distinct=True)
         )
         
@@ -580,6 +604,10 @@ class TransactionCreateSerializer(serializers.ModelSerializer):
         fields = [
             'transactionId', 'courseId', 'amount', 'paymentProvider'
         ]
+        # A inscrição não tem custo (os cursos estão incluídos nos planos): o valor e o
+        # identificador vêm do servidor, nunca do cliente.
+        read_only_fields = ['amount', 'paymentProvider']
+        extra_kwargs = {'transactionId': {'required': False}}
 
     def validate(self, attrs):
         """
@@ -643,6 +671,7 @@ class UserCourseProgressSerializer(serializers.ModelSerializer):
     courseId = serializers.CharField(source='course.id', read_only=True)
     userId = serializers.CharField(source='user.id', read_only=True)
     sections = serializers.SerializerMethodField()
+    overallProgress = serializers.SerializerMethodField()
     
     class Meta:
         model = UserCourseProgress
@@ -652,39 +681,48 @@ class UserCourseProgressSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['userId', 'courseId', 'lastAccessedTimestamp']
     
+    def _estrutura(self, obj):
+        """Secções/capítulos do curso e capítulos concluídos: 2 consultas no total (antes era uma por capítulo)."""
+        cache = getattr(self, '_estrutura_cache', None)
+        if cache is None:
+            cache = self._estrutura_cache = {}
+        if obj.pk in cache:
+            return cache[obj.pk]
+        from django.db.models import Prefetch
+        from apps.courses.ciclo import q_aula_visivel
+        seccoes = list(obj.course.sections.order_by('order').prefetch_related(
+            Prefetch('chapters', queryset=Chapter.objects.filter(q_aula_visivel()).order_by('order', 'created_at')
+                     .only('id', 'section_id', 'order'))
+        ))
+        feitos = set(ChapterProgress.objects.filter(user_progress=obj, completed=True)
+                     .values_list('chapter_id', flat=True))
+        cache[obj.pk] = (seccoes, feitos)
+        return cache[obj.pk]
+
     def get_sections(self, obj):
         """
         Return progress in the same nested structure as Express:
         sections: [{ sectionId, chapters: [{ chapterId, completed }] }]
         """
-        sections_data = []
-        
-        # Get all sections for this course
-        for section in obj.course.sections.all():
-            section_data = {
+        seccoes, feitos = self._estrutura(obj)
+        return [
+            {
                 'sectionId': str(section.id),
-                'chapters': []
+                'chapters': [
+                    {'chapterId': str(ch.id), 'completed': ch.id in feitos}
+                    for ch in section.chapters.all()
+                ],
             }
-            
-            # Get progress for each chapter in this section
-            for chapter in section.chapters.all():
-                try:
-                    progress = obj.chapter_progress.get(chapter=chapter)
-                    chapter_data = {
-                        'chapterId': str(chapter.id),
-                        'completed': progress.completed
-                    }
-                except ChapterProgress.DoesNotExist:
-                    chapter_data = {
-                        'chapterId': str(chapter.id),
-                        'completed': False
-                    }
-                
-                section_data['chapters'].append(chapter_data)
-            
-            sections_data.append(section_data)
-        
-        return sections_data
+            for section in seccoes
+        ]
+
+    def get_overallProgress(self, obj):
+        """Calculado na leitura: capítulos concluídos que ainda existem / capítulos actuais."""
+        seccoes, feitos = self._estrutura(obj)
+        ids = [ch.id for sec in seccoes for ch in sec.chapters.all()]
+        if not ids:
+            return 0.0
+        return min(100.0, sum(1 for i in ids if i in feitos) * 100.0 / len(ids))
 
 
 class UserCourseProgressUpdateSerializer(serializers.Serializer):
@@ -707,7 +745,8 @@ class UserCourseProgressUpdateSerializer(serializers.Serializer):
                 completed = chapter_data.get('completed', False)
                 
                 try:
-                    chapter = Chapter.objects.get(id=chapter_id)
+                    # Só capítulos deste curso (senão o progresso podia passar de 100%).
+                    chapter = Chapter.objects.get(id=chapter_id, section__course=instance.course)
                     progress, created = ChapterProgress.objects.get_or_create(
                         user_progress=instance,
                         chapter=chapter,
@@ -717,16 +756,16 @@ class UserCourseProgressUpdateSerializer(serializers.Serializer):
                         progress.completed = completed
                         progress.save()
                         
-                except Chapter.DoesNotExist:
+                except (Chapter.DoesNotExist, ValueError, TypeError, ValidationError):
                     continue
         
-        # Recalculate overall progress
-        total_chapters = instance.course.total_chapters
-        if total_chapters > 0:
-            completed_chapters = instance.chapter_progress.filter(completed=True).count()
-            instance.overallProgress = (completed_chapters / total_chapters) * 100
-        else:
-            instance.overallProgress = 0
+        # Recalculate overall progress (só capítulos que ainda existem neste curso)
+        from apps.courses.certificados import progresso_actual
+        instance.overallProgress = progresso_actual(instance.user, instance.course)
+        if instance.overallProgress >= 100.0 and not instance.completion_date:
+            instance.completion_date = timezone.now()
+        elif instance.overallProgress < 100.0 and instance.completion_date:
+            instance.completion_date = None
         
         instance.save()
         return instance
@@ -880,7 +919,9 @@ class StudentQuizAttemptCreateSerializer(serializers.ModelSerializer):
             'chapter_quiz', 'score', 'max_score', 'time_taken', 'hearts_lost',
             'points_earned', 'is_completed', 'is_passed', 'practice_progress'
         ]
-    
+        # O quiz vem do URL (a view passa-o em save()); o do corpo é ignorado.
+        extra_kwargs = {'chapter_quiz': {'required': False}}
+
     def create(self, validated_data):
         # Set student from request user
         validated_data['student'] = self.context['request'].user

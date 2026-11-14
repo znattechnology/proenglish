@@ -1,0 +1,8 @@
+{% extends "emails/base.html" %}
+{% block titulo %}{{ assunto }}{% endblock %}
+{% block conteudo %}
+{% for paragrafo in paragrafos %}<p style="margin:0 0 16px;">{{ paragrafo }}</p>
+{% endfor %}
+{% if botao_link %}<p style="margin:8px 0 20px;"><a href="{{ botao_link }}" style="display:inline-block;background:#1d4ed8;color:#ffffff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:8px;">{{ botao_texto }}</a></p>{% endif %}
+<p style="margin:0;font-size:13px;color:#6b7280;">O pagamento é feito em kwanzas com Multicaixa Express. Não há cobranças automáticas.</p>
+{% endblock %}

@@ -183,89 +183,39 @@ class TeacherVideoCoursesAPITest(APITestCase):
         ])
     
     def test_teacher_can_update_own_course(self):
-        """Test teacher can update their own course."""
+        """A edição antiga foi retirada (410): o curso edita-se em /api/v1/teacher/cursos/<id>/."""
         self.authenticate_as_teacher()
         url = f'/api/v1/teacher/video-courses/{self.teacher_course.id}/'
-        
-        update_data = {
-            'title': 'Updated Course Title',
-            'description': 'Updated description',
-            'level': 'Advanced'
-        }
-        
-        response = self.client.patch(url, update_data, format='json')
-        
-        # Should be successful
-        self.assertIn(response.status_code, [
-            status.HTTP_200_OK, 
-            status.HTTP_204_NO_CONTENT
-        ])
-        
-        # Verify course was updated
+        response = self.client.patch(url, {'title': 'Updated Course Title'}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_410_GONE)
         self.teacher_course.refresh_from_db()
-        self.assertEqual(self.teacher_course.title, update_data['title'])
-        self.assertEqual(self.teacher_course.description, update_data['description'])
-        self.assertEqual(self.teacher_course.level, update_data['level'])
-    
+        self.assertNotEqual(self.teacher_course.title, 'Updated Course Title')
+
     def test_teacher_can_delete_own_course(self):
-        """Test teacher can delete their own course."""
+        """Um rascunho sem alunos apaga-se (200)."""
         self.authenticate_as_teacher()
-        
-        # Create a course specifically for deletion
-        course_to_delete = VideoCourseFactory(teacher=self.teacher)
+        course_to_delete = VideoCourseFactory(teacher=self.teacher, status='Draft')
         url = f'/api/v1/teacher/video-courses/{course_to_delete.id}/'
-        
         response = self.client.delete(url)
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-        
-        # Verify course was deleted
+        self.assertEqual(response.status_code, status.HTTP_200_OK, response.content)
         self.assertFalse(Course.objects.filter(id=course_to_delete.id).exists())
-    
+
     def test_teacher_section_management(self):
-        """Test teacher can manage course sections."""
+        """Listar secções continua; criar pela rota antiga foi retirado (410)."""
         self.authenticate_as_teacher()
-        
-        # Test listing sections
         url = f'/api/v1/teacher/video-courses/{self.teacher_course.id}/sections/'
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        
-        # Test creating new section
-        section_data = {
-            'sectionTitle': 'New Section',
-            'sectionDescription': 'New section description',
-            'order': 2
-        }
-        
-        response = self.client.post(url, section_data, format='json')
-        self.assertIn(response.status_code, [
-            status.HTTP_201_CREATED,
-            status.HTTP_200_OK
-        ])
-    
+        self.assertEqual(self.client.get(url).status_code, status.HTTP_200_OK)
+        response = self.client.post(url, {'sectionTitle': 'New Section', 'order': 2}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_410_GONE)
+
     def test_teacher_chapter_management(self):
-        """Test teacher can manage chapters."""
+        """Listar capítulos continua; criar pela rota antiga foi retirado (410)."""
         self.authenticate_as_teacher()
-        
-        # Test listing chapters
         url = f'/api/v1/teacher/video-courses/sections/{self.course_section.id}/chapters/'
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        
-        # Test creating new chapter
-        chapter_data = {
-            'title': 'New Chapter',
-            'content': 'New chapter content',
-            'type': 'Video',
-            'video': 'https://example.com/new-video.mp4',
-            'order': 2
-        }
-        
-        response = self.client.post(url, chapter_data, format='json')
-        self.assertIn(response.status_code, [
-            status.HTTP_201_CREATED,
-            status.HTTP_200_OK
-        ])
+        self.assertEqual(self.client.get(url).status_code, status.HTTP_200_OK)
+        response = self.client.post(url, {'title': 'New Chapter', 'type': 'Video',
+                                          'video': 'https://example.com/new-video.mp4'}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_410_GONE)
 
 
 @pytest.mark.django_db

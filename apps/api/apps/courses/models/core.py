@@ -57,6 +57,7 @@ class Course(BaseModel):
         help_text="Course category"
     )
     image = models.URLField(
+        max_length=500,
         blank=True,
         help_text="Course thumbnail image URL (S3 or local)"
     )
@@ -103,6 +104,54 @@ class Course(BaseModel):
     is_featured = models.BooleanField(
         default=False,
         help_text="Whether this course is featured/highlighted on the platform"
+    )
+
+    # --- Ciclo de vida (apps/courses/ciclo.py) ---
+    motivo_recusa = models.TextField(
+        blank=True, default='',
+        help_text="Motivo dado pelo administrador ao recusar a publicação"
+    )
+    submetido_em = models.DateTimeField(null=True, blank=True)
+    aprovado_em = models.DateTimeField(null=True, blank=True)
+    aprovado_por = models.ForeignKey(
+        User, null=True, blank=True, on_delete=models.SET_NULL, related_name='+',
+        help_text="Administrador que aprovou a publicação"
+    )
+    modo_arquivo = models.CharField(
+        max_length=10, blank=True, default='',
+        choices=CourseChoices.ARCHIVE_MODE_CHOICES,
+        help_text="manter: inscritos mantêm o acesso; fechar: inscritos perdem o acesso às aulas"
+    )
+    arquivado_em = models.DateTimeField(null=True, blank=True)
+    # Última decisão de moderação do administrador (recusar ou arquivar), para o professor ver porquê
+    # mesmo quando o curso fica arquivado. Limpa-se quando o curso é aprovado.
+    motivo_moderacao = models.TextField(
+        blank=True, default='',
+        help_text="Motivo da última recusa ou arquivamento feito pelo administrador"
+    )
+    moderacao_accao = models.CharField(
+        max_length=10, blank=True, default='',
+        help_text="recusar | arquivar: a última acção de moderação do administrador"
+    )
+    moderado_por = models.ForeignKey(
+        User, null=True, blank=True, on_delete=models.SET_NULL, related_name='+',
+        help_text="Administrador que fez a última recusa ou arquivamento"
+    )
+    moderado_em = models.DateTimeField(null=True, blank=True)
+    estado_antes_revisao = models.CharField(
+        max_length=20, blank=True, default='',
+        help_text="Estado do curso quando foi submetido (Draft ou Archived): ao cancelar ou recusar "
+                  "a revisão volta a este estado; vindo de arquivado a manter, os inscritos mantêm o acesso"
+    )
+
+    # --- Definições do curso (as que o servidor filtra são colunas) ---
+    visivel_catalogo = models.BooleanField(default=True)
+    inscricao_livre = models.BooleanField(default=True)
+    maximo_alunos = models.PositiveIntegerField(null=True, blank=True)
+    definicoes = models.JSONField(
+        default=dict, blank=True,
+        help_text="pode_repetir, mostrar_progresso, resumo_semanal, tempo_limite_questionario_min, "
+                  "certificado_automatico"
     )
 
     class Meta:
@@ -160,22 +209,21 @@ class Course(BaseModel):
         if self.teacher_id == user.id:
             return True
 
-        # Admin/staff always have access
-        if getattr(user, 'is_staff', False) or getattr(user, 'is_superuser', False):
-            return True
-
-        if getattr(user, 'role', None) == 'admin':
+        # Administradores têm sempre acesso (is_staff sozinho não conta)
+        from apps.core.permissions import e_administrador
+        if e_administrador(user):
             return True
 
         # Check user's subscription
         try:
             from apps.subscriptions.models import UserSubscription
+            # is_active() é um método do modelo (estado + data de fim), não um campo:
+            # não pode entrar no filtro da consulta.
             subscription = UserSubscription.objects.filter(
-                user=user,
-                is_active=True
+                user=user
             ).select_related('plan').first()
 
-            if not subscription or not subscription.plan:
+            if not subscription or not subscription.plan or not subscription.is_active():
                 return False
 
             user_plan_type = subscription.plan.plan_type
@@ -263,11 +311,8 @@ class Course(BaseModel):
     
     def can_be_accessed_by(self, user):
         """Check if a user can access this course."""
-        if self.status == 'Published':
-            return True
-        if self.teacher == user:
-            return True
-        return False
+        from apps.courses.ciclo import bloqueio_conteudo
+        return bloqueio_conteudo(user, self) is None
 
 
 class CourseSection(BaseModel, OrderedModelMixin):
@@ -353,8 +398,26 @@ class Chapter(BaseModel, OrderedModelMixin, MetadataModelMixin):
     
     # Video-specific field
     video = models.URLField(
+        max_length=500,
         blank=True,
         help_text="Video URL for video-type chapters"
+    )
+    video_nome = models.CharField(
+        max_length=255, blank=True, default='',
+        help_text="Nome original do ficheiro de vídeo carregado pelo professor"
+    )
+    video_tamanho = models.BigIntegerField(
+        null=True, blank=True,
+        help_text="Tamanho do ficheiro de vídeo em bytes"
+    )
+    duracao_s = models.PositiveIntegerField(
+        null=True, blank=True,
+        help_text="Duração do vídeo em segundos"
+    )
+    PERCENTAGENS_VISTA = ((50, '50%'), (80, '80%'), (100, '100%'))
+    percentagem_vista = models.PositiveSmallIntegerField(
+        default=80, choices=PERCENTAGENS_VISTA,
+        help_text="Percentagem do vídeo que o aluno tem de ver para a aula contar como vista"
     )
     
     # Enhanced fields - Phase 1 Extensions (Non-breaking)
@@ -535,7 +598,7 @@ class ChapterComment(BaseModel, TimestampedModelMixin):
         """Check if a user can edit this comment."""
         return (self.user == user or 
                 self.chapter.course.teacher == user or 
-                user.role == 'admin')
+                _e_admin(user))
     
     def can_be_deleted_by(self, user):
         """Check if a user can delete this comment."""
@@ -543,8 +606,12 @@ class ChapterComment(BaseModel, TimestampedModelMixin):
     
     def toggle_resolved(self, user):
         """Toggle the resolved status of this comment."""
-        if self.chapter.course.teacher == user or user.role == 'admin':
+        if self.chapter.course.teacher == user or _e_admin(user):
             self.is_resolved = not self.is_resolved
             self.save(update_fields=['is_resolved'])
             return True
         return False
+
+def _e_admin(user):
+    from apps.core.permissions import e_administrador
+    return e_administrador(user)

@@ -31,12 +31,20 @@ class CoursesListView(generics.ListAPIView):
         course_type = self.request.query_params.get('course_type', 'practice')
         include_stats = self.request.query_params.get('include_stats', 'false').lower() == 'true'
 
-        # Base query for practice courses
+        from apps.courses import ciclo
+        user = self.request.user
         queryset = Course.objects.filter(course_type=course_type)
+        if ciclo.e_staff(user):
+            pass  # administradores vêem todos
+        elif ciclo.e_professor(user):
+            # O professor só gere os seus cursos (antes via os rascunhos de todos).
+            queryset = queryset.filter(teacher=user)
+        else:
+            # Os alunos têm o seu próprio catálogo; aqui só vêem o que está no catálogo.
+            queryset = queryset.filter(ciclo.q_catalogo())
 
-        # Filter by draft status if not teacher
-        if not include_drafts and not self.request.user.is_staff:
-            queryset = queryset.filter(is_published=True)
+        if not include_drafts:
+            queryset = queryset.filter(status=ciclo.PUBLICADO)
 
         # Annotate with stats if requested
         if include_stats:
@@ -56,6 +64,10 @@ class CoursesListView(generics.ListAPIView):
         # Serialize normally first
         serializer = self.get_serializer(queryset, many=True)
         data = serializer.data
+        from apps.courses import ciclo
+        estados = {str(c.id): ciclo.estado(c) for c in queryset}
+        for item in data:
+            item['estado'] = estados.get(str(item.get('courseId') or item.get('id') or ''))
 
         # If stats requested, add them to each course
         if include_stats:
@@ -89,6 +101,15 @@ class CoursesListView(generics.ListAPIView):
         return Response(data)
 
 
+def _uuid_valido(valor):
+    import uuid
+    try:
+        uuid.UUID(str(valor))
+        return True
+    except ValueError:
+        return False
+
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_practice_analytics(request):
@@ -96,7 +117,20 @@ def get_practice_analytics(request):
     GET /api/v1/practice/analytics/
 
     Get analytics data for teacher dashboard.
+    Só professores; com ?course=, só o dono do curso (ou um administrador).
     """
+    course_id = request.GET.get('course')
+    from apps.courses import ciclo
+    if not (ciclo.e_professor(request.user) or ciclo.e_staff(request.user)):
+        return Response({'error': 'Apenas professores podem ver estas estatísticas.',
+                         'message': 'Apenas professores podem ver estas estatísticas.',
+                         'code': 'permission_denied', 'details': {}}, status=status.HTTP_403_FORBIDDEN)
+    if course_id:
+        curso = Course.objects.filter(id=course_id).first() if _uuid_valido(course_id) else None
+        if curso is None or not ciclo.e_dono_ou_staff(request.user, curso):
+            return Response({'error': 'Curso não encontrado.', 'message': 'Curso não encontrado.',
+                             'code': 'not_found', 'details': {}}, status=status.HTTP_404_NOT_FOUND)
+
     try:
         from apps.practice.models import PracticeSession
     except ImportError:
@@ -111,11 +145,12 @@ def get_practice_analytics(request):
 
     # Get course filter if provided
     course_id = request.GET.get('course')
-
     # Base query
     sessions = PracticeSession.objects.all()
     if course_id:
         sessions = sessions.filter(course_id=course_id)
+    elif not ciclo.e_staff(request.user):
+        sessions = sessions.filter(course__teacher=request.user)
 
     # Calculate basic analytics
     total_sessions = sessions.count()

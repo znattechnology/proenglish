@@ -9,6 +9,7 @@ These views use external AI services (OpenAI, etc.) for intelligent analysis.
 """
 
 import io
+import logging
 import uuid
 import asyncio
 
@@ -19,79 +20,143 @@ from django.conf import settings
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from .permissions import IsTeacher
 from rest_framework import status as status_module
+from rest_framework.throttling import UserRateThrottle
+from django.core.exceptions import ValidationError as DjangoValidationError
 
 from .models import PracticeChallenge, UserProgress, ChallengeProgress
+
+logger = logging.getLogger(__name__)
 
 
 # =============================================================================
 # AI TRANSLATION ENDPOINTS
 # =============================================================================
 
+class AIAnaliseThrottle(UserRateThrottle):
+    """Análises com IA (pronúncia e tradução) custam dinheiro: no máximo 20 por minuto por pessoa."""
+    rate = '20/minute'
+    scope = 'ai_analise'
+
+
+class AIGeracaoThrottle(UserRateThrottle):
+    """Geração de conteúdo com IA para professores (sugestões, exercícios, áudio): 30 por hora por pessoa."""
+    rate = '30/hour'
+    scope = 'ai_geracao'
+
+
+NIVEIS = ('beginner', 'intermediate', 'advanced')
+VOZES = ('alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer')
+TIPOS_EXERCICIO_PRONUNCIA = ('word', 'sentence', 'paragraph')
+
+
+def _erro(codigo, mensagem, estado=status_module.HTTP_400_BAD_REQUEST, detalhes=None):
+    return Response({'error': codigo, 'message': mensagem, 'code': codigo, 'details': detalhes or []},
+                    status=estado)
+
+
+def _texto(request, campo, maximo):
+    valor = request.data.get(campo) if hasattr(request.data, 'get') else None
+    if valor is None:
+        return ''
+    if not isinstance(valor, str):
+        return None
+    valor = valor.strip()
+    return valor if len(valor) <= maximo else None
+
+
+def _nivel(request):
+    nivel = request.data.get('difficulty_level', 'intermediate') if hasattr(request.data, 'get') else 'intermediate'
+    return nivel if nivel in NIVEIS else None
+
+
+def _exercicio_do_aluno(challenge_id, tipo, user=None):
+    """
+    O exercício `challenge_id`, se for do tipo `tipo` e o aluno o puder abrir no ecrã da lição
+    (a mesma regra do jogar/: a lição tem de ser de um curso publicado).
+    Devolve (exercicio, None) ou (None, Response de erro).
+    """
+    if not challenge_id:
+        return None, Response({'error': 'challenge_required', 'message': 'Indique o exercício.'},
+                              status=status_module.HTTP_400_BAD_REQUEST)
+    try:
+        exercicio = (PracticeChallenge.objects
+                     .select_related('lesson', 'lesson__unit', 'lesson__unit__course')
+                     .prefetch_related('options')
+                     .get(id=challenge_id, lesson__unit__course__status__in=('Published', 'Archived')))
+    except (PracticeChallenge.DoesNotExist, ValueError, DjangoValidationError):
+        return None, Response({'error': 'challenge_not_found', 'message': 'Não encontrámos este exercício.'},
+                              status=status_module.HTTP_404_NOT_FOUND)
+    if exercicio.type != tipo:
+        return None, Response({'error': 'challenge_type', 'message': 'Este exercício não é deste tipo.'},
+                              status=status_module.HTTP_400_BAD_REQUEST)
+    if user is not None:
+        # Ordem do trilho e plano do curso (como jogar/ e challenge-progress/).
+        from .acesso_licoes import erro_acesso_licao
+        erro = erro_acesso_licao(user, exercicio.lesson)
+        if erro:
+            return None, Response(erro, status=status_module.HTTP_403_FORBIDDEN)
+    return exercicio, None
+
+
+def _analise_indisponivel(user, challenge):
+    """
+    503 quando a análise de pronúncia não está disponível. Não tira vidas nem conta como erro;
+    traz um token para saltar o exercício (POST challenge-progress/ com saltar=true).
+    """
+    from .saltar_pronuncia import gerar_token
+    return Response(
+        {'codigo': 'analise_indisponivel',
+         'error': 'analysis_unavailable',
+         'mensagem': 'Não conseguimos analisar a gravação agora. Tente outra vez ou salte este exercício.',
+         'message': 'Não conseguimos analisar a gravação agora. Tente outra vez ou salte este exercício.',
+         'pode_saltar': True,
+         'token_saltar': gerar_token(user, challenge)},
+        status=status_module.HTTP_503_SERVICE_UNAVAILABLE,
+    )
+
+
+def frase_para_dizer(exercicio):
+    """A frase de um exercício SPEAKING: a pergunta (ou a 1.ª opção, em exercícios antigos), como no jogar/."""
+    if (exercicio.question or '').strip():
+        return exercicio.question.strip()
+    opcoes = sorted(exercicio.options.all(), key=lambda o: o.order)
+    return (opcoes[0].text or '').strip() if opcoes else ''
+
+
 class AITranslationValidationView(APIView):
     """
-    POST /api/v1/practice/validate-ai-translation/
+    POST /api/v1/practice/validate-ai-translation/  {challenge_id, user_translation}
 
-    Validate user translation using AI analysis with detailed feedback
+    Dá a opinião da IA sobre uma tradução de um exercício TRANSLATION. Só devolve o veredicto:
+    não mexe em vidas, pontos nem no progresso. A resposta conta (e dá pontos/vidas segundo as
+    regras normais) quando é enviada para challenge-progress/.
+
+    O texto de partida é sempre o do exercício na base de dados; `source_text` enviado pelo
+    cliente é ignorado.
     """
     permission_classes = [IsAuthenticated]
+    throttle_classes = [AIAnaliseThrottle]
 
     def post(self, request):
-        """Validate translation using AI with intelligent scoring"""
         from .services.ai_translation import AITranslationValidator
 
-        # Extract request data
-        source_text = request.data.get('source_text', '').strip()
-        user_translation = request.data.get('user_translation', '').strip()
-        challenge_id = request.data.get('challenge_id')
+        user_translation = str(request.data.get('user_translation') or '').strip()[:2000]
         difficulty_level = request.data.get('difficulty_level', 'intermediate')
+        if difficulty_level not in ('beginner', 'intermediate', 'advanced'):
+            difficulty_level = 'intermediate'
 
-        # Validate required fields
-        if not source_text or not user_translation:
-            return Response(
-                {'error': 'source_text and user_translation are required'},
-                status=status_module.HTTP_400_BAD_REQUEST
-            )
-
-        # Validate challenge exists if provided
-        challenge = None
-        if challenge_id:
-            try:
-                challenge = PracticeChallenge.objects.get(id=challenge_id)
-            except PracticeChallenge.DoesNotExist:
-                return Response(
-                    {'error': 'Challenge not found'},
-                    status=status_module.HTTP_404_NOT_FOUND
-                )
-
-        # Get user progress for hearts/points management
-        user_progress, created = UserProgress.objects.get_or_create(
-            user=request.user,
-            defaults={'hearts': 5, 'points': 0}
-        )
-
-        # Check if this is practice mode (challenge already completed)
-        is_practice = False
-        existing_progress = None
-        if challenge:
-            existing_progress = ChallengeProgress.objects.filter(
-                user=request.user,
-                challenge=challenge
-            ).first()
-            is_practice = existing_progress is not None
-
-        # Check hearts for new challenges
-        if not is_practice and user_progress.hearts == 0:
-            return Response(
-                {'error': 'hearts', 'message': 'No hearts remaining'},
-                status=status_module.HTTP_400_BAD_REQUEST
-            )
+        challenge, erro = _exercicio_do_aluno(request.data.get('challenge_id'), 'TRANSLATION', request.user)
+        if erro:
+            return erro
+        source_text = (challenge.question or '').strip()
+        if not user_translation or not source_text:
+            return Response({'error': 'translation_required', 'message': 'Escreva a sua tradução.'},
+                            status=status_module.HTTP_400_BAD_REQUEST)
 
         try:
-            # Validate translation using AI
             validator = AITranslationValidator()
-
-            # Run async validation in sync context
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
             try:
@@ -104,81 +169,30 @@ class AITranslationValidationView(APIView):
                 )
             finally:
                 loop.close()
-
-            # Process results and update progress
-            response_data = {
-                'success': True,
-                'ai_validation': {
-                    'semantic_score': result.semantic_score,
-                    'fluency_score': result.fluency_score,
-                    'fidelity_score': result.fidelity_score,
-                    'overall_score': result.overall_score,
-                    'is_acceptable': result.is_acceptable,
-                    'partial_credit': result.partial_credit
-                },
-                'feedback': {
-                    'message': result.feedback,
-                    'explanation': result.explanation,
-                    'suggestions': result.suggestions
-                },
-                'user_answer': user_translation,
-                'source_text': source_text
-            }
-
-            # Update challenge progress if challenge provided
-            if challenge and result.is_acceptable:
-                if existing_progress:
-                    existing_progress.completed = True
-                    existing_progress.save()
-                    progress = existing_progress
-                else:
-                    progress = ChallengeProgress.objects.create(
-                        user=request.user,
-                        challenge=challenge,
-                        completed=True
-                    )
-
-                response_data['challenge_progress'] = {
-                    'id': str(progress.id),
-                    'completed': progress.completed,
-                    'completed_at': progress.completed_at
-                }
-
-            # Update user progress based on AI result
-            if result.is_acceptable:
-                if is_practice:
-                    # Practice mode: restore hearts and add points
-                    user_progress.add_hearts(1)
-                else:
-                    # New challenge: just add points
-                    pass
-
-                # Add points based on AI scoring
-                points_earned = result.partial_credit
-                user_progress.add_points(points_earned)
-
-                response_data['points_earned'] = points_earned
-            else:
-                # Incorrect translation: reduce hearts if not practice
-                if not is_practice and user_progress.hearts > 0:
-                    user_progress.reduce_hearts()
-
-                response_data['points_earned'] = 0
-
-            # Add current user progress to response
-            response_data['user_progress'] = {
-                'hearts': user_progress.hearts,
-                'points': user_progress.points
-            }
-
-            return Response(response_data, status=status_module.HTTP_200_OK)
-
         except Exception as e:
             print(f"AI Translation validation error: {e}")
-            return Response(
-                {'error': 'Translation validation failed', 'details': str(e)},
-                status=status_module.HTTP_500_INTERNAL_SERVER_ERROR
-            )
+            return Response({'error': 'analysis_unavailable',
+                             'message': 'Não conseguimos analisar a tradução agora. Tente outra vez.'},
+                            status=status_module.HTTP_503_SERVICE_UNAVAILABLE)
+
+        return Response({
+            'success': True,
+            'ai_validation': {
+                'semantic_score': result.semantic_score,
+                'fluency_score': result.fluency_score,
+                'fidelity_score': result.fidelity_score,
+                'overall_score': result.overall_score,
+                'is_acceptable': result.is_acceptable,
+                'partial_credit': result.partial_credit
+            },
+            'feedback': {
+                'message': result.feedback,
+                'explanation': result.explanation,
+                'suggestions': result.suggestions
+            },
+            'user_answer': user_translation,
+            'source_text': source_text,
+        }, status=status_module.HTTP_200_OK)
 
 
 class GenerateTranslationSuggestionsView(APIView):
@@ -187,21 +201,29 @@ class GenerateTranslationSuggestionsView(APIView):
 
     Generate multiple correct translation alternatives for teachers
     """
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsTeacher]  # só professores e administradores
+    throttle_classes = [AIGeracaoThrottle]
 
     def post(self, request):
         """Generate translation alternatives using AI"""
         from .services.ai_translation import AITranslationValidator
 
-        source_text = request.data.get('source_text', '').strip()
-        difficulty_level = request.data.get('difficulty_level', 'intermediate')
-        count = min(int(request.data.get('count', 3)), 5)  # Limit to 5 suggestions
-
+        # Validar tudo antes de chamar a IA (custa dinheiro).
+        source_text = _texto(request, 'source_text', 1000)
         if not source_text:
-            return Response(
-                {'error': 'source_text is required'},
-                status=status_module.HTTP_400_BAD_REQUEST
-            )
+            return _erro('dados_invalidos', 'Indique o texto a traduzir (até 1000 caracteres).',
+                         detalhes=[{'campo': 'source_text', 'mensagem': 'Obrigatório, até 1000 caracteres.'}])
+        difficulty_level = _nivel(request)
+        if difficulty_level is None:
+            return _erro('dados_invalidos', 'Nível inválido.',
+                         detalhes=[{'campo': 'difficulty_level', 'mensagem': 'Use beginner, intermediate ou advanced.'}])
+        try:
+            count = int(request.data.get('count', 3))
+        except (TypeError, ValueError):
+            count = 0
+        if not 1 <= count <= 5:
+            return _erro('dados_invalidos', 'Pode pedir entre 1 e 5 sugestões.',
+                         detalhes=[{'campo': 'count', 'mensagem': 'Entre 1 e 5.'}])
 
         try:
             validator = AITranslationValidator()
@@ -228,11 +250,9 @@ class GenerateTranslationSuggestionsView(APIView):
             })
 
         except Exception as e:
-            print(f"Translation suggestions error: {e}")
-            return Response(
-                {'error': 'Failed to generate suggestions', 'details': str(e)},
-                status=status_module.HTTP_500_INTERNAL_SERVER_ERROR
-            )
+            logger.exception("Erro a gerar sugestões de tradução: %s", e)
+            return _erro('ia_indisponivel', 'Não conseguimos gerar sugestões agora. Tente outra vez.',
+                         estado=status_module.HTTP_503_SERVICE_UNAVAILABLE)
 
 
 # =============================================================================
@@ -245,15 +265,26 @@ class GeneratePronunciationExerciseView(APIView):
 
     Generate pronunciation exercise with AI
     """
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsTeacher]  # só professores e administradores
+    throttle_classes = [AIGeracaoThrottle]
 
     def post(self, request):
         """Generate pronunciation exercise using AI"""
         from .services.ai_pronunciation import AIPronunciationAnalyzer
 
-        topic = request.data.get('topic', 'daily conversation')
-        difficulty_level = request.data.get('difficulty_level', 'intermediate')
+        # Validar tudo antes de chamar a IA (custa dinheiro); corpo vazio -> 400.
+        topic = _texto(request, 'topic', 200)
+        if not topic:
+            return _erro('dados_invalidos', 'Indique o tema do exercício (até 200 caracteres).',
+                         detalhes=[{'campo': 'topic', 'mensagem': 'Obrigatório, até 200 caracteres.'}])
+        difficulty_level = _nivel(request)
+        if difficulty_level is None:
+            return _erro('dados_invalidos', 'Nível inválido.',
+                         detalhes=[{'campo': 'difficulty_level', 'mensagem': 'Use beginner, intermediate ou advanced.'}])
         exercise_type = request.data.get('exercise_type', 'sentence')
+        if exercise_type not in TIPOS_EXERCICIO_PRONUNCIA:
+            return _erro('dados_invalidos', 'Tipo de exercício inválido.',
+                         detalhes=[{'campo': 'exercise_type', 'mensagem': 'Use word, sentence ou paragraph.'}])
 
         try:
             analyzer = AIPronunciationAnalyzer()
@@ -284,11 +315,9 @@ class GeneratePronunciationExerciseView(APIView):
             })
 
         except Exception as e:
-            print(f"Pronunciation exercise generation error: {e}")
-            return Response(
-                {'error': 'Failed to generate pronunciation exercise', 'details': str(e)},
-                status=status_module.HTTP_500_INTERNAL_SERVER_ERROR
-            )
+            logger.exception("Erro a gerar exercício de pronúncia: %s", e)
+            return _erro('ia_indisponivel', 'Não conseguimos gerar o exercício agora. Tente outra vez.',
+                         estado=status_module.HTTP_503_SERVICE_UNAVAILABLE)
 
 
 class GenerateReferenceAudioView(APIView):
@@ -299,23 +328,27 @@ class GenerateReferenceAudioView(APIView):
     If save_to_s3=true, uploads to S3 and returns URL.
     Otherwise returns audio binary directly.
     """
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsTeacher]  # só professores e administradores
+    throttle_classes = [AIGeracaoThrottle]
 
     def post(self, request):
         """Generate reference audio for pronunciation practice"""
         import boto3
         from .services.ai_pronunciation import AIPronunciationAnalyzer
 
-        text = request.data.get('text', '').strip()
-        voice = request.data.get('voice', 'alloy')  # alloy, echo, fable, onyx, nova, shimmer
-        save_to_s3 = request.data.get('save_to_s3', False)
-        challenge_id = request.data.get('challenge_id', '')
-
+        # Validar tudo antes de chamar o TTS (custa dinheiro); corpo vazio -> 400.
+        text = _texto(request, 'text', 1000)
         if not text:
-            return Response(
-                {'error': 'text is required'},
-                status=status_module.HTTP_400_BAD_REQUEST
-            )
+            return _erro('dados_invalidos', 'Indique o texto a ler (até 1000 caracteres).',
+                         detalhes=[{'campo': 'text', 'mensagem': 'Obrigatório, até 1000 caracteres.'}])
+        voice = request.data.get('voice', 'alloy')
+        if voice not in VOZES:
+            return _erro('dados_invalidos', 'Voz inválida.',
+                         detalhes=[{'campo': 'voice', 'mensagem': 'Use ' + ', '.join(VOZES) + '.'}])
+        save_to_s3 = request.data.get('save_to_s3', False) in (True, 'true', '1', 1)
+        # Só entra no nome do ficheiro: letras, números e hífenes (o editor pode mandar ids temporários).
+        import re
+        challenge_id = re.sub(r'[^A-Za-z0-9-]', '', str(request.data.get('challenge_id') or ''))[:64]
 
         try:
             analyzer = AIPronunciationAnalyzer()
@@ -370,10 +403,8 @@ class GenerateReferenceAudioView(APIView):
 
                 except Exception as s3_error:
                     print(f"S3 upload error: {s3_error}")
-                    return Response(
-                        {'error': 'Failed to upload audio to S3', 'details': str(s3_error)},
-                        status=status_module.HTTP_500_INTERNAL_SERVER_ERROR
-                    )
+                    return _erro('armazenamento_indisponivel', 'Não conseguimos guardar o áudio agora. Tente outra vez.',
+                                 estado=status_module.HTTP_503_SERVICE_UNAVAILABLE)
 
             # Return audio file directly (original behavior)
             response = HttpResponse(audio_bytes, content_type='audio/mpeg')
@@ -381,11 +412,9 @@ class GenerateReferenceAudioView(APIView):
             return response
 
         except Exception as e:
-            print(f"Reference audio generation error: {e}")
-            return Response(
-                {'error': 'Failed to generate reference audio', 'details': str(e)},
-                status=status_module.HTTP_500_INTERNAL_SERVER_ERROR
-            )
+            logger.exception("Erro a gerar áudio de referência: %s", e)
+            return _erro('ia_indisponivel', 'Não conseguimos gerar o áudio agora. Tente outra vez.',
+                         estado=status_module.HTTP_503_SERVICE_UNAVAILABLE)
 
 
 class AIPronunciationAnalysisView(APIView):
@@ -396,8 +425,8 @@ class AIPronunciationAnalysisView(APIView):
 
     Request:
         - audio: Audio file (multipart/form-data)
-        - expected_text: The text the student should pronounce
-        - challenge_id: Optional challenge ID for progress tracking
+        - challenge_id: SPEAKING challenge (required); the sentence comes from the DB
+        - expected_text: ignored (kept for older clients)
         - difficulty_level: 'beginner', 'intermediate', or 'advanced'
 
     Response:
@@ -407,6 +436,7 @@ class AIPronunciationAnalysisView(APIView):
         - ai_analyses_remaining: Remaining AI analyses for today
     """
     permission_classes = [IsAuthenticated]
+    throttle_classes = [AIAnaliseThrottle]
 
     def post(self, request):
         """Analyze pronunciation using AI with detailed feedback"""
@@ -416,16 +446,22 @@ class AIPronunciationAnalysisView(APIView):
         # Extract request data
         # Support both 'audio' and 'audio_file' for compatibility
         audio_file = request.FILES.get('audio') or request.FILES.get('audio_file')
-        expected_text = request.data.get('expected_text', '').strip()
-        challenge_id = request.data.get('challenge_id')
         difficulty_level = request.data.get('difficulty_level', 'intermediate')
+        if difficulty_level not in ('beginner', 'intermediate', 'advanced'):
+            difficulty_level = 'intermediate'
 
-        # Validate required fields
-        if not audio_file or not expected_text:
-            return Response(
-                {'error': 'audio file and expected_text are required'},
-                status=status_module.HTTP_400_BAD_REQUEST
-            )
+        # A frase vem sempre do exercício na base de dados (o `expected_text` que o cliente
+        # envia é ignorado) e o exercício tem de ser SPEAKING de uma lição que o aluno pode abrir.
+        challenge, erro = _exercicio_do_aluno(request.data.get('challenge_id'), 'SPEAKING', request.user)
+        if erro:
+            return erro
+        expected_text = frase_para_dizer(challenge)
+        if not audio_file:
+            return Response({'error': 'audio_required', 'message': 'Grave a frase antes de enviar.'},
+                            status=status_module.HTTP_400_BAD_REQUEST)
+        if not expected_text:
+            return Response({'error': 'challenge_type', 'message': 'Este exercício não tem frase para dizer.'},
+                            status=status_module.HTTP_400_BAD_REQUEST)
 
         # Check AI analyses limit from subscription
         ai_analyses_remaining = -1  # -1 = unlimited
@@ -447,17 +483,6 @@ class AIPronunciationAnalysisView(APIView):
             # No subscription - use default limit of 5
             pass
 
-        # Validate challenge exists if provided
-        challenge = None
-        if challenge_id:
-            try:
-                challenge = PracticeChallenge.objects.get(id=challenge_id)
-            except PracticeChallenge.DoesNotExist:
-                return Response(
-                    {'error': 'Challenge not found'},
-                    status=status_module.HTTP_404_NOT_FOUND
-                )
-
         # Get user progress for hearts/points management
         user_progress, created = UserProgress.objects.get_or_create(
             user=request.user,
@@ -465,14 +490,11 @@ class AIPronunciationAnalysisView(APIView):
         )
 
         # Check if this is practice mode (challenge already completed)
-        is_practice = False
-        existing_progress = None
-        if challenge:
-            existing_progress = ChallengeProgress.objects.filter(
-                user=request.user,
-                challenge=challenge
-            ).first()
-            is_practice = existing_progress is not None
+        existing_progress = ChallengeProgress.objects.filter(
+            user=request.user,
+            challenge=challenge
+        ).first()
+        is_practice = existing_progress is not None
 
         # Check hearts for new challenges
         if not is_practice and user_progress.hearts == 0:
@@ -486,22 +508,46 @@ class AIPronunciationAnalysisView(APIView):
             audio_bytes = io.BytesIO(audio_file.read())
             audio_bytes.name = audio_file.name
 
-            # Analyze pronunciation using AI
-            analyzer = AIPronunciationAnalyzer()
-
-            # Run async analysis in sync context
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            try:
-                result = loop.run_until_complete(
-                    analyzer.analyze_pronunciation(
-                        audio_file=audio_bytes,
-                        expected_text=expected_text,
-                        difficulty_level=difficulty_level
-                    )
+            from django.conf import settings as dj_settings
+            if getattr(dj_settings, 'PRONUNCIA_SIMULADA', False) and dj_settings.DEBUG:
+                # Desenvolvimento sem OpenAI: aceita qualquer gravação com som (> 2 KB).
+                from types import SimpleNamespace
+                aceitavel = audio_bytes.getbuffer().nbytes > 2048
+                result = SimpleNamespace(
+                    transcribed_text=expected_text if aceitavel else '',
+                    expected_text=expected_text,
+                    pronunciation_score=82 if aceitavel else 20,
+                    fluency_score=80 if aceitavel else 20,
+                    clarity_score=84 if aceitavel else 20,
+                    overall_score=82 if aceitavel else 20,
+                    is_acceptable=aceitavel,
+                    partial_credit=10 if aceitavel else 0,
+                    confidence_level='simulado',
+                    feedback='Análise simulada (desenvolvimento sem IA).' if aceitavel else 'Não ouvimos nada. Grave outra vez.',
+                    problematic_words=[],
+                    suggestions=[],
                 )
-            finally:
-                loop.close()
+            else:
+                # Analyze pronunciation using AI
+                analyzer = AIPronunciationAnalyzer()
+
+                # Run async analysis in sync context
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                try:
+                    result = loop.run_until_complete(
+                        analyzer.analyze_pronunciation(
+                            audio_file=audio_bytes,
+                            expected_text=expected_text,
+                            difficulty_level=difficulty_level
+                        )
+                    )
+                finally:
+                    loop.close()
+
+            # Sem transcrição não houve avaliação: é uma falha técnica, não tira vidas nem conta como erro.
+            if getattr(result, 'indisponivel', False):
+                return _analise_indisponivel(request.user, challenge)
 
             # Process results and update progress
             response_data = {
@@ -545,21 +591,21 @@ class AIPronunciationAnalysisView(APIView):
 
             # Update user progress based on AI result
             if result.is_acceptable:
-                if is_practice:
-                    # Practice mode: restore hearts and add points
-                    user_progress.add_hearts(1)
-
-                # Add points based on AI scoring
-                points_earned = result.partial_credit
-                user_progress.add_points(points_earned)
+                # Prática repetida: sem pontos nem vidas por exercício (a recompensa é dada
+                # uma vez por lição em complete-lesson/).
+                points_earned = 0 if is_practice else result.partial_credit
+                if points_earned:
+                    user_progress.add_points(points_earned, reason='ai_practice')
 
                 response_data['points_earned'] = points_earned
+                response_data['explicacao'] = (challenge.explanation or None) if challenge else None
             else:
                 # Incorrect pronunciation: reduce hearts if not practice
                 if not is_practice and user_progress.hearts > 0:
                     user_progress.reduce_hearts()
 
                 response_data['points_earned'] = 0
+                response_data['dica'] = (challenge.hint or None) if challenge else None
 
             # Add current user progress to response
             response_data['user_progress'] = {
@@ -582,8 +628,5 @@ class AIPronunciationAnalysisView(APIView):
             return Response(response_data, status=status_module.HTTP_200_OK)
 
         except Exception as e:
-            print(f"AI Pronunciation analysis error: {e}")
-            return Response(
-                {'error': 'Pronunciation analysis failed', 'details': str(e)},
-                status=status_module.HTTP_500_INTERNAL_SERVER_ERROR
-            )
+            logger.exception("AI Pronunciation analysis error: %s", e)
+            return _analise_indisponivel(request.user, challenge)

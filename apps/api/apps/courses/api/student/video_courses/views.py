@@ -10,10 +10,12 @@ from django.utils import timezone
 from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
+from apps.core.permissions import e_administrador as _e_admin
 from rest_framework.views import APIView
-from rest_framework.exceptions import PermissionDenied
+from rest_framework.exceptions import NotFound, PermissionDenied
 from django.db import transaction
 from django.db.models import Q
+from django.core.exceptions import ValidationError as DjangoValidationError
 
 from django.db.models import Count, Avg
 
@@ -58,10 +60,16 @@ class EnrollmentRequiredMixin:
         if not user.is_authenticated:
             raise PermissionDenied("Autenticação necessária para aceder a este conteúdo.")
 
-        # SECURITY: Atomic check for enrollment with expiration validation
+        # Estado do curso: fechado pelo professor (arquivado a fechar) ou não publicado.
+        from apps.courses.ciclo import bloqueio_conteudo
+        bloqueio = bloqueio_conteudo(user, course)
+        if bloqueio:
+            raise PermissionDenied(bloqueio[1])
+
+        # Leitura simples: select_for_update() fora de transacção rebentava (500) em PostgreSQL.
         from ....models import CourseEnrollment
         try:
-            enrollment = CourseEnrollment.objects.select_for_update().get(
+            enrollment = CourseEnrollment.objects.get(
                 user=user,
                 course=course,
                 is_active=True
@@ -75,7 +83,7 @@ class EnrollmentRequiredMixin:
 
         except CourseEnrollment.DoesNotExist:
             raise PermissionDenied(
-                "Precisa estar inscrito neste curso para aceder a este conteúdo."
+                "Precisa de estar inscrito neste curso para aceder a este conteúdo."
             )
 
         # SECURITY: Check subscription access for non-free courses
@@ -104,7 +112,18 @@ class EnrollmentRequiredMixin:
         return resource.chapter.section.course
 
 
-class SubscriptionAccessMixin:
+class EstadoCursoMixin:
+    def check_estado_curso(self, course):
+        """Arquivado: só os inscritos (e não se o curso foi fechado). Ver apps/courses/ciclo.py."""
+        from apps.courses import ciclo as _ciclo
+        if course.status == _ciclo.PUBLICADO:
+            return
+        from .conteudo import pode_ver_conteudo
+        if not pode_ver_conteudo(self.request.user, course):
+            raise NotFound('Curso não encontrado.')
+
+
+class SubscriptionAccessMixin(EstadoCursoMixin):
     """
     Mixin that checks subscription access for course content without requiring enrollment.
 
@@ -139,7 +158,7 @@ class SubscriptionAccessMixin:
         # Premium courses require authentication
         if not user.is_authenticated:
             raise PermissionDenied(
-                "Este curso requer uma subscrição. Faça login para verificar seu acesso."
+                "Este curso requer uma subscrição. Inicie sessão para verificar o seu acesso."
             )
 
         # Check subscription access
@@ -157,6 +176,7 @@ class SubscriptionAccessMixin:
         return True
 
 
+from apps.courses import ciclo
 from ....models import (
     Course, CourseSection, Chapter, ChapterComment,
     CourseEnrollment, Transaction, UserCourseProgress, ChapterProgress,
@@ -182,6 +202,11 @@ from ....pagination import (
 )
 
 
+class StudentCourseListPagination(CourseListPagination):
+    """Catálogo do estudante: 12 por página por omissão, `page_size` até 50."""
+    max_page_size = 50
+
+
 class CourseListView(generics.ListAPIView):
     """
     List published video courses for students.
@@ -193,7 +218,10 @@ class CourseListView(generics.ListAPIView):
     - access_level: Filter by access level ('free', 'premium', 'premium_plus', 'all')
     - is_featured: Filter by featured status ('true', 'false')
     - level: Filter by course difficulty level ('Beginner', 'Intermediate', 'Advanced')
-    - ordering: Sort order (-created_at, title, level, -is_featured)
+    - search: texto a procurar no título, descrição ou categoria (todas as páginas)
+    - status: ignorado (só cursos publicados)
+    - ordering: created_at, title, level, category, is_featured, updated_at (com ou sem '-');
+      outro valor usa -created_at
     - include_description: Include description field (default: true)
     - include_enrollment_count: Include enrollment count (default: false)
     - page: Page number (default: 1)
@@ -201,11 +229,15 @@ class CourseListView(generics.ListAPIView):
     """
     serializer_class = CourseListSerializer
     permission_classes = [permissions.AllowAny]
-    pagination_class = CourseListPagination
+    pagination_class = StudentCourseListPagination
+    ORDENACOES = {
+        'created_at', '-created_at', 'updated_at', '-updated_at', 'title', '-title',
+        'level', '-level', 'category', '-category', 'is_featured', '-is_featured',
+    }
 
     def get_queryset(self):
         # Students see only published VIDEO courses
-        queryset = Course.objects.filter(status='Published', course_type='video')
+        queryset = Course.objects.filter(ciclo.q_catalogo(), course_type='video')
 
         # Apply category filter
         category = self.request.query_params.get('category')
@@ -233,6 +265,14 @@ class CourseListView(generics.ListAPIView):
             if level in valid_levels:
                 queryset = queryset.filter(level=level)
 
+        # Pesquisa no servidor (título, descrição, categoria), em todas as páginas.
+        search = (self.request.query_params.get('search') or '').strip()[:100]
+        if search:
+            queryset = queryset.filter(
+                Q(title__icontains=search) | Q(description__icontains=search) | Q(category__icontains=search)
+            )
+        # `status`: os estudantes só vêem cursos publicados; outro valor não alarga a lista.
+
         # Use optimized queryset from serializer
         include_enrollment_count = self.request.query_params.get('include_enrollment_count', 'false').lower() == 'true'
         queryset = CourseListSerializer.optimize_queryset(
@@ -240,9 +280,13 @@ class CourseListView(generics.ListAPIView):
             include_enrollment_count=include_enrollment_count
         )
 
-        # Apply ordering
-        ordering = self.request.query_params.get('ordering', '-created_at')
-        return queryset.order_by(ordering)
+        # Ordenação só de uma lista fechada (antes um valor desconhecido dava 500 e
+        # permitia ordenar por campos internos como teacher__password).
+        ordering = self.request.query_params.get('ordering') or '-created_at'
+        if ordering not in self.ORDENACOES:
+            ordering = '-created_at'
+        campos = [ordering] if ordering == '-created_at' else [ordering, '-created_at']
+        return queryset.order_by(*campos)
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
@@ -258,14 +302,14 @@ class CourseListView(generics.ListAPIView):
             serializer = self.get_serializer(page, many=True, context=context)
             response = self.get_paginated_response(serializer.data)
             # Add custom message to paginated response
-            response.data['message'] = 'Cursos recuperados com sucesso'
+            response.data['message'] = 'Cursos obtidos com sucesso'
             return response
 
         # Fallback without pagination (shouldn't happen with pagination_class set)
         serializer = self.get_serializer(queryset, many=True, context=context)
 
         return Response({
-            'message': 'Cursos recuperados com sucesso',
+            'message': 'Cursos obtidos com sucesso',
             'data': serializer.data
         })
 
@@ -279,7 +323,8 @@ class CourseDetailView(generics.RetrieveAPIView):
     SECURITY: For premium courses, unauthenticated users and users without
     subscription only see limited preview (section titles, no chapter details).
     """
-    queryset = Course.objects.filter(status='Published', course_type='video')
+    # Publicados (mesmo fora do catálogo, por ligação) e arquivados a manter para os inscritos.
+    queryset = Course.objects.filter(ciclo.q_conteudo_aluno(), course_type='video')
     serializer_class = CourseDetailSerializer
     permission_classes = [permissions.AllowAny]
     lookup_field = 'id'
@@ -287,9 +332,14 @@ class CourseDetailView(generics.RetrieveAPIView):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
+        user = request.user
+        if instance.status != ciclo.PUBLICADO:
+            from .conteudo import pode_ver_conteudo
+            if not pode_ver_conteudo(user, instance):
+                from rest_framework.exceptions import NotFound
+                raise NotFound("Curso não encontrado ou não está publicado")
 
         # SECURITY: Check if user has access to this course
-        user = request.user
         user_has_access = False
 
         if user and user.is_authenticated:
@@ -312,7 +362,7 @@ class CourseDetailView(generics.RetrieveAPIView):
 
         # Re-fetch with optimizations
         optimized_queryset = CourseDetailSerializer.optimize_queryset(
-            Course.objects.filter(id=instance.id, status='Published', course_type='video'),
+            Course.objects.filter(ciclo.q_conteudo_aluno(), id=instance.id, course_type='video'),
             include_sections=include_sections,
             include_enrollments=include_enrollments
         )
@@ -339,12 +389,14 @@ class CourseDetailView(generics.RetrieveAPIView):
         context['include_chapters'] = include_chapters
         context['include_chapter_comments'] = include_comments
         context['user_has_subscription_access'] = user_has_access
+        from .conteudo import pode_ver_conteudo
+        context['so_estrutura'] = not pode_ver_conteudo(user, instance)
 
         serializer = self.get_serializer(instance, context=context)
 
         # Add access information to response
         response_data = {
-            'message': 'Curso recuperado com sucesso',
+            'message': 'Curso obtido com sucesso',
             'data': serializer.data,
             'access_info': {
                 'has_access': user_has_access,
@@ -399,37 +451,24 @@ def create_transaction(request):
                 'error': 'Curso não encontrado'
             }, status=status.HTTP_404_NOT_FOUND)
 
-    with transaction.atomic():
-        # Create transaction
-        new_transaction = serializer.save()
+        # Estado e definições do curso: só publicados, inscrições abertas e com vagas.
+        bloqueio = ciclo.bloqueio_inscricao(request.user, course)
+        if bloqueio:
+            from apps.core.exceptions import corpo_erro
+            return Response(corpo_erro(bloqueio[1], bloqueio[0]), status=bloqueio[2])
 
-        # Create enrollment (user already verified to have access)
-        enrollment, created = CourseEnrollment.objects.get_or_create(
-            user=request.user,
-            course=new_transaction.course
-        )
-        
-        # Create initial progress record
-        progress, created = UserCourseProgress.objects.get_or_create(
-            user=request.user,
-            course=new_transaction.course,
-            defaults={
-                'enrollmentDate': timezone.now(),
-                'overallProgress': 0.0
-            }
-        )
-        
-        # Create chapter progress records for all chapters
-        for section in new_transaction.course.sections.all():
-            for chapter in section.chapters.all():
-                ChapterProgress.objects.get_or_create(
-                    user_progress=progress,
-                    chapter=chapter,
-                    defaults={'completed': False}
-                )
-    
+    with transaction.atomic():
+        # Os cursos estão incluídos nos planos: a inscrição nunca tem custo próprio.
+        # O valor vem do servidor, nunca do cliente.
+        import uuid
+        new_transaction = serializer.save(amount=0, transactionId=f'inscricao_{uuid.uuid4().hex}')
+
+        # Create enrollment + initial progress (user already verified to have access)
+        from apps.courses.matriculas import matricular_em_curso
+        enrollment, progress = matricular_em_curso(request.user, new_transaction.course)
+
     return Response({
-        'message': 'Curso adquirido com sucesso',
+        'message': 'Inscrição feita com sucesso',
         'data': {
             'transaction': TransactionSerializer(new_transaction).data,
             'courseProgress': UserCourseProgressSerializer(progress).data
@@ -458,7 +497,7 @@ class TransactionListView(generics.ListAPIView):
     def get_queryset(self):
         user_id = self.request.query_params.get('userId')
         
-        if user_id and self.request.user.role == 'admin':
+        if user_id and _e_admin(self.request.user):
             # Admin can view transactions for specific user
             queryset = Transaction.objects.filter(user_id=user_id)
         elif user_id and str(self.request.user.id) == user_id:
@@ -505,7 +544,7 @@ def get_user_enrolled_courses(request, userId):
     """
     # userId is already a UUID object from Django URL converter
     # Check if user can access this data - direct UUID comparison
-    if request.user.id != userId and request.user.role != 'admin':
+    if request.user.id != userId and not _e_admin(request.user):
         from rest_framework.exceptions import PermissionDenied
         raise PermissionDenied("Acesso negado")
     
@@ -513,22 +552,27 @@ def get_user_enrolled_courses(request, userId):
         from apps.users.models import User
         user = User.objects.get(id=userId)
     except User.DoesNotExist:
-        return Response({'error': 'Usuário não encontrado'}, status=404)
+        return Response({'error': 'Utilizador não encontrado.'}, status=404)
     
     # Get enrolled courses - only published video courses
-    # Optimized: filter at DB level and use select_related for teacher
+    # Ordem: o curso mexido mais recentemente primeiro (último acesso/progresso), depois a
+    # data de inscrição. O "Continuar" do painel usa o primeiro.
+    from django.db.models import F, OuterRef, Subquery
+    ultimo_acesso = UserCourseProgress.objects.filter(
+        user=user, course=OuterRef('course_id')).values('lastAccessedTimestamp')[:1]
     enrollments = CourseEnrollment.objects.filter(
         user=user,
         course__course_type='video',
-        course__status='Published'
-    ).select_related('course', 'course__teacher')
+    ).filter(ciclo.q_conteudo_aluno('course__')).select_related('course', 'course__teacher').annotate(
+        _ultimo_acesso=Subquery(ultimo_acesso)
+    ).order_by(F('_ultimo_acesso').desc(nulls_last=True), '-enrollment_date')
 
     courses = [enrollment.course for enrollment in enrollments]
 
     serializer = CourseListSerializer(courses, many=True)
     
     return Response({
-        'message': 'Cursos inscritos recuperados com sucesso',
+        'message': 'Cursos inscritos obtidos com sucesso',
         'data': serializer.data
     })
 
@@ -545,7 +589,7 @@ def get_user_course_progress(request, userId, courseId):
     """
     # userId and courseId are already UUID objects from Django URL converter
     # Check if user can access this data
-    if request.user.id != userId and request.user.role != 'admin':
+    if request.user.id != userId and not _e_admin(request.user):
         from rest_framework.exceptions import PermissionDenied
         raise PermissionDenied("Acesso negado")
     
@@ -555,16 +599,46 @@ def get_user_course_progress(request, userId, courseId):
         course = Course.objects.get(id=courseId)
         progress = UserCourseProgress.objects.get(user=user, course=course)
     except (User.DoesNotExist, Course.DoesNotExist):
-        return Response({'error': 'Usuário ou curso não encontrado'}, status=404)
+        return Response({'error': 'Utilizador ou curso não encontrado.'}, status=404)
     except UserCourseProgress.DoesNotExist:
-        return Response({'error': 'Progresso do curso não encontrado para este usuário'}, status=404)
+        return Response({'error': 'Ainda não há progresso neste curso.'}, status=404)
     
     serializer = UserCourseProgressSerializer(progress)
     
     return Response({
-        'message': 'Progresso do curso recuperado com sucesso',
+        'message': 'Progresso do curso obtido com sucesso',
         'data': serializer.data
     })
+
+
+def _pode_marcar_vista(dados, capitulo):
+    """Falso se o pedido desmarcou este capítulo (completed=false) ou se já está concluído."""
+    for sec in (dados.get('sections') or []) if isinstance(dados.get('sections'), list) else []:
+        if not isinstance(sec, dict):
+            continue
+        for cap in sec.get('chapters') or []:
+            if isinstance(cap, dict) and str(cap.get('chapterId')) == str(capitulo.id) and cap.get('completed') is False:
+                return False
+    return True
+
+
+def _marcar_vista(progresso, capitulo):
+    """Marca o capítulo como concluído e recalcula o progresso. Devolve True se mudou."""
+    from apps.courses.certificados import progresso_actual
+    registo, criado = ChapterProgress.objects.get_or_create(
+        user_progress=progresso, chapter=capitulo,
+        defaults={'completed': True, 'completed_at': timezone.now()})
+    if not criado:
+        if registo.completed:
+            return False
+        registo.completed = True
+        registo.completed_at = timezone.now()
+        registo.save()
+    progresso.overallProgress = progresso_actual(progresso.user, progresso.course)
+    if progresso.overallProgress >= 100.0 and not progresso.completion_date:
+        progresso.completion_date = timezone.now()
+    progresso.save()
+    return True
 
 
 @api_view(['PUT'])
@@ -580,7 +654,6 @@ def update_user_course_progress(request, userId, courseId):
     # userId and courseId are already UUID objects from Django URL converter
     # Check if user can update this data
     if request.user.id != userId:
-        from rest_framework.exceptions import PermissionDenied
         raise PermissionDenied("Acesso negado")
     
     try:
@@ -589,8 +662,18 @@ def update_user_course_progress(request, userId, courseId):
         course = Course.objects.get(id=courseId)
         progress = UserCourseProgress.objects.get(user=user, course=course)
     except (User.DoesNotExist, Course.DoesNotExist):
-        return Response({'error': 'Usuário ou curso não encontrado'}, status=404)
+        return Response({'error': 'Utilizador ou curso não encontrado.'}, status=404)
     except UserCourseProgress.DoesNotExist:
+        progress = None
+
+    # Só regista progresso quem está inscrito e tem o plano do curso (antes qualquer aluno podia).
+    if not course.user_has_access(user):
+        raise PermissionDenied('Não tem a subscrição necessária para este curso.')
+    from .conteudo import pode_ver_conteudo
+    if not pode_ver_conteudo(user, course):
+        raise PermissionDenied('Precisa de estar inscrito neste curso para registar progresso.')
+
+    if progress is None:
         # Create progress if it doesn't exist
         progress = UserCourseProgress.objects.create(
             user=user,
@@ -606,12 +689,46 @@ def update_user_course_progress(request, userId, courseId):
     )
     serializer.is_valid(raise_exception=True)
     updated_progress = serializer.save()
-    
+
+    # Opcional: segundos vistos desde o último envio -> registo diário + sequência.
+    # O capítulo é `chapter_id` ou o único capítulo enviado em `sections`. Os segundos são
+    # limitados (ver apps.courses.tempo_video): só o que é novo conta.
+    watched_seconds = request.data.get('watched_seconds')
+    segundos_creditados = 0
+    aula_concluida = False
+    if watched_seconds not in (None, ''):
+        chapter_id = request.data.get('chapter_id')
+        if not chapter_id:
+            ids = [c.get('chapterId') for sec in (request.data.get('sections') or []) if isinstance(sec, dict)
+                   for c in (sec.get('chapters') or []) if isinstance(c, dict) and c.get('chapterId')]
+            chapter_id = ids[0] if len(ids) == 1 else None
+        capitulo = None
+        if chapter_id:
+            try:
+                capitulo = Chapter.objects.filter(ciclo.q_aula_visivel(), id=chapter_id, section__course=course).first()
+            except (ValueError, TypeError, DjangoValidationError):
+                capitulo = None
+        if capitulo is not None:
+            try:
+                from ....tempo_video import creditar_segundos
+                segundos_creditados = creditar_segundos(request.user, capitulo, watched_seconds)
+            except Exception:
+                import logging
+                logging.getLogger(__name__).exception("Failed to log video study minutes")
+            # A aula conta como vista quando o aluno viu a percentagem que o professor escolheu
+            # (Chapter.percentagem_vista), salvo se este pedido a desmarcou explicitamente.
+            if _pode_marcar_vista(request.data, capitulo):
+                from ....tempo_video import aula_vista
+                if aula_vista(request.user, capitulo):
+                    aula_concluida = _marcar_vista(updated_progress, capitulo)
+
     # Return updated progress
     response_serializer = UserCourseProgressSerializer(updated_progress)
     
     return Response({
-        'message': 'Progresso atualizado com sucesso',
+        'message': 'Progresso actualizado com sucesso',
+        'segundos_creditados': segundos_creditados,
+        'aula_concluida': aula_concluida,
         'data': response_serializer.data
     })
 
@@ -635,8 +752,8 @@ class CourseSectionListView(SubscriptionAccessMixin, generics.ListAPIView):
 
         # Only sections from published video courses
         queryset = CourseSection.objects.filter(
+            ciclo.q_conteudo_aluno('course__'),
             course__id=course_id,
-            course__status='Published',
             course__course_type='video'
         )
 
@@ -652,7 +769,7 @@ class CourseSectionListView(SubscriptionAccessMixin, generics.ListAPIView):
         """Override list to check subscription access before returning sections."""
         course_id = self.kwargs['courseId']
         try:
-            course = Course.objects.get(id=course_id, status='Published', course_type='video')
+            course = Course.objects.filter(ciclo.q_conteudo_aluno()).get(id=course_id, course_type='video')
         except Course.DoesNotExist:
             return Response({
                 'error': 'Curso não encontrado'
@@ -660,6 +777,7 @@ class CourseSectionListView(SubscriptionAccessMixin, generics.ListAPIView):
 
         # SECURITY: Check subscription access
         self.check_subscription_access(course)
+        self.check_estado_curso(course)
 
         return super().list(request, *args, **kwargs)
 
@@ -677,7 +795,7 @@ class CourseSectionDetailView(SubscriptionAccessMixin, generics.RetrieveAPIView)
 
     def get_queryset(self):
         return CourseSection.objects.filter(
-            course__status='Published',
+            ciclo.q_conteudo_aluno('course__'),
             course__course_type='video'
         ).select_related('course')
 
@@ -688,6 +806,7 @@ class CourseSectionDetailView(SubscriptionAccessMixin, generics.RetrieveAPIView)
 
         # SECURITY: Check subscription access
         self.check_subscription_access(course)
+        self.check_estado_curso(course)
 
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
@@ -709,8 +828,8 @@ class ChapterListView(SubscriptionAccessMixin, generics.ListAPIView):
     def get_queryset(self):
         section_id = self.kwargs['sectionId']
         return Chapter.objects.filter(
+            ciclo.q_conteudo_aluno('section__course__'), ciclo.q_aula_visivel(),
             section__id=section_id,
-            section__course__status='Published',
             section__course__course_type='video'
         ).order_by('order')
 
@@ -718,9 +837,9 @@ class ChapterListView(SubscriptionAccessMixin, generics.ListAPIView):
         """Override list to check subscription access before returning chapters."""
         section_id = self.kwargs['sectionId']
         try:
-            section = CourseSection.objects.select_related('course').get(
+            section = CourseSection.objects.select_related('course').filter(
+                ciclo.q_conteudo_aluno('course__')).get(
                 id=section_id,
-                course__status='Published',
                 course__course_type='video'
             )
         except CourseSection.DoesNotExist:
@@ -730,8 +849,17 @@ class ChapterListView(SubscriptionAccessMixin, generics.ListAPIView):
 
         # SECURITY: Check subscription access
         self.check_subscription_access(section.course)
+        self.check_estado_curso(section.course)
+        self._curso = section.course
 
         return super().list(request, *args, **kwargs)
+
+    def get_serializer_context(self):
+        from .conteudo import pode_ver_conteudo
+        context = super().get_serializer_context()
+        curso = getattr(self, '_curso', None)
+        context['so_estrutura'] = curso is None or not pode_ver_conteudo(self.request.user, curso)
+        return context
 
 
 class ChapterDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIView):
@@ -747,7 +875,7 @@ class ChapterDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIView):
 
     def get_queryset(self):
         return Chapter.objects.filter(
-            section__course__status='Published',
+            ciclo.q_conteudo_aluno('section__course__'), ciclo.q_aula_visivel(),
             section__course__course_type='video'
         ).select_related('section', 'section__course')
 
@@ -761,7 +889,7 @@ class ChapterDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIView):
 
 # Chapter Comment Views
 
-class ChapterCommentListCreateView(generics.ListCreateAPIView):
+class ChapterCommentListCreateView(EnrollmentRequiredMixin, generics.ListCreateAPIView):
     """
     List comments for a chapter or create new comment.
     
@@ -774,110 +902,28 @@ class ChapterCommentListCreateView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     pagination_class = CommentListPagination
     
+    def _chapter(self):
+        # Mesmas regras do detalhe do capítulo: inscrição activa e plano com acesso.
+        if not hasattr(self, '_cached_chapter'):
+            chapter = get_object_or_404(
+                Chapter.objects.filter(ciclo.q_aula_visivel()).select_related('section__course'),
+                id=self.kwargs['chapterId']
+            )
+            self.check_enrollment(self.get_course_from_chapter(chapter))
+            self._cached_chapter = chapter
+        return self._cached_chapter
+
     def get_queryset(self):
-        chapter_id = self.kwargs['chapterId']
-        queryset = ChapterComment.objects.filter(chapter__id=chapter_id)
+        queryset = ChapterComment.objects.filter(chapter=self._chapter())
         return ChapterCommentSerializer.optimize_queryset(queryset)
     
     def perform_create(self, serializer):
-        chapter_id = self.kwargs['chapterId']
-        chapter = get_object_or_404(Chapter, id=chapter_id)
-        serializer.save(chapter=chapter)
+        serializer.save(chapter=self._chapter())
 
 
 # Stripe Payment Intent View
 # NOTE: This endpoint is for SUBSCRIPTION payments, not individual course purchases.
 # The platform uses a subscription model - all courses are included with subscription.
-
-@api_view(['POST'])
-@permission_classes([permissions.IsAuthenticated])
-def create_stripe_payment_intent(request):
-    """
-    Create Stripe payment intent for subscription.
-
-    POST /api/v1/courses/payments/stripe/intent/
-
-    SECURITY: Amount should be validated against subscription plan prices.
-    This is a legacy endpoint - subscription payments should use the subscriptions app.
-
-    Maps to Express: POST /transactions/stripe-payment-intent
-    """
-    import logging
-    logger = logging.getLogger(__name__)
-
-    amount = request.data.get('amount', 0)
-    plan_id = request.data.get('plan_id')  # Optional: subscription plan ID
-
-    # Validate amount
-    if not amount or amount <= 0:
-        return Response({
-            'error': 'Valor inválido'
-        }, status=status.HTTP_400_BAD_REQUEST)
-
-    # Convert to integer cents if it's a float
-    try:
-        amount_cents = int(float(amount) * 100) if amount < 1000 else int(amount)
-    except (ValueError, TypeError):
-        return Response({
-            'error': 'Valor inválido'
-        }, status=status.HTTP_400_BAD_REQUEST)
-
-    # Validate amount range (Stripe limits)
-    if amount_cents < 50:  # Stripe minimum is €0.50
-        return Response({
-            'error': 'Valor mínimo é €0.50'
-        }, status=status.HTTP_400_BAD_REQUEST)
-
-    if amount_cents > 99999999:  # Max ~€999,999.99
-        return Response({
-            'error': 'Valor excede o limite permitido'
-        }, status=status.HTTP_400_BAD_REQUEST)
-
-    try:
-        import stripe
-        from django.conf import settings
-
-        stripe.api_key = getattr(settings, 'STRIPE_SECRET_KEY', '')
-
-        if not stripe.api_key:
-            return Response({
-                'error': 'Stripe não configurado'
-            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-        # Create idempotency key to prevent duplicate payments
-        idempotency_key = f"sub_{request.user.id}_{plan_id or 'default'}_{timezone.now().strftime('%Y%m%d%H')}"
-
-        payment_intent = stripe.PaymentIntent.create(
-            amount=amount_cents,
-            currency='eur',
-            automatic_payment_methods={'enabled': True},
-            metadata={
-                'user_id': str(request.user.id),
-                'plan_id': str(plan_id) if plan_id else '',
-                'type': 'subscription'
-            },
-            idempotency_key=idempotency_key
-        )
-
-        logger.info(f"Payment intent created: user={request.user.id}, plan={plan_id}, amount={amount_cents}")
-
-        return Response({
-            'message': 'Payment intent criado com sucesso',
-            'data': {
-                'clientSecret': payment_intent.client_secret
-            }
-        })
-
-    except ImportError:
-        return Response({
-            'error': 'Biblioteca Stripe não instalada'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    except Exception as e:
-        logger.error(f"Payment intent error: {str(e)}")
-        return Response({
-            'error': f'Erro ao criar intenção de pagamento: {str(e)}'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
 
 # =============================================================================
 # 🆕 PHASE 1 BRIDGE ENDPOINTS - Chapter Enhancement API
@@ -903,8 +949,8 @@ class ChapterResourceListView(EnrollmentRequiredMixin, generics.ListAPIView):
     def get_queryset(self):
         chapter_id = self.kwargs['chapterId']
         queryset = ChapterResource.objects.filter(
+            ciclo.q_conteudo_aluno('chapter__section__course__'), ciclo.q_aula_visivel('chapter__'),
             chapter__id=chapter_id,
-            chapter__section__course__status='Published',
             chapter__section__course__course_type='video'
         )
         queryset = queryset.select_related('chapter', 'chapter__section__course', 'created_by')
@@ -922,7 +968,7 @@ class ChapterResourceListView(EnrollmentRequiredMixin, generics.ListAPIView):
         serializer = self.get_serializer(queryset, many=True)
 
         return Response({
-            'message': 'Recursos do capítulo recuperados com sucesso',
+            'message': 'Recursos do capítulo obtidos com sucesso',
             'data': serializer.data
         })
 
@@ -943,8 +989,8 @@ class ChapterResourceDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIVie
     def get_queryset(self):
         chapter_id = self.kwargs['chapterId']
         return ChapterResource.objects.filter(
+            ciclo.q_conteudo_aluno('chapter__section__course__'), ciclo.q_aula_visivel('chapter__'),
             chapter__id=chapter_id,
-            chapter__section__course__status='Published',
             chapter__section__course__course_type='video'
         ).select_related('chapter__section__course')
 
@@ -965,7 +1011,7 @@ class ChapterResourceDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIVie
         serializer = self.get_serializer(instance)
 
         return Response({
-            'message': 'Recurso recuperado com sucesso',
+            'message': 'Recurso obtido com sucesso',
             'data': serializer.data
         })
 
@@ -984,8 +1030,8 @@ class ChapterQuizListView(EnrollmentRequiredMixin, generics.ListAPIView):
     def get_queryset(self):
         chapter_id = self.kwargs['chapterId']
         return ChapterQuiz.objects.filter(
+            ciclo.q_conteudo_aluno('chapter__section__course__'), ciclo.q_aula_visivel('chapter__'),
             chapter__id=chapter_id,
-            chapter__section__course__status='Published',
             chapter__section__course__course_type='video',
             is_active=True
         ).select_related('chapter__section__course')
@@ -1009,7 +1055,7 @@ class ChapterQuizListView(EnrollmentRequiredMixin, generics.ListAPIView):
         serializer = self.get_serializer(quiz)
 
         return Response({
-            'message': 'Quiz do capítulo recuperado com sucesso',
+            'message': 'Quiz do capítulo obtido com sucesso',
             'data': serializer.data
         })
 
@@ -1030,8 +1076,8 @@ class ChapterQuizDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIView):
     def get_queryset(self):
         chapter_id = self.kwargs['chapterId']
         return ChapterQuiz.objects.filter(
+            ciclo.q_conteudo_aluno('chapter__section__course__'), ciclo.q_aula_visivel('chapter__'),
             chapter__id=chapter_id,
-            chapter__section__course__status='Published',
             chapter__section__course__course_type='video',
             is_active=True
         ).select_related('chapter__section__course')
@@ -1048,12 +1094,12 @@ class ChapterQuizDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIView):
         serializer = self.get_serializer(instance)
 
         return Response({
-            'message': 'Quiz recuperado com sucesso',
+            'message': 'Quiz obtido com sucesso',
             'data': serializer.data
         })
 
 
-class StudentQuizAttemptListCreateView(generics.ListCreateAPIView):
+class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCreateAPIView):
     """
     List quiz attempts for a student or create new attempt.
     
@@ -1075,7 +1121,7 @@ class StudentQuizAttemptListCreateView(generics.ListCreateAPIView):
         try:
             chapter_quiz = ChapterQuiz.objects.select_related(
                 'chapter__section__course__teacher'
-            ).get(chapter__id=chapter_id)
+            ).filter(ciclo.q_aula_visivel('chapter__')).get(chapter__id=chapter_id)
         except ChapterQuiz.DoesNotExist:
             return StudentQuizAttempt.objects.none()
 
@@ -1102,12 +1148,17 @@ class StudentQuizAttemptListCreateView(generics.ListCreateAPIView):
     
     def perform_create(self, serializer):
         chapter_id = self.kwargs['chapterId']
-        chapter_quiz = get_object_or_404(ChapterQuiz, chapter__id=chapter_id)
-        
+        chapter_quiz = ChapterQuiz.objects.select_related('chapter__section__course').filter(
+            ciclo.q_aula_visivel('chapter__'), chapter__id=chapter_id).first()
+        if chapter_quiz is None:
+            from rest_framework.exceptions import NotFound
+            raise NotFound('Este capítulo não tem questionário.')
+        self.check_enrollment(self.get_course_from_quiz(chapter_quiz))
+
         # Check if quiz is active
         if not chapter_quiz.is_active:
             from rest_framework.exceptions import ValidationError
-            raise ValidationError("Este quiz não está ativo")
+            raise ValidationError("Este questionário não está activo.")
         
         # Check if student exceeded max attempts
         student_attempts = StudentQuizAttempt.objects.filter(
@@ -1117,49 +1168,89 @@ class StudentQuizAttemptListCreateView(generics.ListCreateAPIView):
         
         if student_attempts >= chapter_quiz.max_attempts:
             from rest_framework.exceptions import ValidationError
-            raise ValidationError(f"Limite máximo de {chapter_quiz.max_attempts} tentativas excedido")
+            raise ValidationError(f"Já usou as {chapter_quiz.max_attempts} tentativas deste questionário.")
         
-        attempt = serializer.save(chapter_quiz=chapter_quiz)
-        
-        # Update quiz statistics
-        with transaction.atomic():
-            chapter_quiz.total_attempts += 1
-            
-            if attempt.is_completed:
-                if attempt.is_passed:
-                    chapter_quiz.total_completions += 1
-                
-                # Update average score
-                all_attempts = StudentQuizAttempt.objects.filter(
-                    chapter_quiz=chapter_quiz,
-                    is_completed=True
-                )
-                
-                if all_attempts.exists():
-                    total_score = sum([attempt.score_percentage for attempt in all_attempts])
-                    chapter_quiz.average_score = total_score / all_attempts.count()
-            
-            chapter_quiz.save()
+        # is_passed é decidido pelo servidor (StudentQuizAttempt.save compara com passing_score);
+        # as estatísticas do quiz também são actualizadas no save() do modelo.
+        serializer.save(chapter_quiz=chapter_quiz, is_passed=False)
     
     def list(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset())
+        from .conteudo import correccao_para_aluno, pode_revelar_respostas
+        chapter_quiz = ChapterQuiz.objects.select_related('chapter__section__course').filter(
+            chapter__id=self.kwargs['chapterId']).first()
+        if chapter_quiz is not None:
+            curso = self.get_course_from_quiz(chapter_quiz)
+            if curso.teacher_id != request.user.id:
+                self.check_enrollment(curso)
+        queryset = list(self.filter_queryset(self.get_queryset()))
         serializer = self.get_serializer(queryset, many=True)
-        
+        dados = [dict(d) for d in serializer.data]
+        revela = False
+        if chapter_quiz is not None:
+            minhas = [a for a in queryset if a.student_id == request.user.id]
+            revela = (chapter_quiz.chapter.section.course.teacher_id == request.user.id
+                      or pode_revelar_respostas(chapter_quiz, any(a.is_passed for a in minhas),
+                                                chapter_quiz.max_attempts - len(minhas)))
+            for item, tentativa in zip(dados, queryset):
+                item['correccao'] = correccao_para_aluno(
+                    (tentativa.answers_data or {}).get('correccao'), revela)
+
         return Response({
-            'message': 'Tentativas de quiz recuperadas com sucesso',
-            'data': serializer.data
+            'message': 'Tentativas do questionário obtidas com sucesso',
+            'revela_respostas': revela,
+            'data': dados,
         })
-    
+
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
+        """
+        POST {respostas: {id_da_pergunta: id_da_opção | [ids]}, time_taken?}
+        A nota é calculada aqui a partir do quiz do capítulo; a pontuação enviada pelo
+        browser é ignorada (antes qualquer estudante podia dar a si próprio 100%).
+
+        A resposta traz `revela_respostas` e, por pergunta, só `certa`/`respondida`;
+        `opcoes_certas` e `explicacao` só quando passou ou já não tem tentativas.
+        """
+        from .conteudo import corrigir_quiz, correccao_para_aluno, pode_revelar_respostas, respondidas
+        respostas = request.data.get('respostas')
+        if not isinstance(respostas, dict):
+            return Response({'error': 'Envie as respostas: {"respostas": {"<pergunta>": "<opção>"}}.'},
+                            status=status.HTTP_400_BAD_REQUEST)
+        chapter = get_object_or_404(Chapter, id=self.kwargs['chapterId'])
+        pontos, maximo, correccao = corrigir_quiz(chapter.quiz_data, respostas)
+        if maximo == 0:
+            return Response({'error': 'Este questionário ainda não tem perguntas.'}, status=status.HTTP_400_BAD_REQUEST)
+        if respondidas(correccao) == 0:
+            return Response({'error': 'Responda a pelo menos uma pergunta antes de enviar.'},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = self.get_serializer(data={
+            'score': pontos,
+            'max_score': maximo,
+            'time_taken': request.data.get('time_taken'),
+            'is_completed': True,
+        })
         serializer.is_valid(raise_exception=True)
-        attempt = serializer.save()
-        
+        # perform_create usa o quiz do URL e aplica inscrição, quiz activo e limite de tentativas.
+        self.perform_create(serializer)
+        attempt = serializer.instance
+        # Guarda as respostas e a correcção completa (para a revisão quando puder ser revelada).
+        attempt.answers_data = {'respostas': respostas, 'correccao': correccao}
+        StudentQuizAttempt.objects.filter(pk=attempt.pk).update(answers_data=attempt.answers_data)
+
+        minhas = StudentQuizAttempt.objects.filter(student=request.user, chapter_quiz=attempt.chapter_quiz)
+        restantes = max(0, attempt.chapter_quiz.max_attempts - minhas.count())
+        revela = pode_revelar_respostas(attempt.chapter_quiz, minhas.filter(is_passed=True).exists(), restantes)
+
         response_serializer = StudentQuizAttemptSerializer(attempt, context={'request': request})
-        
+        dados = dict(response_serializer.data)
+        dados['revela_respostas'] = revela
+        dados['correccao'] = correccao_para_aluno(correccao, revela)
+        dados['tentativas_restantes'] = restantes
+
         return Response({
-            'message': 'Tentativa de quiz registrada com sucesso',
-            'data': response_serializer.data
+            'message': 'Tentativa registada com sucesso',
+            'revela_respostas': revela,
+            'data': dados
         }, status=status.HTTP_201_CREATED)
 
 
@@ -1167,53 +1258,76 @@ class StudentQuizAttemptListCreateView(generics.ListCreateAPIView):
 @permission_classes([permissions.IsAuthenticated])
 def get_student_quiz_summary(request, chapterId):
     """
-    Get summary of student's quiz performance for a specific chapter.
-    
-    GET /api/v1/courses/chapters/{chapterId}/quiz/summary/
+    Resumo das tentativas do estudante no questionário de um capítulo.
+
+    GET /api/v1/student/video-courses/chapters/{chapterId}/quiz/summary/
+
+    Só para quem pode ver o conteúdo do curso (inscrito com o plano certo, o professor do
+    curso ou administrador). `revela_respostas` diz se a correcção traz as opções certas.
     """
+    from .conteudo import pode_ver_conteudo, correccao_para_aluno, pode_revelar_respostas
+
+    chapter = get_object_or_404(Chapter.objects.filter(ciclo.q_aula_visivel()).select_related('section__course'),
+                                id=chapterId)
+    if not pode_ver_conteudo(request.user, chapter.section.course):
+        return Response({'error': 'Precisa de estar inscrito neste curso para ver o questionário.'},
+                        status=status.HTTP_403_FORBIDDEN)
     try:
-        chapter_quiz = ChapterQuiz.objects.get(chapter__id=chapterId)
+        chapter_quiz = ChapterQuiz.objects.get(chapter=chapter)
     except ChapterQuiz.DoesNotExist:
         return Response({
-            'message': 'Quiz não encontrado para este capítulo',
+            'message': 'Este capítulo não tem questionário',
             'data': None
         })
-    
+
     # Get student's attempts
     attempts = StudentQuizAttempt.objects.filter(
         chapter_quiz=chapter_quiz,
         student=request.user
     ).order_by('-created_at')
-    
+
     if not attempts.exists():
         return Response({
-            'message': 'Nenhuma tentativa encontrada',
+            'message': 'Ainda não há tentativas',
+            'revela_respostas': False,
             'data': {
                 'quiz_info': ChapterQuizSerializer(chapter_quiz, context={'request': request}).data,
                 'attempts_count': 0,
                 'best_score': 0,
                 'is_passed': False,
                 'attempts_remaining': chapter_quiz.max_attempts,
+                'revela_respostas': False,
                 'last_attempt': None
             }
         })
-    
+
     best_attempt = attempts.filter(is_completed=True).order_by('-score').first()
     last_attempt = attempts.first()
     passed_attempt = attempts.filter(is_passed=True).first()
-    
+    restantes = max(0, chapter_quiz.max_attempts - attempts.count())
+    revela = pode_revelar_respostas(chapter_quiz, bool(passed_attempt), restantes)
+
+    def _tentativa(t):
+        if not t:
+            return None
+        dados = dict(StudentQuizAttemptSerializer(t, context={'request': request}).data)
+        dados['correccao'] = correccao_para_aluno((t.answers_data or {}).get('correccao'), revela)
+        return dados
+
     summary_data = {
         'quiz_info': ChapterQuizSerializer(chapter_quiz, context={'request': request}).data,
         'attempts_count': attempts.count(),
         'best_score': best_attempt.score_percentage if best_attempt else 0,
         'is_passed': bool(passed_attempt),
-        'attempts_remaining': max(0, chapter_quiz.max_attempts - attempts.count()),
-        'last_attempt': StudentQuizAttemptSerializer(last_attempt, context={'request': request}).data if last_attempt else None,
-        'best_attempt': StudentQuizAttemptSerializer(best_attempt, context={'request': request}).data if best_attempt else None
+        'attempts_remaining': restantes,
+        'revela_respostas': revela,
+        'last_attempt': _tentativa(last_attempt),
+        'best_attempt': _tentativa(best_attempt),
     }
-    
+
     return Response({
-        'message': 'Resumo do quiz recuperado com sucesso',
+        'message': 'Resumo do questionário obtido com sucesso',
+        'revela_respostas': revela,
         'data': summary_data
     })
 
@@ -1234,7 +1348,7 @@ def check_course_enrollment_status(request, courseId):
     - access_level_display: Human-readable access level
     """
     try:
-        course = Course.objects.get(id=courseId, status='Published', course_type='video')
+        course = Course.objects.filter(ciclo.q_conteudo_aluno()).get(id=courseId, course_type='video')
     except Course.DoesNotExist:
         return Response({
             'error': 'Curso não encontrado ou não está publicado'
@@ -1264,7 +1378,8 @@ def check_course_enrollment_status(request, courseId):
             pass
 
     # Determine if user can enroll (needs proper subscription for non-free courses)
-    can_enroll = has_access and not is_enrolled
+    bloqueio_inscricao = ciclo.bloqueio_inscricao(request.user, course)
+    can_enroll = has_access and not is_enrolled and bloqueio_inscricao is None
 
     # Get subscription info for premium courses
     subscription_info = None
@@ -1288,7 +1403,9 @@ def check_course_enrollment_status(request, courseId):
             'is_free': course.is_free,
             'is_premium': course.is_premium,
             'enrollment_details': enrollment_data,
-            'subscription_info': subscription_info
+            'subscription_info': subscription_info,
+            'estado': ciclo.estado(course),
+            'motivo_sem_inscricao': bloqueio_inscricao[1] if bloqueio_inscricao and not is_enrolled else None,
         }
     })
 
@@ -1322,7 +1439,7 @@ def get_featured_courses(request):
 
     # Base query: Published video courses marked as featured
     queryset = Course.objects.filter(
-        status='Published',
+        ciclo.q_catalogo(),
         course_type='video',
         is_featured=True
     )
@@ -1342,7 +1459,7 @@ def get_featured_courses(request):
     # Fallback: if no featured courses, get most popular
     if not queryset.exists():
         fallback_queryset = Course.objects.filter(
-            status='Published',
+            ciclo.q_catalogo(),
             course_type='video'
         )
         # Apply same access_level filter to fallback
@@ -1360,7 +1477,7 @@ def get_featured_courses(request):
     )
 
     return Response({
-        'message': 'Cursos em destaque recuperados com sucesso',
+        'message': 'Cursos em destaque obtidos com sucesso',
         'data': serializer.data
     })
 
@@ -1387,7 +1504,7 @@ def get_popular_courses(request):
         limit = 10
 
     queryset = Course.objects.filter(
-        status='Published',
+        ciclo.q_catalogo(),
         course_type='video'
     )
 
@@ -1415,7 +1532,7 @@ def get_popular_courses(request):
     )
 
     return Response({
-        'message': 'Cursos populares recuperados com sucesso',
+        'message': 'Cursos populares obtidos com sucesso',
         'data': serializer.data
     })
 
@@ -1460,7 +1577,7 @@ def search_courses(request):
         query = query[:MAX_QUERY_LENGTH]
 
     courses = Course.objects.filter(
-        status='Published',
+        ciclo.q_catalogo(),
         course_type='video'
     )
 
@@ -1530,7 +1647,7 @@ class WishlistListCreateView(generics.ListCreateAPIView):
         queryset = self.get_queryset()
         serializer = self.get_serializer(queryset, many=True)
         return Response({
-            'message': 'Lista de desejos recuperada com sucesso',
+            'message': 'Lista de desejos obtida com sucesso',
             'data': serializer.data
         })
 
@@ -1599,7 +1716,7 @@ class NoteListCreateView(generics.ListCreateAPIView):
         queryset = self.get_queryset()
         serializer = self.get_serializer(queryset, many=True)
         return Response({
-            'message': 'Notas recuperadas com sucesso',
+            'message': 'Notas obtidas com sucesso',
             'data': serializer.data
         })
 
@@ -1652,7 +1769,7 @@ class BookmarkListCreateView(generics.ListCreateAPIView):
         queryset = self.get_queryset()
         serializer = self.get_serializer(queryset, many=True)
         return Response({
-            'message': 'Marcadores recuperados com sucesso',
+            'message': 'Marcadores obtidos com sucesso',
             'data': serializer.data
         })
 
@@ -1701,7 +1818,7 @@ def get_course_reviews(request, courseId):
     serializer = CourseReviewSerializer(reviews, many=True, context={'request': request})
 
     return Response({
-        'message': 'Avaliações recuperadas com sucesso',
+        'message': 'Avaliações obtidas com sucesso',
         'data': serializer.data,
         'average': round(avg_rating, 1),
         'total': reviews.count()
@@ -1722,7 +1839,7 @@ class ReviewCreateView(generics.CreateAPIView):
         course_id = request.data.get('course')
         if CourseReview.objects.filter(user=request.user, course_id=course_id).exists():
             return Response({
-                'error': 'Você já avaliou este curso'
+                'error': 'Já avaliou este curso.'
             }, status=status.HTTP_400_BAD_REQUEST)
 
         serializer = self.get_serializer(data=request.data)
@@ -1733,163 +1850,6 @@ class ReviewCreateView(generics.CreateAPIView):
             'message': 'Avaliação criada com sucesso',
             'data': serializer.data
         }, status=status.HTTP_201_CREATED)
-
-
-# =============================================================================
-# CERTIFICATES ENDPOINTS
-# =============================================================================
-
-@api_view(['GET'])
-@permission_classes([permissions.IsAuthenticated])
-def get_my_certificates(request):
-    """
-    Get user's certificates.
-
-    GET /api/v1/student/video-courses/certificates/
-    """
-    certificates = CourseCertificate.objects.filter(
-        user=request.user
-    ).select_related('course').order_by('-issued_at')
-
-    serializer = CourseCertificateSerializer(certificates, many=True, context={'request': request})
-
-    return Response({
-        'message': 'Certificados recuperados com sucesso',
-        'data': serializer.data
-    })
-
-
-@api_view(['POST'])
-@permission_classes([permissions.IsAuthenticated])
-def generate_certificate(request, courseId):
-    """
-    Generate certificate for a completed course.
-
-    POST /api/v1/student/video-courses/{courseId}/generate-certificate/
-
-    Requirements:
-    - User must have a subscription plan that includes certificates
-    - Course must be completed (100% progress)
-    - Student must meet minimum grade requirements for certificate eligibility
-    """
-    from ....services import GradeCalculatorService
-    from apps.subscriptions.models import UserSubscription
-    import uuid
-
-    # P2 FIX: Check if user's subscription plan allows certificates
-    try:
-        subscription = UserSubscription.objects.select_related('plan').get(user=request.user)
-        if not subscription.is_active():
-            return Response({
-                'error': 'Assinatura inativa',
-                'code': 'SUBSCRIPTION_INACTIVE',
-                'message': 'Você precisa de uma assinatura ativa para gerar certificados.'
-            }, status=status.HTTP_403_FORBIDDEN)
-
-        if not subscription.plan.certificates:
-            return Response({
-                'error': 'Recurso não disponível no seu plano',
-                'code': 'CERTIFICATES_NOT_INCLUDED',
-                'message': 'Certificados não estão incluídos no seu plano atual. Faça upgrade para Premium ou Premium Plus.',
-                'upgrade_required': True,
-                'current_plan': subscription.plan.plan_type
-            }, status=status.HTTP_403_FORBIDDEN)
-    except UserSubscription.DoesNotExist:
-        return Response({
-            'error': 'Assinatura não encontrada',
-            'code': 'NO_SUBSCRIPTION',
-            'message': 'Você precisa de uma assinatura para gerar certificados.'
-        }, status=status.HTTP_403_FORBIDDEN)
-
-    # Check if user is enrolled and has progress
-    try:
-        progress = UserCourseProgress.objects.select_related('course').get(
-            user=request.user,
-            course_id=courseId
-        )
-    except UserCourseProgress.DoesNotExist:
-        return Response({
-            'error': 'Você não está inscrito neste curso'
-        }, status=status.HTTP_400_BAD_REQUEST)
-
-    course = progress.course
-
-    # Check completion percentage
-    if progress.overallProgress < 100.0:
-        return Response({
-            'error': f'Você precisa completar 100% do curso. Progresso atual: {progress.overallProgress:.1f}%'
-        }, status=status.HTTP_400_BAD_REQUEST)
-
-    # Check if certificate already exists
-    existing = CourseCertificate.objects.filter(
-        user=request.user,
-        course_id=courseId
-    ).first()
-
-    if existing:
-        serializer = CourseCertificateSerializer(existing, context={'request': request})
-        return Response({
-            'message': 'Certificado já existe',
-            'data': serializer.data
-        })
-
-    # Calculate and check grade eligibility
-    calculator = GradeCalculatorService(request.user, course)
-    grade = calculator.calculate_and_save(change_reason='recalculation')
-
-    if not grade.is_eligible_for_certificate:
-        missing_requirements = grade.get_missing_requirements()
-        messages = [req['message'] for req in missing_requirements]
-
-        return Response({
-            'error': 'Você não atendeu aos requisitos mínimos para o certificado',
-            'details': {
-                'final_grade': {
-                    'percentage': grade.final_grade_percentage,
-                    'letter': grade.final_grade_letter,
-                },
-                'is_eligible': False,
-                'missing_requirements': missing_requirements,
-                'messages': messages,
-            }
-        }, status=status.HTTP_400_BAD_REQUEST)
-
-    # Generate verification code
-    verification_code = f"VER-{uuid.uuid4().hex[:8].upper()}"
-
-    # Create certificate with grade information
-    certificate = CourseCertificate.objects.create(
-        user=request.user,
-        course_id=courseId,
-        completion_percentage=progress.overallProgress,
-        final_grade=grade.final_grade_percentage,
-        final_grade_letter=grade.final_grade_letter,
-        verification_code=verification_code
-    )
-
-    # Generate PDF certificate
-    try:
-        from ....services.certificate_service import CertificateGenerationService
-        pdf_service = CertificateGenerationService(certificate)
-        pdf_service.save_certificate()
-    except Exception as e:
-        # Log but don't fail - certificate record is created, PDF can be generated later
-        import logging
-        logging.getLogger(__name__).error(f"Error generating PDF: {e}")
-
-    serializer = CourseCertificateSerializer(certificate, context={'request': request})
-
-    return Response({
-        'message': 'Certificado gerado com sucesso',
-        'data': serializer.data,
-        'grade_summary': {
-            'final_percentage': grade.final_grade_percentage,
-            'final_letter': grade.final_grade_letter,
-            'quiz_score': grade.quiz_score,
-            'practice_score': grade.practice_score,
-            'conversation_score': grade.conversation_score,
-        }
-    }, status=status.HTTP_201_CREATED)
 
 
 # =============================================================================
@@ -1949,7 +1909,7 @@ def get_student_video_analytics(request):
     } for p in recent_courses]
 
     return Response({
-        'message': 'Analytics recuperados com sucesso',
+        'message': 'Analytics obtidos com sucesso',
         'data': {
             'total_courses_enrolled': total_enrolled,
             'courses_completed': courses_completed,
@@ -1992,15 +1952,29 @@ def get_course_grade(request, courseId):
         )
     except CourseEnrollment.DoesNotExist:
         return Response({
-            'error': 'Você não está inscrito neste curso'
+            'error': 'Não está inscrito neste curso.'
         }, status=status.HTTP_404_NOT_FOUND)
 
     # Calculate and save grades
     calculator = GradeCalculatorService(request.user, enrollment.course)
     grade = calculator.calculate_and_save(change_reason='recalculation')
 
-    # Get missing requirements
-    missing_requirements = grade.get_missing_requirements()
+    # Elegibilidade = as mesmas regras da emissão do certificado (apps.courses.certificados):
+    # requisitos da nota + conclusão do curso (100% dos capítulos) e, para emitir, o plano.
+    from ....certificados import estado_certificado
+    estado = estado_certificado(request.user, enrollment.course, grade)
+    missing_requirements = [
+        {'requirement': r['requisito'], 'message': r['mensagem'],
+         'required': r['necessario'], 'actual': r['atual']}
+        for r in estado['em_falta']
+    ]
+    eligibility_details = dict(grade.eligibility_details or {})
+    eligibility_details['conclusao_curso'] = {
+        'met': estado['progresso'] >= 100.0,
+        'required': 100,
+        'actual': estado['progresso'],
+        'message': f"Capítulos concluídos: {estado['progresso']:.0f}% (necessário: 100%)",
+    }
 
     # Build weight info with mode explanation
     weight_info = grade.weight_info or {}
@@ -2016,7 +1990,7 @@ def get_course_grade(request, courseId):
         mode_explanation = 'Pesos ajustados automaticamente com base no conteúdo disponível'
 
     return Response({
-        'message': 'Notas recuperadas com sucesso',
+        'message': 'Notas obtidas com sucesso',
         'data': {
             'course': {
                 'id': str(enrollment.course.id),
@@ -2059,10 +2033,17 @@ def get_course_grade(request, courseId):
                 'weights_adjusted': weight_info.get('weights_adjusted', False),
             },
             'certificate_eligibility': {
-                'is_eligible': grade.is_eligible_for_certificate,
-                'details': grade.eligibility_details,
+                'is_eligible': estado['cumpre_requisitos'],
+                'pode_emitir': estado['pode_emitir'],
+                'progresso': estado['progresso'],
+                'nota_minima': estado['nota_minima'],
+                'plano_inclui_certificados': estado['plano_inclui_certificados'],
+                'details': eligibility_details,
                 'missing_requirements': missing_requirements,
+                'em_falta': estado['em_falta'],
             },
+            'nota_minima': estado['nota_minima'],
+            'plano_inclui_certificados': estado['plano_inclui_certificados'],
             'last_calculated_at': grade.last_calculated_at.isoformat(),
         }
     })
@@ -2089,7 +2070,7 @@ def get_certificate_eligibility(request, courseId):
         )
     except CourseEnrollment.DoesNotExist:
         return Response({
-            'error': 'Você não está inscrito neste curso'
+            'error': 'Não está inscrito neste curso.'
         }, status=status.HTTP_404_NOT_FOUND)
 
     # Get or calculate grades
@@ -2181,7 +2162,7 @@ def get_grade_history(request, courseId):
         )
     except CourseEnrollment.DoesNotExist:
         return Response({
-            'error': 'Você não está inscrito neste curso'
+            'error': 'Não está inscrito neste curso.'
         }, status=status.HTTP_404_NOT_FOUND)
 
     # Get grade record
@@ -2217,7 +2198,7 @@ def get_grade_history(request, courseId):
     } for entry in history_entries]
 
     return Response({
-        'message': 'Histórico recuperado com sucesso',
+        'message': 'Histórico obtido com sucesso',
         'data': {
             'course': {
                 'id': str(enrollment.course.id),
@@ -2258,9 +2239,11 @@ def get_all_student_grades(request):
 
     # Get all enrollments for the user with optimized queries
     # Include course.teacher for serialization to avoid N+1
+    # Só cursos de vídeo publicados (como em enrolled/): os de prática não têm notas nem página.
     enrollments = CourseEnrollment.objects.filter(
-        user=request.user
-    ).select_related('course', 'course__teacher').order_by('-enrollment_date')
+        user=request.user,
+        course__course_type='video',
+    ).filter(ciclo.q_conteudo_aluno('course__')).select_related('course', 'course__teacher').order_by('-enrollment_date')
 
     # Prefetch existing grades to avoid N+1 queries in the loop
     existing_grades = {
@@ -2292,6 +2275,9 @@ def get_all_student_grades(request):
     courses_with_grades = 0
     eligible_count = 0
 
+    from ....certificados import estado_certificado, plano_inclui_certificados
+    plano_ok = plano_inclui_certificados(request.user)
+
     for enrollment in enrollments:
         course = enrollment.course
 
@@ -2301,6 +2287,8 @@ def get_all_student_grades(request):
             # Calculate if not exists
             calculator = GradeCalculatorService(request.user, course)
             grade = calculator.calculate_and_save(change_reason='recalculation')
+        # Elegibilidade com as regras da emissão (inclui a conclusão do curso).
+        estado = estado_certificado(request.user, course, grade, plano_ok=plano_ok)
 
         # Build grade data
         grade_data = {
@@ -2318,7 +2306,10 @@ def get_all_student_grades(request):
                 'percentage': round(grade.final_grade_percentage, 2),
                 'letter': grade.final_grade_letter,
             },
-            'is_eligible_for_certificate': grade.is_eligible_for_certificate,
+            'is_eligible_for_certificate': estado['cumpre_requisitos'],
+            'pode_emitir_certificado': estado['pode_emitir'],
+            'progresso': estado['progresso'],
+            'nota_minima': estado['nota_minima'],
             'last_calculated_at': grade.last_calculated_at.isoformat(),
         }
 
@@ -2350,8 +2341,12 @@ def get_all_student_grades(request):
             }
 
             # Add missing requirements if not eligible
-            if not grade.is_eligible_for_certificate:
-                grade_data['missing_requirements'] = grade.get_missing_requirements()
+            if not estado['cumpre_requisitos']:
+                grade_data['missing_requirements'] = [
+                    {'requirement': r['requisito'], 'message': r['mensagem'],
+                     'required': r['necessario'], 'actual': r['atual']}
+                    for r in estado['em_falta']
+                ]
 
         courses_grades.append(grade_data)
 
@@ -2360,7 +2355,7 @@ def get_all_student_grades(request):
             total_percentage += grade.final_grade_percentage
             courses_with_grades += 1
 
-        if grade.is_eligible_for_certificate:
+        if estado['cumpre_requisitos']:
             eligible_count += 1
 
     # Sort courses
@@ -2393,9 +2388,10 @@ def get_all_student_grades(request):
         return 'N/A'
 
     return Response({
-        'message': 'Notas recuperadas com sucesso',
+        'message': 'Notas obtidas com sucesso',
         'data': {
             'courses': courses_grades,
+            'plano_inclui_certificados': plano_ok,
             'summary': {
                 'total_courses': len(courses_grades),
                 'courses_with_grades': courses_with_grades,
@@ -2410,234 +2406,4 @@ def get_all_student_grades(request):
     })
 
 
-# =============================================================================
-# CERTIFICATE DOWNLOAD & VERIFICATION ENDPOINTS
-# =============================================================================
-
-@api_view(['GET'])
-@permission_classes([permissions.IsAuthenticated])
-def download_certificate(request, certificateId):
-    """
-    Download certificate PDF.
-
-    GET /api/v1/student/video-courses/certificates/{certificateId}/download/
-
-    Returns the PDF file for download or a URL redirect.
-    """
-    from django.http import FileResponse, HttpResponseRedirect
-    from django.core.files.storage import default_storage
-
-    try:
-        certificate = CourseCertificate.objects.get(
-            id=certificateId,
-            user=request.user
-        )
-    except CourseCertificate.DoesNotExist:
-        return Response({
-            'error': 'Certificado não encontrado'
-        }, status=status.HTTP_404_NOT_FOUND)
-
-    # If PDF doesn't exist, generate it
-    if not certificate.certificate_url:
-        try:
-            from ....services.certificate_service import CertificateGenerationService
-            pdf_service = CertificateGenerationService(certificate)
-            pdf_service.save_certificate()
-            certificate.refresh_from_db()
-        except Exception as e:
-            return Response({
-                'error': 'Erro ao gerar PDF do certificado',
-                'details': str(e)
-            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    # Build full URL for the certificate
-    if certificate.certificate_url.startswith('http'):
-        download_url = certificate.certificate_url
-    else:
-        # For local storage, build full URL
-        from django.conf import settings
-        base_url = request.build_absolute_uri('/').rstrip('/')
-        download_url = f"{base_url}{certificate.certificate_url}"
-
-    # Verify file exists for local storage
-    if not certificate.certificate_url.startswith('http'):
-        file_path = certificate.certificate_url.replace('/media/', '')
-        if not default_storage.exists(file_path):
-            # Regenerate if file doesn't exist
-            try:
-                from ....services.certificate_service import CertificateGenerationService
-                pdf_service = CertificateGenerationService(certificate)
-                pdf_service.save_certificate()
-                certificate.refresh_from_db()
-                download_url = f"{base_url}{certificate.certificate_url}"
-            except Exception as e:
-                return Response({
-                    'error': 'Erro ao regenerar PDF do certificado',
-                    'details': str(e)
-                }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    return Response({
-        'message': 'Certificado disponível para download',
-        'download_url': download_url
-    })
-
-
-from rest_framework.throttling import AnonRateThrottle
-
-class CertificateVerificationThrottle(AnonRateThrottle):
-    """Rate limit certificate verification to prevent enumeration attacks."""
-    rate = '10/minute'  # 10 requests per minute per IP
-
-
-@api_view(['GET'])
-@permission_classes([permissions.AllowAny])
-def verify_certificate(request, verification_code):
-    """
-    Public endpoint to verify a certificate's authenticity.
-
-    GET /api/v1/certificates/verify/{verification_code}/
-
-    Returns certificate details if valid, or error if not found.
-    This endpoint is public (no authentication required).
-
-    SECURITY:
-    - Rate limited to prevent brute-force enumeration
-    - Student name is partially masked for privacy
-    - Verification attempts are logged
-    """
-    import logging
-    logger = logging.getLogger(__name__)
-
-    # Apply rate limiting manually for function-based view
-    throttle = CertificateVerificationThrottle()
-    if not throttle.allow_request(request, None):
-        logger.warning(f"Certificate verification rate limit exceeded from IP: {_get_client_ip(request)}")
-        return Response({
-            'error': 'Muitas tentativas de verificação. Tente novamente em 1 minuto.'
-        }, status=status.HTTP_429_TOO_MANY_REQUESTS)
-
-    # Validate verification code format (basic check)
-    if not verification_code or len(verification_code) < 8:
-        return Response({
-            'valid': False,
-            'error': 'Código de verificação inválido'
-        }, status=status.HTTP_400_BAD_REQUEST)
-
-    try:
-        certificate = CourseCertificate.objects.select_related(
-            'user', 'course'
-        ).get(verification_code=verification_code)
-
-        # Log successful verification
-        logger.info(f"Certificate verified: {certificate.certificate_number} from IP: {_get_client_ip(request)}")
-
-    except CourseCertificate.DoesNotExist:
-        # Log failed verification attempt
-        logger.warning(f"Invalid certificate verification attempt: {verification_code[:20]}... from IP: {_get_client_ip(request)}")
-        return Response({
-            'valid': False,
-            'error': 'Certificado não encontrado',
-            'message': 'O código de verificação fornecido não corresponde a nenhum certificado válido.'
-        }, status=status.HTTP_404_NOT_FOUND)
-
-    # SECURITY: Mask student name for privacy (show first name only)
-    full_name = certificate.user.name or ''
-    if full_name:
-        name_parts = full_name.strip().split()
-        if len(name_parts) > 1:
-            # Show first name + last initial: "João S."
-            masked_name = f"{name_parts[0]} {name_parts[-1][0]}."
-        else:
-            masked_name = name_parts[0] if name_parts else 'Estudante'
-    else:
-        masked_name = 'Estudante'
-
-    return Response({
-        'valid': True,
-        'message': 'Certificado válido e autêntico',
-        'data': {
-            'certificate_number': certificate.certificate_number,
-            'student_name': masked_name,  # Privacy: masked name
-            'course_title': certificate.course.title,
-            'issued_at': certificate.issued_at.isoformat(),
-            'final_grade': {
-                'percentage': certificate.final_grade,
-                'letter': certificate.final_grade_letter,
-            },
-            'completion_percentage': certificate.completion_percentage,
-        }
-    })
-
-
-def _get_client_ip(request):
-    """Get client IP address from request."""
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        return x_forwarded_for.split(',')[0].strip()
-    return request.META.get('REMOTE_ADDR', 'unknown')
-
-
-@api_view(['GET'])
-@permission_classes([permissions.IsAuthenticated])
-def get_certificate_detail(request, certificateId):
-    """
-    Get detailed information about a specific certificate.
-
-    GET /api/v1/student/video-courses/certificates/{certificateId}/
-    """
-    try:
-        certificate = CourseCertificate.objects.select_related(
-            'course'
-        ).get(id=certificateId, user=request.user)
-    except CourseCertificate.DoesNotExist:
-        return Response({
-            'error': 'Certificado não encontrado'
-        }, status=status.HTTP_404_NOT_FOUND)
-
-    # Get grade details
-    try:
-        grade = StudentCourseGrade.objects.get(
-            user=request.user,
-            course=certificate.course
-        )
-        grade_breakdown = {
-            'quizzes': {
-                'score': grade.quiz_score,
-                'count': grade.quiz_count,
-                'completed': grade.quiz_completed,
-            },
-            'practice': {
-                'score': grade.practice_score,
-                'count': grade.practice_count,
-                'completed': grade.practice_completed,
-            },
-            'conversation': {
-                'score': grade.conversation_score,
-                'sessions': grade.conversation_sessions,
-                'minutes': grade.conversation_minutes,
-            },
-        }
-    except StudentCourseGrade.DoesNotExist:
-        grade_breakdown = None
-
-    return Response({
-        'message': 'Certificado recuperado com sucesso',
-        'data': {
-            'id': str(certificate.id),
-            'certificate_number': certificate.certificate_number,
-            'verification_code': certificate.verification_code,
-            'course': {
-                'id': str(certificate.course.id),
-                'title': certificate.course.title,
-                'image': certificate.course.image if certificate.course.image else None,
-            },
-            'issued_at': certificate.issued_at.isoformat(),
-            'final_grade': {
-                'percentage': certificate.final_grade,
-                'letter': certificate.final_grade_letter,
-            },
-            'completion_percentage': certificate.completion_percentage,
-            'certificate_url': certificate.certificate_url,
-            'grade_breakdown': grade_breakdown,
-        }
-    })
+# Certificados: ver certificados_views.py (listar, emitir, PDF) e apps/courses/api/public (verificação).

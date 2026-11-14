@@ -441,132 +441,29 @@ def vapi_templates(request):
     return JsonResponse(templates)
 
 
-@csrf_exempt
-@require_http_methods(["POST"])
-def vapi_simulate(request):
-    """
-    Simulate a complete Vapi conversation for testing
-    """
-    try:
-        data = json.loads(request.body)
-        turns = data.get('turns', 3)
-        student_level = data.get('student_level', 'B1')
-        domain = data.get('domain', 'general')
+SEGREDO_WEBHOOK_PREDEFINIDO = 'default_webhook_secret'
 
-        orchestrator = SpeechOrchestrator()
 
-        session_config = SessionConfig(
-            session_id=str(uuid.uuid4()),
-            student_name='Test Student',
-            student_level=student_level,
-            domain=domain,
-            objective='Simulation test',
-            correction_mode='gentle'
-        )
-
-        conversation_log = []
-        conversation_history = []
-
-        # Start session
-        session_response = async_to_sync(orchestrator.orchestrate_session)(
-            session_config=session_config,
-            conversation_history=[]
-        )
-
-        conversation_log.append({
-            'turn': 0,
-            'type': 'agent_start',
-            'agent_text': session_response.agent_text,
-            'agent_ssml': session_response.agent_ssml,
-            'expected_transcript': session_response.expected_transcript
-        })
-
-        # Simulate conversation turns
-        for turn in range(1, turns + 1):
-            # Use simulated student response
-            if session_response.expected_transcript:
-                student_response = session_response.expected_transcript[0]
-            else:
-                student_response = "I understand."
-
-            # Add simulated student turn
-            student_turn = ConversationTurn(
-                who='student',
-                text=student_response,
-                timestamp=f'turn-{turn}'
-            )
-            conversation_history.append(student_turn)
-
-            # Generate agent response
-            session_response = async_to_sync(orchestrator.orchestrate_session)(
-                session_config=session_config,
-                conversation_history=conversation_history,
-                student_transcript=student_response
-            )
-
-            # Add agent turn
-            agent_turn = ConversationTurn(
-                who='agent',
-                text=session_response.agent_text,
-                timestamp=f'turn-{turn}-agent'
-            )
-            conversation_history.append(agent_turn)
-
-            conversation_log.append({
-                'turn': turn,
-                'student_said': student_response,
-                'agent_text': session_response.agent_text,
-                'agent_ssml': session_response.agent_ssml,
-                'corrections': [
-                    {
-                        'original_phrase': c.original_phrase,
-                        'corrected_phrase': c.corrected_phrase,
-                        'error_type': c.error_type,
-                        'explanation_pt': c.explanation_pt
-                    } for c in (session_response.corrections or [])
-                ],
-                'scores': {
-                    'fluency': session_response.fluency_score,
-                    'pronunciation': session_response.pronunciation_score
-                }
-            })
-
-        return JsonResponse({
-            'success': True,
-            'simulation': {
-                'session_id': session_config.session_id,
-                'config': {
-                    'student_level': student_level,
-                    'domain': domain,
-                    'total_turns': turns
-                },
-                'conversation_log': conversation_log
-            }
-        })
-
-    except Exception as e:
-        logger.error(f"Error in simulation: {str(e)}")
-        return JsonResponse({'error': str(e)}, status=500)
+def webhook_configurado() -> bool:
+    """O webhook só existe com um segredo próprio (nunca o valor predefinido das settings)."""
+    from django.conf import settings
+    segredo = getattr(settings, 'VAPI_WEBHOOK_SECRET', None) or ''
+    return bool(segredo.strip()) and segredo != SEGREDO_WEBHOOK_PREDEFINIDO
 
 
 def _validate_webhook_request(request) -> tuple[bool, str]:
     """
-    Validate incoming webhook request.
+    Validate incoming webhook request: the X-Vapi-Secret (or X-Webhook-Secret) header must
+    match the configured VAPI_WEBHOOK_SECRET.
     """
+    import hmac
     from django.conf import settings
 
-    webhook_secret = getattr(settings, 'VAPI_WEBHOOK_SECRET', None)
-
-    if webhook_secret:
-        request_secret = request.headers.get('X-Vapi-Secret') or request.headers.get('X-Webhook-Secret')
-        if request_secret != webhook_secret:
-            logger.warning("SECURITY - Invalid webhook secret received")
-            return False, "Invalid webhook secret"
-
-    user_agent = request.headers.get('User-Agent', '')
-    if 'vapi' not in user_agent.lower() and webhook_secret is None:
-        logger.info("Webhook request without Vapi User-Agent")
-
+    webhook_secret = getattr(settings, 'VAPI_WEBHOOK_SECRET', None) or ''
+    request_secret = request.headers.get('X-Vapi-Secret') or request.headers.get('X-Webhook-Secret') or ''
+    if not hmac.compare_digest(request_secret.encode(), webhook_secret.encode()):
+        logger.warning("SECURITY - Invalid webhook secret received")
+        return False, "Invalid webhook secret"
     return True, ""
 
 
@@ -578,6 +475,9 @@ def vapi_webhook(request):
     Webhook endpoint for Vapi events.
     Rate limited to 200 requests per minute per IP.
     """
+    if not webhook_configurado():
+        # Sem segredo próprio configurado, o webhook não existe.
+        return JsonResponse({'error': 'Not found'}, status=404)
     is_valid, error_message = _validate_webhook_request(request)
     if not is_valid:
         return JsonResponse({'error': error_message}, status=403)
@@ -602,7 +502,7 @@ def vapi_webhook(request):
 
     except Exception as e:
         logger.error(f"Webhook error: {str(e)}")
-        return JsonResponse({'error': str(e)}, status=500)
+        return JsonResponse({'error': 'Invalid payload'}, status=400)
 
 
 def _handle_transcript_webhook(data: Dict) -> JsonResponse:
@@ -682,39 +582,24 @@ def _handle_function_call_webhook(data: Dict) -> JsonResponse:
 @require_http_methods(["GET"])
 def vapi_session_summary(request, session_id):
     """
-    Get comprehensive summary for a Vapi session
+    Resumo de uma sessão (fluxo antigo). Só o dono a pode ver; sem dados de exemplo.
+    O fluxo novo usa GET conversa/sessoes/<id>/.
     """
-    try:
-        real_session_data = _get_real_session_data(session_id)
-
-        if real_session_data:
-            logger.info(f"Serving REAL data for session {session_id}")
-            return JsonResponse({
-                'success': True,
-                'session': real_session_data,
-                'data_source': 'database'
-            })
-
-        logger.info(f"Serving MOCK data for session {session_id}")
-        mock_data = _get_mock_session_data(session_id)
-
-        return JsonResponse({
-            'success': True,
-            'session': mock_data,
-            'data_source': 'mock'
-        })
-
-    except Exception as e:
-        logger.error(f"Error generating session summary for {session_id}: {str(e)}")
-        return JsonResponse({'error': f'Failed to generate session summary: {str(e)}'}, status=500)
+    _authenticate_request(request)
+    if not getattr(request, 'user', None) or not request.user.is_authenticated:
+        return JsonResponse({'error': 'Authentication required'}, status=401)
+    real_session_data = _get_real_session_data(session_id, request.user)
+    if not real_session_data:
+        return JsonResponse({'error': 'Session not found'}, status=404)
+    return JsonResponse({'success': True, 'session': real_session_data, 'data_source': 'database'})
 
 
-def _get_real_session_data(session_id):
-    """Retrieve real session data from database"""
+def _get_real_session_data(session_id, user):
+    """Retrieve real session data from database (only the owner's)"""
     try:
         from .models import VapiSession
 
-        session = VapiSession.objects.get(session_id=session_id)
+        session = VapiSession.objects.get(session_id=session_id, user=user)
 
         display_name = f"{session.user.first_name} {session.user.last_name}".strip()
         if not display_name:
@@ -765,80 +650,6 @@ def _get_real_session_data(session_id):
         return None
 
 
-def _get_mock_session_data(session_id):
-    """Generate mock session data (fallback)"""
-    return {
-        "session_id": session_id,
-        "student_name": "João Silva",
-        "level": "B1",
-        "domain": "general",
-        "duration_seconds": 420,
-        "date_time": "2025-01-25T10:30:00Z",
-        "scores": {
-            "fluency": 78,
-            "pronunciation": 82,
-            "grammar": 75,
-            "vocabulary": 80,
-            "overall": 79
-        },
-        "corrections": [
-            {
-                "original_phrase": "I have been study English",
-                "corrected_phrase": "I have been studying English",
-                "error_type": "Grammar",
-                "short_explanation_pt": "Use o gerúndio (-ing) após 'have been'",
-                "example_correct_use": "I have been studying for two hours",
-                "timestamp": "02:15",
-                "audio_ref": "correction_1_audio"
-            }
-        ],
-        "key_phrases": [
-            {
-                "text": "I'm passionate about learning",
-                "context": "Expressing enthusiasm for education",
-                "difficulty": "medium",
-                "audio_ref": "phrase_1_audio"
-            }
-        ],
-        "suggested_drills": [
-            {
-                "title": "Present Perfect Continuous",
-                "description": "Practice using 'have been + -ing' structures",
-                "repetitions": 5,
-                "example_text": "I have been working here for three years",
-                "audio_ref": "drill_1_audio"
-            }
-        ],
-        "timeline": [
-            {
-                "timestamp": "00:30",
-                "type": "milestone",
-                "description": "Conversation started",
-                "content": "Hello! Nice to meet you."
-            }
-        ],
-        "conversation_analysis": {
-            "response_appropriateness": 85,
-            "topic_maintenance": 78,
-            "initiative_taking": 72,
-            "cultural_awareness": 80
-        },
-        "speaking_metrics": {
-            "total_words": 342,
-            "words_per_minute": 49,
-            "speaking_time_percentage": 45,
-            "pause_analysis": "Natural pauses, good rhythm"
-        },
-        "recommendations": [
-            "Continue practicing Present Perfect Continuous tense",
-            "Focus on word order rules",
-            "Excellent vocabulary usage"
-        ],
-        "next_level_ready": False,
-        "audio_refs": ["session_intro_audio", "correction_1_audio"]
-    }
-
-
 @transaction.atomic
 def save_vapi_session_data(session_id, user, session_config, session_results):
     """Save real session data to database. Uses atomic transaction for consistency."""
@@ -870,6 +681,7 @@ def save_vapi_session_data(session_id, user, session_config, session_results):
             }
         )
 
+        previous_minutes = 0 if created else (session.duration_minutes or 0)
         if not created:
             for field, value in {
                 'duration_minutes': duration_minutes,
@@ -912,6 +724,15 @@ def save_vapi_session_data(session_id, user, session_config, session_results):
         today = timezone.now().date()
         DailyProgressSummary.update_for_user_date(user, today)
 
+        # Daily study log + streak: only count minutes not already logged for this session
+        try:
+            from .models import DailyStudyLog
+            new_minutes = float(duration_minutes or 0) - float(previous_minutes or 0)
+            if created or new_minutes > 0:
+                DailyStudyLog.add_minutes(user, DailyStudyLog.KIND_CONVERSATION, max(0.0, new_minutes))
+        except Exception as log_error:
+            logger.warning(f"Could not update study log for user {user.id}: {log_error}")
+
         logger.info(f"Saved real session data for {session_id} (duration: {duration_minutes} min)")
         return session
 
@@ -925,6 +746,7 @@ def save_vapi_session_data(session_id, user, session_config, session_results):
 def vapi_user_progress(request):
     """Get comprehensive user progress analytics"""
     try:
+        _authenticate_request(request)
         from .models import VapiSession, DailyProgressSummary
         from datetime import timedelta
         from django.utils import timezone
@@ -944,12 +766,12 @@ def vapi_user_progress(request):
         month_ago = today - timedelta(days=30)
 
         recent_sessions = VapiSession.objects.filter(
-            user=user,
+            user=user, status='avaliada',
             date__gte=week_ago
         ).order_by('-created_at')[:10]
 
         weekly_stats = VapiSession.objects.filter(
-            user=user,
+            user=user, status='avaliada',
             date__gte=week_ago
         ).aggregate(
             total_sessions=Count('session_id'),
@@ -960,7 +782,7 @@ def vapi_user_progress(request):
         )
 
         monthly_stats = VapiSession.objects.filter(
-            user=user,
+            user=user, status='avaliada',
             date__gte=month_ago
         ).aggregate(
             total_sessions=Count('session_id'),
@@ -970,7 +792,7 @@ def vapi_user_progress(request):
         )
 
         daily_stats_qs = VapiSession.objects.filter(
-            user=user,
+            user=user, status='avaliada',
             date__gte=week_ago
         ).values('date').annotate(
             sessions=Count('session_id'),
@@ -1018,8 +840,8 @@ def vapi_user_progress(request):
                 'current_streak': current_streak
             },
             'today': {
-                'sessions': VapiSession.objects.filter(user=user, date=today).count(),
-                'avg_score': round(VapiSession.objects.filter(user=user, date=today).aggregate(avg=Avg('overall_score'))['avg'] or 0, 1)
+                'sessions': VapiSession.objects.filter(user=user, date=today, status='avaliada').count(),
+                'avg_score': round(VapiSession.objects.filter(user=user, date=today, status='avaliada').aggregate(avg=Avg('overall_score'))['avg'] or 0, 1)
             },
             'weekly': {
                 'total_sessions': weekly_stats['total_sessions'] or 0,
@@ -1058,51 +880,11 @@ def vapi_user_progress(request):
 
 
 @csrf_exempt
-@require_http_methods(["POST"])
-def vapi_complete_session(request):
-    """Mark a session as completed and save progress data"""
-    try:
-        data = json.loads(request.body)
-        session_id = data.get('session_id')
-        session_config = data.get('session_config', {})
-        session_results = data.get('session_results', {})
-
-        if not hasattr(request, 'user') or not request.user.is_authenticated:
-            return JsonResponse({
-                'error': 'Authentication required',
-                'detail': 'Please log in to save your session progress'
-            }, status=401)
-
-        user = request.user
-
-        saved_session = save_vapi_session_data(session_id, user, session_config, session_results)
-
-        if saved_session:
-            return JsonResponse({
-                'success': True,
-                'message': 'Session completed and saved',
-                'session_id': session_id,
-                'overall_score': saved_session.overall_score,
-                'improvement': saved_session.improvement_from_last,
-                'streak': saved_session.streak_days
-            })
-        else:
-            return JsonResponse({
-                'success': True,
-                'message': 'Session completed (data not saved)',
-                'session_id': session_id
-            })
-
-    except Exception as e:
-        logger.error(f"Error completing session: {str(e)}")
-        return JsonResponse({'error': str(e)}, status=500)
-
-
-@csrf_exempt
 @require_http_methods(["GET"])
 def vapi_dashboard_analytics(request):
     """Comprehensive speaking progress dashboard"""
     try:
+        _authenticate_request(request)
         from .models import VapiSession, DailyProgressSummary
         from datetime import timedelta
         from django.utils import timezone
@@ -1121,7 +903,7 @@ def vapi_dashboard_analytics(request):
         today = now.date()
         thirty_days_ago = today - timedelta(days=30)
 
-        all_sessions = VapiSession.objects.filter(user=user).order_by('-created_at')
+        all_sessions = VapiSession.objects.filter(user=user, status='avaliada').order_by('-created_at')
         recent_sessions = all_sessions.filter(date__gte=thirty_days_ago)
 
         total_stats = all_sessions.aggregate(
@@ -1224,9 +1006,9 @@ def vapi_dashboard_analytics(request):
 
 
 @csrf_exempt
-@require_http_methods(["POST", "GET"])
+@require_http_methods(["GET"])
 def vapi_assistant_manager(request):
-    """Create and manage Vapi assistants"""
+    """List the Vapi assistant(s). Creating assistants via this API was removed (it was unauthenticated)."""
     if request.method == 'GET':
         try:
             from django.conf import settings
@@ -1251,28 +1033,6 @@ def vapi_assistant_manager(request):
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=500)
 
-    elif request.method == 'POST':
-        try:
-            data = json.loads(request.body)
-            level = data.get('level', 'B1')
-            domain = data.get('domain', 'general')
-            name = data.get('name', 'English Practice Assistant')
-
-            vapi_client = VapiClient()
-            assistant = vapi_client.create_assistant(
-                level=level,
-                domain=domain,
-                name=name
-            )
-
-            return JsonResponse({
-                'success': True,
-                'assistant': assistant
-            })
-
-        except Exception as e:
-            logger.error(f"Error creating assistant: {str(e)}")
-            return JsonResponse({'error': str(e)}, status=500)
 
 
 # =============================================================================
@@ -1342,7 +1102,7 @@ def vapi_check_quota(request):
         # Mensagens contextuais
         if can_start:
             if is_trial:
-                message = f'Trial ativo ({trial_days_remaining} dias restantes)'
+                message = f'Período experimental activo ({trial_days_remaining} dias restantes)'
             else:
                 message = 'OK'
         else:

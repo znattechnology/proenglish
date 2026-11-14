@@ -105,3 +105,13 @@ class VapiWebhookThrottle(AnonRateThrottle):
     """
     rate = '200/minute'
     scope = 'vapi_webhook'
+
+
+class LessonCompletionThrottle(UserRateThrottle):
+    """
+    Rate limit for lesson completion submissions (points/hearts rewards).
+
+    Rate: 30 completions per minute per user
+    """
+    rate = '30/minute'
+    scope = 'lesson_completion'

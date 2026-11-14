@@ -20,7 +20,8 @@ from .core import (
 from .enrollment import (
     CourseEnrollment,
     UserCourseProgress,
-    ChapterProgress
+    ChapterProgress,
+    VideoWatchLog,
 )
 
 from .transactions import (
@@ -41,7 +42,8 @@ from .student_engagement import (
     CourseReview,
     StudentNote,
     StudentBookmark,
-    CourseCertificate
+    CourseCertificate,
+    SequenciaCertificado,
 )
 
 from .grading import (
@@ -62,6 +64,7 @@ __all__ = [
     'CourseEnrollment',
     'UserCourseProgress',
     'ChapterProgress',
+    'VideoWatchLog',
     
     # Transaction models
     'Transaction',
@@ -79,6 +82,7 @@ __all__ = [
     'StudentNote',
     'StudentBookmark',
     'CourseCertificate',
+    'SequenciaCertificado',
 
     # Grading models
     'CourseGradingConfig',

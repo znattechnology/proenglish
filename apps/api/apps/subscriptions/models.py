@@ -90,7 +90,7 @@ class SubscriptionPlan(models.Model):
     # Trial settings (para novos usuários)
     trial_days = models.IntegerField(
         default=0,
-        help_text="Dias de trial após cadastro (0 = sem trial)"
+        help_text="Dias de trial após o registo (0 = sem trial)"
     )
     trial_speaking_minutes = models.IntegerField(
         default=0,
@@ -116,6 +116,15 @@ class SubscriptionPlan(models.Model):
         help_text="Número de dispositivos simultâneos permitidos"
     )
     
+    # Período de teste de um plano PAGO (sem pagamento), uma vez por pessoa.
+    # Não confundir com trial_days, que é o teste de conversa do Gratuito depois do registo.
+    dias_teste = models.PositiveSmallIntegerField(
+        default=0,
+        help_text="Dias de teste grátis deste plano pago (0 = sem teste, máximo 30)"
+    )
+    # Plano em destaque nas páginas de planos (só um de cada vez)
+    destaque = models.BooleanField(default=False)
+
     # Configurações
     is_active = models.BooleanField(default=True)
     sort_order = models.IntegerField(default=0)
@@ -143,7 +152,7 @@ class UserSubscription(models.Model):
     """
     
     STATUS_CHOICES = [
-        ('ACTIVE', 'Ativa'),
+        ('ACTIVE', 'Activa'),
         ('CANCELED', 'Cancelada'),
         ('EXPIRED', 'Expirada'),
         ('PENDING', 'Pendente'),
@@ -175,6 +184,26 @@ class UserSubscription(models.Model):
     stripe_customer_id = models.CharField(max_length=200, null=True, blank=True)
     last_payment_at = models.DateTimeField(null=True, blank=True)
     next_billing_date = models.DateTimeField(null=True, blank=True)
+
+    # Renovação manual (Multicaixa Express não permite débito automático):
+    # quando ligado, o aluno recebe lembretes 3 dias antes e no último dia.
+    lembretes_renovacao = models.BooleanField(
+        default=True,
+        help_text="Enviar lembretes de renovação antes do fim do período pago"
+    )
+
+    # Preço contratado (mantém-se nas renovações do mesmo plano até a subscrição
+    # terminar; mudar o preço do plano só afecta subscrições novas).
+    preco_mensal_kz = models.PositiveIntegerField(null=True, blank=True)
+    preco_anual_kz = models.PositiveIntegerField(null=True, blank=True)
+
+    # Código promocional que continua nas renovações (duração "meses" ou "sempre")
+    promo_codigo = models.ForeignKey(
+        'PromotionalCode', on_delete=models.SET_NULL, null=True, blank=True, related_name='+',
+    )
+    promo_meses_usados = models.PositiveIntegerField(
+        default=0, help_text="Meses já pagos com o desconto do código em curso"
+    )
     
     # Controle de uso diário
     last_reset_date = models.DateField(default=get_current_date)
@@ -243,31 +272,40 @@ class UserSubscription(models.Model):
         return 0
     
     def reset_daily_usage_if_needed(self):
-        """Reseta contadores diários se necessário"""
-        today = timezone.now().date()
+        """
+        Reseta contadores diários se necessário. O dia é o de Angola (Africa/Luanda).
+
+        daily_lessons_used é sincronizado com as lições novas concluídas hoje
+        (apps.practice.limite_licoes), para os ecrãs que lêem o campo mostrarem o valor real.
+        """
+        from apps.practice.limite_licoes import hoje_luanda, licoes_novas_hoje
+        today = hoje_luanda()
+        campos = []
         if self.last_reset_date < today:
             self.daily_lessons_used = 0
             self.daily_speaking_minutes_used = 0
             self.daily_listening_minutes_used = 0
             self.daily_ai_analyses_used = 0
             self.last_reset_date = today
-            self.save(update_fields=[
-                'daily_lessons_used',
-                'daily_speaking_minutes_used',
-                'daily_listening_minutes_used',
-                'daily_ai_analyses_used',
-                'last_reset_date'
-            ])
-    
+            campos = ['daily_lessons_used', 'daily_speaking_minutes_used', 'daily_listening_minutes_used',
+                      'daily_ai_analyses_used', 'last_reset_date']
+        licoes = licoes_novas_hoje(self.user_id)
+        if licoes != self.daily_lessons_used:
+            self.daily_lessons_used = licoes
+            if 'daily_lessons_used' not in campos:
+                campos.append('daily_lessons_used')
+        if campos and self.pk:
+            self.save(update_fields=campos)
+
     def can_take_lesson(self):
-        """Verifica se pode fazer mais uma lição hoje"""
+        """Pode fazer mais uma lição NOVA hoje (dia de Angola; repetir lições não conta)."""
+        from apps.practice.limite_licoes import limite_do_plano
         self.reset_daily_usage_if_needed()
-        
-        if not self.plan.daily_lessons_limit:  # Ilimitado
+        limite = limite_do_plano(self)
+        if not limite:  # Ilimitado
             return True
-            
-        return self.daily_lessons_used < self.plan.daily_lessons_limit
-    
+        return self.daily_lessons_used < limite
+
     def is_in_trial_period(self):
         """
         Verifica se o usuário está no período de trial.
@@ -303,13 +341,13 @@ class UserSubscription(models.Model):
 
     def get_effective_speaking_limit(self):
         """
-        Retorna o limite efetivo de speaking considerando trial.
-        - Durante trial: usa trial_speaking_minutes
-        - Após trial: usa daily_speaking_minutes (pode ser 0)
+        Minutos de conversa por dia: None = ilimitado, 0 = bloqueado, n = n por dia.
+        - Durante o trial do Gratuito (depois do registo): trial_speaking_minutes, se houver
+        - Senão: daily_speaking_minutes do plano (None continua a ser ilimitado)
         """
         if self.is_in_trial_period() and self.plan.trial_speaking_minutes:
             return self.plan.trial_speaking_minutes
-        return self.plan.daily_speaking_minutes or 0
+        return self.plan.daily_speaking_minutes
 
     def can_use_speaking(self, minutes_needed=1):
         """
@@ -317,20 +355,13 @@ class UserSubscription(models.Model):
         Considera período de trial para usuários no plano gratuito.
         """
         self.reset_daily_usage_if_needed()
-
-        # Obter limite efetivo (considerando trial)
         effective_limit = self.get_effective_speaking_limit()
-
-        # Limite null/None = ilimitado
-        if effective_limit is None:
+        if effective_limit is None:  # ilimitado
             return True
-
-        # Limite 0 = bloqueado (plano gratuito após trial)
-        if effective_limit == 0:
+        if effective_limit <= 0:  # bloqueado
             return False
-
         return (self.daily_speaking_minutes_used + minutes_needed) <= effective_limit
-    
+
     def can_use_listening(self, minutes_needed=1):
         """Verifica se pode usar Listening Practice"""
         self.reset_daily_usage_if_needed()
@@ -393,13 +424,17 @@ class UserSubscription(models.Model):
         requests try to use hearts simultaneously.
         """
         # Lock the row for update to prevent race conditions
-        locked_sub = UserSubscription.objects.select_for_update().get(pk=self.pk)
+        locked_sub = UserSubscription.objects.select_for_update().select_related('plan').get(pk=self.pk)
 
         if locked_sub.current_hearts > 0:
+            campos = {'current_hearts': F('current_hearts') - 1}
+            # Com as vidas no máximo o relógio da recarga estava parado (às vezes há dias):
+            # ao perder a primeira vida começa a contar agora, senão ela voltava logo.
+            limite = locked_sub.plan.hearts_limit if locked_sub.plan else 0
+            if limite and locked_sub.current_hearts >= limite:
+                campos['last_heart_recharge'] = timezone.now()
             # Use F() expression for atomic decrement
-            UserSubscription.objects.filter(pk=self.pk).update(
-                current_hearts=F('current_hearts') - 1
-            )
+            UserSubscription.objects.filter(pk=self.pk).update(**campos)
             # Refresh to get updated value
             self.refresh_from_db()
             return True
@@ -413,18 +448,25 @@ class UserSubscription(models.Model):
             return
             
         if self.current_hearts >= self.plan.hearts_limit:
-            return  # Já está no máximo
-            
+            return  # Já está no máximo (use_heart reinicia o relógio ao perder a 1.ª vida)
+
         now = timezone.now()
+        horas = self.plan.hearts_recharge_hours or 0
+        if horas <= 0:
+            return
         hours_since_recharge = (now - self.last_heart_recharge).total_seconds() / 3600
-        hearts_to_add = int(hours_since_recharge / self.plan.hearts_recharge_hours)
-        
+        hearts_to_add = int(hours_since_recharge / horas)
+
         if hearts_to_add > 0:
             self.current_hearts = min(
                 self.current_hearts + hearts_to_add,
                 self.plan.hearts_limit
             )
-            self.last_heart_recharge = now
+            if self.current_hearts >= self.plan.hearts_limit:
+                self.last_heart_recharge = now
+            else:
+                # Guarda o tempo já decorrido para a próxima vida (não o deita fora).
+                self.last_heart_recharge = self.last_heart_recharge + timedelta(hours=horas * hearts_to_add)
             self.save(update_fields=['current_hearts', 'last_heart_recharge'])
     
     def has_hearts(self):
@@ -493,58 +535,155 @@ class SubscriptionHistory(models.Model):
 
 class PromotionalCode(models.Model):
     """
-    Códigos Promocionais - Para descontos e trials gratuitos
+    Códigos Promocionais - descontos no pagamento por Multicaixa Express.
+
+    Regras (aplicadas em apps.subscriptions.services.validar_promo e no checkout):
+    * ``estado``: rascunho (não aceite), activo, desligado (não aceite).
+      Esgotado/expirado são derivados de ``max_uses`` e ``valid_until``.
+    * ``applicable_plans`` (vazio = todos os planos pagos) e ``periodo_aplicavel``.
+    * ``duracao``: primeiro (só o 1.º pagamento), meses (os primeiros N meses pagos),
+      sempre (todas as renovações do mesmo plano).
     """
-    
+
     DISCOUNT_TYPES = [
         ('PERCENTAGE', 'Percentual'),
         ('FIXED_AMOUNT', 'Valor Fixo'),
         ('FREE_TRIAL', 'Trial Gratuito'),
     ]
-    
+
+    RASCUNHO = 'rascunho'
+    ACTIVO = 'activo'
+    DESLIGADO = 'desligado'
+    ESTADOS = [(RASCUNHO, 'Rascunho'), (ACTIVO, 'Activo'), (DESLIGADO, 'Desligado')]
+
+    PERIODO_TODOS = 'todos'
+    PERIODOS = [('todos', 'Mensal e anual'), ('mensal', 'Só mensal'), ('anual', 'Só anual')]
+
+    DURACAO_PRIMEIRO = 'primeiro'
+    DURACAO_MESES = 'meses'
+    DURACAO_SEMPRE = 'sempre'
+    DURACOES = [
+        (DURACAO_PRIMEIRO, 'Só o primeiro pagamento'),
+        (DURACAO_MESES, 'Os primeiros meses'),
+        (DURACAO_SEMPRE, 'Sempre'),
+    ]
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField(max_length=50, unique=True)
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    
+    name = models.CharField(max_length=100, blank=True, default='')
+    description = models.TextField(blank=True, default='')
+
     discount_type = models.CharField(max_length=20, choices=DISCOUNT_TYPES)
     discount_value = models.DecimalField(
         max_digits=10,
         decimal_places=2,
         help_text="Valor do desconto (% ou AOA)"
     )
-    
+
     # Limitações
-    max_uses = models.IntegerField(default=1)
+    max_uses = models.IntegerField(default=1, null=True, blank=True,
+                                   help_text="Máximo de utilizações (vazio = sem limite)")
     current_uses = models.IntegerField(default=0)
-    valid_from = models.DateTimeField()
-    valid_until = models.DateTimeField()
-    
+    valid_from = models.DateTimeField(default=timezone.now)
+    valid_until = models.DateTimeField(null=True, blank=True, help_text="Vazio = não expira")
+
     # Aplicabilidade
     applicable_plans = models.ManyToManyField(
         SubscriptionPlan,
         blank=True,
         help_text="Planos elegíveis (vazio = todos)"
     )
+    periodo_aplicavel = models.CharField(max_length=10, choices=PERIODOS, default=PERIODO_TODOS)
+    duracao = models.CharField(max_length=10, choices=DURACOES, default=DURACAO_PRIMEIRO)
+    duracao_meses = models.PositiveSmallIntegerField(null=True, blank=True)
     first_time_users_only = models.BooleanField(default=False)
-    
+
+    estado = models.CharField(max_length=10, choices=ESTADOS, default=ACTIVO)
+    # Espelho de estado == activo (compatibilidade com código antigo)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     class Meta:
         ordering = ['-created_at']
-    
+
     def __str__(self):
         return f"{self.code} - {self.discount_value}"
-    
+
+    # Tipos que o pagamento sabe aplicar (FREE_TRIAL existe só por compatibilidade
+    # com dados antigos e é recusado na criação/edição e no pagamento).
+    TIPOS_SUPORTADOS = ('PERCENTAGE', 'FIXED_AMOUNT')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if 'is_active' in kwargs and 'estado' not in kwargs:  # criado à moda antiga
+            self.estado = self.ACTIVO if kwargs['is_active'] else self.DESLIGADO
+        # __dict__: não carregar campos adiados (.only())
+        self._estado_orig, self._activo_orig = self.__dict__.get('estado'), self.__dict__.get('is_active')
+
+    def save(self, *args, **kwargs):
+        # estado manda; mudar só is_active (código antigo) traduz-se em activo/desligado
+        if (self._activo_orig is not None and self.estado == self._estado_orig
+                and self.is_active != self._activo_orig):
+            self.estado = self.ACTIVO if self.is_active else self.DESLIGADO
+            campos = kwargs.get('update_fields')
+            if campos is not None and 'estado' not in campos:
+                kwargs['update_fields'] = list(campos) + ['estado']
+        self.is_active = self.estado == self.ACTIVO
+        if self.code:
+            self.code = self.code.strip().upper()
+        campos = kwargs.get('update_fields')
+        if campos is not None and 'estado' in campos and 'is_active' not in campos:
+            kwargs['update_fields'] = list(campos) + ['is_active']
+        super().save(*args, **kwargs)
+        self._estado_orig, self._activo_orig = self.estado, self.is_active
+
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        erros = {}
+        valor = self.discount_value
+        if self.discount_type not in self.TIPOS_SUPORTADOS:
+            erros['discount_type'] = 'Tipo de código não suportado: use percentagem ou valor fixo.'
+        elif valor is None:
+            erros['discount_value'] = 'Indique o valor do desconto.'
+        elif self.discount_type == 'PERCENTAGE' and not (0 < valor <= 100):
+            erros['discount_value'] = 'A percentagem tem de ser maior que 0 e no máximo 100.'
+        elif self.discount_type == 'FIXED_AMOUNT' and not valor > 0:
+            erros['discount_value'] = 'O valor fixo tem de ser maior que 0 Kz.'
+        if self.max_uses is not None and self.max_uses < 1:
+            erros['max_uses'] = 'O número máximo de utilizações tem de ser pelo menos 1.'
+        if self.valid_from and self.valid_until and self.valid_until <= self.valid_from:
+            erros['valid_until'] = 'A data de fim tem de ser posterior à data de início.'
+        if erros:
+            raise ValidationError(erros)
+
+    @property
+    def esgotado(self):
+        return self.max_uses is not None and self.current_uses >= self.max_uses
+
+    def expirado(self, agora=None):
+        return self.valid_until is not None and self.valid_until < (agora or timezone.now())
+
+    def estado_actual(self, agora=None):
+        """rascunho | desligado | expirado | esgotado | activo."""
+        if self.estado != self.ACTIVO:
+            return self.estado
+        if not self.is_active:
+            return self.DESLIGADO
+        if self.expirado(agora):
+            return 'expirado'
+        if self.esgotado:
+            return 'esgotado'
+        return self.ACTIVO
+
     def is_valid(self):
         """Verifica se o código está válido"""
         now = timezone.now()
         return (
-            self.is_active and
-            self.valid_from <= now <= self.valid_until and
-            self.current_uses < self.max_uses
+            self.estado == self.ACTIVO and self.is_active and
+            (self.valid_from is None or self.valid_from <= now) and
+            not self.expirado(now) and
+            not self.esgotado
         )
 
 
@@ -575,7 +714,15 @@ class PromoCodeUsage(models.Model):
         decimal_places=2,
         help_text="Desconto aplicado em AOA"
     )
-    
+
+    # Reservado quando o pagamento é criado (conta para max_uses); passa a
+    # confirmado quando o pagamento é confirmado e é apagado se o pagamento
+    # falhar, expirar ou for cancelado.
+    RESERVADO = 'reservado'
+    CONFIRMADO = 'confirmado'
+    ESTADOS = [(RESERVADO, 'Reservado'), (CONFIRMADO, 'Confirmado')]
+    estado = models.CharField(max_length=12, choices=ESTADOS, default=CONFIRMADO)
+
     used_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
@@ -584,3 +731,47 @@ class PromoCodeUsage(models.Model):
     
     def __str__(self):
         return f"{self.user.username} - {self.promo_code.code}"
+
+def normalizar_email(email):
+    """
+    Caixa de correio de um email, para "um teste grátis por pessoa": minúsculas, sem a
+    etiqueta "+..." e, no Gmail, sem pontos (a.b+x@Gmail.com == ab@gmail.com).
+    """
+    email = (email or '').strip().lower()
+    if '@' not in email:
+        return email
+    local, dominio = email.rsplit('@', 1)
+    local = local.split('+', 1)[0]
+    if dominio in ('gmail.com', 'googlemail.com'):
+        local = local.replace('.', '')
+        dominio = 'gmail.com'
+    return f'{local}@{dominio}'
+
+
+class TesteGratis(models.Model):
+    """
+    Teste grátis de um plano pago: um por pessoa. A pessoa é identificada pelo número
+    Multicaixa Express (normalizado, 9 dígitos) e pela caixa de correio (``normalizar_email``):
+    nenhum dos dois pode voltar a ser usado noutro teste, mesmo noutra conta.
+    """
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='testes_gratis')
+    plan = models.ForeignKey(SubscriptionPlan, on_delete=models.PROTECT, related_name='testes_gratis')
+    # Nulo só nos testes anteriores a esta regra (sem número registado)
+    telefone = models.CharField(max_length=9, null=True, blank=True)
+    email_normalizado = models.CharField(max_length=254, blank=True, default='')
+    iniciado_em = models.DateTimeField(default=timezone.now)
+    termina_em = models.DateTimeField()
+
+    class Meta:
+        ordering = ['-iniciado_em']
+        constraints = [
+            models.UniqueConstraint(fields=['telefone'], condition=models.Q(telefone__isnull=False),
+                                    name='teste_gratis_um_por_telefone'),
+            models.UniqueConstraint(fields=['email_normalizado'], condition=~models.Q(email_normalizado=''),
+                                    name='teste_gratis_um_por_email'),
+        ]
+
+    def __str__(self):
+        return f'{self.user_id} - {self.plan_id} ({self.telefone or "sem número"})'

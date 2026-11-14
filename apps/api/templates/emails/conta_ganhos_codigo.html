@@ -1,0 +1,8 @@
+{% extends "emails/base.html" %}
+{% block titulo %}Confirme a conta para receber os ganhos - ProEnglish{% endblock %}
+{% block conteudo %}
+<p style="margin:0 0 16px;">Recebemos um pedido para alterar a conta onde recebe os ganhos de professor no ProEnglish ({{ banco }}, IBAN terminado em {{ terminada_em }}, titular {{ titular }}). Para confirmar, use este código:</p>
+<div style="margin:0 0 8px;padding:18px;text-align:center;background:#eff6ff;border:1px dashed #93c5fd;border-radius:10px;font-size:32px;font-weight:700;letter-spacing:8px;color:#1d4ed8;font-family:'SFMono-Regular',Menlo,Consolas,monospace;">{{ codigo }}</div>
+<p style="margin:0 0 20px;font-size:13px;color:#6b7280;text-align:center;">O código é válido durante 15 minutos.</p>
+<p style="margin:0;font-size:13px;color:#6b7280;">O código é pessoal: não o dê a ninguém. Se não pediu esta alteração, ignore este email e altere a sua palavra-passe; a conta actual continua igual.</p>
+{% endblock %}

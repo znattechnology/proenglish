@@ -191,9 +191,11 @@ class CourseCertificate(BaseModel):
         on_delete=models.CASCADE,
         related_name='certificates'
     )
+    # PROTECT: um curso com certificados emitidos não pode ser apagado (os certificados
+    # continuam verificáveis); arquiva-se em vez de se apagar.
     course = models.ForeignKey(
         'courses.Course',
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='certificates'
     )
     certificate_number = models.CharField(
@@ -228,6 +230,16 @@ class CourseCertificate(BaseModel):
         blank=True,
         help_text="Code for certificate verification"
     )
+    revoked_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        help_text="Quando o certificado foi revogado (vazio = válido)"
+    )
+    revocation_reason = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="Motivo da revogação (não é mostrado publicamente)"
+    )
 
     class Meta:
         db_table = 'course_certificates'
@@ -243,8 +255,29 @@ class CourseCertificate(BaseModel):
     def __str__(self):
         return f"Certificate for {self.user.name} - {self.course.title}"
 
+    @property
+    def is_revoked(self):
+        return self.revoked_at is not None
+
     def save(self, *args, **kwargs):
         if not self.certificate_number:
-            import uuid
-            self.certificate_number = f"CERT-{uuid.uuid4().hex[:8].upper()}"
+            from django.db import transaction
+            from apps.courses.certificados import gerar_numero_certificado
+            with transaction.atomic():
+                self.certificate_number = gerar_numero_certificado()
+                super().save(*args, **kwargs)
+            return
         super().save(*args, **kwargs)
+
+
+class SequenciaCertificado(models.Model):
+    """Contador de certificados por ano (PE-C-<ano>-<NNNNNN>), como SequenciaRecibo."""
+
+    ano = models.PositiveIntegerField(primary_key=True)
+    ultimo = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        db_table = 'course_certificate_sequences'
+
+    def __str__(self):
+        return f'{self.ano}: {self.ultimo}'

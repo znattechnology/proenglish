@@ -7,6 +7,8 @@ maintaining the same structure and response format as the Express API.
 
 from django.urls import path
 from . import views
+from .jogar import jogar_licao, trilho_curso
+from . import study_views
 
 app_name = 'student_practice_courses'
 
@@ -43,6 +45,13 @@ urlpatterns = [
         name='courses-list'
     ),
     
+    # Practice course detail with the requesting user's progress
+    path(
+        'courses/<uuid:course_id>/',
+        study_views.get_practice_course_detail,
+        name='course-detail'
+    ),
+
     # Course units endpoint
     # Maps to getCourse query from client project
     path(
@@ -67,6 +76,9 @@ urlpatterns = [
     ),
     
     # Lesson completion percentage
+    # Lição para o ecrã novo, sem revelar respostas
+    path('lessons/<uuid:lesson_id>/jogar/', jogar_licao, name='lesson-jogar'),
+    path('courses/<uuid:course_id>/trilho/', trilho_curso, name='course-trilho'),
     path(
         'lessons/<uuid:lesson_id>/percentage/', 
         views.get_lesson_percentage, 
@@ -111,6 +123,29 @@ urlpatterns = [
         name='refill-hearts'
     ),
     
+    # ========================================================================
+    # STUDY TRACKING ENDPOINTS - streak, daily goal, hearts, lessons, review
+    # ========================================================================
+
+    path('study-streak/', study_views.get_study_streak, name='study-streak'),
+    path('study-goal/', study_views.study_goal, name='study-goal'),
+    path('hearts-status/', study_views.get_hearts_status, name='hearts-status'),
+    path('complete-lesson/', study_views.complete_lesson, name='complete-lesson'),
+    path('review-words/', study_views.get_review_words, name='review-words'),
+    path('student-analytics/', study_views.get_student_analytics, name='student-analytics'),
+    path('estatisticas/', study_views.get_estatisticas, name='estatisticas'),
+    path('liga/semana/', study_views.get_liga_semanal, name='liga-semanal'),
+
+    # In-app notifications (distinct from achievements/notifications/ below)
+    path('notifications/', study_views.list_notifications, name='notifications-list'),
+    path('notifications/unread-count/', study_views.notifications_unread_count, name='notifications-unread-count'),
+    path('notifications/read-all/', study_views.mark_all_notifications_read, name='notifications-read-all'),
+    path(
+        'notifications/<uuid:notification_id>/read/',
+        study_views.mark_notification_read,
+        name='notifications-read'
+    ),
+
     # ========================================================================
     # LEADERBOARD ENDPOINTS - Competition and ranking system
     # ========================================================================

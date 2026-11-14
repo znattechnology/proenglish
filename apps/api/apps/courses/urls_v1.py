@@ -7,6 +7,7 @@ maintaining backward compatibility with the original Express API structure.
 
 from django.urls import path
 from . import views
+from apps.courses.legado import rota_removida
 
 app_name = 'courses_v1'
 
@@ -36,12 +37,11 @@ urlpatterns = [
     path('users/<uuid:userId>/progress/<uuid:courseId>/update/', views.update_user_course_progress, name='update_user_course_progress'),
     
     # Stripe payments - matches Express /transactions/stripe-payment-intent
-    path('payments/stripe/intent/', views.create_stripe_payment_intent, name='stripe_payment_intent'),
     
     # Video upload - matches Express /:courseId/sections/:sectionId/chapters/:chapterId/get-upload-url
     path('<uuid:courseId>/sections/<uuid:sectionId>/chapters/<uuid:chapterId>/get-upload-url/', 
-         views.get_upload_video_url, name='get_upload_video_url'),
+         rota_removida, name='get_upload_video_url'),
     
     # Image upload for course cover
-    path('<uuid:courseId>/upload-image/', views.upload_course_image, name='upload_course_image'),
+    path('<uuid:courseId>/upload-image/', rota_removida, name='upload_course_image'),
 ]

@@ -2,6 +2,7 @@
 Views for user authentication and profile management.
 """
 
+import logging
 import secrets
 import uuid
 from datetime import datetime, timedelta
@@ -32,27 +33,18 @@ from rest_framework.throttling import UserRateThrottle
 from apps.cms.views import AdminWritePermissionMixin
 from .models import User, UserAddress, NotificationSettings, EmailVerification
 
+logger = logging.getLogger(__name__)
+
 
 # ============================================================
 # Custom Permission Classes for Feedback System
 # ============================================================
 
-class IsAdminUser(permissions.BasePermission):
-    """
-    Permission class that checks if the user is an admin.
-    More robust than checking request.user.role directly.
-    """
-    message = "Acesso negado. Privilégios de administrador necessários."
+from apps.core.permissions import EAdministrador
 
-    def has_permission(self, request, view):
-        if not request.user or not request.user.is_authenticated:
-            return False
-        # Check multiple ways to determine admin status
-        return (
-            getattr(request.user, 'role', None) == 'admin' or
-            getattr(request.user, 'is_staff', False) or
-            getattr(request.user, 'is_superuser', False)
-        )
+# Nome antigo: as vistas de administração usam a regra única EAdministrador
+# (papel admin ou superutilizador, conta activa; is_staff sozinho não chega).
+IsAdminUser = EAdministrador
 
 
 class FeedbackSubmitThrottle(UserRateThrottle):
@@ -93,48 +85,69 @@ class UserRegistrationView(generics.CreateAPIView):
         # Create and send verification code
         try:
             verification = EmailVerificationService.create_verification_code(user)
-            email_sent = EmailVerificationService.send_verification_email(verification)
-            print(f"DEBUG: Email verification created for {user.email}, code: {verification.code}")
-            print(f"DEBUG: Email verification sent to {user.email}: {email_sent}")
-            if not email_sent:
-                print(f"ERROR: Failed to send verification email to {user.email}")
-        except Exception as e:
-            print(f"ERROR: Exception sending verification email to {user.email}: {e}")
-            import traceback
-            traceback.print_exc()
-            # Continue with registration even if email fails
-        
-        # Do NOT generate JWT tokens - user must verify email first
-        
+            if not EmailVerificationService.send_verification_email(verification):
+                logger.error('Não foi possível enviar o código de confirmação (user=%s)', user.pk)
+        except Exception:
+            # O registo continua: a pessoa pode pedir outro código em resend-verification/.
+            logger.exception('Erro ao criar/enviar o código de confirmação (user=%s)', user.pk)
+
+        # Sem sessão até confirmar o email.
         return Response({
-            'message': 'Utilizador registado com sucesso. Verifique o seu email para ativar a conta.',
+            'message': 'Conta criada. Enviámos um código para o seu email para activar a conta.',
             'email': user.email,
             'requires_verification': True
         }, status=status.HTTP_201_CREATED)
-    
-    def send_verification_email(self, user):
-        """
-        Send email verification email.
-        """
-        verification_url = f"{settings.FRONTEND_URL}/verify-email/{user.email_verification_token}/"
-        
-        subject = 'Verify your ProEnglish account'
-        message = f"""
-        Welcome to ProEnglish!
-        
-        Please click the link below to verify your email address:
-        {verification_url}
-        
-        If you didn't create this account, please ignore this email.
-        """
-        
-        send_mail(
-            subject,
-            message,
-            settings.DEFAULT_FROM_EMAIL,
-            [user.email],
-            fail_silently=False,
-        )
+
+
+def definir_cookies_sessao(response, access_token, refresh_token):
+    """Grava a sessão (JWT) em cookies HttpOnly. Em produção, Secure + SameSite=None."""
+    is_secure = not settings.DEBUG
+    samesite = 'None' if is_secure else 'Lax'
+    if access_token:
+        response.set_cookie(key='access_token', value=access_token, max_age=60 * 60,
+                            httponly=True, secure=is_secure, samesite=samesite, path='/')
+    if refresh_token:
+        response.set_cookie(key='refresh_token', value=refresh_token, max_age=60 * 60 * 24 * 7,
+                            httponly=True, secure=is_secure, samesite=samesite, path='/')
+    return response
+
+
+def apagar_cookies_sessao(response):
+    """Apaga os cookies da sessão com os mesmos atributos (path/samesite) usados ao gravá-los."""
+    samesite = 'None' if not settings.DEBUG else 'Lax'
+    for nome in ('access_token', 'refresh_token'):
+        response.delete_cookie(nome, path='/', samesite=samesite)
+    return response
+
+
+def emitir_sessao(user):
+    """
+    Tokens de uma sessão nova, iguais aos do login normal (com os claims role/email/name).
+    Devolve (access, refresh) em texto.
+    """
+    refresh = CustomTokenObtainPairSerializer.get_token(user)
+    return str(refresh.access_token), str(refresh)
+
+
+def dados_utilizador(user):
+    return {
+        'id': str(user.id),
+        'email': user.email,
+        'name': user.name,
+        'role': user.role,
+        'avatar': user.avatar or None,
+        'email_verified': user.email_verified,
+        'has_password': user.has_usable_password(),
+        'deve_mudar_senha': user.deve_mudar_senha,
+    }
+
+
+@api_view(['GET'])
+@permission_classes([permissions.AllowAny])
+def provincias(request):
+    """GET /api/v1/users/provincias/ -> [{valor, nome}] (as 21 províncias de Angola)."""
+    from .models import PROVINCIAS
+    return Response([{'valor': v, 'nome': n} for v, n in PROVINCIAS])
 
 
 @method_decorator(ratelimit(key='ip', rate='10/m', method='POST', block=True), name='post')
@@ -149,38 +162,10 @@ class CustomTokenObtainPairView(TokenObtainPairView):
         response = super().post(request, *args, **kwargs)
 
         if response.status_code == 200:
-            # Get tokens from response data
-            access_token = response.data.get('access')
-            refresh_token = response.data.get('refresh')
-
-            # Cookie settings for cross-domain authentication
-            # SameSite=None requires Secure=True (HTTPS)
-            is_secure = not settings.DEBUG
-            samesite = 'None' if is_secure else 'Lax'
-
-            # Set access token cookie (short-lived)
-            if access_token:
-                response.set_cookie(
-                    key='access_token',
-                    value=access_token,
-                    max_age=60 * 60,  # 1 hour
-                    httponly=True,
-                    secure=is_secure,
-                    samesite=samesite,
-                    path='/',
-                )
-
-            # Set refresh token cookie (long-lived)
-            if refresh_token:
-                response.set_cookie(
-                    key='refresh_token',
-                    value=refresh_token,
-                    max_age=60 * 60 * 24 * 7,  # 7 days
-                    httponly=True,
-                    secure=is_secure,
-                    samesite=samesite,
-                    path='/',
-                )
+            # Os tokens vão só nos cookies HttpOnly; o corpo leva apenas o utilizador.
+            access_token = response.data.pop('access', None)
+            refresh_token = response.data.pop('refresh', None)
+            definir_cookies_sessao(response, access_token, refresh_token)
 
         return response
 
@@ -192,31 +177,23 @@ class CustomTokenRefreshView(TokenRefreshView):
     """
 
     def post(self, request, *args, **kwargs):
-        # If refresh token not in body, try to get from cookie
-        if 'refresh' not in request.data and request.COOKIES.get('refresh_token'):
+        # Sem refresh no corpo, usa o do cookie. Sem nenhum dos dois: 401 "A sessão terminou".
+        if not request.data.get('refresh'):
+            if not request.COOKIES.get('refresh_token'):
+                from rest_framework.exceptions import NotAuthenticated
+                raise NotAuthenticated()
             request._full_data = request.data.copy()
             request._full_data['refresh'] = request.COOKIES.get('refresh_token')
 
         response = super().post(request, *args, **kwargs)
 
         if response.status_code == 200:
-            access_token = response.data.get('access')
-
-            # Cookie settings for cross-domain authentication
-            is_secure = not settings.DEBUG
-            samesite = 'None' if is_secure else 'Lax'
-
-            # Set new access token cookie
-            if access_token:
-                response.set_cookie(
-                    key='access_token',
-                    value=access_token,
-                    max_age=60 * 60,  # 1 hour
-                    httponly=True,
-                    secure=is_secure,
-                    samesite=samesite,
-                    path='/',
-                )
+            # Com ROTATE_REFRESH_TOKENS o refresh antigo vai para a lista negra: o novo tem de
+            # ficar no cookie, senão a sessão morre no refresh seguinte. Nada vai no corpo.
+            access_token = response.data.pop('access', None)
+            refresh_token = response.data.pop('refresh', None)
+            definir_cookies_sessao(response, access_token, refresh_token)
+            response.data['message'] = 'Sessão renovada.'
 
         return response
 
@@ -231,32 +208,6 @@ class UserProfileView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         return self.request.user
 
-    def update(self, request, *args, **kwargs):
-        """Override update to add detailed logging for avatar uploads."""
-        print("\n" + "="*80)
-        print("📸 USER PROFILE UPDATE REQUEST")
-        print("="*80)
-        print(f"Method: {request.method}")
-        print(f"User: {request.user.email}")
-        print(f"Content-Type: {request.content_type}")
-        print(f"Request DATA keys: {request.data.keys()}")
-        print(f"Request FILES keys: {request.FILES.keys()}")
-
-        if 'avatar' in request.FILES:
-            avatar_file = request.FILES['avatar']
-            print(f"\n✅ Avatar file detected:")
-            print(f"  - Name: {avatar_file.name}")
-            print(f"  - Size: {avatar_file.size} bytes")
-            print(f"  - Content-Type: {avatar_file.content_type}")
-        else:
-            print("\n❌ No avatar file in request.FILES")
-
-        if 'avatar' in request.data:
-            print(f"✅ Avatar in request.data: {type(request.data['avatar'])}")
-
-        print("="*80 + "\n")
-
-        return super().update(request, *args, **kwargs)
 
 
 @api_view(['POST'])
@@ -282,33 +233,35 @@ def get_avatar_upload_url(request):
         }
     }
     """
-    print(f"🖼️ Avatar upload URL request for user: {request.user.email}")
-
     fileName = request.data.get('fileName')
     fileType = request.data.get('fileType')
 
     if not fileName or not fileType:
         return Response({
-            'message': 'O nome e o tipo do ficheiro são obrigatórios'
+            'error': 'Indique o nome e o tipo do ficheiro.',
+            'message': 'Indique o nome e o tipo do ficheiro.',
         }, status=status.HTTP_400_BAD_REQUEST)
 
     # Validate image file type
     allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
     if fileType not in allowed_types:
         return Response({
-            'message': 'Tipo de arquivo não suportado. Use JPG, PNG ou WebP.'
+            'error': 'Este tipo de ficheiro não é aceite. Use JPG, PNG ou WebP.',
+            'message': 'Este tipo de ficheiro não é aceite. Use JPG, PNG ou WebP.',
         }, status=status.HTTP_400_BAD_REQUEST)
 
     try:
         if not S3_AVAILABLE:
+            logger.error('Envio de fotografias: boto3 não está instalado')
             return Response({
-                'error': 'Biblioteca boto3 não instalada'
-            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                'error': 'O envio de fotografias não está disponível agora.'
+            }, status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
         if not all([settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY, settings.AWS_STORAGE_BUCKET_NAME]):
+            logger.error('Envio de fotografias: configuração S3 incompleta')
             return Response({
-                'error': 'Configuração S3 incompleta'
-            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                'error': 'O envio de fotografias não está disponível agora.'
+            }, status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
         # Create S3 client
         s3_client = boto3.client(
@@ -322,8 +275,6 @@ def get_avatar_upload_url(request):
         file_extension = fileName.split('.')[-1].lower()
         unique_filename = f"{uuid.uuid4()}.{file_extension}"
         s3_key = f'avatars/{request.user.id}/{unique_filename}'
-
-        print(f"📁 Generating presigned URL for: {s3_key}")
 
         # Generate presigned URL for PUT operation
         upload_url = s3_client.generate_presigned_url(
@@ -343,44 +294,170 @@ def get_avatar_upload_url(request):
         else:
             avatar_url = f"https://{settings.AWS_S3_CUSTOM_DOMAIN}/avatars/{request.user.id}/{unique_filename}"
 
-        print(f"✅ Presigned URL generated successfully")
-        print(f"📸 Avatar URL: {avatar_url}")
-
         return Response({
-            'message': 'URL de upload de avatar gerado com sucesso',
+            'message': 'Pode enviar a fotografia.',
             'data': {
                 'uploadUrl': upload_url,
                 'avatarUrl': avatar_url
             }
         })
 
-    except ClientError as e:
-        print(f"❌ S3 Error: {str(e)}")
+    except Exception:
+        logger.exception('Erro ao preparar o envio da fotografia (user=%s)', request.user.pk)
         return Response({
-            'error': f'Erro S3: {str(e)}'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    except Exception as e:
-        print(f"❌ Unexpected error: {str(e)}")
-        return Response({
-            'error': f'Erro inesperado: {str(e)}'
-        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            'error': 'Não foi possível preparar o envio da fotografia. Tente outra vez.'
+        }, status=status.HTTP_502_BAD_GATEWAY)
 
 
 class PasswordChangeView(generics.GenericAPIView):
     """
-    View for password change.
+    POST /api/v1/users/change-password/
+
+    Com palavra-passe:  {current_password, new_password, new_password_confirm}
+    Sem palavra-passe (conta criada com o Google, has_password=false): define a primeira
+    palavra-passe com {new_password, new_password_confirm}; current_password é ignorado.
+
+    Resposta: {message, has_password: true}. As sessões nos outros dispositivos terminam.
     """
     serializer_class = PasswordChangeSerializer
     permission_classes = [permissions.IsAuthenticated]
-    
+
     def post(self, request):
+        definir = not request.user.has_usable_password()
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        
-        return Response({
-            'message': 'Password changed successfully.'
-        })
+        if request.user.deve_mudar_senha:
+            request.user.deve_mudar_senha = False
+            request.user.save(update_fields=['deve_mudar_senha'])
+        # Termina as sessões nos outros dispositivos (refresh tokens na lista negra e tokens de
+        # acesso já emitidos sem valor: sessoes_invalidas_antes); esta continua com uma sessão
+        # nova, emitida já a seguir e gravada nos cookies.
+        actual = request.COOKIES.get('refresh_token') or request.data.get('refresh_token')
+        terminar_sessoes(request.user, excepto=actual)
+        invalidar_tokens_acesso(request.user)
+        access, refresh = _acesso_da_sessao_actual(request.user, actual)
+
+        if definir:
+            mensagem = 'Palavra-passe definida. Também pode entrar com o email e esta palavra-passe.'
+        else:
+            mensagem = 'Palavra-passe mudada. As sessões nos outros dispositivos foram terminadas.'
+        resposta = Response({'message': mensagem, 'has_password': True, 'deve_mudar_senha': False})
+        return definir_cookies_sessao(resposta, access, refresh)
+
+
+def _acesso_da_sessao_actual(user, refresh_actual):
+    """
+    Depois de invalidar os tokens de acesso: (access, None) novo para a sessão actual (o refresh
+    dela continua), ou (access, refresh) de uma sessão nova se o pedido não trouxe um refresh
+    válido desta conta (p. ex. clientes com o cabeçalho Authorization).
+    """
+    if refresh_actual:
+        try:
+            rt = RefreshToken(refresh_actual)
+            if str(rt['user_id']) == str(user.pk):
+                return str(rt.access_token), None
+        except Exception:
+            pass
+    return emitir_sessao(user)
+
+
+def invalidar_tokens_acesso(user):
+    """
+    Os tokens de acesso emitidos antes de agora deixam de valer (ver apps.users.middleware, que
+    compara o iat em segundos inteiros: os emitidos neste mesmo segundo ainda valem).
+    """
+    agora = timezone.now()
+    User.objects.filter(pk=user.pk).update(sessoes_invalidas_antes=agora)
+    user.sessoes_invalidas_antes = agora
+    return agora
+
+
+def terminar_sessoes(user, excepto=None):
+    """Põe na lista negra todos os refresh tokens do utilizador (menos, se indicado, o actual)."""
+    from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken, OutstandingToken
+    jti_actual = None
+    if excepto:
+        try:
+            jti_actual = RefreshToken(excepto)['jti']
+        except Exception:
+            jti_actual = None
+    for t in OutstandingToken.objects.filter(user=user).exclude(jti=jti_actual or ''):
+        BlacklistedToken.objects.get_or_create(token=t)
+
+
+def _confirmar_verdadeiro(valor):
+    return valor is True or (isinstance(valor, str) and valor.strip().lower() in ('true', '1', 'sim'))
+
+
+class ApagarContaView(generics.GenericAPIView):
+    """
+    POST /api/v1/users/apagar-conta/
+
+    Com palavra-passe (has_password=true):  {"password": "..."}
+    Sem palavra-passe (conta do Google, has_password=false):  {"confirmar": true}
+
+    O próprio utilizador apaga a conta. Os dados pessoais são anonimizados e a conta fica
+    desactivada (deixa de poder entrar); apagam-se também os códigos enviados por email (têm o
+    email original), as moradas, as subscrições push, as preferências e a lista de avisos.
+    As opiniões deixam de poder ser mostradas em público. Os pagamentos e recibos ficam
+    guardados sem o nome, porque são registos fiscais. Não se pode desfazer.
+    Professores não apagam a conta aqui (403 conta_professor): fecham-na com a equipa.
+    """
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        user = request.user
+        if getattr(user, 'role', None) == 'teacher':
+            # Os cursos do professor têm alunos e ganhos por pagar: fecha-se com a equipa.
+            from apps.core.exceptions import corpo_erro
+            return Response(corpo_erro(
+                'Para fechar a conta de professor, fale com a equipa ProEnglish: '
+                'os seus cursos têm alunos inscritos.', 'conta_professor'),
+                status=status.HTTP_403_FORBIDDEN)
+        if not user.has_usable_password() and not _confirmar_verdadeiro(request.data.get('confirmar')):
+            return Response({'error': 'Confirme que quer apagar a conta.'}, status=status.HTTP_400_BAD_REQUEST)
+        if user.has_usable_password() and not user.check_password(request.data.get('password') or ''):
+            return Response({'error': 'A palavra-passe não está certa.'}, status=status.HTTP_400_BAD_REQUEST)
+        if getattr(user, 'role', None) == 'admin' or user.is_superuser:
+            return Response({'error': 'As contas de administração não se apagam aqui.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        from django.db import transaction
+        from apps.core.models import Address
+        from .models import (Notification, PreferenciasAvisos, PushSubscription, UserFeedback)
+
+        terminar_sessoes(user)
+        with transaction.atomic():
+            # Dados ligados à conta que guardam o email original ou dados pessoais
+            EmailVerification.objects.filter(user=user).delete()
+            PushSubscription.objects.filter(user=user).delete()
+            PreferenciasAvisos.objects.filter(user=user).delete()
+            NotificationSettings.objects.filter(user=user).delete()
+            Notification.objects.filter(user=user).delete()
+            ids_moradas = list(UserAddress.objects.filter(user=user).values_list('address_id', flat=True))
+            UserAddress.objects.filter(user=user).delete()
+            Address.objects.filter(id__in=ids_moradas).delete()
+            UserFeedback.objects.filter(user=user).update(allow_public=False, allow_contact=False)
+
+            anonimo = f'apagado-{user.id.hex}'
+            user.name = 'Conta apagada'
+            user.first_name = ''
+            user.last_name = ''
+            user.email = f'{anonimo}@apagado.invalid'
+            user.username = anonimo
+            user.phone = ''
+            user.avatar = ''
+            user.preferences = {}
+            user.google_id = None
+            user.email_verification_token = ''
+            user.reset_password_token = ''
+            user.reset_password_expires = None
+            user.is_active = False
+            user.set_unusable_password()
+            user.save()
+
+        response = Response({'message': 'A sua conta foi apagada.'})
+        return apagar_cookies_sessao(response)
 
 
 class UserAddressListCreateView(generics.ListCreateAPIView):
@@ -431,109 +508,100 @@ class PasswordResetRequestView(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         
-        try:
-            user = User.objects.get(
-                email=serializer.validated_data['email'],
-                is_active=True
-            )
-            
-            # Create password reset code using EmailVerificationService
-            from .models import EmailVerification
-            
-            # Invalidate any existing password reset codes for this user
-            EmailVerification.objects.filter(
-                user=user,
-                email=user.email,
-                is_used=False,
-                code__isnull=False
-            ).update(is_used=True)
-            
-            # Generate new 6-digit code
-            code = EmailVerificationService.generate_verification_code()
-            expires_at = timezone.now() + timedelta(minutes=30)  # 30 minutes expiry
-            
-            # Create verification record for password reset
-            verification = EmailVerification.objects.create(
-                user=user,
-                code=code,
-                email=user.email,
-                expires_at=expires_at
-            )
-            
-            # Send password reset email with code
+        # Só para o email actual da conta e já confirmado (nunca para um email por confirmar,
+        # p. ex. um email novo pedido pela administração, que fica em email_pendente).
+        user = User.objects.filter(
+            email__iexact=serializer.validated_data['email'].strip(),
+            is_active=True,
+            email_verified=True,
+        ).first()
+        if user:  # Don't reveal if email exists
+            # Código de recuperar a palavra-passe (só serve em password-reset-confirm/).
+            # create_verification_code invalida os códigos de recuperação anteriores.
+            verification = EmailVerificationService.create_verification_code(
+                user, user.email, finalidade=EmailVerification.FINALIDADE_RECUPERAR)
             EmailVerificationService.send_password_reset_email(verification)
-            
-        except User.DoesNotExist:
-            pass  # Don't reveal if email exists
         
         return Response({
-            'message': 'Se o email estiver cadastrado, você receberá um código de verificação para redefinir sua senha.'
+            'message': 'Se houver uma conta com este email, enviámos um código para criar uma palavra-passe nova.'
         })
 
 
+@method_decorator(ratelimit(key='ip', rate='10/m', method='POST', block=True), name='post')
 class PasswordResetConfirmView(generics.GenericAPIView):
     """
-    View for password reset confirmation using 6-digit code.
+    Nova palavra-passe com o código de 6 dígitos enviado por email.
+
+    O código é o último ainda não usado desse email. Cada código errado conta como tentativa
+    (no limite de max_attempts o código deixa de servir), para não se adivinhar por força bruta.
+    Depois da mudança, as outras sessões abertas terminam.
     """
     permission_classes = [permissions.AllowAny]
-    
+
     def post(self, request):
-        email = request.data.get('email')
-        code = request.data.get('code')
-        new_password = request.data.get('newPassword')
-        
+        from django.contrib.auth.password_validation import validate_password
+        from django.core.exceptions import ValidationError as ErroValidacao
+        from .models import EmailVerification
+
+        email = (request.data.get('email') or '').strip().lower()
+        code = (request.data.get('code') or '').strip()
+        new_password = request.data.get('newPassword') or request.data.get('new_password') or ''
+
         if not email or not code or not new_password:
-            return Response({
-                'error': 'Email, código e nova senha são obrigatórios.'
-            }, status=status.HTTP_400_BAD_REQUEST)
-        
-        # Verify the code manually without marking as used
+            return Response({'error': 'Indique o email, o código e a nova palavra-passe.'},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        invalido = Response({'error': 'O código não está certo ou já expirou. Peça um código novo.'},
+                            status=status.HTTP_400_BAD_REQUEST)
+        verification = (EmailVerification.objects
+                        .filter(email__iexact=email, is_used=False, code__isnull=False,
+                                finalidade=EmailVerification.FINALIDADE_RECUPERAR)
+                        .select_related('user').order_by('-created_at').first())
+        if not verification or verification.is_expired() or verification.attempts >= verification.max_attempts:
+            return invalido
+        if verification.code != code:
+            verification.increment_attempts()
+            return invalido
+
+        user = verification.user
+        if not user.is_active:
+            return invalido
         try:
-            from .models import EmailVerification
-            
-            # Find the verification record
-            verification = EmailVerification.objects.filter(
-                email=email,
-                code=code,
-                is_used=False
-            ).order_by('-created_at').first()
-            
-            if not verification:
-                return Response({
-                    'error': 'Código inválido ou não encontrado'
-                }, status=status.HTTP_400_BAD_REQUEST)
-            
-            # Check if code is expired
-            if verification.is_expired():
-                return Response({
-                    'error': 'Código expirado. Solicite um novo código.'
-                }, status=status.HTTP_400_BAD_REQUEST)
-            
-            # Check max attempts
-            if verification.attempts >= verification.max_attempts:
-                return Response({
-                    'error': 'Muitas tentativas. Solicite um novo código.'
-                }, status=status.HTTP_400_BAD_REQUEST)
-            
-            user = verification.user
-            
-            # Reset password
-            user.set_password(new_password)
-            user.save()
-            
-            # Mark the verification code as used
-            verification.is_used = True
-            verification.save()
-            
-            return Response({
-                'message': 'Senha alterada com sucesso.'
-            })
-            
-        except Exception as e:
-            print(f"Error in password reset confirm: {e}")
-            return Response({
-                'error': 'Erro ao alterar a senha. Tente novamente.'
-            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            validate_password(new_password, user=user)
+        except ErroValidacao as e:
+            return Response({'error': ' '.join(e.messages)}, status=status.HTTP_400_BAD_REQUEST)
+
+        user.set_password(new_password)
+        user.deve_mudar_senha = False
+        user.save(update_fields=['password', 'deve_mudar_senha'])
+        verification.is_used = True
+        verification.save(update_fields=['is_used'])
+        terminar_sessoes(user)
+        invalidar_tokens_acesso(user)
+        return Response({'message': 'A palavra-passe foi alterada. Já pode entrar com a nova.'})
+
+
+@method_decorator(ratelimit(key='ip', rate='10/m', method='POST', block=True), name='post')
+class ConfirmarEmailNovoView(generics.GenericAPIView):
+    """
+    POST /api/v1/users/confirmar-email-novo/ {email, code}
+
+    Confirma o email novo pedido pela administração (User.email_pendente) com o código enviado
+    para ele. Só então o email da conta muda (e fica confirmado). Não abre sessão: a pessoa
+    entra depois com o email novo e a palavra-passe de sempre.
+    """
+    permission_classes = [permissions.AllowAny]
+    authentication_classes = []
+
+    def post(self, request):
+        from apps.core.exceptions import corpo_erro
+        from .admin_api import servicos as sv
+        user, erro = sv.confirmar_mudanca_email(request.data.get('email'), request.data.get('code'))
+        if erro:
+            mensagem, code = erro
+            return Response(corpo_erro(mensagem, code), status=status.HTTP_400_BAD_REQUEST)
+        return Response({'message': f'Email confirmado. A partir de agora entre com {user.email}.',
+                         'email': user.email})
 
 
 @method_decorator(ratelimit(key='ip', rate='10/m', method='POST', block=True), name='post')
@@ -556,615 +624,378 @@ class EmailVerificationView(generics.GenericAPIView):
         result = EmailVerificationService.verify_code(email, code)
         
         if result['success']:
-            # Generate JWT tokens for the user
-            from rest_framework_simplejwt.tokens import RefreshToken
             user = result['user']
-            refresh = RefreshToken.for_user(user)
-            access = refresh.access_token
+            access, refresh = emitir_sessao(user)
             
             # Send welcome email
             try:
                 EmailVerificationService.send_welcome_email(user)
-            except Exception as e:
-                # Don't fail the verification if welcome email fails
-                print(f"Failed to send welcome email: {e}")
+            except Exception:
+                # O email de boas-vindas não pode impedir a confirmação
+                logger.exception('Erro ao enviar o email de boas-vindas (user=%s)', user.pk)
             
-            return Response({
+            response = Response({
                 'message': 'Email verificado com sucesso! Bem-vindo(a) ao ProEnglish!',
-                'user': {
-                    'id': str(user.id),
-                    'email': user.email,
-                    'name': user.name,
-                    'role': user.role,
-                    'avatar': user.avatar or None,
-                    'email_verified': user.email_verified,
-                },
-                'access': str(access),
-                'refresh': str(refresh),
+                'user': dados_utilizador(user),
             })
+            # A sessão vai nos cookies HttpOnly, como no login (antes só ia no corpo e a pessoa
+            # ficava sem sessão logo a seguir a confirmar o email).
+            definir_cookies_sessao(response, access, refresh)
+            return response
         else:
             return Response({
                 'error': result['error']
             }, status=status.HTTP_400_BAD_REQUEST)
 
 
+ESPERA_REENVIO_SEGUNDOS = 60
+
+
 @api_view(['POST'])
 @permission_classes([permissions.AllowAny])
+@ratelimit(key='ip', rate='3/m', method='POST', block=True)
 def resend_verification_email(request):
     """
-    Resend email verification code.
+    Envia outro código de verificação.
+
+    A resposta é a mesma quer o email tenha conta ou não (não revela que emails existem),
+    e há uma espera de ESPERA_REENVIO_SEGUNDOS entre códigos para o mesmo email.
     """
-    email = request.data.get('email')
-    
+    from .models import EmailVerification, User as Utilizador
+
+    email = (request.data.get('email') or '').strip().lower()
     if not email:
-        return Response({
-            'error': 'Email é obrigatório.'
-        }, status=status.HTTP_400_BAD_REQUEST)
-    
-    # Resend verification code
-    result = EmailVerificationService.resend_verification_code(email)
-    
-    if result['success']:
-        return Response({
-            'message': 'Novo código enviado para seu email!'
-        })
-    else:
-        return Response({
-            'error': result['error']
-        }, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Indique o email.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    resposta = {'message': 'Se houver uma conta por confirmar com este email, enviámos um código novo.',
+                'aguardar_segundos': ESPERA_REENVIO_SEGUNDOS}
+    ultimo = EmailVerification.objects.filter(email__iexact=email).order_by('-created_at').first()
+    if ultimo:
+        passaram = (timezone.now() - ultimo.created_at).total_seconds()
+        if passaram < ESPERA_REENVIO_SEGUNDOS:
+            falta = int(ESPERA_REENVIO_SEGUNDOS - passaram) + 1
+            return Response({'error': f'Pode pedir outro código daqui a {falta} segundos.', 'aguardar_segundos': falta},
+                            status=status.HTTP_429_TOO_MANY_REQUESTS)
+
+    user = Utilizador.objects.filter(email__iexact=email, is_active=True).first()
+    if user and not user.email_verified:
+        resultado = EmailVerificationService.resend_verification_code(user.email)
+        if not resultado['success']:
+            return Response({'error': 'Não conseguimos enviar o email. Tente outra vez daqui a pouco.'},
+                            status=status.HTTP_503_SERVICE_UNAVAILABLE)
+    return Response(resposta)
 
 
 class GoogleOAuthURLView(generics.GenericAPIView):
     """
-    Generate Google OAuth authorization URL.
+    GET/POST /api/v1/users/oauth/google/url/
+
+    Devolve {auth_url, state}. O `state` é um valor assinado pelo servidor (válido 10 minutos)
+    que o Google devolve em `?state=` no endereço de volta; o cliente envia-o tal e qual em
+    oauth/google/login/ e o servidor confirma que o pedido saiu daqui. O redirect_uri é sempre o
+    configurado no servidor (o mesmo usado na troca do código).
     """
     serializer_class = GoogleOAuthURLSerializer
     permission_classes = [permissions.AllowAny]
+    authentication_classes = []
 
     def get(self, request):
-        """Handle GET request for OAuth URL generation."""
         return self._generate_auth_url(request)
 
     def post(self, request):
-        """Handle POST request for OAuth URL generation."""
         return self._generate_auth_url(request)
 
     def _generate_auth_url(self, request):
-        """Generate the OAuth URL."""
+        from .services import GoogleOAuthErro
         oauth_service = GoogleOAuthService()
-
         try:
-            auth_url = oauth_service.generate_auth_url(
-                state=request.data.get('state') or request.query_params.get('state'),
-                redirect_uri=request.data.get('redirect_uri') or request.query_params.get('redirect_uri')
-            )
-
-            return Response({
-                'auth_url': auth_url
-            })
-
-        except Exception as e:
-            return Response({
-                'error': f'Failed to generate OAuth URL: {str(e)}'
-            }, status=status.HTTP_400_BAD_REQUEST)
+            state = oauth_service.criar_state()
+            auth_url = oauth_service.generate_auth_url(state=state)
+        except GoogleOAuthErro as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception:
+            return Response({'error': 'A entrada com o Google não está disponível agora.'},
+                            status=status.HTTP_400_BAD_REQUEST)
+        return Response({'auth_url': auth_url, 'state': state})
 
 
+@method_decorator(ratelimit(key='ip', rate='10/m', method='POST', block=True), name='post')
 class GoogleOAuthLoginView(generics.GenericAPIView):
     """
-    Authenticate user with Google OAuth.
+    POST /api/v1/users/oauth/google/login/  {code, state?}
+
+    Só aceita o `code` que o Google devolve (trocado no servidor com o nosso client id/secret)
+    ou um `id_token` emitido para o nosso client id. `access_token` é recusado.
     """
     serializer_class = GoogleOAuthSerializer
     permission_classes = [permissions.AllowAny]
+    authentication_classes = []
 
     def post(self, request):
+        from .services import GoogleOAuthErro
+
         serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        if not serializer.is_valid():
+            return Response({'error': 'Pedido inválido para entrar com o Google.'},
+                            status=status.HTTP_400_BAD_REQUEST)
 
         oauth_service = GoogleOAuthService()
-
         try:
-            # Authenticate user using OAuth service
-            user, tokens = oauth_service.authenticate_user(**serializer.validated_data)
+            user = oauth_service.authenticate_user(**serializer.validated_data)
+        except GoogleOAuthErro as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception:
+            import logging
+            logging.getLogger(__name__).exception('Erro na entrada com o Google')
+            return Response({'error': 'Não foi possível entrar com o Google. Tente outra vez.'},
+                            status=status.HTTP_400_BAD_REQUEST)
 
-            # Update last login
-            user.last_login_at = timezone.now()
-            user.save(update_fields=['last_login_at'])
+        user.last_login_at = timezone.now()
+        user.save(update_fields=['last_login_at'])
 
-            # Build response
-            response = Response({
-                'message': 'Login successful',
-                'user': {
-                    'id': str(user.id),
-                    'email': user.email,
-                    'name': user.name,
-                    'role': user.role,
-                    'avatar': user.avatar if user.avatar else None,
-                    'email_verified': user.email_verified,
-                    'google_id': user.google_id,
-                },
-                'tokens': tokens
-            })
-
-            # Set HttpOnly cookies for cross-domain authentication
-            is_secure = not settings.DEBUG
-            samesite = 'None' if is_secure else 'Lax'
-
-            response.set_cookie(
-                key='access_token',
-                value=tokens['access'],
-                max_age=60 * 60,  # 1 hour
-                httponly=True,
-                secure=is_secure,
-                samesite=samesite,
-                path='/',
-            )
-
-            response.set_cookie(
-                key='refresh_token',
-                value=tokens['refresh'],
-                max_age=60 * 60 * 24 * 7,  # 7 days
-                httponly=True,
-                secure=is_secure,
-                samesite=samesite,
-                path='/',
-            )
-
-            return response
-
-        except Exception as e:
-            return Response({
-                'error': f'Authentication failed: {str(e)}'
-            }, status=status.HTTP_400_BAD_REQUEST)
+        access, refresh = emitir_sessao(user)
+        response = Response({
+            'message': 'Entrou com o Google.',
+            'user': {**dados_utilizador(user), 'google_id': user.google_id},
+        })
+        definir_cookies_sessao(response, access, refresh)
+        return response
 
 
 class LogoutView(generics.GenericAPIView):
     """
-    View for user logout - blacklists the refresh token and clears HttpOnly cookies.
+    POST /api/v1/users/logout/
+
+    Funciona mesmo com o access token expirado (sem autenticação): põe na lista negra o
+    refresh token do cookie (ou do corpo, `refresh_token`/`refresh`) se for válido e apaga
+    sempre os dois cookies.
     """
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
+    authentication_classes = []
 
     def post(self, request):
-        try:
-            # Try to get refresh token from request body or cookie
-            refresh_token = request.data.get("refresh_token") or request.COOKIES.get('refresh_token')
-            if refresh_token:
-                token = RefreshToken(refresh_token)
-                token.blacklist()
-
-            # Create response and clear HttpOnly cookies
-            response = Response({
-                'message': 'Logout realizado com sucesso.'
-            })
-
-            # Clear cookies with same settings used to set them
-            is_secure = not settings.DEBUG
-            samesite = 'None' if is_secure else 'Lax'
-
-            response.delete_cookie(
-                key='access_token',
-                path='/',
-                samesite=samesite,
-            )
-            response.delete_cookie(
-                key='refresh_token',
-                path='/',
-                samesite=samesite,
-            )
-
-            return response
-        except Exception as e:
-            # Still clear cookies even on error
-            response = Response({
-                'message': 'Logout realizado com sucesso.'
-            })
-            response.delete_cookie('access_token', path='/')
-            response.delete_cookie('refresh_token', path='/')
-            return response
+        refresh_token = (request.COOKIES.get('refresh_token')
+                         or request.data.get('refresh_token') or request.data.get('refresh'))
+        if refresh_token:
+            try:
+                RefreshToken(refresh_token).blacklist()
+            except Exception:
+                pass  # inválido, expirado ou já na lista negra: nada a fazer
+        response = Response({'message': 'Saiu da sua conta.'})
+        return apagar_cookies_sessao(response)
 
 
-class AdminUsersListView(generics.ListAPIView):
-    """
-    Admin view to list all users with pagination and filtering.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    
+# ============================================================================
+# ADMINISTRAÇÃO (rotas antigas users/admin/users/...)
+#
+# Mantidas para compatibilidade; as novas estão em /api/v1/admin/utilizadores/ (apps.users.admin_api).
+# Usam as mesmas regras: EAdministrador, RegistoAdmin, sessões terminadas ao mudar o papel ou
+# desactivar, confirmação do email novo, apagar de vez só por superutilizadores.
+# ============================================================================
+
+def _utilizador_legado(user):
+    return {
+        'id': str(user.id),
+        'name': user.name,
+        'email': user.email,
+        'phone': user.phone or '',
+        'role': user.role,
+        'is_active': user.is_active,
+        'email_verified': user.email_verified,
+        'date_joined': user.date_joined.isoformat(),
+        'last_login': user.last_login.isoformat() if user.last_login else None,
+        'avatar': user.avatar or None,
+    }
+
+
+def _erro_legado(mensagem, code, estado):
+    from apps.core.exceptions import corpo_erro
+    return Response(corpo_erro(mensagem, code), status=estado)
+
+
+def _inteiro_param(valor, defeito, minimo=1, maximo=None):
+    try:
+        n = max(minimo, int(valor))
+    except (TypeError, ValueError):
+        return defeito
+    return min(n, maximo) if maximo else n
+
+
+class _AdminLegado(APIView):
+    permission_classes = [EAdministrador]
+
+    def _obter(self, id):
+        user = User.objects.filter(pk=id).first()
+        if user is None:
+            from rest_framework.exceptions import NotFound
+            raise NotFound('Não encontrámos este utilizador.')
+        return user
+
+
+class AdminUsersListView(_AdminLegado):
+    """GET users/admin/users/?page=&limit=&search=&role=&status=active|inactive"""
+
     def get(self, request, *args, **kwargs):
-        # Check if user is admin
-        if request.user.role != 'admin':
-            return Response({
-                'error': 'Access denied. Admin privileges required.'
-            }, status=status.HTTP_403_FORBIDDEN)
-        
-        # Get query parameters
-        page = int(request.query_params.get('page', 1))
-        limit = int(request.query_params.get('limit', 20))
+        page = _inteiro_param(request.query_params.get('page'), 1)
+        limit = _inteiro_param(request.query_params.get('limit'), 20, maximo=100)
         search = request.query_params.get('search', '')
         role = request.query_params.get('role', '')
-        status_filter = request.query_params.get('status', '')  # active, inactive, all
-        
-        # Base queryset
-        queryset = User.objects.all().order_by('-date_joined')
-        
-        # Apply filters
+        status_filter = request.query_params.get('status', '')
+
+        # Sem as contas que o próprio apagou (anonimizadas), como em /api/v1/admin/utilizadores/.
+        queryset = User.objects.exclude(email__endswith='@apagado.invalid').order_by('-date_joined')
         if search:
             queryset = queryset.filter(
-                models.Q(name__icontains=search) |
-                models.Q(email__icontains=search) |
-                models.Q(phone__icontains=search)
-            )
-        
+                models.Q(name__icontains=search) | models.Q(email__icontains=search)
+                | models.Q(phone__icontains=search))
         if role and role != 'all':
             queryset = queryset.filter(role=role)
-        
         if status_filter == 'active':
             queryset = queryset.filter(is_active=True)
         elif status_filter == 'inactive':
             queryset = queryset.filter(is_active=False)
-        
-        # Calculate pagination
+
         total = queryset.count()
         start = (page - 1) * limit
         end = start + limit
-        users_page = queryset[start:end]
-        
-        # Serialize users
-        users_data = []
-        for user in users_page:
-            users_data.append({
-                'id': str(user.id),
-                'name': user.name,
-                'email': user.email,
-                'phone': user.phone or '',
-                'role': user.role,
-                'is_active': user.is_active,
-                'email_verified': user.email_verified,
-                'date_joined': user.date_joined.isoformat(),
-                'last_login': user.last_login.isoformat() if user.last_login else None,
-                'avatar': user.avatar or None,
-            })
-        
-        # Calculate stats for dashboard
-        stats = {
-            'total_users': total,
-            'active_users': queryset.filter(is_active=True).count(),
-            'student_users': queryset.filter(role='student').count(),
-            'teacher_users': queryset.filter(role='teacher').count(),
-            'admin_users': queryset.filter(role='admin').count(),
-            'verified_users': queryset.filter(email_verified=True).count(),
-        }
-        
         return Response({
-            'users': users_data,
+            'users': [_utilizador_legado(u) for u in queryset[start:end]],
             'pagination': {
-                'page': page,
-                'limit': limit,
-                'total': total,
+                'page': page, 'limit': limit, 'total': total,
                 'total_pages': (total + limit - 1) // limit,
-                'has_next': end < total,
-                'has_prev': page > 1
+                'has_next': end < total, 'has_prev': page > 1,
             },
-            'stats': stats
+            'stats': {
+                'total_users': total,
+                'active_users': queryset.filter(is_active=True).count(),
+                'student_users': queryset.filter(role='student').count(),
+                'teacher_users': queryset.filter(role='teacher').count(),
+                'admin_users': queryset.filter(role='admin').count(),
+                'verified_users': queryset.filter(email_verified=True).count(),
+            },
         })
 
 
-class AdminUserDetailView(generics.RetrieveAPIView):
-    """
-    Admin view to get user details by ID.
-    """
-    queryset = User.objects.all()
-    serializer_class = UserProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    lookup_field = 'id'
-    
-    def get(self, request, *args, **kwargs):
-        # Check if user is admin
-        if request.user.role != 'admin':
-            return Response({
-                'error': 'Access denied. Admin privileges required.'
-            }, status=status.HTTP_403_FORBIDDEN)
-        
-        try:
-            user = self.get_object()
-            
-            user_data = {
-                'id': str(user.id),
-                'name': user.name,
-                'email': user.email,
-                'phone': user.phone or '',
-                'role': user.role,
-                'is_active': user.is_active,
-                'email_verified': user.email_verified,
-                'date_joined': user.date_joined.isoformat(),
-                'last_login': user.last_login.isoformat() if user.last_login else None,
-                'avatar': user.avatar or None,
-                'google_id': user.google_id if hasattr(user, 'google_id') else None,
-            }
-            
-            return Response({'user': user_data})
-            
-        except User.DoesNotExist:
-            return Response({
-                'error': 'User not found.'
-            }, status=status.HTTP_404_NOT_FOUND)
+class AdminUserDetailView(_AdminLegado):
+    def get(self, request, id):
+        user = self._obter(id)
+        return Response({'user': {**_utilizador_legado(user), 'google_id': user.google_id}})
 
 
-class AdminUserUpdateView(generics.UpdateAPIView):
+class AdminUserUpdateView(_AdminLegado):
     """
-    Admin view to update user basic information.
+    PATCH {name, email, phone}. A conta de outro administrador/superutilizador só um
+    superutilizador a altera. Email novo: fica pendente (email_pendente) até ser confirmado com
+    o código enviado para ele; até lá o email actual continua a valer.
     """
-    queryset = User.objects.all()
-    serializer_class = UserProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    lookup_field = 'id'
-    
-    def dispatch(self, request, *args, **kwargs):
-        # Check if user is admin for all HTTP methods
-        if request.user.is_authenticated and request.user.role != 'admin':
-            return Response({
-                'error': 'Access denied. Admin privileges required.'
-            }, status=status.HTTP_403_FORBIDDEN)
-        return super().dispatch(request, *args, **kwargs)
-    
-    def get(self, request, *args, **kwargs):
-        # Return 403 for non-admin users instead of 405
-        if request.user.role != 'admin':
-            return Response({
-                'error': 'Access denied. Admin privileges required.'
-            }, status=status.HTTP_403_FORBIDDEN)
-        # This endpoint doesn't support GET, but we want 403 not 405 for non-admins
-        return Response({
-            'error': 'Method not allowed.'
-        }, status=status.HTTP_405_METHOD_NOT_ALLOWED)
-    
-    def patch(self, request, *args, **kwargs):
-        
-        try:
-            user = self.get_object()
-            
-            # Get update data
-            name = request.data.get('name')
-            email = request.data.get('email')
-            phone = request.data.get('phone')
-            
-            # Validate required fields
-            if not name or not name.strip():
-                return Response({
-                    'error': 'Name is required.'
-                }, status=status.HTTP_400_BAD_REQUEST)
-            
-            if not email or not email.strip():
-                return Response({
-                    'error': 'Email is required.'
-                }, status=status.HTTP_400_BAD_REQUEST)
-            
-            # Check if email is already taken by another user
-            if email != user.email:
-                if User.objects.filter(email=email).exclude(id=user.id).exists():
-                    return Response({
-                        'error': 'This email is already registered by another user.'
-                    }, status=status.HTTP_400_BAD_REQUEST)
-            
-            # Update user data
-            user.name = name.strip()
-            user.email = email.strip()
-            user.phone = phone.strip() if phone else None
-            user.save()
-            
-            # Return updated user data
-            user_data = {
-                'id': str(user.id),
-                'name': user.name,
-                'email': user.email,
-                'phone': user.phone or '',
-                'role': user.role,
-                'is_active': user.is_active,
-                'email_verified': user.email_verified,
-                'date_joined': user.date_joined.isoformat(),
-                'last_login': user.last_login.isoformat() if user.last_login else None,
-                'avatar': user.avatar or None,
-            }
-            
-            return Response({
-                'message': 'User updated successfully.',
-                'user': user_data
-            })
-            
-        except User.DoesNotExist:
-            return Response({
-                'error': 'User not found.'
-            }, status=status.HTTP_404_NOT_FOUND)
+
+    def patch(self, request, id):
+        from .admin_api import servicos as sv
+        user = self._obter(id)
+        recusa = sv.recusa_editar(request.user, user)
+        if recusa:
+            return recusa
+        name = request.data.get('name')
+        email = request.data.get('email')
+        phone = request.data.get('phone')
+        if not isinstance(name, str) or not name.strip():
+            return _erro_legado('Indique o nome.', 'validation_error', status.HTTP_400_BAD_REQUEST)
+        if not isinstance(email, str) or not email.strip():
+            return _erro_legado('Indique o email.', 'validation_error', status.HTTP_400_BAD_REQUEST)
+        email = email.strip().lower()
+        email_mudou = email != user.email.lower()
+        if email_mudou:
+            from django.core.exceptions import ValidationError as ErroDjango
+            from django.core.validators import validate_email
+            try:
+                validate_email(email)
+            except ErroDjango:
+                return _erro_legado('Escreva um email válido.', 'validation_error', status.HTTP_400_BAD_REQUEST)
+            if User.objects.filter(email__iexact=email).exclude(id=user.id).exists():
+                return _erro_legado('Já existe outra conta com este email.', 'validation_error',
+                                    status.HTTP_400_BAD_REQUEST)
+        antes = {'name': user.name, 'email': user.email, 'phone': user.phone}
+        user.name = name.strip()
+        user.phone = phone.strip() if isinstance(phone, str) and phone.strip() else None
+        user.save()
+        sv.registar(request, 'editar_utilizador', user, detalhes={
+            'antes': antes, 'depois': {'name': user.name, 'email': user.email, 'phone': user.phone},
+            **({'email_pendente': email} if email_mudou else {})})
+        mensagem = 'Utilizador actualizado.'
+        if email_mudou:
+            enviado, _ = sv.pedir_mudanca_email(user, email, request)
+            mensagem = (f'Utilizador actualizado. Enviámos um código para {email}: o email só muda quando for '
+                        'confirmado.' if enviado else
+                        f'Utilizador actualizado, mas não conseguimos enviar o código para {email}. O email não mudou.')
+        return Response({'message': mensagem,
+                         'user': {**_utilizador_legado(user), 'email_pendente': user.email_pendente or None}})
 
 
-class AdminUserRoleUpdateView(generics.UpdateAPIView):
-    """
-    Admin view to update user role.
-    """
-    queryset = User.objects.all()
-    permission_classes = [permissions.IsAuthenticated]
-    lookup_field = 'id'
-    
-    def dispatch(self, request, *args, **kwargs):
-        # Check if user is admin for all HTTP methods
-        if request.user.is_authenticated and request.user.role != 'admin':
-            return Response({
-                'error': 'Access denied. Admin privileges required.'
-            }, status=status.HTTP_403_FORBIDDEN)
-        return super().dispatch(request, *args, **kwargs)
-    
-    def get(self, request, *args, **kwargs):
-        # Return 403 for non-admin users instead of 405
-        if request.user.role != 'admin':
-            return Response({
-                'error': 'Access denied. Admin privileges required.'
-            }, status=status.HTTP_403_FORBIDDEN)
-        # This endpoint doesn't support GET, but we want 403 not 405 for non-admins
-        return Response({
-            'error': 'Method not allowed.'
-        }, status=status.HTTP_405_METHOD_NOT_ALLOWED)
-    
-    def patch(self, request, *args, **kwargs):
-        
-        try:
-            user = self.get_object()
-            new_role = request.data.get('role')
-            
-            # Validate role
-            valid_roles = ['student', 'teacher', 'admin']
-            if not new_role or new_role not in valid_roles:
-                return Response({
-                    'error': f'Invalid role. Must be one of: {", ".join(valid_roles)}'
-                }, status=status.HTTP_400_BAD_REQUEST)
-            
-            # Prevent admin from changing their own role
-            if user.id == request.user.id:
-                return Response({
-                    'error': 'You cannot change your own role.'
-                }, status=status.HTTP_400_BAD_REQUEST)
-            
-            # Update role
-            old_role = user.role
+class AdminUserRoleUpdateView(_AdminLegado):
+    """PATCH {role}. Nunca o próprio (400); de/para admin só superutilizador; termina as sessões."""
+
+    def patch(self, request, id):
+        from .admin_api import servicos as sv
+        user = self._obter(id)
+        new_role = request.data.get('role')
+        valid_roles = ['student', 'teacher', 'admin']
+        if not new_role or new_role not in valid_roles:
+            return _erro_legado(f'Papel inválido. Use um destes: {", ".join(valid_roles)}.', 'validation_error',
+                                status.HTTP_400_BAD_REQUEST)
+        if user.id == request.user.id:
+            return _erro_legado('Não pode mudar o seu próprio perfil.', 'propria_conta', status.HTTP_400_BAD_REQUEST)
+        if (user.role == 'admin' or new_role == 'admin' or user.is_superuser) and not request.user.is_superuser:
+            return _erro_legado('Só um superutilizador pode dar ou tirar o papel de administrador.',
+                                'alvo_administrador', status.HTTP_403_FORBIDDEN)
+        old_role = user.role
+        if old_role != new_role:
             user.role = new_role
-            user.save()
-            
-            return Response({
-                'message': f'User role updated from {old_role} to {new_role}.',
-                'user': {
-                    'id': str(user.id),
-                    'name': user.name,
-                    'email': user.email,
-                    'role': user.role,
-                    'is_active': user.is_active,
-                }
-            })
-            
-        except User.DoesNotExist:
-            return Response({
-                'error': 'User not found.'
-            }, status=status.HTTP_404_NOT_FOUND)
-
-
-class AdminUserToggleStatusView(generics.UpdateAPIView):
-    """
-    Admin view to toggle user active status.
-    """
-    queryset = User.objects.all()
-    permission_classes = [permissions.IsAuthenticated]
-    lookup_field = 'id'
-    
-    def dispatch(self, request, *args, **kwargs):
-        # Check if user is admin for all HTTP methods
-        if request.user.is_authenticated and request.user.role != 'admin':
-            return Response({
-                'error': 'Access denied. Admin privileges required.'
-            }, status=status.HTTP_403_FORBIDDEN)
-        return super().dispatch(request, *args, **kwargs)
-    
-    def get(self, request, *args, **kwargs):
-        # Return 403 for non-admin users instead of 405
-        if request.user.role != 'admin':
-            return Response({
-                'error': 'Access denied. Admin privileges required.'
-            }, status=status.HTTP_403_FORBIDDEN)
-        # This endpoint doesn't support GET, but we want 403 not 405 for non-admins
+            user.save(update_fields=['role', 'updated_at'])
+            sv.terminar_todas_sessoes(user)
+            if new_role == 'teacher':
+                sv.garantir_perfil_professor(user)
+            sv.registar(request, 'editar_utilizador', user, detalhes={'alterado': {'papel': [old_role, new_role]}})
         return Response({
-            'error': 'Method not allowed.'
-        }, status=status.HTTP_405_METHOD_NOT_ALLOWED)
-    
-    def patch(self, request, *args, **kwargs):
-        
-        try:
-            user = self.get_object()
-            
-            # Prevent admin from deactivating themselves
-            if user.id == request.user.id:
-                return Response({
-                    'error': 'You cannot deactivate your own account.'
-                }, status=status.HTTP_400_BAD_REQUEST)
-            
-            # Toggle status
-            old_status = user.is_active
-            user.is_active = not user.is_active
-            user.save()
-            
-            action = 'activated' if user.is_active else 'deactivated'
-            
-            return Response({
-                'message': f'User {action} successfully.',
-                'user': {
-                    'id': str(user.id),
-                    'name': user.name,
-                    'email': user.email,
-                    'role': user.role,
-                    'is_active': user.is_active,
-                }
-            })
-            
-        except User.DoesNotExist:
-            return Response({
-                'error': 'User not found.'
-            }, status=status.HTTP_404_NOT_FOUND)
+            'message': f'Papel mudado de {old_role} para {new_role}.',
+            'user': {'id': str(user.id), 'name': user.name, 'email': user.email, 'role': user.role,
+                     'is_active': user.is_active},
+        })
 
 
-class AdminUserDeleteView(generics.DestroyAPIView):
-    """
-    Admin view to delete user with cascade handling.
-    """
-    queryset = User.objects.all()
-    permission_classes = [permissions.IsAuthenticated]
-    lookup_field = 'id'
-    
-    def dispatch(self, request, *args, **kwargs):
-        # Check if user is admin for all HTTP methods
-        if request.user.is_authenticated and request.user.role != 'admin':
-            return Response({
-                'error': 'Access denied. Admin privileges required.'
-            }, status=status.HTTP_403_FORBIDDEN)
-        return super().dispatch(request, *args, **kwargs)
-    
-    def get(self, request, *args, **kwargs):
-        # Return 403 for non-admin users instead of 405
-        if request.user.role != 'admin':
-            return Response({
-                'error': 'Access denied. Admin privileges required.'
-            }, status=status.HTTP_403_FORBIDDEN)
-        # This endpoint doesn't support GET, but we want 403 not 405 for non-admins
+class AdminUserToggleStatusView(_AdminLegado):
+    """PATCH: desactivar = suspender (motivo "outro"); activar = reactivar."""
+
+    def patch(self, request, id):
+        from .admin_api import servicos as sv
+        user = self._obter(id)
+        if user.email.endswith('@apagado.invalid'):
+            return _erro_legado('Esta conta foi apagada pelo próprio utilizador.', 'conta_apagada',
+                                status.HTTP_409_CONFLICT)
+        if user.id == request.user.id:
+            return _erro_legado('Não pode desactivar a sua própria conta.', 'propria_conta',
+                                status.HTTP_400_BAD_REQUEST)
+        if sv.e_admin_alvo(user) and not request.user.is_superuser:
+            return _erro_legado('Só um superutilizador pode fazer isto a outro administrador.',
+                                'alvo_administrador', status.HTTP_403_FORBIDDEN)
+        if user.is_active:
+            sv.suspender(user, request.user, 'outro', '', False, request)
+        else:
+            sv.reactivar(user, request.user, request)
+        user.refresh_from_db()
+        action = 'activado' if user.is_active else 'desactivado'
         return Response({
-            'error': 'Method not allowed.'
-        }, status=status.HTTP_405_METHOD_NOT_ALLOWED)
-    
-    def delete(self, request, *args, **kwargs):
+            'message': f'Utilizador {action}.',
+            'user': {'id': str(user.id), 'name': user.name, 'email': user.email, 'role': user.role,
+                     'is_active': user.is_active},
+        })
 
-        try:
-            user = self.get_object()
 
-            # Prevent admin from deleting themselves
-            if user.id == request.user.id:
-                return Response({
-                    'error': 'You cannot delete your own account.'
-                }, status=status.HTTP_400_BAD_REQUEST)
+class AdminUserDeleteView(_AdminLegado):
+    """DELETE: apagar de vez (só superutilizador; contas sem pagamentos, certificados nem cursos)."""
 
-            # Store user info for response
-            user_info = {
-                'id': str(user.id),
-                'name': user.name,
-                'email': user.email,
-                'role': user.role,
-            }
-
-            # Delete user (will cascade to related objects)
-            user.delete()
-
-            return Response({
-                'message': f'User {user_info["name"]} deleted successfully.',
-                'user_info': user_info
-            })
-
-        except User.DoesNotExist:
-            return Response({
-                'error': 'User not found.'
-            }, status=status.HTTP_404_NOT_FOUND)
+    def delete(self, request, id):
+        from .admin_api import servicos as sv
+        return sv.apagar_definitivamente(request, self._obter(id))
 
 
 # ============================================================================
@@ -1173,38 +1004,34 @@ class AdminUserDeleteView(generics.DestroyAPIView):
 
 class FeedbackStatusView(generics.GenericAPIView):
     """
-    Check if user should see a feedback prompt.
+    Se o aluno deve ver agora o pedido de opinião, e com que frase.
 
-    GET /api/users/feedback/status/
+    GET /api/v1/users/feedback/status/
     """
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
         from .models import UserEngagementMetrics
-        from .serializers import FeedbackStatusSerializer
+        from . import opiniao
 
-        # Get or create engagement metrics
-        metrics, created = UserEngagementMetrics.objects.get_or_create(
-            user=request.user
-        )
-
-        should_show, trigger = metrics.should_show_feedback_prompt()
-
-        data = {
-            'should_show_prompt': should_show,
+        metrics, _ = UserEngagementMetrics.objects.get_or_create(user=request.user)
+        mostrar, chave, trigger, frase, m = opiniao.pedido(request.user, metrics)
+        opiniao.sincronizar(metrics, m)
+        return Response({
+            'should_show_prompt': mostrar,
             'trigger': trigger,
+            'chave': chave,
+            'frase': frase,
             'last_feedback_at': metrics.last_feedback_at,
             'total_feedbacks_given': metrics.total_feedbacks_given,
             'engagement_summary': {
-                'lessons_completed': metrics.total_lessons_completed,
-                'courses_completed': metrics.total_courses_completed,
-                'ai_sessions': metrics.total_ai_sessions,
-                'days_active': metrics.total_days_active,
-                'current_streak': metrics.current_streak,
-            }
-        }
-
-        return Response(FeedbackStatusSerializer(data).data)
+                'lessons_completed': m['licoes'],
+                'courses_completed': m['cursos'],
+                'ai_sessions': m['conversas'],
+                'days_active': m['dias'],
+                'current_streak': m['sequencia'],
+            },
+        })
 
 
 class SubmitFeedbackView(generics.CreateAPIView):
@@ -1218,7 +1045,7 @@ class SubmitFeedbackView(generics.CreateAPIView):
 
     def post(self, request):
         from .models import UserFeedback, UserEngagementMetrics, FeedbackPromptLog
-        from .serializers import SubmitFeedbackSerializer, UserFeedbackSerializer
+        from .serializers import SubmitFeedbackSerializer, MinhaOpiniaoSerializer
         from django.utils import timezone
 
         serializer = SubmitFeedbackSerializer(data=request.data)
@@ -1250,8 +1077,8 @@ class SubmitFeedbackView(generics.CreateAPIView):
             )
 
         return Response({
-            'message': 'Thank you for your feedback!',
-            'feedback': UserFeedbackSerializer(feedback).data
+            'message': 'Obrigado pela sua opinião.',
+            'feedback': MinhaOpiniaoSerializer(feedback).data
         }, status=status.HTTP_201_CREATED)
 
 
@@ -1269,7 +1096,16 @@ class DismissFeedbackPromptView(generics.GenericAPIView):
         from django.utils import timezone
         import json
 
-        trigger = request.data.get('trigger', 'prompt')
+        from .models import UserFeedback
+
+        trigger = request.data.get('trigger') or 'prompt'
+        validos = {c for c, _ in UserFeedback.TRIGGER_CHOICES}
+        if not isinstance(trigger, str) or trigger not in validos:
+            return Response({'error': 'Motivo do pedido de opinião inválido.',
+                             'message': 'Motivo do pedido de opinião inválido.',
+                             'code': 'validation_error',
+                             'details': {'trigger': [f'Use um destes: {", ".join(sorted(validos))}.']}},
+                            status=status.HTTP_400_BAD_REQUEST)
         action = request.data.get('action', 'dismissed')  # 'dismissed' or 'skipped'
 
         # Validate action
@@ -1283,7 +1119,7 @@ class DismissFeedbackPromptView(generics.GenericAPIView):
         # Limit context_data to 10KB
         try:
             if len(json.dumps(context_data)) > 10240:
-                context_data = {'error': 'context_data too large'}
+                context_data = {'erro': 'context_data demasiado grande'}
         except (TypeError, ValueError):
             context_data = {}
 
@@ -1303,8 +1139,8 @@ class DismissFeedbackPromptView(generics.GenericAPIView):
         )
 
         return Response({
-            'message': 'Feedback prompt dismissed.',
-            'next_prompt_available_in': '3 days'
+            'message': 'Pedido de opinião fechado.',
+            'next_prompt_available_in': '3 dias'
         })
 
 
@@ -1318,7 +1154,7 @@ class UserFeedbackListView(generics.ListAPIView):
 
     def get(self, request):
         from .models import UserFeedback
-        from .serializers import UserFeedbackSerializer
+        from .serializers import MinhaOpiniaoSerializer
 
         feedbacks = UserFeedback.objects.filter(
             user=request.user
@@ -1326,7 +1162,7 @@ class UserFeedbackListView(generics.ListAPIView):
 
         return Response({
             'count': feedbacks.count(),
-            'feedbacks': UserFeedbackSerializer(feedbacks, many=True).data
+            'feedbacks': MinhaOpiniaoSerializer(feedbacks, many=True).data
         })
 
 
@@ -1351,7 +1187,13 @@ class AdminFeedbackListView(generics.ListAPIView):
 
         rating = request.query_params.get('rating')
         if rating:
-            queryset = queryset.filter(rating=int(rating))
+            try:
+                queryset = queryset.filter(rating=int(rating))
+            except (TypeError, ValueError):
+                from apps.core.exceptions import corpo_erro
+                return Response(corpo_erro('A nota tem de ser um número de 1 a 5.', 'validation_error',
+                                           {'rating': ['A nota tem de ser um número de 1 a 5.']}),
+                                status=status.HTTP_400_BAD_REQUEST)
 
         allow_public = request.query_params.get('allow_public')
         if allow_public:
@@ -1362,8 +1204,8 @@ class AdminFeedbackListView(generics.ListAPIView):
             queryset = queryset.filter(is_reviewed=is_reviewed.lower() == 'true')
 
         # Pagination
-        limit = int(request.query_params.get('limit', 50))
-        offset = int(request.query_params.get('offset', 0))
+        limit = _inteiro_param(request.query_params.get('limit'), 50, maximo=200)
+        offset = _inteiro_param(request.query_params.get('offset'), 0, minimo=0)
 
         total = queryset.count()
         feedbacks = queryset[offset:offset + limit]
@@ -1374,6 +1216,13 @@ class AdminFeedbackListView(generics.ListAPIView):
             'offset': offset,
             'feedbacks': UserFeedbackSerializer(feedbacks, many=True).data
         })
+
+
+# Área profissional (preferences.area = categoria dos cursos) como aparece no site.
+AREAS_PT = {
+    'Industry English': 'Petróleo e Gás', 'Financial English': 'Banca', 'Business English': 'Negócios',
+    'Medical English': 'Saúde', 'Legal English': 'Direito', 'Technical English': 'Tecnologia',
+}
 
 
 class PublicTestimonialsView(generics.ListAPIView):
@@ -1387,41 +1236,22 @@ class PublicTestimonialsView(generics.ListAPIView):
     def get(self, request):
         from .models import UserFeedback
 
-        # Get feedbacks that users allowed to be public
-        # Ensure rating is not null and comment exists
-        feedbacks = UserFeedback.objects.filter(
-            allow_public=True,
-            rating__gte=4,  # Only good ratings (4 or 5)
-            rating__isnull=False,  # Ensure rating exists
-            comment__isnull=False
-        ).exclude(
-            comment=''
-        ).select_related('user').order_by('-created_at')[:10]
-
-        # Return anonymized data
+        # Só as aprovadas pela administração, com autorização do aluno e marcadas para mostrar,
+        # pela ordem escolhida na administração (GET/PATCH /api/v1/admin/testemunhos/).
+        from .admin_api.opinioes import area_de, no_site_qs, nome_curto
+        # Só as aprovadas pela administração, com autorização do aluno, marcadas para mostrar e
+        # de contas activas, pela ordem escolhida na administração (/api/v1/admin/testemunhos/).
+        # O nome é o mesmo da pré-visualização da administração (nome_curto).
+        feedbacks = no_site_qs().select_related('user').order_by('ordem', '-created_at')[:12]
         testimonials = []
         for feedback in feedbacks:
-            name = getattr(feedback.user, 'name', '') or ''
-            name = name.strip()
-
-            # Anonymize name safely: "João Silva" -> "João S."
-            if not name:
-                anon_name = "Utilizador"
-            else:
-                parts = name.split()
-                if len(parts) > 1:
-                    anon_name = f"{parts[0]} {parts[-1][0]}."
-                elif len(parts) == 1 and len(parts[0]) > 0:
-                    anon_name = f"{parts[0][0]}."
-                else:
-                    anon_name = "Utilizador"
-
-            # Don't expose internal UUID - use sequential index instead
+            # Sem o UUID interno: índice sequencial.
             testimonials.append({
-                'id': len(testimonials) + 1,  # Sequential ID instead of UUID
-                'name': anon_name,
+                'id': len(testimonials) + 1,
+                'name': nome_curto(feedback.user.name),
                 'rating': feedback.rating,
                 'comment': feedback.comment,
+                'area': area_de(feedback.user),
                 'feedback_type': feedback.feedback_type,
                 'created_at': feedback.created_at
             })
@@ -1454,7 +1284,7 @@ class AdminFeedbackUpdateView(generics.UpdateAPIView):
             feedback = UserFeedback.objects.select_related('user').get(id=id)
         except UserFeedback.DoesNotExist:
             return Response({
-                'error': 'Feedback not found.'
+                'error': 'Não encontrámos esta opinião.'
             }, status=status.HTTP_404_NOT_FOUND)
 
         changes = []
@@ -1465,9 +1295,21 @@ class AdminFeedbackUpdateView(generics.UpdateAPIView):
             feedback.is_reviewed = bool(request.data['is_reviewed'])
             if old_value != feedback.is_reviewed:
                 changes.append(f"is_reviewed: {old_value} -> {feedback.is_reviewed}")
+                # Rota antiga: revista = aprovada (fica no fim da ordem); tirar a revisão volta a "por rever".
+                if feedback.is_reviewed:
+                    from .admin_api.opinioes import aprovar
+                    aprovar(feedback)
+                else:
+                    feedback.estado = UserFeedback.POR_REVER
 
         if 'admin_notes' in request.data:
-            notes = str(request.data['admin_notes'])[:2000]  # Limit to 2000 chars
+            from .admin_api.opinioes import NOTA_INTERNA_MAX
+            notes = str(request.data['admin_notes'] or '')
+            if len(notes) > NOTA_INTERNA_MAX:
+                from apps.core.exceptions import corpo_erro
+                msg = f'A nota interna tem no máximo {NOTA_INTERNA_MAX} caracteres.'
+                return Response(corpo_erro(msg, 'validation_error', {'admin_notes': [msg]}),
+                                status=status.HTTP_400_BAD_REQUEST)
             if feedback.admin_notes != notes:
                 changes.append("admin_notes updated")
                 feedback.admin_notes = notes
@@ -1483,19 +1325,18 @@ class AdminFeedbackUpdateView(generics.UpdateAPIView):
             elif not feedback.allow_public and new_value:
                 # Admin trying to add public permission - NOT allowed
                 return Response({
-                    'error': 'Não é possível tornar público sem consentimento do utilizador. Apenas o utilizador pode autorizar a publicação do seu feedback.'
+                    'error': 'Não é possível tornar pública sem autorização do aluno. Só o próprio pode autorizar a publicação da sua opinião.'
                 }, status=status.HTTP_403_FORBIDDEN)
 
         feedback.save()
 
         # Log admin action for audit
         if changes:
-            logger.info(
-                f"Admin {request.user.email} updated feedback {id}: {', '.join(changes)}"
-            )
+            from .admin_api.servicos import registar
+            registar(request, 'opiniao', feedback, alvo_tipo='opiniao', detalhes={'alteracoes': changes})
 
         return Response({
-            'message': 'Feedback actualizado com sucesso.',
+            'message': 'Opinião actualizada.',
             'feedback': UserFeedbackSerializer(feedback).data
         })
 

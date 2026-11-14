@@ -191,6 +191,15 @@ def on_vapi_session_saved(sender, instance, created, **kwargs):
         logger.debug("Skipping grade recalc - raw mode")
         return
 
+    # Sessões da conversa/ nascem "em curso" (nota 0): a nota é recalculada ao terminar.
+    if instance.status != VapiSession.STATUS_AVALIADA:
+        return
+
+    recalcular_notas_conversa(instance)
+
+
+def recalcular_notas_conversa(instance):
+    """Recalcula as notas dos cursos a que esta sessão de conversa conta (nunca levanta excepções)."""
     try:
         # Import here to avoid circular imports
         from apps.courses.services.grade_calculator import GradeCalculatorService

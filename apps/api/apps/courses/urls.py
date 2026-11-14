@@ -8,6 +8,7 @@ new features in v2.
 
 from django.urls import path, include
 from . import views
+from apps.courses.legado import rota_removida
 
 app_name = 'courses'
 
@@ -47,24 +48,23 @@ urlpatterns = [
     path('users/<uuid:userId>/progress/<uuid:courseId>/update/', views.update_user_course_progress, name='update_user_course_progress'),
     
     # Stripe payments - matches Express /transactions/stripe-payment-intent
-    path('payments/stripe/intent/', views.create_stripe_payment_intent, name='stripe_payment_intent'),
     
     # Video upload - matches Express /:courseId/sections/:sectionId/chapters/:chapterId/get-upload-url
     path('<uuid:courseId>/sections/<uuid:sectionId>/chapters/<uuid:chapterId>/get-upload-url/', 
-         views.get_upload_video_url, name='get_upload_video_url'),
+         rota_removida, name='get_upload_video_url'),
     
     # Resource upload - for PDFs, audio, images, etc.
     path('<uuid:courseId>/sections/<uuid:sectionId>/chapters/<uuid:chapterId>/get-resource-upload-url/', 
-         views.get_resource_upload_url, name='get_resource_upload_url'),
+         rota_removida, name='get_resource_upload_url'),
     
     # Course image upload presigned URL (new method - direct S3 upload)
-    path('<uuid:courseId>/get-image-upload-url/', views.get_course_image_upload_url, name='get_course_image_upload_url'),
+    path('<uuid:courseId>/get-image-upload-url/', rota_removida, name='get_course_image_upload_url'),
     
     # Update course image URL in database after S3 upload
-    path('<uuid:courseId>/update-image-url/', views.update_course_image_url, name='update_course_image_url'),
+    path('<uuid:courseId>/update-image-url/', rota_removida, name='update_course_image_url'),
     
     # Image upload for course cover (old method - via backend)
-    path('<uuid:courseId>/upload-image/', views.upload_course_image, name='upload_course_image'),
+    path('<uuid:courseId>/upload-image/', rota_removida, name='upload_course_image'),
     
     # Chapter resources (Phase 1 Bridge - maintained for compatibility)
     path('chapters/<uuid:chapterId>/resources/', 

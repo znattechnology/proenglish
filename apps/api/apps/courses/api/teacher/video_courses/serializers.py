@@ -363,6 +363,9 @@ class CourseCreateSerializer(serializers.ModelSerializer):
         if 'title' not in validated_data or not validated_data['title']:
             validated_data['title'] = "Novo Curso"
 
+        from apps.courses.ciclo import limpar_criacao
+        limpar_criacao(validated_data)
+
         return super().create(validated_data)
 
 
@@ -382,6 +385,8 @@ class CourseUpdateSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         # Extract sections data before updating course
         sections_data = validated_data.pop('sections', [])
+        from apps.courses.ciclo import limpar_edicao
+        limpar_edicao(instance, validated_data)
         
         # Update course basic fields
         for attr, value in validated_data.items():
@@ -664,12 +669,9 @@ class UserCourseProgressUpdateSerializer(serializers.Serializer):
                     continue
         
         # Recalculate overall progress
-        total_chapters = instance.course.total_chapters
-        if total_chapters > 0:
-            completed_chapters = instance.chapter_progress.filter(completed=True).count()
-            instance.overallProgress = (completed_chapters / total_chapters) * 100
-        else:
-            instance.overallProgress = 0
+        # Só contam as aulas visíveis aos alunos (ver apps.courses.certificados.progresso_actual).
+        from apps.courses.certificados import progresso_actual
+        instance.overallProgress = progresso_actual(instance.user, instance.course)
         
         instance.save()
         return instance

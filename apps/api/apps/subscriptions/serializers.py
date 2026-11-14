@@ -7,6 +7,7 @@ lidando com serialização de dados para comunicação frontend-backend.
 
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from .limites import limite_conversa_efetivo
 from .models import (
     SubscriptionPlan,
     UserSubscription,
@@ -25,7 +26,9 @@ class SubscriptionPlanSerializer(serializers.ModelSerializer):
     yearly_discount_percentage = serializers.ReadOnlyField(source='get_yearly_discount_percentage')
     is_most_popular = serializers.SerializerMethodField()
     features = serializers.SerializerMethodField()
-    
+    pode_experimentar = serializers.SerializerMethodField()
+    so_renovacao = serializers.SerializerMethodField()
+
     class Meta:
         model = SubscriptionPlan
         fields = [
@@ -37,6 +40,11 @@ class SubscriptionPlanSerializer(serializers.ModelSerializer):
             'yearly_price',
             'yearly_discount_percentage',
             'is_most_popular',
+            'destaque',
+            'dias_teste',
+            'pode_experimentar',
+            # Plano desactivado que quem pede ainda tem (só pode renovar/converter, não é para novos)
+            'so_renovacao',
             'features',
             # Limitações
             'daily_lessons_limit',
@@ -58,52 +66,64 @@ class SubscriptionPlanSerializer(serializers.ModelSerializer):
         ]
         
     def get_is_most_popular(self, obj):
-        """Marca o plano Premium como mais popular"""
-        return obj.plan_type == 'PREMIUM'
+        """O plano em destaque (escolhido na administração; só um de cada vez)."""
+        return obj.destaque
+
+    def get_so_renovacao(self, obj):
+        return not obj.is_active and obj.plan_type != 'FREE'
+
+    def get_pode_experimentar(self, obj):
+        """
+        Se quem pede pode começar o teste grátis deste plano. Sem sessão: True se o plano
+        tem teste (uma conta nova pode experimentar).
+        """
+        if obj.plan_type == 'FREE' or not obj.dias_teste or not obj.is_active:
+            return False
+        request = self.context.get('request')
+        user = getattr(request, 'user', None)
+        if user is None or not user.is_authenticated:
+            return True
+        cache = self.context.setdefault('_teste', {})
+        if 'historico' not in cache:
+            from apps.pagamentos.teste import historico_teste
+            cache['historico'] = historico_teste(user)
+            cache['sub'] = UserSubscription.objects.filter(user=user).select_related('plan').first()
+        from apps.pagamentos.teste import motivo_sem_teste
+        return motivo_sem_teste(user, obj, cache['sub'], _historico=cache['historico']) is None
     
     def get_features(self, obj):
-        """Retorna lista de recursos baseado no plano"""
+        """Vantagens do plano em pt-PT, geradas a partir dos limites reais do plano."""
         features = []
-        
+        if obj.daily_lessons_limit:
+            features.append(f"{obj.daily_lessons_limit} lições por dia")
+        else:
+            features.append("Lições ilimitadas")
+        if obj.daily_speaking_minutes:
+            features.append(f"{obj.daily_speaking_minutes} minutos de conversa com o tutor por dia")
+        elif obj.daily_speaking_minutes is None:
+            features.append("Conversa com o tutor sem limite diário")
+        if obj.hearts_limit and obj.hearts_limit > 0:
+            features.append(f"{obj.hearts_limit} vidas, que recuperam com o tempo")
+        else:
+            features.append("Vidas ilimitadas")
         if obj.plan_type == 'FREE':
-            features = [
-                f"{obj.daily_lessons_limit} lições por dia",
-                f"{obj.daily_speaking_minutes} min de Speaking/dia", 
-                f"{obj.daily_listening_minutes} min de Listening/dia",
-                f"{obj.hearts_limit} vidas",
-                "1 curso básico",
-                "Progresso básico"
-            ]
+            features.append("Cursos gratuitos")
         elif obj.plan_type == 'PREMIUM':
-            features = [
-                "Lições ILIMITADAS",
-                "Speaking & Listening ILIMITADO",
-                "Vidas infinitas",
-                "TODOS os cursos",
-                "Certificados oficiais",
-                "Analytics detalhado",
-                "Download offline",
-                "Suporte por email",
-                f"{obj.streak_freeze} freeze/semana"
-            ]
-        elif obj.plan_type == 'PREMIUM_PLUS':
-            features = [
-                "TUDO do Premium",
-                "IA Personal Tutor",
-                f"{obj.native_teacher_sessions} sessões com nativos/mês",
-                "Correção avançada IA",
-                "Suporte prioritário",
-                "Acesso antecipado",
-                f"{obj.multiple_devices} dispositivos simultâneos",
-                f"{obj.streak_freeze} freezes/semana"
-            ]
-            
+            features.append("Cursos gratuitos e Premium")
+        else:
+            features.append("Todos os cursos, incluindo os Premium Plus")
+        if obj.certificates:
+            features.append("Certificados de conclusão")
+        if obj.advanced_analytics:
+            features.append("Estatísticas detalhadas do progresso")
+        if obj.priority_support:
+            features.append("Apoio prioritário")
         return features
 
 
 class UserSubscriptionSerializer(serializers.ModelSerializer):
     """
-    Serializer para Assinatura do Usuário
+    Serializer para Assinatura do Utilizador
     """
     plan = SubscriptionPlanSerializer(read_only=True)
     user_name = serializers.CharField(source='user.username', read_only=True)
@@ -115,7 +135,19 @@ class UserSubscriptionSerializer(serializers.ModelSerializer):
     # Usage stats
     daily_usage = serializers.SerializerMethodField()
     hearts_status = serializers.SerializerMethodField()
-    
+
+    termina_em = serializers.SerializerMethodField()
+    termina_hoje = serializers.SerializerMethodField()
+    pode_renovar = serializers.SerializerMethodField()
+    renovavel_a_partir_de = serializers.SerializerMethodField()
+    periodo = serializers.SerializerMethodField()
+    valor_periodo_kz = serializers.SerializerMethodField()
+    em_teste = serializers.SerializerMethodField()
+    teste_termina_em = serializers.SerializerMethodField()
+    pode_experimentar = serializers.SerializerMethodField()
+    dias_teste = serializers.SerializerMethodField()
+    plano_teste = serializers.SerializerMethodField()
+
     class Meta:
         model = UserSubscription
         fields = [
@@ -133,14 +165,84 @@ class UserSubscriptionSerializer(serializers.ModelSerializer):
             'is_trial_subscription',
             'daily_usage',
             'hearts_status',
-            'stripe_subscription_id',
             'last_payment_at',
-            'next_billing_date'
+            'next_billing_date',
+            'lembretes_renovacao',
+            # Renovação manual (Multicaixa Express): valores calculados no servidor
+            'termina_em',
+            'termina_hoje',
+            'pode_renovar',
+            'renovavel_a_partir_de',
+            'periodo',
+            'valor_periodo_kz',
+            # Teste grátis de um plano pago
+            'em_teste',
+            'teste_termina_em',
+            'pode_experimentar',
+            'dias_teste',
+            'plano_teste',
         ]
         read_only_fields = [
-            'id', 'started_at', 'stripe_subscription_id',
-            'last_payment_at', 'next_billing_date'
+            'id', 'started_at',
+            'last_payment_at', 'next_billing_date', 'lembretes_renovacao'
         ]
+
+    def _renovacao(self, obj):
+        cache = getattr(self, '_cache_renovacao', None)
+        if cache is None:
+            cache = self._cache_renovacao = {}
+        if obj.pk not in cache:
+            from apps.pagamentos.services import periodo_atual
+            cache[obj.pk] = periodo_atual(obj)
+        return cache[obj.pk]
+
+    def _teste(self, obj):
+        cache = getattr(self, '_cache_teste', None)
+        if cache is None:
+            cache = self._cache_teste = {}
+        if obj.pk not in cache:
+            from apps.pagamentos.teste import estado_teste
+            cache[obj.pk] = estado_teste(obj.user, None, sub=obj)
+        return cache[obj.pk]
+
+    def get_em_teste(self, obj):
+        return self._teste(obj)['em_teste']
+
+    def get_teste_termina_em(self, obj):
+        return self._teste(obj)['teste_termina_em']
+
+    def get_pode_experimentar(self, obj):
+        return self._teste(obj)['pode_experimentar']
+
+    def get_dias_teste(self, obj):
+        return self._teste(obj)['dias_teste']
+
+    def get_plano_teste(self, obj):
+        return self._teste(obj)['plano_teste']
+
+    def get_termina_em(self, obj):
+        if obj.plan.plan_type == 'FREE' or not obj.expires_at:
+            return None
+        return obj.expires_at.isoformat()
+
+    def get_termina_hoje(self, obj):
+        from .services import termina_hoje
+        return termina_hoje(obj)
+
+    def get_pode_renovar(self, obj):
+        from .services import pode_renovar
+        return pode_renovar(obj)
+
+    def get_renovavel_a_partir_de(self, obj):
+        from .services import renovavel_a_partir_de
+        quando = renovavel_a_partir_de(obj)
+        return quando.isoformat() if quando else None
+
+    def get_periodo(self, obj):
+        return self._renovacao(obj)['periodo']
+
+    def get_valor_periodo_kz(self, obj):
+        return self._renovacao(obj)['valor_periodo_kz']
     
     def get_daily_usage(self, obj):
         """Retorna uso diário atual"""
@@ -149,7 +251,7 @@ class UserSubscriptionSerializer(serializers.ModelSerializer):
             'lessons_used': obj.daily_lessons_used,
             'lessons_limit': obj.plan.daily_lessons_limit,
             'speaking_minutes_used': obj.daily_speaking_minutes_used,
-            'speaking_limit': obj.plan.daily_speaking_minutes,
+            'speaking_limit': limite_conversa_efetivo(obj),
             'listening_minutes_used': obj.daily_listening_minutes_used,
             'listening_limit': obj.plan.daily_listening_minutes,
             'can_take_lesson': obj.can_take_lesson(),
@@ -220,6 +322,35 @@ class PromotionalCodeSerializer(serializers.ModelSerializer):
             'is_valid_now'
         ]
     
+    def validate(self, data):
+        """Mesmas regras do modelo (PromotionalCode.clean): valores e tipo suportado."""
+        from django.core.exceptions import ValidationError as DjangoValidationError
+        instancia = PromotionalCode(**{
+            campo: data.get(campo, getattr(self.instance, campo, None))
+            for campo in ('discount_type', 'discount_value', 'max_uses', 'valid_from', 'valid_until')
+        })
+        try:
+            instancia.clean()
+        except DjangoValidationError as e:
+            raise serializers.ValidationError(e.message_dict)
+        if 'code' in data and data['code']:
+            data['code'] = data['code'].strip().upper()
+        return data
+
+    @staticmethod
+    def _estado(validated_data):
+        # is_active é espelho de estado (PromotionalCode.save): traduzir para estado
+        if 'is_active' in validated_data:
+            validated_data['estado'] = (PromotionalCode.ACTIVO if validated_data.pop('is_active')
+                                        else PromotionalCode.DESLIGADO)
+        return validated_data
+
+    def create(self, validated_data):
+        return super().create(self._estado(validated_data))
+
+    def update(self, instance, validated_data):
+        return super().update(instance, self._estado(validated_data))
+
     def get_applicable_plan_names(self, obj):
         """Retorna nomes dos planos aplicáveis"""
         if not obj.applicable_plans.exists():
@@ -228,6 +359,8 @@ class PromotionalCodeSerializer(serializers.ModelSerializer):
     
     def get_usage_stats(self, obj):
         """Retorna estatísticas de uso"""
+        if not obj.max_uses:
+            return {'used': obj.current_uses, 'remaining': None, 'usage_percentage': 0}
         return {
             'used': obj.current_uses,
             'remaining': obj.max_uses - obj.current_uses,
@@ -299,7 +432,7 @@ class ApplyPromoCodeSerializer(serializers.Serializer):
                 # Verificar se o código é aplicável ao plano
                 if promo.applicable_plans.exists() and plan not in promo.applicable_plans.all():
                     raise serializers.ValidationError({
-                        'promo_code': 'Este código não é válido para o plano selecionado.'
+                        'promo_code': 'Este código não é válido para o plano escolhido.'
                     })
                     
             except (PromotionalCode.DoesNotExist, SubscriptionPlan.DoesNotExist):

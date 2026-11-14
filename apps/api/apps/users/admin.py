@@ -209,3 +209,38 @@ class NotificationSettingsAdmin(admin.ModelAdmin):
     
     def get_queryset(self, request):
         return super().get_queryset(request).select_related('user')
+
+from .models import ConviteProfessor, RegistoAdmin, SuspensaoConta  # noqa: E402
+
+
+@admin.register(RegistoAdmin)
+class RegistoAdminAdmin(admin.ModelAdmin):
+    """Registo das acções da administração: só leitura."""
+    list_display = ('criado_em', 'autor', 'accao', 'alvo_tipo', 'alvo_id', 'ip')
+    list_filter = ('accao', 'alvo_tipo')
+    search_fields = ('alvo_id', 'autor__email')
+    readonly_fields = [f.name for f in RegistoAdmin._meta.fields]
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
+@admin.register(SuspensaoConta)
+class SuspensaoContaAdmin(admin.ModelAdmin):
+    list_display = ('user', 'motivo', 'desde', 'por', 'terminada_em')
+    list_filter = ('motivo',)
+    raw_id_fields = ('user', 'por', 'terminada_por')
+
+
+@admin.register(ConviteProfessor)
+class ConviteProfessorAdmin(admin.ModelAdmin):
+    list_display = ('email', 'nome', 'estado', 'enviado_em', 'expira_em', 'publica_sem_revisao')
+    list_filter = ('estado',)
+    exclude = ('token_hash',)
+    raw_id_fields = ('criado_por', 'utilizador')

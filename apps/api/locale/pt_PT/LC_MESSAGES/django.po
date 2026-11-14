@@ -1,0 +1,280 @@
+# Mensagens em português europeu/angolano (grafia anterior ao Acordo de 1990, como no site).
+# Sobrepõem-se às traduções do Django, do DRF e do simplejwt, que faltam ou vêm em pt-BR.
+# Depois de editar: ./venv/bin/python manage.py compilemessages -l pt_PT  (ou msgfmt)
+msgid ""
+msgstr ""
+"Project-Id-Version: ProEnglish API\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# ---------------------------------------------------------------- DRF: pedidos
+msgid "A server error occurred."
+msgstr "Ocorreu um erro no servidor. Tente outra vez daqui a pouco."
+
+msgid "Malformed request."
+msgstr "O pedido está mal formado."
+
+msgid "JSON parse error - {detail}"
+msgstr "O pedido não traz um JSON válido."
+
+msgid "Incorrect authentication credentials."
+msgstr "A sessão terminou. Entre outra vez."
+
+msgid "Authentication credentials were not provided."
+msgstr "A sessão terminou. Entre outra vez."
+
+msgid "You do not have permission to perform this action."
+msgstr "Não tem permissão para isto."
+
+msgid "Not found."
+msgstr "Não encontrámos o que procura."
+
+msgid "Method \"{method}\" not allowed."
+msgstr "Este pedido ({method}) não é permitido aqui."
+
+msgid "Could not satisfy the request Accept header."
+msgstr "Não conseguimos responder no formato pedido."
+
+msgid "Unsupported media type \"{media_type}\" in request."
+msgstr "O formato \"{media_type}\" não é aceite neste pedido."
+
+msgid "Request was throttled."
+msgstr "Fez muitos pedidos seguidos. Tente outra vez daqui a pouco."
+
+msgid "Expected available in {wait} second."
+msgstr "Tente outra vez daqui a {wait} segundo."
+
+msgid "Expected available in {wait} seconds."
+msgstr "Tente outra vez daqui a {wait} segundos."
+
+msgid "Invalid input."
+msgstr "Dados inválidos."
+
+msgid "Invalid page."
+msgstr "Página inválida."
+
+# ---------------------------------------------------------------- DRF: campos
+msgid "This field is required."
+msgstr "Este campo é obrigatório."
+
+msgid "This field may not be null."
+msgstr "Este campo não pode ficar vazio."
+
+msgid "This field may not be blank."
+msgstr "Este campo não pode ficar vazio."
+
+msgid "Must be a valid boolean."
+msgstr "Tem de ser verdadeiro ou falso."
+
+msgid "Not a valid string."
+msgstr "Tem de ser texto."
+
+msgid "Ensure this field has no more than {max_length} characters."
+msgstr "Escreva no máximo {max_length} caracteres."
+
+msgid "Ensure this field has at least {min_length} characters."
+msgstr "Escreva pelo menos {min_length} caracteres."
+
+msgid "Enter a valid email address."
+msgstr "Indique um email válido."
+
+msgid "This value does not match the required pattern."
+msgstr "O valor não tem o formato certo."
+
+msgid "Enter a valid URL."
+msgstr "Indique um endereço (URL) válido."
+
+msgid "Must be a valid UUID."
+msgstr "Identificador inválido."
+
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr "Indique um endereço IP válido."
+
+msgid "A valid integer is required."
+msgstr "Indique um número inteiro."
+
+msgid "A valid biginteger is required."
+msgstr "Indique um número inteiro."
+
+msgid "A valid number is required."
+msgstr "Indique um número válido."
+
+msgid "Ensure this value is less than or equal to {max_value}."
+msgstr "O valor tem de ser no máximo {max_value}."
+
+msgid "Ensure this value is greater than or equal to {min_value}."
+msgstr "O valor tem de ser pelo menos {min_value}."
+
+msgid "String value too large."
+msgstr "O valor é demasiado grande."
+
+msgid "Ensure that there are no more than {max_digits} digits in total."
+msgstr "Use no máximo {max_digits} algarismos."
+
+msgid "Ensure that there are no more than {max_decimal_places} decimal places."
+msgstr "Use no máximo {max_decimal_places} casas decimais."
+
+msgid "Ensure that there are no more than {max_whole_digits} digits before the decimal point."
+msgstr "Use no máximo {max_whole_digits} algarismos antes da vírgula."
+
+msgid "Datetime has wrong format. Use one of these formats instead: {format}."
+msgstr "A data e hora não têm o formato certo. Use: {format}."
+
+msgid "Date has wrong format. Use one of these formats instead: {format}."
+msgstr "A data não tem o formato certo. Use: {format}."
+
+msgid "Time has wrong format. Use one of these formats instead: {format}."
+msgstr "A hora não tem o formato certo. Use: {format}."
+
+msgid "Duration has wrong format. Use one of these formats instead: {format}."
+msgstr "A duração não tem o formato certo. Use: {format}."
+
+msgid "Expected a date but got a datetime."
+msgstr "Indique só a data, sem hora."
+
+msgid "Expected a datetime but got a date."
+msgstr "Indique a data e a hora."
+
+msgid "\"{input}\" is not a valid choice."
+msgstr "\"{input}\" não é uma opção válida."
+
+msgid "Expected a list of items but got type \"{input_type}\"."
+msgstr "Esperava-se uma lista."
+
+msgid "This selection may not be empty."
+msgstr "Escolha pelo menos uma opção."
+
+msgid "This list may not be empty."
+msgstr "A lista não pode ficar vazia."
+
+msgid "This dictionary may not be empty."
+msgstr "Este campo não pode ficar vazio."
+
+msgid "Ensure this field has at least {min_length} elements."
+msgstr "Indique pelo menos {min_length} elementos."
+
+msgid "Ensure this field has no more than {max_length} elements."
+msgstr "Indique no máximo {max_length} elementos."
+
+msgid "No file was submitted."
+msgstr "Não foi enviado nenhum ficheiro."
+
+msgid "The submitted data was not a file. Check the encoding type on the form."
+msgstr "O que foi enviado não é um ficheiro."
+
+msgid "No filename could be determined."
+msgstr "O ficheiro não tem nome."
+
+msgid "The submitted file is empty."
+msgstr "O ficheiro está vazio."
+
+msgid "Ensure this filename has at most {max_length} characters (it has {length})."
+msgstr "O nome do ficheiro pode ter no máximo {max_length} caracteres (tem {length})."
+
+msgid "Upload a valid image. The file you uploaded was either not an image or a corrupted image."
+msgstr "Envie uma imagem válida. O ficheiro não é uma imagem ou está danificado."
+
+msgid "Value must be valid JSON."
+msgstr "O valor tem de ser JSON válido."
+
+msgid "Invalid data. Expected a dictionary, but got {datatype}."
+msgstr "Dados inválidos: esperava-se um objecto."
+
+msgid "Invalid pk \"{pk_value}\" - object does not exist."
+msgstr "Não existe nenhum objecto com o identificador \"{pk_value}\"."
+
+msgid "Incorrect type. Expected pk value, received {data_type}."
+msgstr "Identificador inválido."
+
+msgid "Object with {slug_name}={value} does not exist."
+msgstr "Não existe nenhum objecto com {slug_name}={value}."
+
+msgid "Invalid value."
+msgstr "Valor inválido."
+
+# ---------------------------------------------------------------- simplejwt
+msgid "Given token not valid for any token type"
+msgstr "A sessão terminou. Entre outra vez."
+
+msgid "Token is invalid or expired"
+msgstr "A sessão terminou. Entre outra vez."
+
+msgid "Token is invalid"
+msgstr "A sessão terminou. Entre outra vez."
+
+msgid "Token is expired"
+msgstr "A sessão terminou. Entre outra vez."
+
+msgid "Token is blacklisted"
+msgstr "A sessão terminou. Entre outra vez."
+
+msgid "Token has no type"
+msgstr "A sessão terminou. Entre outra vez."
+
+msgid "Token has wrong type"
+msgstr "A sessão terminou. Entre outra vez."
+
+msgid "Token has no id"
+msgstr "A sessão terminou. Entre outra vez."
+
+msgid "Token contained no recognizable user identification"
+msgstr "A sessão terminou. Entre outra vez."
+
+msgid "User not found"
+msgstr "A sessão terminou. Entre outra vez."
+
+msgid "User is inactive"
+msgstr "Esta conta está desactivada."
+
+msgid "No active account found with the given credentials"
+msgstr "O email ou a palavra-passe não estão certos."
+
+msgid "No active account found for the given token."
+msgstr "A sessão terminou. Entre outra vez."
+
+msgid "Authorization header must contain two space-delimited values"
+msgstr "A sessão terminou. Entre outra vez."
+
+# ---------------------------------------------------------------- palavras-passe (Django)
+msgid "This password is too common."
+msgstr "Esta palavra-passe é demasiado comum. Escolha outra."
+
+msgid "This password is entirely numeric."
+msgstr "A palavra-passe não pode ter só algarismos."
+
+msgid "The password is too similar to the %(verbose_name)s."
+msgstr "A palavra-passe é demasiado parecida com os seus dados (nome ou email)."
+
+msgid "This password is too short. It must contain at least %(min_length)d character."
+msgid_plural "This password is too short. It must contain at least %(min_length)d characters."
+msgstr[0] "A palavra-passe é demasiado curta. Tem de ter pelo menos %(min_length)d carácter."
+msgstr[1] "A palavra-passe é demasiado curta. Tem de ter pelo menos %(min_length)d caracteres."
+
+msgid "Your password can’t be too similar to your other personal information."
+msgstr "A palavra-passe não pode ser parecida com os seus dados pessoais."
+
+msgid "Your password can’t be a commonly used password."
+msgstr "A palavra-passe não pode ser uma das mais usadas."
+
+msgid "Your password can’t be entirely numeric."
+msgstr "A palavra-passe não pode ter só algarismos."
+
+# ---------------------------------------------------------------- Django (modelos e formulários)
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr "Já existe um registo com este valor."
+
+msgid "Enter a valid value."
+msgstr "Indique um valor válido."
+
+msgid "Ensure this value has at most %(limit_value)d character (it has %(show_value)d)."
+msgid_plural "Ensure this value has at most %(limit_value)d characters (it has %(show_value)d)."
+msgstr[0] "Escreva no máximo %(limit_value)d carácter (tem %(show_value)d)."
+msgstr[1] "Escreva no máximo %(limit_value)d caracteres (tem %(show_value)d)."
+
+msgid "Ensure this value has at least %(limit_value)d character (it has %(show_value)d)."
+msgid_plural "Ensure this value has at least %(limit_value)d characters (it has %(show_value)d)."
+msgstr[0] "Escreva pelo menos %(limit_value)d carácter (tem %(show_value)d)."
+msgstr[1] "Escreva pelo menos %(limit_value)d caracteres (tem %(show_value)d)."

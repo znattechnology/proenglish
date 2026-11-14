@@ -68,42 +68,62 @@ class PracticeCourseManagementView(APIView):
         # Get action from request data
         action = request.data.get('action')  # 'publish' or 'unpublish'
         
+        from django.utils import timezone
+        from apps.courses import ciclo
+
         if action == 'publish':
-            if course.status == 'Published':
+            # Publicar passa pela revisão do administrador: isto submete o curso.
+            if course.status in (ciclo.PUBLICADO, ciclo.EM_REVISAO):
                 return Response({
-                    'message': 'Curso já está publicado',
-                    'success': False
+                    'message': 'Curso já está publicado' if course.status == ciclo.PUBLICADO
+                    else 'Curso já está em revisão',
+                    'success': False,
+                    'status': course.status,
+                    'estado': ciclo.estado(course),
                 }, status=status.HTTP_400_BAD_REQUEST)
-            
-            course.status = 'Published'
-            course.save()
-            
-            logger.info(f"📢 Practice course published: {course.title} (ID: {course.id})")
-            
+            verificacao = ciclo.verificar(course)
+            if not verificacao['pode_submeter']:
+                return Response({
+                    'message': 'O curso ainda não está pronto para revisão. Veja o que falta na lista.',
+                    'success': False,
+                    **verificacao,
+                }, status=status.HTTP_400_BAD_REQUEST)
+            course.status = ciclo.EM_REVISAO
+            course.submetido_em = timezone.now()
+            course.motivo_recusa = ''
+            course.save(update_fields=['status', 'submetido_em', 'motivo_recusa', 'updated_at'])
             return Response({
-                'message': f'Curso "{course.title}" publicado com sucesso',
+                'message': f'Curso "{course.title}" enviado para revisão. Fica publicado quando o administrador aprovar.',
                 'success': True,
-                'status': 'Published'
+                'status': course.status,
+                'estado': ciclo.estado(course),
             }, status=status.HTTP_200_OK)
-            
+
         elif action == 'unpublish':
-            if course.status == 'Draft':
+            if course.status == ciclo.EM_REVISAO:
+                course.status = ciclo.RASCUNHO
+                course.submetido_em = None
+                course.save(update_fields=['status', 'submetido_em', 'updated_at'])
                 return Response({
-                    'message': 'Curso já está em rascunho',
-                    'success': False
+                    'message': 'Revisão cancelada. O curso voltou a rascunho.',
+                    'success': True,
+                    'status': course.status,
+                    'estado': ciclo.estado(course),
+                }, status=status.HTTP_200_OK)
+            if course.status == ciclo.PUBLICADO:
+                return Response({
+                    'message': 'Para retirar um curso publicado do catálogo, arquive-o.',
+                    'success': False,
+                    'status': course.status,
+                    'estado': ciclo.estado(course),
                 }, status=status.HTTP_400_BAD_REQUEST)
-            
-            course.status = 'Draft'
-            course.save()
-            
-            logger.info(f"📝 Practice course unpublished: {course.title} (ID: {course.id})")
-            
             return Response({
-                'message': f'Curso "{course.title}" despublicado com sucesso',
-                'success': True,
-                'status': 'Draft'
-            }, status=status.HTTP_200_OK)
-            
+                'message': 'Curso já está em rascunho',
+                'success': False,
+                'status': course.status,
+                'estado': ciclo.estado(course),
+            }, status=status.HTTP_400_BAD_REQUEST)
+
         else:
             return Response({
                 'message': 'Ação inválida. Use "publish" ou "unpublish"',

@@ -17,6 +17,7 @@ from django.db import transaction
 from django.db.models import Avg, Count, Sum, Q
 from django.utils import timezone
 
+from apps.courses.ciclo import q_aula_visivel
 from apps.courses.models import (
     Course, CourseSection, Chapter, ChapterQuiz, StudentQuizAttempt,
     StudentCourseGrade, CourseGradingConfig, GradeHistory
@@ -108,7 +109,7 @@ class GradeCalculatorService:
         quizzes = ChapterQuiz.objects.filter(
             chapter__section__course=self.course,
             is_active=True
-        ).select_related('chapter', 'chapter__section')
+        ).filter(q_aula_visivel('chapter__')).select_related('chapter', 'chapter__section')
 
         quiz_count = quizzes.count()
 
@@ -155,7 +156,7 @@ class GradeCalculatorService:
                     'quiz_id': str(quiz.id),
                     'quiz_title': quiz.title,
                     'chapter_title': quiz.chapter.title,
-                    'section_title': quiz.chapter.section.title,
+                    'section_title': quiz.chapter.section.sectionTitle,
                     'score': score_percentage,
                     'is_passed': is_passed,
                     'attempts_used': attempts.count(),
@@ -167,7 +168,7 @@ class GradeCalculatorService:
                     'quiz_id': str(quiz.id),
                     'quiz_title': quiz.title,
                     'chapter_title': quiz.chapter.title,
-                    'section_title': quiz.chapter.section.title,
+                    'section_title': quiz.chapter.section.sectionTitle,
                     'score': 0,
                     'is_passed': False,
                     'attempts_used': 0,
@@ -213,7 +214,7 @@ class GradeCalculatorService:
         chapter_quizzes = ChapterQuiz.objects.filter(
             chapter__section__course=self.course,
             is_active=True
-        ).select_related('practice_lesson', 'chapter', 'chapter__section')
+        ).filter(q_aula_visivel('chapter__')).select_related('practice_lesson', 'chapter', 'chapter__section')
 
         practice_details = []
         total_challenges = 0
@@ -227,8 +228,7 @@ class GradeCalculatorService:
             from apps.practice.models import PracticeChallenge
 
             challenges = PracticeChallenge.objects.filter(
-                unit__lesson=quiz.practice_lesson,
-                is_active=True
+                lesson=quiz.practice_lesson,
             )
 
             chapter_total = challenges.count()
@@ -249,7 +249,7 @@ class GradeCalculatorService:
             practice_details.append({
                 'chapter_id': str(quiz.chapter.id),
                 'chapter_title': quiz.chapter.title,
-                'section_title': quiz.chapter.section.title,
+                'section_title': quiz.chapter.section.sectionTitle,
                 'practice_lesson_id': str(quiz.practice_lesson.id),
                 'total_challenges': chapter_total,
                 'completed_challenges': chapter_completed,
@@ -302,7 +302,7 @@ class GradeCalculatorService:
 
         # Get Vapi sessions for this user
         sessions = VapiSession.objects.filter(
-            user=self.user
+            user=self.user, status=VapiSession.STATUS_AVALIADA  # sem sessões em curso / sem avaliação
         ).order_by('-created_at')
 
         # If the course has a specific level, filter sessions by matching CEFR levels
@@ -329,9 +329,16 @@ class GradeCalculatorService:
             }
 
         # Aggregate scores
+        # Minutos reais (duration_seconds, como no DailyStudyLog e nas estatísticas); sessões
+        # antigas sem segundos usam duration_minutes.
+        from django.db.models import Case, When, F, IntegerField
         aggregates = sessions.aggregate(
             avg_score=Avg('overall_score'),
-            total_minutes=Sum('duration_minutes'),
+            total_seconds=Sum(Case(
+                When(duration_seconds__gt=0, then=F('duration_seconds')),
+                default=F('duration_minutes') * 60,
+                output_field=IntegerField(),
+            )),
             avg_fluency=Avg('fluency_score'),
             avg_pronunciation=Avg('pronunciation_score'),
             avg_grammar=Avg('grammar_score'),
@@ -357,7 +364,7 @@ class GradeCalculatorService:
         return {
             'score': round(aggregates['avg_score'] or 0, 2),
             'sessions': session_count,
-            'minutes': aggregates['total_minutes'] or 0,
+            'minutes': round((aggregates['total_seconds'] or 0) / 60),
             'fluency_average': round(aggregates['avg_fluency'] or 0, 2),
             'pronunciation_average': round(aggregates['avg_pronunciation'] or 0, 2),
             'grammar_average': round(aggregates['avg_grammar'] or 0, 2),
@@ -588,47 +595,23 @@ class GradeCalculatorService:
 
         return all_met, eligibility_details
 
-    @transaction.atomic
-    def calculate_and_save(self, change_reason: str = 'recalculation') -> StudentCourseGrade:
-        """
-        Calculate all grades and save to database.
-
-        Args:
-            change_reason: Reason for this calculation (for audit trail)
-
-        Returns:
-            StudentCourseGrade: Updated grade record
-        """
-        # Calculate all components
+    def _calcular(self):
+        """Calcula todos os componentes. Devolve (quiz, practice, conversation, final, letter, weights, eligible, details)."""
         quiz_data = self.calculate_quiz_scores()
         practice_data = self.calculate_practice_scores()
         conversation_data = self.calculate_conversation_scores()
-
-        # Calculate final grade with dynamic weight adjustment
         final_percentage, final_letter, weight_info = self.calculate_final_grade(
             quiz_data, practice_data, conversation_data
         )
-
-        # Check eligibility with weight info for context
         is_eligible, eligibility_details = self.check_certificate_eligibility(
             quiz_data, practice_data, conversation_data, final_percentage, weight_info
         )
+        return (quiz_data, practice_data, conversation_data, final_percentage, final_letter,
+                weight_info, is_eligible, eligibility_details)
 
-        # Get or create grade record
-        grade, created = StudentCourseGrade.objects.get_or_create(
-            user=self.user,
-            course=self.course,
-            defaults={'calculation_version': self.CALCULATION_VERSION}
-        )
-
-        # Track if grade changed
-        grade_changed = (
-            created or
-            grade.final_grade_percentage != final_percentage or
-            grade.is_eligible_for_certificate != is_eligible
-        )
-
-        # Update grade record
+    @staticmethod
+    def _preencher(grade, quiz_data, practice_data, conversation_data, final_percentage, final_letter,
+                   weight_info, is_eligible, eligibility_details):
         grade.quiz_score = quiz_data['score']
         grade.quiz_count = quiz_data['count']
         grade.quiz_completed = quiz_data['completed']
@@ -651,8 +634,51 @@ class GradeCalculatorService:
         grade.is_eligible_for_certificate = is_eligible
         grade.eligibility_details = eligibility_details
         grade.weight_info = weight_info
-        grade.calculation_version = self.CALCULATION_VERSION
+        grade.calculation_version = GradeCalculatorService.CALCULATION_VERSION
 
+    def calcular_sem_guardar(self) -> StudentCourseGrade:
+        """
+        A nota calculada agora, num StudentCourseGrade NÃO guardado (para leituras: GET não
+        escreve na base de dados nem dispara signals).
+        """
+        from django.utils import timezone
+        resultado = self._calcular()
+        grade = (StudentCourseGrade.objects.filter(user=self.user, course=self.course).first()
+                 or StudentCourseGrade(user=self.user, course=self.course))
+        self._preencher(grade, *resultado)
+        grade.last_calculated_at = timezone.now()
+        return grade
+
+    @transaction.atomic
+    def calculate_and_save(self, change_reason: str = 'recalculation') -> StudentCourseGrade:
+        """
+        Calculate all grades and save to database.
+
+        Args:
+            change_reason: Reason for this calculation (for audit trail)
+
+        Returns:
+            StudentCourseGrade: Updated grade record
+        """
+        resultado = self._calcular()
+        (quiz_data, practice_data, conversation_data, final_percentage, final_letter,
+         weight_info, is_eligible, eligibility_details) = resultado
+
+        # Get or create grade record
+        grade, created = StudentCourseGrade.objects.get_or_create(
+            user=self.user,
+            course=self.course,
+            defaults={'calculation_version': self.CALCULATION_VERSION}
+        )
+
+        # Track if grade changed
+        grade_changed = (
+            created or
+            grade.final_grade_percentage != final_percentage or
+            grade.is_eligible_for_certificate != is_eligible
+        )
+
+        self._preencher(grade, *resultado)
         grade.save()
 
         # Create history entry if grade changed
