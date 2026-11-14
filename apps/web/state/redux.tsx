@@ -1,6 +1,15 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useState } from "react";
+import { subscricaoApi } from "@/src/domains/student/subscricao/api";
+import { cursoApi } from "@/src/domains/student/curso/api";
+import { perfilApi } from "@/src/domains/student/perfil/api";
+import { progressoApi } from "@/src/domains/student/progresso/api";
+import { conversaApi } from "@/src/domains/student/conversa/api";
+import { avisosApi } from "@/src/domains/student/avisos/api";
+import { opiniaoApi } from "@/src/domains/student/opiniao/api";
+import { professorApi } from "@/src/domains/teacher/professor/api";
+import { administracaoApi } from "@/src/domains/admin/administracao/api";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
@@ -16,7 +25,6 @@ import { studentPracticeApiSlice } from "@/src/domains/student/practice-courses/
 import { studentVideoCourseApiSlice } from "@/src/domains/student/video-courses/api";
 import { studentLeaderboardApiSlice } from "@/src/domains/student/leaderboard/api";
 import { studentAchievementsApiSlice } from "@/src/domains/student/achievements/api";
-import { studentSpeakingApiSlice } from "@/src/domains/student/speaking-practice/api";
 import { adminApiSlice } from "@/src/domains/admin/api";
 import { feedbackApi } from "@/src/domains/shared/feedback/api/feedbackApiSlice";
 import courseEditorSlice from "@/redux/features/courseEditor/courseEditorSlice";
@@ -37,9 +45,17 @@ const rootReducer = combineReducers({
   [studentVideoCourseApiSlice.reducerPath]: studentVideoCourseApiSlice.reducer,
   [studentLeaderboardApiSlice.reducerPath]: studentLeaderboardApiSlice.reducer,
   [studentAchievementsApiSlice.reducerPath]: studentAchievementsApiSlice.reducer,
-  [studentSpeakingApiSlice.reducerPath]: studentSpeakingApiSlice.reducer,
   [adminApiSlice.reducerPath]: adminApiSlice.reducer,
   [feedbackApi.reducerPath]: feedbackApi.reducer,
+  [subscricaoApi.reducerPath]: subscricaoApi.reducer,
+  [cursoApi.reducerPath]: cursoApi.reducer,
+  [perfilApi.reducerPath]: perfilApi.reducer,
+  [progressoApi.reducerPath]: progressoApi.reducer,
+  [conversaApi.reducerPath]: conversaApi.reducer,
+  [avisosApi.reducerPath]: avisosApi.reducer,
+  [opiniaoApi.reducerPath]: opiniaoApi.reducer,
+  [professorApi.reducerPath]: professorApi.reducer,
+  [administracaoApi.reducerPath]: administracaoApi.reducer,
 });
 
 export const makeStore = () => {
@@ -80,9 +96,17 @@ export const makeStore = () => {
       .concat(studentVideoCourseApiSlice.middleware)
       .concat(studentLeaderboardApiSlice.middleware)
       .concat(studentAchievementsApiSlice.middleware)
-      .concat(studentSpeakingApiSlice.middleware)
       .concat(adminApiSlice.middleware)
-      .concat(feedbackApi.middleware),
+      .concat(feedbackApi.middleware)
+      .concat(subscricaoApi.middleware)
+      .concat(cursoApi.middleware)
+      .concat(perfilApi.middleware)
+      .concat(progressoApi.middleware)
+      .concat(conversaApi.middleware)
+      .concat(avisosApi.middleware)
+      .concat(opiniaoApi.middleware)
+      .concat(professorApi.middleware)
+      .concat(administracaoApi.middleware),
   });
 };
 
@@ -99,10 +123,8 @@ export default function StoreProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const storeRef = useRef<AppStore | undefined>(undefined);
-  if (!storeRef.current) {
-    storeRef.current = makeStore();
-    setupListeners(storeRef.current.dispatch);
-  }
-  return <Provider store={storeRef.current}>{children}</Provider>;
+  // Uma store por montagem do provider; setupListeners devolve a função que os desliga.
+  const [store] = useState<AppStore>(makeStore);
+  useEffect(() => setupListeners(store.dispatch), [store]);
+  return <Provider store={store}>{children}</Provider>;
 }

@@ -10,6 +10,8 @@ interface JWTPayload {
   user_id: string;
   email: string;
   role: 'student' | 'teacher' | 'admin';
+  /** Superutilizador ou papel admin: a API trata-o como administrador. */
+  administrador?: boolean;
   name: string;
   exp: number;
   iat: number;
@@ -35,8 +37,11 @@ const ROUTE_CONFIG = {
     '/signup',
     '/verify-email',
     '/forgot-password',
-    '/checkout', // May need auth for later steps
-    '/auth/google/callback' // Google OAuth callback
+    '/auth/google/callback', // Google OAuth callback
+    '/certificados', // Verificação pública de certificados (empresas, sem conta)
+    '/termos',
+    '/privacidade',
+    '/offline', // página "Sem ligação" que o service worker guarda
   ],
 
   // Student routes
@@ -71,7 +76,8 @@ const ROUTE_CONFIG = {
   // Routes accessible by authenticated users (any role)
   authenticated: [
     '/profile',
-    '/settings'
+    '/settings',
+    '/sem-permissao', // explica porque não pode abrir uma área de outro papel
   ]
 };
 
@@ -180,10 +186,10 @@ function getDefaultRedirect(role: string): string {
     case 'admin':
       return '/admin/dashboard';
     case 'teacher':
-      return '/teacher/courses';
+      return '/teacher/dashboard';
     case 'student':
     default:
-      return '/user/courses/explore';
+      return '/user/dashboard';
   }
 }
 
@@ -241,7 +247,7 @@ export function djangoAuthMiddleware(request: NextRequest) {
 
     // Store the intended destination for redirect after login
     const loginUrl = new URL('/signin', request.url);
-    loginUrl.searchParams.set('redirect', pathname);
+    loginUrl.searchParams.set('redirect', pathname + request.nextUrl.search);
     return NextResponse.redirect(loginUrl);
   }
 
@@ -263,33 +269,19 @@ export function djangoAuthMiddleware(request: NextRequest) {
   // If user is authenticated but accessing wrong role route
   if (user && requiredRole && requiredRole !== 'authenticated') {
     // Special case for routes accessible by both students and teachers
+    const semPermissao = (area: string) => {
+      const url = new URL('/sem-permissao', request.url);
+      url.searchParams.set('area', area);
+      return NextResponse.redirect(url);
+    };
     if (requiredRole === 'studentAndTeacher') {
-      if (user.role !== 'student' && user.role !== 'teacher') {
-        return NextResponse.redirect(new URL(getDefaultRedirect(user.role), request.url));
-      }
-    } else if (user.role !== requiredRole) {
-      // Redirect to appropriate dashboard based on user role
-      return NextResponse.redirect(new URL(getDefaultRedirect(user.role), request.url));
+      if (user.role !== 'student' && user.role !== 'teacher') return semPermissao('student');
+    } else if (user.role !== requiredRole && !(requiredRole === 'admin' && (user as { administrador?: boolean }).administrador)) {
+      // Mostra porquê, em vez de levar a pessoa para outro sítio sem explicação.
+      return semPermissao(requiredRole);
     }
   }
 
-  // Special handling for checkout flow
-  if (pathname.startsWith('/checkout')) {
-    const step = request.nextUrl.searchParams.get('step');
-    
-    // If step 2+ but no user, redirect to step 1
-    if (step && parseInt(step) > 1 && !user) {
-      const redirectUrl = new URL('/checkout', request.url);
-      redirectUrl.searchParams.set('step', '1');
-      // Preserve other params
-      request.nextUrl.searchParams.forEach((value, key) => {
-        if (key !== 'step') {
-          redirectUrl.searchParams.set(key, value);
-        }
-      });
-      return NextResponse.redirect(redirectUrl);
-    }
-  }
 
   // Allow access
   return NextResponse.next();

@@ -29,7 +29,7 @@ def subscription_required(feature_type='general', amount=1):
             
             if not user.is_authenticated:
                 return Response({
-                    'error': 'Autenticação necessária'
+                    'error': 'A sessão terminou. Entre outra vez.'
                 }, status=status.HTTP_401_UNAUTHORIZED)
             
             # Obter ou criar assinatura
@@ -44,7 +44,7 @@ def subscription_required(feature_type='general', amount=1):
             # Verificar se a assinatura está ativa
             if not subscription.is_active():
                 return Response({
-                    'error': 'Sua assinatura expirou',
+                    'error': 'A sua subscrição terminou.',
                     'upgrade_required': True,
                     'subscription_status': subscription.status
                 }, status=status.HTTP_402_PAYMENT_REQUIRED)
@@ -65,11 +65,13 @@ def subscription_required(feature_type='general', amount=1):
             
             elif feature_type == 'speaking':
                 if not subscription.can_use_speaking(amount):
+                    limite = subscription.get_effective_speaking_limit()
                     return Response({
-                        'error': f'Limite diário de Speaking atingido ({subscription.plan.daily_speaking_minutes} min)',
+                        'error': (f'Atingiu o limite diário de conversa ({limite} min).' if limite
+                                  else 'O seu plano não inclui conversa com o tutor.'),
                         'upgrade_required': True,
                         'current_usage': subscription.daily_speaking_minutes_used,
-                        'limit': subscription.plan.daily_speaking_minutes,
+                        'limit': limite,
                         'feature_type': 'speaking'
                     }, status=status.HTTP_429_TOO_MANY_REQUESTS)
             
@@ -89,7 +91,7 @@ def subscription_required(feature_type='general', amount=1):
                 
                 if subscription.current_hearts < amount:
                     return Response({
-                        'error': 'Você não tem vidas suficientes',
+                        'error': 'Não tem vidas suficientes.',
                         'upgrade_required': True,
                         'current_hearts': subscription.current_hearts,
                         'max_hearts': subscription.plan.hearts_limit,
@@ -117,7 +119,7 @@ def premium_required():
             
             if not user.is_authenticated:
                 return Response({
-                    'error': 'Autenticação necessária'
+                    'error': 'A sessão terminou. Entre outra vez.'
                 }, status=status.HTTP_401_UNAUTHORIZED)
             
             # Obter assinatura
@@ -133,7 +135,7 @@ def premium_required():
             # Verificar se tem plano Premium ou superior
             if subscription.plan.plan_type == 'FREE':
                 return Response({
-                    'error': 'Esta funcionalidade requer plano Premium ou superior',
+                    'error': 'Esta funcionalidade precisa do plano Premium ou superior.',
                     'upgrade_required': True,
                     'current_plan': subscription.plan.plan_type,
                     'required_plan': 'PREMIUM'
@@ -142,7 +144,7 @@ def premium_required():
             # Verificar se a assinatura está ativa
             if not subscription.is_active():
                 return Response({
-                    'error': 'Sua assinatura expirou',
+                    'error': 'A sua subscrição terminou.',
                     'upgrade_required': True,
                     'subscription_status': subscription.status
                 }, status=status.HTTP_402_PAYMENT_REQUIRED)
@@ -165,7 +167,7 @@ def premium_plus_required():
             
             if not user.is_authenticated:
                 return Response({
-                    'error': 'Autenticação necessária'
+                    'error': 'A sessão terminou. Entre outra vez.'
                 }, status=status.HTTP_401_UNAUTHORIZED)
             
             # Obter assinatura
@@ -181,7 +183,7 @@ def premium_plus_required():
             # Verificar se tem plano Premium Plus
             if subscription.plan.plan_type != 'PREMIUM_PLUS':
                 return Response({
-                    'error': 'Esta funcionalidade requer plano Premium Plus',
+                    'error': 'Esta funcionalidade precisa do plano Premium Plus.',
                     'upgrade_required': True,
                     'current_plan': subscription.plan.plan_type,
                     'required_plan': 'PREMIUM_PLUS'
@@ -190,7 +192,7 @@ def premium_plus_required():
             # Verificar se a assinatura está ativa
             if not subscription.is_active():
                 return Response({
-                    'error': 'Sua assinatura expirou',
+                    'error': 'A sua subscrição terminou.',
                     'upgrade_required': True,
                     'subscription_status': subscription.status
                 }, status=status.HTTP_402_PAYMENT_REQUIRED)

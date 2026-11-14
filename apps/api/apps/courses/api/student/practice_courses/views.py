@@ -16,6 +16,7 @@ from django.utils import timezone
 from rest_framework import generics, status as status_module
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from apps.core.permissions import EAdministrador
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
@@ -120,9 +121,9 @@ class CoursesListView(generics.ListAPIView):
         """
         try:
             # Students see only published practice courses
+            from apps.courses.ciclo import q_catalogo
             queryset = Course.objects.filter(
-                course_type='practice', 
-                status='Published'
+                q_catalogo(), course_type='practice'
             ).distinct().order_by('-created_at')
             
             import logging
@@ -238,11 +239,28 @@ class CourseUnitsView(generics.ListAPIView):
     permission_classes = []
     
     def get_queryset(self):
+        from rest_framework.exceptions import NotFound
+        from apps.courses import ciclo
         course_id = self.kwargs['course_id']
         course = get_object_or_404(Course, id=course_id)
-        return PracticeUnit.objects.filter(course=course).prefetch_related(
-            'lessons__challenges__options'
+        user = self.request.user
+        if user.is_authenticated:
+            if ciclo.bloqueio_pratica(user, course):
+                raise NotFound('Curso não encontrado.')
+        elif course.status != ciclo.PUBLICADO:
+            raise NotFound('Curso não encontrado.')
+        self._curso = course
+        return PracticeUnit.objects.filter(course=course).order_by('order').prefetch_related(
+            'lessons__challenges'
         )
+
+    def get_serializer_context(self):
+        # Só a estrutura (sem enunciados nem opções) e sem as lições ainda incompletas.
+        from apps.practice.acesso_licoes import ids_escondidas
+        context = super().get_serializer_context()
+        curso = getattr(self, '_curso', None)
+        context['licoes_escondidas'] = ids_escondidas(curso) if curso is not None else set()
+        return context
 
 
 class LessonDetailView(generics.RetrieveAPIView):
@@ -265,9 +283,26 @@ class LessonDetailView(generics.RetrieveAPIView):
         return super().get(request, *args, **kwargs)
     
     def get_queryset(self):
-        return PracticeLesson.objects.select_related('unit').prefetch_related(
-            'challenges__options'
+        return PracticeLesson.objects.select_related('unit', 'unit__course').prefetch_related(
+            'challenges'
         )
+
+    def retrieve(self, request, *args, **kwargs):
+        # As mesmas regras que lessons/<id>/jogar/: estado do curso, ordem do trilho, plano,
+        # lição escondida e limite diário. Só devolve a estrutura (sem respostas).
+        from rest_framework.exceptions import NotFound
+        from apps.practice import acesso_licoes, limite_licoes
+        licao = self.get_object()
+        erro = acesso_licoes.erro_acesso_licao(request.user, licao)
+        if erro:
+            if erro.get('codigo') in ('curso_indisponivel', acesso_licoes.CODIGO_INDISPONIVEL):
+                raise NotFound('Lição não encontrada.')
+            return Response(erro, status=status_module.HTTP_403_FORBIDDEN)
+        if not acesso_licoes._sem_restricoes(request.user, licao.unit.course):
+            erro = limite_licoes.erro_limite(request.user, licao)
+            if erro:
+                return Response(erro, status=status_module.HTTP_403_FORBIDDEN)
+        return Response(self.get_serializer(licao).data)
     
     def get_serializer_context(self):
         context = super().get_serializer_context()
@@ -380,8 +415,13 @@ class ChallengeProgressView(APIView):
     permission_classes = [IsAuthenticated]
     throttle_classes = [ChallengeProgressThrottle]
 
-    # P1 FIX: Enforce hearts requirement before processing challenge
-    @method_decorator(hearts_required())
+    # Only gate on an active subscription. Hearts are checked/deducted inside the
+    # view (0 hearts blocks new challenges; wrong answers on new challenges cost 1;
+    # practice mode never costs hearts). The previous @hearts_required() also ran
+    # track_usage('hearts'), which took a heart on EVERY successful submission
+    # (correct answers and practice included) and saved a stale subscription copy,
+    # overwriting the practice-mode heart restore.
+    @method_decorator(subscription_required('general'))
     @transaction.atomic
     def post(self, request):
         """Complete a challenge and update user progress"""
@@ -452,12 +492,18 @@ class ChallengeProgressView(APIView):
                 {'error': 'Invalid challenge'},
                 status=status_module.HTTP_400_BAD_REQUEST
             )
-        except Exception as e:
-            logger.error(f"Unexpected error: {e}")
+        except Exception:
+            logger.exception("Unexpected error")
             return Response(
-                {'error': f'Unexpected error: {str(e)}'},
+                {'error': 'Ocorreu um erro inesperado. Tente de novo.'},
                 status=status_module.HTTP_500_INTERNAL_SERVER_ERROR
             )
+
+        # Ordem do trilho e plano do curso: uma lição bloqueada não pode ser respondida.
+        from apps.practice.acesso_licoes import erro_acesso_licao
+        erro_acesso = erro_acesso_licao(request.user, challenge.lesson)
+        if erro_acesso:
+            return Response(erro_acesso, status=status_module.HTTP_403_FORBIDDEN)
 
         # Get user progress
         user_progress, created = UserProgress.objects.get_or_create(
@@ -465,6 +511,9 @@ class ChallengeProgressView(APIView):
             defaults={'hearts': 5, 'points': 0}
         )
         logger.info(f"User progress: hearts={user_progress.hearts}, points={user_progress.points}, created={created}")
+
+        if request.data.get('saltar') in (True, 'true', '1', 1):
+            return self._saltar(request, challenge, user_progress)
 
         # Check if this is practice mode (challenge already completed)
         existing_progress = ChallengeProgress.objects.filter(
@@ -497,7 +546,7 @@ class ChallengeProgressView(APIView):
         if user_progress.hearts == 0 and not is_practice and not has_unlimited_hearts(request.user):
             logger.info("User has no hearts and this is not practice mode")
             return Response(
-                {'error': 'hearts', 'message': 'No hearts remaining'},
+                {'error': 'hearts', 'message': 'Ficou sem vidas. Espere pela recarga ou recarregue com pontos.'},
                 status=status_module.HTTP_400_BAD_REQUEST
             )
 
@@ -776,7 +825,10 @@ class ChallengeProgressView(APIView):
                     status=status_module.HTTP_400_BAD_REQUEST
                 )
 
-            is_correct = user_order == correct_order_str
+            # Compara o texto e não os ids: frases com palavras repetidas ("the ... the")
+            # ficam certas seja qual for a cópia da palavra que a pessoa usou primeiro.
+            textos = {str(o.id): ' '.join((o.text or '').lower().split()) for o in challenge.options.all()}
+            is_correct = [textos[i] for i in user_order] == [textos[i] for i in correct_order_str]
             logger.info(f"Sentence order validation: user={user_order}, correct={correct_order_str}, is_correct: {is_correct}")
 
         elif challenge_type == 'MATCH_PAIRS':
@@ -859,37 +911,15 @@ class ChallengeProgressView(APIView):
             logger.info(f"Match pairs validation: paired_options={paired_options}, is_correct: {is_correct}")
 
         elif challenge_type == 'VAPI_CONVERSATION':
-            # SECURITY FIX: Verify score from server-side VapiSession, not client
-            # Frontend must send: { "session_id": "uuid" }
-            session_id = request.data.get('session_id')
-
-            if not session_id:
-                logger.warning("VAPI_CONVERSATION: No session_id provided")
-                return Response(
-                    {'error': 'session_id is required for VAPI_CONVERSATION challenges'},
-                    status=status_module.HTTP_400_BAD_REQUEST
-                )
-
-            # Look up the VapiSession to get the authoritative score
-            try:
-                from apps.practice.models import VapiSession
-                vapi_session = VapiSession.objects.get(
-                    session_id=session_id,
-                    user=request.user  # Ensure session belongs to this user
-                )
-                score = float(vapi_session.overall_score)
-                logger.info(f"VAPI_CONVERSATION: Retrieved server-side score={score} for session={session_id}")
-            except VapiSession.DoesNotExist:
-                logger.warning(f"VAPI_CONVERSATION: Session not found or doesn't belong to user: {session_id}")
-                return Response(
-                    {'error': 'Invalid session_id or session not found'},
-                    status=status_module.HTTP_400_BAD_REQUEST
-                )
-
-            # Minimum passing score is 60%
-            VAPI_PASSING_SCORE = 60.0
-            is_correct = score >= VAPI_PASSING_SCORE
-            logger.info(f"VAPI_CONVERSATION: score={score}, passing={VAPI_PASSING_SCORE}, is_correct={is_correct}")
+            # A conversa dentro da lição está desligada: o exercício só pode ser saltado
+            # ({saltar: true}), sem pontos e sem perder vidas.
+            return Response(
+                {'error': 'conversa_indisponivel', 'codigo': 'conversa_indisponivel',
+                 'message': 'A conversa dentro da lição não está disponível. Salte este exercício.',
+                 'mensagem': 'A conversa dentro da lição não está disponível. Salte este exercício.',
+                 'pode_saltar': True},
+                status=status_module.HTTP_400_BAD_REQUEST
+            )
 
         elif challenge_type == 'SPEAKING':
             # SECURITY FIX: SPEAKING challenges must use AIPronunciationAnalysisView endpoint
@@ -923,6 +953,10 @@ class ChallengeProgressView(APIView):
                 status=status_module.HTTP_400_BAD_REQUEST
             )
 
+        # Persist every answer (right or wrong) for review words / accuracy analytics
+        from apps.practice.models import ChallengeAttempt
+        ChallengeAttempt.objects.create(user=request.user, challenge=challenge, is_correct=is_correct)
+
         # Process result based on correctness
         if is_correct:
             # Correct answer: mark challenge as completed
@@ -938,17 +972,18 @@ class ChallengeProgressView(APIView):
                 )
 
             # Update user progress based on practice mode
-            if is_practice:
-                # Practice mode: restore hearts and add points
-                user_progress.add_hearts(1)
-                user_progress.add_points(10)
-            else:
-                # New challenge: just add points
-                user_progress.add_points(10)
+            # Prática repetida (exercício já concluído antes): não dá pontos nem vidas por
+            # exercício. A recompensa da repetição é dada uma vez por lição em
+            # complete-lesson/ (+5 pontos e +1 vida no total), como definido no produto.
+            if not is_practice:
+                # Exercício novo: +10 pontos
+                user_progress.add_points(10, reason='challenge', curso_id=challenge.lesson.unit.course_id)
 
             return Response({
                 'success': True,
                 'correct': True,
+                # Explicação do professor, mostrada depois de acertar.
+                'explicacao': challenge.explanation or None,
                 'challenge_progress': {
                     'id': str(progress.id),
                     'completed': progress.completed,
@@ -971,6 +1006,8 @@ class ChallengeProgressView(APIView):
             response_data = {
                 'success': True,
                 'correct': False,
+                # Dica para tentar outra vez, sem dar a resposta.
+                'dica': challenge.hint or None,
                 'user_progress': {
                     'hearts': user_progress.hearts if not user_has_unlimited else 999,
                     'points': user_progress.points
@@ -989,6 +1026,46 @@ class ChallengeProgressView(APIView):
                     response_data['feedback']['hint'] = hint_text
 
             return Response(response_data, status=status_module.HTTP_200_OK)
+
+
+    def _saltar(self, request, challenge, user_progress):
+        """
+        Exercício saltado: conta como feito, sem pontos e sem perder vidas.
+        - pronúncia (SPEAKING) com a análise indisponível (apps.practice.saltar_pronuncia, com token);
+        - conversa (VAPI_CONVERSATION), que está desligada, e escuta (LISTENING) sem áudio:
+          sempre (o ecrã de jogar/ marca-os com modo "indisponivel").
+        """
+        from apps.practice.saltar_pronuncia import pode_saltar
+        from .jogar import motivo_saltar
+        if challenge.type != 'SPEAKING' and not motivo_saltar(challenge):
+            return Response({'codigo': 'saltar_invalido',
+                             'mensagem': 'Este exercício não pode ser saltado.'},
+                            status=status_module.HTTP_400_BAD_REQUEST)
+        if challenge.type == 'SPEAKING' and not pode_saltar(request.data.get('token_saltar'), request.user, challenge):
+            return Response({'codigo': 'analise_disponivel',
+                             'mensagem': 'A análise de pronúncia está disponível: grave a frase.'},
+                            status=status_module.HTTP_409_CONFLICT)
+        progress = ChallengeProgress.objects.filter(user=request.user, challenge=challenge).first()
+        if progress is None:
+            progress = ChallengeProgress.objects.create(user=request.user, challenge=challenge,
+                                                        completed=True, skipped=True)
+        elif not progress.completed:
+            progress.completed = True
+            progress.skipped = True
+            progress.save()
+        return Response({
+            'success': True,
+            'correct': None,
+            'saltado': True,
+            'points_earned': 0,
+            'challenge_progress': {
+                'id': str(progress.id),
+                'completed': progress.completed,
+                'skipped': progress.skipped,
+                'completed_at': progress.completed_at,
+            },
+            'user_progress': {'hearts': user_progress.hearts, 'points': user_progress.points},
+        }, status=status_module.HTTP_200_OK)
 
 
 class ReduceHeartsView(APIView):
@@ -1031,31 +1108,20 @@ class ReduceHeartsView(APIView):
 
 class RefillHeartsView(APIView):
     """
-    POST /api/v1/practice/refill-hearts/
+    POST /api/v1/student/practice-courses/refill-hearts/
 
-    Refill user hearts (for premium users only).
-
-    P1 FIX: This is a premium feature - now enforces premium subscription.
+    Refill all hearts (up to the plan maximum) by spending REFILL_HEARTS_COST_POINTS points.
+    No-op for plans with unlimited hearts. Previously this was a premium-only
+    free refill to 5 hearts; it now follows the product rule "refill with 50 points".
     """
     permission_classes = [IsAuthenticated]
 
-    # P1 FIX: Require premium subscription for heart refill
-    @method_decorator(premium_required())
     def post(self, request):
-        """Refill hearts to maximum (5) - PREMIUM ONLY"""
-        user_progress, created = UserProgress.objects.get_or_create(
-            user=request.user,
-            defaults={'hearts': 5, 'points': 0}
-        )
-
-        user_progress.hearts = 5
-        user_progress.save()
-
-        return Response({
-            'hearts': user_progress.hearts,
-            'points': user_progress.points,
-            'message': 'Hearts refilled successfully (Premium feature)'
-        })
+        from apps.practice.study_services import refill_hearts_with_points
+        result, error = refill_hearts_with_points(request.user)
+        if error:
+            return Response(result, status=status_module.HTTP_400_BAD_REQUEST)
+        return Response(result)
 
 
 class ValidateTextAnswerView(APIView):
@@ -1144,13 +1210,12 @@ class ValidateTextAnswerView(APIView):
                 )
             
             # Update user progress based on practice mode
-            if is_practice:
-                # Practice mode: restore hearts and add points
-                user_progress.add_hearts(1)
-                user_progress.add_points(10)
-            else:
-                # New challenge: just add points
-                user_progress.add_points(10)
+            # Prática repetida (exercício já concluído antes): não dá pontos nem vidas por
+            # exercício. A recompensa da repetição é dada uma vez por lição em
+            # complete-lesson/ (+5 pontos e +1 vida no total), como definido no produto.
+            if not is_practice:
+                # Exercício novo: +10 pontos
+                user_progress.add_points(10, reason='challenge', curso_id=challenge.lesson.unit.course_id)
             
             return Response({
                 'success': True,
@@ -1252,7 +1317,7 @@ class GetAudioUploadUrlView(APIView):
 
             # SECURITY: Verify user ownership
             course = challenge.lesson.unit.course
-            if course.teacher != request.user and not request.user.is_staff:
+            if course.teacher_id != request.user.id and not _ciclo.e_staff(request.user):
                 return Response(
                     {'error': 'Não autorizado. Apenas o professor do curso pode fazer upload de áudio.'},
                     status=status_module.HTTP_403_FORBIDDEN
@@ -1261,7 +1326,7 @@ class GetAudioUploadUrlView(APIView):
             # SECURITY: Validate MIME type
             if file_type not in self.ALLOWED_AUDIO_TYPES:
                 return Response(
-                    {'error': f'Tipo de arquivo não permitido. Use: MP3, WAV, OGG, WebM, M4A, AAC'},
+                    {'error': f'Tipo de ficheiro não permitido. Use: MP3, WAV, OGG, WebM, M4A, AAC'},
                     status=status_module.HTTP_400_BAD_REQUEST
                 )
 
@@ -1269,7 +1334,7 @@ class GetAudioUploadUrlView(APIView):
             file_extension = os.path.splitext(file_name)[1].lower().lstrip('.')
             if not file_extension or file_extension not in self.ALLOWED_AUDIO_EXTENSIONS:
                 return Response(
-                    {'error': f'Extensão de arquivo não permitida. Use: {", ".join(self.ALLOWED_AUDIO_EXTENSIONS)}'},
+                    {'error': f'Extensão de ficheiro não permitida. Use: {", ".join(self.ALLOWED_AUDIO_EXTENSIONS)}'},
                     status=status_module.HTTP_400_BAD_REQUEST
                 )
 
@@ -1315,9 +1380,10 @@ class GetAudioUploadUrlView(APIView):
                 }
             }, status=status_module.HTTP_200_OK)
 
-        except Exception as e:
+        except Exception:
+            logger.exception('Falha ao gerar URL de upload')
             return Response(
-                {'error': f'Falha ao gerar URL de upload: {str(e)}'},
+                {'error': 'Não foi possível preparar o envio do ficheiro. Tente de novo.'},
                 status=status_module.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
@@ -1385,7 +1451,7 @@ class GetImageUploadUrlView(APIView):
 
             # SECURITY: Verify user ownership
             course = challenge.lesson.unit.course
-            if course.teacher != request.user and not request.user.is_staff:
+            if course.teacher_id != request.user.id and not _ciclo.e_staff(request.user):
                 return Response(
                     {'error': 'Não autorizado. Apenas o professor do curso pode fazer upload de imagens.'},
                     status=status_module.HTTP_403_FORBIDDEN
@@ -1394,7 +1460,7 @@ class GetImageUploadUrlView(APIView):
             # SECURITY: Validate MIME type
             if file_type not in self.ALLOWED_IMAGE_TYPES:
                 return Response(
-                    {'error': f'Tipo de arquivo não permitido. Use: JPG, PNG, WebP, GIF, SVG'},
+                    {'error': f'Tipo de ficheiro não permitido. Use: JPG, PNG, WebP, GIF, SVG'},
                     status=status_module.HTTP_400_BAD_REQUEST
                 )
 
@@ -1402,7 +1468,7 @@ class GetImageUploadUrlView(APIView):
             file_extension = os.path.splitext(file_name)[1].lower().lstrip('.')
             if not file_extension or file_extension not in self.ALLOWED_IMAGE_EXTENSIONS:
                 return Response(
-                    {'error': f'Extensão de arquivo não permitida. Use: {", ".join(self.ALLOWED_IMAGE_EXTENSIONS)}'},
+                    {'error': f'Extensão de ficheiro não permitida. Use: {", ".join(self.ALLOWED_IMAGE_EXTENSIONS)}'},
                     status=status_module.HTTP_400_BAD_REQUEST
                 )
 
@@ -1448,62 +1514,12 @@ class GetImageUploadUrlView(APIView):
                 }
             }, status=status_module.HTTP_200_OK)
 
-        except Exception as e:
+        except Exception:
+            logger.exception('Falha ao gerar URL de upload')
             return Response(
-                {'error': f'Falha ao gerar URL de upload: {str(e)}'},
+                {'error': 'Não foi possível preparar o envio do ficheiro. Tente de novo.'},
                 status=status_module.HTTP_500_INTERNAL_SERVER_ERROR
             )
-
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_units_with_progress(request, course_id):
-    """
-    GET /api/v1/practice/courses/{course_id}/units-with-progress/
-    
-    Get course units with user completion progress.
-    Enhanced version that includes lesson completion status and course details.
-    """
-    # Filter specifically for practice courses
-    course = get_object_or_404(Course, id=course_id, course_type='practice')
-    units = PracticeUnit.objects.filter(course=course).prefetch_related(
-        'lessons__challenges'
-    )
-    
-    # Serialize course data manually for practice courses
-    course_data = {
-        'id': str(course.id),
-        'title': course.title,
-        'description': course.description,
-        'category': course.category,
-        'level': course.level,
-        'status': course.status,
-        'course_type': course.course_type,
-        'template': course.template,
-        'image': course.image,
-        'created_at': course.created_at.isoformat(),
-        'updated_at': course.updated_at.isoformat(),
-        'teacher': {
-            'id': str(course.teacher.id),
-            'username': course.teacher.username,
-            'email': course.teacher.email,
-            'first_name': getattr(course.teacher, 'first_name', ''),
-            'last_name': getattr(course.teacher, 'last_name', ''),
-        } if course.teacher else None,
-        'teacherName': course.teacherName,
-    }
-    
-    # Serialize units data
-    units_serializer = PracticeUnitSerializer(
-        units, 
-        many=True, 
-        context={'request': request}
-    )
-    
-    return Response({
-        'course': course_data,
-        'units': units_serializer.data
-    })
 
 
 @api_view(['GET'])
@@ -1535,346 +1551,417 @@ def get_lesson_percentage(request, lesson_id):
     })
 
 
-# ============================================================================
-# TEACHER MANAGEMENT VIEWS - CRUD operations for practice content
-# ============================================================================
-
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-@method_decorator(csrf_exempt, name='dispatch')
-class PracticeUnitCreateView(generics.ListCreateAPIView):
+# ============================================================================
+# TEACHER MANAGEMENT VIEWS - CRUD operations for practice content
+#
+# Só o professor dono do curso (ou um administrador) lê e altera unidades, lições,
+# exercícios e opções por aqui: os alunos usam os endpoints de student/practice-courses
+# (jogar/, trilho/), que nunca mostram as respostas certas. Para os outros, os objectos
+# não existem (404) e as criações são recusadas (403).
+# ============================================================================
+
+from rest_framework.exceptions import PermissionDenied as _SemPermissao, ValidationError as _Invalido
+from rest_framework.permissions import BasePermission
+from apps.courses import ciclo as _ciclo
+from .serializers import (
+    PracticeChallengeProfessorSerializer,
+    PracticeLessonProfessorSerializer,
+    PracticeUnitProfessorSerializer,
+    ChallengeOptionProfessorSerializer,
+)
+
+MENSAGEM_SO_DONO = 'Apenas o professor do curso pode alterar este conteúdo.'
+
+
+def _pode_gerir_curso(user, course):
+    """Professor dono do curso ou administrador."""
+    if _ciclo.e_staff(user):
+        return True
+    return _ciclo.e_professor(user) and course is not None and course.teacher_id == user.id
+
+
+def _exigir_dono(user, course):
+    if not _pode_gerir_curso(user, course):
+        raise _SemPermissao(MENSAGEM_SO_DONO)
+
+
+class _SoProfessoresEscrevem(BasePermission):
+    """Escritas só para professores e administradores (antes de validar os dados)."""
+    message = MENSAGEM_SO_DONO
+
+    def has_permission(self, request, view):
+        if request.method in ('GET', 'HEAD', 'OPTIONS'):
+            return True
+        return _ciclo.e_professor(request.user) or _ciclo.e_staff(request.user)
+
+
+ROTA_ANTIGA_MENSAGEM = ('Esta forma de editar cursos de prática foi retirada. '
+                       'Use o editor de cursos de prática na área do professor.')
+
+
+def _rota_antiga(request, *args, **kwargs):
+    """410: as escritas nas rotas antigas não passavam pelas validações do editor novo."""
+    return Response({'error': ROTA_ANTIGA_MENSAGEM, 'message': ROTA_ANTIGA_MENSAGEM,
+                     'code': 'rota_removida', 'details': {'editor': '/api/v1/teacher/pratica/'}},
+                    status=status_module.HTTP_410_GONE)
+
+
+class _ConteudoPraticaMixin:
     """
-    GET /api/v1/practice/units/ - List units by course (query param: course)
-    POST /api/v1/practice/units/ - Create a new practice unit (Teacher only)
+    Restringe o queryset ao professor dono (o administrador vê tudo) e mostra as respostas.
+    Só leitura: criar, alterar e apagar unidades, lições, exercícios e opções faz-se no editor
+    novo (/api/v1/teacher/pratica/, apps/courses/api/teacher/pratica.py) -> 410 aqui.
     """
-    queryset = PracticeUnit.objects.all()
-    serializer_class = PracticeUnitSerializer
-    permission_classes = [IsAuthenticated]
-    
-    def get_queryset(self):
-        """Filter units by course if course parameter is provided"""
-        queryset = super().get_queryset()
-        course_id = self.request.GET.get('course')
-        
-        if course_id:
-            queryset = queryset.filter(course_id=course_id)
-        
-        return queryset.order_by('order')
-    
-    def list(self, request, *args, **kwargs):
-        """GET method - List units with same format as units_list_simple"""
-        queryset = self.get_queryset()
-        
-        units_data = []
-        for unit in queryset:
-            units_data.append({
-                'id': str(unit.id),
-                'title': unit.title,
-                'description': unit.description,
-                'order': unit.order,
-                'course_id': str(unit.course.id),
-                'lessons_count': unit.lessons.count()
-            })
-        
-        return Response({
-            'results': units_data,
-            'count': len(units_data),
-            'message': 'Units retrieved successfully'
-        })
-    
-    def perform_create(self, serializer):
-        """POST method - Create new unit"""
-        # Add validation for teacher role if needed
-        serializer.save()
+    caminho_professor = None  # ex.: 'course__teacher'
+
+    def post(self, request, *args, **kwargs):
+        return _rota_antiga(request)
+
+    put = patch = delete = post
+
+    def get_permissions(self):
+        return [IsAuthenticated(), _SoProfessoresEscrevem()]
+
+    def _filtrar_dono(self, qs):
+        user = self.request.user
+        if _ciclo.e_staff(user):
+            return qs
+        if not _ciclo.e_professor(user):
+            return qs.none()
+        return qs.filter(**{self.caminho_professor: user})
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['mostrar_respostas'] = True
+        return context
 
 
-class PracticeUnitUpdateView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    GET/PUT/PATCH/DELETE /api/v1/practice/units/{unit_id}/
-    
-    Update or delete practice unit (Teacher only).
-    """
-    queryset = PracticeUnit.objects.all()
-    serializer_class = PracticeUnitSerializer
-    permission_classes = [IsAuthenticated]
-    lookup_field = 'id'
-    lookup_url_kwarg = 'unit_id'
-
-
-class PracticeLessonCreateView(generics.ListCreateAPIView):
-    """
-    GET /api/v1/practice/lessons/ - List lessons by unit (query param: unit)
-    POST /api/v1/practice/lessons/ - Create a new practice lesson (Teacher only)
-    """
-    serializer_class = PracticeLessonSerializer
-    permission_classes = [IsAuthenticated]
-    
-    def get_queryset(self):
-        unit_id = self.request.GET.get('unit')
-        if unit_id:
-            return PracticeLesson.objects.filter(unit_id=unit_id).order_by('order')
-        return PracticeLesson.objects.all().order_by('order')
-    
-    def list(self, request, *args, **kwargs):
-        # Same format as lessons_list_simple
-        unit_id = request.GET.get('unit')
-        if not unit_id:
-            return Response(
-                {"error": "unit parameter is required"}, 
-                status=status.HTTP_400_BAD_REQUEST
-            )
-        
-        try:
-            lessons = PracticeLesson.objects.filter(
-                unit_id=unit_id
-            ).order_by('order')
-            
-            serializer = self.get_serializer(lessons, many=True)
-            return Response({
-                "message": "Lessons retrieved successfully",
-                "data": serializer.data
-            })
-        except Exception as e:
-            return Response(
-                {"error": f"Error fetching lessons: {str(e)}"}, 
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
-
-
-class PracticeLessonUpdateView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    GET/PUT/PATCH/DELETE /api/v1/practice/lessons/{lesson_id}/
-    
-    Update or delete practice lesson (Teacher only).
-    """
-    queryset = PracticeLesson.objects.all()
-    serializer_class = PracticeLessonSerializer
-    permission_classes = [IsAuthenticated]
-    lookup_field = 'id'
-    lookup_url_kwarg = 'lesson_id'
-
-
-class PracticeChallengeCreateView(generics.ListCreateAPIView):
-    """
-    GET /api/v1/practice/challenges/ - List challenges by lesson (query param: lesson)
-    POST /api/v1/practice/challenges/ - Create a new practice challenge (Teacher only)
-    """
-    serializer_class = PracticeChallengeSerializer
-    permission_classes = [IsAuthenticated]
-
-    def get_queryset(self):
-        lesson_id = self.request.GET.get('lesson')
-        if lesson_id:
-            return PracticeChallenge.objects.filter(lesson_id=lesson_id).order_by('order')
-        return PracticeChallenge.objects.all().order_by('order')
-
-    def create(self, request, *args, **kwargs):
-        """
-        Create a new challenge with options.
-
-        The serializer's create() method handles creating nested options.
-        """
-        logger.info(f"=== CREATE CHALLENGE ===")
-        logger.info(f"Request data: {request.data}")
-        logger.info(f"Options in request: {request.data.get('options', 'NOT FOUND')}")
-
-        serializer = self.get_serializer(data=request.data)
-        logger.info(f"Serializer initial_data: {serializer.initial_data}")
-        logger.info(f"Options in initial_data: {serializer.initial_data.get('options', 'NOT FOUND')}")
-
-        serializer.is_valid(raise_exception=True)
-        challenge = serializer.save()
-
-        # Re-fetch to include created options in response
-        response_serializer = self.get_serializer(challenge)
-
-        logger.info(f"Challenge created: {challenge.id} with {challenge.options.count()} options")
-        logger.info(f"=== END CREATE CHALLENGE ===")
-
-        return Response(response_serializer.data, status=status_module.HTTP_201_CREATED)
-
-    def list(self, request, *args, **kwargs):
-        # Same format as challenges_list_simple
-        lesson_id = request.GET.get('lesson')
-        if not lesson_id:
-            return Response(
-                {"error": "lesson parameter is required"},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
-        try:
-            challenges = PracticeChallenge.objects.filter(
-                lesson_id=lesson_id
-            ).order_by('order')
-
-            serializer = self.get_serializer(challenges, many=True)
-            return Response({
-                "message": "Challenges retrieved successfully",
-                "data": serializer.data
-            })
-        except Exception as e:
-            return Response(
-                {"error": f"Error fetching challenges: {str(e)}"},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
-
-
-class PracticeChallengeUpdateView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    GET/PUT/PATCH/DELETE /api/v1/practice/challenges/{challenge_id}/
-    
-    Update or delete practice challenge (Teacher only).
-    """
-    queryset = PracticeChallenge.objects.all()
-    serializer_class = PracticeChallengeSerializer
-    permission_classes = [IsAuthenticated]
-    lookup_field = 'id'
-    lookup_url_kwarg = 'challenge_id'
-
-
-class ChallengeOptionCreateView(generics.CreateAPIView):
-    """
-    POST /api/v1/practice/challenge-options/
-    
-    Create a new challenge option (Teacher only).
-    """
-    queryset = ChallengeOption.objects.all()
-    serializer_class = ChallengeOptionCreateSerializer
-    permission_classes = [IsAuthenticated]
-
-
-class ChallengeOptionUpdateView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    GET/PUT/PATCH/DELETE /api/v1/practice/challenge-options/{option_id}/
-    
-    Update or delete challenge option (Teacher only).
-    """
-    queryset = ChallengeOption.objects.all()
-    serializer_class = ChallengeOptionWithAnswerSerializer
-    permission_classes = [IsAuthenticated]
-    lookup_field = 'id'
-    lookup_url_kwarg = 'option_id'
+def _guardar_opcoes(challenge, opcoes, substituir=False):
+    """Cria as opções enviadas com o exercício (o construtor do professor manda-as juntas)."""
+    if opcoes is None:
+        return
+    if not isinstance(opcoes, list):
+        raise _Invalido({'options': ['As opções devem ser uma lista.']})
+    serializers_ = []
+    for i, dados in enumerate(opcoes):
+        if not isinstance(dados, dict):
+            raise _Invalido({'options': ['Cada opção deve ser um objecto.']})
+        dados = dict(dados)
+        dados.pop('id', None)
+        dados.pop('challenge', None)
+        dados.pop('challenge_id', None)
+        if 'audio_url' in dados and 'audioSrc' not in dados:
+            dados['audioSrc'] = dados.pop('audio_url')
+        if 'image_url' in dados and 'imageSrc' not in dados:
+            dados['imageSrc'] = dados.pop('image_url')
+        dados.setdefault('order', i)
+        s = ChallengeOptionProfessorSerializer(data=dados)
+        s.is_valid(raise_exception=True)
+        serializers_.append(s)
+    if substituir:
+        challenge.options.all().delete()
+    for s in serializers_:
+        s.save(challenge=challenge)
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_practice_analytics(request):
+def get_units_with_progress(request, course_id):
     """
-    GET /api/v1/practice/analytics/
-    
-    Get analytics data for teacher dashboard.
+    GET /api/v1/practice/courses/{course_id}/units-with-progress/          (professor)
+    GET /api/v1/student/practice-courses/courses/{course_id}/units-with-progress/ (aluno)
+
+    O professor dono e o administrador vêem qualquer estado e as respostas certas.
+    Os alunos só vêem cursos que podem abrir (publicados ou arquivados a manter) e nunca
+    as respostas certas de exercícios por fazer.
     """
-    # Get all courses
-    total_courses = Course.objects.filter(status='Published').count()
-    
-    # Get total students with progress
-    total_students = UserProgress.objects.count()
-    
-    # Get total challenges
-    total_challenges = PracticeChallenge.objects.count()
-    
-    # Calculate average completion rate
-    if total_students > 0:
-        all_progress = UserProgress.objects.all()
-        completion_rates = []
-        
-        for progress in all_progress:
-            if progress.active_course:
-                course_units = PracticeUnit.objects.filter(course=progress.active_course)
-                if course_units.exists():
-                    total_lessons = PracticeLesson.objects.filter(unit__in=course_units).count()
-                    if total_lessons > 0:
-                        completed_lessons = ChallengeProgress.objects.filter(
-                            user=progress.user,
-                            challenge__lesson__unit__course=progress.active_course,
-                            completed=True
-                        ).values('challenge__lesson').distinct().count()
-                        
-                        completion_rate = (completed_lessons / total_lessons) * 100
-                        completion_rates.append(completion_rate)
-        
-        avg_completion_rate = sum(completion_rates) / len(completion_rates) if completion_rates else 0
-    else:
-        avg_completion_rate = 0
-    
+    course = get_object_or_404(Course.objects.select_related('teacher'), id=course_id, course_type='practice')
+    dono = _ciclo.e_dono_ou_staff(request.user, course)
+    if not dono:
+        if _ciclo.bloqueio_pratica(request.user, course):
+            from rest_framework.exceptions import NotFound
+            raise NotFound('Curso de prática não encontrado.')
+    units = PracticeUnit.objects.filter(course=course).order_by('order').prefetch_related(
+        'lessons__challenges__options'
+    )
+
+    course_data = {
+        'id': str(course.id),
+        'title': course.title,
+        'description': course.description,
+        'category': course.category,
+        'level': course.level,
+        'status': course.status,
+        'estado': _ciclo.estado(course),
+        'course_type': course.course_type,
+        'template': course.template,
+        'image': course.image,
+        'created_at': course.created_at.isoformat(),
+        'updated_at': course.updated_at.isoformat(),
+        'teacher': {
+            'id': str(course.teacher.id),
+            'username': course.teacher.username,
+            'email': course.teacher.email if dono else None,
+            'first_name': getattr(course.teacher, 'first_name', ''),
+            'last_name': getattr(course.teacher, 'last_name', ''),
+        } if course.teacher else None,
+        'teacherName': course.teacherName,
+    }
+    if dono:
+        course_data['motivo_recusa'] = course.motivo_recusa or None
+
+    # O aluno recebe só a estrutura e o progresso (sem enunciados, opções nem respostas) e não vê
+    # as lições ainda incompletas; o ecrã da lição usa lessons/<id>/jogar/.
+    from apps.practice.acesso_licoes import ids_escondidas
+    serializer_class = PracticeUnitProfessorSerializer if dono else PracticeUnitSerializer
+    units_serializer = serializer_class(
+        units,
+        many=True,
+        context={'request': request, 'mostrar_respostas': dono,
+                 'licoes_escondidas': set() if dono else ids_escondidas(course)}
+    )
+
     return Response({
-        'total_courses': total_courses,
-        'total_students': total_students,
-        'total_challenges': total_challenges,
-        'avg_completion_rate': round(avg_completion_rate, 2)
+        'course': course_data,
+        'units': units_serializer.data
     })
 
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def get_student_progress_list(request):
+@method_decorator(csrf_exempt, name='dispatch')
+class PracticeUnitCreateView(_ConteudoPraticaMixin, generics.ListCreateAPIView):
     """
-    GET /api/v1/practice/student-progress/
-    
-    Get list of all students and their progress for teacher dashboard.
+    GET /api/v1/practice/units/?course=<id> - Unidades dos cursos do professor
+    POST /api/v1/practice/units/ - Cria uma unidade (professor dono do curso)
     """
-    students_progress = UserProgress.objects.select_related('user', 'active_course').all()
-    
-    students_data = []
-    for progress in students_progress:
-        # Calculate completion stats
-        if progress.active_course:
-            course_units = PracticeUnit.objects.filter(course=progress.active_course)
-            total_lessons = PracticeLesson.objects.filter(unit__in=course_units).count()
-            
-            completed_lessons = ChallengeProgress.objects.filter(
-                user=progress.user,
-                challenge__lesson__unit__course=progress.active_course,
-                completed=True
-            ).values('challenge__lesson').distinct().count()
-            
-            # Calculate accuracy
-            total_attempts = ChallengeProgress.objects.filter(user=progress.user).count()
-            correct_attempts = ChallengeProgress.objects.filter(
-                user=progress.user, 
-                completed=True
-            ).count()
-            accuracy = (correct_attempts / total_attempts * 100) if total_attempts > 0 else 0
-        else:
-            total_lessons = 0
-            completed_lessons = 0
-            accuracy = 0
-        
-        students_data.append({
-            'id': progress.user.id,
-            'name': f"{progress.user.first_name} {progress.user.last_name}".strip() or progress.user.email,
-            'email': progress.user.email,
-            'total_points': progress.points,
-            'hearts': progress.hearts,
-            'total_lessons': total_lessons,
-            'completed_lessons': completed_lessons,
-            'average_accuracy': round(accuracy, 1),
-            'active_course': progress.active_course.title if progress.active_course else None,
-            'last_activity': progress.updated_at.isoformat(),
-            'joined_at': progress.created_at.isoformat()
+    serializer_class = PracticeUnitProfessorSerializer
+    permission_classes = [IsAuthenticated]
+    caminho_professor = 'course__teacher'
+
+    def get_queryset(self):
+        queryset = self._filtrar_dono(PracticeUnit.objects.select_related('course'))
+        course_id = self.request.GET.get('course')
+        if course_id:
+            queryset = queryset.filter(course_id=course_id)
+        return queryset.annotate(_n_licoes=models.Count('lessons')).order_by('order')
+
+    def list(self, request, *args, **kwargs):
+        units_data = [{
+            'id': str(unit.id),
+            'title': unit.title,
+            'description': unit.description,
+            'order': unit.order,
+            'course_id': str(unit.course_id),
+            'lessons_count': unit._n_licoes,
+        } for unit in self.get_queryset()]
+        return Response({
+            'results': units_data,
+            'count': len(units_data),
+            'message': 'Unidades obtidas com sucesso'
         })
-    
-    return Response(students_data)
+
+    def perform_create(self, serializer):
+        _exigir_dono(self.request.user, serializer.validated_data.get('course'))
+        serializer.save()
+
+
+class PracticeUnitUpdateView(_ConteudoPraticaMixin, generics.RetrieveUpdateDestroyAPIView):
+    """
+    GET/PUT/PATCH/DELETE /api/v1/practice/units/{unit_id}/ (professor dono do curso)
+    """
+    serializer_class = PracticeUnitProfessorSerializer
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'id'
+    lookup_url_kwarg = 'unit_id'
+    caminho_professor = 'course__teacher'
+
+    def get_queryset(self):
+        return self._filtrar_dono(PracticeUnit.objects.select_related('course'))
+
+    def perform_update(self, serializer):
+        if 'course' in serializer.validated_data:
+            _exigir_dono(self.request.user, serializer.validated_data['course'])
+        serializer.save()
+
+
+class PracticeLessonCreateView(_ConteudoPraticaMixin, generics.ListCreateAPIView):
+    """
+    GET /api/v1/practice/lessons/?unit=<id> - Lições de uma unidade (professor dono)
+    POST /api/v1/practice/lessons/ - Cria uma lição (professor dono do curso)
+    """
+    serializer_class = PracticeLessonProfessorSerializer
+    permission_classes = [IsAuthenticated]
+    caminho_professor = 'unit__course__teacher'
+
+    def get_queryset(self):
+        queryset = self._filtrar_dono(PracticeLesson.objects.all())
+        unit_id = self.request.GET.get('unit')
+        if unit_id:
+            queryset = queryset.filter(unit_id=unit_id)
+        return queryset.prefetch_related('challenges__options').order_by('order')
+
+    def list(self, request, *args, **kwargs):
+        if not request.GET.get('unit'):
+            return Response(
+                {'error': 'Indique a unidade (parâmetro unit).', 'message': 'Indique a unidade (parâmetro unit).',
+                 'code': 'unit_obrigatorio', 'details': {}},
+                status=status_module.HTTP_400_BAD_REQUEST
+            )
+        serializer = self.get_serializer(self.get_queryset(), many=True)
+        return Response({
+            "message": "Lições obtidas com sucesso",
+            "data": serializer.data
+        })
+
+    def perform_create(self, serializer):
+        unit = serializer.validated_data.get('unit')
+        _exigir_dono(self.request.user, unit.course if unit else None)
+        serializer.save()
+
+
+class PracticeLessonUpdateView(_ConteudoPraticaMixin, generics.RetrieveUpdateDestroyAPIView):
+    """
+    GET/PUT/PATCH/DELETE /api/v1/practice/lessons/{lesson_id}/ (professor dono do curso)
+    """
+    serializer_class = PracticeLessonProfessorSerializer
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'id'
+    lookup_url_kwarg = 'lesson_id'
+    caminho_professor = 'unit__course__teacher'
+
+    def get_queryset(self):
+        return self._filtrar_dono(PracticeLesson.objects.select_related('unit__course')
+                                  .prefetch_related('challenges__options'))
+
+    def perform_update(self, serializer):
+        if 'unit' in serializer.validated_data:
+            _exigir_dono(self.request.user, serializer.validated_data['unit'].course)
+        serializer.save()
+
+
+class PracticeChallengeCreateView(_ConteudoPraticaMixin, generics.ListCreateAPIView):
+    """
+    GET /api/v1/practice/challenges/?lesson=<id> - Exercícios de uma lição (professor dono)
+    POST /api/v1/practice/challenges/ - Cria um exercício com as opções (professor dono)
+    """
+    serializer_class = PracticeChallengeProfessorSerializer
+    permission_classes = [IsAuthenticated]
+    caminho_professor = 'lesson__unit__course__teacher'
+
+    def get_queryset(self):
+        queryset = self._filtrar_dono(PracticeChallenge.objects.all())
+        lesson_id = self.request.GET.get('lesson')
+        if lesson_id:
+            queryset = queryset.filter(lesson_id=lesson_id)
+        return queryset.prefetch_related('options').order_by('order')
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        lesson = serializer.validated_data.get('lesson')
+        _exigir_dono(request.user, lesson.unit.course if lesson else None)
+        with transaction.atomic():
+            challenge = serializer.save()
+            _guardar_opcoes(challenge, request.data.get('options'))
+        response_serializer = self.get_serializer(challenge)
+        return Response(response_serializer.data, status=status_module.HTTP_201_CREATED)
+
+    def list(self, request, *args, **kwargs):
+        if not request.GET.get('lesson'):
+            return Response(
+                {'error': 'Indique a lição (parâmetro lesson).', 'message': 'Indique a lição (parâmetro lesson).',
+                 'code': 'lesson_obrigatorio', 'details': {}},
+                status=status_module.HTTP_400_BAD_REQUEST
+            )
+        serializer = self.get_serializer(self.get_queryset(), many=True)
+        return Response({
+            "message": "Exercícios obtidos com sucesso",
+            "data": serializer.data
+        })
+
+
+class PracticeChallengeUpdateView(_ConteudoPraticaMixin, generics.RetrieveUpdateDestroyAPIView):
+    """
+    GET/PUT/PATCH/DELETE /api/v1/practice/challenges/{challenge_id}/ (professor dono)
+
+    Se o pedido trouxer `options`, as opções do exercício são substituídas por essas.
+    """
+    serializer_class = PracticeChallengeProfessorSerializer
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'id'
+    lookup_url_kwarg = 'challenge_id'
+    caminho_professor = 'lesson__unit__course__teacher'
+
+    def get_queryset(self):
+        return self._filtrar_dono(PracticeChallenge.objects.select_related('lesson__unit__course')
+                                  .prefetch_related('options'))
+
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        if 'lesson' in serializer.validated_data:
+            _exigir_dono(request.user, serializer.validated_data['lesson'].unit.course)
+        with transaction.atomic():
+            challenge = serializer.save()
+            if 'options' in request.data:
+                _guardar_opcoes(challenge, request.data.get('options'), substituir=True)
+        challenge = self.get_queryset().get(pk=challenge.pk)
+        return Response(self.get_serializer(challenge).data)
+
+
+class ChallengeOptionCreateView(_ConteudoPraticaMixin, generics.CreateAPIView):
+    """
+    POST /api/v1/practice/challenge-options/ {challenge_id, text, is_correct, ...}
+
+    Acrescenta uma opção a um exercício (professor dono do curso).
+    """
+    serializer_class = ChallengeOptionCreateSerializer
+    permission_classes = [IsAuthenticated]
+    caminho_professor = 'challenge__lesson__unit__course__teacher'
+
+    def perform_create(self, serializer):
+        challenge = PracticeChallenge.objects.select_related('lesson__unit__course').filter(
+            id=serializer.validated_data.get('challenge_id')).first()
+        if challenge is None or not _pode_gerir_curso(self.request.user, challenge.lesson.unit.course):
+            from rest_framework.exceptions import NotFound
+            raise NotFound('Exercício não encontrado.')
+        serializer.save()
+
+
+class ChallengeOptionUpdateView(_ConteudoPraticaMixin, generics.RetrieveUpdateDestroyAPIView):
+    """
+    GET/PUT/PATCH/DELETE /api/v1/practice/challenge-options/{option_id}/ (professor dono)
+    """
+    serializer_class = ChallengeOptionProfessorSerializer
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'id'
+    lookup_url_kwarg = 'option_id'
+    caminho_professor = 'challenge__lesson__unit__course__teacher'
+
+    def get_queryset(self):
+        return self._filtrar_dono(ChallengeOption.objects.all())
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_unit_lessons(request, unit_id):
     """
-    GET /api/v1/practice/units/{unit_id}/lessons/
-    
-    Get all lessons for a specific unit.
+    GET /api/v1/practice/units/{unit_id}/lessons/ (professor dono do curso)
     """
-    unit = get_object_or_404(PracticeUnit, id=unit_id)
-    lessons = PracticeLesson.objects.filter(unit=unit).prefetch_related('challenges')
-    
-    serializer = PracticeLessonSerializer(
-        lessons, 
-        many=True, 
-        context={'request': request}
+    unit = get_object_or_404(PracticeUnit.objects.select_related('course'), id=unit_id)
+    if not _pode_gerir_curso(request.user, unit.course):
+        from rest_framework.exceptions import NotFound
+        raise NotFound('Unidade não encontrada.')
+    lessons = PracticeLesson.objects.filter(unit=unit).prefetch_related('challenges__options')
+    serializer = PracticeLessonProfessorSerializer(
+        lessons,
+        many=True,
+        context={'request': request, 'mostrar_respostas': True}
     )
-    
     return Response(serializer.data)
 
 
@@ -1890,16 +1977,15 @@ def get_global_leaderboard(request):
     
     Get global leaderboard with top users ranked by points.
     """
-    from django.contrib.auth import get_user_model
-    from django.db.models import F
-    
-    User = get_user_model()
+    from apps.practice.liga import nome_publico
     
     # Get top users with progress, ordered by points
     leaderboard_data = []
     
     # Get all users with progress, ordered by points
-    users_with_progress = UserProgress.objects.select_related('user').order_by('-points')[:50]
+    users_with_progress = UserProgress.objects.select_related('user').filter(
+        user__role='student', user__is_active=True
+    ).order_by('-points')[:50]
     
     current_user_rank = None
     current_user_data = None
@@ -1929,9 +2015,8 @@ def get_global_leaderboard(request):
         if is_current_user:
             current_user_rank = index + 1
             current_user_data = {
-                'id': str(user_progress.user.id),
                 'rank': index + 1,
-                'username': user_progress.user.name if hasattr(user_progress.user, 'name') else user_progress.user.first_name or user_progress.user.email,
+                'username': nome_publico(user_progress.user.name),
                 'points': user_progress.points,
                 'streak': user_streak.current_streak,
                 'league': user_league.current_league,
@@ -1940,10 +2025,10 @@ def get_global_leaderboard(request):
                 'isCurrentUser': True
             }
         
+        # Privacidade: sem id/e-mail/nome completo dos outros alunos, só o nome público.
         entry = {
-            'id': str(user_progress.user.id),
             'rank': index + 1,
-            'username': user_progress.user.name if hasattr(user_progress.user, 'name') else user_progress.user.first_name or user_progress.user.email,
+            'username': nome_publico(user_progress.user.name),
             'avatar': user_progress.user_image_src,
             'points': user_progress.points,
             'streak': user_streak.current_streak,
@@ -2001,8 +2086,17 @@ def get_active_competitions(request):
     
     Get active competitions.
     """
-    # Get active competitions
-    competitions = Competition.objects.filter(status='active').order_by('-start_date')
+    # Competições da plataforma activas (as antigas, de inscrição) + as dos cursos do aluno,
+    # em que participa automaticamente (apps/practice/competicoes.py).
+    from django.db.models import Q
+    from django.utils import timezone
+    from apps.practice.competicoes import competicoes_do_aluno
+    agora = timezone.now()
+    ids = {c.id for c in competicoes_do_aluno(request.user, agora)}
+    competitions = (Competition.objects.filter(
+        Q(status='active', criado_por__isnull=True, cursos__isnull=True, todos_os_cursos=False)
+        | Q(id__in=ids))
+        .distinct().order_by('-start_date'))
     
     serializer = CompetitionSerializer(
         competitions, 
@@ -2072,6 +2166,9 @@ def join_competition(request, competition_id):
     """
     competition = get_object_or_404(Competition, id=competition_id, status='active')
     user = request.user
+    if competition.criado_por_id or competition.todos_os_cursos or competition.cursos.exists():
+        return Response({'error': 'Nesta competição a participação é automática para os alunos dos cursos.'},
+                        status=400)
     
     # Check if user meets requirements
     try:
@@ -2114,7 +2211,7 @@ class LeaderboardSnapshotCreateView(APIView):
     Create a leaderboard snapshot (for automated tasks).
     Admin only - used by Celery tasks for scheduled snapshots.
     """
-    permission_classes = [IsAdminUser]  # SECURITY FIX: Admin only
+    permission_classes = [EAdministrador]  # SECURITY FIX: Admin only
     
     def post(self, request):
         """Create snapshot of current leaderboard"""
@@ -2180,7 +2277,7 @@ def update_user_streak(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAdminUser])  # SECURITY FIX: Admin only - was public, leaked PII
+@permission_classes([EAdministrador])  # SECURITY FIX: Admin only - was public, leaked PII
 def test_leaderboard_data(request):
     """
     Test endpoint to check leaderboard data (Admin only).
@@ -2279,52 +2376,80 @@ def test_leaderboard_data(request):
 @permission_classes([IsAuthenticated])
 def get_user_achievements(request):
     """
-    GET /api/v1/practice/achievements/
-    
-    Get all achievements with user progress and unlock status.
+    GET /api/v1/student/practice-courses/achievements/
+
+    Todas as conquistas activas com estado (desbloqueada ou não), data e progresso.
+    O progresso é lido das tabelas reais para os tipos conhecidos (e desbloqueia a
+    conquista se o objectivo já foi atingido). Conquistas secretas só aparecem depois
+    de desbloqueadas.
     """
+    from django.utils import timezone
+    from apps.practice.achievement_utils import (
+        check_achievement_progress, conquistas_plataforma_do_aluno, conquistas_professor_do_aluno,
+        live_achievement_values,
+        valor_conquista_professor, verificar_conquistas_professor,
+    )
+
     user = request.user
-    
-    # Get all active achievements
-    achievements = Achievement.objects.filter(is_active=True).order_by('order', 'category', 'rarity')
-    
-    # Build response data matching frontend interface
-    achievements_data = []
-    
-    for achievement in achievements:
-        # Get or create user achievement record
-        user_achievement, created = UserAchievement.objects.get_or_create(
-            user=user,
-            achievement=achievement,
-            defaults={'current_progress': 0}
-        )
-        
-        # Build progress data
-        progress_data = None
-        if not user_achievement.is_unlocked and achievement.requirement_target > 0:
-            progress_data = {
-                'current': user_achievement.current_progress,
-                'target': achievement.requirement_target,
-                'unit': achievement.requirement_unit
+    # Conquistas da plataforma + as dos professores dos cursos do aluno (só contam esses cursos).
+    verificar_conquistas_professor(user)
+    # Inclui as da plataforma já desligadas que o aluno ganhou (continuam visíveis).
+    achievements = list(conquistas_plataforma_do_aluno(user).order_by('order', 'category', 'rarity'))
+    do_professor = list(conquistas_professor_do_aluno(user).select_related('curso').order_by('created_at'))
+    achievements += do_professor
+    user_achievements = {
+        ua.achievement_id: ua for ua in UserAchievement.objects.filter(user=user, achievement__in=achievements)
+    }
+    live = live_achievement_values(user, {a.requirement_type for a in achievements if a.criado_por_id is None})
+    live_professor = {a.id: valor_conquista_professor([user.id], a)[user.id] for a in do_professor
+                      if not getattr(user_achievements.get(a.id), 'is_unlocked', False)}
+
+    # Desbloqueia o que já foi atingido mas ainda não tinha sido verificado.
+    for req_type, value in live.items():
+        if any(a.requirement_type == req_type and value >= a.requirement_target and a.criado_por_id is None
+               and not getattr(user_achievements.get(a.id), 'is_unlocked', False) for a in achievements):
+            check_achievement_progress(user, req_type, value)
+            user_achievements = {
+                ua.achievement_id: ua
+                for ua in UserAchievement.objects.filter(user=user, achievement__in=achievements)
             }
-        
-        # Format unlock date
+
+    now = timezone.now()
+    achievements_data = []
+    for achievement in achievements:
+        ua = user_achievements.get(achievement.id)
+        unlocked = bool(ua and ua.is_unlocked)
+        if achievement.is_secret and not unlocked:
+            continue
+
+        progress_data = None
+        if not unlocked and achievement.requirement_target > 0:
+            if achievement.criado_por_id is None:
+                current = max(ua.current_progress if ua else 0, live.get(achievement.requirement_type, 0))
+            else:
+                current = live_professor.get(achievement.id, ua.current_progress if ua else 0)
+            current = min(current, achievement.requirement_target)
+            progress_data = {
+                'current': current,
+                'target': achievement.requirement_target,
+                'unit': achievement.requirement_unit,
+                'percentage': round(current * 100 / achievement.requirement_target),
+            }
+
         unlocked_at_formatted = None
-        if user_achievement.unlocked_at:
-            from django.utils import timezone
-            now = timezone.now()
-            diff = now - user_achievement.unlocked_at
-            
+        if unlocked and ua.unlocked_at:
+            diff = now - ua.unlocked_at
             if diff.days == 0:
                 unlocked_at_formatted = "hoje"
             elif diff.days == 1:
-                unlocked_at_formatted = "1 dia atrás"
+                unlocked_at_formatted = "há 1 dia"
             elif diff.days < 7:
-                unlocked_at_formatted = f"{diff.days} dias atrás"
+                unlocked_at_formatted = f"há {diff.days} dias"
             else:
-                unlocked_at_formatted = f"{diff.days // 7} semana{'s' if diff.days // 7 > 1 else ''} atrás"
-        
-        achievement_data = {
+                semanas = diff.days // 7
+                unlocked_at_formatted = f"há {semanas} semana{'s' if semanas > 1 else ''}"
+
+        achievements_data.append({
             'id': str(achievement.id),
             'title': achievement.title,
             'description': achievement.description,
@@ -2332,13 +2457,19 @@ def get_user_achievements(request):
             'category': achievement.category,
             'rarity': achievement.rarity,
             'points': achievement.points,
-            'isUnlocked': user_achievement.is_unlocked,
+            'isSecret': achievement.is_secret,
+            'isUnlocked': unlocked,
             'unlockedAt': unlocked_at_formatted,
-            'progress': progress_data
-        }
-        
-        achievements_data.append(achievement_data)
-    
+            'unlockedAtIso': ua.unlocked_at.isoformat() if unlocked and ua.unlocked_at else None,
+            'progress': progress_data,
+            # Conquista de um professor: o curso a que se limita (null = todos os cursos dele).
+            'professor': (
+                {'curso': ({'id': str(achievement.curso_id), 'titulo': achievement.curso.title}
+                           if achievement.curso_id else None)}
+                if achievement.criado_por_id else None
+            ),
+        })
+
     return Response(achievements_data)
 
 
@@ -2353,7 +2484,9 @@ def get_achievement_stats(request):
     user = request.user
     
     # Get all achievements and user achievements
-    total_achievements = Achievement.objects.filter(is_active=True).count()
+    from apps.practice.achievement_utils import conquistas_plataforma_do_aluno, conquistas_professor_do_aluno
+    total_achievements = (conquistas_plataforma_do_aluno(user).count()
+                          + conquistas_professor_do_aluno(user).count())
     user_achievements = UserAchievement.objects.filter(user=user)
     
     # Calculate stats
@@ -2484,7 +2617,8 @@ def check_achievement_progress(user, achievement_type, current_value):
     # Get achievements of the specified type
     achievements = Achievement.objects.filter(
         requirement_type=achievement_type,
-        is_active=True
+        is_active=True,
+        criado_por__isnull=True,  # as dos professores só contam os cursos deles (achievement_utils)
     )
     
     newly_unlocked = []
@@ -2507,13 +2641,16 @@ def check_achievement_progress(user, achievement_type, current_value):
                     user=user,
                     achievement=achievement
                 )
+                if created:
+                    from apps.practice.achievement_utils import notify_achievement_unlocked
+                    notify_achievement_unlocked(user, achievement)
                 newly_unlocked.append(achievement)
     
     return newly_unlocked
 
 
 @api_view(['GET'])
-@permission_classes([IsAdminUser])  # SECURITY FIX: Admin only - was public, wrote to DB
+@permission_classes([EAdministrador])  # SECURITY FIX: Admin only - was public, wrote to DB
 def test_achievements_data(request):
     """
     Test endpoint to check achievements data (Admin only).

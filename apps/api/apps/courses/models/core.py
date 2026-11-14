@@ -57,6 +57,7 @@ class Course(BaseModel):
         help_text="Course category"
     )
     image = models.URLField(
+        max_length=500,
         blank=True,
         help_text="Course thumbnail image URL (S3 or local)"
     )
@@ -90,7 +91,69 @@ class Course(BaseModel):
         default='video',
         help_text="Type of course: video lessons or practice laboratory"
     )
-    
+
+    # Access level - defines minimum subscription plan required
+    access_level = models.CharField(
+        max_length=20,
+        choices=CourseChoices.ACCESS_LEVEL_CHOICES,
+        default='free',
+        help_text="Minimum subscription plan required to access this course"
+    )
+
+    # Flag for featured/highlighted courses
+    is_featured = models.BooleanField(
+        default=False,
+        help_text="Whether this course is featured/highlighted on the platform"
+    )
+
+    # --- Ciclo de vida (apps/courses/ciclo.py) ---
+    motivo_recusa = models.TextField(
+        blank=True, default='',
+        help_text="Motivo dado pelo administrador ao recusar a publicação"
+    )
+    submetido_em = models.DateTimeField(null=True, blank=True)
+    aprovado_em = models.DateTimeField(null=True, blank=True)
+    aprovado_por = models.ForeignKey(
+        User, null=True, blank=True, on_delete=models.SET_NULL, related_name='+',
+        help_text="Administrador que aprovou a publicação"
+    )
+    modo_arquivo = models.CharField(
+        max_length=10, blank=True, default='',
+        choices=CourseChoices.ARCHIVE_MODE_CHOICES,
+        help_text="manter: inscritos mantêm o acesso; fechar: inscritos perdem o acesso às aulas"
+    )
+    arquivado_em = models.DateTimeField(null=True, blank=True)
+    # Última decisão de moderação do administrador (recusar ou arquivar), para o professor ver porquê
+    # mesmo quando o curso fica arquivado. Limpa-se quando o curso é aprovado.
+    motivo_moderacao = models.TextField(
+        blank=True, default='',
+        help_text="Motivo da última recusa ou arquivamento feito pelo administrador"
+    )
+    moderacao_accao = models.CharField(
+        max_length=10, blank=True, default='',
+        help_text="recusar | arquivar: a última acção de moderação do administrador"
+    )
+    moderado_por = models.ForeignKey(
+        User, null=True, blank=True, on_delete=models.SET_NULL, related_name='+',
+        help_text="Administrador que fez a última recusa ou arquivamento"
+    )
+    moderado_em = models.DateTimeField(null=True, blank=True)
+    estado_antes_revisao = models.CharField(
+        max_length=20, blank=True, default='',
+        help_text="Estado do curso quando foi submetido (Draft ou Archived): ao cancelar ou recusar "
+                  "a revisão volta a este estado; vindo de arquivado a manter, os inscritos mantêm o acesso"
+    )
+
+    # --- Definições do curso (as que o servidor filtra são colunas) ---
+    visivel_catalogo = models.BooleanField(default=True)
+    inscricao_livre = models.BooleanField(default=True)
+    maximo_alunos = models.PositiveIntegerField(null=True, blank=True)
+    definicoes = models.JSONField(
+        default=dict, blank=True,
+        help_text="pode_repetir, mostrar_progresso, resumo_semanal, tempo_limite_questionario_min, "
+                  "certificado_automatico"
+    )
+
     class Meta:
         db_table = 'courses'
         verbose_name = 'Course'
@@ -102,11 +165,14 @@ class Course(BaseModel):
             models.Index(fields=['level']),
             models.Index(fields=['status']),
             models.Index(fields=['created_at']),
+            models.Index(fields=['access_level']),
+            models.Index(fields=['is_featured']),
             # Composite indexes for common query patterns
             models.Index(fields=['status', 'category'], name='course_status_category_idx'),
             models.Index(fields=['teacher', 'status'], name='course_teacher_status_idx'),
             models.Index(fields=['status', 'created_at'], name='course_status_date_idx'),
             models.Index(fields=['category', 'level'], name='course_category_level_idx'),
+            models.Index(fields=['status', 'access_level'], name='course_status_access_idx'),
         ]
         ordering = ['-created_at']
     
@@ -118,7 +184,98 @@ class Course(BaseModel):
         if self.teacher and not self.teacherName:
             self.teacherName = self.teacher.name
         super().save(*args, **kwargs)
-    
+
+    def user_has_access(self, user) -> bool:
+        """
+        Check if a user has access to this course based on their subscription.
+
+        Returns True if:
+        - Course is free (access_level='free')
+        - User's plan type matches or exceeds the required access level
+        - User is the teacher/owner of the course
+        - User is admin/staff
+
+        Args:
+            user: The User instance to check access for
+
+        Returns:
+            bool: True if user has access, False otherwise
+        """
+        # Course is free - everyone has access
+        if self.access_level == 'free':
+            return True
+
+        # User is the course teacher - always has access
+        if self.teacher_id == user.id:
+            return True
+
+        # Administradores têm sempre acesso (is_staff sozinho não conta)
+        from apps.core.permissions import e_administrador
+        if e_administrador(user):
+            return True
+
+        # Check user's subscription
+        try:
+            from apps.subscriptions.models import UserSubscription
+            # is_active() é um método do modelo (estado + data de fim), não um campo:
+            # não pode entrar no filtro da consulta.
+            subscription = UserSubscription.objects.filter(
+                user=user
+            ).select_related('plan').first()
+
+            if not subscription or not subscription.plan or not subscription.is_active():
+                return False
+
+            user_plan_type = subscription.plan.plan_type
+
+            # Access level hierarchy: FREE < PREMIUM < PREMIUM_PLUS
+            # Normalize both values to uppercase for comparison
+            access_hierarchy = {
+                'FREE': 0,
+                'PREMIUM': 1,
+                'PREMIUM_PLUS': 2,
+            }
+
+            required_level = access_hierarchy.get(self.access_level.upper(), 0)
+            user_level = access_hierarchy.get(user_plan_type.upper() if user_plan_type else '', 0)
+
+            return user_level >= required_level
+
+        except ImportError:
+            # Subscriptions module not available - deny access for non-free courses
+            import logging
+            logging.getLogger(__name__).warning(
+                f"Subscriptions module not available when checking access for course {self.id}"
+            )
+            return False
+        except AttributeError as e:
+            # User or plan object has unexpected structure
+            import logging
+            logging.getLogger(__name__).warning(
+                f"AttributeError in user_has_access for course {self.id}: {e}"
+            )
+            return False
+
+    @property
+    def access_level_display(self) -> str:
+        """Return human-readable access level."""
+        labels = {
+            'free': 'Gratuito',
+            'premium': 'Premium',
+            'premium_plus': 'Premium Plus',
+        }
+        return labels.get(self.access_level, 'Gratuito')
+
+    @property
+    def is_free(self) -> bool:
+        """Check if course is free."""
+        return self.access_level == 'free'
+
+    @property
+    def is_premium(self) -> bool:
+        """Check if course requires premium or higher."""
+        return self.access_level in ('premium', 'premium_plus')
+
     @property
     def total_sections(self):
         """Return total number of sections in this course."""
@@ -154,11 +311,8 @@ class Course(BaseModel):
     
     def can_be_accessed_by(self, user):
         """Check if a user can access this course."""
-        if self.status == 'Published':
-            return True
-        if self.teacher == user:
-            return True
-        return False
+        from apps.courses.ciclo import bloqueio_conteudo
+        return bloqueio_conteudo(user, self) is None
 
 
 class CourseSection(BaseModel, OrderedModelMixin):
@@ -244,8 +398,26 @@ class Chapter(BaseModel, OrderedModelMixin, MetadataModelMixin):
     
     # Video-specific field
     video = models.URLField(
+        max_length=500,
         blank=True,
         help_text="Video URL for video-type chapters"
+    )
+    video_nome = models.CharField(
+        max_length=255, blank=True, default='',
+        help_text="Nome original do ficheiro de vídeo carregado pelo professor"
+    )
+    video_tamanho = models.BigIntegerField(
+        null=True, blank=True,
+        help_text="Tamanho do ficheiro de vídeo em bytes"
+    )
+    duracao_s = models.PositiveIntegerField(
+        null=True, blank=True,
+        help_text="Duração do vídeo em segundos"
+    )
+    PERCENTAGENS_VISTA = ((50, '50%'), (80, '80%'), (100, '100%'))
+    percentagem_vista = models.PositiveSmallIntegerField(
+        default=80, choices=PERCENTAGENS_VISTA,
+        help_text="Percentagem do vídeo que o aluno tem de ver para a aula contar como vista"
     )
     
     # Enhanced fields - Phase 1 Extensions (Non-breaking)
@@ -426,7 +598,7 @@ class ChapterComment(BaseModel, TimestampedModelMixin):
         """Check if a user can edit this comment."""
         return (self.user == user or 
                 self.chapter.course.teacher == user or 
-                user.role == 'admin')
+                _e_admin(user))
     
     def can_be_deleted_by(self, user):
         """Check if a user can delete this comment."""
@@ -434,8 +606,12 @@ class ChapterComment(BaseModel, TimestampedModelMixin):
     
     def toggle_resolved(self, user):
         """Toggle the resolved status of this comment."""
-        if self.chapter.course.teacher == user or user.role == 'admin':
+        if self.chapter.course.teacher == user or _e_admin(user):
             self.is_resolved = not self.is_resolved
             self.save(update_fields=['is_resolved'])
             return True
         return False
+
+def _e_admin(user):
+    from apps.core.permissions import e_administrador
+    return e_administrador(user)

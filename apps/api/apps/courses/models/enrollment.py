@@ -200,12 +200,9 @@ class UserCourseProgress(BaseModel, TimestampedModelMixin):
 
         Uses atomic transaction to ensure data consistency.
         """
-        total_chapters = self.course.total_chapters
-        if total_chapters == 0:
-            self.overallProgress = 0.0
-        else:
-            completed_chapters = self.chapter_progress.filter(completed=True).count()
-            self.overallProgress = (completed_chapters / total_chapters) * 100
+        # Só contam as aulas visíveis aos alunos (ver apps.courses.certificados.progresso_actual).
+        from apps.courses.certificados import progresso_actual
+        self.overallProgress = progresso_actual(self.user, self.course)
 
         # Check if course is completed
         if self.overallProgress >= 100.0 and not self.completion_date:
@@ -453,6 +450,28 @@ class ChapterProgress(BaseModel, ProgressTrackingMixin, TimestampedModelMixin):
     def get_progress_percentage(self):
         """Get progress as a percentage (0-100)."""
         return 100.0 if self.completed else 0.0
+
+
+class VideoWatchLog(models.Model):
+    """
+    Segundos de vídeo creditados por aluno, capítulo e dia (dia local, como o DailyStudyLog).
+    Serve para limitar o tempo de estudo que o browser declara: reenviar o mesmo tempo ou
+    valores absurdos não soma minutos outra vez.
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='video_watch_logs')
+    chapter = models.ForeignKey('courses.Chapter', on_delete=models.CASCADE, related_name='watch_logs')
+    date = models.DateField()
+    seconds = models.PositiveIntegerField(default=0)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'video_watch_logs'
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'chapter', 'date'], name='unique_video_watch_per_day'),
+        ]
+
+    def __str__(self):
+        return f"{self.user_id} - {self.chapter_id} - {self.date}: {self.seconds}s"
 
 
 class EnrollmentLog(BaseModel):

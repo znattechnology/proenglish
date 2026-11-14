@@ -9,16 +9,12 @@ This package contains business logic services for course-related operations:
 - analytics_service: Course analytics and reporting
 """
 
+# Só módulos que existem: os antigos enrollment/quiz/payment/analytics_service nunca foram
+# criados e o import falhava, deixando notas e certificados sempre partidos.
 from .course_service import CourseService
-from .enrollment_service import EnrollmentService
-from .quiz_service import QuizService
-from .payment_service import PaymentService
-from .analytics_service import AnalyticsService
+from .grade_calculator import GradeCalculatorService
 
 __all__ = [
     'CourseService',
-    'EnrollmentService', 
-    'QuizService',
-    'PaymentService',
-    'AnalyticsService',
+    'GradeCalculatorService',
 ]

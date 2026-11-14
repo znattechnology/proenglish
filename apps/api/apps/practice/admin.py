@@ -336,3 +336,15 @@ class LeaderboardSnapshotAdmin(admin.ModelAdmin):
         else:
             return format_html('<span style="color: gray;">━</span>')
     rank_change_display.short_description = 'Mudança'
+
+
+from .models import Situacao  # noqa: E402
+
+
+@admin.register(Situacao)
+class SituacaoAdmin(admin.ModelAdmin):
+    """Situações da conversa (as da plataforma têm criado_por vazio e só o administrador as altera)."""
+    list_display = ('nome', 'slug', 'curso', 'nivel', 'estado', 'criado_por', 'updated_at')
+    list_filter = ('estado', 'nivel', 'area')
+    search_fields = ('nome', 'slug', 'descricao')
+    raw_id_fields = ('curso', 'criado_por')

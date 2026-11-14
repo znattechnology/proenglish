@@ -1,8 +1,11 @@
 """
 AI Pronunciation Analysis Service
-Provides intelligent pronunciation evaluation using OpenAI Whisper and GPT-4
+Provides intelligent pronunciation evaluation using OpenAI Whisper (transcrição) and a chat
+model (análise). O modelo de análise vem de PRONUNCIA_MODELO (settings ou variável de
+ambiente; por omissão "gpt-4o-mini"): o "gpt-4" antigo dava 404.
 """
 
+import os
 import openai
 import json
 import asyncio
@@ -10,6 +13,12 @@ import io
 from typing import Dict, List, Optional, Tuple
 from django.conf import settings
 from dataclasses import dataclass
+
+
+def modelo_de_analise():
+    return (getattr(settings, 'PRONUNCIA_MODELO', None)
+            or os.environ.get('PRONUNCIA_MODELO')
+            or 'gpt-4o-mini')
 
 
 @dataclass
@@ -27,6 +36,8 @@ class PronunciationResult:
     suggestions: List[str]   # Specific improvement suggestions
     partial_credit: int     # Points awarded (0-10)
     confidence_level: float # AI confidence in analysis (0-1)
+    # True quando não foi possível ouvir/transcrever a gravação (falha técnica, não erro do aluno).
+    indisponivel: bool = False
 
 
 class AIPronunciationAnalyzer:
@@ -37,7 +48,7 @@ class AIPronunciationAnalyzer:
     def __init__(self):
         self.client = openai.Client(api_key=settings.OPENAI_API_KEY)
         self.whisper_model = "whisper-1"
-        self.analysis_model = "gpt-4"
+        self.analysis_model = modelo_de_analise()
         
     async def analyze_pronunciation(self, 
                                   audio_file: io.BytesIO,
@@ -118,8 +129,12 @@ class AIPronunciationAnalyzer:
             return self._parse_analysis_response(result_json, transcribed, expected)
             
         except Exception as e:
-            print(f"GPT-4 analysis error: {e}")
-            return self._create_fallback_result(expected, transcribed)
+            print(f"Pronunciation analysis model error ({self.analysis_model}): {e}")
+            # Sem análise do modelo não há avaliação justa: é indisponibilidade (503, sem
+            # tirar vidas), não um erro do aluno.
+            resultado = self._create_fallback_result(expected, transcribed)
+            resultado.indisponivel = True
+            return resultado
     
     def _get_system_prompt(self) -> str:
         """System prompt for pronunciation analysis"""
@@ -169,7 +184,7 @@ class AIPronunciationAnalyzer:
             "clarity_score": <número 0-100>,
             "overall_score": <número 0-100>,
             "is_acceptable": <true se >= 60>,
-            "feedback": "<feedback encorajador em português>",
+            "feedback": "<feedback encorajador em português europeu, tratando o aluno por 'você'>",
             "problematic_words": ["<palavra1>", "<palavra2>"],
             "suggestions": ["<sugestão específica 1>", "<sugestão específica 2>"],
             "partial_credit": <pontos 0-10 baseado na faixa acima>,
@@ -219,7 +234,8 @@ class AIPronunciationAnalyzer:
             problematic_words=[],
             suggestions=["Tente falar mais devagar e articular claramente"],
             partial_credit=min(10, max(0, score // 10)),
-            confidence_level=0.3
+            confidence_level=0.3,
+            indisponivel=not transcribed,
         )
     
     async def generate_pronunciation_exercise(self,
@@ -308,9 +324,35 @@ class AIPronunciationAnalyzer:
             )
             
             return response.content
-            
+
         except Exception as e:
             print(f"TTS generation error: {e}")
+            return b""
+
+    def generate_reference_audio_sync(self, text: str, voice: str = "alloy") -> bytes:
+        """
+        Synchronous version of generate_reference_audio for use in Django views.
+
+        Args:
+            text: Text to convert to speech
+            voice: TTS voice (alloy, echo, fable, onyx, nova, shimmer)
+
+        Returns:
+            Audio bytes for reference pronunciation
+        """
+
+        try:
+            response = self.client.audio.speech.create(
+                model="tts-1",
+                voice=voice,
+                input=text,
+                response_format="mp3"
+            )
+
+            return response.content
+
+        except Exception as e:
+            print(f"TTS generation error (sync): {e}")
             return b""
 
 

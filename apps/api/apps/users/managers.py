@@ -20,7 +20,9 @@ class UserManager(BaseUserManager):
         if name is None:
             raise ValueError('The Name field must be set')
         
-        email = self.normalize_email(email)
+        # Emails guardados sempre em minúsculas (ALUNO@x e aluno@x são a mesma conta).
+        email = self.normalize_email(email).strip().lower()
+        extra_fields.setdefault('role', 'student')
         user = self.model(email=email, name=name, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)

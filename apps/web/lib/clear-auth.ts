@@ -14,7 +14,7 @@ export function clearAllAuthData() {
   // Clear all possible cookie variations
   // Note: HttpOnly cookies (access_token, refresh_token) can only be cleared by the server
   // We clear auth_state which is a non-HttpOnly flag cookie
-  const cookiesToClear = ['access_token', 'refresh_token', 'auth_state'];
+  const cookiesToClear = ['access_token', 'refresh_token', 'auth_state', 'user_role'];
   const domains = [window.location.hostname, 'localhost', '127.0.0.1'];
   const paths = ['/', '/signin', '/signup', '/user', '/teacher', '/admin'];
   
@@ -84,6 +84,7 @@ export async function forceLogoutAndRedirect() {
   // Wait a bit then redirect
   setTimeout(() => {
     // Force a hard redirect to clear any middleware state
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- recarregar a página toda limpa o estado da sessão
     window.location.href = '/signin';
   }, 200);
 }

@@ -17,7 +17,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from apps.courses.models import Course
-from .permissions import IsTeacher
+from .permissions import IsTeacher, e_professor_ou_admin
 from .throttling import CourseCreationThrottle
 
 logger = logging.getLogger(__name__)
@@ -49,12 +49,12 @@ class CreateCourseView(APIView):
                     status=status_module.HTTP_401_UNAUTHORIZED
                 )
 
-            # Validate user role
-            user_role = getattr(request.user, 'role', None)
-            if user_role != 'teacher':
+            # Professor ou administrador (apps.core.permissions.e_administrador; is_staff não chega)
+            if not e_professor_ou_admin(request.user):
                 logger.warning(f"SECURITY - Non-teacher course creation attempt by user {getattr(request.user, 'id', 'N/A')}")
                 return Response(
-                    {'error': 'Only teachers can create courses'},
+                    {'error': 'Proibido', 'message': 'Apenas professores podem criar cursos.',
+                     'code': 'sem_permissao', 'details': []},
                     status=status_module.HTTP_403_FORBIDDEN
                 )
 
@@ -95,11 +95,9 @@ class CreateCourseView(APIView):
             if level not in valid_levels:
                 level = 'Beginner'
 
-            # Validate status
-            status = request.data.get('status', 'Draft').strip()
-            valid_statuses = ['Draft', 'Published', 'Archived']
-            if status not in valid_statuses:
-                status = 'Draft'
+            # Um curso novo é sempre rascunho: publicar passa pela revisão do administrador
+            # (POST /teacher/cursos/<id>/submeter/).
+            status = 'Draft'
 
             # Validate template
             template = request.data.get('template', 'general').strip()
@@ -133,6 +131,11 @@ class CreateCourseView(APIView):
                 teacher=request.user,
                 teacherName=teacher_name or f"{request.user.first_name} {request.user.last_name}".strip() or request.user.email,
                 course_type='practice',
+                definicoes={
+                    'coracoes': hearts,
+                    'pontos_por_exercicio': points_per_challenge,
+                    'nota_passagem': passing_score,
+                },
             )
 
             logger.info(f"Course created successfully with ID: {course.id}")

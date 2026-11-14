@@ -54,6 +54,13 @@ declare global {
     enrollments?: Array<{
       userId: string;
     }>;
+    // Access level - defines minimum subscription plan required
+    access_level: "free" | "premium" | "premium_plus";
+    access_level_display?: string; // Human-readable label
+    is_free?: boolean;
+    is_premium?: boolean;
+    is_featured?: boolean;
+    user_has_access?: boolean; // Whether current user has access
   }
 
   interface Transaction {
@@ -111,7 +118,8 @@ declare global {
     video?: string | File;
     freePreview?: boolean;
     type: "Text" | "Quiz" | "Video" | "Exercise";
-    
+    order?: number;
+
     // 🆕 PHASE 1 BRIDGE - Novos campos opcionais
     transcript?: string;
     quiz_enabled?: boolean;
@@ -159,6 +167,7 @@ declare global {
     sectionId: string;
     sectionTitle: string;
     sectionDescription?: string;
+    order?: number;
     chapters: Chapter[];
   }
 

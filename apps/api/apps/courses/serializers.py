@@ -112,12 +112,10 @@ class CourseSectionSerializer(serializers.ModelSerializer):
         if not self.context.get('include_chapters', True):
             return []
         
-        # Use prefetched chapters if available, otherwise query directly
-        if hasattr(obj, '_prefetched_chapters') or hasattr(obj, '_prefetched_objects_cache'):
-            chapters_queryset = obj.chapters.all().order_by('order')
-        else:
-            # Fallback to direct query if not prefetched
-            chapters_queryset = obj.chapters.all().order_by('order')
+        # Só as aulas visíveis aos alunos (uma aula de vídeo sem vídeo ainda não está pronta).
+        from apps.courses.ciclo import aula_visivel
+        chapters_queryset = [c for c in sorted(obj.chapters.all(), key=lambda c: (c.order, c.created_at))
+                             if aula_visivel(c)]
         
         context = self.context.copy()
         context['include_comments'] = context.get('include_chapter_comments', False)
@@ -284,6 +282,7 @@ class CourseDetailSerializer(serializers.ModelSerializer):
     def optimize_queryset(cls, queryset, include_sections=True, include_enrollments=True):
         """Optimize queryset for detail view."""
         from django.db.models import Count
+        from apps.courses.ciclo import q_aula_visivel
         
         # Always select related teacher
         queryset = queryset.select_related('teacher')
@@ -291,7 +290,8 @@ class CourseDetailSerializer(serializers.ModelSerializer):
         # Add counts as annotations to avoid property calculations
         queryset = queryset.annotate(
             _sections_count=Count('sections', distinct=True),
-            _chapters_count=Count('sections__chapters', distinct=True),
+            _chapters_count=Count('sections__chapters', distinct=True,
+                                  filter=q_aula_visivel('sections__chapters__')),
             _enrollments_count=Count('enrollments', distinct=True)
         )
         
@@ -344,6 +344,9 @@ class CourseCreateSerializer(serializers.ModelSerializer):
         # Set default values if not provided
         if 'title' not in validated_data or not validated_data['title']:
             validated_data['title'] = "Novo Curso"
+
+        from apps.courses.ciclo import limpar_criacao
+        limpar_criacao(validated_data)
         
         return super().create(validated_data)
 
@@ -364,6 +367,8 @@ class CourseUpdateSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         # Extract sections data before updating course
         sections_data = validated_data.pop('sections', [])
+        from apps.courses.ciclo import limpar_edicao
+        limpar_edicao(instance, validated_data)
         
         # Update course basic fields
         for attr, value in validated_data.items():
@@ -625,12 +630,9 @@ class UserCourseProgressUpdateSerializer(serializers.Serializer):
                     continue
         
         # Recalculate overall progress
-        total_chapters = instance.course.total_chapters
-        if total_chapters > 0:
-            completed_chapters = instance.chapter_progress.filter(completed=True).count()
-            instance.overallProgress = (completed_chapters / total_chapters) * 100
-        else:
-            instance.overallProgress = 0
+        # Só contam as aulas visíveis aos alunos (ver apps.courses.certificados.progresso_actual).
+        from apps.courses.certificados import progresso_actual
+        instance.overallProgress = progresso_actual(instance.user, instance.course)
         
         instance.save()
         return instance

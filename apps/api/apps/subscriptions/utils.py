@@ -8,48 +8,21 @@ e outras operações relacionadas às assinaturas.
 from decimal import Decimal
 from django.utils import timezone
 from datetime import timedelta
-from .models import UserSubscription, SubscriptionPlan, PromotionalCode
+from .models import UserSubscription, SubscriptionPlan
 
 
 def get_user_subscription(user):
-    """
-    Obtém ou cria a assinatura do usuário
-    
-    Args:
-        user: Instance do usuário Django
-        
-    Returns:
-        UserSubscription: Assinatura do usuário
-    """
-    # Garantir que o plano FREE existe
-    free_plan, _ = SubscriptionPlan.objects.get_or_create(
-        plan_type='FREE',
-        defaults={
-            'name': 'Free',
-            'description': 'Plano gratuito',
-            'monthly_price': Decimal('0.00'),
-            'is_active': True
-        }
-    )
-    
-    subscription, created = UserSubscription.objects.get_or_create(
-        user=user,
-        defaults={
-            'plan': free_plan,
-            'status': 'ACTIVE',
-            'expires_at': timezone.now() + timedelta(days=365*10)  # 10 anos para free
-        }
-    )
-    
-    return subscription
+    """Obtém ou cria a assinatura do utilizador (ver services.obter_ou_criar_assinatura)."""
+    from .services import obter_ou_criar_assinatura
+    return obter_ou_criar_assinatura(user)
 
 
 def check_subscription_limits(user, feature_type='general', amount=1):
     """
-    Verifica se o usuário pode usar uma funcionalidade
+    Verifica se o utilizador pode usar uma funcionalidade
     
     Args:
-        user: Usuário Django
+        user: Utilizador Django
         feature_type: Tipo de funcionalidade ('lesson', 'speaking', 'listening', 'hearts')
         amount: Quantidade necessária (default: 1)
         
@@ -71,7 +44,7 @@ def check_subscription_limits(user, feature_type='general', amount=1):
     if not subscription.is_active():
         return {
             'allowed': False,
-            'error_message': 'Sua assinatura expirou',
+            'error_message': 'A sua subscrição terminou.',
             'upgrade_required': True
         }
     
@@ -90,29 +63,23 @@ def check_subscription_limits(user, feature_type='general', amount=1):
         if not can_use:
             result.update({
                 'allowed': False,
-                'error_message': f'Limite diário de lições atingido ({subscription.plan.daily_lessons_limit})',
+                'error_message': f'Atingiu o limite diário de lições ({subscription.plan.daily_lessons_limit}).',
                 'upgrade_required': True
             })
     
     elif feature_type == 'speaking':
-        if subscription.plan.daily_speaking_minutes is None or subscription.plan.daily_speaking_minutes == 0:
-            # Unlimited speaking
-            result.update({
-                'current_usage': subscription.daily_speaking_minutes_used,
-                'limit': subscription.plan.daily_speaking_minutes
-            })
-        elif subscription.daily_speaking_minutes_used + amount > subscription.plan.daily_speaking_minutes:
+        # None = ilimitado, 0 = bloqueado (a mesma regra de UserSubscription.can_use_speaking)
+        limite = subscription.get_effective_speaking_limit()
+        result.update({
+            'current_usage': subscription.daily_speaking_minutes_used,
+            'limit': limite
+        })
+        if not subscription.can_use_speaking(amount):
             result.update({
                 'allowed': False,
-                'error_message': f'Limite diário de Speaking atingido ({subscription.plan.daily_speaking_minutes} min)',
-                'current_usage': subscription.daily_speaking_minutes_used,
-                'limit': subscription.plan.daily_speaking_minutes,
+                'error_message': (f'Atingiu o limite diário de conversa ({limite} min).' if limite
+                                  else 'O seu plano não inclui conversa com o tutor.'),
                 'upgrade_required': True
-            })
-        else:
-            result.update({
-                'current_usage': subscription.daily_speaking_minutes_used,
-                'limit': subscription.plan.daily_speaking_minutes
             })
     
     elif feature_type == 'listening':
@@ -125,7 +92,7 @@ def check_subscription_limits(user, feature_type='general', amount=1):
         elif subscription.daily_listening_minutes_used + amount > subscription.plan.daily_listening_minutes:
             result.update({
                 'allowed': False,
-                'error_message': f'Limite diário de Listening atingido ({subscription.plan.daily_listening_minutes} min)',
+                'error_message': f'Atingiu o limite diário de compreensão oral ({subscription.plan.daily_listening_minutes} min).',
                 'current_usage': subscription.daily_listening_minutes_used,
                 'limit': subscription.plan.daily_listening_minutes,
                 'upgrade_required': True
@@ -143,7 +110,7 @@ def check_subscription_limits(user, feature_type='general', amount=1):
         if subscription.current_hearts < amount:
             result.update({
                 'allowed': False,
-                'error_message': 'Você não tem vidas suficientes',
+                'error_message': 'Não tem vidas suficientes.',
                 'current_usage': subscription.current_hearts,
                 'limit': subscription.plan.hearts_limit,
                 'upgrade_required': True
@@ -159,10 +126,10 @@ def check_subscription_limits(user, feature_type='general', amount=1):
 
 def consume_subscription_resource(user, feature_type, amount=1):
     """
-    Consome recursos da assinatura do usuário
+    Consome recursos da assinatura do utilizador
     
     Args:
-        user: Usuário Django
+        user: Utilizador Django
         feature_type: Tipo ('lesson', 'speaking_minutes', 'listening_minutes', 'hearts')
         amount: Quantidade a consumir
         
@@ -190,81 +157,38 @@ def consume_subscription_resource(user, feature_type, amount=1):
 
 def calculate_upgrade_price(user, new_plan_id, billing_cycle='MONTHLY', promo_code=None):
     """
-    Calcula o preço de upgrade considerando descontos e promoções
-    
-    Args:
-        user: Usuário Django
-        new_plan_id: UUID do novo plano
-        billing_cycle: 'MONTHLY' ou 'YEARLY'
-        promo_code: Código promocional (opcional)
-        
-    Returns:
-        dict: Dados do cálculo de preço
+    Preço de um plano com código promocional (sem crédito do plano atual).
+    Delegado em services.calcular_preco_plano, que nunca devolve valores negativos.
+    O orçamento completo (com crédito) é apps.pagamentos.services.orcamento.
     """
+    from .services import calcular_preco_plano
+
     try:
         new_plan = SubscriptionPlan.objects.get(id=new_plan_id, is_active=True)
-        subscription = get_user_subscription(user)
-        
-        # Preço base
-        if billing_cycle == 'YEARLY' and new_plan.yearly_price:
-            base_price = new_plan.yearly_price
-        else:
-            base_price = new_plan.monthly_price
-        
-        result = {
-            'new_plan': new_plan.name,
-            'billing_cycle': billing_cycle,
-            'base_price': base_price,
-            'discount_applied': Decimal('0.00'),
-            'final_price': base_price,
-            'promo_code_valid': False,
-            'promo_code_error': None
-        }
-        
-        # Aplicar código promocional se fornecido
-        if promo_code:
-            try:
-                promo = PromotionalCode.objects.get(code=promo_code.upper())
-                
-                # Verificar se é válido
-                if not promo.is_valid():
-                    result['promo_code_error'] = 'Código promocional expirado ou esgotado'
-                else:
-                    # Verificar se usuário já usou
-                    from .models import PromoCodeUsage
-                    if PromoCodeUsage.objects.filter(user=user, promo_code=promo).exists():
-                        result['promo_code_error'] = 'Código já utilizado por este usuário'
-                    else:
-                        # Calcular desconto
-                        if promo.discount_type == 'PERCENTAGE':
-                            discount = (base_price * promo.discount_value) / 100
-                        else:  # FIXED_AMOUNT
-                            discount = min(promo.discount_value, base_price)
-                        
-                        result.update({
-                            'discount_applied': discount,
-                            'final_price': base_price - discount,
-                            'promo_code_valid': True,
-                            'promo_code_name': promo.name
-                        })
-                        
-            except PromotionalCode.DoesNotExist:
-                result['promo_code_error'] = 'Código promocional não encontrado'
-        
-        return result
-        
     except SubscriptionPlan.DoesNotExist:
-        return {
-            'error': 'Plano não encontrado'
-        }
+        return {'error': 'Plano não encontrado.'}
+
+    preco = calcular_preco_plano(user, new_plan, billing_cycle, promo_code)
+    result = {
+        'new_plan': new_plan.name,
+        'billing_cycle': billing_cycle,
+        'base_price': preco.base,
+        'discount_applied': preco.desconto,
+        'final_price': preco.final,
+        'promo_code_valid': bool(preco.promo),
+        'promo_code_error': preco.mensagem_erro_promo,
+    }
+    if preco.promo:
+        result['promo_code_name'] = preco.promo.name
+    return result
 
 
 def get_subscription_analytics(user):
     """
-    Retorna analytics da assinatura do usuário
+    Retorna analytics da assinatura do utilizador
     
     Args:
-        user: Usuário Django
+        user: Utilizador Django
         
     Returns:
         dict: Dados analytics
@@ -313,7 +237,7 @@ def get_subscription_analytics(user):
             'speaking': {
                 'used': subscription.daily_speaking_minutes_used,
                 'limit': plan.daily_speaking_minutes,
-                'unlimited': plan.daily_speaking_minutes == 0 or plan.daily_speaking_minutes is None,
+                'unlimited': subscription.get_effective_speaking_limit() is None,
                 'percentage': min(100, speaking_usage_pct),
                 'can_use': subscription.can_use_speaking()
             },
@@ -348,10 +272,10 @@ def get_subscription_analytics(user):
 
 def check_premium_feature(user, feature_name):
     """
-    Verifica se o usuário tem acesso a uma funcionalidade premium
+    Verifica se o utilizador tem acesso a uma funcionalidade premium
     
     Args:
-        user: Usuário Django
+        user: Utilizador Django
         feature_name: Nome da funcionalidade
         
     Returns:

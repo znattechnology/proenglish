@@ -256,12 +256,23 @@ class UserProgress(models.Model):
         try:
             from apps.subscriptions.models import UserSubscription
             subscription = UserSubscription.objects.select_related('plan').get(user=self.user)
-            # Trigger automatic heart recharge
-            subscription.recharge_hearts_if_needed()
+            plan = subscription.plan
+            if plan.hearts_limit == 0 and subscription.is_active():
+                # Vidas ilimitadas enquanto o plano estiver activo.
+                subscription.recharge_hearts_if_needed()
+                return subscription.current_hearts
+            # O máximo é o do plano (um plano "ilimitado" que já terminou vale o máximo normal).
+            maximo = plan.hearts_limit if plan.hearts_limit > 0 else 5
+            if plan.hearts_limit > 0:
+                subscription.recharge_hearts_if_needed()
+            if subscription.current_hearts > maximo:
+                # Ex.: 999 vidas que sobraram de um plano pago que terminou.
+                UserSubscription.objects.filter(pk=subscription.pk).update(current_hearts=maximo)
+                subscription.current_hearts = maximo
             return subscription.current_hearts
         except Exception:
             # Fallback to legacy field if subscription doesn't exist
-            return self._hearts_legacy
+            return min(self._hearts_legacy, 5)
 
     @hearts.setter
     def hearts(self, value):
@@ -325,26 +336,60 @@ class UserProgress(models.Model):
             self.refresh_from_db()
 
     @transaction.atomic
-    def add_points(self, amount=10, check_achievements=True):
+    def add_points(self, amount=10, check_achievements=True, reason='', curso_id=None):
         """
         Add points for correct answers in a thread-safe manner.
 
         Uses F() expression for atomic increment to prevent race conditions.
+        Every award is also written to PointsEntry (feeds the weekly league).
+        `curso_id`: curso onde os pontos foram ganhos (conquistas e competições dos professores).
         """
         # Use F() expression for atomic increment
         UserProgress.objects.filter(pk=self.pk).update(
             points=F('points') + amount
         )
+        if amount and amount > 0:
+            PointsEntry.objects.create(user=self.user, points=amount, reason=reason[:30], curso_id=curso_id)
         self.refresh_from_db()
+        if amount and amount > 0:
+            self._verificar_subida_de_liga(self.points - amount, self.points)
 
         # Trigger achievement progress check (unless disabled to prevent recursion)
         if check_achievements:
             self._check_achievements_for_points()
     
+    def _verificar_subida_de_liga(self, pontos_antes, pontos_agora):
+        """Atualiza UserLeague e avisa o aluno quando os pontos totais o fazem subir de liga."""
+        antes = UserLeague.get_league_for_points(pontos_antes)
+        agora = UserLeague.get_league_for_points(pontos_agora)
+        ordem = [codigo for codigo, _ in UserLeague.LEAGUE_CHOICES]
+        if ordem.index(agora) <= ordem.index(antes):
+            return
+        try:
+            with transaction.atomic():
+                liga, _ = UserLeague.objects.get_or_create(user=self.user, defaults={'current_league': antes})
+                liga.update_league()
+            from apps.users.models import Notification
+            info = UserLeague.get_league_info(agora)
+            Notification.notify(
+                self.user,
+                Notification.KIND_LEAGUE,
+                title=f'Subiu para a {info["name"]}',
+                body=(f'Chegou a {pontos_agora} pontos no total. '
+                      + ('Está na liga mais alta. Parabéns!' if agora == ordem[-1]
+                         else 'Continue a praticar para subir ainda mais.')),
+                link='/user/laboratory/achievements#liga',
+                dedupe_key=f'liga:{agora}',
+            )
+        except Exception:  # nunca bloquear a atribuição de pontos por causa da liga/aviso
+            import logging
+            logging.getLogger(__name__).exception("Falha ao atualizar a liga do utilizador %s", self.user_id)
+
     def _check_achievements_for_points(self):
         """Check and update achievements related to points"""
-        from .achievement_utils import check_achievement_progress
+        from .achievement_utils import check_achievement_progress, verificar_conquistas_professor
         check_achievement_progress(self.user, 'points_earned', self.points)
+        verificar_conquistas_professor(self.user)
 
 
 class ChallengeProgress(models.Model):
@@ -366,6 +411,9 @@ class ChallengeProgress(models.Model):
         related_name='user_progress'
     )
     completed = models.BooleanField(default=False)
+    # Exercício de pronúncia saltado porque a análise estava indisponível: conta como feito
+    # para concluir a lição, mas não deu pontos.
+    skipped = models.BooleanField(default=False)
     completed_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -401,11 +449,20 @@ class ChallengeProgress(models.Model):
         check_achievement_progress(self.user, 'challenges_completed', total_completed)
         
         # Also check for lessons completed (challenges can be part of lessons)
-        from apps.practice.models import PracticeLesson
-        completed_lessons = PracticeLesson.objects.filter(
-            units__challenges__user_progress__user=self.user,
-            units__challenges__user_progress__completed=True
-        ).distinct().count()
+        # A lesson counts as completed when every one of its challenges has a
+        # completed ChallengeProgress for this user. (The previous lookup used a
+        # non-existent `units__` relation and raised FieldError on every save.)
+        completed_lessons = PracticeLesson.objects.annotate(
+            total_challenges=models.Count('challenges', distinct=True),
+            done_challenges=models.Count(
+                'challenges__user_progress',
+                filter=models.Q(
+                    challenges__user_progress__user=self.user,
+                    challenges__user_progress__completed=True,
+                ),
+                distinct=True,
+            ),
+        ).filter(total_challenges__gt=0, done_challenges=F('total_challenges')).count()
         
         check_achievement_progress(self.user, 'lessons_completed', completed_lessons)
     
@@ -481,14 +538,15 @@ class UserLeague(models.Model):
         new_league = self.get_league_for_points(user_progress.points)
         
         if new_league != self.current_league:
+            previous_league = self.current_league
             self.current_league = new_league
             self.points_when_promoted = user_progress.points
             self.save()
             
-            # Create promotion record
+            # Create promotion record (from_league was recorded after being overwritten)
             LeaguePromotion.objects.create(
                 user=self.user,
-                from_league=self.current_league,
+                from_league=previous_league,
                 to_league=new_league,
                 points_at_promotion=user_progress.points
             )
@@ -558,7 +616,38 @@ class Competition(models.Model):
     first_place_prize = models.CharField(max_length=200, default="Badge especial + 500 pontos")
     second_place_prize = models.CharField(max_length=200, default="300 pontos")
     third_place_prize = models.CharField(max_length=200, default="200 pontos")
-    
+
+    # Competições dos professores (ver apps/practice/competicoes.py).
+    CONTA_LICOES = 'licoes'
+    CONTA_PONTOS = 'pontos'
+    CONTA_MINUTOS = 'minutos_conversa'
+    CONTA_DIAS = 'dias_seguidos'
+    CONTA_CHOICES = [
+        (CONTA_LICOES, 'Lições concluídas'),
+        (CONTA_PONTOS, 'Pontos'),
+        (CONTA_MINUTOS, 'Minutos de conversa'),
+        (CONTA_DIAS, 'Dias seguidos'),
+    ]
+    PREMIO_CERTIFICADO = 'certificado_merito'
+    PREMIO_MEDALHA = 'medalha'
+    PREMIO_PLANO = 'plano'  # um mês de plano: só o administrador
+    PREMIO_CHOICES = [
+        (PREMIO_CERTIFICADO, 'Certificado de mérito'),
+        (PREMIO_MEDALHA, 'Medalha'),
+        (PREMIO_PLANO, 'Um mês de plano'),
+    ]
+    criado_por = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True, related_name='competicoes_criadas',
+        help_text='Professor que criou; vazio = competição da plataforma')
+    cursos = models.ManyToManyField(Course, blank=True, related_name='competicoes')
+    todos_os_cursos = models.BooleanField(
+        default=False, help_text='Professor: conta todos os cursos dele (também os que criar depois)')
+    conta = models.CharField(max_length=20, choices=CONTA_CHOICES, default=CONTA_PONTOS)
+    premio = models.CharField(max_length=20, choices=PREMIO_CHOICES, default=PREMIO_CERTIFICADO)
+    premio_lugares = models.PositiveSmallIntegerField(default=3)
+    inicio_notificado = models.BooleanField(default=False)
+    fechada_em = models.DateTimeField(null=True, blank=True, help_text='Quando os prémios foram atribuídos')
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -601,6 +690,9 @@ class CompetitionParticipant(models.Model):
     # Ranking
     current_rank = models.PositiveIntegerField(null=True, blank=True)
     best_rank = models.PositiveIntegerField(null=True, blank=True)
+    # Competições dos professores: valor final da métrica e prémio atribuído no fecho.
+    valor = models.PositiveIntegerField(default=0)
+    premio = models.CharField(max_length=20, blank=True, default='')
     
     joined_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -666,15 +758,37 @@ class UserStreak(models.Model):
     current_streak = models.PositiveIntegerField(default=0)
     longest_streak = models.PositiveIntegerField(default=0)
     last_practice_date = models.DateField(null=True, blank=True)
-    
+
+    # Daily study goal (minutes). Lives here because it is a one-row-per-user
+    # study setting that is always read together with the streak.
+    DAILY_GOAL_CHOICES = [(5, '5 min'), (10, '10 min'), (15, '15 min'), (20, '20 min')]
+    DEFAULT_DAILY_GOAL_MINUTES = 10
+    daily_goal_minutes = models.PositiveSmallIntegerField(
+        default=DEFAULT_DAILY_GOAL_MINUTES,
+        choices=DAILY_GOAL_CHOICES,
+        help_text="Daily study goal in minutes (5, 10, 15 or 20)",
+    )
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
+    def get_effective_streak(self, today=None):
+        """Current streak as seen today (0 if the last study day was before yesterday)."""
+        from datetime import timedelta
+        from django.utils import timezone
+
+        today = today or timezone.localdate()
+        if not self.last_practice_date or self.last_practice_date < today - timedelta(days=1):
+            return 0
+        return self.current_streak
+
     def update_streak(self):
         """Update streak based on practice activity"""
-        from datetime import date, timedelta
-        
-        today = date.today()
+        from datetime import timedelta
+        from django.utils import timezone
+
+        # Use the project timezone (same date used by DailyStudyLog)
+        today = timezone.localdate()
         yesterday = today - timedelta(days=1)
         
         if self.last_practice_date == today:
@@ -690,7 +804,8 @@ class UserStreak(models.Model):
         else:
             # First practice ever
             self.current_streak = 1
-        
+
+        self.longest_streak = max(self.longest_streak, self.current_streak)
         self.last_practice_date = today
         self.save()
         
@@ -699,8 +814,9 @@ class UserStreak(models.Model):
     
     def _check_achievements_for_streak(self):
         """Check and update achievements related to streaks"""
-        from .achievement_utils import check_achievement_progress
+        from .achievement_utils import check_achievement_progress, verificar_conquistas_professor
         check_achievement_progress(self.user, 'streak_days', self.current_streak)
+        verificar_conquistas_professor(self.user)
     
     def __str__(self):
         return f"{self.user.name} - {self.current_streak} days streak"
@@ -757,7 +873,14 @@ class Achievement(models.Model):
         help_text="Hidden achievements not shown until unlocked"
     )
     order = models.PositiveIntegerField(default=0, help_text="Display order")
-    
+
+    # Conquistas dos professores (vazio = conquista da plataforma, só o administrador altera).
+    criado_por = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True, related_name='conquistas_criadas')
+    # Âmbito de uma conquista de professor: um curso dele, ou vazio = todos os cursos dele.
+    curso = models.ForeignKey(
+        Course, on_delete=models.CASCADE, null=True, blank=True, related_name='conquistas')
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -841,7 +964,7 @@ class UserAchievement(models.Model):
                 user=self.user,
                 defaults={'hearts': 5, 'points': 0}
             )
-            user_progress.add_points(self.achievement.points, check_achievements=False)
+            user_progress.add_points(self.achievement.points, check_achievements=False, reason='achievement')
         
         self.save()
         return self.is_unlocked
@@ -952,14 +1075,44 @@ class VapiSession(models.Model):
     session_id = models.CharField(max_length=100, unique=True, primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='vapi_sessions')
     
+    # Estado da sessão (conversa/). Sessões antigas (sem estado) contam como avaliadas.
+    STATUS_EM_CURSO = 'em_curso'
+    STATUS_A_AVALIAR = 'a_avaliar'      # terminada e cobrada; a avaliação (Claude) ainda não acabou
+    STATUS_AVALIADA = 'avaliada'
+    STATUS_SEM_AVALIACAO = 'sem_avaliacao'
+    STATUS_NAO_LIGOU = 'nao_ligou'      # a chamada nunca ligou: 0 minutos, não conta em lado nenhum
+    STATUS_CHOICES = [
+        (STATUS_EM_CURSO, 'Em curso'),
+        (STATUS_A_AVALIAR, 'A avaliar'),
+        (STATUS_AVALIADA, 'Avaliada'),
+        (STATUS_SEM_AVALIACAO, 'Sem avaliação'),
+        (STATUS_NAO_LIGOU, 'Não ligou'),
+    ]
+    # Conversas que aconteceram (contam sessões e minutos). As notas só vêm das avaliadas.
+    STATUS_TERMINADAS = (STATUS_AVALIADA, STATUS_SEM_AVALIACAO, STATUS_A_AVALIAR)
+
     # Session Context
     level = models.CharField(max_length=10)  # A1, A2, B1, B2, C1, C2
     domain = models.CharField(max_length=50)  # general, petroleum, IT, business
     duration_minutes = models.PositiveIntegerField()
+
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_AVALIADA, db_index=True)
+    situation = models.CharField(max_length=40, blank=True, default='',
+                                 help_text="Situação da conversa (ver apps.practice.conversa.situacoes)")
+    mode = models.CharField(max_length=10, blank=True, default='', help_text="vapi | simulado")
+    started_at = models.DateTimeField(null=True, blank=True, help_text="Início (relógio do servidor)")
+    ended_at = models.DateTimeField(null=True, blank=True)
+    duration_seconds = models.PositiveIntegerField(default=0, help_text="Duração calculada no servidor")
+    max_seconds = models.PositiveIntegerField(default=0, help_text="Duração máxima permitida ao criar")
+    connected_at = models.DateTimeField(null=True, blank=True,
+                                        help_text="A chamada ligou (POST ligada/): o tempo cobrado conta daqui")
+    last_activity_at = models.DateTimeField(null=True, blank=True,
+                                            help_text="Último sinal de vida (ligada/, ajuste/, responder/)")
     
     # Core Scores (0-100) - Essential for progress tracking
     fluency_score = models.PositiveIntegerField(default=0)
-    pronunciation_score = models.PositiveIntegerField(default=0)
+    # null = não medida (as conversas só têm texto; não inventamos uma nota de pronúncia)
+    pronunciation_score = models.PositiveIntegerField(default=0, null=True, blank=True)
     grammar_score = models.PositiveIntegerField(default=0)
     vocabulary_score = models.PositiveIntegerField(default=0)
     overall_score = models.PositiveIntegerField(default=0)
@@ -993,10 +1146,12 @@ class VapiSession(models.Model):
     
     def calculate_improvement(self):
         """Calculate improvement from previous session"""
+        from django.utils import timezone
         previous_session = VapiSession.objects.filter(
             user=self.user,
-            created_at__lt=self.created_at
-        ).first()
+            status=VapiSession.STATUS_AVALIADA,
+            created_at__lt=self.created_at or timezone.now()
+        ).exclude(pk=self.pk).first()
         
         if previous_session:
             self.improvement_from_last = self.overall_score - previous_session.overall_score
@@ -1004,24 +1159,24 @@ class VapiSession(models.Model):
             self.improvement_from_last = 0
     
     def update_streak(self):
-        """Update daily practice streak"""
+        """Update daily conversation streak (consecutive days with a session)."""
         from django.utils import timezone
         from datetime import timedelta
-        
-        yesterday = timezone.now().date() - timedelta(days=1)
-        
-        # Check if user practiced yesterday
-        if VapiSession.objects.filter(user=self.user, date=yesterday).exists():
-            # Get the latest streak count and increment
-            latest = VapiSession.objects.filter(user=self.user).exclude(pk=self.pk).first()
-            self.streak_days = (latest.streak_days if latest else 0) + 1
+
+        today = timezone.localdate()
+        latest = VapiSession.objects.filter(user=self.user).exclude(pk=self.pk).order_by('-created_at').first()
+        if latest and latest.date == today:
+            self.streak_days = latest.streak_days or 1  # second session today: unchanged
+        elif latest and latest.date == today - timedelta(days=1):
+            self.streak_days = (latest.streak_days or 0) + 1
         else:
-            # Reset streak if gap in practice
             self.streak_days = 1
-    
+
     def save(self, *args, **kwargs):
         """Auto-calculate metrics on save"""
-        if not self.pk:  # Only on creation
+        # Only on creation. session_id is the (always pre-filled) primary key, so the
+        # old `if not self.pk` check never ran these.
+        if self._state.adding:
             self.calculate_improvement()
             self.update_streak()
         super().save(*args, **kwargs)
@@ -1063,7 +1218,7 @@ class DailyProgressSummary(models.Model):
     @classmethod
     def update_for_user_date(cls, user, date):
         """Update daily summary for a specific user and date"""
-        sessions = VapiSession.objects.filter(user=user, date=date)
+        sessions = VapiSession.objects.filter(user=user, date=date, status=VapiSession.STATUS_AVALIADA)
         
         if not sessions.exists():
             return None
@@ -1100,3 +1255,250 @@ class DailyProgressSummary(models.Model):
         summary.save()
         return summary
 
+
+
+# =============================================================================
+# STUDY TRACKING (daily log, lesson completions, attempts)
+# =============================================================================
+
+
+class DailyStudyLog(models.Model):
+    """
+    Minutes studied per user per day, split by activity kind.
+
+    Feeds the streak widget, the daily goal and the student analytics page.
+    """
+    KIND_LESSON = 'lesson'
+    KIND_VIDEO = 'video'
+    KIND_CONVERSATION = 'conversation'
+    KIND_FIELDS = {
+        KIND_LESSON: 'lesson_minutes',
+        KIND_VIDEO: 'video_minutes',
+        KIND_CONVERSATION: 'conversation_minutes',
+    }
+    MAX_MINUTES_PER_EVENT = 60
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='study_logs')
+    date = models.DateField()
+    lesson_minutes = models.FloatField(default=0)
+    video_minutes = models.FloatField(default=0)
+    conversation_minutes = models.FloatField(default=0)
+    lessons_completed = models.PositiveIntegerField(default=0)
+    goal_met_at = models.DateTimeField(
+        null=True, blank=True,
+        help_text="When the daily goal was first met on this day",
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-date']
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'date'], name='unique_daily_study_log_per_user_date'),
+        ]
+        indexes = [models.Index(fields=['user', '-date'])]
+
+    def __str__(self):
+        return f"{self.user_id} - {self.date} ({self.total_minutes:.1f} min)"
+
+    @property
+    def total_minutes(self):
+        return (self.lesson_minutes or 0) + (self.video_minutes or 0) + (self.conversation_minutes or 0)
+
+    @classmethod
+    def add_minutes(cls, user, kind, minutes, lessons_completed=0, day=None):
+        """
+        Add study minutes for today, update the streak and fire the
+        "daily goal met" notification the first time the goal is reached.
+
+        day: record on a past day instead (e.g. a conversation closed after its day ended).
+        Past days only get the minutes: no streak update, no notification.
+
+        Returns a dict: {log, streak, goal_minutes, goal_completed, goal_just_completed}.
+        """
+        from django.utils import timezone
+
+        if day is not None and day < timezone.localdate():
+            return cls._add_minutes_past_day(user, kind, minutes, day)
+
+        if kind not in cls.KIND_FIELDS:
+            raise ValueError(f"Unknown study kind: {kind}")
+        try:
+            minutes = float(minutes or 0)
+        except (TypeError, ValueError):
+            minutes = 0.0
+        minutes = max(0.0, min(minutes, float(cls.MAX_MINUTES_PER_EVENT)))
+
+        today = timezone.localdate()
+        with transaction.atomic():
+            log, _ = cls.objects.get_or_create(user=user, date=today)
+            log = cls.objects.select_for_update().get(pk=log.pk)
+            field = cls.KIND_FIELDS[kind]
+            setattr(log, field, getattr(log, field) + minutes)
+            log.lessons_completed += max(0, int(lessons_completed or 0))
+
+            streak, _ = UserStreak.objects.get_or_create(user=user)
+            goal = streak.daily_goal_minutes
+            goal_just_completed = False
+            if log.goal_met_at is None and log.total_minutes >= goal:
+                log.goal_met_at = timezone.now()
+                goal_just_completed = True
+            log.save()
+
+        # Streak update (also triggers streak achievements)
+        streak.update_streak()
+
+        if goal_just_completed:
+            try:
+                from apps.users.models import Notification
+                Notification.notify(
+                    user,
+                    Notification.KIND_STREAK,
+                    title='Meta diária cumprida!',
+                    body=f'Estudou {goal} minutos hoje. Sequência actual: {streak.current_streak} dia(s).',
+                    link='/user/laboratory',
+                    dedupe_key=f'meta-cumprida:{today.isoformat()}',
+                )
+            except Exception:  # never block study tracking on notifications
+                import logging
+                logging.getLogger(__name__).exception("Failed to create daily goal notification")
+
+        return {
+            'log': log,
+            'streak': streak,
+            'goal_minutes': goal,
+            'goal_completed': log.goal_met_at is not None,
+            'goal_just_completed': goal_just_completed,
+        }
+
+    @classmethod
+    def _add_minutes_past_day(cls, user, kind, minutes, day):
+        if kind not in cls.KIND_FIELDS:
+            raise ValueError(f"Unknown study kind: {kind}")
+        minutes = max(0.0, min(float(minutes or 0), float(cls.MAX_MINUTES_PER_EVENT)))
+        with transaction.atomic():
+            log, _ = cls.objects.get_or_create(user=user, date=day)
+            log = cls.objects.select_for_update().get(pk=log.pk)
+            field = cls.KIND_FIELDS[kind]
+            setattr(log, field, getattr(log, field) + minutes)
+            log.save()
+        streak, _ = UserStreak.objects.get_or_create(user=user)
+        return {
+            'log': log,
+            'streak': streak,
+            'goal_minutes': streak.daily_goal_minutes,
+            'goal_completed': log.goal_met_at is not None,
+            'goal_just_completed': False,
+        }
+
+
+class LessonCompletion(models.Model):
+    """
+    One row per (user, lesson): makes the first-completion bonus idempotent and
+    records repeat practice ("praticar de novo").
+    """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='lesson_completions')
+    lesson = models.ForeignKey(PracticeLesson, on_delete=models.CASCADE, related_name='completions')
+    times_completed = models.PositiveIntegerField(default=1)
+    first_completed_at = models.DateTimeField(auto_now_add=True)
+    last_completed_at = models.DateTimeField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'lesson'], name='unique_lesson_completion_per_user'),
+        ]
+        indexes = [models.Index(fields=['user', '-last_completed_at'])]
+
+    def __str__(self):
+        return f"{self.user_id} - {self.lesson_id} x{self.times_completed}"
+
+
+class ChallengeAttempt(models.Model):
+    """
+    Every answer submitted through ChallengeProgressView (right or wrong).
+
+    ChallengeProgress only stores the latest correct state, so wrong answers
+    were not persisted. This log powers review words and accuracy analytics.
+    """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='challenge_attempts')
+    challenge = models.ForeignKey(PracticeChallenge, on_delete=models.CASCADE, related_name='attempts')
+    is_correct = models.BooleanField()
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['user', '-created_at']),
+            models.Index(fields=['user', 'challenge', 'is_correct']),
+        ]
+
+    def __str__(self):
+        return f"{self.user_id} - {self.challenge_id} ({'ok' if self.is_correct else 'wrong'})"
+
+
+class PointsEntry(models.Model):
+    """
+    Ledger of points earned (one row per UserProgress.add_points call).
+    UserProgress.points only keeps the running total; this table lets the
+    weekly league rank students by points earned in a given week.
+    """
+    id = models.BigAutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='points_entries')
+    points = models.PositiveIntegerField()
+    reason = models.CharField(max_length=30, blank=True, default='')
+    # Curso onde os pontos foram ganhos (vazio: conquista, prática com IA, conversa geral...).
+    curso = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True, blank=True,
+                              related_name='pontos_ganhos')
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        indexes = [models.Index(fields=['user', 'created_at'])]
+
+    def __str__(self):
+        return f"{self.user_id} +{self.points} ({self.reason or '-'})"
+
+
+class Situacao(models.Model):
+    """
+    Situação da conversa com o tutor (apps/practice/conversa/).
+
+    `slug` é o valor guardado em VapiSession.situation (as 5 situações originais mantêm
+    as chaves antigas: pedir_relatorio, reuniao_seguranca, ...). criado_por vazio = situação
+    da plataforma (só o administrador altera); curso vazio = Geral (todos os alunos).
+    `extras` guarda o guião detalhado das situações da plataforma (brief, primeira_fala,
+    primeira_fala_simples, palavras, guiao, minutos_sugeridos e frases com tradução).
+    """
+    NIVEIS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
+    DURACOES = [3, 5, 10]
+    CORRECCOES = ['suave', 'directa']
+    RASCUNHO = 'rascunho'
+    ACTIVO = 'activo'
+    ESTADOS = [RASCUNHO, ACTIVO]
+
+    slug = models.CharField(max_length=40, unique=True)
+    nome = models.CharField(max_length=80)
+    descricao = models.TextField(help_text='O que acontece (orienta o tutor)')
+    papel_tutor = models.CharField(max_length=300, blank=True, default='')
+    frases = models.JSONField(default=list, blank=True, help_text='Frases-alvo (lista de textos)')
+    curso = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, blank=True,
+                              related_name='situacoes_conversa')
+    area = models.CharField(max_length=20, default='general')
+    nivel = models.CharField(max_length=2, default='B1')
+    duracao_min = models.PositiveSmallIntegerField(default=5)
+    correccao = models.CharField(max_length=10, default='suave')
+    estado = models.CharField(max_length=10, default=RASCUNHO, db_index=True)
+    criado_por = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True,
+                                   related_name='situacoes_criadas')
+    ordem = models.PositiveIntegerField(default=100)
+    extras = models.JSONField(default=dict, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['ordem', 'created_at']
+
+    def __str__(self):
+        return f"{self.nome} ({self.slug})"

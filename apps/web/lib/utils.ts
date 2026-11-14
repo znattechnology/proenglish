@@ -361,9 +361,9 @@ export const uploadCourseImage = async (
       size: imageFile.size
     });
 
-    // Step 1: Get presigned URL from Django backend
+    // Step 1: Get presigned URL from Django backend (using teacher endpoint with proper decorators)
     const uploadUrlResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_DJANGO_API_URL}/courses/${courseId}/get-image-upload-url/`,
+      `${process.env.NEXT_PUBLIC_DJANGO_API_URL}/teacher/video-courses/${courseId}/get-image-upload-url/`,
       {
         method: 'POST',
         headers: {
@@ -380,7 +380,9 @@ export const uploadCourseImage = async (
 
     if (!uploadUrlResponse.ok) {
       const errorData = await uploadUrlResponse.json();
-      throw new Error(errorData.message || 'Erro ao obter URL de upload');
+      const errorMessage = errorData.error || errorData.message || 'Erro ao obter URL de upload';
+      console.error('❌ Backend error:', errorData);
+      throw new Error(errorMessage);
     }
 
     const { data } = await uploadUrlResponse.json();
@@ -403,11 +405,12 @@ export const uploadCourseImage = async (
 
     console.log('✅ Image uploaded to S3 successfully');
 
-    // Step 3: Update course in database with new image URL
-    console.log('📝 Updating course in database...');
-    const updateResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_DJANGO_API_URL}/courses/${courseId}/update-image-url/`,
-      {
+    // Step 3: Update course in database with new image URL (using teacher endpoint)
+    const updateUrl = `${process.env.NEXT_PUBLIC_DJANGO_API_URL}/teacher/video-courses/${courseId}/update-image-url/`;
+    console.log('📝 Updating course in database...', { updateUrl, imageUrl });
+
+    try {
+      const updateResponse = await fetch(updateUrl, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -416,16 +419,26 @@ export const uploadCourseImage = async (
         body: JSON.stringify({
           imageUrl: imageUrl,
         }),
+      });
+
+      console.log('📝 Update response status:', updateResponse.status);
+
+      if (!updateResponse.ok) {
+        const errorData = await updateResponse.json();
+        const errorMessage = errorData.error || errorData.message || 'Erro ao atualizar curso no banco de dados';
+        console.error('❌ Update course error:', errorData);
+        throw new Error(errorMessage);
       }
-    );
 
-    if (!updateResponse.ok) {
-      const errorData = await updateResponse.json();
-      throw new Error(errorData.message || 'Erro ao atualizar curso no banco de dados');
+      console.log('✅ Course updated in database successfully');
+      toast.success('Imagem do curso atualizada com sucesso');
+    } catch (updateError: any) {
+      console.error('❌ Update fetch error:', updateError);
+      // If update fails, still return the image URL since it was uploaded to S3
+      console.log('⚠️ Update failed but image is on S3, returning URL anyway');
+      toast.info('Imagem carregada, mas pode precisar atualizar a página');
+      return imageUrl;
     }
-
-    console.log('✅ Course updated in database successfully');
-    toast.success('Imagem do curso atualizada com sucesso');
     
     return imageUrl;
   } catch (error: any) {
@@ -459,7 +472,9 @@ export const uploadAvatarToS3 = async (
 
     if (!uploadUrlResponse.ok) {
       const errorData = await uploadUrlResponse.json();
-      throw new Error(errorData.message || 'Erro ao obter URL de upload');
+      const errorMessage = errorData.error || errorData.message || 'Erro ao obter URL de upload do avatar';
+      console.error('❌ Avatar upload error:', errorData);
+      throw new Error(errorMessage);
     }
 
     const { data } = await uploadUrlResponse.json();

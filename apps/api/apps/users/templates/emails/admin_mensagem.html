@@ -1,0 +1,6 @@
+{% extends "emails/base.html" %}
+{% block titulo %}Mensagem da equipa ProEnglish{% endblock %}
+{% block conteudo %}
+{% for p in paragrafos %}<p style="margin:0 0 16px;">{{ p|linebreaksbr }}</p>
+{% endfor %}<p style="margin:24px 0 0;">A equipa ProEnglish</p>
+{% endblock %}

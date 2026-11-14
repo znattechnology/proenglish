@@ -60,6 +60,7 @@ class ChapterResource(BaseModel, OrderedModelMixin, TimestampedModelMixin, Metad
     
     # External URL (for links, external videos, etc.)
     external_url = models.URLField(
+        max_length=500,
         blank=True,
         help_text="External URL"
     )

@@ -28,8 +28,27 @@ export const createBaseQueryWithReauth = (baseUrl: string): BaseQueryFn<
   return async (args, api, extraOptions) => {
     let result = await baseQuery(args, api, extraOptions);
 
-    if (result.error && result.error.status === 401) {
+    // Get the URL from the args to check if it's an auth endpoint
+    const url = typeof args === 'string' ? args : args.url;
+
+    // Auth endpoints that should NOT trigger token refresh on 401
+    // These endpoints return 401 for invalid credentials, not expired tokens
+    const authEndpoints = [
+      '/users/login/',
+      '/users/register/',
+      '/users/password-reset/',
+      '/users/password-reset-confirm/',
+      '/users/verify-email/',
+      '/users/resend-verification/',
+      '/users/refresh-token/',
+      '/oauth/google/'
+    ];
+
+    const isAuthEndpoint = authEndpoints.some(endpoint => url?.includes(endpoint));
+
+    if (result.error && result.error.status === 401 && !isAuthEndpoint) {
       // Use TokenRefreshCoordinator to prevent race conditions
+      // Only for non-auth endpoints (protected routes)
       try {
         // Coordinator will queue this request if refresh is already in progress
         await tokenRefreshCoordinator.refreshToken();
@@ -38,13 +57,12 @@ export const createBaseQueryWithReauth = (baseUrl: string): BaseQueryFn<
         result = await baseQuery(args, api, extraOptions);
       } catch {
         // Refresh failed - clear auth and redirect to login
-
-        // Refresh failed, clear auth and redirect to login
         tokenRefreshCoordinator.clearTokens();
 
         if (typeof window !== 'undefined') {
           // Use a slight delay to avoid immediate redirect issues
           setTimeout(() => {
+            // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- recarregar a página toda limpa o estado da sessão
             window.location.href = '/signin?reason=session_expired';
           }, 100);
         }

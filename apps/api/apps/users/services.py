@@ -5,11 +5,11 @@ Services for user authentication and OAuth.
 import requests
 import secrets
 import logging
-from typing import Dict, Any, Optional, Tuple
+from typing import Dict, Any
 from urllib.parse import urlencode
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
+from django.core import signing
 from rest_framework_simplejwt.tokens import RefreshToken
 from google.oauth2 import id_token
 from google.auth.transport import requests as google_requests
@@ -18,8 +18,29 @@ User = get_user_model()
 logger = logging.getLogger(__name__)
 
 
+class GoogleOAuthErro(Exception):
+    """Erro da entrada com o Google; a mensagem (pt-PT) pode ser mostrada à pessoa."""
+
+
+ERRO_GOOGLE = 'Não foi possível entrar com o Google. Tente outra vez.'
+STATE_SALT = 'proenglish.google-oauth-state'
+STATE_MAX_AGE = 10 * 60  # segundos
+
+
 class GoogleOAuthService:
-    """Service for Google OAuth authentication."""
+    """
+    Entrada com o Google (fluxo "authorization code").
+
+    - Só se aceita o `code` devolvido pelo Google, trocado aqui com o nosso client id/secret e o
+      redirect_uri configurado, ou um `id_token` verificado com google-auth para o nosso client
+      id (aud). Um `access_token` enviado pelo cliente nunca é aceite: pode ter sido emitido
+      para outra aplicação.
+    - O Google tem de confirmar o email (email_verified) antes de ligar ou criar a conta.
+    - Contas novas são de aluno e não têm palavra-passe utilizável; contas desactivadas são
+      recusadas.
+    - `state`: valor assinado (django.core.signing) devolvido por oauth/google/url/; se o cliente
+      o enviar no login, tem de ser válido e recente.
+    """
     
     def __init__(self):
         self.config = settings.OAUTH2_SETTINGS.get('GOOGLE', {})
@@ -30,230 +51,157 @@ class GoogleOAuthService:
         self.auth_uri = self.config.get('AUTH_URI')
         self.token_uri = self.config.get('TOKEN_URI')
         self.user_info_uri = self.config.get('USER_INFO_URI')
+
+    # -- state ---------------------------------------------------------------
+
+    @staticmethod
+    def criar_state() -> str:
+        return signing.dumps({'n': secrets.token_urlsafe(16)}, salt=STATE_SALT)
+
+    @staticmethod
+    def state_valido(state: str) -> bool:
+        try:
+            signing.loads(state, salt=STATE_SALT, max_age=STATE_MAX_AGE)
+            return True
+        except signing.BadSignature:  # inclui SignatureExpired
+            return False
+
+    # -- Google --------------------------------------------------------------
     
-    def generate_auth_url(self, state: str = None, redirect_uri: str = None) -> str:
-        """
-        Generate Google OAuth authorization URL.
-        
-        Args:
-            state: Optional state parameter for security
-            redirect_uri: Optional custom redirect URI
-            
-        Returns:
-            Authorization URL
-        """
+    def generate_auth_url(self, state: str = None) -> str:
+        """URL de autorização do Google, sempre com o redirect_uri configurado."""
         if not self.client_id:
-            raise ValidationError("Google OAuth client ID not configured")
-        
+            raise GoogleOAuthErro('A entrada com o Google não está configurada.')
         params = {
             'client_id': self.client_id,
-            'redirect_uri': redirect_uri or self.redirect_uri,
+            'redirect_uri': self.redirect_uri,
             'scope': self.scope,
             'response_type': 'code',
-            'access_type': 'offline',
-            'prompt': 'consent',
+            'access_type': 'online',
+            'prompt': 'select_account',
+            'state': state or self.criar_state(),
         }
-        
-        if state:
-            params['state'] = state
-        else:
-            params['state'] = secrets.token_urlsafe(32)
-        
         return f"{self.auth_uri}?{urlencode(params)}"
     
-    def exchange_code_for_tokens(self, code: str, redirect_uri: str = None) -> Dict[str, Any]:
-        """
-        Exchange authorization code for access and refresh tokens.
-        
-        Args:
-            code: Authorization code from Google
-            redirect_uri: Redirect URI used in the authorization request
-            
-        Returns:
-            Token response from Google
-        """
-        if not self.client_secret:
-            raise ValidationError("Google OAuth client secret not configured")
-        
+    def exchange_code_for_tokens(self, code: str) -> Dict[str, Any]:
+        """Troca o código de autorização pelos tokens do Google (no servidor)."""
+        if not self.client_id or not self.client_secret:
+            raise GoogleOAuthErro('A entrada com o Google não está configurada.')
         data = {
             'client_id': self.client_id,
             'client_secret': self.client_secret,
             'code': code,
             'grant_type': 'authorization_code',
-            'redirect_uri': redirect_uri or self.redirect_uri,
+            'redirect_uri': self.redirect_uri,
         }
-        
         try:
             response = requests.post(self.token_uri, data=data, timeout=30)
             response.raise_for_status()
             return response.json()
         except requests.RequestException as e:
             logger.error(f"Error exchanging code for tokens: {str(e)}")
-            raise ValidationError("Failed to exchange authorization code for tokens")
+            raise GoogleOAuthErro('O Google não aceitou a autorização. Tente outra vez.')
     
     def get_user_info_from_token(self, access_token: str) -> Dict[str, Any]:
-        """
-        Get user information using access token.
-        
-        Args:
-            access_token: Google access token
-            
-        Returns:
-            User information from Google
-        """
+        """Dados da pessoa com um access token obtido por nós na troca do código."""
         headers = {'Authorization': f'Bearer {access_token}'}
-        
         try:
             response = requests.get(self.user_info_uri, headers=headers, timeout=30)
             response.raise_for_status()
             return response.json()
         except requests.RequestException as e:
             logger.error(f"Error getting user info from token: {str(e)}")
-            raise ValidationError("Failed to get user information from Google")
+            raise GoogleOAuthErro(ERRO_GOOGLE)
     
     def verify_id_token(self, id_token_str: str) -> Dict[str, Any]:
-        """
-        Verify and decode Google ID token.
-        
-        Args:
-            id_token_str: Google ID token
-            
-        Returns:
-            Decoded token payload
-        """
+        """Verifica um ID token do Google emitido para o nosso client id (aud)."""
+        if not self.client_id:
+            raise GoogleOAuthErro('A entrada com o Google não está configurada.')
         try:
-            # Verify the token
             id_info = id_token.verify_oauth2_token(
-                id_token_str, 
-                google_requests.Request(), 
+                id_token_str,
+                google_requests.Request(),
                 self.client_id
             )
-            
-            # Verify the issuer
-            if id_info['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
-                raise ValidationError('Invalid token issuer')
-            
-            return id_info
         except Exception as e:
             logger.error(f"Error verifying ID token: {str(e)}")
-            raise ValidationError("Invalid ID token")
+            raise GoogleOAuthErro(ERRO_GOOGLE)
+        if id_info.get('iss') not in ['accounts.google.com', 'https://accounts.google.com']:
+            raise GoogleOAuthErro(ERRO_GOOGLE)
+        if id_info.get('aud') != self.client_id:
+            raise GoogleOAuthErro(ERRO_GOOGLE)
+        return id_info
     
-    def authenticate_user(self, **kwargs) -> Tuple[User, Dict[str, str]]:
+    def authenticate_user(self, code: str = None, id_token: str = None, state: str = None,
+                          access_token: str = None, **_ignorar) -> User:
         """
-        Authenticate user with Google OAuth.
-        
-        Args:
-            **kwargs: Can contain 'code', 'access_token', or 'id_token'
-            
-        Returns:
-            Tuple of (user, tokens) where tokens contains 'access' and 'refresh'
+        Devolve o utilizador da entrada com o Google (sem tokens: a sessão é criada na view,
+        como no login normal).
         """
+        if access_token:
+            raise GoogleOAuthErro('Pedido inválido para entrar com o Google.')
+        if state and not self.state_valido(state):
+            raise GoogleOAuthErro('O pedido de entrada com o Google expirou. Tente outra vez.')
+
         user_info = None
-        
-        # Try different authentication methods
-        if 'code' in kwargs:
-            # Exchange code for tokens and get user info
-            token_response = self.exchange_code_for_tokens(kwargs['code'])
-            access_token = token_response.get('access_token')
-            if access_token:
-                user_info = self.get_user_info_from_token(access_token)
-            
-            # Also try to get info from ID token if present
-            if not user_info and 'id_token' in token_response:
+        if code:
+            token_response = self.exchange_code_for_tokens(code)
+            if token_response.get('id_token'):
+                # O id_token vem directamente do Google na troca; verifica-se na mesma (aud).
                 user_info = self.verify_id_token(token_response['id_token'])
-        
-        elif 'access_token' in kwargs:
-            # Get user info directly from access token
-            user_info = self.get_user_info_from_token(kwargs['access_token'])
-        
-        elif 'id_token' in kwargs:
-            # Verify and decode ID token
-            user_info = self.verify_id_token(kwargs['id_token'])
-        
+            elif token_response.get('access_token'):
+                user_info = self.get_user_info_from_token(token_response['access_token'])
+        elif id_token:
+            user_info = self.verify_id_token(id_token)
+        else:
+            raise GoogleOAuthErro('Pedido inválido para entrar com o Google.')
+
         if not user_info:
-            raise ValidationError("Could not retrieve user information from Google")
-        
-        # Extract user data
-        google_id = user_info.get('id')
-        email = user_info.get('email')
-        name = user_info.get('name', '')
-        given_name = user_info.get('given_name', '')
-        family_name = user_info.get('family_name', '')
-        picture = user_info.get('picture')
-        verified_email = user_info.get('verified_email', False)
-        
-        if not email:
-            raise ValidationError("Email not provided by Google")
-        
-        # Find or create user
-        user = self._get_or_create_user(
-            google_id=google_id,
-            email=email,
-            name=name,
-            given_name=given_name,
-            family_name=family_name,
-            picture=picture,
-            verified_email=verified_email
-        )
-        
-        # Generate JWT tokens
-        refresh = RefreshToken.for_user(user)
-        tokens = {
-            'access': str(refresh.access_token),
-            'refresh': str(refresh)
-        }
-        
-        return user, tokens
+            raise GoogleOAuthErro(ERRO_GOOGLE)
+
+        google_id = user_info.get('sub') or user_info.get('id')
+        email = (user_info.get('email') or '').strip().lower()
+        verificado = user_info.get('email_verified', user_info.get('verified_email', False))
+        if isinstance(verificado, str):
+            verificado = verificado.lower() == 'true'
+        if not email or not google_id:
+            raise GoogleOAuthErro('O Google não indicou o seu email.')
+        if verificado is not True:
+            raise GoogleOAuthErro('O seu email ainda não está confirmado no Google. '
+                                  'Confirme-o no Google ou entre com email e palavra-passe.')
+
+        return self._get_or_create_user(google_id=str(google_id), email=email,
+                                        name=(user_info.get('name') or '').strip())
     
-    def _get_or_create_user(self, **user_data) -> User:
-        """
-        Get existing user or create new one from Google data.
-        
-        Args:
-            **user_data: User information from Google
-            
-        Returns:
-            User instance
-        """
-        email = user_data['email']
-        google_id = user_data['google_id']
-        
-        # Try to find existing user by email
-        try:
-            user = User.objects.get(email=email)
-            
-            # Update user with Google data if needed
-            if not user.google_id and google_id:
+    def _get_or_create_user(self, google_id: str, email: str, name: str) -> User:
+        user = User.objects.filter(google_id=google_id).first() or User.objects.filter(email__iexact=email).first()
+        if user:
+            if not user.is_active:
+                raise GoogleOAuthErro('Esta conta está desactivada.')
+            if user.google_id and user.google_id != google_id:
+                # A conta já está ligada a outra conta Google.
+                raise GoogleOAuthErro(ERRO_GOOGLE)
+            campos = []
+            if not user.google_id:
                 user.google_id = google_id
-            
-            if not user.name and user_data.get('name'):
-                user.name = user_data['name']
-            
-            if user_data.get('verified_email') and not user.email_verified:
+                campos.append('google_id')
+            if not user.name and name:
+                user.name = name
+                campos.append('name')
+            if not user.email_verified:
+                # O Google confirmou que a pessoa é dona deste email.
                 user.email_verified = True
-            
-            if user_data.get('picture') and not user.avatar:
-                # TODO: Download and save avatar from Google
-                pass
-            
-            user.save()
-            logger.info(f"Updated existing user {user.email} with Google OAuth data")
-            
-        except User.DoesNotExist:
-            # Create new user
-            user_data_clean = {
-                'email': email,
-                'name': user_data.get('name', ''),
-                'google_id': google_id,
-                'email_verified': user_data.get('verified_email', False),
-                'role': 'customer',  # Default role
-                'is_active': True,
-            }
-            
-            # Create user without password (OAuth only)
-            user = User.objects.create(**user_data_clean)
-            logger.info(f"Created new user {user.email} via Google OAuth")
-        
+                campos.append('email_verified')
+            if campos:
+                user.save(update_fields=campos)
+            logger.info(f"Google OAuth: utilizador existente {user.pk}")
+            return user
+
+        user = User(email=email, name=name or email.split('@')[0], google_id=google_id,
+                    email_verified=True, role='student', is_active=True)
+        user.set_unusable_password()
+        user.save()
+        logger.info(f"Google OAuth: utilizador novo {user.pk}")
         return user
 
 

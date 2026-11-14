@@ -154,16 +154,22 @@ class CourseListSerializer(serializers.ModelSerializer):
     """
     teacherId = serializers.CharField(source='teacher.id', read_only=True)
     total_enrollments = serializers.SerializerMethodField()
-    
+    access_level_display = serializers.CharField(read_only=True)
+    is_free = serializers.BooleanField(read_only=True)
+    is_premium = serializers.BooleanField(read_only=True)
+
     class Meta:
         model = Course
         fields = [
             'courseId', 'title', 'description', 'category', 'image',
-            'level', 'status', 'template', 'teacher', 'teacherId', 'teacherName', 
+            'level', 'status', 'template', 'course_type',
+            'access_level', 'access_level_display', 'is_free', 'is_premium', 'is_featured',
+            'teacher', 'teacherId', 'teacherName',
             'total_enrollments', 'created_at', 'updated_at'
         ]
         read_only_fields = [
             'courseId', 'teacher', 'teacherId', 'teacherName', 'total_enrollments',
+            'access_level_display', 'is_free', 'is_premium',
             'created_at', 'updated_at'
         ]
     
@@ -325,7 +331,7 @@ class CourseCreateSerializer(serializers.ModelSerializer):
     """
     Serializer for creating courses.
     """
-    
+
     # Make fields optional to allow creating course with minimal data
     title = serializers.CharField(required=False, default="Novo Curso")
     description = serializers.CharField(required=False, default="")
@@ -333,24 +339,33 @@ class CourseCreateSerializer(serializers.ModelSerializer):
     level = serializers.CharField(required=False, default="Beginner")
     status = serializers.CharField(required=False, default="Draft")
     template = serializers.CharField(required=False, default="general")
-    
+    access_level = serializers.ChoiceField(
+        choices=[('free', 'Gratuito'), ('premium', 'Premium'), ('premium_plus', 'Premium Plus')],
+        required=False,
+        default='free'
+    )
+    is_featured = serializers.BooleanField(required=False, default=False)
+
     class Meta:
         model = Course
         fields = [
             'title', 'description', 'category', 'image',
-            'level', 'status', 'template'
+            'level', 'status', 'template', 'access_level', 'is_featured'
         ]
-    
+
     def create(self, validated_data):
         # Set teacher and teacherName from authenticated user
         user = self.context['request'].user
         validated_data['teacher'] = user
         validated_data['teacherName'] = user.name or f"Professor {user.email}"
-        
+
         # Set default values if not provided
         if 'title' not in validated_data or not validated_data['title']:
             validated_data['title'] = "Novo Curso"
-        
+
+        from apps.courses.ciclo import limpar_criacao
+        limpar_criacao(validated_data)
+
         return super().create(validated_data)
 
 
@@ -359,17 +374,19 @@ class CourseUpdateSerializer(serializers.ModelSerializer):
     Serializer for updating courses with sections and chapters support.
     """
     sections = serializers.ListField(child=serializers.DictField(), required=False, write_only=True)
-    
+
     class Meta:
         model = Course
         fields = [
             'title', 'description', 'category', 'image',
-            'level', 'status', 'template', 'sections'
+            'level', 'status', 'template', 'access_level', 'is_featured', 'sections'
         ]
         
     def update(self, instance, validated_data):
         # Extract sections data before updating course
         sections_data = validated_data.pop('sections', [])
+        from apps.courses.ciclo import limpar_edicao
+        limpar_edicao(instance, validated_data)
         
         # Update course basic fields
         for attr, value in validated_data.items():
@@ -465,6 +482,15 @@ class CourseUpdateSerializer(serializers.ModelSerializer):
                     chapter.type = chapter_data.get('type', chapter.type)
                     chapter.video = chapter_data.get('video', chapter.video)
                     chapter.order = chapter_data.get('order', chapter.order)
+                    # Quiz fields
+                    chapter.quiz_enabled = chapter_data.get('quiz_enabled', chapter.quiz_enabled)
+                    chapter.quiz_data = chapter_data.get('quiz_data', chapter.quiz_data)
+                    # Resource fields
+                    chapter.transcript = chapter_data.get('transcript', chapter.transcript)
+                    chapter.resources_data = chapter_data.get('resources_data', chapter.resources_data)
+                    # Exercise fields
+                    chapter.practice_lesson = chapter_data.get('practice_lesson', chapter.practice_lesson)
+                    chapter.practice_selection = chapter_data.get('practice_selection', chapter.practice_selection)
                     chapter.save()
                     processed_chapter_ids.add(chapter.id)
                 except Chapter.DoesNotExist:
@@ -475,7 +501,13 @@ class CourseUpdateSerializer(serializers.ModelSerializer):
                         content=chapter_data.get('content', ''),
                         type=chapter_data.get('type', 'Text'),
                         video=chapter_data.get('video', ''),
-                        order=chapter_data.get('order', 0)
+                        order=chapter_data.get('order', 0),
+                        quiz_enabled=chapter_data.get('quiz_enabled', False),
+                        quiz_data=chapter_data.get('quiz_data'),
+                        transcript=chapter_data.get('transcript', ''),
+                        resources_data=chapter_data.get('resources_data'),
+                        practice_lesson=chapter_data.get('practice_lesson', ''),
+                        practice_selection=chapter_data.get('practice_selection'),
                     )
                     processed_chapter_ids.add(chapter.id)
             else:
@@ -486,7 +518,13 @@ class CourseUpdateSerializer(serializers.ModelSerializer):
                     content=chapter_data.get('content', ''),
                     type=chapter_data.get('type', 'Text'),
                     video=chapter_data.get('video', ''),
-                    order=chapter_data.get('order', 0)
+                    order=chapter_data.get('order', 0),
+                    quiz_enabled=chapter_data.get('quiz_enabled', False),
+                    quiz_data=chapter_data.get('quiz_data'),
+                    transcript=chapter_data.get('transcript', ''),
+                    resources_data=chapter_data.get('resources_data'),
+                    practice_lesson=chapter_data.get('practice_lesson', ''),
+                    practice_selection=chapter_data.get('practice_selection'),
                 )
                 processed_chapter_ids.add(chapter.id)
         
@@ -631,12 +669,9 @@ class UserCourseProgressUpdateSerializer(serializers.Serializer):
                     continue
         
         # Recalculate overall progress
-        total_chapters = instance.course.total_chapters
-        if total_chapters > 0:
-            completed_chapters = instance.chapter_progress.filter(completed=True).count()
-            instance.overallProgress = (completed_chapters / total_chapters) * 100
-        else:
-            instance.overallProgress = 0
+        # Só contam as aulas visíveis aos alunos (ver apps.courses.certificados.progresso_actual).
+        from apps.courses.certificados import progresso_actual
+        instance.overallProgress = progresso_actual(instance.user, instance.course)
         
         instance.save()
         return instance

@@ -60,6 +60,11 @@ class EndToEndAuthenticationFlowTest(APITestCase):
         
         # Step 2: Get and verify email verification code
         user = User.objects.get(email=registration_data['email'])
+        # O 'role' enviado no registo é ignorado: quem se regista é aluno. Os professores são
+        # promovidos pela equipa (aqui simulado directamente na base de dados).
+        self.assertEqual(user.role, 'student')
+        user.role = 'teacher'
+        user.save(update_fields=['role'])
         from apps.users.models import EmailVerification
         verification = EmailVerification.objects.filter(user=user).first()
         
@@ -70,7 +75,7 @@ class EndToEndAuthenticationFlowTest(APITestCase):
         self.assertEqual(verify_response.status_code, status.HTTP_200_OK)
         
         # Step 3: Use JWT token to access teacher endpoints
-        access_token = verify_response.data['access']
+        access_token = verify_response.cookies['access_token'].value
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {access_token}')
         
         # Step 4: Access teacher course list (should work)
@@ -131,7 +136,7 @@ class EndToEndAuthenticationFlowTest(APITestCase):
         self.assertEqual(verify_response.status_code, status.HTTP_200_OK)
         
         # Step 4: Use JWT token to access student endpoints
-        access_token = verify_response.data['access']
+        access_token = verify_response.cookies['access_token'].value
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {access_token}')
         
         # Step 5: Access student course list (should work)
@@ -159,7 +164,7 @@ class EndToEndAuthenticationFlowTest(APITestCase):
             'email': user.email,
             'password': 'password123'
         })
-        access_token = login_response.data['access']
+        access_token = login_response.cookies['access_token'].value
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {access_token}')
         
         # Verify student can access student endpoints
@@ -179,7 +184,7 @@ class EndToEndAuthenticationFlowTest(APITestCase):
             'email': user.email,
             'password': 'password123'
         })
-        new_access_token = login_response2.data['access']
+        new_access_token = login_response2.cookies['access_token'].value
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {new_access_token}')
         
         # Now user should be able to access teacher endpoints
@@ -230,14 +235,14 @@ class SecurityValidationTest(APITestCase):
             'email': self.student.email,
             'password': 'password123'
         })
-        student_token = student_login.data['access']
+        student_token = student_login.cookies['access_token'].value
         
         # Test teacher token
         teacher_login = self.client.post(login_url, {
             'email': self.teacher.email,
             'password': 'password123'
         })
-        teacher_token = teacher_login.data['access']
+        teacher_token = teacher_login.cookies['access_token'].value
         
         # Student token should not work for teacher endpoints
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {student_token}')

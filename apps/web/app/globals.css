@@ -117,8 +117,11 @@ body {
   }
 }
 
+/* "clip" corta o que sai para os lados sem criar um contentor de scroll:
+   com "hidden" o body passava a ser o contentor e os elementos sticky
+   (barra lateral, painéis laterais) subiam com a página. */
 html, body {
-  @apply overflow-x-hidden w-full;
+  @apply overflow-x-clip w-full;
 }
 
 /* Custom scrollbar styles */
@@ -191,32 +194,6 @@ html, body {
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* ==== clerk class override ===== */
-
-.cl-userButtonPopoverActionButtonIcon {
-  color: white;
-}
-
-.cl-logoBox {
-  height: 40px;
-}
-.cl-dividerLine {
-  background: #252a41;
-  height: 2px;
-}
-
-.cl-socialButtonsIconButton {
-  border: 3px solid #565761;
-}
-
-.cl-internal-wkkub3 {
-  color: white;
-}
-.cl-userButtonPopoverActionButton {
-  color: white;
-}
-
-/* =============================== */
 
 @layer utilities {
   .flex-center {

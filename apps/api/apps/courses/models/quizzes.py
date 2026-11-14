@@ -38,8 +38,10 @@ class ChapterQuiz(BaseModel, StatisticsModelMixin, TimestampedModelMixin, Metada
     # Bridge to Practice Lab
     practice_lesson = models.ForeignKey(
         'practice.PracticeLesson',
+        null=True, blank=True,
         on_delete=models.CASCADE,
-        help_text="Connected Practice Lab lesson"
+        help_text="Connected Practice Lab lesson (opcional: os questionários criados pelo professor "
+                  "no capítulo não têm lição de prática)"
     )
     
     # Quiz configuration

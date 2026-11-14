@@ -38,11 +38,11 @@ class CertificateGenerationService:
     PAGE_WIDTH, PAGE_HEIGHT = landscape(A4)
 
     # Colors
-    PRIMARY_COLOR = colors.HexColor('#6B21A8')  # Purple
-    SECONDARY_COLOR = colors.HexColor('#7C3AED')  # Violet
-    GOLD_COLOR = colors.HexColor('#D4AF37')  # Gold
-    TEXT_COLOR = colors.HexColor('#1F2937')  # Dark gray
-    LIGHT_TEXT = colors.HexColor('#6B7280')  # Light gray
+    PRIMARY_COLOR = colors.HexColor('#000066')  # Azul-marca ProEnglish
+    SECONDARY_COLOR = colors.HexColor('#2F46E8')  # Azul-vivo
+    GOLD_COLOR = colors.HexColor('#FFC72C')  # Realce (só filetes: sem contraste para texto sobre branco)
+    TEXT_COLOR = colors.HexColor('#14143F')  # Tinta
+    LIGHT_TEXT = colors.HexColor('#54577A')  # Tinta suave
 
     def __init__(self, certificate: CourseCertificate):
         """
@@ -86,7 +86,7 @@ class CertificateGenerationService:
     def _draw_background(self, c: canvas.Canvas):
         """Draw the certificate background with gradient effect."""
         # Light background
-        c.setFillColor(colors.HexColor('#FAFAFA'))
+        c.setFillColor(colors.HexColor('#FFFFFF'))
         c.rect(0, 0, self.PAGE_WIDTH, self.PAGE_HEIGHT, fill=True, stroke=False)
 
         # Decorative corners
@@ -149,7 +149,7 @@ class CertificateGenerationService:
         c.drawCentredString(center_x, self.PAGE_HEIGHT - 70, "PROENGLISH")
 
         # Certificate title
-        c.setFillColor(self.GOLD_COLOR)
+        c.setFillColor(self.PRIMARY_COLOR)
         c.setFont("Helvetica-Bold", 36)
         c.drawCentredString(center_x, self.PAGE_HEIGHT - 115, "CERTIFICADO DE CONCLUSÃO")
 
@@ -266,12 +266,9 @@ class CertificateGenerationService:
         verification_text = f"Certificado Nº: {self.certificate.certificate_number}"
         c.drawString(text_x, logo_y + 18, verification_text)
 
-        if self.certificate.verification_code:
-            verify_text = f"Código de Verificação: {self.certificate.verification_code}"
-            c.drawString(text_x, logo_y + 6, verify_text)
-
-        # Verification URL - on the right side
-        verify_url = f"Verificar em: proenglish.com/verify/{self.certificate.verification_code}"
+        # Verification URL - on the right side (verificação pública pelo número)
+        from apps.courses.certificados import ligacao_verificacao
+        verify_url = f"Verificar em: {ligacao_verificacao(self.certificate)}"
         c.drawRightString(self.PAGE_WIDTH - 50, logo_y + 12, verify_url)
 
     def save_certificate(self) -> str:
@@ -304,69 +301,9 @@ class CertificateGenerationService:
 
 def generate_certificate_for_user(user: User, course: Course) -> Optional[CourseCertificate]:
     """
-    Convenience function to generate a certificate for a user.
-
-    Checks eligibility and creates the certificate if conditions are met.
-
-    Args:
-        user: The user to generate certificate for
-        course: The course to generate certificate for
-
-    Returns:
-        The created CourseCertificate or None if not eligible
+    Compatibilidade: delega em apps.courses.certificados.emitir_se_elegivel
+    (regras, número PE-C-... e verificação vivem lá). Devolve None se não for elegível.
     """
-    from apps.courses.services import GradeCalculatorService
-    from apps.courses.models import CourseEnrollment, UserCourseProgress, StudentCourseGrade
-    from apps.subscriptions.models import UserSubscription
+    from apps.courses.certificados import emitir_se_elegivel
 
-    # P2 FIX: Check if user's subscription plan allows certificates
-    try:
-        subscription = UserSubscription.objects.select_related('plan').get(user=user)
-        if not subscription.is_active() or not subscription.plan.certificates:
-            return None
-    except UserSubscription.DoesNotExist:
-        return None
-
-    # Check if already has certificate
-    existing = CourseCertificate.objects.filter(user=user, course=course).first()
-    if existing:
-        return existing
-
-    # Check enrollment
-    if not CourseEnrollment.objects.filter(user=user, course=course).exists():
-        return None
-
-    # Check progress
-    try:
-        progress = UserCourseProgress.objects.get(user=user, course=course)
-        if progress.overallProgress < 100.0:
-            return None
-    except UserCourseProgress.DoesNotExist:
-        return None
-
-    # Calculate/get grade
-    calculator = GradeCalculatorService(user, course)
-    grade = calculator.calculate_and_save(change_reason='certificate_check')
-
-    # Check eligibility
-    if not grade.is_eligible_for_certificate:
-        return None
-
-    # Generate verification code
-    verification_code = f"VER-{uuid.uuid4().hex[:8].upper()}"
-
-    # Create certificate
-    certificate = CourseCertificate.objects.create(
-        user=user,
-        course=course,
-        completion_percentage=progress.overallProgress,
-        final_grade=grade.final_grade_percentage,
-        final_grade_letter=grade.final_grade_letter,
-        verification_code=verification_code
-    )
-
-    # Generate PDF
-    service = CertificateGenerationService(certificate)
-    service.save_certificate()
-
-    return certificate
+    return emitir_se_elegivel(user, course)

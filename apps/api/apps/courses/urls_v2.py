@@ -7,6 +7,7 @@ including new features like resources, quizzes, and enhanced functionality.
 
 from django.urls import path
 from . import views
+from apps.courses.legado import rota_removida
 
 app_name = 'courses_v2'
 
@@ -54,10 +55,9 @@ urlpatterns = [
     path('users/<uuid:userId>/progress/<uuid:courseId>/update/', views.update_user_course_progress, name='update_user_course_progress'),
     
     # Enhanced payments with Stripe
-    path('payments/stripe/intent/', views.create_stripe_payment_intent, name='stripe_payment_intent'),
     
     # Enhanced file uploads
     path('<uuid:courseId>/sections/<uuid:sectionId>/chapters/<uuid:chapterId>/get-upload-url/', 
-         views.get_upload_video_url, name='get_upload_video_url'),
-    path('<uuid:courseId>/upload-image/', views.upload_course_image, name='upload_course_image'),
+         rota_removida, name='get_upload_video_url'),
+    path('<uuid:courseId>/upload-image/', rota_removida, name='upload_course_image'),
 ]

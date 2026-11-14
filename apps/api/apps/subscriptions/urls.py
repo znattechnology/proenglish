@@ -32,6 +32,13 @@ urlpatterns = [
         views.UserSubscriptionView.as_view(), 
         name='user-subscription'
     ),
+
+    # Lembretes de renovação (ligar/desligar)
+    path(
+        'my-subscription/lembretes/',
+        views.renewal_reminders,
+        name='renewal-reminders'
+    ),
     
     # Upgrade/downgrade de plano
     path(
@@ -47,12 +54,8 @@ urlpatterns = [
         name='apply-promo-code'
     ),
     
-    # Cancelar assinatura
-    path(
-        'cancel/', 
-        views.cancel_subscription, 
-        name='cancel-subscription'
-    ),
+    # Não há cancel/: sem renovação automática, o plano pago termina no fim do
+    # período e a conta volta ao Gratuito (apps.pagamentos.renovacao).
     
     # ========================================================================
     # ADMIN ENDPOINTS - Requer permissões de admin
@@ -128,20 +131,9 @@ urlpatterns = [
         name='user-subscription-analytics'
     ),
     
-    # Verificar acesso a funcionalidade
-    path(
-        'check-access/', 
-        views.check_feature_access, 
-        name='check-feature-access'
-    ),
-    
-    # Consumir recursos da assinatura
-    path(
-        'consume-usage/', 
-        views.consume_feature_usage, 
-        name='consume_feature_usage'
-    ),
-    
+    # check-access/ e consume-usage/ foram retirados: deixavam o aluno mexer nos próprios
+    # limites (quantidades negativas davam vidas e minutos). O consumo é feito no servidor.
+
     # Status de limitações e uso atual
     path(
         'limits/', 

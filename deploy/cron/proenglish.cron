@@ -1,0 +1,36 @@
+# ProEnglish - tarefas periódicas da API (crontab do utilizador que corre a API).
+#
+# Substituir antes de instalar (ver README.md nesta pasta):
+#   __PROJECT_DIR__  pasta da API Django, ex.: /opt/proenglish/apps/api
+#   __VENV__         virtualenv da API,      ex.: /opt/proenglish/apps/api/venv
+#   __LOG_DIR__      pasta de logs,          ex.: /opt/proenglish/logs
+#
+# Horas: o relógio do VPS está provavelmente em UTC. Não faz mal: os comandos
+# calculam tudo em Africa/Luanda (UTC+1) por dentro, e ambos correm várias
+# vezes por hora/dia, por isso não dependem da hora exata a que o cron dispara.
+# Os dois comandos são idempotentes; flock impede execuções sobrepostas.
+
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+# Se a API ler as variáveis de um ficheiro .env na pasta do projeto, nada mais é preciso.
+# Caso contrário, defina aqui DJANGO_SETTINGS_MODULE/DATABASE_URL, ou use "set -a; . .env;" no comando.
+
+# Testes grátis (de hora a hora, ao minuto 3): aviso 2 dias antes do fim do teste e volta ao
+# Gratuito dos testes que terminaram sem pagamento (o progresso fica).
+3 * * * * cd __PROJECT_DIR__ && flock -n /tmp/proenglish-testes.lock __VENV__/bin/python manage.py terminar_testes >> __LOG_DIR__/cron-testes.log 2>&1
+
+# Renovação (de hora a hora, ao minuto 5): lembretes D-3 (<= 72 h) e D-0 (<= 24 h)
+# antes de expirar, volta ao Gratuito dos planos terminados e liberta pagamentos pendentes caducados.
+5 * * * * cd __PROJECT_DIR__ && flock -n /tmp/proenglish-renovacao.lock __VENV__/bin/python manage.py enviar_lembretes_renovacao >> __LOG_DIR__/cron-renovacao.log 2>&1
+
+# Competições (de hora a hora, ao minuto 7): avisa o início e fecha as que terminaram
+# (classificação final, prémios e avisos aos vencedores).
+7 * * * * cd __PROJECT_DIR__ && flock -n /tmp/proenglish-competicoes.lock __VENV__/bin/python manage.py fechar_competicoes >> __LOG_DIR__/cron-competicoes.log 2>&1
+
+# Lembrete da meta diária de estudo (a cada 15 minutos; janela calculada em hora de Luanda).
+*/15 * * * * cd __PROJECT_DIR__ && flock -n /tmp/proenglish-meta.lock __VENV__/bin/python manage.py enviar_lembretes_meta >> __LOG_DIR__/cron-meta.log 2>&1
+
+# Ganhos dos professores: fecha o mês anterior no dia 1 às 03:00 de Luanda (02:00 UTC, se o
+# relógio do VPS estiver em UTC). Idempotente (nunca altera meses já pagos); o pagamento
+# aos professores é feito à mão no dia 5 e marcado em /api/v1/admin/ganhos/<id>/pago/.
+0 2 1 * * cd __PROJECT_DIR__ && flock -n /tmp/proenglish-ganhos.lock __VENV__/bin/python manage.py fechar_ganhos >> __LOG_DIR__/cron-ganhos.log 2>&1

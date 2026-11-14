@@ -9,10 +9,10 @@ This module follows the established signal pattern from apps/users/signals.py
 """
 
 import logging
-from django.db.models.signals import post_save, pre_save
+from django.db.models.signals import post_delete, post_save, pre_save
 from django.dispatch import receiver
 
-from .models import StudentQuizAttempt, StudentCourseGrade, UserCourseProgress, CourseCertificate
+from .models import StudentQuizAttempt, StudentCourseGrade, UserCourseProgress, CourseCertificate, Chapter
 
 logger = logging.getLogger(__name__)
 
@@ -103,122 +103,160 @@ def on_quiz_attempt_saved(sender, instance, created, **kwargs):
 @receiver(post_save, sender=StudentCourseGrade)
 def on_grade_saved_check_certificate(sender, instance, created, **kwargs):
     """
-    Automatically generate certificate when student becomes eligible.
-
-    Triggers when:
-    - Grade is saved and is_eligible_for_certificate becomes True
-    - Course progress is 100%
-    - No existing certificate
-
-    This allows automatic certificate issuance without student action.
+    Emite o certificado automaticamente quando a nota guardada fica elegível
+    (o resto das regras, incluindo progresso a 100% e plano, está em
+    apps.courses.certificados). Passa a própria nota para não recalcular:
+    recalcular aqui voltava a guardar a nota e a disparar este signal.
     """
-    # Skip if not eligible
-    if not instance.is_eligible_for_certificate:
+    if not instance.is_eligible_for_certificate or kwargs.get('raw', False):
         return
-
-    # Skip if in raw mode
-    if kwargs.get('raw', False):
-        return
-
     try:
-        user = instance.user
-        course = instance.course
-
-        # Check if certificate already exists
-        if CourseCertificate.objects.filter(user=user, course=course).exists():
-            logger.debug(f"Certificate already exists for user {user.id} in course {course.id}")
+        if CourseCertificate.objects.filter(user=instance.user, course=instance.course).exists():
             return
-
-        # Check course progress is 100%
-        try:
-            progress = UserCourseProgress.objects.get(user=user, course=course)
-            if progress.overallProgress < 100.0:
-                logger.debug(
-                    f"Course progress not complete ({progress.overallProgress}%), "
-                    f"certificate not auto-generated"
-                )
-                return
-        except UserCourseProgress.DoesNotExist:
-            logger.debug("No progress record found, certificate not auto-generated")
-            return
-
-        # Import here to avoid circular imports
-        from .services.certificate_service import generate_certificate_for_user
-
-        logger.info(
-            f"Auto-generating certificate for user {user.id} ({user.email}) "
-            f"in course {course.id} ({course.title})"
-        )
-
-        certificate = generate_certificate_for_user(user, course)
-
-        if certificate:
-            logger.info(
-                f"Certificate auto-generated successfully: {certificate.certificate_number}"
-            )
-        else:
-            logger.warning(
-                f"Certificate generation returned None for user {user.id} in course {course.id}"
-            )
-
+        from .certificados import emitir_se_elegivel
+        emitir_se_elegivel(instance.user, instance.course, grade=instance)
     except Exception as e:
-        # Log but don't raise - certificate can be generated manually later
-        logger.error(
-            f"Error auto-generating certificate for grade {instance.id}: {e}",
-            exc_info=True
-        )
+        # Nunca partir quem guardou a nota; o aluno pode pedir o certificado depois.
+        logger.error(f"Error auto-generating certificate for grade {instance.id}: {e}", exc_info=True)
 
 
 @receiver(post_save, sender=UserCourseProgress)
 def on_progress_complete_check_certificate(sender, instance, **kwargs):
     """
-    Check for certificate eligibility when course progress reaches 100%.
-
-    This handles the case where a student completes the course but the
-    grade was calculated earlier (already eligible).
+    Quando o progresso chega a 100% e a nota já guardada é elegível, emite o certificado.
     """
-    # Only trigger when progress reaches 100%
-    if instance.overallProgress < 100.0:
+    if instance.overallProgress < 100.0 or kwargs.get('raw', False):
         return
+    try:
+        if CourseCertificate.objects.filter(user=instance.user, course=instance.course).exists():
+            return
+        grade = StudentCourseGrade.objects.filter(user=instance.user, course=instance.course).first()
+        if grade is None or not grade.is_eligible_for_certificate:
+            return
+        from .certificados import emitir_se_elegivel
+        emitir_se_elegivel(instance.user, instance.course, grade=grade)
+    except Exception as e:
+        logger.error(f"Error checking certificate on progress completion: {e}", exc_info=True)
 
-    # Skip if in raw mode
+
+@receiver(pre_save, sender=Chapter, dispatch_uid='visibilidade_capitulo_antes')
+def on_chapter_pre_save_remember_visibility(sender, instance, **kwargs):
+    """Guarda se a aula já era visível aos alunos (tinha vídeo) antes desta gravação."""
     if kwargs.get('raw', False):
         return
+    from .ciclo import aula_visivel
+    anterior = None
+    if instance.pk and not instance._state.adding:
+        anterior = Chapter.objects.filter(pk=instance.pk).only('type', 'video').first()
+    instance._era_visivel = aula_visivel(anterior) if anterior is not None else None
 
-    try:
-        user = instance.user
-        course = instance.course
 
-        # Check if certificate already exists
-        if CourseCertificate.objects.filter(user=user, course=course).exists():
+@receiver(post_save, sender=Chapter, dispatch_uid='avisar_novo_capitulo')
+def on_chapter_visible_notify_students(sender, instance, created, **kwargs):
+    """
+    Uma aula passa a estar visível (o vídeo foi confirmado pela primeira vez, ou foi criada já
+    completa) num curso de vídeo publicado: avisa os alunos inscritos, depois do commit.
+    Uma aula nova ainda sem vídeo não avisa ninguém (os alunos ainda não a vêem).
+    """
+    if kwargs.get('raw', False):
+        return
+    from .ciclo import aula_visivel
+    if not aula_visivel(instance) or getattr(instance, '_era_visivel', None):
+        return
+    from django.db import transaction
+    from .avisos import avisar_novo_capitulo
+
+    chapter_id = instance.pk
+    transaction.on_commit(lambda: avisar_novo_capitulo(chapter_id))
+
+
+@receiver(post_save, sender=Chapter, dispatch_uid='sincronizar_questionario_do_capitulo')
+def on_chapter_saved_sync_quiz(sender, instance, created, **kwargs):
+    """
+    O professor guarda o questionário em Chapter.quiz_data; as tentativas usam ChapterQuiz.
+    Cria/actualiza/desactiva o ChapterQuiz depois do commit (ver apps.courses.questionarios).
+    """
+    if kwargs.get('raw', False):
+        return
+    if instance.type != 'Quiz' and not instance.quiz_enabled:
+        from .models import ChapterQuiz
+        if not ChapterQuiz.objects.filter(chapter_id=instance.pk, is_active=True).exists():
             return
+    from django.db import transaction
 
-        # Check if eligible for certificate
+    chapter_id = instance.pk
+
+    def _sincronizar():
         try:
-            grade = StudentCourseGrade.objects.get(user=user, course=course)
-            if not grade.is_eligible_for_certificate:
-                return
-        except StudentCourseGrade.DoesNotExist:
-            # No grade yet, will be handled when grade is calculated
-            return
+            from .questionarios import sincronizar_questionario
+            chapter = Chapter.objects.select_related('section__course__teacher').filter(pk=chapter_id).first()
+            if chapter is not None:
+                sincronizar_questionario(chapter)
+        except Exception:
+            logger.exception('Falha ao sincronizar o questionário do capítulo %s', chapter_id)
 
-        # Import here to avoid circular imports
-        from .services.certificate_service import generate_certificate_for_user
+    transaction.on_commit(_sincronizar)
 
-        logger.info(
-            f"Progress complete - auto-generating certificate for user {user.id} "
-            f"in course {course.id}"
-        )
 
-        certificate = generate_certificate_for_user(user, course)
+def _recalcular_progresso_do_curso(course_id):
+    """
+    overallProgress guardado = capítulos concluídos / capítulos do curso. Quando o professor
+    acrescenta ou apaga capítulos o total muda: recalcula para todos os alunos do curso.
+    """
+    from django.db.models import Count, Q
+    from .models import Course
 
-        if certificate:
-            logger.info(
-                f"Certificate auto-generated on completion: {certificate.certificate_number}"
-            )
+    if not Course.objects.filter(pk=course_id).exists():
+        return
+    from .ciclo import q_aula_visivel
 
-    except Exception as e:
-        logger.error(
-            f"Error checking certificate on progress completion: {e}",
-            exc_info=True
-        )
+    # Só as aulas que os alunos vêem contam (uma aula sem vídeo está escondida).
+    total = Chapter.objects.filter(q_aula_visivel(), section__course_id=course_id).count()
+    progressos = (UserCourseProgress.objects.filter(course_id=course_id)
+                  .annotate(feitos=Count('chapter_progress', filter=Q(chapter_progress__completed=True,
+                                                                     chapter_progress__chapter__section__course_id=course_id)
+                                                                   & q_aula_visivel('chapter_progress__chapter__'))))
+    for p in progressos:
+        novo = min(100.0, (p.feitos / total) * 100) if total else 0.0
+        if abs((p.overallProgress or 0.0) - novo) < 1e-9:
+            continue
+        p.overallProgress = novo
+        if novo >= 100.0 and not p.completion_date:
+            from django.utils import timezone
+            p.completion_date = timezone.now()
+        elif novo < 100.0 and p.completion_date:
+            p.completion_date = None
+        # save() (não update) para o signal do certificado correr quando chega a 100%.
+        p.save(update_fields=['overallProgress', 'completion_date'])
+
+
+def _agendar_recalculo_progresso(instance, **kwargs):
+    if kwargs.get('raw', False):
+        return
+    from django.db import transaction
+    try:
+        course_id = instance.section.course_id
+    except Exception:
+        return
+    transaction.on_commit(lambda: _recalcular_seguro(course_id))
+
+
+def _recalcular_seguro(course_id):
+    try:
+        _recalcular_progresso_do_curso(course_id)
+    except Exception:
+        logger.exception('Falha ao recalcular o progresso do curso %s', course_id)
+
+
+@receiver(post_save, sender=Chapter, dispatch_uid='progresso_capitulo_criado')
+def on_chapter_created_recalc_progress(sender, instance, created, **kwargs):
+    """O total de aulas visíveis muda quando se cria uma aula ou quando ela ganha/perde o vídeo."""
+    from .ciclo import aula_visivel
+    era = getattr(instance, '_era_visivel', None)
+    if created or (era is not None and era != aula_visivel(instance)):
+        _agendar_recalculo_progresso(instance, **kwargs)
+
+
+@receiver(post_delete, sender=Chapter, dispatch_uid='progresso_capitulo_apagado')
+def on_chapter_deleted_recalc_progress(sender, instance, **kwargs):
+    _agendar_recalculo_progresso(instance, **kwargs)

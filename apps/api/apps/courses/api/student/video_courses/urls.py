@@ -7,6 +7,7 @@ maintaining the same structure and response format as the Express API.
 
 from django.urls import path
 from . import views
+from . import certificados_views
 
 app_name = 'student_video_courses'
 
@@ -39,7 +40,6 @@ urlpatterns = [
     path('users/<uuid:userId>/progress/<uuid:courseId>/update/', views.update_user_course_progress, name='update_user_course_progress'),
     
     # Stripe payments
-    path('payments/stripe/intent/', views.create_stripe_payment_intent, name='stripe_payment_intent'),
     
     # Chapter resources (read-only for students)
     path('chapters/<uuid:chapterId>/resources/', 
@@ -56,6 +56,15 @@ urlpatterns = [
     # Quiz attempts
     path('chapters/<uuid:chapterId>/quiz/attempts/', 
          views.StudentQuizAttemptListCreateView.as_view(), name='quiz_attempts'),
-    path('chapters/<uuid:chapterId>/quiz/summary/', 
+    path('chapters/<uuid:chapterId>/quiz/summary/',
          views.get_student_quiz_summary, name='quiz_summary'),
+
+    # Notas (as views já existiam mas não tinham rota)
+    path('grades/all/', views.get_all_student_grades, name='all_student_grades'),
+    path('<uuid:courseId>/grade/', views.get_course_grade, name='course_grade'),
+
+    # Certificados (verificação pública: /api/v1/certificados/verificar/<numero>/)
+    path('certificados/', certificados_views.listar_certificados, name='certificados'),
+    path('certificados/<uuid:certificadoId>/pdf/', certificados_views.descarregar_pdf, name='certificado_pdf'),
+    path('<uuid:courseId>/certificado/', certificados_views.emitir_certificado, name='emitir_certificado'),
 ]

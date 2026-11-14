@@ -76,8 +76,10 @@ class UserRegistrationFlowTest(APITestCase):
         })
         
         self.assertEqual(verify_response.status_code, status.HTTP_200_OK)
-        self.assertIn('access', verify_response.data)
-        self.assertIn('refresh', verify_response.data)
+        # A sessão vai nos cookies HttpOnly, não no corpo.
+        self.assertIn('access_token', verify_response.cookies)
+        self.assertIn('refresh_token', verify_response.cookies)
+        self.assertNotIn('access', verify_response.data)
         
         # Verify user is now verified and can login
         user.refresh_from_db()
@@ -156,6 +158,8 @@ class UserRegistrationFlowTest(APITestCase):
         # Get original verification code
         original_verification = EmailVerification.objects.filter(user=user).first()
         original_code = original_verification.code
+        # Há uma espera de 60 s entre códigos: simula que já passou.
+        EmailVerification.objects.filter(user=user).update(created_at=timezone.now() - timedelta(minutes=2))
         
         # Resend verification code
         response = self.client.post(self.resend_url, {
@@ -222,8 +226,9 @@ class UserLoginFlowTest(APITestCase):
                 })
                 
                 self.assertEqual(response.status_code, status.HTTP_200_OK)
-                self.assertIn('access', response.data)
-                self.assertIn('refresh', response.data)
+                self.assertIn('access_token', response.cookies)
+                self.assertIn('refresh_token', response.cookies)
+                self.assertNotIn('access', response.data)
                 self.assertIn('user', response.data)
                 self.assertEqual(response.data['user']['role'], expected_role)
                 self.assertEqual(response.data['user']['email'], user.email)
@@ -278,7 +283,7 @@ class UserLoginFlowTest(APITestCase):
             'password': 'password123'
         })
         
-        refresh_token = login_response.data['refresh']
+        refresh_token = login_response.cookies['refresh_token'].value
         
         # Use refresh token to get new access token
         refresh_response = self.client.post(self.refresh_url, {
@@ -286,7 +291,10 @@ class UserLoginFlowTest(APITestCase):
         })
         
         self.assertEqual(refresh_response.status_code, status.HTTP_200_OK)
-        self.assertIn('access', refresh_response.data)
+        # Os tokens novos vão nos cookies (o refresh também, por causa da rotação), não no corpo.
+        self.assertIn('access_token', refresh_response.cookies)
+        self.assertIn('refresh_token', refresh_response.cookies)
+        self.assertNotIn('access', refresh_response.data)
     
     def test_logout_functionality(self):
         """Test logout functionality with token blacklisting."""
@@ -296,8 +304,8 @@ class UserLoginFlowTest(APITestCase):
             'password': 'password123'
         })
         
-        access_token = login_response.data['access']
-        refresh_token = login_response.data['refresh']
+        access_token = login_response.cookies['access_token'].value
+        refresh_token = login_response.cookies['refresh_token'].value
         
         # Set authentication
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {access_token}')
@@ -422,7 +430,7 @@ class PasswordResetFlowTest(APITestCase):
         })
         
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertIn('expirado', response.data['error'].lower())
+        self.assertIn('expir', response.data['error'].lower())
 
 
 class RoleBasedAuthenticationTest(APITestCase):
@@ -504,7 +512,7 @@ class RoleBasedAuthenticationTest(APITestCase):
                 self.assertEqual(response.data['user']['role'], user.role)
                 
                 # Verify token works for authenticated requests
-                access_token = response.data['access']
+                access_token = response.cookies['access_token'].value
                 self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {access_token}')
                 
                 profile_response = self.client.get(self.profile_url)

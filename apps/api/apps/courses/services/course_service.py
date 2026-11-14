@@ -433,12 +433,11 @@ class CourseService(BaseService):
     
     def _validate_course_for_deletion(self, course: Course):
         """Validate that a course can be safely deleted."""
-        # Check if there are active enrollments
-        if course.enrollments.filter(is_active=True).exists():
-            raise BusinessLogicError(
-                "Cannot delete course with active enrollments. "
-                "Please contact support for assistance."
-            )
+        # Mesmas regras das rotas antigas: só rascunhos sem inscritos nem certificados.
+        from apps.courses.legado import motivo_nao_apagar
+        motivo = motivo_nao_apagar(course)
+        if motivo:
+            raise BusinessLogicError(motivo)
     
     def _notify_course_published(self, course: Course):
         """Send notifications when a course is published."""

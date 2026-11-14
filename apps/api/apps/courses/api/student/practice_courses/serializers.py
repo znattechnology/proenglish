@@ -108,120 +108,121 @@ class ChallengeProgressSerializer(serializers.ModelSerializer):
         fields = ['id', 'completed', 'completed_at']
 
 
+def _utilizador(context):
+    request = context.get('request')
+    user = getattr(request, 'user', None)
+    return user if user is not None and user.is_authenticated else None
+
+
 class PracticeChallengeSerializer(serializers.ModelSerializer):
     """
-    Practice Challenge serializer - individual exercises.
-    
-    Maps to frontend challenges structure from client project.
-    Includes challenge options and user progress.
+    Exercício para o aluno (units-with-progress/, courses/<id>/units/, lessons/<id>/): só a
+    estrutura e o progresso. Sem enunciado nem opções, para não revelar respostas (o texto das
+    opções é a resposta em completar, traduzir, ditado, ordenar e pares). Para jogar, o ecrã usa
+    lessons/<id>/jogar/.
     """
     id = serializers.UUIDField(read_only=True)
-    options = serializers.SerializerMethodField()
     challenge_progress = serializers.SerializerMethodField()
     completed = serializers.SerializerMethodField()
-    
+
     class Meta:
         model = PracticeChallenge
-        fields = [
-            'id', 'lesson', 'type', 'question', 'order', 
-            'options', 'challenge_progress', 'completed'
-        ]
-    
-    def get_options(self, obj):
-        """Get challenge options, hiding correct answers unless completed"""
-        user = self.context.get('request').user if self.context.get('request') else None
-        
-        if not user:
-            # Anonymous user - hide correct answers
-            return ChallengeOptionSerializer(obj.options.all(), many=True).data
-            
-        # Check if user completed this challenge
-        try:
-            progress = ChallengeProgress.objects.get(user=user, challenge=obj)
-            if progress.completed:
-                # Show correct answers for completed challenges (practice mode)
-                return ChallengeOptionWithAnswerSerializer(obj.options.all(), many=True).data
-        except ChallengeProgress.DoesNotExist:
-            pass
-            
-        # Hide correct answers for incomplete challenges
-        return ChallengeOptionSerializer(obj.options.all(), many=True).data
-    
+        fields = ['id', 'lesson', 'type', 'order', 'challenge_progress', 'completed']
+
+    def _progresso(self, obj):
+        user = _utilizador(self.context)
+        if user is None:
+            return None
+        cache = self.context.setdefault('_progresso_cache', {})
+        if user.pk not in cache:
+            cache[user.pk] = {}
+        if obj.id not in cache[user.pk]:
+            cache[user.pk][obj.id] = ChallengeProgress.objects.filter(user=user, challenge=obj).first()
+        return cache[user.pk][obj.id]
+
     def get_challenge_progress(self, obj):
-        """Get user's progress for this challenge"""
-        user = self.context.get('request').user if self.context.get('request') else None
-        
-        if not user:
-            return []
-            
-        try:
-            progress = ChallengeProgress.objects.get(user=user, challenge=obj)
-            return [ChallengeProgressSerializer(progress).data]
-        except ChallengeProgress.DoesNotExist:
-            return []
-    
+        progress = self._progresso(obj)
+        return [ChallengeProgressSerializer(progress).data] if progress else []
+
     def get_completed(self, obj):
-        """Check if user completed this challenge"""
-        user = self.context.get('request').user if self.context.get('request') else None
-        
-        if not user:
-            return False
-            
-        try:
-            progress = ChallengeProgress.objects.get(user=user, challenge=obj)
-            return progress.completed
-        except ChallengeProgress.DoesNotExist:
-            return False
+        progress = self._progresso(obj)
+        return bool(progress and progress.completed)
 
 
 class PracticeLessonSerializer(serializers.ModelSerializer):
-    """
-    Practice Lesson serializer - learning sessions.
-    
-    Maps to frontend lessons structure from client project.
-    Includes challenges and completion status.
-    """
+    """Lição para o aluno: estrutura e progresso (ver PracticeChallengeSerializer)."""
     id = serializers.UUIDField(read_only=True)
     challenges = PracticeChallengeSerializer(many=True, read_only=True)
     completed = serializers.SerializerMethodField()
-    
+
     class Meta:
         model = PracticeLesson
         fields = ['id', 'unit', 'title', 'order', 'challenges', 'completed']
-    
+
     def get_completed(self, obj):
-        """Check if user completed all challenges in this lesson"""
-        user = self.context.get('request').user if self.context.get('request') else None
-        
-        if not user:
+        user = _utilizador(self.context)
+        if user is None:
             return False
-            
-        if obj.challenges.count() == 0:
+        total = obj.challenges.count()
+        if total == 0:
             return False
-            
-        # Check if all challenges are completed
-        completed_count = ChallengeProgress.objects.filter(
-            user=user,
-            challenge__lesson=obj,
-            completed=True
-        ).count()
-        
-        return completed_count == obj.challenges.count()
+        feitos = ChallengeProgress.objects.filter(user=user, challenge__lesson=obj, completed=True).count()
+        return feitos == total
 
 
 class PracticeUnitSerializer(serializers.ModelSerializer):
-    """
-    Practice Unit serializer - groups of lessons.
-    
-    Maps to frontend units structure from client project.
-    Includes lessons with progress tracking.
-    """
+    """Unidade para o aluno; as lições escondidas (context['licoes_escondidas']) não aparecem."""
     id = serializers.UUIDField(read_only=True)
-    lessons = PracticeLessonSerializer(many=True, read_only=True)
-    
+    lessons = serializers.SerializerMethodField()
+
     class Meta:
         model = PracticeUnit
         fields = ['id', 'course', 'title', 'description', 'order', 'lessons']
+
+    def get_lessons(self, obj):
+        escondidas = self.context.get('licoes_escondidas') or set()
+        licoes = [l for l in obj.lessons.all() if l.id not in escondidas]
+        return PracticeLessonSerializer(licoes, many=True, context=self.context).data
+
+
+class ChallengeOptionProfessorSerializer(serializers.ModelSerializer):
+    """Opção com a resposta certa, para o professor dono do curso. Não muda de exercício."""
+    id = serializers.UUIDField(read_only=True)
+    challenge = serializers.PrimaryKeyRelatedField(read_only=True)
+    imageSrc = serializers.URLField(source='image_url', allow_null=True, allow_blank=True, required=False)
+    audioSrc = serializers.URLField(source='audio_url', allow_null=True, allow_blank=True, required=False)
+
+    class Meta:
+        model = ChallengeOption
+        fields = ['id', 'challenge', 'text', 'is_correct', 'imageSrc', 'audioSrc', 'order']
+
+
+class PracticeChallengeProfessorSerializer(PracticeChallengeSerializer):
+    """Exercício para o professor: campos de edição e opções com a resposta certa."""
+    options = serializers.SerializerMethodField()
+
+    class Meta(PracticeChallengeSerializer.Meta):
+        fields = PracticeChallengeSerializer.Meta.fields + [
+            'question', 'options', 'instruction', 'hint', 'explanation', 'reference_audio_url',
+            'conversation_context', 'minimum_conversation_score',
+        ]
+        extra_kwargs = {
+            'instruction': {'required': False},
+            'hint': {'required': False},
+            'explanation': {'required': False},
+            'reference_audio_url': {'required': False},
+        }
+
+    def get_options(self, obj):
+        return ChallengeOptionProfessorSerializer(obj.options.all(), many=True).data
+
+
+class PracticeLessonProfessorSerializer(PracticeLessonSerializer):
+    challenges = PracticeChallengeProfessorSerializer(many=True, read_only=True)
+
+
+class PracticeUnitProfessorSerializer(PracticeUnitSerializer):
+    lessons = PracticeLessonProfessorSerializer(many=True, read_only=True)
 
 
 class UserProgressSerializer(serializers.ModelSerializer):
@@ -666,3 +667,54 @@ class VapiConversationFeedbackSerializer(serializers.Serializer):
     conversation_flow = serializers.CharField()
     difficulty_level = serializers.CharField()
     topic_coverage = serializers.ListField(child=serializers.CharField())
+
+# ============================================================================
+# STUDY TRACKING SERIALIZERS (streak goal, lesson completion, notifications)
+# ============================================================================
+
+class StudyGoalSerializer(serializers.Serializer):
+    """Validate the daily study goal (minutes)."""
+    daily_goal_minutes = serializers.IntegerField(
+        error_messages={
+            'required': 'Indica a meta diária em minutos.',
+            'invalid': 'A meta diária deve ser um número inteiro de minutos.',
+            'null': 'Indica a meta diária em minutos.',
+        }
+    )
+
+    def validate_daily_goal_minutes(self, value):
+        allowed = [choice for choice, _ in UserStreak.DAILY_GOAL_CHOICES]
+        if value not in allowed:
+            raise serializers.ValidationError(
+                'Meta diária inválida. Escolhe 5, 10, 15 ou 20 minutos.'
+            )
+        return value
+
+
+class CompleteLessonSerializer(serializers.Serializer):
+    """Body for POST complete-lesson/. Accepts `time_spent` (seconds) as an alias."""
+    lesson_id = serializers.UUIDField(error_messages={
+        'required': 'O campo lesson_id é obrigatório.',
+        'invalid': 'lesson_id inválido.',
+        'null': 'O campo lesson_id é obrigatório.',
+    })
+    duration_seconds = serializers.IntegerField(required=False, min_value=0, allow_null=True, error_messages={
+        'invalid': 'duration_seconds deve ser um número inteiro de segundos.',
+        'min_value': 'duration_seconds não pode ser negativo.',
+    })
+    time_spent = serializers.IntegerField(required=False, min_value=0, allow_null=True, error_messages={
+        'invalid': 'time_spent deve ser um número inteiro de segundos.',
+        'min_value': 'time_spent não pode ser negativo.',
+    })
+
+
+class NotificationSerializer(serializers.Serializer):
+    id = serializers.UUIDField(read_only=True)
+    kind = serializers.CharField(read_only=True)
+    title = serializers.CharField(read_only=True)
+    body = serializers.CharField(read_only=True)
+    link = serializers.CharField(read_only=True)
+    created_at = serializers.DateTimeField(read_only=True)
+    read = serializers.BooleanField(source='is_read', read_only=True)
+    read_at = serializers.DateTimeField(read_only=True)
+    is_read = serializers.BooleanField(read_only=True)

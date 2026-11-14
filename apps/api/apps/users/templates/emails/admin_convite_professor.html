@@ -1,0 +1,9 @@
+{% extends "emails/base.html" %}
+{% block titulo %}Convite para ensinar no ProEnglish{% endblock %}
+{% block conteudo %}
+<p style="margin:0 0 16px;">{{ quem_convida }} convidou-o(a) para ser professor(a) no ProEnglish{% if area %}, na área de <strong>{{ area }}</strong>{% endif %}.</p>
+<p style="margin:0 0 20px;">Para aceitar, escolha a sua palavra-passe na página do convite:</p>
+<p style="margin:0 0 24px;"><a href="{{ link }}" style="display:inline-block;background:#1d4ed8;color:#ffffff;text-decoration:none;padding:12px 22px;border-radius:8px;font-weight:600;">Aceitar o convite</a></p>
+<p style="margin:0 0 16px;font-size:13px;color:#6b7280;">O convite é válido até {{ expira_em }}. Se o botão não funcionar, copie este endereço para o navegador:<br>{{ link }}</p>
+<p style="margin:0;font-size:13px;color:#6b7280;">Se não esperava este convite, pode ignorar este email.</p>
+{% endblock %}

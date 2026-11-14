@@ -126,41 +126,22 @@ class TestTeacherVideoCourseAPI(BaseTeacherAPITest):
         self.assertEqual(course.course_type, 'video')
     
     def test_teacher_update_own_video_course(self):
-        """Test teacher can update their own video courses."""
+        """A edição antiga foi retirada (410): o curso edita-se em /api/v1/teacher/cursos/<id>/."""
         self.authenticate_as_teacher()
-        
-        update_data = {
-            'title': 'Updated Video Course',
-            'description': 'Updated description',
-            'status': 'Published'
-        }
-        
         url = f'/api/v1/teacher/video-courses/{self.teacher_draft_video.id}/'
-        response = self.client.patch(url, update_data, format='json')
-        
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        data = response.json()
-        
-        self.assertEqual(data['title'], update_data['title'])
-        self.assertEqual(data['status'], 'Published')
-        
-        # Verify in database
+        response = self.client.patch(url, {'title': 'Updated Video Course'}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_410_GONE)
         self.teacher_draft_video.refresh_from_db()
-        self.assertEqual(self.teacher_draft_video.title, update_data['title'])
-    
+        self.assertNotEqual(self.teacher_draft_video.title, 'Updated Video Course')
+
     def test_teacher_delete_own_video_course(self):
-        """Test teacher can delete their own video courses."""
+        """Um rascunho sem alunos apaga-se; um curso publicado não (409)."""
         self.authenticate_as_teacher()
-        
         url = f'/api/v1/teacher/video-courses/{self.teacher_draft_video.id}/'
         response = self.client.delete(url)
-        
-        # Check if deletion is allowed (might be 204 or 405 depending on implementation)
-        self.assertIn(response.status_code, [
-            status.HTTP_204_NO_CONTENT,
-            status.HTTP_405_METHOD_NOT_ALLOWED  # If deletion is not allowed
-        ])
-    
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertFalse(Course.objects.filter(id=self.teacher_draft_video.id).exists())
+
     def test_teacher_cannot_access_other_teacher_video_course(self):
         """Test teacher cannot access other teacher's video courses."""
         self.authenticate_as_teacher()
@@ -176,48 +157,20 @@ class TestTeacherVideoCourseAPI(BaseTeacherAPITest):
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
     
     def test_teacher_create_section_in_video_course(self):
-        """Test teacher can create sections in their video courses."""
+        """Criar secções pela rota antiga foi retirado (410): usa-se o editor novo."""
         self.authenticate_as_teacher()
-        
-        section_data = {
-            'sectionTitle': 'New Video Section',
-            'sectionDescription': 'A new section for video course',
-            'order': 2
-        }
-        
         url = f'/api/v1/teacher/video-courses/{self.teacher_video_course.id}/sections/'
-        response = self.client.post(url, section_data, format='json')
-        
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        data = response.json()
-        
-        self.assertEqual(data['sectionTitle'], section_data['sectionTitle'])
-        
-        # Verify in database
-        section = CourseSection.objects.get(id=data['sectionId'])
-        self.assertEqual(section.course, self.teacher_video_course)
-    
+        response = self.client.post(url, {'sectionTitle': 'New Video Section', 'order': 2}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_410_GONE)
+        self.assertFalse(CourseSection.objects.filter(sectionTitle='New Video Section').exists())
+
     def test_teacher_create_video_chapter(self):
-        """Test teacher can create video chapters."""
+        """Criar capítulos pela rota antiga foi retirado (410): usa-se o editor novo."""
         self.authenticate_as_teacher()
-        
-        chapter_data = {
-            'title': 'New Video Chapter',
-            'content': 'Video chapter content',
-            'type': 'Video',
-            'video': 'https://example.com/new-video.mp4',
-            'order': 2
-        }
-        
         url = f'/api/v1/teacher/video-courses/sections/{self.video_section.id}/chapters/'
-        response = self.client.post(url, chapter_data, format='json')
-        
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        data = response.json()
-        
-        self.assertEqual(data['title'], chapter_data['title'])
-        self.assertEqual(data['type'], 'Video')
-        self.assertEqual(data['video'], chapter_data['video'])
+        response = self.client.post(url, {'title': 'New Video Chapter', 'type': 'Video',
+                                          'video': 'https://example.com/new-video.mp4'}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_410_GONE)
 
 
 @pytest.mark.django_db

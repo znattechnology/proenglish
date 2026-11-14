@@ -47,13 +47,14 @@ function getUserFromToken(request: NextRequest): JWTPayload | null {
 }
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 // PUT /api/v1/subscriptions/admin/plans/[id] - Update plan (admin only)
-export async function PUT(request: NextRequest, { params }: RouteParams) {
+export async function PUT(request: NextRequest, props: RouteParams) {
+  const params = await props.params;
   try {
     // Get Django JWT authentication
     const user = getUserFromToken(request);
@@ -125,7 +126,8 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 }
 
 // DELETE /api/v1/subscriptions/admin/plans/[id] - Delete plan (admin only)
-export async function DELETE(request: NextRequest, { params }: RouteParams) {
+export async function DELETE(request: NextRequest, props: RouteParams) {
+  const params = await props.params;
   try {
     // Get Django JWT authentication
     const user = getUserFromToken(request);

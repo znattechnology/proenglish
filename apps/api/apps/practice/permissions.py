@@ -6,6 +6,17 @@ Defines permission classes for teacher-only and other specialized access control
 
 from rest_framework.permissions import BasePermission
 
+from apps.core.permissions import e_administrador
+
+
+def e_professor_ou_admin(user):
+    """Professor (papel teacher, conta activa) ou administrador (apps.core.permissions.e_administrador)."""
+    if not user or not getattr(user, 'is_authenticated', False):
+        return False
+    if e_administrador(user):
+        return True
+    return getattr(user, 'role', None) == 'teacher' and getattr(user, 'is_active', False)
+
 
 class IsTeacher(BasePermission):
     """
@@ -13,22 +24,18 @@ class IsTeacher(BasePermission):
 
     Checks for:
     1. User is authenticated
-    2. User has role='teacher' OR is_staff=True
+    2. User has role='teacher' OR is an administrator (e_administrador)
 
     Usage:
         permission_classes = [IsAuthenticated, IsTeacher]
     """
-    message = "Apenas professores podem realizar esta ação."
+    message = "Apenas professores podem realizar esta acção."
 
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
             return False
 
-        # Check for teacher role or staff status
-        user_role = getattr(request.user, 'role', None)
-        is_staff = getattr(request.user, 'is_staff', False)
-
-        return user_role == 'teacher' or is_staff
+        return e_professor_ou_admin(request.user)
 
 
 class IsTeacherOrReadOnly(BasePermission):
@@ -52,11 +59,7 @@ class IsTeacherOrReadOnly(BasePermission):
         if request.method in self.SAFE_METHODS:
             return True
 
-        # Write operations require teacher role
-        user_role = getattr(request.user, 'role', None)
-        is_staff = getattr(request.user, 'is_staff', False)
-
-        return user_role == 'teacher' or is_staff
+        return e_professor_ou_admin(request.user)
 
 
 class IsOwnerOrTeacher(BasePermission):
@@ -66,25 +69,20 @@ class IsOwnerOrTeacher(BasePermission):
     Allows access if:
     - User is the owner of the object (obj.user == request.user)
     - User is a teacher
-    - User is staff
+    - User is an administrator (e_administrador; is_staff alone is not enough)
 
     Usage:
         permission_classes = [IsAuthenticated, IsOwnerOrTeacher]
 
     Note: The object must have a 'user' or 'teacher' attribute.
     """
-    message = "Você não tem permissão para acessar este recurso."
+    message = "Não tem permissão para aceder a este recurso."
 
     def has_object_permission(self, request, view, obj):
         if not request.user or not request.user.is_authenticated:
             return False
 
-        # Check if user is staff
-        if getattr(request.user, 'is_staff', False):
-            return True
-
-        # Check if user is teacher
-        if getattr(request.user, 'role', None) == 'teacher':
+        if e_professor_ou_admin(request.user):
             return True
 
         # Check ownership
@@ -112,24 +110,14 @@ class IsCourseOwner(BasePermission):
         if not request.user or not request.user.is_authenticated:
             return False
 
-        # Staff always has access
-        if getattr(request.user, 'is_staff', False):
-            return True
-
-        # Check teacher role first
-        user_role = getattr(request.user, 'role', None)
-        if user_role != 'teacher':
-            return False
-
-        # For object-level checks, defer to has_object_permission
-        return True
+        # Administradores e professores passam; a posse é verificada em has_object_permission
+        return e_professor_ou_admin(request.user)
 
     def has_object_permission(self, request, view, obj):
         if not request.user or not request.user.is_authenticated:
             return False
 
-        # Staff always has access
-        if getattr(request.user, 'is_staff', False):
+        if e_administrador(request.user):
             return True
 
         # Check if obj is a Course or has a course relationship
@@ -148,6 +136,6 @@ class IsCourseOwner(BasePermission):
             course = obj.lesson.unit.course
 
         if course and hasattr(course, 'teacher'):
-            return course.teacher == request.user
+            return course.teacher_id == request.user.id
 
         return False

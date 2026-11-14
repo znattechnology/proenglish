@@ -12,7 +12,7 @@ import {
  * Helper to mark user as authenticated (UI state only)
  * Actual tokens are stored in HttpOnly cookies by the backend
  */
-const markAuthenticated = (user: User) => {
+export const markAuthenticated = (user: User) => {
   if (typeof window === 'undefined') return;
 
   // Set auth state cookie (non-HttpOnly) for quick UI checks
@@ -119,9 +119,8 @@ export const authApi = apiSlice.injectEndpoints({
             })
           );
         } catch (error: any) {
-          console.error('Registration error:', error);
           dispatch(setLoading(false));
-          throw error;
+          // o componente trata o erro com .unwrap()
         }
       }
     }),
@@ -148,9 +147,8 @@ export const authApi = apiSlice.injectEndpoints({
             })
           );
         } catch (error: any) {
-          console.error('Email verification error:', error);
           dispatch(setLoading(false));
-          throw error;
+          // o componente trata o erro com .unwrap()
         }
       }
     }),
@@ -185,7 +183,6 @@ export const authApi = apiSlice.injectEndpoints({
             })
           );
         } catch (error: any) {
-          console.error('Login error:', error);
           dispatch(setLoading(false));
 
           // Extract error message safely (could be string, object, or array)
@@ -200,7 +197,7 @@ export const authApi = apiSlice.injectEndpoints({
               isRegistration: false,
             }));
           }
-          throw error;
+          // o componente trata o erro com .unwrap()
         }
       }
     }),
@@ -248,8 +245,7 @@ export const authApi = apiSlice.injectEndpoints({
             isRegistration: false,
           }));
         } catch (error: any) {
-          console.error('Password reset request error:', error);
-          throw error;
+          // o componente trata o erro com .unwrap()
         }
       }
     }),
@@ -354,7 +350,7 @@ export const authApi = apiSlice.injectEndpoints({
       }),
     }),
 
-    googleOAuthLogin: builder.mutation<LoginResponse, { code?: string; access_token?: string; id_token?: string }>({
+    googleOAuthLogin: builder.mutation<LoginResponse, { code: string; state?: string }>({
       query: (data) => ({
         url: `/users/oauth/google/login/`,
         method: "POST",
@@ -376,9 +372,8 @@ export const authApi = apiSlice.injectEndpoints({
             })
           );
         } catch (error: any) {
-          console.error('Google OAuth error:', error);
           dispatch(setLoading(false));
-          throw error;
+          // o componente trata o erro com .unwrap()
         }
       }
     }),

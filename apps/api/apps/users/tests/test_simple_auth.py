@@ -65,8 +65,10 @@ class SimpleAuthenticationTest(APITestCase):
         })
         
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('access', response.data)
-        self.assertIn('refresh', response.data)
+        # Os tokens vão só nos cookies HttpOnly.
+        self.assertIn('access_token', response.cookies)
+        self.assertIn('refresh_token', response.cookies)
+        self.assertNotIn('access', response.data)
         self.assertEqual(response.data['user']['role'], 'student')
     
     def test_teacher_login_success(self):
@@ -77,8 +79,10 @@ class SimpleAuthenticationTest(APITestCase):
         })
         
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('access', response.data)
-        self.assertIn('refresh', response.data)
+        # Os tokens vão só nos cookies HttpOnly.
+        self.assertIn('access_token', response.cookies)
+        self.assertIn('refresh_token', response.cookies)
+        self.assertNotIn('access', response.data)
         self.assertEqual(response.data['user']['role'], 'teacher')
     
     def test_admin_login_success(self):
@@ -89,8 +93,10 @@ class SimpleAuthenticationTest(APITestCase):
         })
         
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('access', response.data)
-        self.assertIn('refresh', response.data)
+        # Os tokens vão só nos cookies HttpOnly.
+        self.assertIn('access_token', response.cookies)
+        self.assertIn('refresh_token', response.cookies)
+        self.assertNotIn('access', response.data)
         self.assertEqual(response.data['user']['role'], 'admin')
     
     def test_invalid_login_credentials(self):
@@ -139,7 +145,7 @@ class SimpleAuthenticationTest(APITestCase):
             'password': 'password123'
         })
         
-        access_token = login_response.data['access']
+        access_token = login_response.cookies['access_token'].value
         
         # Use token to access profile
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {access_token}')
@@ -156,7 +162,7 @@ class SimpleAuthenticationTest(APITestCase):
             'email': self.student.email,
             'password': 'password123'
         })
-        access_token = login_response.data['access']
+        access_token = login_response.cookies['access_token'].value
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {access_token}')
         
         # Student should be able to access student endpoints
@@ -172,7 +178,7 @@ class SimpleAuthenticationTest(APITestCase):
             'email': self.teacher.email,
             'password': 'password123'
         })
-        teacher_access_token = teacher_login_response.data['access']
+        teacher_access_token = teacher_login_response.cookies['access_token'].value
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {teacher_access_token}')
         
         # Teacher should be able to access teacher endpoints
@@ -204,7 +210,7 @@ class SimpleAuthenticationTest(APITestCase):
             'password': 'password123'
         })
         
-        refresh_token = login_response.data['refresh']
+        refresh_token = login_response.cookies['refresh_token'].value
         
         # Use refresh token to get new access token
         refresh_url = reverse('users:refresh_token')
@@ -213,7 +219,10 @@ class SimpleAuthenticationTest(APITestCase):
         })
         
         self.assertEqual(refresh_response.status_code, status.HTTP_200_OK)
-        self.assertIn('access', refresh_response.data)
+        # Os tokens novos vão nos cookies (o refresh também, por causa da rotação), não no corpo.
+        self.assertIn('access_token', refresh_response.cookies)
+        self.assertIn('refresh_token', refresh_response.cookies)
+        self.assertNotIn('access', refresh_response.data)
 
 
 @override_settings(

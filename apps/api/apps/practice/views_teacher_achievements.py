@@ -4,7 +4,9 @@ Teacher Achievement Management Views
 Endpoints for teachers to create, edit, and manage achievements/badges
 for the gamification system.
 
-All endpoints require IsAuthenticated + IsTeacher permissions.
+Só o administrador (gestão das conquistas da plataforma). Os professores gerem as suas
+conquistas em /api/v1/teacher/conquistas/ (apps/practice/professor/conquistas.py), sempre
+limitadas aos cursos deles; aqui alterar-se-ia qualquer conquista, por isso ficou só para admin.
 """
 
 from datetime import timedelta
@@ -21,7 +23,18 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Achievement, UserAchievement
 from .serializers import AchievementSerializer
-from .permissions import IsTeacher
+from rest_framework.permissions import BasePermission
+
+
+class ApenasAdministrador(BasePermission):
+    message = 'Apenas o administrador pode gerir as conquistas da plataforma.'
+
+    def has_permission(self, request, view):
+        from apps.courses import ciclo
+        return ciclo.e_staff(request.user)
+
+
+IsTeacher = ApenasAdministrador  # nome antigo usado nas vistas abaixo
 
 
 # ============================================================================
@@ -216,7 +229,7 @@ def bulk_update_achievements(request):
             order_data = request.data.get('order_data', [])
             for item in order_data:
                 Achievement.objects.filter(id=item['id']).update(order=item['order'])
-            message = 'Ordem das conquistas atualizada'
+            message = 'Ordem das conquistas actualizada'
 
         else:
             return Response(

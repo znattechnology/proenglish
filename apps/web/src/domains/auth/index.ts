@@ -6,16 +6,16 @@
  */
 
 // Components
-export * from './components'
 
 // Hooks
-export * from './hooks'
+// Os hooks de autenticação ainda vivem em @/hooks/useDjangoAuth; esta pasta está vazia.
 
 // Services
 export * from './services'
 
-// Types
+// Types (o User da sessão é o de ./services; o de ./types descreve o perfil completo)
 export * from './types'
+export type { User } from './services'
 
 // Re-export commonly used items with cleaner names
 // These will be added as we migrate components

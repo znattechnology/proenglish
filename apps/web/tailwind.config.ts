@@ -1,10 +1,10 @@
 import type { Config } from "tailwindcss"
+import tailwindAnimate from "tailwindcss-animate"
 
 const config = {
   darkMode: ["class"],
   important: true,
   content: [
-    "./sections/**/*.{js,ts,jsx,tsx,mdx}",
 
     
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,7 +15,11 @@ const config = {
   theme: {
   	container: {
   		center: true,
-  		padding: '2rem',
+  		padding: {
+  			DEFAULT: '1rem',
+  			sm: '1.5rem',
+  			lg: '2rem',
+  		},
   		screens: {
   			'2xl': '1400px'
   		}
@@ -23,8 +27,45 @@ const config = {
   	extend: {
   		fontFamily: {
   			sans: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
+  			// Base visual nova (styles/pe.css). Algarismos sempre em Montserrat.
+  			'pe-texto': ['"PE Numeros"', '"PE Atkinson"', '"Atkinson Hyperlegible"', 'system-ui', 'sans-serif'],
+  			'pe-titulo': ['"PE Montserrat"', 'system-ui', 'sans-serif'],
+  		},
+  		fontSize: {
+  			'pe-titulo-xl': ['56px', { lineHeight: '60px', letterSpacing: '-0.02em', fontWeight: '700' }],
+  			'pe-titulo-l': ['40px', { lineHeight: '46px', letterSpacing: '-0.015em', fontWeight: '700' }],
+  			'pe-titulo-m': ['28px', { lineHeight: '34px', letterSpacing: '-0.01em', fontWeight: '700' }],
+  			'pe-titulo-s': ['20px', { lineHeight: '26px', fontWeight: '600' }],
+  			'pe-voz': ['24px', { lineHeight: '34px', fontWeight: '300' }],
+  			'pe-corpo-l': ['18px', { lineHeight: '28px' }],
+  			'pe-corpo': ['16px', { lineHeight: '26px' }],
+  			'pe-rotulo': ['15px', { lineHeight: '20px', fontWeight: '600' }],
+  			'pe-legenda': ['14px', { lineHeight: '20px' }],
+  		},
+  		boxShadow: {
+  			'pe-1': '0 1px 2px rgba(0, 0, 102, 0.08)',
+  			'pe-2': '0 8px 24px rgba(0, 0, 102, 0.12)',
   		},
   		colors: {
+  			pe: {
+  				'azul-marca': '#000066',
+  				'azul-vivo': '#2f46e8',
+  				realce: '#ffc72c',
+  				'realce-suave': '#fff1c2',
+  				fundo: '#ffffff',
+  				'fundo-suave': '#f2f3fa',
+  				'fundo-forte': '#e3e5f4',
+  				tinta: '#14143f',
+  				'tinta-suave': '#54577a',
+  				'sobre-marca': '#ffffff',
+  				linha: '#cfd2e6',
+  				'linha-forte': '#7479a3',
+  				certo: '#007268',
+  				'certo-suave': '#d9f2ee',
+  				errado: '#c2330f',
+  				'errado-suave': '#fde4dc',
+  				vida: '#e5385a',
+  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			'primary-black': '#1A232E',
@@ -126,6 +167,14 @@ const config = {
   			}
   		},
   		borderRadius: {
+  			'pe-sm': '6px',
+  			'pe-md': '12px',
+  			// O canto do balão do logótipo: três cantos redondos e um recto (em baixo à esquerda).
+  			'pe-fala': '28px 28px 28px 0',
+  			// O aluno fala do outro lado: canto recto em baixo à direita.
+  			'pe-fala-aluno': '28px 28px 0 28px',
+  			'pe-fala-m': '20px 20px 20px 0',
+  			'pe-fala-s': '12px 12px 12px 0',
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
@@ -160,7 +209,7 @@ const config = {
   	
   	}
   },
-  plugins: [require("tailwindcss-animate"), "prettier-plugin-tailwindcss"],
+  plugins: [tailwindAnimate],
 } satisfies Config
 
 export default config

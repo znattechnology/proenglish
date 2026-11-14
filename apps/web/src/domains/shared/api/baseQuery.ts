@@ -2,7 +2,7 @@ import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BaseQueryApi, FetchArgs } from '@reduxjs/toolkit/query';
 import { tokenRefreshCoordinator } from '@/lib/token-refresh-coordinator';
 
-const DJANGO_BASE_URL = process.env.NEXT_PUBLIC_DJANGO_API_URL || 'http://localhost:8000/api/v1';
+export const DJANGO_BASE_URL = process.env.NEXT_PUBLIC_DJANGO_API_URL || 'http://localhost:8000/api/v1';
 
 /**
  * Centralized token refresh handler using TokenRefreshCoordinator
@@ -29,6 +29,7 @@ async function handleTokenRefresh(
 
     // Clear auth state and redirect to login
     tokenRefreshCoordinator.clearTokens();
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- recarregar a página toda limpa o estado da sessão
     window.location.href = '/signin?reason=session_expired';
 
     return {
@@ -158,33 +159,9 @@ export const createAdminBaseQuery = () => {
   };
 };
 
-export const createStudentSpeakingPracticeBaseQuery = () => {
-  const baseQuery = fetchBaseQuery({
-    baseUrl: `${DJANGO_BASE_URL}/practice/speaking`,
-    credentials: 'include',
-    prepareHeaders: (headers, { endpoint }) => {
-      // Don't set Content-Type for file upload endpoints to allow FormData
-      if (!['createSpeakingTurn', 'analyzeSpeech'].includes(endpoint || '')) {
-        headers.set('Content-Type', 'application/json');
-      }
-      return headers;
-    },
-  });
-
-  return async (args: string | FetchArgs, api: BaseQueryApi, extraOptions: any) => {
-    let result = await baseQuery(args, api, extraOptions);
-
-    if (result.error && result.error.status === 401) {
-      result = await handleTokenRefresh(args, api, extraOptions, baseQuery);
-    }
-
-    return result;
-  };
-};
 
 // Export all base queries
 export const studentVideoCoursesBaseQuery = createStudentVideoCoursesBaseQuery();
 export const studentPracticeCoursesBaseQuery = createStudentPracticeCoursesBaseQuery();
-export const studentSpeakingPracticeBaseQuery = createStudentSpeakingPracticeBaseQuery();
 export const teacherVideoCoursesBaseQuery = createTeacherVideoCoursesBaseQuery();
 export const adminBaseQuery = createAdminBaseQuery();

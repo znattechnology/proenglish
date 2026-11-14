@@ -83,3 +83,25 @@ class IsPlatformAdmin(BasePermission):
         is_superuser = getattr(request.user, 'is_superuser', False)
 
         return user_role == 'admin' or is_superuser
+
+
+def e_administrador(user) -> bool:
+    """
+    Única regra para "é administrador" na plataforma: conta activa com papel admin, ou superutilizador.
+    `is_staff` sozinho (acesso ao Django admin) não chega: não dá acesso às APIs de administração.
+    """
+    return bool(
+        user is not None
+        and getattr(user, 'is_authenticated', False)
+        and getattr(user, 'is_active', False)
+        and (getattr(user, 'role', None) == 'admin' or getattr(user, 'is_superuser', False))
+    )
+
+
+class EAdministrador(BasePermission):
+    """Permissão DRF para todas as APIs de administração (ver `e_administrador`)."""
+
+    message = 'Esta área é só para a administração.'
+
+    def has_permission(self, request, view):
+        return e_administrador(request.user)
