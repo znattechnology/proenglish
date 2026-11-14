@@ -19,9 +19,11 @@ how-to-pronunciation-assessment, consultadas em 2026-11):
   A REST API devolve as notas directamente no objecto; os exemplos do SDK põem-nas dentro de
   'PronunciationAssessment': aceitam-se as duas formas.
 
-Modo 'livre' (sem texto de referência, "unscripted"): a REST API para áudio curto exige
-ReferenceText. TODO: avaliação livre só pelo Speech SDK (ou WebSocket) — até lá levanta ErroProvedor
-e a avaliação é a normal, pelo texto.
+Modo 'livre' (fala espontânea): a REST API para áudio curto exige ReferenceText. Sem texto, levanta
+ErroProvedor (TODO: "unscripted" só pelo Speech SDK ou WebSocket) e a avaliação é a normal, pelo
+texto. Com o texto do que o aluno DISSE (a transcrição confirmada da fala, como no exame oral:
+conversa/exame.py) avalia-se contra esse texto, sem EnableMiscue (não há guião a cumprir: palavras
+a mais ou a menos não são erros de pronúncia); a nota útil é a exactidão (AccuracyScore).
 
 A chave nunca vai para os registos (só o código HTTP e o tipo de erro).
 """
@@ -91,13 +93,13 @@ def url_reconhecimento(idioma='en-US'):
     return f'{base}?language={idioma}&format=detailed'
 
 
-def cabecalho_avaliacao(texto_esperado, idioma='en-US'):
+def cabecalho_avaliacao(texto_esperado, idioma='en-US', miscue=True):
     params = {
         'ReferenceText': texto_esperado,
         'GradingSystem': 'HundredMark',
         'Granularity': 'Phoneme',
         'Dimension': 'Comprehensive',
-        'EnableMiscue': 'True',
+        'EnableMiscue': 'True' if miscue else 'False',
     }
     if idioma == 'en-US':  # prosódia só existe em en-US
         params['EnableProsodyAssessment'] = 'True'
@@ -124,8 +126,14 @@ def para_wav(audio_bytes, mime=''):
                            input=audio_bytes, capture_output=True, timeout=TIMEOUT_FFMPEG, check=False)
     except subprocess.TimeoutExpired as e:
         raise ErroProvedor('ffmpeg demorou demasiado') from e
-    pcm = r.stdout or b''
-    if r.returncode != 0 or len(pcm) < 320:  # menos de 10 ms de som
+    if r.returncode != 0:
+        raise ErroProvedor('ffmpeg não converteu a gravação')
+    return pcm_para_wav(r.stdout or b'')
+
+
+def pcm_para_wav(pcm):
+    """Amostras s16le, 16 kHz, mono (saída do ffmpeg) -> WAV com o cabeçalho certo."""
+    if len(pcm) < 320:  # menos de 10 ms de som
         raise ErroProvedor('ffmpeg não converteu a gravação')
     if len(pcm) % 2:
         pcm = pcm[:-1]
@@ -243,7 +251,7 @@ class ProvedorAzure(Provedor):
                 nome=None):
         if not configurado():
             raise ErroProvedor('Azure Speech não configurado')
-        if modo != 'lido' or not (texto_esperado or '').strip():
+        if not (texto_esperado or '').strip():
             # TODO(fase 3, etapa 2): avaliação livre ("unscripted") pelo Speech SDK; a REST API exige ReferenceText.
             raise ErroProvedor('avaliação livre não suportada pela REST API para áudio curto')
         wav = para_wav(audio_bytes, mime)
@@ -256,7 +264,8 @@ class ProvedorAzure(Provedor):
                     'Ocp-Apim-Subscription-Key': settings.AZURE_SPEECH_KEY.strip(),
                     'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000',
                     'Accept': 'application/json',
-                    'Pronunciation-Assessment': cabecalho_avaliacao(texto_esperado.strip()[:1000], idioma),
+                    'Pronunciation-Assessment': cabecalho_avaliacao(texto_esperado.strip()[:1000], idioma,
+                                                                    miscue=(modo != 'livre')),
                 })
         except requests.RequestException as e:
             raise ErroProvedor(f'rede: {type(e).__name__}') from e

@@ -30,7 +30,8 @@ class ExameOral(BaseModel):
                                related_name='+')
     estado = models.CharField(max_length=14, choices=ESTADOS, default=EM_CURSO, db_index=True)
 
-    # Notas da IA por competência (0-100). A pronúncia fica vazia até haver um serviço próprio.
+    # Notas da IA por competência (0-100). A pronúncia só existe com gravação consentida e o Azure
+    # Speech configurado (conversa/exame.avaliar_pronuncia, em segundo plano); senão fica vazia.
     nota_fluencia = models.FloatField(null=True, blank=True)
     nota_gramatica = models.FloatField(null=True, blank=True)
     nota_vocabulario = models.FloatField(null=True, blank=True)

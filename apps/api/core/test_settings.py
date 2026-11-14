@@ -168,3 +168,6 @@ RECALCULO_NOTAS_EM_FUNDO = False
 
 # Avaliação das conversas no próprio pedido nos testes: ver conversa.servico.avaliar_sem_bloquear.
 AVALIACAO_EM_FUNDO = False
+# Nada de Azure nem de downloads da gravação do exame nos testes (o .env pode ter chaves reais); os
+# testes da pronúncia do exame ligam-no com o Azure e o ffmpeg simulados.
+PRONUNCIA_EXAME = False

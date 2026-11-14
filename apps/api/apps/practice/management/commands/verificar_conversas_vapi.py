@@ -6,7 +6,9 @@ Conversas por voz à espera da chamada verificada do Vapi (apps/practice/convers
 - passado o prazo (ESPERA_MAXIMA_MINUTOS) sem chamada verificada, fecham sem nota;
 - as que já podiam ser avaliadas e ficaram 'a_avaliar' há mais de 2 minutos (a thread da avaliação
   perdeu-se num reinício do worker do Gunicorn: servico.avaliacoes_paradas) são avaliadas agora,
-  respeitando o bloqueio de servico.avaliar_pendente.
+  respeitando o bloqueio de servico.avaliar_pendente;
+- os exames orais gravados ainda sem nota de pronúncia (exame.pronuncias_por_fazer): pede a gravação
+  em falta ao Vapi e avalia a pronúncia (só com o Azure configurado).
 Correr de 5 em 5 minutos (cron): python manage.py verificar_conversas_vapi
 """
 from django.core.management.base import BaseCommand
@@ -51,5 +53,12 @@ class Command(BaseCommand):
                 continue
             if s.status != VapiSession.STATUS_A_AVALIAR:
                 retomadas += 1
+        from apps.practice.conversa import exame
+        try:
+            pronuncias = exame.pronuncias_por_fazer(limite=options['limite_paradas'])
+        except Exception as e:
+            self.stderr.write(f'Pronúncia dos exames: {type(e).__name__}')
+            pronuncias = 0
         self.stdout.write(f'{abandonadas} abandonada(s); {tratadas} à espera do Vapi: {avaliadas} avaliada(s), '
-                          f'{expiradas} fechada(s) sem nota; {retomadas} avaliação(ões) parada(s) retomada(s).')
+                          f'{expiradas} fechada(s) sem nota; {retomadas} avaliação(ões) parada(s) retomada(s); '
+                          f'{pronuncias} pronúncia(s) de exame avaliada(s).')

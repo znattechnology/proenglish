@@ -15,8 +15,10 @@ Regras (decididas na fase 6):
   comecar() recusa.
 - Só a chamada verificada do Vapi conta (verificacao.py): a nota sai da transcrição do Vapi e só com
   pelo menos MIN_SEGUNDOS_VERIFICADOS de chamada; a transcrição do browser nunca é avaliada.
-- Nota final = média de fluência, gramática, vocabulário e cumprimento das tarefas (25 % cada);
-  a pronúncia (vazia até haver um serviço de pronúncia) entra com o mesmo peso quando existir.
+- Nota final = média simples das competências medidas: fluência, gramática, vocabulário e
+  cumprimento das tarefas (25 % cada, do Claude) e, quando há gravação consentida e o Azure Speech
+  está configurado, a pronúncia (20 % cada uma das cinco: avaliar_pronuncia, mais abaixo). Sem
+  gravação ou sem Azure, a pronúncia fica vazia e não conta. O peso do exame na nota do curso não muda.
 - Gravação: SÓ com o consentimento do aluno, e só aqui (servico.criar_sessao(gravar=True) ->
   artifactPlan.recordingEnabled). O URL só vem da chamada verificada (end-of-call-report com o
   segredo global ou GET /call com o id confirmado: buscar_gravacao). Quem ouve: o aluno, o professor
@@ -30,6 +32,10 @@ Regras (decididas na fase 6):
 Situação "exame-<hex do ExameOral>" (cabe nos 40 caracteres de VapiSession.situation).
 """
 import logging
+import os
+import shutil
+import subprocess
+import tempfile
 import uuid
 from datetime import timedelta
 from zoneinfo import ZoneInfo
@@ -38,8 +44,9 @@ from django.conf import settings
 from django.core.cache import cache
 from django.db import transaction
 from django.utils import timezone
+from django.utils.dateparse import parse_datetime
 
-from . import analise, chamada
+from . import analise, chamada, regras
 from .situacoes import NIVEIS, _limpar_prompt, nome_aluno, preferencias_padrao
 
 logger = logging.getLogger(__name__)
@@ -530,6 +537,7 @@ def depois_de_avaliar(sessao):
     exame.save()
     if exame.estado == ExameOral.AVALIADO:
         recalcular_nota(exame)
+        agendar_pronuncia(exame)
     return exame
 
 
@@ -601,8 +609,13 @@ def guardar_gravacao_da_sessao(sessao_pk, url):
     exame = _exame_da_sessao(sessao)
     if exame is None or not exame.consentimento_gravacao or exame.gravacao_url or exame.gravacao_apagada_em:
         return 0
-    return ExameOral.objects.filter(pk=exame.pk, gravacao_apagada_em__isnull=True, gravacao_url='').update(
+    n = ExameOral.objects.filter(pk=exame.pk, gravacao_apagada_em__isnull=True, gravacao_url='').update(
         gravacao_url=url[:1000], gravada_em=timezone.now())
+    if n and exame.estado == ExameOral.AVALIADO:
+        # A gravação chegou depois da nota (relatório tardio, buscar_gravacao): falta a pronúncia.
+        exame.gravacao_url = url[:1000]
+        agendar_pronuncia(exame)
+    return n
 
 
 def _call_id(exame):
@@ -698,6 +711,296 @@ def apagar_gravacoes_do_aluno(user):
     from apps.courses.models import ExameOral
     return _apagar_varios(ExameOral.objects.select_related('sessao').filter(
         user=user, consentimento_gravacao=True, gravacao_apagada_em__isnull=True))
+
+
+# ---------------------------------------------------------------------------
+# Pronúncia (Azure Speech, sobre a gravação consentida)
+# ---------------------------------------------------------------------------
+#
+# Só com gravação (consentimento do aluno), Azure configurado (pronuncia.detalhada_ligada) e
+# PRONUNCIA_EXAME. Corre SEMPRE em segundo plano (webhook.executar_em_fundo, com o mesmo limite de
+# tarefas em simultâneo das avaliações), nunca no pedido:
+# 1. verificacao.aplicar guarda, da chamada verificada, até PRONUNCIA_MAX_AMOSTRAS falas do aluno
+#    com os tempos do Vapi (falas_para_pronuncia -> dados da sessão CHAVE_FALAS);
+# 2. com o exame avaliado e a gravação guardada (depois_de_avaliar, ou guardar_gravacao_da_sessao
+#    se a gravação só chega depois): agendar_pronuncia;
+# 3. avaliar_pronuncia descarrega a gravação para um ficheiro temporário (apagado no fim; nada mais
+#    fica guardado), corta cada fala com o ffmpeg (WAV 16 kHz mono, no máximo 25 s) e pede ao Azure
+#    a avaliação em modo livre, contra o texto que o aluno disse (a transcrição confirmada). A nota é
+#    a média da exactidão (AccuracyScore) pesada pelas palavras de cada fala; precisa de pelo menos
+#    PRONUNCIA_MIN_AMOSTRAS falas avaliadas, senão fica vazia (como sem Azure);
+# 4. nota_pronuncia preenchida -> nota_final recalculada (nota_final_de), aprovado (_decidir) e
+#    nota do curso (recalcular_nota). Uma nota revista pelo professor continua a ganhar.
+# Gravação que ainda não chegou do Vapi: nada a fazer até chegar (webhook tardio, buscar_gravacao ao
+# abrir o exame ou o comando verificar_conversas_vapi, que também a pede e repete as falhas:
+# pronuncias_por_fazer). Não gasta as avaliações detalhadas do dia do aluno (o exame está fora das
+# quotas); são no máximo PRONUNCIA_MAX_AMOSTRAS pedidos curtos ao Azure por tentativa.
+
+PRONUNCIA_MAX_AMOSTRAS = 5
+PRONUNCIA_MIN_AMOSTRAS = 3
+PRONUNCIA_MIN_PALAVRAS = 4
+PRONUNCIA_MIN_SEGUNDOS = 1.5
+PRONUNCIA_MAX_SEGUNDOS = 25.0      # o Azure aceita até 30 s por pedido
+PRONUNCIA_MARGEM = 0.3             # segundos antes e depois de cada fala (os tempos do Vapi são aproximados)
+PRONUNCIA_BLOQUEIO_SEGUNDOS = 600  # outra tentativa não começa enquanto esta pode estar a correr
+PRONUNCIA_MAX_TENTATIVAS = 3
+PRONUNCIA_JANELA_DIAS = 2          # o comando só insiste nos exames avaliados nestes dias
+PRONUNCIA_HORAS_GRAVACAO = 2       # e só pede ao Vapi a gravação em falta nestas horas
+PRONUNCIA_MAX_BYTES = 80 * 1024 * 1024
+PRONUNCIA_TIMEOUT_DOWNLOAD = (5, 60)
+PRONUNCIA_TIMEOUT_FFMPEG = 30
+CHAVE_PRONUNCIA = 'pronuncia_exame'
+CHAVE_FALAS = 'falas_pronuncia'
+FEITA, SEM_AMOSTRAS, ERRO, A_AVALIAR_PRONUNCIA = 'feita', 'sem_amostras', 'erro', 'a_avaliar'
+
+
+class ErroPronunciaExame(Exception):
+    pass
+
+
+def pronuncia_ligada():
+    from apps.practice.services import pronuncia
+    return (bool(getattr(settings, 'PRONUNCIA_EXAME', True)) and not pronuncia.modo_simulado()
+            and pronuncia.detalhada_ligada())
+
+
+def _numero(v):
+    try:
+        f = float(v)
+    except (TypeError, ValueError):
+        return None
+    return f if f == f and f >= 0 else None  # sem NaN nem negativos
+
+
+def falas_para_pronuncia(mensagens):
+    """artifact.messages da chamada verificada -> as falas do aluno a avaliar
+    [{inicio, segundos, texto, palavras}]: as PRONUNCIA_MAX_AMOSTRAS com mais palavras, com tempos e
+    entre PRONUNCIA_MIN_SEGUNDOS e PRONUNCIA_MAX_SEGUNDOS, pela ordem da conversa."""
+    from .tempo_fala import duracao_mensagem
+    candidatas = []
+    for m in mensagens if isinstance(mensagens, list) else []:
+        if not isinstance(m, dict) or m.get('role') != 'user':
+            continue
+        texto = m.get('message') if isinstance(m.get('message'), str) else m.get('content')
+        texto = ' '.join(texto.split())[:500] if isinstance(texto, str) else ''
+        palavras = len(regras.palavras(texto))
+        inicio, segundos = _numero(m.get('secondsFromStart')), duracao_mensagem(m)
+        if (palavras < PRONUNCIA_MIN_PALAVRAS or inicio is None or segundos is None
+                or not PRONUNCIA_MIN_SEGUNDOS <= segundos <= PRONUNCIA_MAX_SEGUNDOS):
+            continue
+        candidatas.append({'inicio': round(inicio, 2), 'segundos': round(segundos, 2), 'texto': texto,
+                           'palavras': palavras})
+    escolhidas = sorted(candidatas, key=lambda f: -f['palavras'])[:PRONUNCIA_MAX_AMOSTRAS]
+    return sorted(escolhidas, key=lambda f: f['inicio'])
+
+
+def _pronuncia_aplicavel(exame):
+    from apps.courses.models import ExameOral
+    return (exame is not None and exame.estado == ExameOral.AVALIADO and exame.consentimento_gravacao
+            and bool(exame.gravacao_url) and exame.gravacao_apagada_em is None and exame.nota_pronuncia is None
+            and exame.sessao_id is not None)
+
+
+def agendar_pronuncia(exame):
+    """Manda avaliar a pronúncia em segundo plano (depois do commit), se for caso disso. Nunca levanta."""
+    try:
+        if not _pronuncia_aplicavel(exame) or not pronuncia_ligada():
+            return False
+        from .webhook import executar_em_fundo
+        pk = exame.pk
+        transaction.on_commit(lambda: executar_em_fundo(avaliar_pronuncia, pk))
+        return True
+    except Exception:
+        logger.exception('exame oral: falha ao agendar a pronúncia do exame %s', getattr(exame, 'pk', None))
+        return False
+
+
+def _marcar(sessao_pk, funcao):
+    """Muda o registo da pronúncia nos dados da sessão (com bloqueio). funcao(reg) devolve False para
+    não gravar. Devolve o registo gravado, ou None."""
+    from apps.practice.models import VapiSession
+    with transaction.atomic():
+        s = VapiSession.objects.select_for_update().filter(pk=sessao_pk).first()
+        if s is None:
+            return None
+        dados = dict(_dados_sessao(s))
+        reg = dict(dados.get(CHAVE_PRONUNCIA) or {})
+        if funcao(reg) is False:
+            return None
+        dados[CHAVE_PRONUNCIA] = reg
+        VapiSession.objects.filter(pk=s.pk).update(full_session_data=dados)
+        return reg
+
+
+def _reservar(sessao_pk, agora):
+    """Marca o início de uma tentativa; False se já está feita, sem amostras, esgotada ou a correr."""
+    def f(reg):
+        estado = reg.get('estado')
+        if estado in (FEITA, SEM_AMOSTRAS) or int(reg.get('tentativas') or 0) >= PRONUNCIA_MAX_TENTATIVAS:
+            return False
+        desde = parse_datetime(reg.get('em') or '') if isinstance(reg.get('em'), str) else None
+        if estado == A_AVALIAR_PRONUNCIA and desde and agora - desde < timedelta(seconds=PRONUNCIA_BLOQUEIO_SEGUNDOS):
+            return False  # outra thread (ou o comando) está a tratar disto
+        reg.update({'estado': A_AVALIAR_PRONUNCIA, 'em': agora.isoformat(),
+                    'tentativas': int(reg.get('tentativas') or 0) + 1})
+    return _marcar(sessao_pk, f) is not None
+
+
+def _descarregar(url, destino):
+    """A gravação (URL do Vapi, só https) para o ficheiro aberto `destino`, no máximo PRONUNCIA_MAX_BYTES."""
+    import requests
+    if not isinstance(url, str) or not url.startswith('https://'):
+        raise ErroPronunciaExame('URL da gravação inválido')
+    total = 0
+    with requests.get(url, stream=True, timeout=PRONUNCIA_TIMEOUT_DOWNLOAD) as r:
+        if r.status_code != 200:
+            raise ErroPronunciaExame(f'gravação: HTTP {r.status_code}')
+        for bloco in r.iter_content(64 * 1024):
+            total += len(bloco)
+            if total > PRONUNCIA_MAX_BYTES:
+                raise ErroPronunciaExame('gravação demasiado grande')
+            destino.write(bloco)
+    if total == 0:
+        raise ErroPronunciaExame('gravação vazia')
+
+
+def _ffmpeg():
+    ffmpeg = shutil.which(getattr(settings, 'FFMPEG_BIN', 'ffmpeg') or 'ffmpeg')
+    if not ffmpeg:
+        raise ErroPronunciaExame('ffmpeg em falta')
+    return ffmpeg
+
+
+def _cortar(ffmpeg, caminho, inicio, segundos):
+    """Uma fala da gravação -> WAV PCM 16 kHz mono (o formato que o Azure pede)."""
+    from apps.practice.services.pronuncia import azure
+    ini = max(0.0, float(inicio) - PRONUNCIA_MARGEM)
+    dur = min(float(segundos) + 2 * PRONUNCIA_MARGEM, azure.MAX_SEGUNDOS - 1)
+    try:
+        r = subprocess.run([ffmpeg, '-hide_banner', '-loglevel', 'error', '-ss', f'{ini:.2f}', '-i', caminho,
+                            '-t', f'{dur:.2f}', '-map_metadata', '-1', '-vn', '-ac', '1', '-ar', '16000',
+                            '-acodec', 'pcm_s16le', '-f', 's16le', 'pipe:1'],
+                           capture_output=True, timeout=PRONUNCIA_TIMEOUT_FFMPEG, check=False)
+    except subprocess.TimeoutExpired as e:
+        raise ErroPronunciaExame('ffmpeg demorou demasiado') from e
+    if r.returncode != 0:
+        raise ErroPronunciaExame('ffmpeg não cortou a gravação')
+    return azure.pcm_para_wav(r.stdout or b'')
+
+
+def _avaliar_falas(url, falas):
+    """[(fala, ResultadoPronuncia)] das falas que o Azure avaliou. Levanta ErroPronunciaExame quando a
+    gravação não se pode usar (ffmpeg em falta, download)."""
+    from apps.practice.services.pronuncia import ErroProvedor, azure
+    ffmpeg = _ffmpeg()
+    provedor = azure.ProvedorAzure()
+    feitas = []
+    fd, caminho = tempfile.mkstemp(prefix='exame-gravacao-', suffix='.audio')
+    try:
+        with os.fdopen(fd, 'wb') as destino:
+            _descarregar(url, destino)
+        for fala in falas:
+            try:
+                wav = _cortar(ffmpeg, caminho, fala['inicio'], fala['segundos'])
+                feitas.append((fala, provedor.avaliar(wav, 'audio/wav', fala['texto'], 'en-US', modo='livre')))
+            except (ErroProvedor, ErroPronunciaExame) as e:
+                logger.warning('exame oral: fala aos %ss não avaliada: %s', fala.get('inicio'), e)
+    finally:
+        try:
+            os.remove(caminho)
+        except OSError:
+            pass
+    return feitas
+
+
+def avaliar_pronuncia(exame_pk):
+    """
+    Nota de pronúncia do exame a partir da gravação (ver o topo desta secção). Corre em segundo
+    plano; idempotente (uma vez por exame; no máximo PRONUNCIA_MAX_TENTATIVAS se falhar).
+    Devolve um código: feita | sem_amostras | erro | ignorada.
+    """
+    from apps.courses.models import ExameOral
+    exame = ExameOral.objects.select_related('sessao').filter(pk=exame_pk).first()
+    if not _pronuncia_aplicavel(exame) or not pronuncia_ligada():
+        return 'ignorada'
+    if not _reservar(exame.sessao_id, timezone.now()):
+        return 'ignorada'
+    falas = [f for f in _dados_sessao(exame.sessao).get(CHAVE_FALAS) or []
+             if isinstance(f, dict) and f.get('texto') and _numero(f.get('inicio')) is not None
+             and _numero(f.get('segundos'))][:PRONUNCIA_MAX_AMOSTRAS]
+    estado, detalhe, nota = SEM_AMOSTRAS, [], None
+    if len(falas) >= PRONUNCIA_MIN_AMOSTRAS:
+        try:
+            feitas = _avaliar_falas(exame.gravacao_url, falas)
+        except Exception as e:  # rede, gravação, ffmpeg: o comando tenta outra vez
+            logger.warning('exame oral: pronúncia do exame %s não avaliada: %s', exame.pk, e)
+            feitas = []
+        detalhe = [{'inicio': f['inicio'], 'nota': r.nota_pronuncia, 'fluencia': r.fluencia, 'prosodia': r.prosodia}
+                   for f, r in feitas]
+        if len(feitas) >= PRONUNCIA_MIN_AMOSTRAS:
+            pesos = [max(1, int(f.get('palavras') or len(regras.palavras(f['texto'])))) for f, _ in feitas]
+            nota = round(sum(r.nota_pronuncia * p for (_, r), p in zip(feitas, pesos)) / sum(pesos), 1)
+            estado = FEITA
+        else:
+            estado = ERRO
+
+    def fim(reg):
+        reg.update({'estado': estado, 'em': timezone.now().isoformat(), 'amostras': detalhe, 'nota': nota})
+    _marcar(exame.sessao_id, fim)
+    if nota is None:
+        return estado
+
+    with transaction.atomic():
+        exame = ExameOral.objects.select_for_update().select_related('course').get(pk=exame.pk)
+        if exame.estado != ExameOral.AVALIADO or exame.nota_pronuncia is not None:
+            return 'ignorada'
+        exame.nota_pronuncia = nota
+        exame.nota_final = nota_final_de(exame.notas())
+        _decidir(exame)
+        exame.save(update_fields=['nota_pronuncia', 'nota_final', 'nota_minima', 'aprovado', 'pode_repetir_em',
+                                  'updated_at'])
+    recalcular_nota(exame)
+    return FEITA
+
+
+def pronuncias_por_fazer(agora=None, limite=10):
+    """
+    Para o comando verificar_conversas_vapi: exames avaliados nos últimos PRONUNCIA_JANELA_DIAS, com
+    consentimento e sem nota de pronúncia. Sem gravação ainda, pede-a ao Vapi (buscar_gravacao, que
+    agenda a pronúncia quando ela chega); com gravação, avalia (respeita o bloqueio e as tentativas).
+    Devolve quantos ficaram com nota.
+    """
+    from apps.courses.models import ExameOral
+    if not pronuncia_ligada():
+        return 0
+    agora = agora or timezone.now()
+    qs = (ExameOral.objects.select_related('sessao', 'course')
+          .filter(estado=ExameOral.AVALIADO, consentimento_gravacao=True, gravacao_apagada_em__isnull=True,
+                  nota_pronuncia__isnull=True, sessao__isnull=False,
+                  avaliado_em__lte=agora - timedelta(minutes=2),
+                  avaliado_em__gte=agora - timedelta(days=PRONUNCIA_JANELA_DIAS))
+          .order_by('avaliado_em'))
+    feitas = 0
+    for exame in qs[:limite * 3]:
+        reg = _dados_sessao(exame.sessao).get(CHAVE_PRONUNCIA) or {}
+        if (isinstance(reg, dict) and (reg.get('estado') in (FEITA, SEM_AMOSTRAS)
+                                       or int(reg.get('tentativas') or 0) >= PRONUNCIA_MAX_TENTATIVAS)):
+            continue
+        if not exame.gravacao_url and exame.avaliado_em < agora - timedelta(hours=PRONUNCIA_HORAS_GRAVACAO):
+            continue  # o Vapi não mandou a gravação: deixa de se pedir
+        limite -= 1
+        try:
+            if not exame.gravacao_url:
+                buscar_gravacao(exame)  # se chegar, guardar_gravacao_da_sessao agenda a pronúncia
+                exame.refresh_from_db(fields=['nota_pronuncia'])
+                feitas += exame.nota_pronuncia is not None
+            elif avaliar_pronuncia(exame.pk) == FEITA:
+                feitas += 1
+        except Exception:
+            logger.exception('exame oral: falha na pronúncia do exame %s', exame.pk)
+        if limite <= 0:
+            break
+    return feitas
 
 
 # ---------------------------------------------------------------------------

@@ -170,6 +170,12 @@ def aplicar(sessao_pk, v, origem, so_regras=False, em_fundo=False):
             cfg = dados.get('config') if isinstance(dados.get('config'), dict) else {}
             if v.get('gravacao_url') and cfg.get('gravar') and not dados.get('gravacao_apagada'):
                 dados['gravacao_url'] = v['gravacao_url']
+            if cfg.get('gravar'):
+                # Exame oral gravado: as falas (com os tempos do Vapi) para a nota de pronúncia.
+                from .exame import CHAVE_FALAS, falas_para_pronuncia
+                falas = falas_para_pronuncia(v['mensagens'])
+                if falas:
+                    dados[CHAVE_FALAS] = falas
             s.full_session_data = dados
             if duracao > 0 and s.connected_at is None:
                 inicio = parse_datetime(v['inicio']) if isinstance(v.get('inicio'), str) else None

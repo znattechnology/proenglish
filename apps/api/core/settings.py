@@ -584,6 +584,9 @@ CONVERSA_MAX_MINUTOS_SESSAO = config('CONVERSA_MAX_MINUTOS_SESSAO', default=15, 
 AVALIACAO_EM_FUNDO = config('AVALIACAO_EM_FUNDO', default=True, cast=bool)
 # No máximo estas avaliações em segundo plano ao mesmo tempo, por processo (conversa/webhook.py).
 AVALIACOES_EM_SIMULTANEO = config('AVALIACOES_EM_SIMULTANEO', default=2, cast=int)
+# Nota de pronúncia do exame oral (Azure Speech sobre a gravação consentida, em segundo plano):
+# só faz alguma coisa com AZURE_SPEECH_KEY/REGION definidas. Ver conversa/exame.avaliar_pronuncia.
+PRONUNCIA_EXAME = config('PRONUNCIA_EXAME', default=True, cast=bool)
 # Claude (Anthropic): ajustes, respostas escritas do tutor e avaliação das conversas.
 ANTHROPIC_API_KEY = config('ANTHROPIC_API_KEY', default='')
 # Modelos Claude: o mais barato que chega para cada tarefa (Haiku 5.5 < Sonnet 5.5 < Opus 5.5).
