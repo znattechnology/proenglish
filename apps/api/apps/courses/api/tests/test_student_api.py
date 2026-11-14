@@ -77,6 +77,15 @@ class BaseStudentAPITest(APITestCase):
         token = self.get_jwt_token(self.student)
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {token}')
     
+    def results(self, response):
+        """Lista de uma resposta paginada ({count, results}), embrulhada ou não em {message, data}."""
+        body = response.json()
+        if isinstance(body, dict) and 'data' in body:
+            body = body['data']
+        if isinstance(body, dict) and 'results' in body:
+            return body['results']
+        return body
+
     def extract_api_data(self, response):
         """Extract data from API response format {message: ..., data: [...]}."""
         response_data = response.json()
@@ -100,9 +109,9 @@ class TestStudentVideoCourseAPI(BaseStudentAPITest):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         response_data = response.json()
         
-        # API returns {message: ..., data: [...]}
+        # A API devolve {message, data: {count, results: [...]}}
         self.assertIn('data', response_data)
-        courses = response_data['data']
+        courses = self.results(response)
         
         # Should see published video course but not draft
         course_ids = [course['courseId'] for course in courses]
@@ -122,8 +131,9 @@ class TestStudentVideoCourseAPI(BaseStudentAPITest):
         data = response_data['data']
         
         self.assertEqual(data['courseId'], str(self.published_video_course.id))
-        self.assertEqual(data['course_type'], 'video')
         self.assertEqual(data['status'], 'Published')
+        # A resposta já não traz course_type: a separação vídeo/prática está em
+        # TestStudentAPICourseTypeSegregation (um curso de prática por aqui dá 404).
     
     def test_student_cannot_access_draft_video_course(self):
         """Test student cannot access draft video courses."""
@@ -138,12 +148,13 @@ class TestStudentVideoCourseAPI(BaseStudentAPITest):
         response = self.client.get(url)
         
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        response_data = response.json()
-        data = response_data['data']
-        
-        self.assertEqual(len(data), 1)
-        self.assertEqual(data[0]['sectionId'], str(self.video_section.id))
-        self.assertEqual(data[0]['sectionTitle'], 'Video Section')
+        data = self.results(response)
+
+        # A fábrica já cria secções; a nossa tem de lá estar, e só secções deste curso.
+        por_id = {s['sectionId']: s for s in data}
+        self.assertIn(str(self.video_section.id), por_id)
+        self.assertEqual(por_id[str(self.video_section.id)]['sectionTitle'], 'Video Section')
+        self.assertEqual(len(data), CourseSection.objects.filter(course=self.published_video_course).count())
     
     def test_student_list_video_course_chapters(self):
         """Test student can list chapters in video course section."""
@@ -151,13 +162,13 @@ class TestStudentVideoCourseAPI(BaseStudentAPITest):
         response = self.client.get(url)
         
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        response_data = response.json()
-        data = response_data['data']
-        
+        data = self.results(response)
+
         self.assertEqual(len(data), 1)
         self.assertEqual(data[0]['chapterId'], str(self.video_chapter.id))
         self.assertEqual(data[0]['type'], 'Video')
-        self.assertIn('video', data[0])
+        # A lista é pública: não traz o endereço do vídeo (só o detalhe, com inscrição).
+        self.assertNotIn('video', data[0])
     
     def test_filter_video_courses_by_category(self):
         """Test filtering video courses by category."""
@@ -171,9 +182,9 @@ class TestStudentVideoCourseAPI(BaseStudentAPITest):
         response = self.client.get(url)
         
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        response_data = response.json()
-        data = response_data['data']
-        
+        data = self.results(response)
+        self.assertTrue(all(c['category'] == 'Grammar' for c in data))
+
         # Should find the grammar course
         course_found = False
         for course in data:
@@ -196,7 +207,7 @@ class TestStudentPracticeCourseAPI(BaseStudentAPITest):
         data = response.json()
         
         # Should see published practice course but not draft
-        course_ids = [course['courseId'] for course in data]
+        course_ids = [course['id'] for course in data]
         self.assertIn(str(self.published_practice_course.id), course_ids)
         self.assertNotIn(str(self.draft_practice_course.id), course_ids)
         
@@ -204,16 +215,21 @@ class TestStudentPracticeCourseAPI(BaseStudentAPITest):
         self.assertNotIn(str(self.published_video_course.id), course_ids)
     
     def test_student_practice_course_detail(self):
-        """Test student can view published practice course details."""
-        url = f'/api/v1/student/practice-courses/courses/{self.published_practice_course.id}/units/'
+        """O detalhe do curso de prática (com o progresso) está em courses/<id>/ e pede sessão."""
+        url = f'/api/v1/student/practice-courses/courses/{self.published_practice_course.id}/'
+        self.assertEqual(self.client.get(url).status_code, status.HTTP_401_UNAUTHORIZED)
+
+        self.authenticate_as_student()
         response = self.client.get(url)
-        
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.json()
-        
-        self.assertEqual(data['courseId'], str(self.published_practice_course.id))
-        self.assertEqual(data['course_type'], 'practice')
-        self.assertEqual(data['status'], 'Published')
+
+        self.assertEqual(data['id'], str(self.published_practice_course.id))
+        self.assertEqual(data['type'], 'practice')
+
+        # Um rascunho não se vê.
+        url = f'/api/v1/student/practice-courses/courses/{self.draft_practice_course.id}/'
+        self.assertEqual(self.client.get(url).status_code, status.HTTP_404_NOT_FOUND)
     
     def test_student_cannot_access_draft_practice_course(self):
         """Test student cannot access draft practice courses."""
@@ -222,19 +238,18 @@ class TestStudentPracticeCourseAPI(BaseStudentAPITest):
         
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
     
-    def test_practice_course_has_exercise_chapters(self):
-        """Test that practice courses can have exercise chapters."""
-        url = f'/api/v1/student/practice-courses/sections/{self.practice_section.id}/chapters/'
+    def test_practice_course_lists_its_units(self):
+        """Os cursos de prática organizam-se em unidades (já não em capítulos de exercício)."""
+        from apps.practice.models import PracticeUnit
+        unidade = PracticeUnit.objects.create(
+            course=self.published_practice_course, title='Unit 1', description='', order=1
+        )
+        url = f'/api/v1/student/practice-courses/courses/{self.published_practice_course.id}/units/'
         response = self.client.get(url)
-        
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        data = response.json()
-        
-        self.assertEqual(len(data), 1)
-        self.assertEqual(data[0]['chapterId'], str(self.practice_chapter.id))
-        self.assertEqual(data[0]['type'], 'Exercise')
-        # Exercise chapters should have practice_selection
-        self.assertIn('practice_selection', data[0])
+        data = self.results(response)
+        self.assertEqual([u['id'] for u in data], [str(unidade.id)])
 
 
 @pytest.mark.django_db
@@ -330,10 +345,17 @@ class TestStudentAPICourseTypeSegregation(BaseStudentAPITest):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         
-        # Try to access video course via practice API
-        url = f'/api/v1/student/practice-courses/courses/{self.published_video_course.id}/units/'
+        # Try to access video course via practice API (o detalhe pede sessão)
+        self.authenticate_as_student()
+        url = f'/api/v1/student/practice-courses/courses/{self.published_video_course.id}/'
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        # As unidades de um curso em vídeo vêm sempre vazias (nada do curso passa por aqui).
+        url = f'/api/v1/student/practice-courses/courses/{self.published_video_course.id}/units/'
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(self.results(response), [])
     
     def test_course_sections_respect_course_type(self):
         """Test that sections are only accessible via correct course type API."""
@@ -358,52 +380,51 @@ class TestStudentAPIResponseFormat(BaseStudentAPITest):
         response = self.client.get(url)
         
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        data = response.json()
-        
+        body = response.json()
+        self.assertIn('message', body)
+        data = body['data']
+
         # Check required fields
-        required_fields = ['courseId', 'title', 'description', 'teacher', 'status', 'course_type']
+        required_fields = ['courseId', 'title', 'description', 'teacher', 'status', 'sections']
         for field in required_fields:
             self.assertIn(field, data)
-        
-        # Check course type is video
-        self.assertEqual(data['course_type'], 'video')
+        self.assertEqual(data['teacher'], str(self.teacher.id))
     
     def test_practice_course_response_structure(self):
         """Test practice course API response has correct structure."""
-        url = f'/api/v1/student/practice-courses/courses/{self.published_practice_course.id}/units/'
+        self.authenticate_as_student()
+        url = f'/api/v1/student/practice-courses/courses/{self.published_practice_course.id}/'
         response = self.client.get(url)
-        
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.json()
-        
+
         # Check required fields
-        required_fields = ['courseId', 'title', 'description', 'teacher', 'status', 'course_type']
+        required_fields = ['id', 'title', 'description', 'level', 'type', 'progress']
         for field in required_fields:
             self.assertIn(field, data)
-        
+
         # Check course type is practice
-        self.assertEqual(data['course_type'], 'practice')
+        self.assertEqual(data['type'], 'practice')
     
     def test_chapter_response_includes_type_specific_fields(self):
         """Test chapter responses include type-specific fields."""
-        # Video chapter should include video field
+        # O detalhe da aula (com o vídeo) pede sessão e inscrição no curso.
+        from apps.courses.models import CourseEnrollment
         url = f'/api/v1/student/video-courses/chapters/{self.video_chapter.id}/'
+        self.assertEqual(self.client.get(url).status_code, status.HTTP_401_UNAUTHORIZED)
+
+        self.authenticate_as_student()
+        self.assertEqual(self.client.get(url).status_code, status.HTTP_403_FORBIDDEN)
+
+        CourseEnrollment.objects.create(user=self.student, course=self.published_video_course)
         response = self.client.get(url)
-        
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.json()
-        
+        if isinstance(data, dict) and 'data' in data:
+            data = data['data']
+
         self.assertEqual(data['type'], 'Video')
-        self.assertIn('video', data)
         self.assertEqual(data['video'], 'https://example.com/video.mp4')
-        
-        # Exercise chapter should include practice_selection
-        url = f'/api/v1/student/practice-courses/chapters/{self.practice_chapter.id}/'
-        response = self.client.get(url)
-        
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        data = response.json()
-        
-        self.assertEqual(data['type'], 'Exercise')
-        self.assertIn('practice_selection', data)
-        self.assertIsNotNone(data['practice_selection'])
+        # (Os cursos de prática já não têm capítulos de exercício: usam unidades e lições.)
