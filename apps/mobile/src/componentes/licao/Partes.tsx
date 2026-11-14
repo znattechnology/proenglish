@@ -92,6 +92,18 @@ export function corBorda(visual: Visual, normal: string = cor.linhaForte) {
   return visual === "certo" ? cor.certo : visual === "errado" ? cor.errado : normal;
 }
 
+export const TEXTO_ANALISE_APROXIMADA = "Análise aproximada: baseada nas palavras que ouvimos.";
+
+/** Aviso curto quando a nota não vem da avaliação detalhada (fonte 'texto': só as palavras ouvidas). */
+export function AvisoAnaliseAproximada({ fonte: origem }: { fonte?: string | null }) {
+  if (origem !== "texto") return null;
+  return (
+    <Texto v="legenda" suave>
+      {TEXTO_ANALISE_APROXIMADA}
+    </Texto>
+  );
+}
+
 /** A frase com cada palavra pela sua nota: verde (bem), amarelo (quase), vermelho (a treinar). */
 export function PalavrasComNota({ detalhe }: { detalhe: DetalhePronuncia }) {
   return (

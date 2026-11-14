@@ -25,7 +25,7 @@ import { Aviso, Botao, Ecra, EstadoErro, Etiqueta, Osso, Texto, Titulo } from "@
 import { BotaoOuvirTexto } from "./Audio";
 import { BotaoGravar, useGravador } from "./Gravador";
 import { voltarAoTrilho } from "./Jogador";
-import { BalaoEnunciado, CabecalhoLicao, corBorda, EmPortugues, Enunciado, estiloOpcao, Linha, PalavrasComNota, Resultado, Rodape, type Visual } from "./Partes";
+import { AvisoAnaliseAproximada, BalaoEnunciado, CabecalhoLicao, corBorda, EmPortugues, Enunciado, estiloOpcao, Linha, PalavrasComNota, Resultado, Rodape, type Visual } from "./Partes";
 
 const ROTULO_ESTADO: Record<string, string> = { vista: "Vista", reconhecida: "Reconhecida", com_ajuda: "Disse com ajuda", sozinho: "Disse sozinho" };
 
@@ -340,6 +340,7 @@ export function Revisao() {
               certo={r.correcta}
               titulo={r.correcta ? (r.analise ? `Certo. ${r.analise.nota} de 100 na pronúncia` : "Certo") : r.analise ? `Ainda não. ${r.analise.nota} de 100 na pronúncia` : "Ainda não"}
             >
+              <AvisoAnaliseAproximada fonte={r.analise?.fonte} />
               <Texto style={{ lineHeight: 24 }}>
                 <Texto suave>{r.correcta ? "A frase: " : "Resposta certa: "}</Texto>
                 <Texto forte>{r.texto}</Texto>

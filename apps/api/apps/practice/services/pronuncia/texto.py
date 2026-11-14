@@ -14,11 +14,12 @@ def de_pronunciation_result(r, fonte='texto'):
     g = lambda nome, omissao=None: getattr(r, nome, omissao)  # noqa: E731
     return ResultadoPronuncia(
         # Valores como vieram (quem grava arredonda com views_ai._nota).
-        nota=g('overall_score', 0) or 0, fluencia=g('fluency_score', 0) or 0,
+        # Fluência e clareza ficam None quando não se mediram (avaliação só pelo texto).
+        nota=g('overall_score', 0) or 0, fluencia=g('fluency_score'),
         fonte=fonte, transcricao=str(g('transcribed_text', '') or ''), texto_esperado=str(g('expected_text', '') or ''),
         aceite=bool(g('is_acceptable', False)), mensagem=str(g('feedback', '') or ''),
         sugestoes=list(g('suggestions', []) or []), palavras_problematicas=list(g('problematic_words', []) or []),
-        nota_pronuncia=g('pronunciation_score', 0) or 0, nota_clareza=g('clarity_score', 0) or 0,
+        nota_pronuncia=g('pronunciation_score', 0) or 0, nota_clareza=g('clarity_score'),
         credito=g('partial_credit', 0) or 0, confianca=g('confidence_level', 0.5),
         indisponivel=bool(g('indisponivel', False)), sem_fala=g('sem_fala', False) is True,
         audio_invalido=g('audio_invalido', False) is True, tempos=g('transcricao_fala'),

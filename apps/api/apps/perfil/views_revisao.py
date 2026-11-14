@@ -134,6 +134,8 @@ def analise_publica(result, tentativa=None):
             'transcricao': str(result.transcribed_text or '')[:500],
             'palavras': _lista_textos(result.problematic_words, chars=60),
             'mensagem': str(result.feedback or '')[:500] or None,
+            # 'texto': análise aproximada (só as palavras ouvidas); 'azure': detalhada; 'simulada'.
+            'fonte': getattr(result, 'fonte', 'texto'),
             'detalhe': pronuncia.detalhe_publico(result),
             'fala': pronuncia.fala_publica(tentativa)}
 

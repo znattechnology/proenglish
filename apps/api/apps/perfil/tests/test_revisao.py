@@ -586,6 +586,7 @@ class ApiTests(APITestCase):
         d = r.json()
         self.assertTrue(d['correcta'])
         self.assertEqual((d['analise']['nota'], d['nota'], d['estado_depois']), (82, 'certo', 'com_ajuda'))
+        self.assertEqual(d['analise']['fonte'], 'simulada')  # o ecrã só avisa "aproximada" com 'texto'
         t = TentativaPronuncia.objects.get(user=self.u)
         self.assertIsNone(t.challenge_id)
         self.assertEqual(t.texto_esperado, 'Could you check the pressure?')

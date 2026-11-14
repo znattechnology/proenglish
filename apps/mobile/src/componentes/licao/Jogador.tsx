@@ -163,7 +163,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         if (r.error) return void (await falhaGravacao(r.error, "Já usou as análises de pronúncia de hoje. Amanhã há mais."));
         const d = r.data;
         if (d.user_progress) setVidas(d.user_progress.hearts);
-        setFala({ nota: d.ai_analysis.overall_score, palavras: d.feedback?.problematic_words ?? [], mensagem: d.feedback?.message ?? null, detalhe: d.detalhe ?? null });
+        setFala({ nota: d.ai_analysis.overall_score, palavras: d.feedback?.problematic_words ?? [], mensagem: d.feedback?.message ?? null, detalhe: d.detalhe ?? null, fonte: d.ai_analysis.fonte ?? null });
         if (d.ai_analysis.is_acceptable) acertou(d.explicacao);
         // Uma gravação não aceite nunca tira vidas (o reconhecimento de fala pode errar com o sotaque).
         else errou(false, d.user_progress?.hearts, { dica: d.dica ?? null, falado: true });

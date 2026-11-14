@@ -459,6 +459,8 @@ class ExercicioPronunciaTests(PraticaBase):
         self.assertEqual(d['detalhe']['palavras'][2], {'palavra': 'the', 'nota': 41, 'erro_tipo': 'Mispronunciation'})
         self.assertIn('/ð/', d['detalhe']['dica'])
         self.assertEqual(d['ai_analysis']['overall_score'], 80)
+        self.assertEqual(d['ai_analysis']['fonte'], 'azure')
+        self.assertIsNotNone(d['ai_analysis']['fluency_score'])
         tp = TentativaPronuncia.objects.get(user=self.aluno)
         self.assertEqual((tp.avaliacao, tp.nota_completude), ('azure', 100))
         self.assertEqual(len(tp.palavras_detalhe), 5)
@@ -516,10 +518,53 @@ class AnaliseClaudeTests(SimpleTestCase):
         self.assertIs(esquema, ap.ANALISE_ESQUEMA)
         self.assertIn('"correcto"', system)
         self.assertIn('<heard>\nplease check the valf\n</heard>', mensagem)
-        self.assertEqual((r.pronunciation_score, r.fluency_score, r.clarity_score, r.partial_credit), (100, 70, 0, 10))
-        self.assertEqual(len(r.problematic_words), 6)
+        # Auditoria: as notas que o modelo inventa são ignoradas. Só pelo texto, a nota é a
+        # correspondência de palavras (3 de 4) e não há fluência nem clareza.
+        self.assertIn('<score>\n75/100 (3 of 4', mensagem)
+        self.assertNotIn('fluency_score', ap.ANALISE_ESQUEMA['properties'])
+        self.assertEqual((r.pronunciation_score, r.overall_score, r.fluency_score, r.clarity_score, r.partial_credit),
+                         (75, 75, None, None, 6))
+        self.assertTrue(r.is_acceptable)
+        self.assertEqual(r.fonte, 'texto')
+        self.assertEqual(r.problematic_words, ['valve'])
         self.assertEqual(r.confidence_level, 1.0)
         self.assertFalse(r.indisponivel)
+
+    def test_nota_baixa_pelo_texto_mesmo_que_o_modelo_diga_que_esta_bem(self):
+        import asyncio
+        from apps.practice.services import ai_pronunciation as ap
+        dados = {'pronunciation_score': 95, 'fluency_score': 95, 'clarity_score': 95, 'overall_score': 95,
+                 'is_acceptable': True, 'partial_credit': 10, 'feedback': 'x', 'problematic_words': [],
+                 'suggestions': [], 'confidence_level': 0.8}
+        with mock.patch('apps.practice.conversa.analise._json', return_value=dados):
+            r = asyncio.run(ap.AIPronunciationAnalyzer()._analyze_with_gpt4(
+                'check', 'Please check the pressure gauge.', 'beginner'))
+        self.assertEqual((r.overall_score, r.is_acceptable, r.partial_credit), (20, False, 0))
+        self.assertEqual(r.problematic_words[:2], ['please', 'the'])
+
+    def test_recurso_sem_modelo_nao_inventa_fluencia(self):
+        from apps.practice.services import ai_pronunciation as ap
+        r = ap.AIPronunciationAnalyzer()._create_fallback_result('Check the valve.', 'check the valve')
+        self.assertEqual((r.overall_score, r.fluency_score, r.clarity_score, r.partial_credit), (100, None, None, 10))
+
+
+class CorrespondenciaPalavrasTests(SimpleTestCase):
+    def test_igual_ignora_pontuacao_numeros_e_contraccoes(self):
+        from apps.practice.services.metricas_fala import correspondencia_palavras
+        c = correspondencia_palavras("I'll have it ready by five.", 'I will have it ready by 5')
+        self.assertEqual((c['nota'], c['em_falta'], c['a_mais']), (100, [], []))
+
+    def test_em_falta_trocadas_e_a_mais_baixam_a_nota(self):
+        from apps.practice.services.metricas_fala import correspondencia_palavras
+        self.assertEqual(correspondencia_palavras('Shut down the pump', 'shut the pump')['nota'], 75)
+        self.assertEqual(correspondencia_palavras('Shut down the pump', 'shut down the bump')['em_falta'], ['pump'])
+        self.assertEqual(correspondencia_palavras('Shut down', 'shut down shut down shut down')['nota'], 33)
+        self.assertEqual(correspondencia_palavras('', 'hello')['nota'], 0)
+
+    def test_usa_os_tempos_por_palavra_quando_existem(self):
+        from apps.practice.services.metricas_fala import correspondencia_palavras
+        palavras = [{'palavra': 'Shut', 'inicio': 0.0, 'fim': 0.3}, {'palavra': 'down', 'inicio': 0.3, 'fim': 0.6}]
+        self.assertEqual(correspondencia_palavras('Shut down', 'texto diferente', palavras)['nota'], 100)
 
     def test_sem_cliente_openai_para_o_texto(self):
         from apps.practice.services import ai_pronunciation as ap

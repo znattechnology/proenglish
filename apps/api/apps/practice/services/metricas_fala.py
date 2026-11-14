@@ -105,3 +105,83 @@ def resumo_publico(m):
     if not m or m.get('segundos_fala') is None:
         return None
     return {k: m.get(k) for k in CAMPOS if k != 'tempos_palavras'}
+
+
+# ---------------------------------------------------------------------------
+# Correspondência de palavras (avaliação de pronúncia só pelo texto)
+# ---------------------------------------------------------------------------
+# Sem a avaliação detalhada (Azure) só temos o que a transcrição ouviu. A nota honesta é quantas
+# palavras da frase esperada foram reconhecidas, por ordem (palavras em falta, trocadas ou a mais
+# baixam a nota). Não mede fluência nem clareza: a transcrição normaliza o que o aluno disse.
+# Formas que a transcrição escreve de outra maneira (números, contracções) contam como iguais.
+
+_NUMEROS = {
+    '0': 'zero', '1': 'one', '2': 'two', '3': 'three', '4': 'four', '5': 'five', '6': 'six', '7': 'seven',
+    '8': 'eight', '9': 'nine', '10': 'ten', '11': 'eleven', '12': 'twelve', '13': 'thirteen', '14': 'fourteen',
+    '15': 'fifteen', '16': 'sixteen', '17': 'seventeen', '18': 'eighteen', '19': 'nineteen', '20': 'twenty',
+    '30': 'thirty', '40': 'forty', '50': 'fifty', '60': 'sixty', '70': 'seventy', '80': 'eighty',
+    '90': 'ninety', '100': 'hundred',
+}
+_CONTRACCOES = {
+    "can't": ['can', 'not'], "won't": ['will', 'not'], "shan't": ['shall', 'not'], "let's": ['let', 'us'],
+    "i'm": ['i', 'am'], "it's": ['it', 'is'], "that's": ['that', 'is'], "there's": ['there', 'is'],
+    "what's": ['what', 'is'], "he's": ['he', 'is'], "she's": ['she', 'is'],
+}
+_SUFIXOS = (("n't", ['not']), ("'ll", ['will']), ("'re", ['are']), ("'ve", ['have']), ("'d", ['would']),
+            ("'m", ['am']))
+_TOKEN = re.compile(r"[a-z0-9]+(?:'[a-z]+)?")
+
+
+def palavras_normalizadas(texto):
+    """Palavras em minúsculas, sem pontuação, com números por extenso e contracções abertas."""
+    out = []
+    for t in _TOKEN.findall(str(texto or '').lower().replace('’', "'")):
+        if t in _NUMEROS:
+            out.append(_NUMEROS[t])
+        elif t in _CONTRACCOES:
+            out.extend(_CONTRACCOES[t])
+        else:
+            for suf, abre in _SUFIXOS:
+                if t.endswith(suf) and len(t) > len(suf):
+                    out.append(t[:-len(suf)])
+                    out.extend(abre)
+                    break
+            else:
+                out.append(t)
+    return out
+
+
+def correspondencia_palavras(esperado, ouvido, palavras=None):
+    """
+    Compara a frase esperada com o que se ouviu. `palavras` (opcional) são os tempos por palavra da
+    transcrição ([{palavra, inicio, fim}]): quando existem, são a fonte do que se ouviu.
+
+    Devolve {'nota': 0-100, 'certas', 'esperadas', 'ouvidas', 'em_falta': [...], 'a_mais': [...]}.
+    nota = palavras certas (por ordem) / max(esperadas, ouvidas): palavras em falta, trocadas ou a
+    mais baixam a nota. Frase esperada vazia: nota 0.
+    """
+    from difflib import SequenceMatcher
+
+    exp = palavras_normalizadas(esperado)
+    ouv = []
+    if palavras:
+        ouv = palavras_normalizadas(' '.join(str(p.get('palavra') or '') for p in palavras if isinstance(p, dict)))
+    if not ouv:
+        ouv = palavras_normalizadas(ouvido)
+    if not exp:
+        return {'nota': 0, 'certas': 0, 'esperadas': 0, 'ouvidas': len(ouv), 'em_falta': [], 'a_mais': []}
+    sm = SequenceMatcher(None, exp, ouv, autojunk=False)
+    certas, em_falta, a_mais = 0, [], []
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        if tag == 'equal':
+            certas += i2 - i1
+        else:
+            em_falta.extend(exp[i1:i2])
+            a_mais.extend(ouv[j1:j2])
+    nota = int(round(100 * certas / max(len(exp), len(ouv))))
+    vistos = []
+    for p in em_falta:
+        if p not in vistos:
+            vistos.append(p)
+    return {'nota': nota, 'certas': certas, 'esperadas': len(exp), 'ouvidas': len(ouv),
+            'em_falta': vistos, 'a_mais': a_mais}

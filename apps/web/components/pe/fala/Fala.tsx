@@ -22,6 +22,21 @@ const diaCurto = (iso: string) => new Date(`${iso}T12:00:00`).toLocaleDateString
 const diaLongo = (iso: string) => new Date(`${iso}T12:00:00`).toLocaleDateString("pt-PT", { weekday: "long", day: "numeric", month: "long" });
 
 /* ------------------------------------------------------------------ */
+/* Análise aproximada (sem a avaliação detalhada)                      */
+/* ------------------------------------------------------------------ */
+
+/** De onde veio a nota de uma gravação: 'texto' = só as palavras que a transcrição ouviu. */
+export type FonteAnalise = "texto" | "azure" | "simulada";
+
+export const TEXTO_ANALISE_APROXIMADA = "Análise aproximada: baseada nas palavras que ouvimos.";
+
+/** Aviso curto quando a nota não vem da avaliação detalhada (fonte 'texto'). */
+export function AvisoAnaliseAproximada({ fonte, className }: { fonte?: FonteAnalise | string | null; className?: string }) {
+  if (fonte !== "texto") return null;
+  return <span className={cnPe("text-pe-legenda text-pe-tinta-suave", className)}>{TEXTO_ANALISE_APROXIMADA}</span>;
+}
+
+/* ------------------------------------------------------------------ */
 /* Notas por palavra (avaliação detalhada)                             */
 /* ------------------------------------------------------------------ */
 

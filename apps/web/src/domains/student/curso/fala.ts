@@ -35,6 +35,8 @@ export type AnaliseGravacao = {
   transcricao: string;
   palavras: string[];
   mensagem: string | null;
+  /** 'texto': aproximada (palavras ouvidas); 'azure': detalhada. */
+  fonte?: "texto" | "azure" | "simulada";
   detalhe?: DetalhePronuncia | null;
   fala?: MetricasGravacao | null;
 };

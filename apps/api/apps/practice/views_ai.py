@@ -574,7 +574,9 @@ class AIPronunciationAnalysisView(APIView):
                 'overall_score': result.overall_score,
                 'is_acceptable': result.is_acceptable,
                 'partial_credit': result.partial_credit,
-                'confidence_level': result.confidence_level
+                'confidence_level': result.confidence_level,
+                # 'texto': aproximada (só as palavras ouvidas; sem fluência nem clareza); 'azure': detalhada.
+                'fonte': result.fonte,
             },
             'feedback': {
                 'message': result.feedback,

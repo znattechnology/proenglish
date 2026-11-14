@@ -34,7 +34,7 @@ class ResultadoPronuncia:
     completude: Optional[int] = None
     prosodia: Optional[int] = None
     palavras: List[dict] = field(default_factory=list)  # [{palavra, nota, erro_tipo, fonemas:[{fonema, nota}]}]
-    fonte: str = 'texto'                # 'texto' | 'azure' | 'simulada'
+    fonte: str = 'texto'                # 'texto' (aproximada: só as palavras ouvidas) | 'azure' | 'simulada'
     transcricao: str = ''
     texto_esperado: str = ''
     aceite: bool = False
@@ -42,7 +42,7 @@ class ResultadoPronuncia:
     sugestoes: List[str] = field(default_factory=list)
     palavras_problematicas: List[str] = field(default_factory=list)
     nota_pronuncia: int = 0
-    nota_clareza: int = 0
+    nota_clareza: Optional[int] = None  # None quando não se mediu (avaliação só pelo texto)
     credito: int = 0
     confianca: object = 0.5
     indisponivel: bool = False          # o serviço falhou: 503, pode saltar, não conta
@@ -66,7 +66,7 @@ class ResultadoPronuncia:
 
     @property
     def fluency_score(self):
-        return self.fluencia or 0
+        return self.fluencia  # None quando não se mediu
 
     @property
     def clarity_score(self):

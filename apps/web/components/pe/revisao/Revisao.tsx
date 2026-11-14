@@ -17,7 +17,7 @@ import {
   type ResultadoRevisao,
 } from "@/src/domains/student/revisao/api";
 import { BotaoOuvirFrase, ExercicioRevisaoUI, type RespostaRevisao } from "./Exercicios";
-import { PalavrasComNota } from "@/components/pe/fala/Fala";
+import { AvisoAnaliseAproximada, PalavrasComNota } from "@/components/pe/fala/Fala";
 
 const VOLTAR = "/user/laboratory/learn";
 
@@ -257,6 +257,7 @@ function Rodape({
               <span className={cnPe("font-pe-titulo text-[18px] font-bold leading-6 md:text-pe-titulo-s", certo ? "text-pe-certo" : "text-pe-errado")}>
                 {certo ? (r.analise ? `Certo. ${r.analise.nota} de 100 na pronúncia` : "Certo") : r.analise ? `Ainda não. ${r.analise.nota} de 100 na pronúncia` : "Ainda não"}
               </span>
+              <AvisoAnaliseAproximada fonte={r.analise?.fonte} />
               <span className="text-[16px] leading-6">
                 <span className="text-pe-tinta-suave">{certo ? "A frase: " : "Resposta certa: "}</span>
                 <span className="font-semibold">{r.texto}</span>

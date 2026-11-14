@@ -178,6 +178,23 @@ class FalarNaLicao(Fase4BBase):
         r = self._pron()
         self.assertEqual((r.status_code, r.json()['error']), (400, 'hearts'))
 
+    def test_speaking_so_pelo_texto_aproximada_sem_fluencia_nem_clareza(self):
+        """Auditoria: sem Azure, o modelo dava fluência/clareza inventadas (e altas). Agora a nota é a
+        correspondência de palavras e a resposta diz que é aproximada."""
+        patch, _ = self._claude(NOTA_BOA)  # o modelo diria 90 em tudo
+        frase = PracticeChallenge.objects.get(id=self.fala['id']).question
+        metade = ' '.join(frase.split()[:max(1, len(frase.split()) // 3)])
+        with patch, mock.patch('apps.practice.services.transcricao_fala.transcrever', return_value=Transcricao(texto=metade)):
+            r = self._pron()
+        self.assertEqual(r.status_code, 200, r.content)
+        a = r.json()['ai_analysis']
+        self.assertEqual((a['fonte'], a['fluency_score'], a['clarity_score']), ('texto', None, None))
+        self.assertLess(a['overall_score'], 60)
+        self.assertFalse(a['is_acceptable'])
+        self.assertEqual((a['partial_credit'], r.json()['points_earned']), (0, 0))
+        tp = TentativaPronuncia.objects.get(user=self.aluno)
+        self.assertEqual((tp.avaliacao, tp.aceite, tp.nota_geral), ('texto', False, a['overall_score']))
+
     def test_speaking_pontos_com_curso(self):
         patch, _ = self._claude(NOTA_BOA)
         frase = PracticeChallenge.objects.get(id=self.fala['id']).question

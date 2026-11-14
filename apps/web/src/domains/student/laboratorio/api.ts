@@ -89,7 +89,16 @@ export type ResultadoResposta = {
 };
 
 export type ResultadoPronuncia = {
-  ai_analysis: { overall_score: number; is_acceptable: boolean; transcribed_text?: string };
+  ai_analysis: {
+    overall_score: number;
+    is_acceptable: boolean;
+    transcribed_text?: string;
+    /** null quando a análise é só pelo texto (não se mede fluência nem clareza). */
+    fluency_score?: number | null;
+    clarity_score?: number | null;
+    /** 'texto': aproximada (palavras ouvidas); 'azure': detalhada. */
+    fonte?: "texto" | "azure" | "simulada";
+  };
   feedback?: { message?: string; problematic_words?: string[] };
   /** Fase 3: notas por palavra (avaliação detalhada) e métricas de fluência da gravação. */
   detalhe?: DetalhePronuncia | null;

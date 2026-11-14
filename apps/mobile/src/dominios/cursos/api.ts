@@ -198,7 +198,16 @@ export type EstadoBanco = "vista" | "reconhecida" | "com_ajuda" | "sozinho";
 export type FraseDaAula = { id: number; texto: string; traducao: string; tipo: "frase" | "palavra"; inicio: number | null; fim: number | null; estado: EstadoBanco | null };
 export type FalaDaAula = { frases: FraseDaAula[]; conversa: { disponivel: boolean; motivo: string | null; mensagem: string | null; max_segundos: number } };
 export type DetalhePronuncia = { palavras: { palavra: string; nota: number | null; erro_tipo: string }[]; fluencia: number | null; completude: number | null; prosodia: number | null; dica: string | null; fonte: string };
-export type AnaliseGravacao = { nota: number; aceite: boolean; transcricao: string; palavras: string[]; mensagem: string | null; detalhe?: DetalhePronuncia | null };
+export type AnaliseGravacao = {
+  nota: number;
+  aceite: boolean;
+  transcricao: string;
+  palavras: string[];
+  mensagem: string | null;
+  /** 'texto': aproximada (palavras ouvidas); 'azure': detalhada. */
+  fonte?: "texto" | "azure" | "simulada";
+  detalhe?: DetalhePronuncia | null;
+};
 export type AnaliseFrase = { analise: AnaliseGravacao; estado: EstadoBanco | null };
 
 export type PlanoActual = { plan: { name: string; plan_type: string }; status?: string };

@@ -31,7 +31,16 @@ export type SessaoRevisao = { dia: string; total: number; para_rever: number; no
 
 export type ResumoRevisao = { para_rever: number; minutos: number; feitas_hoje: number };
 
-export type AnaliseGravacao = { nota: number; aceite: boolean; transcricao: string; palavras: string[]; mensagem: string | null; detalhe?: DetalhePronuncia | null };
+export type AnaliseGravacao = {
+  nota: number;
+  aceite: boolean;
+  transcricao: string;
+  palavras: string[];
+  mensagem: string | null;
+  /** 'texto': aproximada (palavras ouvidas); 'azure': detalhada. */
+  fonte?: "texto" | "azure" | "simulada";
+  detalhe?: DetalhePronuncia | null;
+};
 
 export type ResultadoRevisao = {
   correcta: boolean;

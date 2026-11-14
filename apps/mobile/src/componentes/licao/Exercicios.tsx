@@ -15,10 +15,10 @@ import { cor, fonte, raio } from "@/tema";
 import { Aviso, Texto } from "@/ui";
 import { BotaoOuvir, BotaoOuvirTexto, OuvirGrande } from "./Audio";
 import { BotaoGravar, useGravador } from "./Gravador";
-import { BalaoEnunciado, corBorda, Dica, EmPortugues, Enunciado, estiloOpcao, PalavrasComNota, type Visual } from "./Partes";
+import { AvisoAnaliseAproximada, BalaoEnunciado, corBorda, Dica, EmPortugues, Enunciado, estiloOpcao, PalavrasComNota, type Visual } from "./Partes";
 
 export type RespostaExercicio = { tipo: "texto"; resposta: Resposta } | { tipo: "audio"; gravacao: Gravacao } | null;
-export type ResultadoFala = { nota: number; palavras: string[]; mensagem?: string | null; detalhe?: DetalhePronuncia | null };
+export type ResultadoFala = { nota: number; palavras: string[]; mensagem?: string | null; detalhe?: DetalhePronuncia | null; fonte?: string | null };
 
 type Props = {
   ex: Exercicio;
@@ -489,6 +489,7 @@ function ResultadoPronuncia({ frase, fala }: { frase: string; fala: ResultadoFal
           {Math.round(fala.nota)} de 100
         </Texto>
       </View>
+      <AvisoAnaliseAproximada fonte={fala.fonte} />
       {fala.detalhe ? (
         <PalavrasComNota detalhe={fala.detalhe} />
       ) : (

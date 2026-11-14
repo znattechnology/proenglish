@@ -15,6 +15,7 @@ import { pedir } from "@/api/base";
 import { agora, tocarDesde } from "./leitor";
 import type { AnaliseFrase, AnaliseGravacao, EstadoBanco, FalaDaAula, FraseDaAula } from "@/dominios/cursos/api";
 import { Aviso, Botao, Etiqueta, Texto } from "@/ui";
+import { AvisoAnaliseAproximada } from "@/componentes/licao/Partes";
 import { balao, cor, fonte, raio } from "@/tema";
 
 const ROTULO_ESTADO: Partial<Record<EstadoBanco, string>> = { com_ajuda: "Já repetiu", sozinho: "Já a diz sozinho" };
@@ -249,6 +250,7 @@ function Resultado({ frase, r }: { frase: string; r: AnaliseGravacao }) {
           {r.aceite ? "Repetida com ajuda" : "Tente outra vez"}
         </Texto>
       </View>
+      <AvisoAnaliseAproximada fonte={r.fonte} />
       {r.detalhe?.palavras?.length ? (
         <View style={{ gap: 6 }}>
           <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 6 }}>

@@ -9,7 +9,7 @@ import { ditasNoResumo, ListaFrases, Viva } from "@/components/pe/licao/Conversa
 import { cnPe } from "@/lib/pe";
 import type { Resumo } from "@/src/domains/student/conversa/api";
 import type { ConversaLicao } from "@/src/domains/student/laboratorio/api";
-import { PalavrasComNota } from "@/components/pe/fala/Fala";
+import { AvisoAnaliseAproximada, PalavrasComNota } from "@/components/pe/fala/Fala";
 import {
   erroFala,
   useComecarConversaAulaMutation,
@@ -213,6 +213,7 @@ function Resultado({ frase, r }: { frase: string; r: AnaliseFrase["analise"] }) 
         <span className="text-pe-legenda text-pe-tinta-suave">de 100 na pronúncia</span>
         <span className="ml-auto text-[14px] font-semibold">{r.aceite ? "Repetida com ajuda" : "Tente outra vez"}</span>
       </p>
+      <AvisoAnaliseAproximada fonte={r.fonte} />
       {r.detalhe ? (
         <PalavrasComNota detalhe={r.detalhe} />
       ) : marcar.size ? (
