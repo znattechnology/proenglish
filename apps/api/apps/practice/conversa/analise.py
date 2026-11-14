@@ -187,6 +187,16 @@ def _cliente(timeout):
     return anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY, timeout=timeout, max_retries=0)
 
 
+def sistema_em_cache(system):
+    """
+    O prompt de sistema como bloco com cache_control (cache de 5 minutos). Os pedidos seguintes com o
+    mesmo prompt e o mesmo modelo lêem-no da cache (cerca de 1/10 a 1/20 do preço de entrada).
+    Prompts abaixo do mínimo do modelo (512 tokens no Haiku/Sonnet/Opus 5.5) simplesmente não ficam
+    em cache: sem erro e sem custo de escrita.
+    """
+    return [{'type': 'text', 'text': system, 'cache_control': {'type': 'ephemeral'}}]
+
+
 def _pedir(system, messages, timeout, max_tokens, esforco, esquema=None, modelo=None):
     """Um pedido ao Claude; devolve o texto da resposta. Levanta excepção em falha ou recusa."""
     modelo = modelo or settings.CONVERSA_CLAUDE_MODELO
@@ -201,7 +211,7 @@ def _pedir(system, messages, timeout, max_tokens, esforco, esquema=None, modelo=
     resp = _cliente(timeout).beta.messages.create(
         model=modelo,
         max_tokens=max_tokens,
-        system=system,
+        system=sistema_em_cache(system),
         messages=messages,
         **extra,
     )

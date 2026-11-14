@@ -246,7 +246,8 @@ def avaliar_claude(transcricao, segundos):
     linhas = '\n'.join(f'{t["quem"]}: {t["texto"][:600]}' for t in transcricao[-80:])
     linhas = linhas.replace('<', '(').replace('>', ')')
     dados = analise._json(DIAGNOSTICO_SYSTEM, f'<conversation>\n{linhas}\n</conversation>',
-                          analise.TIMEOUT_AVALIACAO, 3000, 'medium', DIAGNOSTICO_ESQUEMA)
+                          analise.TIMEOUT_AVALIACAO, 3000, 'medium', DIAGNOSTICO_ESQUEMA,
+                          modelo=settings.DIAGNOSTICO_CLAUDE_MODELO)
     niveis = {c: (dados.get('niveis') or {}).get(c) for c in COMPETENCIAS}
     if any(n not in NIVEIS for n in niveis.values()):
         raise ValueError(f'níveis inválidos: {dados!r}'[:300])

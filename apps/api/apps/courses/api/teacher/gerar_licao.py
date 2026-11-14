@@ -178,6 +178,8 @@ def pedir_claude(user):
     """Pede a lição ao Claude e devolve o dict do JSON. Levanta IAIndisponivel em qualquer falha."""
     import anthropic
 
+    from apps.practice.conversa.analise import sistema_em_cache
+
     modelo = settings.PRATICA_CLAUDE_MODELO
     extra = {'output_config': {'effort': ESFORCO, 'format': {'type': 'json_schema', 'schema': ESQUEMA}}}
     if getattr(settings, 'CONVERSA_CLAUDE_FALLBACKS', True) and modelo in MODELOS_COM_FALLBACK:
@@ -187,7 +189,7 @@ def pedir_claude(user):
         resp = _cliente().beta.messages.create(
             model=modelo,
             max_tokens=MAX_TOKENS,
-            system=SYSTEM,
+            system=sistema_em_cache(SYSTEM),
             messages=[{'role': 'user', 'content': user}],
             **extra,
         )

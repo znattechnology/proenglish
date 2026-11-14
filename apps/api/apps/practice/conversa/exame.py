@@ -437,7 +437,8 @@ def avaliar_claude(sessao, transcricao, course, objectivos, padroes_conhecidos):
             '<course_phrases>\n' + ('\n'.join(f'- {_limpar_prompt(m, 160)}' for m in metas) or '(none)')
             + '\n</course_phrases>\n'
             f'<exam>\n{linhas}\n</exam>')
-    dados = analise._json(EXAME_SYSTEM, user, analise.TIMEOUT_AVALIACAO, 5000, 'medium', EXAME_ESQUEMA)
+    dados = analise._json(EXAME_SYSTEM, user, analise.TIMEOUT_AVALIACAO, 5000, 'medium', EXAME_ESQUEMA,
+                          modelo=settings.EXAME_CLAUDE_MODELO)
     notas_llm = {k: analise._int_nota(dados.get(k)) for k in ('fluencia', 'gramatica', 'vocabulario', 'tarefa')}
     if any(v is None for v in notas_llm.values()):
         raise ValueError(f'notas inválidas: {dados!r}'[:300])

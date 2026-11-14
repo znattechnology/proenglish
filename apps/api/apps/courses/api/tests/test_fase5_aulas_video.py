@@ -672,7 +672,7 @@ class GerarDaAulaTests(Base):
         self.assertIn('<lesson_transcript>Good morning team.', msg)
         self.assertIn('<teacher_objective>Praticar as frases da aula em vídeo «Pedir um relatório»', msg)
         self.assertIn('<target_words>Could you send me the report by Friday?</target_words>', msg)
-        self.assertIn('<lesson_transcript>', cliente.beta.messages.create.call_args.kwargs['system'])
+        self.assertIn('<lesson_transcript>', cliente.beta.messages.create.call_args.kwargs['system'][0]['text'])
         self.assertEqual(r.json()['aula'], {'id': str(self.aula.id), 'titulo': 'Pedir um relatório'})
         from apps.courses.api.teacher.gerar_licao import metade_falada
         self.assertTrue(metade_falada(r.json()['exercicios']))

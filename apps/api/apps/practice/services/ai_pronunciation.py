@@ -5,7 +5,7 @@ AI Pronunciation Analysis Service
 - Análise do texto dito contra o texto esperado e geração de exercícios: Claude (Anthropic), com
   saída estruturada, pelo mesmo cliente de apps/practice/conversa/analise.py (_json: timeout,
   recurso no servidor quando o modelo o aceita, sem prefill). Modelo: PRONUNCIA_CLAUDE_MODELO
-  (por omissão claude-opus-5-5), esforço baixo.
+  (por omissão claude-haiku-5-5), esforço baixo.
 - Áudio de referência (texto -> fala): OpenAI tts-1.
 """
 
@@ -26,7 +26,7 @@ PT_PT = ('European Portuguese (pt-PT, address the student as "você", pre-2009 s
 
 
 def modelo_de_analise():
-    return getattr(settings, 'PRONUNCIA_CLAUDE_MODELO', None) or 'claude-opus-5-5'
+    return getattr(settings, 'PRONUNCIA_CLAUDE_MODELO', None) or 'claude-haiku-5-5'
 
 
 ANALISE_SYSTEM = (

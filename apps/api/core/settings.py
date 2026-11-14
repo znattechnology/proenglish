@@ -584,25 +584,32 @@ CONVERSA_MAX_MINUTOS_SESSAO = config('CONVERSA_MAX_MINUTOS_SESSAO', default=15, 
 AVALIACAO_EM_FUNDO = config('AVALIACAO_EM_FUNDO', default=True, cast=bool)
 # Claude (Anthropic): ajustes, respostas escritas do tutor e avaliação das conversas.
 ANTHROPIC_API_KEY = config('ANTHROPIC_API_KEY', default='')
-CONVERSA_CLAUDE_MODELO = config('CONVERSA_CLAUDE_MODELO', default='claude-opus-5-5')  # avaliação e respostas escritas
+# Modelos Claude: o mais barato que chega para cada tarefa (Haiku 5.5 < Sonnet 5.5 < Opus 5.5).
+# Avaliação das conversas normais (role-play, conversa da aula/lição) e respostas escritas do tutor.
+CONVERSA_CLAUDE_MODELO = config('CONVERSA_CLAUDE_MODELO', default='claude-sonnet-5-5')
+# Avaliações que decidem nível ou certificado: exame oral do curso e teste de nível (diagnóstico).
+EXAME_CLAUDE_MODELO = config('EXAME_CLAUDE_MODELO', default='claude-opus-5-5')
+DIAGNOSTICO_CLAUDE_MODELO = config('DIAGNOSTICO_CLAUDE_MODELO', default='claude-opus-5-5')
 # Correcção em tempo real (ajuste/): um pedido por frase, por isso um modelo rápido e barato.
 CONVERSA_CLAUDE_MODELO_AJUSTE = config('CONVERSA_CLAUDE_MODELO_AJUSTE', default='claude-haiku-5-5')
 # Se o modelo recusar um pedido, a Anthropic repete-o noutro modelo no mesmo pedido.
 CONVERSA_CLAUDE_FALLBACKS = config('CONVERSA_CLAUDE_FALLBACKS', default=True, cast=bool)
 # Modelo que o Vapi usa durante a chamada de voz. Tem de estar na lista do Vapi
-# (docs.vapi.ai/providers/model/anthropic); o claude-opus-5-5 ainda não está.
+# (docs.vapi.ai/providers/model/anthropic); em 2026-11-14 a lista tinha o claude-sonnet-5 e o
+# claude-haiku-5-5, mas ainda não o claude-sonnet-5-5 nem o claude-opus-5-5.
 CONVERSA_VAPI_PROVEDOR = config('CONVERSA_VAPI_PROVEDOR', default='anthropic')
 CONVERSA_VAPI_MODELO = config('CONVERSA_VAPI_MODELO', default='claude-sonnet-5')
 CONVERSA_LIMITE_AJUSTE = config('CONVERSA_LIMITE_AJUSTE', default='30/min')
 CONVERSA_LIMITE_RESPONDER = config('CONVERSA_LIMITE_RESPONDER', default='30/min')
 CONVERSA_LIMITE_SESSOES = config('CONVERSA_LIMITE_SESSOES', default='10/hour')
 # Geração de lições de prática com o Claude (área do professor) e limite diário por professor.
-PRATICA_CLAUDE_MODELO = config('PRATICA_CLAUDE_MODELO', default='claude-opus-5-5')
+# Sonnet: o professor revê a lição antes de gravar e a API valida cada exercício.
+PRATICA_CLAUDE_MODELO = config('PRATICA_CLAUDE_MODELO', default='claude-sonnet-5-5')
 PRATICA_GERAR_LIMITE_DIA = config('PRATICA_GERAR_LIMITE_DIA', default=30, cast=int)
 # Revisão de hoje: exercícios curtos para os padrões de erro (gerados uma vez por padrão e reutilizados).
 REVISAO_CLAUDE_MODELO = config('REVISAO_CLAUDE_MODELO', default='claude-haiku-5-5')
 # Avaliação e sugestões de tradução (antes gpt-4 da OpenAI).
-TRADUCAO_CLAUDE_MODELO = config('TRADUCAO_CLAUDE_MODELO', default='claude-opus-5-5')
+TRADUCAO_CLAUDE_MODELO = config('TRADUCAO_CLAUDE_MODELO', default='claude-haiku-5-5')
 # Exercício "Responder" (resposta livre em voz alta): um pedido curto por gravação, modelo rápido.
 RESPONDER_CLAUDE_MODELO = config('RESPONDER_CLAUDE_MODELO', default='claude-haiku-5-5')
 # Conversa curta no fim de uma lição (exercício VAPI_CONVERSATION): duração máxima em segundos.
@@ -627,7 +634,7 @@ FFPROBE_BIN = config('FFPROBE_BIN', default='ffprobe')
 TRANSCRICAO_FALA_PROVEDOR = config('TRANSCRICAO_FALA_PROVEDOR', default='openai')
 TRANSCRICAO_FALA_MODELO = config('TRANSCRICAO_FALA_MODELO', default='whisper-1')
 # Análise de pronúncia pelo texto e geração de exercícios de pronúncia (Claude, esforço baixo).
-PRONUNCIA_CLAUDE_MODELO = config('PRONUNCIA_CLAUDE_MODELO', default='claude-opus-5-5')
+PRONUNCIA_CLAUDE_MODELO = config('PRONUNCIA_CLAUDE_MODELO', default='claude-haiku-5-5')
 # Avaliação de pronúncia detalhada (apps/practice/services/pronuncia/): 'auto' usa o Azure Speech
 # quando AZURE_SPEECH_KEY e AZURE_SPEECH_REGION estão definidas (dentro do limite diário do plano);
 # 'texto' desliga-a. Sem chave, ou em falha, a avaliação é a normal, pelo texto.
@@ -636,7 +643,8 @@ AZURE_SPEECH_KEY = config('AZURE_SPEECH_KEY', default='')
 AZURE_SPEECH_REGION = config('AZURE_SPEECH_REGION', default='')
 # Opcional: o endpoint do recurso (https://<nome>.cognitiveservices.azure.com); vazio usa a região.
 AZURE_SPEECH_ENDPOINT = config('AZURE_SPEECH_ENDPOINT', default='')
-FRASES_AULA_CLAUDE_MODELO = config('FRASES_AULA_CLAUDE_MODELO', default='claude-opus-5-5')
+# Frases-chave propostas a partir da transcrição: uma vez por aula, revistas pelo professor.
+FRASES_AULA_CLAUDE_MODELO = config('FRASES_AULA_CLAUDE_MODELO', default='claude-sonnet-5-5')
 # Nota: os limites acima (e os throttles/ratelimits) usam a cache 'default' (ver CACHES).
 
 # =============================================================================

@@ -176,7 +176,7 @@ def limpar_propostas(dados, segmentos):
 def pedir_claude(mensagem):
     """Devolve o dict do JSON. Levanta IAIndisponivel em qualquer falha."""
     import anthropic
-    from apps.practice.conversa.analise import BETA_FALLBACK, aceita_fallback
+    from apps.practice.conversa.analise import BETA_FALLBACK, aceita_fallback, sistema_em_cache
     if not settings.ANTHROPIC_API_KEY:
         raise IAIndisponivel('ANTHROPIC_API_KEY em falta')
     modelo = getattr(settings, 'FRASES_AULA_CLAUDE_MODELO', None) or settings.PRATICA_CLAUDE_MODELO
@@ -186,7 +186,7 @@ def pedir_claude(mensagem):
         extra['fallbacks'] = 'default'
     try:
         cliente = anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY, timeout=TIMEOUT, max_retries=0)
-        resp = cliente.beta.messages.create(model=modelo, max_tokens=MAX_TOKENS, system=SYSTEM,
+        resp = cliente.beta.messages.create(model=modelo, max_tokens=MAX_TOKENS, system=sistema_em_cache(SYSTEM),
                                             messages=[{'role': 'user', 'content': mensagem}], **extra)
     except anthropic.APIError as e:
         raise IAIndisponivel(f'API: {e}') from e
