@@ -677,6 +677,25 @@ def avaliar_pendente(sessao_pk, so_regras=False):
     return sessao
 
 
+def avaliar_sem_bloquear(sessao):
+    """
+    Avalia uma sessão 'a_avaliar' sem prender o pedido HTTP: a avaliação (Claude) pode demorar até
+    60 s e em produção há poucos lugares no Gunicorn (2 workers x 2 threads no VPS); umas quantas
+    conversas a terminar ao mesmo tempo deixavam a API inteira (entrada, lições, site) à espera.
+    O cliente já sonda enquanto o estado é 'a_avaliar' (resumo da conversa, exame, teste de nível).
+    AVALIACAO_EM_FUNDO=False (testes) avalia no próprio pedido, como antes.
+    Devolve a sessão relida (já avaliada quando corre no pedido).
+    """
+    if sessao.status != VapiSession.STATUS_A_AVALIAR:
+        return sessao
+    if getattr(settings, 'AVALIACAO_EM_FUNDO', True):
+        from .webhook import executar_em_fundo
+        executar_em_fundo(avaliar_pendente, sessao.pk)
+        sessao.refresh_from_db()
+        return sessao
+    return avaliar_pendente(sessao.pk)
+
+
 def _avaliacao_especial(sessao):
     """O módulo que avalia o teste de nível (diagnostico) ou o exame oral (exame); None nas outras."""
     slug = sessao.situation or ''
@@ -730,8 +749,7 @@ def terminar(user, sessao_id, transcricao_bruta, call_id=None, reveladas=None):
     if fechada_agora:
         _efeitos_cobranca(sessao, segundos)
         depois_de_fechar(sessao)
-    if sessao.status == VapiSession.STATUS_A_AVALIAR:
-        sessao = avaliar_pendente(sessao.pk)
+    sessao = avaliar_sem_bloquear(sessao)
     return resumo(sessao)
 
 
@@ -765,8 +783,7 @@ def obter_resumo(user, sessao_id):
     """GET da sessão. Uma sessão que ficou 'a_avaliar' (p.ex. o pedido de terminar caiu a meio)
     é avaliada aqui, se ninguém a estiver a avaliar."""
     sessao = obter_sessao(user, sessao_id)
-    if sessao.status == VapiSession.STATUS_A_AVALIAR:
-        sessao = avaliar_pendente(sessao.pk)
+    sessao = avaliar_sem_bloquear(sessao)
     return resumo(sessao)
 
 

@@ -321,13 +321,11 @@ def resultado_da_sessao(sessao):
 
 
 def resultado(user, sessao_id):
-    """GET do resultado de um teste (avalia aqui se ficou 'a_avaliar')."""
-    from apps.practice.models import VapiSession
+    """GET do resultado de um teste (se ficou 'a_avaliar', avalia em segundo plano e o cliente sonda)."""
     from . import servico
     from .servico import ErroConversa
     sessao = sessoes(user).filter(session_id=str(sessao_id)).first()
     if sessao is None:
         raise ErroConversa(404, 'nao_encontrada', 'Teste não encontrado.')
-    if sessao.status == VapiSession.STATUS_A_AVALIAR:
-        sessao = servico.avaliar_pendente(sessao.pk)
+    sessao = servico.avaliar_sem_bloquear(sessao)
     return resultado_da_sessao(sessao)

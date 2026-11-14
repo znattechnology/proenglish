@@ -279,6 +279,24 @@ class TerminarTests(Base):
                          log)
         self.assertEqual(self.usados(), usados)
 
+    @override_settings(AVALIACAO_EM_FUNDO=True)
+    def test_terminar_nao_espera_pela_avaliacao(self):
+        """Com AVALIACAO_EM_FUNDO o pedido responde logo 'a_avaliar'; a avaliação corre à parte e o GET
+        do resumo (que o cliente sonda) devolve a conversa avaliada."""
+        sid = self.conversar()
+        tarefas = []
+        with mock.patch('apps.practice.conversa.webhook.executar_em_fundo',
+                        side_effect=lambda f, *a: tarefas.append((f, a))):
+            r = self.terminar(sid)
+            self.assertEqual(r.status_code, 200)
+            self.assertEqual(r.data['estado'], 'a_avaliar')
+            self.assertEqual(len(tarefas), 1)
+            f, a = tarefas[0]
+            f(*a)  # a thread em segundo plano
+            r2 = self.client.get(f'{C}sessoes/{sid}/')
+        self.assertEqual(r2.data['estado'], 'avaliada')
+        self.assertEqual(len(tarefas), 1)  # já avaliada: o GET não lança outra
+
     def test_avaliacao_simulada_deterministica(self):
         r1 = self.terminar(self.conversar()).data
         r2 = self.terminar(self.conversar()).data

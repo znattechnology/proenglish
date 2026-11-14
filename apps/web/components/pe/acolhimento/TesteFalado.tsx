@@ -86,7 +86,7 @@ export function TesteFalado({ aoTerminar, aoPreferirPerguntas, erro }: { aoTermi
     try {
       // O nível sai da chamada confirmada pelo serviço de voz: pode demorar alguns segundos a chegar.
       let r = await lerResultado(id).unwrap();
-      for (let i = 0; i < 20 && r.estado === "a_avaliar"; i++) {
+      for (let i = 0; i < 40 && r.estado === "a_avaliar"; i++) {
         await new Promise((ok) => setTimeout(ok, 3000));
         r = await lerResultado(id).unwrap();
       }

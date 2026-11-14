@@ -121,6 +121,12 @@ function CartaoExame({ e, alunoId }: { e: ExameDoAluno; alunoId: string }) {
 
       {avaliado ? (
         <>
+          {e.revisao_recomendada ? (
+            <p className="m-0 flex flex-wrap items-center gap-2 text-[15px] leading-[22px]">
+              <Etiqueta tipo="realce">Por confirmar</Etiqueta>
+              {e.revisao_recomendada} Ouça a gravação e confirme ou reveja a nota.
+            </p>
+          ) : null}
           <NotasDoExame exame={e} compacto />
           <p className="m-0 text-[15px] leading-[22px]">
             {e.revisao ? `Nota revista por si${e.revisao.por ? ` (${e.revisao.por})` : ""}; a da IA era ${Math.round(e.nota_ia ?? 0)}%.` : `Nota da IA: ${Math.round(e.nota_ia ?? 0)}%, ainda não confirmada.`} Disse sozinho {e.frases_usadas.length} de {e.frases_total} frases do curso.

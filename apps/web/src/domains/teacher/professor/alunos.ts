@@ -48,7 +48,11 @@ export type Resultados = {
 };
 
 /** Fase 6: perfil de fala do aluno e exames orais nos cursos do professor. */
-export type ExameDoAluno = ExameOral & { aluno: { id: string; nome: string } };
+export type ExameDoAluno = ExameOral & {
+  aluno: { id: string; nome: string };
+  /** Porque é que o professor devia confirmar a nota (perto da nota mínima, avaliado por regras), ou null. */
+  revisao_recomendada: string | null;
+};
 export type FalaDoAluno = {
   perfil: {
     niveis: Record<"falar" | "ouvir" | "vocabulario" | "gramatica", NivelCefr | null>;

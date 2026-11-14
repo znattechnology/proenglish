@@ -165,3 +165,6 @@ TRANSCRICAO_AUTOMATICA = False
 
 # Notas dos alunos recalculadas no próprio pedido (sem thread) nos testes: ver apps.courses.recalculo.
 RECALCULO_NOTAS_EM_FUNDO = False
+
+# Avaliação das conversas no próprio pedido nos testes: ver conversa.servico.avaliar_sem_bloquear.
+AVALIACAO_EM_FUNDO = False

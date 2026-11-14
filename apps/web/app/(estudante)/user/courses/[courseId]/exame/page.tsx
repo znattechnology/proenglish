@@ -31,8 +31,8 @@ export default function PaginaExame() {
   const mostrar = async (id: string) => {
     setFase({ tipo: "a_avaliar" });
     setErro(null);
-    // A nota sai da chamada confirmada pelo serviço de voz e da avaliação: pode demorar até um minuto.
-    for (let i = 0; i < 25; i++) {
+    // A nota sai da chamada confirmada pelo serviço de voz e da avaliação: pode demorar até dois minutos.
+    for (let i = 0; i < 40; i++) {
       try {
         const e = await lerExame(id).unwrap();
         if (e.estado !== "em_curso" && e.estado !== "a_avaliar") {

@@ -703,6 +703,25 @@ def apagar_gravacoes_do_aluno(user):
 # Leitura
 # ---------------------------------------------------------------------------
 
+MARGEM_REVISAO = 10  # nota da IA a menos de 10 pontos da nota mínima: o professor deve confirmar
+
+
+def revisao_recomendada(exame, minima=None):
+    """
+    Porque é que o professor devia confirmar este exame antes de valer, ou None. Uma única avaliação
+    da IA decide 40 % da nota e um certificado público: nos casos em que um erro dela muda o
+    resultado (perto da nota mínima) ou em que não foi o Claude a avaliar (regras), pede-se um humano.
+    """
+    if exame.estado != 'avaliado' or exame.nota_revista is not None or exame.nota_final is None:
+        return None
+    if (exame.fonte_avaliacao or 'claude') != 'claude':
+        return 'Avaliado só por regras automáticas (o Claude não respondeu).'
+    minima = nota_minima(exame.course) if minima is None else minima
+    if abs(float(exame.nota_final) - float(minima)) <= MARGEM_REVISAO:
+        return f'Nota da IA perto da nota mínima ({round(exame.nota_final)}% para {round(minima)}%).'
+    return None
+
+
 def exame_dict(exame, gravacao=True, minima=None):
     """Para o aluno e para o professor do curso (nunca a transcrição). nota_minima e aprovado são os
     de agora (a nota mínima actual do curso)."""

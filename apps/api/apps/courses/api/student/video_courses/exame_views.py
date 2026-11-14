@@ -76,7 +76,7 @@ class ExameDetalhe(_ExameDoAluno):
         e = self.exame()
         if e.sessao is not None and e.estado in (ExameOral.EM_CURSO, ExameOral.A_AVALIAR):
             if e.sessao.status == VapiSession.STATUS_A_AVALIAR:
-                servico.avaliar_pendente(e.sessao.pk)  # o pedido de terminar caiu a meio
+                servico.avaliar_sem_bloquear(e.sessao)  # o pedido de terminar caiu a meio
             elif e.sessao.status != VapiSession.STATUS_EM_CURSO:
                 svc.depois_de_avaliar(e.sessao)
             e = self.exame()

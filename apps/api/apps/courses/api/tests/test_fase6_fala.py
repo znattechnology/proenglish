@@ -482,6 +482,24 @@ class ProfessorTests(Base):
         self.assertEqual((r.data['nota'], r.data['aprovado']), (52.5, False))
         self.assertTrue(r.data['pode_repetir_em'])
 
+    def test_exame_perto_da_minima_pede_confirmacao(self):
+        self.entrar(self.prof)
+        self.exame.refresh_from_db()
+        self.assertEqual(self.exame.fonte_avaliacao, 'claude')
+        r = self.client.get(f'{PROF}/exames/')
+        self.assertEqual(r.status_code, 200, r.content)
+        self.assertEqual(r.data['por_rever'], 1)
+        self.assertIn('perto da nota mínima', r.data['exames'][0]['revisao_recomendada'])
+        self.assertIn('52%', r.data['exames'][0]['revisao_recomendada'])
+        # Depois de o professor confirmar, já não aparece como por confirmar.
+        self.client.post(f'{PROF}/exames/{self.exame.pk}/rever/', {'confirmar': True}, format='json')
+        r = self.client.get(f'{PROF}/exames/')
+        self.assertEqual(r.data['por_rever'], 0)
+        self.assertIsNone(r.data['exames'][0]['revisao_recomendada'])
+        # Longe da nota mínima: a nota da IA basta.
+        ExameOral.objects.filter(pk=self.exame.pk).update(nota_final=90, nota_revista=None)
+        self.assertIsNone(self.client.get(f'{PROF}/exames/').data['exames'][0]['revisao_recomendada'])
+
     def test_validacao_da_nota(self):
         self.entrar(self.prof)
         for nota in (101, -1, 'x', None):

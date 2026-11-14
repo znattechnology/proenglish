@@ -45,7 +45,7 @@ export default function EcraExameOral() {
     setFase({ tipo: "a_avaliar" });
     setErro(null);
     // A nota sai da chamada confirmada pelo serviço de voz e da avaliação: pode demorar até um minuto.
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 40; i++) {
       try {
         const e = await lerExame(id).unwrap();
         if (e.estado !== "em_curso" && e.estado !== "a_avaliar") {

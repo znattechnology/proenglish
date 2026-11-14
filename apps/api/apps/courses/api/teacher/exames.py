@@ -5,7 +5,8 @@
                                               frequentes, frases ditas sozinho), minutos a falar
                                               por semana e palavras a treinar, e exames orais
                                               do aluno nos cursos do professor
-  GET  /api/v1/teacher/exames/?curso=<id>     exames orais avaliados de um curso (ou de todos)
+  GET  /api/v1/teacher/exames/?curso=<id>     exames orais avaliados de um curso (ou de todos),
+                                              primeiro os que pedem confirmação (revisao_recomendada)
   GET  /api/v1/teacher/exames/<id>/           um exame (pede a gravação ao Vapi, se ainda não chegou)
   POST /api/v1/teacher/exames/<id>/rever/     {"confirmar": true} ou {"nota": 0-100, "comentario"}
 
@@ -27,10 +28,12 @@ from .alunos import _cursos_visiveis, _nome, _pares
 
 
 def _exame_professor(e, buscar=False):
-    from apps.practice.conversa.exame import buscar_gravacao, exame_dict
+    from apps.practice.conversa.exame import buscar_gravacao, exame_dict, revisao_recomendada
     if buscar:
         buscar_gravacao(e)  # nunca levanta
-    return {**exame_dict(e), 'aluno': {'id': str(e.user_id), 'nome': _nome(e.user.name)}}
+    d = exame_dict(e)
+    return {**d, 'aluno': {'id': str(e.user_id), 'nome': _nome(e.user.name)},
+            'revisao_recomendada': revisao_recomendada(e, minima=d['nota_minima'])}
 
 
 def _exame_visivel(request, exame_id):
@@ -96,7 +99,10 @@ def exames_dos_cursos(request):
         ids = [i for i in ids if str(i) == curso]
     exames = (ExameOral.objects.filter(course_id__in=ids, estado=ExameOral.AVALIADO)
               .select_related('course', 'user', 'sessao', 'revisto_por').order_by('-created_at')[:100])
-    return Response({'exames': [_exame_professor(e) for e in exames]})
+    lista = [_exame_professor(e) for e in exames]
+    # Primeiro os que pedem a confirmação do professor (perto da nota mínima, avaliados por regras).
+    lista.sort(key=lambda d: d['revisao_recomendada'] is None)
+    return Response({'exames': lista, 'por_rever': sum(1 for d in lista if d['revisao_recomendada'])})
 
 
 @api_view(['POST'])

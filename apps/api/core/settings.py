@@ -580,6 +580,8 @@ CONVERSA_SIMULADA = config(
 )
 # Duração máxima de uma conversa (minutos), além do que resta da quota diária.
 CONVERSA_MAX_MINUTOS_SESSAO = config('CONVERSA_MAX_MINUTOS_SESSAO', default=15, cast=int)
+# Avaliação das conversas (Claude, até 60 s) em segundo plano, fora do pedido HTTP; o cliente sonda.
+AVALIACAO_EM_FUNDO = config('AVALIACAO_EM_FUNDO', default=True, cast=bool)
 # Claude (Anthropic): ajustes, respostas escritas do tutor e avaliação das conversas.
 ANTHROPIC_API_KEY = config('ANTHROPIC_API_KEY', default='')
 CONVERSA_CLAUDE_MODELO = config('CONVERSA_CLAUDE_MODELO', default='claude-opus-5-5')  # avaliação e respostas escritas
