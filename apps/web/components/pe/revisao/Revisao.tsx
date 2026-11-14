@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowUp, CheckCircle2, X, XCircle } from "lucide-react";
+import { ArrowDown, ArrowUp, CheckCircle2, X, XCircle } from "lucide-react";
 import { BarraProgresso, Botao, Etiqueta, Osso } from "@/components/pe";
 import { cnPe } from "@/lib/pe";
 import {
@@ -272,6 +272,10 @@ function Rodape({
                 <span className="inline-flex items-center gap-1 text-[15px] font-semibold">
                   <ArrowUp aria-hidden className="size-4" /> Subiu para {ROTULO_ESTADO[r.estado_depois].toLowerCase()}
                 </span>
+              ) : r.desceu ? (
+                <span className="inline-flex items-start gap-1 text-[15px] font-semibold leading-[22px]">
+                  <ArrowDown aria-hidden className="mt-[3px] size-4 shrink-0" /> Voltou a «disse com ajuda»: falhou-a em dois dias seguidos. Diga-a sozinho numa conversa para a recuperar.
+                </span>
               ) : null}
               <BotaoOuvirFrase texto={r.texto} rotulo="Ouvir a frase" />
             </div>
@@ -279,7 +283,7 @@ function Rodape({
         ) : fase.tipo === "aviso" ? (
           <p role="alert" className="m-0 text-[16px] leading-6">{fase.mensagem}</p>
         ) : (
-          <p className="m-0 hidden text-pe-legenda text-pe-tinta-suave md:block">Sem vidas na revisão: errar só faz a frase voltar mais cedo.</p>
+          <p className="m-0 hidden text-pe-legenda text-pe-tinta-suave md:block">Sem vidas na revisão: uma frase errada volta mais cedo para a treinar.</p>
         )}
         <div className="flex flex-col gap-2 md:shrink-0 md:flex-row-reverse">
           {r ? (
@@ -362,6 +366,26 @@ function Fim({ fim, aoRecomecar }: { fim: FimRevisao; aoRecomecar: () => void })
             ))}
           </ul>
           <p className="m-0 text-pe-legenda text-pe-tinta-suave">Uma frase só fica aprendida quando a diz sozinho numa conversa com o tutor.</p>
+        </section>
+      ) : null}
+
+      {fim.desceram?.length ? (
+        <section aria-labelledby="titulo-desceram" className="flex flex-col gap-3">
+          <h2 id="titulo-desceram" className="m-0 text-pe-titulo-s">
+            {fim.desceram.length === 1 ? "Uma frase para recuperar" : `${fim.desceram.length} frases para recuperar`}
+          </h2>
+          <ul className="m-0 flex list-none flex-col gap-2 p-0">
+            {fim.desceram.map((s) => (
+              <li key={s.texto} className="flex flex-col gap-0.5 rounded-pe-md border border-pe-linha px-4 py-3">
+                <span lang="en" className="font-semibold leading-6">{s.texto}</span>
+                {s.traducao ? <span className="text-pe-legenda text-pe-tinta-suave">{s.traducao}</span> : null}
+                <span className="inline-flex items-center gap-1 text-pe-legenda">
+                  <ArrowDown aria-hidden className="size-4" /> {ROTULO_ESTADO[s.antes]} para {s.depois_rotulo.toLowerCase()}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p className="m-0 text-pe-legenda text-pe-tinta-suave">Falhou-as em dois dias seguidos. Diga-as outra vez sozinho numa conversa e voltam a contar como aprendidas.</p>
         </section>
       ) : null}
 

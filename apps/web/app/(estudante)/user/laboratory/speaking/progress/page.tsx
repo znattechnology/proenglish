@@ -156,7 +156,7 @@ function Padroes({ p }: { p: Progresso }) {
   );
 }
 
-/** Frases que o aluno já disse sozinho numa conversa: contam como aprendidas. */
+/** Frases que o aluno diz sozinho numa conversa: contam como aprendidas (voltam a 'com ajuda' se as falhar em dias seguidos). */
 function FrasesSozinho({ p }: { p: Progresso }) {
   const f = p.frases_sozinho ?? { total: 0, recentes: [] };
   return (
@@ -184,6 +184,11 @@ function FrasesSozinho({ p }: { p: Progresso }) {
       ) : (
         <p className="m-0 text-pe-tinta-suave">Quando disser sozinho uma das frases-objectivo numa conversa, ela aparece aqui.</p>
       )}
+      {f.a_recuperar ? (
+        <p className="m-0 text-[15px] leading-[22px] text-pe-tinta-suave">
+          {f.a_recuperar === 1 ? "1 frase voltou" : `${f.a_recuperar} frases voltaram`} a «disse com ajuda» depois de falhar em dois dias seguidos na revisão. Diga-as outra vez sozinho numa conversa para voltarem a contar.
+        </p>
+      ) : null}
     </section>
   );
 }

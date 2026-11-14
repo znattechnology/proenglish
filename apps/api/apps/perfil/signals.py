@@ -2,7 +2,8 @@
 Erros nas lições do laboratório -> revisão de amanhã.
 
 Quando um ChallengeAttempt errado é gravado, a resposta certa do exercício (em inglês) entra no
-banco do aluno (origem 'licao') e fica marcada para amanhã. Corre depois do commit e nunca parte
+banco do aluno (origem 'licao') e fica marcada para amanhã; conta também como uma falha da frase
+(servico.registar_falha: uma frase 'sozinho' falhada em dias seguidos volta a 'com_ajuda'). Corre depois do commit e nunca parte
 a resposta da lição: exercícios sem texto em inglês reconhecível são ignorados.
 """
 import logging
@@ -61,7 +62,8 @@ def texto_certo(ch):
 
 def registar_erro_licao(tentativa_id):
     from apps.perfil import agenda
-    from apps.perfil.servico import registar_item
+    from apps.perfil.servico import (CAMPOS_FALHA, recalcular_notas_depois_de_descer, registar_falha,
+                                     registar_item)
 
     t = (ChallengeAttempt.objects.select_related('challenge__lesson__unit', 'user')
          .filter(pk=tentativa_id).first())
@@ -77,8 +79,15 @@ def registar_erro_licao(tentativa_id):
                              curso_id=curso_id)
         if item is None:
             return None
-        if agenda.marcar_para_amanha(item):
-            item.save(update_fields=agenda.CAMPOS)
+        campos = list(agenda.CAMPOS) if agenda.marcar_para_amanha(item) else []
+        antes = (item.falhas_seguidas, item.ultima_falha)
+        desceu = registar_falha(item)  # uma por dia: vários erros na mesma lição contam uma vez
+        if desceu or (item.falhas_seguidas, item.ultima_falha) != antes:
+            campos += [c for c in CAMPOS_FALHA if c not in campos]
+        if campos:
+            item.save(update_fields=campos)
+        if desceu:
+            recalcular_notas_depois_de_descer(t.user, [item.chave])
     return item
 
 

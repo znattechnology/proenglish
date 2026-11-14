@@ -31,7 +31,9 @@ exercícios de itens é falada.
 
 Responder: a primeira resposta a cada exercício em cada dia (Luanda) conta: nota
 (errei/dificil/certo/facil, deduzida do resultado, do tempo e das pistas), agenda, estado
-(só sobe e nunca até 'sozinho': isso só numa conversa), pontos e minutos do dia.
+(um acerto sobe, nunca até 'sozinho': isso só numa conversa; uma falha conta para
+servico.registar_falha, e uma frase 'sozinho' falhada em dias seguidos volta a 'com_ajuda'),
+pontos e minutos do dia.
 Não custa vidas. Um exercício falado pode ser saltado (sem microfone, sem análises, análise em
 baixo): sem pontos, o item volta amanhã sem mexer na estabilidade.
 """
@@ -52,7 +54,8 @@ from apps.practice.limite_licoes import hoje_luanda, inicio_do_dia
 
 from . import agenda
 from .models import ExerciciosPadrao, ItemBanco, PadraoErro, RespostaRevisao, SessaoRevisao
-from .servico import _subir, normalizar, padroes_abertos, tokens
+from .servico import (_subir, normalizar, padroes_abertos, recalcular_notas_depois_de_descer, registar_acerto,
+                      registar_falha, tokens)
 
 logger = logging.getLogger(__name__)
 
@@ -654,6 +657,7 @@ def registar_resposta(user, d, exercicio_id, correcta, nota, resposta='', segund
                                                     contou=True).exists()
         antes = item.estado if item is not None else ''
         intervalo = None
+        desceu = False
         if contou and item is not None:
             # Só um item novo (ainda fora da agenda) gasta a quota de novos do dia; um item que já
             # estava marcado (erro numa lição, conversa) não.
@@ -662,7 +666,12 @@ def registar_resposta(user, d, exercicio_id, correcta, nota, resposta='', segund
             intervalo = agenda.aplicar(item, nota, agora)
             if correcta:
                 _subir(item, ESTADO_POR_FORMA[d['forma']], agora)
+                registar_acerto(item)
+            else:
+                desceu = registar_falha(item, agora)
             item.save()
+            if desceu:
+                recalcular_notas_depois_de_descer(user, [item.chave])
         pontos = PONTOS_CERTO if contou and correcta else 0
         RespostaRevisao.objects.create(
             user=user, item=item, chave_exercicio=exercicio_id, forma=d['forma'], dia=dia, correcta=correcta,
@@ -689,7 +698,8 @@ def registar_resposta(user, d, exercicio_id, correcta, nota, resposta='', segund
         'explicacao': d['explicacao'],
         'estado_antes': antes or None,
         'estado_depois': depois or None,
-        'subiu': bool(item is not None and depois != antes),
+        'subiu': bool(item is not None and ItemBanco.ordem(depois) > ItemBanco.ordem(antes)),
+        'desceu': desceu,
         'pontos': pontos,
         'proxima_revisao': item.proxima_revisao.isoformat() if item is not None and item.proxima_revisao else None,
         'intervalo_dias': intervalo,
@@ -763,13 +773,17 @@ def terminar(user, inicio=None, agora=None):
         desde = inicio
     linhas = list(RespostaRevisao.objects.filter(user=user, dia=dia, contou=True, criada_em__gte=desde)
                   .select_related('item').order_by('criada_em'))
-    subiram, vistos = [], set()
+    subiram, desceram, vistos = [], [], set()
     for r in linhas:
         if r.item_id and r.estado_depois != r.estado_antes and r.item_id not in vistos:
             vistos.add(r.item_id)
-            subiram.append({'texto': r.item.texto, 'traducao': r.item.traducao or None,
-                            'antes': r.estado_antes, 'depois': r.estado_depois,
-                            'depois_rotulo': ROTULO_ESTADO.get(r.estado_depois, r.estado_depois)})
+            linha = {'texto': r.item.texto, 'traducao': r.item.traducao or None,
+                     'antes': r.estado_antes, 'depois': r.estado_depois,
+                     'depois_rotulo': ROTULO_ESTADO.get(r.estado_depois, r.estado_depois)}
+            if ItemBanco.ordem(r.estado_depois) > ItemBanco.ordem(r.estado_antes):
+                subiram.append(linha)
+            else:
+                desceram.append(linha)
     seq = build_streak_payload(user)
     return {
         'respondidos': len(linhas),
@@ -777,6 +791,7 @@ def terminar(user, inicio=None, agora=None):
         'pontos': sum(r.pontos for r in linhas),
         'minutos': round(sum(r.segundos for r in linhas) / 60.0, 1),
         'subiram': subiram,
+        'desceram': desceram,
         'restam_hoje': contar_para_hoje(user, agora),
         'amanha': contar_para_amanha(user, agora),
         'meta': {'minutos_hoje': seq['minutes_today'], 'meta_minutos': seq['daily_goal_minutes'],

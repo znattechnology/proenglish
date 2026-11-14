@@ -130,6 +130,11 @@ function Conversas({ p }: { p: Progresso }) {
         ) : (
           <Texto suave>Quando disser sozinho uma das frases-objectivo numa conversa, ela aparece aqui.</Texto>
         )}
+        {frases.a_recuperar ? (
+          <Texto v="legenda" suave style={{ fontSize: 15, lineHeight: 22 }}>
+            {frases.a_recuperar === 1 ? "1 frase voltou" : `${frases.a_recuperar} frases voltaram`} a «disse com ajuda» depois de falhar em dois dias seguidos na revisão. Diga-as outra vez sozinho numa conversa para voltarem a contar.
+          </Texto>
+        ) : null}
       </Seccao>
 
       <Seccao titulo="Erros a trabalhar" gap={10}>

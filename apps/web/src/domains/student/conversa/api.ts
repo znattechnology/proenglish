@@ -94,7 +94,7 @@ export type Progresso = {
   por_competencia: { chave: string; nome: string; valor: number | null; nota: string }[];
   ultimas: { id: string; titulo: string; iniciada_em: string; minutos: number; geral: number | null }[];
   padroes: PadraoPerfil[];
-  frases_sozinho: { total: number; recentes: { texto: string; traducao: string; vezes: number; dias: number; ultima_vez: string | null }[] };
+  frases_sozinho: { total: number; a_recuperar?: number; recentes: { texto: string; traducao: string; vezes: number; dias: number; ultima_vez: string | null }[] };
 };
 
 /** Teste de nível falado da primeira entrada (fase 6). */

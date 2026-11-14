@@ -4,7 +4,7 @@
  * a frase volta amanhã. No fim, o resumo.
  */
 import { router } from "expo-router";
-import { ArrowUp, CheckCircle2 } from "lucide-react-native";
+import { ArrowDown, ArrowUp, CheckCircle2 } from "lucide-react-native";
 import { useEffect, useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, type ScrollViewInstance, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -358,6 +358,13 @@ export function Revisao() {
                     Subiu para {ROTULO_ESTADO[r.estado_depois].toLowerCase()}
                   </Texto>
                 </View>
+              ) : r.desceu ? (
+                <View style={{ flexDirection: "row", alignItems: "flex-start", gap: 4 }}>
+                  <ArrowDown size={16} color={cor.tinta} style={{ marginTop: 3 }} />
+                  <Texto forte style={{ fontSize: 15, lineHeight: 22, flexShrink: 1 }}>
+                    Voltou a «disse com ajuda»: falhou-a em dois dias seguidos. Diga-a sozinho numa conversa para a recuperar.
+                  </Texto>
+                </View>
               ) : null}
               <BotaoOuvirTexto texto={r.texto} rotulo="Ouvir a frase" />
             </Resultado>
@@ -452,6 +459,35 @@ function Fim({ fim, aoRecomecar, aoSair }: { fim: FimRevisao; aoRecomecar: () =>
           ))}
           <Texto v="legenda" suave>
             Uma frase só fica aprendida quando a diz sozinho numa conversa com o tutor.
+          </Texto>
+        </View>
+      ) : null}
+
+      {fim.desceram?.length ? (
+        <View style={{ gap: 12 }}>
+          <Texto v="tituloS" accessibilityRole="header">
+            {fim.desceram.length === 1 ? "Uma frase para recuperar" : `${fim.desceram.length} frases para recuperar`}
+          </Texto>
+          {fim.desceram.map((s) => (
+            <View key={s.texto} style={{ gap: 2, borderWidth: 1, borderColor: cor.linha, borderRadius: raio.md, paddingHorizontal: 16, paddingVertical: 12 }}>
+              <Texto forte style={{ lineHeight: 24 }}>
+                {s.texto}
+              </Texto>
+              {s.traducao ? (
+                <Texto v="legenda" suave>
+                  {s.traducao}
+                </Texto>
+              ) : null}
+              <View style={{ flexDirection: "row", alignItems: "center", gap: 4 }}>
+                <ArrowDown size={16} color={cor.tinta} />
+                <Texto v="legenda">
+                  {ROTULO_ESTADO[s.antes]} para {s.depois_rotulo.toLowerCase()}
+                </Texto>
+              </View>
+            </View>
+          ))}
+          <Texto v="legenda" suave>
+            Falhou-as em dois dias seguidos. Diga-as outra vez sozinho numa conversa e voltam a contar como aprendidas.
           </Texto>
         </View>
       ) : null}

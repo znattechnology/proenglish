@@ -9,7 +9,10 @@ Quem lê:
 - os ecrãs da conversa (preparar, resumo, progresso).
 
 Regra central: uma frase só passa a 'sozinho' quando o aluno a disse sozinho numa conversa
-(sem o tutor a ter dito imediatamente antes).
+(sem o tutor a ter dito imediatamente antes). E deixa de o ser quando a falha em
+FALHAS_PARA_DESCER dias seguidos (registar_falha): volta a 'com_ajuda' e conta outra vez como
+frase a aprender (nota do curso, objectivos das conversas). O histórico (vezes_sozinho,
+dias_sozinho, ultima_vez_sozinho) fica.
 """
 import logging
 import math
@@ -47,6 +50,11 @@ LIMIAR_USO_NAO_ASSINALADO = 0.95  # o Claude diz que não: só conta se a disse 
 LIMIAR_ECO = 0.8                 # o tutor disse-a no turno anterior: foi com ajuda
 LIMIAR_BANCO = 0.9               # outras frases do banco ditas numa conversa
 MIN_PALAVRAS_BANCO = 3
+# Falhas seguidas (em dias de Luanda diferentes, sem um acerto pelo meio) para uma frase 'sozinho'
+# voltar a 'com_ajuda'. Dois e não um: um dia mau (cansaço, ruído no microfone, uma resposta à
+# pressa) não tira uma frase aprendida; depois de um erro a agenda trá-la logo no dia seguinte e,
+# se volta a falhar, a memória caiu de facto (dois lapsos seguidos no FSRS).
+FALHAS_PARA_DESCER = 2
 
 
 # ---------------------------------------------------------------------------
@@ -201,16 +209,85 @@ def definir_niveis(perfil, estimativas):
 # ---------------------------------------------------------------------------
 
 def _subir(item, estado, quando=None):
-    """Sobe o estado (nunca desce). 'sozinho' conta a vez e o dia (Luanda)."""
+    """Sobe o estado (nunca desce). 'sozinho' conta a vez e o dia (Luanda) e põe as falhas a zero."""
     from apps.practice.limite_licoes import hoje_luanda
     if ItemBanco.ordem(estado) > ItemBanco.ordem(item.estado):
         item.estado = estado
     if estado == ItemBanco.SOZINHO:
         quando = quando or timezone.now()
+        item.falhas_seguidas = 0
         item.vezes_sozinho += 1
         if item.ultima_vez_sozinho is None or hoje_luanda(item.ultima_vez_sozinho) != hoje_luanda(quando):
             item.dias_sozinho += 1
         item.ultima_vez_sozinho = quando
+
+
+CAMPOS_FALHA = ['estado', 'falhas_seguidas', 'ultima_falha', 'actualizado_em']
+
+
+def registar_acerto(item):
+    """Acertou a frase (revisão): as falhas seguidas voltam a zero (sem gravar)."""
+    item.falhas_seguidas = 0
+
+
+def registar_falha(item, quando=None):
+    """
+    O aluno falhou a frase (revisão: resposta errada ou fala não aceite; lição: exercício errado;
+    conversa: o tutor corrigiu-a). Sem gravar. Conta no máximo uma falha por dia de Luanda (vários
+    erros no mesmo dia são um dia mau, não esquecimento). À FALHAS_PARA_DESCER-ésima falha seguida
+    uma frase 'sozinho' volta a 'com_ajuda' e o contador recomeça. Devolve True se desceu.
+    vezes_sozinho / dias_sozinho / ultima_vez_sozinho não mudam (histórico).
+    """
+    from apps.practice.limite_licoes import hoje_luanda
+    quando = quando or timezone.now()
+    if item.ultima_falha is not None and hoje_luanda(item.ultima_falha) == hoje_luanda(quando):
+        return False
+    item.ultima_falha = quando
+    item.falhas_seguidas = min(item.falhas_seguidas + 1, 32000)
+    if item.estado == ItemBanco.SOZINHO and item.falhas_seguidas >= FALHAS_PARA_DESCER:
+        item.estado = ItemBanco.COM_AJUDA
+        item.falhas_seguidas = 0
+        return True
+    return False
+
+
+def cursos_com_frases(user, chaves):
+    """Cursos em que o aluno está inscrito (activo) cujas frases aprovadas incluem alguma destas chaves."""
+    from apps.courses.models import CourseEnrollment
+    from apps.courses.services.grade_calculator import frases_do_curso
+    chaves = set(chaves)
+    out = []
+    for insc in CourseEnrollment.objects.filter(user=user, is_active=True).select_related('course'):
+        if chaves & {normalizar(t) for t, _ in frases_do_curso(insc.course)}:
+            out.append(insc.course)
+    return out
+
+
+def recalcular_notas_depois_de_descer(user, chaves):
+    """
+    Uma frase do curso deixou de estar 'sozinho': a nota guardada (frases ditas sozinho, 25%) fica
+    desactualizada. Recalcula-a depois do commit, só nos cursos com essa frase. Um certificado já
+    emitido não muda nem é revogado (emitir_certificado devolve o existente; a nota dele é a do dia
+    da emissão).
+    """
+    chaves = [c for c in chaves if c]
+    if not chaves:
+        return
+
+    def depois():
+        from apps.courses.services.grade_calculator import GradeCalculatorService
+        try:
+            cursos = cursos_com_frases(user, chaves)
+        except Exception:
+            logger.exception('perfil: falha ao procurar os cursos de uma frase que desceu')
+            return
+        for curso in cursos:
+            try:
+                GradeCalculatorService(user, curso).calculate_and_save(change_reason='recalculation')
+            except Exception:
+                logger.exception('perfil: falha ao recalcular a nota de %s no curso %s', user.pk, curso.pk)
+
+    transaction.on_commit(depois)
 
 
 def registar_item(user, texto, traducao='', estado=ItemBanco.VISTA, origem='conversa', situacao_id=None,
@@ -582,10 +659,23 @@ def registar_conversa(sessao, avaliacao=None):
                 item.save()
                 outras.append(item.texto)
 
-        # 3. Correcções -> banco (a forma certa, como 'vista')
+        # 3. Correcções -> banco (a forma certa, como 'vista'). Se a forma certa é uma frase que o
+        #    aluno já tinha no banco e não a disse sozinho nesta conversa, tentou-a e errou: falha.
+        ditas_sozinho = {normalizar(o['en']) for o in res_obj if o['usado']} | {normalizar(t) for t in outras}
+        desceram = []
         for c in (av.get('correccoes') or [])[:8]:
-            if isinstance(c, dict) and c.get('certo'):
-                registar_item(user, c['certo'], origem='conversa', curso_id=curso_id, sessao=s.session_id)
+            if not (isinstance(c, dict) and c.get('certo')):
+                continue
+            chave = normalizar(c['certo'])
+            existente = (ItemBanco.objects.select_for_update().filter(user=user, chave=chave).first()
+                         if chave and chave not in ditas_sozinho else None)
+            if existente is not None and existente.tipo == ItemBanco.TIPO_FRASE \
+                    and uso_da_frase(existente.texto, transcricao, limiar=LIMIAR_BANCO) != ItemBanco.SOZINHO:
+                if registar_falha(existente, agora):
+                    desceram.append(chave)
+                existente.save(update_fields=CAMPOS_FALHA)
+            registar_item(user, c['certo'], origem='conversa', curso_id=curso_id, sessao=s.session_id)
+        recalcular_notas_depois_de_descer(user, desceram)
 
         # 4. Padrões de erro
         fonte = av.get('fonte_avaliacao') or av.get('fonte')
@@ -627,6 +717,9 @@ def resumo_progresso(user, max_padroes=6, max_frases=8):
         'padroes': [padrao_dict(p) for p in padroes],
         'frases_sozinho': {
             'total': sozinho.count(),
+            # Já as disse sozinho, mas falhou-as em dias seguidos: voltaram a 'com_ajuda'.
+            'a_recuperar': ItemBanco.objects.filter(user=user, vezes_sozinho__gt=0)
+                                            .exclude(estado=ItemBanco.SOZINHO).count(),
             'recentes': [{'texto': i.texto, 'traducao': i.traducao, 'vezes': i.vezes_sozinho, 'dias': i.dias_sozinho,
                           'ultima_vez': i.ultima_vez_sozinho.isoformat() if i.ultima_vez_sozinho else None}
                          for i in recentes],

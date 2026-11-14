@@ -298,8 +298,9 @@ def resumo_painel(user, agora=None):
     total = sum(d['segundos'] for d in dias)
     meta = meta_de(user)
     hoje_s = dias[-1]['segundos']
-    sozinho = ItemBanco.objects.filter(user=user, estado=ItemBanco.SOZINHO,
-                                       ultima_vez_sozinho__gte=_inicio(inicio)).count()
+    # Frases ditas sozinho numa conversa esta semana (facto da semana: conta mesmo que, entretanto,
+    # uma tenha voltado a 'com_ajuda' por falhas na revisão).
+    sozinho = ItemBanco.objects.filter(user=user, ultima_vez_sozinho__gte=_inicio(inicio)).count()
     padrao = (PadraoErro.objects.filter(user=user, superado=False)
               .order_by('-ocorrencias', '-ultima_ocorrencia').values_list('descricao', flat=True).first())
     return {

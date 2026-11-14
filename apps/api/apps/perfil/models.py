@@ -3,7 +3,8 @@ Perfil de fala do aluno (um por aluno).
 
 - PerfilFala: nível CEFR por competência (com uma pontuação contínua para suavizar).
 - ItemBanco: frases e palavras que o aluno está a aprender, com o estado
-  vista < reconhecida < com_ajuda < sozinho (nunca desce). Os campos de repetição
+  vista < reconhecida < com_ajuda < sozinho. Só sobe, com uma excepção: uma frase 'sozinho'
+  falhada em FALHAS_PARA_DESCER dias seguidos volta a 'com_ajuda' (servico.registar_falha). Os campos de repetição
   espaçada (proxima_revisao, estabilidade, ...) ficam prontos para a revisão (fase 4).
 - PadraoErro: erros recorrentes (chave estável, p.ex. 'third_person_s').
 """
@@ -59,7 +60,7 @@ class ItemBanco(models.Model):
     RECONHECIDA = 'reconhecida'
     COM_AJUDA = 'com_ajuda'
     SOZINHO = 'sozinho'
-    ESTADOS = [VISTA, RECONHECIDA, COM_AJUDA, SOZINHO]  # por ordem: nunca desce
+    ESTADOS = [VISTA, RECONHECIDA, COM_AJUDA, SOZINHO]  # por ordem (só 'sozinho' desce: servico.registar_falha)
     ESTADO_CHOICES = [(VISTA, 'Vista'), (RECONHECIDA, 'Reconhecida'), (COM_AJUDA, 'Disse com ajuda'),
                       (SOZINHO, 'Disse sozinho')]
 
@@ -75,6 +76,11 @@ class ItemBanco(models.Model):
     vezes_sozinho = models.PositiveIntegerField(default=0)
     dias_sozinho = models.PositiveIntegerField(default=0, help_text='Dias diferentes em que a disse sozinho')
     ultima_vez_sozinho = models.DateTimeField(null=True, blank=True)
+    # Falhas seguidas (no máximo uma por dia de Luanda): revisão, lição, correcção numa conversa.
+    # Um acerto põe a zero. vezes_sozinho / dias_sozinho / ultima_vez_sozinho são histórico e
+    # nunca se apagam, mesmo quando a frase volta a 'com_ajuda'.
+    falhas_seguidas = models.PositiveSmallIntegerField(default=0)
+    ultima_falha = models.DateTimeField(null=True, blank=True)
 
     origem = models.CharField(max_length=12, choices=ORIGENS, default='conversa')
     situacao = models.ForeignKey('practice.Situacao', on_delete=models.SET_NULL, null=True, blank=True,

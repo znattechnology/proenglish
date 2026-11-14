@@ -51,6 +51,8 @@ export type ResultadoRevisao = {
   estado_antes: EstadoItem | null;
   estado_depois: EstadoItem | null;
   subiu: boolean;
+  /** A frase deixou de contar como dita sozinho (falhou em dias seguidos). */
+  desceu?: boolean;
   pontos: number;
   proxima_revisao: string | null;
   intervalo_dias: number | null;
@@ -64,6 +66,8 @@ export type FimRevisao = {
   pontos: number;
   minutos: number;
   subiram: { texto: string; traducao: string | null; antes: EstadoItem; depois: EstadoItem; depois_rotulo: string }[];
+  /** Frases 'sozinho' falhadas em dias seguidos: voltaram a 'com_ajuda'. */
+  desceram?: { texto: string; traducao: string | null; antes: EstadoItem; depois: EstadoItem; depois_rotulo: string }[];
   restam_hoje: number;
   amanha: number;
   meta: { minutos_hoje: number; meta_minutos: number; cumprida: boolean; sequencia: number };
