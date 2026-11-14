@@ -214,22 +214,7 @@ export const teacherVideoCourseApiSlice = createApi({
     }),
 
     // Temporary video upload - only needs courseId
-    getTempVideoUploadUrl: builder.mutation<VideoUploadResponse, { courseId: string; fileName: string; fileType: string }>({
-      query: ({ courseId, fileName, fileType }) => ({
-        url: `/${courseId}/get-temp-video-upload-url/`,
-        method: 'POST',
-        body: { fileName, fileType },
-      }),
-    }),
-
     // ===== ANALYTICS =====
-
-    getVideoCourseAnalytics: builder.query<VideoCourseAnalytics, string>({
-      query: (courseId) => `/courses/${courseId}/analytics/`,
-      providesTags: (result, error, courseId) => [
-        { type: 'VideoCourseAnalytics', id: courseId },
-      ],
-    }),
 
     getVideoEnrollments: builder.query<StudentVideoProgress[], string>({
       query: (courseId) => `/courses/${courseId}/enrollments/`,
@@ -316,10 +301,7 @@ export const {
   
   // Video upload
   useGetVideoUploadUrlMutation,
-  useGetTempVideoUploadUrlMutation,
-  
   // Analytics
-  useGetVideoCourseAnalyticsQuery,
   useGetVideoEnrollmentsQuery,
   
   // Publishing
