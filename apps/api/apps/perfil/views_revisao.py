@@ -7,12 +7,9 @@ Revisão de hoje (só alunos). Montado em /api/v1/student/revisao/.
   POST falar/       multipart {exercicio_id, audio, segundos}   análise de pronúncia + resposta
   POST terminar/    {inicio}                                    resumo do fim
 """
-import asyncio
 import io
 import logging
-from types import SimpleNamespace
 
-from django.conf import settings
 from django.utils.dateparse import parse_datetime
 from rest_framework import status
 from rest_framework.permissions import BasePermission, IsAuthenticated
@@ -69,28 +66,17 @@ class Responder(Base):
         return Response(r)
 
 
-def _analisar(audio_bytes, frase):
-    """Resultado da análise (o mesmo serviço e o mesmo modo simulado das lições)."""
-    simulada = bool(getattr(settings, 'PRONUNCIA_SIMULADA', False) and settings.DEBUG)
-    if simulada:
-        ok = audio_bytes.getbuffer().nbytes > 2048
-        return SimpleNamespace(
-            transcribed_text=frase if ok else '', expected_text=frase, pronunciation_score=82 if ok else 20,
-            fluency_score=80 if ok else 20, clarity_score=84 if ok else 20, overall_score=82 if ok else 20,
-            is_acceptable=ok, feedback='Análise simulada (desenvolvimento sem IA).' if ok else 'Não ouvimos nada. Grave outra vez.',
-            problematic_words=[], suggestions=[], indisponivel=False), True
-    from apps.practice.services.ai_pronunciation import AIPronunciationAnalyzer
-    loop = asyncio.new_event_loop()
-    try:
-        r = loop.run_until_complete(AIPronunciationAnalyzer().analyze_pronunciation(
-            audio_file=audio_bytes, expected_text=frase, difficulty_level='intermediate'))
-    finally:
-        loop.close()
-    return r, False
+def _analisar(audio_bytes, frase, user=None, mime='audio/webm'):
+    """(resultado, simulada): services/pronuncia (detalhada dentro do limite do plano, senão pelo
+    texto; o mesmo modo simulado das lições)."""
+    from apps.practice.services import pronuncia
+    r = pronuncia.avaliar(audio_bytes, mime or 'audio/webm', frase, user=user)
+    return r, r.fonte == 'simulada'
 
 
-def _guardar_tentativa(user, result, simulada):
+def _guardar_tentativa(user, result, simulada, origem='revisao'):
     from apps.practice.models import TentativaPronuncia
+    from apps.practice.services.pronuncia import campos_tentativa
     from apps.practice.views_ai import _lista_textos, _nota
     return TentativaPronuncia.objects.create(
         user=user, challenge=None, resposta=None,
@@ -100,7 +86,20 @@ def _guardar_tentativa(user, result, simulada):
         palavras_problematicas=_lista_textos(result.problematic_words, chars=60),
         sugestoes=_lista_textos(result.suggestions, maximo=10), feedback=str(result.feedback or '')[:2000],
         aceite=bool(result.is_acceptable),
-        fonte=TentativaPronuncia.FONTE_SIMULADA if simulada else TentativaPronuncia.FONTE_IA)
+        fonte=TentativaPronuncia.FONTE_SIMULADA if simulada else TentativaPronuncia.FONTE_IA,
+        origem=origem, **campos_tentativa(result))
+
+
+def analise_publica(result, tentativa=None):
+    """O bloco 'analise' das respostas da revisão e da aula (com as notas por palavra, se houver)."""
+    from apps.practice.services import pronuncia
+    from apps.practice.views_ai import _lista_textos, _nota
+    return {'nota': _nota(result.overall_score), 'aceite': bool(result.is_acceptable),
+            'transcricao': str(result.transcribed_text or '')[:500],
+            'palavras': _lista_textos(result.problematic_words, chars=60),
+            'mensagem': str(result.feedback or '')[:500] or None,
+            'detalhe': pronuncia.detalhe_publico(result),
+            'fala': pronuncia.fala_publica(tentativa)}
 
 
 def _indisponivel():
@@ -116,7 +115,7 @@ class Falar(Base):
 
     def post(self, request):
         from apps.subscriptions.models import UserSubscription
-        from apps.practice.views_ai import _lista_textos, _nota
+        from apps.practice.views_ai import _nota
 
         exercicio_id = request.data.get('exercicio_id')
         try:
@@ -137,14 +136,15 @@ class Falar(Base):
         try:
             dados = io.BytesIO(audio.read())
             dados.name = audio.name
-            result, simulada = _analisar(dados, frase)
+            result, simulada = _analisar(dados, frase, request.user, getattr(audio, 'content_type', None))
         except Exception:
             logger.exception('revisão: análise de pronúncia falhou')
             return _indisponivel()
         if getattr(result, 'indisponivel', False):
             return _indisponivel()
+        tentativa = None
         try:
-            _guardar_tentativa(request.user, result, simulada)
+            tentativa = _guardar_tentativa(request.user, result, simulada)
         except Exception:
             logger.exception('revisão: falha ao guardar a tentativa de pronúncia')
         if sub is not None and sub.is_active():
@@ -156,10 +156,7 @@ class Falar(Base):
         nota_geral = _nota(result.overall_score)
         r = revisao.registar_fala(request.user, d, exercicio_id, bool(result.is_acceptable), nota_geral,
                                   request.data.get('segundos'))
-        r['analise'] = {'nota': nota_geral, 'aceite': bool(result.is_acceptable),
-                        'transcricao': str(result.transcribed_text or '')[:500],
-                        'palavras': _lista_textos(result.problematic_words, chars=60),
-                        'mensagem': str(result.feedback or '')[:500] or None}
+        r['analise'] = analise_publica(result, tentativa)
         return Response(r)
 
 

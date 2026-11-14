@@ -145,7 +145,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         const d = r.data!;
         if (d.user_progress) setVidas(d.user_progress.hearts);
         // A nota, as palavras a treinar e o comentário aparecem no exercício; o rodapé fica com a explicação/dica.
-        setFala({ nota: d.ai_analysis.overall_score, palavras: d.feedback?.problematic_words ?? [], mensagem: d.feedback?.message ?? null });
+        setFala({ nota: d.ai_analysis.overall_score, palavras: d.feedback?.problematic_words ?? [], mensagem: d.feedback?.message ?? null, detalhe: d.detalhe ?? null });
         if (d.ai_analysis.is_acceptable) {
           setFase({ tipo: "certo", explicacao: d.explicacao ?? null });
           setAcertados((a) => new Set(a).add(ex.id));

@@ -433,10 +433,12 @@ def _lista_textos(valor, maximo=20, chars=200):
 def guardar_tentativa_pronuncia(user, challenge, result, simulada=False):
     """
     Guarda uma gravação analisada: ChallengeAttempt (certo = is_acceptable, entra nas estatísticas
-    de acerto e na revisão) e TentativaPronuncia (transcrição, notas e palavras a melhorar).
+    de acerto e na revisão) e TentativaPronuncia (transcrição, notas, palavras a melhorar, métricas
+    de fluência e, se houver, a avaliação detalhada por palavra).
     """
     from django.db import transaction
     from .models import ChallengeAttempt, TentativaPronuncia
+    from .services.pronuncia import campos_tentativa
 
     aceite = bool(result.is_acceptable)
     with transaction.atomic():
@@ -454,6 +456,8 @@ def guardar_tentativa_pronuncia(user, challenge, result, simulada=False):
             feedback=str(result.feedback or '')[:2000],
             aceite=aceite,
             fonte=TentativaPronuncia.FONTE_SIMULADA if simulada else TentativaPronuncia.FONTE_IA,
+            origem=TentativaPronuncia.ORIGEM_LICAO,
+            **campos_tentativa(result),
         )
     if aceite:
         try:  # perfil de fala: a frase lida em voz alta fica 'com ajuda' (nunca parte o exercício)
@@ -468,7 +472,7 @@ class AIPronunciationAnalysisView(APIView):
     """
     POST /api/v1/practice/analyze-ai-pronunciation/
 
-    Analyze student pronunciation using AI (Whisper + GPT-4).
+    Analyze student pronunciation (services/pronuncia: Azure detalhada ou transcrição + Claude).
 
     Request:
         - audio: Audio file (multipart/form-data)
@@ -487,7 +491,6 @@ class AIPronunciationAnalysisView(APIView):
 
     def post(self, request):
         """Analyze pronunciation using AI with detailed feedback"""
-        from .services.ai_pronunciation import AIPronunciationAnalyzer
         from apps.subscriptions.models import UserSubscription
 
         # Extract request data
@@ -555,43 +558,12 @@ class AIPronunciationAnalysisView(APIView):
             audio_bytes = io.BytesIO(audio_file.read())
             audio_bytes.name = audio_file.name
 
-            from django.conf import settings as dj_settings
-            simulada = bool(getattr(dj_settings, 'PRONUNCIA_SIMULADA', False) and dj_settings.DEBUG)
-            if simulada:
-                # Desenvolvimento sem OpenAI: aceita qualquer gravação com som (> 2 KB).
-                from types import SimpleNamespace
-                aceitavel = audio_bytes.getbuffer().nbytes > 2048
-                result = SimpleNamespace(
-                    transcribed_text=expected_text if aceitavel else '',
-                    expected_text=expected_text,
-                    pronunciation_score=82 if aceitavel else 20,
-                    fluency_score=80 if aceitavel else 20,
-                    clarity_score=84 if aceitavel else 20,
-                    overall_score=82 if aceitavel else 20,
-                    is_acceptable=aceitavel,
-                    partial_credit=10 if aceitavel else 0,
-                    confidence_level='simulado',
-                    feedback='Análise simulada (desenvolvimento sem IA).' if aceitavel else 'Não ouvimos nada. Grave outra vez.',
-                    problematic_words=[],
-                    suggestions=[],
-                )
-            else:
-                # Analyze pronunciation using AI
-                analyzer = AIPronunciationAnalyzer()
-
-                # Run async analysis in sync context
-                loop = asyncio.new_event_loop()
-                asyncio.set_event_loop(loop)
-                try:
-                    result = loop.run_until_complete(
-                        analyzer.analyze_pronunciation(
-                            audio_file=audio_bytes,
-                            expected_text=expected_text,
-                            difficulty_level=difficulty_level
-                        )
-                    )
-                finally:
-                    loop.close()
+            # Fornecedor de avaliação (services/pronuncia): detalhada (Azure) dentro do limite do
+            # plano, senão pelo texto (transcrição + Claude); modo simulado em desenvolvimento.
+            from .services import pronuncia
+            result = pronuncia.avaliar(audio_bytes, getattr(audio_file, 'content_type', None) or 'audio/webm',
+                                       expected_text, user=request.user, nivel=difficulty_level)
+            simulada = result.fonte == 'simulada'
 
             # Sem transcrição não houve avaliação: é uma falha técnica, não tira vidas nem conta como erro.
             if getattr(result, 'indisponivel', False):
@@ -623,7 +595,10 @@ class AIPronunciationAnalysisView(APIView):
                     'message': result.feedback,
                     'problematic_words': _lista_textos(result.problematic_words, chars=60),
                     'suggestions': _lista_textos(result.suggestions, maximo=10)
-                }
+                },
+                # Fase 3: notas por palavra (só com a avaliação detalhada) e métricas de fluência.
+                'detalhe': pronuncia.detalhe_publico(result),
+                'fala': pronuncia.fala_publica(tentativa),
             }
 
             # Update challenge progress if challenge provided

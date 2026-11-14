@@ -57,6 +57,12 @@ export type FalaDoAluno = {
     frases_sozinho: number;
     frases_sozinho_cursos: number;
   };
+  /** Fase 3: minutos a falar por semana (8), palavras por minuto e palavras a treinar. */
+  fala?: {
+    semanas: { inicio: string; segundos: number; ppm: number | null; actual: boolean }[];
+    palavras_treinar: { palavra: string; tentativas: number; falhas: number; media: number | null; fonema: string | null }[];
+    meta_min: number;
+  } | null;
   exames: ExameDoAluno[];
 };
 export type RevisaoExame = { id: string; alunoId: string } & ({ confirmar: true } | { nota: number; comentario: string });

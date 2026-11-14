@@ -6,6 +6,7 @@
 import { DJANGO_BASE_URL } from "@/src/domains/shared/api/baseQuery";
 import type { ConversaLicao } from "@/src/domains/student/laboratorio/api";
 import { cursoApi } from "./api";
+import type { DetalhePronuncia, MetricasGravacao } from "@/src/domains/student/fala/api";
 
 const BASE = "/student/video-courses";
 
@@ -27,8 +28,19 @@ export type FalaDaAula = {
   conversa: { disponivel: boolean; motivo: string | null; mensagem: string | null; max_segundos: number };
 };
 
+/** Análise de uma gravação (revisão e aulas): com notas por palavra quando houve avaliação detalhada. */
+export type AnaliseGravacao = {
+  nota: number;
+  aceite: boolean;
+  transcricao: string;
+  palavras: string[];
+  mensagem: string | null;
+  detalhe?: DetalhePronuncia | null;
+  fala?: MetricasGravacao | null;
+};
+
 export type AnaliseFrase = {
-  analise: { nota: number; aceite: boolean; transcricao: string; palavras: string[]; mensagem: string | null };
+  analise: AnaliseGravacao;
   estado: EstadoBanco | null;
 };
 

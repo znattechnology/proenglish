@@ -1119,6 +1119,14 @@ class VapiSession(models.Model):
     # Speaking Performance Metrics
     total_words = models.PositiveIntegerField(default=0)
     words_per_minute = models.PositiveIntegerField(default=0)
+    # Fase 3: tempo de fala do aluno (conversa/tempo_fala.py). 'medido' com os tempos de cada
+    # mensagem do Vapi; 'estimado' (palavras / 2,3 por segundo) quando não há tempos.
+    segundos_aluno = models.FloatField(null=True, blank=True)
+    segundos_tutor = models.FloatField(null=True, blank=True)
+    ppm_aluno = models.FloatField(null=True, blank=True, help_text='Só quando medido')
+    palavras_por_turno = models.FloatField(null=True, blank=True)
+    quota_fala_aluno = models.FloatField(null=True, blank=True, help_text='0-1: parte do tempo de fala que foi do aluno')
+    fonte_tempo = models.CharField(max_length=10, blank=True, default='', help_text="'medido' | 'estimado'")
     corrections_count = models.PositiveIntegerField(default=0)
     
     # Progress Indicators
@@ -1467,6 +1475,36 @@ class TentativaPronuncia(models.Model):
     feedback = models.TextField(blank=True, default='')
     aceite = models.BooleanField()
     fonte = models.CharField(max_length=10, choices=FONTE_CHOICES, default=FONTE_IA)
+
+    # Onde foi gravada (para os minutos a falar por actividade). Vazio nas tentativas antigas.
+    ORIGEM_LICAO = 'licao'
+    ORIGEM_RESPONDER = 'responder'
+    ORIGEM_REVISAO = 'revisao'
+    ORIGEM_AULA = 'aula'
+    ORIGEM_CHOICES = [(ORIGEM_LICAO, 'Lição (ler em voz alta)'), (ORIGEM_RESPONDER, 'Responder'),
+                      (ORIGEM_REVISAO, 'Revisão'), (ORIGEM_AULA, 'Aula em vídeo (repetir)')]
+    origem = models.CharField(max_length=12, choices=ORIGEM_CHOICES, blank=True, default='')
+
+    # Fase 3: métricas de fluência a partir dos tempos das palavras (services/metricas_fala.py).
+    # Vazias quando não foi possível medir nem estimar (tentativas antigas).
+    segundos_fala = models.FloatField(null=True, blank=True,
+                                      help_text='Da 1.ª à última palavra, sem as pausas longas (> 1 s)')
+    palavras_ditas = models.PositiveSmallIntegerField(null=True, blank=True)
+    ppm = models.FloatField(null=True, blank=True, help_text='Palavras por minuto (inclui as pausas)')
+    pausas_longas = models.PositiveSmallIntegerField(null=True, blank=True)
+    pausas_longas_s = models.FloatField(null=True, blank=True)
+    maior_pausa_s = models.FloatField(null=True, blank=True)
+    fonte_tempo = models.CharField(max_length=10, blank=True, default='', help_text="'medido' | 'estimado'")
+    tempos_palavras = models.JSONField(null=True, blank=True, help_text='[[palavra, início, fim], ...] em segundos')
+
+    # Avaliação da pronúncia: 'texto' (transcrição comparada com o texto) ou 'azure' (detalhada).
+    AVALIACAO_TEXTO = 'texto'
+    AVALIACAO_AZURE = 'azure'
+    avaliacao = models.CharField(max_length=10, blank=True, default=AVALIACAO_TEXTO)
+    nota_completude = models.PositiveSmallIntegerField(null=True, blank=True)
+    nota_prosodia = models.PositiveSmallIntegerField(null=True, blank=True)
+    palavras_detalhe = models.JSONField(null=True, blank=True,
+                                        help_text='Avaliação detalhada: [{palavra, nota, erro_tipo, fonemas}]')
     criada_em = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -1475,6 +1513,20 @@ class TentativaPronuncia(models.Model):
 
     def __str__(self):
         return f"{self.user_id} - {self.challenge_id} ({self.nota_geral})"
+
+
+class AvaliacaoDetalhadaDia(models.Model):
+    """Avaliações de pronúncia detalhadas (fornecedor pago, p.ex. Azure) feitas por aluno e dia de Luanda.
+    O limite diário vem do plano (SubscriptionPlan.daily_detailed_pronunciation_limit)."""
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='avaliacoes_detalhadas')
+    dia = models.DateField()
+    usadas = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['user', 'dia'], name='avaliacao_detalhada_unica_dia')]
+
+    def __str__(self):
+        return f"{self.user_id} {self.dia}: {self.usadas}"
 
 
 class PointsEntry(models.Model):

@@ -9,6 +9,8 @@ import { Pagina } from "@/components/pe/estudante/Pagina";
 import { MudarPalavraPasse } from "@/components/pe/conta/MudarPalavraPasse";
 import { SeccaoAvisos } from "@/components/pe/avisos/Avisos";
 import { cnPe } from "@/lib/pe";
+import { EscolherMetaFala } from "@/components/pe/fala/Fala";
+import { useMetaFalaQuery } from "@/src/domains/student/fala/api";
 import { useDjangoAuth } from "@/hooks/useDjangoAuth";
 import { normalizarNivel } from "@/src/domains/shared/niveis";
 import { dataPt, mensagemErro, telefoneLegivel, useLembretesMutation, useMinhaSubscricaoQuery } from "@/src/domains/student/subscricao/api";
@@ -220,7 +222,7 @@ function EstudoEAvisos({ pago, lembretes }: { pago: boolean; lembretes: boolean 
       </h2>
       <div className="flex flex-col gap-2">
         <span id="rotulo-meta" className="font-semibold leading-[22px]">
-          Meta diária
+          Meta de estudo
         </span>
         <span className="text-pe-legenda text-pe-tinta-suave">Minutos de prática por dia. Conta para os dias seguidos.</span>
         <div role="radiogroup" aria-labelledby="rotulo-meta" className="flex flex-wrap gap-2 pt-1">
@@ -246,6 +248,7 @@ function EstudoEAvisos({ pago, lembretes }: { pago: boolean; lembretes: boolean 
           ))}
         </div>
       </div>
+      <MetaFala />
       {pago ? (
         <Interruptor
           rotulo="Lembretes de renovação"
@@ -261,6 +264,17 @@ function EstudoEAvisos({ pago, lembretes }: { pago: boolean; lembretes: boolean 
       ) : null}
       {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
     </section>
+  );
+}
+
+/** Meta de minutos a falar por dia (fase 3): só se mostra, não conta para os dias seguidos. */
+function MetaFala() {
+  const { data } = useMetaFalaQuery();
+  return (
+    <div className="flex flex-col gap-1">
+      <EscolherMetaFala actual={data?.meta_fala_min} opcoes={data?.opcoes ?? [3, 5, 10, 15]} id="rotulo-meta-fala" rotulo="Meta de fala" />
+      <span className="text-pe-legenda text-pe-tinta-suave">Minutos a falar inglês por dia (conversas, lições, revisão e aulas). Aparece em destaque no painel.</span>
+    </div>
   );
 }
 

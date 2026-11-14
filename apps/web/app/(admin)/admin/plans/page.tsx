@@ -15,6 +15,7 @@ function linhasPlano(p: Plano): [string, string][] {
     ["Lições por dia", l.licoes_dia == null ? "Ilimitadas" : String(l.licoes_dia)],
     ["Vidas", l.vidas == null ? "Ilimitadas" : `${l.vidas}, recuperam com o tempo`],
     ["Conversa por dia", l.conversa_min_dia == null ? "Sem limite" : `${l.conversa_min_dia} min`],
+    ...(l.pronuncia_detalhada_dia ? ([["Pronúncia detalhada", `${l.pronuncia_detalhada_dia} por dia`]] as [string, string][]) : []),
     ...(l.sessoes_nativo_mes ? ([["Professor nativo", `${l.sessoes_nativo_mes} sessões por mês`]] as [string, string][]) : []),
     ["Certificados", p.certificados ? "Sim" : "Não"],
     ...(p.dias_teste ? ([["Teste grátis", `${p.dias_teste} dias`]] as [string, string][]) : []),

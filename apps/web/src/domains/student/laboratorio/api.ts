@@ -5,6 +5,7 @@
 import { aposEstudo, quandoCorrerBem } from "@/src/domains/student/sincronizar";
 import { studentPracticeApiSlice } from "../practice-courses/api/studentPracticeApiSlice";
 import type { NovaSessao } from "@/src/domains/student/conversa/api";
+import type { DetalhePronuncia, MetricasGravacao } from "@/src/domains/student/fala/api";
 
 const API = process.env.NEXT_PUBLIC_DJANGO_API_URL || "http://localhost:8000/api/v1";
 
@@ -89,6 +90,9 @@ export type ResultadoResposta = {
 export type ResultadoPronuncia = {
   ai_analysis: { overall_score: number; is_acceptable: boolean; transcribed_text?: string };
   feedback?: { message?: string; problematic_words?: string[] };
+  /** Fase 3: notas por palavra (avaliação detalhada) e métricas de fluência da gravação. */
+  detalhe?: DetalhePronuncia | null;
+  fala?: MetricasGravacao | null;
   explicacao?: string | null;
   dica?: string | null;
   user_progress?: { hearts: number; points: number };

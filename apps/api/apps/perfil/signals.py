@@ -95,3 +95,46 @@ def erro_na_licao(sender, instance, created, **kwargs):
             logger.exception('perfil: falha ao pôr o erro da lição na revisão')
 
     transaction.on_commit(depois)
+
+
+# ---------------------------------------------------------------------------
+# Fase 3: minutos a falar por dia e palavras difíceis (apps/perfil/fala.py)
+# ---------------------------------------------------------------------------
+
+def _ligar_sinais_fala():
+    from apps.practice.models import TentativaPronuncia, VapiSession
+
+    @receiver(post_save, sender=TentativaPronuncia, dispatch_uid='perfil_fala_tentativa')
+    def tentativa_gravada(sender, instance, created, **kwargs):
+        if not created:
+            return
+        pk = instance.pk
+
+        def depois():
+            from apps.perfil import fala
+            t = TentativaPronuncia.objects.select_related('user').filter(pk=pk).first()
+            if t is not None:
+                fala.depois_da_tentativa(t)
+
+        transaction.on_commit(depois)
+
+    @receiver(post_save, sender=VapiSession, dispatch_uid='perfil_fala_sessao')
+    def sessao_gravada(sender, instance, created, update_fields=None, **kwargs):
+        if instance.segundos_aluno is None:
+            return
+        if update_fields is not None and not ({'segundos_aluno', 'status'} & set(update_fields)):
+            return
+        pk = instance.pk
+
+        def depois():
+            from apps.perfil import fala
+            s = VapiSession.objects.select_related('user').filter(pk=pk).first()
+            if s is not None:
+                fala.depois_da_sessao(s)
+
+        transaction.on_commit(depois)
+
+    return tentativa_gravada, sessao_gravada
+
+
+_SINAIS_FALA = _ligar_sinais_fala()

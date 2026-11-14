@@ -78,6 +78,12 @@ class SubscriptionPlan(models.Model):
         blank=True,
         help_text="Limite diário de análises AI de pronúncia (null = ilimitado)"
     )
+    # Avaliações de pronúncia detalhadas (fornecedor pago, p.ex. Azure: nota por palavra e por som).
+    # Acima do limite (ou com o fornecedor desligado) a avaliação é a normal, pelo texto.
+    daily_detailed_pronunciation_limit = models.PositiveIntegerField(
+        default=0,
+        help_text="Avaliações de pronúncia detalhadas por dia (0 = nenhuma)"
+    )
     hearts_limit = models.IntegerField(
         default=5,
         help_text="Número máximo de vidas (0 = ilimitado)"

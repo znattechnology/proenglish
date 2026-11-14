@@ -186,19 +186,19 @@ class PronunciaIndisponivelTests(Base):
             return self.client.post(ANALISE, {'challenge_id': str(self.falar.id), 'audio': audio}, format='multipart')
 
     def test_modelo_actual(self):
+        # A análise pelo texto passou para o Claude (PRONUNCIA_CLAUDE_MODELO).
         from apps.practice.services import ai_pronunciation
-        self.assertEqual(ai_pronunciation.modelo_de_analise(), 'gpt-4o-mini')
-        with override_settings(PRONUNCIA_MODELO='gpt-4.1-mini'):
-            self.assertEqual(ai_pronunciation.modelo_de_analise(), 'gpt-4.1-mini')
+        with override_settings(PRONUNCIA_CLAUDE_MODELO='claude-opus-5-5'):
+            self.assertEqual(ai_pronunciation.modelo_de_analise(), 'claude-opus-5-5')
+        with override_settings(PRONUNCIA_CLAUDE_MODELO='claude-haiku-5-5'):
+            self.assertEqual(ai_pronunciation.modelo_de_analise(), 'claude-haiku-5-5')
 
     def test_falha_do_modelo_e_indisponivel(self):
         import asyncio
         from apps.practice.services.ai_pronunciation import AIPronunciationAnalyzer
         a = AIPronunciationAnalyzer.__new__(AIPronunciationAnalyzer)
-        a.analysis_model = 'x'
-        a.client = mock.MagicMock()
-        a.client.chat.completions.create.side_effect = RuntimeError('404 model')
-        r = asyncio.run(a._analyze_with_gpt4('hello there', 'Hello there.', 'intermediate'))
+        with mock.patch('apps.practice.conversa.analise._json', side_effect=RuntimeError('404 model')):
+            r = asyncio.run(a._analyze_with_gpt4('hello there', 'Hello there.', 'intermediate'))
         self.assertTrue(r.indisponivel)
 
     def test_503_e_saltar_sem_pontos_nem_vidas(self):

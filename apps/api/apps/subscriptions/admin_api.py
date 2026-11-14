@@ -145,6 +145,8 @@ def _plano_repr(p, contagens=None):
             'conversa_min_dia': p.daily_speaking_minutes,
             'sessoes_nativo_mes': p.native_teacher_sessions,
             'protecoes_semana': p.streak_freeze,
+            # Avaliações de pronúncia detalhadas (Azure) por dia; 0 = nenhuma.
+            'pronuncia_detalhada_dia': p.daily_detailed_pronunciation_limit,
         },
         'certificados': p.certificates,
         'utilizadores': utilizadores,
@@ -238,7 +240,7 @@ def _validar_plano(p, d):
             erros['limites'] = ['Indique os limites como um objecto.']
         else:
             outros = sorted(set(lim) - {'licoes_dia', 'vidas', 'conversa_min_dia', 'sessoes_nativo_mes',
-                                        'protecoes_semana'})
+                                        'protecoes_semana', 'pronuncia_detalhada_dia'})
             if outros:
                 erros['limites'] = [f'Limite desconhecido: {", ".join(outros)}.']
             if 'licoes_dia' in lim:
@@ -263,6 +265,11 @@ def _validar_plano(p, d):
                 v = _inteiro(lim['protecoes_semana'], 'limites.protecoes_semana', erros, minimo=0, maximo=7)
                 if v is not None:
                     p.streak_freeze = v
+            if 'pronuncia_detalhada_dia' in lim:
+                v = _inteiro(lim['pronuncia_detalhada_dia'], 'limites.pronuncia_detalhada_dia', erros, minimo=0,
+                             maximo=500)
+                if v is not None:
+                    p.daily_detailed_pronunciation_limit = v
     if erros:
         raise ErroValidacao(erros)
     return vidas_novas

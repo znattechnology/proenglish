@@ -7,11 +7,13 @@ import { falarNoBrowser } from "@/components/pe/conversa/useConversa";
 import type { Exercicio, Resposta, ResultadoResponder } from "@/src/domains/student/laboratorio/api";
 import { BalaoEnunciado, BotaoOuvir, Enunciado } from "./Partes";
 import { ConversaCurta } from "./ConversaCurta";
+import { PalavrasComNota } from "@/components/pe/fala/Fala";
+import type { DetalhePronuncia } from "@/src/domains/student/fala/api";
 
 export type RespostaExercicio = { tipo: "texto"; resposta: Resposta } | { tipo: "audio"; audio: Blob } | null;
 export type EstadoVisual = "livre" | "certo" | "errado";
 /** Resultado da análise de pronúncia, mostrado no exercício de falar depois de verificar. */
-export type ResultadoFala = { nota: number; palavras: string[]; mensagem?: string | null };
+export type ResultadoFala = { nota: number; palavras: string[]; mensagem?: string | null; detalhe?: DetalhePronuncia | null };
 
 type Props = {
   ex: Exercicio;
@@ -435,7 +437,9 @@ function ResultadoPronuncia({ frase, fala }: { frase: string; fala: ResultadoFal
         <span className="font-pe-titulo text-[28px] font-bold leading-8">{Math.round(fala.nota)}</span>
         <span className="text-pe-legenda text-pe-tinta-suave">de 100 na pronúncia</span>
       </p>
-      {frase ? (
+      {fala.detalhe ? (
+        <PalavrasComNota detalhe={fala.detalhe} />
+      ) : frase ? (
         <p className="m-0 text-[17px] leading-7">
           {partes.map((p, i) =>
             marcar.has(soLetras(p)) ? (
@@ -448,7 +452,7 @@ function ResultadoPronuncia({ frase, fala }: { frase: string; fala: ResultadoFal
           )}
         </p>
       ) : null}
-      {marcadas ? <p className="m-0 text-pe-legenda text-pe-tinta-suave">Sublinhadas: as palavras a treinar.</p> : null}
+      {marcadas && !fala.detalhe ? <p className="m-0 text-pe-legenda text-pe-tinta-suave">Sublinhadas: as palavras a treinar.</p> : null}
       {fala.mensagem ? <p className="m-0 text-[15px] leading-[22px]">{fala.mensagem}</p> : null}
     </div>
   );

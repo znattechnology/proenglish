@@ -41,6 +41,7 @@ urlpatterns = [
     path('api/v1/student/video-courses/', include('apps.courses.api.student.video_courses.urls')),
     path('api/v1/student/practice-courses/', include('apps.courses.api.student.practice_courses.urls')),
     path('api/v1/student/revisao/', include('apps.perfil.urls_revisao')),  # revisão de hoje
+    path('api/v1/student/fala/', include('apps.perfil.urls_fala')),  # minutos a falar, meta de fala (fase 3)
     
     # Teacher APIs (organized)
     path('api/v1/teacher/video-courses/', include('apps.courses.api.teacher.video_courses.urls')),
@@ -68,7 +69,6 @@ urlpatterns = [
     path('api/v1/cms/', include('apps.cms.urls')),
 
     # Chatbot (public, no auth required)
-    path('api/v1/chatbot/', include('apps.chatbot.urls')),
 ]
 
 # Serve media files in development

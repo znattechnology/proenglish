@@ -2,7 +2,8 @@
 Área do professor: perfil de fala e exames orais dos alunos (fase 6).
 
   GET  /api/v1/teacher/alunos/<id>/fala/      perfil de fala (níveis por competência, erros
-                                              frequentes, frases ditas sozinho) e exames orais
+                                              frequentes, frases ditas sozinho), minutos a falar
+                                              por semana e palavras a treinar, e exames orais
                                               do aluno nos cursos do professor
   GET  /api/v1/teacher/exames/?curso=<id>     exames orais avaliados de um curso (ou de todos)
   POST /api/v1/teacher/exames/<id>/rever/     {"confirmar": true} ou {"nota": 0-100, "comentario"}
@@ -53,8 +54,17 @@ def fala_aluno(request, aluno_id):
             'frases_sozinho': sozinho.count(),
             'frases_sozinho_cursos': sozinho.filter(curso_id__in=list(pares)).count(),
         },
+        'fala': _fala(aluno_id),
         'exames': [_exame_professor(e) for e in exames],
     })
+
+
+def _fala(aluno_id):
+    """Fase 3: minutos a falar por semana, palavras por minuto e palavras a treinar."""
+    from apps.perfil import fala
+    from apps.users.models import User
+    aluno = User.objects.filter(pk=aluno_id).first()
+    return fala.resumo_professor(aluno) if aluno is not None else None
 
 
 @api_view(['GET'])

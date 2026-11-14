@@ -4,7 +4,8 @@ em voz alta, livremente; a resposta deve usar uma frase-alvo/estrutura da liçã
 
   POST /api/v1/student/practice-courses/challenges/<uuid>/responder/   multipart {audio}
 
-1. Transcrição com o Whisper (o mesmo cliente de services/ai_pronunciation.py).
+1. Transcrição (services/transcricao_fala.py: hoje o Whisper), com os tempos das palavras para as
+   métricas de fluência (services/metricas_fala.py).
 2. Avaliação com o Claude (RESPONDER_CLAUDE_MODELO, por omissão claude-haiku-5-5; saída estruturada,
    esforço baixo, timeout curto; o padrão de apps/practice/conversa/analise.py):
    responde à pergunta (sim/parcial/nao), usou a frase-alvo, no máximo 1 correcção com explicação
@@ -145,20 +146,29 @@ def modo_simulado():
 
 
 def transcrever(audio):
-    """Texto dito (Whisper). Levanta Indisponivel se o serviço falhar; '' se não houve fala."""
-    from .services.ai_pronunciation import AIPronunciationAnalyzer
+    """Fala transcrita (services/transcricao_fala: texto + tempos das palavras). Levanta Indisponivel
+    se o serviço falhar; texto '' se não houve fala."""
+    from .services import transcricao_fala
     try:
-        analisador = AIPronunciationAnalyzer()
         audio.seek(0)
-        texto = analisador.client.audio.transcriptions.create(
-            model=analisador.whisper_model, file=audio, response_format='text', language='en')
+        t = transcricao_fala.transcrever(audio.getvalue(), 'audio/webm', 'en', True, getattr(audio, 'name', None))
     except Exception as e:
-        raise Indisponivel(f'whisper: {e}') from e
-    return ' '.join(str(texto or '').split())[:2000]
+        raise Indisponivel(f'transcrição: {type(e).__name__}') from e
+    t.texto = ' '.join(str(t.texto or '').split())[:2000]
+    return t
 
 
-def guardar(user, ch, ex, transcricao, veredicto, simulada):
+def _texto_e_tempos(r):
+    """transcrever() devolve uma Transcricao; aceita também só o texto (testes, adaptadores antigos)."""
+    if isinstance(r, str) or r is None:
+        return ' '.join(str(r or '').split())[:2000], None
+    return ' '.join(str(getattr(r, 'texto', '') or '').split())[:2000], r
+
+
+def guardar(user, ch, ex, transcricao, veredicto, simulada, tempos=None):
+    from .services.metricas_fala import metricas_de_transcricao
     aceite = veredicto['aceite']
+    metricas = metricas_de_transcricao(tempos, transcricao)
     with transaction.atomic():
         resposta = ChallengeAttempt.objects.create(user=user, challenge=ch, is_correct=aceite)
         c = veredicto['correccao']
@@ -173,6 +183,8 @@ def guardar(user, ch, ex, transcricao, veredicto, simulada):
             feedback=(veredicto['comentario'] or '')[:2000],
             aceite=aceite,
             fonte=TentativaPronuncia.FONTE_SIMULADA if simulada else TentativaPronuncia.FONTE_IA,
+            origem=TentativaPronuncia.ORIGEM_RESPONDER,
+            **metricas,
         )
     if veredicto['usou_frase']:
         try:  # perfil de fala: a frase pedida pelo exercício fica 'com_ajuda' (não foi dita sozinha)
@@ -187,6 +199,14 @@ def _assinatura(user):
     from apps.subscriptions.models import UserSubscription
     sub = UserSubscription.objects.select_related('plan').filter(user=user).first()
     return sub if sub is not None and sub.is_active() else None
+
+
+def _fala_da_tentativa(tentativa):
+    from .services.metricas_fala import resumo_publico
+    if tentativa is None:
+        return None
+    return resumo_publico({k: getattr(tentativa, k, None) for k in (
+        'segundos_fala', 'palavras_ditas', 'ppm', 'pausas_longas', 'pausas_longas_s', 'maior_pausa_s', 'fonte_tempo')})
 
 
 class ResponderEmVozView(APIView):
@@ -230,10 +250,11 @@ class ResponderEmVozView(APIView):
         audio.name = audio_file.name or 'resposta.webm'
         simulada = modo_simulado()
         try:
+            tempos = None
             if simulada:
                 transcricao = (ex['exemplo'] or ex['frase_alvo']) if audio.getbuffer().nbytes > MIN_BYTES_SIMULADO else ''
             else:
-                transcricao = transcrever(audio)
+                transcricao, tempos = _texto_e_tempos(transcrever(audio))
             if not transcricao.strip():
                 # Silêncio ou só ruído: grava-se outra vez, sem perder vidas.
                 return Response({'codigo': 'sem_fala', 'mensagem': 'Não ouvimos a sua resposta. Grave outra vez, mais perto do microfone.'},
@@ -245,7 +266,7 @@ class ResponderEmVozView(APIView):
 
         tentativa = None
         try:
-            tentativa = guardar(request.user, ch, ex, transcricao, veredicto, simulada)
+            tentativa = guardar(request.user, ch, ex, transcricao, veredicto, simulada, tempos)
         except Exception:
             logger.exception('responder: falha ao guardar a tentativa')
 
@@ -290,4 +311,5 @@ class ResponderEmVozView(APIView):
             'user_progress': {'hearts': 999 if ilimitadas else progresso.hearts, 'points': progresso.points},
             'ai_analyses_remaining': restantes,
             'simulada': simulada,
+            'fala': _fala_da_tentativa(tentativa),
         }, status=status_http.HTTP_200_OK)

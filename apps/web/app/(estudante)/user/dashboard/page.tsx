@@ -14,6 +14,7 @@ import { contextoCurso, LinhaCursoInscrito, ListaCursos } from "@/components/pe/
 import { SinoNotificacoes } from "@/components/pe/estudante/Navegacao";
 import { PedidoOpiniao } from "@/components/pe/opiniao/PedidoOpiniao";
 import { CartaoRevisao } from "@/components/pe/revisao/CartaoRevisao";
+import { ResumoFala } from "@/components/pe/fala/Fala";
 import { usePerfilQuery } from "@/src/domains/student/perfil/api";
 
 /** A API representa "vidas ilimitadas" (planos pagos) com 999. */
@@ -65,6 +66,9 @@ export default function Inicio() {
             <Contadores sequencia={seq?.current_streak} vidas={vidas} />
           </div>
         </div>
+
+        {/* Quanto fala: a medida principal do progresso (fase 3). */}
+        {user ? <ResumoFala /> : null}
 
         <div className="grid gap-8 md:grid-cols-[minmax(0,1.5fr)_minmax(320px,1fr)] md:items-start xl:gap-12">
           <div className="flex flex-col gap-8">

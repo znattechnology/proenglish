@@ -16,6 +16,7 @@ import {
   type ResultadoRevisao,
 } from "@/src/domains/student/revisao/api";
 import { BotaoOuvirFrase, ExercicioRevisaoUI, type RespostaRevisao } from "./Exercicios";
+import { PalavrasComNota } from "@/components/pe/fala/Fala";
 
 const VOLTAR = "/user/laboratory/learn";
 
@@ -234,7 +235,11 @@ function Rodape({
                 <span className="font-semibold">{r.texto}</span>
               </span>
               {r.traducao ? <span className="text-[15px] leading-[22px] text-pe-tinta-suave">{r.traducao}</span> : null}
-              {r.analise?.palavras.length ? <span className="text-[15px] leading-[22px]">Palavras a treinar: {r.analise.palavras.join(", ")}.</span> : null}
+              {r.analise?.detalhe ? (
+                <PalavrasComNota detalhe={r.analise.detalhe} />
+              ) : r.analise?.palavras.length ? (
+                <span className="text-[15px] leading-[22px]">Palavras a treinar: {r.analise.palavras.join(", ")}.</span>
+              ) : null}
               {r.explicacao ? <span className="text-[15px] leading-[22px]">{r.explicacao}</span> : null}
               {r.subiu && r.estado_depois ? (
                 <span className="inline-flex items-center gap-1 text-[15px] font-semibold">

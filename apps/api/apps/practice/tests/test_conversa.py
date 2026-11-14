@@ -384,7 +384,7 @@ class DonoTests(Base):
         self.assertIsNone(d['notas'])
         self.assertEqual(set(d), {'id', 'situacao', 'iniciada_em', 'minutos', 'minutos_cobrados', 'segundos',
                                   'estado', 'notas', 'transcricao', 'correccoes', 'palavras_bem_usadas', 'resumo',
-                                  'objectivos', 'padroes'})
+                                  'objectivos', 'padroes', 'fala'})
 
     def test_legado_nao_quebra(self):
         VapiSession.objects.create(session_id='legado-1', user=self.aluno, level='B1', domain='general',

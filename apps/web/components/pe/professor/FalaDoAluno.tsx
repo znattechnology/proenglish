@@ -4,7 +4,8 @@ import { useState } from "react";
 import { Aviso, Botao, Etiqueta, Osso } from "@/components/pe";
 import { NotasDoExame } from "@/components/pe/curso/Exame";
 import { dataCurta } from "@/src/domains/shared/exameOral";
-import { useFalaAlunoQuery, useReverExameMutation, type ExameDoAluno } from "@/src/domains/teacher/professor/alunos";
+import { MinutosPorDia } from "@/components/pe/estatisticas/MinutosPorDia";
+import { useFalaAlunoQuery, useReverExameMutation, type ExameDoAluno, type FalaDoAluno as DadosFala } from "@/src/domains/teacher/professor/alunos";
 
 const COMPETENCIAS = [
   ["falar", "Falar"],
@@ -72,6 +73,8 @@ export function FalaDoAluno({ alunoId }: { alunoId: string }) {
           <p className="m-0 rounded-pe-md bg-pe-fundo-suave p-4">Ainda não fez o exame oral de nenhum curso seu.</p>
         )}
       </section>
+
+      {data.fala ? <FalaPorSemana f={data.fala} /> : null}
     </div>
   );
 }
@@ -181,5 +184,63 @@ function CartaoExame({ e, alunoId }: { e: ExameDoAluno; alunoId: string }) {
         )
       ) : null}
     </li>
+  );
+}
+
+const semanaCurta = (iso: string) => new Date(`${iso}T12:00:00`).toLocaleDateString("pt-PT", { day: "numeric", month: "short" }).replace(".", "");
+
+/** Quanto o aluno fala por semana, o ritmo (palavras por minuto) e as palavras que ainda não saem bem. */
+function FalaPorSemana({ f }: { f: NonNullable<DadosFala["fala"]> }) {
+  const total = f.semanas.reduce((a, s) => a + s.segundos, 0);
+  const ppm = f.semanas.filter((s) => s.ppm !== null);
+  return (
+    <section aria-labelledby="t-minutos" className="flex flex-col gap-3 xl:col-span-2">
+      <h2 id="t-minutos" className="m-0 font-pe-titulo text-[22px] font-semibold leading-7">
+        Quanto fala
+      </h2>
+      <div className="grid gap-8 xl:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+        <div className="flex min-w-0 flex-col gap-3">
+          <p className="m-0 text-[15px] leading-[22px] text-pe-tinta-suave">
+            {total ? `${Math.round(total / 60)} min a falar nas últimas 8 semanas (conversas e gravações). Meta do aluno: ${f.meta_min} min por dia.` : "Ainda não falou nas últimas 8 semanas."}
+          </p>
+          {total ? (
+            <MinutosPorDia
+              dias={f.semanas.map((s) => ({ data: s.inicio, minutos: Math.round(s.segundos / 60), rotulo: s.actual ? "esta" : semanaCurta(s.inicio) }))}
+              meta={f.meta_min * 7}
+              legendaMeta={`meta da semana: ${f.meta_min} min por dia`}
+              rotuloLongo={(iso) => `Semana de ${semanaCurta(iso)}`}
+              descricao="Minutos a falar por semana"
+              cabecalho="Semana"
+            />
+          ) : null}
+          {ppm.length ? (
+            <p className="m-0 text-[15px] leading-[22px]">
+              Palavras por minuto (mediana):{" "}
+              {ppm.map((s) => `${s.actual ? "esta semana" : semanaCurta(s.inicio)} ${Math.round(s.ppm!)}`).join(", ")}.
+            </p>
+          ) : null}
+        </div>
+        <div className="flex min-w-0 flex-col gap-2">
+          <h3 className="m-0 text-[17px] font-semibold leading-6">Palavras a treinar</h3>
+          {f.palavras_treinar.length ? (
+            <ul className="m-0 flex list-none flex-col p-0">
+              {f.palavras_treinar.map((w) => (
+                <li key={w.palavra} className="flex justify-between gap-3 border-b border-pe-fundo-forte py-2">
+                  <span lang="en" className="font-semibold">
+                    {w.palavra}
+                    {w.fonema ? <span className="font-normal text-pe-tinta-suave"> /{w.fonema}/</span> : null}
+                  </span>
+                  <span className="shrink-0 tabular-nums text-pe-tinta-suave">
+                    {w.falhas} de {w.tentativas}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="m-0 rounded-pe-md bg-pe-fundo-suave p-4">Sem palavras difíceis nas gravações.</p>
+          )}
+        </div>
+      </div>
+    </section>
   );
 }

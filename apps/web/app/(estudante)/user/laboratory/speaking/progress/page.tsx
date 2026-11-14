@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { BarraProgresso, Botao, Etiqueta, Osso } from "@/components/pe";
 import { Pagina } from "@/components/pe/estudante/Pagina";
+import { ProgressoDaFala } from "@/components/pe/fala/Fala";
 import { useProgressoQuery, type Progresso } from "@/src/domains/student/conversa/api";
 import { duracao } from "@/src/domains/student/progresso/api";
 import { diaMesCurto } from "@/src/domains/student/subscricao/api";
@@ -13,11 +14,14 @@ export default function PaginaProgressoConversa() {
   return (
     <Pagina>
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <h1 className="m-0 font-pe-titulo text-[26px] font-bold leading-8 md:text-pe-titulo-l">Progresso na conversa</h1>
+        <h1 className="m-0 font-pe-titulo text-[26px] font-bold leading-8 md:text-pe-titulo-l">Progresso a falar</h1>
         <Botao asChild tamanho="medio" className="self-start md:self-auto">
           <Link href="/user/laboratory/speaking/real-time">Começar uma conversa</Link>
         </Botao>
       </div>
+      {/* Fase 3: quanto e como fala (todas as gravações e conversas). */}
+      <ProgressoDaFala />
+      <h2 className="m-0 mt-4 font-pe-titulo text-[22px] font-bold leading-7 md:text-pe-titulo-m">Conversas com o tutor</h2>
       {isError ? (
         <div role="alert" className="flex max-w-[640px] flex-col items-start gap-3 rounded-pe-md bg-pe-errado-suave p-5">
           <p className="m-0">Não conseguimos carregar o progresso.</p>

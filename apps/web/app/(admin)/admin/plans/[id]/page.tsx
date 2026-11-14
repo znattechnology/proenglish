@@ -48,6 +48,7 @@ function Formulario({ p }: { p: Plano }) {
     conversa: p.limites.conversa_min_dia == null ? "" : String(p.limites.conversa_min_dia),
     nativo: String(p.limites.sessoes_nativo_mes),
     protecoes: String(p.limites.protecoes_semana),
+    detalhada: String(p.limites.pronuncia_detalhada_dia ?? 0),
     certificados: p.certificados,
   });
   const [erros, setErros] = useState<Record<string, string>>({});
@@ -85,6 +86,7 @@ function Formulario({ p }: { p: Plano }) {
               conversa_min_dia: numero(v.conversa),
               sessoes_nativo_mes: numero(v.nativo) ?? 0,
               protecoes_semana: numero(v.protecoes) ?? 0,
+              pronuncia_detalhada_dia: numero(v.detalhada) ?? 0,
             },
           }).unwrap();
           router.push("/admin/plans");
@@ -131,6 +133,14 @@ function Formulario({ p }: { p: Plano }) {
           <Campo rotulo="Lições por dia" inputMode="numeric" value={v.licoes} onChange={(e) => muda("licoes", e.target.value)} erro={erros.licoes_dia} ajuda="Vazio para ilimitado." />
           <Campo rotulo="Vidas" inputMode="numeric" value={v.vidas} onChange={(e) => muda("vidas", e.target.value)} erro={erros.vidas} ajuda="Vazio para ilimitado." />
           <Campo rotulo="Minutos de conversa por dia" inputMode="numeric" value={v.conversa} onChange={(e) => muda("conversa", e.target.value)} erro={erros.conversa_min_dia} ajuda="Vazio para sem limite." />
+          <Campo
+            rotulo="Avaliações de pronúncia detalhadas por dia"
+            inputMode="numeric"
+            value={v.detalhada}
+            onChange={(e) => muda("detalhada", e.target.value)}
+            erro={erros.pronuncia_detalhada_dia}
+            ajuda="Nota por palavra e por som (Azure Speech, quando ligado no servidor). Acima do limite, a avaliação é a normal. 0 para nenhuma."
+          />
           <Campo rotulo="Sessões com professor nativo por mês" inputMode="numeric" value={v.nativo} onChange={(e) => muda("nativo", e.target.value)} erro={erros.sessoes_nativo_mes} ajuda="Só aparece na descrição do plano: as sessões ainda não existem na plataforma." />
           <Campo
             rotulo="Protecções de dias seguidos por semana"

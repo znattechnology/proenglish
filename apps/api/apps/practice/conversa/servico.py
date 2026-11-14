@@ -446,6 +446,9 @@ def _terminar_bloqueado(sessao, transcricao_enviada, sub, segundos_max=None):
     sessao.duration_seconds = segundos
     sessao.duration_minutes = minutos
     sessao.ended_at = agora
+    if ligou:  # fase 3: tempo de fala do aluno (medido com os tempos do Vapi, ou estimado)
+        from . import tempo_fala
+        tempo_fala.aplicar(sessao, dados, transcricao)
     sessao.full_session_data = dados
     sessao.save()
 
@@ -684,7 +687,17 @@ def resumo(sessao):
         'resumo': texto_resumo or None,
         'objectivos': objectivos,
         'padroes': padroes,
+        'fala': _tempo_fala(sessao),
     }
+
+
+def _tempo_fala(sessao):
+    from . import tempo_fala
+    try:
+        return tempo_fala.resumo(sessao)
+    except Exception:
+        logger.exception('conversa: falha no resumo do tempo de fala')
+        return None
 
 
 def _perfil_da_sessao(sessao, dados):

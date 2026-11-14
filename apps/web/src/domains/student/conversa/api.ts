@@ -79,6 +79,8 @@ export type Resumo = {
   resumo: string | null;
   objectivos: ObjectivoResultado[];
   padroes: PadraoConversa[];
+  /** Fase 3: quanto falou o aluno (medido com os tempos do Vapi, ou estimado pelas palavras). */
+  fala?: { segundos: number; ppm: number | null; palavras_por_turno: number | null; quota: number | null; fonte: "medido" | "estimado"; frase: string } | null;
 };
 
 export type Progresso = {

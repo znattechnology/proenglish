@@ -10,7 +10,8 @@ Só as frases aprovadas pelo professor (FraseAula.APROVADA) chegam aqui.
 
 "Repetir em voz alta": a análise é a da revisão (views_revisao._analisar: Whisper + nota, ou o modo
 simulado em desenvolvimento), conta para o limite diário de análises do plano e fica em
-TentativaPronuncia. Gravação aceite -> a frase fica 'com_ajuda' no banco (o aluno repetiu-a com o
+TentativaPronuncia (com as métricas de fluência e, dentro do limite do plano, a avaliação detalhada).
+Gravação aceite -> a frase fica 'com_ajuda' no banco (o aluno repetiu-a com o
 modelo do vídeo: ainda não a disse sozinho).
 
 A conversa usa o serviço normal (conversa/servico.criar_sessao) com a situação "aula-<hex>"
@@ -92,8 +93,7 @@ class FalarFrase(_BaseAula):
     def post(self, request, chapterId, fraseId):
         from apps.perfil.models import ItemBanco
         from apps.perfil.servico import registar_item
-        from apps.perfil.views_revisao import _analisar, _guardar_tentativa, _indisponivel
-        from apps.practice.views_ai import _lista_textos, _nota
+        from apps.perfil.views_revisao import _analisar, _guardar_tentativa, _indisponivel, analise_publica
         from apps.subscriptions.models import UserSubscription
 
         chapter = self.aula()
@@ -114,14 +114,15 @@ class FalarFrase(_BaseAula):
         try:
             dados = io.BytesIO(audio.read())
             dados.name = audio.name
-            result, simulada = _analisar(dados, frase.texto)
+            result, simulada = _analisar(dados, frase.texto, request.user, getattr(audio, 'content_type', None))
         except Exception:
             logger.exception('aula: análise de pronúncia falhou')
             return _indisponivel()
         if getattr(result, 'indisponivel', False):
             return _indisponivel()
+        tentativa = None
         try:
-            _guardar_tentativa(request.user, result, simulada)
+            tentativa = _guardar_tentativa(request.user, result, simulada, origem='aula')
         except Exception:
             logger.exception('aula: falha ao guardar a tentativa de pronúncia')
         if sub is not None and sub.is_active():
@@ -135,10 +136,7 @@ class FalarFrase(_BaseAula):
                              estado=ItemBanco.COM_AJUDA if aceite else ItemBanco.VISTA, origem='aula',
                              capitulo_id=chapter.pk, curso_id=chapter.section.course_id)
         return Response({
-            'analise': {'nota': _nota(result.overall_score), 'aceite': aceite,
-                        'transcricao': str(result.transcribed_text or '')[:500],
-                        'palavras': _lista_textos(result.problematic_words, chars=60),
-                        'mensagem': str(result.feedback or '')[:500] or None},
+            'analise': analise_publica(result, tentativa),
             'estado': item.estado if item is not None else None,
         })
 

@@ -63,7 +63,6 @@ LOCAL_APPS = [
     'apps.cms',  # antigo: as rotas /api/v1/cms/ respondem 410
     'apps.site',  # conteúdo do site público (rascunho + publicado)
     'apps.platform_admin',  # Platform admin dashboard and management
-    'apps.chatbot',  # Intelligent landing page chatbot
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -578,7 +577,6 @@ CONVERSA_SIMULADA = config(
 )
 # Duração máxima de uma conversa (minutos), além do que resta da quota diária.
 CONVERSA_MAX_MINUTOS_SESSAO = config('CONVERSA_MAX_MINUTOS_SESSAO', default=15, cast=int)
-# Modelo barato (o mesmo do chatbot) para avaliação, respostas escritas e ajustes.
 # Claude (Anthropic): ajustes, respostas escritas do tutor e avaliação das conversas.
 ANTHROPIC_API_KEY = config('ANTHROPIC_API_KEY', default='')
 CONVERSA_CLAUDE_MODELO = config('CONVERSA_CLAUDE_MODELO', default='claude-opus-5-5')  # avaliação e respostas escritas
@@ -598,6 +596,8 @@ PRATICA_CLAUDE_MODELO = config('PRATICA_CLAUDE_MODELO', default='claude-opus-5-5
 PRATICA_GERAR_LIMITE_DIA = config('PRATICA_GERAR_LIMITE_DIA', default=30, cast=int)
 # Revisão de hoje: exercícios curtos para os padrões de erro (gerados uma vez por padrão e reutilizados).
 REVISAO_CLAUDE_MODELO = config('REVISAO_CLAUDE_MODELO', default='claude-haiku-5-5')
+# Avaliação e sugestões de tradução (antes gpt-4 da OpenAI).
+TRADUCAO_CLAUDE_MODELO = config('TRADUCAO_CLAUDE_MODELO', default='claude-opus-5-5')
 # Exercício "Responder" (resposta livre em voz alta): um pedido curto por gravação, modelo rápido.
 RESPONDER_CLAUDE_MODELO = config('RESPONDER_CLAUDE_MODELO', default='claude-haiku-5-5')
 # Conversa curta no fim de uma lição (exercício VAPI_CONVERSATION): duração máxima em segundos.
@@ -616,6 +616,21 @@ TRANSCRICAO_MAX_BYTES = config('TRANSCRICAO_MAX_BYTES', default=2200 * 1024 * 10
 TRANSCRICAO_PEDACO_SEGUNDOS = config('TRANSCRICAO_PEDACO_SEGUNDOS', default=600, cast=int)  # 10 min (~2.4 MB a 32 kb/s)
 FFMPEG_BIN = config('FFMPEG_BIN', default='ffmpeg')
 FFPROBE_BIN = config('FFPROBE_BIN', default='ffprobe')
+
+# Fase 3 (medir a fala).
+# Fala -> texto dos alunos (apps/practice/services/transcricao_fala.py): fornecedor e modelo.
+TRANSCRICAO_FALA_PROVEDOR = config('TRANSCRICAO_FALA_PROVEDOR', default='openai')
+TRANSCRICAO_FALA_MODELO = config('TRANSCRICAO_FALA_MODELO', default='whisper-1')
+# Análise de pronúncia pelo texto e geração de exercícios de pronúncia (Claude, esforço baixo).
+PRONUNCIA_CLAUDE_MODELO = config('PRONUNCIA_CLAUDE_MODELO', default='claude-opus-5-5')
+# Avaliação de pronúncia detalhada (apps/practice/services/pronuncia/): 'auto' usa o Azure Speech
+# quando AZURE_SPEECH_KEY e AZURE_SPEECH_REGION estão definidas (dentro do limite diário do plano);
+# 'texto' desliga-a. Sem chave, ou em falha, a avaliação é a normal, pelo texto.
+PRONUNCIA_PROVEDOR = config('PRONUNCIA_PROVEDOR', default='auto')
+AZURE_SPEECH_KEY = config('AZURE_SPEECH_KEY', default='')
+AZURE_SPEECH_REGION = config('AZURE_SPEECH_REGION', default='')
+# Opcional: o endpoint do recurso (https://<nome>.cognitiveservices.azure.com); vazio usa a região.
+AZURE_SPEECH_ENDPOINT = config('AZURE_SPEECH_ENDPOINT', default='')
 FRASES_AULA_CLAUDE_MODELO = config('FRASES_AULA_CLAUDE_MODELO', default='claude-opus-5-5')
 # Nota: os limites acima (e os throttles/ratelimits) usam a cache 'default' (ver CACHES).
 

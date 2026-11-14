@@ -4,6 +4,7 @@
  */
 import { aposEstudo, quandoCorrerBem } from "@/src/domains/student/sincronizar";
 import { DJANGO_BASE_URL } from "@/src/domains/shared/api/baseQuery";
+import type { AnaliseGravacao } from "@/src/domains/student/curso/fala";
 import { studentPracticeApiSlice } from "../practice-courses/api/studentPracticeApiSlice";
 
 const R = `${DJANGO_BASE_URL}/student/revisao`;
@@ -53,7 +54,7 @@ export type ResultadoRevisao = {
   proxima_revisao: string | null;
   intervalo_dias: number | null;
   semelhanca?: number;
-  analise?: { nota: number; aceite: boolean; transcricao: string; palavras: string[]; mensagem: string | null };
+  analise?: AnaliseGravacao;
 };
 
 export type FimRevisao = {

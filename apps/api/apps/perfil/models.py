@@ -31,6 +31,10 @@ class PerfilFala(models.Model):
     profissao = models.CharField(max_length=120, blank=True, default='')
     objectivo = models.CharField(max_length=200, blank=True, default='')
     conversas_avaliadas = models.PositiveIntegerField(default=0)
+    # Meta diária de minutos a FALAR (fase 3). A sequência continua a usar a meta de estudo.
+    META_FALA_CHOICES = [(3, '3 minutos'), (5, '5 minutos'), (10, '10 minutos'), (15, '15 minutos')]
+    META_FALA_PADRAO = 5
+    meta_fala_min = models.PositiveSmallIntegerField(choices=META_FALA_CHOICES, default=META_FALA_PADRAO)
 
     criado_em = models.DateTimeField(auto_now_add=True)
     actualizado_em = models.DateTimeField(auto_now=True)
@@ -60,7 +64,7 @@ class ItemBanco(models.Model):
                       (SOZINHO, 'Disse sozinho')]
 
     ORIGENS = [('situacao', 'Situação'), ('aula', 'Aula em vídeo'), ('licao', 'Lição de prática'),
-               ('conversa', 'Conversa'), ('professor', 'Professor')]
+               ('conversa', 'Conversa'), ('professor', 'Professor'), ('pronuncia', 'Palavra difícil')]
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='banco_frases')
     texto = models.CharField(max_length=300, help_text='Em inglês')
@@ -184,3 +188,52 @@ class ExerciciosPadrao(models.Model):
 
     def __str__(self):
         return f'{self.chave} ({len(self.exercicios or [])})'
+
+
+class FalaDiaria(models.Model):
+    """
+    Segundos que o aluno FALOU num dia de Luanda (fase 3): a sua parte das conversas com o tutor
+    (incl. lição, aula, teste de nível e exame oral) e todas as gravações (lição, Responder, revisão,
+    repetir frases da aula). Recalculada a partir das fontes (idempotente): ver apps/perfil/fala.py.
+    fontes: {'conversa': s, 'exame': s, 'diagnostico': s, 'licao': s, 'responder': s, 'revisao': s, 'aula': s}
+    """
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='fala_diaria')
+    dia = models.DateField(help_text='Dia de Angola')
+    segundos = models.FloatField(default=0)
+    fontes = models.JSONField(default=dict, blank=True)
+    actualizado_em = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-dia']
+        constraints = [models.UniqueConstraint(fields=['user', 'dia'], name='perfil_fala_diaria_unica')]
+        verbose_name = 'fala diária'
+        verbose_name_plural = 'fala diária'
+
+    def __str__(self):
+        return f'{self.user_id} {self.dia}: {self.segundos:.0f} s'
+
+
+class PalavraDificil(models.Model):
+    """
+    Palavras que o aluno pronuncia mal (fase 3). Vêm das gravações: hoje as palavras a melhorar da
+    avaliação pelo texto; com a avaliação detalhada, a nota de cada palavra (media).
+    acertos_seguidos: gravações seguidas em que a palavra saiu bem (3 = deixa de aparecer).
+    """
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='palavras_dificeis')
+    palavra = models.CharField(max_length=40, help_text='Minúsculas')
+    tentativas = models.PositiveIntegerField(default=0)
+    falhas = models.PositiveIntegerField(default=0)
+    acertos_seguidos = models.PositiveIntegerField(default=0)
+    media = models.FloatField(null=True, blank=True, help_text='Nota média (0-100) das avaliações detalhadas')
+    avaliacoes_detalhadas = models.PositiveIntegerField(default=0)
+    fonema = models.CharField(max_length=20, blank=True, default='', help_text='O som mais difícil (detalhada)')
+    ultima = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ['-falhas', '-ultima']
+        constraints = [models.UniqueConstraint(fields=['user', 'palavra'], name='perfil_palavra_dificil_unica')]
+        verbose_name = 'palavra difícil'
+        verbose_name_plural = 'palavras difíceis'
+
+    def __str__(self):
+        return f'{self.palavra} ({self.falhas}/{self.tentativas})'

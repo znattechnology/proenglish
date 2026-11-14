@@ -34,7 +34,7 @@ from rest_framework.response import Response
 from apps.practice.models import VapiSession
 from apps.practice.throttling import VapiWebhookThrottle
 
-from . import analise, servico
+from . import analise, servico, tempo_fala
 from .quota import obter_assinatura
 
 logger = logging.getLogger(__name__)
@@ -188,6 +188,9 @@ def registar_fim_chamada(sessao_id, msg):
             'duracao_segundos': duracao,
             'recebido_em': timezone.now().isoformat(),
         }
+        tempos = tempo_fala.segmentos_vapi(artifact.get('messages') or msg.get('messages'))
+        if tempos:
+            dados['tempos_vapi'] = tempos
         sessao.full_session_data = dados
 
         if sessao.status == VapiSession.STATUS_EM_CURSO:
@@ -205,7 +208,13 @@ def registar_fim_chamada(sessao_id, msg):
             sessao.total_words = m['total_palavras']
             sessao.words_per_minute = m['palavras_por_minuto']
             sessao.status = VapiSession.STATUS_A_AVALIAR
-            sessao.save(update_fields=['full_session_data', 'total_words', 'words_per_minute', 'status'])
+            campos = tempo_fala.aplicar(sessao, dados, transcricao)
+            sessao.save(update_fields=['full_session_data', 'total_words', 'words_per_minute', 'status'] + campos)
+        elif sessao.connected_at is not None and sessao.status in VapiSession.STATUS_TERMINADAS:
+            # Já fechada e avaliada: só os tempos de fala medidos (ganham à estimativa do fecho).
+            campos = tempo_fala.aplicar(sessao, dados, analise.limpar_transcricao(dados.get('transcricao') or [])
+                                        or transcricao)
+            sessao.save(update_fields=['full_session_data'] + campos)
         else:
             sessao.save(update_fields=['full_session_data'])
 

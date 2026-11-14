@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
-import { CheckCircle2, ChevronLeft, Circle } from "lucide-react";
+import { CheckCircle2, ChevronLeft, Circle, Mic } from "lucide-react";
 import { BalaoFala, Botao, Etiqueta, Osso } from "@/components/pe";
 import { Pagina } from "@/components/pe/estudante/Pagina";
 import { cnPe } from "@/lib/pe";
@@ -23,7 +23,7 @@ export default function PaginaResumoConversa() {
   return (
     <Pagina>
       <Link href="/user/laboratory/speaking/progress" className="-ml-1 flex min-h-11 items-center gap-1 self-start text-[15px] font-semibold text-pe-azul-marca no-underline">
-        <ChevronLeft aria-hidden className="size-5" /> Progresso na conversa
+        <ChevronLeft aria-hidden className="size-5" /> Progresso a falar
       </Link>
       {isError ? (
         <div role="alert" className="flex max-w-[640px] flex-col items-start gap-3 rounded-pe-md bg-pe-errado-suave p-5">
@@ -76,6 +76,16 @@ function Conteudo({ r }: { r: Resumo }) {
           </Link>
         </Botao>
       </div>
+
+      {r.fala ? (
+        <p className="m-0 flex max-w-[760px] items-start gap-3 rounded-pe-md border border-pe-linha px-4 py-3 text-[17px] leading-[26px]">
+          <Mic aria-hidden className="mt-0.5 size-5 shrink-0 text-pe-azul-marca" />
+          <span>
+            {r.fala.frase}
+            {r.fala.fonte === "estimado" ? <span className="block text-pe-legenda text-pe-tinta-suave">Tempo estimado pelas palavras que disse.</span> : null}
+          </span>
+        </p>
+      ) : null}
 
       {notas.length ? (
         <dl className={cnPe("m-0 grid grid-cols-2 gap-3", notas.length === 5 ? "sm:grid-cols-3 lg:grid-cols-5" : "sm:grid-cols-4")}>
