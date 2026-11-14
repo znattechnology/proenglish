@@ -11,7 +11,7 @@ import logging
 from datetime import timedelta
 
 from django.db import transaction
-from django.db.models import Count, F, Max, Q, Sum, Avg
+from django.db.models import Count, F, Max, Min, Q, Sum, Avg
 from django.utils import timezone
 
 from apps.practice.models import (
@@ -239,6 +239,30 @@ class LessonNotCompleted(Exception):
         super().__init__(f"{completed}/{total}")
 
 
+FOLGA_LICAO_SEGUNDOS = 60  # ler o primeiro exercício antes da primeira resposta
+
+
+def duracao_medida(user, lesson, duracao_cliente, agora=None):
+    """
+    Segundos de estudo a creditar por uma lição: o que o cliente diz, mas nunca mais do que o tempo
+    que o servidor viu passar desde a primeira resposta desta volta da lição (mais uma folga para ler
+    o primeiro exercício) nem mais de MAX_LESSON_DURATION_SECONDS. Sem isto, o cliente podia declarar
+    60 min por cada lição de 5 min e encher a meta diária e a sequência.
+    """
+    agora = agora or timezone.now()
+    try:
+        pedido = max(0, int(duracao_cliente or 0))
+    except (TypeError, ValueError):
+        pedido = 0
+    respostas = ChallengeProgress.objects.filter(user=user, challenge__lesson=lesson, completed=True)
+    anterior = LessonCompletion.objects.filter(user=user, lesson=lesson).values_list('last_completed_at', flat=True).first()
+    if anterior is not None:
+        respostas = respostas.filter(updated_at__gt=anterior)  # só a volta actual ("praticar de novo")
+    inicio = respostas.aggregate(inicio=Min('updated_at'))['inicio']
+    medido = int((agora - inicio).total_seconds()) + FOLGA_LICAO_SEGUNDOS if inicio else 0
+    return max(0, min(pedido, medido, MAX_LESSON_DURATION_SECONDS))
+
+
 def complete_lesson(user, lesson, duration_seconds):
     """
     Record a lesson completion.
@@ -261,8 +285,8 @@ def complete_lesson(user, lesson, duration_seconds):
     if limit_error:
         raise LessonLimitReached(limit_error)
 
-    duration_seconds = max(0, min(int(duration_seconds or 0), MAX_LESSON_DURATION_SECONDS))
     now = timezone.now()
+    duration_seconds = duracao_medida(user, lesson, duration_seconds, now)
     points_awarded = 0
     hearts_awarded = 0
     recorded = True
