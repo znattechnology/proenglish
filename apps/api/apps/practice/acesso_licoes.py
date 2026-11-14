@@ -4,7 +4,8 @@ Pode esta pessoa abrir/jogar esta lição de prática agora?
 A mesma regra que o trilho (GET .../courses/<id>/trilho/) mostra:
 - uma lição "feita" (todos os exercícios concluídos) pode sempre ser repetida;
 - a primeira lição por fazer, pela ordem unidade -> lição, é a "actual" e pode ser jogada;
-- as outras estão bloqueadas.
+- as outras estão bloqueadas, salvo se forem a lição de prática ligada a uma aula de um curso
+  em vídeo em que o aluno está inscrito (ligada_a_aula_do_aluno).
 O curso tem de estar publicado (ou arquivado a manter, para quem já o fazia; ver
 apps/courses/ciclo.py), e o professor pode desligar a repetição (definição pode_repetir).
 E o plano tem de dar acesso ao curso (Course.access_level: free / premium / premium_plus).
@@ -119,6 +120,16 @@ def licoes_visiveis(curso, licoes):
 CODIGO_INDISPONIVEL = 'licao_indisponivel'
 
 
+def ligada_a_aula_do_aluno(user, licao):
+    """
+    A lição é a "lição de prática a seguir" (Chapter.practice_lesson) de uma aula de um curso em
+    vídeo em que a pessoa está inscrita: abre-se a partir da aula sem ter de seguir a ordem do trilho.
+    """
+    from apps.courses.models import Chapter, CourseEnrollment
+    cursos = Chapter.objects.filter(practice_lesson=licao).values('section__course_id')
+    return CourseEnrollment.objects.filter(user=user, is_active=True, course_id__in=cursos).exists()
+
+
 def erro_acesso_licao(user, licao):
     """None se a pessoa pode jogar a lição; senão o corpo do 403."""
     curso = licao.unit.course
@@ -136,7 +147,7 @@ def erro_acesso_licao(user, licao):
         }
     for outra, estado in estados_das_licoes(user, curso):
         if outra.id == licao.id:
-            if estado == 'bloqueada':
+            if estado == 'bloqueada' and not ligada_a_aula_do_aluno(user, licao):
                 return {'codigo': CODIGO_BLOQUEADA, 'mensagem': MENSAGEM_BLOQUEADA}
             if estado == 'feita' and not definicao(curso, 'pode_repetir'):
                 return {'codigo': CODIGO_REPETIR, 'mensagem': MENSAGEM_REPETIR}

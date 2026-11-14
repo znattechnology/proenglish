@@ -13,6 +13,7 @@ import { mensagemErro } from "@/src/domains/student/subscricao/api";
 import {
   capitulosPorOrdem,
   concluidos,
+  temQuestionario,
   TIPO_PT,
   useCapituloQuery,
   useCursoQuery,
@@ -20,6 +21,7 @@ import {
   useMarcarCapituloMutation,
   useProgressoQuery,
   useRecursosQuery,
+  videosVistos,
   type CapituloNoCurso,
 } from "@/src/domains/student/curso/api";
 
@@ -40,6 +42,7 @@ export default function PaginaAula() {
   const anterior = i > 0 ? lista[i - 1] : null;
   const seguinte = i >= 0 && i < lista.length - 1 ? lista[i + 1] : null;
   const feitos = concluidos(progresso);
+  const vistos = videosVistos(progresso);
 
   if (erroCurso) return <Problema titulo="Não encontrámos este curso" courseId={courseId} />;
   if (!dados || !inscricao) return <EsqueletoAula />;
@@ -84,6 +87,7 @@ export default function PaginaAula() {
               courseId={courseId}
               userId={user?.id ?? ""}
               feito={feitos.has(chapterId)}
+              videoVisto={vistos.has(chapterId)}
               seguinte={seguinte}
             />
           ) : (
@@ -152,19 +156,25 @@ function Conteudo({
   courseId,
   userId,
   feito,
+  videoVisto,
   seguinte,
 }: {
   cap: CapituloNoCurso & { resources_data?: unknown[] };
   courseId: string;
   userId: string;
   feito: boolean;
+  videoVisto: boolean;
   seguinte: CapituloNoCurso | null;
 }) {
   const [marcar, { isLoading }] = useMarcarCapituloMutation();
   const [erro, setErro] = useState<string | null>(null);
   // O progresso pode chegar depois de a aula abrir: conta o que vem do servidor e o que se marcou agora.
   const [vistoAgora, setVisto] = useState(false);
-  const visto = feito || vistoAgora;
+  // Numa aula com questionário, ver o vídeo não chega: a aula só fica concluída ao passar.
+  const comQuiz = temQuestionario(cap);
+  const soQuiz = cap.type === "Quiz";
+  const visto = comQuiz ? feito : feito || vistoAgora;
+  const videoFeito = videoVisto || vistoAgora;
   const segundos = useRef(0);
   const { data: recursos } = useRecursosQuery(cap.chapterId);
   const linhas = useMemo(() => lerTranscricao(cap.transcript), [cap.transcript]);
@@ -181,16 +191,23 @@ function Conteudo({
   };
 
   const accao =
-    cap.type === "Quiz" ? null : visto ? (
+    soQuiz ? null : visto ? (
       <div className="flex flex-wrap items-center gap-3">
         <Etiqueta tipo="certo">
-          <Check aria-hidden className="size-4" strokeWidth={3} /> {cap.type === "Text" ? "Lida" : "Vista"}
+          <Check aria-hidden className="size-4" strokeWidth={3} /> {comQuiz ? "Concluída" : cap.type === "Text" ? "Lida" : "Vista"}
         </Etiqueta>
         {seguinte ? (
           <Botao asChild tamanho="medio">
             <Link href={`/user/courses/${courseId}/chapters/${seguinte.chapterId}`}>Aula seguinte</Link>
           </Botao>
         ) : null}
+      </div>
+    ) : comQuiz && videoFeito ? (
+      <div className="flex flex-col items-start gap-1 md:items-end">
+        <Etiqueta tipo="neutra">
+          <Check aria-hidden className="size-4" strokeWidth={3} /> {cap.type === "Text" ? "Lida" : "Vídeo visto"}
+        </Etiqueta>
+        <span className="text-[14px] leading-5 text-pe-tinta-suave">Passe o questionário para concluir a aula.</span>
       </div>
     ) : (
       <Botao tamanho="medio" disabled={isLoading} onClick={() => void concluir()}>
@@ -201,7 +218,7 @@ function Conteudo({
   return (
     <>
       {cap.type === "Video" && cap.video ? (
-        <Video src={cap.video} titulo={cap.title} linhas={linhas} aoAvancar={(s) => (segundos.current += s)} aoTerminar={() => !visto && void concluir()} />
+        <Video src={cap.video} titulo={cap.title} linhas={linhas} aoAvancar={(s) => (segundos.current += s)} aoTerminar={() => !visto && !(comQuiz && videoFeito) && void concluir()} />
       ) : null}
 
       <div className="flex flex-col gap-4 md:flex-row md:flex-wrap md:items-start md:justify-between">
@@ -215,22 +232,37 @@ function Conteudo({
       </div>
       {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
 
-      {cap.type === "Quiz" && cap.content ? <p className="m-0 text-pe-corpo-l">{cap.content}</p> : null}
+      {soQuiz && cap.content ? <p className="m-0 text-pe-corpo-l">{cap.content}</p> : null}
+      {cap.content && !soQuiz ? <TextoRico texto={cap.content} /> : null}
 
-      {cap.type === "Quiz" ? (
-        cap.quiz_data ? (
-          <Questionario chapterId={cap.chapterId} courseId={courseId} quiz={cap.quiz_data} aoPassar={() => !visto && void concluir()} />
+      {soQuiz ? (
+        cap.quiz_data?.questions?.length ? (
+          <Questionario chapterId={cap.chapterId} courseId={courseId} quiz={cap.quiz_data} />
         ) : (
           <Aviso tipo="neutro">O professor ainda não pôs perguntas neste questionário.</Aviso>
         )
+      ) : comQuiz && cap.quiz_data ? (
+        <section aria-labelledby="titulo-questionario" className="flex flex-col gap-3 border-t border-pe-linha pt-6">
+          <div className="flex flex-col gap-1">
+            <h2 id="titulo-questionario" className="m-0 font-pe-titulo text-[22px] font-bold leading-[28px]">
+              Questionário da aula
+            </h2>
+            <p className="m-0 text-pe-tinta-suave">
+              {videoFeito || visto ? "Responda para concluir a aula." : "Veja o vídeo e responda ao questionário para concluir a aula."}
+            </p>
+          </div>
+          <Questionario chapterId={cap.chapterId} courseId={courseId} quiz={cap.quiz_data} />
+        </section>
       ) : null}
 
-      {cap.content && cap.type !== "Quiz" ? <TextoRico texto={cap.content} /> : null}
-
-      {cap.type === "Exercise" && cap.practice_lesson ? (
+      {cap.practice_lesson ? (
         <div className="flex flex-col items-start gap-3 rounded-pe-fala bg-pe-azul-marca p-6 text-pe-sobre-marca pe-sobre-marca">
           <span className="font-pe-titulo text-[20px] font-bold leading-[26px]">Praticar no laboratório</span>
-          <span className="text-[15px] leading-[22px]">Esta aula é uma lição de prática: responde, ganha pontos e volta aqui quando terminar.</span>
+          <span className="text-[15px] leading-[22px]">
+            {cap.type === "Exercise"
+              ? "Esta aula é uma lição de prática: responde, ganha pontos e volta aqui quando terminar."
+              : "Pratique o que viu nesta aula. Os exercícios contam para a nota do curso."}
+          </span>
           <Botao asChild tipo="realce" tamanho="medio">
             <Link href={`/user/laboratory/learn/lesson/${cap.practice_lesson}`}>
               <Dumbbell aria-hidden /> Começar a prática

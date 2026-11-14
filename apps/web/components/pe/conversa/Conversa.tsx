@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ChevronLeft, Keyboard, Loader2, Mic, MicOff, Send, Volume2 } from "lucide-react";
+import { CheckCircle2, ChevronLeft, Circle, Keyboard, Loader2, Mic, MicOff, Send, Volume2 } from "lucide-react";
 import { Aviso, BalaoFala, Botao } from "@/components/pe";
 import { cnPe } from "@/lib/pe";
-import type { NovaSessao } from "@/src/domains/student/conversa/api";
+import { disseFrase, type NovaSessao } from "@/src/domains/student/conversa/api";
 import { falarNoBrowser, reconhecimentoDisponivel, useConversa, type FalaViva } from "./useConversa";
 
 const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
@@ -49,6 +49,16 @@ export function Conversa({ sessao, modo, chavePublica, minutosUsadosHoje, minuto
   const ajustes = c.falas.filter((f) => f.ajuste).length;
   const minutosHoje = Math.min(minutosDia ?? Infinity, minutosUsadosHoje + Math.floor(c.segundos / 60));
   const aTerminar = c.estado === "a_terminar" || c.estado === "terminada";
+
+  // Objectivos já ditos: só as falas finais do aluno (aproximado; quem decide no fim é o servidor).
+  const objectivos = useMemo(() => sessao.objectivos ?? [], [sessao.objectivos]);
+  const falasAluno = c.falas.filter((f) => f.quem === "aluno").map((f) => f.texto).join("\n");
+  const ditos = useMemo(() => {
+    const falas = falasAluno.split("\n");
+    return new Set(objectivos.filter((o) => falas.some((f) => disseFrase(o.en, f))).map((o) => o.en));
+  }, [objectivos, falasAluno]);
+  const chavesObjectivos = new Set(objectivos.map((o) => o.en.toLowerCase()));
+  const outrasFrases = sessao.frases.filter((f) => !chavesObjectivos.has(f.en.toLowerCase()));
 
   const instrucao =
     c.estado === "a_ligar"
@@ -138,6 +148,11 @@ export function Conversa({ sessao, modo, chavePublica, minutosUsadosHoje, minuto
           <p className="m-0 text-center font-pe-titulo text-[18px] font-light italic leading-[26px]" role="status">
             {instrucao}
           </p>
+          {objectivos.length ? (
+            <p className="m-0 text-[14px] leading-5 text-pe-tinta-suave md:hidden">
+              Objectivos já ditos: {ditos.size} de {objectivos.length}
+            </p>
+          ) : null}
           <div className="flex items-center justify-center gap-7">
             <button
               type="button"
@@ -209,23 +224,53 @@ export function Conversa({ sessao, modo, chavePublica, minutosUsadosHoje, minuto
       </section>
 
       <aside aria-label="Ajuda para a conversa" className="hidden w-[320px] shrink-0 flex-col gap-6 overflow-y-auto md:flex lg:w-[360px]">
-        <section aria-labelledby="titulo-frases" className="flex flex-col gap-3">
-          <h2 id="titulo-frases" className="m-0 font-pe-titulo text-pe-titulo-s">
-            Frases que pode usar
-          </h2>
-          <ul className="m-0 flex list-none flex-col p-0">
-            {sessao.frases.map((f) => (
-              <li key={f.en} className="border-b border-pe-fundo-forte py-2.5">
-                <button type="button" onClick={() => falarNoBrowser(f.en)} className="flex w-full flex-col items-start bg-transparent p-0 text-left" aria-label={`Ouvir: ${f.en}. ${f.pt}`}>
-                  <span lang="en" className="font-semibold leading-[22px]">
-                    {f.en}
-                  </span>
-                  <span className="text-[14px] leading-5 text-pe-tinta-suave">{f.pt}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        </section>
+        {objectivos.length ? (
+          <section aria-labelledby="titulo-objectivos" className="flex flex-col gap-2 rounded-pe-md border-2 border-pe-azul-marca p-4">
+            <h2 id="titulo-objectivos" className="m-0 font-pe-titulo text-pe-titulo-s">
+              Objectivos desta conversa
+            </h2>
+            <p className="m-0 text-[14px] leading-5 text-pe-tinta-suave" aria-live="polite">
+              Já disse {ditos.size} de {objectivos.length}. Diga-as sozinho, quando fizer sentido.
+            </p>
+            <ul className="m-0 flex list-none flex-col p-0">
+              {objectivos.map((o) => {
+                const dito = ditos.has(o.en);
+                return (
+                  <li key={o.en} className="border-b border-pe-fundo-forte last:border-b-0">
+                    <button type="button" onClick={() => falarNoBrowser(o.en)} className="flex w-full items-start gap-2.5 bg-transparent py-2.5 text-left" aria-label={`${dito ? "Já disse" : "Ainda não disse"}. Ouvir: ${o.en}${o.pt ? `. ${o.pt}` : ""}`}>
+                      {dito ? <CheckCircle2 aria-hidden className="mt-0.5 size-5 shrink-0 text-pe-certo" /> : <Circle aria-hidden className="mt-0.5 size-5 shrink-0 text-pe-tinta-suave" />}
+                      <span className="flex flex-col">
+                        <span lang="en" className={cnPe("font-semibold leading-[22px]", dito && "text-pe-certo")}>
+                          {o.en}
+                        </span>
+                        {o.pt ? <span className="text-[14px] leading-5 text-pe-tinta-suave">{o.pt}</span> : null}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        ) : null}
+        {outrasFrases.length ? (
+          <section aria-labelledby="titulo-frases" className="flex flex-col gap-3">
+            <h2 id="titulo-frases" className="m-0 font-pe-titulo text-pe-titulo-s">
+              {objectivos.length ? "Outras frases que pode usar" : "Frases que pode usar"}
+            </h2>
+            <ul className="m-0 flex list-none flex-col p-0">
+              {outrasFrases.map((f) => (
+                <li key={f.en} className="border-b border-pe-fundo-forte py-2.5">
+                  <button type="button" onClick={() => falarNoBrowser(f.en)} className="flex w-full flex-col items-start bg-transparent p-0 text-left" aria-label={`Ouvir: ${f.en}. ${f.pt}`}>
+                    <span lang="en" className="font-semibold leading-[22px]">
+                      {f.en}
+                    </span>
+                    <span className="text-[14px] leading-5 text-pe-tinta-suave">{f.pt}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
         <section aria-labelledby="titulo-nesta" className="flex flex-col gap-1.5 rounded-pe-md bg-pe-fundo-suave p-5">
           <h2 id="titulo-nesta" className="m-0 text-[17px] font-semibold leading-6">
             Nesta conversa

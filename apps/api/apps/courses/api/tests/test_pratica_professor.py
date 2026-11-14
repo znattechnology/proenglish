@@ -71,7 +71,7 @@ class Base(APITestCase):
         self.admin = User.objects.create_user(email='admin-pratica@example.com', name='Admin', password='x12345678',
                                               role='admin')
         self.curso = Course.objects.create(teacher=self.prof, teacherName='Prof', title='Inglês no Terminal',
-                                           description='Curso de prática', category='Oil & Gas', level='Intermediate',
+                                           description='Curso de prática', category='Oil & Gas', level='B1',
                                            course_type='practice', status='Draft')
         self.entrar(self.prof)
 

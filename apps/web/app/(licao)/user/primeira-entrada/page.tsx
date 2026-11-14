@@ -8,6 +8,7 @@ import { Aviso, Botao, Logo, Osso } from "@/components/pe";
 import { cnPe } from "@/lib/pe";
 import { useCatalogoCursosQuery } from "@/src/domains/student/inicio/api";
 import { useCursosPraticaQuery, useEscolherCursoMutation } from "@/src/domains/student/laboratorio/api";
+import { nivelDoTeste, nomeCompletoNivel, sugerirPorNivel } from "@/src/domains/shared/niveis";
 import { AREAS, NIVEIS, errosDoServidor, useGuardarPerfilMutation, useMetaQuery, useMudarMetaMutation, usePerfilQuery, type Nivel } from "@/src/domains/student/perfil/api";
 
 const ICONES: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -36,8 +37,6 @@ const PERGUNTAS: { frase: [string, string]; opcoes: string[]; certa: number }[] 
   { frase: ["Had we known about the delay, we ", " the client earlier."], opcoes: ["would warn", "would have warned", "will warn"], certa: 1 },
 ];
 
-const nivelPelaNota = (certas: number): Nivel => (certas <= 1 ? "Beginner" : certas <= 3 ? "Intermediate" : "Advanced");
-const nomeNivel = (n: Nivel) => NIVEIS.find((x) => x.valor === n)?.nome ?? n;
 
 /**
  * Primeira entrada: área e meta diária, 5 perguntas para o nível e a primeira lição.
@@ -156,7 +155,7 @@ export default function PrimeiraEntrada() {
             erro={erro}
           />
         ) : (
-          <Pronto area={areaEscolhida} nivel={nivel ?? "Intermediate"} />
+          <Pronto area={areaEscolhida} nivel={nivel ?? "B1"} />
         )}
       </main>
     </div>
@@ -177,7 +176,7 @@ function Teste({ aoTerminar, erro }: { aoTerminar: (n: Nivel) => void; erro: str
     novas[i] = acertou;
     setRespostas(novas);
     setEscolha(null);
-    if (ultima) aoTerminar(nivelPelaNota(novas.filter(Boolean).length));
+    if (ultima) aoTerminar(nivelDoTeste(novas.filter(Boolean).length));
     else setI(i + 1);
   };
 
@@ -187,8 +186,11 @@ function Teste({ aoTerminar, erro }: { aoTerminar: (n: Nivel) => void; erro: str
         <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9">Qual é o seu nível de inglês?</h1>
         <div className="flex flex-col gap-2.5">
           {NIVEIS.map((n) => (
-            <Botao key={n.valor} tipo="secundario" larguraTotal className="justify-start" onClick={() => aoTerminar(n.valor)}>
-              {n.nome}
+            <Botao key={n.valor} tipo="secundario" larguraTotal className="justify-start py-2.5 text-left" onClick={() => aoTerminar(n.valor)}>
+              <span className="flex flex-col gap-0.5">
+                <span>{n.nome}</span>
+                <span className="text-[14px] font-normal leading-5 text-pe-tinta-suave">{n.descricao}</span>
+              </span>
             </Botao>
           ))}
         </div>
@@ -255,14 +257,15 @@ function Pronto({ area, nivel }: { area: string | null; nivel: Nivel }) {
   const [erro, setErro] = useState<string | null>(null);
 
   const daArea = (praticas ?? []).filter((c) => c.category === area);
-  const pratica = daArea.find((c) => c.level === nivel) ?? daArea[0] ?? (praticas ?? [])[0];
+  // Mesmo nível ou um abaixo (ver sugerirPorNivel); sem cursos da área, qualquer curso de prática.
+  const pratica = sugerirPorNivel(daArea, nivel) ?? sugerirPorNivel(praticas ?? [], nivel);
   const videos = catalogo?.cursos ?? [];
-  const video = videos.find((c) => c.level === nivel) ?? videos[0];
+  const video = sugerirPorNivel(videos, nivel);
 
   return (
     <>
       <div className="flex flex-col gap-2">
-        <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9 md:text-[34px] md:leading-[42px]">O seu nível: {nomeNivel(nivel)}</h1>
+        <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9 md:text-[34px] md:leading-[42px]">O seu nível: {nomeCompletoNivel(nivel)}</h1>
         <p className="m-0 text-pe-tinta-suave">Escolhemos o curso por onde começar. Pode mudar de nível e de área nas definições.</p>
       </div>
 

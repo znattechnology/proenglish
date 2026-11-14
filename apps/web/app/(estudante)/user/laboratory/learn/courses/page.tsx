@@ -7,7 +7,8 @@ import { ArrowLeft, BookOpen } from "lucide-react";
 import { Botao, Osso } from "@/components/pe";
 import { Pagina } from "@/components/pe/estudante/Pagina";
 import { cnPe } from "@/lib/pe";
-import { categoriaPt, nivelPt } from "@/src/domains/student/inicio/api";
+import { nivelEmFrase } from "@/src/domains/shared/niveis";
+import { categoriaPt } from "@/src/domains/student/inicio/api";
 import { idCursoActivo, useCursosPraticaQuery, useEscolherCursoMutation, useProgressoPraticaQuery } from "@/src/domains/student/laboratorio/api";
 
 export default function EscolherCurso() {
@@ -77,7 +78,7 @@ export default function EscolherCurso() {
         <ul className="m-0 grid list-none gap-3 p-0 md:grid-cols-2">
           {cursos.map((c) => {
             const eActual = c.id === actual;
-            const contexto = [c.category ? categoriaPt(c.category) : null, c.level ? nivelPt(c.level) : null].filter(Boolean).join(", ");
+            const contexto = [c.category ? categoriaPt(c.category) : null, nivelEmFrase(c.level) ?? null].filter(Boolean).join(", ");
             return (
               <li key={c.id}>
                 <button

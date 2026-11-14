@@ -68,7 +68,8 @@ export type EstadoInscricao = { is_enrolled: boolean; has_access: boolean; can_e
 
 export type Progresso = {
   overallProgress: number;
-  sections: { sectionId: string; chapters: { chapterId: string; completed: boolean }[] }[];
+  /** video_visto: numa aula com questionário, o vídeo já foi visto (a aula só conclui ao passar). */
+  sections: { sectionId: string; chapters: { chapterId: string; completed: boolean; video_visto?: boolean }[] }[];
   lastAccessedTimestamp?: string;
 };
 
@@ -187,7 +188,8 @@ export const cursoApi = createApi({
     responderQuiz: build.mutation<ResultadoQuiz, { chapterId: string; courseId: string; respostas: Record<string, string>; segundos: number }>({
       query: ({ chapterId, respostas, segundos }) => ({ url: `${BASE}/chapters/${chapterId}/quiz/attempts/`, method: "POST", body: { respostas, time_taken: Math.round(segundos) } }),
       transformResponse: dados<ResultadoQuiz>,
-      invalidatesTags: (_r, _e, a) => [{ type: "Quiz", id: a.chapterId }, { type: "Notas", id: a.courseId }, { type: "Notas", id: "TODAS" }],
+      // Passar o questionário pode concluir a aula: o progresso volta a ser lido.
+      invalidatesTags: (_r, _e, a) => [{ type: "Quiz", id: a.chapterId }, { type: "Progresso", id: a.courseId }, { type: "Notas", id: a.courseId }, { type: "Notas", id: "TODAS" }],
       onQueryStarted: quandoCorrerBem(aposCurso),
     }),
     notasDeTodos: build.query<NotasDeTodos, void>({
@@ -236,6 +238,16 @@ export function capitulosPorOrdem(curso: Curso): CapituloNoCurso[] {
 
 export function concluidos(p: Progresso | null | undefined) {
   return new Set((p?.sections ?? []).flatMap((s) => s.chapters.filter((c) => c.completed).map((c) => c.chapterId)));
+}
+
+/** Aulas com o vídeo visto (concluídas ou à espera de passar o questionário). */
+export function videosVistos(p: Progresso | null | undefined) {
+  return new Set((p?.sections ?? []).flatMap((s) => s.chapters.filter((c) => c.completed || c.video_visto).map((c) => c.chapterId)));
+}
+
+/** A aula tem um questionário para fazer (aulas do tipo Questionário ou outras com questionário ligado). */
+export function temQuestionario(c: Pick<Capitulo, "type" | "quiz_enabled" | "quiz_data">) {
+  return c.type === "Quiz" || (!!c.quiz_enabled && !!c.quiz_data?.questions?.length);
 }
 
 export const TIPO_PT: Record<TipoCapitulo, string> = { Video: "Vídeo", Text: "Leitura", Quiz: "Questionário", Exercise: "Prática" };

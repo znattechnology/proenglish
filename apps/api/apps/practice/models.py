@@ -1056,10 +1056,7 @@ class AchievementNotification(models.Model):
 # Vapi-based conversation practice which handles both speaking and listening
 # in a single, superior AI conversation experience.
 #
-# All speaking/listening functionality is now handled through:
-# - apps/practice/services/vapi_client.py
-# - apps/practice/services/conversation_ai.py  
-# - apps/practice/views/vapi_views.py
+# A conversa com o tutor vive em apps/practice/conversa/ (servico.py, webhook.py).
 # =============================================================================
 
 
@@ -1436,6 +1433,46 @@ class ChallengeAttempt(models.Model):
 
     def __str__(self):
         return f"{self.user_id} - {self.challenge_id} ({'ok' if self.is_correct else 'wrong'})"
+
+
+class TentativaPronuncia(models.Model):
+    """
+    Cada gravação de um exercício de falar (SPEAKING) analisada em analyze-ai-pronunciation/.
+
+    Guarda o que o aluno disse (transcrição), as notas e as palavras a melhorar: é a base
+    do perfil de fala do aluno. A resposta (certa/errada) também fica em ChallengeAttempt,
+    para as estatísticas de acerto e a revisão incluírem a fala.
+    """
+    FONTE_IA = 'ia'
+    FONTE_SIMULADA = 'simulada'
+    FONTE_CHOICES = [(FONTE_IA, 'IA'), (FONTE_SIMULADA, 'Simulada (desenvolvimento)')]
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tentativas_pronuncia')
+    # SET_NULL: o histórico de fala do aluno fica mesmo que o professor apague o exercício.
+    challenge = models.ForeignKey(PracticeChallenge, on_delete=models.SET_NULL, null=True, blank=True,
+                                  related_name='tentativas_pronuncia')
+    resposta = models.OneToOneField(ChallengeAttempt, on_delete=models.SET_NULL, null=True, blank=True,
+                                    related_name='pronuncia')
+    texto_esperado = models.TextField()
+    transcricao = models.TextField(blank=True, default='')
+    nota_pronuncia = models.PositiveSmallIntegerField(default=0)
+    nota_fluencia = models.PositiveSmallIntegerField(default=0)
+    nota_clareza = models.PositiveSmallIntegerField(default=0)
+    nota_geral = models.PositiveSmallIntegerField(default=0)
+    palavras_problematicas = models.JSONField(default=list, blank=True)
+    sugestoes = models.JSONField(default=list, blank=True)
+    feedback = models.TextField(blank=True, default='')
+    aceite = models.BooleanField()
+    fonte = models.CharField(max_length=10, choices=FONTE_CHOICES, default=FONTE_IA)
+    criada_em = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-criada_em']
+        indexes = [models.Index(fields=['user', '-criada_em'])]
+
+    def __str__(self):
+        return f"{self.user_id} - {self.challenge_id} ({self.nota_geral})"
 
 
 class PointsEntry(models.Model):

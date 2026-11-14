@@ -57,6 +57,7 @@ LOCAL_APPS = [
     'apps.users',
     'apps.courses',
     'apps.practice',  # Temporarily enabled for testing - functionality moved to courses/api structure
+    'apps.perfil',  # perfil de fala do aluno (níveis, banco de frases, padrões de erro)
     'apps.subscriptions',
     'apps.pagamentos',  # Pagamentos Multicaixa Express (AOA)
     'apps.cms',  # antigo: as rotas /api/v1/cms/ respondem 410
@@ -497,49 +498,9 @@ SPECTACULAR_SETTINGS = {
 # OPENAI API SETTINGS
 # =============================================================================
 
-# OpenAI API configuration for AI Speaking Practice
+# OpenAI (Whisper e GPT na análise de pronúncia e de traduções)
 OPENAI_API_KEY = config('OPENAI_API_KEY', default='')
 OPENAI_ORGANIZATION_ID = config('OPENAI_ORGANIZATION_ID', default='')
-
-# AI Speaking Practice Settings
-AI_SPEAKING_SETTINGS = {
-    # Models configuration
-    'MODELS': {
-        'CHAT': 'gpt-4-turbo-preview',
-        'WHISPER': 'whisper-1',
-        'TTS': 'tts-1',
-    },
-    
-    # Speech analysis weights
-    'SCORING_WEIGHTS': {
-        'PRONUNCIATION': 0.35,
-        'FLUENCY': 0.25,
-        'ACCURACY': 0.25,
-        'CONFIDENCE': 0.15,
-    },
-    
-    # Conversation settings
-    'CONVERSATION': {
-        'MAX_TOKENS': 200,
-        'TEMPERATURE': 0.7,
-        'MAX_CONTEXT_MESSAGES': 5,
-    },
-    
-    # TTS settings
-    'TTS': {
-        'VOICE': 'nova',
-        'MODEL': 'tts-1',
-        'RESPONSE_FORMAT': 'mp3',
-    },
-    
-    # Minimum scores for passing
-    'MINIMUM_SCORES': {
-        'OVERALL': 70.0,
-        'PRONUNCIATION': 60.0,
-        'FLUENCY': 65.0,
-        'ACCURACY': 70.0,
-    },
-}
 
 # =============================================================================
 # DEFAULT FIELD SETTINGS

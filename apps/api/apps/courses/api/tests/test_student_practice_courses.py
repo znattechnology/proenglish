@@ -171,7 +171,6 @@ class StudentPracticeCoursesAPITest(APITestCase):
         vapi_endpoints = [
             '/api/v1/student/practice-courses/conversations/start/',
             '/api/v1/student/practice-courses/validate-ai-translation/',
-            '/api/v1/student/practice-courses/analyze-ai-pronunciation/',
             '/api/v1/student/practice-courses/achievements/'
         ]
         

@@ -25,6 +25,8 @@ de verificação passar.
 """
 from django.db.models import Count, Q
 
+from apps.courses import niveis
+
 RASCUNHO = 'Draft'
 EM_REVISAO = 'InReview'
 PUBLICADO = 'Published'
@@ -78,16 +80,8 @@ AREAS = {
 }
 AREAS_SEM_VALOR = {'', 'Sem categoria'}
 
-NIVEIS = {
-    'Beginner': 'Iniciante (A1–A2)',
-    'Intermediate': 'Intermédio (B1)',
-    'Advanced': 'Avançado (B2–C1)',
-}
-NIVEIS_ENTRADA = {
-    'beginner': 'Beginner', 'iniciante': 'Beginner',
-    'intermediate': 'Intermediate', 'intermédio': 'Intermediate', 'intermedio': 'Intermediate',
-    'advanced': 'Advanced', 'avançado': 'Advanced', 'avancado': 'Advanced',
-}
+# Níveis: escala CEFR única (ver apps/courses/niveis.py). Valor -> nome curto para selects.
+NIVEIS = {c: f'{c} ({niveis.NOMES[c]})' for c in niveis.CEFR}
 
 TITULOS_POR_OMISSAO = {'', 'Curso sem título', 'Novo Curso'}
 
@@ -165,15 +159,13 @@ def categoria_de_entrada(valor, course_type='video'):
 
 
 def nivel_pt(nivel):
-    return NIVEIS.get(nivel) if nivel else None
+    """'Nível B1' (aceita valores antigos guardados); None sem nível."""
+    return niveis.rotulo(nivel)
 
 
 def nivel_de_entrada(valor):
-    valor = (valor or '').strip()
-    if valor in NIVEIS:
-        return valor
-    base = valor.split('(')[0].strip().lower()
-    return NIVEIS_ENTRADA.get(base)
+    """Só códigos CEFR (A1..C2, qualquer caixa); os nomes antigos são recusados."""
+    return niveis.cefr_de_entrada(valor)
 
 
 def definicoes(course):
@@ -354,7 +346,7 @@ def _item_dados(course):
     if falta:
         detalhe = 'Falta preencher: ' + ', '.join(falta) + '.'
     else:
-        detalhe = f'{area_pt(course.category)}, {nivel_pt(course.level) or course.level}.'
+        detalhe = f'{area_pt(course.category)}, nível {niveis.normalizar(course.level) or course.level}.'
     return _item('dados', 'Título, área e nível preenchidos', not falta, detalhe)
 
 

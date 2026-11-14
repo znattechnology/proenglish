@@ -3,12 +3,11 @@ Grade Calculator Service
 
 This service handles all grade calculations for video courses:
 - Quiz score aggregation from StudentQuizAttempt
-- Practice score calculation from ChallengeProgress (via ChapterQuiz -> PracticeLesson)
-- Conversation score aggregation from VapiSession
+- Practice score calculation from ChallengeProgress (via Chapter/ChapterQuiz -> PracticeLesson)
+- Conversation score aggregation from VapiSession (only conversations tied to the course)
 - Final grade calculation with configurable weights
 - Certificate eligibility determination
 - Dynamic weight adjustment when components don't exist
-- CEFR level mapping for conversation sessions
 """
 
 from typing import Optional, Dict, List, Tuple
@@ -26,32 +25,56 @@ from apps.practice.models import ChallengeProgress, VapiSession, PracticeLesson
 from apps.users.models import User
 
 
-# Mapping from course levels to CEFR levels used in VapiSession
-COURSE_LEVEL_TO_CEFR = {
-    'Beginner': ['A1', 'A2'],
-    'beginner': ['A1', 'A2'],
-    'Elementary': ['A1', 'A2'],
-    'elementary': ['A1', 'A2'],
-    'Pre-Intermediate': ['A2', 'B1'],
-    'pre-intermediate': ['A2', 'B1'],
-    'Intermediate': ['B1', 'B2'],
-    'intermediate': ['B1', 'B2'],
-    'Upper-Intermediate': ['B2', 'C1'],
-    'upper-intermediate': ['B2', 'C1'],
-    'Advanced': ['C1', 'C2'],
-    'advanced': ['C1', 'C2'],
-    'Proficient': ['C1', 'C2'],
-    'proficient': ['C1', 'C2'],
-    'All Levels': ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
-    'all levels': ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
-    # Direct CEFR level mappings (in case course already uses CEFR)
-    'A1': ['A1'],
-    'A2': ['A2'],
-    'B1': ['B1'],
-    'B2': ['B2'],
-    'C1': ['C1'],
-    'C2': ['C2'],
-}
+# Course.level já está em CEFR (A1..C2): o nível do curso é o nível das sessões do tutor.
+COURSE_LEVEL_TO_CEFR = {c: [c] for c in ('A1', 'A2', 'B1', 'B2', 'C1', 'C2')}
+
+
+def curso_tem_conversa(course) -> bool:
+    """O curso tem pelo menos uma situação de conversa activa (practice.Situacao.curso)."""
+    from apps.practice.models import Situacao
+    return Situacao.objects.filter(curso=course, estado=Situacao.ACTIVO).exists()
+
+
+def sessoes_de_conversa_do_curso(user, course):
+    """Conversas avaliadas do aluno que contam para este curso."""
+    from apps.practice.models import Situacao
+    slugs = Situacao.objects.filter(curso=course).values('slug')
+    return VapiSession.objects.filter(user=user, status=VapiSession.STATUS_AVALIADA).filter(
+        Q(situation__in=slugs) | Q(full_session_data__config__curso_id=str(course.id)))
+
+
+def curso_da_sessao(vapi_session):
+    """O curso a que uma conversa conta (ou None): o curso_id da configuração ou o da situação."""
+    from apps.practice.models import Situacao
+    dados = vapi_session.full_session_data if isinstance(vapi_session.full_session_data, dict) else {}
+    config = dados.get('config') if isinstance(dados.get('config'), dict) else {}
+    curso_id = config.get('curso_id')
+    if curso_id:
+        curso = Course.objects.filter(pk=curso_id).first() if _uuid_valido(curso_id) else None
+        if curso is not None:
+            return curso
+    if vapi_session.situation:
+        situacao = Situacao.objects.select_related('curso').filter(slug=vapi_session.situation).first()
+        if situacao is not None and situacao.curso_id:
+            return situacao.curso
+    return None
+
+
+def _uuid_valido(valor) -> bool:
+    import uuid
+    try:
+        uuid.UUID(str(valor))
+        return True
+    except (TypeError, ValueError):
+        return False
+
+
+def cursos_da_licao_pratica(lesson_id):
+    """Cursos em vídeo com aulas (ou questionários) ligados a esta lição de prática."""
+    return Course.objects.filter(
+        Q(sections__chapters__practice_lesson_id=lesson_id)
+        | Q(sections__chapters__quiz__practice_lesson_id=lesson_id)
+    ).distinct()
 
 
 class GradeCalculatorService:
@@ -210,29 +233,35 @@ class GradeCalculatorService:
                 'component_disabled': True
             }
 
-        # Get all practice lessons linked to this course's chapter quizzes
-        chapter_quizzes = ChapterQuiz.objects.filter(
-            chapter__section__course=self.course,
-            is_active=True
-        ).filter(q_aula_visivel('chapter__')).select_related('practice_lesson', 'chapter', 'chapter__section')
+        # Lições de prática ligadas às aulas visíveis do curso: a "lição a seguir" da aula
+        # (Chapter.practice_lesson) e a do questionário (ChapterQuiz.practice_lesson). Cada lição
+        # conta uma vez, mesmo que esteja ligada a várias aulas.
+        from apps.practice.models import PracticeChallenge
+
+        ligacoes = []
+        for chapter in (Chapter.objects.filter(q_aula_visivel(), section__course=self.course,
+                                               practice_lesson__isnull=False)
+                        .select_related('practice_lesson', 'section')
+                        .order_by('section__order', 'order', 'created_at')):
+            ligacoes.append((chapter, chapter.practice_lesson))
+        for quiz in (ChapterQuiz.objects.filter(chapter__section__course=self.course, is_active=True,
+                                                practice_lesson__isnull=False)
+                     .filter(q_aula_visivel('chapter__'))
+                     .select_related('practice_lesson', 'chapter', 'chapter__section')):
+            ligacoes.append((quiz.chapter, quiz.practice_lesson))
 
         practice_details = []
         total_challenges = 0
         completed_challenges = 0
+        vistas = set()
 
-        for quiz in chapter_quizzes:
-            if not quiz.practice_lesson:
+        for chapter, licao in ligacoes:
+            if licao.id in vistas:
                 continue
+            vistas.add(licao.id)
 
-            # Get all challenges in the practice lesson's units
-            from apps.practice.models import PracticeChallenge
-
-            challenges = PracticeChallenge.objects.filter(
-                lesson=quiz.practice_lesson,
-            )
-
+            challenges = PracticeChallenge.objects.filter(lesson=licao)
             chapter_total = challenges.count()
-
             if chapter_total == 0:
                 continue
 
@@ -247,10 +276,10 @@ class GradeCalculatorService:
             completed_challenges += chapter_completed
 
             practice_details.append({
-                'chapter_id': str(quiz.chapter.id),
-                'chapter_title': quiz.chapter.title,
-                'section_title': quiz.chapter.section.sectionTitle,
-                'practice_lesson_id': str(quiz.practice_lesson.id),
+                'chapter_id': str(chapter.id),
+                'chapter_title': chapter.title,
+                'section_title': chapter.section.sectionTitle,
+                'practice_lesson_id': str(licao.id),
                 'total_challenges': chapter_total,
                 'completed_challenges': chapter_completed,
                 'completion_percentage': round(
@@ -275,9 +304,7 @@ class GradeCalculatorService:
         """
         Calculate conversation practice scores from Vapi sessions.
 
-        For video courses, we look at Vapi sessions that match the course level.
-        Uses CEFR level mapping to correctly match course levels (Beginner, Intermediate, etc.)
-        to VapiSession CEFR levels (A1, A2, B1, B2, C1, C2).
+        Only conversations tied to this course count (sessoes_de_conversa_do_curso).
 
         Returns dict with:
         - score: Average conversation score (0-100)
@@ -297,25 +324,14 @@ class GradeCalculatorService:
                 'component_disabled': True
             }
 
-        # Check if course has conversation requirement
-        has_requirement = self.config.require_conversation_if_available
+        # A conversa só é requisito se o curso tiver pelo menos uma situação de conversa activa;
+        # sem situações o componente não existe e os pesos dos outros são renormalizados.
+        has_requirement = bool(self.config.require_conversation_if_available
+                               and curso_tem_conversa(self.course))
 
-        # Get Vapi sessions for this user
-        sessions = VapiSession.objects.filter(
-            user=self.user, status=VapiSession.STATUS_AVALIADA  # sem sessões em curso / sem avaliação
-        ).order_by('-created_at')
-
-        # If the course has a specific level, filter sessions by matching CEFR levels
-        if hasattr(self.course, 'level') and self.course.level:
-            course_level = self.course.level
-            cefr_levels = COURSE_LEVEL_TO_CEFR.get(course_level, None)
-
-            if cefr_levels:
-                # Filter sessions by any matching CEFR level
-                sessions = sessions.filter(level__in=cefr_levels)
-            # If no mapping found and it's not empty, try direct match as fallback
-            elif course_level:
-                sessions = sessions.filter(level=course_level)
+        # Só as conversas deste curso (avaliadas): numa situação do curso, ou iniciadas a partir
+        # dele (full_session_data.config.curso_id). As de outros cursos ou gerais não contam.
+        sessions = sessoes_de_conversa_do_curso(self.user, self.course).order_by('-created_at')
 
         session_count = sessions.count()
 
@@ -560,7 +576,7 @@ class GradeCalculatorService:
                     'met': False,
                     'required': self.config.min_conversation_score,
                     'actual': 0,
-                    'message': "Nenhuma sessão de conversação completada no nível do curso"
+                    'message': "Ainda não fez nenhuma conversa deste curso"
                 }
                 all_met = False
         else:
@@ -753,25 +769,16 @@ class GradeCalculatorService:
         """
         Trigger grade recalculation when a practice challenge is completed.
 
-        This is more complex because we need to find which course(s) the
-        challenge belongs to via ChapterQuiz -> PracticeLesson relationship.
+        Courses whose chapters (Chapter.practice_lesson) or chapter quizzes
+        (ChapterQuiz.practice_lesson) link to the challenge's lesson, where the user is enrolled.
         """
-        # Find courses that have this challenge's lesson linked
-        chapter_quizzes = ChapterQuiz.objects.filter(
-            practice_lesson__units__challenges=challenge_progress.challenge
-        ).select_related('chapter__section__course')
+        from apps.courses.models import CourseEnrollment
 
+        lesson_id = challenge_progress.challenge.lesson_id
         grades = []
-        courses_updated = set()
-
-        for quiz in chapter_quizzes:
-            course = quiz.chapter.section.course
-            if course.id not in courses_updated:
-                calculator = cls(user, course)
-                grade = calculator.calculate_and_save(change_reason='practice_completed')
-                grades.append(grade)
-                courses_updated.add(course.id)
-
+        for course in cursos_da_licao_pratica(lesson_id):
+            if CourseEnrollment.objects.filter(user=user, course=course).exists():
+                grades.append(cls(user, course).calculate_and_save(change_reason='practice_completed'))
         return grades
 
     @classmethod
@@ -779,24 +786,11 @@ class GradeCalculatorService:
         """
         Trigger grade recalculation when a conversation session is completed.
 
-        Updates grades for all courses the user is enrolled in that have
-        conversation requirements enabled.
+        Only the course the conversation belongs to (curso_da_sessao), if the user is enrolled.
         """
         from apps.courses.models import CourseEnrollment
 
-        enrollments = CourseEnrollment.objects.filter(
-            user=user
-        ).select_related('course')
-
-        grades = []
-        for enrollment in enrollments:
-            try:
-                config = enrollment.course.grading_config
-                if config.require_conversation_if_available:
-                    calculator = cls(user, enrollment.course)
-                    grade = calculator.calculate_and_save(change_reason='conversation_session')
-                    grades.append(grade)
-            except CourseGradingConfig.DoesNotExist:
-                pass
-
-        return grades
+        course = curso_da_sessao(vapi_session)
+        if course is None or not CourseEnrollment.objects.filter(user=user, course=course).exists():
+            return []
+        return [cls(user, course).calculate_and_save(change_reason='conversation_session')]

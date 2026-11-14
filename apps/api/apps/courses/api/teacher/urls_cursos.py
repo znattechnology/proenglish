@@ -17,6 +17,7 @@ urlpatterns = [
 
     # Editor de cursos em vídeo
     path('cursos/<uuid:curso_id>/estrutura/', editor_video.estrutura, name='estrutura'),
+    path('cursos/<uuid:curso_id>/licoes-pratica/', editor_video.licoes_pratica, name='licoes-pratica'),
     path('cursos/<uuid:curso_id>/seccoes/', editor_video.criar_seccao, name='seccoes'),
     path('cursos/<uuid:curso_id>/seccoes/ordem/', editor_video.ordenar_seccoes, name='seccoes-ordem'),
     path('cursos/<uuid:curso_id>/capa/', envios.iniciar_capa, name='capa'),

@@ -531,15 +531,6 @@ class AnalyticsAndHooksTests(StudyTrackingTestBase):
         log.refresh_from_db()
         self.assertEqual(log.video_minutes, 4)
 
-    def test_vapi_session_logs_conversation_minutes_once(self):
-        from apps.practice.vapi_views import save_vapi_session_data
-        results = {'duration_minutes': 6, 'scores': {'overall': 80}}
-        save_vapi_session_data('sess-study-1', self.student, {'level': 'B1'}, results)
-        save_vapi_session_data('sess-study-1', self.student, {'level': 'B1'}, results)  # resave: no double count
-        log = DailyStudyLog.objects.get(user=self.student)
-        self.assertEqual(log.conversation_minutes, 6)
-        self.assertEqual(UserStreak.objects.get(user=self.student).current_streak, 1)
-
 
 class ChallengeHeartsRegressionTests(StudyTrackingTestBase):
 

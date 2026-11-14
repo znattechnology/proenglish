@@ -11,6 +11,7 @@ from .models import (
     CourseEnrollment, Transaction, UserCourseProgress, ChapterProgress,
     ChapterResource, ChapterQuiz, StudentQuizAttempt
 )
+from apps.courses import niveis
 from apps.users.serializers import UserProfileSerializer
 
 
@@ -324,7 +325,8 @@ class CourseCreateSerializer(serializers.ModelSerializer):
     title = serializers.CharField(required=False, default="Novo Curso")
     description = serializers.CharField(required=False, default="")
     category = serializers.CharField(required=False, default="Inglês Geral")
-    level = serializers.CharField(required=False, default="Beginner")
+    level = serializers.ChoiceField(choices=niveis.CEFR, required=False, default="A2",
+                                    error_messages={"invalid_choice": "Nível inválido. Escolha um nível de A1 a C2."})
     status = serializers.CharField(required=False, default="Draft")
     template = serializers.CharField(required=False, default="general")
     

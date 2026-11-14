@@ -2835,12 +2835,3 @@ class AITranslationValidationView(APIView):
             'status': 'placeholder'
         })
 
-class AIPronunciationAnalysisView(APIView):
-    """Placeholder for AI pronunciation analysis - moved to Vapi"""
-    permission_classes = [IsAuthenticated]
-    
-    def post(self, request):
-        return Response({
-            'message': 'AI pronunciation analysis moved to Vapi integration',
-            'status': 'placeholder'
-        })

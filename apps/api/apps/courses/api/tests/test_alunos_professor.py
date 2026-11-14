@@ -30,14 +30,14 @@ class Base(APITestCase):
 
         self.video = Course.objects.create(
             teacher=self.prof, teacherName='Prof Ana', title='Inglês para Plataformas', description='x',
-            category='Industry English', level='Beginner', course_type='video', status='Published')
+            category='Industry English', level='A2', course_type='video', status='Published')
         seccao = CourseSection.objects.create(course=self.video, sectionTitle='S1', order=1)
         self.cap1 = Chapter.objects.create(section=seccao, title='A1', content='x', type='Video', video='https://example.com/a1.mp4', order=1)
         self.cap2 = Chapter.objects.create(section=seccao, title='A2', content='x', type='Video', video='https://example.com/a2.mp4', order=2)
 
         self.pratica = Course.objects.create(
             teacher=self.prof, teacherName='Prof Ana', title='Inglês no Terminal', description='x',
-            category='Oil & Gas', level='Intermediate', course_type='practice', status='Published')
+            category='Oil & Gas', level='B1', course_type='practice', status='Published')
         unidade = PracticeUnit.objects.create(course=self.pratica, title='U1', description='', order=1)
         licao = PracticeLesson.objects.create(unit=unidade, title='L1', order=1)
         self.ex_dificil = PracticeChallenge.objects.create(
@@ -48,7 +48,7 @@ class Base(APITestCase):
 
         self.curso_outro = Course.objects.create(
             teacher=self.outro_prof, teacherName='Prof Rui', title='Curso do Rui', description='x',
-            category='Business English', level='Beginner', course_type='video', status='Published')
+            category='Business English', level='A2', course_type='video', status='Published')
 
         # activo: inscrito há 20 dias, concluiu um capítulo há 2 dias
         self.activo = self.utilizador('activo@example.com', 'Bruno Activo')

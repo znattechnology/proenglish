@@ -8,12 +8,15 @@ import { BalaoEnunciado, BotaoOuvir, Enunciado } from "./Partes";
 
 export type RespostaExercicio = { tipo: "texto"; resposta: Resposta } | { tipo: "audio"; audio: Blob } | null;
 export type EstadoVisual = "livre" | "certo" | "errado";
+/** Resultado da análise de pronúncia, mostrado no exercício de falar depois de verificar. */
+export type ResultadoFala = { nota: number; palavras: string[]; mensagem?: string | null };
 
 type Props = {
   ex: Exercicio;
   bloqueado: boolean;
   visual: EstadoVisual;
   aoMudar: (r: RespostaExercicio) => void;
+  fala?: ResultadoFala | null;
 };
 
 const ESPACO = /_{2,}|\[\s*\]/g;
@@ -413,7 +416,39 @@ function Pares({ ex, bloqueado, visual, aoMudar }: Props) {
 /* ------------------------------------------------------------------ */
 /* Falar: grava a frase e envia para análise de pronúncia               */
 /* ------------------------------------------------------------------ */
-function Falar({ ex, bloqueado, aoMudar }: Props) {
+const soLetras = (t: string) => t.toLowerCase().replace(/[^a-z0-9']/g, "");
+
+/** A frase com as palavras a treinar marcadas, a nota e o comentário da análise. */
+function ResultadoPronuncia({ frase, fala }: { frase: string; fala: ResultadoFala }) {
+  const marcar = new Set(fala.palavras.flatMap((p) => p.split(/\s+/)).map(soLetras).filter(Boolean));
+  const partes = frase.split(/(\s+)/);
+  const marcadas = partes.some((p) => marcar.has(soLetras(p)));
+  return (
+    <div role="status" className="flex w-full max-w-[560px] flex-col gap-2 rounded-pe-md bg-pe-fundo-suave px-4 py-3">
+      <p className="m-0 flex items-baseline gap-2">
+        <span className="font-pe-titulo text-[28px] font-bold leading-8">{Math.round(fala.nota)}</span>
+        <span className="text-pe-legenda text-pe-tinta-suave">de 100 na pronúncia</span>
+      </p>
+      {frase ? (
+        <p className="m-0 text-[17px] leading-7">
+          {partes.map((p, i) =>
+            marcar.has(soLetras(p)) ? (
+              <mark key={i} className="rounded-[4px] bg-pe-errado-suave px-0.5 text-inherit underline decoration-pe-errado decoration-2 underline-offset-4">
+                {p}
+              </mark>
+            ) : (
+              <span key={i}>{p}</span>
+            )
+          )}
+        </p>
+      ) : null}
+      {marcadas ? <p className="m-0 text-pe-legenda text-pe-tinta-suave">Sublinhadas: as palavras a treinar.</p> : null}
+      {fala.mensagem ? <p className="m-0 text-[15px] leading-[22px]">{fala.mensagem}</p> : null}
+    </div>
+  );
+}
+
+function Falar({ ex, bloqueado, aoMudar, fala }: Props) {
   // Só é montado no browser (a lição carrega depois dos dados), por isso pode ver-se já o suporte.
   const [estado, setEstado] = useState<"parado" | "a-gravar" | "gravado" | "sem-permissao" | "sem-suporte">(() =>
     typeof window !== "undefined" && !("MediaRecorder" in window) ? "sem-suporte" : "parado"
@@ -472,9 +507,13 @@ function Falar({ ex, bloqueado, aoMudar }: Props) {
             {estado === "a-gravar" ? <Square aria-hidden className="size-8 fill-current" /> : <Mic aria-hidden className="size-9" />}
           </button>
         )}
-        <span aria-live="polite" className="text-pe-legenda text-pe-tinta-suave">
-          {estado === "a-gravar" ? "A gravar… toque para parar" : estado === "gravado" ? "Gravado. Pode verificar ou gravar outra vez." : "Toque para gravar"}
-        </span>
+        {fala ? (
+          <ResultadoPronuncia frase={ex.frase ?? ex.pergunta ?? ""} fala={fala} />
+        ) : (
+          <span aria-live="polite" className="text-pe-legenda text-pe-tinta-suave">
+            {estado === "a-gravar" ? "A gravar… toque para parar" : estado === "gravado" ? "Gravado. Pode verificar ou gravar outra vez." : "Toque para gravar"}
+          </span>
+        )}
       </div>
     </Enunciado>
   );

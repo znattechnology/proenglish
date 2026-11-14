@@ -21,6 +21,8 @@ from apps.practice.models import DailyProgressSummary, DailyStudyLog, UserProgre
 from apps.subscriptions.models import UserSubscription
 
 from . import analise, regras
+from apps.perfil import servico as perfil_servico
+
 from .quota import MENSAGENS, estado_quota, obter_assinatura
 from .situacoes import (
     AREA_IDS, CORRECOES, NIVEIS, SITUACOES_POR_ID, instrucoes_tutor, nome_aluno, obter_situacao,
@@ -112,8 +114,8 @@ def criar_sessao(user, data):
     for antiga, segundos in fechadas:
         _efeitos_cobranca(antiga, segundos)
         if antiga.status == VapiSession.STATUS_A_AVALIAR:
-            # Sem esperar pelo Claude: avaliação por regras (rápida). No modo de voz o servidor
-            # não tem a transcrição de uma conversa abandonada, por isso quase nunca chega aqui.
+            # Sem esperar pelo Claude: avaliação por regras (rápida). No modo de voz, a transcrição
+            # de uma conversa abandonada só existe se o end-of-call-report do Vapi já chegou.
             try:
                 avaliar_pendente(antiga.pk, so_regras=True)
             except Exception:
@@ -129,6 +131,7 @@ def criar_sessao(user, data):
 
         nome = nome_aluno(user)
         fala = primeira_fala(situacao, nivel, nome)
+        objectivos = _objectivos(user, situacao)
         vapi = config_vapi()
         max_segundos = quota['max_minutos_sessao'] * 60
         agora = timezone.now()
@@ -140,21 +143,29 @@ def criar_sessao(user, data):
             full_session_data={
                 'versao': VERSAO,
                 'config': {'situacao': situacao['id'], 'nivel': nivel, 'correcao': correcao, 'area': area,
-                           'curso_id': str(situacao['curso_id']) if situacao.get('curso_id') else None},
+                           'curso_id': str(situacao['curso_id']) if situacao.get('curso_id') else None,
+                           'objectivos': objectivos},
                 'historico': [{'quem': 'tutor', 'texto': fala}],
             },
         )
+
+    try:
+        perfil_servico.semear_situacao(user, situacao)
+    except Exception:
+        logger.exception('conversa: falha ao semear as frases da situação no banco do aluno')
 
     resposta = {
         'id': sessao.session_id,
         'situacao': {'id': situacao['id'], 'titulo': situacao['titulo']},
         'max_segundos': max_segundos,
         'frases': situacao['frases'],
+        'objectivos': objectivos,
         'primeira_fala': fala,
         'vapi': None,
     }
     if vapi:
-        instrucoes = instrucoes_tutor(situacao, nivel, correcao, area, nome)
+        instrucoes = instrucoes_tutor(situacao, nivel, correcao, area, nome,
+                                      contexto=_contexto(user, situacao), objectivos=objectivos)
         resposta['vapi'] = {
             'assistant_id': vapi['assistant_id'],
             'assistant_overrides': {
@@ -173,7 +184,32 @@ def criar_sessao(user, data):
                 'metadata': {'sessao_id': sessao.session_id},
             },
         }
+        # O Vapi manda o end-of-call-report (transcrição e duração) ao nosso webhook: assim uma
+        # conversa abandonada (separador fechado) fica com transcrição, cobrada e avaliada.
+        from .webhook import url_servidor
+        url = url_servidor(sessao.session_id)
+        if url:
+            resposta['vapi']['assistant_overrides']['server'] = {'url': url}
+            resposta['vapi']['assistant_overrides']['serverMessages'] = ['end-of-call-report']
     return resposta
+
+
+def _objectivos(user, situacao):
+    """2 a 4 frases-alvo [{en, pt}] (perfil de fala). Uma falha no perfil não impede a conversa."""
+    try:
+        return perfil_servico.objectivos_detalhe(user, situacao)
+    except Exception:
+        logger.exception('conversa: falha ao escolher os objectivos')
+        return [{'en': f['en'], 'pt': f.get('pt') or ''} for f in (situacao.get('frases') or [])[:3]
+                if isinstance(f, dict) and f.get('en')]
+
+
+def _contexto(user, situacao):
+    try:
+        return perfil_servico.contexto_do_aluno(user, situacao=situacao)
+    except Exception:
+        logger.exception('conversa: falha ao montar o contexto do aluno')
+        return None
 
 
 def modelo_vapi(instrucoes):
@@ -301,7 +337,9 @@ def _escolher_transcricao(sessao, enviada):
     # No simulado o servidor conhece a conversa toda: é a única fonte (não se confia no cliente).
     if sessao.mode == 'simulado':
         return historico
-    return enviada or historico
+    # Na voz, a transcrição do Vapi (end-of-call-report, conversa/webhook.py) ganha à do cliente.
+    servidor = analise.limpar_transcricao(_dados(sessao).get('transcricao_servidor') or [])
+    return servidor or enviada or historico
 
 
 def segundos_ligada(sessao, agora=None):
@@ -334,15 +372,18 @@ def dia_da_sessao(sessao):
     return hoje_luanda(sessao.connected_at or sessao.started_at or sessao.created_at)
 
 
-def _terminar_bloqueado(sessao, transcricao_enviada, sub):
+def _terminar_bloqueado(sessao, transcricao_enviada, sub, segundos_max=None):
     """
     Fecha e cobra uma sessão em curso, SEM avaliar (a avaliação é depois, fora da transacção).
     Chamar dentro de transaction.atomic com a sessão e a assinatura bloqueadas.
+    segundos_max: a duração que o Vapi diz que a chamada teve (webhook); nunca se cobra mais.
     """
     from apps.practice.limite_licoes import hoje_luanda
     agora = timezone.now()
     ligou = sessao.connected_at is not None
     segundos = segundos_ligada(sessao, agora)
+    if segundos_max is not None:
+        segundos = min(segundos, max(0, int(segundos_max)))
     do_dia = dia_da_sessao(sessao) == hoje_luanda(agora)
 
     quota = estado_quota(sessao.user, sub)
@@ -428,8 +469,16 @@ def avaliar_pendente(sessao_pk, so_regras=False):
 
     situacao = _situacao_de(sessao) or obter_situacao('conversa_livre') or SITUACOES_POR_ID['conversa_livre']
     transcricao = dados.get('transcricao') or []
+    objectivos = (dados.get('config') or {}).get('objectivos') or []
+    try:
+        conhecidos = [{'chave': p.chave, 'descricao': p.descricao}
+                      for p in perfil_servico.padroes_abertos(sessao.user, limite=10)]
+    except Exception:
+        logger.exception('conversa: falha ao ler os padrões de erro do aluno')
+        conhecidos = []
     resultado = analise.avaliar(transcricao, situacao, sessao.level, sessao.domain, sessao.duration_seconds,
-                                simulado=so_regras or sessao.mode == 'simulado' or modo_simulado())
+                                simulado=so_regras or sessao.mode == 'simulado' or modo_simulado(),
+                                objectivos=objectivos, padroes_conhecidos=conhecidos)
 
     with transaction.atomic():
         sessao = VapiSession.objects.select_for_update().select_related('user').get(pk=sessao_pk)
@@ -442,6 +491,8 @@ def avaliar_pendente(sessao_pk, so_regras=False):
             'notas': notas, 'correccoes': resultado['correccoes'],
             'palavras_bem_usadas': resultado['palavras_bem_usadas'], 'resumo': resultado['resumo'],
             'summary': resultado['resumo'], 'metricas': resultado['metricas'], 'fonte_avaliacao': resultado['fonte'],
+            'padroes': resultado.get('padroes') or [], 'nivel_cefr': resultado.get('nivel_cefr'),
+            'objectivos_usados': resultado.get('objectivos_usados'),
         })
         sessao.status = VapiSession.STATUS_AVALIADA
         sessao.fluency_score = notas['fluencia']
@@ -454,6 +505,10 @@ def avaliar_pendente(sessao_pk, so_regras=False):
         sessao.calculate_improvement()
         sessao.save()
     _efeitos_avaliacao(sessao)
+    try:
+        perfil_servico.registar_conversa(sessao)
+    except Exception:
+        logger.exception('conversa: falha ao actualizar o perfil de fala (sessão %s)', sessao.pk)
     sessao.refresh_from_db()
     return sessao
 
@@ -538,6 +593,7 @@ def resumo(sessao):
         bem = dados.get('palavras_bem_usadas') or []
         texto_resumo = dados.get('resumo') or dados.get('summary')
     situacao = _situacao_de(sessao)
+    objectivos, padroes = _perfil_da_sessao(sessao, dados)
     return {
         'id': sessao.session_id,
         'situacao': {'id': situacao['id'] if situacao else None, 'titulo': _titulo(sessao)},
@@ -551,12 +607,36 @@ def resumo(sessao):
         'correccoes': correccoes,
         'palavras_bem_usadas': bem,
         'resumo': texto_resumo or None,
+        'objectivos': objectivos,
+        'padroes': padroes,
     }
+
+
+def _perfil_da_sessao(sessao, dados):
+    """
+    Objectivos [{en, pt, usado, com_ajuda}] e padrões [{chave, descricao, errado, certo, estado}]
+    desta conversa. estado: novo | recorrente | superado (superado é o estado de agora).
+    """
+    registo = dados.get('perfil') if isinstance(dados.get('perfil'), dict) else {}
+    objectivos = registo.get('objectivos')
+    if objectivos is None:
+        objectivos = [{'en': o['en'], 'pt': o.get('pt') or '', 'usado': False, 'com_ajuda': False}
+                      for o in (dados.get('config') or {}).get('objectivos') or [] if isinstance(o, dict) and o.get('en')]
+    padroes = [dict(p) for p in registo.get('padroes') or [] if isinstance(p, dict)]
+    if padroes:
+        try:
+            superados = perfil_servico.padroes_superados(sessao.user_id, [p['chave'] for p in padroes])
+        except Exception:
+            superados = set()
+        for p in padroes:
+            if p['chave'] in superados:
+                p['estado'] = 'superado'
+    return objectivos, padroes
 
 
 def preparar(user):
     from .situacoes import AREAS, preferencias_padrao
-    situacoes = []
+    situacoes, dicts = [], []
     for obj in situacoes_visiveis(user):
         s = situacao_dict(obj)
         item = {k: s[k] for k in ('id', 'titulo', 'minutos_sugeridos', 'area')}
@@ -569,11 +649,31 @@ def preparar(user):
         item['correcao'] = s['correcao'] if do_professor and s['correcao'] in CORRECOES else None
         item['curso'] = {'id': str(obj.curso_id), 'titulo': obj.curso.title} if obj.curso_id else None
         situacoes.append(item)
+        dicts.append(s)
+    preferencias = preferencias_padrao(user)
+    perfil = {'nivel': None}
+    objectivos = {}
+    try:
+        p = perfil_servico.obter_perfil(user)
+        perfil['nivel'] = p.nivel_falar
+        if p.nivel_falar in NIVEIS:
+            preferencias['nivel'] = p.nivel_falar  # «O seu nível» (o aluno pode mudar)
+        # As mesmas consultas para todas as situações.
+        banco = perfil_servico.banco_a_aprender(user)
+        from apps.perfil.models import ItemBanco
+        chaves = {perfil_servico.normalizar(f['en']) for s in dicts for f in perfil_servico._frases_situacao(s)}
+        estados = dict(ItemBanco.objects.filter(user=user, chave__in=chaves).values_list('chave', 'estado'))
+        for s in dicts:
+            objectivos[s['id']] = perfil_servico.objectivos_detalhe(user, s, banco=banco, estados=estados)
+    except Exception:
+        logger.exception('conversa: falha ao ler o perfil de fala no preparar')
     return {
         'situacoes': situacoes,
+        'objectivos': objectivos,
+        'perfil': perfil,
         'niveis': NIVEIS,
         'areas': AREAS,
-        'preferencias': preferencias_padrao(user),
+        'preferencias': preferencias,
         'quota': estado_quota(user),
         'modo': modo(),
         'vapi': config_vapi(),
@@ -601,11 +701,15 @@ def _erro_mais_frequente(sessoes):
     return disse, certo, n
 
 
-def _nota_competencia(chave, valor, mais_fraca, erro_freq):
+def _nota_competencia(chave, valor, mais_fraca, erro_freq, padrao=None):
     if valor is None:
         if chave == 'pronuncia':
             return 'Ainda não medimos a pronúncia nas conversas (só o texto).'
         return 'Ainda sem dados.'
+    if chave == 'gramatica' and padrao and valor < 85:
+        if padrao['errado'] and padrao['certo']:
+            return f'Erro a trabalhar: {padrao["descricao"]} («{padrao["errado"]}» → «{padrao["certo"]}»).'
+        return f'Erro a trabalhar: {padrao["descricao"]}'
     if chave == 'gramatica' and erro_freq and valor < 85:
         disse, certo, _ = erro_freq
         return f'Erro mais frequente: «{disse}» → «{certo}».'
@@ -651,6 +755,12 @@ def progresso(user):
     medidos = {k: v for k, v in valores.items() if v is not None}
     mais_fraca = min(medidos, key=medidos.get) if medidos else None
     erro_freq = _erro_mais_frequente(avaliadas.order_by('-created_at'))
+    try:
+        perfil = perfil_servico.resumo_progresso(user)
+    except Exception:
+        logger.exception('conversa: falha ao ler o perfil de fala no progresso')
+        perfil = {'padroes': [], 'frases_sozinho': {'total': 0, 'recentes': []}}
+    padrao = next((p for p in perfil['padroes'] if not p['superado']), None)
 
     ultimas = []
     for s in terminadas.order_by('-created_at')[:10]:
@@ -668,8 +778,10 @@ def progresso(user):
         'minutos': agg['minutos'] or 0,
         'por_competencia': [
             {'chave': chave, 'nome': nome, 'valor': valores[chave],
-             'nota': _nota_competencia(chave, valores[chave], mais_fraca, erro_freq)}
+             'nota': _nota_competencia(chave, valores[chave], mais_fraca, erro_freq, padrao)}
             for chave, nome, _ in COMPETENCIAS
         ],
         'ultimas': ultimas,
+        'padroes': perfil['padroes'],
+        'frases_sozinho': perfil['frases_sozinho'],
     }

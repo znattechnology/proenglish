@@ -52,7 +52,7 @@ class Base(APITestCase):
                     categoria='Industry English', **extra):
         prof = prof or self.prof
         curso = Course.objects.create(teacher=prof, teacherName=prof.name, title=titulo, description='Vídeo',
-                                      category=categoria, level='Beginner', course_type='video', status=status,
+                                      category=categoria, level='A2', course_type='video', status=status,
                                       image='https://exemplo.ao/capa.jpg', **extra)
         seccao = CourseSection.objects.create(course=curso, sectionTitle='Secção 1', order=1)
         curso.aulas = [Chapter.objects.create(section=seccao, title=f'Aula {i + 1}', content='x', type='Video',
@@ -63,7 +63,7 @@ class Base(APITestCase):
     def curso_pratica(self, status='Draft', prof=None, titulo='Inglês no Terminal', licoes=1, **extra):
         prof = prof or self.prof
         curso = Course.objects.create(teacher=prof, teacherName=prof.name, title=titulo, description='Prática',
-                                      category='Oil & Gas', level='Intermediate', course_type='practice',
+                                      category='Oil & Gas', level='B1', course_type='practice',
                                       status=status, **extra)
         unidade = PracticeUnit.objects.create(course=curso, title='Unidade 1', description='', order=1)
         curso.licoes = []

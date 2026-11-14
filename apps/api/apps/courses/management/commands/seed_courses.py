@@ -62,7 +62,7 @@ class Command(BaseCommand):
                 'category': 'Computer Science',
                 'image': 'https://images.pexels.com/photos/5905888/pexels-photo-5905888.jpeg',
                 'price': 99.99,
-                'level': 'Beginner',
+                'level': 'A2',
                 'status': 'Published',
                 'template': 'technology',
                 'sections': [
@@ -152,7 +152,7 @@ class Command(BaseCommand):
                 'category': 'Artificial Intelligence',
                 'image': 'https://images.pexels.com/photos/6303596/pexels-photo-6303596.jpeg',
                 'price': 149.99,
-                'level': 'Advanced',
+                'level': 'B2',
                 'status': 'Published',
                 'template': 'technology',
                 'sections': [
@@ -242,7 +242,7 @@ class Command(BaseCommand):
                 'category': 'Web Development',
                 'image': 'https://images.pexels.com/photos/6001397/pexels-photo-6001397.jpeg',
                 'price': 79.99,
-                'level': 'Beginner',
+                'level': 'A2',
                 'status': 'Published',
                 'template': 'technology',
                 'sections': [

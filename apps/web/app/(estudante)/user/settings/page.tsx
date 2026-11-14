@@ -10,6 +10,7 @@ import { MudarPalavraPasse } from "@/components/pe/conta/MudarPalavraPasse";
 import { SeccaoAvisos } from "@/components/pe/avisos/Avisos";
 import { cnPe } from "@/lib/pe";
 import { useDjangoAuth } from "@/hooks/useDjangoAuth";
+import { normalizarNivel } from "@/src/domains/shared/niveis";
 import { dataPt, mensagemErro, telefoneLegivel, useLembretesMutation, useMinhaSubscricaoQuery } from "@/src/domains/student/subscricao/api";
 import {
   AREAS,
@@ -91,7 +92,7 @@ function OsSeusDados({ perfil }: { perfil: Perfil }) {
   const [provincia, setProvincia] = useState(perfil.provincia ?? "");
   const { data: provincias } = useProvinciasQuery();
   const [area, setArea] = useState(perfil.preferences?.area ?? "");
-  const [nivel, setNivel] = useState<Nivel | "">(perfil.preferences?.nivel ?? "");
+  const [nivel, setNivel] = useState<Nivel | "">(normalizarNivel(perfil.preferences?.nivel) ?? "");
   const [erros, setErros] = useState<Record<string, string>>({});
   const [estado, setEstado] = useState<{ tipo: "certo" | "errado"; texto: string } | null>(null);
 
@@ -181,7 +182,7 @@ function OsSeusDados({ perfil }: { perfil: Perfil }) {
           <option value="">Não sei</option>
           {NIVEIS.map((n) => (
             <option key={n.valor} value={n.valor}>
-              {n.nome}
+              {`${n.valor}: ${n.descricao}`}
             </option>
           ))}
         </Escolha>

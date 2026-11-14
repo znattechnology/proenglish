@@ -5,6 +5,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { sharedBaseQuery } from "@/src/domains/shared/api/baseQuery";
 import { mensagemErro as mensagemErroBase } from "@/src/domains/student/subscricao/api";
+import { nivelEmFrase } from "@/src/domains/shared/niveis";
 
 export type EstadoCurso = "rascunho" | "em_revisao" | "publicado" | "arquivado";
 export type TipoCurso = "video" | "pratica";
@@ -100,6 +101,20 @@ export type Aula = {
   resumo: string;
   materiais: Material[];
   questionario: { activo: boolean; perguntas: number; nota_minima: number };
+  /** Lição de prática a seguir a esta aula (de um curso de prática do mesmo professor). */
+  licao_pratica?: LicaoLigada | null;
+};
+export type LicaoLigada = {
+  id: string;
+  titulo: string;
+  unidade: { id: string; titulo: string };
+  curso: { id: string; titulo: string; estado: EstadoCurso };
+};
+export type CursoComLicoes = {
+  id: string;
+  titulo: string;
+  estado: EstadoCurso;
+  unidades: { id: string; titulo: string; licoes: { id: string; titulo: string }[] }[];
 };
 export type Seccao = { id: string; titulo: string; ordem: number; aulas: Aula[] };
 export type Estrutura = { curso: DetalheCurso; seccoes: Seccao[] };
@@ -163,9 +178,13 @@ export const professorApi = createApi({
       query: ({ seccao, titulo }) => ({ url: `/teacher/seccoes/${seccao}/aulas/`, method: "POST", body: { titulo } }),
       invalidatesTags: ["Estrutura", "Verificacao", "Cursos"],
     }),
-    mudarAula: build.mutation<Aula, { id: string } & Partial<Pick<Aula, "titulo" | "resumo" | "percentagem_vista" | "duracao_s">> & { seccao?: string }>({
+    mudarAula: build.mutation<Aula, { id: string } & Partial<Pick<Aula, "titulo" | "resumo" | "percentagem_vista" | "duracao_s">> & { seccao?: string; licao_pratica?: string | null }>({
       query: ({ id, ...body }) => ({ url: `/teacher/aulas/${id}/`, method: "PATCH", body }),
       invalidatesTags: ["Estrutura", "Verificacao"],
+    }),
+    licoesPratica: build.query<CursoComLicoes[], string>({
+      query: (curso) => `/teacher/cursos/${curso}/licoes-pratica/`,
+      transformResponse: (r: { cursos: CursoComLicoes[] }) => r?.cursos ?? [],
     }),
     apagarAula: build.mutation<void, string>({
       query: (id) => ({ url: `/teacher/aulas/${id}/`, method: "DELETE" }),
@@ -225,6 +244,7 @@ export const {
   useNovaAulaMutation,
   useMudarAulaMutation,
   useApagarAulaMutation,
+  useLicoesPraticaQuery,
   useOrdenarAulasMutation,
   useApagarMaterialMutation,
   useQuestionarioQuery,
@@ -239,10 +259,9 @@ export const ESTADO: Record<EstadoCurso, { nome: string; tipo: "certo" | "neutra
   arquivado: { nome: "Arquivado", tipo: "neutra" },
 };
 
-/** "Petróleo e Gás, intermédio" a partir da área e do nível. */
+/** "Petróleo e Gás, nível B1" a partir da área e do nível. */
 export function areaNivel(c: Pick<CursoProfessor, "area" | "nivel">) {
-  const nivel = c.nivel ? c.nivel.replace(/\s*\(.*\)$/, "").toLowerCase() : null;
-  return [c.area, nivel].filter(Boolean).join(", ");
+  return [c.area, nivelEmFrase(c.nivel)].filter(Boolean).join(", ");
 }
 
 export const pct = (v: number | null | undefined) => (v == null ? "–" : `${Math.round(v)}%`);

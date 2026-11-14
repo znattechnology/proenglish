@@ -176,7 +176,7 @@ class SubscriptionAccessMixin(EstadoCursoMixin):
         return True
 
 
-from apps.courses import ciclo
+from apps.courses import ciclo, niveis
 from ....models import (
     Course, CourseSection, Chapter, ChapterComment,
     CourseEnrollment, Transaction, UserCourseProgress, ChapterProgress,
@@ -217,7 +217,7 @@ class CourseListView(generics.ListAPIView):
     - category: Filter by category ('all' for no filter)
     - access_level: Filter by access level ('free', 'premium', 'premium_plus', 'all')
     - is_featured: Filter by featured status ('true', 'false')
-    - level: Filter by course difficulty level ('Beginner', 'Intermediate', 'Advanced')
+    - level: nível CEFR ('B1') ou lista ('A2,B1'); os nomes antigos valem a sua banda
     - search: texto a procurar no título, descrição ou categoria (todas as páginas)
     - status: ignorado (só cursos publicados)
     - ordering: created_at, title, level, category, is_featured, updated_at (com ou sem '-');
@@ -259,11 +259,9 @@ class CourseListView(generics.ListAPIView):
             queryset = queryset.filter(is_featured=False)
 
         # Apply level filter
-        level = self.request.query_params.get('level')
-        if level:
-            valid_levels = ['Beginner', 'Intermediate', 'Advanced']
-            if level in valid_levels:
-                queryset = queryset.filter(level=level)
+        codigos = niveis.filtro(self.request.query_params.get('level'))
+        if codigos:
+            queryset = queryset.filter(level__in=codigos)
 
         # Pesquisa no servidor (título, descrição, categoria), em todas as páginas.
         search = (self.request.query_params.get('search') or '').strip()[:100]
@@ -623,21 +621,14 @@ def _pode_marcar_vista(dados, capitulo):
 
 
 def _marcar_vista(progresso, capitulo):
-    """Marca o capítulo como concluído e recalcula o progresso. Devolve True se mudou."""
-    from apps.courses.certificados import progresso_actual
-    registo, criado = ChapterProgress.objects.get_or_create(
-        user_progress=progresso, chapter=capitulo,
-        defaults={'completed': True, 'completed_at': timezone.now()})
-    if not criado:
-        if registo.completed:
-            return False
-        registo.completed = True
-        registo.completed_at = timezone.now()
-        registo.save()
-    progresso.overallProgress = progresso_actual(progresso.user, progresso.course)
-    if progresso.overallProgress >= 100.0 and not progresso.completion_date:
-        progresso.completion_date = timezone.now()
-    progresso.save()
+    """
+    Regista o vídeo como visto e recalcula o progresso. Devolve True se a aula ficou concluída
+    agora (numa aula com questionário, só quando o questionário também está passado).
+    """
+    from apps.courses.conclusao import actualizar_progresso, registar
+    if not registar(progresso, capitulo, vista=True):
+        return False
+    actualizar_progresso(progresso)
     return True
 
 
@@ -688,14 +679,15 @@ def update_user_course_progress(request, userId, courseId):
         context={'request': request}
     )
     serializer.is_valid(raise_exception=True)
-    updated_progress = serializer.save()
 
     # Opcional: segundos vistos desde o último envio -> registo diário + sequência.
     # O capítulo é `chapter_id` ou o único capítulo enviado em `sections`. Os segundos são
-    # limitados (ver apps.courses.tempo_video): só o que é novo conta.
+    # limitados (ver apps.courses.tempo_video): só o que é novo conta. Creditam-se ANTES de
+    # gravar, para "marcar como vista" já contar com o que o aluno acabou de ver.
     watched_seconds = request.data.get('watched_seconds')
     segundos_creditados = 0
     aula_concluida = False
+    capitulo = None
     if watched_seconds not in (None, ''):
         chapter_id = request.data.get('chapter_id')
         if not chapter_id:
@@ -715,12 +707,16 @@ def update_user_course_progress(request, userId, courseId):
             except Exception:
                 import logging
                 logging.getLogger(__name__).exception("Failed to log video study minutes")
-            # A aula conta como vista quando o aluno viu a percentagem que o professor escolheu
-            # (Chapter.percentagem_vista), salvo se este pedido a desmarcou explicitamente.
-            if _pode_marcar_vista(request.data, capitulo):
-                from ....tempo_video import aula_vista
-                if aula_vista(request.user, capitulo):
-                    aula_concluida = _marcar_vista(updated_progress, capitulo)
+
+    updated_progress = serializer.save()
+
+    if capitulo is not None:
+        # A aula conta como vista quando o aluno viu a percentagem que o professor escolheu
+        # (Chapter.percentagem_vista), salvo se este pedido a desmarcou explicitamente.
+        if _pode_marcar_vista(request.data, capitulo):
+            from ....tempo_video import aula_vista
+            if aula_vista(request.user, capitulo):
+                aula_concluida = _marcar_vista(updated_progress, capitulo)
 
     # Return updated progress
     response_serializer = UserCourseProgressSerializer(updated_progress)
@@ -1236,6 +1232,11 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
         # Guarda as respostas e a correcção completa (para a revisão quando puder ser revelada).
         attempt.answers_data = {'respostas': respostas, 'correccao': correccao}
         StudentQuizAttempt.objects.filter(pk=attempt.pk).update(answers_data=attempt.answers_data)
+        aula_concluida = False
+        if attempt.is_passed:
+            # Passar o questionário conclui a aula (se o vídeo, quando o há, já foi visto).
+            from apps.courses.conclusao import apos_questionario_passado
+            aula_concluida = apos_questionario_passado(request.user, chapter)
 
         minhas = StudentQuizAttempt.objects.filter(student=request.user, chapter_quiz=attempt.chapter_quiz)
         restantes = max(0, attempt.chapter_quiz.max_attempts - minhas.count())
@@ -1246,6 +1247,7 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
         dados['revela_respostas'] = revela
         dados['correccao'] = correccao_para_aluno(correccao, revela)
         dados['tentativas_restantes'] = restantes
+        dados['aula_concluida'] = aula_concluida
 
         return Response({
             'message': 'Tentativa registada com sucesso',
@@ -1548,7 +1550,7 @@ def search_courses(request):
     Query params:
     - q: Search query (searches title and description)
     - category: Filter by category
-    - level: Filter by level
+    - level: nível CEFR ('B1') ou lista ('A2,B1')
     - access_level: Filter by access level ('free', 'premium', 'premium_plus')
     - is_featured: Filter by featured status ('true', 'false')
     - limit: Number of results (default: 20, max: 100)
@@ -1590,10 +1592,9 @@ def search_courses(request):
     if category and category != 'all':
         courses = courses.filter(category=category)
 
-    if level:
-        valid_levels = ['Beginner', 'Intermediate', 'Advanced']
-        if level in valid_levels:
-            courses = courses.filter(level=level)
+    codigos = niveis.filtro(level)
+    if codigos:
+        courses = courses.filter(level__in=codigos)
 
     # Apply access_level filter
     if access_level and access_level != 'all':

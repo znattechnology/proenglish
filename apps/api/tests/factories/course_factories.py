@@ -23,7 +23,7 @@ class CourseFactory(DjangoModelFactory):
         'Inglês Geral', 'Inglês para Negócios', 'Inglês para Tecnologia',
         'Inglês Médico', 'Inglês Jurídico', 'Conversação', 'Gramática'
     ])
-    level = factory.Iterator(['Beginner', 'Intermediate', 'Advanced'])
+    level = factory.Iterator(['A1', 'A2', 'B1', 'B2', 'C1', 'C2'])
     status = factory.Iterator(['Draft', 'Published', 'Archived'])
     template = factory.Iterator(['general', 'business', 'technology', 'medical', 'legal'])
     course_type = factory.Iterator(['video', 'practice'])
@@ -113,7 +113,7 @@ class BusinessCourseFactory(CourseFactory):
     
     category = 'Inglês para Negócios'
     template = 'business'
-    level = factory.Iterator(['Intermediate', 'Advanced'])
+    level = factory.Iterator(['B1', 'B2'])
 
 
 class TechnologyCourseFactory(CourseFactory):
@@ -121,7 +121,7 @@ class TechnologyCourseFactory(CourseFactory):
     
     category = 'Inglês para Tecnologia'
     template = 'technology'
-    level = factory.Iterator(['Intermediate', 'Advanced'])
+    level = factory.Iterator(['B1', 'B2'])
 
 
 class MedicalCourseFactory(CourseFactory):
@@ -129,13 +129,13 @@ class MedicalCourseFactory(CourseFactory):
     
     category = 'Inglês Médico'
     template = 'medical'
-    level = 'Advanced'  # Medical courses are always advanced
+    level = 'B2'  # Medical courses are always B2 or above
 
 
 class BeginnerCourseFactory(CourseFactory):
     """Factory for Beginner level courses."""
     
-    level = 'Beginner'
+    level = 'A2'
     category = factory.Iterator(['Inglês Geral', 'Conversação', 'Gramática'])
     template = 'general'
 

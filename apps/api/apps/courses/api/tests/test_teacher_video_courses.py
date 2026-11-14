@@ -118,7 +118,7 @@ class TeacherVideoCoursesAPITest(APITestCase):
             'title': 'New Video Course',
             'description': 'A new video course description',
             'category': 'Conversação',
-            'level': 'Beginner',
+            'level': 'A2',
             'template': 'general'
         }
         
@@ -144,7 +144,7 @@ class TeacherVideoCoursesAPITest(APITestCase):
             'title': 'Unauthorized Course',
             'description': 'Should not be created',
             'category': 'Test',
-            'level': 'Beginner'
+            'level': 'A2'
         }
         
         response = self.client.post(url, course_data, format='json')
@@ -329,7 +329,7 @@ class TeacherVideoCoursesResponseFormatTest(APITestCase):
             'title': 'Test Course',
             'description': 'Test description',
             'category': 'Test',
-            'level': 'Beginner'
+            'level': 'A2'
         }
         
         response = self.client.post(url, course_data, format='json')

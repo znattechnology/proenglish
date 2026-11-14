@@ -6,7 +6,7 @@ Most functionality has been migrated to:
 - apps/courses/api/teacher/practice_courses/ (teacher endpoints)
 
 This file maintains:
-1. Vapi webhook (old flow; student routes removed)
+1. Vapi webhook (end-of-call-report of the tutor conversation)
 2. Teacher course creation (CreateCourseView)
 3. Legacy compatibility routes
 """
@@ -24,10 +24,9 @@ from .views_course_management import PracticeCourseManagementView
 # Import CreateCourseView from essential views (only view not in new API)
 from .views_essential import CreateCourseView
 
-# Fluxo antigo da Vapi: só fica o webhook (protegido por segredo). As rotas de sessão,
-# resumo, progresso, painel, assistentes e quota foram retiradas; a conversa com o tutor
-# vive em apps/practice/conversa/.
-from .vapi_views import vapi_webhook
+# Webhook do Vapi (end-of-call-report da conversa com o tutor, protegido por segredo).
+# A conversa com o tutor vive em apps/practice/conversa/.
+from .conversa.webhook import vapi_webhook
 from . import competicoes_views
 
 # Import shared views from the NEW API (avoiding duplication)
@@ -95,7 +94,7 @@ urlpatterns = [
     # Certificado de mérito de uma competição (página imprimível do vencedor)
     path('competicoes/<uuid:competicao_id>/certificado/', competicoes_views.certificado, name='competicao-certificado'),
 
-    # Webhook da Vapi (fluxo antigo). Só responde com VAPI_WEBHOOK_SECRET configurado.
+    # Webhook do Vapi (conversa/webhook.py). Só responde com VAPI_WEBHOOK_SECRET configurado.
     path('vapi/webhook/', vapi_webhook, name='vapi-webhook'),
 
     # ========================================================================

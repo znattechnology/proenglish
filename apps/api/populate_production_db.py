@@ -164,7 +164,7 @@ def create_sample_courses(teacher_user):
             'course_type': 'video',
             'status': 'Published',
             'category': 'Grammar',
-            'level': 'Beginner',
+            'level': 'A2',
             'sections': [
                 {
                     'title': 'Introduction to Grammar',
@@ -204,7 +204,7 @@ def create_sample_courses(teacher_user):
             'course_type': 'video',
             'status': 'Published',
             'category': 'Business',
-            'level': 'Intermediate',
+            'level': 'B1',
             'sections': [
                 {
                     'title': 'Meeting English',
@@ -230,7 +230,7 @@ def create_sample_courses(teacher_user):
             'course_type': 'practice',
             'status': 'Published',
             'category': 'General',
-            'level': 'Beginner',
+            'level': 'A2',
             'sections': [
                 {
                     'title': 'Basic Conversations',

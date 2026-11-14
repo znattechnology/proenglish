@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Lock } from "lucide-react";
+import { Lock, Target, Volume2 } from "lucide-react";
 import { Aviso, Botao, Osso, Pilulas } from "@/components/pe";
 import { Pagina } from "@/components/pe/estudante/Pagina";
 import { Conversa } from "@/components/pe/conversa/Conversa";
+import { falarNoBrowser } from "@/components/pe/conversa/useConversa";
 import { cnPe } from "@/lib/pe";
 import {
   NIVEIS_DESCRICAO,
@@ -16,6 +17,7 @@ import {
   type Correcao,
   type Nivel,
   type NovaSessao,
+  type Objectivo,
   type Preparar,
 } from "@/src/domains/student/conversa/api";
 
@@ -69,13 +71,15 @@ function Formulario({ p, aoComecar }: { p: Preparar; aoComecar: (s: NovaSessao) 
   const pedida = useSearchParams().get("situacao"); // "Repetir esta conversa" no resumo
   const inicial = p.situacoes.find((s) => s.id === pedida) ?? p.situacoes[0];
   const [situacao, setSituacao] = useState(inicial?.id ?? "");
-  // O nível e a correcção que o professor sugere para a situação vêm já escolhidos; o aluno pode mudar.
+  // O nível vem do perfil de fala do aluno («O seu nível»); sem perfil, o que o professor sugere.
+  // A correcção sugerida pelo professor vem já escolhida. O aluno pode mudar as duas.
+  const nivelDe = (s?: Preparar["situacoes"][number]) => p.perfil?.nivel ?? s?.nivel ?? p.preferencias.nivel;
   const [correcao, setCorrecao] = useState<Correcao>(inicial?.correcao ?? p.preferencias.correcao);
-  const [nivel, setNivel] = useState<Nivel>(inicial?.nivel ?? p.preferencias.nivel);
+  const [nivel, setNivel] = useState<Nivel>(nivelDe(inicial));
   const escolherSituacao = (id: string) => {
     const s = p.situacoes.find((x) => x.id === id);
     setSituacao(id);
-    setNivel(s?.nivel ?? p.preferencias.nivel);
+    setNivel(nivelDe(s));
     setCorrecao(s?.correcao ?? p.preferencias.correcao);
   };
   const escolhida = p.situacoes.find((s) => s.id === situacao);
@@ -112,32 +116,35 @@ function Formulario({ p, aoComecar }: { p: Preparar; aoComecar: (s: NovaSessao) 
         }
       }}
     >
-      <fieldset className="m-0 flex min-w-0 flex-col gap-2.5 border-0 p-0">
-        <legend className="mb-2.5 p-0 font-pe-titulo text-[18px] font-semibold leading-6">Situação</legend>
-        <div className="grid gap-2.5 xl:grid-cols-2">
-          {p.situacoes.map((s) => {
-            const a = s.id === situacao;
-            return (
-              <label
-                key={s.id}
-                className={cnPe(
-                  "flex cursor-pointer items-center gap-3 rounded-pe-md px-4 py-3.5 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-pe-azul-vivo",
-                  a ? "border-2 border-pe-azul-marca bg-pe-fundo-suave" : "border border-pe-linha bg-pe-fundo hover:bg-pe-fundo-suave"
-                )}
-              >
-                <input type="radio" name="situacao" value={s.id} checked={a} onChange={() => escolherSituacao(s.id)} className="m-0 size-5 shrink-0 accent-pe-azul-marca" />
-                <span className="flex flex-col">
-                  <span className="font-semibold leading-[22px]">{s.titulo}</span>
-                  <span className="text-[14px] leading-5 text-pe-tinta-suave">
-                    {s.descricao} {s.minutos_sugeridos} minutos.
-                    {s.curso ? ` Do curso «${s.curso.titulo}».` : ""}
+      <div className="flex min-w-0 flex-col gap-6">
+        <fieldset className="m-0 flex min-w-0 flex-col gap-2.5 border-0 p-0">
+          <legend className="mb-2.5 p-0 font-pe-titulo text-[18px] font-semibold leading-6">Situação</legend>
+          <div className="grid gap-2.5 xl:grid-cols-2">
+            {p.situacoes.map((s) => {
+              const a = s.id === situacao;
+              return (
+                <label
+                  key={s.id}
+                  className={cnPe(
+                    "flex cursor-pointer items-center gap-3 rounded-pe-md px-4 py-3.5 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-pe-azul-vivo",
+                    a ? "border-2 border-pe-azul-marca bg-pe-fundo-suave" : "border border-pe-linha bg-pe-fundo hover:bg-pe-fundo-suave"
+                  )}
+                >
+                  <input type="radio" name="situacao" value={s.id} checked={a} onChange={() => escolherSituacao(s.id)} className="m-0 size-5 shrink-0 accent-pe-azul-marca" />
+                  <span className="flex flex-col">
+                    <span className="font-semibold leading-[22px]">{s.titulo}</span>
+                    <span className="text-[14px] leading-5 text-pe-tinta-suave">
+                      {s.descricao} {s.minutos_sugeridos} minutos.
+                      {s.curso ? ` Do curso «${s.curso.titulo}».` : ""}
+                    </span>
                   </span>
-                </span>
-              </label>
-            );
-          })}
-        </div>
-      </fieldset>
+                </label>
+              );
+            })}
+          </div>
+        </fieldset>
+        <Objectivos lista={p.objectivos?.[situacao] ?? []} />
+      </div>
 
       <div className="flex min-w-0 flex-col gap-6 lg:sticky lg:top-8">
         <fieldset className="m-0 flex flex-col gap-2.5 border-0 p-0">
@@ -166,7 +173,7 @@ function Formulario({ p, aoComecar }: { p: Preparar; aoComecar: (s: NovaSessao) 
 
         <div className="flex flex-col gap-2.5">
           <h2 id="titulo-nivel" className="m-0 font-pe-titulo text-[18px] font-semibold leading-6">
-            Nível
+            O seu nível
           </h2>
           <div role="group" aria-labelledby="titulo-nivel" className="grid grid-cols-6 gap-1.5">
             {p.niveis.map((n) => (
@@ -187,6 +194,11 @@ function Formulario({ p, aoComecar }: { p: Preparar; aoComecar: (s: NovaSessao) 
           <span className="text-[14px] leading-5 text-pe-tinta-suave">
             {nivel}: {NIVEIS_DESCRICAO[nivel]}
           </span>
+          {p.perfil?.nivel ? (
+            <span className="text-[14px] leading-5 text-pe-tinta-suave">
+              {nivel === p.perfil.nivel ? "Escolhemos pelas suas últimas conversas e lições." : `Pelas suas conversas e lições, o seu nível é ${p.perfil.nivel}.`}
+            </span>
+          ) : null}
           {escolhida?.nivel || escolhida?.correcao ? (
             <span className="text-[14px] leading-5 text-pe-tinta-suave">
               O professor sugere {[escolhida.nivel ? `o nível ${escolhida.nivel}` : "", escolhida.correcao ? `a correcção ${escolhida.correcao === "suave" ? "suave" : "directa"}` : ""].filter(Boolean).join(" e ")} para esta situação. Pode mudar.
@@ -230,5 +242,34 @@ function Formulario({ p, aoComecar }: { p: Preparar; aoComecar: (s: NovaSessao) 
         </div>
       </div>
     </form>
+  );
+}
+
+/** As frases-alvo desta conversa (do perfil de fala): o tutor cria ocasiões para o aluno as dizer. */
+function Objectivos({ lista }: { lista: Objectivo[] }) {
+  if (!lista.length) return null;
+  return (
+    <section aria-labelledby="titulo-objectivos" className="flex flex-col gap-2 rounded-pe-md bg-pe-fundo-suave p-4 md:p-5">
+      <h2 id="titulo-objectivos" className="m-0 flex items-center gap-2 font-pe-titulo text-[18px] font-semibold leading-6">
+        <Target aria-hidden className="size-5 shrink-0 text-pe-azul-marca" />
+        Objectivos desta conversa
+      </h2>
+      <p className="m-0 text-[15px] leading-[22px] text-pe-tinta-suave">Tente dizer estas frases sozinho durante a conversa. O tutor vai dar-lhe ocasiões para as usar.</p>
+      <ul className="m-0 flex list-none flex-col p-0">
+        {lista.map((o) => (
+          <li key={o.en} className="border-b border-pe-fundo-forte last:border-b-0">
+            <button type="button" onClick={() => falarNoBrowser(o.en)} aria-label={`Ouvir: ${o.en}${o.pt ? `. ${o.pt}` : ""}`} className="flex min-h-11 w-full items-start gap-3 bg-transparent py-2.5 text-left">
+              <Volume2 aria-hidden className="mt-0.5 size-5 shrink-0 text-pe-azul-marca" />
+              <span className="flex flex-col">
+                <span lang="en" className="font-semibold leading-[22px]">
+                  {o.en}
+                </span>
+                {o.pt ? <span className="text-[14px] leading-5 text-pe-tinta-suave">{o.pt}</span> : null}
+              </span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

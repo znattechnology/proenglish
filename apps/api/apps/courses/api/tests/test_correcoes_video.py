@@ -34,7 +34,7 @@ class CursoCompleto(Base):
     def curso_completo(self, status=ciclo.PUBLICADO, aulas=1):
         curso = Course.objects.create(
             teacher=self.prof, teacherName='Prof', title='Inglês na Plataforma', category='Industry English',
-            level='Intermediate', image='https://cdn.exemplo.ao/courses/images/capa.png', course_type='video',
+            level='B1', image='https://cdn.exemplo.ao/courses/images/capa.png', course_type='video',
             status=status, access_level='free')
         seccao = CourseSection.objects.create(course=curso, sectionTitle='Chegada', order=1)
         for i in range(aulas):

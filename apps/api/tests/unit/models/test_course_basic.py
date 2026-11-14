@@ -25,13 +25,13 @@ class TestCourseBasic(TestCase):
             title='Basic English',
             description='A simple English course',
             teacher=teacher,
-            level='Beginner',
+            level='A2',
             status='Draft'
         )
         
         self.assertEqual(course.title, 'Basic English')
         self.assertEqual(course.teacher, teacher)
-        self.assertEqual(course.level, 'Beginner')
+        self.assertEqual(course.level, 'A2')
         self.assertEqual(course.status, 'Draft')
         self.assertIsNotNone(course.id)
     
@@ -52,7 +52,7 @@ class TestCourseBasic(TestCase):
         course = Course.objects.create(
             title='Test Course',
             teacher=teacher,
-            level='Beginner'
+            level='A2'
         )
         
         self.assertEqual(course.teacherName, 'Jane Smith')

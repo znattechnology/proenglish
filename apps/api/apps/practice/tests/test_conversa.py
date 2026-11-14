@@ -47,7 +47,7 @@ class Base(APITestCase):
         self.plus = _plano('PREMIUM_PLUS', 'Premium Plus', 20)
         self.aluno = User.objects.create_user(email='ana-conv@example.com', name='Ana Maria Santos',
                                               password='x', role='student')
-        self.aluno.preferences = {'area': 'Industry English', 'nivel': 'Intermediate', 'cidade': 'Luanda'}
+        self.aluno.preferences = {'area': 'Industry English', 'nivel': 'B1', 'cidade': 'Luanda'}
         self.aluno.save(update_fields=['preferences'])
         self.outro = User.objects.create_user(email='bruno-conv@example.com', name='Bruno Costa',
                                               password='x', role='student')
@@ -383,7 +383,8 @@ class DonoTests(Base):
         self.assertEqual(d['estado'], 'em_curso')
         self.assertIsNone(d['notas'])
         self.assertEqual(set(d), {'id', 'situacao', 'iniciada_em', 'minutos', 'minutos_cobrados', 'segundos',
-                                  'estado', 'notas', 'transcricao', 'correccoes', 'palavras_bem_usadas', 'resumo'})
+                                  'estado', 'notas', 'transcricao', 'correccoes', 'palavras_bem_usadas', 'resumo',
+                                  'objectivos', 'padroes'})
 
     def test_legado_nao_quebra(self):
         VapiSession.objects.create(session_id='legado-1', user=self.aluno, level='B1', domain='general',

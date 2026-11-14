@@ -11,6 +11,12 @@ export type Correcao = "suave" | "directa";
 export type Frase = { en: string; pt: string };
 export type Ajuste = { disse: string; certo: string; porque: string };
 export type Fala = { quem: "tutor" | "aluno"; texto: string };
+/** Frase-alvo da conversa (perfil de fala). pt pode vir vazio. */
+export type Objectivo = { en: string; pt: string };
+export type ObjectivoResultado = Objectivo & { usado: boolean; com_ajuda: boolean };
+/** Padrão de erro nesta conversa: novo, recorrente ou já superado (estado de agora). */
+export type PadraoConversa = { chave: string; descricao: string; errado: string; certo: string; estado: "novo" | "recorrente" | "superado" };
+export type PadraoPerfil = { chave: string; descricao: string; errado: string; certo: string; ocorrencias: number; ultima_ocorrencia: string | null; superado: boolean };
 
 export type Preparar = {
   situacoes: {
@@ -25,6 +31,10 @@ export type Preparar = {
     correcao: Correcao | null;
     curso: { id: string; titulo: string } | null;
   }[];
+  /** Frases-alvo por situação (id da situação -> 2 a 4 frases). */
+  objectivos: Record<string, Objectivo[]>;
+  /** Nível de fala do perfil do aluno (null enquanto não há). */
+  perfil: { nivel: Nivel | null };
   niveis: Nivel[];
   areas: { id: string; nome: string }[];
   preferencias: { nivel: Nivel; correcao: Correcao; area: string };
@@ -47,6 +57,7 @@ export type NovaSessao = {
   max_segundos: number;
   primeira_fala: string;
   frases: Frase[];
+  objectivos: Objectivo[];
   vapi: { assistant_id: string; assistant_overrides: Record<string, unknown> } | null;
 };
 
@@ -66,6 +77,8 @@ export type Resumo = {
   correccoes: Ajuste[];
   palavras_bem_usadas: string[];
   resumo: string | null;
+  objectivos: ObjectivoResultado[];
+  padroes: PadraoConversa[];
 };
 
 export type Progresso = {
@@ -75,7 +88,39 @@ export type Progresso = {
   minutos: number;
   por_competencia: { chave: string; nome: string; valor: number | null; nota: string }[];
   ultimas: { id: string; titulo: string; iniciada_em: string; minutos: number; geral: number | null }[];
+  padroes: PadraoPerfil[];
+  frases_sozinho: { total: number; recentes: { texto: string; traducao: string; vezes: number; dias: number; ultima_vez: string | null }[] };
 };
+
+/** A fala contém a frase? (aproximado, só para o painel ao vivo: quem decide é o servidor no fim). */
+export function disseFrase(frase: string, fala: string) {
+  const norm = (t: string) =>
+    t
+      .toLowerCase()
+      .replace(/[\u2018\u2019`]/g, "'")
+      .replace(/\bcan't\b/g, "can not")
+      .replace(/\bwon't\b/g, "will not")
+      .replace(/n't\b/g, " not")
+      .replace(/'ll\b/g, " will")
+      .replace(/'re\b/g, " are")
+      .replace(/'m\b/g, " am")
+      .replace(/'ve\b/g, " have")
+      .replace(/'d\b/g, " would")
+      .replace(/[^a-z0-9\s]/g, " ")
+      .split(/\s+/)
+      .filter(Boolean);
+  const a = norm(frase);
+  const b = norm(fala);
+  if (!a.length || !b.length) return false;
+  // Maior subsequência comum (as palavras da frase, pela ordem): 80% chega.
+  let ant = new Array(b.length + 1).fill(0);
+  for (const x of a) {
+    const act = [0];
+    for (let j = 1; j <= b.length; j++) act.push(x === b[j - 1] ? ant[j - 1] + 1 : Math.max(ant[j], act[j - 1]));
+    ant = act;
+  }
+  return ant[b.length] / a.length >= 0.8;
+}
 
 const BASE = "/practice/conversa";
 

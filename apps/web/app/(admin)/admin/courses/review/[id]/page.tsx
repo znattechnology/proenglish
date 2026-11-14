@@ -13,6 +13,7 @@ import { dataPt, mensagemErro } from "@/src/domains/student/subscricao/api";
 import { duracaoPorExtenso } from "@/src/domains/teacher/professor/envio";
 import { nomeTipo } from "@/src/domains/teacher/professor/pratica";
 import { useAprovarMutation, useArquivarAdminMutation, useCursoRevisaoQuery, useRecusarMutation, type DetalheRevisao, type ExercicioRevisao } from "@/src/domains/admin/administracao/api";
+import { nivelEmFrase } from "@/src/domains/shared/niveis";
 
 const h2 = "m-0 font-pe-titulo text-[20px] font-semibold leading-7";
 
@@ -48,7 +49,7 @@ function Conteudo({ d, recarregar }: { d: DetalheRevisao; recarregar: () => void
             <EtiquetaEstado estado={c.estado} />
           </h1>
           <p className="m-0 text-pe-tinta-suave">
-            {c.tipo === "video" ? "Curso em vídeo" : "Curso de prática"}, {[c.area, c.nivel].filter(Boolean).join(", ")}. Por{" "}
+            {c.tipo === "video" ? "Curso em vídeo" : "Curso de prática"}, {[c.area, nivelEmFrase(c.nivel)].filter(Boolean).join(", ")}. Por{" "}
             <Link href={`/admin/users/${d.professor.id}`}>{d.professor.nome}</Link> ({d.professor.cursos_publicados} {d.professor.cursos_publicados === 1 ? "curso publicado" : "cursos publicados"}).
             {c.submetido_em ? ` Enviado a ${dataPt(c.submetido_em)}.` : ""}
           </p>

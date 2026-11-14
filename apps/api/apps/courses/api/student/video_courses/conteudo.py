@@ -40,6 +40,24 @@ def pode_ver_conteudo(user, course):
     return course.user_has_access(user)
 
 
+def licao_pratica_aberta(chapter):
+    """
+    A lição de prática ligada à aula (Chapter.practice_lesson), se os alunos a podem abrir: o curso
+    de prática tem conteúdo para alunos (publicado / arquivado a manter) e a lição não está
+    escondida (apps.practice.acesso_licoes). Senão None (o botão "Praticar" não aparece).
+    """
+    if not chapter.practice_lesson_id:
+        return None
+    from apps.courses.ciclo import q_conteudo_aluno
+    from apps.practice.acesso_licoes import ids_escondidas
+    from apps.practice.models import PracticeLesson
+    licao = (PracticeLesson.objects.select_related('unit__course')
+             .filter(q_conteudo_aluno('unit__course__'), pk=chapter.practice_lesson_id).first())
+    if licao is None or licao.id in ids_escondidas(licao.unit.course):
+        return None
+    return licao
+
+
 def quiz_sem_respostas(quiz_data):
     """Cópia do quiz_data sem isCorrect, correctOptionId nem explicações."""
     if not isinstance(quiz_data, dict):

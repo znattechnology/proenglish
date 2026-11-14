@@ -73,7 +73,7 @@ class Command(BaseCommand):
             curso = Course.objects.create(
                 teacher=professor, teacherName=professor.name, title=TITULO,
                 description="Curso de desenvolvimento com os 9 tipos de exercício.",
-                category="Industry English", level="Intermediate",
+                category="Industry English", level="B1",
                 course_type="practice", status="Published",
             )
             u1 = PracticeUnit.objects.create(course=curso, title="Reuniões de segurança", description="Pedir, confirmar e relatar.", order=1)

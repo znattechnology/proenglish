@@ -20,7 +20,7 @@ import {
 } from "@/src/domains/student/laboratorio/api";
 import { tempoAte } from "@/components/pe/laboratorio/Trilho";
 import { CabecalhoLicao, RodapeLicao, type EstadoRodape } from "./Partes";
-import { dicaTeclado, ExercicioUI, type RespostaExercicio } from "./Exercicios";
+import { dicaTeclado, ExercicioUI, type RespostaExercicio, type ResultadoFala } from "./Exercicios";
 
 const ILIMITADAS = 999;
 
@@ -39,6 +39,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   const [tentativa, setTentativa] = useState(0);
   const [resposta, setResposta] = useState<RespostaExercicio>(null);
   const [fase, setFase] = useState<Fase>({ tipo: "responder" });
+  const [fala, setFala] = useState<ResultadoFala | null>(null);
   const [aVerificar, setAVerificar] = useState(false);
   const [vidasLocal, setVidas] = useState<number | null>(null);
   const [errouEste, setErrouEste] = useState(false);
@@ -98,10 +99,12 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         }
         const d = r.data!;
         if (d.user_progress) setVidas(d.user_progress.hearts);
+        // A nota, as palavras a treinar e o comentário aparecem no exercício; o rodapé fica com a explicação/dica.
+        setFala({ nota: d.ai_analysis.overall_score, palavras: d.feedback?.problematic_words ?? [], mensagem: d.feedback?.message ?? null });
         if (d.ai_analysis.is_acceptable) {
-          setFase({ tipo: "certo", explicacao: d.explicacao ?? d.feedback?.message ?? null });
+          setFase({ tipo: "certo", explicacao: d.explicacao ?? null });
         } else {
-          setFase({ tipo: "errado", dica: d.dica ?? d.feedback?.message ?? null, perdeuVida: !repeticao && !ilimitadas });
+          setFase({ tipo: "errado", dica: d.dica ?? null, perdeuVida: !repeticao && !ilimitadas });
           setErrouEste(true);
         }
         return;
@@ -157,6 +160,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
     }
     setErrouEste(false);
     setResposta(null);
+    setFala(null);
     setFase({ tipo: "responder" });
     if (i + 1 >= total) {
       void terminar();
@@ -196,6 +200,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
 
   const tentarOutraVez = useCallback(() => {
     setResposta(null);
+    setFala(null);
     setFase({ tipo: "responder" });
     setTentativa((t) => t + 1);
   }, []);
@@ -281,7 +286,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
       <main className="flex-1">
         <div className="mx-auto flex max-w-[720px] flex-col gap-6 px-5 py-6 md:px-6 md:py-12">
           {ex ? (
-            <ExercicioUI key={`${ex.id}-${tentativa}`} ex={ex} bloqueado={fase.tipo !== "responder"} visual={fase.tipo === "responder" ? "livre" : fase.tipo} aoMudar={setResposta} />
+            <ExercicioUI key={`${ex.id}-${tentativa}`} ex={ex} bloqueado={fase.tipo !== "responder"} visual={fase.tipo === "responder" ? "livre" : fase.tipo} aoMudar={setResposta} fala={fala} />
           ) : null}
           {erroConcluir ? (
             <div role="alert" className="flex flex-col gap-3 rounded-pe-md bg-pe-errado-suave px-4 py-3">

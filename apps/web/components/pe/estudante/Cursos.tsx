@@ -5,7 +5,8 @@ import { useEffect } from "react";
 import { BookOpen, ChevronRight } from "lucide-react";
 import { BarraProgresso, Etiqueta, MarcaIcone, Osso } from "@/components/pe";
 import { cnPe } from "@/lib/pe";
-import { categoriaPt, nivelPt, useProgressoCursoQuery, type CursoVideo } from "@/src/domains/student/inicio/api";
+import { nivelEmFrase } from "@/src/domains/shared/niveis";
+import { categoriaPt, useProgressoCursoQuery, type CursoVideo } from "@/src/domains/student/inicio/api";
 
 /** Separadores da área Cursos: os cursos da pessoa e o catálogo. */
 export const SEPARADORES_CURSOS = [
@@ -15,7 +16,7 @@ export const SEPARADORES_CURSOS = [
 
 /** Linha de contexto do curso: área e nível, em português. */
 export function contextoCurso(c: CursoVideo) {
-  return [categoriaPt(c.category), nivelPt(c.level)?.toLowerCase()].filter(Boolean).join(", ");
+  return [categoriaPt(c.category), nivelEmFrase(c.level)].filter(Boolean).join(", ");
 }
 
 /** Miniatura do curso. A imagem é decorativa: o título já diz o que é. */

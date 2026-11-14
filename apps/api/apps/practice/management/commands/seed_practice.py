@@ -63,35 +63,35 @@ class Command(BaseCommand):
                     'description': 'Learn English from basics to advanced level',
                     'image': '/laboratory/challenges/english-1.jpg',
                     'category': 'General English',
-                    'level': 'Beginner'
+                    'level': 'A2'
                 },
                 {
                     'title': 'Inglês para Negócios',
                     'description': 'Business English for professional communication',
                     'image': '/laboratory/challenges/english-2.jpg',
                     'category': 'Business English',
-                    'level': 'Intermediate'
+                    'level': 'B1'
                 },
                 {
                     'title': 'Inglês para Tecnologia',
                     'description': 'Technical English for IT professionals',
                     'image': '/laboratory/challenges/english-1.jpg',
                     'category': 'Technical English',
-                    'level': 'Intermediate'
+                    'level': 'B1'
                 },
                 {
                     'title': 'Inglês para o Setor Bancário',
                     'description': 'Financial English for banking professionals',
                     'image': '/laboratory/challenges/english-2.jpg',
                     'category': 'Financial English',
-                    'level': 'Advanced'
+                    'level': 'B2'
                 },
                 {
                     'title': 'Inglês para o Setor Petrolífero',
                     'description': 'Oil and gas industry English',
                     'image': '/laboratory/challenges/english-1.jpg',
                     'category': 'Industry English',
-                    'level': 'Advanced'
+                    'level': 'B2'
                 }
             ]
 

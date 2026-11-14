@@ -27,7 +27,7 @@ from rest_framework.exceptions import NotFound
 from rest_framework.response import Response
 
 from apps.core.exceptions import corpo_erro
-from apps.courses import ciclo
+from apps.courses import ciclo, niveis
 from apps.courses.models import (
     Chapter, Course, CourseEnrollment, CourseSection, UserCourseProgress,
 )
@@ -440,7 +440,7 @@ def detalhe_curso(c, mc=None):
     dados.update({
         'descricao': c.description,
         'categoria': c.category,
-        'nivel_codigo': c.level,
+        'nivel_codigo': niveis.normalizar(c.level) or c.level,
         'submetido_em': c.submetido_em.isoformat() if c.submetido_em else None,
         'aprovado_em': c.aprovado_em.isoformat() if c.aprovado_em else None,
         'acesso': ACESSO_API.get(c.access_level, 'todos'),
@@ -525,7 +525,7 @@ def curso_detalhe(request, curso_id):
     if 'nivel' in entrada:
         nivel = ciclo.nivel_de_entrada(entrada['nivel'] if isinstance(entrada['nivel'], str) else '')
         if not nivel:
-            erros['nivel'] = ['Nível inválido. Use iniciante, intermédio ou avançado.']
+            erros['nivel'] = ['Nível inválido. Escolha um nível de A1 a C2.']
         else:
             curso.level = nivel
             campos.append('level')

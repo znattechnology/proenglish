@@ -377,7 +377,7 @@ class CourseService(BaseService):
         # Set default values
         defaults = {
             'status': 'Draft',
-            'level': 'Beginner',
+            'level': 'A2',
             'category': 'Inglês Geral',
             'price': 0,
             'template': 'general'

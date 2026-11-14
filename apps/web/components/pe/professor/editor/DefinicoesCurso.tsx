@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AreaTexto, Aviso, Botao, Campo, Escolha, Interruptor } from "@/components/pe";
+import { DESCRICAO_NIVEL, OPCOES_NIVEL, normalizarNivel } from "@/src/domains/shared/niveis";
 import { mensagemErro } from "@/src/domains/student/subscricao/api";
 import { useMudarCursoMutation, useOpcoesQuery, type DefinicoesCurso, type DetalheCurso } from "@/src/domains/teacher/professor/api";
 import { DialogoArquivar } from "./Arquivar";
@@ -15,7 +16,7 @@ export function FormDefinicoes({ curso }: { curso: DetalheCurso }) {
   const [titulo, setTitulo] = useState(curso.titulo);
   const [descricao, setDescricao] = useState(curso.descricao ?? "");
   const [area, setArea] = useState(curso.categoria);
-  const [nivel, setNivel] = useState(curso.nivel_codigo);
+  const [nivel, setNivel] = useState(normalizarNivel(curso.nivel_codigo) ?? "A2");
   const [acesso, setAcesso] = useState(curso.acesso);
   const [d, setD] = useState<DefinicoesCurso>(curso.definicoes);
   const [maximo, setMaximo] = useState(curso.definicoes.maximo_alunos?.toString() ?? "");
@@ -59,8 +60,8 @@ export function FormDefinicoes({ curso }: { curso: DetalheCurso }) {
               </option>
             ))}
           </Escolha>
-          <Escolha rotulo="Nível" value={nivel} onChange={(e) => setNivel(e.target.value)} disabled={!opcoes}>
-            {(opcoes?.niveis ?? [{ valor: curso.nivel_codigo, nome: curso.nivel ?? curso.nivel_codigo }]).map((n) => (
+          <Escolha rotulo="Nível" value={nivel} onChange={(e) => setNivel(normalizarNivel(e.target.value) ?? nivel)} ajuda={DESCRICAO_NIVEL[nivel]}>
+            {OPCOES_NIVEL.map((n) => (
               <option key={n.valor} value={n.valor}>
                 {n.nome}
               </option>

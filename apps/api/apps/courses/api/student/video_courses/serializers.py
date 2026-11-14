@@ -6,6 +6,7 @@ following the same structure and response format as the Express API.
 """
 
 from django.core.exceptions import ValidationError
+from django.db.models import Q
 from django.utils import timezone
 from rest_framework import serializers
 from ....models import (
@@ -14,6 +15,7 @@ from ....models import (
     ChapterResource, ChapterQuiz, StudentQuizAttempt,
     CourseWishlist, CourseReview, StudentNote, StudentBookmark, CourseCertificate
 )
+from apps.courses import niveis
 from apps.users.serializers import UserProfileSerializer
 
 
@@ -95,6 +97,11 @@ class ChapterSerializer(serializers.ModelSerializer):
         # As respostas certas nunca vão para o browser: a correcção é feita no servidor.
         if 'quiz_data' in dados:
             dados['quiz_data'] = quiz_sem_respostas(dados['quiz_data'])
+        # A lição de prática ligada só vai quando os alunos a podem abrir.
+        if dados.get('practice_lesson'):
+            from .conteudo import licao_pratica_aberta
+            if licao_pratica_aberta(instance) is None:
+                dados['practice_lesson'] = None
         return dados
 
 
@@ -385,7 +392,8 @@ class CourseCreateSerializer(serializers.ModelSerializer):
     title = serializers.CharField(required=False, default="Novo Curso")
     description = serializers.CharField(required=False, default="")
     category = serializers.CharField(required=False, default="Inglês Geral")
-    level = serializers.CharField(required=False, default="Beginner")
+    level = serializers.ChoiceField(choices=niveis.CEFR, required=False, default="A2",
+                                    error_messages={"invalid_choice": "Nível inválido. Escolha um nível de A1 a C2."})
     status = serializers.CharField(required=False, default="Draft")
     template = serializers.CharField(required=False, default="general")
     
@@ -694,8 +702,16 @@ class UserCourseProgressSerializer(serializers.ModelSerializer):
             Prefetch('chapters', queryset=Chapter.objects.filter(q_aula_visivel()).order_by('order', 'created_at')
                      .only('id', 'section_id', 'order'))
         ))
-        feitos = set(ChapterProgress.objects.filter(user_progress=obj, completed=True)
-                     .values_list('chapter_id', flat=True))
+        registos = ChapterProgress.objects.filter(user_progress=obj).filter(
+            Q(completed=True) | Q(video_visto=True)).values_list('chapter_id', 'completed')
+        feitos, vistos = set(), set()
+        for chapter_id, completed in registos:
+            vistos.add(chapter_id)
+            if completed:
+                feitos.add(chapter_id)
+        if not hasattr(self, '_vistos'):
+            self._vistos = {}
+        self._vistos[obj.pk] = vistos
         cache[obj.pk] = (seccoes, feitos)
         return cache[obj.pk]
 
@@ -709,7 +725,9 @@ class UserCourseProgressSerializer(serializers.ModelSerializer):
             {
                 'sectionId': str(section.id),
                 'chapters': [
-                    {'chapterId': str(ch.id), 'completed': ch.id in feitos}
+                    # video_visto: numa aula com questionário, o vídeo já foi visto (falta passar).
+                    {'chapterId': str(ch.id), 'completed': ch.id in feitos,
+                     'video_visto': ch.id in getattr(self, '_vistos', {}).get(obj.pk, ())}
                     for ch in section.chapters.all()
                 ],
             }
@@ -733,6 +751,7 @@ class UserCourseProgressUpdateSerializer(serializers.Serializer):
     sections = serializers.ListField(child=serializers.DictField())
     
     def update(self, instance, validated_data):
+        from apps.courses.conclusao import actualizar_progresso, registar
         sections_data = validated_data.get('sections', [])
         
         # Update progress for each chapter
@@ -747,28 +766,34 @@ class UserCourseProgressUpdateSerializer(serializers.Serializer):
                 try:
                     # Só capítulos deste curso (senão o progresso podia passar de 100%).
                     chapter = Chapter.objects.get(id=chapter_id, section__course=instance.course)
-                    progress, created = ChapterProgress.objects.get_or_create(
-                        user_progress=instance,
-                        chapter=chapter,
-                        defaults={'completed': completed}
-                    )
-                    if not created:
-                        progress.completed = completed
-                        progress.save()
-                        
                 except (Chapter.DoesNotExist, ValueError, TypeError, ValidationError):
                     continue
+                # Um vídeo com duração conhecida só conta como visto quando o servidor registou a
+                # percentagem que o professor escolheu: o browser já não basta (antes bastava
+                # mandar completed=true).
+                if completed and _video_por_ver(instance.user, chapter):
+                    pct = getattr(chapter, 'percentagem_vista', None) or 80
+                    raise serializers.ValidationError(
+                        {'completed': f'Veja pelo menos {pct}% do vídeo para o marcar como visto.'},
+                        code='video_por_ver')
+                # Numa aula com questionário, marcar como vista regista o vídeo; a aula só fica
+                # concluída com o questionário passado (apps/courses/conclusao.py).
+                registar(instance, chapter, vista=bool(completed), desmarcar=not completed)
         
         # Recalculate overall progress (só capítulos que ainda existem neste curso)
-        from apps.courses.certificados import progresso_actual
-        instance.overallProgress = progresso_actual(instance.user, instance.course)
-        if instance.overallProgress >= 100.0 and not instance.completion_date:
-            instance.completion_date = timezone.now()
-        elif instance.overallProgress < 100.0 and instance.completion_date:
-            instance.completion_date = None
-        
-        instance.save()
+        actualizar_progresso(instance)
         return instance
+
+
+def _video_por_ver(user, chapter):
+    """Aula de vídeo com duração conhecida que o aluno ainda não viu o suficiente."""
+    from apps.courses.tempo_video import aula_vista, duracao_do_video
+    if chapter.type == 'Quiz' or not chapter.video or not duracao_do_video(chapter):
+        return False
+    from apps.courses.models import ChapterProgress
+    if ChapterProgress.objects.filter(user_progress__user=user, chapter=chapter, video_visto=True).exists():
+        return False  # já contou antes (inclui o que estava concluído antes desta regra)
+    return not aula_vista(user, chapter)
 
 
 class CourseEnrollmentSerializer(serializers.ModelSerializer):

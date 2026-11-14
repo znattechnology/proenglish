@@ -92,17 +92,6 @@ export const { useCatalogoCursosQuery, useMeusCursosQuery, useProgressoCursoQuer
 /* ------------------------------------------------------------------ */
 /* Texto para o estudante (a API devolve alguns valores em inglês).    */
 /* ------------------------------------------------------------------ */
-const NIVEIS: Record<string, string> = {
-  Beginner: "Iniciante",
-  Intermediate: "Intermédio",
-  Advanced: "Avançado",
-};
-
-export function nivelPt(nivel?: string) {
-  if (!nivel) return undefined;
-  return NIVEIS[nivel] ?? nivel;
-}
-
 const CATEGORIAS: Record<string, string> = {
   "Industry English": "Petróleo e Gás",
   "Financial English": "Banca",

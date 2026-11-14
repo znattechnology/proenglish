@@ -7,16 +7,15 @@ used across multiple course models.
 
 from django.db import models
 
+from apps.courses import niveis
+
 
 # Shared choices for course models
 class CourseChoices:
     """Course-specific choices and constants."""
 
-    LEVEL_CHOICES = [
-        ('Beginner', 'Beginner'),
-        ('Intermediate', 'Intermediate'),
-        ('Advanced', 'Advanced'),
-    ]
+    # Escala CEFR única (A1..C2); ver apps/courses/niveis.py.
+    LEVEL_CHOICES = niveis.LEVEL_CHOICES
 
     # Ciclo de vida (ver apps/courses/ciclo.py): rascunho -> em revisão -> publicado -> arquivado.
     STATUS_CHOICES = [

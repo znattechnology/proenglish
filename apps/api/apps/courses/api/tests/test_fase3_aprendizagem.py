@@ -347,12 +347,16 @@ class MinutosConversaNaNotaTests(Base):
         cfg.conversation_enabled = True
         cfg.require_conversation_if_available = True
         cfg.save()
-        self.curso.level = 'Intermediate'
+        self.curso.level = 'B1'
         self.curso.save()
+        # Só contam as conversas deste curso (config.curso_id ou situação do curso).
+        do_curso = {'config': {'curso_id': str(self.curso.id)}}
         VapiSession.objects.create(session_id='f3-a', user=self.aluno, level='B1', domain='general',
-                                   duration_minutes=8, duration_seconds=330, overall_score=70)
+                                   duration_minutes=8, duration_seconds=330, overall_score=70,
+                                   full_session_data=do_curso)
         VapiSession.objects.create(session_id='f3-b', user=self.aluno, level='B1', domain='general',
-                                   duration_minutes=2, overall_score=80)  # antiga, sem segundos
+                                   duration_minutes=2, overall_score=80,  # antiga, sem segundos
+                                   full_session_data=do_curso)
         conv = self.client.get(f'{V}/{self.curso.id}/grade/').json()['data']['grades']['conversation']
         self.assertEqual((conv['sessions'], conv['minutes']), (2, round((330 + 120) / 60)))
 

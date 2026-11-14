@@ -40,7 +40,7 @@ class Base(APITestCase):
 
     def curso_pratica(self, status='Draft', licoes=1, exercicios=3, **extra):
         curso = Course.objects.create(teacher=self.prof, teacherName='Prof', title='Inglês no Terminal',
-                                      description='Curso de prática', category='Oil & Gas', level='Intermediate',
+                                      description='Curso de prática', category='Oil & Gas', level='B1',
                                       course_type='practice', status=status, **extra)
         unidade = PracticeUnit.objects.create(course=curso, title='Unidade 1', description='', order=1)
         curso.licoes = []
@@ -57,7 +57,7 @@ class Base(APITestCase):
 
     def curso_video(self, status='Draft', com_video=True, **extra):
         curso = Course.objects.create(teacher=self.prof, teacherName='Prof', title='Inglês para Plataformas',
-                                      description='Curso em vídeo', category='Industry English', level='Beginner',
+                                      description='Curso em vídeo', category='Industry English', level='A2',
                                       course_type='video', status=status,
                                       image='https://exemplo.ao/capa.jpg', **extra)
         seccao = CourseSection.objects.create(course=curso, sectionTitle='Secção 1', order=1)
@@ -356,7 +356,7 @@ class DefinicoesTests(Base):
         r = self.client.patch(f'{PROF}cursos/{curso.id}/', {'status': 'Published'}, format='json')
         self.assertEqual(r.status_code, 400)
         r = self.client.patch(f'{PROF}cursos/{curso.id}/', {
-            'titulo': 'Inglês no Terminal II', 'area': 'Petróleo e Gás', 'nivel': 'avançado',
+            'titulo': 'Inglês no Terminal II', 'area': 'Petróleo e Gás', 'nivel': 'B2',
             'visivel_catalogo': False, 'maximo_alunos': 30, 'nota_minima': 80, 'pode_repetir': False,
             'tempo_limite_questionario_min': 15,
         }, format='json')
@@ -367,7 +367,7 @@ class DefinicoesTests(Base):
         self.assertEqual(corpo['definicoes']['nota_minima'], 80)
         self.assertFalse(corpo['definicoes']['pode_repetir'])
         curso.refresh_from_db()
-        self.assertEqual((curso.category, curso.level, curso.maximo_alunos), ('Oil & Gas', 'Advanced', 30))
+        self.assertEqual((curso.category, curso.level, curso.maximo_alunos), ('Oil & Gas', 'B2', 30))
         self.assertEqual(CourseGradingConfig.objects.get(course=curso).min_final_grade, 80)
         r = self.client.patch(f'{PROF}cursos/{curso.id}/', {'nota_minima': 40}, format='json')
         self.assertEqual(r.status_code, 400)
@@ -422,7 +422,7 @@ class ResumosTests(Base):
         self.assertEqual(item['tipo'], 'pratica')
         self.assertEqual(item['estado'], 'publicado')
         self.assertEqual(item['area'], 'Petróleo e Gás')
-        self.assertEqual(item['nivel'], 'Intermédio (B1)')
+        self.assertEqual(item['nivel'], 'Nível B1')
         self.assertEqual((item['alunos'], item['unidades'], item['licoes'], item['exercicios']), (1, 1, 2, 6))
         self.assertEqual(item['conclusao'], 50.0)
         self.assertEqual(item['acerto'], 33.3)

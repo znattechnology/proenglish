@@ -8,7 +8,8 @@ import { ArrowLeft, Check, Lock } from "lucide-react";
 import { Aviso, Botao, Osso } from "@/components/pe";
 import { cnPe } from "@/lib/pe";
 import { useDjangoAuth } from "@/hooks/useDjangoAuth";
-import { categoriaPt, nivelPt } from "@/src/domains/student/inicio/api";
+import { nivelEmFrase, nomeCompletoNivel } from "@/src/domains/shared/niveis";
+import { categoriaPt } from "@/src/domains/student/inicio/api";
 import { mensagemErro, useMinhaSubscricaoQuery } from "@/src/domains/student/subscricao/api";
 import {
   capitulosPorOrdem,
@@ -59,7 +60,7 @@ function CursoInscrito({ curso }: { curso: Curso }) {
   const seguinte = lista.find((c) => !feitos.has(c.chapterId));
   const nFeitos = lista.filter((c) => feitos.has(c.chapterId)).length;
   const pct = lista.length ? (100 * nFeitos) / lista.length : 0;
-  const contexto = [categoriaPt(curso.category), nivelPt(curso.level), curso.teacherName || null, `${lista.length} aulas`].filter(Boolean).join(", ");
+  const contexto = [categoriaPt(curso.category), nivelEmFrase(curso.level), curso.teacherName || null, `${lista.length} aulas`].filter(Boolean).join(", ");
 
   return (
     <div className="flex flex-col">
@@ -207,7 +208,7 @@ function CursoPorComecar({ curso, temAcesso }: { curso: Curso; temAcesso: boolea
             <ArrowLeft aria-hidden className="size-5" /> Explorar cursos
           </Link>
           <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-[34px] tracking-[-0.01em] md:text-pe-titulo-l">{curso.title}</h1>
-          <p className="m-0 text-pe-tinta-suave">{[categoriaPt(curso.category), nivelPt(curso.level)].filter(Boolean).join(", ")}</p>
+          <p className="m-0 text-pe-tinta-suave">{[categoriaPt(curso.category), nivelEmFrase(curso.level)].filter(Boolean).join(", ")}</p>
           {curso.description ? <p className="m-0 max-w-[68ch] text-pe-corpo-l">{curso.description}</p> : null}
         </div>
         <section aria-labelledby="titulo-programa" className="flex flex-col gap-3">
@@ -244,7 +245,7 @@ function CursoPorComecar({ curso, temAcesso }: { curso: Curso; temAcesso: boolea
           {(
             [
               ["Professor", curso.teacherName],
-              ["Nível", nivelPt(curso.level)],
+              ["Nível", nomeCompletoNivel(curso.level) ?? "—"],
               ["Aulas", total ? `${total}` : "—"],
               ["Incluído no plano", plano.nome],
             ] as [string, string][]

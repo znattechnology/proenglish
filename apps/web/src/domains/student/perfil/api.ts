@@ -5,8 +5,10 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { aposMeta, quandoCorrerBem } from "@/src/domains/student/sincronizar";
 import { sharedBaseQuery } from "@/src/domains/shared/api/baseQuery";
+import type { NivelCefr } from "@/src/domains/shared/niveis";
 
-export type Nivel = "Beginner" | "Intermediate" | "Advanced";
+/** Nível CEFR (A1 a C2); a API traduz os valores antigos na leitura. */
+export type Nivel = NivelCefr;
 
 export type Perfil = {
   id: string;
@@ -98,8 +100,5 @@ export const AREAS: { valor: string; nome: string }[] = [
   { valor: "General English", nome: "Outra área" },
 ];
 
-export const NIVEIS: { valor: Nivel; nome: string }[] = [
-  { valor: "Beginner", nome: "Iniciante" },
-  { valor: "Intermediate", nome: "Intermédio" },
-  { valor: "Advanced", nome: "Avançado" },
-];
+/** Níveis para escolher (A1 a C2, com nome e descrição): ver src/domains/shared/niveis.ts. */
+export { OPCOES_NIVEL as NIVEIS } from "@/src/domains/shared/niveis";

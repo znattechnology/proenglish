@@ -66,8 +66,8 @@ class Course(BaseModel):
     level = models.CharField(
         max_length=20,
         choices=CourseChoices.LEVEL_CHOICES,
-        default='Beginner',
-        help_text="Course difficulty level"
+        default='A2',
+        help_text="Nível CEFR do curso (A1..C2)"
     )
     status = models.CharField(
         max_length=20,

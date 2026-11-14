@@ -279,11 +279,5 @@ urlpatterns = [
         views.AITranslationValidationView.as_view(),
         name='validate-ai-translation'
     ),
-    
-    # AI Pronunciation analysis with detailed feedback
-    path(
-        'analyze-ai-pronunciation/',
-        views.AIPronunciationAnalysisView.as_view(),
-        name='analyze-ai-pronunciation'
-    ),
+
 ]

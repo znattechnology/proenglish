@@ -417,6 +417,53 @@ class GenerateReferenceAudioView(APIView):
                          estado=status_module.HTTP_503_SERVICE_UNAVAILABLE)
 
 
+def _nota(valor):
+    try:
+        return max(0, min(100, int(round(float(valor)))))
+    except (TypeError, ValueError):
+        return 0
+
+
+def _lista_textos(valor, maximo=20, chars=200):
+    if not isinstance(valor, (list, tuple)):
+        return []
+    return [str(v).strip()[:chars] for v in valor if isinstance(v, (str, int, float)) and str(v).strip()][:maximo]
+
+
+def guardar_tentativa_pronuncia(user, challenge, result, simulada=False):
+    """
+    Guarda uma gravação analisada: ChallengeAttempt (certo = is_acceptable, entra nas estatísticas
+    de acerto e na revisão) e TentativaPronuncia (transcrição, notas e palavras a melhorar).
+    """
+    from django.db import transaction
+    from .models import ChallengeAttempt, TentativaPronuncia
+
+    aceite = bool(result.is_acceptable)
+    with transaction.atomic():
+        resposta = ChallengeAttempt.objects.create(user=user, challenge=challenge, is_correct=aceite)
+        tentativa = TentativaPronuncia.objects.create(
+            user=user, challenge=challenge, resposta=resposta,
+            texto_esperado=str(result.expected_text or '')[:2000],
+            transcricao=str(result.transcribed_text or '')[:2000],
+            nota_pronuncia=_nota(result.pronunciation_score),
+            nota_fluencia=_nota(result.fluency_score),
+            nota_clareza=_nota(result.clarity_score),
+            nota_geral=_nota(result.overall_score),
+            palavras_problematicas=_lista_textos(result.problematic_words, chars=60),
+            sugestoes=_lista_textos(result.suggestions, maximo=10),
+            feedback=str(result.feedback or '')[:2000],
+            aceite=aceite,
+            fonte=TentativaPronuncia.FONTE_SIMULADA if simulada else TentativaPronuncia.FONTE_IA,
+        )
+    if aceite:
+        try:  # perfil de fala: a frase lida em voz alta fica 'com ajuda' (nunca parte o exercício)
+            from apps.perfil.servico import registar_frase_licao
+            registar_frase_licao(user, challenge, tentativa.texto_esperado)
+        except Exception:
+            logger.exception('Falha ao registar a frase no perfil de fala')
+    return tentativa
+
+
 class AIPronunciationAnalysisView(APIView):
     """
     POST /api/v1/practice/analyze-ai-pronunciation/
@@ -509,7 +556,8 @@ class AIPronunciationAnalysisView(APIView):
             audio_bytes.name = audio_file.name
 
             from django.conf import settings as dj_settings
-            if getattr(dj_settings, 'PRONUNCIA_SIMULADA', False) and dj_settings.DEBUG:
+            simulada = bool(getattr(dj_settings, 'PRONUNCIA_SIMULADA', False) and dj_settings.DEBUG)
+            if simulada:
                 # Desenvolvimento sem OpenAI: aceita qualquer gravação com som (> 2 KB).
                 from types import SimpleNamespace
                 aceitavel = audio_bytes.getbuffer().nbytes > 2048
@@ -549,8 +597,16 @@ class AIPronunciationAnalysisView(APIView):
             if getattr(result, 'indisponivel', False):
                 return _analise_indisponivel(request.user, challenge)
 
+            # Cada gravação analisada fica guardada (perfil de fala, acerto e revisão).
+            tentativa = None
+            try:
+                tentativa = guardar_tentativa_pronuncia(request.user, challenge, result, simulada=simulada)
+            except Exception:
+                logger.exception("Falha ao guardar a tentativa de pronúncia")
+
             # Process results and update progress
             response_data = {
+                'tentativa_id': str(tentativa.id) if tentativa else None,
                 'success': True,
                 'ai_analysis': {
                     'transcribed_text': result.transcribed_text,
@@ -565,8 +621,8 @@ class AIPronunciationAnalysisView(APIView):
                 },
                 'feedback': {
                     'message': result.feedback,
-                    'problematic_words': result.problematic_words,
-                    'suggestions': result.suggestions
+                    'problematic_words': _lista_textos(result.problematic_words, chars=60),
+                    'suggestions': _lista_textos(result.suggestions, maximo=10)
                 }
             }
 

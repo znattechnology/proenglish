@@ -106,7 +106,7 @@ class TestTeacherVideoCourseAPI(BaseTeacherAPITest):
             'title': 'New Video Course',
             'description': 'A new course for testing',
             'category': 'Grammar',
-            'level': 'Beginner',
+            'level': 'A2',
             'status': 'Draft'
         }
         
@@ -203,7 +203,7 @@ class TestTeacherPracticeCourseAPI(BaseTeacherAPITest):
             'title': 'New Practice Course',
             'description': 'A new practice laboratory course',
             'category': 'General',  # Must be one of the valid categories
-            'level': 'Intermediate',
+            'level': 'B1',
             'status': 'Draft'
         }
         

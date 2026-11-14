@@ -9,6 +9,7 @@ import { Dialogo } from "@/components/pe/Dialogo";
 import { cnPe } from "@/lib/pe";
 import { errosPorCampo } from "@/components/pe/conta/Partes";
 import { mensagemErro } from "@/src/domains/student/subscricao/api";
+import { OPCOES_NIVEL } from "@/src/domains/shared/niveis";
 import {
   useApagarSituacaoMutation,
   useCriarSituacaoMutation,
@@ -125,7 +126,7 @@ export function FormSituacao({ inicial }: { inicial?: Situacao }) {
             ))}
           </Escolha>
           <Escolha rotulo="Nível" value={v.nivel} onChange={(e) => muda({ nivel: e.target.value })} erro={erros.nivel}>
-            {(opcoes?.niveis ?? ["A1", "A2", "B1", "B2", "C1", "C2"].map((n) => ({ valor: n, nome: n }))).map((n) => (
+            {(opcoes?.niveis ?? OPCOES_NIVEL).map((n) => (
               <option key={n.valor} value={n.valor}>
                 {n.nome}
               </option>

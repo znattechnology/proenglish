@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
-import { ChevronLeft } from "lucide-react";
-import { BalaoFala, Botao, Osso } from "@/components/pe";
+import { CheckCircle2, ChevronLeft, Circle } from "lucide-react";
+import { BalaoFala, Botao, Etiqueta, Osso } from "@/components/pe";
 import { Pagina } from "@/components/pe/estudante/Pagina";
 import { cnPe } from "@/lib/pe";
-import { COMPETENCIAS, useResumoQuery, type Ajuste, type Resumo } from "@/src/domains/student/conversa/api";
+import { COMPETENCIAS, useResumoQuery, type Ajuste, type PadraoConversa, type Resumo } from "@/src/domains/student/conversa/api";
 
 export default function PaginaResumoConversa() {
   const { sessionId } = useParams<{ sessionId: string }>();
@@ -138,6 +138,8 @@ function Conteudo({ r }: { r: Resumo }) {
         </section>
 
         <div className="flex min-w-0 flex-col gap-8 lg:sticky lg:top-8">
+          <Objectivos r={r} />
+
           <section aria-labelledby="titulo-correccoes" className="flex flex-col gap-3">
             <h2 id="titulo-correccoes" className="m-0 font-pe-titulo text-pe-titulo-s">
               Correcções
@@ -162,6 +164,23 @@ function Conteudo({ r }: { r: Resumo }) {
               <p className="m-0 text-pe-tinta-suave">{notas.length ? "Nenhuma correcção nesta conversa." : "Sem correcções."}</p>
             )}
           </section>
+
+          {r.padroes?.length ? (
+            <section aria-labelledby="titulo-padroes" className="flex flex-col gap-3">
+              <h2 id="titulo-padroes" className="m-0 font-pe-titulo text-pe-titulo-s">
+                Erros a trabalhar
+              </h2>
+              <ul className="m-0 flex list-none flex-col gap-3 p-0">
+                {r.padroes.map((p) => (
+                  <li key={p.chave} className="flex flex-col gap-1.5 rounded-pe-md bg-pe-fundo-suave p-4">
+                    <EstadoPadrao estado={p.estado} />
+                    <span className="leading-[22px]">{p.descricao}</span>
+                    <Exemplo errado={p.errado} certo={p.certo} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
 
           {r.palavras_bem_usadas.length ? (
             <section aria-labelledby="titulo-palavras" className="flex flex-col gap-3">
@@ -196,5 +215,66 @@ function ComErros({ texto, correccoes }: { texto: string; correccoes: Ajuste[] }
       <mark className="rounded-[2px] bg-pe-errado-suave px-0.5 text-pe-tinta underline decoration-pe-errado decoration-wavy underline-offset-4">{texto.slice(i, i + alvo.length)}</mark>
       {texto.slice(i + alvo.length)}
     </>
+  );
+}
+
+/** As frases-alvo: ditas sozinho (contam como aprendidas) ou ainda não. */
+function Objectivos({ r }: { r: Resumo }) {
+  const lista = r.objectivos ?? [];
+  if (!lista.length) return null;
+  const avaliada = r.estado === "avaliada";
+  const ditas = lista.filter((o) => o.usado).length;
+  return (
+    <section aria-labelledby="titulo-objectivos" className="flex flex-col gap-3">
+      <h2 id="titulo-objectivos" className="m-0 font-pe-titulo text-pe-titulo-s">
+        Objectivos
+      </h2>
+      <p className="m-0 text-[15px] leading-[22px] text-pe-tinta-suave">
+        {!avaliada
+          ? "Vemos que frases disse quando a conversa for avaliada."
+          : ditas === lista.length
+            ? "Disse todas as frases sozinho. Ficam como aprendidas."
+            : ditas
+              ? `Disse ${ditas} de ${lista.length} frases sozinho. Essas ficam como aprendidas.`
+              : "Ainda não disse estas frases sozinho. Tente na próxima conversa."}
+      </p>
+      <ul className="m-0 flex list-none flex-col p-0">
+        {lista.map((o) => (
+          <li key={o.en} className="flex items-start gap-2.5 border-b border-pe-fundo-forte py-2.5 last:border-b-0">
+            {o.usado ? <CheckCircle2 aria-hidden className="mt-0.5 size-5 shrink-0 text-pe-certo" /> : <Circle aria-hidden className="mt-0.5 size-5 shrink-0 text-pe-tinta-suave" />}
+            <span className="flex min-w-0 flex-col">
+              <span lang="en" className="font-semibold leading-[22px]">
+                {o.en}
+              </span>
+              {o.pt ? <span className="text-[14px] leading-5 text-pe-tinta-suave">{o.pt}</span> : null}
+              {avaliada ? (
+                <span className={cnPe("text-[14px] leading-5", o.usado ? "font-semibold text-pe-certo" : "text-pe-tinta-suave")}>
+                  {o.usado ? "Disse sozinho" : o.com_ajuda ? "Disse logo a seguir ao tutor: ainda não conta" : "Ainda não disse"}
+                </span>
+              ) : null}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function EstadoPadrao({ estado }: { estado: PadraoConversa["estado"] }) {
+  if (estado === "superado") return <Etiqueta tipo="certo">Já superado</Etiqueta>;
+  if (estado === "recorrente") return <Etiqueta tipo="realce">Repete-se</Etiqueta>;
+  return <Etiqueta>Novo</Etiqueta>;
+}
+
+function Exemplo({ errado, certo }: { errado: string; certo: string }) {
+  if (!errado || !certo) return null;
+  return (
+    <span lang="en" className="text-[15px] leading-[22px]">
+      <span className="sr-only">Disse: </span>
+      <span className="text-pe-tinta-suave line-through decoration-pe-errado decoration-2">{errado}</span>
+      <span aria-hidden> → </span>
+      <span className="sr-only">. Forma certa: </span>
+      <span className="font-semibold">{certo}</span>
+    </span>
   );
 }
