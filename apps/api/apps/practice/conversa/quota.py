@@ -18,7 +18,7 @@ MOTIVO_PLANO_SEM_TUTOR = 'plano_sem_tutor'
 MOTIVO_TESTE_EXPIRADO = 'teste_expirado'
 
 MENSAGENS = {
-    MOTIVO_SEM_MINUTOS: 'Já usou todos os minutos de conversa de hoje. Volte amanhã ou mude de plano.',
+    MOTIVO_SEM_MINUTOS: 'Já usou os minutos de conversa de hoje. Volte amanhã ou assine um plano com mais minutos.',
     MOTIVO_PLANO_SEM_TUTOR: 'O seu plano não inclui conversa com o tutor.',
     MOTIVO_TESTE_EXPIRADO: 'O seu período de teste terminou. Escolha um plano para continuar a conversar.',
 }

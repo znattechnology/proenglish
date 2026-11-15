@@ -160,10 +160,12 @@ def emitir_certificado(user, course, grade=None):
         return existente, False
 
     if not plano_inclui_certificados(user):
+        from apps.subscriptions.oferta import CERTIFICADO, oferta_segura
         raise CertificadoIndisponivel(
             'CERTIFICADOS_NAO_INCLUIDOS',
-            'Os certificados estão incluídos nos planos Premium e Premium Plus.',
+            'O certificado está incluído nos planos pagos. Assine para o receber.',
             status=403,
+            detalhes={'oferta': oferta_segura(user, CERTIFICADO)},
         )
     if not CourseEnrollment.objects.filter(user=user, course=course).exists():
         raise CertificadoIndisponivel('NAO_INSCRITO', 'Não está inscrito neste curso.', status=404)

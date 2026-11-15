@@ -32,13 +32,13 @@ class Command(BaseCommand):
                 'description': 'Perfeito para começar. Acesso básico com limite diário de lições e prática de conversação IA.',
                 'monthly_price': 0.00,
                 'yearly_price': 0.00,
-                'daily_lessons_limit': 3,
-                'daily_speaking_minutes': 5,  # 5 min/dia de conversação VAPI
+                'daily_lessons_limit': 2,
+                'daily_speaking_minutes': 3,  # 3 min/dia de conversa com o tutor
                 'daily_listening_minutes': 5,
                 'hearts_limit': 3,
                 'hearts_recharge_hours': 4,
                 'trial_days': 7,  # 7 dias de trial
-                'trial_speaking_minutes': 5,  # 5 min durante trial
+                'trial_speaking_minutes': 3,  # 3 min nos primeiros dias
                 'offline_downloads': False,
                 'certificates': False,
                 'ai_tutor': False,

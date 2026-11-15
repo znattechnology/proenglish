@@ -37,6 +37,7 @@ from apps.subscriptions.decorators import (
     premium_plus_required
 )
 from apps.subscriptions.models import UserSubscription
+from apps.practice.study_services import corpo_sem_vidas
 
 from apps.courses.models import Course
 from apps.practice.models import (
@@ -567,7 +568,7 @@ class ChallengeProgressView(APIView):
                 and not has_unlimited_hearts(request.user)):
             logger.info("User has no hearts and this is not practice mode")
             return Response(
-                {'error': 'hearts', 'message': 'Ficou sem vidas. Espere pela recarga ou recarregue com pontos.'},
+                corpo_sem_vidas(request.user),
                 status=status_module.HTTP_400_BAD_REQUEST
             )
 
@@ -1212,7 +1213,7 @@ class ValidateTextAnswerView(APIView):
         # Check hearts for new challenges (skip for users with unlimited hearts subscription)
         if user_progress.hearts == 0 and not is_practice and not has_unlimited_hearts(request.user):
             return Response(
-                {'error': 'hearts', 'message': 'No hearts remaining'},
+                corpo_sem_vidas(request.user),
                 status=status_module.HTTP_400_BAD_REQUEST
             )
         

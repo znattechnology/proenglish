@@ -94,7 +94,7 @@ class FalarFrase(_BaseAula):
         from apps.perfil.models import ItemBanco
         from apps.perfil.servico import registar_item
         from apps.perfil.views_revisao import (_analisar, _guardar_tentativa, _indisponivel, analise_publica,
-                                               contar_analise, estado_analises)
+                                               contar_analise, estado_analises, oferta_analises)
         from apps.practice.services import gravacao
 
         chapter = self.aula()
@@ -115,7 +115,8 @@ class FalarFrase(_BaseAula):
         if not pode:
             return Response({'codigo': 'limite_analises', 'pode_saltar': True,
                              'mensagem': 'Já usou as análises de pronúncia de hoje. Pode passar à frase seguinte '
-                                         'sem perder nada; amanhã há mais.'},
+                                         'sem perder nada; amanhã há mais.',
+                             'oferta': oferta_analises(request.user, sub)},
                             status=status.HTTP_429_TOO_MANY_REQUESTS)
         try:
             dados = io.BytesIO(audio.read())

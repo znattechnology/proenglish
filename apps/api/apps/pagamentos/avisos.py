@@ -119,6 +119,21 @@ def _email_teste(user, assunto, paragrafos, botao_texto=None, botao_caminho=None
         return False
 
 
+def _perdas(plano_pago):
+    """O que se perde ao voltar ao Gratuito, numa frase («lições novas sem limite, vidas ...»)."""
+    try:
+        from apps.subscriptions.oferta import perdas
+        from apps.subscriptions.services import obter_plano_gratuito
+        lista = [t[0].lower() + t[1:] for t in perdas(plano_pago, obter_plano_gratuito())]
+    except Exception:
+        logger.exception('avisos: falha ao listar o que se perde')
+        return ''
+    if not lista:
+        return ''
+    texto = lista[0] if len(lista) == 1 else ', '.join(lista[:-1]) + ' e ' + lista[-1]
+    return texto
+
+
 def _link_pagar(plano):
     return f'/user/upgrade?plan={plano.plan_type}'
 
@@ -146,9 +161,15 @@ def avisar_teste_a_terminar(sender, subscription, fim, **kwargs):
     body = (f'O teste termina a {_data(fim)} às {_hora(fim)}. Pague por Multicaixa Express para '
             f'continuar com o {plano.name}. Se não pagar, a conta volta ao Gratuito e o progresso '
             f'fica guardado.')
+    perde = _perdas(plano)
+    paragrafos = [body]
+    if perde:
+        aviso = f'No Gratuito deixa de ter {perde}.'
+        body = f'{body} {aviso}'
+        paragrafos.append(aviso)
     _notify(subscription.user, title=title, body=body, link=_link_pagar(plano),
             dedupe_key=f'teste:t2:{subscription.pk}:{fim:%Y%m%d%H%M}')
-    _email_teste(subscription.user, title, [body], f'Pagar o {plano.name}', _link_pagar(plano))
+    _email_teste(subscription.user, title, paragrafos, f'Pagar o {plano.name}', _link_pagar(plano))
 
 
 @receiver(teste_terminado, dispatch_uid='avisos_teste_terminado')
@@ -156,7 +177,14 @@ def avisar_teste_terminado(sender, subscription, plano_anterior, **kwargs):
     title = f'O seu teste do {plano_anterior.name} terminou'
     body = (f'A sua conta voltou ao plano Gratuito e o progresso foi mantido. Quando quiser voltar '
             f'ao {plano_anterior.name}, pague com Multicaixa Express.')
+    perde = _perdas(plano_anterior)
+    paragrafos = [body]
+    if perde:
+        aviso = f'Deixou de ter {perde}.'
+        body = f'{aviso} {body}'
+        paragrafos.insert(0, aviso)
     hoje = timezone.localtime(timezone.now(), FUSO_ANGOLA).date()
     _notify(subscription.user, title=title, body=body, link=_link_pagar(plano_anterior),
             dedupe_key=f'teste:fim:{subscription.pk}:{hoje.isoformat()}')
-    _email_teste(subscription.user, title, [body], f'Pagar o {plano_anterior.name}', _link_pagar(plano_anterior))
+    _email_teste(subscription.user, title, paragrafos, f'Pagar o {plano_anterior.name}',
+                 _link_pagar(plano_anterior))

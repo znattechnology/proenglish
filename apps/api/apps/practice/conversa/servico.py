@@ -42,9 +42,15 @@ TITULO_LEGADO = 'Conversa com o tutor'
 
 
 class ErroConversa(Exception):
-    def __init__(self, status, codigo, mensagem, campos=None):
+    def __init__(self, status, codigo, mensagem, campos=None, oferta=None):
         super().__init__(mensagem)
         self.status, self.codigo, self.mensagem, self.campos = status, codigo, mensagem, campos
+        self.oferta = oferta
+
+
+def _erro_quota(user, motivo):
+    from apps.subscriptions.oferta import CONVERSA, oferta_segura
+    return ErroConversa(403, motivo, MENSAGENS[motivo], oferta=oferta_segura(user, CONVERSA))
 
 
 def modo_simulado():
@@ -139,13 +145,13 @@ def criar_sessao(user, data, situacao=None, objectivos=None, max_segundos=None, 
         except Exception:
             logger.exception('conversa: falha ao avaliar a sessão pendente %s', pk)
     if not quota['pode_comecar'] and not isenta_quota:
-        raise ErroConversa(403, quota['motivo'], MENSAGENS[quota['motivo']])
+        raise _erro_quota(user, quota['motivo'])
 
     with transaction.atomic():
         sub = obter_assinatura(user, bloquear=True)
         quota = estado_quota(user, sub)
         if not quota['pode_comecar'] and not isenta_quota:
-            raise ErroConversa(403, quota['motivo'], MENSAGENS[quota['motivo']])
+            raise _erro_quota(user, quota['motivo'])
 
         nome = nome_aluno(user)
         fala = primeira_fala(situacao, nivel, nome)

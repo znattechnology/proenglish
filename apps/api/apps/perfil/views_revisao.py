@@ -65,6 +65,12 @@ def estado_analises(user):
     return usadas < limite, None
 
 
+def oferta_analises(user, sub=None):
+    """O plano que dá mais análises (para o 429 limite_analises da revisão e das aulas)."""
+    from apps.subscriptions.oferta import ANALISES, oferta_segura
+    return oferta_segura(user, ANALISES, sub)
+
+
 def contar_analise(sub, onde='revisão'):
     if sub is None:
         return  # sem assinatura activa: conta a própria TentativaPronuncia
@@ -172,7 +178,8 @@ class Falar(Base):
         if not pode:
             return Response({'codigo': 'limite_analises', 'pode_saltar': True,
                              'mensagem': 'Já usou as análises de pronúncia de hoje. Pode saltar este exercício: '
-                                         'não perde nada e a frase volta amanhã.'},
+                                         'não perde nada e a frase volta amanhã.',
+                             'oferta': oferta_analises(request.user, sub)},
                             status=status.HTTP_429_TOO_MANY_REQUESTS)
         try:
             dados = io.BytesIO(audio.read())

@@ -262,6 +262,21 @@ def _iso(d):
     return d.isoformat() if d else None
 
 
+MOTIVO_PLANO = 'plano'
+
+
+def plano_inclui_exame(user):
+    """O exame oral vai com o certificado: só nos planos que incluem certificados
+    (SubscriptionPlan.certificates, com a assinatura activa)."""
+    from apps.courses.certificados import plano_inclui_certificados
+    return plano_inclui_certificados(user)
+
+
+def _oferta_exame(user):
+    from apps.subscriptions.oferta import EXAME, oferta_segura
+    return oferta_segura(user, EXAME)
+
+
 def estado(user, course, progresso=None):
     """O que o ecrã do exame precisa: disponível?, porquê, temas e tentativas."""
     from apps.courses.certificados import progresso_actual
@@ -284,6 +299,9 @@ def estado(user, course, progresso=None):
         motivo, mensagem = 'desligado', 'Este curso não tem exame oral.'
     elif aprovado is not None:
         motivo, mensagem = 'aprovado', 'Já passou no exame oral deste curso.'
+    elif not plano_inclui_exame(user):
+        motivo = MOTIVO_PLANO
+        mensagem = 'O exame oral e o certificado estão incluídos nos planos pagos. Assine para fazer o exame.'
     elif progresso < LIMIAR_PROGRESSO:
         motivo = 'progresso'
         mensagem = (f'O exame abre quando tiver {LIMIAR_PROGRESSO:.0f}% das aulas concluídas '
@@ -300,6 +318,7 @@ def estado(user, course, progresso=None):
     return {
         'disponivel': motivo is None,
         'motivo': motivo,
+        'oferta': _oferta_exame(user) if motivo == MOTIVO_PLANO else None,
         'mensagem': mensagem,
         'progresso': round(progresso, 1),
         'limiar_progresso': LIMIAR_PROGRESSO,
@@ -331,7 +350,8 @@ def comecar(user, course, consentimento):
         get_user_model().objects.select_for_update().filter(pk=user.pk).first()
         e = estado(user, course)
         if not e['disponivel']:
-            raise ErroConversa(409, e['motivo'], e['mensagem'])
+            raise ErroConversa(403 if e['motivo'] == MOTIVO_PLANO else 409, e['motivo'], e['mensagem'],
+                               oferta=e.get('oferta'))
         exame = ExameOral.objects.create(
             user=user, course=course, estado=ExameOral.EM_CURSO, nota_minima=nota_minima(course),
             consentimento_gravacao=consentimento, consentimento_em=agora if consentimento else None,

@@ -256,17 +256,14 @@ class UserProgress(models.Model):
         Falls back to legacy field if no subscription exists.
         """
         try:
-            from apps.subscriptions.models import UserSubscription
-            subscription = UserSubscription.objects.select_related('plan').get(user=self.user)
-            plan = subscription.plan
-            if plan.hearts_limit == 0 and subscription.is_active():
-                # Vidas ilimitadas enquanto o plano estiver activo.
-                subscription.recharge_hearts_if_needed()
-                return subscription.current_hearts
-            # O máximo é o do plano (um plano "ilimitado" que já terminou vale o máximo normal).
-            maximo = plan.hearts_limit if plan.hearts_limit > 0 else 5
-            if plan.hearts_limit > 0:
-                subscription.recharge_hearts_if_needed()
+            from apps.subscriptions.services import obter_ou_criar_assinatura
+            # Sem assinatura (contas antigas): passa a ter a do Gratuito, com a recarga dele.
+            subscription = obter_ou_criar_assinatura(self.user)
+            plan = subscription.plano_das_vidas()
+            subscription.recharge_hearts_if_needed()
+            if plan.hearts_limit == 0:
+                return subscription.current_hearts  # ilimitadas enquanto o plano estiver activo
+            maximo = plan.hearts_limit
             if subscription.current_hearts > maximo:
                 # Ex.: 999 vidas que sobraram de um plano pago que terminou.
                 UserSubscription.objects.filter(pk=subscription.pk).update(current_hearts=maximo)

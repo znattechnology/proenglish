@@ -530,7 +530,8 @@ class AIPronunciationAnalysisView(APIView):
         ilimitadas = has_unlimited_hearts(request.user)
         is_practice = ChallengeProgress.objects.filter(user=request.user, challenge=challenge).exists()
         if not is_practice and not ilimitadas and user_progress.hearts <= 0:
-            return Response({'error': 'hearts', 'message': 'Ficou sem vidas. Espere pela recarga ou recarregue com pontos.'},
+            from apps.practice.study_services import corpo_sem_vidas
+            return Response(corpo_sem_vidas(request.user),
                             status=status_module.HTTP_400_BAD_REQUEST)
 
         try:

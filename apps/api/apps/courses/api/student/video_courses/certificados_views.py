@@ -44,6 +44,11 @@ def _certificado(cert, request):
     }
 
 
+def _oferta_certificado(user):
+    from apps.subscriptions.oferta import CERTIFICADO, oferta_segura
+    return oferta_segura(user, CERTIFICADO)
+
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def listar_certificados(request):
@@ -77,6 +82,7 @@ def listar_certificados(request):
     certs = CourseCertificate.objects.filter(user=user).select_related('course').order_by('-issued_at')
     return Response({
         'plano_inclui_certificados': plano_ok,
+        'oferta': None if plano_ok else _oferta_certificado(user),
         'certificados': [_certificado(c, request) for c in certs],
         'em_curso': em_curso,
     })

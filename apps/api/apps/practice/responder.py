@@ -248,7 +248,8 @@ class ResponderEmVozView(APIView):
         is_practice = ChallengeProgress.objects.filter(user=request.user, challenge=ch).exists()
         ilimitadas = has_unlimited_hearts(request.user)
         if progresso.hearts == 0 and not is_practice and not ilimitadas:
-            return Response({'error': 'hearts', 'message': 'Ficou sem vidas. Espere pela recarga ou recarregue com pontos.'},
+            from apps.practice.study_services import corpo_sem_vidas
+            return Response(corpo_sem_vidas(request.user),
                             status=status_http.HTTP_400_BAD_REQUEST)
 
         audio = io.BytesIO(audio_file.read())

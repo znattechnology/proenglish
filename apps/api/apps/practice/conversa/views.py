@@ -41,6 +41,8 @@ def _erro(e):
     corpo = {'codigo': e.codigo, 'mensagem': e.mensagem}
     if e.campos:
         corpo['campos'] = e.campos
+    if getattr(e, 'oferta', None):
+        corpo['oferta'] = e.oferta
     return Response(corpo, status=e.status)
 
 

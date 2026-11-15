@@ -436,7 +436,7 @@ class UserSubscription(models.Model):
             campos = {'current_hearts': F('current_hearts') - 1}
             # Com as vidas no máximo o relógio da recarga estava parado (às vezes há dias):
             # ao perder a primeira vida começa a contar agora, senão ela voltava logo.
-            limite = locked_sub.plan.hearts_limit if locked_sub.plan else 0
+            limite = locked_sub.plano_das_vidas().hearts_limit if locked_sub.plan else 0
             if limite and locked_sub.current_hearts >= limite:
                 campos['last_heart_recharge'] = timezone.now()
             # Use F() expression for atomic decrement
@@ -446,18 +446,35 @@ class UserSubscription(models.Model):
             return True
         return False
     
+    def plano_das_vidas(self):
+        """
+        O plano cujas regras de vidas se aplicam agora: o da assinatura ou, numa assinatura paga
+        que já terminou (antes de o cron a passar ao Gratuito), o Gratuito. Sem isto, um plano
+        pago expirado ficava com 5 vidas e sem recarga nenhuma.
+        """
+        if self.plan.plan_type != 'FREE' and not self.is_active():
+            gratuito = SubscriptionPlan.objects.filter(plan_type='FREE').first()
+            if gratuito is not None:
+                return gratuito
+        return self.plan
+
     def recharge_hearts_if_needed(self):
-        """Recarrega vidas se necessário"""
-        if self.plan.hearts_limit == 0:  # Vidas ilimitadas
+        """Recarrega vidas se necessário (segundo o plano_das_vidas)."""
+        plano = self.plano_das_vidas()
+        if plano.hearts_limit == 0:  # Vidas ilimitadas
             self.current_hearts = 999
             self.save(update_fields=['current_hearts'])
             return
-            
-        if self.current_hearts >= self.plan.hearts_limit:
+
+        if self.current_hearts > plano.hearts_limit:
+            # Ex.: as 999 de um plano pago que terminou.
+            self.current_hearts = plano.hearts_limit
+            self.save(update_fields=['current_hearts'])
+        if self.current_hearts >= plano.hearts_limit:
             return  # Já está no máximo (use_heart reinicia o relógio ao perder a 1.ª vida)
 
         now = timezone.now()
-        horas = self.plan.hearts_recharge_hours or 0
+        horas = plano.hearts_recharge_hours or 0
         if horas <= 0:
             return
         hours_since_recharge = (now - self.last_heart_recharge).total_seconds() / 3600
@@ -466,9 +483,9 @@ class UserSubscription(models.Model):
         if hearts_to_add > 0:
             self.current_hearts = min(
                 self.current_hearts + hearts_to_add,
-                self.plan.hearts_limit
+                plano.hearts_limit
             )
-            if self.current_hearts >= self.plan.hearts_limit:
+            if self.current_hearts >= plano.hearts_limit:
                 self.last_heart_recharge = now
             else:
                 # Guarda o tempo já decorrido para a próxima vida (não o deita fora).

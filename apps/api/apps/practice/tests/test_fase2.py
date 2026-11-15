@@ -110,10 +110,13 @@ class LimiteLicoesTests(LicoesBase):
         r = self.jogar(self.licoes[3])
         self.assertEqual(r.status_code, 403)
         d = r.json()
-        self.assertEqual(set(d), {'codigo', 'mensagem', 'limite', 'feitas', 'renova_em'})
+        self.assertEqual(set(d), {'codigo', 'mensagem', 'limite', 'feitas', 'renova_em', 'oferta'})
         self.assertEqual((d['codigo'], d['limite'], d['feitas']), ('limite_licoes', 3, 3))
-        self.assertEqual(d['mensagem'], 'Já fez as 3 lições de hoje. Amanhã há mais, ou passe para o Premium '
+        self.assertEqual(d['mensagem'], 'Já fez as 3 lições novas de hoje. Amanhã há mais, ou assine um plano '
                                         'para lições sem limite.')
+        # O plano que tira o limite (se houver um plano pago activo nestes testes).
+        if d['oferta'] is not None:
+            self.assertEqual(d['oferta']['recurso'], 'licoes')
         renova = datetime.fromisoformat(d['renova_em'])
         self.assertEqual(renova, limite_licoes.proxima_meia_noite())
         self.assertEqual((renova.hour, renova.minute, renova.utcoffset()), (0, 0, timedelta(hours=1)))
