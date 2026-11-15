@@ -2,7 +2,7 @@
 
 Servidor `2.31.122.170` (utilizador `deploy`), partilhado com o LabTIC e O Mambo.
 A API e a sua base de dados PostgreSQL correm em Docker, em `/opt/proenglish`.
-O Caddy de `/opt/proxy` trata do HTTPS e encaminha `api.proenglish.cloud` para a API.
+O Caddy de `/opt/proxy` trata do HTTPS e encaminha o endereço da API (por agora `proenglish-api.2.31.122.170.sslip.io`; o domínio novo junta-se depois).
 
 ```
 /opt/proenglish/
@@ -123,7 +123,7 @@ Cada push para `main` com alterações em `apps/api` corre `.github/workflows/ap
    - **se não ficar, volta à imagem anterior** e o workflow falha (as migrações não são
      desfeitas: têm de ser sempre compatíveis com a versão anterior);
    - instala as tarefas agendadas e apaga imagens antigas (ficam a nova e a anterior).
-4. **Verificação de fora**: `https://api.proenglish.cloud/api/health/` pelo Caddy.
+4. **Verificação de fora**: `<API_URL>/api/health/` pelo Caddy (variável `API_URL` do repositório; por omissão o endereço sslip.io).
 
 Também se corre à mão em Actions > API Deploy > Run workflow.
 

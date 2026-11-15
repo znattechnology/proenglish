@@ -4,8 +4,10 @@
 #   cp caddy/Caddyfile caddy/Caddyfile.bak-$(date +%F)
 #   docker compose exec caddy caddy validate --config /etc/caddy/Caddyfile
 #   docker compose exec caddy caddy reload   --config /etc/caddy/Caddyfile
-# O endereço sslip.io serve para testar antes de mudar o DNS de api.proenglish.cloud.
-api.proenglish.cloud, proenglish-api.2.31.122.170.sslip.io {
+# Por agora só o endereço sslip.io (aponta sozinho para o servidor e o Caddy obtém o certificado).
+# Quando houver domínio: acrescentá-lo a esta linha (p.ex. "api.novodominio.ao, proenglish-api...")
+# e a ALLOWED_HOSTS no .env, e mudar a variável API_URL do repositório no GitHub.
+proenglish-api.2.31.122.170.sslip.io {
 	encode zstd gzip
 
 	# Vídeos e gravações das aulas chegam a dezenas de MB.

@@ -112,11 +112,15 @@ jobs:
             "$APP/apps/api/deploy/vps/deploy.sh" "$IMAGEM:$GH_SHA"
 
       - name: Verificar de fora (HTTPS pelo Caddy)
+        env:
+          # Variável do repositório API_URL (Settings > Variables) quando houver domínio.
+          API_URL: ${{ vars.API_URL || 'https://proenglish-api.2.31.122.170.sslip.io' }}
         run: |
           for i in $(seq 1 12); do
-            if curl -fsS --max-time 10 https://api.proenglish.cloud/api/health/ >/dev/null; then
-              echo "API saudável em https://api.proenglish.cloud"; exit 0
+            if curl -fsS --max-time 10 "$API_URL/api/health/" >/dev/null; then
+              echo "API saudável em $API_URL"; exit 0
             fi
             sleep 5
           done
-          echo "::warning::A API respondeu no servidor mas não em https://api.proenglish.cloud (DNS ou Caddy?)"
+          echo "::error::A API respondeu no servidor mas não em $API_URL (DNS ou Caddy?)"
+          exit 1
