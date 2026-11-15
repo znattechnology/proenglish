@@ -47,6 +47,10 @@ class Command(BaseCommand):
                 'priority_support': False,
                 'streak_freeze': 0,
                 'multiple_devices': 1,
+                'daily_ai_analyses_limit': 3,  # análises de pronúncia por IA (None = sem limite)
+                'daily_detailed_pronunciation_limit': 0,  # pronúncia detalhada (Azure)
+                'dias_teste': 0,
+                'destaque': False,
                 'sort_order': 1,
             },
             {
@@ -70,6 +74,10 @@ class Command(BaseCommand):
                 'priority_support': False,
                 'streak_freeze': 1,
                 'multiple_devices': 2,
+                'daily_ai_analyses_limit': 20,
+                'daily_detailed_pronunciation_limit': 10,
+                'dias_teste': 7,  # teste grátis de 7 dias (um por pessoa)
+                'destaque': True,
                 'sort_order': 2,
             },
             {
@@ -93,6 +101,10 @@ class Command(BaseCommand):
                 'priority_support': True,
                 'streak_freeze': 2,
                 'multiple_devices': 3,
+                'daily_ai_analyses_limit': None,  # sem limite
+                'daily_detailed_pronunciation_limit': 20,
+                'dias_teste': 0,
+                'destaque': False,
                 'sort_order': 3,
             }
         ]
