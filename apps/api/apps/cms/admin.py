@@ -27,7 +27,7 @@ class LandingPageSettingsAdmin(admin.ModelAdmin):
     search_fields = ['site_title', 'site_description']
     
     fieldsets = (
-        ('Informacoes Basicas', {
+        ('Informações Básicas', {
             'fields': ('site_title', 'site_description', 'meta_keywords')
         }),
         ('Contactos', {
@@ -61,7 +61,7 @@ class HeroSectionAdmin(admin.ModelAdmin):
         ('Badge', {
             'fields': ('badge_text', 'badge_is_active')
         }),
-        ('Conteudo Principal', {
+        ('Conteúdo Principal', {
             'fields': ('headline', 'headline_highlight', 'description')
         }),
         ('Botoes CTA', {
@@ -128,11 +128,11 @@ class PricingTierAdmin(admin.ModelAdmin):
     
     def formatted_monthly_price(self, obj):
         return f"{obj.monthly_price:,.0f} {obj.currency}"
-    formatted_monthly_price.short_description = "Preco Mensal"
+    formatted_monthly_price.short_description = "Preço Mensal"
     
     def formatted_yearly_price(self, obj):
         return f"{obj.yearly_price:,.0f} {obj.currency}"
-    formatted_yearly_price.short_description = "Preco Anual"
+    formatted_yearly_price.short_description = "Preço Anual"
 
 
 @admin.register(Feature)
@@ -194,4 +194,4 @@ class SeoSettingsAdmin(admin.ModelAdmin):
 # Custom admin site configuration
 admin.site.site_header = "ProEnglish CMS Admin"
 admin.site.site_title = "ProEnglish CMS"
-admin.site.index_title = "Gestao de Conteudo da Landing Page"
+admin.site.index_title = "Gestão de Conteúdo da Landing Page"

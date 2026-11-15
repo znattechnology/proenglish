@@ -349,8 +349,8 @@ class Command(BaseCommand):
         categories_data = [
             {
                 'name': 'learning',
-                'display_name': 'Aprendizado',
-                'description': 'Conquistas relacionadas ao progresso nos estudos',
+                'display_name': 'Aprendizagem',
+                'description': 'Conquistas relacionadas com o progresso nos estudos',
                 'icon_class': 'fa-graduation-cap',
                 'color': 'text-blue-500',
                 'order': 1
@@ -366,7 +366,7 @@ class Command(BaseCommand):
             {
                 'name': 'social',
                 'display_name': 'Social',
-                'description': 'Conquistas por interação e competição',
+                'description': 'Conquistas por interacção e competição',
                 'icon_class': 'fa-users',
                 'color': 'text-green-500',
                 'order': 3
@@ -374,7 +374,7 @@ class Command(BaseCommand):
             {
                 'name': 'milestone',
                 'display_name': 'Marcos',
-                'description': 'Conquistas por atingir objetivos importantes',
+                'description': 'Conquistas por atingir objectivos importantes',
                 'icon_class': 'fa-trophy',
                 'color': 'text-yellow-500',
                 'order': 4
@@ -400,7 +400,7 @@ class Command(BaseCommand):
             # Conquistas de Aprendizado
             {
                 'title': 'Primeiro Passo',
-                'description': 'Complete seu primeiro desafio no laboratório',
+                'description': 'Conclua o seu primeiro desafio no laboratório',
                 'icon': '🎯',
                 'category': 'learning',
                 'rarity': 'common',
@@ -412,7 +412,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Estudante Dedicado',
-                'description': 'Complete 25 desafios',
+                'description': 'Conclua 25 desafios',
                 'icon': '📚',
                 'category': 'learning',
                 'rarity': 'common',
@@ -424,7 +424,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Mestre dos Desafios',
-                'description': 'Complete 100 desafios',
+                'description': 'Conclua 100 desafios',
                 'icon': '🎓',
                 'category': 'learning',
                 'rarity': 'rare',
@@ -436,7 +436,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Primeira Lição',
-                'description': 'Complete sua primeira lição completa',
+                'description': 'Conclua a sua primeira lição',
                 'icon': '📖',
                 'category': 'learning',
                 'rarity': 'common',
@@ -448,7 +448,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Estudioso',
-                'description': 'Complete 10 lições',
+                'description': 'Conclua 10 lições',
                 'icon': '🤓',
                 'category': 'learning',
                 'rarity': 'rare',
@@ -462,7 +462,7 @@ class Command(BaseCommand):
             # Conquistas de Sequência
             {
                 'title': 'Começou a Sequência',
-                'description': 'Pratique por 3 dias consecutivos',
+                'description': 'Pratique 3 dias seguidos',
                 'icon': '🔥',
                 'category': 'streak',
                 'rarity': 'common',
@@ -474,7 +474,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Uma Semana Forte',
-                'description': 'Pratique por 7 dias consecutivos',
+                'description': 'Pratique 7 dias seguidos',
                 'icon': '🌟',
                 'category': 'streak',
                 'rarity': 'rare',
@@ -486,7 +486,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Incansável',
-                'description': 'Pratique por 30 dias consecutivos',
+                'description': 'Pratique 30 dias seguidos',
                 'icon': '💪',
                 'category': 'streak',
                 'rarity': 'epic',
@@ -500,7 +500,7 @@ class Command(BaseCommand):
             # Conquistas de Pontos
             {
                 'title': 'Primeiros Pontos',
-                'description': 'Ganhe seus primeiros 100 pontos',
+                'description': 'Ganhe os seus primeiros 100 pontos',
                 'icon': '💎',
                 'category': 'milestone',
                 'rarity': 'common',
@@ -511,7 +511,7 @@ class Command(BaseCommand):
                 'order': 20
             },
             {
-                'title': 'Colecionador',
+                'title': 'Coleccionador',
                 'description': 'Acumule 1000 pontos',
                 'icon': '💰',
                 'category': 'milestone',
@@ -538,20 +538,20 @@ class Command(BaseCommand):
             # Conquistas Especiais
             {
                 'title': 'Beta Tester',
-                'description': 'Um dos primeiros usuários do ProEnglish',
+                'description': 'Um dos primeiros utilizadores do ProEnglish',
                 'icon': '🚀',
                 'category': 'special',
                 'rarity': 'legendary',
                 'points': 1000,
                 'requirement_type': 'special_beta',
                 'requirement_target': 1,
-                'requirement_unit': 'registro',
+                'requirement_unit': 'registo',
                 'is_secret': True,
                 'order': 30
             },
             {
                 'title': 'Madrugador',
-                'description': 'Complete uma lição antes das 6h da manhã',
+                'description': 'Conclua uma lição antes das 6h da manhã',
                 'icon': '🌅',
                 'category': 'special',
                 'rarity': 'rare',
@@ -620,7 +620,7 @@ class Command(BaseCommand):
         # Criar competição ativa
         competition = Competition.objects.create(
             title='Desafio de Outubro 2024',
-            description='Competição mensal para praticar inglês e ganhar prêmios incríveis!',
+            description='Competição mensal para praticar inglês e ganhar prémios incríveis!',
             type='monthly',
             status='active',
             start_date=timezone.now() - timedelta(days=15),

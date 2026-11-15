@@ -249,26 +249,26 @@ class Command(BaseCommand):
                 'met': True,
                 'required': float(config.min_quiz_average),
                 'actual': 88.5,
-                'message': f'Media dos quizzes: 88.5% (minimo: {config.min_quiz_average}%)'
+                'message': f'Média dos quizzes: 88.5% (mínimo: {config.min_quiz_average}%)'
             },
             'practice_completion': {
                 'met': True,
                 'required': float(config.min_practice_completion),
                 'actual': 85.0,
-                'message': f'Exercicios praticos: 85.0% (minimo: {config.min_practice_completion}%)'
+                'message': f'Exercícios práticos: 85.0% (mínimo: {config.min_practice_completion}%)'
             },
             'conversation_score': {
                 'met': True,
                 'required': None,
                 'actual': 82.0,
-                'message': 'Conversacao nao e requisito para este curso',
+                'message': 'Conversação não é requisito para este curso',
                 'skipped': True,
             },
             'final_grade': {
                 'met': True,
                 'required': float(config.min_final_grade),
                 'actual': 87.0,
-                'message': f'Nota final: 87.0% (minimo: {config.min_final_grade}%)'
+                'message': f'Nota final: 87.0% (mínimo: {config.min_final_grade}%)'
             },
         }
         grade.weight_info = {

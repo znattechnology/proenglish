@@ -104,7 +104,7 @@ class IsCourseOwner(BasePermission):
     Usage:
         permission_classes = [IsAuthenticated, IsCourseOwner]
     """
-    message = "Apenas o professor proprietário pode gerenciar este curso."
+    message = "Apenas o professor proprietário pode gerir este curso."
 
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:

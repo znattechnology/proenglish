@@ -1341,7 +1341,7 @@ class GetAudioUploadUrlView(APIView):
 
             if not all([lesson_id, file_name, file_type]):
                 return Response(
-                    {'error': 'lessonId, fileName, and fileType são obrigatórios'},
+                    {'error': 'lessonId, fileName e fileType são obrigatórios'},
                     status=status_module.HTTP_400_BAD_REQUEST
                 )
 
@@ -1383,7 +1383,7 @@ class GetAudioUploadUrlView(APIView):
             if file_size and int(file_size) > self.MAX_FILE_SIZE:
                 max_mb = self.MAX_FILE_SIZE // (1024 * 1024)
                 return Response(
-                    {'error': f'Arquivo muito grande. Tamanho máximo: {max_mb}MB'},
+                    {'error': f'Ficheiro demasiado grande. Tamanho máximo: {max_mb}MB'},
                     status=status_module.HTTP_400_BAD_REQUEST
                 )
 
@@ -1475,7 +1475,7 @@ class GetImageUploadUrlView(APIView):
 
             if not all([lesson_id, file_name, file_type]):
                 return Response(
-                    {'error': 'lessonId, fileName, and fileType são obrigatórios'},
+                    {'error': 'lessonId, fileName e fileType são obrigatórios'},
                     status=status_module.HTTP_400_BAD_REQUEST
                 )
 
@@ -1517,7 +1517,7 @@ class GetImageUploadUrlView(APIView):
             if file_size and int(file_size) > self.MAX_FILE_SIZE:
                 max_mb = self.MAX_FILE_SIZE // (1024 * 1024)
                 return Response(
-                    {'error': f'Arquivo muito grande. Tamanho máximo: {max_mb}MB'},
+                    {'error': f'Ficheiro demasiado grande. Tamanho máximo: {max_mb}MB'},
                     status=status_module.HTTP_400_BAD_REQUEST
                 )
 
@@ -2739,11 +2739,11 @@ def test_achievements_data(request):
             if diff.days == 0:
                 unlocked_at_formatted = "hoje"
             elif diff.days == 1:
-                unlocked_at_formatted = "1 dia atrás"
+                unlocked_at_formatted = "há 1 dia"
             elif diff.days < 7:
-                unlocked_at_formatted = f"{diff.days} dias atrás"
+                unlocked_at_formatted = f"há {diff.days} dias"
             else:
-                unlocked_at_formatted = f"{diff.days // 7} semana{'s' if diff.days // 7 > 1 else ''} atrás"
+                unlocked_at_formatted = f"há {diff.days // 7} semana{'s' if diff.days // 7 > 1 else ''}"
         
         achievement_data = {
             'id': str(achievement.id),

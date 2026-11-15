@@ -40,7 +40,7 @@ class Command(BaseCommand):
                 'badge_text': '🇦🇴 A primeira plataforma de inglês feita para Angola',
                 'badge_is_active': True,
                 'headline_highlight': 'com IA Personal Tutor',
-                'description': 'A única plataforma que combina inteligência artificial com cursos especializados para setores como petróleo, bancos e TI. Preços em AOA, conteúdo adaptado para Angola.',
+                'description': 'A única plataforma que combina inteligência artificial com cursos especializados para sectores como petróleo, bancos e TI. Preços em AOA, conteúdo adaptado para Angola.',
                 'primary_cta_text': 'Começar Grátis - 7 Dias',
                 'primary_cta_url': '/signup',
                 'secondary_cta_text': 'Ver Demo do IA Tutor',
@@ -55,7 +55,7 @@ class Command(BaseCommand):
 
         # Create Stats
         stats_data = [
-            {'value': '10K+', 'label': 'Angolanos aprendendo', 'section': 'hero', 'order': 0},
+            {'value': '10K+', 'label': 'Angolanos a aprender', 'section': 'hero', 'order': 0},
             {'value': '94%', 'label': 'Taxa de sucesso', 'section': 'hero', 'order': 1},
             {'value': '50+', 'label': 'Cursos especializados', 'section': 'hero', 'order': 2},
         ]
@@ -100,17 +100,17 @@ class Command(BaseCommand):
         services_data = [
             {
                 'title': 'Inglês para Petróleo & Gás',
-                'description': 'Especializado para Sonangol, Total Angola e Chevron. Aprenda terminologia técnica, protocolos de segurança e comunicação internacional específica do setor energético angolano.',
+                'description': 'Especializado para Sonangol, Total Angola e Chevron. Aprenda terminologia técnica, protocolos de segurança e comunicação internacional específica do sector energético angolano.',
                 'icon': '🛢️',
                 'service_type': 'course',
                 'student_count': '2.5K+',
-                'level': 'Técnico-Professional',
+                'level': 'Técnico-Profissional',
                 'duration': '3-6 meses',
                 'certification': 'Certificado Internacional',
                 'features': [
                     'Terminologia técnica do petróleo',
                     'Protocolos de segurança internacional',
-                    'Comunicação com equipes multinacionais',
+                    'Comunicação com equipas multinacionais',
                     'Relatórios técnicos em inglês',
                     'Apresentações para executivos'
                 ],
@@ -118,15 +118,15 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Inglês Bancário',
-                'description': 'Desenvolvido para BAI, BFA e Standard Bank. Domine transações internacionais, análise de crédito, compliance e atendimento a clientes internacionais.',
+                'description': 'Desenvolvido para BAI, BFA e Standard Bank. Domine transacções internacionais, análise de crédito, compliance e atendimento a clientes internacionais.',
                 'icon': '🏦',
                 'service_type': 'course',
                 'student_count': '1.8K+',
-                'level': 'Professional-Executivo',
+                'level': 'Profissional-Executivo',
                 'duration': '2-4 meses',
                 'certification': 'Certificado Bancário',
                 'features': [
-                    'Transações internacionais',
+                    'Transacções internacionais',
                     'Análise de crédito em inglês',
                     'Compliance internacional',
                     'Atendimento a clientes estrangeiros',
@@ -136,7 +136,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Inglês para TI & Telecomunicações',
-                'description': 'Criado para Unitel, MS Telecom e startups tech. Vocabulário de programação, metodologias ágeis, cloud computing e liderança de equipes remotas.',
+                'description': 'Criado para Unitel, MS Telecom e startups tech. Vocabulário de programação, metodologias ágeis, cloud computing e liderança de equipas remotas.',
                 'icon': '💻',
                 'service_type': 'course',
                 'student_count': '1.2K+',
@@ -147,14 +147,14 @@ class Command(BaseCommand):
                     'Vocabulário de programação',
                     'Metodologias ágeis',
                     'Cloud computing',
-                    'Liderança de equipes remotas',
+                    'Liderança de equipas remotas',
                     'Documentação técnica'
                 ],
                 'order': 2
             },
             {
                 'title': 'Inglês Executivo',
-                'description': 'Para C-Level e gestores sênior. Liderança internacional, negociações estratégicas, apresentações executivas e networking global com foco no mercado angolano.',
+                'description': 'Para C-Level e gestores seniores. Liderança internacional, negociações estratégicas, apresentações executivas e networking global com foco no mercado angolano.',
                 'icon': '👔',
                 'service_type': 'course',
                 'student_count': '950+',
@@ -172,7 +172,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'IA Personal Tutor',
-                'description': 'Nossa tecnologia exclusiva! Correção de pronunciação em tempo real, feedback personalizado para sotaque angolano e aprendizado adaptativo com inteligência artificial.',
+                'description': 'A nossa tecnologia exclusiva! Correcção da pronúncia em tempo real, feedback personalizado para o sotaque angolano e aprendizagem adaptativa com inteligência artificial.',
                 'icon': '🤖',
                 'service_type': 'ai_tutor',
                 'student_count': '3.2K+',
@@ -180,9 +180,9 @@ class Command(BaseCommand):
                 'duration': 'Contínuo',
                 'certification': 'Certificado IA-Enhanced',
                 'features': [
-                    'Correção de pronunciação em tempo real',
+                    'Correcção da pronúncia em tempo real',
                     'Feedback personalizado para Angola',
-                    'Aprendizado adaptativo',
+                    'Aprendizagem adaptativa',
                     'IA conversacional',
                     'Análise de progresso avançada'
                 ],
@@ -201,7 +201,7 @@ class Command(BaseCommand):
                     'Speaking Challenge com IA',
                     'Listening Lab com áudios reais',
                     'Writing Workshop profissional',
-                    'Cenários interativos de trabalho',
+                    'Cenários interactivos de trabalho',
                     'Gamificação e conquistas',
                     'Analytics avançado de progresso'
                 ],
@@ -235,7 +235,7 @@ class Command(BaseCommand):
                 'monthly_price': 0,
                 'yearly_price': 0,
                 'currency': 'AOA',
-                'angola_benefit': 'Ideal para testar nossa metodologia angolana',
+                'angola_benefit': 'Ideal para experimentar a nossa metodologia angolana',
                 'features': [
                     '3 lições por dia',
                     '5 min de Speaking com IA',
@@ -293,7 +293,7 @@ class Command(BaseCommand):
                     'TUDO do Professional',
                     'IA Personal Tutor exclusivo',
                     '2 sessões com nativos/mês',
-                    'Correção avançada com IA',
+                    'Correcção avançada com IA',
                     'Inglês para C-Level',
                     'Preparação para reuniões internacionais',
                     'Suporte VIP 24/7',
@@ -319,10 +319,10 @@ class Command(BaseCommand):
             page_type='home',
             defaults={
                 'meta_title': 'ProEnglish Angola - Inglês Especializado com IA Personal Tutor',
-                'meta_description': 'A primeira plataforma de inglês feita para Angola. Cursos especializados para petróleo, bancos e TI. Preços em AOA, IA Personal Tutor. Mais de 10K angolanos aprendendo.',
+                'meta_description': 'A primeira plataforma de inglês feita para Angola. Cursos especializados para petróleo, bancos e TI. Preços em AOA, IA Personal Tutor. Mais de 10K angolanos a aprender.',
                 'meta_keywords': 'inglês angola, aprender inglês, IA tutor, sonangol, petróleo, bancos, telecomunicações, cursos inglês',
                 'og_title': 'ProEnglish Angola - Inglês Especializado',
-                'og_description': 'A única plataforma que combina IA com cursos especializados para setores angolanos. Preços em AOA, conteúdo adaptado para Angola.',
+                'og_description': 'A única plataforma que combina IA com cursos especializados para sectores angolanos. Preços em AOA, conteúdo adaptado para Angola.',
                 'og_type': 'website',
                 'twitter_card': 'summary_large_image',
                 'twitter_title': 'ProEnglish Angola - Inglês com IA',

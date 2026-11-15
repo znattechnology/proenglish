@@ -683,7 +683,7 @@ class GradeCalculatorService:
                 'met': True,
                 'required': None,
                 'actual': conversation_data.get('score', 0),
-                'message': "Conversação não é requisito para este curso" if not self.config.require_conversation_if_available else "Componente de conversação desativado",
+                'message': "Conversação não é requisito para este curso" if not self.config.require_conversation_if_available else "Componente de conversação desactivado",
                 'skipped': True
             }
 

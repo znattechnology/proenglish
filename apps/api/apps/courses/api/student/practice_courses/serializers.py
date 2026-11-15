@@ -417,7 +417,7 @@ class CompetitionSerializer(serializers.ModelSerializer):
         elif diff.days < 0:
             return f"em {abs(diff.days)} dias"
         else:
-            return f"{diff.days} dias atrás"
+            return f"há {diff.days} dias"
     
     def get_endDate(self, obj):
         """Format end date for display"""
@@ -510,15 +510,15 @@ class UserAchievementSerializer(serializers.ModelSerializer):
         if diff.days == 0:
             return "hoje"
         elif diff.days == 1:
-            return "1 dia atrás"
+            return "há 1 dia"
         elif diff.days < 7:
-            return f"{diff.days} dias atrás"
+            return f"há {diff.days} dias"
         elif diff.days < 30:
             weeks = diff.days // 7
-            return f"{weeks} semana{'s' if weeks > 1 else ''} atrás"
+            return f"há {weeks} semana{'s' if weeks > 1 else ''}"
         else:
             months = diff.days // 30
-            return f"{months} mês{'es' if months > 1 else ''} atrás"
+            return f"há {months} mês{'es' if months > 1 else ''}"
 
 
 class AchievementStatsSerializer(serializers.Serializer):
@@ -583,14 +583,14 @@ class AchievementNotificationSerializer(serializers.ModelSerializer):
             return "agora"
         elif diff.total_seconds() < 3600:
             minutes = int(diff.total_seconds() // 60)
-            return f"{minutes} min atrás"
+            return f"há {minutes} min"
         elif diff.days == 0:
             hours = int(diff.total_seconds() // 3600)
-            return f"{hours}h atrás"
+            return f"há {hours} h"
         elif diff.days == 1:
             return "ontem"
         else:
-            return f"{diff.days} dias atrás"
+            return f"há {diff.days} dias"
 
 
 class DetailedAchievementSerializer(serializers.Serializer):
@@ -676,9 +676,9 @@ class StudyGoalSerializer(serializers.Serializer):
     """Validate the daily study goal (minutes)."""
     daily_goal_minutes = serializers.IntegerField(
         error_messages={
-            'required': 'Indica a meta diária em minutos.',
+            'required': 'Indique a meta diária em minutos.',
             'invalid': 'A meta diária deve ser um número inteiro de minutos.',
-            'null': 'Indica a meta diária em minutos.',
+            'null': 'Indique a meta diária em minutos.',
         }
     )
 
@@ -686,7 +686,7 @@ class StudyGoalSerializer(serializers.Serializer):
         allowed = [choice for choice, _ in UserStreak.DAILY_GOAL_CHOICES]
         if value not in allowed:
             raise serializers.ValidationError(
-                'Meta diária inválida. Escolhe 5, 10, 15 ou 20 minutos.'
+                'Meta diária inválida. Escolha 5, 10, 15 ou 20 minutos.'
             )
         return value
 

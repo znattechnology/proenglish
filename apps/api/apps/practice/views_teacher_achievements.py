@@ -154,7 +154,7 @@ def teacher_achievement_stats(request):
 
     except Exception as e:
         return Response(
-            {'error': f'Erro ao buscar estatísticas: {str(e)}'},
+            {'error': f'Erro ao obter estatísticas: {str(e)}'},
             status=status_module.HTTP_500_INTERNAL_SERVER_ERROR
         )
 
@@ -173,13 +173,13 @@ def toggle_achievement_status(request, achievement_id):
         achievement.save()
 
         return Response({
-            'message': f'Conquista {"ativada" if achievement.is_active else "desativada"} com sucesso',
+            'message': f'Conquista {"activada" if achievement.is_active else "desactivada"} com sucesso',
             'is_active': achievement.is_active
         })
 
     except Exception as e:
         return Response(
-            {'error': f'Erro ao alterar status: {str(e)}'},
+            {'error': f'Erro ao alterar o estado: {str(e)}'},
             status=status_module.HTTP_500_INTERNAL_SERVER_ERROR
         )
 
@@ -205,7 +205,7 @@ def bulk_update_achievements(request):
 
         if not action or not achievement_ids:
             return Response(
-                {'error': 'Ação e IDs das conquistas são obrigatórios'},
+                {'error': 'Acção e IDs das conquistas são obrigatórios'},
                 status=status_module.HTTP_400_BAD_REQUEST
             )
 
@@ -213,11 +213,11 @@ def bulk_update_achievements(request):
 
         if action == 'activate':
             achievements.update(is_active=True)
-            message = f'{achievements.count()} conquistas ativadas'
+            message = f'{achievements.count()} conquistas activadas'
 
         elif action == 'deactivate':
             achievements.update(is_active=False)
-            message = f'{achievements.count()} conquistas desativadas'
+            message = f'{achievements.count()} conquistas desactivadas'
 
         elif action == 'delete':
             count = achievements.count()
@@ -233,7 +233,7 @@ def bulk_update_achievements(request):
 
         else:
             return Response(
-                {'error': 'Ação inválida. Use: activate, deactivate, delete, ou reorder'},
+                {'error': 'Acção inválida. Use: activate, deactivate, delete ou reorder'},
                 status=status_module.HTTP_400_BAD_REQUEST
             )
 
@@ -310,6 +310,6 @@ def achievement_unlock_analytics(request, achievement_id):
 
     except Exception as e:
         return Response(
-            {'error': f'Erro ao buscar analytics: {str(e)}'},
+            {'error': f'Erro ao obter analytics: {str(e)}'},
             status=status_module.HTTP_500_INTERNAL_SERVER_ERROR
         )

@@ -18,25 +18,25 @@ class Command(BaseCommand):
         sample_transcripts = {
             'basic_english': """[00:00] Olá, bem-vindos ao nosso curso de inglês básico!
 [00:10] Hoje vamos aprender sobre cumprimentos básicos em inglês.
-[00:20] A primeira palavra que vocês precisam saber é "Hello" - que significa "Olá".
+[00:20] A primeira palavra que precisam de saber é "Hello" - que significa "Olá".
 [00:35] Outra forma comum de cumprimentar é "Hi" - mais informal.
-[00:50] Para perguntar como alguém está, usamos "How are you?" - "Como você está?"
+[00:50] Para perguntar como alguém está, usamos "How are you?" - "Como está?"
 [01:10] Uma resposta comum é "I'm fine, thank you" - "Estou bem, obrigado(a)".
-[01:25] Lembrem-se de sempre responder com educação!""",
+[01:25] Lembrem-se de responder sempre com educação!""",
             
             'grammar_intro': """[00:00] Bem-vindos à aula de gramática básica!
 [00:12] Hoje vamos falar sobre a estrutura básica das frases em inglês.
-[00:25] A ordem mais comum é: Sujeito + Verbo + Objeto.
+[00:25] A ordem mais comum é: Sujeito + Verbo + Objecto.
 [00:40] Por exemplo: "I eat apples" - "Eu como maçãs".
-[00:55] O sujeito é "I" (eu), o verbo é "eat" (como), o objeto é "apples" (maçãs).
+[00:55] O sujeito é "I" (eu), o verbo é "eat" (como), o objecto é "apples" (maçãs).
 [01:15] Vamos praticar com mais exemplos durante a aula!""",
             
-            'vocabulary': """[00:00] Vamos expandir nosso vocabulário hoje!
+            'vocabulary': """[00:00] Vamos alargar o nosso vocabulário hoje!
 [00:10] Primeiro, vamos aprender palavras sobre família.
 [00:20] "Mother" significa mãe, "Father" significa pai.
 [00:35] "Sister" é irmã, "Brother" é irmão.
 [00:50] "Grandmother" é avó, "Grandfather" é avô.
-[01:05] Tentem usar essas palavras em frases simples!"""
+[01:05] Tentem usar estas palavras em frases simples!"""
         }
 
         # Sample resources data
@@ -56,7 +56,7 @@ class Command(BaseCommand):
                 'is_featured': False
             },
             {
-                'title': 'Áudio - Pronunciação Correta',
+                'title': 'Áudio - Pronúncia Correcta',
                 'description': 'Exemplos de pronúncia nativa',
                 'resource_type': 'AUDIO',
                 'external_url': 'https://example.com/pronunciation.mp3',
@@ -89,7 +89,7 @@ class Command(BaseCommand):
         sample_quizzes = [
             {
                 'title': 'Quiz: Cumprimentos Básicos',
-                'description': 'Teste seu conhecimento sobre cumprimentos em inglês',
+                'description': 'Teste o seu conhecimento sobre cumprimentos em inglês',
                 'practice_lesson': 'greetings-101',
                 'points_reward': 20,
                 'hearts_cost': 1,
@@ -99,7 +99,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Quiz: Estrutura de Frases',
-                'description': 'Avalie sua compreensão sobre ordem das palavras',
+                'description': 'Avalie a sua compreensão da ordem das palavras',
                 'practice_lesson': 'sentence-structure-101',
                 'points_reward': 25,
                 'hearts_cost': 2,

@@ -74,7 +74,7 @@ from .views_teacher_achievements import (
 
 
 def test_view(request):
-    return JsonResponse({'status': 'OK', 'message': 'Backend funcionando!'})
+    return JsonResponse({'status': 'OK', 'message': 'Backend a funcionar!'})
 
 
 app_name = 'practice'

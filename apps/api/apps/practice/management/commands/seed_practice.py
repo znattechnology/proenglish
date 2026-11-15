@@ -80,14 +80,14 @@ class Command(BaseCommand):
                     'level': 'B1'
                 },
                 {
-                    'title': 'Inglês para o Setor Bancário',
+                    'title': 'Inglês para o Sector Bancário',
                     'description': 'Financial English for banking professionals',
                     'image': '/laboratory/challenges/english-2.jpg',
                     'category': 'Financial English',
                     'level': 'B2'
                 },
                 {
-                    'title': 'Inglês para o Setor Petrolífero',
+                    'title': 'Inglês para o Sector Petrolífero',
                     'description': 'Oil and gas industry English',
                     'image': '/laboratory/challenges/english-1.jpg',
                     'category': 'Industry English',

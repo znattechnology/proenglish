@@ -29,7 +29,7 @@ class Command(BaseCommand):
             {
                 'name': 'Gratuito',
                 'plan_type': 'FREE',
-                'description': 'Perfeito para começar. Acesso básico com limite diário de lições e prática de conversação IA.',
+                'description': 'Perfeito para começar. Acesso básico com limite diário de lições e prática de conversação com IA.',
                 'monthly_price': 0.00,
                 'yearly_price': 0.00,
                 'daily_lessons_limit': 2,
@@ -56,7 +56,7 @@ class Command(BaseCommand):
             {
                 'name': 'Premium',
                 'plan_type': 'PREMIUM',
-                'description': 'Aprendizagem sem limites. Lições ilimitadas, certificados oficiais, e relatórios avançados.',
+                'description': 'Aprendizagem sem limites. Lições ilimitadas, certificados oficiais e relatórios avançados.',
                 'monthly_price': 14950.00,  # 14.950 Kz (~$18 USD)
                 'yearly_price': 149500.00,  # 149.500 Kz (economia de ~17%)
                 'daily_lessons_limit': None,  # Ilimitado
@@ -83,7 +83,7 @@ class Command(BaseCommand):
             {
                 'name': 'Premium Plus',
                 'plan_type': 'PREMIUM_PLUS',
-                'description': 'A experiência completa. Tudo do Premium + IA Professor pessoal e sessões com professores nativos.',
+                'description': 'A experiência completa. Tudo do Premium, mais um professor pessoal com IA e sessões com professores nativos.',
                 'monthly_price': 24950.00,  # 24.950 Kz (~$30 USD)
                 'yearly_price': 249500.00,  # 249.500 Kz (economia de ~17%)
                 'daily_lessons_limit': None,  # Ilimitado

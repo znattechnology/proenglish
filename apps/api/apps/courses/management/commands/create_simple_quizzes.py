@@ -24,7 +24,7 @@ class Command(BaseCommand):
         sample_quizzes = [
             {
                 'title': 'Quiz: Conceitos Básicos',
-                'description': 'Teste seus conhecimentos sobre conceitos fundamentais',
+                'description': 'Teste os seus conhecimentos sobre conceitos fundamentais',
                 'points_reward': 20,
                 'hearts_cost': 1,
                 'passing_score': 80,
@@ -33,7 +33,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Quiz: Aplicação Prática', 
-                'description': 'Avalie sua capacidade de aplicar os conceitos aprendidos',
+                'description': 'Avalie a sua capacidade de aplicar os conceitos aprendidos',
                 'points_reward': 25,
                 'hearts_cost': 2,
                 'passing_score': 75,

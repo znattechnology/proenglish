@@ -78,7 +78,7 @@ class EnrollmentRequiredMixin:
             # Check if enrollment has expired
             if enrollment.expires_at and timezone.now() > enrollment.expires_at:
                 raise PermissionDenied(
-                    "A sua matrícula neste curso expirou. Renove para continuar a aceder."
+                    "A sua inscrição neste curso expirou. Renove para continuar a aceder."
                 )
 
         except CourseEnrollment.DoesNotExist:
@@ -1407,7 +1407,7 @@ def check_course_enrollment_status(request, courseId):
         }
 
     return Response({
-        'message': 'Status de inscrição verificado com sucesso',
+        'message': 'Estado da inscrição verificado com sucesso',
         'data': {
             'course_id': str(courseId),
             'course_title': course.title,

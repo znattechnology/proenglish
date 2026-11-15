@@ -385,7 +385,7 @@ def get_user_enrolled_courses(request, userId):
         from apps.users.models import User
         user = User.objects.get(id=userId)
     except User.DoesNotExist:
-        return Response({'error': 'Usuário não encontrado'}, status=404)
+        return Response({'error': 'Utilizador não encontrado'}, status=404)
     
     # Get enrolled courses - only video courses
     enrollments = CourseEnrollment.objects.filter(user=user).select_related('course')
@@ -421,7 +421,7 @@ def get_user_course_progress(request, userId, courseId):
         course = Course.objects.get(id=courseId)
         progress = UserCourseProgress.objects.get(user=user, course=course)
     except (User.DoesNotExist, Course.DoesNotExist):
-        return Response({'error': 'Usuário ou curso não encontrado'}, status=404)
+        return Response({'error': 'Utilizador ou curso não encontrado'}, status=404)
     except UserCourseProgress.DoesNotExist:
         return Response({'error': 'Progresso do curso não encontrado para este utilizador'}, status=404)
     

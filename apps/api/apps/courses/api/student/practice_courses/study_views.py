@@ -167,7 +167,7 @@ def complete_lesson(request):
     except study_services.LessonNotCompleted as exc:
         message = (
             'Esta lição ainda não tem exercícios.' if exc.total == 0
-            else f'Ainda não concluíste todos os exercícios desta lição ({exc.completed}/{exc.total}).'
+            else f'Ainda não concluiu todos os exercícios desta lição ({exc.completed}/{exc.total}).'
         )
         return Response(
             {'error': 'lesson_not_completed', 'message': message,

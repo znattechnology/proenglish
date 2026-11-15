@@ -295,10 +295,10 @@ class TextValidationService:
         if similarity >= 1.0:
             return "Perfeito!"
         elif similarity >= tolerance:
-            return "Correto! (pequeno erro de digitação aceito)"
+            return "Correcto! (pequeno erro de escrita aceite)"
         elif similarity >= tolerance - 0.10:
             return "Quase! Verifique a ortografia."
         elif similarity >= 0.5:
-            return "Parcialmente correto. Tente novamente."
+            return "Parcialmente correcto. Tente novamente."
         else:
-            return "Incorreto. Revise o conteúdo."
+            return "Incorrecto. Reveja o conteúdo."

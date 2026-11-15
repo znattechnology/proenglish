@@ -19,7 +19,7 @@ def teacher_required(view_func):
         
         # Check if user has teacher role
         if getattr(request.user, 'role', None) != 'teacher':
-            raise PermissionDenied("Apenas professores podem acessar este endpoint")
+            raise PermissionDenied("Apenas professores podem aceder a este endpoint")
         
         return view_func(request, *args, **kwargs)
     
@@ -43,7 +43,7 @@ def course_owner_required(view_func):
             course = Course.objects.get(id=course_id)
             
             if course.teacher != request.user:
-                raise PermissionDenied("Apenas o professor proprietário pode acessar este curso")
+                raise PermissionDenied("Apenas o professor proprietário pode aceder a este curso")
                 
         except Course.DoesNotExist:
             raise PermissionDenied("Curso não encontrado")
