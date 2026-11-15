@@ -13,7 +13,7 @@ const caixa = "mx-auto flex max-w-[1200px] flex-col gap-8 px-4 py-14 md:gap-10 m
 const PASSOS = [
   { titulo: "Ouve a frase", texto: "Cada lição começa por uma situação do seu trabalho: uma reunião, uma chamada, um pedido a um colega." },
   { titulo: "Repete em voz alta", texto: "Diz a frase ao microfone. O sistema avalia a pronúncia e mostra-lhe as palavras a melhorar." },
-  { titulo: "Conversa com o tutor", texto: "Fala por voz com o tutor de IA sobre a mesma situação. Ele responde, corrige e explica em português." },
+  { titulo: "Conversa com o tutor", texto: "Fala por voz com o tutor de inteligência artificial sobre a mesma situação. Ele responde, corrige e explica em português." },
   { titulo: "Faz o exame oral", texto: "No fim do curso, o exame é falado e vale 40% da nota. É ele que dá acesso ao certificado." },
 ];
 

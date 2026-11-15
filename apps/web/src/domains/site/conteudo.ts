@@ -69,7 +69,7 @@ export const SITE_POR_DEFEITO: Site = {
   perguntas: [],
   definicoes: {
     titulo: "ProEnglish: inglês para o seu trabalho",
-    descricao: "Cursos de inglês por área profissional, feitos para Angola. 15 minutos por dia e conversa com um tutor de IA.",
+    descricao: "Cursos de inglês por área profissional, feitos para Angola. 15 minutos por dia e conversa com um tutor de inteligência artificial.",
     palavras_chave: "",
     ga_id: null,
     pixel_id: null,

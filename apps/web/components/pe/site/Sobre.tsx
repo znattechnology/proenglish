@@ -5,7 +5,7 @@ import { Convite, Moldura } from "./Moldura";
 const PRINCIPIOS = [
   { titulo: "O inglês da sua profissão", texto: "Cada curso parte das situações reais de uma área: a reunião de segurança, o balcão do banco, a triagem no hospital." },
   { titulo: "Pouco e todos os dias", texto: "Lições de 15 minutos, pensadas para o intervalo do almoço ou a viagem de táxi para o trabalho." },
-  { titulo: "Falar desde o primeiro dia", texto: "O tutor de IA conversa consigo em inglês e explica as correcções em português." },
+  { titulo: "Falar desde o primeiro dia", texto: "O tutor de inteligência artificial conversa consigo em inglês e explica as correcções em português." },
 ];
 
 const h2 = "m-0 font-pe-titulo text-[28px] font-bold leading-[1.2] tracking-[-0.015em] md:text-[2.25rem]";
