@@ -32,7 +32,9 @@ export function Moldura({ site, actual, children }: { site: Site; actual: "inici
             {actual === "inicio" ? (
               <>
                 <a href="#como-funciona" className={ligacaoNav}>Como funciona</a>
+                <a href="#curso-geral" className={ligacaoNav}>Curso geral</a>
                 <a href="#areas" className={ligacaoNav}>Sectores</a>
+                <a href="#empresas" className={ligacaoNav}>Empresas</a>
                 <a href="#planos" className={ligacaoNav}>Planos</a>
                 <Link href="/about" className={ligacaoNav}>Sobre</Link>
               </>
@@ -50,7 +52,9 @@ export function Moldura({ site, actual, children }: { site: Site; actual: "inici
               actual === "inicio"
                 ? [
                     { nome: "Como funciona", href: "#como-funciona" },
+                    { nome: "Curso geral", href: "#curso-geral" },
                     { nome: "Sectores", href: "#areas" },
+                    { nome: "Empresas", href: "#empresas" },
                     { nome: "Planos", href: "#planos" },
                     { nome: "Sobre", href: "/about" },
                   ]

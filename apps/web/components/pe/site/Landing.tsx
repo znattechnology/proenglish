@@ -23,6 +23,20 @@ const SITUACOES = [
   { foto: "escuta", alt: "Profissional com auscultadores ao pescoço, atento ao ecrã", onde: "Na videochamada", frase: "Sorry, the line is bad. Can you hear me now?" },
 ];
 
+/** Percurso do English Communication Skills: o que o aluno já consegue dizer em cada etapa. */
+const NIVEIS = [
+  { nome: "Básico", frase: "Hello, my name is Ana. I work at a bank.", texto: "Apresentar-se, fazer perguntas simples, dizer números, datas e horas." },
+  { nome: "Intermédio", frase: "Could we move the meeting to Thursday?", texto: "Participar em reuniões, atender o telefone, combinar e explicar." },
+  { nome: "Avançado", frase: "I'd argue the second option carries less risk.", texto: "Apresentar, negociar e defender uma ideia com à-vontade." },
+];
+
+const EMPRESAS = [
+  { titulo: "Cada colaborador começa no seu nível", texto: "Um teste falado à entrada coloca cada pessoa na etapa certa, do básico ao avançado." },
+  { titulo: "Base geral, depois o sector da empresa", texto: "A equipa ganha primeiro a base no English Communication Skills e segue para o inglês do seu sector." },
+  { titulo: "Sem tirar ninguém do posto", texto: "São 15 minutos por dia, no telemóvel ou no computador, à hora que der mais jeito." },
+  { titulo: "Certificado que se pode verificar", texto: "Cada curso concluído com exame oral dá um certificado com código de verificação online." },
+];
+
 /** Sectores da página inicial, pela ordem em que aparecem. `areas` são os nomes que a API usa para contar os cursos. */
 const SECTORES = [
   { nome: "Petróleo e Gás", areas: ["Petróleo e Gás"], foto: "petroleo", alt: "Plataforma petrolífera no mar ao pôr do sol", frase: "Could you send me the drilling report by Friday?", texto: "Reuniões de segurança, relatórios de turno e instruções em plataforma." },
@@ -74,6 +88,10 @@ export function Landing({ site }: { site: Site }) {
   const gratis = site.precos.planos.some((p) => p.preco_mensal_kz <= 0);
   // Os cursos publicados de cada sector vêm da API; sem cursos, o cartão não mostra contagem.
   const sectores = SECTORES.map((x) => ({ novo: false, ...x, cursos: site.areas.filter((a) => x.areas.includes(a.nome)).reduce((n, a) => n + a.cursos, 0) }));
+
+  const contactoEmpresas = site.definicoes.email
+    ? `mailto:${site.definicoes.email}?subject=${encodeURIComponent("Formação em inglês para a empresa")}`
+    : null;
 
   return (
     <Moldura site={site} actual="inicio">
@@ -219,13 +237,53 @@ export function Landing({ site }: { site: Site }) {
         </div>
       </section>
 
+      {/* English Communication Skills: o curso geral, do básico ao avançado */}
+      <section id="curso-geral" className="scroll-mt-4 bg-pe-fundo-suave">
+        <div className="mx-auto flex max-w-[1200px] flex-col gap-10 px-4 py-14 md:gap-14 md:px-6 md:py-24">
+          <div className="grid items-center gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)]">
+            <div className="flex min-w-0 flex-col gap-4">
+              <p className="m-0 self-start rounded-full bg-pe-azul-marca px-4 py-1.5 text-[15px] font-semibold text-pe-sobre-marca">Para toda a gente</p>
+              <h2 className="m-0 text-balance font-pe-titulo text-[34px] font-bold leading-[1.08] tracking-[-0.02em] md:text-[3.25rem]">
+                <span lang="en">English Communication Skills</span>
+              </h2>
+              <p className="m-0 max-w-[560px] text-pe-corpo-l text-pe-tinta-suave">
+                É o nosso curso de inglês geral, todo virado para a fala. Começa do zero e leva-o do básico ao avançado, seja qual for a sua profissão. Estudante, profissional ou empresa: é por aqui que se começa.
+              </p>
+              <Link href="/signup" className="inline-flex min-h-[52px] items-center self-start rounded-pe-sm bg-pe-realce px-7 text-[17px] font-semibold text-pe-tinta no-underline hover:text-pe-tinta hover:shadow-pe-2">
+                Começar pelo nível básico
+              </Link>
+            </div>
+            <div className="aspect-[4/3] overflow-hidden rounded-[56px_56px_0_56px] bg-pe-fundo-forte md:rounded-[88px_88px_0_88px]">
+              <Foto nome="falar" alt="Profissional a falar para um grupo de colegas, de pé, no escritório" sizes="(min-width: 1024px) 500px, 100vw" />
+            </div>
+          </div>
+
+          {/* O percurso é uma sequência: cada degrau sobe um nível; o básico abre os cursos de sector. */}
+          <ol className="m-0 grid list-none gap-4 p-0 md:grid-cols-3 md:items-end md:gap-6">
+            {NIVEIS.map((n, i) => (
+              <li key={n.nome} className={cnPe("flex min-w-0 flex-col gap-3 rounded-pe-fala bg-pe-fundo p-6 md:p-7", i === 1 && "md:pb-14", i === 2 && "md:pb-24")}>
+                <span className="flex items-center gap-3">
+                  <span aria-hidden className="flex size-10 shrink-0 items-center justify-center rounded-pe-fala-s bg-pe-azul-marca font-pe-titulo text-[17px] font-bold text-pe-sobre-marca">{i + 1}</span>
+                  <h3 className="m-0 font-pe-titulo text-[22px] font-semibold leading-7">{n.nome}</h3>
+                </span>
+                <p lang="en" className="m-0 font-pe-titulo text-[19px] font-light italic leading-[28px] text-pe-azul-marca">{n.frase}</p>
+                <p className="m-0 text-[15px] leading-[22px] text-pe-tinta-suave">{n.texto}</p>
+                {i === 0 ? (
+                  <p className="m-0 mt-1 rounded-pe-sm bg-pe-realce-suave px-3 py-2 text-[14px] font-semibold leading-5">Com este nível já pode entrar num curso de sector.</p>
+                ) : null}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       {/* Sectores: todos com o mesmo peso; a aviação é o mais recente */}
       <section id="areas" className="pe-sobre-marca scroll-mt-4 bg-pe-azul-marca text-pe-sobre-marca">
         <div className="mx-auto flex max-w-[1200px] flex-col gap-10 px-4 py-14 md:gap-12 md:px-6 md:py-24">
           <div className="grid items-end gap-x-16 gap-y-5 lg:grid-cols-2">
             <h2 className="m-0 text-balance font-pe-titulo text-[34px] font-bold leading-[1.08] tracking-[-0.02em] md:text-[3.25rem]">O inglês do seu sector</h2>
             <p className="m-0 max-w-[520px] text-pe-corpo-l opacity-90">
-              Cada sector tem as suas frases. Treina em voz alta as que vai usar no seu posto de trabalho, do poço de petróleo à torre de controlo.
+              Depois da base, o inglês da sua área. Os cursos de sector pedem, no mínimo, o nível básico do <span lang="en">English Communication Skills</span>.
             </p>
           </div>
           <ul className="m-0 grid list-none gap-x-6 gap-y-10 p-0 sm:grid-cols-2 lg:grid-cols-4">
@@ -254,10 +312,54 @@ export function Landing({ site }: { site: Site }) {
             ))}
           </ul>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-white/20 pt-8">
-            <p className="m-0 min-w-0 flex-[1_1_420px] text-pe-corpo-l">Não encontra o seu sector? O curso de inglês geral serve qualquer profissão e começa hoje.</p>
-            <Link href="/signup" className="inline-flex min-h-[52px] items-center rounded-pe-sm bg-pe-realce px-7 text-[17px] font-semibold text-pe-tinta no-underline hover:text-pe-tinta hover:shadow-pe-2">
-              Criar conta grátis
-            </Link>
+            <p className="m-0 min-w-0 flex-[1_1_420px] text-pe-corpo-l">Não trabalha em nenhum destes sectores? O <span lang="en">English Communication Skills</span> serve qualquer pessoa e qualquer profissão.</p>
+            <a href="#curso-geral" className="inline-flex min-h-[52px] items-center rounded-pe-sm bg-pe-realce px-7 text-[17px] font-semibold text-pe-tinta no-underline hover:text-pe-tinta hover:shadow-pe-2">
+              Ver o curso geral
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Empresas */}
+      <section id="empresas" className="scroll-mt-4">
+        <div className="mx-auto grid max-w-[1200px] items-center gap-x-16 gap-y-10 px-4 py-14 md:px-6 md:py-24 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)]">
+          <figure className="relative m-0 min-w-0">
+            <div className="aspect-[4/5] max-h-[560px] w-full overflow-hidden rounded-[56px_56px_56px_0] bg-pe-fundo-forte md:rounded-[88px_88px_88px_0]">
+              <Foto nome="empresa" alt="Gestora de pé no escritório, com uma pasta aberta, a sorrir para a equipa" className="object-[30%_center]" />
+            </div>
+            <figcaption className="absolute bottom-6 right-0 max-w-[290px] rounded-pe-fala-aluno bg-pe-azul-marca px-5 py-4 text-pe-sobre-marca shadow-pe-2 md:-right-6">
+              <span lang="en" className="font-pe-titulo text-[19px] font-light italic leading-[27px]">Our whole team can now handle a client call in English.</span>
+            </figcaption>
+          </figure>
+          <div className="flex min-w-0 flex-col gap-8">
+            <div className="flex flex-col gap-3">
+              <h2 className={h2}>Formação em inglês para a sua empresa</h2>
+              <p className="m-0 max-w-[560px] text-pe-corpo-l text-pe-tinta-suave">
+                As empresas são o nosso principal foco. Pomos a sua equipa a falar inglês com clientes, parceiros e colegas estrangeiros, cada pessoa ao seu ritmo.
+              </p>
+            </div>
+            <dl className="m-0 grid gap-x-10 gap-y-6 sm:grid-cols-2">
+              {EMPRESAS.map((e) => (
+                <div key={e.titulo} className="flex min-w-0 flex-col gap-1.5 border-t-2 border-pe-realce pt-4">
+                  <dt className="font-pe-titulo text-[18px] font-semibold leading-6">{e.titulo}</dt>
+                  <dd className="m-0 text-[15px] leading-[22px] text-pe-tinta-suave">{e.texto}</dd>
+                </div>
+              ))}
+            </dl>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              {contactoEmpresas ? (
+                <a href={contactoEmpresas} className="inline-flex min-h-[52px] items-center rounded-pe-sm bg-pe-azul-marca px-7 text-[17px] font-semibold text-pe-sobre-marca no-underline hover:text-pe-sobre-marca hover:shadow-pe-2">
+                  Pedir proposta para a empresa
+                </a>
+              ) : (
+                <Link href="/about" className="inline-flex min-h-[52px] items-center rounded-pe-sm bg-pe-azul-marca px-7 text-[17px] font-semibold text-pe-sobre-marca no-underline hover:text-pe-sobre-marca hover:shadow-pe-2">
+                  Conhecer o ProEnglish
+                </Link>
+              )}
+              {site.definicoes.telefone ? (
+                <a href={`tel:${site.definicoes.telefone.replace(/\s/g, "")}`} className="py-2 font-semibold">{site.definicoes.telefone}</a>
+              ) : null}
+            </div>
           </div>
         </div>
       </section>

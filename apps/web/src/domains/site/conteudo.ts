@@ -53,8 +53,8 @@ export type Site = {
 export const SITE_POR_DEFEITO: Site = {
   topo: {
     etiqueta: null,
-    titulo: "Fale inglês no seu trabalho",
-    texto: "Aqui o inglês aprende-se a falar: pratica em voz alta desde a primeira lição, conversa com um tutor de inteligência artificial e é corrigido na hora. Feito para quem trabalha em Angola.",
+    titulo: "Fale inglês com confiança",
+    texto: "Aqui o inglês aprende-se a falar, do básico ao avançado. Para quem quer aprender, para profissionais de cada sector e para as equipas das empresas.",
     botao_principal: { texto: "Experimentar grátis", href: "/signup" },
     botao_secundario: { texto: "Ver como funciona", href: "#como-funciona" },
     mostrar_nota: false,
