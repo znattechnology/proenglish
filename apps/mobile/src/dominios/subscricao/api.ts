@@ -160,6 +160,36 @@ export type TesteIniciado = {
   mensagem: string;
 };
 
+/**
+ * Oferta de plano quando o aluno chega a um limite (vidas, lições, análises, conversa, exame,
+ * certificado). Vem no corpo do erro ou do GET; null = já tem o melhor plano ou nenhum resolve.
+ * O cliente só mostra: quem decide o plano e os ganhos é a API (apps/api/apps/subscriptions/oferta.py).
+ */
+export type OfertaPlano = {
+  recurso: "vidas" | "licoes" | "analises" | "conversa" | "exame" | "certificado";
+  plano: { tipo: Exclude<TipoPlano, "FREE">; nome: string; preco_mensal_kz: number; preco_anual_kz: number | null; dias_teste: number; pode_experimentar: boolean };
+  /** O primeiro é o que resolve este limite. */
+  ganhos: string[];
+  /** Rota da web; na app vai-se para /checkout/<tipo>. */
+  ligacao: string;
+};
+
+function eOferta(v: unknown): v is OfertaPlano {
+  const o = v as OfertaPlano | null | undefined;
+  return !!o && typeof o === "object" && !!o.plano && typeof o.plano.tipo === "string" && Array.isArray(o.ganhos);
+}
+
+/**
+ * A oferta que vem num erro da API ({status, data: {oferta}}) ou num corpo já lido ({oferta}).
+ * undefined = a resposta não traz o campo; null = traz, mas não há plano a sugerir.
+ */
+export function ofertaDe(v: unknown): OfertaPlano | null | undefined {
+  const x = v as { data?: { oferta?: unknown }; oferta?: unknown } | null | undefined;
+  const corpo = x && typeof x === "object" && x.data && typeof x.data === "object" && "oferta" in x.data ? x.data : x;
+  if (!corpo || typeof corpo !== "object" || !("oferta" in corpo)) return undefined;
+  return eOferta(corpo.oferta) ? corpo.oferta : null;
+}
+
 export const subscricaoApi = api.enhanceEndpoints({ addTagTypes: ["Subscricao", "Pagamentos", "Planos"] }).injectEndpoints({
   endpoints: (build) => ({
     subPlanos: build.query<Plano[], void>({
@@ -241,6 +271,9 @@ export const {
 /* ------------------------------------------------------------------ */
 /** "9 900 Kz", "14 950 Kz": agrupa sempre os milhares. */
 export const kz = (v: number | string | null | undefined) => `${String(Math.round(Number(v ?? 0))).replace(/\B(?=(\d{3})+(?!\d))/g, " ")} Kz`;
+
+/** "14 950 Kz/mês" */
+export const kzMes = (v: number | string | null | undefined) => `${kz(v)}/mês`;
 
 /** Número com milhares agrupados ("1 240"). */
 export const milhares = (v: number | null | undefined) => String(Math.round(Number(v ?? 0))).replace(/\B(?=(\d{3})+(?!\d))/g, " ");

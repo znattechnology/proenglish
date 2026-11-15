@@ -18,13 +18,15 @@ import { erroConversa, useConversaComecarLicaoMutation, type ConversaAberta, typ
 import { ListaFrases } from "./Pecas";
 import { PermissaoMicrofone, useMicrofone } from "./PermissaoMicrofone";
 import { Viva } from "./Viva";
+import { OfertaPlano } from "@/componentes/subscricao/Oferta";
+import { ofertaDe, type OfertaPlano as Oferta } from "@/dominios/subscricao/api";
 
 export const MIN_FALAS_CONVERSA = 2;
 
 export type RespostaConversaCurta = { tipo: "texto"; resposta: { sessao_id: string } } | null;
 export type ExercicioConversa = { id: string; pergunta: string; frases?: string[] | null };
 
-type Fase = { tipo: "inicio" } | { tipo: "viva"; dados: ConversaAberta } | { tipo: "fim"; resumo: Resumo } | { tipo: "bloqueada"; mensagem: string };
+type Fase = { tipo: "inicio" } | { tipo: "viva"; dados: ConversaAberta } | { tipo: "fim"; resumo: Resumo } | { tipo: "bloqueada"; mensagem: string; oferta?: Oferta | null };
 
 export function ditasNoResumo(resumo: Resumo, frases: string[]) {
   const usadas = new Set(resumo.objectivos.filter((o) => o.usado || o.com_ajuda).map((o) => o.en));
@@ -42,7 +44,7 @@ export function ConversaCurta({ ex, bloqueado, aoMudar, aoSaltar }: { ex: Exerci
     try {
       setFase({ tipo: "viva", dados: await comecar(ex.id).unwrap() });
     } catch (e) {
-      setFase({ tipo: "bloqueada", mensagem: erroConversa(e, "Não foi possível começar a conversa agora.") });
+      setFase({ tipo: "bloqueada", mensagem: erroConversa(e, "Não foi possível começar a conversa agora."), oferta: ofertaDe(e) });
     }
   };
 
@@ -89,6 +91,7 @@ export function ConversaCurta({ ex, bloqueado, aoMudar, aoSaltar }: { ex: Exerci
       {fase.tipo === "bloqueada" ? (
         <View style={{ gap: 12 }}>
           <Aviso>{`${fase.mensagem} Pode saltar esta conversa: não perde vidas nem pontos.`}</Aviso>
+          {fase.oferta ? <OfertaPlano oferta={fase.oferta} /> : null}
           {saltar}
         </View>
       ) : null}

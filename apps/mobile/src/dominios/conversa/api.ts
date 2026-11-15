@@ -7,6 +7,7 @@
  * (a partir da chamada confirmada pelo serviço de voz). A app só cria e termina a sessão, manda a
  * transcrição provisória (para mostrar) e o que só pode baixar o resultado (falas escritas e frases vistas).
  */
+import type { OfertaPlano } from "@/dominios/subscricao/api";
 import { api } from "@/api/base";
 
 export type Nivel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
@@ -144,8 +145,10 @@ export type ExameOral = {
 };
 export type EstadoExame = {
   disponivel: boolean;
-  motivo: null | "progresso" | "aprovado" | "aguardar" | "tentativas" | "curso_pratica" | "desligado";
+  /** plano: o plano do aluno não inclui o exame (vem com `oferta`). */
+  motivo: null | "progresso" | "aprovado" | "aguardar" | "tentativas" | "curso_pratica" | "desligado" | "plano";
   mensagem: string | null;
+  oferta?: OfertaPlano | null;
   progresso: number;
   limiar_progresso: number;
   duracao_minutos: number;

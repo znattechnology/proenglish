@@ -3,6 +3,7 @@
  * CheckoutAguardar, CheckoutConcluido, CheckoutRecusado. Web: components/pe/subscricao/Checkout.tsx.
  *
  * /checkout/PREMIUM?periodo=anual&codigo=BEMVINDO
+ * /checkout/PREMIUM?teste=1 (da oferta nos limites): o teste grátis aparece primeiro, se houver
  *  - pagamento: número de telefone, código promocional, teste grátis (se houver)
  *  - a aguardar: consulta o estado a cada 2 s até ficar pago, recusado, expirado ou cancelado
  *  - concluído / recusado
@@ -128,6 +129,7 @@ function FormularioPagamento({
   aoTeste: (t: TesteIniciado) => void;
 }) {
   const { utilizador } = useSessao();
+  const { teste: pediuTeste } = useLocalSearchParams<{ teste?: string }>();
   // O servidor calcula tudo: preço, código, crédito dos dias já pagos e o que fica a pagar.
   const orc = useSubOrcamentoQuery({ plano: plano.plan_type, periodo, codigo });
   const o = orc.data;
@@ -158,6 +160,8 @@ function FormularioPagamento({
   };
 
   const podePagar = !!o && o.pode_comprar;
+  // Veio de "Experimentar N dias grátis": o teste vem primeiro, com o seu próprio campo do número.
+  const testePrimeiro = pediuTeste === "1" && !!o && o.pode_experimentar && o.dias_teste > 0;
   return (
     <Ecra
       cabecalho={<CabecalhoPagamento />}
@@ -189,6 +193,10 @@ function FormularioPagamento({
             <Aviso tom="info">
               {`Está a experimentar o ${plano.name} até ${dataPt(o.teste_termina_em, "diaMes")}. Se pagar agora, o período pago só começa no fim do teste: não perde nenhum dia.`}
             </Aviso>
+          ) : null}
+
+          {testePrimeiro ? (
+            <OfertaTeste plano={plano} dias={o.dias_teste} telefone={telefone} aoMudarTelefone={setTelefone} aoComecar={aoTeste} comCampo />
           ) : null}
 
           <ResumoCompra plano={plano} periodo={periodo} orcamento={o} aoMudarPlano={() => (router.canGoBack() ? router.back() : router.replace("/planos"))} />
@@ -244,7 +252,7 @@ function FormularioPagamento({
 
           {erro && !erro.campo ? <Aviso tom="erro">{erro.texto}</Aviso> : null}
 
-          {o.pode_experimentar && o.dias_teste > 0 ? <OfertaTeste plano={plano} dias={o.dias_teste} telefone={telefone} aoMudarTelefone={setTelefone} aoComecar={aoTeste} /> : null}
+          {o.pode_experimentar && o.dias_teste > 0 && !testePrimeiro ? <OfertaTeste plano={plano} dias={o.dias_teste} telefone={telefone} aoMudarTelefone={setTelefone} aoComecar={aoTeste} /> : null}
         </>
       )}
     </Ecra>
@@ -324,8 +332,25 @@ function Codigo({ o, codigo, aoMudar }: { o: Orcamento; codigo: string | null; a
   );
 }
 
-/** Teste grátis: só para quem nunca experimentou nem pagou. Um teste por número. */
-function OfertaTeste({ plano, dias, telefone, aoMudarTelefone, aoComecar }: { plano: Plano; dias: number; telefone: string; aoMudarTelefone: (v: string) => void; aoComecar: (t: TesteIniciado) => void }) {
+/**
+ * Teste grátis: só para quem nunca experimentou nem pagou. Um teste por número.
+ * comCampo: no topo do pagamento (veio da oferta de um limite), com o campo do número próprio.
+ */
+function OfertaTeste({
+  plano,
+  dias,
+  telefone,
+  aoMudarTelefone,
+  aoComecar,
+  comCampo,
+}: {
+  plano: Plano;
+  dias: number;
+  telefone: string;
+  aoMudarTelefone: (v: string) => void;
+  aoComecar: (t: TesteIniciado) => void;
+  comCampo?: boolean;
+}) {
   const [iniciar, { isLoading }] = useSubIniciarTesteMutation();
   const [erro, setErro] = useState<{ campo?: boolean; texto: string } | null>(null);
   const digitos = telefone.replace(/\D/g, "").replace(/^244/, "");
@@ -350,7 +375,7 @@ function OfertaTeste({ plano, dias, telefone, aoMudarTelefone, aoComecar }: { pl
         </View>
         <View style={{ flex: 1, gap: 4 }}>
           <Texto accessibilityRole="header" style={{ fontFamily: fonte.tituloMedio, fontSize: 18, lineHeight: 24 }}>
-            Ou experimente o {plano.name} {dias} dias grátis
+            {comCampo ? `Experimente o ${plano.name} ${dias} dias grátis` : `Ou experimente o ${plano.name} ${dias} dias grátis`}
           </Texto>
           <Texto v="legenda" style={{ fontSize: 15, lineHeight: 22 }}>
             Não paga nada agora. No fim do teste, pague com Multicaixa Express para continuar. Se não pagar, a conta volta ao Gratuito e o seu progresso fica guardado.
@@ -358,14 +383,23 @@ function OfertaTeste({ plano, dias, telefone, aoMudarTelefone, aoComecar }: { pl
         </View>
       </View>
       <Texto v="legenda" suave>
-        Com o número acima. Cada número só dá direito a um teste grátis.
+        {comCampo ? "Cada número só dá direito a um teste grátis." : "Com o número acima. Cada número só dá direito a um teste grátis."}
       </Texto>
-      {erro?.campo ? (
-        <CampoTelefone rotulo="Número com Multicaixa Express" valor={telefone} aoMudar={aoMudarTelefone} erro={erro.texto} />
-      ) : erro ? (
+      {comCampo || erro?.campo ? (
+        <CampoTelefone
+          rotulo="Número com Multicaixa Express"
+          valor={telefone}
+          aoMudar={(v) => {
+            if (erro?.campo) setErro(null);
+            aoMudarTelefone(v);
+          }}
+          erro={erro?.campo ? erro.texto : null}
+        />
+      ) : null}
+      {erro && !erro.campo ? (
         <Aviso tom="erro">{erro.texto}</Aviso>
       ) : null}
-      <Botao tipo="secundario" larguraTotal carregando={isLoading} onPress={() => void comecar()}>
+      <Botao tipo={comCampo ? "principal" : "secundario"} larguraTotal carregando={isLoading} onPress={() => void comecar()}>
         {isLoading ? "A começar o teste…" : `Experimentar ${dias} dias grátis`}
       </Botao>
     </View>

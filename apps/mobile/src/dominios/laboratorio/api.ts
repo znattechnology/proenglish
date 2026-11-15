@@ -3,6 +3,7 @@
  * apps/web/src/domains/student/laboratorio/api.ts: a correcção das respostas é sempre feita no servidor.
  */
 import { api } from "@/api/base";
+import type { OfertaPlano } from "@/dominios/subscricao/api";
 
 const P = "/student/practice-courses";
 
@@ -136,6 +137,8 @@ export type EstadoVidas = {
   can_refill_with_points: boolean;
   points: number;
   licoes_hoje?: { feitas: number; limite: number | null; renova_em: string };
+  /** Plano com vidas ilimitadas quando current <= 0 e as vidas não são ilimitadas; senão null. */
+  oferta?: OfertaPlano | null;
 };
 
 export type Sequencia = {
@@ -151,7 +154,19 @@ export type CursoPratica = { id: string; title: string; description?: string; im
 
 export type ProgressoPratica = { hearts: number; points: number; active_course: string | { id: string; title?: string } | null; has_unlimited_hearts?: boolean };
 
-export type PlanoLab = { id: string; name: string; plan_type: string; monthly_price: string; daily_speaking_minutes: number | null; certificates?: boolean; sort_order: number };
+export type PlanoLab = {
+  id: string;
+  name: string;
+  plan_type: string;
+  monthly_price: string;
+  daily_speaking_minutes: number | null;
+  /** 0 = vidas ilimitadas. */
+  hearts_limit?: number;
+  /** null ou 0 = lições novas sem limite. */
+  daily_lessons_limit?: number | null;
+  certificates?: boolean;
+  sort_order: number;
+};
 
 /** Tags que outros ecrãs (estatísticas, liga, conquistas, certificados, início) também usam. */
 const DEPOIS_DE_ESTUDAR = ["LabTrilho", "LabProgresso", "LabSequencia", "Estatisticas", "Liga", "Conquistas", "Certificados", "InicioResumo"] as const;

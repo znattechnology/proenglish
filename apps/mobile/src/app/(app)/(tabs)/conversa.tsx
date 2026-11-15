@@ -24,6 +24,8 @@ import { EscolherNivel, OpcaoCartao } from "@/componentes/conversa/Pecas";
 import { PermissaoMicrofone, useMicrofone } from "@/componentes/conversa/PermissaoMicrofone";
 import { guardarSessao } from "@/componentes/conversa/sessoesAbertas";
 import { falar } from "@/componentes/conversa/voz";
+import { FolhaOferta } from "@/componentes/subscricao/Oferta";
+import { ofertaDe, type OfertaPlano } from "@/dominios/subscricao/api";
 
 const CORRECOES: { id: Correcao; nome: string; descricao: string }[] = [
   { id: "suave", nome: "Suave", descricao: "O tutor não interrompe: repete a sua ideia já na forma certa e continua." },
@@ -83,6 +85,8 @@ function Formulario({ p, pedida, cabecalho, aoActualizar, aActualizar }: { p: Pr
   const [area, setArea] = useState(p.preferencias.area);
   const [comecar, { isLoading }] = useConversaComecarMutation();
   const [erro, setErro] = useState<string | null>(null);
+  // 403 sem_minutos / plano_sem_tutor / teste_expirado ao criar a sessão, com o plano que resolve.
+  const [limite, setLimite] = useState<{ mensagem: string; oferta: OfertaPlano } | null>(null);
   const mic = useMicrofone();
   const escolhida = p.situacoes.find((s) => s.id === situacao);
   const q = p.quota;
@@ -113,7 +117,9 @@ function Formulario({ p, pedida, cabecalho, aoActualizar, aActualizar }: { p: Pr
       guardarSessao({ sessao, modo: p.modo, chavePublica: p.vapi?.public_key ?? null, minutosUsadosHoje: q.minutos_usados, minutosDia: q.minutos_dia });
       router.push(`/conversa/sessao?id=${encodeURIComponent(sessao.id)}`);
     } catch (e) {
-      setErro(erroConversa(e));
+      const oferta = ofertaDe(e);
+      if (oferta) setLimite({ mensagem: erroConversa(e), oferta });
+      else setErro(erroConversa(e));
     }
   };
 
@@ -203,11 +209,10 @@ function Formulario({ p, pedida, cabecalho, aoActualizar, aActualizar }: { p: Pr
             <Lock size={20} color={cor.tinta} style={{ marginTop: 1 }} />
             <Texto style={{ flex: 1, fontSize: 15, lineHeight: 22 }}>{bloqueio}</Texto>
           </View>
-          {q.motivo !== "sem_minutos" ? (
-            <Botao tipo="realce" tamanho="pequeno" href="/planos" style={{ alignSelf: "flex-start" }}>
-              Ver os planos com tutor
-            </Botao>
-          ) : null}
+          {/* A quota (GET) não traz oferta: só a ligação para os planos. */}
+          <Botao tipo="secundario" tamanho="pequeno" href="/planos" style={{ alignSelf: "flex-start" }}>
+            Ver os planos
+          </Botao>
         </View>
       ) : null}
       {semVoz ? <Aviso titulo="Sem voz nesta versão">{semVoz}</Aviso> : null}
@@ -218,6 +223,13 @@ function Formulario({ p, pedida, cabecalho, aoActualizar, aActualizar }: { p: Pr
         Ver o seu progresso na conversa
       </Botao>
       <PermissaoMicrofone {...mic.folha} />
+      {limite ? (
+        <FolhaOferta aberto aoFechar={() => setLimite(null)} titulo="Sem minutos de conversa" mensagem={limite.mensagem} oferta={limite.oferta}>
+          <Botao tipo="ligacao" larguraTotal onPress={() => setLimite(null)}>
+            Agora não
+          </Botao>
+        </FolhaOferta>
+      ) : null}
     </Ecra>
   );
 }

@@ -4,11 +4,12 @@
  * com nomes próprios para não colidirem com os endpoints dos outros domínios da app.
  */
 import { api } from "@/api/base";
+import type { OfertaPlano } from "@/dominios/subscricao/api";
 
 const PRATICA = "/student/practice-courses";
 
 export type SequenciaInicio = { current_streak: number; longest_streak: number; practiced_today: boolean; daily_goal_minutes: number; minutes_today: number; goal_completed: boolean };
-export type VidasInicio = { current: number; maximum: number; unlimited: boolean };
+export type VidasInicio = { current: number; maximum: number; unlimited: boolean; oferta?: OfertaPlano | null };
 export type LigaInicio = { liga: { id: string; nome: string }; eu: { posicao: number; pontos_semana: number } };
 export type RevisaoInicio = { para_rever: number; minutos: number; feitas_hoje: number };
 

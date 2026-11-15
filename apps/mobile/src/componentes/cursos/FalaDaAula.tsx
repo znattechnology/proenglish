@@ -14,7 +14,9 @@ import { Linking, Pressable, View } from "react-native";
 import { pedir } from "@/api/base";
 import { agora, tocarDesde } from "./leitor";
 import type { AnaliseFrase, AnaliseGravacao, EstadoBanco, FalaDaAula, FraseDaAula } from "@/dominios/cursos/api";
+import { ofertaDe, type OfertaPlano } from "@/dominios/subscricao/api";
 import { Aviso, Botao, Etiqueta, Texto } from "@/ui";
+import { FolhaOferta } from "@/componentes/subscricao/Oferta";
 import { AvisoAnaliseAproximada } from "@/componentes/licao/Partes";
 import { balao, cor, fonte, raio } from "@/tema";
 
@@ -55,6 +57,8 @@ export function RepetirEmVozAlta({ chapterId, player, dados }: { chapterId: stri
   const [estados, setEstados] = useState<Record<number, EstadoBanco | null>>({});
   const [erro, setErro] = useState<{ fraseId: number; texto: string } | null>(null);
   const [semMicrofone, setSemMicrofone] = useState(false);
+  // 429 limite_analises: o plano que dá mais análises de pronúncia.
+  const [limite, setLimite] = useState<{ mensagem: string; oferta: OfertaPlano } | null>(null);
   const inicio = useRef(0);
   const ouvir = useOuvir(player);
 
@@ -110,7 +114,10 @@ export function RepetirEmVozAlta({ chapterId, player, dados }: { chapterId: stri
     try {
       const r = await pedir<AnaliseFrase & { mensagem?: string }>(`/student/video-courses/chapters/${chapterId}/frases/${f.id}/falar/`, { method: "POST", body: corpo });
       if (!r.ok) {
-        setErro({ fraseId: f.id, texto: r.data?.mensagem ?? "Não conseguimos analisar a gravação. Tente outra vez." });
+        const texto = r.data?.mensagem ?? "Não conseguimos analisar a gravação. Tente outra vez.";
+        setErro({ fraseId: f.id, texto });
+        const oferta = r.status === 429 ? ofertaDe(r.data) : undefined;
+        if (oferta) setLimite({ mensagem: texto, oferta });
         return;
       }
       setResultados((v) => ({ ...v, [f.id]: r.data.analise }));
@@ -220,6 +227,14 @@ export function RepetirEmVozAlta({ chapterId, player, dados }: { chapterId: stri
             ))}
           </View>
         </View>
+      ) : null}
+
+      {limite ? (
+        <FolhaOferta aberto aoFechar={() => setLimite(null)} titulo="Já usou as análises de hoje" mensagem={limite.mensagem} oferta={limite.oferta}>
+          <Botao tipo="ligacao" larguraTotal onPress={() => setLimite(null)}>
+            Continuar a aula
+          </Botao>
+        </FolhaOferta>
       ) : null}
     </View>
   );

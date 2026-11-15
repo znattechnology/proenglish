@@ -4,6 +4,7 @@
  * Igual a apps/web/src/domains/student/{inicio,curso}/api.ts, curso/fala.ts e progresso/api.ts (certificados).
  * O acesso a cada curso vem do plano (não há compras de cursos).
  */
+import type { OfertaPlano } from "@/dominios/subscricao/api";
 import { api } from "@/api/base";
 
 const BASE = "/student/video-courses";
@@ -164,7 +165,7 @@ export type NotasDeTodos = {
 /** Estado do exame oral (só o que o cartão da página do curso precisa; o ecrã do exame é do agente da conversa). */
 export type EstadoExameCurso = {
   disponivel: boolean;
-  motivo: null | "progresso" | "aprovado" | "aguardar" | "tentativas" | "curso_pratica" | "desligado";
+  motivo: null | "progresso" | "aprovado" | "aguardar" | "tentativas" | "curso_pratica" | "desligado" | "plano";
   mensagem: string | null;
   duracao_minutos: number;
   nota_minima: number;
@@ -176,6 +177,8 @@ export type RequisitoCertificado = { requisito: string; mensagem: string; necess
 export type NotaFala = { chave: string; nome: string; nota: number };
 export type Certificados = {
   plano_inclui_certificados: boolean;
+  /** O plano que inclui certificados (null se o plano já os inclui ou nenhum resolve). */
+  oferta?: OfertaPlano | null;
   certificados: {
     id: string;
     numero: string;

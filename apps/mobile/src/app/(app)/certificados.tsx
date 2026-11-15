@@ -14,6 +14,8 @@ import { SITE_URL } from "@/api/config";
 import { mensagemErro } from "@/api/erros";
 import { tokens } from "@/api/tokens";
 import { diaMesCurto, useCursoCertificadosQuery, useEmitirCertificadoCursoMutation, type Certificados } from "@/dominios/cursos/api";
+import { FolhaOferta, OfertaPlano } from "@/componentes/subscricao/Oferta";
+import { ofertaDe, type OfertaPlano as Oferta } from "@/dominios/subscricao/api";
 import { Aviso, BarraProgresso, Botao, Cabecalho, Ecra, EstadoErro, EstadoVazio, Etiqueta, Osso, Texto } from "@/ui";
 import { cor, fonte, raio } from "@/tema";
 
@@ -44,14 +46,12 @@ export default function EcraCertificados() {
       ) : (
         <>
           {!data.plano_inclui_certificados ? (
-            <View style={{ gap: 12, padding: 16, borderRadius: raio.md, backgroundColor: cor.realceSuave }}>
-              <View style={{ flexDirection: "row", gap: 10 }}>
+            <View style={{ gap: 12 }}>
+              <View style={{ flexDirection: "row", gap: 10, padding: 16, borderRadius: raio.md, backgroundColor: cor.realceSuave }}>
                 <Lock size={20} color={cor.tinta} style={{ marginTop: 1 }} />
-                <Texto style={{ flex: 1, fontSize: 15, lineHeight: 22 }}>Os certificados fazem parte do Premium e do Premium Plus. O progresso dos seus cursos fica guardado.</Texto>
+                <Texto style={{ flex: 1, fontSize: 15, lineHeight: 22 }}>O seu plano não inclui certificados. O progresso dos seus cursos fica guardado.</Texto>
               </View>
-              <Botao tipo="realce" tamanho="pequeno" href="/checkout/PREMIUM">
-                Passar para Premium
-              </Botao>
+              {data.oferta ? <OfertaPlano oferta={data.oferta} /> : null}
             </View>
           ) : null}
 
@@ -219,6 +219,8 @@ function Dado({ rotulo, valor }: { rotulo: string; valor: string }) {
 function ACaminho({ emCurso, podeEmitir }: { emCurso: Certificados["em_curso"]; podeEmitir: boolean }) {
   const [emitir, { isLoading }] = useEmitirCertificadoCursoMutation();
   const [erro, setErro] = useState<string | null>(null);
+  // 403 CERTIFICADOS_NAO_INCLUIDOS com o plano que os inclui.
+  const [limite, setLimite] = useState<{ mensagem: string; oferta: Oferta } | null>(null);
   return (
     <View style={{ gap: 10 }}>
       <Texto v="tituloXS" accessibilityRole="header" style={{ fontSize: 18, lineHeight: 24 }}>
@@ -255,7 +257,10 @@ function ACaminho({ emCurso, podeEmitir }: { emCurso: Certificados["em_curso"]; 
                 onPress={async () => {
                   setErro(null);
                   const r = await emitir(c.curso.id);
-                  if ("error" in r && r.error) setErro(mensagemErro(r.error, "Não foi possível emitir o certificado."));
+                  if (!("error" in r && r.error)) return;
+                  const oferta = ofertaDe(r.error);
+                  if (oferta) setLimite({ mensagem: mensagemErro(r.error, "O seu plano não inclui certificados."), oferta });
+                  else setErro(mensagemErro(r.error, "Não foi possível emitir o certificado."));
                 }}
               >
                 Receber o certificado
@@ -264,6 +269,13 @@ function ACaminho({ emCurso, podeEmitir }: { emCurso: Certificados["em_curso"]; 
           </View>
         );
       })}
+      {limite ? (
+        <FolhaOferta aberto aoFechar={() => setLimite(null)} titulo="Os certificados não estão no seu plano" mensagem={limite.mensagem} oferta={limite.oferta}>
+          <Botao tipo="ligacao" larguraTotal onPress={() => setLimite(null)}>
+            Agora não
+          </Botao>
+        </FolhaOferta>
+      ) : null}
     </View>
   );
 }

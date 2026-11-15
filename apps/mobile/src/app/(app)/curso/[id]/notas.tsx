@@ -130,7 +130,7 @@ function Conteudo({ notas, courseId }: { notas: Notas; courseId: string }) {
           </Texto>
           <Texto v="legenda" cor={cor.sobreMarca} style={{ fontSize: 15, lineHeight: 22 }}>
             {semCertificados
-              ? "Os certificados fazem parte do Premium e do Premium Plus. A nota fica guardada."
+              ? "O seu plano não inclui certificados. A nota fica guardada."
               : elegivel
                 ? "Cumpre tudo o que o certificado pede."
                 : final >= minimo

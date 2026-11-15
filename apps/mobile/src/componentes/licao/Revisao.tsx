@@ -20,6 +20,8 @@ import {
   type FimRevisao,
   type ResultadoRevisao,
 } from "@/dominios/revisao/api";
+import { ofertaDe, type OfertaPlano } from "@/dominios/subscricao/api";
+import { FolhaOferta } from "@/componentes/subscricao/Oferta";
 import { balao, cor, fonte, raio } from "@/tema";
 import { Aviso, Botao, Ecra, EstadoErro, Etiqueta, Osso, Texto, Titulo } from "@/ui";
 import { BotaoOuvirTexto } from "./Audio";
@@ -198,6 +200,8 @@ export function Revisao() {
   const [erroFim, setErroFim] = useState(false);
   const [inicio, setInicio] = useState(() => new Date().toISOString());
   const [tentativa, setTentativa] = useState(0);
+  // 429 limite_analises com o plano que dá mais análises.
+  const [limite, setLimite] = useState<{ mensagem: string; oferta: OfertaPlano } | null>(null);
   const inicioExercicio = useRef(0);
   useEffect(() => {
     inicioExercicio.current = Date.now();
@@ -223,6 +227,8 @@ export function Revisao() {
         const r = await falarRevisao(ex.id, resposta.gravacao, segundos);
         if (r.error) {
           const e = r.error;
+          const oferta = e.status === 429 ? ofertaDe(e) : undefined;
+          if (oferta) setLimite({ mensagem: e.data?.mensagem ?? "Já usou as análises de pronúncia de hoje.", oferta });
           setFase({
             tipo: "aviso",
             mensagem: e.status === "FETCH_ERROR" ? "Sem ligação ao servidor. Verifique a Internet e tente outra vez." : (e.data?.mensagem ?? "Não conseguimos verificar agora. Tente outra vez."),
@@ -396,6 +402,21 @@ export function Revisao() {
           )}
         </Rodape>
       </KeyboardAvoidingView>
+
+      {limite ? (
+        <FolhaOferta aberto aoFechar={() => setLimite(null)} titulo="Já usou as análises de hoje" mensagem={limite.mensagem} oferta={limite.oferta}>
+          <Botao
+            tipo="ligacao"
+            larguraTotal
+            onPress={() => {
+              setLimite(null);
+              void saltar();
+            }}
+          >
+            Saltar este exercício
+          </Botao>
+        </FolhaOferta>
+      ) : null}
     </View>
   );
 }

@@ -8,6 +8,7 @@ import { mensagemErro } from "@/api/erros";
 import { BotaoGoogle, ComGoogle, type EntradaGoogle } from "@/componentes/conta/Google";
 import { AjudaSenha, FraseComLigacao, Ou, TituloConta } from "@/componentes/conta/Partes";
 import { EMAIL_VALIDO, errosPorCampo, useContaRegistarMutation } from "@/dominios/conta/api";
+import { useSubPlanosQuery } from "@/dominios/subscricao/api";
 import { Aviso, Botao, Campo, Ecra, Logo, Texto } from "@/ui";
 
 type Erros = Partial<Record<"name" | "email" | "password" | "password_confirm", string>>;
@@ -35,6 +36,9 @@ function Formulario({ g }: { g: EntradaGoogle }) {
   const [erros, setErros] = useState<Erros>({});
   const [erro, setErro] = useState<string | null>(null);
   const [registar, { isLoading }] = useContaRegistarMutation();
+  // O limite do Gratuito vem da API de planos (pública); sem ela, não se promete um número.
+  const { data: planos } = useSubPlanosQuery();
+  const licoesGratis = planos?.find((pl) => pl.plan_type === "FREE")?.daily_lessons_limit;
   const refEmail = useRef<TextInputInstance>(null);
   const refSenha = useRef<TextInputInstance>(null);
   const refRepetir = useRef<TextInputInstance>(null);
@@ -60,7 +64,7 @@ function Formulario({ g }: { g: EntradaGoogle }) {
   return (
     <Ecra style={{ paddingTop: 24, paddingHorizontal: 24, gap: 20 }}>
       <Logo altura={40} />
-      <TituloConta titulo="Criar conta" texto="Grátis, com 3 lições por dia. Sem cartão." />
+      <TituloConta titulo="Criar conta" texto={licoesGratis ? `Grátis, com ${licoesGratis} ${licoesGratis === 1 ? "lição nova" : "lições novas"} por dia. Sem cartão.` : "Grátis e sem cartão."} />
 
       <View style={{ gap: 14 }}>
         <Campo

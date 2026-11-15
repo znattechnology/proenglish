@@ -4,6 +4,7 @@
  * Igual a apps/web/src/domains/student/perfil/api.ts e opiniao/api.ts.
  */
 import { api } from "@/api/base";
+import type { OfertaPlano } from "@/dominios/subscricao/api";
 import type { RespostaSessao } from "@/sessao/ContextoSessao";
 
 export type Nivel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
@@ -25,7 +26,7 @@ export type Perfil = {
 export type MudancaPerfil = { name?: string; phone?: string | null; provincia?: string | null; preferences?: Perfil["preferences"] };
 
 export type Sequencia = { current_streak: number; longest_streak: number; practiced_today: boolean; daily_goal_minutes: number; minutes_today: number; goal_completed: boolean };
-export type EstadoVidas = { current: number; maximum: number; unlimited: boolean; points: number };
+export type EstadoVidas = { current: number; maximum: number; unlimited: boolean; points: number; oferta?: OfertaPlano | null };
 export type ResumoCertificados = { plano_inclui_certificados: boolean; certificados: { id: string; estado: "valido" | "revogado" }[]; em_curso: unknown[] };
 
 export type EstadoOpiniao = { should_show_prompt: boolean; trigger: string | null; chave: string | null; frase: string | null };

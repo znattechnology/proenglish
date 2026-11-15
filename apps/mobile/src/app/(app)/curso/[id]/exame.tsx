@@ -27,6 +27,8 @@ import {
   type ExameOral,
 } from "@/dominios/conversa/api";
 import { PermissaoMicrofone, useMicrofone } from "@/componentes/conversa/PermissaoMicrofone";
+import { FolhaOferta, OfertaPlano } from "@/componentes/subscricao/Oferta";
+import { ofertaDe, type OfertaPlano as Oferta } from "@/dominios/subscricao/api";
 import { Viva } from "@/componentes/conversa/Viva";
 
 type Fase = { tipo: "inicio" } | { tipo: "viva"; dados: ExameComecado } | { tipo: "a_avaliar" } | { tipo: "resultado"; exame: ExameOral };
@@ -147,7 +149,10 @@ function Introducao({
   const [consentimento, setConsentimento] = useState(false);
   const [comecar, { isLoading }] = useExameOralComecarMutation();
   const [erroInicio, setErroInicio] = useState<string | null>(null);
+  // 403 {codigo: "plano", oferta}: o plano não inclui o exame.
+  const [limite, setLimite] = useState<{ mensagem: string; oferta: Oferta } | null>(null);
   const mic = useMicrofone();
+  const ofertaPlano = e.motivo === "plano" ? (e.oferta ?? null) : null;
   const tentativas = e.tentativas.filter((t) => t.estado !== "em_curso");
 
   const abrir = async () => {
@@ -156,7 +161,9 @@ function Introducao({
     try {
       aoComecar(await comecar({ courseId, consentimento }).unwrap());
     } catch (x) {
-      setErroInicio(erroConversa(x, "Não foi possível começar o exame agora."));
+      const oferta = ofertaDe(x);
+      if (oferta) setLimite({ mensagem: erroConversa(x, "O seu plano não inclui o exame oral."), oferta });
+      else setErroInicio(erroConversa(x, "Não foi possível começar o exame agora."));
     }
   };
 
@@ -166,7 +173,7 @@ function Introducao({
       aoActualizar={aoActualizar}
       aActualizar={aActualizar}
       rodape={
-        e.disponivel ? (
+        e.disponivel && !ofertaPlano ? (
           <Botao larguraTotal onPress={() => void abrir()} carregando={isLoading} icone={<Mic size={20} color={cor.sobreMarca} />}>
             Começar o exame
           </Botao>
@@ -180,6 +187,8 @@ function Introducao({
 
       {erro ? <Aviso>{erro}</Aviso> : null}
       {!e.disponivel && e.mensagem ? <Aviso tom={e.motivo === "aprovado" ? "certo" : "info"}>{e.mensagem}</Aviso> : null}
+      {/* Sem exame no plano: a oferta toma o lugar do botão de começar. */}
+      {ofertaPlano ? <OfertaPlano oferta={ofertaPlano} /> : null}
 
       <Seccao titulo="Como é o exame" gap={8}>
         {["Apresenta-se e fala um pouco do seu trabalho.", "Faz duas ou três tarefas de trabalho a partir das situações do curso: informar, pedir, explicar, resolver um problema.", "Dá a sua opinião sobre um tema do curso."].map((t, i) => (
@@ -268,6 +277,13 @@ function Introducao({
         </View>
       ) : null}
       <PermissaoMicrofone {...mic.folha} />
+      {limite ? (
+        <FolhaOferta aberto aoFechar={() => setLimite(null)} titulo="O exame oral não está no seu plano" mensagem={limite.mensagem} oferta={limite.oferta}>
+          <Botao tipo="ligacao" larguraTotal onPress={() => setLimite(null)}>
+            Agora não
+          </Botao>
+        </FolhaOferta>
+      ) : null}
     </Ecra>
   );
 }

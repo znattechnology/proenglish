@@ -18,8 +18,10 @@ import { ditasNoResumo } from "@/componentes/conversa/ConversaCurta";
 import { ListaFrases } from "@/componentes/conversa/Pecas";
 import { PermissaoMicrofone, useMicrofone } from "@/componentes/conversa/PermissaoMicrofone";
 import { Viva } from "@/componentes/conversa/Viva";
+import { OfertaPlano } from "@/componentes/subscricao/Oferta";
+import { ofertaDe, type OfertaPlano as Oferta } from "@/dominios/subscricao/api";
 
-type Fase = { tipo: "inicio" } | { tipo: "viva"; dados: ConversaAberta } | { tipo: "fim"; resumo: Resumo } | { tipo: "bloqueada"; mensagem: string };
+type Fase = { tipo: "inicio" } | { tipo: "viva"; dados: ConversaAberta } | { tipo: "fim"; resumo: Resumo } | { tipo: "bloqueada"; mensagem: string; oferta?: Oferta | null };
 
 const TITULO_FRASES = "Tente usar estas frases da aula";
 
@@ -76,7 +78,7 @@ export default function EcraConversaDaAula() {
     try {
       setFase({ tipo: "viva", dados: await comecar(capitulo).unwrap() });
     } catch (e) {
-      setFase({ tipo: "bloqueada", mensagem: erroConversa(e, "Não foi possível começar a conversa agora.") });
+      setFase({ tipo: "bloqueada", mensagem: erroConversa(e, "Não foi possível começar a conversa agora."), oferta: ofertaDe(e) });
     }
   };
 
@@ -107,17 +109,18 @@ export default function EcraConversaDaAula() {
           </Botao>
         )
       ) : null}
-      {fase.tipo === "bloqueada" ? <Indisponivel mensagem={fase.mensagem} /> : null}
+      {fase.tipo === "bloqueada" ? <Indisponivel mensagem={fase.mensagem} oferta={fase.oferta} /> : null}
       {fase.tipo === "fim" ? <Fim resumo={fase.resumo} aoRepetir={() => setFase({ tipo: "inicio" })} /> : null}
       <PermissaoMicrofone {...mic.folha} />
     </Ecra>
   );
 }
 
-function Indisponivel({ mensagem }: { mensagem: string }) {
+function Indisponivel({ mensagem, oferta }: { mensagem: string; oferta?: Oferta | null }) {
   return (
     <View style={{ gap: 12 }}>
       <Aviso>{`${mensagem} Entretanto, pode treinar estas frases na revisão de hoje.`}</Aviso>
+      {oferta ? <OfertaPlano oferta={oferta} /> : null}
       <Botao tipo="secundario" href="/revisao" larguraTotal>
         Fazer a revisão de hoje
       </Botao>

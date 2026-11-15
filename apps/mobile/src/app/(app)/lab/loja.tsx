@@ -107,11 +107,16 @@ export default function Loja() {
         <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
           <Crown size={24} color={cor.realce} />
           <Texto accessibilityRole="header" cor={cor.sobreMarca} style={{ fontFamily: fonte.titulo, fontSize: 20, lineHeight: 26 }}>
-            Premium
+            {premium?.name ?? "Premium"}
           </Texto>
         </View>
         <View style={{ gap: 6 }}>
-          {["Vidas e lições ilimitadas", premium?.daily_speaking_minutes ? `${premium.daily_speaking_minutes} minutos de conversa com o tutor por dia` : null, premium?.certificates ? "Certificados de conclusão" : null]
+          {[
+            premium?.hearts_limit === 0 ? "Vidas ilimitadas" : null,
+            premium ? (premium.daily_lessons_limit ? `${premium.daily_lessons_limit} lições novas por dia` : "Lições novas sem limite") : null,
+            premium?.daily_speaking_minutes ? `${premium.daily_speaking_minutes} minutos de conversa com o tutor por dia` : null,
+            premium?.certificates ? "Certificados de conclusão" : null,
+          ]
             .filter(Boolean)
             .map((t) => (
               <Texto key={t} cor={cor.sobreMarca} style={{ fontSize: 15, lineHeight: 22 }}>

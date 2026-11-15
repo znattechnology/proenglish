@@ -4,7 +4,7 @@
  * confirmação, sem vidas e o fim da lição. Telas Licao*.dc.html, SairLicao, SemVidas e Concluida.
  */
 import { router, Stack, usePreventRemove } from "expo-router";
-import { CheckCircle2, Heart, Infinity as Infinito } from "lucide-react-native";
+import { CheckCircle2, Heart } from "lucide-react-native";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, type ScrollViewInstance, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -23,6 +23,8 @@ import {
   type ResultadoResponder,
 } from "@/dominios/laboratorio/api";
 import { analisarPronuncia, responderEmVoz, type ErroGravacao } from "@/dominios/laboratorio/gravacao";
+import { ofertaDe, type OfertaPlano as Oferta } from "@/dominios/subscricao/api";
+import { FolhaOferta, OfertaPlano } from "@/componentes/subscricao/Oferta";
 import { balao, cor, fonte, raio } from "@/tema";
 import { Aviso, Botao, Dialogo, Ecra, Etiqueta, Numero, Osso, Texto, Titulo } from "@/ui";
 import { ExercicioUI, seSalta, type RespostaExercicio, type ResultadoFala } from "./Exercicios";
@@ -37,7 +39,13 @@ type Fase =
 /** Respostas da gravação que pedem para gravar outra vez (silêncio, ficheiro recusado ou grande demais). */
 const GRAVAR_OUTRA_VEZ = new Set(["sem_fala", "gravacao_invalida", "gravacao_grande"]);
 
-type DadosLimite = { codigo?: string; limite?: number; feitas?: number; renova_em?: string; mensagem?: string };
+type DadosLimite = { codigo?: string; limite?: number; feitas?: number; renova_em?: string; mensagem?: string; oferta?: Oferta | null };
+
+/** Sem vidas: o que veio no erro (a oferta só vem no 400 "hearts"; undefined quando não houve erro). */
+type SemVidasInfo = { mensagem?: string | null; oferta?: Oferta | null };
+
+/** Limite de análises com IA atingido a meio da lição (429 limite_analises com oferta). */
+type LimiteAnalises = { mensagem: string; oferta: Oferta };
 
 /** Segundos desde um instante (fora dos componentes: o compilador do React não o vê como render). */
 function segundosDesde(t: number) {
@@ -75,6 +83,8 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   const [saltados, setSaltados] = useState<ReadonlySet<string>>(() => new Set());
   const [sair, setSair] = useState(false);
   const [semVidas, setSemVidas] = useState(false);
+  const [infoVidas, setInfoVidas] = useState<SemVidasInfo>({});
+  const [limiteAnalises, setLimiteAnalises] = useState<LimiteAnalises | null>(null);
   const [conclusao, setConclusao] = useState<ConclusaoLicao | null>(null);
   const [erroConcluir, setErroConcluir] = useState(false);
   const [limiteAoConcluir, setLimiteAoConcluir] = useState<DadosLimite | null>(null);
@@ -104,7 +114,16 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   const errou = (perdeu: boolean, heartsRestantes: number | undefined, extra: Omit<Extract<Fase, { tipo: "errado" }>, "tipo" | "perdeuVida">) => {
     setFase({ tipo: "errado", perdeuVida: perdeu, ...extra });
     if (ex) marcarErrado(ex.id);
-    if (perdeu && heartsRestantes !== undefined && heartsRestantes <= 0) setSemVidas(true);
+    if (perdeu && heartsRestantes !== undefined && heartsRestantes <= 0) {
+      setInfoVidas({});
+      setSemVidas(true);
+    }
+  };
+  // 400 {error: "hearts", mensagem, oferta}: sem vidas, com o plano que as torna ilimitadas.
+  const ficouSemVidas = (corpo: { mensagem?: string; message?: string } | undefined, oferta: Oferta | null | undefined) => {
+    setVidas(0);
+    setInfoVidas({ mensagem: corpo?.mensagem ?? corpo?.message ?? null, oferta });
+    setSemVidas(true);
   };
   const acertou = (explicacao?: string | null) => {
     setFase({ tipo: "certo", explicacao: explicacao ?? null });
@@ -114,11 +133,9 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   // Falha técnica numa gravação: salta com o token (sem pontos nem vidas) ou grava outra vez.
   const falhaGravacao = async (e: ErroGravacao, limite: string) => {
     if (!ex) return;
-    if (e.data?.error === "hearts") {
-      setVidas(0);
-      setSemVidas(true);
-      return;
-    }
+    if (e.data?.error === "hearts") return ficouSemVidas(e.data, ofertaDe(e));
+    const oferta = e.status === 429 ? ofertaDe(e) : undefined;
+    if (oferta) setLimiteAnalises({ mensagem: e.data?.mensagem ?? limite, oferta });
     if (e.data?.codigo === "analise_indisponivel" && e.data.pode_saltar) {
       const s = await saltar({ challengeId: ex.id, token: e.data.token_saltar });
       if (!("error" in s && s.error)) {
@@ -172,12 +189,9 @@ export function Jogador({ lessonId }: { lessonId: string }) {
 
       const r = await responder({ challengeId: ex.id, resposta: resposta.resposta });
       if ("error" in r && r.error) {
-        const corpo = (r.error as { data?: { codigo?: string; error?: string; mensagem?: string } }).data;
-        if (corpo?.error === "hearts") {
-          setVidas(0);
-          setSemVidas(true);
-          return;
-        }
+        const corpo = (r.error as { data?: DadosLimite & { error?: string; message?: string } }).data;
+        if (corpo?.error === "hearts") return ficouSemVidas(corpo, ofertaDe(r.error));
+        if (corpo?.codigo === "limite_licoes") return setLimiteAoConcluir(corpo);
         const dica = corpo?.codigo === "conversa_incompleta" && corpo.mensagem ? corpo.mensagem : "Não conseguimos verificar a resposta. Verifique a ligação e tente outra vez.";
         setFase({ tipo: "errado", dica, perdeuVida: false, repetir: true });
         return;
@@ -395,8 +409,17 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         </Botao>
       </Dialogo>
 
+      {limiteAnalises ? (
+        <FolhaOferta aberto aoFechar={() => setLimiteAnalises(null)} titulo="Já usou as análises de hoje" mensagem={limiteAnalises.mensagem} oferta={limiteAnalises.oferta}>
+          <Botao tipo="ligacao" larguraTotal onPress={() => setLimiteAnalises(null)}>
+            Continuar a lição
+          </Botao>
+        </FolhaOferta>
+      ) : null}
+
       <SemVidas
         aberto={semVidas}
+        info={infoVidas}
         aoFechar={() => setSemVidas(false)}
         aoSair={() => {
           setSemVidas(false);
@@ -415,8 +438,10 @@ export function Jogador({ lessonId }: { lessonId: string }) {
 /* ------------------------------------------------------------------ */
 /* Sem vidas (tela SemVidas)                                            */
 /* ------------------------------------------------------------------ */
-function SemVidas({ aberto, aoFechar, aoSair, aoRecarregar }: { aberto: boolean; aoFechar: () => void; aoSair: () => void; aoRecarregar: (vidas: number) => void }) {
-  const { data: estado, refetch } = useEstadoVidasQuery(undefined, { skip: !aberto });
+function SemVidas({ aberto, info, aoFechar, aoSair, aoRecarregar }: { aberto: boolean; info: SemVidasInfo; aoFechar: () => void; aoSair: () => void; aoRecarregar: (vidas: number) => void }) {
+  const { data: estado, isFetching, refetch } = useEstadoVidasQuery(undefined, { skip: !aberto });
+  // Sem oferta no erro (a última vida perdeu-se numa resposta normal): a do estado das vidas, lido de novo ao abrir.
+  const oferta = info.oferta ?? (isFetching ? undefined : estado?.oferta);
   const [recarregar, { isLoading }] = useRecarregarVidasMutation();
   const [erro, setErro] = useState<string | null>(null);
   useEffect(() => {
@@ -427,16 +452,34 @@ function SemVidas({ aberto, aoFechar, aoSair, aoRecarregar }: { aberto: boolean;
   const max = estado?.maximum ?? 3;
 
   return (
-    <Dialogo aberto={aberto} aoFechar={aoFechar} titulo="Ficou sem vidas" texto={`${tempo ? `A próxima vida volta daqui a ${tempo}. ` : ""}O seu progresso nesta lição fica guardado.`}>
-      <View accessible accessibilityLabel={`0 de ${max} vidas`} style={{ flexDirection: "row", gap: 8 }}>
-        {Array.from({ length: max }, (_, i) => (
-          <Heart key={i} size={34} color={cor.linhaForte} />
-        ))}
-      </View>
+    <FolhaOferta
+      aberto={aberto}
+      aoFechar={aoFechar}
+      titulo="Ficou sem vidas"
+      mensagem={tempo || !info.mensagem ? `${tempo ? `A próxima vida volta daqui a ${tempo}. ` : ""}O seu progresso nesta lição fica guardado.` : info.mensagem}
+      oferta={oferta}
+    >
+      {oferta ? null : (
+        <View accessible accessibilityLabel={`0 de ${max} vidas`} style={{ flexDirection: "row", gap: 8 }}>
+          {Array.from({ length: max }, (_, i) => (
+            <Heart key={i} size={34} color={cor.linhaForte} />
+          ))}
+        </View>
+      )}
       {erro ? <Aviso tom="erro">{erro}</Aviso> : null}
-      <Botao tipo="realce" larguraTotal icone={<Infinito size={20} color={cor.tinta} />} href="/planos">
-        Vidas ilimitadas com o Premium
-      </Botao>
+      {/* Nem o erro nem o estado das vidas trouxeram oferta: só a ligação para os planos. */}
+      {!oferta && info.oferta === undefined && !isFetching ? (
+        <Botao
+          tipo="secundario"
+          larguraTotal
+          onPress={() => {
+            aoFechar();
+            router.push("/planos");
+          }}
+        >
+          Ver os planos
+        </Botao>
+      ) : null}
       <Botao
         tipo="secundario"
         larguraTotal
@@ -458,7 +501,7 @@ function SemVidas({ aberto, aoFechar, aoSair, aoRecarregar }: { aberto: boolean;
       <Botao tipo="ligacao" larguraTotal onPress={aoSair}>
         Voltar ao trilho
       </Botao>
-    </Dialogo>
+    </FolhaOferta>
   );
 }
 
@@ -516,29 +559,32 @@ function LicaoConcluida({ licao, conclusao, certas, total, segundos, pontosInici
   );
 }
 
-/** Plano Gratuito: o limite de lições novas do dia foi atingido. Repetir lições continua livre. */
+/** O limite de lições novas do dia foi atingido. Repetir lições continua livre. */
 function LimiteLicoes({ d }: { d: DadosLimite }) {
-  const n = d.limite ?? 3;
+  const n = d.limite;
   const renova = d.renova_em ? new Date(d.renova_em) : null;
   const hora = renova ? `${String(renova.getHours()).padStart(2, "0")}:${String(renova.getMinutes()).padStart(2, "0")}` : null;
+  const oferta = d.oferta ?? null;
+  const texto =
+    d.mensagem ??
+    `${n ? `O seu plano tem ${n} ${n === 1 ? "lição nova" : "lições novas"} por dia` : "Chegou ao limite de lições novas do seu plano"}${hora ? `. Amanhã, a partir das ${hora}, há mais` : ""}.`;
   return (
     <Ecra style={{ paddingTop: 48, gap: 20 }}>
-      <View style={{ width: 64, height: 64, borderTopLeftRadius: 22, borderTopRightRadius: 22, borderBottomRightRadius: 22, borderBottomLeftRadius: 0, alignItems: "center", justifyContent: "center", backgroundColor: cor.azulMarca }}>
-        <Texto cor={cor.realce} style={{ fontFamily: fonte.titulo, fontSize: 26, lineHeight: 32 }}>
-          {n}
-        </Texto>
-      </View>
+      {n ? (
+        <View style={{ width: 64, height: 64, borderTopLeftRadius: 22, borderTopRightRadius: 22, borderBottomRightRadius: 22, borderBottomLeftRadius: 0, alignItems: "center", justifyContent: "center", backgroundColor: cor.azulMarca }}>
+          <Texto cor={cor.realce} style={{ fontFamily: fonte.titulo, fontSize: 26, lineHeight: 32 }}>
+            {n}
+          </Texto>
+        </View>
+      ) : null}
       <View style={{ gap: 8 }}>
-        <Titulo>Já fez as {n} lições de hoje</Titulo>
-        <Texto suave>
-          No plano Gratuito há {n} lições novas por dia{hora ? `. Amanhã, a partir das ${hora}, há mais` : ""}. Pode repetir as lições que já fez, sem limite. O que fez nesta lição fica guardado.
-        </Texto>
+        <Titulo>{n ? `Já fez ${n === 1 ? "a lição nova" : `as ${n} lições novas`} de hoje` : "Já fez as lições novas de hoje"}</Titulo>
+        <Texto suave>{texto}</Texto>
+        <Texto suave>Pode repetir as lições que já fez, sem limite. O que fez nesta lição fica guardado.</Texto>
       </View>
-      <View style={{ gap: 12, marginTop: "auto" }}>
-        <Botao tipo="realce" larguraTotal href="/planos">
-          Passar para o Premium
-        </Botao>
-        <Botao tipo="secundario" larguraTotal onPress={voltarAoTrilho}>
+      {oferta ? <OfertaPlano oferta={oferta} /> : null}
+      <View style={{ gap: 12, marginTop: oferta ? 0 : "auto" }}>
+        <Botao tipo={oferta ? "ligacao" : "principal"} larguraTotal onPress={voltarAoTrilho}>
           Voltar ao trilho
         </Botao>
       </View>

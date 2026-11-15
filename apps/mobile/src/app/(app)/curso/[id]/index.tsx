@@ -258,7 +258,7 @@ function CursoInscrito({ curso, aoActualizar }: { curso: Curso; aoActualizar: ()
 }
 
 function textoNota(n: Notas) {
-  if (n.plano_inclui_certificados === false) return "Os certificados fazem parte do Premium e do Premium Plus.";
+  if (n.plano_inclui_certificados === false) return "O seu plano não inclui certificados.";
   if (n.certificate_eligibility.is_eligible) return "Já cumpre tudo o que o certificado pede.";
   const falta = Object.values(n.certificate_eligibility.details).filter((d) => !d.met && !d.info_only).length;
   return `Certificado a partir de ${n.nota_minima ?? n.certificate_eligibility.nota_minima ?? 70}%. ${falta} ${falta === 1 ? "requisito por cumprir" : "requisitos por cumprir"}.`;
