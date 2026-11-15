@@ -27,7 +27,7 @@ ssh_public_key_path = "~/.ssh/id_rsa.pub"
 # DATABASE CONFIGURATION (NEON POSTGRESQL) - CONFIGURAÇÕES EXISTENTES
 # =============================================================================
 
-neon_database_url = "postgresql://neondb_owner:npg_0Xo1HNrcObmp@ep-divine-dew-agc1ldk8-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+neon_database_url = "postgresql://UTILIZADOR:PALAVRA_PASSE@HOST:5432/BASE"
 
 # =============================================================================
 # DJANGO CONFIGURATION - USANDO CONFIGURAÇÕES ATUAIS
