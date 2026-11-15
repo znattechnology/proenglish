@@ -171,3 +171,38 @@ class CoreExceptionsTest(TestCase):
         
         permission_exc = PermissionError("Permission denied")
         self.assertEqual(permission_exc.message, "Permission denied")
+
+class ArmazenamentoDjango52Test(TestCase):
+    """
+    O Django 5.1 removeu DEFAULT_FILE_STORAGE e STATICFILES_STORAGE e passou a ignorá-los sem erro.
+    Com USE_S3=True os ficheiros têm de ir para o S3 pela definição STORAGES (core/settings.py).
+    Lê as definições num processo à parte, com o ambiente controlado; não fala com o S3.
+    """
+
+    def ler_storages(self, use_s3):
+        import json
+        import os
+        import subprocess
+        import sys
+        from django.conf import settings
+        env = {**os.environ, 'USE_S3': 'True' if use_s3 else 'False', 'DJANGO_SETTINGS_MODULE': 'core.settings'}
+        codigo = ('import json, django; django.setup(); from django.conf import settings as s; '
+                  'from django.core.files.storage import storages; '
+                  'print(json.dumps({"storages": s.STORAGES, "default": type(storages["default"]).__name__, '
+                  '"antigas": [n for n in ("DEFAULT_FILE_STORAGE", "STATICFILES_STORAGE") if hasattr(s, n)]}))')
+        r = subprocess.run([sys.executable, '-c', codigo], cwd=str(settings.BASE_DIR), env=env,
+                           capture_output=True, text=True, timeout=120)
+        self.assertEqual(r.returncode, 0, r.stderr[-2000:])
+        return json.loads(r.stdout.strip().splitlines()[-1])
+
+    def test_com_s3_os_ficheiros_vao_para_o_s3(self):
+        d = self.ler_storages(True)
+        self.assertEqual(d['storages']['default']['BACKEND'], 'storages.backends.s3boto3.S3Boto3Storage')
+        self.assertEqual(d['storages']['staticfiles']['BACKEND'], 'storages.backends.s3boto3.S3Boto3Storage')
+        self.assertIn(d['default'], ('S3Storage', 'S3Boto3Storage'))  # S3Boto3Storage é o nome antigo de S3Storage
+        self.assertEqual(d['antigas'], [])
+
+    def test_sem_s3_ficam_no_disco(self):
+        d = self.ler_storages(False)
+        self.assertEqual(d['storages']['default']['BACKEND'], 'django.core.files.storage.FileSystemStorage')
+        self.assertEqual(d['default'], 'FileSystemStorage')

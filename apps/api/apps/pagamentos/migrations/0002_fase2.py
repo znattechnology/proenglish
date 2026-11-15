@@ -77,7 +77,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddConstraint(
             model_name='pagamento',
-            constraint=models.CheckConstraint(check=models.Q(('valor_kz__gte', django.db.models.expressions.CombinedExpression(models.F('desconto_kz'), '+', models.F('credito_abatido_kz')))), name='pagamento_total_nao_negativo'),
+            constraint=models.CheckConstraint(condition=models.Q(('valor_kz__gte', django.db.models.expressions.CombinedExpression(models.F('desconto_kz'), '+', models.F('credito_abatido_kz')))), name='pagamento_total_nao_negativo'),
         ),
         migrations.AddConstraint(
             model_name='pagamento',

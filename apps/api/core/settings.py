@@ -172,7 +172,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Security settings
-SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
 
@@ -335,13 +334,17 @@ AWS_QUERYSTRING_AUTH = False
 # Static and Media files configuration
 USE_S3 = config('USE_S3', default=False, cast=bool)
 
+# Django 5.1 removeu DEFAULT_FILE_STORAGE e STATICFILES_STORAGE (eram ignorados sem erro): tudo em STORAGES.
+STORAGES = {
+    'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
+    'staticfiles': {'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage'},
+}
+
 if USE_S3:
-    # Static files
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    # Ficheiros estáticos e enviados pelos utilizadores no S3 (ou compatível)
+    STORAGES['staticfiles'] = {'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage'}
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
-    
-    # Media files  
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STORAGES['default'] = {'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage'}
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
 # =============================================================================

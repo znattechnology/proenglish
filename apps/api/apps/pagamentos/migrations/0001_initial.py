@@ -69,7 +69,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddConstraint(
             model_name='pagamento',
-            constraint=models.CheckConstraint(check=models.Q(('desconto_kz__lte', models.F('valor_kz'))), name='pagamento_desconto_ate_valor'),
+            constraint=models.CheckConstraint(condition=models.Q(('desconto_kz__lte', models.F('valor_kz'))), name='pagamento_desconto_ate_valor'),
         ),
         migrations.AddConstraint(
             model_name='pagamento',
