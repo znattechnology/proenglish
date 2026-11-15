@@ -72,10 +72,14 @@
     ],
     "extra": {
       "apiUrl": "http://localhost:8000/api/v1",
-      "siteUrl": "http://localhost:3000"
+      "siteUrl": "http://localhost:3000",
+      "eas": {
+        "projectId": "a84bc1ec-c4bc-450d-a138-45100c970dc8"
+      }
     },
     "experiments": {
       "reactCompiler": true
-    }
+    },
+    "owner": "vadaos-team"
   }
 }
