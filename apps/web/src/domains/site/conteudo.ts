@@ -54,9 +54,9 @@ export const SITE_POR_DEFEITO: Site = {
   topo: {
     etiqueta: null,
     titulo: "Fale inglês no seu trabalho",
-    texto: "Cursos por área profissional, 15 minutos de prática por dia e conversa com um tutor de inteligência artificial. Feito para quem trabalha e estuda em Angola.",
+    texto: "Aqui o inglês aprende-se a falar: pratica em voz alta desde a primeira lição, conversa com um tutor de inteligência artificial e é corrigido na hora. Feito para quem trabalha em Angola.",
     botao_principal: { texto: "Experimentar grátis", href: "/signup" },
-    botao_secundario: { texto: "Ver planos", href: "#planos" },
+    botao_secundario: { texto: "Ver como funciona", href: "#como-funciona" },
     mostrar_nota: false,
     nota: null,
   },
