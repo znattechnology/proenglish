@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Award, BookOpen, Bot, FlaskConical, MessageCircle, Mic, Plane } from "lucide-react";
 import { cnPe } from "@/lib/pe";
-import { FRASES_AREA, type Site } from "@/src/domains/site/conteudo";
+import type { Site } from "@/src/domains/site/conteudo";
 import { Convite, Moldura } from "./Moldura";
 import { LigacaoPlano } from "./Entrada";
 
@@ -23,11 +23,16 @@ const SITUACOES = [
   { foto: "escuta", alt: "Profissional com auscultadores ao pescoço, atento ao ecrã", onde: "Na videochamada", frase: "Sorry, the line is bad. Can you hear me now?" },
 ];
 
-const AVIACAO_PARA = [
-  { quem: "Pilotos", texto: "Fraseologia padrão e inglês corrente para o que sai da rotina: desvios, emergências, mau tempo." },
-  { quem: "Controladores de tráfego aéreo", texto: "Autorizações, repetições e pedidos de confirmação, ditos com clareza e sem hesitar." },
-  { quem: "Tripulação de cabine", texto: "Anúncios, segurança a bordo e atendimento a passageiros de qualquer país." },
-  { quem: "Manutenção e assistência em terra", texto: "Passagem de turno, relatórios técnicos e comunicação na placa." },
+/** Sectores da página inicial, pela ordem em que aparecem. `areas` são os nomes que a API usa para contar os cursos. */
+const SECTORES = [
+  { nome: "Petróleo e Gás", areas: ["Petróleo e Gás"], foto: "petroleo", alt: "Plataforma petrolífera no mar ao pôr do sol", frase: "Could you send me the drilling report by Friday?", texto: "Reuniões de segurança, relatórios de turno e instruções em plataforma." },
+  { nome: "Banca", areas: ["Banca"], foto: "banca", alt: "Cliente a marcar o código numa caixa multibanco", frase: "Your transfer will arrive within two business days.", texto: "Atendimento, contas, taxas e reclamações explicadas com clareza." },
+  { nome: "Tecnologia", areas: ["Tecnologia"], foto: "tecnologia", alt: "Dois programadores a rever código no mesmo ecrã", frase: "The deploy failed, so we rolled back.", texto: "Reuniões diárias, documentação e conversas com equipas remotas." },
+  { nome: "Minas", areas: ["Minas"], foto: "minas", alt: "Camião de minério a subir a rampa de uma mina a céu aberto", frase: "The haul road is closed until the blast is cleared.", texto: "Segurança na mina, passagem de turno e relatórios de produção." },
+  { nome: "Aviação", areas: ["Aviação"], foto: "cockpit", alt: "Piloto na cabine de um avião comercial, a preparar o voo", frase: "Luanda Tower, ready for departure, runway 23.", texto: "Fraseologia de rádio, tripulação de cabine, manutenção e assistência em terra.", novo: true },
+  { nome: "Saúde", areas: ["Saúde"], foto: "saude", alt: "Dois profissionais de saúde a consultar um tablet", frase: "Where exactly does it hurt?", texto: "Consulta, triagem e passagem de turno com doentes e colegas estrangeiros." },
+  { nome: "Direito", areas: ["Direito"], foto: "direito", alt: "Mão a assinar um contrato sobre a mesa", frase: "The contract takes effect on the first of March.", texto: "Contratos, prazos e correspondência formal." },
+  { nome: "Negócios e Gestão", areas: ["Negócios", "Gestão"], foto: "negocios", alt: "Dois profissionais a conversar, sentados frente a frente", frase: "Please find the revised proposal attached.", texto: "Propostas, negociação e reuniões com clientes e parceiros." },
 ];
 
 const ICONES = { livro: BookOpen, laboratorio: FlaskConical, bot: Bot, microfone: Mic, balao: MessageCircle, certificado: Award } as const;
@@ -67,12 +72,8 @@ export function Landing({ site }: { site: Site }) {
   const numerosTopo = site.numeros.filter((n) => n.onde === "topo" && n.valor.trim() !== "0");
   const faixa = site.empresas.filter((e) => e.na_faixa);
   const gratis = site.precos.planos.some((p) => p.preco_mensal_kz <= 0);
-  // Áreas com cursos publicados; sem nenhuma, mostram-se as frases de exemplo (sem contar cursos).
-  const comCursos = site.areas.filter((a) => a.cursos > 0);
-  const areas = (comCursos.length ? comCursos.map((a) => ({ nome: a.nome, cursos: a.cursos })) : Object.keys(FRASES_AREA).map((nome) => ({ nome, cursos: 0 }))).map((a) => ({
-    ...a,
-    ...(FRASES_AREA[a.nome] ?? { frase: null, texto: null }),
-  }));
+  // Os cursos publicados de cada sector vêm da API; sem cursos, o cartão não mostra contagem.
+  const sectores = SECTORES.map((x) => ({ novo: false, ...x, cursos: site.areas.filter((a) => x.areas.includes(a.nome)).reduce((n, a) => n + a.cursos, 0) }));
 
   return (
     <Moldura site={site} actual="inicio">
@@ -218,94 +219,45 @@ export function Landing({ site }: { site: Site }) {
         </div>
       </section>
 
-      {/* Aviação */}
-      <section id="aviacao" className="pe-sobre-marca scroll-mt-4 bg-pe-azul-marca text-pe-sobre-marca">
-        <div className="mx-auto flex max-w-[1200px] flex-col gap-10 px-4 py-14 md:gap-14 md:px-6 md:py-24">
-          <div className="grid items-end gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-            <div className="flex min-w-0 flex-col gap-4">
-              <p className="m-0 flex items-center gap-2 self-start rounded-full bg-pe-realce px-4 py-1.5 text-[15px] font-semibold text-pe-tinta">
-                <Plane aria-hidden className="size-4" />
-                Novo sector
-              </p>
-              <h2 className="m-0 text-balance font-pe-titulo text-[34px] font-bold leading-[1.08] tracking-[-0.02em] md:text-[3.25rem]">Inglês para a aviação</h2>
-            </div>
+      {/* Sectores: todos com o mesmo peso; a aviação é o mais recente */}
+      <section id="areas" className="pe-sobre-marca scroll-mt-4 bg-pe-azul-marca text-pe-sobre-marca">
+        <div className="mx-auto flex max-w-[1200px] flex-col gap-10 px-4 py-14 md:gap-12 md:px-6 md:py-24">
+          <div className="grid items-end gap-x-16 gap-y-5 lg:grid-cols-2">
+            <h2 className="m-0 text-balance font-pe-titulo text-[34px] font-bold leading-[1.08] tracking-[-0.02em] md:text-[3.25rem]">O inglês do seu sector</h2>
             <p className="m-0 max-w-[520px] text-pe-corpo-l opacity-90">
-              No ar e na placa, uma frase mal entendida custa caro. Estamos a preparar cursos para quem trabalha na aviação em Angola, com o mesmo método: ouvir, repetir e conversar em voz alta.
+              Cada sector tem as suas frases. Treina em voz alta as que vai usar no seu posto de trabalho, do poço de petróleo à torre de controlo.
             </p>
           </div>
-
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
-            <figure className="relative m-0 min-w-0">
-              <div className="aspect-[4/3] overflow-hidden rounded-[56px_56px_56px_0] md:rounded-[88px_88px_88px_0]">
-                <Foto nome="cockpit" alt="Piloto na cabine de um avião comercial, a preparar o voo" sizes="(min-width: 1024px) 660px, 100vw" />
-              </div>
-              {/* Troca de rádio: indicativo e pista de exemplo */}
-              <figcaption className="relative z-10 -mt-16 ml-auto flex w-[min(100%,420px)] flex-col gap-2 pr-0 md:-mt-24 md:mr-6">
-                <div className="self-start rounded-pe-fala bg-pe-fundo px-5 py-3.5 text-pe-tinta shadow-pe-2">
-                  <span className="block text-[13px] font-semibold leading-5 text-pe-tinta-suave">Piloto</span>
-                  <p lang="en" className="m-0 text-[16px] leading-6">Luanda Tower, Palanca 520, ready for departure, runway 23.</p>
+          <ul className="m-0 grid list-none gap-x-6 gap-y-10 p-0 sm:grid-cols-2 lg:grid-cols-4">
+            {sectores.map((a, i) => (
+              <li key={a.nome} className="flex min-w-0 flex-col gap-4">
+                <div className={cnPe("relative aspect-[4/3] overflow-hidden bg-white/10", i % 2 ? "rounded-pe-fala-aluno" : "rounded-pe-fala")}>
+                  <Foto nome={a.foto} alt={a.alt} sizes="(min-width: 1024px) 280px, (min-width: 640px) 50vw, 100vw" />
+                  {a.novo ? (
+                    <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-pe-realce px-3 py-1 text-[13px] font-semibold leading-5 text-pe-tinta">
+                      <Plane aria-hidden className="size-3.5" />
+                      Novo
+                    </span>
+                  ) : null}
                 </div>
-                <div className="self-end rounded-pe-fala-aluno bg-pe-realce px-5 py-3.5 text-pe-tinta shadow-pe-2">
-                  <span className="block text-[13px] font-semibold leading-5">Torre</span>
-                  <p lang="en" className="m-0 text-[16px] leading-6">Palanca 520, wind 240 degrees 8 knots, runway 23, cleared for take-off.</p>
+                <div className="flex flex-col gap-1.5">
+                  <h3 className="m-0 font-pe-titulo text-[20px] font-semibold leading-[26px]">{a.nome}</h3>
+                  <p lang="en" className="m-0 font-pe-titulo text-[17px] font-light italic leading-[25px] text-pe-realce">{a.frase}</p>
+                  <p className="m-0 text-[15px] leading-[22px] opacity-85">{a.texto}</p>
+                  {a.cursos > 0 ? (
+                    <p className="m-0 text-[14px] leading-5 opacity-75">{a.cursos} {a.cursos === 1 ? "curso" : "cursos"}</p>
+                  ) : a.novo ? (
+                    <p className="m-0 text-[14px] leading-5 opacity-75">Cursos em preparação</p>
+                  ) : null}
                 </div>
-              </figcaption>
-            </figure>
-            <div className="grid min-w-0 grid-cols-2 gap-6 lg:grid-cols-1">
-              <div className="aspect-[4/3] overflow-hidden rounded-pe-fala-aluno lg:aspect-auto lg:min-h-0 lg:flex-1">
-                <Foto nome="torre" alt="Torre de controlo ao pôr do sol, com um avião a aproximar-se" sizes="(min-width: 1024px) 480px, 50vw" />
-              </div>
-              <div className="aspect-[4/3] overflow-hidden rounded-pe-fala lg:aspect-auto">
-                <Foto nome="pista" alt="Avião a aterrar numa pista com as luzes acesas ao anoitecer" sizes="(min-width: 1024px) 480px, 50vw" />
-              </div>
-            </div>
-          </div>
-
-          {/* A linha central da pista separa as fotografias de quem os cursos servem. */}
-          <div aria-hidden className="h-1 w-full bg-[repeating-linear-gradient(90deg,var(--pe-realce)_0_48px,transparent_48px_80px)] opacity-80" />
-
-          <div className="grid gap-x-16 gap-y-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
-            <dl className="m-0 grid gap-x-10 gap-y-7 sm:grid-cols-2">
-              {AVIACAO_PARA.map((a) => (
-                <div key={a.quem} className="flex min-w-0 flex-col gap-1.5">
-                  <dt className="font-pe-titulo text-[20px] font-semibold leading-[26px]">{a.quem}</dt>
-                  <dd className="m-0 opacity-85">{a.texto}</dd>
-                </div>
-              ))}
-            </dl>
-            <div className="flex min-w-0 flex-col items-start gap-4 rounded-pe-fala bg-white/10 p-6 md:p-7">
-              <p className="m-0 text-pe-corpo-l">
-                A OACI exige a pilotos e controladores proficiência em inglês falado. É exactamente isso que aqui se treina: falar.
-              </p>
-              <Link href="/signup" className="inline-flex min-h-[52px] items-center rounded-pe-sm bg-pe-realce px-7 text-[17px] font-semibold text-pe-tinta no-underline hover:text-pe-tinta hover:shadow-pe-2">
-                Criar conta e ser avisado
-              </Link>
-              <p className="m-0 text-[14px] leading-5 opacity-80">Os cursos de aviação estão em preparação. Quem tem conta é avisado quando abrirem.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Áreas */}
-      <section id="areas" className="scroll-mt-4 bg-pe-fundo-suave">
-        <div className={caixa}>
-          <div className="flex max-w-[640px] flex-col gap-3">
-            <h2 className={h2}>O inglês da sua profissão</h2>
-            <p className="m-0 text-pe-corpo-l text-pe-tinta-suave">Cada área tem as suas frases. Comece pela primeira reunião, pelo primeiro email ou pelo primeiro cliente.</p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
-            {areas.map((a) => (
-              <article key={a.nome} className="flex min-w-0 flex-col gap-3 rounded-pe-fala-m bg-pe-fundo p-6">
-                <h3 className="m-0 font-pe-titulo text-[18px] font-semibold leading-6">{a.nome}</h3>
-                {a.frase ? (
-                  <p lang="en" className="m-0 font-pe-titulo text-[18px] font-light italic leading-[27px] text-pe-azul-marca">
-                    {a.frase}
-                  </p>
-                ) : null}
-                {a.texto ? <p className="m-0 text-[15px] leading-[22px] text-pe-tinta-suave">{a.texto}</p> : null}
-                {a.cursos > 0 ? <p className="m-0 mt-auto text-[14px] leading-5 text-pe-tinta-suave">{a.cursos} {a.cursos === 1 ? "curso" : "cursos"}</p> : null}
-              </article>
+              </li>
             ))}
+          </ul>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-white/20 pt-8">
+            <p className="m-0 min-w-0 flex-[1_1_420px] text-pe-corpo-l">Não encontra o seu sector? O curso de inglês geral serve qualquer profissão e começa hoje.</p>
+            <Link href="/signup" className="inline-flex min-h-[52px] items-center rounded-pe-sm bg-pe-realce px-7 text-[17px] font-semibold text-pe-tinta no-underline hover:text-pe-tinta hover:shadow-pe-2">
+              Criar conta grátis
+            </Link>
           </div>
         </div>
       </section>
