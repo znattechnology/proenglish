@@ -1,0 +1,27 @@
+{
+  "cli": {
+    "version": ">= 16.0.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "teste": {
+      "distribution": "internal",
+      "channel": "teste",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://proenglish-api.2.31.122.170.sslip.io/api/v1",
+        "EXPO_PUBLIC_SITE_URL": "https://proenglish.2.31.122.170.sslip.io"
+      }
+    },
+    "producao": {
+      "channel": "producao",
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://proenglish-api.2.31.122.170.sslip.io/api/v1",
+        "EXPO_PUBLIC_SITE_URL": "https://proenglish.2.31.122.170.sslip.io"
+      }
+    }
+  }
+}

@@ -35,3 +35,29 @@ Os pedidos levam `X-Cliente: app`: a API devolve os tokens no corpo (`tokens: {a
 - `src/dominios/<área>` — endpoints e regras de cada área; `src/componentes/<área>` — peças de cada área.
 
 Antes de entregar: `npx tsc --noEmit` e `npx expo lint`.
+
+## Testar no telefone (sem as lojas)
+
+A app de teste fala com o servidor (`https://proenglish-api.2.31.122.170.sslip.io/api/v1`): o
+endereço entra no build por `EXPO_PUBLIC_API_URL` (`eas.json` e o script `telefone:ios`).
+
+### Android: APK por ligação (grátis)
+
+1. Uma vez: conta em expo.dev e, no terminal, `npx eas-cli@latest login` e `npx eas-cli@latest init`.
+2. `npm run build:android:teste`: o EAS constrói o APK na nuvem e dá uma ligação e um QR.
+3. No telefone: abrir a ligação, descarregar e permitir "instalar apps desta fonte".
+
+### iPhone: pelo Xcode, com uma conta Apple gratuita
+
+Instala a versão final (sem Metro) no iPhone ligado por cabo. Limites da Apple para contas
+gratuitas: até 3 aparelhos e a app deixa de abrir ao fim de 7 dias (reinstalar com o mesmo comando).
+Sem notificações remotas (a app só usa as locais, que funcionam).
+
+1. Uma vez: Xcode > Settings > Accounts > juntar o Apple ID.
+2. Ligar o iPhone por cabo, desbloquear e "Confiar neste computador".
+3. Uma vez, no iPhone: Definições > Privacidade e segurança > Modo de programador > ligar (reinicia).
+4. `npm run telefone:ios` (escolher a equipa pessoal se perguntar).
+5. No iPhone, da primeira vez: Definições > Geral > VPN e gestão de dispositivos > confiar no
+   programador.
+
+Para testadores com iPhone: TestFlight (conta Apple Developer, 99 USD/ano).
