@@ -10,6 +10,8 @@ import { Pagina } from "@/components/pe/estudante/Pagina";
 import { Viva } from "@/components/pe/licao/ConversaCurta";
 import type { ExameOral } from "@/src/domains/shared/exameOral";
 import { erroConversa } from "@/src/domains/student/conversa/api";
+import { OfertaPlano } from "@/components/pe/subscricao/Oferta";
+import { ofertaDoErro, type Oferta } from "@/src/domains/student/subscricao/api";
 import { useComecarExameMutation, useCursoQuery, useExameQuery, useLazyResultadoExameQuery, type EstadoExame, type ExameComecado } from "@/src/domains/student/curso/api";
 
 type Fase = { tipo: "inicio" } | { tipo: "viva"; dados: ExameComecado } | { tipo: "a_avaliar" } | { tipo: "resultado"; exame: ExameOral };
@@ -104,13 +106,19 @@ function Introducao({ estado: e, courseId, erro, aoComecar, aoAbrir }: { estado:
   const [consentimento, setConsentimento] = useState(false);
   const [comecar, { isLoading }] = useComecarExameMutation();
   const [erroInicio, setErroInicio] = useState<string | null>(null);
+  // O plano não inclui o exame: a oferta vem no estado (GET) ou no 403 ao começar.
+  const [ofertaInicio, setOfertaInicio] = useState<{ mensagem: string; oferta: Oferta } | null>(null);
+  const oferta = ofertaInicio ?? (e.motivo === "plano" && e.oferta ? { mensagem: e.mensagem ?? "", oferta: e.oferta } : null);
 
   const abrir = async () => {
     setErroInicio(null);
     try {
       aoComecar(await comecar({ courseId, consentimento }).unwrap());
     } catch (x) {
-      setErroInicio(erroConversa(x, "Não foi possível começar o exame agora."));
+      const mensagem = erroConversa(x, "Não foi possível começar o exame agora.");
+      const o = ofertaDoErro(x);
+      if (o) setOfertaInicio({ mensagem, oferta: o });
+      else setErroInicio(mensagem);
     }
   };
 
@@ -207,7 +215,24 @@ function Introducao({ estado: e, courseId, erro, aoComecar, aoAbrir }: { estado:
         </div>
       </div>
 
-      {e.disponivel ? (
+      {oferta ? (
+        <section aria-labelledby="t-plano-exame" className="flex max-w-[480px] flex-col gap-4">
+          <div className="flex flex-col gap-1.5">
+            <h2 id="t-plano-exame" className="m-0 font-pe-titulo text-[20px] font-semibold leading-[26px]">
+              O exame faz parte dos planos pagos
+            </h2>
+            {oferta.mensagem ? <p className="m-0 text-[15px] leading-[22px]">{oferta.mensagem}</p> : null}
+          </div>
+          <OfertaPlano
+            oferta={oferta.oferta}
+            saidas={
+              <Botao asChild tipo="ligacao" larguraTotal>
+                <Link href={`/user/courses/${courseId}`}>Continuar o curso</Link>
+              </Botao>
+            }
+          />
+        </section>
+      ) : e.disponivel ? (
         <section aria-labelledby="t-comecar" className="flex flex-col gap-4 rounded-pe-md border-[1.5px] border-pe-azul-marca p-5 md:p-6">
           <h2 id="t-comecar" className="m-0 font-pe-titulo text-[20px] font-semibold leading-[26px]">
             Antes de começar

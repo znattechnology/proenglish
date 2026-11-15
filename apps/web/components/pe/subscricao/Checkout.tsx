@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { skipToken } from "@reduxjs/toolkit/query/react";
 import { CalendarClock, CheckCircle2, Gift, LockKeyhole, Smartphone, XCircle } from "lucide-react";
 import { Aviso, BarraProgresso, Botao, Etiqueta, Osso } from "@/components/pe";
@@ -128,7 +128,7 @@ export function Checkout() {
             </div>
           ) : (
             <>
-              {orcamento.pode_experimentar && orcamento.dias_teste > 0 ? <OfertaTeste plano={plano} dias={orcamento.dias_teste} aoComecar={setTeste} /> : null}
+              {orcamento.pode_experimentar && orcamento.dias_teste > 0 ? <OfertaTeste plano={plano} dias={orcamento.dias_teste} aoComecar={setTeste} focar={params.get("teste") === "1"} /> : null}
               {orcamento.operacao === "conversao_teste" && orcamento.teste_termina_em ? (
                 <Aviso tipo="neutro">
                   Está a experimentar o {plano.name} até {dataPt(orcamento.teste_termina_em, { day: "numeric", month: "long" })}. Se pagar agora, o período pago só começa no fim do teste: não perde
@@ -155,8 +155,15 @@ export function Checkout() {
 /* ------------------------------------------------------------------ */
 /* Teste grátis: só para quem nunca experimentou nem pagou              */
 /* ------------------------------------------------------------------ */
-function OfertaTeste({ plano, dias, aoComecar }: { plano: Plano; dias: number; aoComecar: (t: TesteIniciado) => void }) {
+function OfertaTeste({ plano, dias, aoComecar, focar = false }: { plano: Plano; dias: number; aoComecar: (t: TesteIniciado) => void; focar?: boolean }) {
   const [iniciar, { isLoading }] = useIniciarTesteMutation();
+  // Vindo de "Experimentar N dias grátis" (oferta num limite): vai direito ao número.
+  const campo = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (!focar || !campo.current) return;
+    campo.current.scrollIntoView({ block: "center" });
+    campo.current.focus({ preventScroll: true });
+  }, [focar]);
   const [erro, setErro] = useState<{ campo?: boolean; texto: string } | null>(null);
   const [telefone, setTelefone] = useState(() => {
     try {
@@ -215,6 +222,7 @@ function OfertaTeste({ plano, dias, aoComecar }: { plano: Plano; dias: number; a
           <span className="flex items-center border-r border-pe-linha bg-pe-fundo-suave px-3 font-semibold">+244</span>
           <input
             id="telefone-teste"
+            ref={campo}
             type="tel"
             inputMode="numeric"
             autoComplete="tel-national"

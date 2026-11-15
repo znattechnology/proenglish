@@ -6,6 +6,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import type { ExameOral } from "@/src/domains/shared/exameOral";
 import type { ConversaLicao } from "@/src/domains/student/laboratorio/api";
+import type { Oferta } from "@/src/domains/student/subscricao/api";
 import { aposCurso, quandoCorrerBem } from "@/src/domains/student/sincronizar";
 import { sharedBaseQuery } from "@/src/domains/shared/api/baseQuery";
 
@@ -128,7 +129,9 @@ export type Notas = {
 
 export type EstadoExame = {
   disponivel: boolean;
-  motivo: null | "progresso" | "aprovado" | "aguardar" | "tentativas" | "curso_pratica" | "desligado";
+  motivo: null | "progresso" | "aprovado" | "aguardar" | "tentativas" | "curso_pratica" | "desligado" | "plano";
+  /** Plano que inclui o exame (só com motivo "plano"); null se nenhum resolve. */
+  oferta?: Oferta | null;
   mensagem: string | null;
   progresso: number;
   limiar_progresso: number;

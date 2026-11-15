@@ -4,9 +4,11 @@ import Link from "next/link";
 import { PedirLembrete } from "@/components/pe/avisos/Avisos";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { CheckCircle2, Heart, Infinity as InfinitoIcone } from "lucide-react";
+import { CheckCircle2, Heart } from "lucide-react";
 import { Botao, Etiqueta, Osso } from "@/components/pe";
 import { Dialogo } from "@/components/pe/Dialogo";
+import { FolhaOferta, OfertaPlano } from "@/components/pe/subscricao/Oferta";
+import type { Oferta } from "@/src/domains/student/subscricao/api";
 import {
   useAnalisarPronunciaMutation,
   useResponderEmVozMutation,
@@ -36,7 +38,7 @@ type Fase =
 /** Respostas da gravação que pedem para gravar outra vez (silêncio, ficheiro recusado ou grande demais). */
 const GRAVAR_OUTRA_VEZ = new Set(["sem_fala", "gravacao_invalida", "gravacao_grande"]);
 
-type CorpoErro = { status?: number; data?: { codigo?: string; error?: string; mensagem?: string; pode_saltar?: boolean; token_saltar?: string } };
+type CorpoErro = { status?: number; data?: { codigo?: string; error?: string; mensagem?: string; pode_saltar?: boolean; token_saltar?: string; oferta?: Oferta | null } & DadosLimite };
 
 /**
  * A ordem da lição: começa no primeiro exercício por fazer (retoma uma lição deixada a meio, sem
@@ -76,6 +78,8 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   const [saltados, setSaltados] = useState<ReadonlySet<string>>(() => new Set());
   const [sair, setSair] = useState(false);
   const [semVidas, setSemVidas] = useState(false);
+  // Plano que torna as vidas ilimitadas (vem no 400 «sem vidas»; undefined se ainda não chegou).
+  const [ofertaVidas, setOfertaVidas] = useState<Oferta | null | undefined>(undefined);
   const [conclusao, setConclusao] = useState<ConclusaoLicao | null>(null);
   const [erroConcluir, setErroConcluir] = useState(false);
   const [limiteAoConcluir, setLimiteAoConcluir] = useState<DadosLimite | null>(null);
@@ -107,9 +111,11 @@ export function Jogador({ lessonId }: { lessonId: string }) {
       const falhaGravacao = async (e: CorpoErro, limite: string) => {
         if (e.data?.error === "hearts") {
           setVidas(0);
+          setOfertaVidas(e.data.oferta);
           setSemVidas(true);
           return;
         }
+        if (e.data?.codigo === "limite_licoes") return void setLimiteAoConcluir(e.data);
         if (e.data?.codigo === "analise_indisponivel" && e.data.pode_saltar) {
           const s = await saltar({ challengeId: ex.id, token: e.data.token_saltar });
           if (!("error" in s && s.error)) {
@@ -171,9 +177,11 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         const corpo = (r.error as CorpoErro).data;
         if (corpo?.error === "hearts") {
           setVidas(0);
+          setOfertaVidas(corpo.oferta);
           setSemVidas(true);
           return;
         }
+        if (corpo?.codigo === "limite_licoes") return void setLimiteAoConcluir(corpo);
         const dica = corpo?.codigo === "conversa_incompleta" && corpo.mensagem ? corpo.mensagem : "Não conseguimos verificar a resposta. Verifique a ligação e tente outra vez.";
         setFase({ tipo: "errado", dica, perdeuVida: false, repetir: true });
         return;
@@ -401,7 +409,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         </div>
       </Dialogo>
 
-      <SemVidas aberto={semVidas} aoMudar={setSemVidas} aoRecarregar={(n) => { setVidas(n); setSemVidas(false); }} />
+      <SemVidas aberto={semVidas} aoMudar={setSemVidas} oferta={ofertaVidas} aoRecarregar={(n) => { setVidas(n); setSemVidas(false); }} />
     </div>
   );
 }
@@ -409,8 +417,18 @@ export function Jogador({ lessonId }: { lessonId: string }) {
 /* ------------------------------------------------------------------ */
 /* Sem vidas                                                            */
 /* ------------------------------------------------------------------ */
-function SemVidas({ aberto, aoMudar, aoRecarregar }: { aberto: boolean; aoMudar: (v: boolean) => void; aoRecarregar: (vidas: number) => void }) {
-  const { data: estado, refetch } = useEstadoVidasQuery(undefined, { skip: !aberto });
+function SemVidas({
+  aberto,
+  aoMudar,
+  oferta,
+  aoRecarregar,
+}: {
+  aberto: boolean;
+  aoMudar: (v: boolean) => void;
+  oferta: Oferta | null | undefined;
+  aoRecarregar: (vidas: number) => void;
+}) {
+  const { data: estado, isFetching, refetch } = useEstadoVidasQuery(undefined, { skip: !aberto });
   const [recarregar, { isLoading }] = useRecarregarVidasMutation();
   const [erro, setErro] = useState<string | null>(null);
   useEffect(() => {
@@ -418,12 +436,48 @@ function SemVidas({ aberto, aoMudar, aoRecarregar }: { aberto: boolean; aoMudar:
   }, [aberto, refetch]);
 
   const tempo = tempoAte(estado?.next_heart_at);
+  // Sem oferta no erro (ficou sem vidas ao errar, resposta 200): usa a do estado das vidas, já
+  // relido ao abrir. undefined enquanto não chega a leitura nova.
+  const ofertaFinal = oferta !== undefined ? oferta : isFetching ? undefined : estado?.oferta;
+  const custo = estado?.refill_cost_points ?? 50;
+
+  const saidas = (
+    <>
+      <Botao
+        tipo="secundario"
+        larguraTotal
+        disabled={isLoading || (estado ? !estado.can_refill_with_points : false)}
+        onClick={async () => {
+          setErro(null);
+          const r = await recarregar();
+          if ("error" in r && r.error) {
+            const c = (r.error as { data?: { error?: string; message?: string } }).data;
+            setErro(c?.error === "insufficient_points" ? `Ainda não tem ${custo} pontos. Pode praticar uma lição já feita para ganhar pontos.` : c?.message ?? "Não foi possível recarregar agora.");
+            return;
+          }
+          aoRecarregar(r.data!.hearts);
+        }}
+      >
+        {estado && !estado.can_refill_with_points && estado.points < custo ? `Recarregar por ${custo} pontos (tem ${estado.points})` : `Recarregar por ${custo} pontos`}
+      </Botao>
+      {/* Nem o erro nem o estado das vidas trazem oferta: a página de planos mostra o que há. */}
+      {ofertaFinal === undefined ? (
+        <Botao asChild tipo="ligacao" larguraTotal>
+          <Link href="/user/upgrade">Ver os planos</Link>
+        </Botao>
+      ) : null}
+      <Botao asChild tipo="ligacao" larguraTotal>
+        <Link href="/user/laboratory/learn">Esperar e voltar ao trilho</Link>
+      </Botao>
+    </>
+  );
 
   return (
-    <Dialogo
+    <FolhaOferta
       aberto={aberto}
       aoMudar={aoMudar}
       titulo="Ficou sem vidas"
+      oferta={ofertaFinal}
       topo={
         <div role="img" aria-label="0 vidas" className="flex gap-2">
           {[0, 1, 2].map((i) => (
@@ -431,39 +485,11 @@ function SemVidas({ aberto, aoMudar, aoRecarregar }: { aberto: boolean; aoMudar:
           ))}
         </div>
       }
-      descricao={`${tempo ? `A próxima vida volta daqui a ${tempo}. ` : ""}O que já fez nesta lição fica guardado.`}
+      mensagem={`${tempo ? `A próxima vida volta daqui a ${tempo}. ` : ""}O que já fez nesta lição fica guardado.`}
+      aviso={erro ? <p role="alert" className="m-0 rounded-pe-md bg-pe-errado-suave px-3 py-2 text-[15px]">{erro}</p> : null}
     >
-      {erro ? <p role="alert" className="m-0 rounded-pe-md bg-pe-errado-suave px-3 py-2 text-[15px]">{erro}</p> : null}
-      <div className="flex flex-col gap-3">
-        <Botao asChild tipo="realce" larguraTotal>
-          <Link href="/user/subscription">
-            <InfinitoIcone aria-hidden /> Vidas ilimitadas com o Premium
-          </Link>
-        </Botao>
-        <Botao
-          tipo="secundario"
-          larguraTotal
-          disabled={isLoading || (estado ? !estado.can_refill_with_points : false)}
-          onClick={async () => {
-            setErro(null);
-            const r = await recarregar();
-            if ("error" in r && r.error) {
-              const c = (r.error as { data?: { error?: string; message?: string } }).data;
-              setErro(c?.error === "insufficient_points" ? "Ainda não tem 50 pontos. Pode praticar uma lição já feita para ganhar pontos." : c?.message ?? "Não foi possível recarregar agora.");
-              return;
-            }
-            aoRecarregar(r.data!.hearts);
-          }}
-        >
-          {estado && !estado.can_refill_with_points && estado.points < estado.refill_cost_points
-            ? `Recarregar por 50 pontos (tem ${estado.points})`
-            : "Recarregar por 50 pontos"}
-        </Botao>
-        <Botao asChild tipo="ligacao" larguraTotal>
-          <Link href="/user/laboratory/learn">Voltar ao trilho</Link>
-        </Botao>
-      </div>
-    </Dialogo>
+      {saidas}
+    </FolhaOferta>
   );
 }
 
@@ -541,30 +567,32 @@ function LicaoConcluida({
   );
 }
 
-type DadosLimite = { codigo?: string; limite?: number; feitas?: number; renova_em?: string };
+type DadosLimite = { codigo?: string; mensagem?: string; limite?: number; feitas?: number; renova_em?: string; oferta?: Oferta | null };
 
-/** Plano Gratuito: o limite de lições novas do dia foi atingido. Repetir lições continua livre. */
+/** Limite de lições novas do dia atingido. Repetir lições continua livre. */
 function LimiteLicoes({ d }: { d: DadosLimite }) {
-  const n = d.limite ?? 3;
   const renova = d.renova_em ? new Date(d.renova_em) : null;
+  const titulo = d.limite ? `Já fez as ${d.limite} lições novas de hoje` : "Já fez as lições novas de hoje";
+  const voltar = (
+    <Botao asChild tipo={d.oferta ? "ligacao" : "secundario"} larguraTotal={!!d.oferta}>
+      <Link href="/user/laboratory/learn">Voltar ao trilho e repetir lições</Link>
+    </Botao>
+  );
   return (
-    <main className="mx-auto flex max-w-[560px] flex-col items-start gap-5 px-5 py-16">
-      <span aria-hidden className="pe-sobre-marca flex size-16 items-center justify-center rounded-[22px_22px_22px_0] bg-pe-azul-marca font-pe-titulo text-[26px] font-bold text-pe-realce">
-        {n}
-      </span>
-      <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9">Já fez as {n} lições de hoje</h1>
-      <p className="m-0 text-pe-tinta-suave">
-        No plano Gratuito há {n} lições novas por dia
-        {renova ? `. Amanhã, a partir das ${renova.toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" })}, há mais` : ""}. Pode repetir as lições que já fez, sem limite. O que fez nesta lição fica guardado.
-      </p>
-      <div className="flex flex-wrap gap-3">
-        <Botao asChild tipo="realce">
-          <Link href="/user/upgrade?plan=PREMIUM">Passar para o Premium</Link>
-        </Botao>
-        <Botao asChild tipo="secundario">
-          <Link href="/user/laboratory/learn">Voltar ao trilho</Link>
-        </Botao>
+    <main className="mx-auto flex max-w-[480px] flex-col items-start gap-5 px-5 py-12 md:py-16">
+      {d.limite ? (
+        <span aria-hidden className="pe-sobre-marca flex size-16 items-center justify-center rounded-[22px_22px_22px_0] bg-pe-azul-marca font-pe-titulo text-[26px] font-bold text-pe-realce">
+          {d.limite}
+        </span>
+      ) : null}
+      <div className="flex flex-col gap-2">
+        <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9">{titulo}</h1>
+        <p className="m-0 text-pe-tinta-suave">
+          {renova ? `Amanhã, a partir das ${renova.toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" })}, há mais. ` : ""}
+          Pode repetir as lições que já fez, sem limite. O que fez nesta lição fica guardado.
+        </p>
       </div>
+      {d.oferta ? <OfertaPlano oferta={d.oferta} saidas={voltar} /> : <div className="flex flex-wrap gap-3">{voltar}</div>}
     </main>
   );
 }

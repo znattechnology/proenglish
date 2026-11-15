@@ -10,11 +10,13 @@ import { disseFrase, type Resumo } from "@/src/domains/student/conversa/api";
 import { useComecarConversaLicaoMutation, type ConversaLicao, type Exercicio } from "@/src/domains/student/laboratorio/api";
 import type { RespostaExercicio } from "./Exercicios";
 import { Enunciado } from "./Partes";
+import { OfertaPlano } from "@/components/pe/subscricao/Oferta";
+import { ofertaDoErro, type Oferta } from "@/src/domains/student/subscricao/api";
 
 const MIN_FALAS = 2;
 const mmss = (s: number) => `${Math.floor(s / 60)}:${String(Math.max(0, s) % 60).padStart(2, "0")}`;
 
-type Fase = { tipo: "inicio" } | { tipo: "viva"; dados: ConversaLicao } | { tipo: "fim"; resumo: Resumo } | { tipo: "bloqueada"; mensagem: string };
+type Fase = { tipo: "inicio" } | { tipo: "viva"; dados: ConversaLicao } | { tipo: "fim"; resumo: Resumo } | { tipo: "bloqueada"; mensagem: string; oferta?: Oferta | null };
 
 /**
  * Conversa curta (1 a 2 minutos) com o tutor no fim da lição, dentro do ecrã da lição.
@@ -30,7 +32,7 @@ export function ConversaCurta({ ex, bloqueado, aoMudar, aoSaltar }: { ex: Exerci
     const r = await comecar(ex.id);
     if ("error" in r && r.error) {
       const d = (r.error as { data?: { mensagem?: string } }).data;
-      setFase({ tipo: "bloqueada", mensagem: d?.mensagem ?? "Não foi possível começar a conversa agora." });
+      setFase({ tipo: "bloqueada", mensagem: d?.mensagem ?? "Não foi possível começar a conversa agora.", oferta: ofertaDoErro(r.error) });
       return;
     }
     setFase({ tipo: "viva", dados: r.data! });
@@ -74,7 +76,12 @@ export function ConversaCurta({ ex, bloqueado, aoMudar, aoSaltar }: { ex: Exerci
         </div>
       ) : null}
 
-      {fase.tipo === "bloqueada" ? (
+      {fase.tipo === "bloqueada" && fase.oferta ? (
+        <div className="flex max-w-[440px] flex-col gap-4">
+          <p className="m-0">{fase.mensagem} Pode saltar esta conversa: não perde vidas nem pontos.</p>
+          <OfertaPlano oferta={fase.oferta} saidas={saltar} />
+        </div>
+      ) : fase.tipo === "bloqueada" ? (
         <div className="flex flex-col gap-3">
           <Aviso tipo="neutro">{fase.mensagem} Pode saltar esta conversa: não perde vidas nem pontos.</Aviso>
           <div>{saltar}</div>

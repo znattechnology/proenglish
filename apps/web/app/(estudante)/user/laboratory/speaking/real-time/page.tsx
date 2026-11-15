@@ -9,6 +9,8 @@ import { Pagina } from "@/components/pe/estudante/Pagina";
 import { Conversa } from "@/components/pe/conversa/Conversa";
 import { falarNoBrowser } from "@/components/pe/conversa/useConversa";
 import { cnPe } from "@/lib/pe";
+import { FolhaOferta } from "@/components/pe/subscricao/Oferta";
+import { ofertaDoErro, type Oferta } from "@/src/domains/student/subscricao/api";
 import {
   NIVEIS_DESCRICAO,
   erroConversa,
@@ -86,6 +88,8 @@ function Formulario({ p, aoComecar }: { p: Preparar; aoComecar: (s: NovaSessao) 
   const [area, setArea] = useState(p.preferencias.area);
   const [comecar, { isLoading }] = useComecarMutation();
   const [erro, setErro] = useState<string | null>(null);
+  // Sem minutos / plano sem tutor / teste acabado ao começar: o plano que resolve (a API decide).
+  const [limite, setLimite] = useState<{ mensagem: string; oferta: Oferta } | null>(null);
   const q = p.quota;
   const nomesArea = p.areas.map((a) => a.nome);
 
@@ -112,7 +116,10 @@ function Formulario({ p, aoComecar }: { p: Preparar; aoComecar: (s: NovaSessao) 
         try {
           aoComecar(await comecar({ situacao, nivel, correcao, area }).unwrap());
         } catch (er) {
-          setErro(erroConversa(er));
+          const mensagem = erroConversa(er);
+          setErro(mensagem);
+          const oferta = ofertaDoErro(er);
+          if (oferta) setLimite({ mensagem, oferta });
         }
       }}
     >
@@ -218,11 +225,9 @@ function Formulario({ p, aoComecar }: { p: Preparar; aoComecar: (s: NovaSessao) 
                 <Lock aria-hidden className="mt-0.5 size-5 shrink-0" />
                 {bloqueio}
               </span>
-              {q.motivo !== "sem_minutos" ? (
-                <Botao asChild tipo="realce" tamanho="pequeno">
-                  <Link href="/user/upgrade?plan=PREMIUM_PLUS">Ver os planos com tutor</Link>
-                </Botao>
-              ) : null}
+              <Botao asChild tipo="realce" tamanho="pequeno">
+                <Link href="/user/upgrade">Ver os planos</Link>
+              </Botao>
             </div>
           ) : (
             <p className="m-0 text-[15px] leading-[22px]">
@@ -239,6 +244,11 @@ function Formulario({ p, aoComecar }: { p: Preparar; aoComecar: (s: NovaSessao) 
           <Botao asChild tipo="ligacao" tamanho="pequeno" className="self-center">
             <Link href="/user/laboratory/speaking/progress">Ver o seu progresso na conversa</Link>
           </Botao>
+          <FolhaOferta aberto={!!limite} aoMudar={(v) => !v && setLimite(null)} titulo="Não pode começar a conversa agora" mensagem={limite?.mensagem} oferta={limite?.oferta}>
+            <Botao asChild tipo="ligacao" larguraTotal>
+              <Link href="/user/laboratory/review">Fazer a revisão de hoje</Link>
+            </Botao>
+          </FolhaOferta>
         </div>
       </div>
     </form>

@@ -30,7 +30,7 @@ export function Dialogo({
         <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-[rgba(20,20,63,0.55)]" />
         <DialogPrimitive.Content
           className={cnPe(
-            "pe fixed z-50 flex !min-h-0 flex-col gap-5 bg-pe-fundo p-6 pb-[max(24px,env(safe-area-inset-bottom))] shadow-pe-2 focus:outline-none",
+            "pe fixed z-50 flex !min-h-0 max-h-[92dvh] flex-col gap-5 overflow-y-auto bg-pe-fundo p-6 pb-[max(24px,env(safe-area-inset-bottom))] shadow-pe-2 focus:outline-none",
             "inset-x-0 bottom-0 rounded-t-pe-md",
             "md:inset-auto md:left-1/2 md:top-1/2 md:w-[var(--largura-dialogo)] md:-translate-x-1/2 md:-translate-y-1/2 md:rounded-pe-md md:p-8"
           )}

@@ -15,6 +15,7 @@ import {
   Vidas,
 } from "@/components/pe";
 import { DemoInterativa } from "./DemoInterativa";
+import { OfertaPlano } from "@/components/pe/subscricao/Oferta";
 
 export const metadata = { title: "Sistema de design | ProEnglish" };
 
@@ -43,7 +44,7 @@ export default function SistemaDesign() {
             Cursos por área profissional, 15 minutos por dia e conversa com um tutor de IA. Os números ficam em Montserrat:
             14 950 Kz por mês, 7 dias seguidos, 1 240 pontos.
           </p>
-          <p className="m-0 text-pe-legenda text-pe-tinta-suave">Legenda: 3 lições por dia, sem cartão.</p>
+          <p className="m-0 text-pe-legenda text-pe-tinta-suave">Legenda: 2 lições por dia, sem cartão.</p>
         </Seccao>
 
         <Seccao titulo="Botões">
@@ -132,6 +133,20 @@ export default function SistemaDesign() {
 
         <Seccao titulo="Formulários e escolhas">
           <DemoInterativa />
+        </Seccao>
+
+        <Seccao titulo="Oferta num limite">
+          <div className="max-w-[440px]">
+            <OfertaPlano
+              oferta={{
+                recurso: "vidas",
+                plano: { tipo: "PREMIUM", nome: "Premium", preco_mensal_kz: 14950, preco_anual_kz: 149500, dias_teste: 7, pode_experimentar: true },
+                ganhos: ["Vidas ilimitadas", "Lições novas sem limite", "Análises de pronúncia sem limite", "10 minutos de conversa com o tutor por dia"],
+                ligacao: "/user/upgrade?plan=PREMIUM",
+              }}
+              saidas={<p className="m-0 text-center text-pe-legenda text-pe-tinta-suave">As saídas gratuitas ficam aqui (recarregar, saltar, voltar).</p>}
+            />
+          </div>
         </Seccao>
 
         <Seccao titulo="A carregar">

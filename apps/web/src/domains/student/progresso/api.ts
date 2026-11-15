@@ -4,6 +4,7 @@
  */
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { sharedBaseQuery } from "@/src/domains/shared/api/baseQuery";
+import type { Oferta } from "@/src/domains/student/subscricao/api";
 
 export type Periodo = "7" | "30" | "tudo";
 
@@ -34,6 +35,8 @@ export type Requisito = { requisito: string; mensagem: string; necessario: numbe
 
 export type Certificados = {
   plano_inclui_certificados: boolean;
+  /** Plano que inclui certificados (null se o plano já inclui, ou se nenhum resolve). */
+  oferta?: Oferta | null;
   certificados: {
     id: string;
     numero: string;

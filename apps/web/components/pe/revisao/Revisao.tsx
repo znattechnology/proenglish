@@ -18,6 +18,8 @@ import {
 } from "@/src/domains/student/revisao/api";
 import { BotaoOuvirFrase, ExercicioRevisaoUI, type RespostaRevisao } from "./Exercicios";
 import { AvisoAnaliseAproximada, PalavrasComNota } from "@/components/pe/fala/Fala";
+import { FolhaOferta } from "@/components/pe/subscricao/Oferta";
+import { ofertaDoErro, type Oferta } from "@/src/domains/student/subscricao/api";
 
 const VOLTAR = "/user/laboratory/learn";
 
@@ -50,6 +52,8 @@ export function Revisao() {
   const [erroFim, setErroFim] = useState(false);
   const [inicio, setInicio] = useState(() => new Date().toISOString());
   const [tentativa, setTentativa] = useState(0);
+  // Limite de análises de pronúncia: o plano que dá mais (a API decide), numa folha.
+  const [limite, setLimite] = useState<{ mensagem: string; oferta: Oferta } | null>(null);
   const inicioExercicio = useRef(0);
   useEffect(() => {
     inicioExercicio.current = Date.now();
@@ -75,12 +79,11 @@ export function Revisao() {
           ? await falar({ exercicioId: ex.id, audio: resposta.audio, segundos })
           : await responder({ exercicioId: ex.id, forma: ex.forma, resposta: resposta.valor, segundos });
       if ("error" in r && r.error) {
-        const e = r.error as { status?: number | string; data?: { mensagem?: string; pode_saltar?: boolean } };
-        setFase({
-          tipo: "aviso",
-          mensagem: e.data?.mensagem ?? "Não conseguimos verificar agora. Verifique a ligação e tente outra vez.",
-          podeSaltar: !!e.data?.pode_saltar || e.status === 404,
-        });
+        const e = r.error as { status?: number | string; data?: { codigo?: string; mensagem?: string; pode_saltar?: boolean } };
+        const mensagem = e.data?.mensagem ?? "Não conseguimos verificar agora. Verifique a ligação e tente outra vez.";
+        setFase({ tipo: "aviso", mensagem, podeSaltar: !!e.data?.pode_saltar || e.status === 404 });
+        const oferta = e.data?.codigo === "limite_analises" ? ofertaDoErro(r.error) : null;
+        if (oferta) setLimite({ mensagem, oferta });
         return;
       }
       setFase({ tipo: "resultado", r: r.data! });
@@ -215,6 +218,18 @@ export function Revisao() {
         aoSaltar={() => void saltar()}
         aoTentar={outraVez}
       />
+      <FolhaOferta aberto={!!limite} aoMudar={(v) => !v && setLimite(null)} titulo="Já usou as análises de pronúncia de hoje" mensagem={limite?.mensagem} oferta={limite?.oferta}>
+        <Botao
+          tipo="ligacao"
+          larguraTotal
+          onClick={() => {
+            setLimite(null);
+            void saltar();
+          }}
+        >
+          Saltar este exercício
+        </Botao>
+      </FolhaOferta>
     </div>
   );
 }

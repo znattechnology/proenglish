@@ -10,6 +10,8 @@ import { cnPe } from "@/lib/pe";
 import type { Resumo } from "@/src/domains/student/conversa/api";
 import type { ConversaLicao } from "@/src/domains/student/laboratorio/api";
 import { AvisoAnaliseAproximada, PalavrasComNota } from "@/components/pe/fala/Fala";
+import { FolhaOferta, OfertaPlano } from "@/components/pe/subscricao/Oferta";
+import { ofertaDoErro, type Oferta } from "@/src/domains/student/subscricao/api";
 import {
   erroFala,
   useComecarConversaAulaMutation,
@@ -60,6 +62,8 @@ export function RepetirEmVozAlta({ chapterId, video, dados }: { chapterId: strin
   const [estados, setEstados] = useState<Record<number, EstadoBanco | null>>({});
   const [erro, setErro] = useState<{ fraseId: number; texto: string } | null>(null);
   const [semMicrofone, setSemMicrofone] = useState(false);
+  // Limite de análises de pronúncia: o plano que dá mais (a API decide), numa folha.
+  const [limite, setLimite] = useState<{ mensagem: string; oferta: Oferta } | null>(null);
   const [falar] = useFalarFraseMutation();
   const gravador = useRef<MediaRecorder | null>(null);
   const inicio = useRef(0);
@@ -97,7 +101,10 @@ export function RepetirEmVozAlta({ chapterId, video, dados }: { chapterId: strin
         const r = await falar({ chapterId, fraseId: f.id, audio: new Blob(pedacos, { type: rec.mimeType || "audio/webm" }), segundos });
         setGravacao(null);
         if ("error" in r && r.error) {
-          setErro({ fraseId: f.id, texto: erroFala(r.error, "Não conseguimos analisar a gravação. Tente outra vez.").mensagem! });
+          const e = erroFala(r.error, "Não conseguimos analisar a gravação. Tente outra vez.");
+          setErro({ fraseId: f.id, texto: e.mensagem! });
+          const oferta = e.codigo === "limite_analises" ? ofertaDoErro(r.error) : null;
+          if (oferta) setLimite({ mensagem: e.mensagem!, oferta });
           return;
         }
         setResultados((v) => ({ ...v, [f.id]: r.data!.analise }));
@@ -179,6 +186,12 @@ export function RepetirEmVozAlta({ chapterId, video, dados }: { chapterId: strin
         })}
       </ol>
 
+      <FolhaOferta aberto={!!limite} aoMudar={(v) => !v && setLimite(null)} titulo="Já usou as análises de pronúncia de hoje" mensagem={limite?.mensagem} oferta={limite?.oferta}>
+        <Botao tipo="ligacao" larguraTotal onClick={() => setLimite(null)}>
+          Continuar a aula sem gravar
+        </Botao>
+      </FolhaOferta>
+
       {palavras.length ? (
         <div className="flex flex-col gap-2">
           <h3 className="m-0 text-[17px] font-semibold leading-6">Palavras da aula</h3>
@@ -238,7 +251,7 @@ function Resultado({ frase, r }: { frase: string; r: AnaliseFrase["analise"] }) 
 /* Usar isto numa conversa (3 minutos com o tutor)                      */
 /* ------------------------------------------------------------------ */
 
-type Fase = { tipo: "inicio" } | { tipo: "viva"; dados: ConversaLicao } | { tipo: "fim"; resumo: Resumo } | { tipo: "bloqueada"; mensagem: string };
+type Fase = { tipo: "inicio" } | { tipo: "viva"; dados: ConversaLicao } | { tipo: "fim"; resumo: Resumo } | { tipo: "bloqueada"; mensagem: string; oferta?: Oferta | null };
 
 export function ConversaDaAula({ chapterId, dados }: { chapterId: string; dados: FalaDaAula }) {
   const [fase, setFase] = useState<Fase>({ tipo: "inicio" });
@@ -252,7 +265,7 @@ export function ConversaDaAula({ chapterId, dados }: { chapterId: string; dados:
   const abrir = async () => {
     const r = await comecar(chapterId);
     if ("error" in r && r.error) {
-      setFase({ tipo: "bloqueada", mensagem: erroFala(r.error, "Não foi possível começar a conversa agora.").mensagem! });
+      setFase({ tipo: "bloqueada", mensagem: erroFala(r.error, "Não foi possível começar a conversa agora.").mensagem!, oferta: ofertaDoErro(r.error) });
       return;
     }
     setFase({ tipo: "viva", dados: r.data! });
@@ -290,13 +303,28 @@ export function ConversaDaAula({ chapterId, dados }: { chapterId: string; dados:
           </Botao>
         )
       ) : null}
-      {fase.tipo === "bloqueada" ? <Indisponivel mensagem={fase.mensagem} /> : null}
+      {fase.tipo === "bloqueada" ? <Indisponivel mensagem={fase.mensagem} oferta={fase.oferta} /> : null}
       {fase.tipo === "fim" ? <FimConversa resumo={fase.resumo} aoRepetir={() => setFase({ tipo: "inicio" })} /> : null}
     </section>
   );
 }
 
-function Indisponivel({ mensagem }: { mensagem: string }) {
+function Indisponivel({ mensagem, oferta }: { mensagem: string; oferta?: Oferta | null }) {
+  if (oferta) {
+    return (
+      <div className="flex max-w-[440px] flex-col gap-4">
+        <p className="m-0">{mensagem} Entretanto, pode treinar estas frases na revisão de hoje.</p>
+        <OfertaPlano
+          oferta={oferta}
+          saidas={
+            <Botao asChild tipo="ligacao" larguraTotal>
+              <Link href={REVISAO}>Fazer a revisão de hoje</Link>
+            </Botao>
+          }
+        />
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col gap-3">
       <Aviso tipo="neutro">{mensagem} Entretanto, pode treinar estas frases na revisão de hoje.</Aviso>

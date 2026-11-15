@@ -7,6 +7,7 @@ import { studentPracticeApiSlice } from "../practice-courses/api/studentPractice
 import { enviarGravacao } from "./enviarGravacao";
 import type { NovaSessao } from "@/src/domains/student/conversa/api";
 import type { DetalhePronuncia, MetricasGravacao } from "@/src/domains/student/fala/api";
+import type { Oferta } from "@/src/domains/student/subscricao/api";
 
 const API = process.env.NEXT_PUBLIC_DJANGO_API_URL || "http://localhost:8000/api/v1";
 
@@ -150,6 +151,8 @@ export type EstadoVidas = {
   refill_cost_points: number;
   can_refill_with_points: boolean;
   points: number;
+  /** Plano que torna as vidas ilimitadas, quando current <= 0 e não são ilimitadas; senão null. */
+  oferta?: Oferta | null;
   /** Lições novas feitas hoje (hora de Angola); limite null = sem limite. */
   licoes_hoje?: { feitas: number; limite: number | null; renova_em: string };
 };
