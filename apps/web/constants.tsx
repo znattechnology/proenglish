@@ -21,7 +21,7 @@ export const sidebarLinks = [
     icon: Users,
     items: [
       { title: "Utilizadores", url: "/dashboard/users/users" },
-      { title: "Faturas", url: "/dashboard/users/faturas" },
+      { title: "Facturas", url: "/dashboard/users/faturas" },
       { title: "Equipa", url: "/dashboard/users/team" },
     ],
   },
@@ -57,7 +57,7 @@ export const sidebarLinks = [
     ],
   },
   {
-    title: "Configurações",
+    title: "Definições",
     url: "/dashboard/manage",
     icon: Settings2,
     items: [
@@ -80,11 +80,11 @@ export const exploreWorlds = [
     id: 'world-1',
     imgUrl: '/service-2.jpg',
     title: 'Inglês para Petróleo & Gás',
-    description: 'Especializado para Sonangol, Total Angola e Chevron. Aprenda terminologia técnica, protocolos de segurança e comunicação internacional específica do setor energético angolano.',
+    description: 'Especializado para Sonangol, Total Angola e Chevron. Aprenda terminologia técnica, protocolos de segurança e comunicação internacional específica do sector energético angolano.',
     icon: '🛢️',
     companies: ['Sonangol', 'Total Angola', 'Chevron'],
     students: '2.5K+',
-    level: 'Técnico-Professional',
+    level: 'Técnico-Profissional',
     duration: '3-6 meses',
     certification: 'Certificado Internacional'
   },
@@ -92,11 +92,11 @@ export const exploreWorlds = [
     id: 'world-2',
     imgUrl: '/service-3.jpg',
     title: 'Inglês Bancário',
-    description: 'Desenvolvido para BAI, BFA e Standard Bank. Domine transações internacionais, análise de crédito, compliance e atendimento a clientes internacionais.',
+    description: 'Desenvolvido para BAI, BFA e Standard Bank. Domine transacções internacionais, análise de crédito, compliance e atendimento a clientes internacionais.',
     icon: '🏦',
     companies: ['BAI', 'BFA', 'Standard Bank'],
     students: '1.8K+',
-    level: 'Professional-Executivo',
+    level: 'Profissional-Executivo',
     duration: '2-4 meses',
     certification: 'Certificado Bancário'
   },
@@ -104,7 +104,7 @@ export const exploreWorlds = [
     id: 'world-3',
     imgUrl: '/service-4.jpg',
     title: 'Inglês para TI & Telecomunicações',
-    description: 'Criado para Unitel, MS Telecom e startups tech. Vocabulário de programação, metodologias ágeis, cloud computing e liderança de equipes remotas.',
+    description: 'Criado para Unitel, MS Telecom e startups tech. Vocabulário de programação, metodologias ágeis, cloud computing e liderança de equipas remotas.',
     icon: '💻',
     companies: ['Unitel', 'MS Telecom', 'Angola Telecom'],
     students: '1.2K+',
@@ -116,7 +116,7 @@ export const exploreWorlds = [
     id: 'world-4',
     imgUrl: '/service-5.jpg',
     title: 'Inglês Executivo',
-    description: 'Para C-Level e gestores sênior. Liderança internacional, negociações estratégicas, apresentações executivas e networking global com foco no mercado angolano.',
+    description: 'Para C-Level e gestores sénior. Liderança internacional, negociações estratégicas, apresentações executivas e networking global com foco no mercado angolano.',
     icon: '👔',
     companies: ['Multinacionais', 'Governo', 'ONGs'],
     students: '950+',
@@ -128,7 +128,7 @@ export const exploreWorlds = [
     id: 'world-5',
     imgUrl: '/service-6.jpg',
     title: 'Inglês com IA Personal Tutor',
-    description: 'Nossa tecnologia exclusiva! Correção de pronunciação em tempo real, feedback personalizado para sotaque angolano e aprendizado adaptativo com inteligência artificial.',
+    description: 'A nossa tecnologia exclusiva! Correcção da pronúncia em tempo real, feedback personalizado para sotaque angolano e aprendizagem adaptativa com inteligência artificial.',
     icon: '🤖',
     companies: ['Exclusivo ProEnglish'],
     students: '3.2K+',
@@ -171,13 +171,13 @@ export const insights = [
     imgUrl: '/planet-07.png',
     title: '7 dicas para dominar facilmente o inglês angolano',
     subtitle:
-        'Descubra as melhores técnicas adaptadas para o contexto angolano. Metodologias comprovadas que aceleram o seu aprendizado de inglês.',
+        'Descubra as melhores técnicas adaptadas para o contexto angolano. Metodologias comprovadas que aceleram a sua aprendizagem de inglês.',
   },
   {
     imgUrl: '/planet-08.png',
     title: 'Com uma plataforma pode explorar o mundo todo virtualmente',
     subtitle:
-        'Acesso global a oportunidades internacionais. Conecte-se com o mundo através do inglês e expanda os seus horizontes profissionais.',
+        'Acesso global a oportunidades internacionais. Ligue-se ao mundo através do inglês e expanda os seus horizontes profissionais.',
   },
 ];
 

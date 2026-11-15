@@ -258,7 +258,7 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
         });
         v.on("error", (() => {
           if (terminada.current) return;
-          setErro("A ligação ao tutor falhou. Verifique a internet e tente outra vez.");
+          setErro("A ligação ao tutor falhou. Verifique a Internet e tente outra vez.");
           setEstado((e) => (e === "a_ligar" ? "erro" : e));
         }) as never);
         const chamada = await v.start(sessao.vapi.assistant_id, sessao.vapi.assistant_overrides);
@@ -292,7 +292,7 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
       try {
         vapi.current?.stop();
       } catch {}
-      setErro("O tutor não atendeu. Verifique a internet e tente outra vez.");
+      setErro("O tutor não atendeu. Verifique a Internet e tente outra vez.");
       setEstado("erro");
     }, 25_000);
     return () => clearTimeout(t);

@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: 'Ação inválida' },
+      { error: 'Acção inválida' },
       { status: 400 }
     );
 

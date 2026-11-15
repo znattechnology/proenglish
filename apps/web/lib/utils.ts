@@ -425,18 +425,18 @@ export const uploadCourseImage = async (
 
       if (!updateResponse.ok) {
         const errorData = await updateResponse.json();
-        const errorMessage = errorData.error || errorData.message || 'Erro ao atualizar curso no banco de dados';
+        const errorMessage = errorData.error || errorData.message || 'Erro ao actualizar o curso na base de dados';
         console.error('❌ Update course error:', errorData);
         throw new Error(errorMessage);
       }
 
       console.log('✅ Course updated in database successfully');
-      toast.success('Imagem do curso atualizada com sucesso');
+      toast.success('Imagem do curso actualizada com sucesso');
     } catch (updateError: any) {
       console.error('❌ Update fetch error:', updateError);
       // If update fails, still return the image URL since it was uploaded to S3
       console.log('⚠️ Update failed but image is on S3, returning URL anyway');
-      toast.info('Imagem carregada, mas pode precisar atualizar a página');
+      toast.info('Imagem carregada, mas pode ser preciso actualizar a página');
       return imageUrl;
     }
     
@@ -493,7 +493,7 @@ export const uploadAvatarToS3 = async (
       throw new Error(`Upload failed with status: ${uploadToS3Response.status}`);
     }
 
-    toast.success('Avatar atualizado com sucesso');
+    toast.success('Avatar actualizado com sucesso');
 
     // Return the avatar URL to be saved in the database by the caller
     return avatarUrl;

@@ -37,7 +37,7 @@ const POR_COMPETENCIA: Record<string, Record<NivelCefr, string>> = {
     C2: "Gramática precisa em qualquer situação.",
   },
   vocabulario: {
-    A1: "Palavras básicas do dia a dia.",
+    A1: "Palavras básicas do dia-a-dia.",
     A2: "Palavras comuns do trabalho e das rotinas.",
     B1: "Vocabulário suficiente para falar do seu trabalho.",
     B2: "Vocabulário variado da sua área.",

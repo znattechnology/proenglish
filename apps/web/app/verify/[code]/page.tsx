@@ -63,7 +63,7 @@ const VerifyCertificatePage = () => {
         setVerification({
           valid: false,
           message: 'Erro ao verificar certificado',
-          error: 'Não foi possível conectar ao servidor'
+          error: 'Não foi possível ligar ao servidor'
         });
       } finally {
         setIsLoading(false);
@@ -113,7 +113,7 @@ const VerifyCertificatePage = () => {
             <Card className="bg-gray-800/50 border-gray-700">
               <CardContent className="p-12 flex flex-col items-center">
                 <Loader2 className="w-12 h-12 text-purple-500 animate-spin mb-4" />
-                <p className="text-gray-400">Verificando certificado...</p>
+                <p className="text-gray-400">A verificar o certificado...</p>
               </CardContent>
             </Card>
           ) : verification?.valid ? (
@@ -217,8 +217,8 @@ const VerifyCertificatePage = () => {
               <CardContent className="p-8 text-center">
                 <Award className="w-16 h-16 text-gray-600 mx-auto mb-4" />
                 <p className="text-gray-400 mb-6">
-                  O código de verificação fornecido não corresponde a nenhum certificado em nosso sistema.
-                  Por favor, verifique se o código está correto.
+                  O código de verificação fornecido não corresponde a nenhum certificado no nosso sistema.
+                  Por favor, verifique se o código está correcto.
                 </p>
                 <p className="text-sm text-gray-500">
                   Código verificado: <span className="font-mono text-gray-400">{verificationCode}</span>

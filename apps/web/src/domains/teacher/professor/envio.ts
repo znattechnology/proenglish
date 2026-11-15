@@ -40,7 +40,7 @@ function enviarBytes(p: Pedido, ficheiro: File, aoProgredir?: (f: number) => voi
     if (!p.cabecalhos || !Object.keys(p.cabecalhos).some((k) => k.toLowerCase() === "content-type")) xhr.setRequestHeader("Content-Type", ficheiro.type || "application/octet-stream");
     xhr.upload.onprogress = (e) => e.lengthComputable && aoProgredir?.(e.loaded / e.total);
     xhr.onload = () => (xhr.status >= 200 && xhr.status < 300 ? resolve() : reject({ status: xhr.status, data: { message: "O envio do ficheiro falhou. Tente outra vez." } }));
-    xhr.onerror = () => reject({ status: 0, data: { message: "Sem ligação. Verifique a internet e tente outra vez." } });
+    xhr.onerror = () => reject({ status: 0, data: { message: "Sem ligação. Verifique a Internet e tente outra vez." } });
     xhr.onabort = () => reject({ status: 0, data: { message: "Envio cancelado." }, cancelado: true });
     sinal?.addEventListener("abort", () => xhr.abort());
     xhr.send(ficheiro);
