@@ -2,6 +2,14 @@
 
 # Trigger deploy Thu Mar  5 10:30:44 WAT 2026
 
+## Ambiente
+
+Python 3.12 (o mesmo do Docker e do CI; ver `.python-version`) e Django 5.2 LTS:
+
+```bash
+python3.12 -m venv venv && ./venv/bin/pip install -r requirements.txt
+```
+
 ## Testes
 
 Correm com o test runner do Django e `core.test_settings` (a partir de `apps/api`):
