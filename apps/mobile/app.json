@@ -68,7 +68,15 @@
       "expo-sharing",
       "expo-font",
       "./plugins/withChamadaVoz",
-      "expo-asset"
+      "expo-asset",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraProguardRules": "# WebRTC da Daily (conversa por voz): classes JNI chamadas pelo código nativo.\n-keep class org.webrtc.** { *; }\n-dontwarn org.webrtc.**"
+          }
+        }
+      ]
     ],
     "extra": {
       "apiUrl": "http://localhost:8000/api/v1",
