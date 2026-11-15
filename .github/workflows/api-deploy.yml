@@ -109,7 +109,7 @@ jobs:
 
             echo "$GH_TOKEN" | docker login ghcr.io -u "$GH_ACTOR" --password-stdin >/dev/null
             trap 'docker logout ghcr.io >/dev/null 2>&1 || true' EXIT
-            "$APP/apps/api/deploy/vps/deploy.sh" "$IMAGEM:$GH_SHA"
+            "$APP/apps/api/deploy/vps/deploy.sh" api "$IMAGEM:$GH_SHA"
 
       - name: Verificar de fora (HTTPS pelo Caddy)
         env:

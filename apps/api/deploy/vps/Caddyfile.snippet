@@ -29,3 +29,21 @@ proenglish-api.2.31.122.170.sslip.io {
 		# X-Forwarded-Proto/For/Host já são enviados pelo Caddy.
 	}
 }
+
+# ── ProEnglish web (Next.js, mesmo projecto compose) ───────────────────────
+# Quando houver domínio: acrescentá-lo aqui (p.ex. "novodominio.ao, www.novodominio.ao, ...")
+# e definir WEB_URL no GitHub (a web guarda o endereço dentro da imagem).
+proenglish.2.31.122.170.sslip.io {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+
+	reverse_proxy proenglish-web:3000 {
+		header_up X-Real-IP {remote_host}
+	}
+}

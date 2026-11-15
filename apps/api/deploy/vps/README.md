@@ -1,4 +1,4 @@
-# ProEnglish API no servidor mambo-labtic
+# ProEnglish (API e web) no servidor mambo-labtic
 
 Servidor `2.31.122.170` (utilizador `deploy`), partilhado com o LabTIC e O Mambo.
 A API e a sua base de dados PostgreSQL correm em Docker, em `/opt/proenglish`.
@@ -122,7 +122,8 @@ Cada push para `main` com alterações em `apps/api` corre `.github/workflows/ap
    - troca a API e espera até 3 minutos que fique saudável (`/api/health/`);
    - **se não ficar, volta à imagem anterior** e o workflow falha (as migrações não são
      desfeitas: têm de ser sempre compatíveis com a versão anterior);
-   - instala as tarefas agendadas e apaga imagens antigas (ficam a nova e a anterior).
+   - instala as tarefas agendadas e apaga imagens antigas (ficam a nova e a anterior);
+   - um deploy de cada vez (a API e a web partilham o `.env`).
 4. **Verificação de fora**: `<API_URL>/api/health/` pelo Caddy (variável `API_URL` do repositório; por omissão o endereço sslip.io).
 
 Também se corre à mão em Actions > API Deploy > Run workflow.
@@ -145,6 +146,25 @@ entra no registo só durante o deploy, com o token temporário do workflow.
 **Voltar a uma versão anterior**: Actions > API Deploy > Run workflow num commit antigo, ou
 no servidor `./deploy.sh ghcr.io/znattechnology/proenglish-api:<commit>` (a imagem anterior
 está sempre guardada no servidor).
+
+## 5b. Web (Next.js)
+
+A web corre no mesmo projecto compose (serviço `web`, imagem
+`ghcr.io/znattechnology/proenglish-web`), atrás do mesmo Caddy, em
+`https://proenglish.2.31.122.170.sslip.io` enquanto não houver domínio. Substitui a Vercel.
+
+- Deploy automático: `.github/workflows/web-deploy.yml` em cada push para `main` com
+  alterações em `apps/web` (lint, testes e build -> imagem -> `deploy.sh web <imagem>`).
+- Os endereços públicos ficam dentro da imagem (`NEXT_PUBLIC_*`): mudar de endereço pede um
+  deploy novo, com as variáveis `WEB_URL` e `API_URL` do repositório no GitHub.
+- Os pedidos do servidor da web à API vão pela rede interna (`http://proenglish-api:8000`),
+  por isso `proenglish-api` está em `ALLOWED_HOSTS`.
+- A API aceita a web por `CORS_ALLOWED_ORIGINS`, `CSRF_TRUSTED_ORIGINS` e `FRONTEND_URL`.
+- Memória: 384 MB no máximo.
+
+**Domínio novo** (web e API): juntar os nomes às duas linhas do Caddy, a `ALLOWED_HOSTS`,
+`CORS_ALLOWED_ORIGINS`, `CSRF_TRUSTED_ORIGINS`, `FRONTEND_URL` e `BACKEND_BASE_URL` no `.env`;
+definir `WEB_URL` e `API_URL` no GitHub e fazer deploy da web e da API.
 
 ## 6. Tarefas agendadas
 
