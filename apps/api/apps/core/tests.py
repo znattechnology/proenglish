@@ -202,6 +202,21 @@ class ArmazenamentoDjango52Test(TestCase):
         self.assertIn(d['default'], ('S3Storage', 'S3Boto3Storage'))  # S3Boto3Storage é o nome antigo de S3Storage
         self.assertEqual(d['antigas'], [])
 
+    def test_atras_do_proxy_o_https_e_reconhecido(self):
+        import json
+        import os
+        import subprocess
+        import sys
+        from django.conf import settings
+        codigo = ('import json, django; django.setup(); from django.conf import settings as s; '
+                  'print(json.dumps(getattr(s, "SECURE_PROXY_SSL_HEADER", None)))')
+        for proxy, esperado in (('True', ['HTTP_X_FORWARDED_PROTO', 'https']), ('False', None)):
+            env = {**os.environ, 'TRUSTED_PROXY': proxy, 'DJANGO_SETTINGS_MODULE': 'core.settings'}
+            r = subprocess.run([sys.executable, '-c', codigo], cwd=str(settings.BASE_DIR), env=env,
+                               capture_output=True, text=True, timeout=120)
+            self.assertEqual(r.returncode, 0, r.stderr[-2000:])
+            self.assertEqual(json.loads(r.stdout.strip().splitlines()[-1]), esperado, proxy)
+
     def test_sem_s3_ficam_no_disco(self):
         d = self.ler_storages(False)
         self.assertEqual(d['storages']['default']['BACKEND'], 'django.core.files.storage.FileSystemStorage')

@@ -721,6 +721,11 @@ else:
 # Só ligar quando há mesmo um proxy à frente: sem ele, o cliente podia inventar o IP.
 TRUSTED_PROXY = config('TRUSTED_PROXY', default=False, cast=bool)
 TRUSTED_PROXY_COUNT = config('TRUSTED_PROXY_COUNT', default=1, cast=int)
+if TRUSTED_PROXY:
+    # O proxy (Caddy no servidor) termina o HTTPS e diz-nos o esquema original em
+    # X-Forwarded-Proto. Sem isto, request.is_secure() era False e as ligações absolutas
+    # (PDF do certificado, verificação) saíam em http://.
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 RATELIMIT_IP_META_KEY = 'apps.core.ip.ip_do_cliente'
 # django_ratelimit com block=True devolve 429 (e não 403) através de apps.core.exceptions.
 RATELIMIT_VIEW = 'apps.core.exceptions.ratelimit_view'

@@ -1,0 +1,24 @@
+# Tarefas agendadas do ProEnglish (crontab do utilizador deploy).
+# O deploy.sh instala este bloco a cada deploy, entre as marcas "# >>> proenglish" e
+# "# <<< proenglish", sem tocar nas linhas dos outros projectos (o crontab é partilhado:
+# nada de variáveis globais aqui). Editar AQUI, não no crontab do servidor.
+# Horas do servidor em UTC (Luanda = UTC+1). tarefa.sh corre o comando dentro da API.
+
+# Conversas por voz: cobra e avalia as que o Vapi confirmou; retoma avaliações paradas.
+*/5 * * * *  /opt/proenglish/app/apps/api/deploy/vps/tarefa.sh verificar_conversas_vapi
+# Lembrete da meta diária (à hora que cada aluno escolheu).
+*/15 * * * * /opt/proenglish/app/apps/api/deploy/vps/tarefa.sh enviar_lembretes_meta
+# Testes grátis a terminar (aviso 2 dias antes) e terminados (voltam ao Gratuito).
+0 * * * *    /opt/proenglish/app/apps/api/deploy/vps/tarefa.sh terminar_testes
+# Renovações: lembretes D-3/D-0, subscrições terminadas -> Gratuito, pagamentos fora de prazo.
+5 * * * *    /opt/proenglish/app/apps/api/deploy/vps/tarefa.sh enviar_lembretes_renovacao
+# Competições: avisa o início e fecha as terminadas (prémios).
+10 * * * *   /opt/proenglish/app/apps/api/deploy/vps/tarefa.sh fechar_competicoes
+# Transcrições das aulas que ficaram por fazer (só as pendentes; o Whisper cobra por minuto).
+20 * * * *   /opt/proenglish/app/apps/api/deploy/vps/tarefa.sh transcrever_aulas
+# Ganhos dos professores: dia 1 às 03:00 de Luanda.
+0 2 1 * *    /opt/proenglish/app/apps/api/deploy/vps/tarefa.sh fechar_ganhos
+# Gravações dos exames orais com mais de 12 meses.
+30 3 * * *   /opt/proenglish/app/apps/api/deploy/vps/tarefa.sh apagar_gravacoes_exames
+# Cópia da base (servidor 7 dias, R2 30 dias).
+55 3 * * *   /opt/proenglish/app/apps/api/deploy/vps/copia-bd.sh >> /opt/proenglish/copias.log 2>&1

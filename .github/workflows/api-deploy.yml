@@ -1,14 +1,19 @@
 name: API Deploy (VPS mambo-labtic)
 
-# Publica a API em /opt/proenglish no servidor partilhado com o LabTIC e O Mambo.
-# Só mexe no projecto compose "proenglish": nunca toca no Caddy nem nos outros projectos.
+# Push para main com alterações na API -> testes -> imagem no GitHub Container Registry ->
+# deploy no servidor partilhado (apps/api/deploy/vps/deploy.sh). Sem passos à mão.
 #
-# Secrets necessários:
+# O servidor não compila nada: descarrega a imagem já testada. Se a API nova não ficar
+# saudável, o deploy.sh volta à imagem anterior e o workflow falha.
+# Nunca toca no Caddy nem nos outros projectos do servidor.
+#
+# Secrets (Settings > Secrets and variables > Actions):
 #   VPS_HOST      2.31.122.170
 #   VPS_SSH_KEY   chave privada cuja pública está em ~deploy/.ssh/authorized_keys
+# Ambiente "producao" (Settings > Environments): opcional, para pedir aprovação antes do deploy.
 #
-# O primeiro arranque faz-se à mão (ver apps/api/deploy/vps/README.md); este workflow
-# só actualiza uma instalação que já existe.
+# A instalação inicial (base, .env, Caddy, dados do Neon) faz-se uma vez à mão:
+# ver apps/api/deploy/vps/README.md.
 
 on:
   push:
@@ -16,68 +21,102 @@ on:
     paths:
       - 'apps/api/**'
       - '.github/workflows/api-deploy.yml'
+      - '.github/workflows/api-tests.yml'
   workflow_dispatch:
 
 concurrency:
   group: api-deploy
   cancel-in-progress: false
 
+env:
+  IMAGEM: ghcr.io/znattechnology/proenglish-api
+
 jobs:
-  deploy:
+  testes:
+    name: Testes
+    uses: ./.github/workflows/api-tests.yml
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
+
+  imagem:
+    name: Imagem
+    needs: testes
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
-      - name: Deploy to VPS
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Construir e publicar
+        uses: docker/build-push-action@v6
+        with:
+          context: apps/api
+          push: true
+          tags: |
+            ${{ env.IMAGEM }}:${{ github.sha }}
+            ${{ env.IMAGEM }}:latest
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    name: Deploy
+    needs: imagem
+    runs-on: ubuntu-latest
+    environment: producao
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Deploy no servidor
         uses: appleboy/ssh-action@v1.0.3
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_ACTOR: ${{ github.actor }}
           GH_REPO: ${{ github.repository }}
           GH_SHA: ${{ github.sha }}
+          IMAGEM: ${{ env.IMAGEM }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: deploy
           key: ${{ secrets.VPS_SSH_KEY }}
-          envs: GH_TOKEN,GH_REPO,GH_SHA
+          envs: GH_TOKEN,GH_ACTOR,GH_REPO,GH_SHA,IMAGEM
           script_stop: true
-          command_timeout: 30m
+          command_timeout: 20m
           script: |
             set -eu
             APP=/opt/proenglish/app
-            VPS="$APP/apps/api/deploy/vps"
-
             test -d "$APP/.git" || { echo "ERRO: $APP não existe. Fazer a instalação inicial (README)."; exit 1; }
-            test -f "$VPS/.env" || { echo "ERRO: falta $VPS/.env"; exit 1; }
 
-            echo "== Código ($GH_SHA)"
+            echo "== Código ($GH_SHA): docker-compose.yml e scripts"
             cd "$APP"
-            # O token só vive neste comando: não fica guardado na configuração do git.
+            # O token só vive nestes comandos: não fica na configuração do git nem do docker.
             git fetch --quiet "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git" "$GH_SHA"
             git reset --hard --quiet FETCH_HEAD
 
-            echo "== Imagem"
-            cd "$VPS"
-            docker compose build api
+            echo "$GH_TOKEN" | docker login ghcr.io -u "$GH_ACTOR" --password-stdin >/dev/null
+            trap 'docker logout ghcr.io >/dev/null 2>&1 || true' EXIT
+            "$APP/apps/api/deploy/vps/deploy.sh" "$IMAGEM:$GH_SHA"
 
-            echo "== Base de dados e migrações"
-            docker compose up -d postgres
-            docker compose run --rm api python manage.py migrate --noinput
-
-            echo "== API"
-            docker compose up -d api
-
-            echo "== Saúde"
-            ok=0
-            for i in $(seq 1 24); do
-              estado=$(docker inspect -f '{{.State.Health.Status}}' proenglish-api-1 2>/dev/null || echo "?")
-              if [ "$estado" = "healthy" ]; then ok=1; break; fi
-              sleep 5
-            done
-            docker compose ps
-            if [ "$ok" != "1" ]; then
-              echo "ERRO: a API não ficou saudável"
-              docker compose logs --tail=80 api
-              exit 1
+      - name: Verificar de fora (HTTPS pelo Caddy)
+        run: |
+          for i in $(seq 1 12); do
+            if curl -fsS --max-time 10 https://api.proenglish.cloud/api/health/ >/dev/null; then
+              echo "API saudável em https://api.proenglish.cloud"; exit 0
             fi
-
-            # Só as imagens antigas deste projecto que ficaram sem etiqueta.
-            docker image prune -f --filter "label=com.docker.compose.project=proenglish" >/dev/null || true
-            echo "== Deploy concluído"
+            sleep 5
+          done
+          echo "::warning::A API respondeu no servidor mas não em https://api.proenglish.cloud (DNS ou Caddy?)"

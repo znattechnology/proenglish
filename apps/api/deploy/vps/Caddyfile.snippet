@@ -1,12 +1,29 @@
 # ── ProEnglish API (/opt/proenglish/app/apps/api/deploy/vps) ────────────────
-# Acrescentar a /opt/proxy/caddy/Caddyfile e depois, em /opt/proxy:
+# Acrescentar UMA VEZ a /opt/proxy/caddy/Caddyfile (o Caddy é partilhado: o deploy automático
+# nunca lhe toca). Fazer antes uma cópia e, em /opt/proxy:
+#   cp caddy/Caddyfile caddy/Caddyfile.bak-$(date +%F)
 #   docker compose exec caddy caddy validate --config /etc/caddy/Caddyfile
 #   docker compose exec caddy caddy reload   --config /etc/caddy/Caddyfile
 # O endereço sslip.io serve para testar antes de mudar o DNS de api.proenglish.cloud.
 api.proenglish.cloud, proenglish-api.2.31.122.170.sslip.io {
 	encode zstd gzip
+
+	# Vídeos e gravações das aulas chegam a dezenas de MB.
 	request_body {
 		max_size 100MB
 	}
-	reverse_proxy proenglish-api:8000
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+
+	reverse_proxy proenglish-api:8000 {
+		# A API (TRUSTED_PROXY=True) lê o IP do aluno daqui para os limites de pedidos.
+		# O Caddy substitui o que o cliente mandar, para ninguém o inventar.
+		header_up X-Real-IP {remote_host}
+		# X-Forwarded-Proto/For/Host já são enviados pelo Caddy.
+	}
 }

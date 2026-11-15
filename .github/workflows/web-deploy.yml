@@ -7,15 +7,25 @@ on:
     paths:
       - 'apps/web/**'
       - '.github/workflows/web-deploy.yml'
+      - '.github/workflows/web-ci.yml'
   workflow_dispatch:
 
 defaults:
   run:
     working-directory: apps/web
 
+concurrency:
+  group: web-deploy
+  cancel-in-progress: false
+
 jobs:
+  ci:
+    name: Lint, testes e build
+    uses: ./.github/workflows/web-ci.yml
+
   deploy:
     name: 🚀 Deploy to Vercel
+    needs: ci
     runs-on: ubuntu-latest
 
     steps:

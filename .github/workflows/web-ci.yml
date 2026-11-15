@@ -2,7 +2,7 @@ name: Web CI (Next.js)
 
 on:
   push:
-    branches: [ develop, main ]
+    branches: [ develop ]
     paths:
       - 'apps/web/**'
       - '.github/workflows/web-ci.yml'
@@ -11,6 +11,8 @@ on:
     paths:
       - 'apps/web/**'
       - '.github/workflows/web-ci.yml'
+  # Chamado pelo web-deploy.yml: a Vercel só recebe código com lint, testes e build a passar.
+  workflow_call:
 
 defaults:
   run:
