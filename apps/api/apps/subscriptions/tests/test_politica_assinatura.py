@@ -237,3 +237,12 @@ class ConversaTests(Base):
         self.assertEqual(r.data['codigo'], 'sem_minutos')
         self.assertEqual(r.data['oferta']['recurso'], 'conversa')
         self.assertEqual(r.data['oferta']['ganhos'][0], '10 minutos de conversa com o tutor por dia')
+
+
+class EstadoVidasTests(Base):
+    def test_estado_das_vidas_traz_a_oferta_so_a_zero(self):
+        self.assertIsNone(study_services.build_hearts_status(self.aluno)['oferta'])
+        UserSubscription.objects.filter(pk=self.sub.pk).update(current_hearts=0, last_heart_recharge=timezone.now())
+        self.assertEqual(study_services.build_hearts_status(self.aluno)['oferta']['recurso'], 'vidas')
+        self.no_plano(self.premium)
+        self.assertIsNone(study_services.build_hearts_status(self.aluno)['oferta'])

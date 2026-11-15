@@ -102,7 +102,15 @@ def build_hearts_status(user):
         'points': points,
         # Lições novas de hoje (dia de Angola) e o limite do plano (None = ilimitado).
         'licoes_hoje': licoes_hoje(user),
+        # Sem vidas: o plano que as torna ilimitadas (a última vida pode perder-se numa resposta
+        # normal, que não traz oferta).
+        'oferta': _oferta_vidas(user) if not state['unlimited'] and state['current'] <= 0 else None,
     }
+
+
+def _oferta_vidas(user):
+    from apps.subscriptions.oferta import VIDAS, oferta_segura
+    return oferta_segura(user, VIDAS)
 
 
 def licoes_hoje(user):
