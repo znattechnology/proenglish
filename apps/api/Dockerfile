@@ -38,8 +38,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
 
 # Create necessary directories and set permissions
-RUN mkdir -p /app/staticfiles /app/media /app/logs \
-    && chown -R appuser:appuser /app
+# /home/appuser: o gunicorn (>= 25) cria lá o seu canal de controlo; sem ela regista um erro.
+RUN mkdir -p /app/staticfiles /app/media /app/logs /home/appuser \
+    && chown -R appuser:appuser /app /home/appuser
 
 # Collect static files
 RUN python manage.py collectstatic --noinput --clear
