@@ -77,6 +77,12 @@ class Base(APITestCase):
         self.curso = Course.objects.create(teacher=self.prof, teacherName='Prof', title='Inglês no Terminal',
                                            description='Curso de prática', category='Oil & Gas', level='B1',
                                            course_type='practice', status='Draft')
+        # O curso é de sector: o aluno destes testes já tem o nível básico (regra testada em
+        # apps/courses/test_teste_basico.py).
+        from django.utils import timezone
+        from apps.courses.models import TesteNivelBasico
+        TesteNivelBasico.objects.create(user=self.aluno, perguntas=[], expira_em=timezone.now(),
+                                        submetido_em=timezone.now(), certas=20, total=20, aprovado=True)
         self.entrar(self.prof)
 
     def entrar(self, user):

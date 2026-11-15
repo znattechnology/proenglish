@@ -40,6 +40,7 @@ from .resources import (
 
 from .frases import FraseAula
 from .exame import ExameOral
+from .teste_basico import TesteNivelBasico
 
 from .student_engagement import (
     CourseWishlist,
@@ -58,6 +59,7 @@ from .grading import (
 
 # Make all models available at package level
 __all__ = [
+    'TesteNivelBasico',
     # Core models
     'Course',
     'CourseSection',

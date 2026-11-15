@@ -140,6 +140,10 @@ def erro_acesso_licao(user, licao):
     bloqueio = bloqueio_pratica(user, curso)
     if bloqueio:
         return {'codigo': bloqueio[0], 'mensagem': bloqueio[1]}
+    from apps.courses.ciclo import bloqueio_requisito_pratica
+    requisito = None if ligada_a_aula_do_aluno(user, licao) else bloqueio_requisito_pratica(user, curso)
+    if requisito:
+        return {'codigo': requisito[0], 'mensagem': requisito[1], 'teste': '/user/teste-basico'}
     if not curso.user_has_access(user):
         return {
             'codigo': CODIGO_PLANO,

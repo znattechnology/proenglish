@@ -1,5 +1,6 @@
 "use client";
 
+import { ROTA_TESTE_BASICO, faltaNivelBasico } from "@/src/domains/student/curso/testeBasico";
 import Link from "next/link";
 import { SobreProfessor } from "@/components/pe/curso/SobreProfessor";
 import { CartaoExame } from "@/components/pe/curso/Exame";
@@ -188,6 +189,7 @@ function CursoPorComecar({ curso, temAcesso }: { curso: Curso; temAcesso: boolea
   const { data: sub } = useMinhaSubscricaoQuery();
   const [inscrever, { isLoading }] = useInscreverMutation();
   const [erro, setErro] = useState<string | null>(null);
+  const [faltaBasico, setFaltaBasico] = useState(false);
   const plano = PLANO_DO_CURSO[curso.access_level] ?? PLANO_DO_CURSO.free;
   const lista = capitulosPorOrdem(curso);
   const total = curso.total_chapters || lista.length;
@@ -196,6 +198,7 @@ function CursoPorComecar({ curso, temAcesso }: { curso: Curso; temAcesso: boolea
     setErro(null);
     const r = await inscrever(curso.courseId);
     if ("error" in r && r.error) {
+      setFaltaBasico(faltaNivelBasico(r.error));
       setErro(mensagemErro(r.error, "Não foi possível começar o curso. Tente outra vez."));
       return;
     }
@@ -263,10 +266,16 @@ function CursoPorComecar({ curso, temAcesso }: { curso: Curso; temAcesso: boolea
             <p className="m-0 text-[15px] leading-[22px]">
               {curso.access_level === "free" ? "Este curso é gratuito para todos." : `Incluído no seu plano ${sub?.plan.name ?? plano.nome}.`}
             </p>
-            {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
-            <Botao larguraTotal disabled={isLoading} onClick={() => void comecar()}>
-              {isLoading ? "A preparar o curso…" : "Começar o curso"}
-            </Botao>
+            {erro ? <Aviso tipo={faltaBasico ? "info" : "errado"}>{erro}</Aviso> : null}
+            {faltaBasico ? (
+              <Botao asChild larguraTotal tipo="realce">
+                <Link href={ROTA_TESTE_BASICO}>Fazer o teste do nível básico</Link>
+              </Botao>
+            ) : (
+              <Botao larguraTotal disabled={isLoading} onClick={() => void comecar()}>
+                {isLoading ? "A preparar o curso…" : "Começar o curso"}
+              </Botao>
+            )}
           </>
         ) : (
           <>

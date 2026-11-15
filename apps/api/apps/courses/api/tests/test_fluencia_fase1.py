@@ -290,7 +290,12 @@ class LigarAulaALicaoTests(Base):
         self.assertIsNone(d.get('data', d)['practice_lesson'])
 
     def test_licao_ligada_abre_fora_de_ordem(self):
+        from django.utils import timezone
+        from apps.courses.models import TesteNivelBasico
         from apps.practice.acesso_licoes import erro_acesso_licao
+        # Curso de sector: o aluno já tem o nível básico (apps/courses/test_teste_basico.py).
+        TesteNivelBasico.objects.create(user=self.aluno, perguntas=[], expira_em=timezone.now(),
+                                        submetido_em=timezone.now(), certas=20, total=20, aprovado=True)
         segunda = PracticeLesson.objects.create(unit=self.unidade, title='L2', order=2)
         for i in range(1, 4):
             PracticeChallenge.objects.create(lesson=segunda, type='SELECT', question=f'Q{i}', order=i)

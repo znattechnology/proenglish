@@ -321,6 +321,22 @@ export function Jogador({ lessonId }: { lessonId: string }) {
       </main>
     );
   }
+  if (isError && bloqueio?.codigo === "requisito_basico") {
+    return (
+      <main className="mx-auto flex max-w-[560px] flex-col items-start gap-4 px-5 py-16">
+        <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9">Este curso pede o nível básico</h1>
+        <p className="m-0 text-pe-tinta-suave">{bloqueio.mensagem ?? "Faça o teste do nível básico ou comece pelo curso geral."}</p>
+        <div className="flex flex-wrap gap-3">
+          <Botao asChild tipo="realce">
+            <Link href="/user/teste-basico">Fazer o teste do nível básico</Link>
+          </Botao>
+          <Botao asChild tipo="secundario">
+            <Link href="/user/laboratory/learn">Voltar ao trilho</Link>
+          </Botao>
+        </div>
+      </main>
+    );
+  }
   if (limiteAoConcluir) return <LimiteLicoes d={limiteAoConcluir} />;
   if (isError || !licao) {
     return (

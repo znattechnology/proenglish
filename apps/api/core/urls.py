@@ -40,6 +40,7 @@ urlpatterns = [
     # Student APIs (organized)
     path('api/v1/student/video-courses/', include('apps.courses.api.student.video_courses.urls')),
     path('api/v1/student/practice-courses/', include('apps.courses.api.student.practice_courses.urls')),
+    path('api/v1/student/teste-basico/', include('apps.courses.api.student.urls_teste_basico')),
     path('api/v1/student/revisao/', include('apps.perfil.urls_revisao')),  # revisão de hoje
     path('api/v1/student/fala/', include('apps.perfil.urls_fala')),  # minutos a falar, meta de fala (fase 3)
     

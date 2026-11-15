@@ -275,6 +275,19 @@ def bloqueio_pratica(user, course):
     return None
 
 
+def bloqueio_requisito_pratica(user, course):
+    """
+    Cursos de sector no laboratório: quem ainda não fazia o curso precisa do nível básico para
+    começar a jogar (ver o curso continua a ser possível). None ou (codigo, mensagem).
+    """
+    from apps.courses import teste_basico
+    if e_dono_ou_staff(user, course) or not teste_basico.curso_de_sector(course):
+        return None
+    if participou_pratica(user, course) or teste_basico.tem_nivel_basico(user):
+        return None
+    return (teste_basico.CODIGO, teste_basico.MENSAGEM)
+
+
 def alunos_pratica(course):
     from apps.practice.models import ChallengeProgress
     return (ChallengeProgress.objects.filter(challenge__lesson__unit__course=course)
@@ -302,6 +315,10 @@ def bloqueio_inscricao(user, course):
         inscritos = CourseEnrollment.objects.filter(course=course, is_active=True).count()
         if inscritos >= course.maximo_alunos:
             return ('curso_cheio', 'Este curso já atingiu o número máximo de alunos.', 400)
+    # Cursos de sector: nível básico (curso geral concluído ou teste aprovado).
+    from apps.courses import teste_basico
+    if teste_basico.falta_requisito(user, course):
+        return (teste_basico.CODIGO, teste_basico.MENSAGEM, 403)
     return None
 
 

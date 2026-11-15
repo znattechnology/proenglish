@@ -1422,6 +1422,7 @@ def check_course_enrollment_status(request, courseId):
             'subscription_info': subscription_info,
             'estado': ciclo.estado(course),
             'motivo_sem_inscricao': bloqueio_inscricao[1] if bloqueio_inscricao and not is_enrolled else None,
+            'codigo_sem_inscricao': bloqueio_inscricao[0] if bloqueio_inscricao and not is_enrolled else None,
         }
     })
 

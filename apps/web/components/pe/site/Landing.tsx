@@ -269,7 +269,7 @@ export function Landing({ site }: { site: Site }) {
                 <p lang="en" className="m-0 font-pe-titulo text-[19px] font-light italic leading-[28px] text-pe-azul-marca">{n.frase}</p>
                 <p className="m-0 text-[15px] leading-[22px] text-pe-tinta-suave">{n.texto}</p>
                 {i === 0 ? (
-                  <p className="m-0 mt-1 rounded-pe-sm bg-pe-realce-suave px-3 py-2 text-[14px] font-semibold leading-5">Com este nível já pode entrar num curso de sector.</p>
+                  <p className="m-0 mt-1 rounded-pe-sm bg-pe-realce-suave px-3 py-2 text-[14px] font-semibold leading-5">É o requisito para entrar num curso de sector.</p>
                 ) : null}
               </li>
             ))}
@@ -283,7 +283,7 @@ export function Landing({ site }: { site: Site }) {
           <div className="grid items-end gap-x-16 gap-y-5 lg:grid-cols-2">
             <h2 className="m-0 text-balance font-pe-titulo text-[34px] font-bold leading-[1.08] tracking-[-0.02em] md:text-[3.25rem]">O inglês do seu sector</h2>
             <p className="m-0 max-w-[520px] text-pe-corpo-l opacity-90">
-              Depois da base, o inglês da sua área. Os cursos de sector pedem, no mínimo, o nível básico do <span lang="en">English Communication Skills</span>.
+              Depois da base, o inglês da sua área. Os cursos de sector pedem, no mínimo, o nível básico: conclua-o no <span lang="en">English Communication Skills</span> ou, se já o tem, prove-o num teste de 20 minutos.
             </p>
           </div>
           <ul className="m-0 grid list-none gap-x-6 gap-y-10 p-0 sm:grid-cols-2 lg:grid-cols-4">
