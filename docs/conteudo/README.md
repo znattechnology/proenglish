@@ -22,6 +22,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [02-plano-A1.md](02-plano-A1.md) | Plano completo do nível A1, dividido em A1.1 e A1.2: unidades, aulas, objectivos, laboratório, tutor, reciclagem, colocação e avaliação. |
 | [a1/unidade-01/](a1/unidade-01/README.md) | A1.1, unidade 1 "Hello!": guiões, laboratório, tutor e questionário. |
 | [a1/unidade-02/](a1/unidade-02/README.md) | A1.1, unidade 2 "Where are you from?": guiões, laboratório, tutor e questionário. |
+| [a1/unidade-03/](a1/unidade-03/README.md) | A1.1, unidade 3 "My job": guiões, laboratório, tutor e questionário. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.

@@ -167,26 +167,26 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 ### Unidade 3 — My job
 
 **Objectivos da unidade.** No fim, o aluno consegue:
-1. dizer a profissão e o local de trabalho, e perguntar pelos de outra pessoa;
-2. descrever em 2 ou 3 frases o que faz no trabalho;
-3. dar informação pessoal para um registo (nome, morada, telefone, empresa);
-4. registar-se numa recepção.
+1. dizer a sua profissão e a de outra pessoa com *a/an* (*I'm an engineer. She's a nurse.*), dizer onde trabalha (*I work for… / at… / in…*) e perguntar a outra pessoa (*What do you do? Where do you work?*);
+2. dizer em duas ou três frases o que faz no trabalho com o *present simple* (*I answer the phone. I don't travel.*) e responder a perguntas de sim ou não (*Do you work on Saturdays? — No, I don't.*);
+3. dar os seus dados para um registo — nome, apelido, profissão, empresa, onde vive, telefone e e-mail — e confirmar o que ouve (*Is that correct? — Yes, that's right.*);
+4. registar-se como visitante numa recepção: dizer quem é, de que empresa vem e com quem tem reunião (*I have a meeting with…*).
 
 | Aula | Tipo | Título | Objectivo da aula |
 |---|---|---|---|
-| 3A | Língua | Jobs | Dizer a profissão com *a/an*. |
-| 3B | Língua | What do you do? | Perguntar e responder sobre o trabalho com o *present simple* (I/you/we/they). |
-| 3C | Língua | Personal information | Dar morada, telefone e empresa; pedir para repetir (*Can you repeat that?*). |
-| 3D | Vocabulário e pronúncia | Workplaces | Nomear locais de trabalho e tarefas, com o acento certo em profissões. |
-| 3E | Real English | What do you do? | Entender 4 pessoas a falar do trabalho (banco, hospital, empresa petrolífera, escola). |
-| 3F | Work & Life | At the reception | Registar-se como visitante numa empresa. |
+| 3A | Língua | Jobs | Dizer a sua profissão e a de outra pessoa com *a/an* e perguntar a profissão. |
+| 3B | Língua | What do you do? | Dizer onde trabalha e o que faz com o *present simple* (I/you/we/they) e fazer e responder a perguntas. |
+| 3C | Língua | Personal information | Dar os dados para um registo e confirmar o que ouve. |
+| 3D | Vocabulário e pronúncia | Workplaces | Nomear locais de trabalho e tarefas e pronunciá-los com o acento certo; /ɪ/ e /iː/. |
+| 3E | Real English | What do you do? | Identificar, em quatro testemunhos a velocidade quase natural, a profissão, o local e uma tarefa de cada pessoa. |
+| 3F | Work & Life | At the reception | Registar-se como visitante numa empresa e confirmar os dados. |
 
-- **Gramática:** *present simple* (I/you/we/they) +, −, ?; *work in / for / at*.
-- **Vocabulário (~50):** profissões (engineer, nurse, bank teller, accountant, driver, IT technician, teacher, manager), locais de trabalho, dados pessoais.
-- **Pronúncia:** acento em profissões (*enGIneer, acCOUNtant*); /ɪ/ e /iː/ (*it / eat*).
-- **Laboratório:** imagem → profissão; *do/don't*; escuta de um registo (preencher campos); pronúncia; resposta falada "What do you do? Where do you work?".
-- **Conversa guiada:** o tutor pergunta pelo trabalho e o aluno responde e pergunta de volta.
-- **Conversa livre:** "Networking at an event" — falar do trabalho com alguém num evento.
+- **Gramática:** *present simple* com I/you/we/they (+, −, ?, *do/don't*, respostas curtas); *What do you do? Where do you work? Where do you live?*; *work for / at / in*. O *present simple* na 3.ª pessoa (*works, does*) fica para a unidade 5; para falar de outros usa-se *be* (*She's a nurse*).
+- **Vocabulário (~60):** profissões (incluindo *unemployed, retired, student*), locais de trabalho, tarefas, campos de uma ficha, *Is that correct? Here you are. I have a meeting with…*
+- **Pronúncia:** acento em profissões e locais (*engiNEER, acCOUNtant, reCEPtionist, HOSpital*); /ɪ/ e /iː/ (*live / leave*); formas fracas em *What do you do?*
+- **Laboratório:** profissão com *a/an*; *do/don't*; respostas curtas; *work for/at/in*; escuta de dados; resposta falada "What do you do? Where do you work?".
+- **Conversa guiada:** o tutor pergunta a profissão, onde trabalha, o que faz e onde vive; o aluno pergunta o mesmo.
+- **Conversa livre:** "Networking at an event" — conhecer alguém num evento em Luanda, falar do trabalho e trocar contactos.
 
 ### Unidade 4 — Family and friends
 
@@ -541,5 +541,5 @@ Verificação: Lab 6A (exercícios 1–8) e pergunta 3 do questionário da unida
 1. Revisão deste plano pelos professores (objectivos, ordem, contexto angolano).
 2. Decidir a regra do nível básico (recomendado: só o A2 concluído ou o teste).
 3. Fechar o inventário de vocabulário A1 a partir da NGSL, aferido com Oxford 3000 A1 e Cambridge A2 Key.
-4. ~~Escrever as unidades 1 e 2~~ — feito: [unidade 1](a1/unidade-01/README.md), [unidade 2](a1/unidade-02/README.md). Testar com o professor de IA depois da revisão.
+4. ~~Escrever as unidades 1 a 3~~ — feito: [unidade 1](a1/unidade-01/README.md), [unidade 2](a1/unidade-02/README.md), [unidade 3](a1/unidade-03/README.md). Testar com o professor de IA depois da revisão.
 5. Escolher o serviço de voz para as aulas "Real English" (vozes variadas).

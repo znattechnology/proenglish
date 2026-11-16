@@ -1,0 +1,130 @@
+{
+ "unidade": "A1.1 · Unit 3 — My job",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a1-u3-guiada",
+   "nome": "Unit 3 · What do you do?",
+   "tipo": "guiada",
+   "depois_da_aula": "3C",
+   "descricao": "O tutor pergunta ao aluno a profissão, onde trabalha, o que faz e onde vive, e pede-lhe que faça as mesmas perguntas.",
+   "papel_tutor": "Um professor simpático.",
+   "nivel": "A1",
+   "duracao_min": 3,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I'm a/an…",
+    "I work for / at / in…",
+    "What do you do?"
+   ],
+   "extras": {
+    "brief": "Guided practice for a beginner (A1, unit 3). You are a friendly teacher. Ask the student: What do you do? Where do you work? What do you do at work? Where do you live? Then ask the student to ask you the same; you are a teacher at a school in Lubango and you live in Lubango. Use only units 1-3 language: be, jobs with a/an, present simple with I/you only (never he/she works), work for/at/in, live in. If the student says \"I am engineer\", model \"I'm an engineer\" kindly and continue. If the student is unemployed or a student, accept it and ask what job they want, using \"What job do you want?\" only if needed.",
+    "primeira_fala": "Hello, {nome}! What do you do?",
+    "primeira_fala_simples": "Hello! What's your job?",
+    "guiao": [
+     "Great! Where do you work?",
+     "Nice. What do you do at work? Tell me one thing.",
+     "And where do you live?",
+     "Thank you! Now you ask me: what do I do?",
+     "I'm a teacher. I work at a school in Lubango. Very good, {nome}! Goodbye!"
+    ],
+    "frases": [
+     {
+      "en": "I'm an accountant.",
+      "pt": "Sou contabilista."
+     },
+     {
+      "en": "I work for an oil company.",
+      "pt": "Trabalho para uma empresa petrolífera."
+     },
+     {
+      "en": "What do you do?",
+      "pt": "Qual é a sua profissão?"
+     }
+    ],
+    "palavras": [
+     "work",
+     "job",
+     "live",
+     "company",
+     "office",
+     "do",
+     "clients"
+    ],
+    "minutos_sugeridos": 3
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a1-u3-livre",
+   "nome": "Unit 3 · Networking at an event",
+   "tipo": "livre",
+   "depois_da_aula": "3F",
+   "descricao": "Num evento de tecnologia em Luanda, o tutor é um participante que o aluno não conhece. Falam de onde são, do trabalho e trocam contactos.",
+   "papel_tutor": "Daniel, gestor de vendas angolano numa empresa de telecomunicações.",
+   "nivel": "A1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "What do you do?",
+    "I work for / at…",
+    "What's your phone number?"
+   ],
+   "extras": {
+    "brief": "Role-play for a beginner (A1, unit 3). You are Daniel, a sales manager at a telecoms company, at a technology event in Luanda. You meet the student at the coffee break. Greet them, introduce yourself, ask their name, where they are from, what they do, where they work and one thing they do at work. Answer their questions about you: you are from Benguela, you live in Luanda, you sell phone services to companies, you travel a lot. At the end, ask for their phone number or email, check it (\"Is that correct?\") and say goodbye. Use only units 1-3 language; present simple only with I/you/we/they (never \"he works\"). One short question at a time. Encourage the student to ask you at least two questions.",
+    "primeira_fala": "Hi! Good coffee, right? I'm Daniel. Nice to meet you.",
+    "primeira_fala_simples": "Hi! I'm Daniel. Nice to meet you.",
+    "guiao": [
+     "What's your name?",
+     "Where are you from?",
+     "And what do you do?",
+     "Where do you work?",
+     "Interesting! What do you do every day at work?",
+     "Do you have a question for me?",
+     "Can I have your phone number or your email?",
+     "Thank you. Is that correct? Great. Nice to meet you, {nome}. Goodbye!"
+    ],
+    "frases": [
+     {
+      "en": "I'm a technician. I work for Kalandula Tech.",
+      "pt": "Sou técnico. Trabalho para a Kalandula Tech."
+     },
+     {
+      "en": "What do you do?",
+      "pt": "Qual é a sua profissão?"
+     },
+     {
+      "en": "Where do you work?",
+      "pt": "Onde trabalha?"
+     },
+     {
+      "en": "Yes, that's right.",
+      "pt": "Sim, está certo."
+     }
+    ],
+    "palavras": [
+     "work",
+     "job",
+     "company",
+     "do",
+     "live",
+     "phone",
+     "email",
+     "correct",
+     "right",
+     "clients"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": [
+    "Responde a todas as perguntas com uma frase completa ou uma resposta curta adequada.",
+    "Diz a profissão com \"a/an\" e onde trabalha (work for / at / in).",
+    "Faz pelo menos duas perguntas ao tutor (por exemplo, \"What do you do?\" e \"Where do you work?\").",
+    "Dá o telefone ou o e-mail e confirma os dados (\"Yes, that's right\" ou corrige).",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}
