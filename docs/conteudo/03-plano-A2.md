@@ -297,6 +297,8 @@ Versão completa em [a2/unidade-06/](a2/unidade-06/README.md) **[I]**.
 
 ### Unidade 7 — News and updates (7 aulas)
 
+Versão completa em [a2/unidade-07/](a2/unidade-07/README.md) **[I]**.
+
 **Objectivos da unidade.** No fim, o aluno consegue:
 1. dar novidades recentes com *just* e reagir às novidades dos outros (*I've just got a promotion! — Really? Congratulations!*; *Oh no, I'm sorry to hear that.*);
 2. dizer o que já está feito e o que ainda não está com *already / yet* (*We've already installed the system, but we haven't trained the staff yet.*);

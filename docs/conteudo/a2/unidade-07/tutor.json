@@ -1,0 +1,139 @@
+{
+ "unidade": "A2.2 · Unit 7 — News and updates",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a2-u7-guiada",
+   "nome": "A2 Unit 7 · Any news?",
+   "tipo": "guiada",
+   "depois_da_aula": "7C",
+   "descricao": "Conversa de circunstância com novidades: o tutor pergunta pelas novidades do aluno, reage, conta uma sua e pergunta há quanto tempo o aluno trabalha ou vive onde está.",
+   "papel_tutor": "Um colega simpático.",
+   "nivel": "A2",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I have some news! I've just…",
+    "Congratulations! / I'm sorry to hear that.",
+    "I've worked there for… / since…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an elementary learner (A2, unit 7). You are a friendly colleague. Ask \"Any news?\" and react to the student's news with the right expression (good news: Congratulations! That's great news!; bad news: Oh no, I'm sorry to hear that.; surprise: Really? What happened?). If the student has no news, ask what they have already done this week and what they haven't done yet. Then give your own news: \"I've just moved to a new flat!\" and wait for the student's reaction. Ask \"How long have you worked (or studied) there?\" and \"How long have you lived in your city?\". If the student says \"I work here since 2020\", model \"Ah, you've worked there since 2020\". If they say \"I have just…\" without contraction, that's fine. Use only A1 and A2.1 language plus A2 units 6-7: the present perfect for experiences (ever / never), for news (just), for done / not done (already / yet) and for duration (How long…? for / since + a point in time), the past simple for details, been / gone, reactions (Congratulations! I'm sorry to hear that. Really?), feelings (excited, worried, relieved, disappointed, bored / boring). Do NOT use the present perfect continuous, \"since\" + a clause, \"will\" or \"going to\" for predictions, \"could\", \"if\" sentences, \"would\" + verb (except \"would like\"), \"too\" or \"enough\". One question at a time.",
+    "primeira_fala": "Hi, {nome}! Good to see you. Any news?",
+    "primeira_fala_simples": "Hi! Do you have any news?",
+    "guiao": [
+     "Tell me more!",
+     "What have you already done this week? And what haven't you done yet?",
+     "I have some news too: I've just moved to a new flat!",
+     "How long have you worked or studied there?",
+     "And how long have you lived in your city?",
+     "Thanks for the chat, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "I've just finished a big project.",
+      "pt": "Acabei de terminar um projecto grande."
+     },
+     {
+      "en": "Congratulations! That's great news!",
+      "pt": "Parabéns! Que boa notícia!"
+     },
+     {
+      "en": "I haven't booked my holiday yet.",
+      "pt": "Ainda não marquei as férias."
+     },
+     {
+      "en": "I've worked there since 2021.",
+      "pt": "Trabalho lá desde 2021."
+     }
+    ],
+    "palavras": [
+     "just",
+     "news",
+     "already",
+     "yet",
+     "since",
+     "for",
+     "congratulations",
+     "sorry"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a2-u7-livre",
+   "nome": "A2 Unit 7 · Project update",
+   "tipo": "livre",
+   "depois_da_aula": "7G",
+   "descricao": "O tutor é Quinn, cliente estrangeiro(a), que quer saber em que ponto está a abertura do novo escritório da sua empresa em Luanda. O aluno tem a lista no ecrã: o que está feito, o que falta e porquê, e os próximos passos.",
+   "papel_tutor": "Quinn, cliente, director(a) de uma empresa de Nairobi que está a abrir um escritório em Luanda.",
+   "nivel": "A2",
+   "duracao_min": 7,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "We're on track / a bit behind schedule.",
+    "We've already…",
+    "We haven't … yet, because…",
+    "Next week we're…"
+   ],
+   "extras": {
+    "brief": "Role-play for an elementary learner (A2, unit 7). You are Quinn, a director of a company from Nairobi that is opening a new office in Luanda (Quinn can be a man or a woman, to match your voice). The student's company is preparing the office. The student has this list (tell it to the student in two sentences if they ask): DONE — painted the office, installed the internet, bought the furniture; NOT DONE — the air conditioning (the supplier is late; it's arriving next Tuesday), the sign on the door (the designer is sick); NEXT — install the air conditioning on Wednesday and Thursday, open the office on Monday the 15th. Ask for the update: \"So, how's it going?\", \"What have you already done?\", \"Have you installed the air conditioning yet?\", \"Why not?\", \"Are we still on track for the 15th?\", \"How long have you worked on this project?\". React to the news (Great! / Oh no.). Make one small complaint (\"The air conditioning is important — it's very hot in Luanda!\") and let the student reassure you. Use only A1 and A2.1 language plus A2 units 6-7: the present perfect for experiences (ever / never), for news (just), for done / not done (already / yet) and for duration (How long…? for / since + a point in time), the past simple for details, been / gone, reactions (Congratulations! I'm sorry to hear that. Really?), feelings (excited, worried, relieved, disappointed, bored / boring). Do NOT use the present perfect continuous, \"since\" + a clause, \"will\" or \"going to\" for predictions, \"could\", \"if\" sentences, \"would\" + verb (except \"would like\"), \"too\" or \"enough\". Short turns, one question at a time.",
+    "primeira_fala": "Hello, {nome}. It's Quinn, from Nairobi. Thanks for the call. So, how's it going with our new office?",
+    "primeira_fala_simples": "Hello! It's Quinn. How's our new office? Give me an update.",
+    "guiao": [
+     "What have you already done?",
+     "Have you installed the air conditioning yet?",
+     "Why not?",
+     "The air conditioning is important — it's very hot in Luanda!",
+     "Are we still on track for the fifteenth?",
+     "And how long have you worked on this project?",
+     "Thank you, {nome}. That was a very clear update."
+    ],
+    "frases": [
+     {
+      "en": "We're on track for the 15th.",
+      "pt": "Estamos dentro do prazo para dia 15."
+     },
+     {
+      "en": "We've already painted the office.",
+      "pt": "Já pintámos o escritório."
+     },
+     {
+      "en": "We haven't installed the air conditioning yet, because the supplier is late.",
+      "pt": "Ainda não instalámos o ar condicionado, porque o fornecedor está atrasado."
+     },
+     {
+      "en": "It's arriving next Tuesday.",
+      "pt": "Chega na próxima terça-feira."
+     },
+     {
+      "en": "I've worked on this project since January.",
+      "pt": "Trabalho neste projecto desde Janeiro."
+     }
+    ],
+    "palavras": [
+     "already",
+     "yet",
+     "because",
+     "track",
+     "next",
+     "since",
+     "for",
+     "installed"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": [
+    "Diz a situação geral (on track / a bit behind schedule).",
+    "Diz o que já está feito com o present perfect e already.",
+    "Diz o que ainda não está feito com yet e explica porquê (because…).",
+    "Diz os próximos passos com o present continuous ou going to.",
+    "Responde a \"How long…?\" com for ou since e tranquiliza o cliente perante a queixa.",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

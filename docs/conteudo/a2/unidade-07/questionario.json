@@ -1,0 +1,301 @@
+{
+ "title": "A2.2 Unit 7 quiz — News and updates",
+ "description": "Present perfect com just, already, yet, for e since; reacções; sentimentos; ponto de situação de um projecto.",
+ "questions": [
+  {
+   "id": "a2u7q1",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "a2u7q1o0",
+     "text": "I've just sent the email.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u7q1o1",
+     "text": "I just have sent the email.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u7q1o2",
+     "text": "I've sent just the email.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u7q1o0",
+   "explanation": "have + just + particípio.",
+   "points": 10
+  },
+  {
+   "id": "a2u7q2",
+   "question": "\"My car has broken down.\" Qual é a melhor reacção?",
+   "options": [
+    {
+     "id": "a2u7q2o0",
+     "text": "Oh no, I'm sorry to hear that.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u7q2o1",
+     "text": "Congratulations!",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u7q2o2",
+     "text": "That's great news!",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u7q2o0",
+   "explanation": "Má notícia.",
+   "points": 10
+  },
+  {
+   "id": "a2u7q3",
+   "question": "Complete: \"We haven't trained the staff ___.\"",
+   "options": [
+    {
+     "id": "a2u7q3o0",
+     "text": "yet",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u7q3o1",
+     "text": "since",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u7q3o2",
+     "text": "ago",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u7q3o0",
+   "explanation": "Negativa: yet, no fim.",
+   "points": 10
+  },
+  {
+   "id": "a2u7q4",
+   "question": "\"We're behind schedule\" quer dizer:",
+   "options": [
+    {
+     "id": "a2u7q4o0",
+     "text": "Estamos atrasados.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u7q4o1",
+     "text": "Estamos dentro do prazo.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u7q4o2",
+     "text": "Já acabámos.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u7q4o0",
+   "explanation": "behind schedule = atrasado.",
+   "points": 10
+  },
+  {
+   "id": "a2u7q5",
+   "question": "Complete: \"I've worked here ___ 2005.\"",
+   "options": [
+    {
+     "id": "a2u7q5o0",
+     "text": "since",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u7q5o1",
+     "text": "for",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u7q5o2",
+     "text": "ago",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u7q5o0",
+   "explanation": "since + momento.",
+   "points": 10
+  },
+  {
+   "id": "a2u7q6",
+   "question": "\"Trabalho aqui há três anos.\" Em inglês:",
+   "options": [
+    {
+     "id": "a2u7q6o0",
+     "text": "I've worked here for three years.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u7q6o1",
+     "text": "I work here for three years.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u7q6o2",
+     "text": "I've worked here since three years.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u7q6o0",
+   "explanation": "present perfect + for + período.",
+   "points": 10
+  },
+  {
+   "id": "a2u7q7",
+   "question": "Numa conversa de circunstância, qual é a melhor resposta a \"Is this your first time in Angola?\"",
+   "options": [
+    {
+     "id": "a2u7q7o0",
+     "text": "Yes, it is. I've never been here before. It's very different from India!",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u7q7o1",
+     "text": "Yes.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u7q7o2",
+     "text": "Why?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u7q7o0",
+   "explanation": "Responda com um pormenor.",
+   "points": 10
+  },
+  {
+   "id": "a2u7q8",
+   "question": "\"The meeting was boring.\" Como se sentiu a pessoa?",
+   "options": [
+    {
+     "id": "a2u7q8o0",
+     "text": "bored",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u7q8o1",
+     "text": "boring",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u7q8o2",
+     "text": "bore",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u7q8o0",
+   "explanation": "-ed = como a pessoa se sente.",
+   "points": 10
+  },
+  {
+   "id": "a2u7q9",
+   "question": "Num ponto de situação, como diz o que ainda não está feito e porquê?",
+   "options": [
+    {
+     "id": "a2u7q9o0",
+     "text": "We haven't trained the staff yet, because the room wasn't ready.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u7q9o1",
+     "text": "We didn't train already the staff.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u7q9o2",
+     "text": "Staff not trained, room.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u7q9o0",
+   "explanation": "haven't … yet + because.",
+   "points": 10
+  },
+  {
+   "id": "a2u7q10",
+   "question": "Reciclagem (A2, unidade 6). Complete: \"I ___ to Lisbon in 2023.\"",
+   "options": [
+    {
+     "id": "a2u7q10o0",
+     "text": "went",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u7q10o1",
+     "text": "'ve been",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u7q10o2",
+     "text": "'ve gone",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u7q10o0",
+   "explanation": "Com uma data, past simple.",
+   "points": 10
+  },
+  {
+   "id": "a2u7q11",
+   "question": "Reciclagem (A2, unidade 6). \"Have you ever been to Lagos?\" — \"No, ___\"",
+   "options": [
+    {
+     "id": "a2u7q11o0",
+     "text": "I haven't.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u7q11o1",
+     "text": "I didn't.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u7q11o2",
+     "text": "I haven't never.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u7q11o0",
+   "explanation": "Resposta curta com have.",
+   "points": 10
+  },
+  {
+   "id": "a2u7q12",
+   "question": "Reciclagem (A2, unidade 4). Complete: \"This system is ___ faster than the old one.\"",
+   "options": [
+    {
+     "id": "a2u7q12o0",
+     "text": "much",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u7q12o1",
+     "text": "very",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u7q12o2",
+     "text": "more",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u7q12o0",
+   "explanation": "much + comparativo.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
