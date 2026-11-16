@@ -1,0 +1,301 @@
+{
+ "title": "A2.1 Unit 5 quiz — Health and safety",
+ "description": "Should, have to, must, mustn't ≠ don't have to, saúde e segurança no trabalho.",
+ "questions": [
+  {
+   "id": "a2u5q1",
+   "question": "Complete: \"You look tired. You ___ rest.\"",
+   "options": [
+    {
+     "id": "a2u5q1o0",
+     "text": "should",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u5q1o1",
+     "text": "should to",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u5q1o2",
+     "text": "shoulding",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u5q1o0",
+   "explanation": "should + verbo simples.",
+   "points": 10
+  },
+  {
+   "id": "a2u5q2",
+   "question": "Qual é a pergunta correcta?",
+   "options": [
+    {
+     "id": "a2u5q2o0",
+     "text": "What should I do?",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u5q2o1",
+     "text": "What I should do?",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u5q2o2",
+     "text": "What do I should do?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u5q2o0",
+   "explanation": "Pergunta: What should I…?",
+   "points": 10
+  },
+  {
+   "id": "a2u5q3",
+   "question": "Complete: \"She ___ sign the papers before we start.\"",
+   "options": [
+    {
+     "id": "a2u5q3o0",
+     "text": "has to",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u5q3o1",
+     "text": "have to",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u5q3o2",
+     "text": "has",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u5q3o0",
+   "explanation": "he / she / it: has to.",
+   "points": 10
+  },
+  {
+   "id": "a2u5q4",
+   "question": "\"I don't have to work on Saturday\" quer dizer:",
+   "options": [
+    {
+     "id": "a2u5q4o0",
+     "text": "Não é preciso trabalhar ao sábado.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u5q4o1",
+     "text": "É proibido trabalhar ao sábado.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u5q4o2",
+     "text": "Tenho de trabalhar ao sábado.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u5q4o0",
+   "explanation": "don't have to = não é necessário.",
+   "points": 10
+  },
+  {
+   "id": "a2u5q5",
+   "question": "\"You mustn't smoke here\" quer dizer:",
+   "options": [
+    {
+     "id": "a2u5q5o0",
+     "text": "É proibido fumar aqui.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u5q5o1",
+     "text": "Não é preciso fumar aqui.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u5q5o2",
+     "text": "Devia fumar aqui.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u5q5o0",
+   "explanation": "mustn't = proibido.",
+   "points": 10
+  },
+  {
+   "id": "a2u5q6",
+   "question": "Não é necessário usar gravata. Qual é a frase?",
+   "options": [
+    {
+     "id": "a2u5q6o0",
+     "text": "You don't have to wear a tie.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u5q6o1",
+     "text": "You mustn't wear a tie.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u5q6o2",
+     "text": "You haven't to wear a tie.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u5q6o0",
+   "explanation": "Não é necessário: don't have to.",
+   "points": 10
+  },
+  {
+   "id": "a2u5q7",
+   "question": "\"Estou constipado\" em inglês é:",
+   "options": [
+    {
+     "id": "a2u5q7o0",
+     "text": "I have a cold.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u5q7o1",
+     "text": "I'm constipated.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u5q7o2",
+     "text": "I'm constipate.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u5q7o0",
+   "explanation": "Falso amigo: constipated = com prisão de ventre.",
+   "points": 10
+  },
+  {
+   "id": "a2u5q8",
+   "question": "Ouviu: \"The doctor says I have to stop the car every hour and walk.\" O médico diz que ele...",
+   "options": [
+    {
+     "id": "a2u5q8o0",
+     "text": "tem de parar o carro de hora a hora e andar.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u5q8o1",
+     "text": "devia deixar de conduzir.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u5q8o2",
+     "text": "não precisa de parar.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u5q8o0",
+   "explanation": "have to = obrigação.",
+   "points": 10
+  },
+  {
+   "id": "a2u5q9",
+   "question": "Está doente e liga à chefia. Qual é a melhor frase para começar?",
+   "options": [
+    {
+     "id": "a2u5q9o0",
+     "text": "I'm calling because I'm sick. I can't come in today.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u5q9o1",
+     "text": "I no come today, sick.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u5q9o2",
+     "text": "Hello. I'm not working because I don't want.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u5q9o0",
+   "explanation": "A razão e o que não pode fazer.",
+   "points": 10
+  },
+  {
+   "id": "a2u5q10",
+   "question": "Reciclagem (A2, unidade 4). Complete: \"It's the best clinic ___ Luanda.\"",
+   "options": [
+    {
+     "id": "a2u5q10o0",
+     "text": "in",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u5q10o1",
+     "text": "of",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u5q10o2",
+     "text": "at",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u5q10o0",
+   "explanation": "Superlativo + in + lugar.",
+   "points": 10
+  },
+  {
+   "id": "a2u5q11",
+   "question": "Reciclagem (A2, unidade 3). \"I have a headache.\" — Qual é a melhor resposta?",
+   "options": [
+    {
+     "id": "a2u5q11o0",
+     "text": "I'll get you some water.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u5q11o1",
+     "text": "I get you some water.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u5q11o2",
+     "text": "I'm going to get you some water next week.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u5q11o0",
+   "explanation": "Oferta no momento: will.",
+   "points": 10
+  },
+  {
+   "id": "a2u5q12",
+   "question": "Reciclagem (A2, unidade 2). Complete: \"I ___ dinner when I started to feel sick.\"",
+   "options": [
+    {
+     "id": "a2u5q12o0",
+     "text": "was having",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u5q12o1",
+     "text": "am having",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u5q12o2",
+     "text": "have",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u5q12o0",
+   "explanation": "Acção longa no passado.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

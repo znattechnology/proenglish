@@ -221,6 +221,8 @@ Versão completa em [a2/unidade-04/](a2/unidade-04/README.md) **[I]**.
 
 ### Unidade 5 — Health and safety
 
+Versão completa em [a2/unidade-05/](a2/unidade-05/README.md) **[I]**.
+
 **Objectivos da unidade.** No fim, o aluno consegue:
 1. dar e pedir conselhos com *should / shouldn't* (*You should see a doctor. Should I take a day off?*);
 2. dizer o que é obrigatório e o que não é necessário com *have to / don't have to*, sem confundir *don't have to* com *mustn't*;
@@ -565,5 +567,5 @@ No A1, cada unidade teve uma revisão pedagógica depois de escrita. No A2, **ca
 1. Revisão deste plano pelos professores (objectivos, ordem, situações de trabalho, falsos amigos).
 2. Confirmar no CEFR Companion Volume os descritores A2 de produção oral, interacção e mediação, e aferir a ordem da gramática com o resumo de unidades do Empower 2e A2 e o booklet GSE do Roadmap A2 (secção 2).
 3. Fechar o inventário de vocabulário A2 a partir da NGSL, aferido com Oxford 3000 A2 e Cambridge A2 Key.
-4. Escrever as unidades 1 a 5 do A2.1 (feito: [1](a2/unidade-01/README.md), [2](a2/unidade-02/README.md), [3](a2/unidade-03/README.md), [4](a2/unidade-04/README.md)), uma aula de cada vez, com a revisão de cada aula (secção 10); depois a revisão 1 e o exame do A2.1.
+4. Escrever as unidades 1 a 5 do A2.1 (feito: [1](a2/unidade-01/README.md), [2](a2/unidade-02/README.md), [3](a2/unidade-03/README.md), [4](a2/unidade-04/README.md), [5](a2/unidade-05/README.md)), uma aula de cada vez, com a revisão de cada aula (secção 10); depois a revisão 1 e o exame do A2.1.
 5. Acrescentar à plataforma um guião de exame A2 por omissão (secção 6).

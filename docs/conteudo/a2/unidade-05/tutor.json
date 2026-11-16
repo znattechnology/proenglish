@@ -1,0 +1,137 @@
+{
+ "unidade": "A2.1 · Unit 5 — Health and safety",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a2-u5-guiada",
+   "nome": "A2 Unit 5 · I don't feel well",
+   "tipo": "guiada",
+   "depois_da_aula": "5C",
+   "descricao": "O tutor é um colega simpático. O aluno diz que não se sente bem e pede conselhos; depois o tutor conta um problema seu e o aluno dá-lhe conselhos.",
+   "papel_tutor": "Um colega simpático.",
+   "nivel": "A2",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I don't feel well. I have…",
+    "What should I do?",
+    "You should… / You shouldn't…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an elementary learner (A2, unit 5). You are a friendly colleague. Start by asking how the student is. The student says they don't feel well (if they say they are fine, ask them to imagine they are very tired and stressed this week). Ask what the problem is, then give two pieces of advice with \"should / shouldn't\" and \"Why don't you…?\". Ask \"What do you have to do today?\" and say what they don't have to do (\"You don't have to finish everything today.\"). Then tell the student your problem: \"I have back pain. I sit at the computer all day. What should I do?\" and let the student give you advice. If the student says \"You should to…\", model \"You should…\"; if they confuse \"mustn't\" and \"don't have to\", model the right one. Use only A1 language plus A2 units 1-5: present simple and continuous, state verbs, past simple and continuous, the present continuous for arrangements, going to for plans, will only for offers, decisions and promises, comparatives and superlatives, much / many / a few / a little, should / shouldn't for advice, have to / don't have to / had to, must / mustn't for rules, health words (fever, headache, back pain, check-up, sick leave, doctor's note). Do NOT use the present perfect, \"will\" or \"going to\" for predictions, \"could\", \"too\" or \"enough\", \"if\" sentences or \"would\" + verb (except \"would like\"). One question at a time.",
+    "primeira_fala": "Hi, {nome}! How are you today? You look tired.",
+    "primeira_fala_simples": "Hi! How are you? You look tired.",
+    "guiao": [
+     "Oh no. What's the problem?",
+     "I think you should take a break. Why don't you go for a walk at lunchtime?",
+     "What do you have to do today?",
+     "You don't have to finish everything today. Now, I have a problem too: I have back pain. I sit at the computer all day. What should I do?",
+     "Thanks for the advice, {nome}! Get well soon."
+    ],
+    "frases": [
+     {
+      "en": "I don't feel well. I have a headache.",
+      "pt": "Não me sinto bem. Tenho dores de cabeça."
+     },
+     {
+      "en": "What should I do?",
+      "pt": "O que devo fazer?"
+     },
+     {
+      "en": "You should stand up every hour.",
+      "pt": "Devias levantar-te de hora a hora."
+     },
+     {
+      "en": "You shouldn't sit all day.",
+      "pt": "Não devias estar sentado o dia todo."
+     }
+    ],
+    "palavras": [
+     "should",
+     "shouldn't",
+     "have",
+     "feel",
+     "headache",
+     "tired",
+     "break",
+     "why"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a2-u5-livre",
+   "nome": "A2 Unit 5 · Calling in sick",
+   "tipo": "livre",
+   "depois_da_aula": "5F",
+   "descricao": "O tutor é Kim, a chefia. O aluno liga às 7h00 a dizer que está doente: tem de explicar o problema, dizer o que vai fazer, o que fica por fazer e quem pode substituí-lo, e responder às perguntas da chefia.",
+   "papel_tutor": "Kim, chefe de equipa, simpático(a) mas preocupado(a) com os prazos.",
+   "nivel": "A2",
+   "duracao_min": 6,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I'm calling because I'm sick.",
+    "I can't come in today.",
+    "I'll send you a doctor's note.",
+    "… can take over."
+   ],
+   "extras": {
+    "brief": "Role-play for an elementary learner (A2, unit 5). You are Kim, the student's team manager (Kim can be a man or a woman, to match your voice). It is 7 a.m. and the student calls you. Answer the phone: \"Hello, Kim speaking.\" Let the student explain. Ask: \"Oh no. What's the problem?\", \"Are you going to see a doctor?\", \"What do you have to finish this week?\", \"Who can take over?\", and once, a deadline question: \"But the report is for Thursday. Do I have to tell the client?\". Give advice (\"You should rest\", \"You don't have to work today\") and ask for a doctor's note if the student doesn't mention it. Finish with \"Get well soon!\". The student can invent their job and tasks. Use only A1 language plus A2 units 1-5: present simple and continuous, state verbs, past simple and continuous, the present continuous for arrangements, going to for plans, will only for offers, decisions and promises, comparatives and superlatives, much / many / a few / a little, should / shouldn't for advice, have to / don't have to / had to, must / mustn't for rules, health words (fever, headache, back pain, check-up, sick leave, doctor's note). Do NOT use the present perfect, \"will\" or \"going to\" for predictions, \"could\", \"too\" or \"enough\", \"if\" sentences or \"would\" + verb (except \"would like\"). Short turns, one question at a time.",
+    "primeira_fala": "Hello, Kim speaking.",
+    "primeira_fala_simples": "Hello, this is Kim.",
+    "guiao": [
+     "Oh no. What's the problem?",
+     "Are you going to see a doctor?",
+     "What do you have to finish this week?",
+     "Who can take over?",
+     "But the report is for Thursday. Do I have to tell the client?",
+     "OK. You don't have to work today. You should rest. Please send me a doctor's note. Get well soon, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "I'm calling because I'm sick.",
+      "pt": "Estou a ligar porque estou doente."
+     },
+     {
+      "en": "I can't come in today.",
+      "pt": "Hoje não posso ir trabalhar."
+     },
+     {
+      "en": "I'm going to see a doctor this morning.",
+      "pt": "Vou ao médico esta manhã."
+     },
+     {
+      "en": "Marta knows the project. She can take over.",
+      "pt": "A Marta conhece o projecto. Ela pode substituir-me."
+     },
+     {
+      "en": "I'll send you a doctor's note.",
+      "pt": "Envio-lhe um atestado."
+     }
+    ],
+    "palavras": [
+     "sick",
+     "calling",
+     "can't",
+     "doctor",
+     "note",
+     "have",
+     "finish",
+     "take"
+    ],
+    "minutos_sugeridos": 6
+   },
+   "criterios": [
+    "Diz porque liga e que não pode ir trabalhar (I'm calling because… I can't come in today).",
+    "Diz o que vai fazer (I'm going to see a doctor) e promete com will (I'll send you a doctor's note).",
+    "Diz o que tem de terminar com have to e quem pode substituí-lo.",
+    "Responde à pergunta sobre o prazo com uma solução.",
+    "Agradece e despede-se de forma adequada.",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

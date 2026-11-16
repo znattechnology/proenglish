@@ -38,6 +38,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [a2/unidade-02/](a2/unidade-02/README.md) | A2.1, unidade 2 "Life stories": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [a2/unidade-03/](a2/unidade-03/README.md) | A2.1, unidade 3 "Plans and arrangements": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [a2/unidade-04/](a2/unidade-04/README.md) | A2.1, unidade 4 "Comparing and choosing": guiões, laboratório, tutor, questionário e revisão aula a aula. |
+| [a2/unidade-05/](a2/unidade-05/README.md) | A2.1, unidade 5 "Health and safety": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.
