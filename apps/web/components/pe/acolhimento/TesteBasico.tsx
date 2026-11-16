@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Check, Clock, X } from "lucide-react";
 import { Aviso, BarraProgresso, Botao, Logo, Osso } from "@/components/pe";
 import { cnPe } from "@/lib/pe";
@@ -135,6 +135,8 @@ function Perguntas({ t, aoEntregar }: { t: TentativaTeste; aoEntregar: (r: Tenta
   const perguntas = useMemo(() => t.perguntas ?? [], [t.perguntas]);
   const [indice, setIndice] = useState(0);
   const [respostas, setRespostas] = useState<Record<string, number>>({});
+  // As respostas mais recentes, para a entrega automática quando o tempo acaba.
+  const ultimas = useRef<Record<string, number>>({});
   const [entregar, { isLoading }] = useEntregarTesteBasicoMutation();
   const [erro, setErro] = useState<string | null>(null);
   const falta = useFalta(t.expira_em);
@@ -144,7 +146,7 @@ function Perguntas({ t, aoEntregar }: { t: TentativaTeste; aoEntregar: (r: Tenta
 
   const enviar = async () => {
     setErro(null);
-    const r = await entregar({ id: t.id, respostas });
+    const r = await entregar({ id: t.id, respostas: ultimas.current });
     if ("data" in r && r.data) return aoEntregar(r.data);
     setErro(mensagemErro("error" in r ? r.error : null, "Não foi possível entregar o teste. Verifique a ligação e tente outra vez."));
   };
@@ -187,7 +189,10 @@ function Perguntas({ t, aoEntregar }: { t: TentativaTeste; aoEntregar: (r: Tenta
               role="radio"
               aria-checked={escolhida}
               lang="en"
-              onClick={() => setRespostas((r) => ({ ...r, [p.id]: i }))}
+              onClick={() => {
+                ultimas.current = { ...ultimas.current, [p.id]: i };
+                setRespostas(ultimas.current);
+              }}
               className={cnPe(
                 "min-h-[56px] rounded-pe-md border-2 px-5 py-3 text-left text-[18px] leading-7",
                 escolhida ? "border-pe-azul-marca bg-pe-fundo-suave font-semibold" : "border-pe-linha bg-pe-fundo hover:border-pe-linha-forte"
