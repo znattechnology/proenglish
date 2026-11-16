@@ -60,11 +60,11 @@ Verificação: Lab 5A (exercícios 1–10); perguntas 1 e 2 do questionário da 
 | Hora | Forma digital (mais fácil) | Forma tradicional |
 |---|---|---|
 | 9:00 | nine o'clock | nine o'clock |
-| 9:15 | nine fifteen | quarter past nine |
-| 9:30 | nine thirty | half past nine |
-| 9:45 | nine forty-five | quarter to ten |
 | 9:10 | nine ten | ten past nine |
+| 9:15 | nine fifteen | (a) quarter past nine |
+| 9:30 | nine thirty | half past nine |
 | 9:40 | nine forty | twenty to ten |
+| 9:45 | nine forty-five | (a) quarter to ten |
 
 **PROF:** The easy way: say the numbers. Nine fifteen. Nine thirty. Nine forty-five.
 (PT: A forma mais fácil: diga os números como no relógio digital. Está sempre certa.)
@@ -72,8 +72,8 @@ Verificação: Lab 5A (exercícios 1–10); perguntas 1 e 2 do questionário da 
 **PROF:** You also hear the traditional way: quarter past nine, half past nine, quarter to ten.
 (PT: Também vai ouvir a forma tradicional: "past" é depois da hora, "to" é antes da hora seguinte. Precisa de a perceber; para falar, pode usar a forma digital.)
 
-**PROF:** Careful: "half past nine" is 9:30. In Portuguese, "nove e meia" — the same idea. Not 8:30!
-(PT: "Half past nine" é 9h30 — "meia hora depois das nove".)
+**PROF:** Half past nine is 9:30 — like "nove e meia". Quarter to ten is 9:45 — like "um quarto para as dez".
+(PT: A lógica é a mesma do português: "past" é "e" (depois de), "to" é "para" (antes de). "Half past nine" = nove e meia; "quarter to ten" = um quarto para as dez.)
 
 [ECRÃ: ✔ half past nine = 9:30]
 
@@ -191,10 +191,12 @@ Verificação: Lab 5B (exercícios 1–10); perguntas 3, 4 e 5 do questionário
 |---|---|
 | quase todos: + s | work → works · start → starts · live → lives |
 | -s, -sh, -ch, -x, -o: + es | watch → watches · finish → finishes · go → **goes** · do → **does** |
-| consoante + y: y → ies | study → studies |
+| consoante + y: y → ies | study → studies · carry → carries |
+| vogal + y: + s | play → **plays** · say → says |
 | irregular | have → **has** |
 
-**PROF:** Go — goes. Do — does. Watch — watches. Study — studies.
+**PROF:** Go — goes. Do — does. Watch — watches. Study — studies. But: play — plays.
+(PT: Atenção: "play" tem uma vogal antes do "y", por isso só leva "s": "plays", nunca "plaies".)
 [PAUSA 2 s depois de cada par]
 
 **Horas com *at***
@@ -425,7 +427,7 @@ Verificação: Lab 5D (exercícios 1–9); pergunta 8 do questionário
 
 ***How often…?***
 
-[ECRÃ: **How often** do you…? — every day · every Monday · once a week (uma vez por semana) · twice a week (duas vezes) · three times a week]
+[ECRÃ: **How often** do you…? — every day · every Monday · once a week (uma vez por semana) · twice a week (duas vezes) · three times a week · once a month (uma vez por mês)]
 
 **PROF:** How often do you go to the gym? Twice a week. How often does she travel? Once a month.
 [PAUSA 3 s depois de cada resposta]
@@ -455,9 +457,9 @@ Verificação: Lab 5D (exercícios 1–9); pergunta 8 do questionário
 [ECRÃ: I always / usually / never have breakfast.]
 **PROF:** How often do you speak English at work?
 [PAUSA 5 s]
-**PROF:** Say one thing your boss or a colleague always does.
+**PROF:** Say one thing a colleague or a person in your family always does.
 [PAUSA 6 s]
-[ECRÃ: My boss always starts meetings on time.]
+[ECRÃ: My boss always starts meetings on time. / My mother always gets up early.]
 
 **PROF (reciclagem — 4B):** Do you have a car? Do you usually drive to work?
 [PAUSA 6 s]
@@ -662,7 +664,7 @@ Verificação: Lab 5G (exercícios 1–9); conversa livre "Let's meet"; pergunta
 |---|---|---|
 | **at** | horas | at ten · at two thirty · at night |
 | **on** | dias | on Tuesday · on Wednesday morning · on Saturdays |
-| **in** | partes do dia, meses | in the morning · in the afternoon · in the evening |
+| **in** | partes do dia | in the morning · in the afternoon · in the evening |
 
 **PROF:** At + time: at ten. On + day: on Tuesday. In + part of the day: in the morning.
 (PT: "at" com horas, "on" com dias, "in" com partes do dia. Excepções úteis: "at night" e "at the weekend".)
@@ -704,7 +706,7 @@ Verificação: Lab 5G (exercícios 1–9); conversa livre "Let's meet"; pergunta
 
 ### 5. Prática guiada: marque uma reunião (2 min 30 s)
 
-[ECRÃ: a sua agenda da semana: Monday — busy all day · Tuesday — free in the morning · Wednesday — busy · Thursday — free at 3 p.m.]
+[ECRÃ: a sua agenda da semana: Monday — busy all day · Tuesday — busy · Wednesday — busy · Thursday — free at 3 p.m. · Friday — busy]
 
 **PROF:** Look at your calendar. I'm a colleague. Can we meet on Monday?
 [PAUSA 5 s]
@@ -714,7 +716,7 @@ Verificação: Lab 5G (exercícios 1–9); conversa livre "Let's meet"; pergunta
 [ECRÃ: Sorry, I'm busy on Wednesday too.]
 **PROF:** Hmm. When are you free?
 [PAUSA 6 s]
-[ECRÃ: I'm free on Tuesday morning. / How about Thursday at three?]
+[ECRÃ: I'm free on Thursday at three. / How about Thursday at three?]
 **PROF:** Thursday at three is perfect. Now confirm.
 [PAUSA 5 s]
 [ECRÃ: Great. See you on Thursday at three.]

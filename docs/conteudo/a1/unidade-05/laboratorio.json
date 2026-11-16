@@ -259,6 +259,22 @@
      "explicacao": "Consoante + y → ies: studies."
     },
     {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Paulo [plays] football on Saturdays.",
+     "opcoes": [
+      {
+       "texto": "plaies",
+       "certa": false
+      },
+      {
+       "texto": "play",
+       "certa": false
+      }
+     ],
+     "explicacao": "Vogal + y: só se acrescenta \"s\": plays."
+    },
+    {
      "tipo": "escolher",
      "enunciado": "Qual é a frase correcta?",
      "opcoes": [
@@ -474,7 +490,7 @@
     },
     {
      "tipo": "responder",
-     "enunciado": "Does your boss or a colleague drive to work?",
+     "enunciado": "Does a colleague or a person in your family drive to work?",
      "frase": "does",
      "resposta": "Yes, he does. He drives to work every day.",
      "contexto": "Responda com \"Yes, he/she does\" ou \"No, he/she doesn't\" e mais uma frase."

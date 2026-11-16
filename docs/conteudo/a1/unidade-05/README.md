@@ -1,6 +1,6 @@
 # A1.1 · Unidade 5 — A day in Luanda (7 aulas)
 
-**Estado:** primeira versão escrita e revista ao escrever, com os 7 critérios das revisões anteriores; falta a revisão n.º 1 e a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 5
+**Estado:** primeira versão escrita e revista ([revisão n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 5
 
 ## Objectivos da unidade
 
@@ -23,7 +23,7 @@ No fim da unidade, o aluno consegue:
 | Ficheiro | Conteúdo | Pronto a carregar? |
 |---|---|---|
 | [guioes.md](guioes.md) | Os 7 guiões (5A a 5G) | Para o professor de IA |
-| [laboratorio.json](laboratorio.json) | 8 lições (5A a 5G e 5R), 76 exercícios: 15 de escuta, 10 de pronúncia, 8 de resposta livre | Sim: validado com `pratica_formato.validar` (0 erros) |
+| [laboratorio.json](laboratorio.json) | 8 lições (5A a 5G e 5R), 77 exercícios: 15 de escuta, 10 de pronúncia, 8 de resposta livre | Sim: validado com `pratica_formato.validar` (0 erros) |
 | [tutor.json](tutor.json) | Conversa guiada (depois da 5C): "Your day"; livre (no fim): "Let's meet" | Sim: campos do modelo `Situacao` |
 | [questionario.json](questionario.json) | 12 perguntas, aprovação a 70% | Sim: formato `quiz_data` |
 
@@ -57,6 +57,6 @@ No fim da unidade, o aluno consegue:
 
 ## O que falta para publicar
 
-O mesmo que nas unidades anteriores: revisão n.º 1, leitura pelos professores, vídeos com o professor de IA (com uma voz de narradora na 5B), áudio (15 escutas e 10 pronúncias), carregamento na plataforma e imagens (relógios digital e de ponteiros na 5A; o dia da Sílvia em animação na 5B; agenda na 5G; fotografias de transportes em Luanda na 5E).
+O mesmo que nas unidades anteriores: leitura pelos professores, vídeos com o professor de IA (com uma voz de narradora na 5B), áudio (15 escutas e 10 pronúncias), carregamento na plataforma e imagens (relógios digital e de ponteiros na 5A; o dia da Sílvia em animação na 5B; agenda na 5G; fotografias de transportes em Luanda na 5E).
 
 A seguir ao A1.1 vem a **Revisão 1 e o exame oral do A1.1** (plano, secção 5), que ainda não estão escritos.
