@@ -879,7 +879,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "His flight leaves from gate 14. Boarding is at seven twenty. The departure is at eight.",
+     "frase": "His flight is from gate 14. Boarding is at seven twenty. The departure is at eight.",
      "enunciado": "What time is boarding?",
      "opcoes": [
       {

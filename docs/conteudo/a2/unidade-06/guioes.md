@@ -432,7 +432,7 @@ Verificação: Lab 6E; pergunta 7 do questionário
 
 [ECRÃ: o cartão de embarque do Nuno — "Passenger: KAPINGA/NUNO · Flight: LAD → JNB · Gate: 14 · Boarding: 07:20 · Departure: 08:00 · Seat: 23A"; um painel de partidas com um voo "DELAYED" e outro "CANCELLED"]
 
-**PROF:** This is Nuno's boarding pass. You need it to get on the plane. His flight leaves from gate 14. Boarding is at seven twenty — that's when you get on the plane. The departure is at eight.
+**PROF:** This is Nuno's boarding pass. You need it to get on the plane. His flight is from gate 14. Boarding is at seven twenty — that's when you get on the plane. The departure is at eight.
 **PROF:** On the screen, one flight is delayed — it's late. Another flight is cancelled — there's no flight.
 **PROF:** At check-in, you give your suitcase. Your luggage goes on the plane. Your hand luggage — a small bag — stays with you.
 [PAUSA 3 s]
@@ -447,7 +447,7 @@ Verificação: Lab 6E; pergunta 7 do questionário
 [ECRÃ: a confirmação da reserva — "Jacaranda Park Hotel · Reservation for: Nuno Kapinga · Single room · Check-in: Mon 18 Jan · Check-out: Fri 22 Jan · Breakfast included"]
 
 **PROF:** Nuno has a reservation: a single room — for one person. A double room is for two. Breakfast is included — he doesn't have to pay for it.
-**PROF:** He checks in on Monday and checks out on Friday. At reception, they give him a key card to open the door.
+**PROF:** He's checking in on Monday and checking out on Friday. At reception, they give him a key card to open the door.
 [PAUSA 3 s]
 
 ### 4. O tempo (1 min)
