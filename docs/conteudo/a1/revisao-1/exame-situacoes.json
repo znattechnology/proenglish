@@ -1,0 +1,63 @@
+{
+ "exame": "A1.1",
+ "formato": "apps/practice/models.py Situacao (situações próprias do exame; ver exame.md, secção 4)",
+ "situacoes": [
+  {
+   "slug": "a1-1-exame-reuniao",
+   "nome": "A1.1 exam · Let's meet",
+   "papel_tutor": "A busy colleague.",
+   "descricao": "The examiner is a busy colleague who needs a meeting with the student this week. The examiner is busy on Monday and Tuesday and on Wednesday morning, and free on Wednesday at 2 p.m., Thursday all day and Friday morning. The student must propose a day and a time, accept a refusal, propose another, and confirm the day and the time.",
+   "nivel": "A1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm your colleague. I need a meeting with you this week. I'm busy on Monday and Tuesday. When are you free?"
+   },
+   "frases": [
+    "Can we meet on … at …?",
+    "How about…?",
+    "See you on … at …"
+   ]
+  },
+  {
+   "slug": "a1-1-exame-recepcao",
+   "nome": "A1.1 exam · At the reception",
+   "papel_tutor": "A receptionist at Mussulo Energy.",
+   "descricao": "The examiner is a receptionist. The student visits the company and has a meeting with Ms Kiala at ten. The student must greet, say who they are and their company, say who the meeting is with and the time, spell their surname and confirm their phone number (the examiner repeats it with one mistake: the student must correct it).",
+   "nivel": "A1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm a receptionist. You visit a company. You have a meeting with Ms Kiala. Good morning, can I help you?"
+   },
+   "frases": [
+    "I have a meeting with…",
+    "I work for…",
+    "Is that correct?"
+   ]
+  },
+  {
+   "slug": "a1-1-exame-visitante",
+   "nome": "A1.1 exam · A visitor",
+   "papel_tutor": "A visitor from South Africa.",
+   "descricao": "The examiner is a visitor from Johannesburg, South Africa, at the student's office for a meeting. It is the visitor's first time in Luanda; the visitor speaks English and Zulu, not Portuguese. The student must welcome the visitor, ask where they are from and what languages they speak, and introduce a colleague (This is… He's / She's…). The examiner asks \"Who is your colleague?\" if needed.",
+   "nivel": "A1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm a visitor from South Africa. I'm in your office for a meeting. Good morning!"
+   },
+   "frases": [
+    "Welcome to Angola!",
+    "Where are you from?",
+    "This is… He's / She's…"
+   ]
+  }
+ ]
+}

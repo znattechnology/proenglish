@@ -239,17 +239,17 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 
 ### Revisão 1 e exame oral do A1.1
 
-**Objectivo:** o aluno consegue manter uma entrevista pessoal de 3 a 4 minutos (nome, país, trabalho, família, rotina), respondendo e fazendo pelo menos duas perguntas.
+**Objectivo:** o aluno consegue manter uma conversa de 4 a 6 minutos sobre si (nome e soletração, cidade, trabalho, família), a sua rotina e a de outra pessoa, e resolver uma situação de trabalho (marcar uma reunião, registar-se numa recepção ou receber um visitante).
 
 | Aula | Título | Objectivo |
 |---|---|---|
-| R1A | Review: me, my work, my day | Rever *be*, *present simple* e as perguntas numa situação nova. |
-| R1B | Getting ready for the speaking exam | Mostrar como é o exame do A1.1 e praticar cada parte com exemplos. |
+| R1A | Review: me, my work, my day | Apresentar-se durante 2 minutos e fazer pelo menos três perguntas a outra pessoa; corrigir os 10 erros mais comuns do A1.1. |
+| R1B | Getting ready for the speaking exam | Conhecer as três partes do exame e o que se avalia, e usar três estratégias (*Can you say it again, please? I don't understand. Let me think.*). |
 
-- **Laboratório:** 2 lições de revisão com os erros mais frequentes das unidades 1 a 5.
+- **Laboratório:** 2 lições de revisão (unidades 1–3 e 4–5), com os erros mais comuns.
 - **Conversa:** "Getting to know a new colleague" — ensaio do exame.
 - **Questionário:** 15 perguntas sobre as unidades 1 a 5.
-- **Exame oral do A1.1:** ver secção 6.
+- **Exame oral do A1.1:** ver [a1/revisao-1/exame.md](a1/revisao-1/exame.md) — três partes (Interview, My day, Situation), guião do examinador, escala de avaliação do A1.1 e as mudanças necessárias na plataforma.
 
 ---
 
@@ -409,7 +409,7 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 
 A conversa guiada não tem nota mínima: serve para praticar com apoio.
 
-**Exame oral do A1.1 (4–5 minutos)** **[I]**:
+**Exame oral do A1.1 (4–6 minutos)** — versão completa em [a1/revisao-1/exame.md](a1/revisao-1/exame.md) **[I]**:
 1. **Entrevista** (2 min): nome, país, trabalho, família.
 2. **A minha rotina** (1–2 min): o dia do aluno e o de um colega.
 3. **Situação** (1–2 min): combinar uma reunião ou registar-se numa recepção (sorteada).
@@ -541,5 +541,5 @@ Verificação: Lab 6A (exercícios 1–8) e pergunta 3 do questionário da unida
 1. Revisão deste plano pelos professores (objectivos, ordem, contexto angolano).
 2. Decidir a regra do nível básico (recomendado: só o A2 concluído ou o teste).
 3. Fechar o inventário de vocabulário A1 a partir da NGSL, aferido com Oxford 3000 A1 e Cambridge A2 Key.
-4. ~~Escrever as unidades 1 a 5~~ — feito: [1](a1/unidade-01/README.md), [2](a1/unidade-02/README.md), [3](a1/unidade-03/README.md), [4](a1/unidade-04/README.md), [5](a1/unidade-05/README.md). Falta a revisão 1 e o exame oral do A1.1. Testar com o professor de IA depois da revisão.
+4. ~~Escrever as unidades 1 a 5~~ — feito: [1](a1/unidade-01/README.md), [2](a1/unidade-02/README.md), [3](a1/unidade-03/README.md), [4](a1/unidade-04/README.md), [5](a1/unidade-05/README.md). Revisão 1 e exame oral do A1.1: [a1/revisao-1](a1/revisao-1/README.md). O A1.1 está todo escrito. Testar com o professor de IA depois da revisão.
 5. Escolher o serviço de voz para as aulas "Real English" (vozes variadas).
