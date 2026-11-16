@@ -829,7 +829,7 @@
      "frase": "He applied [for] a job at the bank.",
      "opcoes": [
       {
-       "texto": "to",
+       "texto": "at",
        "certa": false
       },
       {
@@ -971,7 +971,7 @@
    "exercicios": [
     {
      "tipo": "escuta",
-     "frase": "I grew up in Huambo, in a family of seven children, so we didn't have much money.",
+     "frase": "We didn't have much money. After secondary school I wanted to study, but I needed a job.",
      "enunciado": "Why did Fátima need a job after school?",
      "opcoes": [
       {
@@ -1031,7 +1031,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "I didn't speak any Portuguese, but I said yes.",
+     "frase": "I didn't speak any Portuguese, but I said yes. I moved to Luanda in 2014. It was hard at the beginning.",
      "enunciado": "What was difficult for Tunde at the beginning?",
      "opcoes": [
       {
@@ -1051,7 +1051,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "I was working in a bank in Manchester, and I hated it.",
+     "frase": "I was working in a bank in Manchester, and I hated it. So I left my job.",
      "enunciado": "Why did Emma leave her job?",
      "opcoes": [
       {
@@ -1308,7 +1308,7 @@
      "tipo": "responder",
      "enunciado": "Tell me about yourself.",
      "frase": "Now",
-     "resposta": "I was born in Huíla, and I grew up in Lubango. After school I did a degree in management. In 2020 I got a job at a bank. Now I'm an analyst, and this month I'm preparing the annual report.",
+     "resposta": "I was born in Menongue, and I grew up in Lubango. After school I did a degree in management. In 2020 I got a job at a bank. Now I'm an analyst, and this month I'm preparing the annual report.",
      "contexto": "Origem, estudos, experiência e agora."
     },
     {

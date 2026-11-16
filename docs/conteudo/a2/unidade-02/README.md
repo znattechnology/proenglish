@@ -1,6 +1,6 @@
 # A2.1 · Unidade 2 — Life stories (7 aulas)
 
-**Estado:** primeira versão escrita, revista aula a aula ([revisão n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [03-plano-A2.md](../../03-plano-A2.md), unidade 2
+**Estado:** primeira versão escrita, com duas revisões aula a aula ([n.º 1](revisao-1.md) e [n.º 2](revisao-2.md)); falta a leitura dos professores · **Plano:** [03-plano-A2.md](../../03-plano-A2.md), unidade 2
 
 ## Objectivos da unidade
 
