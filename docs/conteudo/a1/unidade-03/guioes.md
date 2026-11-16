@@ -4,7 +4,7 @@ Guiões para o professor de IA. Conteúdo original da ProEnglish. Convenções e
 
 **Personagens novas desta unidade**
 
-- **Mateus** (já conhecido na unidade 2), engenheiro de Huambo; trabalha em projectos de petróleo em Cabinda.
+- **Mateus** (já conhecido na unidade 2), engenheiro da Kalandula Tech, de Huambo; trabalha em Cabinda, em projectos para empresas petrolíferas.
 - **Rosa**, recepcionista da Mussulo Energy, uma empresa fictícia de energia na Ilha de Luanda.
 - Na aula 3E: **Helena** (caixa de banco, Luanda), **Jorge** (enfermeiro, Lubango), **Kevin** (engenheiro britânico numa plataforma ao largo do Soyo), **Esperança** (professora, Malanje).
 
@@ -57,6 +57,11 @@ Verificação: Lab 3A (exercícios 1–9); perguntas 1 e 2 do questionário da u
 
 **PROF:** Remember: in English, a job has "a" or "an". I'm a nurse. I'm an engineer.
 (PT: Lembre-se: em inglês, a profissão leva sempre "a" ou "an". Em português não: "Sou enfermeira".)
+
+[ECRÃ: mais profissões, com imagens: a doctor · a lawyer · a driver · a bank teller · a manager · a salesperson · a mechanic · a secretary]
+
+**PROF:** More jobs. Listen and repeat.
+*(O professor diz cada profissão com "a" e espera 2 s.)*
 
 **PROF:** "An" is before a vowel sound: an engineer, an accountant, an IT technician — "I" says "ai".
 (PT: "An" antes de som de vogal. "IT" lê-se "ai-ti", por isso "an IT technician".)
@@ -140,7 +145,7 @@ Verificação: Lab 3B (exercícios 1–10); perguntas 3, 4, 5 e 6 do questionár
 [ECRÃ: cantina da Kalandula Tech, ao almoço]
 
 **SÍLVIA:** Mateus, what do you do?
-**MATEUS:** I'm an engineer. I work for an oil company.
+**MATEUS:** I'm an engineer. I work on projects for oil companies.
 **SÍLVIA:** Do you work in Luanda?
 **MATEUS:** No, I don't. I work in Cabinda. I travel a lot.
 **PAULO:** Do you speak English at work?
@@ -189,7 +194,15 @@ Verificação: Lab 3B (exercícios 1–10); perguntas 3, 4, 5 e 6 do questionár
 [ECRÃ: I work **for** Kalandula Tech (a empresa) · I work **in** Luanda / **in** an office (lugar) · I work **at** a bank / **at** a hospital (local de trabalho)]
 
 **PROF:** For a company: work for. For a city or an office: work in. For a bank or a hospital: work at or in.
-(PT: "work for" + empresa; "work in" + cidade ou escritório; "work at" + banco, hospital, escola.)
+(PT: "work for" + empresa; "work in" + cidade ou escritório; "work at" + banco, hospital, escola. Também se ouve "I work at" + nome da empresa: está certo, mas aqui treinamos "work for".)
+
+**Os dias de descanso**
+
+[ECRÃ: **on Saturdays** — aos sábados · **on Sundays** — aos domingos · **at the weekend** — ao fim-de-semana]
+
+**PROF:** I don't work on Saturdays. I don't work at the weekend.
+(PT: Os dias da semana estudam-se na unidade 5. Por agora: "on Saturdays", "on Sundays" e "at the weekend".)
+[PAUSA 3 s depois de cada frase]
 
 ### 4. Pronúncia (1 min)
 
@@ -218,7 +231,7 @@ Verificação: Lab 3B (exercícios 1–10); perguntas 3, 4, 5 e 6 do questionár
 
 **PROF:** Now tell me two things you do at work. Start with "I…".
 [PAUSA 10 s]
-[ECRÃ: exemplos — I answer the phone. I write emails. I help clients. I drive a truck.]
+[ECRÃ: exemplos — I answer the phone. I write emails. I help clients. I drive a car for the company.]
 
 **PROF (reciclagem — 2A e 2D):** Where are you from? What languages do you speak at work?
 [PAUSA 8 s]
@@ -327,9 +340,17 @@ Verificação: Lab 3C (exercícios 1–9); perguntas 7 e 8 do questionário
 [PAUSA 4 s]
 **PROF:** And your phone number?
 [PAUSA 8 s]
-**PROF:** Is that correct? Say yes, or correct me.
+
+**PROF:** Now imagine: your number is nine two three, four five one, eight zero six. I write it, and I check.
+(PT: Agora imagine que o seu número é o do ecrã. Eu confirmo-o, às vezes com erro.)
+[ECRÃ: o seu número: 923 451 806]
+**PROF:** Nine two three, four five one, eight zero six. Is that correct?
 [PAUSA 4 s]
-[ECRÃ: Yes, that's right. / No, it's …]
+[ECRÃ: Yes, that's right.]
+**PROF:** And your email: paulo dot mendis at kalandula dot co dot A, O. Is that correct?
+[ECRÃ: o seu e-mail: paulo.mendes@kalandula.co.ao]
+[PAUSA 6 s]
+[ECRÃ: No, it's Mendes: M, E, N, D, E, S.]
 
 ### 6. Fecho (30 s)
 
@@ -520,7 +541,7 @@ Verificação: Lab 3F (exercícios 1–9); conversa livre "Networking at an even
 
 **Na recepção**
 
-[ECRÃ: **Can I help you?** — Posso ajudar? · **I have a meeting with Ms Kiala at ten.** — Tenho uma reunião com a Sra. Neto às dez. · **Do you have your ID card?** — Tem o bilhete de identidade? · **Here you are.** — Aqui tem. · **Please sit down.** — Sente-se, por favor.]
+[ECRÃ: **Can I help you?** — Posso ajudar? · **I have a meeting with Ms Kiala at ten.** — Tenho uma reunião com a Sra. Kiala às dez. · **Do you have your ID card?** — Tem o bilhete de identidade? · **Here you are.** — Aqui tem. · **Please sit down.** — Sente-se, por favor.]
 
 **PROF:** At a reception, they ask: Can I help you? You say who you are and why you're there: I have a meeting with Ms Kiala.
 (PT: Na recepção perguntam "Can I help you?". Diga quem é e com quem tem reunião.)
@@ -562,9 +583,11 @@ Verificação: Lab 3F (exercícios 1–9); conversa livre "Networking at an even
 **PROF:** And your phone number?
 [PAUSA 8 s]
 
-**PROF:** (repete o número com um erro) Nine two four… Is that correct?
-[PAUSA 5 s]
-[ECRÃ: No, it's … / Yes, that's right.]
+**PROF:** Imagine your number is on the screen. I check it: nine one two, three five four, six seven eight. Is that correct?
+(PT: Imagine que o seu número é o do ecrã. O recepcionista enganou-se: corrija-o.)
+[ECRÃ: o seu número: 912 345 678 · o que o recepcionista disse: 912 354 678]
+[PAUSA 6 s]
+[ECRÃ: No, it's nine one two, three four five, six seven eight.]
 
 **PROF:** Do you have your ID card?
 [PAUSA 4 s]

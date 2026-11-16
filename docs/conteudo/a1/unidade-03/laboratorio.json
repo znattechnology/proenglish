@@ -246,7 +246,7 @@
      "frase": "I work [for] Kalandula Tech.",
      "opcoes": [
       {
-       "texto": "at",
+       "texto": "of",
        "certa": false
       },
       {
@@ -254,7 +254,7 @@
        "certa": false
       }
      ],
-     "explicacao": "\"Work for\" + empresa."
+     "explicacao": "\"Work for\" + empresa. (\"Work at\" + empresa também se ouve.)"
     },
     {
      "tipo": "ordenar",
@@ -264,7 +264,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "I'm an engineer. I work for an oil company. I work in Cabinda.",
+     "frase": "I'm an engineer. I work on projects for oil companies. I work in Cabinda.",
      "enunciado": "Onde trabalha o Mateus?",
      "opcoes": [
       {

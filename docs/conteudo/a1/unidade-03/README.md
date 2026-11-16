@@ -1,6 +1,6 @@
 # A1.1 · Unidade 3 — My job
 
-**Estado:** primeira versão escrita e revista ao escrever (critérios das revisões das unidades [1](../unidade-01/revisao-1.md) e [2](../unidade-02/revisao-1.md)); falta a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 3
+**Estado:** primeira versão escrita e revista ([revisão n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 3
 
 ## Objectivos da unidade
 
@@ -39,7 +39,7 @@ O objectivo 4 não tem conversa com o tutor própria: treina-se na prática guia
 
 ## Personagens
 
-A equipa da Kalandula Tech, o **Mateus** (engenheiro em Cabinda), a **Rosa** (recepcionista da Mussulo Energy, empresa fictícia na Ilha de Luanda) e a **Sra. Kiala** (Finanças, Mussulo Energy). Na 3E: **Helena** (caixa de banco, Luanda), **Jorge** (enfermeiro, Lubango), **Kevin** (engenheiro britânico numa plataforma perto do Soyo), **Esperança** (professora, Malanje). No tutor: **Daniel** (vendas, telecomunicações).
+A equipa da Kalandula Tech, o **Mateus** (engenheiro da Kalandula Tech, em projectos para empresas petrolíferas em Cabinda), a **Rosa** (recepcionista da Mussulo Energy, empresa fictícia na Ilha de Luanda) e a **Sra. Kiala** (Finanças, Mussulo Energy). Na 3E: **Helena** (caixa de banco, Luanda), **Jorge** (enfermeiro, Lubango), **Kevin** (engenheiro britânico numa plataforma perto do Soyo), **Esperança** (professora, Malanje). No tutor: **Daniel** (vendas, telecomunicações).
 
 ## Decisões pedagógicas desta unidade
 

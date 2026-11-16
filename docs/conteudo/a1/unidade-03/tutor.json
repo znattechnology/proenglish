@@ -19,7 +19,7 @@
     "What do you do?"
    ],
    "extras": {
-    "brief": "Guided practice for a beginner (A1, unit 3). You are a friendly teacher. Ask the student: What do you do? Where do you work? What do you do at work? Where do you live? Then ask the student to ask you the same; you are a teacher at a school in Lubango and you live in Lubango. Use only units 1-3 language: be, jobs with a/an, present simple with I/you only (never he/she works), work for/at/in, live in. If the student says \"I am engineer\", model \"I'm an engineer\" kindly and continue. If the student is unemployed or a student, accept it and ask what job they want, using \"What job do you want?\" only if needed.",
+    "brief": "Guided practice for a beginner (A1, unit 3). You are a friendly teacher. Ask the student: What do you do? Where do you work? What do you do at work? Where do you live? Then ask the student to ask you the same; you are a teacher at a school in Lubango and you live in Lubango. Use only units 1-3 language: be, jobs with a/an, present simple with I/you only (never he/she works), work for/at/in, live in. If the student says \"I am engineer\", model \"I'm an engineer\" kindly and continue. If the student is unemployed, retired or a student, accept it warmly and move on to \"Where do you live?\".",
     "primeira_fala": "Hello, {nome}! What do you do?",
     "primeira_fala_simples": "Hello! What's your job?",
     "guiao": [
