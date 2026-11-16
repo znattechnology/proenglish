@@ -408,6 +408,8 @@ Versão completa em [a2/unidade-10/](a2/unidade-10/README.md) **[I]**.
 
 ### Revisão 2 e exame oral do A2.2
 
+Versão completa em [a2/revisao-2/](a2/revisao-2/README.md) **[I]**.
+
 **Objectivo:** o aluno consegue manter uma conversa de 7 a 8 minutos sobre experiências, novidades e o seu trabalho, explicar um problema e resolver uma situação de serviço ou de trabalho.
 
 | Aula | Título | Objectivo |
@@ -437,7 +439,7 @@ As peças e o peso são os do A1 ([plano do A1, secção 6](02-plano-A1.md#6-ava
 2. **Uma história** (1–2 min): o aluno conta uma situação do passado a partir de uma pergunta (*Tell me about a difficult day at work.*), com *past simple*, *past continuous* e sequenciadores.
 3. **Situação** (2–3 min), sorteada de quatro: remarcar uma reunião; convidar e combinar; comparar duas opções e recomendar; dar conselho a um colega doente.
 
-**Exame oral do A2.2 (7–8 minutos)** **[I]**:
+**Exame oral do A2.2 (7–8 minutos)** — versão completa em [a2/revisao-2/exame.md](a2/revisao-2/exame.md) **[I]**:
 1. **Entrevista** (2 min): experiências e novidades (*Have you ever…? What's new at work? How long have you worked there?*).
 2. **Explicar** (2 min): o aluno explica como funciona uma coisa que usa no trabalho ou o ponto de situação de um trabalho.
 3. **Situação** (3 min), sorteada de cinco: problema no hotel; mala perdida; apoio técnico; reclamação (o aluno reclama); cliente insatisfeito (o aluno resolve).

@@ -1,0 +1,107 @@
+{
+ "exame": "A2.2",
+ "formato": "apps/practice/models.py Situacao (situações próprias do exame; extras.exame = true; carregar com manage.py carregar_exame_curso)",
+ "situacoes": [
+  {
+   "slug": "a2-2-exame-hotel",
+   "nome": "A2.2 exam · A problem with the room",
+   "papel_tutor": "A hotel receptionist in Benguela.",
+   "descricao": "The examiner is the receptionist of a hotel in Benguela. The student is a guest on a work trip and arrived today. There is a problem with the room (the student chooses: the air conditioning doesn't work, there's no hot water, the Wi-Fi doesn't work, or it's the wrong room). The student must explain the problem politely (I'm sorry, but… / There's a problem with…), say what they have already tried (I've turned it off and on again), and ask for a solution with could (Could you send someone? Could I have another room?). The examiner offers a first solution that is not good for the student once (I'm afraid the technician can't come today. He'll come tomorrow at ten.), and the student must explain why (I have an early meeting tomorrow) and ask for another solution. Then the examiner gives the student another room, and asks for the student's room number to confirm.",
+   "nivel": "A2",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. You're on a work trip in Benguela, and you arrived at your hotel today. There's a problem with your room. I'm the receptionist. Good evening. How can I help you?"
+   },
+   "frases": [
+    "I'm sorry, but there's a problem with my room.",
+    "I've already tried…, but it still doesn't work.",
+    "Could you send someone?",
+    "Could I have another room, please?"
+   ]
+  },
+  {
+   "slug": "a2-2-exame-mala",
+   "nome": "A2.2 exam · Lost luggage",
+   "papel_tutor": "An airline agent at the airport in Luanda.",
+   "descricao": "The examiner is an airline agent at the lost luggage desk at the airport in Luanda. The student has just arrived on a flight from Lisbon, and their suitcase hasn't arrived. The student must explain what happened, describe the suitcase (colour, size, something on it, what's inside), give the flight number or the place they flew from, and give a phone number or a hotel (the student invents them). The examiner asks two questions (What colour is it? What's inside it?). Then the examiner says: It's in Lisbon. We'll deliver it to your hotel in three days. The student must say why that is a problem (I have an important meeting tomorrow, and my suit is in the suitcase) and ask for a better solution; the examiner then offers the next flight and delivery tomorrow evening, or money for new clothes.",
+   "nivel": "A2",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. You've just arrived in Luanda on a flight from Lisbon, but your suitcase hasn't arrived. I'm the airline agent. Good afternoon. Can I help you?"
+   },
+   "frases": [
+    "My suitcase hasn't arrived.",
+    "It's a big black suitcase with a red ribbon.",
+    "I have an important meeting tomorrow.",
+    "Could you deliver it today, please?"
+   ]
+  },
+  {
+   "slug": "a2-2-exame-apoio",
+   "nome": "A2.2 exam · Help desk call",
+   "papel_tutor": "A technician at the IT help desk.",
+   "descricao": "The examiner is a technician at the IT help desk. The student calls because something doesn't work (the student chooses: the laptop doesn't connect to the network, the printer doesn't print, or the email doesn't open). The student must say who they are and why they are calling, explain what happened and what the screen or the light says, and follow the examiner's instructions, saying what happens after each one (OK, done. / Nothing happens. / The light is green now.). The examiner gives one instruction at a time. The first instruction doesn't solve the problem; the student must say so clearly. The second one solves it. At the end, the examiner gives a reference number in words (six, two, oh, eight), and the student must repeat it.",
+   "nivel": "A2",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. Something on your computer doesn't work, and you call the IT help desk. I'm the technician. Help desk, good morning. How can I help you?"
+   },
+   "frases": [
+    "I'm calling because… doesn't work.",
+    "When I try to…, it says…",
+    "OK, done. Nothing happens.",
+    "Could you repeat the reference number, please?"
+   ]
+  },
+  {
+   "slug": "a2-2-exame-reclamacao",
+   "nome": "A2.2 exam · Make a complaint",
+   "papel_tutor": "A customer service agent of an internet provider.",
+   "descricao": "The examiner is a customer service agent of the student's internet provider (or the student's phone company, if the student prefers). The student calls to make a complaint: the internet has been very slow since last week. The student must say why they are calling (I'm calling about… I'd like to make a complaint.), explain the problem with since or for, say what they have already done (I've restarted the router. I've called you twice.), and say what they want (I'd like a technician / a discount). The examiner asks for the customer number once. Then the examiner refuses the first request once (I'm afraid there's no technician free this week.), and the student must insist politely and ask for another solution; then the examiner offers a technician on Monday and a discount.",
+   "nivel": "A2",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. Your internet at home has been very slow, and you call your internet provider. I'm the customer service agent. Good morning. How can I help you?"
+   },
+   "frases": [
+    "I'm calling about my internet. I'd like to make a complaint.",
+    "It's been very slow since last week.",
+    "I've restarted the router, but it's still slow.",
+    "I'd like a discount for this month."
+   ]
+  },
+  {
+   "slug": "a2-2-exame-cliente",
+   "nome": "A2.2 exam · An unhappy customer",
+   "papel_tutor": "Jo Duarte, the office manager of a company in Luanda, a client of the student's company.",
+   "descricao": "The examiner is Jo Duarte, the office manager of a company in Luanda and a client of the student's company. Jo is unhappy but not rude: Jo ordered twelve desk phones two weeks ago; ten arrived on Monday, and two of them don't work. The student must say sorry, ask for the order number (Jo says: P, H, three, three, oh, five), repeat the details to check (So, two phones haven't arrived, and two don't work. Is that right?), propose a solution with a day (We'll send… by…), and close politely (Thank you for your patience. I'll send you an email.). The examiner makes one objection to the first solution (But we have new staff on Thursday! We need them before that!) and the student must find a new solution or a faster day. If the student's English is unclear, Jo asks once: Sorry, can you say that again?",
+   "nivel": "A2",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm Jo Duarte, a client of your company. I'm calling about our order, and I'm not happy. We ordered twelve desk phones two weeks ago. Only ten have arrived, and two of them don't work!"
+   },
+   "frases": [
+    "I'm very sorry to hear that.",
+    "Could I have your order number, please?",
+    "So, … Is that right?",
+    "We'll send them by Wednesday.",
+    "Thank you for your patience."
+   ]
+  }
+ ]
+}

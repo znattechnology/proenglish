@@ -1,0 +1,81 @@
+{
+ "unidade": "A2.2 · Review 2",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a2-r2-ensaio",
+   "nome": "A2 Review 2 · A visitor from abroad",
+   "tipo": "livre",
+   "depois_da_aula": "R2B",
+   "descricao": "Ensaio do exame oral do A2.2: o tutor é Rowan, um cliente estrangeiro de visita à empresa do aluno. Conversam sobre experiências e novidades; o aluno explica como funciona uma coisa do seu trabalho; no fim, o Rowan tem um problema (o portátil não liga à rede Wi-Fi) e o aluno ajuda com instruções.",
+   "papel_tutor": "Rowan, um cliente estrangeiro de visita a Luanda.",
+   "nivel": "A2",
+   "duracao_min": 8,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Have you ever…? — Yes, I have. I went…",
+    "I've just… I haven't… yet.",
+    "First, you… Then… If you…",
+    "Could you…, please?"
+   ],
+   "extras": {
+    "brief": "Exam rehearsal for an elementary learner (A2.2, units 6-10). You are Rowan, a client from abroad, visiting the student's company in Luanda for the first time (Rowan can be a man or a woman, to match your voice; you live in Nairobi). Have a friendly conversation in three parts. 1) Experiences and news: have you ever travelled for work (then ask when and where); what's new at work; how long have you worked there. 2) Explain: \"Tell me about a program or a machine at your work. What is it for, and how does it work?\", then \"What happens if it doesn't work?\". 3) A problem: your laptop doesn't connect to the office Wi-Fi. Ask the student for help, follow the student's instructions one by one, and say what happens after each one (\"OK, done.\" / \"Nothing happens.\"). The first instruction does not solve the problem; the second one does. If the student answers with one word, ask \"Can you tell me more?\" once. If the student asks \"Do you mean…?\", answer and repeat the question in other words. Answer the student's questions about you: you have been to Luanda once before, in 2025; you arrived on Sunday; you are flying home on Friday; you have never been to the Miradouro da Lua. Use only A1 and A2 language: no second conditional or hypothetical would, no passive, no relative clauses, no used to, no past perfect, no present perfect continuous, no too / enough. One question at a time. Correct gently by repeating the sentence correctly, only for: \"I've been… last year\" (→ I went… last year), \"I work here since…\" (→ I've worked here since…), \"If it will…\" (→ If it…), \"Could you to…\" (→ Could you…).",
+    "primeira_fala": "Hi, {nome}! I'm Rowan, from Nairobi. It's my first visit to your office. Tell me, have you ever travelled for work?",
+    "primeira_fala_simples": "Hi! I'm Rowan. Have you ever travelled for work?",
+    "guiao": [
+     "I see. And where did you go on your last holiday?",
+     "And what's new at work these days?",
+     "How long have you worked there?",
+     "Now tell me about a program or a machine at your work. What is it for, and how does it work?",
+     "What happens if it doesn't work?",
+     "Oh, can you help me? My laptop doesn't connect to the Wi-Fi. What should I do?",
+     "OK… done. Hmm, nothing happens.",
+     "OK… done. Yes! It's working now. Thank you, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "Yes, I have. I went to Lobito in March.",
+      "pt": "Sim. Fui ao Lobito em Março."
+     },
+     {
+      "en": "We've just moved to a new office.",
+      "pt": "Acabámos de mudar para um escritório novo."
+     },
+     {
+      "en": "I've worked there since 2021.",
+      "pt": "Trabalho lá desde 2021."
+     },
+     {
+      "en": "First, you log in. Then you choose the client.",
+      "pt": "Primeiro, entra na conta. Depois, escolhe o cliente."
+     },
+     {
+      "en": "Sorry, I mean…",
+      "pt": "Desculpe, quero dizer…"
+     }
+    ],
+    "palavras": [
+     "ever",
+     "been",
+     "went",
+     "just",
+     "since",
+     "first",
+     "then",
+     "if",
+     "could"
+    ],
+    "minutos_sugeridos": 8
+   },
+   "criterios": [
+    "Fala de experiências com o present perfect e dá os pormenores com o past simple.",
+    "Dá novidades com just / already / yet e diz há quanto tempo com for / since.",
+    "Explica como funciona uma coisa por passos (first, then) e com if.",
+    "Ajuda o Rowan com instruções claras, uma de cada vez, e propõe outra quando a primeira não resulta.",
+    "Responde com duas ou três frases ligadas e faz pelo menos uma pergunta ao tutor.",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

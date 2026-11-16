@@ -1,0 +1,411 @@
+{
+ "unidade": "A2.2 · Review 2",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "A2R2-1",
+   "titulo": "Review 2: experiences, news and technology",
+   "aula": "R2A",
+   "objectivo": "Rever as unidades 6 a 8 do A2: present perfect e past simple, os futuros e o 1.º condicional, com os erros mais comuns.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've [been] to Lisbon twice. The first time, I [went] there in 2019.",
+     "opcoes": [
+      {
+       "texto": "gone",
+       "certa": false
+      },
+      {
+       "texto": "have gone",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I went to Lubango last year.",
+       "certa": true
+      },
+      {
+       "texto": "I've been to Lubango last year.",
+       "certa": false
+      },
+      {
+       "texto": "I've gone to Lubango last year.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Have you ever been to Lagos?",
+       "certa": true
+      },
+      {
+       "texto": "Have you ever went to Lagos?",
+       "certa": false
+      },
+      {
+       "texto": "Did you ever been to Lagos?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've worked here [since] 2020.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "in",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I haven't finished it yet.",
+       "certa": true
+      },
+      {
+       "texto": "I haven't finished yet it.",
+       "certa": false
+      },
+      {
+       "texto": "I haven't yet finished it yet.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Your friend has a new job. You heard about it five minutes ago. Choose the sentence.",
+     "opcoes": [
+      {
+       "texto": "I've just heard the news!",
+       "certa": true
+      },
+      {
+       "texto": "I just hear the news!",
+       "certa": false
+      },
+      {
+       "texto": "I've heard the news last week!",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If it rains, we'll stay at home.",
+       "certa": true
+      },
+      {
+       "texto": "If it will rain, we'll stay at home.",
+       "certa": false
+      },
+      {
+       "texto": "If it rains, we stayed at home.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The printer doesn't work.",
+       "certa": true
+      },
+      {
+       "texto": "The printer is not work.",
+       "certa": false
+      },
+      {
+       "texto": "The printer not works.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "It's in your diary: Monday, training in Johannesburg. Choose the sentence.",
+     "opcoes": [
+      {
+       "texto": "I'm flying to Johannesburg on Monday.",
+       "certa": true
+      },
+      {
+       "texto": "I fly to Johannesburg last Monday.",
+       "certa": false
+      },
+      {
+       "texto": "I've flown to Johannesburg on Monday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Yes, I've already called my mother in Lubango. But I haven't told Paulo yet. He's on holiday this week.",
+     "enunciado": "Who hasn't Nuno told yet?",
+     "opcoes": [
+      {
+       "texto": "Paulo",
+       "certa": true
+      },
+      {
+       "texto": "his mother",
+       "certa": false
+      },
+      {
+       "texto": "Thandi",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I've already called my mother, but I haven't told Paulo yet.",
+     "enunciado": "Ouça e repita: already e yet."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's new? Have you done anything interesting recently?",
+     "frase": "I've",
+     "resposta": "I've just started a new project at work, and I've already met the client twice. But I haven't finished the plan yet.",
+     "contexto": "just, already e yet."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Have you ever travelled for work? Tell me about one trip.",
+     "frase": "I went",
+     "resposta": "Yes, I have. I've been to Lobito three times. The last time, I went there in March for a meeting with a client.",
+     "contexto": "Present perfect e depois past simple com a data."
+    }
+   ]
+  },
+  {
+   "codigo": "A2R2-2",
+   "titulo": "Review 2: customer service, interviews and the exam",
+   "aula": "R2B",
+   "objectivo": "Rever as unidades 9 e 10 do A2 e as estratégias do exame.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Could you] send me the details, please?",
+     "opcoes": [
+      {
+       "texto": "Could you to",
+       "certa": false
+      },
+      {
+       "texto": "You could",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I enjoy speaking English.",
+       "certa": true
+      },
+      {
+       "texto": "I enjoy to speak English.",
+       "certa": false
+      },
+      {
+       "texto": "I enjoy speak English.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've decided [to apply] for the job.",
+     "opcoes": [
+      {
+       "texto": "applying",
+       "certa": false
+      },
+      {
+       "texto": "apply",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "She speaks English well.",
+       "certa": true
+      },
+      {
+       "texto": "She speaks well English.",
+       "certa": false
+      },
+      {
+       "texto": "She speaks English good.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I'm good at solving problems.",
+       "certa": true
+      },
+      {
+       "texto": "I'm good in solve problems.",
+       "certa": false
+      },
+      {
+       "texto": "I'm good at solve problems.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A client is angry: the order is late. What do you say first?",
+     "opcoes": [
+      {
+       "texto": "I'm very sorry to hear that.",
+       "certa": true
+      },
+      {
+       "texto": "It isn't my problem.",
+       "certa": false
+      },
+      {
+       "texto": "Are you sure?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You said \"I've been to Lisbon last year\". You hear the mistake. What do you say?",
+     "opcoes": [
+      {
+       "texto": "Sorry, I mean, I went to Lisbon last year.",
+       "certa": true
+      },
+      {
+       "texto": "No, no, no. Next question.",
+       "certa": false
+      },
+      {
+       "texto": "I don't speak English.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You don't understand the examiner's question. What do you say?",
+     "opcoes": [
+      {
+       "texto": "Can you repeat that, please?",
+       "certa": true
+      },
+      {
+       "texto": "What?",
+       "certa": false
+      },
+      {
+       "texto": "I don't know. Next.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "If it stops, we call the IT help desk. If they can't fix it quickly, we'll use the old system, on paper.",
+     "enunciado": "What will they use if the help desk can't fix it?",
+     "opcoes": [
+      {
+       "texto": "the old system, on paper",
+       "certa": true
+      },
+      {
+       "texto": "a new program",
+       "certa": false
+      },
+      {
+       "texto": "the bank's app",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I've been to Lisbon last year — sorry, I mean, I went to Lisbon last year.",
+     "enunciado": "Ouça e repita a estratégia nova: Sorry, I mean…"
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a program or a machine at your work. How does it work?",
+     "frase": "First",
+     "resposta": "We use a program for the orders. First, you log in. Then you choose the client and type the order. If the order is over one million kwanzas, the system sends it to the manager.",
+     "contexto": "Passos com first, then e if."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "I'm a client. My internet has been very slow for a week! What do you say?",
+     "frase": "sorry",
+     "resposta": "I'm very sorry to hear that. Could I have your customer number, please? I'll send a technician tomorrow morning, and I'll call you after the visit.",
+     "contexto": "Desculpa, pormenores e solução com prazo."
+    }
+   ]
+  }
+ ]
+}

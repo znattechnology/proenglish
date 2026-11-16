@@ -1,0 +1,373 @@
+{
+ "title": "A2.2 Review 2 quiz — Units 6 to 10",
+ "description": "Questionário de revisão das unidades 6 a 10 do A2.",
+ "questions": [
+  {
+   "id": "a2r2q1",
+   "question": "U6. Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "a2r2q1o0",
+     "text": "I've never been to Lagos.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q1o1",
+     "text": "I've never went to Lagos.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q1o2",
+     "text": "I never have been to Lagos.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q1o0",
+   "explanation": "never + particípio (been).",
+   "points": 10
+  },
+  {
+   "id": "a2r2q2",
+   "question": "U6. \"She's gone to Lobito\" quer dizer:",
+   "options": [
+    {
+     "id": "a2r2q2o0",
+     "text": "Foi para o Lobito e ainda lá está.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q2o1",
+     "text": "Esteve no Lobito e já voltou.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q2o2",
+     "text": "Vai ao Lobito amanhã.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q2o0",
+   "explanation": "gone = ainda lá está; been = já voltou.",
+   "points": 10
+  },
+  {
+   "id": "a2r2q3",
+   "question": "U6. Complete: \"I've been to Lisbon. I ___ there in 2023.\"",
+   "options": [
+    {
+     "id": "a2r2q3o0",
+     "text": "went",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q3o1",
+     "text": "'ve gone",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q3o2",
+     "text": "go",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q3o0",
+   "explanation": "Com uma data: past simple.",
+   "points": 10
+  },
+  {
+   "id": "a2r2q4",
+   "question": "U7. Complete: \"I've ___ heard the news!\"",
+   "options": [
+    {
+     "id": "a2r2q4o0",
+     "text": "just",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q4o1",
+     "text": "yet",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q4o2",
+     "text": "since",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q4o0",
+   "explanation": "Novidade recente: just.",
+   "points": 10
+  },
+  {
+   "id": "a2r2q5",
+   "question": "U7. Complete: \"Have you finished the report ___?\"",
+   "options": [
+    {
+     "id": "a2r2q5o0",
+     "text": "yet",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q5o1",
+     "text": "already",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q5o2",
+     "text": "since",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q5o0",
+   "explanation": "Pergunta: yet, no fim.",
+   "points": 10
+  },
+  {
+   "id": "a2r2q6",
+   "question": "U7. Complete: \"I've worked here ___ three years.\"",
+   "options": [
+    {
+     "id": "a2r2q6o0",
+     "text": "for",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q6o1",
+     "text": "since",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q6o2",
+     "text": "during",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q6o0",
+   "explanation": "Um período: for.",
+   "points": 10
+  },
+  {
+   "id": "a2r2q7",
+   "question": "U8. Complete: \"If you press this button, the screen ___ off.\"",
+   "options": [
+    {
+     "id": "a2r2q7o0",
+     "text": "turns",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q7o1",
+     "text": "will turning",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q7o2",
+     "text": "turned",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q7o0",
+   "explanation": "Condicional zero: presente + presente.",
+   "points": 10
+  },
+  {
+   "id": "a2r2q8",
+   "question": "U8. Complete: \"If the power ___ off, we'll use the generator.\"",
+   "options": [
+    {
+     "id": "a2r2q8o0",
+     "text": "goes",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q8o1",
+     "text": "'ll go",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q8o2",
+     "text": "went",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q8o0",
+   "explanation": "Depois de if, o presente.",
+   "points": 10
+  },
+  {
+   "id": "a2r2q9",
+   "question": "U8. Complete: \"I think it ___ be ready on Friday.\"",
+   "options": [
+    {
+     "id": "a2r2q9o0",
+     "text": "'ll",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q9o1",
+     "text": "'s going",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q9o2",
+     "text": "is",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q9o0",
+   "explanation": "Previsão com I think: will.",
+   "points": 10
+  },
+  {
+   "id": "a2r2q10",
+   "question": "U9. Qual é o pedido mais educado?",
+   "options": [
+    {
+     "id": "a2r2q10o0",
+     "text": "Could you check the invoice, please?",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q10o1",
+     "text": "Check the invoice.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q10o2",
+     "text": "I want the invoice now.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q10o0",
+   "explanation": "Could you…, please?",
+   "points": 10
+  },
+  {
+   "id": "a2r2q11",
+   "question": "U9. Complete: \"I forgot ___ the email.\"",
+   "options": [
+    {
+     "id": "a2r2q11o0",
+     "text": "to send",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q11o1",
+     "text": "send",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q11o2",
+     "text": "sended",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q11o0",
+   "explanation": "forget + to.",
+   "points": 10
+  },
+  {
+   "id": "a2r2q12",
+   "question": "U9. \"Atender o telefone\" em inglês é:",
+   "options": [
+    {
+     "id": "a2r2q12o0",
+     "text": "answer the phone",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q12o1",
+     "text": "attend the phone",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q12o2",
+     "text": "atend the phone",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q12o0",
+   "explanation": "Falso amigo: attend = assistir a.",
+   "points": 10
+  },
+  {
+   "id": "a2r2q13",
+   "question": "U10. Complete: \"He checks everything ___.\"",
+   "options": [
+    {
+     "id": "a2r2q13o0",
+     "text": "carefully",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q13o1",
+     "text": "careful",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q13o2",
+     "text": "carefuly",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q13o0",
+   "explanation": "Advérbio de modo.",
+   "points": 10
+  },
+  {
+   "id": "a2r2q14",
+   "question": "U10. Complete: \"I'm good ___ organising things.\"",
+   "options": [
+    {
+     "id": "a2r2q14o0",
+     "text": "at",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q14o1",
+     "text": "to",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q14o2",
+     "text": "of",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q14o0",
+   "explanation": "good at + -ing.",
+   "points": 10
+  },
+  {
+   "id": "a2r2q15",
+   "question": "U10. \"Ela é muito sensível.\" Em inglês:",
+   "options": [
+    {
+     "id": "a2r2q15o0",
+     "text": "She's very sensitive.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r2q15o1",
+     "text": "She's very sensible.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r2q15o2",
+     "text": "She's very sensibel.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r2q15o0",
+   "explanation": "Falso amigo: sensible = sensato.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
