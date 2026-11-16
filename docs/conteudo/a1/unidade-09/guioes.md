@@ -215,6 +215,8 @@ Verificação: Lab 9B (exercícios 1–10); perguntas 3 e 4 do questionário
 (PT: Para se perceber a diferença, o "can" na frase é fraco e curto; o "can't" é longo e forte.)
 [PAUSA 3 s]
 **PROF:** I can swim — I can't swim. [PAUSA 4 s]
+**PROF:** In American English, can't is /kænt/ — like "can" with a "t". Listen for the strong vowel and the "t".
+(PT: No inglês americano, "can't" diz-se /kænt/, quase como "can". A diferença ouve-se na força da palavra e no "t" no fim. Na 9F vai ouvir "can" e "can't" com sotaques diferentes.)
 
 ### 5. Prática guiada (2 min)
 
@@ -336,6 +338,9 @@ Verificação: Lab 9C (exercícios 1–10); perguntas 5 e 6 do questionário
 **PROF:** Are they sleeping? (imagem 3)
 [PAUSA 4 s]
 [ECRÃ: No, they aren't. They're talking on the phone.]
+**PROF:** And him? Is he walking? (imagem 4)
+[PAUSA 4 s]
+[ECRÃ: No, he isn't. He's driving.]
 **PROF:** And you? What are you doing now?
 [PAUSA 5 s]
 [ECRÃ: I'm learning English. / I'm watching a video.]
@@ -533,7 +538,7 @@ Objectivo da aula: No fim, o aluno consegue identificar, em três testemunhos e 
 Objectivo da unidade a que serve: 1, 2, 3
 Língua: unidades 1–9, sem estruturas novas
 Vozes: Kátia (angolana, joga basquetebol), Samuel (angolano, canta num coro), Lisa (britânica,
-  aprende a dançar kizomba); uma chamada entre a Kátia e uma amiga
+  aprende a dançar kizomba); uma chamada entre a Kátia e uma amiga norte-americana
 Velocidade: quase natural
 Duração: 9 min
 Verificação: Lab 9F (exercícios 1–8); pergunta 10 do questionário
@@ -548,7 +553,7 @@ Verificação: Lab 9F (exercícios 1–8); pergunta 10 do questionário
 
 **PROF:** First: what's each person's hobby?
 
-**KÁTIA:** I'm Kátia. I love playing basketball. I play with my team every Saturday morning. I'm not very tall, but I can run very fast! And I don't mind losing… well, not really!
+**KÁTIA:** I'm Kátia. I love playing basketball. I play with my team every Saturday morning. I'm not very tall, but I can run very fast! And I love winning!
 
 **SAMUEL:** My name's Samuel. I sing in a church choir. We practise on Fridays and we sing every Sunday. I can't play an instrument, but I can sing!
 
