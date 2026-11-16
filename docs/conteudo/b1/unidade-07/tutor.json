@@ -1,0 +1,144 @@
+{
+ "unidade": "B1.2 · Unit 7 — Calls and video calls",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "b1-u7-guiada",
+   "nome": "B1 Unit 7 · Take a message",
+   "tipo": "guiada",
+   "depois_da_aula": "7C",
+   "descricao": "O tutor é Jesse Mwangi, de um fornecedor de papel de Nairobi. Liga para a empresa do aluno e quer falar com o director do escritório, que não está. O aluno atende, anota o recado (nome soletrado, empresa, número, e-mail, assunto e pedido) e lê-o de volta.",
+   "papel_tutor": "Jesse Mwangi, de um fornecedor de papel de Nairobi, ao telefone.",
+   "nivel": "B1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Good morning, [empresa], [nome] speaking.",
+    "I'm afraid … is in a meeting. Can I take a message?",
+    "Could you spell that, please?",
+    "Let me read that back to you.",
+    "So, just to check: … Is that right?"
+   ],
+   "extras": {
+    "brief": "Guided practice for an intermediate learner (B1.2, unit 7). You are Jesse Mwangi (a neutral name; never mention a husband or wife), from Lakeside Paper Supplies in Nairobi (a fictional company). You call the student's company. You want to speak to the office manager, Alex Lopes; the student must tell you that Alex is not available. If the student says they are Alex, say: \"Oh, sorry — I need the office manager, Alex Lopes. Is Alex there?\". Leave a message, one piece at a time, and let the student ask for spelling and repetition: your name (Mwangi: M-W-A-N-G-I); your company; your number, in groups: plus two five four, seven one two, three four five, six seven eight; your email: jesse dot mwangi at lakesidepaper dot co dot ke (\"lakesidepaper\" is one word); the message: the printer paper will arrive on Thursday, not Tuesday; and the request: please ask Alex to call you back before four o'clock to confirm the delivery address. When the student reads the message back, correct one mistake, if there is one (\"Sorry — Thursday, not Tuesday\"). If the student does not read it back, ask: \"Could you read that back to me, please?\". Finish politely. Use only A1, A2 and B1.1 language plus B1 units 6 and 7: the past perfect and narrative tenses, cause and result, reported speech (said / told me / asked if / asked me to / explained that / promised to / agreed to), phone and video-call language (This is… / Can I take a message? / You're on mute / You broke up / Hold on). Do NOT use: other reporting verbs (suggest, recommend, insist, deny), the third conditional, \"should have\" or \"could have\", \"must have\" or \"can't have\" for deduction, the future continuous, \"wish\". Short turns; speak a little fast once, so the student has to ask you to repeat.",
+    "primeira_fala": "Good morning. This is Jesse Mwangi, from Lakeside Paper Supplies in Nairobi. Could I speak to the office manager, Alex Lopes, please?",
+    "primeira_fala_simples": "Good morning. This is Jesse Mwangi. Could I speak to Alex Lopes, please?",
+    "guiao": [
+     "Oh, I see. Could you take a message, please?",
+     "Sure. My surname is Mwangi. That's M-W-A-N-G-I.",
+     "My number is plus two five four, seven one two, three four five, six seven eight.",
+     "And my email is jesse dot mwangi at lakesidepaper dot co dot ke. Lakesidepaper is one word.",
+     "The message is: the printer paper will arrive on Thursday, not Tuesday. Could you ask Alex to call me back before four o'clock, to confirm the delivery address?",
+     "Could you read that back to me, please?",
+     "Perfect. Thank you very much. Goodbye!"
+    ],
+    "frases": [
+     {
+      "en": "I'm afraid Alex is in a meeting. Can I take a message?",
+      "pt": "Lamento, o Alex está numa reunião. Quer deixar recado?"
+     },
+     {
+      "en": "Could you spell your surname, please?",
+      "pt": "Pode soletrar o apelido, por favor?"
+     },
+     {
+      "en": "Could you say the number again, more slowly?",
+      "pt": "Pode repetir o número mais devagar?"
+     },
+     {
+      "en": "Let me read that back to you.",
+      "pt": "Deixe-me ler-lhe o recado."
+     },
+     {
+      "en": "I'll give Alex the message as soon as possible.",
+      "pt": "Dou o recado ao Alex o mais depressa possível."
+     }
+    ],
+    "palavras": [
+     "speaking",
+     "available",
+     "message",
+     "spell",
+     "call back",
+     "read back"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": null
+  },
+  {
+   "slug": "b1-u7-livre",
+   "nome": "B1 Unit 7 · The supplier call",
+   "tipo": "livre",
+   "depois_da_aula": "7G",
+   "descricao": "O tutor é Drew, de um fornecedor de mobiliário de escritório. O aluno quer comprar vinte secretárias e negoceia o preço, o prazo e as condições. A ligação falha duas vezes. No fim, o tutor pede ao aluno que repita o que ficou combinado.",
+   "papel_tutor": "Drew, vendedor(a) de um fornecedor de mobiliário de escritório, em videochamada.",
+   "nivel": "B1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Sorry, you broke up. Could you say that again?",
+    "Did you say … or …?",
+    "I understand. But…",
+    "Could you…? / Would it be possible to…?",
+    "So, just to check: … Is that right?"
+   ],
+   "extras": {
+    "brief": "Role-play for an intermediate learner (B1.2, unit 7). You are Drew (a neutral name; never mention a husband or wife), a salesperson at Northgate Office Furniture (a fictional company), on a video call. The student wants to buy twenty office desks. Your first offer: two hundred and fifty dollars a desk, delivery in five weeks, fifty percent in advance. Answer the student's questions, and negotiate: you can go down to two hundred and thirty dollars a desk, deliver in three weeks, and accept thirty percent in advance, but only if the student asks and gives a reason; never give everything at once. Twice, the connection fails: once, cut your own sentence (\"The price is two hundred and — sorry, can you hear me?\"); once, say \"Sorry, you broke up. Could you say that again?\" after a student turn. At the end, ask the student: \"So, can you tell me what we agreed?\" and confirm or correct one detail. Use only A1, A2 and B1.1 language plus B1 units 6 and 7: the past perfect and narrative tenses, cause and result, reported speech (said / told me / asked if / asked me to / explained that / promised to / agreed to), phone and video-call language (This is… / Can I take a message? / You're on mute / You broke up / Hold on). Do NOT use: other reporting verbs (suggest, recommend, insist, deny), the third conditional, \"should have\" or \"could have\", \"must have\" or \"can't have\" for deduction, the future continuous, \"wish\". Short turns; never more than three sentences at a time.",
+    "primeira_fala": "Hi, {nome}! This is Drew, from Northgate Office Furniture. Can you hear me OK? I've got your email about the desks.",
+    "primeira_fala_simples": "Hi, {nome}! This is Drew. Can you hear me? You want some desks, right?",
+    "guiao": [
+     "Great. So, how many desks do you need, and when?",
+     "OK. Our price is two hundred and — sorry, can you hear me?",
+     "Sorry about that. I said two hundred and fifty dollars a desk, delivery in five weeks, and fifty percent in advance.",
+     "Hmm. I understand. What price did you have in mind?",
+     "Sorry, you broke up. Could you say that again?",
+     "OK, I can do that, if you confirm the order this week.",
+     "So, can you tell me what we agreed?",
+     "That's it. I'll send it in writing today. Thanks, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "Sorry, you broke up. Did you say two hundred and fifty?",
+      "pt": "Desculpe, a ligação falhou. Disse duzentos e cinquenta?"
+     },
+     {
+      "en": "That's a bit expensive for us. Could you do two hundred and twenty?",
+      "pt": "É um pouco caro para nós. Podia fazer por duzentos e vinte?"
+     },
+     {
+      "en": "We need them in three weeks, because the new office opens on the first.",
+      "pt": "Precisamos delas daqui a três semanas, porque o escritório novo abre no dia 1."
+     },
+     {
+      "en": "We usually pay thirty percent in advance.",
+      "pt": "Normalmente pagamos trinta por cento adiantados."
+     },
+     {
+      "en": "So, just to check: twenty desks, two hundred and thirty dollars each, in three weeks. Is that right?",
+      "pt": "Então, só para confirmar: vinte secretárias, a duzentos e trinta dólares cada, em três semanas. Certo?"
+     }
+    ],
+    "palavras": [
+     "price",
+     "delivery",
+     "in advance",
+     "discount",
+     "agree",
+     "in writing"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Negoceia pelo menos duas condições (preço, prazo ou pagamento) com razões.",
+    "Gere os dois problemas de ligação: diz o que não ouviu e pede para repetir ou verifica (Did you say…?).",
+    "Usa a linguagem de chamadas e videochamadas com naturalidade (This is…, You broke up, Can you hear me?).",
+    "No fim, resume o que ficou combinado, com números e datas correctos, falando pelo menos uma vez 45 segundos ou mais sem ajuda.",
+    "Mantém um tom cortês, também quando discorda (I understand. But…).",
+    "É compreendido sem o tutor ter de pedir para repetir mais de duas vezes (além do corte previsto no guião)."
+   ]
+  }
+ ]
+}

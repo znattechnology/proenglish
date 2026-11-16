@@ -1,0 +1,1498 @@
+{
+ "unidade": "B1.2 · Unit 7 — Calls and video calls",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "7A",
+   "titulo": "She said it was ready",
+   "aula": "7A",
+   "objectivo": "Relatar afirmações com say / tell e a mudança de tempos.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Ingrid said she [was] very happy with the report.",
+     "opcoes": [
+      {
+       "texto": "is being",
+       "certa": false
+      },
+      {
+       "texto": "were",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Kagiso said he [would] send a price by Wednesday.",
+     "opcoes": [
+      {
+       "texto": "will be",
+       "certa": false
+      },
+      {
+       "texto": "wills",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She [told] me she wanted water sensors.",
+     "opcoes": [
+      {
+       "texto": "said",
+       "certa": false
+      },
+      {
+       "texto": "spoke",
+       "certa": false
+      }
+     ],
+     "explicacao": "tell + pessoa; say sem pessoa."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He [said] they had installed sensors at three mines.",
+     "opcoes": [
+      {
+       "texto": "told",
+       "certa": false
+      },
+      {
+       "texto": "talked",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Ela disse-me que estava ocupada.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "She told me she was busy.",
+       "certa": true
+      },
+      {
+       "texto": "She said me she was busy.",
+       "certa": false
+      },
+      {
+       "texto": "She told that she was busy.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Kagiso: \"I can't promise anything.\" Report it.",
+     "opcoes": [
+      {
+       "texto": "He said he couldn't promise anything.",
+       "certa": true
+      },
+      {
+       "texto": "He said he can't promised anything.",
+       "certa": false
+      },
+      {
+       "texto": "He told he couldn't promise anything.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Kagiso: \"We installed sensors at three mines.\" Report it.",
+     "opcoes": [
+      {
+       "texto": "He said they'd installed sensors at three mines.",
+       "certa": true
+      },
+      {
+       "texto": "He said we installed sensors at three mines.",
+       "certa": false
+      },
+      {
+       "texto": "He said they have installing sensors at three mines.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ele disse que ia enviar o preço na quarta-feira.",
+     "resposta": "He said he would send the price on Wednesday.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Pieter said the insurance company had accepted the claim.",
+     "enunciado": "What did Pieter say?",
+     "opcoes": [
+      {
+       "texto": "The insurance company had accepted the claim.",
+       "certa": true
+      },
+      {
+       "texto": "The insurance company had refused the claim.",
+       "certa": false
+      },
+      {
+       "texto": "He needed new switches.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "She said she was happy with the report.",
+     "enunciado": "Ouça e repita: \"said\" com \"e\" curto."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of a conversation you had last week. Report three things the other person said.",
+     "frase": "said",
+     "resposta": "Last week I had lunch with my old colleague Ana. She said she'd changed jobs in January, and she was much happier now. She told me her new office was in Talatona. And she said she would call me when her company needed an accountant.",
+     "contexto": "Discurso indirecto."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you prefer to call people or to send messages? Why?",
+     "frase": "prefer",
+     "resposta": "I prefer to call, because it's faster and people understand my tone. But for numbers and addresses, I send a message, so the person has them in writing.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "7B",
+   "titulo": "He asked if we could…",
+   "aula": "7B",
+   "objectivo": "Relatar perguntas com asked if / asked where, when, how many…, com a ordem da afirmação.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He asked [if] we could pay fifty percent in advance.",
+     "opcoes": [
+      {
+       "texto": "that",
+       "certa": false
+      },
+      {
+       "texto": "do",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He asked how many sensors we [needed].",
+     "opcoes": [
+      {
+       "texto": "did need",
+       "certa": false
+      },
+      {
+       "texto": "do need",
+       "certa": false
+      }
+     ],
+     "explicacao": "Sem do / did: a ordem da afirmação."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Pieter asked when the sensors [would] arrive.",
+     "opcoes": [
+      {
+       "texto": "did",
+       "certa": false
+      },
+      {
+       "texto": "will be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She asked where I [worked].",
+     "opcoes": [
+      {
+       "texto": "did work",
+       "certa": false
+      },
+      {
+       "texto": "do work",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Kagiso: \"Where are the rooms?\" Report it.",
+     "opcoes": [
+      {
+       "texto": "He asked where the rooms were.",
+       "certa": true
+      },
+      {
+       "texto": "He asked where were the rooms.",
+       "certa": false
+      },
+      {
+       "texto": "He asked that where the rooms were.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Lerato: \"Are you free on Friday?\" Report it.",
+     "opcoes": [
+      {
+       "texto": "She asked me if I was free on Friday.",
+       "certa": true
+      },
+      {
+       "texto": "She said me if I was free on Friday.",
+       "certa": false
+      },
+      {
+       "texto": "She asked me if was I free on Friday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "He asked how many sensors we needed.",
+       "certa": true
+      },
+      {
+       "texto": "He asked how many sensors did we need.",
+       "certa": false
+      },
+      {
+       "texto": "He asked how many sensors do we need.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ele perguntou se podíamos pagar adiantado.",
+     "resposta": "He asked if we could pay in advance.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Kagiso asked if we wanted the alert software too.",
+     "enunciado": "What did Kagiso ask?",
+     "opcoes": [
+      {
+       "texto": "if they wanted the alert software",
+       "certa": true
+      },
+      {
+       "texto": "how much the software cost",
+       "certa": false
+      },
+      {
+       "texto": "where the software was",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "He asked how many sensors we needed.",
+     "enunciado": "Ouça e repita: \"asked\" com som de \"t\" no fim."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of a job interview, a visit to a bank or a call with a client. Report three or four questions the person asked you.",
+     "frase": "asked",
+     "resposta": "When I opened my bank account, the manager asked me a lot of questions. She asked where I worked and how much I earned. She asked if I had another account, and whether I wanted a credit card. In the end, she asked when I could bring my documents.",
+     "contexto": "Perguntas relatadas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it fair for a supplier to ask for fifty percent in advance? Why?",
+     "frase": "because",
+     "resposta": "In my view, it depends. For a new client, it's fair, because the supplier doesn't know them yet. But for an old client, thirty percent is enough. Our company normally pays thirty days after delivery.",
+     "contexto": "Uma opinião com uma razão."
+    }
+   ]
+  },
+  {
+   "codigo": "7C",
+   "titulo": "They told us to wait",
+   "aula": "7C",
+   "objectivo": "Relatar pedidos e ordens com ask / tell + pessoa + to, e usar explain that, promise to, agree to.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Sílvia asked me [to get] the price in writing.",
+     "opcoes": [
+      {
+       "texto": "get",
+       "certa": false
+      },
+      {
+       "texto": "for get",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She told me [not to pay] anything in advance.",
+     "opcoes": [
+      {
+       "texto": "don't pay",
+       "certa": false
+      },
+      {
+       "texto": "to not paying",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Kagiso [promised] to send a sample sensor.",
+     "opcoes": [
+      {
+       "texto": "explained",
+       "certa": false
+      },
+      {
+       "texto": "told",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He [agreed] to give us a five percent discount.",
+     "opcoes": [
+      {
+       "texto": "explained",
+       "certa": false
+      },
+      {
+       "texto": "told",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Pediu-nos para enviar um relatório todas as sextas.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "She asked us to send a report every Friday.",
+       "certa": true
+      },
+      {
+       "texto": "She asked us send a report every Friday.",
+       "certa": false
+      },
+      {
+       "texto": "She asked to us to send a report every Friday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "He explained that the software was included.",
+       "certa": true
+      },
+      {
+       "texto": "He explained me that the software was included.",
+       "certa": false
+      },
+      {
+       "texto": "He explained to the software was included.",
+       "certa": false
+      }
+     ],
+     "explicacao": "explain não leva a pessoa directamente: explained (to me) that…"
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Lerato: \"Call Kagiso again tomorrow.\" Report it.",
+     "opcoes": [
+      {
+       "texto": "She told me to call Kagiso again.",
+       "certa": true
+      },
+      {
+       "texto": "She told me call Kagiso again.",
+       "certa": false
+      },
+      {
+       "texto": "She said me to call Kagiso again.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ele prometeu enviar uma amostra.",
+     "resposta": "He promised to send a sample.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Lerato asked us to send Ingrid a weekly report about the sensors, every Friday.",
+     "enunciado": "What did Lerato ask them to do?",
+     "opcoes": [
+      {
+       "texto": "send Ingrid a weekly report",
+       "certa": true
+      },
+      {
+       "texto": "visit Ingrid every Friday",
+       "certa": false
+      },
+      {
+       "texto": "call Kagiso every Friday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "She told me not to pay anything in advance.",
+     "enunciado": "Ouça e repita, com \"to\" fraco."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Report two things your manager, a teacher or a doctor asked you to do this week, one thing they told you not to do, and one promise.",
+     "frase": "asked me to",
+     "resposta": "On Monday my manager asked me to prepare the budget for March, and she told me to send it by Thursday. She told me not to include the new office, because it isn't approved yet. And she promised to give me a day off next week!",
+     "contexto": "Pedidos, ordens e promessas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you prefer instructions in writing or by phone? Why?",
+     "frase": "prefer",
+     "resposta": "I prefer instructions in writing, because I can read them again later. Last month my manager told me to change a report by phone, and I forgot one detail. Now I ask people to send me an email.",
+     "contexto": "Uma opinião com um exemplo."
+    }
+   ]
+  },
+  {
+   "codigo": "7D",
+   "titulo": "Can I take a message?",
+   "aula": "7D",
+   "objectivo": "Fazer e receber uma chamada de trabalho, deixar e anotar um recado, soletrar e confirmar.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Good morning, Tsodilo Sensors, Lesego [speaking].",
+     "opcoes": [
+      {
+       "texto": "talking",
+       "certa": false
+      },
+      {
+       "texto": "here",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[This] is Nuno Kapinga, from Kalandula Tech.",
+     "opcoes": [
+      {
+       "texto": "Here",
+       "certa": false
+      },
+      {
+       "texto": "I",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Could you ask him to call me [back]?",
+     "opcoes": [
+      {
+       "texto": "return",
+       "certa": false
+      },
+      {
+       "texto": "behind",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let me read that [back] to you.",
+     "opcoes": [
+      {
+       "texto": "after",
+       "certa": false
+      },
+      {
+       "texto": "behind",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The person you want is not there. The receptionist says:",
+     "opcoes": [
+      {
+       "texto": "I'm afraid she's in a meeting. Can I take a message?",
+       "certa": true
+      },
+      {
+       "texto": "She's not here. Bye.",
+       "certa": false
+      },
+      {
+       "texto": "Can you leave her a message for me?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "How do you say \"@\" in an email address?",
+     "opcoes": [
+      {
+       "texto": "at",
+       "certa": true
+      },
+      {
+       "texto": "dot",
+       "certa": false
+      },
+      {
+       "texto": "arroba",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Fala o Nuno\" (ao telefone). Em inglês:",
+     "opcoes": [
+      {
+       "texto": "This is Nuno.",
+       "certa": true
+      },
+      {
+       "texto": "I am Nuno speaking.",
+       "certa": false
+      },
+      {
+       "texto": "Here is Nuno.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. My number is plus two four four, nine two three, four five six, seven one eight.",
+     "enunciado": "What is Nuno's number?",
+     "opcoes": [
+      {
+       "texto": "+244 923 456 718",
+       "certa": true
+      },
+      {
+       "texto": "+244 932 456 718",
+       "certa": false
+      },
+      {
+       "texto": "+244 923 465 718",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. My surname is Kapinga: K-A-P-I-N-G-A.",
+     "enunciado": "How do you spell Nuno's surname?",
+     "opcoes": [
+      {
+       "texto": "KAPINGA",
+       "certa": true
+      },
+      {
+       "texto": "CAPINGA",
+       "certa": false
+      },
+      {
+       "texto": "KAPINJA",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "A, E, I. G, J. H, Y, W.",
+     "enunciado": "Ouça e repita as letras que mais confundem."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You call a supplier, but the person isn't there. Leave a complete message: who you are, who it's for, what it's about, what you want, and your number.",
+     "frase": "This is",
+     "resposta": "This is Rosa Neto, from Kwanza Logistics in Luanda. Could you ask Mr Daniel Ferreira to call me back this afternoon? It's about the invoice for January. My number is nine one two, three four five, six seven eight. Could you read that back to me, please?",
+     "contexto": "Um recado completo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What is more difficult for you in English: a phone call or a video call? Why?",
+     "frase": "because",
+     "resposta": "For me, a phone call is more difficult, because I can't see the person's face. On a video call, I can see if they understand me. And on the phone, numbers and names are really hard.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "7E",
+   "titulo": "Online meetings",
+   "aula": "7E",
+   "objectivo": "Linguagem de videochamadas, phrasal verbs do telefone, números agrupados; record e lecture.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada phrasal verb à tradução.",
+     "pares": [
+      {
+       "a": "hold on",
+       "b": "esperar um momento"
+      },
+      {
+       "a": "put through",
+       "b": "passar a chamada"
+      },
+      {
+       "a": "hang up",
+       "b": "desligar"
+      },
+      {
+       "a": "cut off",
+       "b": "cortar a ligação"
+      },
+      {
+       "a": "call back",
+       "b": "voltar a ligar"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I can't hear you. I think you're on [mute].",
+     "opcoes": [
+      {
+       "texto": "silence",
+       "certa": false
+      },
+      {
+       "texto": "quiet",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Sorry, you're breaking [up]. Could you say that again?",
+     "opcoes": [
+      {
+       "texto": "out",
+       "certa": false
+      },
+      {
+       "texto": "off",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Can you see my [screen]?",
+     "opcoes": [
+      {
+       "texto": "monitor",
+       "certa": false
+      },
+      {
+       "texto": "screens",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Hold [on], I'll check.",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "off",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Não me recordo do número.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I don't remember the number.",
+       "certa": true
+      },
+      {
+       "texto": "I don't record the number.",
+       "certa": false
+      },
+      {
+       "texto": "I don't recorder the number.",
+       "certa": false
+      }
+     ],
+     "explicacao": "record = gravar."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Gosto de leitura.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I like reading.",
+       "certa": true
+      },
+      {
+       "texto": "I like lecture.",
+       "certa": false
+      },
+      {
+       "texto": "I like lectures.",
+       "certa": false
+      }
+     ],
+     "explicacao": "lecture = palestra."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "How do you say 2 160 dollars?",
+     "opcoes": [
+      {
+       "texto": "two thousand, one hundred and sixty dollars",
+       "certa": true
+      },
+      {
+       "texto": "two thousand, one hundreds and sixty dollars",
+       "certa": false
+      },
+      {
+       "texto": "two thousands, one hundred and sixty dollars",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. Sorry, Kagiso, we got cut off. I'll send you the link again.",
+     "enunciado": "What happened?",
+     "opcoes": [
+      {
+       "texto": "They got cut off.",
+       "certa": true
+      },
+      {
+       "texto": "Kagiso was on mute.",
+       "certa": false
+      },
+      {
+       "texto": "Lerato hung up on purpose.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Two thousand, one hundred and sixty dollars. The fifteenth of February.",
+     "enunciado": "Ouça e repita, com os números agrupados."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe your last video call or online meeting: who was in it, what problems you had, and what you said.",
+     "frase": "mute",
+     "resposta": "Last week I had a video call with a client in Lisbon. At first, she was on mute, so I said: \"You're on mute!\" Then my connection was bad, and I broke up. In the end, we got cut off, and I had to send her the link again.",
+     "contexto": "Videochamadas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you think video calls are as good as face-to-face meetings? Why?",
+     "frase": "face",
+     "resposta": "Not really. Video calls save time and money, but face-to-face meetings are better for difficult conversations. You can see people's reactions, and there are no connection problems!",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "7F",
+   "titulo": "Real English: Sorry, you broke up",
+   "aula": "7F",
+   "objectivo": "Seguir uma videochamada com problemas de ligação e identificar o que ficou combinado.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Kagiso, I think you're on mute.",
+     "enunciado": "What was the first problem?",
+     "opcoes": [
+      {
+       "texto": "Kagiso was on mute.",
+       "certa": true
+      },
+      {
+       "texto": "Lerato's camera was off.",
+       "certa": false
+      },
+      {
+       "texto": "Nuno broke up.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Kagiso. Yes, the first year. After that, three hundred dollars a year.",
+     "enunciado": "How long is the software free?",
+     "opcoes": [
+      {
+       "texto": "for the first year",
+       "certa": true
+      },
+      {
+       "texto": "for two years",
+       "certa": false
+      },
+      {
+       "texto": "for three months",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kagiso. If you order this week, they arrive on Friday the third of March.",
+     "enunciado": "When will the sensors arrive, if they order this week?",
+     "opcoes": [
+      {
+       "texto": "on Friday the third of March",
+       "certa": true
+      },
+      {
+       "texto": "on Thursday",
+       "certa": false
+      },
+      {
+       "texto": "in three months",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Kagiso. Our engineer can install them the following week. He can come to Luanda, Lobito and Namibe.",
+     "enunciado": "Who installs the sensors?",
+     "opcoes": [
+      {
+       "texto": "Tsodilo's engineer",
+       "certa": true
+      },
+      {
+       "texto": "Paulo",
+       "certa": false
+      },
+      {
+       "texto": "Pieter's team",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kagiso. Let me talk to my manager. I'll call you on Wednesday with an answer.",
+     "enunciado": "When will Kagiso call about the payment?",
+     "opcoes": [
+      {
+       "texto": "on Wednesday",
+       "certa": true
+      },
+      {
+       "texto": "on Thursday",
+       "certa": false
+      },
+      {
+       "texto": "tomorrow",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Kagiso. The sample left on Friday by courier. You'll have it on Thursday.",
+     "enunciado": "When will the sample arrive?",
+     "opcoes": [
+      {
+       "texto": "on Thursday",
+       "certa": true
+      },
+      {
+       "texto": "on Wednesday",
+       "certa": false
+      },
+      {
+       "texto": "next week",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "When the connection fails, Nuno…",
+     "opcoes": [
+      {
+       "texto": "says what he lost and checks: \"Did you say…?\"",
+       "certa": true
+      },
+      {
+       "texto": "hangs up and calls again",
+       "certa": false
+      },
+      {
+       "texto": "waits and says nothing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Kagiso said: \"I'll call you on Wednesday.\" Report it.",
+     "opcoes": [
+      {
+       "texto": "He said he would call us on Wednesday.",
+       "certa": true
+      },
+      {
+       "texto": "He said he will called us on Wednesday.",
+       "certa": false
+      },
+      {
+       "texto": "He told he would call us on Wednesday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Sorry, you broke up. Did you say the first year?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "You froze. We lost the last part.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Lerato asks you to report the call to Sílvia. What did Kagiso say, and what did he promise?",
+     "frase": "said",
+     "resposta": "Kagiso said the software was free for the first year. He explained that the sensors would arrive on the third of March if we ordered this week. He promised to call us on Wednesday about the payment, and he said the sample would arrive on Thursday.",
+     "contexto": "Relatar uma chamada."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you do when the connection is bad in an important call?",
+     "frase": "If",
+     "resposta": "If the connection is bad, I turn off my camera first, because that helps. I say what I lost — \"Sorry, you broke up\" — and at the end, I check everything in writing, by email.",
+     "contexto": "Estratégias numa chamada."
+    }
+   ]
+  },
+  {
+   "codigo": "7G",
+   "titulo": "Work & Life: Supplier call",
+   "aula": "7G",
+   "objectivo": "Negociar com um fornecedor, relatar o resultado à equipa e passar ao fornecedor um pedido escrito em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "The note says: \"o resto só 30 dias após a instalação\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "He asks for the rest thirty days after the installation.",
+       "certa": true
+      },
+      {
+       "texto": "He asks the rest only thirty days before the installation.",
+       "certa": false
+      },
+      {
+       "texto": "He says the rest is thirty after installing days.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The note says: \"pedimos uma formação de duas horas, sem custos\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "He asks for a two-hour training, at no cost.",
+       "certa": true
+      },
+      {
+       "texto": "He asks a two hours formation without costs.",
+       "certa": false
+      },
+      {
+       "texto": "He says the training costs two hours.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In the end, Kagiso [agreed] to wait thirty days after the installation.",
+     "opcoes": [
+      {
+       "texto": "explained",
+       "certa": false
+      },
+      {
+       "texto": "told",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He [promised] to keep the five percent discount.",
+     "opcoes": [
+      {
+       "texto": "explained",
+       "certa": false
+      },
+      {
+       "texto": "told",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Kagiso said they [could] accept thirty percent in advance.",
+     "opcoes": [
+      {
+       "texto": "can to",
+       "certa": false
+      },
+      {
+       "texto": "could to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Kagiso has an objection. Nuno says:",
+     "opcoes": [
+      {
+       "texto": "I understand. But the installation is only one week after delivery.",
+       "certa": true
+      },
+      {
+       "texto": "That's your problem.",
+       "certa": false
+      },
+      {
+       "texto": "OK, OK, no thirty days.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "To report a negotiation to the team, Nuno uses…",
+     "opcoes": [
+      {
+       "texto": "\"At first… but in the end…\"",
+       "certa": true
+      },
+      {
+       "texto": "only the final price",
+       "certa": false
+      },
+      {
+       "texto": "the exact words of the supplier",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Kagiso. Two hours online, yes. In person, it's two hundred dollars, because the engineer needs an extra day.",
+     "enunciado": "Why does the training in person cost money?",
+     "opcoes": [
+      {
+       "texto": "The engineer needs an extra day.",
+       "certa": true
+      },
+      {
+       "texto": "It takes two days.",
+       "certa": false
+      },
+      {
+       "texto": "It is in Gaborone.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. He told me he'd send the contract this afternoon.",
+     "enunciado": "When will Kagiso send the contract?",
+     "opcoes": [
+      {
+       "texto": "this afternoon",
+       "certa": true
+      },
+      {
+       "texto": "on Friday",
+       "certa": false
+      },
+      {
+       "texto": "tomorrow morning",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Thirty percent in advance. The rest, thirty days after installation. A two-year warranty.",
+     "enunciado": "Ouça e repita, com uma pausa antes de cada número."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Report a call with a chair supplier: price 90 dollars a chair; at first, delivery in four weeks; you asked for two; in the end, three; a free sample next Monday; they asked if you could pay half in advance.",
+     "frase": "asked",
+     "resposta": "She said the price was ninety dollars a chair. At first, she told me the delivery would take four weeks. I asked if they could do it in two, and in the end, she agreed to deliver in three. She promised to send a free sample next Monday, and she asked if we could pay half in advance.",
+     "contexto": "Relatar uma negociação."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Pass on this note to a foreign supplier, in English: \"Por favor diga ao fornecedor: precisamos de 50 cadeiras até ao dia 20; pagamos 40% na encomenda e o resto na entrega; e pedimos que levem as cadeiras velhas. — A Direcção\"",
+     "frase": "says",
+     "resposta": "Our director says we need fifty chairs by the twentieth. We can pay forty percent when we order, and the rest on delivery. And the director asks if you could take away the old chairs.",
+     "contexto": "Mediação: números e condições exactos."
+    }
+   ]
+  },
+  {
+   "codigo": "7R",
+   "titulo": "Unit 7 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 7 e reciclar as unidades 3 e 6 do B1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She said she [had] finished the report.",
+     "opcoes": [
+      {
+       "texto": "have",
+       "certa": false
+      },
+      {
+       "texto": "was",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He asked if I [could] come on Monday.",
+     "opcoes": [
+      {
+       "texto": "can to",
+       "certa": false
+      },
+      {
+       "texto": "could to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "They told us [to wait].",
+     "opcoes": [
+      {
+       "texto": "wait",
+       "certa": false
+      },
+      {
+       "texto": "waiting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Could I [speak] to Rosa Neto, please?",
+     "opcoes": [
+      {
+       "texto": "say",
+       "certa": false
+      },
+      {
+       "texto": "tell",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "He asked where the office was.",
+       "certa": true
+      },
+      {
+       "texto": "He asked where was the office.",
+       "certa": false
+      },
+      {
+       "texto": "He asked where did the office was.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "She told me not to call after six.",
+       "certa": true
+      },
+      {
+       "texto": "She told me don't call after six.",
+       "certa": false
+      },
+      {
+       "texto": "She said me not to call after six.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 6). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "When I arrived, the meeting had already started.",
+       "certa": true
+      },
+      {
+       "texto": "When I arrived, the meeting has already started.",
+       "certa": false
+      },
+      {
+       "texto": "When I arrived, the meeting had already start.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 6). Complete: \"The flight was late ___ the weather.\"",
+     "opcoes": [
+      {
+       "texto": "because of",
+       "certa": true
+      },
+      {
+       "texto": "because",
+       "certa": false
+      },
+      {
+       "texto": "so",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 3). Choose the polite way to interrupt.",
+     "opcoes": [
+      {
+       "texto": "Sorry to interrupt, but…",
+       "certa": true
+      },
+      {
+       "texto": "Sorry for interrupt, but…",
+       "certa": false
+      },
+      {
+       "texto": "Stop, please.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ela pediu-me para lhe ligar amanhã.",
+     "resposta": "She asked me to call her tomorrow.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Sílvia. Even with the discount? Excellent. Thirty percent in advance is fine.",
+     "enunciado": "How does Sílvia feel about the deal?",
+     "opcoes": [
+      {
+       "texto": "happy",
+       "certa": true
+      },
+      {
+       "texto": "worried",
+       "certa": false
+      },
+      {
+       "texto": "angry",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Report a phone call you had recently: what did the other person say and ask?",
+     "frase": "asked",
+     "resposta": "Yesterday my cousin called me from Benguela. She said she had a new job at the port, and she told me she was very happy. She asked if I could visit her in April, and she asked when my holidays were. I promised to call her back this weekend.",
+     "contexto": "Discurso indirecto (45 segundos)."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague calls, but your manager is in a meeting. Take the message and read it back: the colleague wants a call back today about the invoice; number 912 345 678.",
+     "frase": "just to check",
+     "resposta": "I'm afraid she's in a meeting. Can I take a message? … OK. So, just to check: you'd like her to call you back today about the invoice, and your number is nine one two, three four five, six seven eight. Is that right?",
+     "contexto": "Anotar e confirmar um recado."
+    }
+   ]
+  }
+ ]
+}
