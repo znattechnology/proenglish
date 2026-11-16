@@ -6,6 +6,8 @@ Guiões para o professor de IA. Conteúdo original da ProEnglish. Convenções: 
 
 **Não usar nesta unidade:** *used to*; o *present perfect continuous*; *too / enough*; *so / such* + adjectivo; o 2.º condicional e *would* hipotético (também "That would be great"); *might / may* de probabilidade; a voz passiva (também "is based in", "was founded"); orações relativas, com ou sem pronome ("the company I work for"); o *past perfect*; o discurso indirecto no passado ("She said it was…"); o *future continuous*; *must / can't* de dedução.
 
+**Nomes de empresas e lugares:** a Mopane Systems, a Morro Azul Energia e o Centro Médico Mulemba (1F) são fictícios.
+
 **Personagens:** **Nuno** (Nuno Kapinga, de Lubango, na equipa de apoio conjunta desde 1 de Julho); **Lerato Dlamini** (coordenadora da equipa); **Sipho** (técnico de apoio da Mopane Systems; ajudou o Nuno ao telefone em Março, A2 8F; conhecem-se agora em pessoa). Vozes novas: **Zanele** (recepcionista do centro de formação), **Kofi Asante** (ganês, de Acra, engenheiro de redes numa empresa de energia solar), **Mei Chen** (chinesa, programadora numa empresa de pagamentos móveis em Lusaca), **Carlos Mondlane** (moçambicano, de Maputo, responsável de informática numa empresa do porto), **Neo Molefe** (do Botsuana, de Gaborone, directora de operações numa empresa de logística) e **Hannah Becker** (alemã, engenheira de projecto da Morro Azul Energia, na central solar do Namibe).
 
 **A história:** Julho de 2027. O Nuno voou para Joanesburgo na segunda-feira, 5 de Julho, para a formação de duas semanas da equipa conjunta, na Mopane Systems (de terça, 6, a sexta, 16 de Julho). É Inverno em Joanesburgo: de manhã estão cinco graus (A2, revisão 2).
@@ -491,11 +493,13 @@ I'm a bit tired. — **So am I.**]
 
 ### 6. Prática e fecho (2 min)
 
-**PROF:** Answer with "So… I" or "Neither… I", if it's true for you.
+**PROF:** Answer with "So… I" or "Neither… I", if it's true for you. If it isn't true, say so: "Oh, I do!" or "Really? I didn't."
 **PROF:** I don't like long meetings.
 [PAUSA 4 s]
+[ECRÃ: Neither do I. / Oh, I do!]
 **PROF:** I started studying English as an adult.
 [PAUSA 4 s]
+[ECRÃ: So did I. / Really? I didn't.]
 
 **PROF:** Now a longer turn. You're at a conference coffee break. Open a conversation with a stranger, ask two questions, and close it with a plan to keep in touch. Talk for about forty seconds.
 [PAUSA 40 s]
@@ -710,17 +714,17 @@ Verificação: Lab 1F; conversa livre "Networking evening"; pergunta 8 do questi
 
 **PROF:** I'm the other person. I say: "Our office has problems with the internet every week." Ask two follow-up questions.
 [PAUSA 12 s]
-[ECRÃ: Really? What happens exactly? / Do you know why? / How long does it take to come back?]
+[ECRÃ: Really? What happens exactly? / Do you know why? / How long does the problem last?]
 
 **PROF:** Now change topic, and then close the conversation with a plan.
 [PAUSA 15 s]
 [ECRÃ: By the way, … · Well, it was great talking to you. Let's keep in touch. I'll …]
 
 **PROF:** And the mediation. Explain this leaflet to a foreign visitor, in English. Give only the main points.
-[ECRÃ: "Centro Médico Mulemba (fictício) — consultas de segunda a sábado, das 8h às 20h. Médicos de família, pediatria e análises clínicas. Aceitamos os principais seguros de saúde. Marcações por telefone ou na recepção."]
+[ECRÃ: "Centro Médico Mulemba — consultas de segunda a sábado, das 8h às 20h. Médicos de família, pediatria e análises clínicas. Aceitamos os principais seguros de saúde. Marcações por telefone ou na recepção."]
 
 [PAUSA 35 s]
-[ECRÃ: modelo — It says it's a clinic. It's open from Monday to Saturday, from eight a.m. to eight p.m. There are family doctors, doctors for children, and a lab for blood tests. They accept the main health insurances. You can book by phone or at the reception.]
+[ECRÃ: modelo — It says it's a clinic. It's open from Monday to Saturday, from eight a.m. to eight p.m. There are family doctors, doctors for children, and a lab for blood tests. They accept most health insurance plans. You can book by phone or at the reception.]
 
 **PROF (opinião):** In your opinion, what's more important at a networking event: talking about your company, or listening to the other person? Why?
 [PAUSA 25 s]

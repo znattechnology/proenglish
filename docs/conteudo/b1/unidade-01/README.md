@@ -1,6 +1,6 @@
 # B1.1 · Unidade 1 — Making connections (6 aulas)
 
-**Estado:** primeira versão escrita, com a revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 1
+**Estado:** primeira versão escrita, com duas revisões aula a aula ([n.º 1](revisao-1.md) e [n.º 2](revisao-2.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 1
 
 ## Objectivos da unidade
 
@@ -29,7 +29,7 @@ No fim da unidade, o aluno consegue:
 
 ## Vocabulário da unidade (cerca de 70 palavras e expressões)
 
-- **Eventos e formação:** conference, workshop, speaker, delegate, venue, session, training, training centre, welcome event, networking evening, badge, business card, agenda.
+- **Eventos e formação:** conference, workshop, speaker, delegate, venue, session, training, training centre, welcome event, networking evening, badge, business card.
 - **Abrir:** Is this seat free? Sorry to interrupt — are you…? Hi, I don't think we've met. It's a great venue, isn't it? Excuse me.
 - **Manter:** What brings you here? What line of work are you in? How do you know…? What did you think of the talk? What do you mean? How did that happen? What was it like? What happens exactly? Really? That's interesting! By the way… Speaking of…
 - **Fechar e manter o contacto:** It was great talking to you. Enjoy the rest of the evening. keep in touch, get in touch, follow up, exchange contacts, Here's my card, Count me in.
