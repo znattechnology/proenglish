@@ -228,7 +228,7 @@ Palavras-alvo: rule, sign, badge, visitor, server room, fire exit, emergency, sm
   sign in, allowed
 Reciclagem: have to (5B); imperativo (A1, 7 e 8)
 Pronúncia: mustn't /ˈmʌsnt/ — o primeiro t não se diz
-Contexto: quinta-feira, dia 3; o Sr. Cardoso, chefe de segurança da Mussulo Energy, explica as regras
+Contexto: terça-feira, dia 1; o Sr. Cardoso, chefe de segurança da Mussulo Energy, explica as regras
   à equipa da Kalandula Tech
 Duração: 10 min
 Verificação: Lab 5C; perguntas 5 e 6 do questionário
@@ -240,7 +240,7 @@ Verificação: Lab 5C; perguntas 5 e 6 do questionário
 
 ### 2. Situação (1 min 30 s)
 
-[ECRÃ: a recepção da Mussulo Energy, quinta-feira; o Sr. Cardoso, de uniforme, com a equipa: o Mateus, o Nuno, o Paulo e a Thandi]
+[ECRÃ: a recepção da Mussulo Energy, terça-feira; o Sr. Cardoso, de uniforme, com a equipa: o Mateus, o Nuno, o Paulo e a Thandi]
 
 **SR. CARDOSO:** Good morning, everyone. On Monday you're starting work in our building, so here are the safety rules. First, you must wear your badge at all times.
 **THANDI:** Do we have to sign in every day?

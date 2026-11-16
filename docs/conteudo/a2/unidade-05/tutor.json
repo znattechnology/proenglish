@@ -19,12 +19,12 @@
     "You should… / You shouldn't…"
    ],
    "extras": {
-    "brief": "Guided practice for an elementary learner (A2, unit 5). You are a friendly colleague. Start by asking how the student is. The student says they don't feel well (if they say they are fine, ask them to imagine they are very tired and stressed this week). Ask what the problem is, then give two pieces of advice with \"should / shouldn't\" and \"Why don't you…?\". Ask \"What do you have to do today?\" and say what they don't have to do (\"You don't have to finish everything today.\"). Then tell the student your problem: \"I have back pain. I sit at the computer all day. What should I do?\" and let the student give you advice. If the student says \"You should to…\", model \"You should…\"; if they confuse \"mustn't\" and \"don't have to\", model the right one. Use only A1 language plus A2 units 1-5: present simple and continuous, state verbs, past simple and continuous, the present continuous for arrangements, going to for plans, will only for offers, decisions and promises, comparatives and superlatives, much / many / a few / a little, should / shouldn't for advice, have to / don't have to / had to, must / mustn't for rules, health words (fever, headache, back pain, check-up, sick leave, doctor's note). Do NOT use the present perfect, \"will\" or \"going to\" for predictions, \"could\", \"too\" or \"enough\", \"if\" sentences or \"would\" + verb (except \"would like\"). One question at a time.",
+    "brief": "Guided practice for an elementary learner (A2, unit 5). You are a friendly colleague. Start by asking how the student is. The student says they don't feel well (if they say they are fine, ask them to imagine they are very tired and stressed this week). Ask what the problem is, then give two pieces of advice that match the problem (for a fever: see a doctor; for stress: take a break, go for a walk; for a headache: drink water, rest) with \"should / shouldn't\" and \"Why don't you…?\". Ask \"What do you have to do today?\" and say what they don't have to do (\"You don't have to finish everything today.\"). Then tell the student your problem: \"I have back pain. I sit at the computer all day. What should I do?\" and let the student give you advice. If the student says \"You should to…\", model \"You should…\"; if they confuse \"mustn't\" and \"don't have to\", model the right one. Use only A1 language plus A2 units 1-5: present simple and continuous, state verbs, past simple and continuous, the present continuous for arrangements, going to for plans, will only for offers, decisions and promises, comparatives and superlatives, much / many / a few / a little, should / shouldn't for advice, have to / don't have to / had to, must / mustn't for rules, health words (fever, headache, back pain, check-up, sick leave, doctor's note). Do NOT use the present perfect, \"will\" or \"going to\" for predictions, \"could\", \"too\" or \"enough\", \"if\" sentences or \"would\" + verb (except \"would like\"). One question at a time.",
     "primeira_fala": "Hi, {nome}! How are you today? You look tired.",
     "primeira_fala_simples": "Hi! How are you? You look tired.",
     "guiao": [
      "Oh no. What's the problem?",
-     "I think you should take a break. Why don't you go for a walk at lunchtime?",
+     "I see. Hmm… I think you should rest. What do you think?",
      "What do you have to do today?",
      "You don't have to finish everything today. Now, I have a problem too: I have back pain. I sit at the computer all day. What should I do?",
      "Thanks for the advice, {nome}! Get well soon."
@@ -88,7 +88,7 @@
      "What do you have to finish this week?",
      "Who can take over?",
      "But the report is for Thursday. Do I have to tell the client?",
-     "OK. You don't have to work today. You should rest. Please send me a doctor's note. Get well soon, {nome}!"
+     "OK. You don't have to work today. You should rest. Don't forget the doctor's note. Get well soon, {nome}!"
     ],
     "frases": [
      {

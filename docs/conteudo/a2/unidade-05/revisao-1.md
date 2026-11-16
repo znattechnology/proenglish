@@ -43,7 +43,7 @@ Critérios: (1) inglês correcto e natural; (2) só língua já ensinada; (3) in
 - Nenhum verbo irregular fora dos já ensinados (*slept, got, hurt* são do A1).
 - Nenhum símbolo fonético nas falas do professor (só no ecrã).
 - As 83 actividades do laboratório passam a validação; nenhuma lacuna a meio de palavra nem alternativa igual à certa.
-- **Calendário:** segunda 30 de Novembro a sexta 4 de Dezembro de 2026; a instalação é na segunda 7 (é uma segunda-feira em 2026); o relatório do Nuno é para quinta e passa para sexta porque ele adoece na quarta.
+- **Calendário:** segunda 30 de Novembro a sexta 4 de Dezembro de 2026 (regras de segurança na terça, depois da revisão n.º 2); a instalação é na segunda 7 (é uma segunda-feira em 2026); o relatório do Nuno é para quinta e passa para sexta porque ele adoece na quarta.
 
 ## O que esta revisão não substitui
 
