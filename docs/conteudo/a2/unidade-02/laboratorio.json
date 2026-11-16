@@ -1,0 +1,1544 @@
+{
+ "unidade": "A2.1 · Unit 2 — Life stories",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "2A",
+   "titulo": "I grew up in Huambo",
+   "aula": "2A",
+   "objectivo": "Contar os marcos da vida por ordem, com o past simple e datas.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I was born in Huambo in 1992.",
+       "certa": true
+      },
+      {
+       "texto": "I born in Huambo in 1992.",
+       "certa": false
+      },
+      {
+       "texto": "I am born in Huambo in 1992.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Nasci\" = \"I was born\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Mateus [grew] up in Huambo.",
+     "opcoes": [
+      {
+       "texto": "growed",
+       "certa": false
+      },
+      {
+       "texto": "grow",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He [chose] engineering because he loved computers.",
+     "opcoes": [
+      {
+       "texto": "choosed",
+       "certa": false
+      },
+      {
+       "texto": "choose",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "A great teacher [taught] me a lot.",
+     "opcoes": [
+      {
+       "texto": "teached",
+       "certa": false
+      },
+      {
+       "texto": "teach",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He [spent] ten years in Cabinda.",
+     "opcoes": [
+      {
+       "texto": "spended",
+       "certa": false
+      },
+      {
+       "texto": "spend",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Match each verb to its past form.",
+     "pares": [
+      {
+       "a": "become",
+       "b": "became"
+      },
+      {
+       "a": "know",
+       "b": "knew"
+      },
+      {
+       "a": "understand",
+       "b": "understood"
+      },
+      {
+       "a": "grow",
+       "b": "grew"
+      },
+      {
+       "a": "teach",
+       "b": "taught"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "He studied from 2010 to 2015.",
+       "certa": true
+      },
+      {
+       "texto": "He studied of 2010 until 2015.",
+       "certa": false
+      },
+      {
+       "texto": "He studied since 2010 to 2015.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"We got married four years ago\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Casámo-nos há quatro anos.",
+       "certa": true
+      },
+      {
+       "texto": "Estamos casados há quatro anos.",
+       "certa": false
+      },
+      {
+       "texto": "Vamos casar daqui a quatro anos.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I graduated in 2015, and I got a job here at Kalandula Tech a year later.",
+     "enunciado": "When did Mateus get a job at Kalandula Tech?",
+     "opcoes": [
+      {
+       "texto": "in 2016",
+       "certa": true
+      },
+      {
+       "texto": "in 2015",
+       "certa": false
+      },
+      {
+       "texto": "in 2014",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I was born in nineteen ninety-two. I grew up in Huambo. In twenty ten I moved to Luanda.",
+     "enunciado": "Ouça e repita os anos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Where were you born, and where did you grow up?",
+     "frase": "I was born",
+     "resposta": "I was born in Benguela in 1995, and I grew up there. In 2014 I moved to Luanda.",
+     "contexto": "Use \"I was born\", \"grew up\" e um ano."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What did you do after secondary school?",
+     "frase": "After",
+     "resposta": "After secondary school I went to university in Luanda. I chose economics, and I graduated in 2019.",
+     "contexto": "Dois ou três factos por ordem."
+    }
+   ]
+  },
+  {
+   "codigo": "2B",
+   "titulo": "Who told you?",
+   "aula": "2B",
+   "objectivo": "Fazer perguntas sobre o passado com did e perguntas sobre o sujeito sem did.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "What happened?",
+       "certa": true
+      },
+      {
+       "texto": "What did happen?",
+       "certa": false
+      },
+      {
+       "texto": "What did happened?",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"What\" é o sujeito: sem \"did\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Who opened the door?",
+       "certa": true
+      },
+      {
+       "texto": "Who did open the door?",
+       "certa": false
+      },
+      {
+       "texto": "Who did opened the door?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Where did you study?",
+       "certa": true
+      },
+      {
+       "texto": "Where you studied?",
+       "certa": false
+      },
+      {
+       "texto": "Where did you studied?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Who did you call?\" — Choose the answer.",
+     "opcoes": [
+      {
+       "texto": "I called Thandi.",
+       "certa": true
+      },
+      {
+       "texto": "Thandi called me.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, I did.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Você ligou a alguém."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Who called you?\" — Choose the answer.",
+     "opcoes": [
+      {
+       "texto": "Thandi called me.",
+       "certa": true
+      },
+      {
+       "texto": "I called Thandi.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, she did.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Alguém ligou para si."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Why [did you choose] IT?",
+     "opcoes": [
+      {
+       "texto": "you chose",
+       "certa": false
+      },
+      {
+       "texto": "did you chose",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Who [gave] her the key?",
+     "opcoes": [
+      {
+       "texto": "did give",
+       "certa": false
+      },
+      {
+       "texto": "did gave",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Quem lhe disse?",
+     "resposta": "Who told you?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Thandi opened it. She came early, at seven.",
+     "enunciado": "What time did Thandi arrive?",
+     "opcoes": [
+      {
+       "texto": "at seven",
+       "certa": true
+      },
+      {
+       "texto": "at eleven",
+       "certa": false
+      },
+      {
+       "texto": "at seven fifty",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "What did you do? Where did you go? What happened?",
+     "enunciado": "Ouça e repita: \"did you\" soa /dɪdʒu/."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Ask me two questions about my past: my studies or my first job.",
+     "frase": "did you",
+     "resposta": "Where did you study? And when did you get your first job?",
+     "contexto": "Duas perguntas com \"did\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Something strange happened at work. Ask what happened and who did it.",
+     "frase": "happened",
+     "resposta": "What happened? Who left the door open?",
+     "contexto": "Perguntas sobre o sujeito, sem \"did\"."
+    }
+   ]
+  },
+  {
+   "codigo": "2C",
+   "titulo": "I was working when…",
+   "aula": "2C",
+   "objectivo": "Contar uma acção longa no passado e a acção curta que a interrompeu, com when e while.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "At three o'clock I [was preparing] the accounts.",
+     "opcoes": [
+      {
+       "texto": "prepared",
+       "certa": false
+      },
+      {
+       "texto": "were preparing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Mateus and Thandi [were standing] in the lift.",
+     "opcoes": [
+      {
+       "texto": "was standing",
+       "certa": false
+      },
+      {
+       "texto": "are standing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I was preparing the accounts when the power [went] off.",
+     "opcoes": [
+      {
+       "texto": "was going",
+       "certa": false
+      },
+      {
+       "texto": "goes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[While] we were waiting, Paulo ran down the stairs.",
+     "opcoes": [
+      {
+       "texto": "During",
+       "certa": false
+      },
+      {
+       "texto": "Then",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I was driving to work when my phone rang.",
+       "certa": true
+      },
+      {
+       "texto": "I drove to work when my phone was ringing.",
+       "certa": false
+      },
+      {
+       "texto": "I was drive to work when my phone rang.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Acção longa: past continuous; acção curta: past simple."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I knew the answer.",
+       "certa": true
+      },
+      {
+       "texto": "I was knowing the answer.",
+       "certa": false
+      },
+      {
+       "texto": "I was know the answer.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Verbo de estado: sem -ing."
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Match each verb to its past form.",
+     "pares": [
+      {
+       "a": "ring",
+       "b": "rang"
+      },
+      {
+       "a": "stand",
+       "b": "stood"
+      },
+      {
+       "a": "run",
+       "b": "ran"
+      },
+      {
+       "a": "hear",
+       "b": "heard"
+      },
+      {
+       "a": "wake",
+       "b": "woke"
+      },
+      {
+       "a": "wear",
+       "b": "wore"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Were you working at eight? — No, ...",
+     "opcoes": [
+      {
+       "texto": "I wasn't.",
+       "certa": true
+      },
+      {
+       "texto": "I weren't.",
+       "certa": false
+      },
+      {
+       "texto": "I didn't.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "They waited for twenty minutes. Mateus was wearing his new suit — and it was very hot!",
+     "enunciado": "How long did Mateus and Thandi wait in the lift?",
+     "opcoes": [
+      {
+       "texto": "20 minutes",
+       "certa": true
+      },
+      {
+       "texto": "2 minutes",
+       "certa": false
+      },
+      {
+       "texto": "12 minutes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I was preparing the accounts when the power went off.",
+     "enunciado": "Ouça e repita: \"was\" fraco, /wəz/."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What were you doing yesterday at eight p.m.?",
+     "frase": "I was",
+     "resposta": "At eight p.m. I was having dinner with my family, and my brother was watching football.",
+     "contexto": "Use was / were + -ing."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a power cut. What were you doing when the power went off?",
+     "frase": "when",
+     "resposta": "I was cooking dinner when the power went off. So we had dinner in the dark.",
+     "contexto": "Acção longa + when + acção curta."
+    }
+   ]
+  },
+  {
+   "codigo": "2D",
+   "titulo": "In the end",
+   "aula": "2D",
+   "objectivo": "Contar uma pequena história com princípio, meio e fim, com sequenciadores, because e so.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[First], I arrived at the airport. Then I took a taxi.",
+     "opcoes": [
+      {
+       "texto": "In the end",
+       "certa": false
+      },
+      {
+       "texto": "At the end",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I was very worried. [In the end], the driver brought my phone back.",
+     "opcoes": [
+      {
+       "texto": "At the end",
+       "certa": false
+      },
+      {
+       "texto": "In end",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I was tired at the end of the day.",
+       "certa": true
+      },
+      {
+       "texto": "I was tired in the end of the day.",
+       "certa": false
+      },
+      {
+       "texto": "I was tired at the end the day.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I was worried [because] all my work was on the phone.",
+     "opcoes": [
+      {
+       "texto": "so",
+       "certa": false
+      },
+      {
+       "texto": "then",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My phone wasn't in my bag, [so] I sent an email.",
+     "opcoes": [
+      {
+       "texto": "because",
+       "certa": false
+      },
+      {
+       "texto": "when",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Match each verb to its past form.",
+     "pares": [
+      {
+       "a": "lose",
+       "b": "lost"
+      },
+      {
+       "a": "find",
+       "b": "found"
+      },
+      {
+       "a": "pay",
+       "b": "paid"
+      },
+      {
+       "a": "bring",
+       "b": "brought"
+      },
+      {
+       "a": "send",
+       "b": "sent"
+      },
+      {
+       "a": "forget",
+       "b": "forgot"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Brought\" é o passado de...",
+     "opcoes": [
+      {
+       "texto": "bring",
+       "certa": true
+      },
+      {
+       "texto": "buy",
+       "certa": false
+      },
+      {
+       "texto": "break",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Primeiro perdi as chaves. No fim, encontrei-as no carro.",
+     "resposta": "First, I lost my keys. In the end, I found them in my car.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The taxi driver! He found my phone in his car and he brought it back to the hotel.",
+     "enunciado": "Who found Thandi's phone?",
+     "opcoes": [
+      {
+       "texto": "the taxi driver",
+       "certa": true
+      },
+      {
+       "texto": "the hotel receptionist",
+       "certa": false
+      },
+      {
+       "texto": "Sílvia",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "First, I lost my phone. Then I sent an email. In the end, the driver brought it back.",
+     "enunciado": "Ouça e repita, com pausas depois de First, Then e In the end."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a day when something went wrong. What happened in the end?",
+     "frase": "In the end",
+     "resposta": "First, I missed the bus. Then it started to rain, so I took a taxi. In the end, I arrived at the meeting on time.",
+     "contexto": "Use first, then, so e in the end."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What were you doing when the problem started?",
+     "frase": "when",
+     "resposta": "I was waiting at the bus stop when it started to rain.",
+     "contexto": "Past continuous + when + past simple."
+    }
+   ]
+  },
+  {
+   "codigo": "2E",
+   "titulo": "Life events",
+   "aula": "2E",
+   "objectivo": "Dizer os marcos da vida e do percurso profissional; ligar as palavras; college e pretend.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "get a job",
+       "b": "arranjar emprego"
+      },
+      {
+       "a": "get a promotion",
+       "b": "ser promovido"
+      },
+      {
+       "a": "get married",
+       "b": "casar-se"
+      },
+      {
+       "a": "retire",
+       "b": "reformar-se"
+      },
+      {
+       "a": "graduate",
+       "b": "licenciar-se"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She got married [to] Alberto in 1995.",
+     "opcoes": [
+      {
+       "texto": "with",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In 2010 she [got] a promotion.",
+     "opcoes": [
+      {
+       "texto": "took",
+       "certa": false
+      },
+      {
+       "texto": "did",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He applied [for] a job at the bank.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "on",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct order of a life.",
+     "opcoes": [
+      {
+       "texto": "born → grew up → graduated → got a job → retired",
+       "certa": true
+      },
+      {
+       "texto": "graduated → born → retired → got a job → grew up",
+       "certa": false
+      },
+      {
+       "texto": "got a job → born → grew up → retired → graduated",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Match each verb to its past form.",
+     "pares": [
+      {
+       "a": "begin",
+       "b": "began"
+      },
+      {
+       "a": "keep",
+       "b": "kept"
+      },
+      {
+       "a": "sell",
+       "b": "sold"
+      },
+      {
+       "a": "win",
+       "b": "won"
+      },
+      {
+       "a": "mean",
+       "b": "meant"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Pretendo mudar de emprego\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "I want to change jobs.",
+       "certa": true
+      },
+      {
+       "texto": "I pretend to change jobs.",
+       "certa": false
+      },
+      {
+       "texto": "I intend change jobs.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Pretend\" = fingir."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Andei num colégio privado\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "I went to a private school.",
+       "certa": true
+      },
+      {
+       "texto": "I went to a college.",
+       "certa": false
+      },
+      {
+       "texto": "I went to a private college school.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"College\" é uma escola superior ou um curso técnico."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "In 2010 she got a promotion: she became the head teacher of her school.",
+     "enunciado": "What happened to Graça in 2010?",
+     "opcoes": [
+      {
+       "texto": "She became head teacher.",
+       "certa": true
+      },
+      {
+       "texto": "She got married.",
+       "certa": false
+      },
+      {
+       "texto": "She moved to Luanda.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "She lived in Malanje. She got a job. I worked at a bank.",
+     "enunciado": "Ouça e repita, a ligar as palavras: lived‿in, got‿a, worked‿at."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me three big moments of your life, with the year.",
+     "frase": "in",
+     "resposta": "I was born in Huambo in 1998. I moved to Luanda in 2016, and I got my first job in 2021.",
+     "contexto": "Três marcos com o ano."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about the life of an older person in your family.",
+     "frase": "got",
+     "resposta": "My uncle was born in Uíge in 1960. He got a job at a bank, and he got married in 1985. He retired last year.",
+     "contexto": "Use get a job, get married ou retire."
+    }
+   ]
+  },
+  {
+   "codigo": "2F",
+   "titulo": "Real English: How I started",
+   "aula": "2F",
+   "objectivo": "Identificar a ordem dos acontecimentos e a decisão mais importante em três histórias de carreira.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I grew up in Huambo, in a family of seven children, so we didn't have much money.",
+     "enunciado": "Why did Fátima need a job after school?",
+     "opcoes": [
+      {
+       "texto": "Her family didn't have much money.",
+       "certa": true
+      },
+      {
+       "texto": "She didn't like school.",
+       "certa": false
+      },
+      {
+       "texto": "She wanted to travel.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Then, in 2019, I opened a small bakery.",
+     "enunciado": "What did Fátima open in 2019?",
+     "opcoes": [
+      {
+       "texto": "a bakery",
+       "certa": true
+      },
+      {
+       "texto": "a restaurant",
+       "certa": false
+      },
+      {
+       "texto": "a market",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I was working in my uncle's shop when a friend told me about a job in Angola.",
+     "enunciado": "What was Tunde doing when he heard about the job?",
+     "opcoes": [
+      {
+       "texto": "working in his uncle's shop",
+       "certa": true
+      },
+      {
+       "texto": "studying engineering",
+       "certa": false
+      },
+      {
+       "texto": "looking for a flat",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I didn't speak any Portuguese, but I said yes.",
+     "enunciado": "What was difficult for Tunde at the beginning?",
+     "opcoes": [
+      {
+       "texto": "the language",
+       "certa": true
+      },
+      {
+       "texto": "the food",
+       "certa": false
+      },
+      {
+       "texto": "the weather",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I was working in a bank in Manchester, and I hated it.",
+     "enunciado": "Why did Emma leave her job?",
+     "opcoes": [
+      {
+       "texto": "She hated it.",
+       "certa": true
+      },
+      {
+       "texto": "The bank closed.",
+       "certa": false
+      },
+      {
+       "texto": "She got married.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "In January I came to Luanda for a six-month job. Now it's November… and I'm still here!",
+     "enunciado": "How long did Emma plan to stay in Luanda?",
+     "opcoes": [
+      {
+       "texto": "six months",
+       "certa": true
+      },
+      {
+       "texto": "eleven months",
+       "certa": false
+      },
+      {
+       "texto": "one year",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Put Tunde's story in order.",
+     "opcoes": [
+      {
+       "texto": "studied → applied for jobs → worked in a shop → moved to Luanda",
+       "certa": true
+      },
+      {
+       "texto": "moved to Luanda → studied → worked in a shop → applied for jobs",
+       "certa": false
+      },
+      {
+       "texto": "worked in a shop → studied → moved to Luanda → applied for jobs",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It was hard at the beginning\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Foi difícil no princípio.",
+       "certa": true
+      },
+      {
+       "texto": "Foi duro no fim.",
+       "certa": false
+      },
+      {
+       "texto": "Começou a ser difícil.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It was the best decision of my life.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How did you start your career or your studies?",
+     "frase": "After",
+     "resposta": "After school I worked in a shop for two years. Then I did a course in accounting, and in 2020 I got a job at a bank.",
+     "contexto": "Os passos por ordem."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What was the most important decision of your life?",
+     "frase": "decision",
+     "resposta": "The best decision of my life was moving to Luanda. I was nervous, but in the end I found a good job.",
+     "contexto": "Diga a decisão e porquê."
+    }
+   ]
+  },
+  {
+   "codigo": "2G",
+   "titulo": "Work & Life: Tell me about yourself",
+   "aula": "2G",
+   "objectivo": "Contar à nova chefia o percurso de estudos e de trabalho em cerca de um minuto e responder a perguntas de seguimento.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the best order for \"Tell me about yourself\"?",
+     "opcoes": [
+      {
+       "texto": "where you're from → studies → experience → now",
+       "certa": true
+      },
+      {
+       "texto": "now → experience → where you're from → studies",
+       "certa": false
+      },
+      {
+       "texto": "studies → now → where you're from → experience",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "After secondary school, I [began] a degree in computer science.",
+     "opcoes": [
+      {
+       "texto": "begun",
+       "certa": false
+      },
+      {
+       "texto": "begin",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [spent] three months with the IT team.",
+     "opcoes": [
+      {
+       "texto": "spend",
+       "certa": false
+      },
+      {
+       "texto": "spended",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Now I [support] the staff, and this month I'm working on a new project.",
+     "opcoes": [
+      {
+       "texto": "supported",
+       "certa": false
+      },
+      {
+       "texto": "was supporting",
+       "certa": false
+      }
+     ],
+     "explicacao": "O fim da resposta é no presente."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Licenciatura em Gestão\" — how do you explain it?",
+     "opcoes": [
+      {
+       "texto": "a degree in management",
+       "certa": true
+      },
+      {
+       "texto": "a licence in management",
+       "certa": false
+      },
+      {
+       "texto": "a gestion degree",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Ensino Médio Técnico de Informática\" — how do you explain it?",
+     "opcoes": [
+      {
+       "texto": "a technical secondary school course in IT",
+       "certa": true
+      },
+      {
+       "texto": "a medium teaching of informatics",
+       "certa": false
+      },
+      {
+       "texto": "a technical university of computers",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "In October, there was a place in the IT team, and I got the job.",
+     "enunciado": "When did Nuno get the job at Kalandula Tech?",
+     "opcoes": [
+      {
+       "texto": "in October",
+       "certa": true
+      },
+      {
+       "texto": "in July",
+       "certa": false
+      },
+      {
+       "texto": "in December",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "When I was a child, my father's computer was always broken — he has a small shop. So I began to fix it. I was twelve!",
+     "enunciado": "How old was Nuno when he began to fix computers?",
+     "opcoes": [
+      {
+       "texto": "12",
+       "certa": true
+      },
+      {
+       "texto": "20",
+       "certa": false
+      },
+      {
+       "texto": "2",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I was born in Lubango, and I grew up there. Now I'm working on a big project.",
+     "enunciado": "Ouça e repita, com uma pausa antes de \"Now\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about yourself.",
+     "frase": "Now",
+     "resposta": "I was born in Huíla, and I grew up in Lubango. After school I did a degree in management. In 2020 I got a job at a bank. Now I'm an analyst, and this month I'm preparing the annual report.",
+     "contexto": "Origem, estudos, experiência e agora."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What was a difficult moment in your career, and what happened in the end?",
+     "frase": "In the end",
+     "resposta": "I was presenting a project to a client when my computer stopped. So I explained it without slides. In the end, the client liked the project.",
+     "contexto": "Past continuous, when, so e in the end."
+    }
+   ]
+  },
+  {
+   "codigo": "2R",
+   "titulo": "Unit 2 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 2 e reciclar o A1 e a unidade 1 do A2.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "When were you born?",
+       "certa": true
+      },
+      {
+       "texto": "When did you born?",
+       "certa": false
+      },
+      {
+       "texto": "When you were born?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Who sent this email?",
+       "certa": true
+      },
+      {
+       "texto": "Who did send this email?",
+       "certa": false
+      },
+      {
+       "texto": "Who did sent this email?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [was having] a shower when someone knocked on the door.",
+     "opcoes": [
+      {
+       "texto": "am having",
+       "certa": false
+      },
+      {
+       "texto": "were having",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[While] I was driving, it started to rain.",
+     "opcoes": [
+      {
+       "texto": "During",
+       "certa": false
+      },
+      {
+       "texto": "In the end",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "In the end, we found the problem.",
+       "certa": true
+      },
+      {
+       "texto": "At the end, we found the problem.",
+       "certa": false
+      },
+      {
+       "texto": "In the end of, we found the problem.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Match each verb to its past form.",
+     "pares": [
+      {
+       "a": "lose",
+       "b": "lost"
+      },
+      {
+       "a": "teach",
+       "b": "taught"
+      },
+      {
+       "a": "choose",
+       "b": "chose"
+      },
+      {
+       "a": "win",
+       "b": "won"
+      },
+      {
+       "a": "hear",
+       "b": "heard"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 1). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "These days I'm working late.",
+       "certa": true
+      },
+      {
+       "texto": "These days I work late now.",
+       "certa": false
+      },
+      {
+       "texto": "These days I working late.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 1). \"What does your manager look like?\" — Choose the answer.",
+     "opcoes": [
+      {
+       "texto": "She's tall and she wears glasses.",
+       "certa": true
+      },
+      {
+       "texto": "She's very friendly.",
+       "certa": false
+      },
+      {
+       "texto": "She likes her job.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A1, unidade 10). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I didn't go to university.",
+       "certa": true
+      },
+      {
+       "texto": "I didn't went to university.",
+       "certa": false
+      },
+      {
+       "texto": "I not go to university.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ele foi promovido no ano passado.",
+     "resposta": "He got a promotion last year.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I studied engineering in Lagos. When I graduated, I applied for twenty jobs.",
+     "enunciado": "Where did Tunde study?",
+     "opcoes": [
+      {
+       "texto": "in Lagos",
+       "certa": true
+      },
+      {
+       "texto": "in Luanda",
+       "certa": false
+      },
+      {
+       "texto": "in London",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me your life story in four sentences.",
+     "frase": "I was born",
+     "resposta": "I was born in Malanje in 1990. I grew up there and I went to school there. In 2012 I moved to Luanda for university. Now I work at a hospital.",
+     "contexto": "Por ordem, do nascimento ao presente."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What were you doing at this time yesterday?",
+     "frase": "I was",
+     "resposta": "At this time yesterday I was having a meeting with my team.",
+     "contexto": "Past continuous."
+    }
+   ]
+  }
+ ]
+}

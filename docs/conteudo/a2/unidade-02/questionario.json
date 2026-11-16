@@ -1,0 +1,301 @@
+{
+ "title": "A2.1 Unit 2 quiz — Life stories",
+ "description": "Past simple e irregulares, perguntas sobre o passado, past continuous, contar uma história e o percurso profissional.",
+ "questions": [
+  {
+   "id": "a2u2q1",
+   "question": "Como se diz \"Nasci em 1995\"?",
+   "options": [
+    {
+     "id": "a2u2q1o0",
+     "text": "I was born in 1995.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u2q1o1",
+     "text": "I born in 1995.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u2q1o2",
+     "text": "I am born in 1995.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u2q1o0",
+   "explanation": "\"Nascer\" = \"be born\".",
+   "points": 10
+  },
+  {
+   "id": "a2u2q2",
+   "question": "Qual é o passado de \"teach\"?",
+   "options": [
+    {
+     "id": "a2u2q2o0",
+     "text": "taught",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u2q2o1",
+     "text": "teached",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u2q2o2",
+     "text": "thought",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u2q2o0",
+   "explanation": "teach → taught (\"thought\" é de \"think\").",
+   "points": 10
+  },
+  {
+   "id": "a2u2q3",
+   "question": "Choose the correct question.",
+   "options": [
+    {
+     "id": "a2u2q3o0",
+     "text": "What happened at the meeting?",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u2q3o1",
+     "text": "What did happen at the meeting?",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u2q3o2",
+     "text": "What did happened at the meeting?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u2q3o0",
+   "explanation": "Pergunta de sujeito: sem \"did\".",
+   "points": 10
+  },
+  {
+   "id": "a2u2q4",
+   "question": "Complete: \"I ___ dinner when the power went off.\"",
+   "options": [
+    {
+     "id": "a2u2q4o0",
+     "text": "was cooking",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u2q4o1",
+     "text": "cooked",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u2q4o2",
+     "text": "were cooking",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u2q4o0",
+   "explanation": "Acção longa: was + -ing.",
+   "points": 10
+  },
+  {
+   "id": "a2u2q5",
+   "question": "Complete: \"___ we were waiting, Paulo called the technician.\"",
+   "options": [
+    {
+     "id": "a2u2q5o0",
+     "text": "While",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u2q5o1",
+     "text": "During",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u2q5o2",
+     "text": "Then",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u2q5o0",
+   "explanation": "\"While\" + past continuous.",
+   "points": 10
+  },
+  {
+   "id": "a2u2q6",
+   "question": "Qual destas frases conta como acabou a história?",
+   "options": [
+    {
+     "id": "a2u2q6o0",
+     "text": "In the end, the driver brought it back.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u2q6o1",
+     "text": "At the end, the driver brought it back.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u2q6o2",
+     "text": "Finally of the story, the driver brought it back.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u2q6o0",
+   "explanation": "\"In the end\" = no fim (da história).",
+   "points": 10
+  },
+  {
+   "id": "a2u2q7",
+   "question": "\"I pretend to change jobs\" quer dizer:",
+   "options": [
+    {
+     "id": "a2u2q7o0",
+     "text": "Finjo que vou mudar de emprego.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u2q7o1",
+     "text": "Pretendo mudar de emprego.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u2q7o2",
+     "text": "Mudei de emprego.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u2q7o0",
+   "explanation": "Falso amigo: pretend = fingir. \"Pretendo\" = \"I want to\".",
+   "points": 10
+  },
+  {
+   "id": "a2u2q8",
+   "question": "Ouviu: \"I was working in my uncle's shop when a friend told me about a job in Angola.\" O que aconteceu primeiro?",
+   "options": [
+    {
+     "id": "a2u2q8o0",
+     "text": "Ele já trabalhava na loja do tio.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u2q8o1",
+     "text": "O amigo falou-lhe do emprego.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u2q8o2",
+     "text": "Ele foi para Angola.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u2q8o0",
+   "explanation": "O past continuous é a acção que já estava a decorrer.",
+   "points": 10
+  },
+  {
+   "id": "a2u2q9",
+   "question": "Para terminar \"Tell me about yourself\", qual é a melhor frase?",
+   "options": [
+    {
+     "id": "a2u2q9o0",
+     "text": "Now I'm a team leader, and this month I'm working on a new project.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u2q9o1",
+     "text": "Now I was a team leader.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u2q9o2",
+     "text": "Now I am work on a new project.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u2q9o0",
+   "explanation": "Termine no presente.",
+   "points": 10
+  },
+  {
+   "id": "a2u2q10",
+   "question": "Reciclagem (A2, unidade 1). Choose the correct sentence.",
+   "options": [
+    {
+     "id": "a2u2q10o0",
+     "text": "I need more time this week.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u2q10o1",
+     "text": "I'm needing more time this week.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u2q10o2",
+     "text": "I needing more time this week.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u2q10o0",
+   "explanation": "Verbo de estado: sem -ing.",
+   "points": 10
+  },
+  {
+   "id": "a2u2q11",
+   "question": "Reciclagem (A2, unidade 1). \"What's your new colleague like?\" — Choose the answer.",
+   "options": [
+    {
+     "id": "a2u2q11o0",
+     "text": "He's very helpful, but a bit shy.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u2q11o1",
+     "text": "He's tall and he has a beard.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u2q11o2",
+     "text": "He likes football.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u2q11o0",
+   "explanation": "\"What's he like?\" pergunta pela personalidade.",
+   "points": 10
+  },
+  {
+   "id": "a2u2q12",
+   "question": "Reciclagem (A1, unidade 10). Choose the correct sentence.",
+   "options": [
+    {
+     "id": "a2u2q12o0",
+     "text": "Next year I'm going to apply for a new job.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u2q12o1",
+     "text": "Next year I going to apply for a new job.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u2q12o2",
+     "text": "Next year I'm going to applied for a new job.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u2q12o0",
+   "explanation": "be + going to + verbo simples.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
