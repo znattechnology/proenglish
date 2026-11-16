@@ -194,3 +194,46 @@ class ValidarGuiaoTests(Base):
         s = Situacao.objects.get(slug='nv-cmd-1')
         self.assertEqual((s.curso_id, s.estado, s.extras['exame']), (self.curso.pk, Situacao.ACTIVO, True))
         self.assertEqual(exame.situacoes_de_exame(self.curso), [s])
+
+
+class EscalaPorNivelTests(Base):
+
+    def setUp(self):
+        super().setUp()
+        self.concluir()
+
+    def mensagem_claude(self):
+        self.fazer_exame()
+        return next(c.args[1] for c in self.claude.call_args_list if c.args[0] == exame.EXAME_SYSTEM)
+
+    def test_curso_a1_recebe_a_escala_do_a1_e_a_estrutura(self):
+        self.curso.level = 'A1'
+        self.curso.save(update_fields=['level'])
+        msg = self.mensagem_claude()
+        self.assertIn('<level_scale>', msg)
+        self.assertIn(exame.ESCALA_A1['gramatica']['60-79'], msg)
+        self.assertIn('Does not lower any score: a Portuguese accent', msg)
+        self.assertIn('Part 1: Interview (Hello, the candidate.', msg)
+        self.assertIn('Part 2: My day', msg)
+
+    def test_escala_do_guiao_do_curso_ganha(self):
+        from apps.courses.models import CourseGradingConfig
+        self.curso.level = 'A1'
+        self.curso.save(update_fields=['level'])
+        CourseGradingConfig.objects.update_or_create(course=self.curso, defaults={'exam_script': {
+            'situacoes': 0, 'partes': [{'titulo': 'Past and plans', 'perguntas': [{'pergunta': 'Last weekend?'}]}],
+            'escala': {'gramatica': {'60-79': 'Uses the four A1 tenses with frequent mistakes. <b>'},
+                       'inventada': {'60-79': 'x'}},
+            'nao_baixa': ['one wrong irregular verb']}})
+        msg = self.mensagem_claude()
+        self.assertIn('gramatica 60-79: Uses the four A1 tenses with frequent mistakes. (b)', msg)
+        self.assertNotIn(exame.ESCALA_A1['tarefa']['60-79'], msg)
+        self.assertNotIn('inventada', msg)
+        self.assertIn('Does not lower any score: one wrong irregular verb.', msg)
+        self.assertNotIn('Situation', msg.split('</exam_structure>')[0])
+
+    def test_curso_b1_sem_escala_de_nivel(self):
+        msg = self.mensagem_claude()
+        self.assertNotIn('<level_scale>', msg)
+        self.assertIn('two or three role-play tasks', msg)
+        self.assertIn('<level_scale>', exame.EXAME_SYSTEM)  # a regra existe, o bloco só vem quando há escala
