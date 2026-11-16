@@ -2,7 +2,7 @@
 
 Guiões para o professor de IA. Conteúdo original da ProEnglish. Convenções e personagens: ver os [guiões da unidade 1 do A2](../unidade-01/guioes.md).
 
-**Língua que esta unidade pode usar:** tudo do A1 e das unidades 1 a 3 do A2. Do A1 o aluno já sabe comparar duas coisas (*cheaper, bigger, better, more expensive … than* — aula 8C), dizer o mais barato e o melhor (*the cheapest, the best*), e falar de quantidades com *some / any, How much / How many, a lot of* (unidade 6). Novo: *much / a bit* + comparativo (*much cheaper, a bit faster*); *less*; *(not) as … as*; superlativos com *in* e *of* (*the best in Luanda, the cheapest of the three*); *the worst*; *much / many* na negativa e na pergunta; *a few / a little*; *a / the* / sem artigo; recomendar (*I recommend…, My recommendation is…*).
+**Língua que esta unidade pode usar:** tudo do A1 e das unidades 1 a 3 do A2. Do A1 o aluno já sabe comparar duas coisas (*cheaper, bigger, better, more expensive … than* — aula 8C), dizer o mais barato e o melhor (*the cheapest, the best*), e falar de quantidades com *some / any, How much / How many, a lot of* (unidade 6). Novo: *much / a bit* + comparativo (*much cheaper, a bit faster*); *less*; *(not) as … as*; superlativos com *in* e *of* (*the best in Luanda, the cheapest of the three*); *the worst*; *much / many* na negativa e na pergunta; *a few / a little*; *a / the* / sem artigo; recomendar (*I recommend…, The only disadvantage is…*).
 
 **Não usar nesta unidade:** o *present perfect*; *will* e *going to* para previsões; *should / have to / must*; *could*; o condicional (*if*, *would* + verbo, excepto *would like*); *too / enough*; *used to*.
 
@@ -22,7 +22,7 @@ Objectivo da aula: No fim, o aluno consegue comparar duas opções com comparati
 Objectivo da unidade a que serve: 1
 Gramática-alvo: comparativos (revistos: -er, more, irregulares better / worse); much / a bit +
   comparativo; less + adjectivo; as … as; not as … as
-Palavras-alvo: generator, model, quiet, noisy, heavy, light, powerful, fuel, price, cost
+Palavras-alvo: generator, model, quiet, noisy, heavy, powerful, fuel, price
 Reciclagem: comparativos (A1, 8C); past simple (A2, 2) — o corte de energia
 Pronúncia: than /ðən/ e as /əz/ fracos: as quiet as /əz ˈkwaɪət əz/
 Contexto: a Sílvia e o Mateus escolhem um gerador para o escritório da Kalandula Tech
@@ -126,7 +126,7 @@ Objectivo da aula: No fim, o aluno consegue escolher e recomendar o melhor de um
 Objectivo da unidade a que serve: 2
 Gramática-alvo: the + -est / the most + adjectivo longo; the best / the worst; in + lugar ou grupo
   (in Luanda, in the team); of + número (of the three); What's the best… ?
-Palavras-alvo: view, beach, market, souvenir, fortress, crowded, beautiful, old, famous, recommend
+Palavras-alvo: view, beach, market, souvenir, fortress, crowded, beautiful, old, amazing, recommend
 Reciclagem: present continuous para combinações (A2, 3A); comparativos (4A)
 Pronúncia: the antes de vogal /ði/ (the oldest) e antes de consoante /ðə/ (the best)
 Contexto: a Thandi quer conhecer Luanda no fim-de-semana e pede conselhos à Ana e ao Nuno
@@ -493,9 +493,9 @@ Objectivo da aula: No fim, o aluno consegue comparar dois orçamentos de fornece
   chefia, com duas razões e uma desvantagem (I recommend PowerSafe. It's a bit more expensive, but the
   warranty is longer and the delivery is faster.).
 Objectivo da unidade a que serve: 4 (e 1, 2, 3)
-Gramática-alvo: toda a da unidade; I recommend…; My recommendation is…; The main advantage / The only
+Gramática-alvo: toda a da unidade; I recommend…; There are two big advantages. First,…; The only
   disadvantage is…; It's within budget.
-Palavras-alvo: advantage, disadvantage, recommend, recommendation, within budget, main
+Palavras-alvo: advantage, disadvantage, recommend, recommendation, within budget
 Reciclagem: past simple (A2, 2); present continuous para combinações (A2, 3)
 Pronúncia: acento em adVANtage / disadVANtage e recommenDAtion
 Mediação: o Nuno explica à Thandi, em inglês, o orçamento português da Luanda UPS

@@ -604,7 +604,7 @@
        "certa": true
       },
       {
-       "texto": "the paper you pay after you buy",
+       "texto": "the invoice, after you buy",
        "certa": false
       },
       {
@@ -791,7 +791,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "Then the black one. The battery is better, too. — Great. The black one, then.",
+     "frase": "Great. The black one, then.",
      "enunciado": "Which phone does Joana choose?",
      "opcoes": [
       {
