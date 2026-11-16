@@ -29,10 +29,17 @@ Regras (decididas na fase 6):
 - O professor do curso (ou a administração) confirma ou revê a nota (rever); a nota revista ganha
   à da IA na nota do curso e no "passou".
 
+Situações do exame (conteúdo do A1 em diante): uma Situacao do curso com extras.exame = true é só
+do exame. Não aparece ao aluno (situacoes.situacoes_visiveis) nem conta como conversa do curso;
+em cada exame sorteiam-se algumas (sortear_situacoes) e os slugs ficam na sessão
+(config.situacoes_exame) para a avaliação usar as mesmas. Sem situações de exame, o examinador
+usa as primeiras situações activas do curso, como antes.
+
 Situação "exame-<hex do ExameOral>" (cabe nos 40 caracteres de VapiSession.situation).
 """
 import logging
 import os
+import random
 import shutil
 import subprocess
 import tempfile
@@ -60,6 +67,8 @@ NOTA_MINIMA_PADRAO = 60.0
 RETENCAO_GRAVACOES_DIAS = 365
 MAX_FRASES_PROMPT = 12
 MAX_SITUACOES_PROMPT = 4
+SITUACOES_SORTEADAS = 3          # tarefas do exame geral (B1+) quando o curso tem situações de exame
+CHAVE_SITUACOES = 'situacoes_exame'
 COMPETENCIAS_NOTA = ('fluencia', 'gramatica', 'vocabulario', 'tarefa', 'pronuncia')
 MIN_SEGUNDOS_VERIFICADOS = 120   # menos do que isto de chamada confirmada pelo Vapi: sem nota
 LUANDA = ZoneInfo('Africa/Luanda')
@@ -73,9 +82,45 @@ def max_segundos():
 # Conteúdo do curso
 # ---------------------------------------------------------------------------
 
+def q_situacao_de_exame():
+    """Situacao só do exame (extras.exame = true). O has_key evita o NULL de uma chave em falta,
+    para servir também no exclude (e funciona no PostgreSQL e no SQLite dos testes)."""
+    from django.db.models import Q
+    return Q(extras__has_key='exame') & Q(extras__exame=True)
+
+
 def situacoes_do_curso(course):
+    """As situações de conversa do curso (as do exame ficam de fora)."""
     from apps.practice.models import Situacao
-    return list(Situacao.objects.filter(curso=course, estado=Situacao.ACTIVO).order_by('ordem', 'created_at'))
+    return list(Situacao.objects.filter(curso=course, estado=Situacao.ACTIVO).exclude(q_situacao_de_exame())
+                .order_by('ordem', 'created_at'))
+
+
+def situacoes_de_exame(course):
+    from apps.practice.models import Situacao
+    return list(Situacao.objects.filter(curso=course, estado=Situacao.ACTIVO).filter(q_situacao_de_exame())
+                .order_by('ordem', 'created_at'))
+
+
+def sortear_situacoes(course, n):
+    """n situações de exame ao acaso; sem elas, as primeiras situações do curso (como antes)."""
+    banco = situacoes_de_exame(course)
+    if banco:
+        return random.SystemRandom().sample(banco, min(max(1, n), len(banco)))
+    return situacoes_do_curso(course)[:MAX_SITUACOES_PROMPT]
+
+
+def situacoes_da_sessao(sessao, course):
+    """As situações que o examinador usou nesta sessão (config.situacoes_exame), pela mesma ordem."""
+    from apps.practice.models import Situacao
+    dados = getattr(sessao, 'full_session_data', None)
+    dados = dados if isinstance(dados, dict) else {}
+    cfg = dados.get('config') if isinstance(dados.get('config'), dict) else {}
+    slugs = [x for x in cfg.get(CHAVE_SITUACOES) or [] if isinstance(x, str)][:MAX_SITUACOES_PROMPT]
+    if not slugs:
+        return situacoes_do_curso(course)[:MAX_SITUACOES_PROMPT]
+    por_slug = {s.slug: s for s in Situacao.objects.filter(curso=course, slug__in=slugs)}
+    return [por_slug[x] for x in slugs if x in por_slug]
 
 
 def frases_do_curso(course):
@@ -159,11 +204,13 @@ def exame_do_slug(slug):
     return ExameOral.objects.select_related('course', 'user').filter(pk=pk).first()
 
 
-def situacao_do_exame(exame):
+def situacao_do_exame(exame, situacoes=None):
     course = exame.course
     frases = frases_do_curso(course)
     titulo = _limpar_prompt(f'Exame oral: {course.title}', 80)
-    temas = [s.nome for s in situacoes_do_curso(course)][:MAX_SITUACOES_PROMPT]
+    if situacoes is None:
+        situacoes = situacoes_da_sessao(_sessao_do_exame(exame), course)
+    temas = [s.nome for s in situacoes][:MAX_SITUACOES_PROMPT]
     return {
         'id': slug_do_exame(exame),
         'pk': None,
@@ -196,6 +243,11 @@ def situacao_do_exame(exame):
     }
 
 
+def _sessao_do_exame(exame):
+    from apps.practice.models import VapiSession
+    return VapiSession.objects.filter(pk=exame.sessao_id).first() if exame.sessao_id else None
+
+
 def situacao_por_slug(slug):
     exame = exame_do_slug(slug)
     return situacao_do_exame(exame) if exame is not None else None
@@ -207,11 +259,13 @@ INICIO_FRASES = '<course_phrases>'
 FIM_FRASES = '</course_phrases>'
 
 
-def instrucoes(user, course, nivel):
+def instrucoes(user, course, nivel, situacoes=None):
     """System prompt (inglês) do examinador. O texto do professor (situações, frases) vai como DADOS."""
     nome = nome_aluno(user)
     sits = []
-    for s in situacoes_do_curso(course)[:MAX_SITUACOES_PROMPT]:
+    if situacoes is None:
+        situacoes = situacoes_do_curso(course)
+    for s in situacoes[:MAX_SITUACOES_PROMPT]:
         linha = f'- {_limpar_prompt(s.nome, 80)}: {_limpar_prompt(s.descricao, 300)}'
         if s.papel_tutor:
             linha += f' (examiner role: {_limpar_prompt(s.papel_tutor, 120)})'
@@ -313,7 +367,11 @@ def estado(user, course, progresso=None):
         motivo = 'tentativas'
         mensagem = f'Já começou {MAX_TENTATIVAS_SEMANA} exames nos últimos 7 dias. Tente outra vez mais tarde.'
 
-    situacoes = situacoes_do_curso(course)
+    banco = situacoes_de_exame(course)
+    if banco:  # o aluno vê os temas possíveis, não o pormenor do que vai sair
+        temas = [{'titulo': s.nome, 'descricao': ''} for s in banco]
+    else:
+        temas = [{'titulo': s.nome, 'descricao': _limpar_prompt(s.descricao, 200)} for s in situacoes_do_curso(course)]
     frases = frases_do_curso(course)
     return {
         'disponivel': motivo is None,
@@ -326,7 +384,7 @@ def estado(user, course, progresso=None):
         'nota_minima': minima,
         'nivel_alvo': nivel_do_curso(course),
         'area': area_pt(course),
-        'temas': [{'titulo': s.nome, 'descricao': _limpar_prompt(s.descricao, 200)} for s in situacoes],
+        'temas': temas,
         'frases': frases[:20],
         'frases_total': len(frases),
         'aprovado': aprovado is not None,
@@ -359,12 +417,13 @@ def comecar(user, course, consentimento):
     prefs = preferencias_padrao(user)
     nivel = nivel_do_curso(course) or prefs['nivel']
     frases = frases_do_curso(course)
+    sorteadas = sortear_situacoes(course, SITUACOES_SORTEADAS)
     try:
         sessao = servico.criar_sessao(
             user, {'nivel': nivel, 'correcao': 'suave', 'area': prefs['area']},
-            situacao=situacao_do_exame(exame), objectivos=frases, max_segundos=max_segundos(),
-            config_extra={'tipo': 'exame', 'exame_id': str(exame.pk)},
-            isenta_quota=True, gravar=consentimento, instrucoes=instrucoes(user, course, nivel))
+            situacao=situacao_do_exame(exame, sorteadas), objectivos=frases, max_segundos=max_segundos(),
+            config_extra={'tipo': 'exame', 'exame_id': str(exame.pk), CHAVE_SITUACOES: [s.slug for s in sorteadas]},
+            isenta_quota=True, gravar=consentimento, instrucoes=instrucoes(user, course, nivel, sorteadas))
     except Exception:
         exame.delete()
         raise
@@ -458,7 +517,7 @@ def avaliar_claude(sessao, transcricao, course, objectivos, padroes_conhecidos):
     user = (f'Course target CEFR level: {nivel}.\n'
             f'<course>\nTitle: {_limpar_prompt(course.title, 120)}\n'
             + '\n'.join(f'- {_limpar_prompt(s.nome, 80)}: {_limpar_prompt(s.descricao, 300)}'
-                        for s in situacoes_do_curso(course)[:MAX_SITUACOES_PROMPT])
+                        for s in situacoes_da_sessao(sessao, course))
             + '\n</course>\n'
             f'<known_patterns>\n{conhecidos or "(none)"}\n</known_patterns>\n'
             '<course_phrases>\n' + ('\n'.join(f'- {_limpar_prompt(m, 160)}' for m in metas) or '(none)')

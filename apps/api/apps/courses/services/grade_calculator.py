@@ -30,9 +30,12 @@ COURSE_LEVEL_TO_CEFR = {c: [c] for c in ('A1', 'A2', 'B1', 'B2', 'C1', 'C2')}
 
 
 def curso_tem_conversa(course) -> bool:
-    """O curso tem pelo menos uma situação de conversa activa (practice.Situacao.curso)."""
+    """O curso tem pelo menos uma situação de conversa activa (practice.Situacao.curso); as do exame
+    oral (extras.exame) não contam."""
+    from apps.practice.conversa.exame import q_situacao_de_exame
     from apps.practice.models import Situacao
-    return Situacao.objects.filter(curso=course, estado=Situacao.ACTIVO).exists()
+    return (Situacao.objects.filter(curso=course, estado=Situacao.ACTIVO)
+            .exclude(q_situacao_de_exame()).exists())
 
 
 def sessoes_de_conversa_do_curso(user, course):

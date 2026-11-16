@@ -405,6 +405,8 @@ def situacoes_visiveis(user):
       fechado não);
     - de um professor sem curso (Geral do professor): os alunos com pelo menos um curso desse
       professor que ainda possam abrir.
+    As situações só do exame oral (extras.exame = true) nunca aparecem: o aluno não pode treinar a
+    situação exacta do exame (conversa/exame.py).
     """
     from django.db.models import F, Q
     from apps.courses import ciclo
@@ -412,10 +414,11 @@ def situacoes_visiveis(user):
     from apps.practice.actividade import cursos_do_aluno
     from apps.practice.models import Situacao
 
+    from .exame import q_situacao_de_exame
     acessiveis = Course.objects.filter(ciclo.q_conteudo_aluno(), id__in=cursos_do_aluno(user))
     cursos = list(acessiveis.values_list('id', flat=True))
     professores = list(acessiveis.values_list('teacher_id', flat=True).distinct())
-    return (Situacao.objects.filter(estado=Situacao.ACTIVO)
+    return (Situacao.objects.filter(estado=Situacao.ACTIVO).exclude(q_situacao_de_exame())
             .filter(Q(curso__isnull=True, criado_por__isnull=True) | Q(curso_id__in=cursos)
                     | Q(curso__isnull=True, criado_por_id__in=professores))
             .select_related('curso')
