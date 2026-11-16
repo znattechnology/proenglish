@@ -18,5 +18,12 @@
 - **Respostas faladas:** as 14 cabem em 45 segundos e contêm a frase-alvo.
 - **Opções erradas:** nenhuma pode estar certa noutro contexto, com uma excepção já explicada na revisão n.º 1: *used to live… for twenty years*.
 - **Tutor:** o Chris e o Robin funcionam com respostas curtas e com "não". O Robin não fala de marido nem de mulher.
-- **Questionário:** 12 perguntas, com as respostas certas na primeira posição do ficheiro (a plataforma baralha as opções).
+- **Questionário:** as 12 perguntas e as explicações estão certas. **Problema encontrado e por resolver:** a resposta certa está sempre em primeiro lugar e tem sempre o identificador terminado em `o0`. A plataforma não baralha as opções (`quiz_sem_respostas`, em `apps/courses/api/student/video_courses/conteudo.py`), por isso o aluno pode adivinhar a resposta pela posição ou pelo identificador. O mesmo acontece nos questionários do A1 e do A2. Fica para decisão da direcção (ver a nota no fim).
 - **Língua:** nenhuma estrutura das unidades seguintes, em nova procura automática e leitura.
+
+## Nota para decisão
+
+Os questionários de todos os níveis (A1, A2 e B1) põem a resposta certa em primeiro lugar e com o identificador `…o0`. Há duas soluções:
+
+- **Na plataforma (recomendada):** a API passa a baralhar as opções de cada pergunta e a enviar identificadores que não revelam a resposta. Assim ficam corrigidos todos os questionários, os já escritos e os que os professores criarem.
+- **Nos ficheiros:** baralhar as opções e trocar os identificadores em todos os `questionario.json`. Isto não protege os questionários que os professores criarem.
