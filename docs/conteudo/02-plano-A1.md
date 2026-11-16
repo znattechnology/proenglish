@@ -355,27 +355,27 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 ### Unidade 10 — Last week, next week (7 aulas)
 
 **Objectivos da unidade.** No fim, o aluno consegue:
-1. dizer onde esteve e como foi;
-2. contar em 4 ou 5 frases o que fez no fim-de-semana ou na semana passada;
-3. dizer o que vai fazer na próxima semana;
-4. dar à chefia um ponto simples da semana: o que fez e o que vai fazer.
+1. dizer onde esteve e como foi, com *was / were* (*I was in Benguela last weekend. It was great.*), e perguntar e responder (*Were you at work yesterday? — No, I wasn't.*);
+2. contar o que fez com o *past simple* regular e irregular, na afirmativa, na negativa e na pergunta (*I visited my parents. I went to the beach. I didn't work. What did you do?*), e contar uma pequena história por ordem (*first, then, finally*);
+3. dizer o que vai fazer com *going to* e com datas (*I'm going to visit a client next Tuesday, the 25th.*);
+4. dar à chefia um ponto da semana: o que fez, o que não fez e porquê (*because*), e o que vai fazer.
 
 | Aula | Tipo | Título | Objectivo da aula |
 |---|---|---|---|
-| 10A | Língua | Where were you? | Usar *was/were* para lugares e opiniões no passado. |
-| 10B | Língua | What did you do? | Contar acções com verbos regulares no *past simple* (+, −, ? com *did*). |
-| 10C | Língua | I went to Benguela | Usar os verbos irregulares mais comuns (went, had, did, saw, made, got, came). |
-| 10D | Língua | Next week | Falar de planos com *going to*. |
-| 10E | Vocabulário e pronúncia | Dates and weekends | Datas, meses, ordinais, actividades de fim-de-semana; -ed /t/ /d/ /ɪd/. |
-| 10F | Real English | What did you do at the weekend? | Entender 3 pessoas a contar o fim-de-semana. |
-| 10G | Work & Life | Weekly check-in | Dizer à chefia o que fez e o que vai fazer. |
+| 10A | Língua | Where were you? | Dizer onde esteve e como foi com *was / were*; *yesterday, last…, ago*; *there was / were*. |
+| 10B | Língua | What did you do? | Contar o que fez com verbos regulares; negativas e perguntas com *did*. |
+| 10C | Língua | I went to Benguela | Contar uma pequena história com os 15 irregulares mais comuns e *first, then, finally*. |
+| 10D | Língua | Next week | Dizer o que vai fazer com *going to* e perguntar. |
+| 10E | Vocabulário e pronúncia | Dates and weekends | Meses, ordinais, datas e anos; o *-ed* em /t/, /d/, /ɪd/; mais irregulares. |
+| 10F | Real English | What did you do at the weekend? | Identificar onde cada pessoa foi, o que fez e o que vai fazer, em três relatos do feriado da Independência. |
+| 10G | Work & Life | Weekly check-in | Dar à chefia o ponto da semana: feito, problemas (*because*) e planos. |
 
-- **Gramática:** *was/were*; *past simple* regular e irregular (+, −, ?); expressões de tempo passado (yesterday, last week, ago); *going to*; *and, but, because*.
-- **Vocabulário (~50):** verbos irregulares comuns, datas, meses, ordinais, actividades.
-- **Pronúncia:** -ed (*worked, called, visited*); *going to* em fala ligada.
-- **Laboratório:** regular ou irregular; ordenar uma história; escuta (verdadeiro/falso); pronúncia de -ed; resposta falada "What did you do last weekend?".
-- **Conversa guiada:** o tutor pergunta pelo fim-de-semana do aluno.
-- **Conversa livre:** "Monday meeting" — o tutor faz de chefe e pede o ponto da semana.
+- **Gramática:** *was / were* (+, −, ?); *there was / were*; *past simple* regular (*-ed, -d, -ied*, consoante dobrada) e irregular; *didn't* e *Did…?* com o verbo simples; *going to* (+, −, ?); *last / next* sem *the*; *ago*; *on* + data, *in* + mês e ano; *because*. Ficam para o A2: o *present perfect*, o *past continuous* e *will*.
+- **Vocabulário (~80):** expressões de tempo passado e futuro, os meses, os ordinais, os anos, feriados de Angola (*Independence Day*, 11 de Novembro; *Day of Peace*, 4 de Abril), verbos irregulares, palavras do trabalho (*report, task, deadline, on time, update, train*).
+- **Pronúncia:** *was / were* fracos e fortes; *-ed* em /t/, /d/, /ɪd/ (e "worked" numa só sílaba); *bought, saw, said*; ordinais com /θ/; *going to* e "gonna" (só para perceber).
+- **Laboratório:** *was / were*; *-ed*; *didn't* + verbo simples; irregulares; *going to*; datas a ouvir; resposta falada "What did you do last week, and what are you going to do this week?".
+- **Conversa guiada:** "Your weekend" — o último fim-de-semana.
+- **Conversa livre:** "Monday meeting" — o ponto da semana com a chefia.
 
 ### Revisão 2 e exame oral do A1.2
 

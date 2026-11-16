@@ -1,0 +1,301 @@
+{
+ "title": "Unit 10 quiz — Last week, next week",
+ "description": "Was/were, past simple regular e irregular, going to, datas e o ponto da semana.",
+ "questions": [
+  {
+   "id": "u10q1",
+   "question": "Complete: \"They ___ at the wedding.\"",
+   "options": [
+    {
+     "id": "u10q1o0",
+     "text": "were",
+     "isCorrect": true
+    },
+    {
+     "id": "u10q1o1",
+     "text": "was",
+     "isCorrect": false
+    },
+    {
+     "id": "u10q1o2",
+     "text": "are",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u10q1o0",
+   "explanation": "they → were.",
+   "points": 10
+  },
+  {
+   "id": "u10q2",
+   "question": "Como se diz \"na sexta passada\"?",
+   "options": [
+    {
+     "id": "u10q2o0",
+     "text": "last Friday",
+     "isCorrect": true
+    },
+    {
+     "id": "u10q2o1",
+     "text": "the last Friday",
+     "isCorrect": false
+    },
+    {
+     "id": "u10q2o2",
+     "text": "in last Friday",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u10q2o0",
+   "explanation": "Sem \"the\" nem preposição.",
+   "points": 10
+  },
+  {
+   "id": "u10q3",
+   "question": "Complete: \"Yesterday I ___ my mother.\"",
+   "options": [
+    {
+     "id": "u10q3o0",
+     "text": "visited",
+     "isCorrect": true
+    },
+    {
+     "id": "u10q3o1",
+     "text": "visit",
+     "isCorrect": false
+    },
+    {
+     "id": "u10q3o2",
+     "text": "visiting",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u10q3o0",
+   "explanation": "Passado regular: -ed.",
+   "points": 10
+  },
+  {
+   "id": "u10q4",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "u10q4o0",
+     "text": "I didn't watch the match.",
+     "isCorrect": true
+    },
+    {
+     "id": "u10q4o1",
+     "text": "I didn't watched the match.",
+     "isCorrect": false
+    },
+    {
+     "id": "u10q4o2",
+     "text": "I not watched the match.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u10q4o0",
+   "explanation": "didn't + verbo simples.",
+   "points": 10
+  },
+  {
+   "id": "u10q5",
+   "question": "Escolha a resposta certa: \"Did you finish the report?\"",
+   "options": [
+    {
+     "id": "u10q5o0",
+     "text": "Yes, I did.",
+     "isCorrect": true
+    },
+    {
+     "id": "u10q5o1",
+     "text": "Yes, I finished.",
+     "isCorrect": false
+    },
+    {
+     "id": "u10q5o2",
+     "text": "Yes, I do.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u10q5o0",
+   "explanation": "Resposta curta com \"did\".",
+   "points": 10
+  },
+  {
+   "id": "u10q6",
+   "question": "Qual é o passado de \"buy\"?",
+   "options": [
+    {
+     "id": "u10q6o0",
+     "text": "bought",
+     "isCorrect": true
+    },
+    {
+     "id": "u10q6o1",
+     "text": "buyed",
+     "isCorrect": false
+    },
+    {
+     "id": "u10q6o2",
+     "text": "brought",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u10q6o0",
+   "explanation": "buy → bought.",
+   "points": 10
+  },
+  {
+   "id": "u10q7",
+   "question": "Qual é a pergunta correcta?",
+   "options": [
+    {
+     "id": "u10q7o0",
+     "text": "Where did you go?",
+     "isCorrect": true
+    },
+    {
+     "id": "u10q7o1",
+     "text": "Where did you went?",
+     "isCorrect": false
+    },
+    {
+     "id": "u10q7o2",
+     "text": "Where you went?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u10q7o0",
+   "explanation": "did + verbo simples.",
+   "points": 10
+  },
+  {
+   "id": "u10q8",
+   "question": "Complete: \"Next week I ___ visit a client.\"",
+   "options": [
+    {
+     "id": "u10q8o0",
+     "text": "'m going to",
+     "isCorrect": true
+    },
+    {
+     "id": "u10q8o1",
+     "text": "going to",
+     "isCorrect": false
+    },
+    {
+     "id": "u10q8o2",
+     "text": "'m go to",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u10q8o0",
+   "explanation": "be + going to + verbo.",
+   "points": 10
+  },
+  {
+   "id": "u10q9",
+   "question": "Are you going to travel? — Sim. O que responde?",
+   "options": [
+    {
+     "id": "u10q9o0",
+     "text": "Yes, I am.",
+     "isCorrect": true
+    },
+    {
+     "id": "u10q9o1",
+     "text": "Yes, I do.",
+     "isCorrect": false
+    },
+    {
+     "id": "u10q9o2",
+     "text": "Yes, I going.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u10q9o0",
+   "explanation": "Resposta curta com \"be\".",
+   "points": 10
+  },
+  {
+   "id": "u10q10",
+   "question": "Como se diz 11/11?",
+   "options": [
+    {
+     "id": "u10q10o0",
+     "text": "the eleventh of November",
+     "isCorrect": true
+    },
+    {
+     "id": "u10q10o1",
+     "text": "the eleven of November",
+     "isCorrect": false
+    },
+    {
+     "id": "u10q10o2",
+     "text": "November the eleven",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u10q10o0",
+   "explanation": "Data com ordinal.",
+   "points": 10
+  },
+  {
+   "id": "u10q11",
+   "question": "Ouviu: \"I didn't go anywhere.\" Quer dizer:",
+   "options": [
+    {
+     "id": "u10q11o0",
+     "text": "Não fui a lado nenhum.",
+     "isCorrect": true
+    },
+    {
+     "id": "u10q11o1",
+     "text": "Fui a todo o lado.",
+     "isCorrect": false
+    },
+    {
+     "id": "u10q11o2",
+     "text": "Não fui à loja.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u10q11o0",
+   "explanation": "anywhere = a lado nenhum (na negativa).",
+   "points": 10
+  },
+  {
+   "id": "u10q12",
+   "question": "Num ponto da semana, como explica um problema?",
+   "options": [
+    {
+     "id": "u10q12o0",
+     "text": "I didn't finish the report because the client was late.",
+     "isCorrect": true
+    },
+    {
+     "id": "u10q12o1",
+     "text": "I don't finished the report because the client is late.",
+     "isCorrect": false
+    },
+    {
+     "id": "u10q12o2",
+     "text": "I not finish report because late client.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u10q12o0",
+   "explanation": "didn't + verbo simples + because + razão.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

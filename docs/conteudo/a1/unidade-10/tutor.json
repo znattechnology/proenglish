@@ -1,0 +1,131 @@
+{
+ "unidade": "A1.2 · Unit 10 — Last week, next week",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a1-u10-guiada",
+   "nome": "Unit 10 · Your weekend",
+   "tipo": "guiada",
+   "depois_da_aula": "10C",
+   "descricao": "O tutor pergunta ao aluno pelo último fim-de-semana (onde esteve, o que fez) e conta o seu.",
+   "papel_tutor": "Um professor simpático.",
+   "nivel": "A1",
+   "duracao_min": 4,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I was at / in…",
+    "I went / saw / had…",
+    "I didn't…"
+   ],
+   "extras": {
+    "brief": "Guided practice for a beginner (A1, unit 10). You are a friendly teacher. Ask about the student's last weekend: How was it? Where were you? What did you do on Saturday? And on Sunday? Did you see your family? Did you go out? Then tell them about your weekend in two or three sentences (you went to the beach on Saturday, you cooked for friends on Sunday, you didn't work). Focus on was/were and the past simple (regular and irregular). If the student says \"I go to the beach\" for the past, repeat naturally: \"Ah, you went to the beach!\" If they say \"I didn't went\", model \"I didn't go\". Use only units 1-10 language; no present perfect, no past continuous, no \"will\". One question at a time.",
+    "primeira_fala": "Hello, {nome}! How was your weekend?",
+    "primeira_fala_simples": "Hello! How was your weekend?",
+    "guiao": [
+     "Where were you on Saturday?",
+     "What did you do?",
+     "And on Sunday? Did you see your family?",
+     "Did you work at the weekend?",
+     "I went to the beach on Saturday, and on Sunday I cooked for my friends. Great job, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "It was great.",
+      "pt": "Foi óptimo."
+     },
+     {
+      "en": "I went to the beach and I saw my friends.",
+      "pt": "Fui à praia e vi os meus amigos."
+     },
+     {
+      "en": "I didn't work.",
+      "pt": "Não trabalhei."
+     }
+    ],
+    "palavras": [
+     "was",
+     "were",
+     "went",
+     "saw",
+     "had",
+     "did",
+     "didn",
+     "saturday",
+     "sunday",
+     "weekend"
+    ],
+    "minutos_sugeridos": 4
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a1-u10-livre",
+   "nome": "Unit 10 · Monday meeting",
+   "tipo": "livre",
+   "depois_da_aula": "10G",
+   "descricao": "Reunião de segunda-feira: o tutor é a chefia (Jamie) e pede ao aluno o ponto da semana — o que fez, os problemas e o que vai fazer — e marca uma data.",
+   "papel_tutor": "Jamie, chefe de equipa, simpático(a) mas exigente.",
+   "nivel": "A1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Last week I…",
+    "I didn't … because…",
+    "This week I'm going to…"
+   ],
+   "extras": {
+    "brief": "Role-play for a beginner (A1, unit 10). You are Jamie, the student's team manager (Jamie can be a man or a woman, to match your voice). It is the Monday check-in. Ask: What did you do last week? Any problems? (if the student says they didn't finish something, ask \"Why?\" and \"When are you going to finish it?\"). Then ask: What are you going to do this week? Finally, set a date: ask the student to send you something \"by the 25th\" or choose a day for a meeting, and check the date. The student can talk about their real job or invent tasks. React like a manager: \"Good job\", \"OK, that's fine\", \"Please send it by Friday\". Use only units 1-10 language: past simple, was/were, going to, dates, because. Short turns.",
+    "primeira_fala": "Good morning, {nome}. Let's start our check-in. What did you do last week?",
+    "primeira_fala_simples": "Good morning. What did you do last week?",
+    "guiao": [
+     "Good job. Any problems last week?",
+     "I see. Why?",
+     "OK. When are you going to finish it?",
+     "And what are you going to do this week?",
+     "Great. Can you send me the report by Friday the 20th?",
+     "Perfect. Thank you, {nome}. Have a good week!"
+    ],
+    "frases": [
+     {
+      "en": "Last week I called three clients.",
+      "pt": "Na semana passada liguei a três clientes."
+     },
+     {
+      "en": "I didn't finish the report because the client was late.",
+      "pt": "Não acabei o relatório porque o cliente se atrasou."
+     },
+     {
+      "en": "This week I'm going to visit the bank.",
+      "pt": "Esta semana vou visitar o banco."
+     },
+     {
+      "en": "On Friday the twentieth.",
+      "pt": "Na sexta-feira, dia vinte."
+     }
+    ],
+    "palavras": [
+     "last",
+     "week",
+     "did",
+     "didn",
+     "because",
+     "going",
+     "finish",
+     "report",
+     "friday",
+     "send"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": [
+    "Diz pelo menos duas coisas que fez na semana passada, no past simple.",
+    "Explica um problema com \"didn't … because …\" ou responde a \"Why?\".",
+    "Diz pelo menos dois planos para esta semana com \"going to\".",
+    "Confirma uma data ou um dia (on Friday, the 20th…).",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}
