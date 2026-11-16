@@ -1,6 +1,6 @@
 # A1.2 · Unidade 6 — Food and drink
 
-**Estado:** primeira versão escrita e revista ao escrever, com os 7 critérios das revisões anteriores; falta a revisão n.º 1 e a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 6
+**Estado:** primeira versão escrita e revista ([revisão n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 6
 
 ## Objectivos da unidade
 
@@ -47,4 +47,4 @@ No fim da unidade, o aluno consegue:
 
 ## O que falta para publicar
 
-O mesmo que nas unidades anteriores: revisão n.º 1, leitura pelos professores, vídeos com o professor de IA (vozes novas: Dona Isabel, o empregado do restaurante e as seis vozes da 6E), áudio (14 escutas e 8 pronúncias), carregamento na plataforma e imagens (frigorífico na 6A, café na 6B, comida angolana na 6D, restaurante na Ilha na 6F).
+O mesmo que nas unidades anteriores: leitura pelos professores, vídeos com o professor de IA (vozes novas: Dona Isabel, o empregado do restaurante e as seis vozes da 6E), áudio (14 escutas e 8 pronúncias), carregamento na plataforma e imagens (frigorífico na 6A, café na 6B, comida angolana na 6D, restaurante na Ilha na 6F).

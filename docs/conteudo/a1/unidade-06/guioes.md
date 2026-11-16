@@ -8,7 +8,7 @@ Guiões para o professor de IA. Conteúdo original da ProEnglish. Convenções e
 - **Empregado do restaurante** na Ilha de Luanda (voz própria).
 - **Thandi Mokoena** (unidade 2) volta a Luanda como cliente.
 
-**Preços (2026, aproximados, para dar realismo):** café 600 Kz · água 400 Kz · sumo natural 1 500 Kz · sandes 2 000 Kz · prato do dia 4 500 Kz · funge com muamba de galinha 5 500 Kz · peixe grelhado 7 500 Kz. Os valores são de exemplo; os professores podem actualizá-los.
+**Preços (2026, aproximados, para dar realismo):** café pequeno 600 Kz · café grande 800 Kz · croissant 900 Kz · água pequena 400 Kz · sumo natural 1 500 Kz · sandes 2 000 Kz · prato do dia 4 500 Kz · funge com muamba de galinha 5 500 Kz · peixe grelhado 7 500 Kz. Os valores são de exemplo e coincidem com o menu do cenário do tutor "At the café"; os professores podem actualizá-los, mantendo as contas certas (6C: café grande + café pequeno + croissant + água = 2 700 Kz).
 
 **Língua que esta unidade pode usar** (unidades 1–6): tudo do A1.1. Novo: contáveis e incontáveis; *some / any*; *How much / How many*; *I'd like…*; *Can I have…?* (bloco fixo para pedir; *can* estuda-se nas unidades 8 e 9); *Would you like…?* (perceber e responder); *like / don't like* + nome; números até 10 000; preços.
 
@@ -270,10 +270,10 @@ Verificação: Lab 6C (exercícios 1–9); perguntas 6 e 7 do questionário
 [ECRÃ: o balcão do café; a Dona Isabel no terminal de pagamento]
 
 **PAULO:** How much is it, please?
-**DONA ISABEL:** Two coffees, a croissant and a bottle of water… That's two thousand five hundred kwanzas.
-**PAULO:** Two thousand five hundred. Can I pay by card?
-**DONA ISABEL:** Yes, of course. Cash or Multicaixa?
-**PAULO:** Multicaixa, please.
+**DONA ISABEL:** A large coffee, a small coffee, a croissant and a bottle of water… That's two thousand seven hundred kwanzas.
+**PAULO:** Two thousand seven hundred. Can I pay by card?
+**DONA ISABEL:** Yes, of course. Multicaixa?
+**PAULO:** Yes, Multicaixa, please.
 **DONA ISABEL:** Here's your receipt. Thank you!
 
 ### 3. Língua (4 min)
@@ -346,7 +346,7 @@ Verificação: Lab 6C (exercícios 1–9); perguntas 6 e 7 do questionário
 [PAUSA 4 s]
 [ECRÃ: By card, please. / Cash, please.]
 
-**PROF (reciclagem — 1C):** And your phone number for the receipt?
+**PROF (reciclagem — 1B):** And your name for the receipt? Spell it, please.
 [PAUSA 8 s]
 
 ### 6. Fecho (30 s)
@@ -394,7 +394,7 @@ Verificação: Lab 6D (exercícios 1–9); pergunta 8 do questionário
 
 **PROF:** Meals: breakfast, lunch, dinner.
 [PAUSA 3 s]
-**PROF:** And taste: spicy — with chili, "picante". Sweet — like sugar.
+**PROF:** And taste: spicy — with chilli, "picante". Sweet — like sugar.
 [PAUSA 3 s]
 
 ### 3. Gostos (2 min)
@@ -546,7 +546,7 @@ Verificação: Lab 6F (exercícios 1–9); conversa livre "Lunch with a client";
 **THANDI:** Hmm… What's calulu?
 **PAULO:** It's an Angolan dish. It's dried fish with vegetables and palm oil. It's very good here.
 **THANDI:** Is it spicy?
-**PAULO:** No, it isn't. But you can have some chili on the side.
+**PAULO:** No, it isn't. But you can have some chilli on the side.
 **THANDI:** OK, I'd like the calulu, please.
 **SR. BAPTISTA:** And I'd like the grilled fish with rice.
 **PAULO:** Can I have the chicken muamba with funge, please?
@@ -604,7 +604,7 @@ Verificação: Lab 6F (exercícios 1–9); conversa livre "Lunch with a client";
 **PROF:** Interesting. What do you recommend?
 [PAUSA 6 s]
 [ECRÃ: The muamba is very good here. Do you like chicken?]
-**PROF:** Yes, I love chicken! OK, the muamba. And you? What would you like?
+**PROF:** Yes, I love it! OK, I'd like that. And you? What would you like?
 [PAUSA 5 s]
 [ECRÃ: I'd like the grilled fish, please.]
 **PROF:** Lovely lunch! Can I pay?
