@@ -1,0 +1,301 @@
+{
+ "title": "Unit 5 quiz — A day in Luanda",
+ "description": "Horas e dias, present simple na 3.ª pessoa, does/doesn't, frequência e marcar uma reunião.",
+ "questions": [
+  {
+   "id": "u5q1",
+   "question": "\"Half past seven\" é:",
+   "options": [
+    {
+     "id": "u5q1o0",
+     "text": "7:30",
+     "isCorrect": true
+    },
+    {
+     "id": "u5q1o1",
+     "text": "6:30",
+     "isCorrect": false
+    },
+    {
+     "id": "u5q1o2",
+     "text": "7:15",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u5q1o0",
+   "explanation": "Meia hora depois das sete.",
+   "points": 10
+  },
+  {
+   "id": "u5q2",
+   "question": "Como se diz 16h45 de forma digital?",
+   "options": [
+    {
+     "id": "u5q2o0",
+     "text": "four forty-five p.m.",
+     "isCorrect": true
+    },
+    {
+     "id": "u5q2o1",
+     "text": "sixteen forty-five",
+     "isCorrect": false
+    },
+    {
+     "id": "u5q2o2",
+     "text": "four forty-five a.m.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u5q2o0",
+   "explanation": "Em inglês fala-se com 12 horas: 4:45 p.m.",
+   "points": 10
+  },
+  {
+   "id": "u5q3",
+   "question": "Complete: \"Paulo ___ up at six.\"",
+   "options": [
+    {
+     "id": "u5q3o0",
+     "text": "gets",
+     "isCorrect": true
+    },
+    {
+     "id": "u5q3o1",
+     "text": "get",
+     "isCorrect": false
+    },
+    {
+     "id": "u5q3o2",
+     "text": "getting",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u5q3o0",
+   "explanation": "3.ª pessoa: gets.",
+   "points": 10
+  },
+  {
+   "id": "u5q4",
+   "question": "Complete: \"She ___ TV in the evening.\"",
+   "options": [
+    {
+     "id": "u5q4o0",
+     "text": "watches",
+     "isCorrect": true
+    },
+    {
+     "id": "u5q4o1",
+     "text": "watchs",
+     "isCorrect": false
+    },
+    {
+     "id": "u5q4o2",
+     "text": "watch",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u5q4o0",
+   "explanation": "watch → watches.",
+   "points": 10
+  },
+  {
+   "id": "u5q5",
+   "question": "Complete: \"My father ___ two cars.\"",
+   "options": [
+    {
+     "id": "u5q5o0",
+     "text": "has",
+     "isCorrect": true
+    },
+    {
+     "id": "u5q5o1",
+     "text": "have",
+     "isCorrect": false
+    },
+    {
+     "id": "u5q5o2",
+     "text": "haves",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u5q5o0",
+   "explanation": "have → has.",
+   "points": 10
+  },
+  {
+   "id": "u5q6",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "u5q6o0",
+     "text": "He doesn't work on Sundays.",
+     "isCorrect": true
+    },
+    {
+     "id": "u5q6o1",
+     "text": "He doesn't works on Sundays.",
+     "isCorrect": false
+    },
+    {
+     "id": "u5q6o2",
+     "text": "He don't work on Sundays.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u5q6o0",
+   "explanation": "doesn't + verbo sem \"s\".",
+   "points": 10
+  },
+  {
+   "id": "u5q7",
+   "question": "Escolha a resposta certa: \"Does she drive to work?\"",
+   "options": [
+    {
+     "id": "u5q7o0",
+     "text": "Yes, she does.",
+     "isCorrect": true
+    },
+    {
+     "id": "u5q7o1",
+     "text": "Yes, she drives.",
+     "isCorrect": false
+    },
+    {
+     "id": "u5q7o2",
+     "text": "Yes, she is.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u5q7o0",
+   "explanation": "Resposta curta com \"does\".",
+   "points": 10
+  },
+  {
+   "id": "u5q8",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "u5q8o0",
+     "text": "I'm never late.",
+     "isCorrect": true
+    },
+    {
+     "id": "u5q8o1",
+     "text": "I never am late.",
+     "isCorrect": false
+    },
+    {
+     "id": "u5q8o2",
+     "text": "I don't never late.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u5q8o0",
+   "explanation": "Com \"be\", o advérbio vem depois.",
+   "points": 10
+  },
+  {
+   "id": "u5q9",
+   "question": "\"Traffic jam\" quer dizer:",
+   "options": [
+    {
+     "id": "u5q9o0",
+     "text": "engarrafamento",
+     "isCorrect": true
+    },
+    {
+     "id": "u5q9o1",
+     "text": "compota",
+     "isCorrect": false
+    },
+    {
+     "id": "u5q9o2",
+     "text": "trânsito livre",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u5q9o0",
+   "explanation": "Traffic jam = engarrafamento.",
+   "points": 10
+  },
+  {
+   "id": "u5q10",
+   "question": "Ouviu: \"I work at night, from seven p.m. to seven a.m.\" Quando trabalha esta pessoa?",
+   "options": [
+    {
+     "id": "u5q10o0",
+     "text": "das 19h às 7h",
+     "isCorrect": true
+    },
+    {
+     "id": "u5q10o1",
+     "text": "das 7h às 19h",
+     "isCorrect": false
+    },
+    {
+     "id": "u5q10o2",
+     "text": "das 17h às 7h",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u5q10o0",
+   "explanation": "p.m. = tarde/noite; a.m. = manhã.",
+   "points": 10
+  },
+  {
+   "id": "u5q11",
+   "question": "Complete: \"Can we meet ___ Tuesday ___ ten?\"",
+   "options": [
+    {
+     "id": "u5q11o0",
+     "text": "on … at",
+     "isCorrect": true
+    },
+    {
+     "id": "u5q11o1",
+     "text": "in … at",
+     "isCorrect": false
+    },
+    {
+     "id": "u5q11o2",
+     "text": "at … on",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u5q11o0",
+   "explanation": "on + dia; at + hora.",
+   "points": 10
+  },
+  {
+   "id": "u5q12",
+   "question": "Quer confirmar a reunião. O que diz?",
+   "options": [
+    {
+     "id": "u5q12o0",
+     "text": "Perfect. See you on Wednesday at two.",
+     "isCorrect": true
+    },
+    {
+     "id": "u5q12o1",
+     "text": "Perfect. See you in Wednesday in two.",
+     "isCorrect": false
+    },
+    {
+     "id": "u5q12o2",
+     "text": "Perfect. You see Wednesday two.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u5q12o0",
+   "explanation": "Repita o dia e a hora para confirmar.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

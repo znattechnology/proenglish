@@ -215,27 +215,27 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 ### Unidade 5 — A day in Luanda (7 aulas)
 
 **Objectivos da unidade.** No fim, o aluno consegue:
-1. dizer e perguntar as horas e os dias;
-2. descrever a sua rotina diária e a de outra pessoa;
-3. dizer com que frequência faz alguma coisa;
-4. combinar o dia e a hora de uma reunião.
+1. perguntar e dizer as horas de duas formas (*It's nine thirty. / It's half past nine.*), dizer os dias da semana e as partes do dia, e dizer a que horas faz alguma coisa (*I start work at eight.*);
+2. descrever a sua rotina e a de outra pessoa com o *present simple*, incluindo a 3.ª pessoa (*She gets up at five thirty. He doesn't work on Sundays.*), e fazer e responder a perguntas (*What time does she start work? Does he drive to work? — No, he doesn't.*);
+3. dizer com que frequência faz alguma coisa, com *always, usually, often, sometimes, never* na posição certa (*I'm never late. She usually takes the bus.*);
+4. combinar o dia e a hora de uma reunião com *in/on/at*: propor, recusar com uma razão, propor outra hora e confirmar (*How about Wednesday at two? — Perfect. See you on Wednesday at two.*).
 
 | Aula | Tipo | Título | Objectivo da aula |
 |---|---|---|---|
-| 5A | Língua | What time is it? | Dizer as horas e os dias da semana. |
-| 5B | Língua | Her day | Descrever a rotina de outra pessoa com o *present simple* na 3.ª pessoa (+). |
-| 5C | Língua | Does he…? | Fazer perguntas e negativas na 3.ª pessoa (*does/doesn't*). |
-| 5D | Língua | How often? | Usar advérbios de frequência (always, usually, sometimes, never). |
-| 5E | Vocabulário e pronúncia | Routines and transport | Verbos de rotina e transportes; o -s da 3.ª pessoa. |
-| 5F | Real English | A day in the life | Entender a rotina de 3 trabalhadores de Luanda. |
-| 5G | Work & Life | Setting up a meeting | Propor e aceitar um dia e uma hora (*in/on/at*). |
+| 5A | Língua | What time is it? | Perguntar e dizer as horas de duas formas, os dias da semana e as partes do dia. |
+| 5B | Língua | Her day | Descrever a rotina de outra pessoa com a 3.ª pessoa afirmativa (*gets, goes, has, studies*). |
+| 5C | Língua | Does he…? | Fazer perguntas e negativas sobre outra pessoa com *does/doesn't*; dizer como vai para o trabalho (*by bus, on foot*). |
+| 5D | Língua | How often? | Dizer com que frequência faz algo, com o advérbio na posição certa, e perguntar *How often…?* |
+| 5E | Vocabulário e pronúncia | Routines and transport | Nomear as acções de um dia e os transportes; o -s da 3.ª pessoa em /s/, /z/ e /ɪz/. |
+| 5F | Real English | A day in the life | Identificar horas, transportes e frequência em três rotinas a velocidade quase natural; perguntas em inglês na 3.ª pessoa. |
+| 5G | Work & Life | Setting up a meeting | Combinar uma reunião: propor, recusar, propor outra hora e confirmar, com *in/on/at*. |
 
-- **Gramática:** *present simple* com he/she/it (+, −, ?); advérbios de frequência; *in/on/at*.
-- **Vocabulário (~50):** horas, dias, partes do dia, rotina (get up, have breakfast, go to work), transportes (car, bus, taxi, candongueiro), trânsito.
-- **Pronúncia:** o -s da 3.ª pessoa (*works, watches*); ritmo da frase.
-- **Laboratório:** relógio → hora; *do* ou *does*; ordenar uma rotina; escuta (verdadeiro/falso); resposta falada "What time do you start work?".
-- **Conversa guiada:** o tutor pergunta pela rotina do aluno e de um colega.
-- **Conversa livre:** "Let's meet" — combinar dia e hora de uma reunião com um colega ocupado.
+- **Gramática:** *present simple* completo, com a 3.ª pessoa (*-s, -es, -ies; has, does, goes*), *doesn't* + verbo sem *-s*, *Does…?* e respostas curtas; *What time / Where / What does…?*; advérbios de frequência; *How often…? once / twice a week*; *in / on / at* de tempo; *by* + transporte.
+- **Vocabulário (~70):** horas (*o'clock, half past, quarter past/to, a.m., p.m.*), dias, partes do dia, rotina diária, transportes (incluindo *candongueiro*, *traffic jam*), *early, on time, late, free, busy*.
+- **Pronúncia:** -s da 3.ª pessoa (/s/, /z/, /ɪz/); *does* /dʌz/; *Wednesday* /ˈwenzdeɪ/; *often* /ˈɒfən/; *thirteen/thirty*; entoação de propostas.
+- **Laboratório:** horas a ouvir; 3.ª pessoa e ortografia; *does/doesn't*; posição do advérbio; *in/on/at*; resposta falada "Can we meet on Monday morning?".
+- **Conversa guiada:** o tutor pergunta pela rotina do aluno e pela de outra pessoa (3.ª pessoa).
+- **Conversa livre:** "Let's meet" — marcar uma reunião com um colega muito ocupado.
 
 ### Revisão 1 e exame oral do A1.1
 
@@ -541,5 +541,5 @@ Verificação: Lab 6A (exercícios 1–8) e pergunta 3 do questionário da unida
 1. Revisão deste plano pelos professores (objectivos, ordem, contexto angolano).
 2. Decidir a regra do nível básico (recomendado: só o A2 concluído ou o teste).
 3. Fechar o inventário de vocabulário A1 a partir da NGSL, aferido com Oxford 3000 A1 e Cambridge A2 Key.
-4. ~~Escrever as unidades 1 a 4~~ — feito: [unidade 1](a1/unidade-01/README.md), [unidade 2](a1/unidade-02/README.md), [unidade 3](a1/unidade-03/README.md), [unidade 4](a1/unidade-04/README.md). Testar com o professor de IA depois da revisão.
+4. ~~Escrever as unidades 1 a 5~~ — feito: [1](a1/unidade-01/README.md), [2](a1/unidade-02/README.md), [3](a1/unidade-03/README.md), [4](a1/unidade-04/README.md), [5](a1/unidade-05/README.md). Falta a revisão 1 e o exame oral do A1.1. Testar com o professor de IA depois da revisão.
 5. Escolher o serviço de voz para as aulas "Real English" (vozes variadas).

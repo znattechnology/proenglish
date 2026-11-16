@@ -1,0 +1,1208 @@
+{
+ "unidade": "A1.1 · Unit 5 — A day in Luanda",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "5A",
+   "titulo": "What time is it?",
+   "aula": "5A",
+   "objectivo": "Perguntar e dizer as horas de duas formas e dizer os dias da semana.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "It's half past nine.",
+     "enunciado": "Que horas são?",
+     "opcoes": [
+      {
+       "texto": "9:30",
+       "certa": true
+      },
+      {
+       "texto": "8:30",
+       "certa": false
+      },
+      {
+       "texto": "9:15",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Half past nine\" = meia hora depois das nove: 9h30."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "It's quarter to eight.",
+     "enunciado": "Que horas são?",
+     "opcoes": [
+      {
+       "texto": "7:45",
+       "certa": true
+      },
+      {
+       "texto": "8:15",
+       "certa": false
+      },
+      {
+       "texto": "8:45",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Quarter to eight\" = um quarto para as oito: 7h45."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "It's two thirteen.",
+     "enunciado": "Que horas são?",
+     "opcoes": [
+      {
+       "texto": "2:13",
+       "certa": true
+      },
+      {
+       "texto": "2:30",
+       "certa": false
+      },
+      {
+       "texto": "3:13",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se diz 15h00 em inglês?",
+     "opcoes": [
+      {
+       "texto": "three p.m.",
+       "certa": true
+      },
+      {
+       "texto": "fifteen hours",
+       "certa": false
+      },
+      {
+       "texto": "three a.m.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Em inglês fala-se com 12 horas: 15h00 = 3 p.m."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's ten [past] nine. (9:10)",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "half",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Que horas são?",
+     "resposta": "What time is it?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada dia à tradução.",
+     "pares": [
+      {
+       "a": "Monday",
+       "b": "segunda-feira"
+      },
+      {
+       "a": "Tuesday",
+       "b": "terça-feira"
+      },
+      {
+       "a": "Wednesday",
+       "b": "quarta-feira"
+      },
+      {
+       "a": "Thursday",
+       "b": "quinta-feira"
+      },
+      {
+       "a": "Friday",
+       "b": "sexta-feira"
+      },
+      {
+       "a": "Saturday",
+       "b": "sábado"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se escreve \"quarta-feira\"?",
+     "opcoes": [
+      {
+       "texto": "Wednesday",
+       "certa": true
+      },
+      {
+       "texto": "Wensday",
+       "certa": false
+      },
+      {
+       "texto": "Wendsday",
+       "certa": false
+      }
+     ],
+     "explicacao": "Escreve-se \"Wednesday\", mas diz-se \"uénz-dei\": o primeiro \"d\" não se pronuncia. Os dias levam sempre maiúscula."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Wednesday, Thursday. It's two thirty.",
+     "enunciado": "Ouça e repita: em \"Wednesday\" o primeiro \"d\" não se ouve."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What time is it now? And what day is it today?",
+     "frase": "It's",
+     "resposta": "It's ten fifteen. It's Tuesday.",
+     "contexto": "Diga a hora e o dia (pode inventar)."
+    }
+   ]
+  },
+  {
+   "codigo": "5B",
+   "titulo": "Her day",
+   "aula": "5B",
+   "objectivo": "Descrever a rotina de outra pessoa com o present simple na 3.ª pessoa.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Sílvia [gets] up at five thirty.",
+     "opcoes": [
+      {
+       "texto": "get",
+       "certa": false
+      },
+      {
+       "texto": "getting",
+       "certa": false
+      }
+     ],
+     "explicacao": "Com \"he/she/it\", o verbo leva \"s\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She [starts] work at seven thirty.",
+     "opcoes": [
+      {
+       "texto": "start",
+       "certa": false
+      },
+      {
+       "texto": "is start",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Paulo [goes] to work by bus.",
+     "opcoes": [
+      {
+       "texto": "go",
+       "certa": false
+      },
+      {
+       "texto": "gos",
+       "certa": false
+      }
+     ],
+     "explicacao": "go → goes."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He [watches] TV in the evening.",
+     "opcoes": [
+      {
+       "texto": "watchs",
+       "certa": false
+      },
+      {
+       "texto": "watch",
+       "certa": false
+      }
+     ],
+     "explicacao": "Verbos em -ch levam -es: watches."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My brother [studies] at night.",
+     "opcoes": [
+      {
+       "texto": "studys",
+       "certa": false
+      },
+      {
+       "texto": "study",
+       "certa": false
+      }
+     ],
+     "explicacao": "Consoante + y → ies: studies."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "She works in Luanda.",
+       "certa": true
+      },
+      {
+       "texto": "She work in Luanda.",
+       "certa": false
+      },
+      {
+       "texto": "She working in Luanda.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "He has lunch at twelve.",
+       "certa": true
+      },
+      {
+       "texto": "He haves lunch at twelve.",
+       "certa": false
+      },
+      {
+       "texto": "He have lunch at twelve.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Sílvia gets up at five thirty. She takes her children to school by car.",
+     "enunciado": "Como leva a Sílvia os filhos à escola?",
+     "opcoes": [
+      {
+       "texto": "de carro",
+       "certa": true
+      },
+      {
+       "texto": "de autocarro",
+       "certa": false
+      },
+      {
+       "texto": "a pé",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "She gets up at five thirty. He goes to work by bus.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about the day of a person in your family.",
+     "frase": "gets up",
+     "resposta": "My mother gets up at five. She goes to work by taxi. She finishes at four.",
+     "contexto": "Use a 3.ª pessoa: gets, goes, works…"
+    }
+   ]
+  },
+  {
+   "codigo": "5C",
+   "titulo": "Does he…?",
+   "aula": "5C",
+   "objectivo": "Fazer perguntas e negativas sobre outra pessoa com does/doesn't.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He [doesn't] work on Sundays.",
+     "opcoes": [
+      {
+       "texto": "don't",
+       "certa": false
+      },
+      {
+       "texto": "isn't",
+       "certa": false
+      }
+     ],
+     "explicacao": "Com \"he/she\": \"doesn't\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "She doesn't drive.",
+       "certa": true
+      },
+      {
+       "texto": "She doesn't drives.",
+       "certa": false
+      },
+      {
+       "texto": "She don't drive.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Depois de \"doesn't\", o verbo fica sem \"s\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a pergunta correcta?",
+     "opcoes": [
+      {
+       "texto": "Does he live in Talatona?",
+       "certa": true
+      },
+      {
+       "texto": "Does he lives in Talatona?",
+       "certa": false
+      },
+      {
+       "texto": "Do he live in Talatona?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Does Mr Baptista drive to work? — Yes, ...",
+     "opcoes": [
+      {
+       "texto": "he does.",
+       "certa": true
+      },
+      {
+       "texto": "he drives.",
+       "certa": false
+      },
+      {
+       "texto": "he is.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What time [does] she start work?",
+     "opcoes": [
+      {
+       "texto": "do",
+       "certa": false
+      },
+      {
+       "texto": "is",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Onde vive ele?",
+     "resposta": "Where does he live?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I go to work [by] bus.",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "with",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"By\" + transporte: by bus, by car. A pé: \"on foot\"."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "He doesn't have lunch before two. He has meetings all morning.",
+     "enunciado": "O Sr. Baptista almoça ao meio-dia?",
+     "opcoes": [
+      {
+       "texto": "Não",
+       "certa": true
+      },
+      {
+       "texto": "Sim",
+       "certa": false
+      },
+      {
+       "texto": "Às vezes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Does he drive to work? No, he doesn't.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Does your boss or a colleague drive to work?",
+     "frase": "does",
+     "resposta": "Yes, he does. He drives to work every day.",
+     "contexto": "Responda com \"Yes, he/she does\" ou \"No, he/she doesn't\" e mais uma frase."
+    }
+   ]
+  },
+  {
+   "codigo": "5D",
+   "titulo": "How often?",
+   "aula": "5D",
+   "objectivo": "Dizer com que frequência faz alguma coisa, com o advérbio na posição certa.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "always",
+       "b": "sempre"
+      },
+      {
+       "a": "usually",
+       "b": "normalmente"
+      },
+      {
+       "a": "often",
+       "b": "muitas vezes"
+      },
+      {
+       "a": "sometimes",
+       "b": "às vezes"
+      },
+      {
+       "a": "never",
+       "b": "nunca"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I'm never late.",
+       "certa": true
+      },
+      {
+       "texto": "I never am late.",
+       "certa": false
+      },
+      {
+       "texto": "I'm late never.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Com \"be\", o advérbio vem depois: \"I'm never late\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "She usually takes the bus.",
+       "certa": true
+      },
+      {
+       "texto": "She takes usually the bus.",
+       "certa": false
+      },
+      {
+       "texto": "Usually she take the bus.",
+       "certa": false
+      }
+     ],
+     "explicacao": "O advérbio vem antes do verbo principal."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I never drive.",
+       "certa": true
+      },
+      {
+       "texto": "I don't never drive.",
+       "certa": false
+      },
+      {
+       "texto": "I never don't drive.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Never\" já é negativo."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How [often] do you go to the gym? — Twice a week.",
+     "opcoes": [
+      {
+       "texto": "much",
+       "certa": false
+      },
+      {
+       "texto": "many",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Once a week\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "uma vez por semana",
+       "certa": true
+      },
+      {
+       "texto": "uma semana",
+       "certa": false
+      },
+      {
+       "texto": "todas as semanas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm sometimes late on Mondays. The traffic in Viana is terrible.",
+     "enunciado": "Quando chega o Paulo atrasado?",
+     "opcoes": [
+      {
+       "texto": "às segundas, às vezes",
+       "certa": true
+      },
+      {
+       "texto": "todos os dias",
+       "certa": false
+      },
+      {
+       "texto": "nunca",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm never late. She usually takes the bus. I often speak English.",
+     "enunciado": "Ouça e repita: em \"often\" o \"t\" normalmente não se ouve."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How often are you late for work?",
+     "frase": "never",
+     "resposta": "I'm never late. I usually arrive at seven forty-five.",
+     "contexto": "Use always, usually, sometimes ou never."
+    }
+   ]
+  },
+  {
+   "codigo": "5E",
+   "titulo": "Routines and transport",
+   "aula": "5E",
+   "objectivo": "Nomear as acções de um dia e os transportes e pronunciar o -s da 3.ª pessoa.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada acção à tradução.",
+     "pares": [
+      {
+       "a": "get up",
+       "b": "levantar-se"
+      },
+      {
+       "a": "have breakfast",
+       "b": "tomar o pequeno-almoço"
+      },
+      {
+       "a": "leave home",
+       "b": "sair de casa"
+      },
+      {
+       "a": "finish work",
+       "b": "acabar o trabalho"
+      },
+      {
+       "a": "go to bed",
+       "b": "deitar-se"
+      }
+     ]
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Tomo o pequeno-almoço às seis e meia.",
+     "resposta": "I have breakfast at six thirty.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Traffic jam\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "engarrafamento",
+       "certa": true
+      },
+      {
+       "texto": "semáforo",
+       "certa": false
+      },
+      {
+       "texto": "estrada",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Que verbo tem uma sílaba a mais na 3.ª pessoa?",
+     "opcoes": [
+      {
+       "texto": "watches",
+       "certa": true
+      },
+      {
+       "texto": "works",
+       "certa": false
+      },
+      {
+       "texto": "goes",
+       "certa": false
+      }
+     ],
+     "explicacao": "Depois de \"ch\", \"sh\", \"s\", \"x\": watch-es, finish-es."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "She finishes work at four.",
+     "enunciado": "Quantas sílabas tem \"finishes\"?",
+     "opcoes": [
+      {
+       "texto": "3",
+       "certa": true
+      },
+      {
+       "texto": "2",
+       "certa": false
+      },
+      {
+       "texto": "4",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Wake up\" e \"get up\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "acordar e levantar-se",
+       "certa": true
+      },
+      {
+       "texto": "levantar-se e acordar",
+       "certa": false
+      },
+      {
+       "texto": "adormecer e acordar",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "She gets up. He lives in Viana. She watches TV.",
+     "enunciado": "Ouça e repita os três sons: /s/, /z/, /ɪz/."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "works, goes, finishes",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you do in the evening?",
+     "frase": "I",
+     "resposta": "I go home, I cook and I have dinner. I sometimes watch TV.",
+     "contexto": "Diga três coisas."
+    }
+   ]
+  },
+  {
+   "codigo": "5F",
+   "titulo": "Real English: A day in the life",
+   "aula": "5F",
+   "objectivo": "Identificar horas, transportes e frequência em descrições de rotina a velocidade quase natural.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I get up at four thirty, every day. I buy fruit at the market at five.",
+     "enunciado": "What time does Domingas get up?",
+     "opcoes": [
+      {
+       "texto": "at 4:30",
+       "certa": true
+      },
+      {
+       "texto": "at 5:00",
+       "certa": false
+      },
+      {
+       "texto": "at 6:00",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I never work on Sundays: Sunday is for church and family.",
+     "enunciado": "Does Domingas work on Sundays?",
+     "opcoes": [
+      {
+       "texto": "No, she doesn't.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, she does.",
+       "certa": false
+      },
+      {
+       "texto": "Sometimes.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I take a candongueiro to work. I work four nights a week.",
+     "enunciado": "How does Luís go to work?",
+     "opcoes": [
+      {
+       "texto": "by candongueiro",
+       "certa": true
+      },
+      {
+       "texto": "by car",
+       "certa": false
+      },
+      {
+       "texto": "on foot",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I work at night, from seven p.m. to seven a.m.",
+     "enunciado": "When does Luís work?",
+     "opcoes": [
+      {
+       "texto": "at night",
+       "certa": true
+      },
+      {
+       "texto": "in the morning",
+       "certa": false
+      },
+      {
+       "texto": "in the afternoon",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I get up at six and I drive to school. It's twenty minutes.",
+     "enunciado": "How does Mark go to school?",
+     "opcoes": [
+      {
+       "texto": "He drives.",
+       "certa": true
+      },
+      {
+       "texto": "He walks.",
+       "certa": false
+      },
+      {
+       "texto": "He takes the bus.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "On Wednesdays I play basketball with the other teachers.",
+     "enunciado": "What does Mark do on Wednesdays?",
+     "opcoes": [
+      {
+       "texto": "He plays basketball.",
+       "certa": true
+      },
+      {
+       "texto": "He teaches music.",
+       "certa": false
+      },
+      {
+       "texto": "He plays football.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I work from seven p.m. to seven a.m.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe your day. What time do you get up? How do you go to work?",
+     "frase": "I get up",
+     "resposta": "I get up at six. I go to work by bus. I start at eight and I never work on Sundays.",
+     "contexto": "Hora, transporte e uma coisa que faz sempre ou nunca."
+    }
+   ]
+  },
+  {
+   "codigo": "5G",
+   "titulo": "Setting up a meeting",
+   "aula": "5G",
+   "objectivo": "Combinar o dia e a hora de uma reunião: propor, recusar, propor outra hora e confirmar.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Can we meet [on] Tuesday?",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"On\" com dias."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The meeting is [at] ten o'clock.",
+     "opcoes": [
+      {
+       "texto": "on",
+       "certa": false
+      },
+      {
+       "texto": "in",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"At\" com horas."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm free [in] the afternoon.",
+     "opcoes": [
+      {
+       "texto": "on",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"In\" com partes do dia."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Não pode na terça. Como recusa com educação?",
+     "opcoes": [
+      {
+       "texto": "Sorry, I'm busy on Tuesday.",
+       "certa": true
+      },
+      {
+       "texto": "No. Tuesday no.",
+       "certa": false
+      },
+      {
+       "texto": "I don't want Tuesday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Quer propor outro dia. O que diz?",
+     "opcoes": [
+      {
+       "texto": "How about Wednesday?",
+       "certa": true
+      },
+      {
+       "texto": "What about you Wednesday?",
+       "certa": false
+      },
+      {
+       "texto": "Wednesday is how?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Às duas está bem para si?",
+     "resposta": "Is two o'clock OK for you?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Wednesday… I'm free in the afternoon. Is two o'clock OK for you?",
+     "enunciado": "Quando é a reunião?",
+     "opcoes": [
+      {
+       "texto": "quarta-feira às 14h",
+       "certa": true
+      },
+      {
+       "texto": "terça-feira às 10h",
+       "certa": false
+      },
+      {
+       "texto": "quarta-feira às 10h",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Can we meet on Tuesday at ten? How about Wednesday at two?",
+     "enunciado": "Ouça e repita: a voz sobe no fim das propostas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Can we meet on Monday morning?",
+     "frase": "Sorry",
+     "resposta": "Sorry, I'm busy on Monday morning. How about Tuesday at ten?",
+     "contexto": "Recuse com educação e proponha outro dia e hora."
+    }
+   ]
+  },
+  {
+   "codigo": "5R",
+   "titulo": "Unit 5 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 5 e reciclar as unidades 1 a 4.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "It's quarter past four.",
+     "enunciado": "Que horas são?",
+     "opcoes": [
+      {
+       "texto": "4:15",
+       "certa": true
+      },
+      {
+       "texto": "3:45",
+       "certa": false
+      },
+      {
+       "texto": "4:45",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My sister [works] at a hospital. She [doesn't] work on Sundays.",
+     "opcoes": [
+      {
+       "texto": "work",
+       "certa": false
+      },
+      {
+       "texto": "don't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a pergunta correcta?",
+     "opcoes": [
+      {
+       "texto": "What time does she finish work?",
+       "certa": true
+      },
+      {
+       "texto": "What time she finishes work?",
+       "certa": false
+      },
+      {
+       "texto": "What time does she finishes work?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "He's always early.",
+       "certa": true
+      },
+      {
+       "texto": "He always is early.",
+       "certa": false
+      },
+      {
+       "texto": "He's early always.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "See you [on] Friday [at] nine.",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "by",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (unidade 4). Como se diz \"o carro do Sr. Baptista\"?",
+     "opcoes": [
+      {
+       "texto": "Mr Baptista's car",
+       "certa": true
+      },
+      {
+       "texto": "the car of Mr Baptista",
+       "certa": false
+      },
+      {
+       "texto": "Mr Baptista car's",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (unidade 3). Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "She's an engineer. She works for an oil company.",
+       "certa": true
+      },
+      {
+       "texto": "She's engineer. She work for an oil company.",
+       "certa": false
+      },
+      {
+       "texto": "She engineer. She works an oil company.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ela não tem carro.",
+     "resposta": "She doesn't have a car.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "She gets up at six. She doesn't have breakfast. She always takes the bus.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hello! Tell me about a friend or a person in your family: their job and their day.",
+     "frase": "works",
+     "resposta": "My brother is a driver. He works for a bank. He gets up at five and he never works on Sundays.",
+     "contexto": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Can we meet on Thursday at three? Perfect, see you on Thursday.",
+     "enunciado": "Ouça e repita em voz alta."
+    }
+   ]
+  }
+ ]
+}
