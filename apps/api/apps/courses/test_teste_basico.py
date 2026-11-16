@@ -166,3 +166,24 @@ class TesteBasicoApiTest(TestCase):
         r = self.c.post('/api/v1/student/video-courses/transactions/create/', {'courseId': str(self.sector.id)}, format='json')
         self.assertEqual(r.status_code, 403, r.data)
         self.assertEqual(r.data['code'], 'requisito_basico')
+
+    def test_catalogos_dizem_que_cursos_sao_de_sector(self):
+        """As listas de cursos trazem `de_sector` (e, no laboratório, se esta pessoa ainda precisa do nível)."""
+        geral = _curso(self.prof, 'Inglês Geral', titulo='ECS L1')
+        lab_sector = _curso(self.prof, 'Banking', tipo='practice', titulo='Lab Banca')
+        lab_geral = _curso(self.prof, 'General', tipo='practice', titulo='Lab Geral')
+
+        r = self.c.get('/api/v1/student/video-courses/', {'status': 'Published'})
+        self.assertEqual(r.status_code, 200)
+        videos = {str(c['courseId']): c['de_sector'] for c in r.data['data']['results']}
+        self.assertEqual(videos, {str(self.sector.id): True, str(geral.id): False})
+
+        def laboratorio():
+            r = self.c.get('/api/v1/student/practice-courses/courses/')
+            self.assertEqual(r.status_code, 200)
+            return {str(c['id']): (c['de_sector'], c['requisito_basico']) for c in r.data}
+
+        self.assertEqual(laboratorio(), {str(lab_sector.id): (True, True), str(lab_geral.id): (False, False)})
+        TesteNivelBasico.objects.create(user=self.aluno, perguntas=[], expira_em=timezone.now(),
+                                        submetido_em=timezone.now(), certas=20, total=20, aprovado=True)
+        self.assertEqual(laboratorio()[str(lab_sector.id)], (True, False))

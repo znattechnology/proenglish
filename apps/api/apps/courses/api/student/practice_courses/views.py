@@ -148,6 +148,9 @@ class CoursesListView(generics.ListAPIView):
         # Check if user is authenticated for progress calculation
         user = request.user if request.user.is_authenticated else None
 
+        from apps.courses import teste_basico
+        from apps.courses.ciclo import bloqueio_requisito_pratica
+
         for course in courses:
             course_data = {
                 'id': str(course.id),
@@ -159,6 +162,9 @@ class CoursesListView(generics.ListAPIView):
                 'template': course.template,
                 'created_at': course.created_at.isoformat() if course.created_at else None,
                 'updated_at': course.updated_at.isoformat() if course.updated_at else None,
+                # Curso de sector; e se esta pessoa ainda precisa do nível básico para o começar.
+                'de_sector': teste_basico.curso_de_sector(course),
+                'requisito_basico': bool(user) and bloqueio_requisito_pratica(user, course) is not None,
             }
 
             # Add statistics if requested for student course selection

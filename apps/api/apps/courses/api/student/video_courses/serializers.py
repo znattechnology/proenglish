@@ -183,6 +183,8 @@ class CourseListSerializer(serializers.ModelSerializer):
     is_free = serializers.ReadOnlyField()
     is_premium = serializers.ReadOnlyField()
     user_has_access = serializers.SerializerMethodField()
+    # Curso de um sector (pede o nível básico: apps/courses/teste_basico.py).
+    de_sector = serializers.SerializerMethodField()
 
     class Meta:
         model = Course
@@ -190,7 +192,7 @@ class CourseListSerializer(serializers.ModelSerializer):
             'courseId', 'title', 'description', 'category', 'image',
             'level', 'status', 'template', 'teacher', 'teacherId', 'teacherName',
             'total_enrollments', 'access_level', 'access_level_display',
-            'is_free', 'is_premium', 'is_featured', 'user_has_access',
+            'is_free', 'is_premium', 'is_featured', 'user_has_access', 'de_sector',
             'created_at', 'updated_at'
         ]
         read_only_fields = [
@@ -214,6 +216,10 @@ class CourseListSerializer(serializers.ModelSerializer):
         for field_name in fields_to_remove:
             self.fields.pop(field_name, None)
     
+    def get_de_sector(self, obj):
+        from apps.courses import teste_basico
+        return teste_basico.curso_de_sector(obj)
+
     def get_total_enrollments(self, obj):
         """Get enrollment count efficiently."""
         if hasattr(obj, '_enrollment_count'):
