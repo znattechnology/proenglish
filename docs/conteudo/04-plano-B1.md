@@ -1,6 +1,6 @@
 # Plano do nível B1 — English Communication Skills
 
-**Nível:** B1 (limiar) · **Curso:** English Communication Skills · **Versão:** 1, 16 de Novembro de 2026 · **Estado:** proposta para revisão pelos professores · **Nível anterior:** [03-plano-A2.md](03-plano-A2.md)
+**Nível:** B1 (limiar) · **Curso:** English Communication Skills · **Versão:** 2, 16 de Novembro de 2026 (revista) · **Estado:** proposta para revisão pelos professores · **Nível anterior:** [03-plano-A2.md](03-plano-A2.md)
 
 ## 1. Resumo
 
@@ -22,18 +22,18 @@ O tempo sobe em relação ao A2 (60 h) porque as vídeo-aulas passam a 10–12 m
 
 **No fim do B1.1**, o aluno consegue iniciar, manter e encerrar uma conversa com pessoas que não conhece (num evento ou numa formação), falar de mudanças na vida e no trabalho e do que fazia antes, dar e defender uma opinião numa reunião, concordar e discordar com cortesia, interromper e retomar, falar de situações hipotéticas e propor soluções, e explicar um processo ou um procedimento de segurança.
 
-**No fim do B1.2**, consegue também contar um incidente com os tempos narrativos e explicar as causas, fazer e relatar chamadas e videochamadas (discurso indirecto), falar de dinheiro e orçamentos e fazer deduções, resumir e comentar uma notícia ou um artigo, e fazer o balanço de um projecto, dizendo o que teria corrido de outra forma — em conversas com estrangeiros, à velocidade normal, com um sotaque claro mas sempre compreensível.
+**No fim do B1.2**, consegue também contar um incidente com os tempos narrativos e explicar as causas, fazer e relatar chamadas e videochamadas (discurso indirecto), falar de dinheiro e orçamentos e fazer deduções, resumir e comentar uma notícia ou um artigo, e fazer o balanço de um projecto, dizendo o que teria corrido de outra forma — em conversas com estrangeiros de vários sotaques, à velocidade normal, sendo sempre compreendido.
 
 ### O que muda do A2 para o B1
 
 | No A2 | No B1 | Porquê |
 |---|---|---|
 | Respostas de 3 a 5 frases ligadas; contar uma história simples | Turnos longos de 1 a 2 minutos: contar, explicar, justificar uma opinião | É a diferença do CEFR entre o A2 e o B1 na produção oral: descrição e narração "lineares" e razões breves **[I]**. |
-| O aluno escolhe entre dois tempos | O aluno escolhe entre vários (tempos narrativos; *present perfect simple / continuous*; os quatro futuros) e usa o hipotético (2.º e 3.º condicionais) | Core Inventory B1 **[V]**. |
+| O aluno escolhe entre dois tempos | O aluno escolhe entre vários (tempos narrativos; *present perfect simple / continuous*; os quatro futuros: *will*, *going to*, *present continuous* e *future continuous*) e usa o hipotético (2.º e 3.º condicionais) | Core Inventory B1 **[V]**. |
 | A conversa segue o tutor ou uma tarefa simples | O aluno **gere** a conversa: inicia, muda de assunto, interrompe, retoma, verifica se percebeu | São funções B1 do Core Inventory **[V]**. |
 | Instruções em inglês simples, notas curtas em português | Tudo em inglês; o português só nos falsos amigos e na mediação | O aluno já percebe a língua da aula. |
 | Uma situação de trabalho por unidade | Duas tarefas em cada aula Work & Life: uma de interacção e uma de mediação (resumir em inglês um documento ou uma conversa em português) | Mediação, descritores B1 do CEFR Companion Volume **[NV — confirmar no PDF]**. |
-| Língua do A2: sem passiva, orações relativas, *used to*, *too / enough*, 2.º condicional, discurso indirecto, *present perfect continuous* | Tudo isso entra agora, por esta ordem: unidades 2, 3, 4, 5, 7 | Era o que o plano do A2 deixou para o B1 (secção 9 do A2). |
+| Língua do A2: sem passiva, orações relativas, *used to*, *too / enough*, 2.º condicional, discurso indirecto, *present perfect continuous* | Tudo isso entra agora: *used to* e *present perfect continuous* na unidade 2, *too / enough* na 3, 2.º condicional na 4, passiva e orações relativas na 5, discurso indirecto na 7 | Era o que o plano do A2 deixou para o B1 (secção 9 do A2). |
 
 ## 2. Fontes que este plano segue
 
@@ -63,7 +63,7 @@ Nas unidades 3, 6 e 7 há uma quarta aula de língua, e as letras vão de A a G.
 
 | Peça | Quantas por unidade | Duração | Diferença em relação ao A2 |
 |---|---|---|---|
-| Lição de laboratório | Uma por vídeo-aula | ~7 min, 10–12 exercícios | Duas respostas faladas por lição, uma delas de 45 segundos a 1 minuto. |
+| Lição de laboratório | Uma por vídeo-aula | ~7 min, 10–12 exercícios | Duas respostas faladas por lição, uma delas de 30 a 45 segundos (o limite de gravação do laboratório é 45 segundos; os turnos de 1 a 2 minutos fazem-se nas conversas com o tutor). |
 | Lição de reciclagem | 1 | ~8 min, 12 exercícios | Metade da unidade, metade de unidades anteriores **do B1 e do A2**. |
 | Conversa guiada com o tutor | 1, depois da aula C | 6–7 min | O tutor pede razões e exemplos (*Why? Can you give me an example?*). |
 | Conversa livre com o tutor | 1, no fim da unidade | 8–10 min | O tutor discorda, muda de assunto ou interrompe uma vez, e o aluno tem de gerir a conversa. |
@@ -73,7 +73,7 @@ Nas unidades 3, 6 e 7 há uma quarta aula de língua, e as letras vão de A a G.
 
 **Guião de cada vídeo-aula:** o mesmo do A2, com a prática guiada a pedir turnos longos e com uma pergunta de opinião em todas as aulas.
 
-**Personagens e história.** A empresa continua a ser a Kalandula Tech. O **Nuno** começa o B1 na equipa de apoio conjunta da Kalandula Tech com a empresa da Thandi (no B1 com nome: **Karoo Systems**, de Joanesburgo), coordenada pela **Lerato**. O B1.1 vai de Julho a Novembro de 2027 (a formação em Joanesburgo, um cliente novo do sector da energia, reuniões de projecto); o B1.2 vai de Janeiro a Junho de 2028 (um incidente na obra, chamadas com fornecedores, o orçamento, o balanço do projecto). Volta o elenco do A2 (Mateus, Sílvia, Paulo, Sr. Baptista, Thandi, Arjun, Rita, João) e entra o cliente novo: a **Morro Azul Energia** (fictícia), com uma central solar no Namibe e um terminal de combustíveis no Lobito **[I]**. As regras de personagens do [README](README.md) mantêm-se: o tutor e o professor, quando fazem de personagem, têm nome neutro.
+**Personagens e história.** A empresa continua a ser a Kalandula Tech. O **Nuno** começa o B1 na equipa de apoio conjunta da Kalandula Tech com a empresa da Thandi (no B1 com nome: **Mopane Systems**, de Joanesburgo), coordenada pela **Lerato**. O B1.1 vai de Julho a Novembro de 2027 (a formação em Joanesburgo, um cliente novo do sector da energia, reuniões de projecto); o B1.2 vai de Janeiro a Junho de 2028 (um incidente na obra, chamadas com fornecedores, o orçamento, o balanço do projecto). Volta o elenco do A2 (Mateus, Sílvia, Paulo, Sr. Baptista, Thandi, Arjun, Rita, João) e entra o cliente novo: a **Morro Azul Energia** (fictícia), com uma central solar no Namibe e um terminal de combustíveis no Lobito **[I]**. As regras de personagens do [README](README.md) mantêm-se: o tutor e o professor, quando fazem de personagem, têm nome neutro.
 
 ## 4. Mapa do nível
 
@@ -122,11 +122,11 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 | 1A | Língua | You're new here, aren't you? | Confirmar informação com *question tags* (com *be*, auxiliares e *do / does / did*) e distinguir a entoação que confirma da que pergunta. |
 | 1B | Língua | Could you tell me where…? | Fazer perguntas indirectas, com a ordem de afirmação (*where the room is*, não *where is the room*), e *if / whether*. |
 | 1C | Língua | Who invited you? | Rever perguntas de sujeito e de objecto e fazer perguntas de seguimento (*What do you mean? How did that happen?*). |
-| 1D | Vocabulário e pronúncia | Small talk and networking | Expressões para abrir, manter e fechar conversas; *keep in touch, get in touch, follow up*; entoação das *tags*; falsos amigos. |
+| 1D | Vocabulário e pronúncia | Small talk and networking | Expressões para abrir, manter e fechar conversas; reagir com *So do I. / Neither do I. / So did I.*; *keep in touch, get in touch, follow up*; entoação das *tags*; falsos amigos. |
 | 1E | Real English | At the welcome event | Identificar quem é cada pessoa, de onde vem e como continua a conversa, numa recepção com cinco vozes. |
 | 1F | Work & Life | A networking evening | Apresentar-se e apresentar a empresa em 30 segundos, conhecer duas pessoas e trocar contactos; mediação: explicar a um visitante, em inglês, um folheto em português. |
 
-- **Gramática:** *question tags* (incluindo *I'm…, aren't I?* e *Let's…, shall we?*); perguntas indirectas; perguntas de sujeito e de objecto.
+- **Gramática:** *question tags* (incluindo *I'm…, aren't I?* e *Let's…, shall we?*); perguntas indirectas; perguntas de sujeito e de objecto; respostas curtas de concordância (*So do I. Neither did I.*).
 - **Vocabulário (~70):** eventos e formação (*conference, workshop, speaker, delegate, venue*), apresentações (*What brings you here? What line of work are you in?*), manter o contacto (*business card, LinkedIn, follow up*).
 - **Pronúncia:** entoação descendente (confirmar) e ascendente (perguntar) nas *tags*.
 - **Falsos amigos:** *compromise* (≠ compromisso → *appointment, commitment*; *compromise* = cedência); *comprehensive* (≠ compreensivo → *understanding*; *comprehensive* = completo).
@@ -139,7 +139,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 **Objectivos da unidade.** No fim, o aluno consegue:
 1. contrastar o passado e o presente com *used to* e *didn't use to* (*I used to work in Lubango, but now I live in Luanda.*);
 2. dizer há quanto tempo dura uma actividade com o *present perfect continuous*, e escolher entre ele e o *present perfect simple* (*I've been working on this project since May. I've finished three reports.*);
-3. descrever sentimentos e reacções com adjectivos em *-ed / -ing* (*I was surprised. It was surprising.*);
+3. descrever sentimentos e reacções com adjectivos em *-ed / -ing* (vistos no A2, aqui alargados: *I was surprised. It was surprising. The instructions were confusing.*);
 4. falar durante 1 a 2 minutos sobre uma mudança importante na vida ou no trabalho.
 
 | Aula | Tipo | Título | Objectivo da aula |
@@ -147,7 +147,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 | 2A | Língua | I used to live in Lubango | Contrastar hábitos e estados do passado com o presente com *used to / didn't use to / Did you use to…?*. |
 | 2B | Língua | I've been working on it all week | Falar de actividades que continuam até agora com o *present perfect continuous* (*How long have you been…?*). |
 | 2C | Língua | Been doing or done? | Escolher entre o *present perfect continuous* (a actividade) e o *simple* (o resultado, quantos). |
-| 2D | Vocabulário e pronúncia | Changes and feelings | Verbos de mudança (*move, get used to, improve, become*), adjectivos *-ed / -ing*; formas fracas de *been* e *have*; falsos amigos. |
+| 2D | Vocabulário e pronúncia | Changes and feelings | Verbos de mudança (*move, change, improve, become, adapt*), adjectivos *-ed / -ing* (alargados); formas fracas de *been* e *have*; falsos amigos. |
 | 2E | Real English | How my life has changed | Identificar a mudança, a razão e o sentimento de cada pessoa em quatro testemunhos. |
 | 2F | Work & Life | One year later | Falar com a nova chefia do que mudou num ano de trabalho, do que tem andado a fazer e do que ainda quer melhorar; mediação: resumir em inglês uma avaliação escrita em português. |
 
@@ -155,7 +155,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 - **Vocabulário (~70):** mudanças de vida e de carreira, sentimentos (*bored / boring, excited / exciting, confused / confusing, tired / tiring*), formação contínua.
 - **Pronúncia:** *used to* /juːstə/ (sem /d/); formas fracas *I've been* /aɪv bɪn/.
 - **Falsos amigos:** *retire* (≠ retirar → *take out, withdraw*; *retire* = reformar-se); *deception* (≠ decepção → *disappointment*; *deception* = engano).
-- **Laboratório:** *used to* ou presente; *been doing* ou *done*; adjectivos *-ed / -ing*; resposta falada de 1 minuto "How has your life changed in the last five years?".
+- **Laboratório:** *used to* ou presente; *been doing* ou *done*; adjectivos *-ed / -ing*; resposta falada de 45 segundos "How has your life changed in the last five years?".
 - **Conversa guiada:** "How long have you been…?" — o tutor pergunta pelas actividades actuais e pede quanto tempo e quantos.
 - **Conversa livre:** "Catching up" — um antigo colega de formação que o aluno não vê há anos; os dois contam o que mudou.
 
@@ -181,7 +181,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 - **Vocabulário (~70):** reuniões, decisões, prazos, prioridades.
 - **Pronúncia:** acento enfático e acento contrastivo (*I said TUESDAY, not Thursday*).
 - **Falsos amigos:** *argument / discussion* (*argument* = discussão zangada; *discussion* = debate calmo; argumento = *point*); *resume* (≠ resumir → *summarise*; *resume* = retomar).
-- **Laboratório:** reacções a opiniões; *too / enough*; interromper e retomar; resposta falada de 1 minuto "Do you think meetings should be shorter? Why?".
+- **Laboratório:** reacções a opiniões; *too / enough*; interromper e retomar; resposta falada de 45 segundos "Do you think meetings should be shorter? Why?".
 - **Conversa guiada:** "What do you think?" — o tutor dá opiniões discutíveis sobre o trabalho e pede ao aluno que concorde ou discorde, com razões.
 - **Conversa livre:** "The project meeting" — o tutor dirige a reunião, discorda da proposta do aluno e interrompe uma vez; o aluno tem de defender a posição e chegar a um acordo.
 
@@ -195,18 +195,18 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 
 | Aula | Tipo | Título | Objectivo da aula |
 |---|---|---|---|
-| 4A | Língua | If I had more time… | Falar de situações imaginárias com o 2.º condicional (*If I were you…*) e de desejos simples. |
+| 4A | Língua | If I had more time… | Falar de situações imaginárias com o 2.º condicional (*If I were you…*), sem *wish* (que fica para o B2). |
 | 4B | Língua | Real or imaginary? | Escolher entre o 1.º e o 2.º condicional pela probabilidade da situação. |
 | 4C | Língua | It might rain | Dizer a probabilidade com *will (probably), may, might, won't* e *I doubt*. |
-| 4D | Vocabulário e pronúncia | Logistics and delays | Logística (*shipment, customs, warehouse, supplier, shortage*), colocações (*solve / cause / face a problem*); contracções *I'd, we'd, it'd*; falsos amigos. |
+| 4D | Vocabulário e pronúncia | Logistics and delays | Logística (*shipment, customs, warehouse, supplier, shortage*), colocações (*solve / cause / face a problem*), *phrasal verbs* (*run out of, sort out, put off*); contracções *I'd, we'd, it'd*; falsos amigos. |
 | 4E | Real English | What would you do? | Identificar o problema e a solução proposta por cada pessoa em quatro conselhos de rádio sobre o trabalho. |
 | 4F | Work & Life | The shipment is late | Analisar um atraso de material com a equipa, propor e comparar duas soluções e recomendar uma; mediação: explicar em inglês uma nota da alfândega em português. |
 
-- **Gramática:** 2.º condicional (*were / was*); 1.º e 2.º condicional em contraste; *might / may / will probably*; sugestões.
+- **Gramática:** 2.º condicional (*were / was*); 1.º e 2.º condicional em contraste; *might / may / will probably*; sugestões; comparativos para comparar soluções (revistos: *faster but more expensive, not as safe as*).
 - **Vocabulário (~70):** logística, alfândega, fornecedores, riscos e soluções.
 - **Pronúncia:** formas contraídas *I'd, we'd, wouldn't*; fala ligada em *if I were you*.
-- **Falsos amigos:** *assume* (≠ assumir → *take on, take responsibility*; *assume* = supor); *ordinary* (≠ ordinário → *rude*; *ordinary* = normal, comum).
-- **Laboratório:** 1.º ou 2.º condicional; probabilidade; sugestões; resposta falada de 1 minuto "If you could change one thing at your workplace, what would it be?".
+- **Falsos amigos:** *assume* (≠ assumir → *take on, take responsibility*; *assume* = supor); *ordinary* (≠ ordinário → *vulgar, rude, cheap*; *ordinary* = normal, comum).
+- **Laboratório:** 1.º ou 2.º condicional; probabilidade; sugestões; resposta falada de 45 segundos "If you could change one thing at your workplace, what would it be?".
 - **Conversa guiada:** "If you were the manager…" — o tutor propõe situações imaginárias de trabalho.
 - **Conversa livre:** "Problem solving" — o tutor é um colega com um problema (a obra pára se o material não chegar); o aluno faz perguntas, propõe soluções, ouve as objecções e recomenda.
 
@@ -223,15 +223,15 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 | 5A | Língua | It's made in… | Usar a passiva no presente para processos e factos (*Solar panels are made of…*), com *by* só quando importa. |
 | 5B | Língua | It was built in 2025 | Usar a passiva no passado para a história de um lugar ou de um projecto. |
 | 5C | Língua | The engineer who designed it | Definir com orações relativas (*who, which, that, where*), com e sem pronome (*the report I sent you*). |
-| 5D | Vocabulário e pronúncia | Energy and safety | Energia (*solar panel, fuel, pipeline, power plant, renewable*), segurança (*protective equipment, hazard, emergency exit*); acento de palavras técnicas (*enGIneer, reNEWable, eLECtrical*); falsos amigos. |
+| 5D | Vocabulário e pronúncia | Energy and safety | Energia (*solar panel, fuel, pipeline, power plant, renewable*), segurança (*protective equipment, hazard, emergency exit*); acento de palavras técnicas (*engiNEER, reNEWable, eLECtrical*); falsos amigos. |
 | 5E | Real English | A tour of the plant | Seguir uma visita guiada e identificar os passos de um processo e as regras de segurança. |
 | 5F | Work & Life | Safety briefing | Explicar a visitantes estrangeiros o procedimento de segurança de uma central e responder a perguntas; mediação: explicar em inglês um aviso de segurança em português. |
 
-- **Gramática:** passiva simples (presente e passado); orações relativas de definição; sequenciadores de processo.
+- **Gramática:** passiva simples (presente e passado); orações relativas de definição; sequenciadores de processo; regras de segurança com *must / have to / mustn't / don't have to* (revistos).
 - **Vocabulário (~75):** energia (solar, combustíveis, rede eléctrica), segurança no trabalho, equipamento.
 - **Pronúncia:** acento de palavra em termos técnicos; *was / were* fracos na passiva.
 - **Falsos amigos:** *petrol* (≠ petróleo → *oil, crude oil*; *petrol* = gasolina); *fabric* (≠ fábrica → *factory, plant*; *fabric* = tecido).
-- **Laboratório:** activa ou passiva; relativas; ordenar os passos de um processo; resposta falada de 1 minuto "Explain a process or a procedure at your work.".
+- **Laboratório:** activa ou passiva; relativas; ordenar os passos de um processo; resposta falada de 45 segundos "Explain a process or a procedure at your work.".
 - **Conversa guiada:** "How is it done?" — o tutor pergunta como se faz uma coisa conhecida (o café, o pão, um documento) e pede passivas.
 - **Conversa livre:** "Site visit" — o tutor é um visitante curioso numa central; o aluno explica o procedimento de segurança e responde a perguntas, reformulando quando o visitante não percebe.
 
@@ -275,7 +275,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 - **Vocabulário (~70):** incidentes, danos, emergências, sentimentos ao contar.
 - **Pronúncia:** *'d* do *past perfect* (*I'd already left*); agrupar e pausar numa narração.
 - **Falsos amigos:** *casualty* (≠ casualidade → *coincidence*; *casualty* = vítima); *prejudice* (≠ prejuízo → *loss, damage*; *prejudice* = preconceito).
-- **Laboratório:** *past perfect* ou *past simple*; ordenar acontecimentos; causas; resposta falada de 1 minuto e meio "Tell me about a problem at work and how it was solved.".
+- **Laboratório:** *past perfect* ou *past simple*; ordenar acontecimentos; causas; resposta falada de 45 segundos "Tell me about a problem at work and how it was solved.".
 - **Conversa guiada:** "Tell me what happened" — o tutor pede uma história e faz perguntas sobre a ordem dos acontecimentos.
 - **Conversa livre:** "Incident report" — o tutor é a directora de operações; o aluno relata um incidente e responde a perguntas difíceis sobre as causas.
 
@@ -291,9 +291,9 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 |---|---|---|---|
 | 7A | Língua | She said it was ready | Relatar afirmações com *say / tell* e a mudança de tempos (*is → was, will → would*). |
 | 7B | Língua | He asked if we could… | Relatar perguntas (*asked if / asked where*) com a ordem de afirmação. |
-| 7C | Língua | They told us to wait | Relatar pedidos e ordens com *ask / tell + pessoa + to* e verbos de relato (*explain, promise, agree, suggest*). |
-| 7D | Língua | Can I take a message? | Chamadas: identificar-se, pedir para falar com alguém, deixar e anotar recados, soletrar e confirmar. |
-| 7E | Vocabulário e pronúncia | Online meetings | Videochamadas (*mute, share your screen, connection, lag, recording*); números, datas e códigos ao telefone, agrupados; falsos amigos. |
+| 7C | Língua | They told us to wait | Relatar pedidos e ordens com *ask / tell + pessoa + to* e três verbos de relato simples (*explain that, promise to, agree to*); os verbos com padrões mais difíceis, como *suggest*, ficam para o B2. |
+| 7D | Língua | Can I take a message? | Chamadas (o recado simples do A1, agora completo): identificar-se, pedir para falar com alguém, deixar e anotar recados, soletrar e confirmar. |
+| 7E | Vocabulário e pronúncia | Online meetings | Videochamadas (*mute, share your screen, connection, lag, recording*), *phrasal verbs* do telefone (*hold on, put through, hang up, cut off*); números, datas e códigos ao telefone, agrupados; falsos amigos. |
 | 7F | Real English | Sorry, you broke up | Seguir uma videochamada com problemas de ligação e identificar o que ficou combinado. |
 | 7G | Work & Life | Supplier call | Fazer uma videochamada com um fornecedor (preço, prazo, condições) e relatar o resultado à equipa; mediação: passar ao fornecedor, em inglês, um pedido escrito em português pela direcção. |
 
@@ -301,7 +301,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 - **Vocabulário (~70):** telefone, videochamadas, recados, condições de fornecimento.
 - **Pronúncia:** números grandes, datas e códigos ao telefone; soletrar; agrupar números (*four-four-eight / one-two*).
 - **Falsos amigos:** *record* (≠ recordar → *remember*; *record* = gravar); *lecture* (≠ leitura → *reading*; *lecture* = palestra).
-- **Laboratório:** relatar frases e perguntas; recados; vocabulário de videochamada; resposta falada de 1 minuto "Report a phone call you had recently: what did the other person say and ask?".
+- **Laboratório:** relatar frases e perguntas; recados; vocabulário de videochamada; resposta falada de 45 segundos "Report a phone call you had recently: what did the other person say and ask?".
 - **Conversa guiada:** "Take a message" — o tutor liga para alguém que não está, e o aluno anota e confirma o recado.
 - **Conversa livre:** "The supplier call" — o tutor é um fornecedor; a ligação falha duas vezes; no fim, o tutor pede ao aluno que repita o que ficou combinado.
 
@@ -318,15 +318,15 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 | 8A | Língua | It must be a mistake | Fazer deduções sobre o presente com *must / might / could / can't*. |
 | 8B | Língua | Prices have gone up by 10% | Números grandes, percentagens, fracções e tendências (*rise, fall, increase, decrease, by / to*). |
 | 8C | Língua | This time next week | Usar o *future continuous* para planos em curso e perguntas educadas (*Will you be using the car tomorrow?*). |
-| 8D | Vocabulário e pronúncia | Budgets and banking | Orçamentos e finanças (*budget, invoice, exchange rate, interest rate, loan, overspend*), colocações (*cut costs, make a profit*); /ʃ/ /tʃ/ /dʒ/; falsos amigos. |
+| 8D | Vocabulário e pronúncia | Budgets and banking | Orçamentos e finanças (*budget, invoice, exchange rate, interest rate, loan, overspend*), colocações (*cut costs, make a profit*), *phrasal verbs* (*pay back, cut down on, set aside*); /ʃ/ /tʃ/ /dʒ/; falsos amigos. |
 | 8E | Real English | Where does the money go? | Identificar os números, a tendência e a opinião de cada pessoa em quatro conversas sobre preços e poupança. |
 | 8F | Work & Life | The budget meeting | Explicar à direcção porque o projecto gastou mais do que o previsto, com números e causas, e propor cortes; mediação: explicar em inglês uma tabela de custos em português. |
 
-- **Gramática:** dedução no presente; *future continuous*; números e tendências.
+- **Gramática:** dedução no presente; *future continuous*; números e tendências; comparativos e superlativos com números (revistos: *much higher than, the most expensive item*).
 - **Vocabulário (~75):** dinheiro pessoal e de empresa, banca, câmbio, inflação, poupança.
 - **Pronúncia:** /ʃ/ /tʃ/ /dʒ/ (*share, change, budget*); números com *-teen / -ty* em contraste.
 - **Falsos amigos:** *tax* (≠ taxa → *rate, fee*; *tax* = imposto); *commodity* (≠ comodidade → *comfort*; *commodity* = mercadoria, matéria-prima).
-- **Laboratório:** dedução; percentagens e tendências; *future continuous*; resposta falada de 1 minuto "How have prices changed where you live, and how do you save money?".
+- **Laboratório:** dedução; percentagens e tendências; *future continuous*; resposta falada de 45 segundos "How have prices changed where you live, and how do you save money?".
 - **Conversa guiada:** "That can't be right!" — o tutor mostra números estranhos e o aluno deduz a causa.
 - **Conversa livre:** "Budget review" — o tutor é o director financeiro; o aluno explica o desvio, responde a perguntas e propõe cortes; o tutor recusa um dos cortes.
 
@@ -334,7 +334,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 
 **Objectivos da unidade.** No fim, o aluno consegue:
 1. resumir uma notícia ou um artigo em 4 a 6 frases: o quê, quem, onde, porquê, e o que vem a seguir;
-2. ligar ideias com conectores de contraste, causa e finalidade (*although, however, despite, in order to, so that, as a result*);
+2. ligar ideias com conectores de contraste, finalidade e consequência (*although, however, despite, in order to, so that, therefore*), revendo os de causa da unidade 6;
 3. dar uma opinião desenvolvida sobre um tema da actualidade, com dois argumentos e um contra-argumento;
 4. falar de filmes, livros e séries que viu ou leu, e recomendá-los.
 
@@ -345,13 +345,13 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 | 9C | Língua | The article says… | Resumir e citar (*According to…, The article says that…, The main point is…*). |
 | 9D | Vocabulário e pronúncia | News, films and books | Media (*headline, source, fake news, review, plot, series*), colocações (*break the news, go viral*); entoação de lista e de contraste; falsos amigos. |
 | 9E | Real English | What do you think about it? | Identificar a opinião e os argumentos de cada pessoa num debate de rádio sobre o uso do telemóvel no trabalho. |
-| 9F | Work & Life | Team briefing | Resumir à equipa, em 2 minutos, um artigo sobre o sector e dizer o que significa para a empresa; mediação: resumir em inglês uma notícia de um jornal angolano. |
+| 9F | Work & Life | Team briefing | Resumir à equipa, em 2 minutos, um artigo sobre o sector e dizer o que significa para a empresa; mediação: resumir em inglês uma notícia em português, escrita por nós ao estilo de um jornal angolano (nunca um texto real de um jornal). |
 
 - **Gramática:** conectores de contraste, causa, finalidade e consequência; linguagem de resumo e de citação.
 - **Vocabulário (~70):** notícias, media, redes sociais, filmes, livros, séries.
 - **Pronúncia:** entoação de listas (sobe, sobe, desce) e de contraste (*Although it's cheap, …*).
-- **Falsos amigos:** *propaganda* (≠ propaganda → *advertising*; *propaganda* = propaganda política); *novel* (≠ novela → *soap opera*; *novel* = romance).
-- **Laboratório:** escolher o conector; ordenar um resumo; distinguir facto e opinião; resposta falada de 1 minuto e meio "Summarise a news story you read or heard this week, and give your opinion.".
+- **Falsos amigos:** *propaganda* (em português também quer dizer publicidade → *advertising*; em inglês, *propaganda* é só a política); *novel* (≠ novela → *soap opera*; *novel* = romance).
+- **Laboratório:** escolher o conector; ordenar um resumo; distinguir facto e opinião; resposta falada de 45 segundos "Summarise a news story you read or heard this week, and give your opinion.".
 - **Conversa guiada:** "Have you seen it?" — o tutor pergunta por um filme, um livro ou uma série, e pede um resumo e uma recomendação.
 - **Conversa livre:** "Hot topic" — o tutor propõe um tema da actualidade (trabalho remoto, inteligência artificial no emprego, transportes em Luanda), defende o lado contrário ao do aluno e pede um resumo final das duas posições.
 
@@ -376,7 +376,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 - **Vocabulário (~70):** balanço, decisões, riscos, resultados, carreira.
 - **Pronúncia:** formas fracas *should've* /ʃʊdəv/, *would've*, *might've*; acento de frase ao lamentar.
 - **Falsos amigos:** *data* (≠ data → *date*; *data* = dados); *balance* (≠ balanço → *review, assessment*; *balance* = equilíbrio, saldo).
-- **Laboratório:** 3.º condicional; *should have*; especulação no passado; resposta falada de 1 minuto e meio "Tell me about a decision you made. What would you do differently?".
+- **Laboratório:** 3.º condicional; *should have*; especulação no passado; resposta falada de 45 segundos "Tell me about a decision you made. What would you do differently?".
 - **Conversa guiada:** "If I had known…" — o tutor fala de decisões passadas e pede ao aluno que imagine o contrário.
 - **Conversa livre:** "Project review" — o tutor é o cliente; aponta um problema do projecto; o aluno reconhece, explica, diz o que se devia ter feito e propõe melhorias.
 
@@ -439,7 +439,7 @@ As regras do A1 e do A2 mantêm-se, com três acrescentos **[I]**:
 |---|---|
 | Concluiu o A2.2 na plataforma | B1.1, unidade 1 |
 | Resultado B1 no teste de nível da primeira entrada | B1.1, unidade 1 |
-| Fala com à-vontade de experiências, opiniões e hipóteses, mas nunca estudou a passiva nem o discurso indirecto | Faz o teste de colocação no B1.2; se passar, começa no B1.2 |
+| Já domina o que o B1.1 ensina (*question tags*, *used to*, opinião e desacordo, 2.º condicional, passiva), mas não os tempos narrativos, o discurso indirecto nem o 3.º condicional | Faz o teste de colocação no B1.2; se passar, começa no B1.2 |
 | Resultado B2 ou acima | B2 |
 
 **Teste de colocação no B1.2** **[I]:** 15 perguntas sobre as unidades 1 a 5 do B1 (do banco dos questionários) e uma conversa curta com o tutor (o ensaio da revisão 1 do B1). Quem passar começa no B1.2 sem certificado do B1.1.
@@ -472,8 +472,8 @@ Cada item do Core Inventory B1 **[V — lista das notas de pesquisa]** e a unida
 | | *Past continuous* (revisto) | 6 |
 | | *Past perfect* | 6 |
 | | *Past simple* (revisto) | 2, 6 |
-| | Respostas no passado (*So did I. Neither did I.*) | 1 (conversa de circunstância), 6 |
-| | *Phrasal verbs* (alargado) | ao longo do nível, sobretudo 4, 7 e 8 |
+| | Respostas curtas de concordância (*So did I. Neither did I.*) | 1 (1D), recicladas na 6 (reacções a histórias) |
+| | *Phrasal verbs* (alargado) | 4D, 7E e 8D, e ao longo do nível |
 | | *Present perfect continuous* | 2 |
 | | *Present perfect / past simple* (revisto) | 2 |
 | | Discurso indirecto (vários tempos) | 7 |
@@ -507,6 +507,7 @@ A ficha do A2, com os mesmos campos (incluindo **Falsos amigos** e **Mediação*
 - Pelo menos 95% das palavras estão no inventário A1 + A2 + B1 ou já foram ensinadas; as palavras técnicas de cada tema aparecem primeiro no ecrã.
 - O professor fala à velocidade natural, com pausas claras; nas aulas "Real English", velocidade natural com sobreposições.
 - Tudo em inglês; o português só nos falsos amigos e na mediação.
+- Os falsos amigos acima do B1 (*comprehensive, deception, casualty, prejudice, commodity*) ensinam-se só para reconhecer e evitar o erro; o laboratório não pede ao aluno que os produza.
 - O aluno fala em todas as aulas: pelo menos 6 momentos de resposta, e pelo menos 2 turnos de 30 segundos ou mais.
 - Uma pergunta de opinião e uma pergunta de reciclagem em cada aula.
 - Nomes, lugares e situações angolanos; nenhum texto, diálogo ou exercício de um manual comercial.
@@ -529,6 +530,7 @@ Como no A2: **cada aula é revista uma a uma**, com os mesmos 7 critérios ([pla
 - **Exame:** guião, situações e escala por curso com `manage.py carregar_exame_curso`; sem guião, o curso usa o exame geral, que já é do nível B1 (secção 6).
 - **Tutor:** as conversas livres do B1 pedem ao tutor que discorde, interrompa ou mude de assunto uma vez; isto vai no *brief* de cada cenário e nos critérios, sem mudar o modelo `Situacao`.
 - **Cursos de sector:** o B1 é o nível natural dos cursos de sector mais exigentes (por exemplo, petróleo e gás, aviação). A regra actual pede só o nível básico; a direcção pode decidir, mais tarde, exigir o B1.1 para alguns cursos **[I]**.
+- **Laboratório:** a gravação de uma resposta falada tem no máximo 45 segundos (`gravacao.py`, `MAX_SEGUNDOS`); por isso as respostas faladas do B1 no laboratório têm até 45 segundos, e os turnos longos fazem-se com o tutor e no exame. Se a direcção quiser respostas de 1 minuto e meio no laboratório, o limite muda no código (API, web e app).
 - **Áudio:** as aulas "Real English" do B1 pedem conversas a várias vozes com sobreposições; é preciso confirmar se o serviço de voz as gera bem ou se se gravam vozes separadas e se montam.
 
 ## 12. Números do B1
@@ -552,3 +554,25 @@ Como no A2: **cada aula é revista uma a uma**, com os mesmos 7 critérios ([pla
 3. Fechar o inventário de vocabulário B1 a partir da NGSL, aferido com Oxford 3000 B1 e Cambridge B1 Preliminary.
 4. Confirmar se o serviço de voz consegue gerar conversas a várias vozes com sobreposições (secção 11).
 5. Escrever as unidades 1 a 5 do B1.1, uma aula de cada vez, com a revisão de cada aula; depois a revisão 1 e o exame do B1.1.
+
+## 14. Registo da revisão (versão 2)
+
+Revisão do plano contra os planos do A1 e do A2, o Core Inventory (secção 9) e os limites da plataforma. Corrigido:
+
+| # | Onde | Problema | Correcção |
+|---|---|---|---|
+| 1 | Secções 3 e 5 (laboratório) | As respostas faladas de 1 minuto e de 1 minuto e meio não cabem no laboratório, que grava no máximo 45 segundos. | Respostas do laboratório até 45 segundos; os turnos longos ficam para o tutor e o exame (secção 11). |
+| 2 | Secção 3 (personagens) | "Karoo Systems" fica demasiado perto de uma empresa tecnológica sul-africana real. | A empresa da Thandi passa a chamar-se **Mopane Systems** (não se encontrou nenhuma empresa com este nome). |
+| 3 | 5D | Acento errado: *enGIneer*. | *engiNEER*. |
+| 4 | 4A | "Desejos simples" levava a *wish*, que o plano deixa para o B2. | Sem *wish*. |
+| 5 | 7C | *suggest* como verbo de relato contradizia a secção 9 (verbos de relato variados ficam para o B2). | Só *explain that, promise to, agree to*. |
+| 6 | Unidade 2 | Os adjectivos *-ed / -ing* apareciam como novos, mas já foram ensinados no A2 (7E); *get used to* aparecia como vocabulário activo e, na gramática, só receptivo. | Marcados como revistos e alargados; *get used to* sai da lista de vocabulário activo. |
+| 7 | Secção 9 | Itens dados como ensinados sem estarem nas unidades: *So did I / Neither did I*, *phrasal verbs* nas unidades 4, 7 e 8, comparativos nas 4 e 8, *must / have to* na 5. | Acrescentados às aulas e às listas de gramática das unidades 1, 4, 5, 7 e 8. |
+| 8 | 7D | O recado ao telefone já foi ensinado no A1 (unidade 9). | Marcado como revisto e completado. |
+| 9 | 9F | "Uma notícia de um jornal angolano" podia levar a usar um texto real. | Notícia escrita por nós, ao estilo de um jornal angolano. |
+| 10 | Secção 1 | "Por esta ordem: unidades 2, 3, 4, 5, 7" não correspondia à ordem da lista; "os quatro futuros" não dizia quais; o fim do B1.2 falava de um "sotaque claro" sem dizer de quem. | Cada estrutura com a sua unidade; os quatro futuros nomeados; frase reescrita. |
+| 11 | Secção 8 | O aluno que "nunca estudou a passiva" era mandado para o B1.2, mas a passiva ensina-se no B1.1. | A linha descreve quem já domina o B1.1. |
+| 12 | Falsos amigos | *comprehensive, deception, casualty, prejudice, commodity* estão acima do B1. | Ensinam-se só para reconhecer (secção 10); *ordinário* e *propaganda* com traduções mais exactas. |
+| 13 | Unidade 9 | O objectivo 2 repetia os conectores de causa da unidade 6. | Contraste, finalidade e consequência; a causa só revista. |
+
+**Verificado sem alterações:** contagens (67 vídeo-aulas, 77 lições, 22 conversas, 12 questionários, 710 palavras, 70 h); falsos amigos sem repetições do A1 e do A2; duração dos exames dentro do limite da plataforma (10 minutos); cada unidade coberta no exame do seu curso. "Morro Azul Energia": só se encontrou um pequeno projecto hidroeléctrico no Brasil com o nome "Morro Azul", sem empresa com este nome; mantém-se.
