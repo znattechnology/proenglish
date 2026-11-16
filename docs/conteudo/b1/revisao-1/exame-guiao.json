@@ -1,0 +1,91 @@
+{
+ "formato": "CourseGradingConfig.exam_script (apps/practice/conversa/exame.py, validar_guiao); carregar com manage.py carregar_exame_curso",
+ "nivel": "B1",
+ "duracao": "8 to 9 minutes",
+ "max_minutos": 10,
+ "situacoes": 1,
+ "partes": [
+  {
+   "titulo": "Interview",
+   "minutos": "about 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Hello, {nome}. Welcome to your B1.1 speaking exam. Tell me about your work or your studies. How has it changed in the last few years?",
+     "simples": "What do you do? Is it different from before?"
+    },
+    {
+     "pergunta": "What have you been doing recently, at work or in your free time? How long have you been doing it?",
+     "simples": "What are you doing these days? Since when?"
+    },
+    {
+     "pergunta": "What did you use to do five or ten years ago that you don't do now?",
+     "simples": "Five years ago, what did you do every weekend?"
+    }
+   ]
+  },
+  {
+   "titulo": "Long turn",
+   "minutos": "about 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Now I'd like you to talk for about one minute. Please explain a process or a procedure at your work or in your studies, step by step. You can take a few seconds to think.",
+     "simples": "Explain how something is done at your work. Step by step."
+    },
+    {
+     "pergunta": "Thank you. Which part of that process is the most difficult, and why?",
+     "simples": "What is difficult in it?"
+    },
+    {
+     "pergunta": "If you could change one thing in that process, what would you change?",
+     "simples": "What would you change?"
+    }
+   ]
+  }
+ ],
+ "notas": [
+  "Ask one question at a time and wait. Do not correct, teach or give hints during the exam.",
+  "If the student answers with one word or one short sentence, ask Can you tell me more? once per question.",
+  "In Part 2, let the student talk for about one minute without interrupting. If they stop after two or three sentences, ask And then? once.",
+  "If the student does not work, ask about their studies, their home or a hobby: for example, how a student is registered at their school, or how a family meal is prepared.",
+  "In the situation, create the difficulty described in it once, so the student has to give a reason or a new solution.",
+  "After the situation, ask its discussion question, then give the opposite view once and ask the student to answer it. This is Part 4 (about 1 minute).",
+  "If the student says What I mean is..., In other words..., Sorry, I mean... or asks Do you mean...?, continue normally.",
+  "Use only A1, A2 and B1.1 language: no past perfect, no third conditional, no should have, no wish, no reported speech, no future continuous."
+ ],
+ "escala": {
+  "tarefa": {
+   "80-100": "Answers every question with details and examples, explains the process in clear steps for about one minute, completes the situation including the difficulty, and answers the counter-argument with a reason.",
+   "60-79": "Answers most questions with some details; the process has the main steps; completes the situation with some help; gives an opinion, but the answer to the counter-argument is short.",
+   "40-59": "Short answers; the process is incomplete or hard to follow; the situation is only half done; no real answer to the counter-argument.",
+   "0-39": "Answers few questions, or answers in Portuguese."
+  },
+  "gramatica": {
+   "80-100": "Chooses well between tenses (used to, present perfect simple and continuous, past simple); uses the second conditional, the passive and relative clauses mostly correctly.",
+   "60-79": "Uses the B1.1 structures with some mistakes (for example I am working here since…), but the meaning is always clear.",
+   "40-59": "Mostly A2 structures; frequent mistakes that sometimes make the meaning unclear.",
+   "0-39": "Very few correct sentences."
+  },
+  "vocabulario": {
+   "80-100": "Uses the words and collocations of B1 units 1-5 (meetings, changes, logistics, processes, safety) with ease, and explains words they do not know.",
+   "60-79": "Enough words for the tasks; some pauses to find words; explains some missing words.",
+   "40-59": "Basic work words are missing; the student often stops.",
+   "0-39": "Very few words, or many Portuguese words."
+  },
+  "fluencia": {
+   "80-100": "Long, linked turns (because, so, but, firstly, secondly, after that); manages the conversation (asks, checks, comes back to a point); few long pauses.",
+   "60-79": "Some long turns with linking words; pauses to organise ideas, but keeps going.",
+   "40-59": "Short, separate sentences and long pauses; needs help to continue.",
+   "0-39": "Can hardly continue without help."
+  }
+ },
+ "nao_baixa": [
+  "a Portuguese or Angolan accent",
+  "asking the examiner to repeat or to explain a question",
+  "pauses to organise ideas in the long turn",
+  "saying What I mean is... or In other words... to explain a word",
+  "correcting yourself with Sorry, I mean...",
+  "asking Do you mean...? to check a question",
+  "disagreeing with the examiner, politely",
+  "one wrong past participle when the structure is correct"
+ ]
+}

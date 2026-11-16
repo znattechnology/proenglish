@@ -1,0 +1,82 @@
+{
+ "unidade": "B1.1 · Review 1",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "b1-r1-ensaio",
+   "nome": "B1 Review 1 · Exam rehearsal: a visiting consultant",
+   "tipo": "livre",
+   "depois_da_aula": "R1B",
+   "descricao": "Ensaio do exame oral do B1.1: o tutor é Quinn, consultor de Londres de visita à empresa do aluno. Conversam sobre as mudanças no trabalho do aluno; o aluno explica um processo; depois, o Quinn tem um problema (o local da festa anual da empresa cancelou a reserva) e o aluno propõe soluções; no fim, uma pergunta de opinião com um argumento contrário.",
+   "papel_tutor": "Quinn, consultor(a) de Londres de visita à empresa do aluno, em Luanda.",
+   "nivel": "B1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I used to…, but now I…",
+    "I've been … since…",
+    "First, … is … Then…",
+    "If we…, we'd… / Why don't we…?",
+    "I see your point, but…"
+   ],
+   "extras": {
+    "brief": "Exam rehearsal for an intermediate learner (B1.1, units 1-5). You are Quinn (a neutral name; never mention a husband or wife), a consultant from London, visiting the student's company in Luanda. Have a friendly conversation in four parts, one question at a time. 1) Changes: how the student's job or studies have changed; what the student has been doing recently, and how long; what the student used to do five years ago. 2) Long turn: ask the student to explain a process or a procedure at their work or studies, step by step, for about one minute; then ask which part is the most difficult, and what the student would change. 3) A problem: the hotel for the company's end-of-year party has cancelled the booking, and the party is in ten days, for eighty people. Ask the student for ideas. Object once to the first idea (\"That might not work, because…\"), then accept a reasonable solution. 4) Discussion: ask \"Do you think end-of-year parties are a good use of company money?\"; whatever the student says, give the opposite view once, and ask the student to answer it. If the student answers with one word, ask \"Can you tell me more?\" once. Do not correct during the conversation, except by repeating once, correctly, these mistakes: \"I'm working here since…\", \"I'm agree\", \"If I would…\", \"I born\". Use only A1, A2 and B1.1 language (units 1 to 5): question tags, indirect questions, used to, the present perfect continuous, opinions, agreeing and disagreeing, too / enough, so / such, the first and second conditionals, probability, suggestions, the passive in the present and past simple, defining relative clauses. Do NOT use: the past perfect, the third conditional, \"should have\", \"wish\", reported speech (\"she said that…\"), the future continuous, \"must\" or \"can't\" for deduction.",
+    "primeira_fala": "Hi, {nome}! I'm Quinn, from London. It's my first visit to your office. Tell me, how has your job changed in the last few years?",
+    "primeira_fala_simples": "Hi, {nome}! I'm Quinn. Is your job different from five years ago?",
+    "guiao": [
+     "Interesting. And what have you been doing recently? How long have you been doing it?",
+     "And five years ago — what did you use to do?",
+     "Now I'd like to understand your work better. Can you explain a process or a procedure, step by step?",
+     "Which part is the most difficult? And if you could change one thing, what would you change?",
+     "Oh, can I ask your advice? The hotel for our end-of-year party has just cancelled, and the party is in ten days — eighty people! What should we do?",
+     "Hmm. That might not work, because it's a very busy time of year. Any other ideas?",
+     "OK, that could work. Last question: do you think end-of-year parties are a good use of company money?",
+     "I see. But some people think the opposite. What do you say to them?",
+     "Thank you, {nome}. I really enjoyed our conversation!"
+    ],
+    "frases": [
+     {
+      "en": "I've been working on a new project since September.",
+      "pt": "Ando a trabalhar num projecto novo desde Setembro."
+     },
+     {
+      "en": "First, the orders are checked. Then they are sent to the warehouse.",
+      "pt": "Primeiro, as encomendas são verificadas. Depois são enviadas para o armazém."
+     },
+     {
+      "en": "If we booked a restaurant, we'd have more choice.",
+      "pt": "Se reservássemos um restaurante, teríamos mais opções."
+     },
+     {
+      "en": "There are two reasons. Firstly… Secondly…",
+      "pt": "Há duas razões. Primeiro… Segundo…"
+     },
+     {
+      "en": "I see your point, but what I mean is…",
+      "pt": "Percebo, mas o que quero dizer é…"
+     }
+    ],
+    "palavras": [
+     "used to",
+     "since",
+     "first",
+     "then",
+     "if",
+     "would",
+     "in my view",
+     "I see your point"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Fala das mudanças no trabalho ou nos estudos com used to e com o present perfect continuous (há quanto tempo).",
+    "Explica um processo por passos, com sequenciadores e com a passiva, falando pelo menos 45 segundos sem ajuda.",
+    "Propõe uma solução para o problema, responde à objecção do Quinn e propõe outra ou defende a primeira com uma razão.",
+    "Dá uma opinião organizada (duas razões ou uma razão e um exemplo) e responde ao argumento contrário (I see your point, but…).",
+    "Gere a conversa: pergunta, verifica ou reformula pelo menos uma vez.",
+    "É compreendido sem o tutor ter de pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

@@ -52,6 +52,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [b1/unidade-03/](b1/unidade-03/README.md) | B1.1, unidade 3 "In the meeting": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b1/unidade-04/](b1/unidade-04/README.md) | B1.1, unidade 4 "What if…?": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b1/unidade-05/](b1/unidade-05/README.md) | B1.1, unidade 5 "How it works": guiões, laboratório, tutor, questionário e revisão aula a aula. |
+| [b1/revisao-1/](b1/revisao-1/README.md) | B1.1, revisão 1 e exame oral: guiões, laboratório, ensaio com o tutor, questionário e o guião e as situações do exame. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.

@@ -1,0 +1,86 @@
+{
+ "exame": "B1.1",
+ "formato": "apps/practice/models.py Situacao (situações próprias do exame; extras.exame = true; carregar com manage.py carregar_exame_curso)",
+ "situacoes": [
+  {
+   "slug": "b1-1-exame-evento",
+   "nome": "B1.1 exam · Meeting someone new",
+   "papel_tutor": "A guest from Cape Town at a business dinner in Luanda. Works for a tourism company.",
+   "descricao": "The examiner is a guest at a business dinner in Luanda, from Cape Town, and works for a tourism company. The student must start and keep the conversation going: introduce themselves, ask follow-up questions, use at least one question tag or indirect question, and talk about how their own job has changed. Difficulty: once, the examiner says they are thinking of changing jobs and asks what the student would do in their place; the student must give advice with a reason. At the end, the student suggests how to keep in touch. Discussion question: Do you think business events are a good way to find new clients? Opposite view: some people say it is better to meet clients online.",
+   "nivel": "B1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. We're at a business dinner in Luanda, and we don't know each other. I'm a guest from Cape Town. Hello! I don't think we've met. Are you enjoying the evening?"
+   },
+   "frases": [
+    "You work in…, don't you?",
+    "Could you tell me…?",
+    "If I were you, I'd…",
+    "Let's keep in touch."
+   ]
+  },
+  {
+   "slug": "b1-1-exame-reuniao",
+   "nome": "B1.1 exam · A team meeting",
+   "papel_tutor": "The chair of a team meeting in the student's company.",
+   "descricao": "The examiner chairs a short team meeting. One item: the examiner proposes to move the weekly team meeting to Friday at five in the afternoon, for ninety minutes. The student must give an opinion with a reason, disagree politely, and make a different proposal. Difficulty: in the middle, the examiner gives one wrong number (says the meeting is ninety minutes when it was sixty, or the wrong day), so the student can interrupt or check; and the examiner disagrees once with the student's proposal. At the end, the student must summarise the decision. Discussion question: Should meetings be shorter? Opposite view: some people say long meetings save time later, because everyone understands the decisions.",
+   "nivel": "B1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm the chair of your team meeting. Good morning. One item today: I'd like to move our weekly meeting to Friday at five. What's your view?"
+   },
+   "frases": [
+    "I see your point, but…",
+    "I'm not sure I agree.",
+    "Sorry to interrupt, but did you say…?",
+    "So, we agree that…"
+   ]
+  },
+  {
+   "slug": "b1-1-exame-problema",
+   "nome": "B1.1 exam · A problem to solve",
+   "papel_tutor": "A colleague in the student's company, worried about a late delivery.",
+   "descricao": "The examiner is a colleague. Twenty new staff start work on Monday, but the supplier's laptops will arrive late, maybe on Wednesday. The student must ask questions to understand the problem, propose solutions (suggestions, the second conditional, probability), compare two options and recommend one. Difficulty: the examiner objects once to the first solution (it is too expensive, or the supplier can't do it). Discussion question: Is it better to pay more and be safe, or to save money and take a risk? Opposite view: some people say a company that never takes risks never grows.",
+   "nivel": "B1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm your colleague, and I have a problem. Twenty new people start on Monday, but their laptops will probably arrive late. Can you help me?"
+   },
+   "frases": [
+    "How long…? How much…?",
+    "Why don't we…?",
+    "If we…, we'd…",
+    "Option one is…, but… I recommend…"
+   ]
+  },
+  {
+   "slug": "b1-1-exame-seguranca",
+   "nome": "B1.1 exam · A safety briefing",
+   "papel_tutor": "A visitor from abroad at the student's workplace (or a warehouse, if the student prefers).",
+   "descricao": "The examiner is a visitor from abroad at the student's workplace; if the student prefers, the place is a warehouse in Luanda. The student must explain the safety procedure in steps, with sequence words and must / have to / mustn't / don't have to, and answer the visitor's questions (what to wear, where not to go, what to do if the alarm sounds). Difficulty: once, the examiner says they don't understand a word the student used; the student must explain it in other words. Discussion question: Why do many people ignore safety rules at work? Opposite view: some people say there are too many safety rules, and they make the work slow.",
+   "nivel": "B1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm a visitor from abroad, and it's my first time at your workplace. You're giving me the safety briefing. Hello! What do I need to know?"
+   },
+   "frases": [
+    "First… Then… After that… Finally…",
+    "You have to… / You mustn't…",
+    "In other words…",
+    "Is everything clear?"
+   ]
+  }
+ ]
+}
