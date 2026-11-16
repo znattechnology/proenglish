@@ -423,7 +423,7 @@ Verificação: Lab 3E (exercícios 1–8); pergunta 10 do questionário
 
 ### 1. Apresentação (30 s)
 
-**PROF:** Four people talk about their work. Listen two times.
+**PROF:** Four people talk about work. Listen two times.
 (PT: Quatro pessoas falam do seu trabalho. Ouve duas vezes.)
 
 ### 2. Primeira escuta: a ideia geral (2 min)
