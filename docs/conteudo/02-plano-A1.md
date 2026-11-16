@@ -143,26 +143,26 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 ### Unidade 2 — Where are you from?
 
 **Objectivos da unidade.** No fim, o aluno consegue:
-1. dizer de onde é e a nacionalidade, e perguntá-lo a outra pessoa;
-2. fazer e responder a perguntas simples com *be* (*Where…? What…? How old…?*);
-3. dizer e entender números até 100 e a idade;
-4. dar as boas-vindas a um colega estrangeiro e fazer-lhe perguntas pessoais simples.
+1. dizer de que país e de que cidade é e a sua nacionalidade (*I'm from Huambo. I'm Angolan.*) e perguntá-lo a outra pessoa (*Where are you from?*);
+2. dizer de onde é outra pessoa e fazer e responder a perguntas com *be* em todas as pessoas, com respostas curtas (*Is she South African? — Yes, she is.*);
+3. dizer e entender números de 20 a 100 e perguntar e dizer a idade (*How old are you? — I'm 34.*);
+4. receber um visitante estrangeiro: dar-lhe as boas-vindas, perguntar-lhe de onde é e que línguas fala, e apresentar-lhe um colega (*This is Sílvia. She's from Benguela.*).
 
 | Aula | Tipo | Título | Objectivo da aula |
 |---|---|---|---|
-| 2A | Língua | Countries and nationalities | Dizer o país e a nacionalidade. |
-| 2B | Língua | Questions with *be* | Fazer e responder a perguntas com *be* em todas as pessoas. |
-| 2C | Língua | Numbers to 100 | Dizer a idade e números até 100. |
-| 2D | Vocabulário e pronúncia | Countries and languages | Pronunciar países, nacionalidades e línguas com o acento certo. |
-| 2E | Real English | Where are they from? | Entender 3 pessoas a dizer de onde são, onde vivem e que línguas falam. |
-| 2F | Work & Life | A visitor from abroad | Receber um colega estrangeiro no escritório de Luanda. |
+| 2A | Língua | Countries and nationalities | Dizer de que país e cidade é e a nacionalidade, e perguntar a outra pessoa (*Where are you from?*). |
+| 2B | Língua | Questions with *be* | Dizer de onde é outra pessoa com *he/she/they* e fazer e responder a perguntas com *be*, com respostas curtas. |
+| 2C | Língua | Numbers to 100 | Dizer e entender números de 20 a 100 e perguntar e dizer a idade. |
+| 2D | Vocabulário e pronúncia | Countries and languages | Dizer países, nacionalidades e línguas com o acento certo e dizer que línguas fala (*I speak… a little…*). |
+| 2E | Real English | Where are they from? | Identificar, em três apresentações a velocidade quase natural, o país, a cidade, a idade e as línguas de cada pessoa. |
+| 2F | Work & Life | A visitor from abroad | Receber um visitante estrangeiro, perguntar-lhe de onde é e que línguas fala, e apresentar-lhe um colega. |
 
-- **Gramática:** *be* (he/she/it/we/they); perguntas *wh-* com *be*; respostas curtas (*Yes, I am / No, she isn't*).
-- **Vocabulário (~50):** países, nacionalidades, línguas, números 20–100, palavras interrogativas.
-- **Pronúncia:** acento em nacionalidades (*ANgolan, PortuGUESE*); entoação descendente nas perguntas *wh-*.
-- **Laboratório:** ligar país e nacionalidade; *is/are*; escuta de idades; pronúncia de nacionalidades; resposta falada "Where are you from?".
+- **Gramática:** *be* (he/she/it/we/they; +, −, ?); contracções e respostas curtas; *Where's…? Who's…?*; idade com *be* (*I'm 34*, nunca *I have 34 years*). Bloco fixo: *I speak… / Do you speak…?* (o *present simple* estuda-se na unidade 3).
+- **Vocabulário (~55):** 14 países e nacionalidades (incluindo Moçambique, Nigéria, RD Congo, Namíbia), línguas (incluindo kimbundu, umbundu, kikongo, lingala), números 20–100, *Mr/Ms*.
+- **Pronúncia:** acento em países e nacionalidades (*anGOlan*, *PORtugal → portuGUESE*, *CHIna → chiNESE*); *-teen* e *-ty*; entoação descendente nas perguntas *wh-* e ascendente nas de sim ou não.
+- **Laboratório:** ligar país e nacionalidade; *is/are/isn't/aren't*; escuta de idades; acento; resposta falada "Where are you from?".
 - **Conversa guiada:** o tutor pergunta o país, a cidade e a idade, e o aluno pergunta o mesmo.
-- **Conversa livre:** "A visitor from Brazil" — conhecer um visitante e fazer-lhe três perguntas.
+- **Conversa livre:** "A visitor from South Africa" — receber uma engenheira sul-africana, perguntar-lhe de onde é e que línguas fala, e apresentar-lhe um colega.
 
 ### Unidade 3 — My job
 
@@ -541,5 +541,5 @@ Verificação: Lab 6A (exercícios 1–8) e pergunta 3 do questionário da unida
 1. Revisão deste plano pelos professores (objectivos, ordem, contexto angolano).
 2. Decidir a regra do nível básico (recomendado: só o A2 concluído ou o teste).
 3. Fechar o inventário de vocabulário A1 a partir da NGSL, aferido com Oxford 3000 A1 e Cambridge A2 Key.
-4. ~~Escrever a unidade 1~~ — feito: [a1/unidade-01](a1/unidade-01/README.md). Testar com o professor de IA depois da revisão.
+4. ~~Escrever as unidades 1 e 2~~ — feito: [unidade 1](a1/unidade-01/README.md), [unidade 2](a1/unidade-02/README.md). Testar com o professor de IA depois da revisão.
 5. Escolher o serviço de voz para as aulas "Real English" (vozes variadas).

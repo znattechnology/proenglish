@@ -1,0 +1,127 @@
+{
+ "unidade": "A1.1 · Unit 2 — Where are you from?",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a1-u2-guiada",
+   "nome": "Unit 2 · Where are you from?",
+   "tipo": "guiada",
+   "depois_da_aula": "2C",
+   "descricao": "O tutor pergunta ao aluno o país, a cidade e a idade, e pede-lhe que faça as mesmas perguntas.",
+   "papel_tutor": "Um professor simpático.",
+   "nivel": "A1",
+   "duracao_min": 3,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I'm from…",
+    "Where are you from?",
+    "How old are you?"
+   ],
+   "extras": {
+    "brief": "Guided practice for a beginner (A1, unit 2). You are a friendly teacher. Ask where the student is from (country and city), their nationality and their age. Then ask the student to ask you the same questions; you are from Lubango, Angola, and you are forty. Use only: be (all persons), Where are you from?, How old are you?, countries and nationalities, numbers to 100, greetings. One short question at a time. If the student says \"I have … years\", model \"I'm …\" kindly and continue.",
+    "primeira_fala": "Hello, {nome}! Where are you from?",
+    "primeira_fala_simples": "Hello! Where are you from?",
+    "guiao": [
+     "Great! And what city are you from?",
+     "So you're Angolan! How old are you?",
+     "Thank you. Now you ask me: where am I from?",
+     "I'm from Lubango. Now ask me my age.",
+     "I'm forty. Very good, {nome}! Goodbye!"
+    ],
+    "frases": [
+     {
+      "en": "I'm from Luanda. I'm Angolan.",
+      "pt": "Sou de Luanda. Sou angolano."
+     },
+     {
+      "en": "Where are you from?",
+      "pt": "De onde é?"
+     },
+     {
+      "en": "How old are you?",
+      "pt": "Que idade tem?"
+     }
+    ],
+    "palavras": [
+     "from",
+     "where",
+     "angolan",
+     "city",
+     "old",
+     "country"
+    ],
+    "minutos_sugeridos": 3
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a1-u2-livre",
+   "nome": "Unit 2 · A visitor from South Africa",
+   "tipo": "livre",
+   "depois_da_aula": "2F",
+   "descricao": "O tutor é uma engenheira sul-africana que chega à empresa. O aluno recebe-a, pergunta-lhe de onde é e que línguas fala, responde às perguntas dela e apresenta um colega.",
+   "papel_tutor": "Thandi, engenheira sul-africana em visita à empresa.",
+   "nivel": "A1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Welcome to Angola!",
+    "Where are you from?",
+    "This is… He's / She's…"
+   ],
+   "extras": {
+    "brief": "Role-play for a beginner (A1, unit 2). You are Thandi Mokoena, a South African engineer from Johannesburg, visiting the student's company in Luanda for a meeting. It is your first time in Luanda. You speak English and Zulu, not Portuguese. Wait for the student to welcome you. Answer their questions simply. Ask them: where they are from, their nationality, what languages they speak. Then ask \"Who is your colleague?\" so the student introduces a colleague with \"This is… He's / She's…\". Use very short sentences and only units 1-2 language. One question at a time.",
+    "primeira_fala": "Good morning! I'm Thandi Mokoena. I have a meeting here today.",
+    "primeira_fala_simples": "Good morning! I'm Thandi. I have a meeting here.",
+    "guiao": [
+     "Thank you! I'm from Johannesburg. And you? Where are you from?",
+     "Nice! Is it a big city?",
+     "What languages do you speak?",
+     "Great! Who is your colleague there?",
+     "Nice to meet you both. Is the meeting room near?",
+     "Thank you very much, {nome}. See you later!"
+    ],
+    "frases": [
+     {
+      "en": "Welcome to Angola!",
+      "pt": "Bem-vinda a Angola!"
+     },
+     {
+      "en": "Is this your first time in Luanda?",
+      "pt": "É a primeira vez que está em Luanda?"
+     },
+     {
+      "en": "I speak Portuguese and a little English.",
+      "pt": "Falo português e um pouco de inglês."
+     },
+     {
+      "en": "This is Sílvia. She's an accountant.",
+      "pt": "Esta é a Sílvia. É contabilista."
+     }
+    ],
+    "palavras": [
+     "welcome",
+     "angola",
+     "from",
+     "first",
+     "time",
+     "speak",
+     "portuguese",
+     "english",
+     "this",
+     "colleague"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": [
+    "Dá as boas-vindas e responde a todas as perguntas com uma frase completa ou uma resposta curta adequada.",
+    "Faz pelo menos duas perguntas à visitante (por exemplo, \"Where are you from?\" e \"Is this your first time in Luanda?\").",
+    "Usa a língua da unidade pelo menos duas vezes (be com he/she/they, países e nacionalidades, I speak…).",
+    "Apresenta um colega com \"This is… He's / She's…\".",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

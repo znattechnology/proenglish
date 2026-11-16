@@ -1,0 +1,1026 @@
+{
+ "unidade": "A1.1 · Unit 2 — Where are you from?",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "2A",
+   "titulo": "Countries and nationalities",
+   "aula": "2A",
+   "objectivo": "Dizer de que país e cidade é e a nacionalidade, e perguntar a outra pessoa.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada país à nacionalidade.",
+     "pares": [
+      {
+       "a": "Angola",
+       "b": "Angolan"
+      },
+      {
+       "a": "Brazil",
+       "b": "Brazilian"
+      },
+      {
+       "a": "Portugal",
+       "b": "Portuguese"
+      },
+      {
+       "a": "Mozambique",
+       "b": "Mozambican"
+      },
+      {
+       "a": "Nigeria",
+       "b": "Nigerian"
+      },
+      {
+       "a": "South Africa",
+       "b": "South African"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I'm from Angola.",
+       "certa": true
+      },
+      {
+       "texto": "I'm from Angolan.",
+       "certa": false
+      },
+      {
+       "texto": "I from Angola.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Com o país usa-se \"from\"; com a nacionalidade, não: \"I'm Angolan\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I'm Angolan.",
+       "certa": true
+      },
+      {
+       "texto": "I'm a Angolan.",
+       "certa": false
+      },
+      {
+       "texto": "I'm Angola.",
+       "certa": false
+      }
+     ],
+     "explicacao": "A nacionalidade vem sem artigo e escreve-se com maiúscula: \"I'm Angolan\"."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "De onde é?",
+     "resposta": "Where are you from?",
+     "explicacao": "O \"from\" fica no fim da pergunta."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [from] Huambo.",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Hi, I'm Mateus. I'm from Huambo.",
+     "enunciado": "De que cidade é o Mateus?",
+     "opcoes": [
+      {
+       "texto": "Huambo",
+       "certa": true
+      },
+      {
+       "texto": "Luanda",
+       "certa": false
+      },
+      {
+       "texto": "Benguela",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Where are you from?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm from Luanda. I'm Angolan.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hello! I'm Mateus. Where are you from?",
+     "frase": "I'm from",
+     "resposta": "Hi, Mateus. I'm from Lubango. I'm Angolan.",
+     "contexto": "Diga de que cidade e de que país é."
+    }
+   ]
+  },
+  {
+   "codigo": "2B",
+   "titulo": "Questions with be",
+   "aula": "2B",
+   "objectivo": "Falar de outras pessoas com he/she/they e fazer e responder a perguntas com be.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Thandi is South African. [She's] an engineer.",
+     "opcoes": [
+      {
+       "texto": "He's",
+       "certa": false
+      },
+      {
+       "texto": "They're",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"She\" é para uma mulher; \"he\" para um homem."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Mr Okafor [isn't] Angolan. He's Nigerian.",
+     "opcoes": [
+      {
+       "texto": "aren't",
+       "certa": false
+      },
+      {
+       "texto": "not",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Are] they from Lagos?",
+     "opcoes": [
+      {
+       "texto": "Is",
+       "certa": false
+      },
+      {
+       "texto": "Am",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Is he Nigerian? — Yes, ...",
+     "opcoes": [
+      {
+       "texto": "he is.",
+       "certa": true
+      },
+      {
+       "texto": "he's.",
+       "certa": false
+      },
+      {
+       "texto": "he are.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Na resposta curta diz-se \"Yes, he is.\" e nunca \"Yes, he's.\""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Are they Angolan? — No, ...",
+     "opcoes": [
+      {
+       "texto": "they aren't.",
+       "certa": true
+      },
+      {
+       "texto": "they isn't.",
+       "certa": false
+      },
+      {
+       "texto": "they not.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "De onde é ela?",
+     "resposta": "Where is she from?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Mr Okafor. He's a client. He's from Lagos.",
+     "enunciado": "De onde é o Sr. Okafor?",
+     "opcoes": [
+      {
+       "texto": "Lagos",
+       "certa": true
+      },
+      {
+       "texto": "Luanda",
+       "certa": false
+      },
+      {
+       "texto": "Johannesburg",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à forma de \"be\".",
+     "pares": [
+      {
+       "a": "I",
+       "b": "am"
+      },
+      {
+       "a": "she",
+       "b": "is"
+      },
+      {
+       "a": "they",
+       "b": "are"
+      }
+     ]
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "She's South African. He isn't Angolan.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Who's this? Is she an engineer?",
+     "frase": "she's",
+     "resposta": "This is Thandi. Yes, she's an engineer. She's from South Africa.",
+     "contexto": "Fale da Thandi: engenheira, sul-africana."
+    }
+   ]
+  },
+  {
+   "codigo": "2C",
+   "titulo": "Numbers to 100",
+   "aula": "2C",
+   "objectivo": "Dizer e entender números de 20 a 100 e dizer a idade.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada número à palavra.",
+     "pares": [
+      {
+       "a": "30",
+       "b": "thirty"
+      },
+      {
+       "a": "13",
+       "b": "thirteen"
+      },
+      {
+       "a": "40",
+       "b": "forty"
+      },
+      {
+       "a": "14",
+       "b": "fourteen"
+      },
+      {
+       "a": "60",
+       "b": "sixty"
+      },
+      {
+       "a": "16",
+       "b": "sixteen"
+      }
+     ]
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Thirty.",
+     "enunciado": "Que número ouve?",
+     "opcoes": [
+      {
+       "texto": "30",
+       "certa": true
+      },
+      {
+       "texto": "13",
+       "certa": false
+      },
+      {
+       "texto": "33",
+       "certa": false
+      }
+     ],
+     "explicacao": "Em \"thirty\" a força está no início: THIR-ty."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Fourteen.",
+     "enunciado": "Que número ouve?",
+     "opcoes": [
+      {
+       "texto": "14",
+       "certa": true
+      },
+      {
+       "texto": "40",
+       "certa": false
+      },
+      {
+       "texto": "4",
+       "certa": false
+      }
+     ],
+     "explicacao": "Em \"fourteen\" a força está no fim: four-TEEN."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se escreve 40?",
+     "opcoes": [
+      {
+       "texto": "forty",
+       "certa": true
+      },
+      {
+       "texto": "fourty",
+       "certa": false
+      },
+      {
+       "texto": "fourteen",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Forty\" escreve-se sem \"u\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I'm thirty-four.",
+       "certa": true
+      },
+      {
+       "texto": "I have thirty-four years.",
+       "certa": false
+      },
+      {
+       "texto": "I have thirty-four.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Para a idade usa-se \"be\": \"I'm 34\"."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Que idade tem?",
+     "resposta": "How old are you?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Mateus is thirty-four.",
+     "enunciado": "Que idade tem o Mateus?",
+     "opcoes": [
+      {
+       "texto": "34",
+       "certa": true
+      },
+      {
+       "texto": "43",
+       "certa": false
+      },
+      {
+       "texto": "24",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Thirteen, thirty. Fifteen, fifty.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How old are you?",
+     "frase": "I'm",
+     "resposta": "I'm thirty-two years old.",
+     "contexto": "Diga a sua idade (pode inventar)."
+    }
+   ]
+  },
+  {
+   "codigo": "2D",
+   "titulo": "Countries and languages",
+   "aula": "2D",
+   "objectivo": "Dizer países, nacionalidades e línguas com o acento certo e dizer que línguas fala.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Em \"Portuguese\", qual é a sílaba forte?",
+     "opcoes": [
+      {
+       "texto": "GUESE",
+       "certa": true
+      },
+      {
+       "texto": "POR",
+       "certa": false
+      },
+      {
+       "texto": "TU",
+       "certa": false
+      }
+     ],
+     "explicacao": "PORtugal, mas PortuGUESE: a sílaba forte muda."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Em \"Angolan\", qual é a sílaba forte?",
+     "opcoes": [
+      {
+       "texto": "GO",
+       "certa": true
+      },
+      {
+       "texto": "AN",
+       "certa": false
+      },
+      {
+       "texto": "LAN",
+       "certa": false
+      }
+     ],
+     "explicacao": "AnGOla e AnGOlan."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Em \"Chinese\", qual é a sílaba forte?",
+     "opcoes": [
+      {
+       "texto": "NESE",
+       "certa": true
+      },
+      {
+       "texto": "CHI",
+       "certa": false
+      }
+     ],
+     "explicacao": "CHIna, mas ChiNESE."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se diz \"falo um pouco de inglês\"?",
+     "opcoes": [
+      {
+       "texto": "I speak a little English.",
+       "certa": true
+      },
+      {
+       "texto": "I speak a few English.",
+       "certa": false
+      },
+      {
+       "texto": "I little speak English.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Do you [speak] French? — Yes, a little.",
+     "opcoes": [
+      {
+       "texto": "talk",
+       "certa": false
+      },
+      {
+       "texto": "say",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I speak Portuguese and a little English.",
+     "enunciado": "Que línguas fala esta pessoa?",
+     "opcoes": [
+      {
+       "texto": "Portuguese and a little English",
+       "certa": true
+      },
+      {
+       "texto": "English and a little Portuguese",
+       "certa": false
+      },
+      {
+       "texto": "only Portuguese",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Portugal, Portuguese. China, Chinese.",
+     "enunciado": "Ouça e repita com a sílaba forte no sítio certo."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Angola, Angolan. Brazil, Brazilian.",
+     "enunciado": "Ouça e repita com a sílaba forte no sítio certo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What languages do you speak?",
+     "frase": "I speak",
+     "resposta": "I speak Portuguese, Kimbundu and a little English.",
+     "contexto": "Diga as línguas que fala."
+    }
+   ]
+  },
+  {
+   "codigo": "2E",
+   "titulo": "Real English: Where are they from?",
+   "aula": "2E",
+   "objectivo": "Identificar país, cidade, idade e línguas em apresentações a velocidade quase natural.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "Hi, everyone. I'm Amélia. I'm from Maputo, in Mozambique.",
+     "enunciado": "De que cidade é a Amélia?",
+     "opcoes": [
+      {
+       "texto": "Maputo",
+       "certa": true
+      },
+      {
+       "texto": "Beira",
+       "certa": false
+      },
+      {
+       "texto": "Luanda",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My name is Patrick. I'm Congolese, from Kinshasa. I'm forty-five.",
+     "enunciado": "Que idade tem o Patrick?",
+     "opcoes": [
+      {
+       "texto": "45",
+       "certa": true
+      },
+      {
+       "texto": "54",
+       "certa": false
+      },
+      {
+       "texto": "35",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I speak French, Lingala and English.",
+     "enunciado": "Que línguas fala o Patrick?",
+     "opcoes": [
+      {
+       "texto": "French, Lingala and English",
+       "certa": true
+      },
+      {
+       "texto": "French and Portuguese",
+       "certa": false
+      },
+      {
+       "texto": "English and Lingala",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm British, from Manchester, but I'm in Luanda this year.",
+     "enunciado": "Onde está a Emma este ano?",
+     "opcoes": [
+      {
+       "texto": "in Luanda",
+       "certa": true
+      },
+      {
+       "texto": "in Manchester",
+       "certa": false
+      },
+      {
+       "texto": "in Maputo",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm twenty-eight.",
+     "enunciado": "Que idade tem a Emma?",
+     "opcoes": [
+      {
+       "texto": "28",
+       "certa": true
+      },
+      {
+       "texto": "38",
+       "certa": false
+      },
+      {
+       "texto": "18",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Hi, everyone\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Olá a todos",
+       "certa": true
+      },
+      {
+       "texto": "Olá, toda a gente diz",
+       "certa": false
+      },
+      {
+       "texto": "Adeus a todos",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Este ano estou em Luanda.",
+     "resposta": "I'm in Luanda this year.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Hi, everyone. I'm from Luanda, in Angola.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hi, everyone! Please introduce yourself.",
+     "frase": "I'm from",
+     "resposta": "Hi, everyone. I'm Paulo. I'm from Luanda. I'm thirty. I speak Portuguese and English.",
+     "contexto": "Apresente-se: nome, cidade, idade e línguas."
+    }
+   ]
+  },
+  {
+   "codigo": "2F",
+   "titulo": "A visitor from abroad",
+   "aula": "2F",
+   "objectivo": "Receber um visitante estrangeiro e apresentar-lhe um colega.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Chega uma visita estrangeira. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Welcome to Angola!",
+       "certa": true
+      },
+      {
+       "texto": "Welcome in Angola!",
+       "certa": false
+      },
+      {
+       "texto": "Good welcome!",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "É a primeira vez que está em Luanda?",
+     "resposta": "Is this your first time in Luanda?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se trata uma mulher no trabalho, de forma educada?",
+     "opcoes": [
+      {
+       "texto": "Ms Mokoena",
+       "certa": true
+      },
+      {
+       "texto": "Mr Mokoena",
+       "certa": false
+      },
+      {
+       "texto": "Miss Thandi Mokoena",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This is Sílvia. [She's] from Benguela.",
+     "opcoes": [
+      {
+       "texto": "He's",
+       "certa": false
+      },
+      {
+       "texto": "It's",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This is Mateus. He's [an] engineer.",
+     "opcoes": [
+      {
+       "texto": "a",
+       "certa": false
+      },
+      {
+       "texto": "the",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm South African. I'm from Johannesburg.",
+     "enunciado": "De que cidade é a Thandi?",
+     "opcoes": [
+      {
+       "texto": "Johannesburg",
+       "certa": true
+      },
+      {
+       "texto": "Lagos",
+       "certa": false
+      },
+      {
+       "texto": "Luanda",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Do you speak Portuguese? — No, I don't. Just English and Zulu.",
+     "enunciado": "A Thandi fala português?",
+     "opcoes": [
+      {
+       "texto": "Não",
+       "certa": true
+      },
+      {
+       "texto": "Sim",
+       "certa": false
+      },
+      {
+       "texto": "Um pouco",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Welcome to Angola! Is this your first time in Luanda?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Good morning. I'm David Okoro, from Nigeria. I have a meeting here.",
+     "frase": "Welcome",
+     "resposta": "Good morning, Mr Okoro. Welcome to Angola! I'm Ana. Is this your first time in Luanda?",
+     "contexto": "Receba o visitante e faça-lhe uma pergunta."
+    }
+   ]
+  },
+  {
+   "codigo": "2R",
+   "titulo": "Unit 2 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 2 e reciclar a unidade 1.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "São 19 horas. Chega um cliente. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Good evening!",
+       "certa": true
+      },
+      {
+       "texto": "Good night!",
+       "certa": false
+      },
+      {
+       "texto": "Good afternoon!",
+       "certa": false
+      }
+     ],
+     "explicacao": "Ao chegar à noite: \"Good evening\". \"Good night\" é para a despedida."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "They [aren't] from Brazil. They're from Portugal.",
+     "opcoes": [
+      {
+       "texto": "isn't",
+       "certa": false
+      },
+      {
+       "texto": "not",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Is she Mozambican? — Yes, ...",
+     "opcoes": [
+      {
+       "texto": "she is.",
+       "certa": true
+      },
+      {
+       "texto": "she's.",
+       "certa": false
+      },
+      {
+       "texto": "she are.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My phone number is nine three one, double four five, two six eight.",
+     "enunciado": "Qual é o número?",
+     "opcoes": [
+      {
+       "texto": "931 445 268",
+       "certa": true
+      },
+      {
+       "texto": "931 454 268",
+       "certa": false
+      },
+      {
+       "texto": "913 445 286",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "He's fifty.",
+     "enunciado": "Que idade tem ele?",
+     "opcoes": [
+      {
+       "texto": "50",
+       "certa": true
+      },
+      {
+       "texto": "15",
+       "certa": false
+      },
+      {
+       "texto": "55",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Como se escreve o seu apelido?",
+     "resposta": "How do you spell your surname?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada país à nacionalidade.",
+     "pares": [
+      {
+       "a": "Nigeria",
+       "b": "Nigerian"
+      },
+      {
+       "a": "the UK",
+       "b": "British"
+      },
+      {
+       "a": "France",
+       "b": "French"
+      },
+      {
+       "a": "China",
+       "b": "Chinese"
+      }
+     ]
+    },
+    {
+     "tipo": "traduzir",
+     "enunciado": "Tenho quarenta anos.",
+     "resposta": "I'm forty.",
+     "opcoes": [
+      {
+       "texto": "I'm forty years old.",
+       "certa": true
+      },
+      {
+       "texto": "I am forty.",
+       "certa": true
+      },
+      {
+       "texto": "I am forty years old.",
+       "certa": true
+      }
+     ],
+     "explicacao": "Em inglês a idade diz-se com \"be\"."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "This is Thandi. She's an engineer. She's from South Africa.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hello! I'm your new colleague. What's your name? Where are you from?",
+     "frase": "I'm from",
+     "resposta": "Nice to meet you. I'm Ana. I'm from Luanda. And you?",
+     "contexto": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Nice to meet you. See you tomorrow!",
+     "enunciado": "Ouça e repita em voz alta."
+    }
+   ]
+  }
+ ]
+}
