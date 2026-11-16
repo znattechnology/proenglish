@@ -166,6 +166,8 @@ Versão completa em [a2/unidade-02/](a2/unidade-02/README.md) **[I]**.
 
 ### Unidade 3 — Plans and arrangements
 
+Versão completa em [a2/unidade-03/](a2/unidade-03/README.md) **[I]**.
+
 **Objectivos da unidade.** No fim, o aluno consegue:
 1. dizer o que tem combinado com o *present continuous* (*I'm meeting the client on Thursday at ten.*) e o que tenciona fazer com *going to*, e escolher entre os dois;
 2. oferecer ajuda e tomar decisões no momento com *will* (*I'll send you the file. I'll call him now.*);
@@ -187,7 +189,7 @@ Versão completa em [a2/unidade-02/](a2/unidade-02/README.md) **[I]**.
 - **Falsos amigos:** *agenda* (≠ agenda pessoal → *diary*; *agenda* é a ordem de trabalhos de uma reunião); *assist* (≠ assistir → *attend*).
 - **Laboratório:** escolher o tempo de futuro; *will* para ofertas; convites e recusas; uma mensagem de voz a ouvir; resposta falada "Invite me to the farewell party on Friday.".
 - **Conversa guiada:** "Your week" — o tutor pergunta o que o aluno tem marcado.
-- **Conversa livre:** "Let's meet" — combinar com um colega estrangeiro uma reunião numa semana cheia; o aluno tem de propor, recusar uma proposta e chegar a um acordo.
+- **Conversa livre:** "A busy week" — combinar com um colega estrangeiro uma reunião numa semana cheia; o aluno tem de propor, recusar uma proposta e chegar a um acordo.
 
 ### Unidade 4 — Comparing and choosing
 
@@ -561,5 +563,5 @@ No A1, cada unidade teve uma revisão pedagógica depois de escrita. No A2, **ca
 1. Revisão deste plano pelos professores (objectivos, ordem, situações de trabalho, falsos amigos).
 2. Confirmar no CEFR Companion Volume os descritores A2 de produção oral, interacção e mediação, e aferir a ordem da gramática com o resumo de unidades do Empower 2e A2 e o booklet GSE do Roadmap A2 (secção 2).
 3. Fechar o inventário de vocabulário A2 a partir da NGSL, aferido com Oxford 3000 A2 e Cambridge A2 Key.
-4. Escrever as unidades 1 a 5 do A2.1 (feito: [1](a2/unidade-01/README.md), [2](a2/unidade-02/README.md)), uma aula de cada vez, com a revisão de cada aula (secção 10); depois a revisão 1 e o exame do A2.1.
+4. Escrever as unidades 1 a 5 do A2.1 (feito: [1](a2/unidade-01/README.md), [2](a2/unidade-02/README.md), [3](a2/unidade-03/README.md)), uma aula de cada vez, com a revisão de cada aula (secção 10); depois a revisão 1 e o exame do A2.1.
 5. Acrescentar à plataforma um guião de exame A2 por omissão (secção 6).
