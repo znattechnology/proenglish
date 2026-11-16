@@ -258,26 +258,26 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 ### Unidade 6 — Food and drink
 
 **Objectivos da unidade.** No fim, o aluno consegue:
-1. dizer o que come e bebe habitualmente e do que gosta;
-2. pedir comida e bebida num restaurante ou café;
-3. perguntar e dizer preços em kwanzas, com números até 10 000;
-4. pedir a conta e pagar.
+1. dizer o que come e bebe habitualmente e do que gosta e não gosta (*I usually have bread and coffee. I don't like spicy food.*), distinguindo contáveis e incontáveis com *some, any, How much, How many*;
+2. pedir comida e bebida num café ou restaurante (*I'd like… / Can I have…, please?*) e responder ao empregado (*Would you like…? — Yes, please. / No, thank you. That's all.*);
+3. perguntar e dizer preços em kwanzas, com números até 10 000 (*How much is it? — It's four thousand five hundred kwanzas.*), e pagar (*By card, please.*);
+4. num almoço de trabalho, explicar e sugerir um prato angolano a um cliente estrangeiro, perguntar pelos gostos dele e pedir a conta (*Can we have the bill, please?*).
 
 | Aula | Tipo | Título | Objectivo da aula |
 |---|---|---|---|
-| 6A | Língua | Some and any | Usar contáveis e incontáveis com *some/any* e *How much/How many*. |
-| 6B | Língua | I'd like… | Pedir com *I'd like* e *Can I have…?* |
-| 6C | Língua | How much is it? | Dizer preços e números até 10 000. |
-| 6D | Vocabulário e pronúncia | Food I like | Comida, bebida e refeições (funge, muamba, peixe grelhado, arroz, café, sumo); *-teen/-ty*. |
-| 6E | Real English | What's for lunch? | Entender 3 pessoas a pedir num café e num restaurante. |
-| 6F | Work & Life | Business lunch | Pedir num restaurante, num almoço com um cliente. |
+| 6A | Língua | Some and any | Distinguir contáveis e incontáveis e usar *some, any, How much, How many, a lot of*. |
+| 6B | Língua | I'd like… | Pedir num café com *I'd like* e *Can I have…?* e responder ao empregado. |
+| 6C | Língua | How much is it? | Dizer e entender números de 100 a 10 000 e preços em kwanzas; perguntar o preço e pagar. |
+| 6D | Vocabulário e pronúncia | Food I like | Nomear alimentos e pratos angolanos, dizer do que gosta e pronunciar /dʒ/. |
+| 6E | Real English | What's for lunch? | Identificar pedidos, quantidades e preços em três conversas (café, restaurante, banca de fruta). |
+| 6F | Work & Life | Business lunch | Pedir, explicar e sugerir um prato a um cliente estrangeiro e pedir a conta. |
 
-- **Gramática:** contáveis e incontáveis; *some/any*; *How much/How many*; *I'd like*; *Can I have…?*
-- **Vocabulário (~55):** comida, bebida, refeições, restaurante (menu, bill, waiter), números 100–10 000.
-- **Pronúncia:** *thirTEEN / THIRty*; /dʒ/ em *orange juice*.
-- **Laboratório:** contável ou incontável; *some/any*; escuta de preços; pronúncia de números; resposta falada "What would you like?".
-- **Conversa guiada:** o tutor faz de empregado e o aluno pede uma bebida.
-- **Conversa livre:** "Lunch with a client" — pedir a refeição completa, perguntar preços e pedir a conta.
+- **Gramática:** contáveis e incontáveis; *some / any*; *How much / How many*; *a lot of*; *a cup / glass / bottle / piece of*; *I'd like*; *Can I have…?* e *Can I pay by card?* (blocos fixos); *like* + nome. Ficam para depois: *there is / are* (unidade 7), *like* + *-ing* (unidade 9).
+- **Vocabulário (~65):** comida, bebida, pratos angolanos (funge, muamba, calulu, mufete) e como os explicar, refeições, café e restaurante (*menu, bill, starter, main course, dessert*), números até 10 000, pagamentos.
+- **Pronúncia:** *-teen/-ty* nos preços; o *and* fraco em *two hundred and fifty*; /θ/ em *thousand*; /dʒ/ em *juice, orange, vegetables*; *I'd like*.
+- **Laboratório:** *some/any*; *How much/many*; *I'd like*; preços a ouvir; *two thousand* sem *s*; escuta de pedidos; resposta falada "What would you like?".
+- **Conversa guiada:** "At the café" — o tutor é o empregado; o aluno pede, pergunta o preço e paga.
+- **Conversa livre:** "Lunch with a client" — explicar e sugerir pratos angolanos a um cliente estrangeiro e pedir a conta.
 
 ### Unidade 7 — Around town
 

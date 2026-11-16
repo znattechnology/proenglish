@@ -1,0 +1,301 @@
+{
+ "title": "Unit 6 quiz — Food and drink",
+ "description": "Contáveis e incontáveis, some/any, pedir num café, preços em kwanzas e almoço de trabalho.",
+ "questions": [
+  {
+   "id": "u6q1",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "u6q1o0",
+     "text": "I'd like some bread.",
+     "isCorrect": true
+    },
+    {
+     "id": "u6q1o1",
+     "text": "I'd like a bread.",
+     "isCorrect": false
+    },
+    {
+     "id": "u6q1o2",
+     "text": "I'd like breads.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u6q1o0",
+   "explanation": "\"Bread\" é incontável.",
+   "points": 10
+  },
+  {
+   "id": "u6q2",
+   "question": "Complete: \"How ___ eggs do you need?\"",
+   "options": [
+    {
+     "id": "u6q2o0",
+     "text": "many",
+     "isCorrect": true
+    },
+    {
+     "id": "u6q2o1",
+     "text": "much",
+     "isCorrect": false
+    },
+    {
+     "id": "u6q2o2",
+     "text": "lot",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u6q2o0",
+   "explanation": "\"How many\" + contável.",
+   "points": 10
+  },
+  {
+   "id": "u6q3",
+   "question": "Qual é a forma mais educada de pedir num café?",
+   "options": [
+    {
+     "id": "u6q3o0",
+     "text": "I'd like a tea, please.",
+     "isCorrect": true
+    },
+    {
+     "id": "u6q3o1",
+     "text": "I want a tea.",
+     "isCorrect": false
+    },
+    {
+     "id": "u6q3o2",
+     "text": "Tea.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u6q3o0",
+   "explanation": "\"I'd like…, please\".",
+   "points": 10
+  },
+  {
+   "id": "u6q4",
+   "question": "O empregado pergunta \"Anything else?\". O que quer dizer?",
+   "options": [
+    {
+     "id": "u6q4o0",
+     "text": "Mais alguma coisa?",
+     "isCorrect": true
+    },
+    {
+     "id": "u6q4o1",
+     "text": "Mais nada.",
+     "isCorrect": false
+    },
+    {
+     "id": "u6q4o2",
+     "text": "Outra coisa qualquer.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u6q4o0",
+   "explanation": "\"Anything else?\" = mais alguma coisa?",
+   "points": 10
+  },
+  {
+   "id": "u6q5",
+   "question": "Complete: \"a ___ of water\"",
+   "options": [
+    {
+     "id": "u6q5o0",
+     "text": "bottle",
+     "isCorrect": true
+    },
+    {
+     "id": "u6q5o1",
+     "text": "piece",
+     "isCorrect": false
+    },
+    {
+     "id": "u6q5o2",
+     "text": "cup",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u6q5o0",
+   "explanation": "Uma garrafa de água.",
+   "points": 10
+  },
+  {
+   "id": "u6q6",
+   "question": "Como se diz 3 500 Kz?",
+   "options": [
+    {
+     "id": "u6q6o0",
+     "text": "three thousand five hundred kwanzas",
+     "isCorrect": true
+    },
+    {
+     "id": "u6q6o1",
+     "text": "three thousands five hundreds kwanzas",
+     "isCorrect": false
+    },
+    {
+     "id": "u6q6o2",
+     "text": "thirty-five hundred kwanza",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u6q6o0",
+   "explanation": "Sem \"s\" em thousand e hundred; kwanzas com \"s\".",
+   "points": 10
+  },
+  {
+   "id": "u6q7",
+   "question": "Complete: \"How much ___ the mangoes?\"",
+   "options": [
+    {
+     "id": "u6q7o0",
+     "text": "are",
+     "isCorrect": true
+    },
+    {
+     "id": "u6q7o1",
+     "text": "is",
+     "isCorrect": false
+    },
+    {
+     "id": "u6q7o2",
+     "text": "do",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u6q7o0",
+   "explanation": "Várias coisas: \"How much are…?\"",
+   "points": 10
+  },
+  {
+   "id": "u6q8",
+   "question": "\"Spicy\" quer dizer:",
+   "options": [
+    {
+     "id": "u6q8o0",
+     "text": "picante",
+     "isCorrect": true
+    },
+    {
+     "id": "u6q8o1",
+     "text": "salgado",
+     "isCorrect": false
+    },
+    {
+     "id": "u6q8o2",
+     "text": "doce",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u6q8o0",
+   "explanation": "Spicy = picante.",
+   "points": 10
+  },
+  {
+   "id": "u6q9",
+   "question": "Ouviu: \"It comes with rice and salad.\" O que quer dizer?",
+   "options": [
+    {
+     "id": "u6q9o0",
+     "text": "Vem com arroz e salada.",
+     "isCorrect": true
+    },
+    {
+     "id": "u6q9o1",
+     "text": "Chega com arroz e salada.",
+     "isCorrect": false
+    },
+    {
+     "id": "u6q9o2",
+     "text": "Come arroz e salada.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u6q9o0",
+   "explanation": "\"It comes with…\" = vem com…",
+   "points": 10
+  },
+  {
+   "id": "u6q10",
+   "question": "Quer pedir a conta no restaurante. O que diz?",
+   "options": [
+    {
+     "id": "u6q10o0",
+     "text": "Can we have the bill, please?",
+     "isCorrect": true
+    },
+    {
+     "id": "u6q10o1",
+     "text": "Can we have the account, please?",
+     "isCorrect": false
+    },
+    {
+     "id": "u6q10o2",
+     "text": "Can we pay the count?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u6q10o0",
+   "explanation": "\"The bill\" = a conta.",
+   "points": 10
+  },
+  {
+   "id": "u6q11",
+   "question": "Reciclagem (unidade 5). Complete: \"My boss ___ fish.\"",
+   "options": [
+    {
+     "id": "u6q11o0",
+     "text": "likes",
+     "isCorrect": true
+    },
+    {
+     "id": "u6q11o1",
+     "text": "like",
+     "isCorrect": false
+    },
+    {
+     "id": "u6q11o2",
+     "text": "liking",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u6q11o0",
+   "explanation": "3.ª pessoa: likes.",
+   "points": 10
+  },
+  {
+   "id": "u6q12",
+   "question": "Reciclagem (unidade 4). Como se diz \"o almoço da Thandi\"?",
+   "options": [
+    {
+     "id": "u6q12o0",
+     "text": "Thandi's lunch",
+     "isCorrect": true
+    },
+    {
+     "id": "u6q12o1",
+     "text": "the lunch of Thandi",
+     "isCorrect": false
+    },
+    {
+     "id": "u6q12o2",
+     "text": "Thandi lunch's",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u6q12o0",
+   "explanation": "Pessoa + 's + coisa.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

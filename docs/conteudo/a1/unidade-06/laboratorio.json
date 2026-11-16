@@ -1,0 +1,1068 @@
+{
+ "unidade": "A1.2 · Unit 6 — Food and drink",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "6A",
+   "titulo": "Some and any",
+   "aula": "6A",
+   "objectivo": "Distinguir contáveis e incontáveis e usar some, any, How much e How many.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual destas palavras NÃO se conta em inglês?",
+     "opcoes": [
+      {
+       "texto": "bread",
+       "certa": true
+      },
+      {
+       "texto": "egg",
+       "certa": false
+      },
+      {
+       "texto": "banana",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Bread\" é incontável: \"some bread\", nunca \"a bread\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "We have some bread.",
+       "certa": true
+      },
+      {
+       "texto": "We have a bread.",
+       "certa": false
+      },
+      {
+       "texto": "We have breads.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We don't have [any] butter.",
+     "opcoes": [
+      {
+       "texto": "some",
+       "certa": false
+      },
+      {
+       "texto": "a",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Any\" na negativa."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Do we have [any] eggs?",
+     "opcoes": [
+      {
+       "texto": "a",
+       "certa": false
+      },
+      {
+       "texto": "many",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How [many] eggs do we need?",
+     "opcoes": [
+      {
+       "texto": "much",
+       "certa": false
+      },
+      {
+       "texto": "lot",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"How many\" + o que se conta."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How [much] coffee do we have?",
+     "opcoes": [
+      {
+       "texto": "many",
+       "certa": false
+      },
+      {
+       "texto": "lot",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"How much\" + o que não se conta."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We need a lot [of] eggs.",
+     "opcoes": [
+      {
+       "texto": "the",
+       "certa": false
+      },
+      {
+       "texto": "with",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Yes, we have some bread. But we don't have any butter.",
+     "enunciado": "O que falta?",
+     "opcoes": [
+      {
+       "texto": "manteiga",
+       "certa": true
+      },
+      {
+       "texto": "pão",
+       "certa": false
+      },
+      {
+       "texto": "ovos",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "We have some bread. Do we have any eggs? We need a lot of coffee.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you usually have for breakfast?",
+     "frase": "I usually have",
+     "resposta": "I usually have some bread and a cup of coffee.",
+     "contexto": "Use some, a cup of, a glass of…"
+    }
+   ]
+  },
+  {
+   "codigo": "6B",
+   "titulo": "I'd like…",
+   "aula": "6B",
+   "objectivo": "Pedir num café e responder às perguntas do empregado.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a forma mais educada de pedir?",
+     "opcoes": [
+      {
+       "texto": "I'd like a coffee, please.",
+       "certa": true
+      },
+      {
+       "texto": "I want a coffee.",
+       "certa": false
+      },
+      {
+       "texto": "Give me a coffee.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"I'd like\" é educado; \"I want\" soa exigente."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Pode dar-me um café simples, por favor?",
+     "resposta": "Can I have a black coffee, please?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "O empregado pergunta \"Would you like some water?\". Quer. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Yes, please.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, I would like.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, I like.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "O empregado pergunta \"Anything else?\". Não quer mais nada. O que diz?",
+     "opcoes": [
+      {
+       "texto": "No, that's all, thanks.",
+       "certa": true
+      },
+      {
+       "texto": "No, anything.",
+       "certa": false
+      },
+      {
+       "texto": "No, all is that.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada medida ao que se usa com ela.",
+     "pares": [
+      {
+       "a": "a cup of",
+       "b": "coffee"
+      },
+      {
+       "a": "a glass of",
+       "b": "juice"
+      },
+      {
+       "a": "a bottle of",
+       "b": "water"
+      },
+      {
+       "a": "a piece of",
+       "b": "cake"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I['d] like a croissant, please.",
+     "opcoes": [
+      {
+       "texto": "'m",
+       "certa": false
+      },
+      {
+       "texto": "'s",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Good morning! What would you like?",
+     "enunciado": "O que pergunta a Dona Isabel?",
+     "opcoes": [
+      {
+       "texto": "O que deseja?",
+       "certa": true
+      },
+      {
+       "texto": "Como está?",
+       "certa": false
+      },
+      {
+       "texto": "Quanto custa?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'd like a coffee with milk, please. Large, please.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Good morning! What would you like?",
+     "frase": "I'd like",
+     "resposta": "Good morning. I'd like a black coffee and a croissant, please.",
+     "contexto": "Peça uma bebida e uma coisa para comer."
+    }
+   ]
+  },
+  {
+   "codigo": "6C",
+   "titulo": "How much is it?",
+   "aula": "6C",
+   "objectivo": "Dizer e entender preços até 10 000 kwanzas, perguntar o preço e pagar.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "That's two thousand five hundred kwanzas.",
+     "enunciado": "Quanto custa?",
+     "opcoes": [
+      {
+       "texto": "2 500 Kz",
+       "certa": true
+      },
+      {
+       "texto": "2 050 Kz",
+       "certa": false
+      },
+      {
+       "texto": "25 000 Kz",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Seven thousand two hundred and fifty kwanzas.",
+     "enunciado": "Quanto custa?",
+     "opcoes": [
+      {
+       "texto": "7 250 Kz",
+       "certa": true
+      },
+      {
+       "texto": "7 215 Kz",
+       "certa": false
+      },
+      {
+       "texto": "2 750 Kz",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Six hundred kwanzas.",
+     "enunciado": "Quanto custa?",
+     "opcoes": [
+      {
+       "texto": "600 Kz",
+       "certa": true
+      },
+      {
+       "texto": "60 Kz",
+       "certa": false
+      },
+      {
+       "texto": "6 000 Kz",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a forma correcta?",
+     "opcoes": [
+      {
+       "texto": "two thousand kwanzas",
+       "certa": true
+      },
+      {
+       "texto": "two thousands kwanzas",
+       "certa": false
+      },
+      {
+       "texto": "two thousand kwanza",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se diz 250 em inglês britânico?",
+     "opcoes": [
+      {
+       "texto": "two hundred and fifty",
+       "certa": true
+      },
+      {
+       "texto": "two hundreds fifty",
+       "certa": false
+      },
+      {
+       "texto": "two and fifty hundred",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How much [are] the bananas?",
+     "opcoes": [
+      {
+       "texto": "is",
+       "certa": false
+      },
+      {
+       "texto": "do",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How much [is] this sandwich?",
+     "opcoes": [
+      {
+       "texto": "are",
+       "certa": false
+      },
+      {
+       "texto": "does",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Perguntam \"Cash or card?\". Quer pagar com Multicaixa. O que diz?",
+     "opcoes": [
+      {
+       "texto": "By card, please.",
+       "certa": true
+      },
+      {
+       "texto": "With card, please.",
+       "certa": false
+      },
+      {
+       "texto": "In card, please.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Four thousand five hundred kwanzas. Two hundred and fifty kwanzas.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your coffee and sandwich are ready. Anything else?",
+     "frase": "How much",
+     "resposta": "No, that's all, thanks. How much is it? Can I pay by card?",
+     "contexto": "Diga que é tudo, pergunte o preço e pague com cartão."
+    }
+   ]
+  },
+  {
+   "codigo": "6D",
+   "titulo": "Food I like",
+   "aula": "6D",
+   "objectivo": "Nomear alimentos e bebidas, dizer do que gosta e pronunciar /dʒ/.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "chicken",
+       "b": "frango"
+      },
+      {
+       "a": "beans",
+       "b": "feijão"
+      },
+      {
+       "a": "beef",
+       "b": "carne de vaca"
+      },
+      {
+       "a": "pineapple",
+       "b": "ananás"
+      },
+      {
+       "a": "vegetables",
+       "b": "legumes"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Como explica \"funge\" a um estrangeiro?",
+     "opcoes": [
+      {
+       "texto": "It's a thick porridge from cassava or corn.",
+       "certa": true
+      },
+      {
+       "texto": "It's a sweet cake with sugar.",
+       "certa": false
+      },
+      {
+       "texto": "It's a cold drink with fruit.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Spicy\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "picante",
+       "certa": true
+      },
+      {
+       "texto": "doce",
+       "certa": false
+      },
+      {
+       "texto": "frio",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I like [mangoes].",
+     "opcoes": [
+      {
+       "texto": "mango",
+       "certa": false
+      },
+      {
+       "texto": "a mango",
+       "certa": false
+      }
+     ],
+     "explicacao": "Para falar em geral, os contáveis vão no plural: \"I like mangoes\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My father [likes] funge with fish.",
+     "opcoes": [
+      {
+       "texto": "like",
+       "certa": false
+      },
+      {
+       "texto": "liking",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Quantas sílabas tem \"vegetables\" quando se diz?",
+     "opcoes": [
+      {
+       "texto": "3",
+       "certa": true
+      },
+      {
+       "texto": "4",
+       "certa": false
+      },
+      {
+       "texto": "2",
+       "certa": false
+      }
+     ],
+     "explicacao": "VEG-ta-bles: três sílabas."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Juice.",
+     "enunciado": "Que palavra ouve?",
+     "opcoes": [
+      {
+       "texto": "juice",
+       "certa": true
+      },
+      {
+       "texto": "use",
+       "certa": false
+      },
+      {
+       "texto": "choose",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "orange juice, vegetables, fridge",
+     "enunciado": "Ouça e repita o som /dʒ/."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What food do you love? What food don't you like?",
+     "frase": "I love",
+     "resposta": "I love calulu and mangoes. I don't like spicy food.",
+     "contexto": "Diga uma comida de que gosta e uma de que não gosta."
+    }
+   ]
+  },
+  {
+   "codigo": "6E",
+   "titulo": "Real English: What's for lunch?",
+   "aula": "6E",
+   "objectivo": "Identificar pedidos, quantidades e preços em conversas a velocidade quase natural.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "Can I have a large black coffee and a cheese sandwich, please?",
+     "enunciado": "What sandwich does the man want?",
+     "opcoes": [
+      {
+       "texto": "cheese",
+       "certa": true
+      },
+      {
+       "texto": "chicken",
+       "certa": false
+      },
+      {
+       "texto": "egg",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Two thousand six hundred kwanzas.",
+     "enunciado": "How much is the order in the café?",
+     "opcoes": [
+      {
+       "texto": "2 600 Kz",
+       "certa": true
+      },
+      {
+       "texto": "2 060 Kz",
+       "certa": false
+      },
+      {
+       "texto": "6 200 Kz",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "No, it isn't. It comes with rice and salad.",
+     "enunciado": "Is the fish of the day spicy?",
+     "opcoes": [
+      {
+       "texto": "No, it isn't.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, it is.",
+       "certa": false
+      },
+      {
+       "texto": "We don't know.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "And a glass of mango juice, please.",
+     "enunciado": "What does the woman drink?",
+     "opcoes": [
+      {
+       "texto": "mango juice",
+       "certa": true
+      },
+      {
+       "texto": "orange juice",
+       "certa": false
+      },
+      {
+       "texto": "water",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "One thousand kwanzas each.",
+     "enunciado": "How much is one pineapple?",
+     "opcoes": [
+      {
+       "texto": "1 000 Kz",
+       "certa": true
+      },
+      {
+       "texto": "100 Kz",
+       "certa": false
+      },
+      {
+       "texto": "10 000 Kz",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It comes with rice and salad\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Vem com arroz e salada.",
+       "certa": true
+      },
+      {
+       "texto": "Chega com arroz e salada.",
+       "certa": false
+      },
+      {
+       "texto": "Venha com arroz e salada.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Are you ready to order? Yes. I'd like the fish of the day, please.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Are you ready to order?",
+     "frase": "I'd like",
+     "resposta": "Yes. I'd like the chicken with rice, please. And a glass of water.",
+     "contexto": "Peça uma refeição e uma bebida."
+    }
+   ]
+  },
+  {
+   "codigo": "6F",
+   "titulo": "Business lunch",
+   "aula": "6F",
+   "objectivo": "Num almoço de trabalho, pedir, explicar e sugerir um prato, e pedir a conta.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Um cliente estrangeiro pergunta \"What's calulu?\". O que responde?",
+     "opcoes": [
+      {
+       "texto": "It's an Angolan dish. It's dried fish with vegetables.",
+       "certa": true
+      },
+      {
+       "texto": "Calulu is calulu.",
+       "certa": false
+      },
+      {
+       "texto": "It's Angolan. You don't know.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Quer pedir a conta. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Can we have the bill, please?",
+       "certa": true
+      },
+      {
+       "texto": "Can we have the count, please?",
+       "certa": false
+      },
+      {
+       "texto": "Give the bill.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It's on the company\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Paga a empresa.",
+       "certa": true
+      },
+      {
+       "texto": "Está na empresa.",
+       "certa": false
+      },
+      {
+       "texto": "É da empresa.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "starter",
+       "b": "entrada"
+      },
+      {
+       "a": "main course",
+       "b": "prato principal"
+      },
+      {
+       "a": "dessert",
+       "b": "sobremesa"
+      }
+     ]
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Gosta de peixe?",
+     "resposta": "Do you like fish?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "It's an Angolan dish. It's dried fish with vegetables and palm oil. It's very good here.",
+     "enunciado": "O que é o calulu?",
+     "opcoes": [
+      {
+       "texto": "peixe seco com legumes",
+       "certa": true
+      },
+      {
+       "texto": "frango com óleo de palma",
+       "certa": false
+      },
+      {
+       "texto": "carne grelhada",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "No, no. It's on the company. You're our guest!",
+     "enunciado": "Quem paga o almoço?",
+     "opcoes": [
+      {
+       "texto": "a empresa",
+       "certa": true
+      },
+      {
+       "texto": "a Thandi",
+       "certa": false
+      },
+      {
+       "texto": "o Paulo",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The muamba is very good here. Do you like chicken?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What a nice restaurant! What do you recommend?",
+     "frase": "very good",
+     "resposta": "The grilled fish is very good here. Do you like fish?",
+     "contexto": "Sugira um prato e pergunte se o cliente gosta."
+    }
+   ]
+  },
+  {
+   "codigo": "6R",
+   "titulo": "Unit 6 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 6 e reciclar o A1.1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Do you have [any] juice? — No, but we have [some] water.",
+     "opcoes": [
+      {
+       "texto": "a",
+       "certa": false
+      },
+      {
+       "texto": "many",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a pergunta correcta?",
+     "opcoes": [
+      {
+       "texto": "How much water do we need?",
+       "certa": true
+      },
+      {
+       "texto": "How many water do we need?",
+       "certa": false
+      },
+      {
+       "texto": "How much waters do we need?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "That's four thousand five hundred kwanzas.",
+     "enunciado": "Quanto custa?",
+     "opcoes": [
+      {
+       "texto": "4 500 Kz",
+       "certa": true
+      },
+      {
+       "texto": "4 050 Kz",
+       "certa": false
+      },
+      {
+       "texto": "5 400 Kz",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "She doesn't like spicy food.",
+       "certa": true
+      },
+      {
+       "texto": "She don't like spicy food.",
+       "certa": false
+      },
+      {
+       "texto": "She doesn't likes spicy food.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Reciclagem da unidade 5: doesn't + verbo sem \"s\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (unidade 5). Combine um almoço: qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "Can we have lunch on Friday at one?",
+       "certa": true
+      },
+      {
+       "texto": "Can we have lunch in Friday in one?",
+       "certa": false
+      },
+      {
+       "texto": "Can we have lunch at Friday on one?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Queria um sumo de manga, por favor.",
+     "resposta": "I'd like a mango juice, please.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How much [are] they? — [They're] one thousand kwanzas.",
+     "opcoes": [
+      {
+       "texto": "is",
+       "certa": false
+      },
+      {
+       "texto": "It's",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (unidade 2). O cliente é da Nigéria. Que nacionalidade?",
+     "opcoes": [
+      {
+       "texto": "Nigerian",
+       "certa": true
+      },
+      {
+       "texto": "Nigerese",
+       "certa": false
+      },
+      {
+       "texto": "Nigeria",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Can I have a bottle of water, please? How much is it?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Good afternoon! Are you ready to order?",
+     "frase": "I'd like",
+     "resposta": "Yes. I'd like the funge with chicken muamba, please. And a bottle of water.",
+     "contexto": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Can we have the bill, please? Thank you.",
+     "enunciado": "Ouça e repita em voz alta."
+    }
+   ]
+  }
+ ]
+}
