@@ -232,7 +232,7 @@
     },
     {
      "tipo": "escolher",
-     "enunciado": "Nuno has a job interview tomorrow. Choose the correct sentence.",
+     "enunciado": "Your friend has a job interview tomorrow. He says:",
      "opcoes": [
       {
        "texto": "If I get the job, I'll move to Luanda.",
@@ -1180,7 +1180,7 @@
      "frase": "We ran [out of] paper.",
      "opcoes": [
       {
-       "texto": "off",
+       "texto": "out from",
        "certa": false
       },
       {

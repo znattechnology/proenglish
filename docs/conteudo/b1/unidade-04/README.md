@@ -1,6 +1,6 @@
 # B1.1 · Unidade 4 — What if…? (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 4
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 4
 
 ## Objectivos da unidade
 
@@ -49,10 +49,10 @@ No fim da unidade, o aluno consegue:
 
 ## A história
 
-Novembro de 2027. As antenas chegam a Luanda na quarta, 3, mas a alfândega fica com elas, porque falta o certificado de homologação. Na quinta, 4, ao almoço, o Nuno, o Paulo e a Sílvia imaginam o que fariam se fossem directores (4A). Na sexta, 5, o Nuno entrega o certificado; a alfândega pode demorar até dez dias úteis (4B). Na segunda, 8, a Hannah avisa que há previsão de vento forte no dia 25 e duvida que haja outra grua em Dezembro; o equipamento de satélite já saiu da alfândega (4C). Na terça, 9, o Nuno explica a nota da alfândega à Lerato e à Thandi, compara esperar com contratar um despachante e recomenda o despachante; a Mopane paga metade (4F).
+Novembro de 2027. As antenas chegam a Luanda na quarta, 3, mas a alfândega fica com elas, porque falta o certificado de homologação. Na quinta, 4, ao almoço, o Nuno, o Paulo e a Sílvia imaginam o que fariam se fossem directores (4A). Na sexta, 5, o Nuno entrega o certificado original, que o Sipho enviou por correio expresso (a alfândega não aceita cópias); a alfândega pode demorar até dez dias úteis (4B). Na segunda, 8, a Hannah avisa que há previsão de vento forte no dia 25 e duvida que haja outra grua para o fim do mês; o equipamento de satélite já saiu da alfândega (4C). Na terça, 9, o Nuno explica a nota da alfândega à Lerato e à Thandi, compara esperar com contratar um despachante e recomenda o despachante; a Mopane paga metade (4F).
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (13 escutas, 8 pronúncias, a 4E com cinco vozes e som de rádio e de telefone); imagens (a nota da alfândega, a nota do fornecedor de cadeiras, a escala de probabilidade); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (13 escutas, 8 pronúncias, a 4E com cinco vozes e som de rádio e de telefone); imagens (a nota da alfândega, a nota do fornecedor de cadeiras, a escala de probabilidade); carregamento na plataforma.
 
 A seguir vem a **unidade 5, "How it works"**, e depois a revisão e o exame oral do B1.1.

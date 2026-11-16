@@ -10,7 +10,7 @@ Guiões para o professor de IA. Conteúdo original da ProEnglish. Convenções: 
 
 **Personagens:** **Nuno**; **Paulo**; **Sílvia** (directora financeira); **Lerato** (coordenadora; não lê português); **Hannah** (Morro Azul, na central do Namibe); **Thandi** (Mopane Systems; de volta a Joanesburgo desde o fim de Outubro, entra por videochamada); **Sipho** (Mopane Systems; só é mencionado).
 
-**A história:** Novembro de 2027. As catorze antenas chegam a Luanda na quarta-feira, 3 (B1 3C), mas a alfândega do aeroporto fica com elas: falta o certificado de homologação do equipamento. O Sipho envia o certificado na quinta à noite, e o Nuno entrega-o na sexta, 5. A partir daí, a alfândega pode demorar até dez dias úteis (com o feriado de dia 11, até segunda, 22). Com mais dois dias de camião, as antenas só chegariam ao Namibe na quarta, 24, e a instalação está marcada de 15 a 26 (B1 3G). Na quinta, 4, o Nuno fala do problema ao almoço (4A); na sexta, 5, com a Lerato (4B); na segunda, 8, com a Hannah (4C); na terça, 9, a equipa compara duas soluções e decide (4F).
+**A história:** Novembro de 2027. As catorze antenas chegam a Luanda na quarta-feira, 3 (B1 3C), mas a alfândega do aeroporto fica com elas: falta o certificado de homologação do equipamento. A alfândega não aceita cópias: o Sipho envia o original por correio expresso na quinta à noite, e o Nuno entrega-o na sexta, 5. A partir daí, a alfândega pode demorar até dez dias úteis (com o feriado de dia 11, até segunda, 22). Com mais dois dias de camião, as antenas só chegariam ao Namibe na quarta, 24, e a instalação está marcada de 15 a 26 (B1 3G). Na quinta, 4, o Nuno fala do problema ao almoço (4A); na sexta, 5, com a Lerato (4B); na segunda, 8, com a Hannah (4C); na terça, 9, a equipa compara duas soluções e decide (4F).
 
 ---
 
@@ -25,7 +25,7 @@ Objectivo da unidade a que serve: 1, 3
 Gramática-alvo: If + past simple, would ('d) / wouldn't + verbo; were para todas as pessoas (If I were
   you); perguntas (What would you do if…?); a ordem das duas partes
 Palavras-alvo: customs, document, missing, director, hire, change, lorry, holiday, worried, right now
-Reciclagem: opiniões (B1, 3A): I don't think…; too / enough (B1, 3D)
+Reciclagem: opiniões e desacordo (B1, 3A e 3B): In my view… I'm not sure I agree; too / enough (B1, 3D)
 Pronúncia: "If I were you" ligado, como uma só palavra; "I'd" curto
 Contexto: quinta-feira, 4 de Novembro, 13:00; a cantina da Kalandula Tech; o Nuno, o Paulo e a Sílvia
 Duração: 11 min
@@ -44,7 +44,7 @@ Verificação: Lab 4A; perguntas 1 e 2 do questionário da unidade 4
 **NUNO:** The antennas arrived yesterday, but customs is keeping them at the airport. One document is missing.
 **PAULO:** Oh no. And the installation starts on the fifteenth.
 **SÍLVIA:** If I were you, I'd call Sipho right now. He can send the document by email.
-**NUNO:** I did. He's sending it tonight. But customs can take ten working days after that.
+**NUNO:** I did. But customs doesn't accept copies, so he's sending the original tonight, by courier. And customs can take ten working days after that.
 **PAULO:** Ten days! If we had more engineers, it wouldn't be a problem. We'd install everything in one week.
 **NUNO:** And if the antennas were in Namibe today, I'd be a happy man.
 **SÍLVIA:** OK, stop. Five minutes without work. Here's a question: if you were the director of Kalandula Tech for one day, what would you change?
@@ -136,7 +136,7 @@ Gramática-alvo: If + present, will (possível); If + past, would (imaginário o
 Palavras-alvo: working day, accept, release, by email, realistic, option, miss (a date), on time,
   airport, officer
 Reciclagem: 1.º condicional (A2, 8); verificar (B1, 3C): Just to check… Is that right?
-Pronúncia: will e would em fala rápida: we'll / we'd, it'll / it'd
+Pronúncia: will e would em fala rápida: we'll / we'd
 Contexto: sexta-feira, 5 de Novembro, 9:30; o escritório da equipa conjunta; a Lerato e o Nuno, antes
   de o Nuno levar o certificado à alfândega
 Duração: 11 min
@@ -152,7 +152,7 @@ Verificação: Lab 4B; perguntas 3 e 4 do questionário
 [ECRÃ: sexta-feira, 5 de Novembro, 9:30; o escritório; o Nuno com uma pasta na mão; a Lerato ao lado]
 
 **LERATO:** Any news, Nuno?
-**NUNO:** Sipho sent the certificate last night. I'm taking it to the airport at ten. If customs accepts it today, they'll start the process on Monday.
+**NUNO:** The courier arrived this morning with the original certificate. I'm taking it to the airport at ten. If customs accepts it today, they'll start the process on Monday.
 **LERATO:** And how long does the process take?
 **NUNO:** Up to ten working days, they say.
 **LERATO:** Ten days! If that happens, we'll miss the installation dates.
@@ -265,8 +265,8 @@ Verificação: Lab 4C; conversa guiada "If you were the manager…"; perguntas 5
 **NUNO:** Exactly. So we may need to move the antennas to the last days of November.
 **HANNAH:** Hmm. The weather might be a problem too. The forecast says strong wind on the twenty-fifth.
 **NUNO:** Strong wind? Then the crane probably won't work that day.
-**HANNAH:** Probably not. It's too dangerous. And I doubt Domingos can find another crane in December.
-**NUNO:** OK. But there's some good news: customs released the satellite equipment this morning. It came with a courier, with all the documents.
+**HANNAH:** Probably not. It's too dangerous. And I doubt Domingos can find another crane for the end of the month.
+**NUNO:** OK. But there's some good news: customs released the satellite equipment this morning. It came by courier, with all the documents.
 **HANNAH:** Great! So the satellite will definitely be ready on the seventeenth?
 **NUNO:** Definitely. The engineers leave Luanda on Saturday the thirteenth.
 **HANNAH:** And the antennas? Be honest, Nuno. Will they be here on time?
@@ -300,12 +300,12 @@ Verificação: Lab 4C; conversa guiada "If you were the manager…"; perguntas 5
 
 [ECRÃ: ✘ It might to rain. · ✔ It **might rain**. · ✘ It mights rain. · ✔ She **might** come.]
 
-**PROF:** After "might" and "may", the verb has no "to" and no "s".
+**PROF:** After "might" and "may", the verb has no "to". And "might" never takes an "s".
 [PAUSA 4 s]
 
 ***Maybe* ou *may be*?**
 
-[ECRÃ: **Maybe** it'll be windy. (talvez — no início da frase) · It **may be** windy. (verbo: pode estar)]
+[ECRÃ: **Maybe** it'll be windy. (talvez — normalmente no início da frase) · It **may be** windy. (verbo: pode estar)]
 
 **PROF:** "Maybe", one word, goes at the start. "May be", two words, is the verb.
 [PAUSA 4 s]
@@ -393,7 +393,7 @@ Verificação: Lab 4D; perguntas 7 e 8 do questionário
 | shortage | There's a shortage of flour this month. (falta, escassez) |
 | delay | Sorry for the delay. (o atraso) |
 | storage fee | Storage is free for five days; then there's a fee. |
-| courier | The satellite equipment came with a courier. (empresa de entregas rápidas) |
+| courier | The satellite equipment came by courier. (empresa de entregas rápidas) |
 
 **PROF:** Repeat: shipment. Delivery. Customs. Warehouse. Supplier. Shortage. Delay.
 [PAUSA 8 s]
@@ -461,6 +461,10 @@ Verificação: Lab 4D; perguntas 7 e 8 do questionário
 
 **PROF (opinião):** In your opinion, what causes most delays at work: documents, transport, or bad planning?
 [PAUSA 20 s]
+
+**PROF (reciclagem — 4A e 4C):** What would happen if your office ran out of paper tomorrow?
+[PAUSA 8 s]
+[ECRÃ: modelo — If we ran out of paper tomorrow, we'd probably print at the copy shop next door.]
 
 **PROF:** Well done! Next lesson: a radio programme — four people with problems at work, and the presenter's advice.
 
@@ -582,7 +586,7 @@ Verificação: Lab 4F; conversa livre "Problem solving"; pergunta 9 do question�
 
 [ECRÃ: terça-feira, 9 de Novembro, 9:00; a sala de reuniões; a Thandi no ecrã; na mesa, a nota da alfândega]
 
-**LERATO:** OK, everyone. One item: the antennas. Nuno, you have the note from customs. Can you explain it to Thandi and me? We can't read Portuguese.
+**LERATO:** OK, everyone. One item: the antennas. Nuno, you have the note from customs. Can you explain it to Thandi and me? Our Portuguese isn't good enough for official documents.
 **NUNO:** Of course.
 
 [ECRÃ: a nota, em português: "Alfândega do Aeroporto de Luanda — Notificação. Mercadoria: 14 antenas de rádio, remetente Mopane Systems (Joanesburgo), destinatário Kalandula Tech. A mercadoria fica retida até à entrega do certificado de homologação do equipamento. Após a entrega, o desalfandegamento pode demorar até 10 dias úteis. Armazenagem gratuita durante 5 dias; a partir do 6.º dia, 50 USD por dia."]
@@ -590,15 +594,15 @@ Verificação: Lab 4F; conversa livre "Problem solving"; pergunta 9 do question�
 **NUNO:** It says customs is keeping the fourteen antennas from Mopane until we give them the approval certificate for the equipment. We gave it to them on Friday. After that, the process can take up to ten working days — so, with the holiday on Thursday, maybe until Monday the twenty-second. And storage is free for five days; after that, it costs fifty dollars a day.
 **THANDI:** The certificate was our mistake. Mopane takes responsibility for that. I'm sorry.
 **LERATO:** Thanks, Thandi. So, Nuno. What are our options?
-**NUNO:** I see two. Option one: we wait. If customs takes ten days, the antennas will be in Namibe on the twenty-fourth. Then we'll install them from the twenty-ninth — after the crane leaves, and after the wind on the twenty-fifth.
+**NUNO:** I see two. Option one: we wait. If customs takes ten days, the antennas will be in Namibe on the twenty-fourth. That's too late: the crane leaves on the twenty-sixth, and the forecast says strong wind on the twenty-fifth. So we'll need a crane again from the twenty-ninth.
 **SÍLVIA:** And option two?
 **NUNO:** We hire a customs agent. Paulo knows one, Mr Lukoki.
 **PAULO:** He's very good. He usually sorts these things out in two or three days.
-**NUNO:** If he got the antennas out on Wednesday or Friday, the lorry would leave on Friday the twelfth, and they'd be at the plant on Sunday the fourteenth. On time.
+**NUNO:** If he got the antennas out on Wednesday or Friday, the lorry would leave on Friday the twelfth at the latest, and they'd be at the plant on Sunday the fourteenth. On time.
 **SÍLVIA:** How much does he cost?
 **PAULO:** Two thousand dollars.
 **SÍLVIA:** Two thousand! That's a lot of money.
-**NUNO:** I see your point, Sílvia. Option two is faster, but it's more expensive. But option one isn't as safe. If we wait, we'll need the crane again in December, and Hannah doubts Domingos can find one. A week of delay would probably cost more than two thousand dollars: the crane, the engineers' hotel, and Morro Azul's network down for another week.
+**NUNO:** I see your point, Sílvia. Option two is faster, but it's more expensive. But option one isn't as safe. If we wait, we'll need another crane, and Hannah doubts Domingos can find one. A week of delay would probably cost more than two thousand dollars: the crane, the engineers' hotel, and Morro Azul's network down for another week.
 **LERATO:** I agree. What do you recommend, Nuno?
 **NUNO:** I recommend option two. And if Mopane shared the cost, it'd be only a thousand dollars for us.
 **THANDI:** That's fair. Mopane will pay half — I'll confirm it today.
@@ -623,7 +627,7 @@ Verificação: Lab 4F; conversa livre "Problem solving"; pergunta 9 do question�
 
 **A mediação**
 
-**PROF:** Lerato and Thandi can't read Portuguese. Nuno starts with "It says…", gives the main facts in order — what, until when, how long, how much — and adds what it means for the project: "maybe until Monday the twenty-second".
+**PROF:** Lerato and Thandi don't read official Portuguese. Nuno starts with "It says…", gives the main facts in order — what, until when, how long, how much — and adds what it means for the project: "maybe until Monday the twenty-second".
 (PT: Numa nota oficial, as frases são longas e na passiva ("a mercadoria fica retida"). Em inglês, diga-as de forma simples e activa: "customs is keeping the antennas". E acrescente o que isso significa para o projecto.)
 [PAUSA 5 s]
 

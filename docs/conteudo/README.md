@@ -50,7 +50,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [b1/unidade-01/](b1/unidade-01/README.md) | B1.1, unidade 1 "Making connections": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b1/unidade-02/](b1/unidade-02/README.md) | B1.1, unidade 2 "Then and now": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b1/unidade-03/](b1/unidade-03/README.md) | B1.1, unidade 3 "In the meeting": guiões, laboratório, tutor, questionário e revisão aula a aula. |
-| [b1/unidade-04/](b1/unidade-04/README.md) | B1.1, unidade 4 "What if…?": guiões, laboratório, tutor e questionário. |
+| [b1/unidade-04/](b1/unidade-04/README.md) | B1.1, unidade 4 "What if…?": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.
