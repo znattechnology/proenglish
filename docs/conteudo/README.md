@@ -47,6 +47,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [a2/unidade-09/](a2/unidade-09/README.md) | A2.2, unidade 9 "Customer service": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [a2/unidade-10/](a2/unidade-10/README.md) | A2.2, unidade 10 "The next step": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [a2/revisao-2/](a2/revisao-2/README.md) | A2.2, revisão 2 e exame oral: guiões, laboratório, ensaio com o tutor, questionário, guião do exame e cinco situações. |
+| [b1/unidade-01/](b1/unidade-01/README.md) | B1.1, unidade 1 "Making connections": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.

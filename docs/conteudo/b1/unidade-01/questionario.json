@@ -1,0 +1,301 @@
+{
+ "title": "B1.1 Unit 1 quiz — Making connections",
+ "description": "Question tags, perguntas indirectas, perguntas de sujeito e de seguimento, small talk e networking.",
+ "questions": [
+  {
+   "id": "b1u1q1",
+   "question": "Complete: \"You're from Lubango, ___?\"",
+   "options": [
+    {
+     "id": "b1u1q1o0",
+     "text": "aren't you",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u1q1o1",
+     "text": "isn't it",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u1q1o2",
+     "text": "don't you",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u1q1o0",
+   "explanation": "be na frase → be na tag; afirmativa → tag negativa.",
+   "points": 10
+  },
+  {
+   "id": "b1u1q2",
+   "question": "Complete: \"You arrived yesterday, ___?\"",
+   "options": [
+    {
+     "id": "b1u1q2o0",
+     "text": "didn't you",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u1q2o1",
+     "text": "don't you",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u1q2o2",
+     "text": "isn't it",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u1q2o0",
+   "explanation": "past simple → did na tag.",
+   "points": 10
+  },
+  {
+   "id": "b1u1q3",
+   "question": "Qual é a forma educada de \"Where is room four?\"",
+   "options": [
+    {
+     "id": "b1u1q3o0",
+     "text": "Could you tell me where room four is?",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u1q3o1",
+     "text": "Could you tell me where is room four?",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u1q3o2",
+     "text": "Could you tell me where does room four is?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u1q3o0",
+   "explanation": "Na pergunta indirecta, a ordem é a da afirmação.",
+   "points": 10
+  },
+  {
+   "id": "b1u1q4",
+   "question": "Complete: \"Do you know ___ the canteen takes cards?\"",
+   "options": [
+    {
+     "id": "b1u1q4o0",
+     "text": "if",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u1q4o1",
+     "text": "is",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u1q4o2",
+     "text": "what",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u1q4o0",
+   "explanation": "Pergunta de sim ou não → if / whether.",
+   "points": 10
+  },
+  {
+   "id": "b1u1q5",
+   "question": "\"Lerato invited Nuno.\" Pergunte pela Lerato:",
+   "options": [
+    {
+     "id": "b1u1q5o0",
+     "text": "Who invited Nuno?",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u1q5o1",
+     "text": "Who did invite Nuno?",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u1q5o2",
+     "text": "Who did Nuno invite?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u1q5o0",
+   "explanation": "Pergunta de sujeito: sem did.",
+   "points": 10
+  },
+  {
+   "id": "b1u1q6",
+   "question": "\"I don't like long meetings.\" Também não gosta. Responde:",
+   "options": [
+    {
+     "id": "b1u1q6o0",
+     "text": "Neither do I.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u1q6o1",
+     "text": "So do I.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u1q6o2",
+     "text": "Neither am I.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u1q6o0",
+   "explanation": "Frase negativa → Neither + o mesmo auxiliar.",
+   "points": 10
+  },
+  {
+   "id": "b1u1q7",
+   "question": "\"Tenho um compromisso às três.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u1q7o0",
+     "text": "I have an appointment at three.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u1q7o1",
+     "text": "I have a compromise at three.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u1q7o2",
+     "text": "I am compromised at three.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u1q7o0",
+   "explanation": "Falso amigo: compromise = cedência.",
+   "points": 10
+  },
+  {
+   "id": "b1u1q8",
+   "question": "Qual é a melhor forma de fechar uma conversa num evento?",
+   "options": [
+    {
+     "id": "b1u1q8o0",
+     "text": "It was great talking to you. Let's keep in touch — I'll email you on Monday.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u1q8o1",
+     "text": "OK. Bye.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u1q8o2",
+     "text": "Finished. I go now.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u1q8o0",
+   "explanation": "Uma frase simpática e o próximo contacto.",
+   "points": 10
+  },
+  {
+   "id": "b1u1q9",
+   "question": "O Kofi pergunta: \"Do you want to come to dinner?\" Qual é a resposta certa?",
+   "options": [
+    {
+     "id": "b1u1q9o0",
+     "text": "Yes! Count me in.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u1q9o1",
+     "text": "So do I.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u1q9o2",
+     "text": "Neither do I.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u1q9o0",
+   "explanation": "So do I responde a uma afirmação, não a uma pergunta.",
+   "points": 10
+  },
+  {
+   "id": "b1u1q10",
+   "question": "Reciclagem (A2, unidade 6). Complete: \"I ___ to Johannesburg last year.\"",
+   "options": [
+    {
+     "id": "b1u1q10o0",
+     "text": "went",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u1q10o1",
+     "text": "'ve been",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u1q10o2",
+     "text": "have gone",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u1q10o0",
+   "explanation": "last year → past simple.",
+   "points": 10
+  },
+  {
+   "id": "b1u1q11",
+   "question": "Reciclagem (A2, unidade 6). Complete: \"I've worked here ___ 2024.\"",
+   "options": [
+    {
+     "id": "b1u1q11o0",
+     "text": "since",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u1q11o1",
+     "text": "for",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u1q11o2",
+     "text": "during",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u1q11o0",
+   "explanation": "Um ponto no tempo → since.",
+   "points": 10
+  },
+  {
+   "id": "b1u1q12",
+   "question": "Reciclagem (A2, unidade 8). Complete: \"If it ___, we'll stay inside.\"",
+   "options": [
+    {
+     "id": "b1u1q12o0",
+     "text": "rains",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u1q12o1",
+     "text": "will rain",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u1q12o2",
+     "text": "rained",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u1q12o0",
+   "explanation": "Depois de if, o presente.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
