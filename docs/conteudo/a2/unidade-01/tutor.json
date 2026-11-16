@@ -1,0 +1,140 @@
+{
+ "unidade": "A2.1 · Unit 1 — People at work",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a2-u1-guiada",
+   "nome": "A2 Unit 1 · My job these days",
+   "tipo": "guiada",
+   "depois_da_aula": "1C",
+   "descricao": "O tutor pergunta ao aluno pelo trabalho habitual, pelo trabalho deste período e por um colega.",
+   "papel_tutor": "Um professor simpático.",
+   "nivel": "A2",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I usually…",
+    "These days I'm…",
+    "She's very… / He has…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an elementary learner (A2, unit 1). You are a friendly teacher. Ask about the student's job: what they usually do, and what they are working on these days (if they don't work, ask about their studies or their week). Then ask about a colleague or a friend: what they look like and what they're like. Ask one follow-up question each time (\"Why?\", \"Really? Tell me more.\"). If the student uses the wrong present (\"I'm usually working\", \"Every day I'm checking\"), repeat the sentence naturally with the right tense. If they say \"I'm needing / I'm knowing\", model \"I need / I know\". Use only A1 language plus A2 unit 1: present simple vs present continuous (these days, this month, at the moment), state verbs (know, need, want, understand, think as opinion), personality and appearance adjectives, be like / look like, be responsible for, report to, deal with. Do NOT use the present perfect, the past continuous, \"will\", \"should\", \"have to\" or \"must\". One question at a time.",
+    "primeira_fala": "Hello, {nome}! Tell me about your job. What do you usually do?",
+    "primeira_fala_simples": "Hello! What do you do at work?",
+    "guiao": [
+     "And what are you working on these days?",
+     "Is it difficult? Why?",
+     "Tell me about a colleague. What does he or she look like?",
+     "And what's he or she like?",
+     "Great descriptions, {nome}! Well done."
+    ],
+    "frases": [
+     {
+      "en": "I usually check the payments.",
+      "pt": "Normalmente verifico os pagamentos."
+     },
+     {
+      "en": "These days I'm preparing a report.",
+      "pt": "Por estes dias estou a preparar um relatório."
+     },
+     {
+      "en": "She's tall and she has glasses.",
+      "pt": "É alta e usa óculos."
+     },
+     {
+      "en": "He's very friendly and really reliable.",
+      "pt": "É muito simpático e muito fiável."
+     }
+    ],
+    "palavras": [
+     "usually",
+     "these",
+     "days",
+     "working",
+     "like",
+     "look",
+     "friendly",
+     "tall",
+     "has"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a2-u1-livre",
+   "nome": "A2 Unit 1 · New project team",
+   "tipo": "livre",
+   "depois_da_aula": "1F",
+   "descricao": "O tutor é Taylor, coordenador(a) de projecto de uma empresa de Nairobi, num projecto novo com a empresa do aluno. Os dois apresentam-se, explicam a função e o que estão a fazer, e o aluno descreve um colega da equipa.",
+   "papel_tutor": "Taylor, coordenador(a) de projecto queniano(a), de Nairobi.",
+   "nivel": "A2",
+   "duracao_min": 7,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I'm responsible for…",
+    "I report to…",
+    "This week I'm…",
+    "What do you do here, exactly?"
+   ],
+   "extras": {
+    "brief": "Role-play for an elementary learner (A2, unit 1). You are Taylor, a project coordinator from Nairobi, Kenya (Taylor can be a man or a woman, to match your voice). You are starting a new project with the student's company in Luanda and you meet the student for the first time before the kick-off meeting. Introduce yourself briefly (you coordinate the project, you report to the director in Nairobi, this week you are meeting all the team). Ask the student: their job, who they report to, what they are responsible for, and what they are working on this week. Then say: \"I don't know the team yet. Who's the contact person for the finance part? What's he or she like?\" and ask what the person looks like (\"I'm meeting them at the door.\"). Answer the student's questions about you. React naturally (\"Oh, interesting!\", \"That sounds busy!\"). Use only A1 language plus A2 unit 1: present simple vs present continuous (these days, this month, at the moment), state verbs (know, need, want, understand, think as opinion), personality and appearance adjectives, be like / look like, be responsible for, report to, deal with. Do NOT use the present perfect, the past continuous, \"will\", \"should\", \"have to\" or \"must\". Short turns, one question at a time.",
+    "primeira_fala": "Hi, {nome}! I'm Taylor, the project coordinator from Nairobi. Nice to meet you! So, what do you do here?",
+    "primeira_fala_simples": "Hi! I'm Taylor, from Nairobi. Nice to meet you. What do you do?",
+    "guiao": [
+     "And who do you report to?",
+     "What are you responsible for on this project?",
+     "What are you working on this week?",
+     "I don't know the team yet. Who's the contact person for finance? What's he or she like?",
+     "And what does he or she look like? I'm meeting them at the door.",
+     "Do you have any questions for me?",
+     "Thanks, {nome}. See you in the meeting!"
+    ],
+    "frases": [
+     {
+      "en": "I report to the IT manager.",
+      "pt": "Respondo ao director de informática."
+     },
+     {
+      "en": "I'm responsible for the tests.",
+      "pt": "Sou responsável pelos testes."
+     },
+     {
+      "en": "This week I'm preparing the plan.",
+      "pt": "Esta semana estou a preparar o plano."
+     },
+     {
+      "en": "She's very organised and quite funny.",
+      "pt": "É muito organizada e bastante divertida."
+     },
+     {
+      "en": "What do you do in Nairobi, exactly?",
+      "pt": "O que faz exactamente em Nairobi?"
+     }
+    ],
+    "palavras": [
+     "responsible",
+     "report",
+     "working",
+     "week",
+     "like",
+     "look",
+     "organised",
+     "friendly",
+     "tall"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": [
+    "Diz a função, a quem responde e de que é responsável (report to, responsible for).",
+    "Diz o que está a fazer neste período com o present continuous e o que faz normalmente com o present simple.",
+    "Descreve um colega pela personalidade e pela aparência, sem confundir like e look like.",
+    "Faz pelo menos duas perguntas ao tutor, incluindo uma de seguimento.",
+    "Responde com duas ou mais frases ligadas quando a pergunta o pede.",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

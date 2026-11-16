@@ -1,0 +1,1307 @@
+{
+ "unidade": "A2.1 · Unit 1 — People at work",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "1A",
+   "titulo": "What do you do? What are you doing?",
+   "aula": "1A",
+   "objectivo": "Descrever o trabalho habitual (present simple) e o deste período (present continuous), escolhendo pelas palavras de tempo.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I usually [fix] computers.",
+     "opcoes": [
+      {
+       "texto": "am fixing",
+       "certa": false
+      },
+      {
+       "texto": "fixing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This month [I'm working] on a big project.",
+     "opcoes": [
+      {
+       "texto": "I work",
+       "certa": false
+      },
+      {
+       "texto": "I working",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Sílvia [is preparing] the annual accounts these days.",
+     "opcoes": [
+      {
+       "texto": "prepares",
+       "certa": false
+      },
+      {
+       "texto": "preparing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Kalandula Tech installs networks.",
+       "certa": true
+      },
+      {
+       "texto": "Kalandula Tech is installing networks every day.",
+       "certa": false
+      },
+      {
+       "texto": "Kalandula Tech install networks.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Um facto sobre a empresa: present simple, com -s."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which time words go with the present continuous?",
+     "opcoes": [
+      {
+       "texto": "these days, this month, at the moment",
+       "certa": true
+      },
+      {
+       "texto": "usually, every day, always",
+       "certa": false
+      },
+      {
+       "texto": "last week, yesterday, ago",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I usually check the payments.",
+       "certa": true
+      },
+      {
+       "texto": "I check usually the payments.",
+       "certa": false
+      },
+      {
+       "texto": "Usually I am check the payments.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Usually\" vem antes do verbo."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "She's always busy.",
+       "certa": true
+      },
+      {
+       "texto": "She always is busy.",
+       "certa": false
+      },
+      {
+       "texto": "She's busy always.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Depois de \"be\": she's always."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Em que está a trabalhar este mês?",
+     "resposta": "What are you working on this month?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I usually support the staff on the phone, but this month I'm working on a big project.",
+     "enunciado": "What is Nuno doing this month?",
+     "opcoes": [
+      {
+       "texto": "working on a big project",
+       "certa": true
+      },
+      {
+       "texto": "supporting the staff on the phone",
+       "certa": false
+      },
+      {
+       "texto": "fixing computers",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I usually fix computers, but this month I'm working on a big project.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you do at work?",
+     "frase": "usually",
+     "resposta": "I'm an accountant. I usually check the payments and I pay the suppliers.",
+     "contexto": "O seu trabalho habitual: present simple."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "And what are you working on these days?",
+     "frase": "I'm",
+     "resposta": "These days I'm preparing a report for a new client, so I'm working late.",
+     "contexto": "O que é temporário: present continuous."
+    }
+   ]
+  },
+  {
+   "codigo": "1B",
+   "titulo": "I know, I need, I want",
+   "aula": "1B",
+   "objectivo": "Usar os verbos de estado só no present simple e corrigir \"I'm knowing\" e \"I'm needing\".",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I need access to the server room now.",
+       "certa": true
+      },
+      {
+       "texto": "I'm needing access to the server room now.",
+       "certa": false
+      },
+      {
+       "texto": "I needing access to the server room now.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Need\" é um verbo de estado: present simple, mesmo agora."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Do you understand the plan?",
+       "certa": true
+      },
+      {
+       "texto": "Are you understanding the plan?",
+       "certa": false
+      },
+      {
+       "texto": "Do you understanding the plan?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "She has a lot of experience.",
+       "certa": true
+      },
+      {
+       "texto": "She's having a lot of experience.",
+       "certa": false
+      },
+      {
+       "texto": "She have a lot of experience.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I'm having lunch with a client.",
+       "certa": true
+      },
+      {
+       "texto": "I have lunch with a client now.",
+       "certa": false
+      },
+      {
+       "texto": "I having lunch with a client.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Have lunch\" é uma acção: pode ir para o continuous."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [think] it's a good plan.",
+     "opcoes": [
+      {
+       "texto": "am thinking",
+       "certa": false
+      },
+      {
+       "texto": "thinking",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Do you [know] Thandi? — No, I don't.",
+     "opcoes": [
+      {
+       "texto": "knowing",
+       "certa": false
+      },
+      {
+       "texto": "knows",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What does \"password\" [mean]?",
+     "opcoes": [
+      {
+       "texto": "means",
+       "certa": false
+      },
+      {
+       "texto": "meaning",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Não me lembro da palavra-passe.",
+     "resposta": "I don't remember the password.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "No, I don't know her. Who is she?",
+     "enunciado": "Does Nuno know Thandi?",
+     "opcoes": [
+      {
+       "texto": "No, he doesn't.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, he does.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, very well.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I don't know her. What does it mean? I don't remember it.",
+     "enunciado": "Ouça e repita. \"Know\": o k não se diz."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you need for your work this week?",
+     "frase": "I need",
+     "resposta": "I need a new password and more time. I don't have a printer, so I need one too.",
+     "contexto": "Use \"need\", sem -ing."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you think of your job?",
+     "frase": "I think",
+     "resposta": "I think it's interesting. I like my colleagues, but I'm very busy these days.",
+     "contexto": "A sua opinião com \"I think\"."
+    }
+   ]
+  },
+  {
+   "codigo": "1C",
+   "titulo": "What's she like?",
+   "aula": "1C",
+   "objectivo": "Descrever um colega pela personalidade e pela aparência e distinguir What's she like? de What does she look like?",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "\"What does she look like?\" asks about...",
+     "opcoes": [
+      {
+       "texto": "her appearance",
+       "certa": true
+      },
+      {
+       "texto": "her personality",
+       "certa": false
+      },
+      {
+       "texto": "her job",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"What's she like?\" asks about...",
+     "opcoes": [
+      {
+       "texto": "her personality",
+       "certa": true
+      },
+      {
+       "texto": "her appearance",
+       "certa": false
+      },
+      {
+       "texto": "what she likes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Answer: \"What does he look like?\"",
+     "opcoes": [
+      {
+       "texto": "He's tall and he has a beard.",
+       "certa": true
+      },
+      {
+       "texto": "He's friendly and patient.",
+       "certa": false
+      },
+      {
+       "texto": "He likes football.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She [has] short black hair and glasses.",
+     "opcoes": [
+      {
+       "texto": "is",
+       "certa": false
+      },
+      {
+       "texto": "are",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[He's] tall and slim.",
+     "opcoes": [
+      {
+       "texto": "He has",
+       "certa": false
+      },
+      {
+       "texto": "His",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is correct?",
+     "opcoes": [
+      {
+       "texto": "She's a bit serious.",
+       "certa": true
+      },
+      {
+       "texto": "She's a bit friendly.",
+       "certa": false
+      },
+      {
+       "texto": "She's a bit helpful.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"A bit\" só com coisas negativas."
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada adjectivo à tradução.",
+     "pares": [
+      {
+       "a": "reliable",
+       "b": "de confiança"
+      },
+      {
+       "a": "hard-working",
+       "b": "trabalhador"
+      },
+      {
+       "a": "helpful",
+       "b": "prestável"
+      },
+      {
+       "a": "shy",
+       "b": "tímido"
+      },
+      {
+       "a": "patient",
+       "b": "paciente"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct phrase.",
+     "opcoes": [
+      {
+       "texto": "my colleagues' names (muitos colegas)",
+       "certa": true
+      },
+      {
+       "texto": "my colleague's names (muitos colegas)",
+       "certa": false
+      },
+      {
+       "texto": "my colleagues names (muitos colegas)",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "She's tall and slim. She has short black hair and glasses. She's in her forties.",
+     "enunciado": "How old is Thandi?",
+     "opcoes": [
+      {
+       "texto": "between 40 and 49",
+       "certa": true
+      },
+      {
+       "texto": "forty",
+       "certa": false
+      },
+      {
+       "texto": "fourteen",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "She's very friendly and really helpful. She's very organised.",
+     "enunciado": "Ouça e repita: FRIENDly, HELPful, ORganised."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What does your manager look like?",
+     "frase": "has",
+     "resposta": "She's quite tall. She has long hair and glasses. She's in her fifties.",
+     "contexto": "A aparência: be + has."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "And what's your manager like?",
+     "frase": "very",
+     "resposta": "She's very hard-working and quite patient, but a bit serious in meetings.",
+     "contexto": "A personalidade, com very, quite, a bit."
+    }
+   ]
+  },
+  {
+   "codigo": "1D",
+   "titulo": "Jobs and responsibilities",
+   "aula": "1D",
+   "objectivo": "Dizer de que é responsável, com quem trabalha e a quem responde; acento dos cognatos; sympathetic e actually.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm responsible [for] the network.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Paulo and Nuno report [to] Mateus.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She's in charge [of] the finance department.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "in",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Sílvia deals [with] the payments.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I'm responsible for training new staff.",
+       "certa": true
+      },
+      {
+       "texto": "I'm responsible for train new staff.",
+       "certa": false
+      },
+      {
+       "texto": "I'm responsible to train new staff.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Depois de \"for\": nome ou -ing."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I work for Kalandula Tech.",
+       "certa": true
+      },
+      {
+       "texto": "I work to Kalandula Tech.",
+       "certa": false
+      },
+      {
+       "texto": "I work in Kalandula Tech for.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Simpático\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "friendly",
+       "certa": true
+      },
+      {
+       "texto": "sympathetic",
+       "certa": false
+      },
+      {
+       "texto": "simpatic",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Sympathetic\" quer dizer compreensivo com o problema de alguém."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Actualmente trabalho num projecto\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "Currently, I'm working on a project.",
+       "certa": true
+      },
+      {
+       "texto": "Actually, I'm working on a project.",
+       "certa": false
+      },
+      {
+       "texto": "Actual, I work on a project.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Actually\" = na verdade."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Technology.",
+     "enunciado": "Where is the stress?",
+     "opcoes": [
+      {
+       "texto": "na 2.ª sílaba: tech-NOL-o-gy",
+       "certa": true
+      },
+      {
+       "texto": "na 1.ª sílaba: TECH-no-lo-gy",
+       "certa": false
+      },
+      {
+       "texto": "na última sílaba: tech-no-lo-GY",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "responsible, technology, development, engineer, analyst, administrator",
+     "enunciado": "Ouça e repita com o acento certo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Who do you report to, and what are you responsible for?",
+     "frase": "responsible for",
+     "resposta": "I report to the finance manager. I'm responsible for the payments, and I deal with the suppliers.",
+     "contexto": "Use report to e responsible for."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you do in your department? Tell me about one more task.",
+     "frase": "deal with",
+     "resposta": "I work in customer service. I deal with the clients' problems and I look after new clients.",
+     "contexto": "Use deal with ou look after."
+    }
+   ]
+  },
+  {
+   "codigo": "1E",
+   "titulo": "Real English: My new team",
+   "aula": "1E",
+   "objectivo": "Identificar a função, uma responsabilidade e uma característica de cada pessoa em quatro apresentações.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm the IT manager at Mussulo Energy, so I'm in charge of all the systems there.",
+     "enunciado": "What's Rita in charge of?",
+     "opcoes": [
+      {
+       "texto": "all the systems at Mussulo Energy",
+       "certa": true
+      },
+      {
+       "texto": "the payments",
+       "certa": false
+      },
+      {
+       "texto": "the installation",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "People say I'm very organised… and a bit impatient!",
+     "enunciado": "How does Rita describe herself?",
+     "opcoes": [
+      {
+       "texto": "organised and a bit impatient",
+       "certa": true
+      },
+      {
+       "texto": "quiet and patient",
+       "certa": false
+      },
+      {
+       "texto": "funny and shy",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm in Luanda for three months, so I'm learning some Portuguese. Slowly!",
+     "enunciado": "What is Thandi doing in Luanda, apart from work?",
+     "opcoes": [
+      {
+       "texto": "learning Portuguese",
+       "certa": true
+      },
+      {
+       "texto": "teaching English",
+       "certa": false
+      },
+      {
+       "texto": "visiting her family",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I usually start very early because of the time difference — it's four hours later here.",
+     "enunciado": "Why does Arjun start very early?",
+     "opcoes": [
+      {
+       "texto": "because of the time difference",
+       "certa": true
+      },
+      {
+       "texto": "because he lives far away",
+       "certa": false
+      },
+      {
+       "texto": "because he's the manager",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I deal with our clients' payments, so I'm going to test the new system. I report to Rita.",
+     "enunciado": "Who does João report to?",
+     "opcoes": [
+      {
+       "texto": "Rita",
+       "certa": true
+      },
+      {
+       "texto": "Mateus",
+       "certa": false
+      },
+      {
+       "texto": "Thandi",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My company sells the equipment for the new network, and I'm responsible for the installation.",
+     "enunciado": "What is Thandi responsible for?",
+     "opcoes": [
+      {
+       "texto": "the installation",
+       "certa": true
+      },
+      {
+       "texto": "the equipment sales",
+       "certa": false
+      },
+      {
+       "texto": "the payment system",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I'm happy to help with anything you need\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Tenho todo o gosto em ajudar no que precisar.",
+       "certa": true
+      },
+      {
+       "texto": "Estou feliz porque preciso de ajuda.",
+       "certa": false
+      },
+      {
+       "texto": "Preciso de ajuda com tudo.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Let's start with a quick round of introductions\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Vamos começar com uma ronda rápida de apresentações.",
+       "certa": true
+      },
+      {
+       "texto": "Vamos começar a reunião depressa.",
+       "certa": false
+      },
+      {
+       "texto": "Vamos apresentar o projecto.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm responsible for the installation. Please send me your questions.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You're on the project video call. Introduce yourself.",
+     "frase": "I'm responsible for",
+     "resposta": "Hi, I'm Marta. I'm an analyst at a bank in Luanda. I'm responsible for the monthly reports. People say I'm very patient.",
+     "contexto": "Nome, trabalho, responsabilidade e uma característica."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What are you working on at the moment, and who do you work with?",
+     "frase": "at the moment",
+     "resposta": "At the moment I'm working on a new system for our clients. I work with two engineers and a designer.",
+     "contexto": "Use o present continuous e \"work with\"."
+    }
+   ]
+  },
+  {
+   "codigo": "1F",
+   "titulo": "Work & Life: Meet the project team",
+   "aula": "1F",
+   "objectivo": "Apresentar-se e apresentar a função a uma equipa nova, fazer perguntas e apresentar um colega.",
+   "exercicios": [
+    {
+     "tipo": "ordenar",
+     "enunciado": "Sou técnico júnior de informática na Kalandula Tech.",
+     "resposta": "I'm a junior IT technician at Kalandula Tech.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This week [I'm checking] all the cables.",
+     "opcoes": [
+      {
+       "texto": "I check",
+       "certa": false
+      },
+      {
+       "texto": "I checking",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This is my colleague Paulo. [He's] responsible for the network.",
+     "opcoes": [
+      {
+       "texto": "He has",
+       "certa": false
+      },
+      {
+       "texto": "His",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is a friendly follow-up question?",
+     "opcoes": [
+      {
+       "texto": "What do you do here, exactly?",
+       "certa": true
+      },
+      {
+       "texto": "What you do here?",
+       "certa": false
+      },
+      {
+       "texto": "What is your work, exactly is?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which question asks for the right person to call?",
+     "opcoes": [
+      {
+       "texto": "Who's the contact person for the second floor?",
+       "certa": true
+      },
+      {
+       "texto": "Who is the second floor?",
+       "certa": false
+      },
+      {
+       "texto": "Where is the contact on the second floor?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm usually in the office from eight to four.",
+     "enunciado": "When is João in the office?",
+     "opcoes": [
+      {
+       "texto": "from 8 to 4",
+       "certa": true
+      },
+      {
+       "texto": "from 4 to 8",
+       "certa": false
+      },
+      {
+       "texto": "from 8 to 14",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "He's very reliable — and he knows every cable in this building!",
+     "enunciado": "What does Nuno say about Paulo?",
+     "opcoes": [
+      {
+       "texto": "He's reliable.",
+       "certa": true
+      },
+      {
+       "texto": "He's funny.",
+       "certa": false
+      },
+      {
+       "texto": "He's new.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "O director diz: \"Estou noutra reunião, chego às onze.\" O que diz à Rita?",
+     "opcoes": [
+      {
+       "texto": "He says he's in another meeting. He's going to come at eleven.",
+       "certa": true
+      },
+      {
+       "texto": "He says: \"Estou noutra reunião.\"",
+       "certa": false
+      },
+      {
+       "texto": "He is meeting at eleven o'clock another.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Na mediação, diga a ideia principal em frases simples."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "So, what do you do here, exactly?",
+     "enunciado": "Ouça e repita: a voz desce no fim."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Welcome to the team! Please introduce yourself.",
+     "frase": "I report to",
+     "resposta": "Good morning. I'm Carla Tavares. I'm an engineer at Kalandula Tech. I report to Mateus, and I'm responsible for the tests. This week I'm preparing the test plan.",
+     "contexto": "Os quatro passos: nome e função, chefia, responsabilidade e o que está a fazer agora."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Can you introduce a colleague to me?",
+     "frase": "This is",
+     "resposta": "This is my colleague Joana. She's responsible for the finance team. She's very organised and really helpful.",
+     "contexto": "Nome, função e uma qualidade."
+    }
+   ]
+  },
+  {
+   "codigo": "1R",
+   "titulo": "Unit 1 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 1 e reciclar o A1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I usually [work] from eight to five, but this week [I'm working] late.",
+     "opcoes": [
+      {
+       "texto": "working",
+       "certa": false
+      },
+      {
+       "texto": "I work",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I don't understand this email.",
+       "certa": true
+      },
+      {
+       "texto": "I'm not understanding this email.",
+       "certa": false
+      },
+      {
+       "texto": "I not understand this email.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"What's your new boss like?\" — Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "She's very friendly, but a bit serious.",
+       "certa": true
+      },
+      {
+       "texto": "She has long hair.",
+       "certa": false
+      },
+      {
+       "texto": "She likes coffee.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm in charge [of] customer service.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "with",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "My colleagues' office is on the second floor.",
+       "certa": true
+      },
+      {
+       "texto": "My colleagues office's is on the second floor.",
+       "certa": false
+      },
+      {
+       "texto": "The office of my colleagues' is on the second floor.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A1, unidade 10). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I didn't go to the meeting.",
+       "certa": true
+      },
+      {
+       "texto": "I didn't went to the meeting.",
+       "certa": false
+      },
+      {
+       "texto": "I not go to the meeting.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A1, unidade 10). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "We're going to start the project in January.",
+       "certa": true
+      },
+      {
+       "texto": "We going to start the project in January.",
+       "certa": false
+      },
+      {
+       "texto": "We're going to started the project in January.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A1, unidade 5). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "She doesn't work on Saturdays.",
+       "certa": true
+      },
+      {
+       "texto": "She don't work on Saturdays.",
+       "certa": false
+      },
+      {
+       "texto": "She doesn't works on Saturdays.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A1, unidade 9). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I like working with people.",
+       "certa": true
+      },
+      {
+       "texto": "I like work with people.",
+       "certa": false
+      },
+      {
+       "texto": "I'm liking working with people.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ela é responsável pela formação.",
+     "resposta": "She's responsible for training.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Portuguese, from Lisbon, but I live in Luanda now.",
+     "enunciado": "Where does Rita live?",
+     "opcoes": [
+      {
+       "texto": "in Luanda",
+       "certa": true
+      },
+      {
+       "texto": "in Lisbon",
+       "certa": false
+      },
+      {
+       "texto": "in Porto",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What are you working on this week, and what do you need for it?",
+     "frase": "I need",
+     "resposta": "This week I'm preparing a presentation for a client. I need some numbers from the finance team.",
+     "contexto": "Present continuous e um verbo de estado."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a colleague: their job, what they look like and what they're like.",
+     "frase": "He's",
+     "resposta": "This is Pedro. He works in sales. He's short and he has a beard. He's very funny and really reliable.",
+     "contexto": "Três frases sobre um colega."
+    }
+   ]
+  }
+ ]
+}
