@@ -137,7 +137,7 @@ Objectivo da aula: No fim, o aluno consegue falar de actividades que começaram 
 Objectivo da unidade a que serve: 2
 Gramática-alvo: have / has been + -ing; How long have you been…?; for / since; verbos de estado sem
   forma contínua (know, like, have = possuir, understand, believe)
-Palavras-alvo: logs, signal, wind, radio link, technical manager, data, recently, lately, all morning
+Palavras-alvo: logs, signal, wind, radio link, technical manager, data, recently, a bit, It shows
 Reciclagem: present perfect com for / since (A2, 6); present continuous (A1, 9)
 Pronúncia: forma fraca de "been" em "I've been"
 Contexto: segunda-feira, 4 de Outubro, 9:00; no escritório da equipa conjunta, em Luanda; a Lerato e o
@@ -198,9 +198,9 @@ Verificação: Lab 2B; perguntas 3 e 4 do questionário
 
 **Verbos de estado**
 
-[ECRÃ: ✘ I've been knowing you since February. · ✔ I**'ve known** you since February. · (também: like, have = possuir, understand, believe)]
+[ECRÃ: ✘ I've been knowing you since January. · ✔ I**'ve known** you since January. · (também: like, have = possuir, understand, believe)]
 
-**PROF:** Some verbs are not activities: know, like, understand, believe, and have when it means "possess". With these, use the normal present perfect: I've known you since February.
+**PROF:** Some verbs are not activities: know, like, understand, believe, and have when it means "possess". With these, use the normal present perfect: I've known you since January.
 [PAUSA 5 s]
 
 ### 4. Pronúncia (1 min)
@@ -245,7 +245,7 @@ Verificação: Lab 2B; perguntas 3 e 4 do questionário
 Curso: B1.1        Unidade: 2        Aula: 2C — Been doing or done?        Tipo: Língua
 Objectivo da aula: No fim, o aluno consegue escolher entre o present perfect continuous (a actividade,
   quanto tempo) e o present perfect simple (o resultado, quantos) ao falar do seu ano de trabalho
-  (I've been writing my review all morning. I've written two pages.).
+  (I've been writing my review since lunch. I've written two pages.).
 Objectivo da unidade a que serve: 2, 4
 Gramática-alvo: present perfect continuous (actividade, duração, ainda não acabou) e present perfect
   simple (resultado, quantos / quanto, acabado); live / work com as duas formas
@@ -285,7 +285,7 @@ Verificação: Lab 2C; perguntas 5 e 6 do questionário
 **A actividade ou o resultado**
 
 [ECRÃ:
-I**'ve been writing** my review all afternoon. → a actividade; quanto tempo; talvez não acabou
+I**'ve been writing** my review since lunch. → a actividade; quanto tempo; talvez não acabou
 I**'ve written** two pages. → o resultado; quantos; acabado]
 
 **PROF:** "I've been writing" — the activity, how long, and maybe it's not finished. "I've written two pages" — the result: how many, and it's done.
@@ -295,7 +295,7 @@ I**'ve written** two pages. → o resultado; quantos; acabado]
 
 [ECRÃ: ✘ I've been visiting the plant twice. · ✔ I**'ve visited** the plant **twice**. · ✘ I've been writing three reports this week. · ✔ I**'ve written three reports** this week.]
 
-**PROF:** With a number — twice, three reports, four projects — use the present perfect simple. You're counting results.
+**PROF:** With a number — twice, three reports, two projects — use the present perfect simple. You're counting results.
 [PAUSA 5 s]
 
 **Com *how long*: o *continuous***
@@ -318,7 +318,7 @@ I**'ve written** two pages. → o resultado; quantos; acabado]
 [PAUSA 4 s]
 **PROF:** I've visited the plant twice.
 [PAUSA 4 s]
-**PROF:** And with the activity, stress how long. I've been working on it all afternoon.
+**PROF:** And with the activity, stress how long. I've been working on it since lunch.
 [PAUSA 5 s]
 
 ### 5. Prática guiada (3 min)
@@ -328,7 +328,7 @@ I**'ve written** two pages. → o resultado; quantos; acabado]
 [ECRÃ: She's (been waiting / waited) for an hour.] [PAUSA 5 s] [ECRÃ: She's been waiting for an hour.]
 [ECRÃ: How many emails have you (been sending / sent)?] [PAUSA 5 s] [ECRÃ: How many emails have you sent?]
 
-**PROF:** Now a longer turn. Talk about your year. Tell me one thing you've been doing for a long time, and two things you've finished or done. Use numbers.
+**PROF:** Now a longer turn. Talk about your year: one long activity, with "I've been…", and two results, with numbers.
 [PAUSA 40 s]
 [ECRÃ: modelo — This year I've been working on a new accounting system. I've been doing it since February, and it isn't finished yet. But I've trained twelve colleagues, and I've written three manuals.]
 
@@ -507,7 +507,7 @@ Verificação: Lab 2E; pergunta 9 do questionário
 **PROF:** I used to do everything myself. [PAUSA 4 s]
 **PROF:** Some days it's confusing, but I'm improving. [PAUSA 4 s]
 
-**PROF:** Did you notice? Each person has the same three parts: before, with "used to"; now, with the present or "I've been…"; and a feeling, with "-ed" or "-ing" — nervous, frustrating, confusing, exciting.
+**PROF:** Did you notice? Each person has the same three parts: before, with "used to" or the past simple; now, with the present or "I've been…"; and a feeling, with "-ed" or "-ing" — nervous, frustrating, confusing, exciting.
 [PAUSA 3 s]
 
 ### 5. A sua vez (1 min 30 s)
@@ -555,7 +555,7 @@ Verificação: Lab 2F; conversa livre "Catching up"; pergunta 9 do questionário
 **NUNO:** A lot. When I started, I used to support the staff in our office. I used to fix laptops and printers, and I needed help with almost everything. I used to be really nervous with clients, especially in English. Now I'm in the joint team, and I talk to clients in Angola and South Africa every day. Since August, I've been working on the Morro Azul project. I've visited the plant in Namibe twice, and I've been writing a weekly report for Hannah. And I've been studying English every Saturday since March.
 **LERATO:** That's a big change. How do you feel about it?
 **NUNO:** Honestly, the first months in the joint team were tiring. Everything was new, and some days were really confusing. But now I'm excited. I love the Morro Azul project.
-**LERATO:** Good. Mr Baptista sent me your evaluation from last year — but it's in Portuguese. Could you tell me what it says?
+**LERATO:** Good. Mr Baptista sent me his evaluation of your work until June — but it's in Portuguese. Could you tell me what it says?
 **NUNO:** Of course.
 
 [ECRÃ: a avaliação, em português: "Avaliação anual — Nuno Kapinga, técnico de informática (Outubro de 2026 a Junho de 2027). O Nuno começou como técnico júnior e evoluiu muito. No início, precisava de ajuda em quase tudo; hoje resolve sozinho a maior parte dos problemas. Teve um papel importante no projecto da Mussulo Energy. Comunica bem com os clientes, também em inglês. A melhorar: os relatórios escritos, que ainda demoram muito. — J. Baptista"]

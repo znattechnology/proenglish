@@ -1,6 +1,6 @@
 # B1.1 · Unidade 2 — Then and now (6 aulas)
 
-**Estado:** primeira versão escrita, com a revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 2
+**Estado:** primeira versão escrita, com duas revisões aula a aula ([n.º 1](revisao-1.md) e [n.º 2](revisao-2.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 2
 
 ## Objectivos da unidade
 
