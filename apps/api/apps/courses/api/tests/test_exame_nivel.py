@@ -86,3 +86,111 @@ class SituacoesDeExameTests(Base):
 
 
 _ = (EXAME_BOM, _claude)
+
+
+class GuiaoPorNivelTests(Base):
+
+    def setUp(self):
+        super().setUp()
+        self.curso.level = 'A1'
+        self.curso.save(update_fields=['level'])
+        self.banco = [_situacao(self.curso, f'nv-a1-{i}', f'A1 exam situation {i}', exame_so=True, ordem=i)
+                      for i in (1, 2, 3)]
+        self.concluir()
+
+    def prompt_e_sessao(self):
+        ex, r = self.fazer_exame()
+        sessao = r.data['sessao']
+        return sessao['vapi']['assistant_overrides']['model']['messages'][0]['content'], sessao, ex
+
+    def test_curso_a1_sem_guiao_usa_o_guiao_do_a1(self):
+        prompt, sessao, ex = self.prompt_e_sessao()
+        self.assertIn('Part 1: Interview', prompt)
+        self.assertIn('Part 2: My day', prompt)
+        self.assertIn('Part 3: Situation', prompt)
+        self.assertIn('simpler version', prompt)
+        self.assertNotIn('What would you do', prompt)
+        self.assertNotIn('8 to 10 minutes', prompt)
+        self.assertEqual(sessao['max_segundos'], 420)
+        # Uma só situação sorteada, com a frase inicial.
+        presentes = [s for s in self.banco if s.nome in prompt]
+        self.assertEqual(len(presentes), 1)
+        self.assertIn(presentes[0].extras['frase_inicial'], prompt)
+        cfg = VapiSession.objects.get(pk=ex.sessao_id).full_session_data['config']
+        self.assertEqual(cfg[exame.CHAVE_GUIAO]['partes'][0]['titulo'], 'Interview')
+        self.assertEqual(cfg[exame.CHAVE_SITUACOES], [presentes[0].slug])
+        e = self.client.get(f'{self.v}/{self.curso.id}/exame/').data
+        self.assertEqual(e['duracao_minutos'], 7)
+
+    def test_guiao_guardado_no_curso_ganha_ao_do_nivel(self):
+        from apps.courses.models import CourseGradingConfig
+        CourseGradingConfig.objects.update_or_create(course=self.curso, defaults={'exam_script': {
+            'duracao': '5 to 6 minutes', 'max_minutos': 6, 'situacoes': 1,
+            'partes': [{'titulo': 'Past and plans', 'perguntas': [
+                {'pergunta': 'Hello, {nome}. What did you do last weekend?', 'simples': 'Last Saturday?'}]}],
+            'notas': ['Ask "Can you tell me more?" once if the answer is one word.']}})
+        prompt, sessao, _ = self.prompt_e_sessao()
+        self.assertIn('Part 1: Past and plans', prompt)
+        self.assertIn('Hello, Ana. What did you do last weekend?', prompt)
+        self.assertIn('Can you tell me more?', prompt)
+        self.assertNotIn('Interview', prompt)
+        self.assertEqual(sessao['max_segundos'], 360)
+
+    def test_guiao_invalido_no_curso_cai_no_do_nivel(self):
+        from apps.courses.models import CourseGradingConfig
+        CourseGradingConfig.objects.update_or_create(course=self.curso, defaults={'exam_script': {'partes': []}})
+        prompt, _, _ = self.prompt_e_sessao()
+        self.assertIn('Part 1: Interview', prompt)
+
+    def test_curso_b1_continua_com_o_exame_geral(self):
+        self.curso.level = 'B1'
+        self.curso.save(update_fields=['level'])
+        prompt, sessao, _ = self.prompt_e_sessao()
+        self.assertIn('8 to 10 minutes', prompt)
+        self.assertEqual(sessao['max_segundos'], 600)
+        self.assertEqual(sum(1 for s in self.banco if s.nome in prompt), 3)  # três tarefas sorteadas
+
+    @property
+    def v(self):
+        from apps.courses.api.tests.test_fase6_fala import V
+        return V
+
+
+class ValidarGuiaoTests(Base):
+
+    def test_limpa_chavetas_e_limita(self):
+        g = exame.validar_guiao({'max_minutos': 99, 'situacoes': 9, 'partes': [
+            {'titulo': 'A', 'perguntas': [{'pergunta': 'Hi {nome}, {0} {x} ok?'}]}]})
+        self.assertEqual(g['partes'][0]['perguntas'][0]['pergunta'], 'Hi {nome}, (0) (x) ok?')
+        self.assertEqual((g['max_minutos'], g['situacoes']), (10, 3))
+        self.assertEqual(g['partes'][0]['perguntas'][0]['pergunta'].format(nome='Ana'), 'Hi Ana, (0) (x) ok?')
+
+    def test_formas_invalidas(self):
+        for dados in (None, [], {}, {'partes': []}, {'partes': [{'titulo': '', 'perguntas': [{'pergunta': 'x'}]}]},
+                      {'partes': [{'titulo': 'A', 'perguntas': []}]}, {'partes': [{'titulo': 'A', 'perguntas': ['x']}]},
+                      {'partes': [{'titulo': 'A', 'perguntas': [{'pergunta': 'x'}]}], 'max_minutos': 'muito'}):
+            self.assertIsNone(exame.validar_guiao(dados), dados)
+
+    def test_comando_carrega_guiao_e_situacoes(self):
+        import json
+        import os
+        import tempfile
+        from io import StringIO
+
+        from django.core.management import call_command
+
+        from apps.courses.models import CourseGradingConfig
+        pasta = tempfile.mkdtemp()
+        guiao = os.path.join(pasta, 'g.json')
+        sits = os.path.join(pasta, 's.json')
+        with open(guiao, 'w') as f:
+            json.dump({'formato': 'x', 'max_minutos': 6, 'partes': [
+                {'titulo': 'Interview', 'perguntas': [{'pergunta': 'Hello?'}]}]}, f)
+        with open(sits, 'w') as f:
+            json.dump({'situacoes': [{'slug': 'nv-cmd-1', 'nome': 'Cmd', 'descricao': 'd', 'papel_tutor': 'w',
+                                      'nivel': 'A1', 'extras': {'parte': 3}}]}, f)
+        call_command('carregar_exame_curso', str(self.curso.pk), guiao=guiao, situacoes=sits, stdout=StringIO())
+        self.assertEqual(CourseGradingConfig.objects.get(course=self.curso).exam_script['max_minutos'], 6)
+        s = Situacao.objects.get(slug='nv-cmd-1')
+        self.assertEqual((s.curso_id, s.estado, s.extras['exame']), (self.curso.pk, Situacao.ACTIVO, True))
+        self.assertEqual(exame.situacoes_de_exame(self.curso), [s])

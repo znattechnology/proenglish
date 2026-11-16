@@ -72,6 +72,11 @@ class CourseGradingConfig(BaseModel):
         validators=[MinValueValidator(0), MaxValueValidator(100)],
         help_text="Nota mínima do exame oral para passar (%)"
     )
+    exam_script = models.JSONField(
+        default=dict, blank=True,
+        help_text="Guião do exame oral deste curso (partes, perguntas, escala); vazio = o do nível "
+                  "(apps/practice/conversa/exame.py, validar_guiao)"
+    )
 
     # ===== MINIMUM REQUIREMENTS FOR CERTIFICATE =====
     min_quiz_average = models.FloatField(
