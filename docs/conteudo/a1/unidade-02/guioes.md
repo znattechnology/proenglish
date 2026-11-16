@@ -22,7 +22,7 @@ Objectivo da unidade a que serve: 1
 Gramática-alvo: I'm from… / Where are you from? / I'm + nacionalidade
 Palavras-alvo: from, country, city, nationality; Angola/Angolan, Portugal/Portuguese,
   Brazil/Brazilian, Mozambique/Mozambican, South Africa/South African, Nigeria/Nigerian,
-  the DR Congo/Congolese, Namibia/Namibian, the UK/British, the USA/American, China/Chinese,
+  DR Congo/Congolese, Namibia/Namibian, the UK/British, the USA/American, China/Chinese,
   France/French, India/Indian, Cuba/Cuban
 Reciclagem: What's your name? (1A); Nice to meet you (1A)
 Pronúncia: entoação descendente em "Where are you from?"
@@ -45,8 +45,8 @@ Verificação: Lab 2A (exercícios 1–9); perguntas 1 e 2 do questionário da u
 **MATEUS:** I'm from Huambo. And you?
 **PAULO:** I'm from Luanda. And you, Sílvia?
 **SÍLVIA:** I'm from Benguela.
-**MATEUS:** So we're all Angolan!
-**PAULO:** Yes! Three cities, one country.
+**MATEUS:** Huambo, Luanda, Benguela…
+**PAULO:** Three cities, one country: Angola!
 
 [ECRÃ: o diálogo, com a tradução por baixo de cada linha]
 
@@ -89,10 +89,10 @@ Verificação: Lab 2A (exercícios 1–9); perguntas 1 e 2 do questionário da u
 
 **Mais países**
 
-[ECRÃ: the DR Congo — Congolese · Namibia — Namibian · the UK — British · the USA — American · China — Chinese · France — French · India — Indian · Cuba — Cuban]
+[ECRÃ: DR Congo — Congolese · Namibia — Namibian · the UK — British · the USA — American · China — Chinese · France — French · India — Indian · Cuba — Cuban]
 
-**PROF:** Some countries have "the": the UK, the USA, the DR Congo.
-(PT: Alguns países levam "the": "the UK", "the USA", "the DR Congo".)
+**PROF:** Some countries have "the": the UK, the USA. I'm from the UK.
+(PT: Alguns países levam "the": "the UK", "the USA". A maioria não leva: "I'm from Angola".)
 
 ### 4. Pronúncia (1 min)
 
@@ -142,7 +142,7 @@ Objectivo da aula: No fim, o aluno consegue dizer de onde é outra pessoa com he
 Objectivo da unidade a que serve: 1, 2
 Gramática-alvo: be com he/she/it/we/they (+, −, ?); contracções he's, she's, it's, we're, they're,
   isn't, aren't; respostas curtas; Who's this?
-Palavras-alvo: he, she, it, we, they, who, colleague, friend, team
+Palavras-alvo: he, she, it, we, they, who, client, colleague
 Reciclagem: I'm / Are you…? (1A); This is… (1F); a/an + profissão (1F)
 Pronúncia: as contracções he's, she's, isn't, aren't
 Contexto: o Paulo vê as fotografias da equipa no ecrã da sala de reuniões
@@ -185,7 +185,10 @@ Verificação: Lab 2B (exercícios 1–10); perguntas 3, 4 e 5 do questionário
 | they | they are | **they're** |
 
 **PROF:** He's Nigerian. She's South African. We're Angolan. They're in Luanda.
-(PT: "He" é ele, "she" é ela, "it" é para coisas, "we" é nós, "they" é eles ou elas.)
+(PT: "He" é ele, "she" é ela, "we" é nós, "they" é eles ou elas. "It" é para coisas e lugares: "Luanda? It's in Angola.")
+
+**PROF:** For things and places, we say "it": Where's Lagos? It's in Nigeria.
+[PAUSA 3 s]
 
 **PROF:** "You" is one person or many people: you're my colleague, you're my colleagues.
 (PT: "You" serve para uma pessoa ou para várias.)
@@ -291,7 +294,7 @@ Verificação: Lab 2C (exercícios 1–9); perguntas 6 e 7 do questionário
 
 **As dezenas**
 
-[ECRÃ: 20 twenty · 30 thirty · 40 forty · 50 fifty · 60 sixty · 70 seventy · 80 eighty · 90 ninety · 100 a hundred]
+[ECRÃ: 20 twenty · 30 thirty · 40 forty · 50 fifty · 60 sixty · 70 seventy · 80 eighty · 90 ninety · 100 a hundred / one hundred]
 
 **PROF:** Listen and repeat. Twenty.
 *(O professor diz cada dezena e espera 2 s.)*
@@ -313,7 +316,10 @@ Verificação: Lab 2C (exercícios 1–9); perguntas 6 e 7 do questionário
 **PROF:** How old are you? I'm thirty-four. Or: I'm thirty-four years old.
 (PT: Para a idade usa-se o verbo "be", não "have". Em português diz-se "tenho 34 anos", mas em inglês diz-se "I'm 34".)
 
-[ECRÃ: ✔ I'm 34. ✘ I have 34 years.]
+[ECRÃ: ✔ I'm 34. ✔ I'm 34 years old. ✘ I have 34 years. ✘ I'm 34 years.]
+
+**PROF:** Careful: "years old" goes together. I'm thirty-four years old. Or just: I'm thirty-four.
+(PT: Atenção: ou se diz só o número, ou "years old" completo. "I'm 34 years" está errado.)
 
 **PROF:** How old is he? He's fifty. How old is she? She's twenty-nine.
 [PAUSA 3 s depois de cada frase]
@@ -477,7 +483,7 @@ Verificação: Lab 2E (exercícios 1–8); pergunta 9 do questionário
 
 **EMMA:** Good morning! I'm Emma. I'm British, from Manchester, but I'm in Luanda this year. I'm twenty-eight. I speak English and a little Portuguese. Obrigada!
 
-[ECRÃ: Amélia — Mozambique · Patrick — the DR Congo · Emma — the UK]
+[ECRÃ: Amélia — Mozambique · Patrick — DR Congo · Emma — the UK]
 
 ### 3. Segunda escuta: os pormenores (3 min)
 
@@ -579,6 +585,10 @@ Verificação: Lab 2F (exercícios 1–9); conversa livre "A visitor from South 
 
 **PROF:** Mr is for a man. Ms is for a woman. At work, Ms is the best choice.
 (PT: "Mr" para homens e "Ms" para mulheres. No trabalho, "Ms" é a escolha mais segura.)
+
+**PROF:** Listen: Mr — /ˈmɪstə/. Ms — /mɪz/. We don't say the letters "M, S".
+(PT: "Mr" lê-se "míster" e "Ms" lê-se "miz". Não se soletram as letras.)
+**PROF:** Mr Baptista. [PAUSA 3 s] Ms Mokoena. [PAUSA 3 s]
 
 **Apresentar um colega**
 

@@ -1,6 +1,6 @@
 # A1.1 · Unidade 2 — Where are you from?
 
-**Estado:** primeira versão escrita, com a revisão pedagógica feita ao escrever (critérios da [revisão da unidade 1](../unidade-01/revisao-1.md)); falta a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 2
+**Estado:** primeira versão escrita e revista ([revisão n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 2
 
 ## Objectivos da unidade
 
@@ -25,13 +25,13 @@ Reciclagem da unidade 1 em todas as aulas, no laboratório 2R e nas perguntas 11
 | Ficheiro | Conteúdo | Pronto a carregar? |
 |---|---|---|
 | [guioes.md](guioes.md) | Os 6 guiões (2A a 2F) | Para o professor de IA |
-| [laboratorio.json](laboratorio.json) | 7 lições (2A a 2F e 2R), 66 exercícios: 15 de escuta, 10 de pronúncia, 7 de resposta livre | Sim: validado com `pratica_formato.validar` (0 erros) |
+| [laboratorio.json](laboratorio.json) | 7 lições (2A a 2F e 2R), 67 exercícios: 15 de escuta, 11 de pronúncia, 7 de resposta livre | Sim: validado com `pratica_formato.validar` (0 erros) |
 | [tutor.json](tutor.json) | Conversa guiada (depois da 2C) e livre (no fim): "A visitor from South Africa" | Sim: campos do modelo `Situacao` |
 | [questionario.json](questionario.json) | 12 perguntas (2 de reciclagem da unidade 1), aprovação a 70% | Sim: formato `quiz_data` |
 
 ## Vocabulário da unidade (cerca de 55 palavras e expressões)
 
-- **Países e nacionalidades (14):** Angola/Angolan, Mozambique/Mozambican, Brazil/Brazilian, Portugal/Portuguese, South Africa/South African, Nigeria/Nigerian, the DR Congo/Congolese, Namibia/Namibian, the UK/British, the USA/American, China/Chinese, France/French, India/Indian, Cuba/Cuban.
+- **Países e nacionalidades (14):** Angola/Angolan, Mozambique/Mozambican, Brazil/Brazilian, Portugal/Portuguese, South Africa/South African, Nigeria/Nigerian, DR Congo/Congolese, Namibia/Namibian, the UK/British, the USA/American, China/Chinese, France/French, India/Indian, Cuba/Cuban.
 - **Línguas:** Portuguese, English, French, Spanish, Chinese, Kimbundu, Umbundu, Kikongo, Lingala, Zulu; *I speak… / Do you speak…? / a little*.
 - **Pessoas e perguntas:** he, she, it, we, they, who, where, how old, country, city, nationality, language, colleague, client, visitor, engineer, *Mr, Ms*.
 - **Números:** twenty … ninety, a hundred, 21–99, years old.
@@ -55,4 +55,4 @@ Equipa da Kalandula Tech (unidade 1) e **Mateus** (engenheiro, de Huambo), **Tha
 
 ## O que falta para publicar
 
-O mesmo que na unidade 1: leitura pelos professores, vídeos com o professor de IA, áudio (15 escutas e 10 pronúncias), carregamento na plataforma e imagens (bandeiras e mapa na 2A e 2D; fotografias da equipa na 2B).
+O mesmo que na unidade 1: leitura pelos professores, vídeos com o professor de IA, áudio (15 escutas e 11 pronúncias), carregamento na plataforma e imagens (bandeiras e mapa na 2A e 2D; fotografias da equipa na 2B).

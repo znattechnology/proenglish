@@ -88,7 +88,7 @@
      "frase": "I'm [from] Huambo.",
      "opcoes": [
       {
-       "texto": "in",
+       "texto": "to",
        "certa": false
       },
       {
@@ -395,11 +395,11 @@
        "certa": false
       },
       {
-       "texto": "I have thirty-four.",
+       "texto": "I'm thirty-four years.",
        "certa": false
       }
      ],
-     "explicacao": "Para a idade usa-se \"be\": \"I'm 34\"."
+     "explicacao": "Para a idade usa-se \"be\": \"I'm 34\" ou \"I'm 34 years old\". \"I'm 34 years\", sem \"old\", está errado."
     },
     {
      "tipo": "ordenar",
@@ -763,11 +763,11 @@
        "certa": false
       },
       {
-       "texto": "Miss Thandi Mokoena",
+       "texto": "Sir Mokoena",
        "certa": false
       }
      ],
-     "explicacao": ""
+     "explicacao": "\"Ms\" (lê-se \"miz\") para mulheres; \"Mr\" (lê-se \"míster\") para homens."
     },
     {
      "tipo": "completar",
@@ -844,6 +844,11 @@
     {
      "tipo": "pronuncia",
      "frase": "Welcome to Angola! Is this your first time in Luanda?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Good morning, Ms Mokoena. Good morning, Mr Baptista.",
      "enunciado": "Ouça e repita em voz alta."
     },
     {

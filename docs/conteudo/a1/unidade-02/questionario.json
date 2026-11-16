@@ -162,12 +162,12 @@
     },
     {
      "id": "u2q7o2",
-     "text": "I have twenty-five.",
+     "text": "I'm twenty-five years.",
      "isCorrect": false
     }
    ],
    "correctOptionId": "u2q7o0",
-   "explanation": "A idade diz-se com \"be\".",
+   "explanation": "A idade diz-se com \"be\": \"I'm 25\" ou \"I'm 25 years old\".",
    "points": 10
   },
   {

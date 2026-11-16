@@ -76,12 +76,12 @@
     "primeira_fala": "Good morning! I'm Thandi Mokoena. I have a meeting here today.",
     "primeira_fala_simples": "Good morning! I'm Thandi. I have a meeting here.",
     "guiao": [
-     "Thank you! I'm from Johannesburg. And you? Where are you from?",
-     "Nice! Is it a big city?",
+     "Thank you! I'm from Johannesburg, in South Africa. And you? Where are you from?",
+     "Nice! How do you spell it?",
      "What languages do you speak?",
      "Great! Who is your colleague there?",
-     "Nice to meet you both. Is the meeting room near?",
-     "Thank you very much, {nome}. See you later!"
+     "Nice to meet you both. Is this your office?",
+     "Thank you very much, {nome}. Goodbye!"
     ],
     "frases": [
      {
