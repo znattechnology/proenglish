@@ -27,9 +27,9 @@
     "guiao": [
      "Interesting. Why? Can you give me an example?",
      "OK, here's another one: I think it's better to work from home every day. Do you agree?",
-     "I see your point. But what about the team? Tell me your reason.",
+     "I see. Why? Tell me your reason.",
      "Last one: I think email is better than the phone for everything. How do you feel about that?",
-     "And in your opinion, what's the biggest problem at work these days?",
+     "And in your opinion, what's the biggest problem at work — or at school — these days?",
      "Great talking to you, {nome}. You really defend your ideas well!"
     ],
     "frases": [
@@ -89,7 +89,7 @@
     "primeira_fala": "Good morning, {nome}. Thanks for coming. One item on the agenda: the new computer system. My proposal is simple: everyone starts using it next Monday, after a one-hour training. What's your view?",
     "primeira_fala_simples": "Good morning, {nome}. The new computer system: everyone starts next Monday. What do you think?",
     "guiao": [
-     "I see your point, but the old system is so slow. Why wait?",
+     "OK. And in your opinion, is one hour of training enough? Why?",
      "Can you give me an example? What can go wrong?",
      "Sorry to interrupt, but there's one more thing: our director wants the new system before the end of the month.",
      "OK. So what's your proposal? Give me the dates, and how many hours of training.",

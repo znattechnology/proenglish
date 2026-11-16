@@ -1,6 +1,6 @@
 # B1.1 · Unidade 3 — In the meeting (7 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 3
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 3
 
 ## Objectivos da unidade
 
@@ -39,11 +39,11 @@ No fim da unidade, o aluno consegue:
 
 ## Decisões pedagógicas desta unidade
 
-- ***I don't think…*:** o "acho que não é" do português leva a *I think it isn't*. A 3A ensina a forma natural, com o negativo em *think*. Nos exercícios, *I think it isn't* nunca aparece como opção errada, porque é gramatical; as opções erradas são *think not* e *not think*.
+- ***I don't think…*:** o "acho que não é" do português leva a *I think it isn't*, que é possível mas menos natural. A 3A ensina a forma habitual, com o negativo em *think*, e mostra a outra com ⚠ e não com ✘. Nos exercícios, *I think it isn't* nunca aparece como opção errada; as opções erradas são *think not* e *not think*.
 - ***I am agree*** é o erro mais frequente de quem fala português. A 3B trata-o com *agree* como verbo (*I agree, I don't agree, Do you agree?*).
 - **Discordar com cortesia:** *I'm not sure I agree* é a forma de discordar com um cliente ou com a chefia; *I totally disagree* e *That's wrong* aparecem como fortes demais numa reunião.
 - ***Too* não é *very*:** a 3D começa pela tradução de "muito" (*The hotel was very good*, não *too good*).
-- **Opções erradas que podiam estar certas:** foram retiradas *don't have too many engineers*, *take a decision* (britânico, correcto), *made an agreement* e *so much work*, porque são gramaticais.
+- **Opções erradas que podiam estar certas:** foram retiradas *don't have too many engineers*, *take a decision* (britânico, correcto), *made an agreement*, *so much work*, *very expensive*, *very much work*, *as I was speaking*, *directs* e *Can you repeat?*, porque são gramaticais ou aceitáveis. Pela mesma razão, nos ecrãs, *I think it isn't*, *In my opinion, I think* e *Can you repeat?* aparecem com ⚠ e não com ✘.
 - ***Argument*:** no dia-a-dia é sobretudo "discussão zangada", mas também pode querer dizer as razões a favor de uma ideia. A 3E diz as duas coisas e ensina *point* como a forma segura de dizer "argumento". *Attend* (≠ *assist*) entra como nota de vocabulário.
 - **Mediação (3G):** o Sr. Domingos fala em português e o Nuno passa a posição dele à reunião com *Mr Domingos says…* no presente (o discurso indirecto é da unidade 7), explicando o que um estrangeiro não conhece (o 11 de Novembro, "fazer ponte").
 - **Turnos longos:** 40 a 45 segundos nos vídeos e no laboratório; a reunião completa, com 1 a 2 minutos de fala, faz-se na conversa livre com o tutor.
@@ -55,6 +55,6 @@ Outubro de 2027. A rede da central solar do Namibe cai com as tempestades de are
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (15 escutas, 9 pronúncias, a 3F com quatro vozes e falas sobrepostas, a 3G com uma fala em português); imagens (o quadro com as três opções, os diapositivos, a agenda); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (15 escutas, 9 pronúncias, a 3F com quatro vozes e falas sobrepostas, a 3G com uma fala em português); imagens (o quadro com as três opções, os diapositivos, a agenda); carregamento na plataforma.
 
 A seguir vem a **unidade 4, "What if…?"**.

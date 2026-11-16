@@ -427,7 +427,7 @@
        "certa": false
       },
       {
-       "texto": "speaking",
+       "texto": "say",
        "certa": false
       }
      ],
@@ -480,7 +480,7 @@
        "certa": true
       },
       {
-       "texto": "Sorry, can you repeat?",
+       "texto": "Sorry, which day you said?",
        "certa": false
       },
       {
@@ -582,15 +582,15 @@
      "frase": "It's [too] expensive for this year.",
      "opcoes": [
       {
-       "texto": "very",
+       "texto": "enough",
        "certa": false
       },
       {
-       "texto": "enough",
+       "texto": "too much",
        "certa": false
       }
      ],
-     "explicacao": "too = um problema; very = só forte."
+     "explicacao": "too + adjectivo; too much só com nomes."
     },
     {
      "tipo": "completar",
@@ -812,7 +812,7 @@
        "certa": false
       },
       {
-       "texto": "directs",
+       "texto": "chair",
        "certa": false
       }
      ],
@@ -1209,11 +1209,11 @@
      "frase": "Fourteen antennas in one week is [too] much work for two people.",
      "opcoes": [
       {
-       "texto": "very",
+       "texto": "enough",
        "certa": false
       },
       {
-       "texto": "enough",
+       "texto": "many",
        "certa": false
       }
      ],

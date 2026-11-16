@@ -22,7 +22,7 @@ Objectivo da aula: No fim, o aluno consegue dar uma opinião com uma razão e um
   option C is important, because… For example,…) e pedir a opinião dos outros (What do you think?
   What's your view? How do you feel about…?).
 Objectivo da unidade a que serve: 1
-Gramática-alvo: I think / I don't think + afirmativa (não "I think it isn't"); In my opinion / In my
+Gramática-alvo: I don't think + afirmativa (mais natural do que "I think it isn't"); In my opinion / In my
   view / Personally / As far as I'm concerned; because / For example / For instance; perguntas de opinião
 Palavras-alvo: option, item, antenna, mast, fibre cable, satellite link, backup, offline, the best,
   cheap / the cheapest, long-term, depend on, opinion, view
@@ -66,16 +66,16 @@ In my opinion, … · In my view, … · Personally, … · As far as I'm concer
 **PROF:** To give an opinion, start with one of these. "I think" is the most common. "In my view" and "As far as I'm concerned" are a bit more formal — good for meetings. "Personally" shows it's your idea, not a fact.
 [PAUSA 4 s]
 
-[ECRÃ: ✘ In my opinion, I think the cable is better. · ✔ In my opinion, the cable is better. · ✔ I think the cable is better.]
+[ECRÃ: ⚠ In my opinion, I think the cable is better. (diz a mesma coisa duas vezes) · ✔ In my opinion, the cable is better. · ✔ I think the cable is better.]
 
 **PROF:** Choose one: "In my opinion" or "I think" — not both.
 [PAUSA 3 s]
 
 ***I don't think…***
 
-[ECRÃ: "Acho que não é a melhor solução." → ✘ I think it isn't the best answer. · ✔ I **don't think** it's the best answer.]
+[ECRÃ: "Acho que não é a melhor solução." → ⚠ I think it isn't the best answer. (possível, mas menos natural) · ✔ I **don't think** it's the best answer.]
 
-**PROF:** In English, the negative goes with "think": "I don't think it's the long-term answer." It sounds softer and more natural.
+**PROF:** In English, we usually put the negative with "think": "I don't think it's the long-term answer." It sounds softer and more natural.
 [PAUSA 5 s]
 
 **Razão e exemplo**
@@ -267,7 +267,7 @@ Verificação: Lab 3C; conversa guiada "What do you think?"; pergunta 5 do quest
 
 [ECRÃ: quarta-feira, 20 de Outubro, 11:00; videochamada; o Nuno e a Thandi num ecrã, em Luanda; o Sipho no outro, num armazém com caixas]
 
-**SIPHO:** OK, here's the plan. We have twelve antennas here in our warehouse. We send them by air on Monday the first, they arrive in Luanda on Wednesday the third, and then for the masts we need—
+**SIPHO:** OK, here's the plan. We can send you twelve antennas from our warehouse. We send them by air on Monday the first, they arrive in Luanda on Wednesday the third, and then for the masts we need—
 **NUNO:** Sorry to interrupt, Sipho, but did you say twelve antennas? We need fourteen.
 **SIPHO:** Fourteen? OK, I can check that. So, for the masts, our supplier in Cape Town needs—
 **THANDI:** Sorry, Sipho, can I just come in here? Hannah's team hasn't chosen the height of the masts yet. We can't order them today.
@@ -276,13 +276,13 @@ Verificação: Lab 3C; conversa guiada "What do you think?"; pergunta 5 do quest
 **SIPHO:** Exactly. And the satellite equipment comes from—
 [ECRÃ: a imagem do Sipho pára]
 **NUNO:** Sipho? Sorry, you froze. Could you repeat that?
-**SIPHO:** Sure. The satellite equipment comes from a different supplier, in Nairobi. It takes two weeks.
+**SIPHO:** Sure. The satellite equipment comes from a different supplier, in Nairobi. It takes two weeks, and—
 **THANDI:** Two weeks from today?
-**SIPHO:** No, two weeks from the order. Can I just finish? We can only order it after Morro Azul says yes.
-**THANDI:** Of course. Go ahead.
+**SIPHO:** Can I just finish? Two weeks from the order, and we can only order it after Morro Azul says yes.
+**THANDI:** Sorry. Go ahead.
 **SIPHO:** That's all, really.
 **NUNO:** OK. Going back to the antennas — can you send fourteen, not twelve?
-**SIPHO:** Let me check… Yes, we have sixteen. Fourteen for you, on the first.
+**SIPHO:** Let me check… Yes, we have sixteen in the warehouse. Fourteen for you, on the first.
 **NUNO:** Great. So, just to check: fourteen antennas, by air, on Monday the first, in Luanda on the third. Is that right?
 **SIPHO:** That's right.
 
@@ -319,9 +319,9 @@ Verificação: Lab 3C; conversa guiada "What do you think?"; pergunta 5 do quest
 **PROF:** To check, repeat the important information in your words. With numbers and dates, give two options: "Did you say twelve or fourteen?" At the end, check everything: "Just to check… Is that right?"
 [PAUSA 5 s]
 
-[ECRÃ: ✘ Can you repeat? · ✔ Could you repeat that? / Could you say that again?]
+[ECRÃ: ⚠ Can you repeat? (muito comum, mas incompleto) · ✔ Could you repeat that? / Could you say that again?]
 
-**PROF:** And "repeat" needs "that": "Could you repeat that?"
+**PROF:** And it's better to say "repeat that": "Could you repeat that?"
 [PAUSA 3 s]
 
 ### 4. Pronúncia (1 min)
@@ -391,11 +391,11 @@ Verificação: Lab 3D; perguntas 6, 7 e 8 do questionário
 **NUNO:** It's too expensive for this year. Hannah says their budget isn't big enough.
 **PAULO:** And it's too slow — three months. They need a solution this year.
 **NUNO:** OK. Slide one: the antennas. Are the old masts high enough?
-**PAULO:** No, they aren't. They're only eighteen metres. In a sandstorm the signal is too weak. We need thirty metres.
+**PAULO:** No, they aren't. They're only eighteen metres. In a sandstorm the signal is too weak. We need higher masts: thirty metres.
 **NUNO:** And do we have enough antennas?
 **PAULO:** Yes — Sipho has fourteen for us. That's enough. But we don't have enough engineers in November: only two.
-**NUNO:** Two engineers for fourteen antennas and four masts? That's too much work for two people.
-**PAULO:** I know. There are too many tasks for one week.
+**NUNO:** Two engineers for fourteen antennas and four masts? In one week? That's too much work for two people.
+**PAULO:** I know. There are too many tasks. We need two weeks.
 **NUNO:** It's such a big job! And slide two, the satellite?
 **PAULO:** It's quite cheap to install — about three thousand dollars. But nine hundred dollars a month is a bit expensive.
 **NUNO:** It isn't cheap, but it's extremely useful. With the backup, the plant keeps working in a sandstorm.
@@ -444,13 +444,13 @@ Verificação: Lab 3D; perguntas 6, 7 e 8 do questionário
 
 ***So* e *such***
 
-[ECRÃ: **so** + adjectivo: It's **so expensive**! · You've been working **so hard**.
+[ECRÃ: **so** + adjectivo (ou advérbio): It's **so expensive**! · You've been working **so hard**.
 **such a** + adjectivo + nome: It's **such a big job**! · It's **such an interesting project**.
 **such** + adjectivo + plural: They're **such nice people**.
 **so many** / **so much**: There are **so many** people! · There's **so much** work!
 ✘ It's a so big job. · ✔ It's such a big job.]
 
-**PROF:** "So" and "such" make a word stronger, often with emotion. "So" goes with an adjective alone; "such a" goes with an adjective and a noun.
+**PROF:** "So" and "such" make a word stronger, often with emotion. "So" goes with an adjective alone — or with a word like "hard" or "fast"; "such a" goes with an adjective and a noun.
 [PAUSA 5 s]
 
 ### 4. Pronúncia (1 min)
@@ -553,7 +553,7 @@ Verificação: Lab 3E; pergunta 9 do questionário
 **PROF:** These verbs and nouns go together. We "make" or "reach" a decision. We "reach an agreement". We "raise a point" — we bring a new subject into the meeting. We "set" a deadline, and then we "meet" it — we finish on time.
 [PAUSA 5 s]
 
-[ECRÃ: ✘ do a decision · ✔ make a decision · ✘ arrive at an agreement → ✔ reach an agreement]
+[ECRÃ: ✘ do a decision · ✔ make a decision · ✘ arrive to an agreement · ✔ reach an agreement]
 [PAUSA 3 s]
 
 ### 4. Pronúncia: acento enfático e contrastivo (2 min)
@@ -661,7 +661,7 @@ Verificação: Lab 3F
 
 ### 3. Segunda escuta: os pormenores (3 min)
 
-1. How much does option A cost? (about forty thousand dollars ✓ / about four thousand dollars / about two hundred thousand dollars)
+1. How much does option A cost? (about forty thousand dollars ✓ / about fourteen thousand dollars / about two hundred thousand dollars)
 2. Why does Femi say no to the fibre this year? (Their budget isn't big enough. ✓ / It's too slow. / He doesn't like fibre.)
 3. How many sandstorms have there been since August? (six ✓ / two / sixteen)
 4. How much is the satellite in a year? (about eleven thousand dollars ✓ / about nine hundred dollars / about three thousand dollars)
@@ -720,7 +720,7 @@ Verificação: Lab 3G; conversa livre "The project meeting"
 
 ### 1. Abertura (30 s)
 
-**PROF:** Hello! Today, Nuno is in a project meeting. Watch how he disagrees with the client, interrupts once, helps Mr Domingos with the Portuguese, and summarises the decisions.
+**PROF:** Hello! Today, Nuno is in a project meeting. Watch how he disagrees with the client, interrupts once, gives Mr Domingos's position in English, and summarises the decisions.
 
 ### 2. Situação (4 min 30 s)
 
@@ -728,25 +728,25 @@ Verificação: Lab 3G; conversa livre "The project meeting"
 
 **LERATO:** Good morning, everyone. One main item today: the installation dates. Hannah, can you start?
 **HANNAH:** Sure. In my view, we should do everything in one week: from Monday the eighth to Friday the twelfth of November. We need the network back as soon as possible.
-**NUNO:** I see your point, Hannah, but I'm not sure one week is enough. The antennas arrive in Luanda on the third, and the lorry needs two days to get to Namibe. And we only have two engineers. Fourteen antennas and four masts in one week is too much work for two people.
+**NUNO:** I see your point, Hannah, but I'm not sure one week is enough. The antennas arrive in Luanda on the third, and the lorry needs two days to get to Namibe, so there's no time for a problem with the delivery. And we only have two engineers. Fourteen antennas and four masts in one week is too much work for two people.
 **HANNAH:** But the network keeps going down, Nuno. We can't wait so long.
 **NUNO:** I understand. But if we go too fast, we make mistakes. For example, at Mussulo Energy, we installed everything in four days, and we had to go back twice.
 **HANNAH:** Hmm. That's a good point. Domingos, what do you think?
 **SR. DOMINGOS:** Desculpem, vou falar em português. A semana de 8 não dá. Dia 11 é feriado, é o Dia da Independência, e no dia 12 metade do pessoal faz ponte. Além disso, a grua só está livre a partir de dia 15. E preciso de dois dias para preparar a central antes de desligarmos a rede.
 **HANNAH:** Sorry — my Portuguese isn't good enough. Nuno, can you help?
 **NUNO:** Of course. Mr Domingos says the week of the eighth isn't possible. The eleventh is a public holiday — Independence Day — and on the twelfth, half of the staff take a long weekend. Also, the crane is only free from the fifteenth. And he needs two days to prepare the plant before we turn off the network.
-**HANNAH:** Ah. OK, then the eighth is too early.
+**HANNAH:** Ah. OK, then the eighth is too early, isn't it?
 **LERATO:** Right. So, let's move to item two, any other business—
 **NUNO:** Sorry to interrupt, Lerato, but we haven't agreed on the dates yet.
 **LERATO:** You're right, sorry! Going back to the dates. Nuno, what's your proposal?
-**NUNO:** Two weeks, from Monday the fifteenth to Friday the twenty-sixth. First the satellite, from the fifteenth to the seventeenth, so the plant has a backup. Then the masts and the antennas, from the eighteenth.
+**NUNO:** My proposal is two weeks, from Monday the fifteenth to Friday the twenty-sixth. First we're going to install the satellite, from the fifteenth to the seventeenth, so the plant has a backup. Then the masts and the antennas, from the eighteenth.
 **HANNAH:** Two weeks… I'm not sure. Can we do it in ten days?
 **NUNO:** Ten days is possible, but there's no time for problems. In my opinion, two weeks is safer.
 **HANNAH:** OK. I can accept that, because the satellite comes first. Domingos?
 **SR. DOMINGOS:** Dia 15? Está bem, combinado.
 **NUNO:** He says the fifteenth is fine.
 **LERATO:** Excellent. Nuno, can you summarise the decisions?
-**NUNO:** Sure. So, the installation is from Monday the fifteenth to Friday the twenty-sixth of November. The satellite comes first, then the masts and the antennas. Action points: Hannah books the crane from the fifteenth. Mr Domingos prepares the plant on the fifteenth and the sixteenth. I send the detailed schedule by Friday the twenty-ninth. And Lerato sends the minutes today. Is that right?
+**NUNO:** Sure. So, the installation is from Monday the fifteenth to Friday the twenty-sixth of November. The satellite comes first, then the masts and the antennas. Action points: Hannah books the crane from the eighteenth. Mr Domingos prepares the plant on the fifteenth and the sixteenth. I send the detailed schedule by Friday the twenty-ninth. And Lerato sends the minutes today. Is that right?
 **LERATO:** Perfect. Such a good meeting! Thank you, everyone.
 
 ### 3. Como se participa numa reunião (2 min 30 s)
@@ -758,7 +758,7 @@ Verificação: Lab 3G; conversa livre "The project meeting"
 | 1. Discordar com razões | I see your point, but… · too / enough | I'm not sure one week is enough… It's too much work for two people. |
 | 2. Dar um exemplo | For example, … | At Mussulo Energy, we installed everything in four days, and we had to go back twice. |
 | 3. Interromper uma vez | Sorry to interrupt, but… | Sorry to interrupt, Lerato, but we haven't agreed on the dates yet. |
-| 4. Propor | My proposal is… · In my opinion, … | Two weeks, from the fifteenth to the twenty-sixth. |
+| 4. Propor | My proposal is… · In my opinion, … | My proposal is two weeks, from the fifteenth to the twenty-sixth. |
 | 5. Resumir | So, … Action points: … Is that right? | So, the installation is from… Action points: … |
 
 **PROF:** Nuno disagrees with the client — but politely, with reasons and an example. He interrupts only once, for a good reason. And at the end, he summarises the decisions and the action points: who does what, and when.
@@ -766,7 +766,7 @@ Verificação: Lab 3G; conversa livre "The project meeting"
 
 **A mediação**
 
-**PROF:** Mr Domingos speaks only Portuguese. Nuno gives his position in English: the problem, the reasons, and what he needs. He starts with "Mr Domingos says…", in the present. He doesn't translate every word: "faz ponte" becomes "take a long weekend".
+**PROF:** Mr Domingos speaks only Portuguese. Nuno gives Mr Domingos's position in English: the problem, the reasons, and what he needs. He starts with "Mr Domingos says…", in the present. He doesn't translate every word: "faz ponte" becomes "take a long weekend".
 (PT: Para passar a posição de alguém, diga primeiro a conclusão — "a semana de 8 não dá" — e depois as razões, pela ordem. Explique as coisas que o estrangeiro não conhece: "o 11 é feriado" → "the eleventh is a public holiday — Independence Day".)
 [PAUSA 5 s]
 
