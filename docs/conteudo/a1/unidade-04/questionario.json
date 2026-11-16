@@ -1,0 +1,301 @@
+{
+ "title": "Unit 4 quiz — Family and friends",
+ "description": "Família, have/has, possessivos, 's e plurais.",
+ "questions": [
+  {
+   "id": "u4q1",
+   "question": "\"Parents\" quer dizer:",
+   "options": [
+    {
+     "id": "u4q1o0",
+     "text": "pai e mãe",
+     "isCorrect": true
+    },
+    {
+     "id": "u4q1o1",
+     "text": "parentes",
+     "isCorrect": false
+    },
+    {
+     "id": "u4q1o2",
+     "text": "irmãos",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u4q1o0",
+   "explanation": "Os parentes são \"relatives\".",
+   "points": 10
+  },
+  {
+   "id": "u4q2",
+   "question": "Complete: \"This is my sister. ___ name is Joana.\"",
+   "options": [
+    {
+     "id": "u4q2o0",
+     "text": "Her",
+     "isCorrect": true
+    },
+    {
+     "id": "u4q2o1",
+     "text": "His",
+     "isCorrect": false
+    },
+    {
+     "id": "u4q2o2",
+     "text": "She",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u4q2o0",
+   "explanation": "\"Her\" para uma mulher.",
+   "points": 10
+  },
+  {
+   "id": "u4q3",
+   "question": "Complete: \"My brother ___ two children.\"",
+   "options": [
+    {
+     "id": "u4q3o0",
+     "text": "has",
+     "isCorrect": true
+    },
+    {
+     "id": "u4q3o1",
+     "text": "have",
+     "isCorrect": false
+    },
+    {
+     "id": "u4q3o2",
+     "text": "is",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u4q3o0",
+   "explanation": "Com \"he/she\": \"has\".",
+   "points": 10
+  },
+  {
+   "id": "u4q4",
+   "question": "Escolha a resposta certa: \"Do you have a car?\"",
+   "options": [
+    {
+     "id": "u4q4o0",
+     "text": "No, I don't.",
+     "isCorrect": true
+    },
+    {
+     "id": "u4q4o1",
+     "text": "No, I not.",
+     "isCorrect": false
+    },
+    {
+     "id": "u4q4o2",
+     "text": "No, I not have.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u4q4o0",
+   "explanation": "A pergunta é com \"do\", e a resposta curta também: \"No, I don't.\"",
+   "points": 10
+  },
+  {
+   "id": "u4q5",
+   "question": "Como se diz \"Sou casado\"?",
+   "options": [
+    {
+     "id": "u4q5o0",
+     "text": "I'm married.",
+     "isCorrect": true
+    },
+    {
+     "id": "u4q5o1",
+     "text": "I have married.",
+     "isCorrect": false
+    },
+    {
+     "id": "u4q5o2",
+     "text": "I married.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u4q5o0",
+   "explanation": "Estado civil com \"be\".",
+   "points": 10
+  },
+  {
+   "id": "u4q6",
+   "question": "Como se diz \"a mala da Ana\"?",
+   "options": [
+    {
+     "id": "u4q6o0",
+     "text": "Ana's bag",
+     "isCorrect": true
+    },
+    {
+     "id": "u4q6o1",
+     "text": "the bag of Ana",
+     "isCorrect": false
+    },
+    {
+     "id": "u4q6o2",
+     "text": "bag Ana's",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u4q6o0",
+   "explanation": "Pessoa + 's + coisa.",
+   "points": 10
+  },
+  {
+   "id": "u4q7",
+   "question": "Complete: \"Sílvia and Carlos have two children. ___ children are Kiesse and Tomé.\"",
+   "options": [
+    {
+     "id": "u4q7o0",
+     "text": "Their",
+     "isCorrect": true
+    },
+    {
+     "id": "u4q7o1",
+     "text": "There",
+     "isCorrect": false
+    },
+    {
+     "id": "u4q7o2",
+     "text": "They",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u4q7o0",
+   "explanation": "\"Their\" = deles.",
+   "points": 10
+  },
+  {
+   "id": "u4q8",
+   "question": "Qual é o plural de \"person\"?",
+   "options": [
+    {
+     "id": "u4q8o0",
+     "text": "people",
+     "isCorrect": true
+    },
+    {
+     "id": "u4q8o1",
+     "text": "persons",
+     "isCorrect": false
+    },
+    {
+     "id": "u4q8o2",
+     "text": "peoples",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u4q8o0",
+   "explanation": "Irregular: person → people.",
+   "points": 10
+  },
+  {
+   "id": "u4q9",
+   "question": "Em que palavra o plural tem uma sílaba a mais?",
+   "options": [
+    {
+     "id": "u4q9o0",
+     "text": "watches",
+     "isCorrect": true
+    },
+    {
+     "id": "u4q9o1",
+     "text": "keys",
+     "isCorrect": false
+    },
+    {
+     "id": "u4q9o2",
+     "text": "books",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u4q9o0",
+   "explanation": "Depois de \"ch\": watch-es.",
+   "points": 10
+  },
+  {
+   "id": "u4q10",
+   "question": "Ouviu \"We have three children: two boys and a girl.\" Quantas filhas tem esta pessoa?",
+   "options": [
+    {
+     "id": "u4q10o0",
+     "text": "uma",
+     "isCorrect": true
+    },
+    {
+     "id": "u4q10o1",
+     "text": "duas",
+     "isCorrect": false
+    },
+    {
+     "id": "u4q10o2",
+     "text": "três",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u4q10o0",
+   "explanation": "Two boys and a girl: dois rapazes e uma rapariga.",
+   "points": 10
+  },
+  {
+   "id": "u4q11",
+   "question": "Reciclagem (unidade 2). Como se diz \"O meu filho tem dez anos\"?",
+   "options": [
+    {
+     "id": "u4q11o0",
+     "text": "My son is ten.",
+     "isCorrect": true
+    },
+    {
+     "id": "u4q11o1",
+     "text": "My son has ten years.",
+     "isCorrect": false
+    },
+    {
+     "id": "u4q11o2",
+     "text": "My son has ten.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u4q11o0",
+   "explanation": "Idade com \"be\".",
+   "points": 10
+  },
+  {
+   "id": "u4q12",
+   "question": "Reciclagem (unidade 3). Complete: \"My wife is ___ lawyer.\"",
+   "options": [
+    {
+     "id": "u4q12o0",
+     "text": "a",
+     "isCorrect": true
+    },
+    {
+     "id": "u4q12o1",
+     "text": "an",
+     "isCorrect": false
+    },
+    {
+     "id": "u4q12o2",
+     "text": "—",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u4q12o0",
+   "explanation": "Profissão com \"a/an\".",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

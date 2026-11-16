@@ -1,0 +1,129 @@
+{
+ "unidade": "A1.1 · Unit 4 — Family and friends",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a1-u4-guiada",
+   "nome": "Unit 4 · Tell me about your family",
+   "tipo": "guiada",
+   "depois_da_aula": "4C",
+   "descricao": "O tutor pergunta ao aluno pela família (irmãos, filhos, nomes, idades) e conta-lhe um pouco da sua.",
+   "papel_tutor": "Um professor simpático.",
+   "nivel": "A1",
+   "duracao_min": 3,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I have…",
+    "This is my… His / Her name is…",
+    "Do you have…?"
+   ],
+   "extras": {
+    "brief": "Guided practice for a beginner (A1, unit 4). You are a friendly teacher. Ask about the student's family: brothers and sisters, children, names and ages. Respect privacy: if the student does not want to answer, accept \"I prefer not to say\" and ask about a friend instead. Tell a little about your own family: you are married, your wife is a nurse, you have a son, David (ten). Use only units 1-4 language: be, have/has, Do you have…?, my/his/her/their, 's, plurals. Never use \"does\", \"doesn't\" or verbs with -s except \"has\". If the student says \"I have 30 years\", model \"I'm 30\" kindly.",
+    "primeira_fala": "Hello, {nome}! Today we talk about family. Do you have brothers and sisters?",
+    "primeira_fala_simples": "Hello! Do you have brothers or sisters?",
+    "guiao": [
+     "Nice! What are their names?",
+     "How old are they?",
+     "Do you have children?",
+     "Thank you. Now ask me a question about my family.",
+     "I have a son. His name is David. He's ten. Very good, {nome}! Goodbye!"
+    ],
+    "frases": [
+     {
+      "en": "I have two sisters.",
+      "pt": "Tenho duas irmãs."
+     },
+     {
+      "en": "Her name is Joana.",
+      "pt": "Chama-se Joana."
+     },
+     {
+      "en": "Do you have children?",
+      "pt": "Tem filhos?"
+     }
+    ],
+    "palavras": [
+     "have",
+     "has",
+     "sister",
+     "brother",
+     "children",
+     "name",
+     "old",
+     "family"
+    ],
+    "minutos_sugeridos": 3
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a1-u4-livre",
+   "nome": "Unit 4 · Family photos",
+   "tipo": "livre",
+   "depois_da_aula": "4F",
+   "descricao": "Intervalo do almoço: o tutor é uma colega que mostra fotografias da família (descreve-as) e pergunta pela família do aluno.",
+   "papel_tutor": "Joana, colega simpática, com fotografias da família no telemóvel.",
+   "nivel": "A1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "She's lovely! How old is she?",
+    "I have…",
+    "What are their names?"
+   ],
+   "extras": {
+    "brief": "Role-play for a beginner (A1, unit 4). It is the lunch break. You are Joana, a friendly colleague. You \"show\" photos on your phone and describe them in words: your husband Pedro (a mechanic), your daughter Rita (four) and your mother (sixty-five, retired). React warmly when the student reacts. Ask about the student's family (brothers and sisters, children, names, ages, jobs). Respect privacy: accept \"I prefer not to say\". Encourage the student to react to your photos (\"Lovely!\") and to ask you at least two questions (How old…? What's his/her name?). Use only units 1-4 language; never \"does\"/\"doesn't\" or verbs with -s except \"has\". One question at a time.",
+    "primeira_fala": "Hi! Look, this is a photo of my family. This is my daughter, Rita.",
+    "primeira_fala_simples": "Hi! Look, this is my daughter, Rita.",
+    "guiao": [
+     "She's four. And this is my husband, Pedro. He's a mechanic.",
+     "And you? Do you have children?",
+     "Do you have brothers and sisters? What are their names?",
+     "Nice! How old are they?",
+     "Do you have a photo of your family? Tell me about one person.",
+     "Lovely! Thank you, {nome}. See you after lunch!"
+    ],
+    "frases": [
+     {
+      "en": "Oh, she's lovely! How old is she?",
+      "pt": "Oh, é linda! Que idade tem?"
+     },
+     {
+      "en": "I have two brothers.",
+      "pt": "Tenho dois irmãos."
+     },
+     {
+      "en": "What's his name?",
+      "pt": "Como se chama ele?"
+     },
+     {
+      "en": "This is my mother. She's a teacher.",
+      "pt": "Esta é a minha mãe. É professora."
+     }
+    ],
+    "palavras": [
+     "lovely",
+     "old",
+     "have",
+     "has",
+     "children",
+     "brother",
+     "sister",
+     "name",
+     "mother",
+     "father"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": [
+    "Reage à fotografia da colega com uma frase simpática (por exemplo, \"She's lovely!\").",
+    "Responde às perguntas sobre a família com uma frase completa ou uma resposta curta adequada (ou \"I prefer not to say\").",
+    "Faz pelo menos duas perguntas à colega (por exemplo, \"How old is she?\" e \"What's his name?\").",
+    "Usa a língua da unidade pelo menos duas vezes (have/has, his/her/their, 's, plurais).",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1040 @@
+{
+ "unidade": "A1.1 · Unit 4 — Family and friends",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "4A",
+   "titulo": "My family",
+   "aula": "4A",
+   "objectivo": "Apresentar a família: quem são, o nome, a idade e a profissão.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "mother",
+       "b": "mãe"
+      },
+      {
+       "a": "father",
+       "b": "pai"
+      },
+      {
+       "a": "sister",
+       "b": "irmã"
+      },
+      {
+       "a": "brother",
+       "b": "irmão"
+      },
+      {
+       "a": "daughter",
+       "b": "filha"
+      },
+      {
+       "a": "son",
+       "b": "filho"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Parents\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "pai e mãe",
+       "certa": true
+      },
+      {
+       "texto": "parentes",
+       "certa": false
+      },
+      {
+       "texto": "primos",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Parents\" são só o pai e a mãe. Os parentes são \"relatives\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[These are] my parents.",
+     "opcoes": [
+      {
+       "texto": "This is",
+       "certa": false
+      },
+      {
+       "texto": "They is",
+       "certa": false
+      }
+     ],
+     "explicacao": "Para duas ou mais pessoas: \"These are…\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This is my sister. [Her] name is Joana.",
+     "opcoes": [
+      {
+       "texto": "His",
+       "certa": false
+      },
+      {
+       "texto": "She",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Her\" para uma mulher; \"his\" para um homem."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This is my brother. [His] name is Nelson.",
+     "opcoes": [
+      {
+       "texto": "Her",
+       "certa": false
+      },
+      {
+       "texto": "He",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is my sister. Her name is Joana. She's twenty-six. She's a nurse.",
+     "enunciado": "Qual é a profissão da Joana?",
+     "opcoes": [
+      {
+       "texto": "nurse",
+       "certa": true
+      },
+      {
+       "texto": "teacher",
+       "certa": false
+      },
+      {
+       "texto": "student",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Este é o meu pai.",
+     "resposta": "This is my father.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "mother, father, brother",
+     "enunciado": "Ouça e repita: o \"th\" é suave, com a língua entre os dentes."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about one person in your family.",
+     "frase": "This is my",
+     "resposta": "This is my brother. His name is Nelson. He's seventeen. He's a student.",
+     "contexto": "Quem é, o nome, a idade e a profissão."
+    }
+   ]
+  },
+  {
+   "codigo": "4B",
+   "titulo": "Have and has",
+   "aula": "4B",
+   "objectivo": "Dizer o que tem e não tem, o que outra pessoa tem, e perguntar com Do you have…?",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [have] two children.",
+     "opcoes": [
+      {
+       "texto": "has",
+       "certa": false
+      },
+      {
+       "texto": "am",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"I have\"; \"he/she has\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My sister [has] a baby.",
+     "opcoes": [
+      {
+       "texto": "have",
+       "certa": false
+      },
+      {
+       "texto": "is",
+       "certa": false
+      }
+     ],
+     "explicacao": "Com \"he\" e \"she\": \"has\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [don't] have a car.",
+     "opcoes": [
+      {
+       "texto": "not",
+       "certa": false
+      },
+      {
+       "texto": "am not",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Do you have brothers and sisters? — Yes, ...",
+     "opcoes": [
+      {
+       "texto": "I do.",
+       "certa": true
+      },
+      {
+       "texto": "I have.",
+       "certa": false
+      },
+      {
+       "texto": "I am.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Resposta curta: \"Yes, I do.\""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I'm married.",
+       "certa": true
+      },
+      {
+       "texto": "I have married.",
+       "certa": false
+      },
+      {
+       "texto": "I'm marry.",
+       "certa": false
+      }
+     ],
+     "explicacao": "O estado civil diz-se com \"be\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I'm thirty.",
+       "certa": true
+      },
+      {
+       "texto": "I have thirty years.",
+       "certa": false
+      },
+      {
+       "texto": "I have thirty.",
+       "certa": false
+      }
+     ],
+     "explicacao": "A idade diz-se com \"be\" (unidade 2)."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Tem filhos?",
+     "resposta": "Do you have children?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Yes, I do. I have two children, a girl and a boy.",
+     "enunciado": "Quantos filhos tem a Sílvia?",
+     "opcoes": [
+      {
+       "texto": "2",
+       "certa": true
+      },
+      {
+       "texto": "3",
+       "certa": false
+      },
+      {
+       "texto": "1",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "She has a baby. I don't have a car.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you have brothers and sisters?",
+     "frase": "I have",
+     "resposta": "Yes, I do. I have two sisters and a brother.",
+     "contexto": "Responda com a verdade, ou diga \"I prefer not to say\"."
+    }
+   ]
+  },
+  {
+   "codigo": "4C",
+   "titulo": "Whose is it?",
+   "aula": "4C",
+   "objectivo": "Dizer de quem é uma coisa com 's e os possessivos, perguntar com Whose…? e usar plurais.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se diz \"o telemóvel do Paulo\"?",
+     "opcoes": [
+      {
+       "texto": "Paulo's phone",
+       "certa": true
+      },
+      {
+       "texto": "the phone of Paulo",
+       "certa": false
+      },
+      {
+       "texto": "phone's Paulo",
+       "certa": false
+      }
+     ],
+     "explicacao": "Primeiro a pessoa, depois 's, depois a coisa."
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada pronome ao possessivo.",
+     "pares": [
+      {
+       "a": "I",
+       "b": "my"
+      },
+      {
+       "a": "he",
+       "b": "his"
+      },
+      {
+       "a": "she",
+       "b": "her"
+      },
+      {
+       "a": "we",
+       "b": "our"
+      },
+      {
+       "a": "they",
+       "b": "their"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Sílvia and Carlos have two children. [Their] names are Kiesse and Tomé.",
+     "opcoes": [
+      {
+       "texto": "There",
+       "certa": false
+      },
+      {
+       "texto": "They",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Whose] keys are these?",
+     "opcoes": [
+      {
+       "texto": "Who",
+       "certa": false
+      },
+      {
+       "texto": "Who's",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é o plural de \"child\"?",
+     "opcoes": [
+      {
+       "texto": "children",
+       "certa": true
+      },
+      {
+       "texto": "childs",
+       "certa": false
+      },
+      {
+       "texto": "childrens",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "three people",
+       "certa": true
+      },
+      {
+       "texto": "three peoples",
+       "certa": false
+      },
+      {
+       "texto": "three persons people",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é o plural de \"city\"?",
+     "opcoes": [
+      {
+       "texto": "cities",
+       "certa": true
+      },
+      {
+       "texto": "citys",
+       "certa": false
+      },
+      {
+       "texto": "cityes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Whose glasses are these? They're Sílvia's.",
+     "enunciado": "De quem são os óculos?",
+     "opcoes": [
+      {
+       "texto": "da Sílvia",
+       "certa": true
+      },
+      {
+       "texto": "da Ana",
+       "certa": false
+      },
+      {
+       "texto": "do Paulo",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Ana's bag. Mateus's laptop.",
+     "enunciado": "Ouça e repita: depois de \"s\", o 's tem mais uma sílaba (Ma-teu-siz)."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Whose phone is this?",
+     "frase": "It's",
+     "resposta": "It's Mr Baptista's phone.",
+     "contexto": "Diga de quem é (pode inventar)."
+    }
+   ]
+  },
+  {
+   "codigo": "4D",
+   "titulo": "People and things",
+   "aula": "4D",
+   "objectivo": "Nomear objectos pessoais e palavras de pessoas, e pronunciar o -s do plural.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada objecto à tradução.",
+     "pares": [
+      {
+       "a": "wallet",
+       "b": "carteira"
+      },
+      {
+       "a": "keys",
+       "b": "chaves"
+      },
+      {
+       "a": "glasses",
+       "b": "óculos"
+      },
+      {
+       "a": "watch",
+       "b": "relógio"
+      },
+      {
+       "a": "umbrella",
+       "b": "guarda-chuva"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Que plural tem uma sílaba a mais?",
+     "opcoes": [
+      {
+       "texto": "glasses",
+       "certa": true
+      },
+      {
+       "texto": "phones",
+       "certa": false
+      },
+      {
+       "texto": "books",
+       "certa": false
+      }
+     ],
+     "explicacao": "Depois de \"s\", \"x\", \"ch\" e \"sh\", o plural soa /ɪz/: glass-es."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Best friend\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "melhor amigo",
+       "certa": true
+      },
+      {
+       "texto": "bom amigo",
+       "certa": false
+      },
+      {
+       "texto": "amigo antigo",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Tem muitos tios e primos. O que diz?",
+     "opcoes": [
+      {
+       "texto": "I have a big family.",
+       "certa": true
+      },
+      {
+       "texto": "I have a large parents.",
+       "certa": false
+      },
+      {
+       "texto": "I'm a big family.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Watches.",
+     "enunciado": "Quantas sílabas ouve?",
+     "opcoes": [
+      {
+       "texto": "2",
+       "certa": true
+      },
+      {
+       "texto": "1",
+       "certa": false
+      },
+      {
+       "texto": "3",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "In my bag, I have my phone, my keys and my ID card.",
+     "enunciado": "O que tem esta pessoa na mala?",
+     "opcoes": [
+      {
+       "texto": "phone, keys, ID card",
+       "certa": true
+      },
+      {
+       "texto": "phone, wallet, glasses",
+       "certa": false
+      },
+      {
+       "texto": "keys, laptop, watch",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "books, phones, glasses",
+     "enunciado": "Ouça e repita os três sons do plural: /s/, /z/, /ɪz/."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "watches, buses, offices",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you have in your bag?",
+     "frase": "I have",
+     "resposta": "I have my phone, my keys and my wallet.",
+     "contexto": "Diga três coisas."
+    }
+   ]
+  },
+  {
+   "codigo": "4E",
+   "titulo": "Real English: My family",
+   "aula": "4E",
+   "objectivo": "Identificar o tamanho da família, nomes, idades e profissões em descrições a velocidade quase natural.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I have a big family! I have four brothers and two sisters.",
+     "enunciado": "Quantos irmãos (rapazes) tem a Fátima?",
+     "opcoes": [
+      {
+       "texto": "4",
+       "certa": true
+      },
+      {
+       "texto": "2",
+       "certa": false
+      },
+      {
+       "texto": "6",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My mother has a small shop. And I have eleven cousins!",
+     "enunciado": "O que tem a mãe da Fátima?",
+     "opcoes": [
+      {
+       "texto": "a small shop",
+       "certa": true
+      },
+      {
+       "texto": "a big house",
+       "certa": false
+      },
+      {
+       "texto": "a car",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My wife's name is Ngozi. She's a doctor.",
+     "enunciado": "Qual é a profissão da mulher do Tunde?",
+     "opcoes": [
+      {
+       "texto": "doctor",
+       "certa": true
+      },
+      {
+       "texto": "nurse",
+       "certa": false
+      },
+      {
+       "texto": "teacher",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "We have three children: two boys and a girl.",
+     "enunciado": "Quantos filhos tem o Tunde?",
+     "opcoes": [
+      {
+       "texto": "3",
+       "certa": true
+      },
+      {
+       "texto": "2",
+       "certa": false
+      },
+      {
+       "texto": "1",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I don't have brothers or sisters. But I have a dog! His name is Max.",
+     "enunciado": "Como se chama o cão da Sarah?",
+     "opcoes": [
+      {
+       "texto": "Max",
+       "certa": true
+      },
+      {
+       "texto": "Mark",
+       "certa": false
+      },
+      {
+       "texto": "Matt",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It's my mother and me\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Somos eu e a minha mãe.",
+       "certa": true
+      },
+      {
+       "texto": "É a minha mãe.",
+       "certa": false
+      },
+      {
+       "texto": "A minha mãe sou eu.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I have a big family. We have three children.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is your family big or small? Tell me.",
+     "frase": "I have",
+     "resposta": "I have a big family. I have three brothers and a sister. My mother is a teacher.",
+     "contexto": "Fale da sua família."
+    }
+   ]
+  },
+  {
+   "codigo": "4F",
+   "titulo": "Lunch break",
+   "aula": "4F",
+   "objectivo": "Manter uma conversa curta sobre a família num intervalo de trabalho.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Um colega mostra a fotografia da filha. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Oh, she's lovely! How old is she?",
+       "certa": true
+      },
+      {
+       "texto": "Oh, she lovely! How old she has?",
+       "certa": false
+      },
+      {
+       "texto": "Oh, is lovely! How years she has?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She's six months [old].",
+     "opcoes": [
+      {
+       "texto": "years",
+       "certa": false
+      },
+      {
+       "texto": "age",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "These are my children. [Their] names are Kiesse and Tomé.",
+     "opcoes": [
+      {
+       "texto": "His",
+       "certa": false
+      },
+      {
+       "texto": "Her",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Como se chamam?",
+     "resposta": "What are their names?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Que idade têm?",
+     "resposta": "How old are they?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Look! This is my daughter, Ana Clara. She's six months old.",
+     "enunciado": "Que idade tem a Ana Clara?",
+     "opcoes": [
+      {
+       "texto": "6 meses",
+       "certa": true
+      },
+      {
+       "texto": "6 anos",
+       "certa": false
+      },
+      {
+       "texto": "1 ano",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Yes, this is Luísa. She's a lawyer.",
+     "enunciado": "Qual é a profissão da Luísa?",
+     "opcoes": [
+      {
+       "texto": "lawyer",
+       "certa": true
+      },
+      {
+       "texto": "nurse",
+       "certa": false
+      },
+      {
+       "texto": "accountant",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Oh, she's lovely! Really? How old is she?",
+     "enunciado": "Ouça e repita com interesse na voz."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Look, this is my son! His name is David.",
+     "frase": "How old",
+     "resposta": "Oh, he's lovely! How old is he?",
+     "contexto": "Reaja à fotografia e faça uma pergunta."
+    }
+   ]
+  },
+  {
+   "codigo": "4R",
+   "titulo": "Unit 4 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 4 e reciclar as unidades 1 a 3.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My brother [has] a car. I [don't] have a car.",
+     "opcoes": [
+      {
+       "texto": "have",
+       "certa": false
+      },
+      {
+       "texto": "not",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Do you have children? — No, ...",
+     "opcoes": [
+      {
+       "texto": "I don't.",
+       "certa": true
+      },
+      {
+       "texto": "I haven't children.",
+       "certa": false
+      },
+      {
+       "texto": "I not.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This is [Mr Baptista's] office.",
+     "opcoes": [
+      {
+       "texto": "Mr Baptista",
+       "certa": false
+      },
+      {
+       "texto": "of Mr Baptista",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é o plural de \"woman\"?",
+     "opcoes": [
+      {
+       "texto": "women",
+       "certa": true
+      },
+      {
+       "texto": "womans",
+       "certa": false
+      },
+      {
+       "texto": "womens",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My parents are sixty and sixty-two.",
+     "enunciado": "Que idades têm os pais?",
+     "opcoes": [
+      {
+       "texto": "60 e 62",
+       "certa": true
+      },
+      {
+       "texto": "16 e 12",
+       "certa": false
+      },
+      {
+       "texto": "66 e 62",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "My sister is a nurse. She has a baby.",
+       "certa": true
+      },
+      {
+       "texto": "My sister is nurse. She have a baby.",
+       "certa": false
+      },
+      {
+       "texto": "My sister has nurse. She is a baby.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Onde trabalha?",
+     "resposta": "Where do you work?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We work in the same office. It's [our] office.",
+     "opcoes": [
+      {
+       "texto": "us",
+       "certa": false
+      },
+      {
+       "texto": "we",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "These are my parents. Their names are Alberto and Graça.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hello! Tell me about you and your family.",
+     "frase": "I'm",
+     "resposta": "I'm Ana. I'm thirty. I'm married and I have two children.",
+     "contexto": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Whose bag is this? It's my bag. Thank you!",
+     "enunciado": "Ouça e repita em voz alta."
+    }
+   ]
+  }
+ ]
+}

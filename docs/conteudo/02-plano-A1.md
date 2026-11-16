@@ -191,26 +191,26 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 ### Unidade 4 — Family and friends
 
 **Objectivos da unidade.** No fim, o aluno consegue:
-1. apresentar a família e dizer nomes e idades;
-2. falar do que tem e do que não tem (*have/has*);
-3. dizer de quem é uma coisa (*Paulo's car, my bag*);
-4. fazer conversa simples sobre a família num intervalo de trabalho.
+1. apresentar a sua família, dizendo quem são, o nome, a idade e a profissão de cada um (*This is my sister. Her name is Joana. She's 26. She's a nurse.*);
+2. dizer o que tem e não tem com *have/has* (*I have two children. My brother has a car. I don't have a car.*) e perguntar e responder (*Do you have children? — No, I don't.*);
+3. dizer de quem é uma coisa com o *'s* e os possessivos (*It's Paulo's phone. Their names are…*), perguntar com *Whose…?* e usar plurais regulares e irregulares (*two children, three people*);
+4. manter uma conversa curta sobre a família num intervalo de trabalho: reagir a uma fotografia, responder e fazer pelo menos duas perguntas.
 
 | Aula | Tipo | Título | Objectivo da aula |
 |---|---|---|---|
-| 4A | Língua | My family | Apresentar os membros da família. |
-| 4B | Língua | Have and has | Falar do que se tem. |
-| 4C | Língua | Whose is it? | Usar o *'s* possessivo, os possessivos e os plurais. |
-| 4D | Vocabulário e pronúncia | People and things | Família, estado civil e objectos pessoais; o -s do plural. |
-| 4E | Real English | My family | Entender 3 pessoas a descrever a família. |
-| 4F | Work & Life | Lunch break | Falar da família com colegas ao almoço. |
+| 4A | Língua | My family | Apresentar os membros da família: quem são, o nome, a idade e a profissão (*his/her name*). |
+| 4B | Língua | Have and has | Dizer o que tem e não tem, o que outra pessoa tem (*has*) e perguntar com *Do you have…?*; estado civil com *be*. |
+| 4C | Língua | Whose is it? | Dizer de quem é uma coisa com *'s* e os possessivos, perguntar *Whose…?* e usar plurais. |
+| 4D | Vocabulário e pronúncia | People and things | Nomear objectos pessoais e palavras de pessoas; o *-s* do plural em /s/, /z/ e /ɪz/. |
+| 4E | Real English | My family | Identificar, em três descrições a velocidade quase natural, o tamanho da família, nomes, idades e profissões. |
+| 4F | Work & Life | Lunch break | Manter uma conversa sobre a família no almoço: reagir a fotografias e fazer perguntas. |
 
-- **Gramática:** *have/has*; *'s*; adjectivos possessivos; plurais regulares e irregulares comuns (children, people).
-- **Vocabulário (~45):** família, estado civil, objectos pessoais.
-- **Pronúncia:** o -s do plural (/s/, /z/, /ɪz/); /ð/ em *mother, father, brother*.
-- **Laboratório:** árvore genealógica; *have* ou *has*; escuta de uma família; pronúncia de plurais; resposta falada "Tell me about your family".
-- **Conversa guiada:** o tutor pergunta pela família e o aluno descreve-a.
-- **Conversa livre:** "Family photos" — mostrar e comentar fotografias da família com um colega.
+- **Gramática:** *have/has* (+; − e ? só com I/you/we/they); *'s*; *my, your, his, her, our, their*; *Whose…?*; plurais (-s, -es, -ies, irregulares); *This is / These are*; estado civil com *be*. Fica para a unidade 5: *Does she have…?* e *She doesn't have…*.
+- **Vocabulário (~60):** família (incluindo *grandparents, uncle, aunt, cousin, relatives*), estado civil, objectos pessoais, *friend, best friend, partner*.
+- **Pronúncia:** /ð/ em *mother, father, brother*; /ʌ/ em *son, cousin*; o -s do plural (/s/, /z/, /ɪz/); *has* com "h" aspirado.
+- **Laboratório:** família; *have/has*; *his/her/their*; *'s*; plurais irregulares; escuta de descrições de família; resposta falada "Tell me about your family".
+- **Conversa guiada:** o tutor pergunta pela família do aluno e conta um pouco da sua.
+- **Conversa livre:** "Family photos" — no almoço, uma colega mostra fotografias; o aluno reage, responde e pergunta.
 
 ### Unidade 5 — A day in Luanda (7 aulas)
 
@@ -541,5 +541,5 @@ Verificação: Lab 6A (exercícios 1–8) e pergunta 3 do questionário da unida
 1. Revisão deste plano pelos professores (objectivos, ordem, contexto angolano).
 2. Decidir a regra do nível básico (recomendado: só o A2 concluído ou o teste).
 3. Fechar o inventário de vocabulário A1 a partir da NGSL, aferido com Oxford 3000 A1 e Cambridge A2 Key.
-4. ~~Escrever as unidades 1 a 3~~ — feito: [unidade 1](a1/unidade-01/README.md), [unidade 2](a1/unidade-02/README.md), [unidade 3](a1/unidade-03/README.md). Testar com o professor de IA depois da revisão.
+4. ~~Escrever as unidades 1 a 4~~ — feito: [unidade 1](a1/unidade-01/README.md), [unidade 2](a1/unidade-02/README.md), [unidade 3](a1/unidade-03/README.md), [unidade 4](a1/unidade-04/README.md). Testar com o professor de IA depois da revisão.
 5. Escolher o serviço de voz para as aulas "Real English" (vozes variadas).
