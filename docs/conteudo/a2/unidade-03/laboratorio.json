@@ -68,7 +68,7 @@
        "certa": true
       },
       {
-       "texto": "I'm meeting the dentist on Monday at eight.",
+       "texto": "I'm seeing the dentist on Monday at eight.",
        "certa": false
       },
       {
@@ -713,7 +713,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "Mateus isn't available on Wednesday, so he's going to cancel.",
+     "frase": "On Wednesday there's a workshop. Mateus isn't available, so he's going to cancel his place.",
      "enunciado": "What is Mateus going to do about the workshop?",
      "opcoes": [
       {
@@ -1067,7 +1067,7 @@
      "tipo": "responder",
      "enunciado": "Call your client to move tomorrow's meeting. Give a reason and two alternatives.",
      "frase": "I'm calling about",
-     "resposta": "Good morning, it's Ana from Kalandula Tech. I'm calling about our meeting tomorrow. I'm afraid we need to move it — our manager is sick. Are you available on Thursday? Or how about Friday morning?",
+     "resposta": "Good morning, it's Marta from Kalandula Tech. I'm calling about our meeting tomorrow. I'm afraid we need to move it — our manager is sick. Are you available on Thursday? Or how about Friday morning?",
      "contexto": "Os cinco passos."
     },
     {
@@ -1256,7 +1256,7 @@
     {
      "tipo": "escuta",
      "frase": "Thanks for calling. Monday afternoon is fine.",
-     "enunciado": "When is Rita free?",
+     "enunciado": "When is the client free?",
      "opcoes": [
       {
        "texto": "Monday afternoon",

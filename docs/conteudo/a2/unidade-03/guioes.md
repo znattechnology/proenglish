@@ -44,8 +44,8 @@ Verificação: Lab 3A; perguntas 1 e 2 do questionário da unidade 3
 **NUNO:** Are we going in your car?
 **MATEUS:** Yes, I'm driving. We're leaving the office at nine fifteen.
 **NUNO:** OK. And on Wednesday the new equipment is arriving from Johannesburg, right?
-**MATEUS:** That's right. Thandi is waiting for the delivery at the airport. Are you doing anything on Saturday?
-**NUNO:** Nothing special. I'm going to clean my flat one day… but not on Saturday!
+**MATEUS:** That's right. Thandi is waiting for the delivery at the airport. Are you doing anything on Sunday?
+**NUNO:** Nothing special. I'm going to clean my flat one day… but not on Sunday!
 
 ### 3. Língua (4 min)
 
@@ -216,9 +216,9 @@ Verificação: Lab 3B; perguntas 3 e 4 do questionário
 [PAUSA 6 s]
 [ECRÃ: I'll send it today. I won't forget.]
 
-**PROF (reciclagem — A2, 2B):** Who carried the boxes?
+**PROF (reciclagem — A2, 2B):** Who called Nuno about the boxes?
 [PAUSA 4 s]
-[ECRÃ: Paulo and Nuno carried them.]
+[ECRÃ: Ana called him.]
 
 ### 6. Fecho (30 s)
 
@@ -340,12 +340,12 @@ Objectivo da aula: No fim, o aluno consegue usar as palavras da agenda e das reu
   available, move, postpone, cancel, confirm, remind), dizer I'll / we'll / won't com clareza, e evitar
   os falsos amigos agenda e assist.
 Objectivo da unidade a que serve: 4
-Gramática-alvo: move / postpone + to (move the meeting to Monday); cancel; confirm; remind someone
-  about…; available (= free)
+Gramática-alvo: move / postpone + to (move the meeting to Monday); cancel; confirm; remind; available
+  (= free)
 Palavras-alvo: diary, appointment, available, busy, move, postpone, cancel, confirm, remind,
-  reminder, attend, agenda (de uma reunião), invitation, event, launch, workshop
+  reminder, attend, agenda (de uma reunião), launch, workshop
 Reciclagem: in / on / at (A1, 5); will (3B)
-Pronúncia: o acento em pos-TPONE, con-FIRM, CAN-cel, a-VAIL-able, ap-POINT-ment
+Pronúncia: o acento em post-PONE, con-FIRM, CAN-cel, a-VAIL-able, ap-POINT-ment
 Falsos amigos: agenda (≠ agenda pessoal); assist (≠ assistir)
 Contexto: a agenda da semana do Mateus, com mudanças
 Duração: 10 min
@@ -362,7 +362,7 @@ Verificação: Lab 3D; pergunta 7 do questionário
 
 **PROF:** Look at Mateus's diary. Next Monday he has an appointment with the dentist at eight.
 **PROF:** The meeting with Rita is on Thursday at ten. But the equipment is late, so they're going to move the meeting to Monday.
-**PROF:** On Wednesday there's a workshop. Mateus isn't available, so he's going to cancel.
+**PROF:** On Wednesday there's a workshop. Mateus isn't available, so he's going to cancel his place.
 **PROF:** On Friday there's a product launch at a hotel on the Marginal. Mateus is going to attend.
 **PROF:** And Ana sends a reminder: "Please confirm your place at the launch."
 [PAUSA 3 s]
@@ -508,7 +508,7 @@ Objectivo da aula: No fim, o aluno consegue ligar a um cliente para mudar uma re
 Objectivo da unidade a que serve: 4 (e 1, 2)
 Gramática-alvo: toda a da unidade; I'm calling about…; I'm afraid we need to move…; Are you
   available on…? / How about…?; I'll send you an email to confirm.
-Palavras-alvo: I'm calling about, move, available, confirm, delay, the equipment is late
+Palavras-alvo: I'm calling about, move, available, confirm, the equipment is late, as we agreed
 Reciclagem: past simple (A2, 2); dias e datas (A1, 10)
 Pronúncia: dizer datas ao telefone com clareza (Monday the twenty-third, at three p.m.)
 Mediação: o Nuno passa à Thandi, em inglês, um recado que o Mateus lhe deixou em português
