@@ -62,7 +62,7 @@ Verificação: laboratórios R2-1 e R2-2; conversa de ensaio; questionário da r
 | há quanto tempo (*How long…? for / since*) | *present perfect* | How long **have** you **worked** here? — Since October. |
 | uma experiência, sem data (*ever / never*) | *present perfect* | **Have** you **ever been** to Johannesburg in winter? — No, never. |
 | o quando e o como (*in January, last week*) | *past simple* | I **went** there in January, and it **was** summer. |
-| o futuro | *present continuous* (combinação) · *going to* (intenção) · *will* (previsão e decisão) · *if* + presente, *will* | I**'m starting** on the first of July. Lerato**'s going to send** me the details. I think it**'ll be** five degrees. I**'ll buy** a coat. **If** there**'s** a problem, call me. |
+| o futuro | *present continuous* (combinação) · *going to* (intenção) · *will* (previsão e decisão) · *if* + presente (com *will* ou com uma ordem) | I**'m starting** on the first of July. Lerato**'s going to send** me the details. I think it**'ll be** five degrees. I**'ll buy** a coat. **If** there**'s** a problem, call me. |
 
 **PROF:** Look at the time words. "Just", "already", "yet", "since", "ever": present perfect. "In January", "last week": past simple.
 [PAUSA 4 s]
@@ -105,7 +105,7 @@ Verificação: laboratórios R2-1 e R2-2; conversa de ensaio; questionário da r
 
 **PROF:** What's new? Have you done anything interesting recently?
 [PAUSA 12 s]
-**PROF:** How long have you worked or studied in your job or school?
+**PROF:** How long have you worked in your job, or studied at your school?
 [PAUSA 8 s]
 **PROF:** Have you ever travelled for work? Where did you go?
 [PAUSA 12 s]

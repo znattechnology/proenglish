@@ -14,11 +14,11 @@
      "frase": "I've [been] to Lisbon twice. The first time, I [went] there in 2019.",
      "opcoes": [
       {
-       "texto": "gone",
+       "texto": "go",
        "certa": false
       },
       {
-       "texto": "have gone",
+       "texto": "have went",
        "certa": false
       }
      ],
@@ -388,7 +388,7 @@
     },
     {
      "tipo": "pronuncia",
-     "frase": "I've been to Lisbon last year — sorry, I mean, I went to Lisbon last year.",
+     "frase": "Sorry, I mean, I went to Lisbon last year.",
      "enunciado": "Ouça e repita a estratégia nova: Sorry, I mean…"
     },
     {
