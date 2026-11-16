@@ -1,0 +1,301 @@
+{
+ "title": "A2.1 Unit 4 quiz — Comparing and choosing",
+ "description": "Comparativos, as … as, superlativos, quantidades, orçamentos e recomendações.",
+ "questions": [
+  {
+   "id": "a2u4q1",
+   "question": "Complete: \"Model B is ___ cheaper than Model A.\"",
+   "options": [
+    {
+     "id": "a2u4q1o0",
+     "text": "much",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u4q1o1",
+     "text": "very",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u4q1o2",
+     "text": "more",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u4q1o0",
+   "explanation": "much + comparativo.",
+   "points": 10
+  },
+  {
+   "id": "a2u4q2",
+   "question": "\"Model B isn't as good as Model A\" quer dizer:",
+   "options": [
+    {
+     "id": "a2u4q2o0",
+     "text": "O Model A é melhor.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u4q2o1",
+     "text": "O Model B é melhor.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u4q2o2",
+     "text": "São iguais.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u4q2o0",
+   "explanation": "not as … as = menos.",
+   "points": 10
+  },
+  {
+   "id": "a2u4q3",
+   "question": "Complete: \"It's the most crowded beach ___ Luanda.\"",
+   "options": [
+    {
+     "id": "a2u4q3o0",
+     "text": "in",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u4q3o1",
+     "text": "of",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u4q3o2",
+     "text": "at",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u4q3o0",
+   "explanation": "Superlativo + in + lugar.",
+   "points": 10
+  },
+  {
+   "id": "a2u4q4",
+   "question": "Complete: \"How ___ time do we have?\"",
+   "options": [
+    {
+     "id": "a2u4q4o0",
+     "text": "much",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u4q4o1",
+     "text": "many",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u4q4o2",
+     "text": "lot",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u4q4o0",
+   "explanation": "Time é incontável.",
+   "points": 10
+  },
+  {
+   "id": "a2u4q5",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "a2u4q5o0",
+     "text": "I need some information.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u4q5o1",
+     "text": "I need some informations.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u4q5o2",
+     "text": "I need an information.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u4q5o0",
+   "explanation": "\"Information\" não tem plural.",
+   "points": 10
+  },
+  {
+   "id": "a2u4q6",
+   "question": "\"Exquisite\" quer dizer:",
+   "options": [
+    {
+     "id": "a2u4q6o0",
+     "text": "belíssimo, requintado",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u4q6o1",
+     "text": "esquisito, estranho",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u4q6o2",
+     "text": "caro",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u4q6o0",
+   "explanation": "Falso amigo: esquisito = strange.",
+   "points": 10
+  },
+  {
+   "id": "a2u4q7",
+   "question": "Ouviu: \"The traffic is as bad as here!\" Quer dizer:",
+   "options": [
+    {
+     "id": "a2u4q7o0",
+     "text": "O trânsito é tão mau como aqui.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u4q7o1",
+     "text": "O trânsito é pior do que aqui.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u4q7o2",
+     "text": "Aqui não há trânsito.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u4q7o0",
+   "explanation": "as bad as = tão mau como.",
+   "points": 10
+  },
+  {
+   "id": "a2u4q8",
+   "question": "Numa recomendação, qual é a melhor forma de falar da desvantagem?",
+   "options": [
+    {
+     "id": "a2u4q8o0",
+     "text": "It's a bit more expensive, but it's within budget.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u4q8o1",
+     "text": "It's expensive. Sorry.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u4q8o2",
+     "text": "It isn't a disadvantage, it's perfect.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u4q8o0",
+   "explanation": "Seja honesto e explique.",
+   "points": 10
+  },
+  {
+   "id": "a2u4q9",
+   "question": "Qual é a melhor frase para começar uma recomendação?",
+   "options": [
+    {
+     "id": "a2u4q9o0",
+     "text": "I recommend PowerSafe Angola.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u4q9o1",
+     "text": "Maybe PowerSafe, I don't know.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u4q9o2",
+     "text": "PowerSafe is a supplier.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u4q9o0",
+   "explanation": "Comece pela recomendação.",
+   "points": 10
+  },
+  {
+   "id": "a2u4q10",
+   "question": "Reciclagem (A2, unidade 3). \"I'm cold.\" — Qual é a melhor resposta?",
+   "options": [
+    {
+     "id": "a2u4q10o0",
+     "text": "I'll close the window.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u4q10o1",
+     "text": "I close the window.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u4q10o2",
+     "text": "I'm going to close the window next week.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u4q10o0",
+   "explanation": "Decisão no momento: will.",
+   "points": 10
+  },
+  {
+   "id": "a2u4q11",
+   "question": "Reciclagem (A2, unidade 3). Está marcado na agenda. Qual é a frase mais natural?",
+   "options": [
+    {
+     "id": "a2u4q11o0",
+     "text": "I'm meeting the supplier on Friday at ten.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u4q11o1",
+     "text": "I'm meet the supplier on Friday at ten.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u4q11o2",
+     "text": "I met the supplier on Friday at ten next week.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u4q11o0",
+   "explanation": "Combinação: present continuous.",
+   "points": 10
+  },
+  {
+   "id": "a2u4q12",
+   "question": "Reciclagem (A2, unidade 2). Complete: \"We ___ the quotes when the client called.\"",
+   "options": [
+    {
+     "id": "a2u4q12o0",
+     "text": "were reading",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u4q12o1",
+     "text": "are reading",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u4q12o2",
+     "text": "read now",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u4q12o0",
+   "explanation": "Acção longa no passado.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

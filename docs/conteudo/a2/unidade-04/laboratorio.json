@@ -1,0 +1,1305 @@
+{
+ "unidade": "A2.1 · Unit 4 — Comparing and choosing",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "4A",
+   "titulo": "Faster, cheaper, better",
+   "aula": "4A",
+   "objectivo": "Comparar duas opções com comparativos, much / a bit, less e (not) as … as.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Model B is [much] cheaper — two million kwanzas less.",
+     "opcoes": [
+      {
+       "texto": "very",
+       "certa": false
+      },
+      {
+       "texto": "more",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's a bit [noisier] than Model A.",
+     "opcoes": [
+      {
+       "texto": "noisyer",
+       "certa": false
+      },
+      {
+       "texto": "most noisy",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Model A uses [less] fuel.",
+     "opcoes": [
+      {
+       "texto": "fewer of",
+       "certa": false
+      },
+      {
+       "texto": "lesser",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Model B is as powerful [as] Model A.",
+     "opcoes": [
+      {
+       "texto": "than",
+       "certa": false
+      },
+      {
+       "texto": "like",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Model B isn't as good as Model A\" means...",
+     "opcoes": [
+      {
+       "texto": "Model A is better.",
+       "certa": true
+      },
+      {
+       "texto": "Model B is better.",
+       "certa": false
+      },
+      {
+       "texto": "They are the same.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "This laptop is much better than the old one.",
+       "certa": true
+      },
+      {
+       "texto": "This laptop is very better than the old one.",
+       "certa": false
+      },
+      {
+       "texto": "This laptop is more better than the old one.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The new office isn't as big as the old one.",
+       "certa": true
+      },
+      {
+       "texto": "The new office isn't as big than the old one.",
+       "certa": false
+      },
+      {
+       "texto": "The new office isn't so big like the old one.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Less expensive\" means...",
+     "opcoes": [
+      {
+       "texto": "cheaper",
+       "certa": true
+      },
+      {
+       "texto": "more expensive",
+       "certa": false
+      },
+      {
+       "texto": "the same price",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Yes, it's as powerful as Model A. But it's a bit noisier, and it's heavier.",
+     "enunciado": "What is the problem with Model B?",
+     "opcoes": [
+      {
+       "texto": "It's noisier and heavier.",
+       "certa": true
+      },
+      {
+       "texto": "It's less powerful.",
+       "certa": false
+      },
+      {
+       "texto": "It's more expensive.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Model B is much cheaper, but it isn't as good as Model A.",
+     "enunciado": "Ouça e repita: \"than\" e \"as\" fracos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Compare your phone with a colleague's phone.",
+     "frase": "as",
+     "resposta": "My phone is much cheaper than my colleague's phone, but the camera isn't as good. The battery is a bit better.",
+     "contexto": "Use much, a bit e (not) as … as."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Compare two places to have lunch near your work.",
+     "frase": "than",
+     "resposta": "The café is much cheaper than the restaurant, but it's a bit noisier. The food isn't as good as at the restaurant.",
+     "contexto": "Três frases com comparações."
+    }
+   ]
+  },
+  {
+   "codigo": "4B",
+   "titulo": "The best in town",
+   "aula": "4B",
+   "objectivo": "Escolher e recomendar o melhor de um grupo com superlativos, in e of.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "For me, the [most beautiful] place is the Miradouro da Lua.",
+     "opcoes": [
+      {
+       "texto": "beautifulest",
+       "certa": false
+      },
+      {
+       "texto": "more beautiful",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Mussulo is the most crowded beach [in] Luanda on Sundays.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Benfica is the cheapest [of] the three markets.",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "than",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The traffic is the [worst] thing about Luanda.",
+     "opcoes": [
+      {
+       "texto": "baddest",
+       "certa": false
+      },
+      {
+       "texto": "worse",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "It's one of the oldest buildings in the city.",
+       "certa": true
+      },
+      {
+       "texto": "It's one of the oldest building in the city.",
+       "certa": false
+      },
+      {
+       "texto": "It's one of the older buildings of the city.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"One of the\" + plural."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "What's the best place to visit in Luanda?",
+       "certa": true
+      },
+      {
+       "texto": "What's the better place to visit in Luanda?",
+       "certa": false
+      },
+      {
+       "texto": "What's the most good place to visit in Luanda?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A praia mais cheia de Luanda\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "the most crowded beach in Luanda",
+       "certa": true
+      },
+      {
+       "texto": "the most crowded beach of Luanda",
+       "certa": false
+      },
+      {
+       "texto": "the more crowded beach in Luanda",
+       "certa": false
+      }
+     ],
+     "explicacao": "Lugar: in."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The\" antes de \"oldest\" soa...",
+     "opcoes": [
+      {
+       "texto": "/ði/, como \"di\"",
+       "certa": true
+      },
+      {
+       "texto": "/ðə/, como \"dâ\"",
+       "certa": false
+      },
+      {
+       "texto": "não se diz",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Mussulo. But on Sundays it's the most crowded beach in Luanda! Go on Saturday morning.",
+     "enunciado": "When is the best time to go to Mussulo?",
+     "opcoes": [
+      {
+       "texto": "Saturday morning",
+       "certa": true
+      },
+      {
+       "texto": "Sunday",
+       "certa": false
+      },
+      {
+       "texto": "Saturday night",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It's the oldest building in the city. It's the best view near Luanda.",
+     "enunciado": "Ouça e repita: the oldest /ði/, the best /ðə/."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's the best restaurant in your city, and why?",
+     "frase": "the best",
+     "resposta": "The best restaurant in my city is a small place near the beach. The fish is the freshest in town, and it isn't the most expensive.",
+     "contexto": "Use the best e mais um superlativo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A visitor asks: \"What's the most beautiful place in Angola?\" Recommend a place.",
+     "frase": "I recommend",
+     "resposta": "I recommend the Kalandula Falls. They're the most beautiful falls in Angola, and one of the biggest in Africa.",
+     "contexto": "Recomende com um superlativo."
+    }
+   ]
+  },
+  {
+   "codigo": "4C",
+   "titulo": "How much time do we have?",
+   "aula": "4C",
+   "objectivo": "Falar de quantidades com much, many, a lot of, a few e a little, e usar a / the / sem artigo.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How [many] cables do we have?",
+     "opcoes": [
+      {
+       "texto": "much",
+       "certa": false
+      },
+      {
+       "texto": "lot",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We don't have [much] time.",
+     "opcoes": [
+      {
+       "texto": "many",
+       "certa": false
+      },
+      {
+       "texto": "few",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We only have [a few] plugs.",
+     "opcoes": [
+      {
+       "texto": "a little",
+       "certa": false
+      },
+      {
+       "texto": "much",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "There's [a little] money for small things.",
+     "opcoes": [
+      {
+       "texto": "a few",
+       "certa": false
+      },
+      {
+       "texto": "many",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I need some information.",
+       "certa": true
+      },
+      {
+       "texto": "I need some informations.",
+       "certa": false
+      },
+      {
+       "texto": "I need an information.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Information\" é incontável."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The new equipment arrived on Friday.",
+       "certa": true
+      },
+      {
+       "texto": "The new equipments arrived on Friday.",
+       "certa": false
+      },
+      {
+       "texto": "The new equipments arrives on Friday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "She gave me some good advice.",
+       "certa": true
+      },
+      {
+       "texto": "She gave me some good advices.",
+       "certa": false
+      },
+      {
+       "texto": "She gave me a good advices.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Os cabos são caros\" (em geral). Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Cables are expensive.",
+       "certa": true
+      },
+      {
+       "texto": "A cables are expensive.",
+       "certa": false
+      },
+      {
+       "texto": "Cable are expensive.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Em geral, sem \"the\"."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "A lot of cables — about two hundred. But we only have a few plugs. Maybe thirty.",
+     "enunciado": "How many plugs do they have?",
+     "opcoes": [
+      {
+       "texto": "about 30",
+       "certa": true
+      },
+      {
+       "texto": "about 200",
+       "certa": false
+      },
+      {
+       "texto": "about 13",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "We have a lot of cables, but only a few plugs. There's a little money left.",
+     "enunciado": "Ouça e repita: \"a lot of\" ligado."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How much free time do you have this week?",
+     "frase": "much",
+     "resposta": "I don't have much free time this week. I have a little time on Sunday afternoon.",
+     "contexto": "Use much e a little."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How many emails do you get every day, and how many meetings do you have?",
+     "frase": "a lot of",
+     "resposta": "I get a lot of emails — about fifty a day. But I only have a few meetings, maybe two or three.",
+     "contexto": "Use a lot of, many ou a few."
+    }
+   ]
+  },
+  {
+   "codigo": "4D",
+   "titulo": "Prices and quality",
+   "aula": "4D",
+   "objectivo": "Usar as palavras de um orçamento; /ə/ fraco; costume e exquisite.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "quote",
+       "b": "orçamento"
+      },
+      {
+       "a": "invoice",
+       "b": "factura"
+      },
+      {
+       "a": "discount",
+       "b": "desconto"
+      },
+      {
+       "a": "warranty",
+       "b": "garantia"
+      },
+      {
+       "a": "supplier",
+       "b": "fornecedor"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A quote is...",
+     "opcoes": [
+      {
+       "texto": "the price before you buy",
+       "certa": true
+      },
+      {
+       "texto": "the paper you pay after you buy",
+       "certa": false
+      },
+      {
+       "texto": "a discount",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Good value for money\" means...",
+     "opcoes": [
+      {
+       "texto": "the price is right for the quality",
+       "certa": true
+      },
+      {
+       "texto": "it's the cheapest",
+       "certa": false
+      },
+      {
+       "texto": "it's free",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Reliable\" means...",
+     "opcoes": [
+      {
+       "texto": "it works and doesn't break",
+       "certa": true
+      },
+      {
+       "texto": "it's very cheap",
+       "certa": false
+      },
+      {
+       "texto": "it's new",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "There's a discount [of] five per cent.",
+     "opcoes": [
+      {
+       "texto": "from",
+       "certa": false
+      },
+      {
+       "texto": "with",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The warranty is two years. The delivery time is two [weeks].",
+     "opcoes": [
+      {
+       "texto": "week",
+       "certa": false
+      },
+      {
+       "texto": "weekly",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"É costume pagarmos a 30 dias\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "We usually pay in 30 days.",
+       "certa": true
+      },
+      {
+       "texto": "It's our costume to pay in 30 days.",
+       "certa": false
+      },
+      {
+       "texto": "We costume to pay in 30 days.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Costume\" = traje."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Este orçamento é esquisito\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "This quote is strange.",
+       "certa": true
+      },
+      {
+       "texto": "This quote is exquisite.",
+       "certa": false
+      },
+      {
+       "texto": "This quote is esquisite.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Exquisite\" = belíssimo."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The delivery time is two weeks. The warranty is two years.",
+     "enunciado": "How long is the warranty?",
+     "opcoes": [
+      {
+       "texto": "two years",
+       "certa": true
+      },
+      {
+       "texto": "two weeks",
+       "certa": false
+      },
+      {
+       "texto": "one year",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "PowerSafe is cheaper than the other supplier. It's as good as the other one. It's good value for money.",
+     "enunciado": "Ouça e repita: o /ə/ fraco."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's more important for you: the cheapest price or good value? Why?",
+     "frase": "good value",
+     "resposta": "For me, good value is more important. The cheapest product isn't always reliable.",
+     "contexto": "Dê a sua opinião e uma razão."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe a quote: price, discount, delivery time and warranty.",
+     "frase": "warranty",
+     "resposta": "The total price is two million kwanzas, with a discount of ten per cent. The delivery time is one week, and the warranty is one year.",
+     "contexto": "Use as palavras do orçamento."
+    }
+   ]
+  },
+  {
+   "codigo": "4E",
+   "titulo": "Real English: Which one is better?",
+   "aula": "4E",
+   "objectivo": "Identificar a opção que cada pessoa escolhe e as razões, em três conversas.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I don't take many photos. I need a good battery — I work nights at the hospital.",
+     "enunciado": "Why does Joana need a good battery?",
+     "opcoes": [
+      {
+       "texto": "She works nights at the hospital.",
+       "certa": true
+      },
+      {
+       "texto": "She takes a lot of photos.",
+       "certa": false
+      },
+      {
+       "texto": "Her old phone is broken.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Then the black one. The battery is better, too. — Great. The black one, then.",
+     "enunciado": "Which phone does Joana choose?",
+     "opcoes": [
+      {
+       "texto": "the black one",
+       "certa": true
+      },
+      {
+       "texto": "the most expensive one",
+       "certa": false
+      },
+      {
+       "texto": "the one with the best camera",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The second one is older, but the mechanic says it's very reliable. In the end, I chose the older one.",
+     "enunciado": "Which van does Fátima choose?",
+     "opcoes": [
+      {
+       "texto": "the older one",
+       "certa": true
+      },
+      {
+       "texto": "the new one",
+       "certa": false
+      },
+      {
+       "texto": "neither",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I saved a lot of money, so I bought a new oven too!",
+     "enunciado": "What else did Fátima buy?",
+     "opcoes": [
+      {
+       "texto": "a new oven",
+       "certa": true
+      },
+      {
+       "texto": "a new phone",
+       "certa": false
+      },
+      {
+       "texto": "a second van",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Johannesburg is bigger, and the traffic is as bad as here!",
+     "enunciado": "What does Thandi say about the traffic?",
+     "opcoes": [
+      {
+       "texto": "It's as bad as in Johannesburg.",
+       "certa": true
+      },
+      {
+       "texto": "It's better than in Johannesburg.",
+       "certa": false
+      },
+      {
+       "texto": "There isn't much traffic.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The people are friendly in both cities. But the beaches… Luanda is much better.",
+     "enunciado": "What's better in Luanda, for Thandi?",
+     "opcoes": [
+      {
+       "texto": "the beaches",
+       "certa": true
+      },
+      {
+       "texto": "the prices",
+       "certa": false
+      },
+      {
+       "texto": "the people",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It's three times more expensive\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "É três vezes mais caro.",
+       "certa": true
+      },
+      {
+       "texto": "É mais caro há três anos.",
+       "certa": false
+      },
+      {
+       "texto": "Custa três mil.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The black one is much cheaper. The camera isn't as good.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Compare two cities in Angola. Which one is better for you, and why?",
+     "frase": "better",
+     "resposta": "Benguela is smaller than Luanda, and it's much quieter. The traffic isn't as bad. For me, Benguela is better for a holiday, but Luanda is better for work.",
+     "contexto": "Comparações e a sua escolha."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Which is better for you: a big car or a small car? Why?",
+     "frase": "cheaper",
+     "resposta": "A small car is better for me. It's cheaper, it uses less fuel, and parking is much easier in Luanda.",
+     "contexto": "Uma escolha com duas razões."
+    }
+   ]
+  },
+  {
+   "codigo": "4F",
+   "titulo": "Work & Life: Two quotes",
+   "aula": "4F",
+   "objectivo": "Comparar dois orçamentos e recomendar um, com duas razões e uma desvantagem.",
+   "exercicios": [
+    {
+     "tipo": "ordenar",
+     "enunciado": "Recomendo a PowerSafe Angola.",
+     "resposta": "I recommend PowerSafe Angola.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's a bit more expensive, but it's [within] budget.",
+     "opcoes": [
+      {
+       "texto": "inside of",
+       "certa": false
+      },
+      {
+       "texto": "into",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The only [disadvantage] is the price.",
+     "opcoes": [
+      {
+       "texto": "disadvantages",
+       "certa": false
+      },
+      {
+       "texto": "disadvantaged",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the best order for a recommendation?",
+     "opcoes": [
+      {
+       "texto": "recommendation → disadvantage → two reasons → conclusion",
+       "certa": true
+      },
+      {
+       "texto": "two reasons → conclusion → recommendation → disadvantage",
+       "certa": false
+      },
+      {
+       "texto": "disadvantage → conclusion → two reasons → recommendation",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "PowerSafe: 2 weeks, 2-year warranty, 3 420 000 Kz. Luanda UPS: 6 weeks, 1-year warranty, 3 100 000 Kz. Which sentence is true?",
+     "opcoes": [
+      {
+       "texto": "PowerSafe is a bit more expensive, but the delivery is much faster.",
+       "certa": true
+      },
+      {
+       "texto": "Luanda UPS is more expensive and slower.",
+       "certa": false
+      },
+      {
+       "texto": "The warranties are the same.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Prazo de entrega: 6 semanas. Garantia: 12 meses.\" Nuno tells Thandi:",
+     "opcoes": [
+      {
+       "texto": "The delivery time is six weeks, and the warranty is one year.",
+       "certa": true
+      },
+      {
+       "texto": "The delivery is in twelve months, and the warranty is six weeks.",
+       "certa": false
+      },
+      {
+       "texto": "Prazo de entrega is six weeks.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The only disadvantage is the price. But for Mussulo Energy, reliable service is more important than the cheapest price.",
+     "enunciado": "What is more important for Mussulo Energy, says Nuno?",
+     "opcoes": [
+      {
+       "texto": "reliable service",
+       "certa": true
+      },
+      {
+       "texto": "the cheapest price",
+       "certa": false
+      },
+      {
+       "texto": "a fast delivery",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The installation starts on the seventh of December, so six weeks is very late for us.",
+     "enunciado": "When does the installation start?",
+     "opcoes": [
+      {
+       "texto": "on 7 December",
+       "certa": true
+      },
+      {
+       "texto": "in six weeks",
+       "certa": false
+      },
+      {
+       "texto": "on 17 December",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "advantage, disadvantage, recommendation",
+     "enunciado": "Ouça e repita: adVANtage, disadVANtage, recommenDAtion."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "NetRápida: 95 000 Kz a month, installation in 3 days, help 24 hours. KiandaNet: 70 000 Kz a month, installation in 3 weeks, help only in the day. Which do you recommend?",
+     "frase": "I recommend",
+     "resposta": "I recommend NetRápida. It's more expensive, but it's within budget. First, the installation is much faster. Also, the help is 24 hours. For us, good service is more important than the price.",
+     "contexto": "Os quatro passos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your manager asks: \"Any disadvantages?\"",
+     "frase": "disadvantage",
+     "resposta": "The only disadvantage is the price. It's about twenty-five thousand kwanzas more every month.",
+     "contexto": "Diga a desvantagem com honestidade."
+    }
+   ]
+  },
+  {
+   "codigo": "4R",
+   "titulo": "Unit 4 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 4 e reciclar as unidades 1 a 3 do A2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The new printer is [much] faster than the old one.",
+     "opcoes": [
+      {
+       "texto": "very",
+       "certa": false
+      },
+      {
+       "texto": "most",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This hotel isn't as expensive [as] the hotel on the Marginal.",
+     "opcoes": [
+      {
+       "texto": "than",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's the best restaurant [in] Benguela.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "on",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "We don't have many problems.",
+       "certa": true
+      },
+      {
+       "texto": "We don't have much problems.",
+       "certa": false
+      },
+      {
+       "texto": "We don't have a little problems.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Can you give me some information about the price?",
+       "certa": true
+      },
+      {
+       "texto": "Can you give me some informations about the price?",
+       "certa": false
+      },
+      {
+       "texto": "Can you give me an information about the price?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "This is the most reliable supplier of the three.",
+       "certa": true
+      },
+      {
+       "texto": "This is the more reliable supplier of the three.",
+       "certa": false
+      },
+      {
+       "texto": "This is the most reliablest supplier of the three.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 3). \"The printer isn't working!\" — Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "I'll call the technician.",
+       "certa": true
+      },
+      {
+       "texto": "I call the technician.",
+       "certa": false
+      },
+      {
+       "texto": "I'm going to call the technician next month.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 3). Choose the polite refusal.",
+     "opcoes": [
+      {
+       "texto": "I'm afraid I can't. I'm meeting a client.",
+       "certa": true
+      },
+      {
+       "texto": "No, I don't want.",
+       "certa": false
+      },
+      {
+       "texto": "I can't. Bye.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 2). Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "What happened to the generator?",
+       "certa": true
+      },
+      {
+       "texto": "What did happen to the generator?",
+       "certa": false
+      },
+      {
+       "texto": "What did happened to the generator?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Não temos muito tempo.",
+     "resposta": "We don't have much time.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "There are three big markets. Benfica is the cheapest of the three, and the most interesting.",
+     "enunciado": "Why does Ana recommend Benfica market?",
+     "opcoes": [
+      {
+       "texto": "It's the cheapest and the most interesting.",
+       "certa": true
+      },
+      {
+       "texto": "It's the biggest.",
+       "certa": false
+      },
+      {
+       "texto": "It's near the office.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Recommend the best place to eat in your city to a visitor.",
+     "frase": "the best",
+     "resposta": "I recommend a restaurant on the Ilha. It's the best place for fish, and it isn't as expensive as the hotels.",
+     "contexto": "Um superlativo e uma comparação."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Compare two supermarkets you know.",
+     "frase": "cheaper",
+     "resposta": "The supermarket near my house is cheaper, but it's much smaller. The one in the shopping centre has a lot of products, but it's more expensive.",
+     "contexto": "Comparativos e quantidades."
+    }
+   ]
+  }
+ ]
+}

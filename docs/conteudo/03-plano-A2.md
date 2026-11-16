@@ -193,6 +193,8 @@ Versão completa em [a2/unidade-03/](a2/unidade-03/README.md) **[I]**.
 
 ### Unidade 4 — Comparing and choosing
 
+Versão completa em [a2/unidade-04/](a2/unidade-04/README.md) **[I]**.
+
 **Objectivos da unidade.** No fim, o aluno consegue:
 1. comparar dois produtos, serviços ou cidades com comparativos e *(not) as … as*, dando uma razão (*Supplier B is cheaper, but it isn't as fast as A.*);
 2. dizer qual é o melhor, o mais barato ou o mais fiável de um grupo com superlativos (*It's the most reliable of the three.*);
@@ -205,7 +207,7 @@ Versão completa em [a2/unidade-03/](a2/unidade-03/README.md) **[I]**.
 | 4B | Língua | The best in town | Escolher a melhor opção de um grupo com superlativos (*the cheapest, the most expensive, the best, the worst*). |
 | 4C | Língua | How much time do we have? | Falar de quantidades com *much / many / a lot of / a few / a little*, com contáveis e incontáveis. |
 | 4D | Vocabulário e pronúncia | Prices and quality | Preço, qualidade e serviço (*quote, discount, delivery, reliable, quality, warranty*); /ə/ em *-er*, *than* e *as … as*. |
-| 4E | Real English | Which one would you choose? | Identificar a opção que cada pessoa escolhe e porquê, em três conversas sobre telemóveis, carros e cidades. |
+| 4E | Real English | Which one is better? | Identificar a opção que cada pessoa escolhe e porquê, em três conversas sobre telemóveis, carros e cidades. |
 | 4F | Work & Life | Two quotes | Comparar dois orçamentos de fornecedores e recomendar um à chefia, com duas razões e uma desvantagem. |
 
 - **Gramática:** comparativos (revistos; *-er / more / less*; *much cheaper*); *(not) as … as*; superlativos (*the -est / the most*; *the best / the worst*; *in / of*); *much / many / a lot of / a few / a little*; artigos com contáveis e incontáveis (*a / the / sem artigo*).
@@ -563,5 +565,5 @@ No A1, cada unidade teve uma revisão pedagógica depois de escrita. No A2, **ca
 1. Revisão deste plano pelos professores (objectivos, ordem, situações de trabalho, falsos amigos).
 2. Confirmar no CEFR Companion Volume os descritores A2 de produção oral, interacção e mediação, e aferir a ordem da gramática com o resumo de unidades do Empower 2e A2 e o booklet GSE do Roadmap A2 (secção 2).
 3. Fechar o inventário de vocabulário A2 a partir da NGSL, aferido com Oxford 3000 A2 e Cambridge A2 Key.
-4. Escrever as unidades 1 a 5 do A2.1 (feito: [1](a2/unidade-01/README.md), [2](a2/unidade-02/README.md), [3](a2/unidade-03/README.md)), uma aula de cada vez, com a revisão de cada aula (secção 10); depois a revisão 1 e o exame do A2.1.
+4. Escrever as unidades 1 a 5 do A2.1 (feito: [1](a2/unidade-01/README.md), [2](a2/unidade-02/README.md), [3](a2/unidade-03/README.md), [4](a2/unidade-04/README.md)), uma aula de cada vez, com a revisão de cada aula (secção 10); depois a revisão 1 e o exame do A2.1.
 5. Acrescentar à plataforma um guião de exame A2 por omissão (secção 6).

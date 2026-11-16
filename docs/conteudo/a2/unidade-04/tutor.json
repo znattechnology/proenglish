@@ -1,0 +1,138 @@
+{
+ "unidade": "A2.1 · Unit 4 — Comparing and choosing",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a2-u4-guiada",
+   "nome": "A2 Unit 4 · Luanda or Benguela?",
+   "tipo": "guiada",
+   "depois_da_aula": "4C",
+   "descricao": "O tutor pede ao aluno que compare duas cidades para viver (Luanda e outra que o aluno conheça) e diga qual é a melhor para ele.",
+   "papel_tutor": "Um professor simpático.",
+   "nivel": "A2",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "… is much bigger than…",
+    "… isn't as … as…",
+    "The best thing about … is…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an elementary learner (A2, unit 4). You are a friendly teacher. Ask the student to compare Luanda with another city they know (Benguela, Lubango, Huambo, or a city in another country): size, traffic, prices, weather, beaches, people. Ask \"Which is bigger?\", \"Is … as expensive as Luanda?\", \"What's the best thing about …?\", \"What's the worst thing about Luanda?\", and finally \"Which city is better for you, and why?\". Ask one follow-up question each time. If the student says \"very cheaper\" or \"more cheaper\", model \"much cheaper\"; if they say \"the best of Luanda\", model \"the best in Luanda\"; if they say \"informations\", model \"information\". Use only A1 language plus A2 units 1-4: present simple and continuous, state verbs, describing people, past simple and continuous, the present continuous for arrangements, going to for plans, will only for offers and quick decisions, invitations, comparatives (much / a bit + comparative, less, as … as), superlatives with in / of, much / many / a lot of / a few / a little, quote, discount, warranty, delivery time, I recommend. Do NOT use the present perfect, \"will\" or \"going to\" for predictions, \"should\", \"have to\", \"must\", \"could\", \"too\" or \"enough\", \"if\" sentences or \"would\" + verb (except \"would like\"). One question at a time.",
+    "primeira_fala": "Hello, {nome}! Today let's compare two cities. Luanda and another city you know. Which city do you want to compare with Luanda?",
+    "primeira_fala_simples": "Hello! Let's compare Luanda with another city. Which city?",
+    "guiao": [
+     "Which one is bigger?",
+     "Is it as expensive as Luanda?",
+     "What's the best thing about it?",
+     "And what's the worst thing about Luanda?",
+     "So, which city is better for you, and why?",
+     "Great comparisons, {nome}! Well done."
+    ],
+    "frases": [
+     {
+      "en": "Benguela is much smaller than Luanda.",
+      "pt": "Benguela é muito mais pequena do que Luanda."
+     },
+     {
+      "en": "It isn't as expensive as Luanda.",
+      "pt": "Não é tão cara como Luanda."
+     },
+     {
+      "en": "The best thing about Benguela is the beaches.",
+      "pt": "O melhor de Benguela são as praias."
+     },
+     {
+      "en": "The worst thing about Luanda is the traffic.",
+      "pt": "O pior de Luanda é o trânsito."
+     }
+    ],
+    "palavras": [
+     "bigger",
+     "smaller",
+     "much",
+     "as",
+     "best",
+     "worst",
+     "better",
+     "than"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a2-u4-livre",
+   "nome": "A2 Unit 4 · Choose a supplier",
+   "tipo": "livre",
+   "depois_da_aula": "4F",
+   "descricao": "O tutor é Robin, director(a) de operações, de Maputo. A empresa precisa de 20 portáteis novos e tem duas propostas. O aluno compara-as e recomenda uma, com razões e uma desvantagem, e responde às perguntas da chefia.",
+   "papel_tutor": "Robin, director(a) de operações moçambicano(a), de Maputo.",
+   "nivel": "A2",
+   "duracao_min": 7,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I recommend…",
+    "It's a bit more expensive, but…",
+    "First,… Also,…",
+    "The only disadvantage is…"
+   ],
+   "extras": {
+    "brief": "Role-play for an elementary learner (A2, unit 4). You are Robin, the operations manager, from Maputo, Mozambique (Robin can be a man or a woman, to match your voice). The company needs 20 new laptops, and the budget is 12 million kwanzas. There are two quotes. TecnoLuanda: 560 000 Kz per laptop (11 200 000 Kz in total), delivery in one week, two-year warranty, after-sales service in Luanda. GlobalOffice: 480 000 Kz per laptop (9 600 000 Kz in total), delivery in five weeks, one-year warranty, after-sales service only by email. Tell the student these facts at the start if they ask, or summarise them in two sentences. Then ask: \"Which one do you recommend?\", \"Why?\", \"Any disadvantages?\", \"Is it within budget?\", \"Is GlobalOffice's warranty as long?\". Accept either recommendation if the student gives reasons; play devil's advocate once (\"But GlobalOffice is much cheaper!\"). At the end, decide and thank the student. Use only A1 language plus A2 units 1-4: present simple and continuous, state verbs, describing people, past simple and continuous, the present continuous for arrangements, going to for plans, will only for offers and quick decisions, invitations, comparatives (much / a bit + comparative, less, as … as), superlatives with in / of, much / many / a lot of / a few / a little, quote, discount, warranty, delivery time, I recommend. Do NOT use the present perfect, \"will\" or \"going to\" for predictions, \"should\", \"have to\", \"must\", \"could\", \"too\" or \"enough\", \"if\" sentences or \"would\" + verb (except \"would like\"). Short turns, one question at a time.",
+    "primeira_fala": "Hi, {nome}. I'm Robin, from operations. We need twenty new laptops, and we have two quotes: TecnoLuanda and GlobalOffice. You read them both. Which one do you recommend?",
+    "primeira_fala_simples": "Hi! We need twenty laptops. We have two quotes. Which one do you recommend?",
+    "guiao": [
+     "Why?",
+     "But GlobalOffice is much cheaper!",
+     "Any disadvantages?",
+     "Is it within budget?",
+     "And the warranty? Is GlobalOffice's warranty as long?",
+     "OK, good recommendation. Thank you, {nome}. I'm going to send the order today."
+    ],
+    "frases": [
+     {
+      "en": "I recommend TecnoLuanda.",
+      "pt": "Recomendo a TecnoLuanda."
+     },
+     {
+      "en": "It's a bit more expensive, but it's within budget.",
+      "pt": "É um pouco mais cara, mas está dentro do orçamento."
+     },
+     {
+      "en": "The delivery is much faster: one week, not five.",
+      "pt": "A entrega é muito mais rápida: uma semana, e não cinco."
+     },
+     {
+      "en": "The warranty isn't as long.",
+      "pt": "A garantia não é tão longa."
+     },
+     {
+      "en": "The only disadvantage is the price.",
+      "pt": "A única desvantagem é o preço."
+     }
+    ],
+    "palavras": [
+     "recommend",
+     "cheaper",
+     "expensive",
+     "faster",
+     "warranty",
+     "budget",
+     "disadvantage",
+     "as"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": [
+    "Recomenda uma das propostas com I recommend… e dá pelo menos duas razões.",
+    "Usa pelo menos três comparações (much / a bit + comparativo, less, as … as, ou um superlativo).",
+    "Diz uma desvantagem com honestidade (The only disadvantage is… / It's a bit more expensive, but…).",
+    "Responde à objecção do tutor com uma razão.",
+    "Usa as palavras do orçamento (price, delivery, warranty, budget) correctamente.",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}
