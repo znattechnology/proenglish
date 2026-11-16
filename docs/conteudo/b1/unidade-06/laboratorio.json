@@ -59,7 +59,7 @@
     {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
-     "frase": "I'd never [seen] snow before I went to Johannesburg.",
+     "frase": "I'd never [seen] snow before I went to Lesotho.",
      "opcoes": [
       {
        "texto": "saw",
@@ -81,7 +81,7 @@
        "certa": true
       },
       {
-       "texto": "When I arrived, he already left.",
+       "texto": "When I arrived, he had already leave.",
        "certa": false
       },
       {
@@ -236,11 +236,11 @@
      "frase": "He [had done] the fire training in December, so he knew what to do.",
      "opcoes": [
       {
-       "texto": "was doing",
+       "texto": "has done",
        "certa": false
       },
       {
-       "texto": "has done",
+       "texto": "had do",
        "certa": false
       }
      ],
@@ -565,7 +565,7 @@
     {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
-     "frase": "After a long time, the fire team [eventually] came.",
+     "frase": "After three hours of waiting, the technician [eventually] came.",
      "opcoes": [
       {
        "texto": "possibly",

@@ -52,7 +52,7 @@ Verificação: Lab 6A; perguntas 1 e 2 do questionário da unidade 6
 **NUNO:** But how did it happen? Everything was working on Friday when we left.
 **PIETER:** I know. It rained all night — really heavily. When I opened the server room, there was water on the floor. It had come through the roof.
 **NUNO:** Through the roof? Nobody had told us about a problem with the roof.
-**PIETER:** Nobody knew. It had never rained like that since we built the room. And the cameras have been off since four thirty — so we've had no images for three hours.
+**PIETER:** Nobody knew. It had never rained like that before. And the cameras have been off since four thirty — so we've had no images for three hours.
 **NUNO:** OK. I'll call Paulo now. Can I see the room?
 **PIETER:** Of course. Put on your boots — it's still wet.
 
@@ -86,7 +86,7 @@ By the time I arrived, he**'d already turned off** the power. (primeiro ele desl
 **PROF:** If you tell the story in order, the past simple is enough. Use the past perfect only when you go back in time.
 [PAUSA 5 s]
 
-[ECRÃ: "Quando cheguei, ele já tinha saído." → ✔ When I arrived, he **had** already **left**. · ✘ When I arrived, he already left. · ✘ When I arrived, he has already left.]
+[ECRÃ: "Quando cheguei, ele já tinha saído." → ✔ When I arrived, he **had** already **left**. · ⚠ When I arrived, he already left. (no inglês americano informal ouve-se, mas a ordem fica confusa) · ✘ When I arrived, he has already left.]
 
 **PROF:** The Portuguese "tinha saído" is very close to the English: "had left".
 [PAUSA 4 s]
@@ -107,7 +107,7 @@ By the time I arrived, he**'d already turned off** the power. (primeiro ele desl
 **PROF:** Join the two actions with the past perfect.
 [ECRÃ: 1. The meeting started. 2. I arrived. → When I arrived, …] [PAUSA 6 s] [ECRÃ: When I arrived, the meeting had already started.]
 [ECRÃ: 1. I sent the report. 2. My boss called. → By the time my boss called, …] [PAUSA 6 s] [ECRÃ: By the time my boss called, I'd already sent the report.]
-[ECRÃ: 1. I never saw snow. 2. I went to Johannesburg in July. → I'd never …] [PAUSA 6 s] [ECRÃ: I'd never seen snow before I went to Johannesburg in July.]
+[ECRÃ: 1. I never saw snow. 2. I went to Lesotho last winter. → I'd never …] [PAUSA 6 s] [ECRÃ: I'd never seen snow before I went to Lesotho last winter.]
 
 **PROF:** Now a longer turn. Think of a day when you arrived late — at work, at school, at an airport. What had already happened when you arrived? About forty seconds.
 [PAUSA 40 s]
@@ -163,7 +163,7 @@ Verificação: Lab 6B; perguntas 3 e 4 do questionário
 **PIETER:** He ran to the control building. As soon as he opened the door, he saw a small fire behind the switch. He'd done the fire training in December, so he knew what to do.
 **NUNO:** He turned off the main power first, didn't he?
 **PIETER:** Yes, and then he used the extinguisher. By four forty, the fire was out.
-**PAULO:** Great work. And the cameras went dark at four thirty — because the power was off.
+**PAULO:** Great work. And the cameras went dark at four thirty — when the switch stopped working.
 **NUNO:** OK. So now we know what happened. Tomorrow we need to find out why the water came in.
 
 ### 3. Língua (4 min)
@@ -566,7 +566,7 @@ Verificação: Lab 6F
 
 **CARLOS:** Nuno, glad everyone's OK! You'll never believe what happened to us last year. We were loading a ship at the port in Maputo when a crane suddenly stopped — with a container in the air! At first, nobody understood why. Eventually, we found the problem: someone had changed a setting in the crane's computer the day before, and nobody had tested it. So, now we test every change before we use it. The container stayed in the air for two hours!
 
-**NEO:** Oh, Nuno, that sounds scary. My story's about water too. In March, one of our lorries was taking medicines to the north of Botswana. While the driver was crossing a river, the water came up very fast because of a storm in the hills. He'd seen the bridge was low, but he didn't know about the storm. He stopped the lorry, climbed onto the roof and called us. In the end, a farmer pulled the lorry out with his tractor. The medicines were fine — they were in waterproof boxes. What a relief!
+**NEO:** Oh, Nuno, that sounds scary. My story's about water too. In March, one of our lorries was taking medicines to the north of Botswana. While the driver was crossing a river, the water came up very fast because of a storm in the hills. He'd crossed that river many times before, but he didn't know about the storm. He stopped the lorry, climbed onto the roof and called us. In the end, a farmer pulled the lorry out with his tractor. The medicines were fine — they were in waterproof boxes. What a relief!
 
 **MEI:** Hi everyone! Mine's less exciting, but it was very stressful. On the last day of the month — payday! — our payment app stopped working at nine in the morning. Thousands of people couldn't pay. We'd installed an update the night before, and it had a mistake. As a result, the app was down for four hours. My phone didn't stop ringing. In the end, we went back to the old version. Since then, we never install updates before payday!
 

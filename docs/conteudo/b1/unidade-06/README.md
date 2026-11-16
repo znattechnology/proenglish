@@ -1,6 +1,6 @@
 # B1.2 · Unidade 6 — What happened? (7 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 6
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 6
 
 ## Objectivos da unidade
 
@@ -52,6 +52,6 @@ Janeiro de 2028. O Nuno lidera o seu primeiro projecto: a rede e as câmaras do 
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (14 escutas, 9 pronúncias, a 6F com três mensagens de voz); imagens (o telhado e o ralo, a sala dos servidores, a linha do tempo, o relato do vigilante); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (14 escutas, 9 pronúncias, a 6F com três mensagens de voz); imagens (o telhado e o ralo, a sala dos servidores, a linha do tempo, o relato do vigilante); carregamento na plataforma.
 
 A seguir vem a **unidade 7, "Calls and video calls"**.
