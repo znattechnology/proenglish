@@ -353,6 +353,8 @@ Versão completa em [a2/unidade-08/](a2/unidade-08/README.md) **[I]**.
 
 ### Unidade 9 — Customer service
 
+Versão completa em [a2/unidade-09/](a2/unidade-09/README.md) **[I]**.
+
 **Objectivos da unidade.** No fim, o aluno consegue:
 1. fazer pedidos formais com *Could you…? / Would you…? / Could I…?* e responder (*Of course. / I'm afraid I can't, but…*);
 2. fazer uma reclamação educada e clara: o problema, desde quando, o que quer (*I'm calling about… It still doesn't work. I'd like a refund / a replacement.*);
