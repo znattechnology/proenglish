@@ -1,0 +1,1331 @@
+{
+ "unidade": "B1.1 · Unit 4 — What if…?",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "4A",
+   "titulo": "If I had more time…",
+   "aula": "4A",
+   "objectivo": "Falar de situações imaginárias com o 2.º condicional e dar conselhos com If I were you, I'd…",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I [had] more time, I'd study every day.",
+     "opcoes": [
+      {
+       "texto": "would have",
+       "certa": false
+      },
+      {
+       "texto": "will have",
+       "certa": false
+      }
+     ],
+     "explicacao": "Depois de if, o past simple; nunca would."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If we had more engineers, we [would] finish in one week.",
+     "opcoes": [
+      {
+       "texto": "will",
+       "certa": false
+      },
+      {
+       "texto": "are",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I [were] you, I'd call Sipho.",
+     "opcoes": [
+      {
+       "texto": "am",
+       "certa": false
+      },
+      {
+       "texto": "will be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I were the director, I [wouldn't] change anything.",
+     "opcoes": [
+      {
+       "texto": "won't",
+       "certa": false
+      },
+      {
+       "texto": "didn't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Se eu fosse a si, ligava ao Sipho.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "If I were you, I'd call Sipho.",
+       "certa": true
+      },
+      {
+       "texto": "If I am you, I call Sipho.",
+       "certa": false
+      },
+      {
+       "texto": "If I would be you, I call Sipho.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"If we had a lorry, we wouldn't wait.\" Do they have a lorry?",
+     "opcoes": [
+      {
+       "texto": "No.",
+       "certa": true
+      },
+      {
+       "texto": "Yes.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, an old one.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "What would you do if you were the director?",
+       "certa": true
+      },
+      {
+       "texto": "What would you do if you would be the director?",
+       "certa": false
+      },
+      {
+       "texto": "What you would do if you were the director?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Se eu tivesse mais tempo, estudava todos os dias.",
+     "resposta": "If I had more time, I'd study every day.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. If I were the director, I'd buy a lorry for our team. We'd never wait for transport again.",
+     "enunciado": "What would Paulo buy?",
+     "opcoes": [
+      {
+       "texto": "a lorry",
+       "certa": true
+      },
+      {
+       "texto": "a car",
+       "certa": false
+      },
+      {
+       "texto": "new computers",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "If I were you, I'd call Sipho.",
+     "enunciado": "Ouça e repita: \"If I were you\" ligado, como uma só palavra."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "If you were the director of your company or school for one day, what would you change? Say three things, and why.",
+     "frase": "I'd",
+     "resposta": "If I were the director, I'd change three things. First, I'd start work at eight thirty, because the traffic is terrible at eight. Second, I'd buy new computers: ours are too slow. And I'd give everyone a free lunch on Fridays. People would be happier.",
+     "contexto": "2.º condicional com razões."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Would you like to be a manager one day? Why, or why not?",
+     "frase": "would",
+     "resposta": "Yes, I would. If I were a manager, I'd help my team to learn new things. But I don't think I'm ready now: I'd like two or three more years of experience first.",
+     "contexto": "Uma opinião com would."
+    }
+   ]
+  },
+  {
+   "codigo": "4B",
+   "titulo": "Real or imaginary?",
+   "aula": "4B",
+   "objectivo": "Escolher entre o 1.º condicional (possível) e o 2.º (imaginário ou pouco provável).",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If customs [accepts] the certificate today, they'll start on Monday.",
+     "opcoes": [
+      {
+       "texto": "accepted",
+       "certa": false
+      },
+      {
+       "texto": "would accept",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If customs accepted documents by email, we [would] have the antennas today.",
+     "opcoes": [
+      {
+       "texto": "will",
+       "certa": false
+      },
+      {
+       "texto": "are going to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If it [rains] tomorrow, we'll stay at home.",
+     "opcoes": [
+      {
+       "texto": "rained",
+       "certa": false
+      },
+      {
+       "texto": "would rain",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Nuno has a job interview tomorrow. Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If I get the job, I'll move to Luanda.",
+       "certa": true
+      },
+      {
+       "texto": "If I get the job, I'd move to Luanda.",
+       "certa": false
+      },
+      {
+       "texto": "If I would get the job, I'll move to Luanda.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Não misturar: present + will; past + would."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Nuno doesn't speak Chinese. Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If Nuno spoke Chinese, he'd talk to Mei in Chinese.",
+       "certa": true
+      },
+      {
+       "texto": "If Nuno speaks Chinese, he'd talk to Mei in Chinese.",
+       "certa": false
+      },
+      {
+       "texto": "If Nuno spoke Chinese, he'll talk to Mei in Chinese.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"If I were Hannah, I'd be annoyed.\" You feel the same. You say:",
+     "opcoes": [
+      {
+       "texto": "So would I.",
+       "certa": true
+      },
+      {
+       "texto": "So do I.",
+       "certa": false
+      },
+      {
+       "texto": "Neither would I.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"We'll miss the dates unless customs is quick.\" It means:",
+     "opcoes": [
+      {
+       "texto": "If customs isn't quick, we'll miss the dates.",
+       "certa": true
+      },
+      {
+       "texto": "If customs is quick, we'll miss the dates.",
+       "certa": false
+      },
+      {
+       "texto": "Customs is never quick.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Se a alfândega aceitar o certificado, mando-te uma mensagem.",
+     "resposta": "If customs accepts the certificate, I'll send you a message.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. If customs accepts the certificate today, they'll start the process on Monday.",
+     "enunciado": "When will customs start the process, if they accept the certificate today?",
+     "opcoes": [
+      {
+       "texto": "on Monday",
+       "certa": true
+      },
+      {
+       "texto": "today",
+       "certa": false
+      },
+      {
+       "texto": "next Friday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "If customs accepts it, we'll start on Monday.",
+     "enunciado": "Ouça e repita, com \"we'll\" curto."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Talk about the next weekend: two real plans with \"if\" and \"will\", and one dream with \"if\" and \"would\".",
+     "frase": "I'd",
+     "resposta": "If the weather is good on Saturday, I'll go to the beach with my family. If my brother calls, we'll have lunch together. But if I had a boat, I'd go to Mussulo every weekend!",
+     "contexto": "1.º e 2.º condicional."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it better to plan for problems before they happen, or to solve them when they happen? Why?",
+     "frase": "if",
+     "resposta": "In my view, it's better to plan. If you have a plan B, you won't panic in a crisis. For example, if the internet goes down at my office, we'll use our phones. We decided that last year.",
+     "contexto": "Uma opinião com o 1.º condicional."
+    }
+   ]
+  },
+  {
+   "codigo": "4C",
+   "titulo": "It might be windy",
+   "aula": "4C",
+   "objectivo": "Dizer a probabilidade com will definitely / probably, may, might, probably won't e I doubt.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "They'll [probably] release the antennas next week.",
+     "opcoes": [
+      {
+       "texto": "might",
+       "certa": false
+      },
+      {
+       "texto": "doubt",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The crane [probably won't] work on the twenty-fifth.",
+     "opcoes": [
+      {
+       "texto": "won't probably",
+       "certa": false
+      },
+      {
+       "texto": "will not probably",
+       "certa": false
+      }
+     ],
+     "explicacao": "probably: depois de will, antes de won't."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It [might] rain tomorrow.",
+     "opcoes": [
+      {
+       "texto": "might to",
+       "certa": false
+      },
+      {
+       "texto": "mights",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Maybe] it'll be windy on Thursday.",
+     "opcoes": [
+      {
+       "texto": "May be",
+       "certa": false
+      },
+      {
+       "texto": "Might",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is the most certain?",
+     "opcoes": [
+      {
+       "texto": "The satellite will definitely be ready.",
+       "certa": true
+      },
+      {
+       "texto": "The satellite will probably be ready.",
+       "certa": false
+      },
+      {
+       "texto": "The satellite might be ready.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Will Paulo come to the party?\" You think no (20%). You say:",
+     "opcoes": [
+      {
+       "texto": "I doubt it.",
+       "certa": true
+      },
+      {
+       "texto": "Definitely.",
+       "certa": false
+      },
+      {
+       "texto": "I doubt.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I doubt Domingos can find another crane.\" Hannah thinks…",
+     "opcoes": [
+      {
+       "texto": "he probably can't find one",
+       "certa": true
+      },
+      {
+       "texto": "he can definitely find one",
+       "certa": false
+      },
+      {
+       "texto": "he has a crane now",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "It may be windy on Thursday.",
+       "certa": true
+      },
+      {
+       "texto": "It maybe windy on Thursday.",
+       "certa": false
+      },
+      {
+       "texto": "It may to be windy on Thursday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. The forecast says strong wind on the twenty-fifth, so the crane probably won't work that day.",
+     "enunciado": "What is the problem on the twenty-fifth?",
+     "opcoes": [
+      {
+       "texto": "strong wind",
+       "certa": true
+      },
+      {
+       "texto": "a public holiday",
+       "certa": false
+      },
+      {
+       "texto": "no engineers",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I doubt it. The crane probably won't work.",
+     "enunciado": "Ouça e repita: em \"doubt\" não se diz o \"b\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Talk about next year, at work or in your studies. Say two things with \"will probably\" or \"will definitely\", one with \"might\", and one with \"I doubt\".",
+     "frase": "might",
+     "resposta": "Next year I'll probably start a new project, and I'll definitely take an English exam. I might change departments — my manager asked me last week. But I doubt I'll get a pay rise: the company doesn't have enough money this year.",
+     "contexto": "Probabilidade."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you trust the weather forecast? Why, or why not?",
+     "frase": "probably",
+     "resposta": "Not always. Sometimes the forecast says it'll probably rain, and then it's sunny all day! But for strong wind or big storms, I think it's quite good. So I usually check it before a trip.",
+     "contexto": "Uma opinião com probabilidade."
+    }
+   ]
+  },
+  {
+   "codigo": "4D",
+   "titulo": "Logistics and delays",
+   "aula": "4D",
+   "objectivo": "Palavras de logística, colocações com problem, run out of / sort out / put off, contracções de would; assume e ordinary.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "shipment",
+       "b": "remessa"
+      },
+      {
+       "a": "customs",
+       "b": "alfândega"
+      },
+      {
+       "a": "supplier",
+       "b": "fornecedor"
+      },
+      {
+       "a": "shortage",
+       "b": "falta, escassez"
+      },
+      {
+       "a": "delay",
+       "b": "atraso"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The bakery [ran out of] flour.",
+     "opcoes": [
+      {
+       "texto": "sorted out",
+       "certa": false
+      },
+      {
+       "texto": "put off",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Don't worry — I'll [sort] it out.",
+     "opcoes": [
+      {
+       "texto": "run",
+       "certa": false
+      },
+      {
+       "texto": "solve",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let's put [it off] until Friday.",
+     "opcoes": [
+      {
+       "texto": "off it",
+       "certa": false
+      },
+      {
+       "texto": "it of",
+       "certa": false
+      }
+     ],
+     "explicacao": "Com pronome, no meio: put it off."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "A missing document can [cause] a problem.",
+     "opcoes": [
+      {
+       "texto": "do",
+       "certa": false
+      },
+      {
+       "texto": "happen",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Customs is keeping the antennas at the airport.",
+       "certa": true
+      },
+      {
+       "texto": "Customers is keeping the antennas at the airport.",
+       "certa": false
+      },
+      {
+       "texto": "Custom are keeping the antennas at the airport.",
+       "certa": false
+      }
+     ],
+     "explicacao": "customs = alfândega; customers = clientes."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Assumo o erro.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I admit my mistake.",
+       "certa": true
+      },
+      {
+       "texto": "I assume my mistake.",
+       "certa": false
+      },
+      {
+       "texto": "I suppose my mistake.",
+       "certa": false
+      }
+     ],
+     "explicacao": "assume = supor."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It was an ordinary day.\" It means:",
+     "opcoes": [
+      {
+       "texto": "It was a normal day.",
+       "certa": true
+      },
+      {
+       "texto": "It was a rude day.",
+       "certa": false
+      },
+      {
+       "texto": "It was a terrible day.",
+       "certa": false
+      }
+     ],
+     "explicacao": "ordinary = normal, comum."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. Our supplier ran out of cable, so we're putting off the installation until Monday.",
+     "enunciado": "When is the installation now?",
+     "opcoes": [
+      {
+       "texto": "on Monday",
+       "certa": true
+      },
+      {
+       "texto": "today",
+       "certa": false
+      },
+      {
+       "texto": "next month",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'd call the agent. It'd cost two thousand dollars.",
+     "enunciado": "Ouça e repita: \"I'd\" e \"it'd\" curtos."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'd go to the airport.",
+     "enunciado": "Ouça e repita: não perca o \"d\" de \"I'd\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe a delay or a shortage at your work or in your city. What caused it, and how did people sort it out?",
+     "frase": "sorted",
+     "resposta": "Last month our office ran out of paper for a week, because the supplier had a problem with a delivery. It caused a lot of problems: we couldn't print contracts. In the end, my manager sorted it out: she found a second supplier in Viana.",
+     "contexto": "Logística e phrasal verbs."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "In your opinion, what causes most delays at work: documents, transport, or bad planning?",
+     "frase": "causes",
+     "resposta": "In my opinion, bad planning causes most delays. For example, people order things too late, and then the supplier runs out of stock. If we planned better, we'd have fewer problems.",
+     "contexto": "Uma opinião com o 2.º condicional."
+    }
+   ]
+  },
+  {
+   "codigo": "4E",
+   "titulo": "Real English: What would you do?",
+   "aula": "4E",
+   "objectivo": "Identificar o problema e a solução proposta em quatro chamadas para um programa de rádio.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Ricardo. My supplier ran out of brake pads two weeks ago, and I have six cars waiting.",
+     "enunciado": "How many cars are waiting at Ricardo's workshop?",
+     "opcoes": [
+      {
+       "texto": "six",
+       "certa": true
+      },
+      {
+       "texto": "two",
+       "certa": false
+      },
+      {
+       "texto": "sixteen",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Ricardo. Call workshops in Benguela? That might not work. They're my competitors!",
+     "enunciado": "Why doesn't Ricardo want to call workshops in Benguela?",
+     "opcoes": [
+      {
+       "texto": "They're his competitors.",
+       "certa": true
+      },
+      {
+       "texto": "They're too far.",
+       "certa": false
+      },
+      {
+       "texto": "They're closed.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Amina. My colleague left in August, and now I do my job and her job.",
+     "enunciado": "Why does Amina do two jobs?",
+     "opcoes": [
+      {
+       "texto": "Her colleague left in August.",
+       "certa": true
+      },
+      {
+       "texto": "Her boss is ill.",
+       "certa": false
+      },
+      {
+       "texto": "The port is busy in August.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Joseph. My team's meetings never start on time. We wait fifteen, twenty minutes every day.",
+     "enunciado": "How late do Joseph's meetings start?",
+     "opcoes": [
+      {
+       "texto": "fifteen or twenty minutes",
+       "certa": true
+      },
+      {
+       "texto": "five minutes",
+       "certa": false
+      },
+      {
+       "texto": "one hour",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Fátima. The price of flour went up thirty percent this year, and there's a shortage.",
+     "enunciado": "How much did the price of flour go up?",
+     "opcoes": [
+      {
+       "texto": "thirty percent",
+       "certa": true
+      },
+      {
+       "texto": "thirteen percent",
+       "certa": false
+      },
+      {
+       "texto": "three percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Fátima. Maybe I'll buy flour with two other bakeries. A bigger order is usually cheaper.",
+     "enunciado": "What is Fátima's idea?",
+     "opcoes": [
+      {
+       "texto": "to buy flour with two other bakeries",
+       "certa": true
+      },
+      {
+       "texto": "to close the bakery",
+       "certa": false
+      },
+      {
+       "texto": "to stop making cakes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Marta says: \"If I were you, I'd find a second supplier.\" She is…",
+     "opcoes": [
+      {
+       "texto": "giving advice",
+       "certa": true
+      },
+      {
+       "texto": "asking for help",
+       "certa": false
+      },
+      {
+       "texto": "telling a story",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Ricardo doesn't like an idea. What does he say?",
+     "opcoes": [
+      {
+       "texto": "That might not work.",
+       "certa": true
+      },
+      {
+       "texto": "That's such a good idea.",
+       "certa": false
+      },
+      {
+       "texto": "If I were you, I'd do it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "What about ordering from a supplier in Luanda?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "If I raise my prices, I might lose customers.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You're the presenter. A caller says: \"I start work at seven, but the bus is always late, and my boss is angry.\" Give two suggestions.",
+     "frase": "If I were you",
+     "resposta": "If I were you, I'd talk to your boss and explain the problem. Why don't you ask to start at seven thirty? Or what about sharing a car with a colleague? It'll probably cost a bit more than the bus, but you won't be late.",
+     "contexto": "Sugestões."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Which of the four problems is the most difficult to solve, in your opinion? Why?",
+     "frase": "because",
+     "resposta": "In my view, Fátima's problem is the most difficult, because she can't control the price of flour. If she raises her prices, she might lose customers. Amina's problem is easier: she can talk to her boss.",
+     "contexto": "Uma opinião com uma razão."
+    }
+   ]
+  },
+  {
+   "codigo": "4F",
+   "titulo": "Work & Life: The shipment is late",
+   "aula": "4F",
+   "objectivo": "Comparar duas soluções, recomendar uma e explicar em inglês uma nota da alfândega.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "The note says: \"A mercadoria fica retida.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "Customs is keeping the antennas.",
+       "certa": true
+      },
+      {
+       "texto": "The merchandise stays retired.",
+       "certa": false
+      },
+      {
+       "texto": "Customs is retaining the merchants.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The note says: \"Armazenagem gratuita durante 5 dias.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "Storage is free for five days.",
+       "certa": true
+      },
+      {
+       "texto": "Storage is gratis during five days.",
+       "certa": false
+      },
+      {
+       "texto": "The warehouse is free in five days.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Option two is faster, [but] it's more expensive.",
+     "opcoes": [
+      {
+       "texto": "than",
+       "certa": false
+      },
+      {
+       "texto": "as",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Option one isn't as [safe] as option two.",
+     "opcoes": [
+      {
+       "texto": "safer",
+       "certa": false
+      },
+      {
+       "texto": "safest",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If he got the antennas out on Wednesday, the lorry [would] leave on Friday.",
+     "opcoes": [
+      {
+       "texto": "will",
+       "certa": false
+      },
+      {
+       "texto": "is",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A good recommendation…",
+     "opcoes": [
+      {
+       "texto": "compares the costs and the risks of each option",
+       "certa": true
+      },
+      {
+       "texto": "only gives the cheapest option",
+       "certa": false
+      },
+      {
+       "texto": "never talks about problems",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Thandi says: \"The certificate was our mistake.\" What does she say next?",
+     "opcoes": [
+      {
+       "texto": "Mopane takes responsibility for that.",
+       "certa": true
+      },
+      {
+       "texto": "Mopane assumes that.",
+       "certa": false
+      },
+      {
+       "texto": "Mopane is ordinary.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. Mr Lukoki is very good. He usually sorts these things out in two or three days.",
+     "enunciado": "How long does Mr Lukoki usually need?",
+     "opcoes": [
+      {
+       "texto": "two or three days",
+       "certa": true
+      },
+      {
+       "texto": "ten working days",
+       "certa": false
+      },
+      {
+       "texto": "one week",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thandi. That's fair. Mopane will pay half. I'll confirm it today.",
+     "enunciado": "How much will Mopane pay?",
+     "opcoes": [
+      {
+       "texto": "half of the cost",
+       "certa": true
+      },
+      {
+       "texto": "all of the cost",
+       "certa": false
+      },
+      {
+       "texto": "nothing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Option two is faster, but it's more expensive. I recommend option two.",
+     "enunciado": "Ouça e repita, com o acento em \"two\" e a voz a descer no fim."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your company needs laptops for a training on Monday. The supplier is late. Option one: wait — free, but they might arrive on Tuesday. Option two: rent laptops — they'll definitely be here, but it costs three hundred dollars. Compare the options and recommend one.",
+     "frase": "recommend",
+     "resposta": "Option one is cheaper, but it isn't as safe. The laptops might arrive on Tuesday, and the training starts on Monday. If we waited, twenty people would sit without computers for a day. Option two is more expensive, but the laptops will definitely be here. I recommend option two.",
+     "contexto": "Comparar e recomendar."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A foreign colleague asks about this note. Explain it in English: \"Informamos que a entrega das cadeiras fica adiada para dia 20, por falta de stock. Pedimos desculpa pelo incómodo. Se preferir, podemos entregar já metade da encomenda.\"",
+     "frase": "It says",
+     "resposta": "It says the supplier is putting off the delivery of the chairs until the twentieth, because they don't have enough in stock. They say sorry. And if we want, they can deliver half of the order now.",
+     "contexto": "Mediação: os factos, em frases simples e activas."
+    }
+   ]
+  },
+  {
+   "codigo": "4R",
+   "titulo": "Unit 4 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 4 e reciclar a unidade 3 do B1 e o A2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I [were] you, I'd talk to the supplier.",
+     "opcoes": [
+      {
+       "texto": "am",
+       "certa": false
+      },
+      {
+       "texto": "will be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If the lorry [leaves] on Friday, it'll arrive on Sunday.",
+     "opcoes": [
+      {
+       "texto": "left",
+       "certa": false
+      },
+      {
+       "texto": "would leave",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It [might] be windy tomorrow.",
+     "opcoes": [
+      {
+       "texto": "might to",
+       "certa": false
+      },
+      {
+       "texto": "mights",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We ran [out of] paper.",
+     "opcoes": [
+      {
+       "texto": "off",
+       "certa": false
+      },
+      {
+       "texto": "out",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If we had more time, we'd finish today.",
+       "certa": true
+      },
+      {
+       "texto": "If we would have more time, we'd finish today.",
+       "certa": false
+      },
+      {
+       "texto": "If we have more time, we'd finish today.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The crane probably won't work.",
+       "certa": true
+      },
+      {
+       "texto": "The crane won't probably work.",
+       "certa": false
+      },
+      {
+       "texto": "The crane probably not work.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 3). Choose the polite way to disagree.",
+     "opcoes": [
+      {
+       "texto": "I'm not sure I agree.",
+       "certa": true
+      },
+      {
+       "texto": "That's wrong.",
+       "certa": false
+      },
+      {
+       "texto": "I am not agree.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 3). Complete: \"The masts aren't high ___.\"",
+     "opcoes": [
+      {
+       "texto": "enough",
+       "certa": true
+      },
+      {
+       "texto": "too",
+       "certa": false
+      },
+      {
+       "texto": "so",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 8). Complete: \"If the power goes off, we ___ the generator.\"",
+     "opcoes": [
+      {
+       "texto": "'ll use",
+       "certa": true
+      },
+      {
+       "texto": "'d use",
+       "certa": false
+      },
+      {
+       "texto": "used",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Se eu fosse o director, contratava mais dois engenheiros.",
+     "resposta": "If I were the director, I'd hire two more engineers.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Sílvia. Two thousand dollars is a lot of money, but with half, I can accept it.",
+     "enunciado": "What does Sílvia accept?",
+     "opcoes": [
+      {
+       "texto": "paying half of the cost",
+       "certa": true
+      },
+      {
+       "texto": "paying all of the cost",
+       "certa": false
+      },
+      {
+       "texto": "waiting ten days",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "If you could change one thing at your workplace, what would it be? Why?",
+     "frase": "would",
+     "resposta": "If I could change one thing, it would be the meeting room. It's too small for our team, and it's always hot. If we had a bigger room with air conditioning, our meetings would be shorter and better.",
+     "contexto": "2.º condicional (45 segundos)."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your colleague says: \"Let's wait for the supplier. It's cheaper.\" You think it's risky. Answer with a suggestion.",
+     "frase": "What about",
+     "resposta": "I see your point, but it might take two weeks. What about calling a second supplier? It'll probably cost a bit more, but we won't miss the deadline.",
+     "contexto": "Discordar e sugerir."
+    }
+   ]
+  }
+ ]
+}
