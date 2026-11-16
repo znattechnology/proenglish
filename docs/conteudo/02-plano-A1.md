@@ -130,7 +130,7 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 | 1B | Língua | Spell it, please | Soletrar o nome e ditar um e-mail (*at*, *dot*). |
 | 1C | Língua | My number is… | Dizer números de 0 a 20 e um número de telemóvel em grupos. |
 | 1D | Vocabulário e pronúncia | Sounds and letters | Distinguir os sons das letras que se confundem e ler palavras simples em voz alta. |
-| 1E | Real English | Hello from around the world | Entender apresentações de 4 pessoas de países diferentes. |
+| 1E | Real English | Hello at work | Entender cumprimentos, nomes soletrados e números de telefone ditos por pessoas diferentes, a velocidade quase natural. |
 | 1F | Work & Life | First day at the office | Apresentar-se na recepção e a um colega no primeiro dia. |
 
 - **Gramática:** *be* com I e you (+, −, ?); contracções *I'm*, *you're*; *a/an*.
@@ -541,5 +541,5 @@ Verificação: Lab 6A (exercícios 1–8) e pergunta 3 do questionário da unida
 1. Revisão deste plano pelos professores (objectivos, ordem, contexto angolano).
 2. Decidir a regra do nível básico (recomendado: só o A2 concluído ou o teste).
 3. Fechar o inventário de vocabulário A1 a partir da NGSL, aferido com Oxford 3000 A1 e Cambridge A2 Key.
-4. Escrever os guiões da unidade 1 (6 aulas), as 7 lições de laboratório e os 2 cenários do tutor, e testá-los com o professor de IA.
+4. ~~Escrever a unidade 1~~ — feito: [a1/unidade-01](a1/unidade-01/README.md). Testar com o professor de IA depois da revisão.
 5. Escolher o serviço de voz para as aulas "Real English" (vozes variadas).

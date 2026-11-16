@@ -1,0 +1,301 @@
+{
+ "title": "Unit 1 quiz — Hello!",
+ "description": "Cumprimentos, nomes, soletração, e-mails e números de telefone.",
+ "questions": [
+  {
+   "id": "u1q1",
+   "question": "It's 10 a.m. You arrive at a meeting. What do you say?",
+   "options": [
+    {
+     "id": "u1q1o0",
+     "text": "Good morning.",
+     "isCorrect": true
+    },
+    {
+     "id": "u1q1o1",
+     "text": "Good evening.",
+     "isCorrect": false
+    },
+    {
+     "id": "u1q1o2",
+     "text": "Good night.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u1q1o0",
+   "explanation": "De manhã: \"Good morning\".",
+   "points": 10
+  },
+  {
+   "id": "u1q2",
+   "question": "Choose the correct answer: \"Are you Paulo?\"",
+   "options": [
+    {
+     "id": "u1q2o0",
+     "text": "Yes, I am.",
+     "isCorrect": true
+    },
+    {
+     "id": "u1q2o1",
+     "text": "Yes, I'm.",
+     "isCorrect": false
+    },
+    {
+     "id": "u1q2o2",
+     "text": "Yes, I is.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u1q2o0",
+   "explanation": "Na resposta curta diz-se \"Yes, I am.\"",
+   "points": 10
+  },
+  {
+   "id": "u1q3",
+   "question": "Someone says \"Nice to meet you.\" What do you answer?",
+   "options": [
+    {
+     "id": "u1q3o0",
+     "text": "Nice to meet you, too.",
+     "isCorrect": true
+    },
+    {
+     "id": "u1q3o1",
+     "text": "Good night.",
+     "isCorrect": false
+    },
+    {
+     "id": "u1q3o2",
+     "text": "I'm fine.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u1q3o0",
+   "explanation": "Responde-se \"Nice to meet you, too.\"",
+   "points": 10
+  },
+  {
+   "id": "u1q4",
+   "question": "How do you say \"@\" in an email?",
+   "options": [
+    {
+     "id": "u1q4o0",
+     "text": "at",
+     "isCorrect": true
+    },
+    {
+     "id": "u1q4o1",
+     "text": "dot",
+     "isCorrect": false
+    },
+    {
+     "id": "u1q4o2",
+     "text": "and",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u1q4o0",
+   "explanation": "@ diz-se \"at\".",
+   "points": 10
+  },
+  {
+   "id": "u1q5",
+   "question": "You don't understand. What do you say?",
+   "options": [
+    {
+     "id": "u1q5o0",
+     "text": "Sorry, can you repeat that, please?",
+     "isCorrect": true
+    },
+    {
+     "id": "u1q5o1",
+     "text": "How do you spell that?",
+     "isCorrect": false
+    },
+    {
+     "id": "u1q5o2",
+     "text": "Nice to meet you.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u1q5o0",
+   "explanation": "Para pedir que repitam: \"Can you repeat that, please?\"",
+   "points": 10
+  },
+  {
+   "id": "u1q6",
+   "question": "Which is 13?",
+   "options": [
+    {
+     "id": "u1q6o0",
+     "text": "thirteen",
+     "isCorrect": true
+    },
+    {
+     "id": "u1q6o1",
+     "text": "three",
+     "isCorrect": false
+    },
+    {
+     "id": "u1q6o2",
+     "text": "thirty",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u1q6o0",
+   "explanation": "13 = thirteen.",
+   "points": 10
+  },
+  {
+   "id": "u1q7",
+   "question": "How do you say 922 in a phone number?",
+   "options": [
+    {
+     "id": "u1q7o0",
+     "text": "nine double two",
+     "isCorrect": true
+    },
+    {
+     "id": "u1q7o1",
+     "text": "nine twenty-two",
+     "isCorrect": false
+    },
+    {
+     "id": "u1q7o2",
+     "text": "nine two",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u1q7o0",
+   "explanation": "Algarismos iguais seguidos: \"double\".",
+   "points": 10
+  },
+  {
+   "id": "u1q8",
+   "question": "Which letter has the same sound as \"A\"?",
+   "options": [
+    {
+     "id": "u1q8o0",
+     "text": "K",
+     "isCorrect": true
+    },
+    {
+     "id": "u1q8o1",
+     "text": "E",
+     "isCorrect": false
+    },
+    {
+     "id": "u1q8o2",
+     "text": "I",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u1q8o0",
+   "explanation": "A, H, J e K têm o mesmo som.",
+   "points": 10
+  },
+  {
+   "id": "u1q9",
+   "question": "\"Hi\" is…",
+   "options": [
+    {
+     "id": "u1q9o0",
+     "text": "for any time of the day",
+     "isCorrect": true
+    },
+    {
+     "id": "u1q9o1",
+     "text": "only for the morning",
+     "isCorrect": false
+    },
+    {
+     "id": "u1q9o2",
+     "text": "only for the evening",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u1q9o0",
+   "explanation": "\"Hi\" é informal e serve a qualquer hora.",
+   "points": 10
+  },
+  {
+   "id": "u1q10",
+   "question": "Complete: \"She's ___ accountant.\"",
+   "options": [
+    {
+     "id": "u1q10o0",
+     "text": "an",
+     "isCorrect": true
+    },
+    {
+     "id": "u1q10o1",
+     "text": "a",
+     "isCorrect": false
+    },
+    {
+     "id": "u1q10o2",
+     "text": "the",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u1q10o0",
+   "explanation": "Antes de som de vogal: \"an\".",
+   "points": 10
+  },
+  {
+   "id": "u1q11",
+   "question": "It's 8 p.m. You leave the office. What do you say?",
+   "options": [
+    {
+     "id": "u1q11o0",
+     "text": "Good night! See you tomorrow.",
+     "isCorrect": true
+    },
+    {
+     "id": "u1q11o1",
+     "text": "Good evening! Nice to meet you.",
+     "isCorrect": false
+    },
+    {
+     "id": "u1q11o2",
+     "text": "Good morning!",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u1q11o0",
+   "explanation": "Ao sair à noite pode dizer-se \"Good night\".",
+   "points": 10
+  },
+  {
+   "id": "u1q12",
+   "question": "Choose the correct sentence.",
+   "options": [
+    {
+     "id": "u1q12o0",
+     "text": "I'm a technician.",
+     "isCorrect": true
+    },
+    {
+     "id": "u1q12o1",
+     "text": "I'm technician.",
+     "isCorrect": false
+    },
+    {
+     "id": "u1q12o2",
+     "text": "I a technician.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u1q12o0",
+   "explanation": "A profissão leva \"a\" ou \"an\".",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
