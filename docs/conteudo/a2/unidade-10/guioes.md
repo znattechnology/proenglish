@@ -334,12 +334,12 @@ Verificação: Lab 10D; pergunta 7 do questionário
 
 ### 2. O anúncio (2 min 30 s)
 
-[ECRÃ: o anúncio completo: "Joint Support Team — Project Support Technician · Luanda · Skills: communication, teamwork, problem-solving · Experience: one year in IT support · Languages: Portuguese and English · Training: yes, in Johannesburg · Salary: to discuss at the interview · Send your CV and application by Friday 28 May."]
+[ECRÃ: o anúncio completo: "Joint Support Team — Project Support Technician · Luanda · Skills: communication, teamwork, problem-solving · Experience: one year in IT support · Languages: Portuguese and English · Training: yes, in Johannesburg · Salary: we'll talk about it at the interview · Send your CV and application by Friday 28 May."]
 
 **PROF:** This is the job ad. The position is project support technician.
 **PROF:** The skills: communication — talking and writing clearly; teamwork — working well with other people; problem-solving — finding solutions.
 **PROF:** The experience: one year in IT support. Languages: Portuguese and English.
-**PROF:** There's training in Johannesburg. The salary is "to discuss at the interview".
+**PROF:** There's training in Johannesburg, and they'll talk about the salary at the interview.
 **PROF:** To apply for the position, send your CV and an application by Friday.
 [PAUSA 3 s]
 
@@ -438,7 +438,7 @@ Verificação: Lab 10E; pergunta 8 do questionário
 
 ### 5. A sua vez (1 min)
 
-**PROF:** Now you. Imagine an interview for a job you'd like. Why do you want this job? Use the three parts.
+**PROF:** Now you. Imagine an interview for your dream job. Why do you want this job? Use the three parts.
 [PAUSA 25 s]
 [ECRÃ: modelo — I've worked as … for / since … I'm good at … , and I'm … My goal is to …]
 

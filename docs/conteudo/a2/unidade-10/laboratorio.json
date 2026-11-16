@@ -312,7 +312,7 @@
     {
      "tipo": "escuta",
      "frase": "Well, he works hard, and he learns very quickly.",
-     "enunciado": "How does Nuno learn?",
+     "enunciado": "Paulo is talking about Nuno. How does Nuno learn?",
      "opcoes": [
       {
        "texto": "very quickly",
@@ -702,7 +702,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "There's training in Johannesburg. The salary is to discuss at the interview.",
+     "frase": "There's training in Johannesburg, and they'll talk about the salary at the interview.",
      "enunciado": "Where is the training?",
      "opcoes": [
       {
@@ -893,7 +893,7 @@
     },
     {
      "tipo": "responder",
-     "enunciado": "Imagine an interview for a job you like. Why do you want this job?",
+     "enunciado": "Imagine an interview for your dream job. Why do you want this job?",
      "frase": "I'm good at",
      "resposta": "I've worked in sales for five years. I'm good at talking to people, and I'm reliable. My goal is to manage a sales team.",
      "contexto": "Experiência, uma qualidade e um objectivo."
