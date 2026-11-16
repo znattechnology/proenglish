@@ -1,0 +1,301 @@
+{
+ "title": "B1.1 Unit 5 quiz — How it works",
+ "description": "Passiva no presente e no passado, orações relativas, regras de segurança, petrol e fabric.",
+ "questions": [
+  {
+   "id": "b1u5q1",
+   "question": "Complete: \"The panels ___ cleaned every two weeks.\"",
+   "options": [
+    {
+     "id": "b1u5q1o0",
+     "text": "are",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u5q1o1",
+     "text": "is",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u5q1o2",
+     "text": "do",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u5q1o0",
+   "explanation": "Plural: are + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b1u5q2",
+   "question": "\"Fala-se inglês aqui.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u5q2o0",
+     "text": "English is spoken here.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u5q2o1",
+     "text": "English speaks here.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u5q2o2",
+     "text": "Here speaks English.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u5q2o0",
+   "explanation": "\"Fala-se\" → passiva.",
+   "points": 10
+  },
+  {
+   "id": "b1u5q3",
+   "question": "Complete: \"The plant ___ built in 2025.\"",
+   "options": [
+    {
+     "id": "b1u5q3o0",
+     "text": "was",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u5q3o1",
+     "text": "were",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u5q3o2",
+     "text": "did",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u5q3o0",
+   "explanation": "Singular, passado: was + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b1u5q4",
+   "question": "Escolha a pergunta correcta.",
+   "options": [
+    {
+     "id": "b1u5q4o0",
+     "text": "When was the plant built?",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u5q4o1",
+     "text": "When the plant was built?",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u5q4o2",
+     "text": "When was built the plant?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u5q4o0",
+   "explanation": "Palavra interrogativa + was + sujeito + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b1u5q5",
+   "question": "Complete: \"Lourenço is the technician ___ works at night.\"",
+   "options": [
+    {
+     "id": "b1u5q5o0",
+     "text": "who",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u5q5o1",
+     "text": "which",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u5q5o2",
+     "text": "where",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u5q5o0",
+   "explanation": "who para pessoas.",
+   "points": 10
+  },
+  {
+   "id": "b1u5q6",
+   "question": "\"O relatório que te enviei.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u5q6o0",
+     "text": "the report I sent you",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u5q6o1",
+     "text": "the report that I sent it to you",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u5q6o2",
+     "text": "the report who I sent you",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u5q6o0",
+   "explanation": "Sem repetir o pronome; o that pode sair.",
+   "points": 10
+  },
+  {
+   "id": "b1u5q7",
+   "question": "Complete: \"You ___ touch the inverters. It's dangerous.\"",
+   "options": [
+    {
+     "id": "b1u5q7o0",
+     "text": "mustn't",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u5q7o1",
+     "text": "don't have to",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u5q7o2",
+     "text": "must to",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u5q7o0",
+   "explanation": "Proibido → mustn't.",
+   "points": 10
+  },
+  {
+   "id": "b1u5q8",
+   "question": "\"Angola produz petróleo.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u5q8o0",
+     "text": "Angola produces oil.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u5q8o1",
+     "text": "Angola produces petrol.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u5q8o2",
+     "text": "Angola produces fabric.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u5q8o0",
+   "explanation": "Falso amigo: petrol = gasolina.",
+   "points": 10
+  },
+  {
+   "id": "b1u5q9",
+   "question": "Num briefing de segurança, quando um visitante não percebe uma palavra, o melhor é…",
+   "options": [
+    {
+     "id": "b1u5q9o0",
+     "text": "explicá-la com palavras mais simples e um exemplo",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u5q9o1",
+     "text": "repeti-la mais alto",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u5q9o2",
+     "text": "passar à frente",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u5q9o0",
+   "explanation": "Como o Nuno na 5F: In other words…",
+   "points": 10
+  },
+  {
+   "id": "b1u5q10",
+   "question": "Reciclagem (B1, unidade 4). Complete: \"If I ___ more time, I'd study every day.\"",
+   "options": [
+    {
+     "id": "b1u5q10o0",
+     "text": "had",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u5q10o1",
+     "text": "would have",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u5q10o2",
+     "text": "will have",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u5q10o0",
+   "explanation": "Depois de if, o past simple.",
+   "points": 10
+  },
+  {
+   "id": "b1u5q11",
+   "question": "Reciclagem (B1, unidade 4). \"Will it rain?\" Acha que não. Responde:",
+   "options": [
+    {
+     "id": "b1u5q11o0",
+     "text": "I doubt it.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u5q11o1",
+     "text": "Definitely.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u5q11o2",
+     "text": "I doubt.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u5q11o0",
+   "explanation": "I doubt it = acho que não.",
+   "points": 10
+  },
+  {
+   "id": "b1u5q12",
+   "question": "Reciclagem (A2, unidade 5). \"Não é preciso trazer o computador.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u5q12o0",
+     "text": "You don't have to bring your computer.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u5q12o1",
+     "text": "You mustn't bring your computer.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u5q12o2",
+     "text": "You haven't to bring your computer.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u5q12o0",
+   "explanation": "Não é preciso → don't have to.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
