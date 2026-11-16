@@ -46,7 +46,7 @@ Verificação: Lab 7A (exercícios 1–10); perguntas 1, 2 e 3 do questionário 
 **NUNO:** Ana, I'm new in Luanda. Is there a bank near here?
 **ANA:** Yes, there is. There's a bank opposite the office. And there's an ATM, too.
 **NUNO:** Great. Are there any restaurants?
-**ANA:** Yes, there are a lot of restaurants. And there's the café Kiandas — the coffee is very good!
+**ANA:** Yes, there are a lot of restaurants. And the café Kiandas is next to the bank — the coffee is very good!
 **NUNO:** Is there a gym?
 **ANA:** No, there isn't. But there's a park near the church. A lot of people run there in the morning.
 **NUNO:** Thank you, Ana!
@@ -194,7 +194,7 @@ Verificação: Lab 7B (exercícios 1–10); perguntas 4 e 5 do questionário
 
 **Os andares**
 
-[ECRÃ: ground floor (rés-do-chão) · first floor (primeiro andar) · second floor · third floor]
+[ECRÃ: ground floor (rés-do-chão) · first floor (primeiro andar) · second floor (segundo andar)]
 
 **PROF:** In a building: the ground floor, the first floor, the second floor. Kalandula Tech is on the second floor.
 (PT: "Ground floor" é o rés-do-chão. "First floor" é o primeiro andar, como em português. Os números ordinais estudam-se na unidade 10; por agora, aprenda estes.)
@@ -205,7 +205,7 @@ Verificação: Lab 7B (exercícios 1–10); perguntas 4 e 5 do questionário
 (PT: "Opposite" tem a força no início: "Ó-pâ-zit".)
 [PAUSA 3 s]
 **PROF:** beTWEEN [PAUSA 2 s] beHIND [PAUSA 2 s]
-**PROF:** Three — there. /θ/ — /ð/. Three banks there. [PAUSA 3 s]
+**PROF:** Three — there. /θ/ — /ð/. There are three shops there. [PAUSA 3 s]
 
 ### 5. Prática guiada (2 min)
 
@@ -224,8 +224,9 @@ Verificação: Lab 7B (exercícios 1–10); perguntas 4 e 5 do questionário
 [PAUSA 8 s]
 [ECRÃ: My office is near the airport. / My home is next to a school.]
 
-**PROF (reciclagem — 4C):** Whose building is it? It's… Kalandula Tech's building!
-[PAUSA 3 s]
+**PROF (reciclagem — 6C):** The café Kiandas is next to the bank. How much is a small coffee there?
+[PAUSA 4 s]
+[ECRÃ: It's six hundred kwanzas.]
 
 ### 6. Fecho (30 s)
 
@@ -239,7 +240,7 @@ Verificação: Lab 7B (exercícios 1–10); perguntas 4 e 5 do questionário
 ```
 Curso: A1.2        Unidade: 7        Aula: 7C — Excuse me, where is…?        Tipo: Língua
 Objectivo da aula: No fim, o aluno consegue pedir direcções com educação (Excuse me, where's the
-  hospital?), dar direcções simples com o imperativo (Go straight on. Turn left. Take the second
+  post office?), dar direcções simples com o imperativo (Go straight on. Turn left. Take the second
   street on the right. It's on the left.) e entender direcções simples.
 Objectivo da unidade a que serve: 3
 Gramática-alvo: imperativo + e − (Turn left. Don't turn right.); Excuse me, where's…? / Excuse me,
@@ -249,7 +250,7 @@ Palavras-alvo: excuse me, straight on, turn, left, right, past, cross, road, str
   roundabout, end, minutes, walk, far
 Reciclagem: preposições (7B); there is (7A); How do you go… by bus/on foot (5C)
 Pronúncia: entoação educada de "Excuse me" ↗; "first" e "second" com força
-Contexto: o Nuno sai a pé para o hospital e pede ajuda a uma senhora na rua
+Contexto: o Nuno sai a pé para os correios (fora do bairro do escritório) e pede ajuda a uma senhora na rua
 Duração: 10 min
 Verificação: Lab 7C (exercícios 1–10); perguntas 6 e 7 do questionário
 ```
@@ -263,10 +264,10 @@ Verificação: Lab 7C (exercícios 1–10); perguntas 6 e 7 do questionário
 
 [ECRÃ: uma rua de Talatona; o Nuno com o telemóvel sem bateria; uma senhora na paragem]
 
-**NUNO:** Excuse me. Where's the hospital, please?
-**SENHORA:** The hospital? It's near here. Go straight on. Go past the church. Then turn left at the traffic lights.
+**NUNO:** Excuse me. Where's the post office, please?
+**SENHORA:** The post office? It's near here. Go straight on. Go past the church. Then turn left at the traffic lights.
 **NUNO:** Turn left at the traffic lights…
-**SENHORA:** Yes. Then take the second street on the right. The hospital is on the left. It's five minutes on foot.
+**SENHORA:** Yes. Then take the second street on the right. The post office is on the left. It's five minutes on foot.
 **NUNO:** Sorry, can you repeat that, please?
 **SENHORA:** Go straight on, past the church. Left at the traffic lights. Second street on the right. It's on the left.
 **NUNO:** Thank you very much!
@@ -276,9 +277,9 @@ Verificação: Lab 7C (exercícios 1–10); perguntas 6 e 7 do questionário
 
 **Pedir direcções**
 
-[ECRÃ: **Excuse me. Where's the hospital, please?** · **Excuse me. Is there a pharmacy near here?** · **Is it far?** — É longe?]
+[ECRÃ: **Excuse me. Where's the post office, please?** · **Excuse me. Is there a pharmacy near here?** · **Is it far?** — É longe?]
 
-**PROF:** Start with "Excuse me". It's polite. Excuse me, where's the hospital, please?
+**PROF:** Start with "Excuse me". It's polite. Excuse me, where's the post office, please?
 (PT: Comece sempre por "Excuse me" — "desculpe" — para chamar a atenção de alguém.)
 [PAUSA 3 s]
 
@@ -327,7 +328,7 @@ Verificação: Lab 7C (exercícios 1–10); perguntas 6 e 7 do questionário
 
 ### 5. Prática guiada (2 min)
 
-[ECRÃ: mapa simples: o aluno está numa ponta da rua; o hospital está assinalado]
+[ECRÃ: mapa simples: o aluno está numa ponta da rua; uma rotunda, uma escola, um banco e outros lugares assinalados]
 
 **PROF:** Listen to my directions. Where do you arrive? Go straight on. Turn right at the roundabout. It's on the left.
 [PAUSA 5 s]
@@ -451,7 +452,7 @@ Verificação: Lab 7E (exercícios 1–8); pergunta 9 do questionário
 
 **Direcções 1 — na rua**
 **TURISTA:** Excuse me, is there a pharmacy near here?
-**RAPAZ:** Yeah, there's one near. Go straight on, past the supermarket. It's on the corner, opposite the bus stop. Two minutes.
+**RAPAZ:** Yeah, there's one near here. Go straight on, past the supermarket. It's on the corner, opposite the bus stop. Two minutes.
 
 **Direcções 2 — na recepção de um hotel**
 **HÓSPEDE:** Hi. How do I get to the beach from here?
@@ -479,8 +480,8 @@ Verificação: Lab 7E (exercícios 1–8); pergunta 9 do questionário
 **PROF:** Listen and repeat.
 **PROF:** How do I get to the beach? [PAUSA 3 s]
 (PT: Como chego à praia?)
-**PROF:** There's one near. [PAUSA 3 s]
-(PT: Há uma perto.)
+**PROF:** There's one near here. [PAUSA 3 s]
+(PT: Há uma aqui perto.)
 **PROF:** Turn right out of the hotel. [PAUSA 3 s]
 (PT: À saída do hotel, vire à direita.)
 **PROF:** It's about ten minutes on foot. [PAUSA 3 s]
@@ -530,7 +531,7 @@ Verificação: Lab 7F (exercícios 1–9); conversa livre "Where's your office?"
 **PAULO:** Kalandula Tech, good morning. Paulo speaking.
 **SR. OKAFOR:** Good morning, Paulo. This is Mr Okafor. I have a meeting with Mr Baptista at ten, but I don't know the way.
 **PAULO:** No problem, Mr Okafor. Where are you now?
-**SR. OKAFOR:** I'm at the car park of a big shopping centre. Belas Shopping.
+**SR. OKAFOR:** I'm in the car park of a big shopping centre. Belas Shopping.
 **PAULO:** OK. You're very near. Go out of the car park and turn right. Go straight on, past two roundabouts.
 **SR. OKAFOR:** Two roundabouts…
 **PAULO:** Yes. Then you see a petrol station on the left. Take the first street on the left after the petrol station. That's Rua Kwanza.

@@ -411,8 +411,8 @@
     },
     {
      "tipo": "ordenar",
-     "enunciado": "Desculpe, onde fica o hospital?",
-     "resposta": "Excuse me, where's the hospital?",
+     "enunciado": "Desculpe, onde ficam os correios?",
+     "resposta": "Excuse me, where's the post office?",
      "explicacao": ""
     },
     {
@@ -437,7 +437,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "The hospital is on the left. It's five minutes on foot.",
+     "frase": "The post office is on the left. It's five minutes on foot.",
      "enunciado": "Quanto tempo leva a pé?",
      "opcoes": [
       {

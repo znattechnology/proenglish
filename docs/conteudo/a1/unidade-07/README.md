@@ -1,6 +1,6 @@
 # A1.2 · Unidade 7 — Around town
 
-**Estado:** primeira versão escrita e revista ao escrever, com os 7 critérios das revisões anteriores; falta a revisão n.º 1 e a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 7
+**Estado:** primeira versão escrita e revista ([revisão n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 7
 
 ## Objectivos da unidade
 
@@ -8,7 +8,7 @@ No fim da unidade, o aluno consegue:
 
 1. dizer o que há e não há num lugar e perguntar (*There's a bank near the office. There aren't any cinemas. Is there an ATM near here? — Yes, there is.*);
 2. dizer onde fica um lugar com preposições (*The bank is opposite the office. The café is next to the bank. The pharmacy is between the office and the hospital.*);
-3. pedir direcções com educação e dar e entender direcções simples com o imperativo (*Excuse me, where's the hospital? — Go straight on, turn left at the traffic lights. It's on the left.*);
+3. pedir direcções com educação e dar e entender direcções simples com o imperativo (*Excuse me, where's the post office? — Go straight on, turn left at the traffic lights. It's on the left.*);
 4. explicar a um visitante, ao telefone, como chegar ao seu local de trabalho, com pontos de referência, o prédio e o andar.
 
 | Objectivo | Aulas | Laboratório | Tutor | Questionário |
@@ -66,4 +66,4 @@ A aula 7C usa um mapa simples à parte (rotunda, escola à esquerda depois da ro
 
 ## O que falta para publicar
 
-O mesmo que nas unidades anteriores: revisão n.º 1, leitura pelos professores, vídeos com o professor de IA (vozes novas: a senhora da 7C e as seis vozes da 7E), áudio (13 escutas e 10 pronúncias), carregamento na plataforma e imagens (o mapa do bairro acima, os mapas simples da 7C e da 7F, fotografias de lugares de Luanda na 7D).
+O mesmo que nas unidades anteriores: leitura pelos professores, vídeos com o professor de IA (vozes novas: a senhora da 7C e as seis vozes da 7E), áudio (13 escutas e 10 pronúncias), carregamento na plataforma e imagens (o mapa do bairro acima, os mapas simples da 7C e da 7F, fotografias de lugares de Luanda na 7D).

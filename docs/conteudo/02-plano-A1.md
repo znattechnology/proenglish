@@ -284,7 +284,7 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 **Objectivos da unidade.** No fim, o aluno consegue:
 1. dizer o que há e não há num lugar e perguntar (*There's a bank near the office. There aren't any cinemas. Is there an ATM near here? — Yes, there is.*);
 2. dizer onde fica um lugar com preposições (*The bank is opposite the office. The café is next to the bank. The pharmacy is between the office and the hospital.*);
-3. pedir direcções com educação e dar e entender direcções simples com o imperativo (*Excuse me, where's the hospital? — Go straight on, turn left at the traffic lights. It's on the left.*);
+3. pedir direcções com educação e dar e entender direcções simples com o imperativo (*Excuse me, where's the post office? — Go straight on, turn left at the traffic lights. It's on the left.*);
 4. explicar a um visitante, ao telefone, como chegar ao seu local de trabalho, com pontos de referência, o prédio e o andar.
 
 | Aula | Tipo | Título | Objectivo da aula |
