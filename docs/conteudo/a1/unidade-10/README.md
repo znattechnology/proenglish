@@ -53,4 +53,4 @@ No fim da unidade, o aluno consegue:
 
 O mesmo que nas unidades anteriores: leitura pelos professores, vídeos com o professor de IA (vozes novas: as três da 10F, incluindo a Graça, mãe do Paulo), áudio (16 escutas e 9 pronúncias), carregamento na plataforma e imagens (fotografias de Benguela na 10C; calendário de 2026 com os feriados de Angola na 10E; a reunião semanal na 10G).
 
-A seguir vem a **Revisão 2 e o exame oral do A1.2** (plano, secção 5), que ainda não estão escritos.
+A seguir vem a **[Revisão 2 e o exame oral do A1.2](../revisao-2/README.md)** (plano, secção 5), já escritos e revistos.

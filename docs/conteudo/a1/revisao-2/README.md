@@ -1,6 +1,6 @@
 # A1.2 · Revisão 2 e exame oral
 
-**Estado:** primeira versão escrita e revista ao escrever; falta a revisão n.º 1 e a leitura dos professores; as mudanças na plataforma estão feitas ([exame](exame.md#4-na-plataforma)) · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), "Revisão 2 e exame oral do A1.2"
+**Estado:** primeira versão escrita e revista ([revisão n.º 1](revisao-1.md)); falta a leitura dos professores; as mudanças na plataforma estão feitas ([exame](exame.md#4-na-plataforma)) · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), "Revisão 2 e exame oral do A1.2"
 
 ## Objectivo
 

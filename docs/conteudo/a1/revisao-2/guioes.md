@@ -39,11 +39,11 @@ Verificação: laboratórios R2-1 e R2-2; conversa "A day in town"; questionári
 **MATEUS:** And what are you doing this week?
 **NUNO:** This week I'm installing the new system at Mussulo Energy. It's a big job!
 **MATEUS:** What was your best day here?
-**NUNO:** Let me think… The trip to Benguela last month. We went to a new client and I spoke English all day! I was very nervous, but it was fine.
+**NUNO:** Let me think… The trip to Benguela last month. We went to a new client, and I used English all day! I was very nervous, but it was fine.
 **MATEUS:** Your English is much better now. Can you understand the clients on the phone?
-**NUNO:** Yes, I can — well, most of the time! I can't understand fast American English!
+**NUNO:** Yes, I can — well, most of the time! I can't understand very fast English!
 **MATEUS:** Ha! And what are you going to do next?
-**NUNO:** I'm going to finish my degree in Lubango. And next year I'm going to apply for a job here — if there's a place for me!
+**NUNO:** I'm going to finish university in Lubango. And next year I want to work here!
 **MATEUS:** There's always a place for you, Nuno. Good job.
 
 ### 3. Os quatro tempos lado a lado (2 min 30 s)
@@ -55,7 +55,7 @@ Verificação: laboratórios R2-1 e R2-2; conversa "A day in town"; questionári
 | **usually, every day, on Saturdays** | *present simple* | I **usually help** the team. |
 | **now, this week, today** | *present continuous* | This week I**'m installing** the new system. |
 | **last month, yesterday, ago** | *past simple* | We **went** to a new client last month. |
-| **next year, tomorrow, this weekend** | *going to* | I**'m going to finish** my degree. |
+| **next year, tomorrow, this weekend** | *going to* | I**'m going to finish** university. |
 
 **PROF:** Look at the time words. They tell you the tense. Usually — I help. This week — I'm installing. Last month — we went. Next year — I'm going to finish.
 (PT: As palavras de tempo dizem qual o tempo verbal a usar.)
@@ -77,7 +77,7 @@ Verificação: laboratórios R2-1 e R2-2; conversa "A day in town"; questionári
 | Errado | Certo | Unidade |
 |---|---|---|
 | ~~I want a coffee.~~ | I'd like a coffee, please. | 6 |
-| ~~a bread, two breads~~ | some bread, two rolls | 6 |
+| ~~a bread, two breads~~ | some bread | 6 |
 | ~~It has a bank near here.~~ | There's a bank near here. | 7 |
 | ~~Can I to pay by card?~~ | Can I pay by card? | 8 |
 | ~~more cheaper~~ | cheaper | 8 |
@@ -86,6 +86,8 @@ Verificação: laboratórios R2-1 e R2-2; conversa "A day in town"; questionári
 | ~~I didn't went.~~ | I didn't go. | 10 |
 | ~~the last Friday~~ | last Friday | 10 |
 | ~~I going to travel.~~ | I'm going to travel. | 10 |
+
+*("I want a coffee" não é erro de gramática, mas num pedido soa brusco; por isso está na lista.)*
 
 *(Para cada linha: o professor lê a frase errada com tom de dúvida, [PAUSA 4 s], e diz a certa.)*
 
