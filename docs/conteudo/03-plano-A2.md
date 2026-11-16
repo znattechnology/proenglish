@@ -381,6 +381,8 @@ Versão completa em [a2/unidade-09/](a2/unidade-09/README.md) **[I]**.
 
 ### Unidade 10 — The next step
 
+Versão completa em [a2/unidade-10/](a2/unidade-10/README.md) **[I]**.
+
 **Objectivos da unidade.** No fim, o aluno consegue:
 1. falar dos seus pontos fortes e do que gosta de fazer no trabalho, com verbo + *-ing* / *to* e adjectivos de personalidade (*I enjoy working with people. I'm good at solving problems.*);
 2. dizer como faz as coisas com advérbios de modo (*carefully, quickly, well*) e distinguir adjectivo de advérbio (*She's a good speaker. She speaks well.*);
