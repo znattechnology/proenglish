@@ -282,26 +282,26 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 ### Unidade 7 — Around town
 
 **Objectivos da unidade.** No fim, o aluno consegue:
-1. dizer o que há num lugar;
-2. localizar coisas com preposições de lugar;
-3. pedir e dar direcções simples;
-4. explicar a um visitante como chegar ao escritório.
+1. dizer o que há e não há num lugar e perguntar (*There's a bank near the office. There aren't any cinemas. Is there an ATM near here? — Yes, there is.*);
+2. dizer onde fica um lugar com preposições (*The bank is opposite the office. The café is next to the bank. The pharmacy is between the office and the hospital.*);
+3. pedir direcções com educação e dar e entender direcções simples com o imperativo (*Excuse me, where's the hospital? — Go straight on, turn left at the traffic lights. It's on the left.*);
+4. explicar a um visitante, ao telefone, como chegar ao seu local de trabalho, com pontos de referência, o prédio e o andar.
 
 | Aula | Tipo | Título | Objectivo da aula |
 |---|---|---|---|
-| 7A | Língua | There is, there are | Descrever um lugar com *there is/are* e *a/some/any*. |
-| 7B | Língua | Where is it? | Localizar com preposições de lugar. |
-| 7C | Língua | Excuse me, where is…? | Pedir e dar direcções com o imperativo. |
-| 7D | Vocabulário e pronúncia | Places in town | Lugares (bank, pharmacy, supermarket, hospital, bus stop, ATM, the Marginal); /θ/ e /ð/. |
-| 7E | Real English | Finding the way | Seguir num mapa as direcções dadas por 3 pessoas. |
-| 7F | Work & Life | Finding our office | Explicar ao telefone o caminho até ao escritório. |
+| 7A | Língua | There is, there are | Dizer o que há e não há e perguntar *Is there…? / Are there any…?* |
+| 7B | Língua | Where is it? | Dizer onde fica um lugar com preposições (*opposite* ≠ *in front of*) e os andares. |
+| 7C | Língua | Excuse me, where is…? | Pedir direcções e dar e entender direcções com o imperativo. |
+| 7D | Vocabulário e pronúncia | Places in town | Nomear lugares da cidade; /θ/ e /ð/; acento em *PHARmacy, uniVERsity*. |
+| 7E | Real English | Finding the way | Seguir três conjuntos de direcções a velocidade quase natural. |
+| 7F | Work & Life | Finding our office | Explicar ao telefone o caminho até ao escritório, com pontos de referência, o prédio e o andar. |
 
-- **Gramática:** *there is/are* (+, −, ?); preposições de lugar (next to, opposite, between, near, behind); imperativo (+, −).
-- **Vocabulário (~45):** lugares, direcções, pontos de referência de Luanda.
-- **Pronúncia:** /θ/ e /ð/ (*there, three, the*); acento em *opPOsite, beTWEEN*.
-- **Laboratório:** mapa → preposição; *there is/are*; escuta de direcções; pronúncia de /ð/; resposta falada "How do I get to the bank?".
-- **Conversa guiada:** o tutor pergunta o que há perto da casa e do trabalho do aluno.
-- **Conversa livre:** "Where's your office?" — explicar a um visitante como chegar.
+- **Gramática:** *there is / there are* (+, −, ?, respostas curtas); preposições de lugar; imperativo (+ e −); *first / second* nas direcções; *ground / first / second floor*; ao telefone: *… speaking* e *This is…*.
+- **Vocabulário (~70):** lugares da cidade (britânico: *petrol station, car park, shopping centre, lift*), direcções (*straight on, traffic lights, roundabout, go past, cross the road*), *landmark, on foot, near, far*.
+- **Pronúncia:** /θ/ (*three, think*) e /ð/ (*there, this*); acento em *OPposite, beTWEEN, beHIND, PHARmacy, uniVERsity, poLICE station*; direcções ao telefone, devagar e por partes.
+- **Laboratório:** *there is/are*; *opposite* e *in front of*; preposições; imperativo; escuta de direcções; resposta falada "Excuse me, where's the bank?".
+- **Conversa guiada:** "Around your home" — o que há perto de casa e como lá chegar.
+- **Conversa livre:** "Where's your office?" — um visitante perdido telefona e o aluno explica o caminho.
 
 ### Unidade 8 — Shopping and services
 

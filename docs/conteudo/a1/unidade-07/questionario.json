@@ -1,0 +1,301 @@
+{
+ "title": "Unit 7 quiz — Around town",
+ "description": "There is/are, preposições de lugar, direcções e explicar o caminho ao telefone.",
+ "questions": [
+  {
+   "id": "u7q1",
+   "question": "Como se diz \"Há dois bancos na rua\"?",
+   "options": [
+    {
+     "id": "u7q1o0",
+     "text": "There are two banks in the street.",
+     "isCorrect": true
+    },
+    {
+     "id": "u7q1o1",
+     "text": "There is two banks in the street.",
+     "isCorrect": false
+    },
+    {
+     "id": "u7q1o2",
+     "text": "It has two banks in the street.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u7q1o0",
+   "explanation": "Várias coisas: \"there are\".",
+   "points": 10
+  },
+  {
+   "id": "u7q2",
+   "question": "Complete: \"There ___ any cinemas near here.\"",
+   "options": [
+    {
+     "id": "u7q2o0",
+     "text": "aren't",
+     "isCorrect": true
+    },
+    {
+     "id": "u7q2o1",
+     "text": "isn't",
+     "isCorrect": false
+    },
+    {
+     "id": "u7q2o2",
+     "text": "not",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u7q2o0",
+   "explanation": "Negativa no plural: \"there aren't any\".",
+   "points": 10
+  },
+  {
+   "id": "u7q3",
+   "question": "Escolha a resposta certa: \"Is there an ATM near here?\"",
+   "options": [
+    {
+     "id": "u7q3o0",
+     "text": "Yes, there is.",
+     "isCorrect": true
+    },
+    {
+     "id": "u7q3o1",
+     "text": "Yes, there's.",
+     "isCorrect": false
+    },
+    {
+     "id": "u7q3o2",
+     "text": "Yes, it has.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u7q3o0",
+   "explanation": "Resposta curta sem contracção.",
+   "points": 10
+  },
+  {
+   "id": "u7q4",
+   "question": "O banco fica do outro lado da rua, virado para o escritório:",
+   "options": [
+    {
+     "id": "u7q4o0",
+     "text": "The bank is opposite the office.",
+     "isCorrect": true
+    },
+    {
+     "id": "u7q4o1",
+     "text": "The bank is in front of the office.",
+     "isCorrect": false
+    },
+    {
+     "id": "u7q4o2",
+     "text": "The bank is next to the office.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u7q4o0",
+   "explanation": "\"Opposite\" = do outro lado.",
+   "points": 10
+  },
+  {
+   "id": "u7q5",
+   "question": "Complete: \"The pharmacy is between the bank ___ the hospital.\"",
+   "options": [
+    {
+     "id": "u7q5o0",
+     "text": "and",
+     "isCorrect": true
+    },
+    {
+     "id": "u7q5o1",
+     "text": "or",
+     "isCorrect": false
+    },
+    {
+     "id": "u7q5o2",
+     "text": "with",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u7q5o0",
+   "explanation": "\"Between … and …\".",
+   "points": 10
+  },
+  {
+   "id": "u7q6",
+   "question": "\"Go straight on\" quer dizer:",
+   "options": [
+    {
+     "id": "u7q6o0",
+     "text": "Siga em frente.",
+     "isCorrect": true
+    },
+    {
+     "id": "u7q6o1",
+     "text": "Vire à direita.",
+     "isCorrect": false
+    },
+    {
+     "id": "u7q6o2",
+     "text": "Vá depressa.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u7q6o0",
+   "explanation": "Go straight on = siga em frente.",
+   "points": 10
+  },
+  {
+   "id": "u7q7",
+   "question": "Qual é a forma correcta de dar uma direcção?",
+   "options": [
+    {
+     "id": "u7q7o0",
+     "text": "Turn left at the traffic lights.",
+     "isCorrect": true
+    },
+    {
+     "id": "u7q7o1",
+     "text": "You turning left in the traffic lights.",
+     "isCorrect": false
+    },
+    {
+     "id": "u7q7o2",
+     "text": "Turns left on the traffic lights.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u7q7o0",
+   "explanation": "Imperativo: o verbo no início.",
+   "points": 10
+  },
+  {
+   "id": "u7q8",
+   "question": "Que palavra tem o som /ð/ (com voz)?",
+   "options": [
+    {
+     "id": "u7q8o0",
+     "text": "there",
+     "isCorrect": true
+    },
+    {
+     "id": "u7q8o1",
+     "text": "three",
+     "isCorrect": false
+    },
+    {
+     "id": "u7q8o2",
+     "text": "thank",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u7q8o0",
+   "explanation": "\"There\" tem /ð/.",
+   "points": 10
+  },
+  {
+   "id": "u7q9",
+   "question": "Ouviu: \"It's about ten minutes on foot.\" Quer dizer:",
+   "options": [
+    {
+     "id": "u7q9o0",
+     "text": "São uns dez minutos a pé.",
+     "isCorrect": true
+    },
+    {
+     "id": "u7q9o1",
+     "text": "São dez minutos de carro.",
+     "isCorrect": false
+    },
+    {
+     "id": "u7q9o2",
+     "text": "Fica a dez pés.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u7q9o0",
+   "explanation": "On foot = a pé.",
+   "points": 10
+  },
+  {
+   "id": "u7q10",
+   "question": "Ao telefone, como se identifica?",
+   "options": [
+    {
+     "id": "u7q10o0",
+     "text": "This is Ana Domingos.",
+     "isCorrect": true
+    },
+    {
+     "id": "u7q10o1",
+     "text": "I am Ana Domingos speaking you.",
+     "isCorrect": false
+    },
+    {
+     "id": "u7q10o2",
+     "text": "Here is Ana.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u7q10o0",
+   "explanation": "Ao telefone: \"This is…\".",
+   "points": 10
+  },
+  {
+   "id": "u7q11",
+   "question": "\"Ground floor\" é:",
+   "options": [
+    {
+     "id": "u7q11o0",
+     "text": "rés-do-chão",
+     "isCorrect": true
+    },
+    {
+     "id": "u7q11o1",
+     "text": "primeiro andar",
+     "isCorrect": false
+    },
+    {
+     "id": "u7q11o2",
+     "text": "chão da rua",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u7q11o0",
+   "explanation": "Ground floor = rés-do-chão.",
+   "points": 10
+  },
+  {
+   "id": "u7q12",
+   "question": "Reciclagem (unidade 5). Complete: \"Can we meet ___ Monday ___ ten?\"",
+   "options": [
+    {
+     "id": "u7q12o0",
+     "text": "on … at",
+     "isCorrect": true
+    },
+    {
+     "id": "u7q12o1",
+     "text": "in … on",
+     "isCorrect": false
+    },
+    {
+     "id": "u7q12o2",
+     "text": "at … in",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u7q12o0",
+   "explanation": "on + dia; at + hora.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
