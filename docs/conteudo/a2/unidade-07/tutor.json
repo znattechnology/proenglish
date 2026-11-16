@@ -23,9 +23,9 @@
     "primeira_fala": "Hi, {nome}! Good to see you. Any news?",
     "primeira_fala_simples": "Hi! Do you have any news?",
     "guiao": [
-     "Tell me more!",
+     "OK! And how was your week?",
      "What have you already done this week? And what haven't you done yet?",
-     "I have some news too: I've just moved to a new flat!",
+     "And I have some news: I've just moved to a new flat!",
      "How long have you worked or studied there?",
      "And how long have you lived in your city?",
      "Thanks for the chat, {nome}!"

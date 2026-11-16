@@ -22,7 +22,7 @@ Objectivo da aula: No fim, o aluno consegue dar uma novidade recente com o prese
 Objectivo da unidade a que serve: 1
 Gramática-alvo: have / has + just + particípio (posição de just: entre have e o particípio); reacções:
   Congratulations! That's great news! / Oh no, I'm sorry to hear that. / Really? / What happened?
-Palavras-alvo: news (incontável), promotion, finance manager, contract, leave (a empresa), break down,
+Palavras-alvo: news (incontável), promotion, finance manager, contract, leave (Luanda), break down,
   congratulations, sorry to hear that, so soon
 Reciclagem: present perfect para experiências (A2, 6A); present continuous para combinações (A2, 3A)
 Pronúncia: just /dʒʌst/ forte; reacções com entoação (Really? ↗ Great! ↘)
