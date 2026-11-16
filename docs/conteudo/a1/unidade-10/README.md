@@ -1,6 +1,6 @@
 # A1.2 · Unidade 10 — Last week, next week (7 aulas)
 
-**Estado:** primeira versão escrita e revista ao escrever, com os 7 critérios das revisões anteriores; falta a revisão n.º 1 e a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 10
+**Estado:** primeira versão escrita e revista ([revisão n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 10
 
 ## Objectivos da unidade
 
@@ -51,6 +51,6 @@ No fim da unidade, o aluno consegue:
 
 ## O que falta para publicar
 
-O mesmo que nas unidades anteriores: revisão n.º 1, leitura pelos professores, vídeos com o professor de IA (vozes novas: as três da 10F, incluindo a Graça, mãe do Paulo), áudio (16 escutas e 9 pronúncias), carregamento na plataforma e imagens (fotografias de Benguela na 10C; calendário de 2026 com os feriados de Angola na 10E; a reunião semanal na 10G).
+O mesmo que nas unidades anteriores: leitura pelos professores, vídeos com o professor de IA (vozes novas: as três da 10F, incluindo a Graça, mãe do Paulo), áudio (16 escutas e 9 pronúncias), carregamento na plataforma e imagens (fotografias de Benguela na 10C; calendário de 2026 com os feriados de Angola na 10E; a reunião semanal na 10G).
 
 A seguir vem a **Revisão 2 e o exame oral do A1.2** (plano, secção 5), que ainda não estão escritos.

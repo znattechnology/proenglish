@@ -500,7 +500,7 @@ Verificação: Lab 10E (exercícios 1–9); pergunta 10 do questionário
 **PROF:** The Day of Peace is on the fourth of April. [PAUSA 3 s]
 
 **PROF:** Years: 2026 — twenty twenty-six. 1975 — nineteen seventy-five.
-(PT: Os anos dizem-se em dois blocos: "twenty twenty-six", "nineteen seventy-five".)
+(PT: Os anos dizem-se em dois blocos: "twenty twenty-six", "nineteen seventy-five". Para 2026 também se ouve "two thousand and twenty-six"; as duas formas estão certas.)
 [PAUSA 3 s]
 **PROF:** When's your birthday? — It's on the … of …
 [PAUSA 5 s]
@@ -535,7 +535,8 @@ Verificação: Lab 10E (exercícios 1–9); pergunta 10 do questionário
 
 ### 5. Fecho (30 s)
 
-**PROF (reciclagem — 9A):** What did you love doing last weekend?
+**PROF (reciclagem — 9A e 9E):** Did you play football, go dancing or go to the beach last weekend?
+[ECRÃ: Yes, I did. I went dancing on Saturday. / No, I didn't. I stayed at home.]
 [PAUSA 6 s]
 **PROF:** Well done! In the Lab: dates, the -ed sounds and more irregular verbs.
 (PT: No laboratório: datas, os sons do "-ed" e mais verbos irregulares.)
@@ -569,7 +570,7 @@ Verificação: Lab 10F (exercícios 1–8); pergunta 11 do questionário
 
 **TOM:** I stayed in Luanda. On the holiday I watched the celebrations on the Marginal. There were a lot of people and a lot of music. The next day I slept until eleven. Next weekend I'm going to visit Mussulo.
 
-**GRAÇA:** I didn't go anywhere. My children came to my house in Viana on the holiday. I cooked funge and muamba for twelve people! Paulo didn't help in the kitchen… but he washed the dishes.
+**GRAÇA:** I didn't go anywhere. We stayed at home in Viana, and my sister came with her children. I cooked funge and muamba for twelve people! Paulo didn't help in the kitchen… but he washed the dishes.
 
 [ECRÃ: Isabel — Lubango · Tom — Luanda · Graça — Viana (Luanda)]
 
@@ -677,7 +678,7 @@ Verificação: Lab 10G (exercícios 1–9); conversa livre "Monday meeting"; per
 
 ### 4. Pronúncia (1 min)
 
-**PROF:** Make the tense clear. Last week I instALLED… This week I'm GOing to call…
+**PROF:** Make the tense clear. Last week I inSTALLED… This week I'm GOing to call…
 [PAUSA 4 s]
 **PROF:** Pause between tasks. Last week I installed the new laptops. … On Wednesday I visited Mussulo Energy.
 [PAUSA 5 s]
