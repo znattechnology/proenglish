@@ -254,18 +254,18 @@
     {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
-     "frase": "I['d] like a croissant, please.",
+     "frase": "[I'd] like a croissant, please.",
      "opcoes": [
       {
-       "texto": "'m",
+       "texto": "I'm",
        "certa": false
       },
       {
-       "texto": "'s",
+       "texto": "I want",
        "certa": false
       }
      ],
-     "explicacao": ""
+     "explicacao": "\"I'd like\" é a forma educada de pedir."
     },
     {
      "tipo": "escuta",

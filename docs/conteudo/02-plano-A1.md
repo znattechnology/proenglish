@@ -330,27 +330,27 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 ### Unidade 9 — Free time and right now (7 aulas)
 
 **Objectivos da unidade.** No fim, o aluno consegue:
-1. dizer do que gosta e não gosta de fazer nos tempos livres;
-2. dizer o que sabe e não sabe fazer;
-3. dizer o que está a fazer neste momento;
-4. atender uma chamada, dizer que está ocupado e propor ligar mais tarde.
+1. dizer do que gosta e não gosta de fazer nos tempos livres com *love, like, don't mind, don't like, hate* + *-ing* (*I love dancing. I hate ironing.*) e perguntar (*What do you like doing at the weekend?*);
+2. dizer o que sabe e não sabe fazer com *can / can't* e perguntar (*I can drive, but I can't swim. Can you cook? — Yes, I can.*);
+3. dizer o que está a fazer agora e o que outras pessoas estão a fazer, com o *present continuous*, e escolher entre esse tempo e o *present simple* (*I usually work in the office, but today I'm working at a client's office.*);
+4. atender uma chamada quando está ocupado, dizer o que está a fazer, propor ligar mais tarde (*Can I call you back later?*) e receber um recado para um colega (*Who's calling, please? Can I take a message?*).
 
 | Aula | Tipo | Título | Objectivo da aula |
 |---|---|---|---|
-| 9A | Língua | I love football | Falar de passatempos com *like/love/hate/don't mind* + -ing. |
-| 9B | Língua | I can swim | Falar de capacidades com *can/can't*. |
-| 9C | Língua | What are you doing? | Dizer o que se está a fazer agora com o *present continuous*. |
-| 9D | Língua | Every day or right now? | Escolher entre *present simple* e *present continuous*. |
-| 9E | Vocabulário e pronúncia | Free time | Passatempos, desporto, música (semba, kizomba), igreja, praia; *can* fraco e *can't* forte. |
-| 9F | Real English | My weekend hobbies | Entender 3 pessoas a falar dos tempos livres. |
-| 9G | Work & Life | I'm in a meeting | Atender o telefone, dizer que está ocupado e propor ligar de volta. |
+| 9A | Língua | I love football | Dizer do que gosta e não gosta de fazer com *love / like / don't mind / hate* + *-ing*; ortografia do *-ing*. |
+| 9B | Língua | I can swim | Dizer o que sabe e não sabe fazer com *can / can't* e perguntar. |
+| 9C | Língua | What are you doing? | Dizer o que está a fazer agora e o que outros estão a fazer (*present continuous*). |
+| 9D | Língua | Every day or right now? | Escolher entre *present simple* e *present continuous*; verbos sem *-ing* (*like, want, know, need*). |
+| 9E | Vocabulário e pronúncia | Free time | Actividades com *play, go* ou *do*; /ŋ/; *can / can't*. |
+| 9F | Real English | My weekend hobbies | Identificar gostos, capacidades e o que cada pessoa está a fazer, em três testemunhos e numa chamada. |
+| 9G | Work & Life | I'm in a meeting | Atender ocupado, propor ligar mais tarde e receber um recado. |
 
-- **Gramática:** *like/love/hate/don't mind* + -ing; *can/can't*; *present continuous* (+, −, ?); contraste simples com o *present simple*.
-- **Vocabulário (~45):** passatempos, desporto, música, telefone (call back, busy, message).
-- **Pronúncia:** *can* /kən/ e *can't* /kɑːnt/; a terminação -ing.
-- **Laboratório:** imagem → actividade; *can* ou *can't*; *simple* ou *continuous*; escuta de uma chamada; resposta falada "What do you do in your free time?".
-- **Conversa guiada:** o tutor pergunta pelos passatempos e capacidades do aluno.
-- **Conversa livre:** "A busy afternoon" — o tutor liga a meio de uma reunião e o aluno gere a chamada.
+- **Gramática:** *love / like / don't mind / don't like / hate* + *-ing* (e a ortografia: *dancing, swimming*); *can / can't* para capacidade, igual em todas as pessoas; *present continuous* (+, −, ?, respostas curtas); contraste com o *present simple*; verbos de estado sem *-ing*; *play / go / do* + actividades. Ficam para a unidade 10: o passado e *going to*; e não se usa *will* ("Can I call you back later?" em vez de "I'll call you back").
+- **Vocabulário (~70):** tempos livres (incluindo *semba, kizomba, Girabola*, coro, praia do Mussulo), instrumentos, *well, a little, not at all*, *now, right now, at the moment*, telefone (*call back, take a message, Who's calling?, Hold on*).
+- **Pronúncia:** *-ing* /ɪŋ/ sem vogal no fim; /n/–/ŋ/ (*thin / thing*); *can* /kən/, /kæn/ e *can't* /kɑːnt/; acento contrastivo (*USually … TOday*).
+- **Laboratório:** *-ing*; *can*; *present continuous*; *simple* ou *continuous*; *play / go / do*; escuta de chamadas; resposta falada "Can we talk now?".
+- **Conversa guiada:** "Free time" — gostos, capacidades e o que está a fazer agora.
+- **Conversa livre:** "A busy afternoon" — uma chamada em hora ocupada e um recado para uma colega.
 
 ### Unidade 10 — Last week, next week (7 aulas)
 

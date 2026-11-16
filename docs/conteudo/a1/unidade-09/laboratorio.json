@@ -1,0 +1,1185 @@
+{
+ "unidade": "A1.2 · Unit 9 — Free time and right now",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "9A",
+   "titulo": "I love football",
+   "aula": "9A",
+   "objectivo": "Dizer do que gosta e não gosta de fazer com love/like/don't mind/hate + -ing.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "I love",
+       "b": "adoro"
+      },
+      {
+       "a": "I like",
+       "b": "gosto"
+      },
+      {
+       "a": "I don't mind",
+       "b": "não me importo"
+      },
+      {
+       "a": "I don't like",
+       "b": "não gosto"
+      },
+      {
+       "a": "I hate",
+       "b": "detesto"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I love [dancing].",
+     "opcoes": [
+      {
+       "texto": "dance",
+       "certa": false
+      },
+      {
+       "texto": "to dancing",
+       "certa": false
+      }
+     ],
+     "explicacao": "Depois de \"love/like/hate\", o verbo leva \"-ing\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Mateus hates [ironing].",
+     "opcoes": [
+      {
+       "texto": "iron",
+       "certa": false
+      },
+      {
+       "texto": "irons",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual está escrito correctamente?",
+     "opcoes": [
+      {
+       "texto": "swimming",
+       "certa": true
+      },
+      {
+       "texto": "swiming",
+       "certa": false
+      },
+      {
+       "texto": "swimmming",
+       "certa": false
+      }
+     ],
+     "explicacao": "swim → swimming (consoante dobrada)."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual está escrito correctamente?",
+     "opcoes": [
+      {
+       "texto": "dancing",
+       "certa": true
+      },
+      {
+       "texto": "danceing",
+       "certa": false
+      },
+      {
+       "texto": "dancring",
+       "certa": false
+      }
+     ],
+     "explicacao": "dance → dancing (perde o \"e\")."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "O que gosta de fazer ao fim-de-semana?",
+     "resposta": "What do you like doing at the weekend?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I love playing basketball. And I like cooking for my family. But I hate ironing!",
+     "enunciado": "O que detesta o Mateus?",
+     "opcoes": [
+      {
+       "texto": "engomar",
+       "certa": true
+      },
+      {
+       "texto": "cozinhar",
+       "certa": false
+      },
+      {
+       "texto": "jogar basquetebol",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Not really\" é:",
+     "opcoes": [
+      {
+       "texto": "um \"não\" suave e educado",
+       "certa": true
+      },
+      {
+       "texto": "um \"sim\" forte",
+       "certa": false
+      },
+      {
+       "texto": "um \"talvez\"",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I love dancing. I don't mind cooking. I hate ironing.",
+     "enunciado": "Ouça e repita: o \"-ing\" acaba no som \"ng\", sem vogal."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you like doing at the weekend?",
+     "frase": "I like",
+     "resposta": "I like going to the beach and I love watching football. I hate cleaning the house!",
+     "contexto": "Diga duas coisas de que gosta e uma de que não gosta."
+    }
+   ]
+  },
+  {
+   "codigo": "9B",
+   "titulo": "I can swim",
+   "aula": "9B",
+   "objectivo": "Dizer o que sabe e não sabe fazer com can/can't e perguntar.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "She can swim.",
+       "certa": true
+      },
+      {
+       "texto": "She cans swim.",
+       "certa": false
+      },
+      {
+       "texto": "She can swims.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Can\" é igual para todas as pessoas, e o verbo fica simples."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Can you drive? — No, ...",
+     "opcoes": [
+      {
+       "texto": "I can't.",
+       "certa": true
+      },
+      {
+       "texto": "I don't can.",
+       "certa": false
+      },
+      {
+       "texto": "I not can.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I can play the guitar [a little].",
+     "opcoes": [
+      {
+       "texto": "a few",
+       "certa": false
+      },
+      {
+       "texto": "little bit",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I can't swim [at all].",
+     "opcoes": [
+      {
+       "texto": "nothing",
+       "certa": false
+      },
+      {
+       "texto": "never",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se diz \"Sei falar português e um pouco de inglês\"?",
+     "opcoes": [
+      {
+       "texto": "I can speak Portuguese and a little English.",
+       "certa": true
+      },
+      {
+       "texto": "I know speak Portuguese and little English.",
+       "certa": false
+      },
+      {
+       "texto": "I can to speak Portuguese and a little English.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Sabe conduzir?",
+     "resposta": "Can you drive?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I can swim.",
+     "enunciado": "Ouve \"can\" ou \"can't\"?",
+     "opcoes": [
+      {
+       "texto": "can",
+       "certa": true
+      },
+      {
+       "texto": "can't",
+       "certa": false
+      }
+     ],
+     "explicacao": "Na frase, \"can\" é fraco (/kən/); \"can't\" é longo e forte."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I can't swim.",
+     "enunciado": "Ouve \"can\" ou \"can't\"?",
+     "opcoes": [
+      {
+       "texto": "can't",
+       "certa": true
+      },
+      {
+       "texto": "can",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I can drive, but I can't swim.",
+     "enunciado": "Ouça e repita: \"can\" fraco, \"can't\" forte."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What can you do? What can't you do?",
+     "frase": "I can",
+     "resposta": "I can drive and I can cook very well. I can't swim at all.",
+     "contexto": "Diga duas coisas que sabe fazer e uma que não sabe."
+    }
+   ]
+  },
+  {
+   "codigo": "9C",
+   "titulo": "What are you doing?",
+   "aula": "9C",
+   "objectivo": "Dizer o que está a fazer agora e o que outros estão a fazer, com o present continuous.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Sílvia [is] having lunch.",
+     "opcoes": [
+      {
+       "texto": "are",
+       "certa": false
+      },
+      {
+       "texto": "has",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [waiting] for a visitor.",
+     "opcoes": [
+      {
+       "texto": "wait",
+       "certa": false
+      },
+      {
+       "texto": "waits",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "They [are] talking to a client.",
+     "opcoes": [
+      {
+       "texto": "is",
+       "certa": false
+      },
+      {
+       "texto": "do",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I'm working now.",
+       "certa": true
+      },
+      {
+       "texto": "I working now.",
+       "certa": false
+      },
+      {
+       "texto": "I'm work now.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Não esqueça o \"be\": \"I'm working\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Is he working? — No, ...",
+     "opcoes": [
+      {
+       "texto": "he isn't.",
+       "certa": true
+      },
+      {
+       "texto": "he doesn't.",
+       "certa": false
+      },
+      {
+       "texto": "he not working.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "O que está a fazer?",
+     "resposta": "What are you doing?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Paulo is installing the new laptops. He's working on the second floor.",
+     "enunciado": "O que está o Paulo a fazer?",
+     "opcoes": [
+      {
+       "texto": "a instalar os portáteis novos",
+       "certa": true
+      },
+      {
+       "texto": "a almoçar",
+       "certa": false
+      },
+      {
+       "texto": "a falar com um cliente",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm waiting for a visitor. He's in a taxi now.",
+     "enunciado": "O que está a Ana a fazer?",
+     "opcoes": [
+      {
+       "texto": "à espera de uma visita",
+       "certa": true
+      },
+      {
+       "texto": "a apanhar um táxi",
+       "certa": false
+      },
+      {
+       "texto": "a ler",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm waiting. She's having lunch. They're talking to a client.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What are you doing right now?",
+     "frase": "I'm",
+     "resposta": "I'm learning English on my phone. I'm sitting at home.",
+     "contexto": "Diga o que está a fazer agora."
+    }
+   ]
+  },
+  {
+   "codigo": "9D",
+   "titulo": "Every day or right now?",
+   "aula": "9D",
+   "objectivo": "Escolher entre present simple (habitual) e present continuous (agora).",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Paulo [plays] football every Saturday.",
+     "opcoes": [
+      {
+       "texto": "is playing",
+       "certa": false
+      },
+      {
+       "texto": "play",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Look! Paulo [is playing] football now.",
+     "opcoes": [
+      {
+       "texto": "plays",
+       "certa": false
+      },
+      {
+       "texto": "play",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I usually [work] in the office.",
+     "opcoes": [
+      {
+       "texto": "am working",
+       "certa": false
+      },
+      {
+       "texto": "working",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Today [I'm working] at a client's office.",
+     "opcoes": [
+      {
+       "texto": "I work",
+       "certa": false
+      },
+      {
+       "texto": "I working",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I need help now.",
+       "certa": true
+      },
+      {
+       "texto": "I'm needing help now.",
+       "certa": false
+      },
+      {
+       "texto": "I needing help now.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Need\" não leva \"-ing\", mesmo \"agora\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I know the answer.",
+       "certa": true
+      },
+      {
+       "texto": "I'm knowing the answer.",
+       "certa": false
+      },
+      {
+       "texto": "I knowing the answer.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I usually work in the office, but today I'm working here.",
+     "enunciado": "Onde está o Paulo a trabalhar hoje?",
+     "opcoes": [
+      {
+       "texto": "num cliente",
+       "certa": true
+      },
+      {
+       "texto": "no escritório",
+       "certa": false
+      },
+      {
+       "texto": "em casa",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I usually work in the office, but today I'm working at home.",
+     "enunciado": "Ouça e repita com força em \"usually\" e \"today\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you usually do on Saturdays? And what are you doing now?",
+     "frase": "usually",
+     "resposta": "On Saturdays I usually go to the beach. Now I'm studying English.",
+     "contexto": "Uma coisa habitual e uma coisa de agora."
+    }
+   ]
+  },
+  {
+   "codigo": "9E",
+   "titulo": "Free time",
+   "aula": "9E",
+   "objectivo": "Nomear actividades de tempos livres com play, go ou do, e pronunciar /ŋ/.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [play] basketball on Saturdays.",
+     "opcoes": [
+      {
+       "texto": "go",
+       "certa": false
+      },
+      {
+       "texto": "do",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We [go] swimming at the weekend.",
+     "opcoes": [
+      {
+       "texto": "play",
+       "certa": false
+      },
+      {
+       "texto": "do",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She [does] yoga every morning.",
+     "opcoes": [
+      {
+       "texto": "plays",
+       "certa": false
+      },
+      {
+       "texto": "goes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I listen [to] music in the car.",
+     "opcoes": [
+      {
+       "texto": "at",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Listen\" leva sempre \"to\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He plays [the] guitar very well.",
+     "opcoes": [
+      {
+       "texto": "a",
+       "certa": false
+      },
+      {
+       "texto": "some",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Sing.",
+     "enunciado": "Que palavra ouve?",
+     "opcoes": [
+      {
+       "texto": "sing",
+       "certa": true
+      },
+      {
+       "texto": "sin",
+       "certa": false
+      },
+      {
+       "texto": "sink",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Thing.",
+     "enunciado": "Que palavra ouve?",
+     "opcoes": [
+      {
+       "texto": "thing",
+       "certa": true
+      },
+      {
+       "texto": "thin",
+       "certa": false
+      },
+      {
+       "texto": "think",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "singing, dancing, swimming",
+     "enunciado": "Ouça e repita o som /ŋ/ no fim."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you do in your free time? Use play, go or do.",
+     "frase": "I",
+     "resposta": "I play football, I go dancing on Saturdays and I do exercise at home.",
+     "contexto": "Diga três actividades."
+    }
+   ]
+  },
+  {
+   "codigo": "9F",
+   "titulo": "Real English: My weekend hobbies",
+   "aula": "9F",
+   "objectivo": "Identificar gostos, capacidades e o que cada pessoa está a fazer, a velocidade quase natural.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I love playing basketball. I play with my team every Saturday morning.",
+     "enunciado": "When does Kátia play basketball?",
+     "opcoes": [
+      {
+       "texto": "every Saturday morning",
+       "certa": true
+      },
+      {
+       "texto": "every Sunday",
+       "certa": false
+      },
+      {
+       "texto": "on Wednesdays",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm not very tall, but I can run very fast!",
+     "enunciado": "What can Kátia do very well?",
+     "opcoes": [
+      {
+       "texto": "run fast",
+       "certa": true
+      },
+      {
+       "texto": "swim",
+       "certa": false
+      },
+      {
+       "texto": "sing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I can't play an instrument, but I can sing!",
+     "enunciado": "Can Samuel play an instrument?",
+     "opcoes": [
+      {
+       "texto": "No, he can't.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, he can.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, the guitar.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "So I'm learning! I have a class every Wednesday evening.",
+     "enunciado": "When is Lisa's kizomba class?",
+     "opcoes": [
+      {
+       "texto": "on Wednesday evenings",
+       "certa": true
+      },
+      {
+       "texto": "on Saturday mornings",
+       "certa": false
+      },
+      {
+       "texto": "every day",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "No, I'm at the sports centre. We're playing a match right now!",
+     "enunciado": "What is Kátia doing during the call?",
+     "opcoes": [
+      {
+       "texto": "playing a match",
+       "certa": true
+      },
+      {
+       "texto": "watching TV",
+       "certa": false
+      },
+      {
+       "texto": "sleeping",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Good luck!\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Boa sorte!",
+       "certa": true
+      },
+      {
+       "texto": "Bom trabalho!",
+       "certa": false
+      },
+      {
+       "texto": "Boa noite!",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I can't play an instrument, but I can sing!",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about your free time. What do you love doing? What can you do?",
+     "frase": "I love",
+     "resposta": "I love dancing kizomba. I can dance very well! I go dancing every Saturday night.",
+     "contexto": "O que adora fazer, o que sabe fazer e quando."
+    }
+   ]
+  },
+  {
+   "codigo": "9G",
+   "titulo": "I'm in a meeting",
+   "aula": "9G",
+   "objectivo": "Atender uma chamada ocupado, propor ligar mais tarde e receber um recado.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Está numa reunião e o telefone toca. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Sorry, I'm in a meeting. Can I call you back later?",
+       "certa": true
+      },
+      {
+       "texto": "Sorry, I meeting. I call you after.",
+       "certa": false
+      },
+      {
+       "texto": "I'm busy. Call me never.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Quer saber quem está a ligar. O que pergunta?",
+     "opcoes": [
+      {
+       "texto": "Who's calling, please?",
+       "certa": true
+      },
+      {
+       "texto": "Who are you calling?",
+       "certa": false
+      },
+      {
+       "texto": "Who is you?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Quer deixar recado?",
+     "resposta": "Can I take a message?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Posso falar com a Sílvia, por favor?",
+     "resposta": "Can I speak to Sílvia, please?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"In ten minutes\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "daqui a dez minutos",
+       "certa": true
+      },
+      {
+       "texto": "durante dez minutos",
+       "certa": false
+      },
+      {
+       "texto": "há dez minutos",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm sorry, she's in a meeting at the moment. Who's calling, please?",
+     "enunciado": "Onde está a Sílvia?",
+     "opcoes": [
+      {
+       "texto": "numa reunião",
+       "certa": true
+      },
+      {
+       "texto": "a almoçar",
+       "certa": false
+      },
+      {
+       "texto": "de férias",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Can she call me back this afternoon? My number is nine one two, three four five, six seven eight.",
+     "enunciado": "Qual é o número?",
+     "opcoes": [
+      {
+       "texto": "912 345 678",
+       "certa": true
+      },
+      {
+       "texto": "912 354 678",
+       "certa": false
+      },
+      {
+       "texto": "921 345 678",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Sorry, I'm driving right now. Can I call you back in ten minutes?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hi! It's me. Can we talk now?",
+     "frase": "Sorry",
+     "resposta": "Sorry, I'm in a meeting right now. Can I call you back in thirty minutes?",
+     "contexto": "Está ocupado: diga porquê e proponha ligar mais tarde."
+    }
+   ]
+  },
+  {
+   "codigo": "9R",
+   "titulo": "Unit 9 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 9 e reciclar unidades anteriores.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Do you like [reading]? — Yes, I love it.",
+     "opcoes": [
+      {
+       "texto": "read",
+       "certa": false
+      },
+      {
+       "texto": "reads",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Can your brother drive? — Yes, ...",
+     "opcoes": [
+      {
+       "texto": "he can.",
+       "certa": true
+      },
+      {
+       "texto": "he cans.",
+       "certa": false
+      },
+      {
+       "texto": "he does.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Shh! The baby [is sleeping].",
+     "opcoes": [
+      {
+       "texto": "sleeps",
+       "certa": false
+      },
+      {
+       "texto": "sleeping",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She usually [has] lunch at twelve, but today [she's having] lunch late.",
+     "opcoes": [
+      {
+       "texto": "is having",
+       "certa": false
+      },
+      {
+       "texto": "she has",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I go swimming on Sundays.",
+       "certa": true
+      },
+      {
+       "texto": "I play swimming on Sundays.",
+       "certa": false
+      },
+      {
+       "texto": "I do swim on Sundays.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I can play the guitar a little.",
+     "enunciado": "O Paulo toca guitarra...",
+     "opcoes": [
+      {
+       "texto": "um pouco",
+       "certa": true
+      },
+      {
+       "texto": "muito bem",
+       "certa": false
+      },
+      {
+       "texto": "nada",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (unidade 8). Num jogo de futebol: \"This team is ___ than that team.\"",
+     "opcoes": [
+      {
+       "texto": "better",
+       "certa": true
+      },
+      {
+       "texto": "gooder",
+       "certa": false
+      },
+      {
+       "texto": "more good",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (unidade 5). Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "She doesn't like football.",
+       "certa": true
+      },
+      {
+       "texto": "She don't likes football.",
+       "certa": false
+      },
+      {
+       "texto": "She doesn't likes football.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I love playing football. I can't swim. I'm studying English now.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hello! What are you doing? Are you busy?",
+     "frase": "I'm",
+     "resposta": "Hi! Yes, I'm a little busy. I'm writing an email. Can I call you back later?",
+     "contexto": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Can I take a message? Is that correct? Thank you.",
+     "enunciado": "Ouça e repita em voz alta."
+    }
+   ]
+  }
+ ]
+}
