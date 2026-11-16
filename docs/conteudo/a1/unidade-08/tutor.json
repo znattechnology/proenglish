@@ -1,0 +1,134 @@
+{
+ "unidade": "A1.2 · Unit 8 — Shopping and services",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a1-u8-guiada",
+   "nome": "Unit 8 · In a clothes shop",
+   "tipo": "guiada",
+   "depois_da_aula": "8C",
+   "descricao": "O tutor é o vendedor de uma loja de roupa: o aluno pede uma peça, escolhe cor e tamanho, compara duas opções e paga.",
+   "papel_tutor": "O vendedor de uma loja de roupa no Belas Shopping.",
+   "nivel": "A1",
+   "duracao_min": 4,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Do you have this in…?",
+    "Can I try it on?",
+    "This one is cheaper than…"
+   ],
+   "extras": {
+    "brief": "Guided practice for a beginner (A1, unit 8). You are a friendly shop assistant in a clothes shop at Belas Shopping, Luanda. Products: white shirt 7,000 kwanzas, blue shirt 9,500, black trousers 12,000, grey jacket 25,000, black jacket 18,000, trainers 15,000. Sizes S, M, L, XL. Ask what the student would like, ask about colour and size, let them try it on, and offer two options so they compare (\"The black jacket is cheaper than the grey one, but the grey one is more comfortable.\"). Ask \"Which one do you like?\" and accept their choice. Then ask \"Cash or card?\". Use only units 1-8 language: this/that/these/those, one(s), can for requests, comparatives. One question at a time.",
+    "primeira_fala": "Good afternoon! Can I help you?",
+    "primeira_fala_simples": "Hello! Can I help you?",
+    "guiao": [
+     "What colour would you like?",
+     "What size are you?",
+     "Here you are. Would you like to try it on?",
+     "We also have this one. It's cheaper, but the other one is better. Which one do you like?",
+     "Great choice. Cash or card?",
+     "Thank you! Here's your receipt. Have a nice day, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "Do you have this in a medium?",
+      "pt": "Tem isto em M?"
+     },
+     {
+      "en": "Can I try it on?",
+      "pt": "Posso experimentar?"
+     },
+     {
+      "en": "This one is cheaper than that one.",
+      "pt": "Este é mais barato do que aquele."
+     }
+    ],
+    "palavras": [
+     "this",
+     "that",
+     "one",
+     "size",
+     "medium",
+     "try",
+     "cheaper",
+     "better",
+     "card",
+     "colour"
+    ],
+    "minutos_sugeridos": 4
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a1-u8-livre",
+   "nome": "Unit 8 · At the pharmacy",
+   "tipo": "livre",
+   "depois_da_aula": "8F",
+   "descricao": "O tutor é o farmacêutico. O aluno explica o que sente, responde às perguntas, pede alguma coisa, confirma as instruções e pergunta o preço.",
+   "papel_tutor": "O farmacêutico de uma farmácia em Luanda.",
+   "nivel": "A1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I don't feel well. I have a…",
+    "Can I have something for…?",
+    "Twice a day, after meals?"
+   ],
+   "extras": {
+    "brief": "Role-play for a beginner (A1, unit 8). You are a friendly pharmacist in Luanda. The student comes in feeling unwell; let the student explain the symptoms (they choose them). Ask simple questions: Do you have a fever? Do you have a cough? Does your head hurt? Then recommend a medicine with clear instructions using the imperative and frequency (for example: \"Take one tablet three times a day, after meals. Drink a lot of water.\"). Ask the student to repeat the instructions to check. If the student has a fever, tell them to go to the doctor because in Angola a fever can be malaria. Tell the price (for example 1,800 kwanzas) when asked. Do not give real medical advice beyond this simple role-play. Use only units 1-8 language. One question at a time.",
+    "primeira_fala": "Good morning. Can I help you?",
+    "primeira_fala_simples": "Hello. Can I help you?",
+    "guiao": [
+     "I'm sorry. Do you have a fever?",
+     "Do you have a cough?",
+     "OK. Take this medicine: one tablet three times a day, after meals. Can you repeat that?",
+     "Perfect. And drink a lot of water.",
+     "Anything else?",
+     "Get well soon, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "I don't feel well. I have a headache.",
+      "pt": "Não me sinto bem. Tenho dores de cabeça."
+     },
+     {
+      "en": "Can I have something for a cough?",
+      "pt": "Pode dar-me alguma coisa para a tosse?"
+     },
+     {
+      "en": "One tablet three times a day, after meals.",
+      "pt": "Um comprimido três vezes por dia, depois das refeições."
+     },
+     {
+      "en": "How much is it?",
+      "pt": "Quanto é?"
+     }
+    ],
+    "palavras": [
+     "headache",
+     "fever",
+     "cough",
+     "throat",
+     "tablet",
+     "times",
+     "day",
+     "after",
+     "meals",
+     "hurts",
+     "feel"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": [
+    "Diz o que sente com \"I have a…\" ou \"My … hurts\".",
+    "Responde às perguntas do farmacêutico com respostas curtas adequadas.",
+    "Pede alguma coisa com \"Can I have something for…?\".",
+    "Repete as instruções (quantas vezes por dia, antes ou depois das refeições).",
+    "Pergunta o preço e agradece.",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

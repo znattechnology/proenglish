@@ -1,0 +1,1053 @@
+{
+ "unidade": "A1.2 · Unit 8 — Shopping and services",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "8A",
+   "titulo": "This one or that one?",
+   "aula": "8A",
+   "objectivo": "Escolher e pedir produtos com this/that/these/those, one(s), cores e tamanhos.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How much is [this] shirt? (perto de si)",
+     "opcoes": [
+      {
+       "texto": "these",
+       "certa": false
+      },
+      {
+       "texto": "those",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How much are [those] shoes? (longe)",
+     "opcoes": [
+      {
+       "texto": "that",
+       "certa": false
+      },
+      {
+       "texto": "this",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[These] trousers are very nice. (perto)",
+     "opcoes": [
+      {
+       "texto": "This",
+       "certa": false
+      },
+      {
+       "texto": "That",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I'd like a blue shirt.",
+       "certa": true
+      },
+      {
+       "texto": "I'd like a shirt blue.",
+       "certa": false
+      },
+      {
+       "texto": "I'd like a blues shirt.",
+       "certa": false
+      }
+     ],
+     "explicacao": "A cor vem antes do nome e não tem plural."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Não quer repetir \"shirt\". Como diz?",
+     "opcoes": [
+      {
+       "texto": "I like the blue one.",
+       "certa": true
+      },
+      {
+       "texto": "I like the blue.",
+       "certa": false
+      },
+      {
+       "texto": "I like the blue shirt one.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Tem isto em M?",
+     "resposta": "Do you have this in a medium?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "That one is nine thousand five hundred.",
+     "enunciado": "Quanto custa a camisa azul?",
+     "opcoes": [
+      {
+       "texto": "9 500 Kz",
+       "certa": true
+      },
+      {
+       "texto": "8 000 Kz",
+       "certa": false
+      },
+      {
+       "texto": "5 900 Kz",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Those are on sale: ten thousand kwanzas.",
+     "enunciado": "O que quer dizer \"on sale\"?",
+     "opcoes": [
+      {
+       "texto": "em promoção",
+       "certa": true
+      },
+      {
+       "texto": "à venda só hoje",
+       "certa": false
+      },
+      {
+       "texto": "esgotado",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "How much is this shirt? And that one, the blue one?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Good afternoon. Can I help you?",
+     "frase": "I'd like",
+     "resposta": "Yes, please. I'd like a shirt for work. Do you have this one in a large?",
+     "contexto": "Peça uma peça de roupa, com cor ou tamanho."
+    }
+   ]
+  },
+  {
+   "codigo": "8B",
+   "titulo": "Can I…? Can you…?",
+   "aula": "8B",
+   "objectivo": "Pedir autorização e ajuda com can e responder.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Quer experimentar um casaco. O que pergunta?",
+     "opcoes": [
+      {
+       "texto": "Can I try it on?",
+       "certa": true
+      },
+      {
+       "texto": "Can I to try it on?",
+       "certa": false
+      },
+      {
+       "texto": "Do I can try it on?",
+       "certa": false
+      }
+     ],
+     "explicacao": "Depois de \"can\", o verbo fica simples: sem \"to\", sem \"do\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Quer que o técnico veja o telemóvel. O que pergunta?",
+     "opcoes": [
+      {
+       "texto": "Can you check my phone?",
+       "certa": true
+      },
+      {
+       "texto": "Can I check my phone?",
+       "certa": false
+      },
+      {
+       "texto": "You can checks my phone?",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Can you…?\" pede a alguém que faça algo."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Can I [pay] by Multicaixa Express?",
+     "opcoes": [
+      {
+       "texto": "to pay",
+       "certa": false
+      },
+      {
+       "texto": "pays",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Pedem para ver o seu BI. Aceita. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Yes, of course. Here you are.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, you can't.",
+       "certa": false
+      },
+      {
+       "texto": "Sure, I can see.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Credit\" no telemóvel é:",
+     "opcoes": [
+      {
+       "texto": "saldo",
+       "certa": true
+      },
+      {
+       "texto": "crédito bancário",
+       "certa": false
+      },
+      {
+       "texto": "bateria",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Posso carregar o saldo do telemóvel aqui?",
+     "resposta": "Can I top up my phone here?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Sorry, you can't. Come back tomorrow at ten.",
+     "enunciado": "Quando pode o Paulo voltar?",
+     "opcoes": [
+      {
+       "texto": "amanhã às 10h",
+       "certa": true
+      },
+      {
+       "texto": "hoje às 10h",
+       "certa": false
+      },
+      {
+       "texto": "amanhã às 2h",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Can you help me?",
+     "enunciado": "Ouve \"can\" ou \"can't\"?",
+     "opcoes": [
+      {
+       "texto": "can",
+       "certa": true
+      },
+      {
+       "texto": "can't",
+       "certa": false
+      }
+     ],
+     "explicacao": "Na pergunta, \"can\" é fraco e curto; \"can't\" tem um \"a\" longo e forte."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Can I pay by card? Sorry, you can't.",
+     "enunciado": "Ouça e repita: \"can\" fraco na pergunta, \"can't\" forte na resposta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hi. Can I help you?",
+     "frase": "Can you",
+     "resposta": "Yes, please. Can you check my phone? The battery is very bad.",
+     "contexto": "Peça ajuda com \"Can you…?\"."
+    }
+   ]
+  },
+  {
+   "codigo": "8C",
+   "titulo": "Cheaper or better?",
+   "aula": "8C",
+   "objectivo": "Comparar dois produtos com comparativos.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Laptop A is [cheaper] than Laptop B.",
+     "opcoes": [
+      {
+       "texto": "more cheap",
+       "certa": false
+      },
+      {
+       "texto": "cheapper",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Phone 1 has a [bigger] screen.",
+     "opcoes": [
+      {
+       "texto": "biger",
+       "certa": false
+      },
+      {
+       "texto": "more big",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This bag is [heavier] than that one.",
+     "opcoes": [
+      {
+       "texto": "heavyer",
+       "certa": false
+      },
+      {
+       "texto": "more heavy",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Laptop B is [more expensive] than Laptop A.",
+     "opcoes": [
+      {
+       "texto": "expensiver",
+       "certa": false
+      },
+      {
+       "texto": "more expensiver",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The black one is good, but the grey one is [better].",
+     "opcoes": [
+      {
+       "texto": "gooder",
+       "certa": false
+      },
+      {
+       "texto": "more good",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "It's cheaper than the other one.",
+       "certa": true
+      },
+      {
+       "texto": "It's more cheaper than the other one.",
+       "certa": false
+      },
+      {
+       "texto": "It's cheaper that the other one.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Cheaper\" já quer dizer \"mais barato\"; e compara-se com \"than\"."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Qual é melhor?",
+     "resposta": "Which one is better?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Laptop B is more expensive, but it's faster and lighter.",
+     "enunciado": "Como é o portátil B?",
+     "opcoes": [
+      {
+       "texto": "mais caro, mais rápido e mais leve",
+       "certa": true
+      },
+      {
+       "texto": "mais barato e mais rápido",
+       "certa": false
+      },
+      {
+       "texto": "mais caro e mais pesado",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Laptop A is cheaper than Laptop B. Laptop B is better.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Phone 1 is 60 000 kwanzas, with a big screen. Phone 2 is 90 000 kwanzas, lighter, with a better camera. Which one is better for you?",
+     "frase": "better",
+     "resposta": "Phone 2 is better for me. It's more expensive, but it's lighter and the camera is better.",
+     "contexto": "Compare os dois e diga qual prefere."
+    }
+   ]
+  },
+  {
+   "codigo": "8D",
+   "titulo": "Shops and payments",
+   "aula": "8D",
+   "objectivo": "Nomear roupa, cores, lojas e pagamentos e pronunciar /æ/ e /ʌ/.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada peça à tradução.",
+     "pares": [
+      {
+       "a": "trousers",
+       "b": "calças"
+      },
+      {
+       "a": "trainers",
+       "b": "ténis"
+      },
+      {
+       "a": "tie",
+       "b": "gravata"
+      },
+      {
+       "a": "skirt",
+       "b": "saia"
+      },
+      {
+       "a": "suit",
+       "b": "fato"
+      }
+     ]
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada cor à tradução.",
+     "pares": [
+      {
+       "a": "grey",
+       "b": "cinzento"
+      },
+      {
+       "a": "brown",
+       "b": "castanho"
+      },
+      {
+       "a": "yellow",
+       "b": "amarelo"
+      },
+      {
+       "a": "green",
+       "b": "verde"
+      },
+      {
+       "a": "pink",
+       "b": "cor-de-rosa"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Num mercado, como pede desconto?",
+     "opcoes": [
+      {
+       "texto": "Can you give me a discount?",
+       "certa": true
+      },
+      {
+       "texto": "Can I have a descount?",
+       "certa": false
+      },
+      {
+       "texto": "You do discount?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Que palavra tem o som /ʌ/?",
+     "opcoes": [
+      {
+       "texto": "money",
+       "certa": true
+      },
+      {
+       "texto": "bag",
+       "certa": false
+      },
+      {
+       "texto": "black",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Money\" escreve-se com \"o\" mas diz-se com /ʌ/."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Cup.",
+     "enunciado": "Que palavra ouve?",
+     "opcoes": [
+      {
+       "texto": "cup",
+       "certa": true
+      },
+      {
+       "texto": "cap",
+       "certa": false
+      },
+      {
+       "texto": "cop",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Bag.",
+     "enunciado": "Que palavra ouve?",
+     "opcoes": [
+      {
+       "texto": "bag",
+       "certa": true
+      },
+      {
+       "texto": "bug",
+       "certa": false
+      },
+      {
+       "texto": "big",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "A black bag. Cash or card?",
+     "enunciado": "Ouça e repita /æ/: boca bem aberta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Money, colour, cup",
+     "enunciado": "Ouça e repita /ʌ/: curto e relaxado."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What colour are your clothes today?",
+     "frase": "is",
+     "resposta": "My shirt is white and my trousers are black.",
+     "contexto": "Diga duas peças e as cores."
+    }
+   ]
+  },
+  {
+   "codigo": "8E",
+   "titulo": "Real English: At the shops",
+   "aula": "8E",
+   "objectivo": "Identificar produto, cor ou tamanho, preço e pagamento em conversas a velocidade quase natural.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "Hi. Do you have these shoes in a size thirty-eight?",
+     "enunciado": "What size are the shoes?",
+     "opcoes": [
+      {
+       "texto": "38",
+       "certa": true
+      },
+      {
+       "texto": "48",
+       "certa": false
+      },
+      {
+       "texto": "28",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Can I try the brown ones on?",
+     "enunciado": "What colour does she try on?",
+     "opcoes": [
+      {
+       "texto": "brown",
+       "certa": true
+      },
+      {
+       "texto": "black",
+       "certa": false
+      },
+      {
+       "texto": "white",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Fifteen thousand. But today they're on sale: twelve thousand.",
+     "enunciado": "What's the final price of the shoes?",
+     "opcoes": [
+      {
+       "texto": "12 000 Kz",
+       "certa": true
+      },
+      {
+       "texto": "15 000 Kz",
+       "certa": false
+      },
+      {
+       "texto": "2 000 Kz",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "OK, for you: four thousand.",
+     "enunciado": "What's the final price of the bag?",
+     "opcoes": [
+      {
+       "texto": "4 000 Kz",
+       "certa": true
+      },
+      {
+       "texto": "5 000 Kz",
+       "certa": false
+      },
+      {
+       "texto": "3 000 Kz",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Three thousand kwanzas. Can I pay by Multicaixa Express?",
+     "enunciado": "How does the man pay for the credit?",
+     "opcoes": [
+      {
+       "texto": "by Multicaixa Express",
+       "certa": true
+      },
+      {
+       "texto": "cash",
+       "certa": false
+      },
+      {
+       "texto": "by bank transfer",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Deal!\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Combinado!",
+       "certa": true
+      },
+      {
+       "texto": "Negócio caro!",
+       "certa": false
+      },
+      {
+       "texto": "Não!",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Can you give me a discount? Deal!",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You're at a market. The seller says: \"This shirt is six thousand kwanzas.\" What do you say?",
+     "frase": "discount",
+     "resposta": "Six thousand? Can you give me a discount?",
+     "contexto": "Peça desconto."
+    }
+   ]
+  },
+  {
+   "codigo": "8F",
+   "titulo": "At the pharmacy",
+   "aula": "8F",
+   "objectivo": "Explicar na farmácia o que sente e entender as instruções.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada sintoma à tradução.",
+     "pares": [
+      {
+       "a": "a headache",
+       "b": "dores de cabeça"
+      },
+      {
+       "a": "a fever",
+       "b": "febre"
+      },
+      {
+       "a": "a cough",
+       "b": "tosse"
+      },
+      {
+       "a": "a sore throat",
+       "b": "dores de garganta"
+      },
+      {
+       "a": "a cold",
+       "b": "constipação"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I have a headache.",
+       "certa": true
+      },
+      {
+       "texto": "I have headache.",
+       "certa": false
+      },
+      {
+       "texto": "I'm headache.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Os sintomas levam \"a\": \"a headache\", \"a fever\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Doem-lhe as costas. Como diz?",
+     "opcoes": [
+      {
+       "texto": "My back hurts.",
+       "certa": true
+      },
+      {
+       "texto": "My back is hurt me.",
+       "certa": false
+      },
+      {
+       "texto": "I hurt the back.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Pode dar-me alguma coisa para as dores de cabeça?",
+     "resposta": "Can I have something for a headache?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Take one tablet three times a day, [after] meals.",
+     "opcoes": [
+      {
+       "texto": "before of",
+       "certa": false
+      },
+      {
+       "texto": "later",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "One tablet three times a day, after meals. And drink a lot of water.",
+     "enunciado": "Quantas vezes por dia?",
+     "opcoes": [
+      {
+       "texto": "3",
+       "certa": true
+      },
+      {
+       "texto": "2",
+       "certa": false
+      },
+      {
+       "texto": "1",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Please go to the doctor tomorrow. In Angola, a fever can be malaria.",
+     "enunciado": "O que aconselha a farmacêutica?",
+     "opcoes": [
+      {
+       "texto": "ir ao médico amanhã",
+       "certa": true
+      },
+      {
+       "texto": "beber chá",
+       "certa": false
+      },
+      {
+       "texto": "voltar à farmácia hoje",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I don't feel well. I have a headache and a fever.",
+     "enunciado": "Ouça e repita: em \"headache\" o \"ch\" diz-se \"k\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Good morning. Can I help you?",
+     "frase": "I have",
+     "resposta": "Good morning. I don't feel well. I have a cough and a sore throat. Can I have something for my throat?",
+     "contexto": "Diga o que sente e peça alguma coisa."
+    }
+   ]
+  },
+  {
+   "codigo": "8R",
+   "titulo": "Unit 8 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 8 e reciclar unidades anteriores.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Can I try [these] shoes on? (perto)",
+     "opcoes": [
+      {
+       "texto": "this",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "Can you help me, please?",
+       "certa": true
+      },
+      {
+       "texto": "Can you to help me, please?",
+       "certa": false
+      },
+      {
+       "texto": "Do you can help me, please?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This phone is [better] than that one.",
+     "opcoes": [
+      {
+       "texto": "gooder",
+       "certa": false
+      },
+      {
+       "texto": "more good",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The grey jacket is [more comfortable] than the black one.",
+     "opcoes": [
+      {
+       "texto": "comfortabler",
+       "certa": false
+      },
+      {
+       "texto": "more comfortabler",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "That's one thousand eight hundred kwanzas.",
+     "enunciado": "Quanto custa?",
+     "opcoes": [
+      {
+       "texto": "1 800 Kz",
+       "certa": true
+      },
+      {
+       "texto": "1 080 Kz",
+       "certa": false
+      },
+      {
+       "texto": "8 100 Kz",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (unidade 7). Onde fica a farmácia da Rua Kwanza?",
+     "opcoes": [
+      {
+       "texto": "next to the office",
+       "certa": true
+      },
+      {
+       "texto": "opposite the bank",
+       "certa": false
+      },
+      {
+       "texto": "behind the hospital",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (unidade 5). Como diz \"de oito em oito horas\"?",
+     "opcoes": [
+      {
+       "texto": "every eight hours",
+       "certa": true
+      },
+      {
+       "texto": "all eight hours",
+       "certa": false
+      },
+      {
+       "texto": "each eight hour",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Tenho uma constipação.",
+     "resposta": "I have a cold.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "How much are those trousers? Can I try them on?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "This shirt is eight thousand kwanzas, and that one is nine thousand five hundred. Which one do you like?",
+     "frase": "cheaper",
+     "resposta": "I like that one. It's more expensive, but it's nicer. This one is cheaper.",
+     "contexto": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Take one tablet twice a day, after meals.",
+     "enunciado": "Ouça e repita em voz alta."
+    }
+   ]
+  }
+ ]
+}

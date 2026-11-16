@@ -1,0 +1,301 @@
+{
+ "title": "Unit 8 quiz — Shopping and services",
+ "description": "This/that/these/those, can para pedir, comparativos, roupa e cores, e a farmácia.",
+ "questions": [
+  {
+   "id": "u8q1",
+   "question": "Os sapatos estão longe de si. Como pergunta o preço?",
+   "options": [
+    {
+     "id": "u8q1o0",
+     "text": "How much are those shoes?",
+     "isCorrect": true
+    },
+    {
+     "id": "u8q1o1",
+     "text": "How much is that shoes?",
+     "isCorrect": false
+    },
+    {
+     "id": "u8q1o2",
+     "text": "How much are these shoe?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u8q1o0",
+   "explanation": "Várias coisas, longe: \"those\".",
+   "points": 10
+  },
+  {
+   "id": "u8q2",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "u8q2o0",
+     "text": "I'd like a black jacket.",
+     "isCorrect": true
+    },
+    {
+     "id": "u8q2o1",
+     "text": "I'd like a jacket black.",
+     "isCorrect": false
+    },
+    {
+     "id": "u8q2o2",
+     "text": "I'd like a blacks jacket.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u8q2o0",
+   "explanation": "A cor vem antes do nome.",
+   "points": 10
+  },
+  {
+   "id": "u8q3",
+   "question": "Não quer repetir o nome. Complete: \"I like the red ___.\"",
+   "options": [
+    {
+     "id": "u8q3o0",
+     "text": "one",
+     "isCorrect": true
+    },
+    {
+     "id": "u8q3o1",
+     "text": "ones",
+     "isCorrect": false
+    },
+    {
+     "id": "u8q3o2",
+     "text": "it",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u8q3o0",
+   "explanation": "\"The red one\" — o vermelho.",
+   "points": 10
+  },
+  {
+   "id": "u8q4",
+   "question": "Qual é a pergunta correcta?",
+   "options": [
+    {
+     "id": "u8q4o0",
+     "text": "Can I pay by card?",
+     "isCorrect": true
+    },
+    {
+     "id": "u8q4o1",
+     "text": "Can I to pay by card?",
+     "isCorrect": false
+    },
+    {
+     "id": "u8q4o2",
+     "text": "Do I can pay by card?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u8q4o0",
+   "explanation": "can + verbo simples.",
+   "points": 10
+  },
+  {
+   "id": "u8q5",
+   "question": "\"Can you help me?\" — Não pode. O que responde?",
+   "options": [
+    {
+     "id": "u8q5o0",
+     "text": "Sorry, I can't.",
+     "isCorrect": true
+    },
+    {
+     "id": "u8q5o1",
+     "text": "No, I can.",
+     "isCorrect": false
+    },
+    {
+     "id": "u8q5o2",
+     "text": "Sorry, I don't can.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u8q5o0",
+   "explanation": "\"Sorry, I can't.\"",
+   "points": 10
+  },
+  {
+   "id": "u8q6",
+   "question": "Complete: \"This laptop is ___ than that one.\"",
+   "options": [
+    {
+     "id": "u8q6o0",
+     "text": "cheaper",
+     "isCorrect": true
+    },
+    {
+     "id": "u8q6o1",
+     "text": "more cheap",
+     "isCorrect": false
+    },
+    {
+     "id": "u8q6o2",
+     "text": "more cheaper",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u8q6o0",
+   "explanation": "cheap → cheaper.",
+   "points": 10
+  },
+  {
+   "id": "u8q7",
+   "question": "Complete: \"The new phone is ___ than the old one.\"",
+   "options": [
+    {
+     "id": "u8q7o0",
+     "text": "better",
+     "isCorrect": true
+    },
+    {
+     "id": "u8q7o1",
+     "text": "gooder",
+     "isCorrect": false
+    },
+    {
+     "id": "u8q7o2",
+     "text": "more good",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u8q7o0",
+   "explanation": "good → better.",
+   "points": 10
+  },
+  {
+   "id": "u8q8",
+   "question": "Que palavra tem o mesmo som de \"a\" que \"cup\"?",
+   "options": [
+    {
+     "id": "u8q8o0",
+     "text": "money",
+     "isCorrect": true
+    },
+    {
+     "id": "u8q8o1",
+     "text": "cash",
+     "isCorrect": false
+    },
+    {
+     "id": "u8q8o2",
+     "text": "black",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u8q8o0",
+   "explanation": "\"Money\" e \"cup\" têm /ʌ/.",
+   "points": 10
+  },
+  {
+   "id": "u8q9",
+   "question": "Ouviu: \"Can you give me a discount?\" O que pede a pessoa?",
+   "options": [
+    {
+     "id": "u8q9o0",
+     "text": "um desconto",
+     "isCorrect": true
+    },
+    {
+     "id": "u8q9o1",
+     "text": "um recibo",
+     "isCorrect": false
+    },
+    {
+     "id": "u8q9o2",
+     "text": "o troco",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u8q9o0",
+   "explanation": "Discount = desconto.",
+   "points": 10
+  },
+  {
+   "id": "u8q10",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "u8q10o0",
+     "text": "I have a fever.",
+     "isCorrect": true
+    },
+    {
+     "id": "u8q10o1",
+     "text": "I have fever.",
+     "isCorrect": false
+    },
+    {
+     "id": "u8q10o2",
+     "text": "I'm fever.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u8q10o0",
+   "explanation": "Sintomas com \"a\".",
+   "points": 10
+  },
+  {
+   "id": "u8q11",
+   "question": "A farmacêutica diz: \"Take one tablet twice a day.\" Quantas vezes por dia?",
+   "options": [
+    {
+     "id": "u8q11o0",
+     "text": "duas",
+     "isCorrect": true
+    },
+    {
+     "id": "u8q11o1",
+     "text": "uma",
+     "isCorrect": false
+    },
+    {
+     "id": "u8q11o2",
+     "text": "três",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u8q11o0",
+   "explanation": "Twice = duas vezes.",
+   "points": 10
+  },
+  {
+   "id": "u8q12",
+   "question": "Reciclagem (unidade 6). Na farmácia, como pergunta o preço?",
+   "options": [
+    {
+     "id": "u8q12o0",
+     "text": "How much is it?",
+     "isCorrect": true
+    },
+    {
+     "id": "u8q12o1",
+     "text": "How many is it?",
+     "isCorrect": false
+    },
+    {
+     "id": "u8q12o2",
+     "text": "How much it costs?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u8q12o0",
+   "explanation": "\"How much is it?\"",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

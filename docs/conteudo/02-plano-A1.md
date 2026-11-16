@@ -306,26 +306,26 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 ### Unidade 8 — Shopping and services
 
 **Objectivos da unidade.** No fim, o aluno consegue:
-1. pedir um produto, perguntar o preço e o tamanho, e pagar;
-2. pedir ajuda e autorização com *can*;
-3. comparar dois produtos de forma simples (*cheaper, bigger, better*);
-4. explicar na farmácia que não se sente bem e entender instruções simples.
+1. escolher e pedir produtos numa loja com *this, that, these, those* e *one(s)*, cores e tamanhos (*How much is this shirt? I'd like the blue one. Do you have it in a medium?*);
+2. pedir autorização e ajuda com *can* e responder (*Can I try it on? Can you check my phone? — Yes, of course. / Sorry, you can't.*);
+3. comparar dois produtos com comparativos (*This laptop is cheaper than that one. It's more expensive, but it's better.*);
+4. explicar na farmácia o que sente, pedir alguma coisa e entender as instruções (*I have a headache and a fever. Can I have something for a headache? — Take one tablet three times a day, after meals.*).
 
 | Aula | Tipo | Título | Objectivo da aula |
 |---|---|---|---|
-| 8A | Língua | This one or that one? | Usar *this/that/these/those* para escolher produtos. |
-| 8B | Língua | Can I…? Can you…? | Fazer pedidos e pedir autorização com *can*. |
-| 8C | Língua | Cheaper or better? | Comparar dois produtos (comparativos curtos, *better/worse*). |
-| 8D | Vocabulário e pronúncia | Shops and payments | Roupa, cores, tamanhos, formas de pagamento (cash, card, Multicaixa Express, top-up); /æ/ e /ʌ/. |
-| 8E | Real English | At the shops | Entender 3 conversas numa loja, num mercado e numa loja de telemóveis. |
-| 8F | Work & Life | At the pharmacy | Descrever sintomas simples e entender a dose. |
+| 8A | Língua | This one or that one? | Escolher e pedir produtos com *this/that/these/those, one(s)*, cores e tamanhos. |
+| 8B | Língua | Can I…? Can you…? | Pedir autorização e ajuda com *can* (pedidos) e responder; telemóveis e saldo. |
+| 8C | Língua | Cheaper or better? | Comparar dois produtos (*-er … than, more …, better, worse*). |
+| 8D | Vocabulário e pronúncia | Shops and payments | Nomear roupa, cores, lojas e pagamentos; /æ/ e /ʌ/. |
+| 8E | Real English | At the shops | Identificar produto, cor ou tamanho, preço e pagamento em três conversas (sapataria, mercado, loja de telemóveis). |
+| 8F | Work & Life | At the pharmacy | Explicar o que sente, pedir alguma coisa e entender as instruções da farmacêutica. |
 
-- **Gramática:** *this/that/these/those*; *can* para pedidos e autorização; comparativos de adjectivos curtos e *better/worse* (uso básico, aprofundado no A2).
-- **Vocabulário (~55):** roupa, cores, tamanhos, pagamentos, carregamento de saldo, partes do corpo, sintomas (headache, fever, cough).
-- **Pronúncia:** entoação de pedidos corteses; /æ/ e /ʌ/ (*cap / cup*).
-- **Laboratório:** *this* ou *these*; ordenar um pedido; escuta numa loja; pronúncia de *Can I…?*; resposta falada "How can I help you?".
-- **Conversa guiada:** o tutor faz de vendedor e o aluno pergunta preços e tamanhos.
-- **Conversa livre:** "At the pharmacy" — explicar o que sente, perguntar o preço e a dose.
+- **Gramática:** *this / that / these / those*; *one / ones*; a cor antes do nome; *can* para autorização e pedidos (+ verbo simples; *Sorry, you can't*); comparativos (*-er, -ier, consoante dobrada, more, better, worse, than*); *I have a* + sintoma; *My … hurts*; imperativo nas instruções. Ficam para a unidade 9: *can* para capacidade e o *present continuous* (*I'm looking for…*).
+- **Vocabulário (~80):** roupa (britânico: *trousers, trainers*), cores (*grey, colour*), tamanhos, lojas, pagamentos (*Multicaixa Express, top up, credit, discount, on sale*), telemóveis (*battery, screen, charger*), sintomas e farmácia (*headache, fever, cough, sore throat, tablet, syrup, after meals, twice a day*).
+- **Pronúncia:** /ð/ e /ɪ/–/iː/ em *this / these*; *can* fraco e *can't* forte; *than* fraco; /æ/ e /ʌ/ (*bag / bug, cap / cup*); *headache* e *stomach* com /k/.
+- **Laboratório:** *this/these*; *one*; *can*; comparativos; cores; escuta de compras; sintomas; resposta falada "Can I help you?".
+- **Conversa guiada:** "In a clothes shop" — escolher, experimentar, comparar e pagar.
+- **Conversa livre:** "At the pharmacy" — explicar o que sente e confirmar as instruções.
 
 ### Unidade 9 — Free time and right now (7 aulas)
 
