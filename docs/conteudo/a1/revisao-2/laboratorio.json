@@ -1,0 +1,389 @@
+{
+ "unidade": "A1.2 · Review 2",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "R2-1",
+   "titulo": "Review 2: food, town and shopping",
+   "aula": "R2A",
+   "objectivo": "Rever as unidades 6 a 8 pelos erros mais comuns.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Num café, qual é o pedido mais educado?",
+     "opcoes": [
+      {
+       "texto": "I'd like a coffee, please.",
+       "certa": true
+      },
+      {
+       "texto": "I want a coffee.",
+       "certa": false
+      },
+      {
+       "texto": "Give me a coffee.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"I want\" soa exigente."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "Can I have some bread, please?",
+       "certa": true
+      },
+      {
+       "texto": "Can I have a bread, please?",
+       "certa": false
+      },
+      {
+       "texto": "Can I have breads, please?",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Bread\" é incontável."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "That's four thousand five hundred kwanzas, please.",
+     "enunciado": "Quanto custa?",
+     "opcoes": [
+      {
+       "texto": "4 500 Kz",
+       "certa": true
+      },
+      {
+       "texto": "5 400 Kz",
+       "certa": false
+      },
+      {
+       "texto": "450 Kz",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se diz \"Há um multibanco aqui perto?\"",
+     "opcoes": [
+      {
+       "texto": "Is there an ATM near here?",
+       "certa": true
+      },
+      {
+       "texto": "Has an ATM near here?",
+       "certa": false
+      },
+      {
+       "texto": "Is it an ATM near here?",
+       "certa": false
+      }
+     ],
+     "explicacao": "Para dizer que algo existe: \"there is\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The pharmacy is [opposite] the bank, on the other side of the road.",
+     "opcoes": [
+      {
+       "texto": "in front of",
+       "certa": false
+      },
+      {
+       "texto": "between",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Go straight on and turn left at the traffic lights. It's on the right.",
+     "enunciado": "Onde vira?",
+     "opcoes": [
+      {
+       "texto": "à esquerda, nos semáforos",
+       "certa": true
+      },
+      {
+       "texto": "à direita, nos semáforos",
+       "certa": false
+      },
+      {
+       "texto": "à esquerda, na rotunda",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a pergunta correcta?",
+     "opcoes": [
+      {
+       "texto": "Can I pay by card?",
+       "certa": true
+      },
+      {
+       "texto": "Can I to pay by card?",
+       "certa": false
+      },
+      {
+       "texto": "Do I can pay by card?",
+       "certa": false
+      }
+     ],
+     "explicacao": "Depois de \"can\", o verbo simples."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This phone is [cheaper] than that one, but that one is [better].",
+     "opcoes": [
+      {
+       "texto": "more cheap",
+       "certa": false
+      },
+      {
+       "texto": "more good",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Na farmácia. Como diz \"Tenho dores de cabeça\"?",
+     "opcoes": [
+      {
+       "texto": "I have a headache.",
+       "certa": true
+      },
+      {
+       "texto": "I have headache.",
+       "certa": false
+      },
+      {
+       "texto": "I am headache.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Posso experimentá-la? (a camisa)",
+     "resposta": "Can I try it on?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Excuse me, is there a pharmacy near here? — Yes, there is. It's opposite the bank.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Good afternoon! Are you ready to order?",
+     "frase": "I'd like",
+     "resposta": "Yes, I'd like the grilled fish with rice, please. And can I have a glass of mango juice?",
+     "contexto": "Peça um prato e uma bebida."
+    }
+   ]
+  },
+  {
+   "codigo": "R2-2",
+   "titulo": "Review 2: free time, past and plans",
+   "aula": "R2B",
+   "objectivo": "Rever as unidades 9 e 10 e os quatro tempos do A1.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I like dancing.",
+       "certa": true
+      },
+      {
+       "texto": "I like dance.",
+       "certa": false
+      },
+      {
+       "texto": "I like to dancing.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Depois de \"like\", o verbo leva -ing."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I can drive, but I can't swim.",
+     "enunciado": "O que não sabe fazer?",
+     "opcoes": [
+      {
+       "texto": "nadar",
+       "certa": true
+      },
+      {
+       "texto": "conduzir",
+       "certa": false
+      },
+      {
+       "texto": "cozinhar",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I usually [take] the bus, but today [I'm driving].",
+     "opcoes": [
+      {
+       "texto": "am taking",
+       "certa": false
+      },
+      {
+       "texto": "I drive",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "She's talking to a client now.",
+       "certa": true
+      },
+      {
+       "texto": "She talking to a client now.",
+       "certa": false
+      },
+      {
+       "texto": "She talks to a client now.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Last weekend we [went] to the beach.",
+     "opcoes": [
+      {
+       "texto": "go",
+       "certa": false
+      },
+      {
+       "texto": "are going to go",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I didn't see the email.",
+       "certa": true
+      },
+      {
+       "texto": "I didn't saw the email.",
+       "certa": false
+      },
+      {
+       "texto": "I not saw the email.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Didn't\" + verbo simples."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Next week [I'm going to] visit a client in Benguela.",
+     "opcoes": [
+      {
+       "texto": "I went to",
+       "certa": false
+      },
+      {
+       "texto": "I going to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The meeting is on the twenty-second of May.",
+     "enunciado": "Quando é a reunião?",
+     "opcoes": [
+      {
+       "texto": "22 de Maio",
+       "certa": true
+      },
+      {
+       "texto": "2 de Maio",
+       "certa": false
+      },
+      {
+       "texto": "22 de Março",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Que palavra de tempo vai com \"I'm going to travel\"?",
+     "opcoes": [
+      {
+       "texto": "next month",
+       "certa": true
+      },
+      {
+       "texto": "last month",
+       "certa": false
+      },
+      {
+       "texto": "every month",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "O que fez no sábado?",
+     "resposta": "What did you do on Saturday?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I don't know the word in English. It's a kind of bus.",
+     "enunciado": "Ouça e repita a nova estratégia do exame."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What did you do last weekend, and what are you going to do next weekend?",
+     "frase": "going to",
+     "resposta": "Last weekend I visited my parents and we cooked funge. Next weekend I'm going to play football with my friends.",
+     "contexto": "Use o passado e \"going to\"."
+    }
+   ]
+  }
+ ]
+}

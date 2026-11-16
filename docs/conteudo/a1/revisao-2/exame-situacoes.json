@@ -1,0 +1,101 @@
+{
+ "exame": "A1.2",
+ "formato": "apps/practice/models.py Situacao (situações próprias do exame; ver ../revisao-1/exame.md, secção 4)",
+ "situacoes": [
+  {
+   "slug": "a1-2-exame-restaurante",
+   "nome": "A1.2 exam · At a restaurant",
+   "papel_tutor": "A waiter at a restaurant in Luanda.",
+   "descricao": "The examiner is a waiter. The student is having lunch. Menu: grilled fish with rice (6 500 Kz), chicken muamba with funge (7 000 Kz), beef with chips (8 000 Kz), salad (3 000 Kz); drinks: water (500 Kz), mango juice (1 500 Kz), soft drinks (1 000 Kz), coffee (800 Kz). The student must order a main course and a drink (I'd like / Can I have…?), answer \"Would you like…?\" (the examiner offers a dessert or a starter), ask the price of one thing and ask for the bill. The examiner says one price only when asked.",
+   "nivel": "A1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm a waiter. You're at a restaurant for lunch. Good afternoon! Are you ready to order?"
+   },
+   "frases": [
+    "I'd like…, please.",
+    "How much is…?",
+    "Can we have the bill, please?"
+   ]
+  },
+  {
+   "slug": "a1-2-exame-loja",
+   "nome": "A1.2 exam · In a shop",
+   "papel_tutor": "A shop assistant in a clothes shop.",
+   "descricao": "The examiner is a shop assistant. The student wants a shirt for work. The shop has white and blue shirts in small, medium and large; the white one is 12 000 Kz, the blue one is 9 500 Kz and it is on sale. The student must say what they want (colour and size), ask the price, ask to try it on, compare the two shirts (cheaper, better, nicer) and choose one, and ask how to pay (by card / Multicaixa Express).",
+   "nivel": "A1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm a shop assistant. You want a shirt for work. Good morning, can I help you?"
+   },
+   "frases": [
+    "Do you have it in a medium?",
+    "Can I try it on?",
+    "The blue one is cheaper."
+   ]
+  },
+  {
+   "slug": "a1-2-exame-farmacia",
+   "nome": "A1.2 exam · At the pharmacy",
+   "papel_tutor": "A pharmacist.",
+   "descricao": "The examiner is a pharmacist. The student doesn't feel well (the student chooses the problem: a headache, a sore throat, a cough, a stomach ache). The examiner asks what the problem is and since when, gives a medicine and simple instructions (for example: one tablet twice a day, after meals), and asks the student to repeat the instructions. If the student says they have a fever, the examiner says to go to a doctor today, because it can be malaria. This is a simple language role-play: do not give real medical advice beyond it.",
+   "nivel": "A1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm a pharmacist. You don't feel well. Good morning, can I help you?"
+   },
+   "frases": [
+    "I have a headache.",
+    "Can I have something for…?",
+    "One tablet twice a day, after meals."
+   ]
+  },
+  {
+   "slug": "a1-2-exame-direccoes",
+   "nome": "A1.2 exam · Directions",
+   "papel_tutor": "A visitor in Luanda.",
+   "descricao": "The examiner is a visitor standing in front of the student's office. The examiner asks if there is a place near here (choose one: a pharmacy, a bank, an ATM, a good restaurant, a supermarket). The student can invent the directions. The student must say if there is one, give simple directions (go straight on, turn left / right, at the traffic lights, it's opposite / next to…), repeat them in short parts when the examiner says \"Sorry, can you repeat that, please?\" (the examiner always asks this once), and say if it is far.",
+   "nivel": "A1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm a visitor in Luanda. I'm in front of your office. Excuse me, is there a pharmacy near here?"
+   },
+   "frases": [
+    "Yes, there is. Go straight on…",
+    "Turn left at the traffic lights.",
+    "It's opposite the bank."
+   ]
+  },
+  {
+   "slug": "a1-2-exame-telefone",
+   "nome": "A1.2 exam · On the phone",
+   "papel_tutor": "A client calling the student's office.",
+   "descricao": "The examiner is a client, Chris Mbala from Mussulo Energy, calling to speak to the student's colleague, Ms Domingos. She isn't available (the student decides why: she is in a meeting, she is having lunch, she is visiting a client). The student must say she isn't available and what she is doing (present continuous), ask who is calling, offer to take a message, write down the name and the phone number (the examiner spells Mbala and says 923 418 507), repeat the number to confirm, and say when she can call back.",
+   "nivel": "A1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. You're at work. I call you, but I want to speak to your colleague, Ms Domingos. She isn't in the office. Hello, can I speak to Ms Domingos, please?"
+   },
+   "frases": [
+    "Sorry, she's in a meeting.",
+    "Who's calling, please?",
+    "Can I take a message?"
+   ]
+  }
+ ]
+}

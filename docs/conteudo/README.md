@@ -32,6 +32,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [a1/unidade-08/](a1/unidade-08/README.md) | A1.2, unidade 8 "Shopping and services": guiões, laboratório, tutor e questionário. |
 | [a1/unidade-09/](a1/unidade-09/README.md) | A1.2, unidade 9 "Free time and right now": guiões, laboratório, tutor e questionário. |
 | [a1/unidade-10/](a1/unidade-10/README.md) | A1.2, unidade 10 "Last week, next week": guiões, laboratório, tutor e questionário. |
+| [a1/revisao-2/](a1/revisao-2/README.md) | A1.2, revisão 2 e exame oral do A1.2: guiões, laboratório, ensaio com o tutor, questionário, exame e situações do exame. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.

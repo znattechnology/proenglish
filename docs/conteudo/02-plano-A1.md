@@ -379,6 +379,8 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 
 ### Revisão 2 e exame oral do A1.2
 
+Versão completa em [a1/revisao-2/](a1/revisao-2/README.md) **[I]**.
+
 **Objectivo:** o aluno consegue falar 4 a 5 minutos sobre si, o trabalho, a rotina, o fim-de-semana e os planos, e resolver uma situação de serviço.
 
 | Aula | Título | Objectivo |
@@ -414,7 +416,7 @@ A conversa guiada não tem nota mínima: serve para praticar com apoio.
 2. **A minha rotina** (1–2 min): o dia do aluno e o de um colega.
 3. **Situação** (1–2 min): combinar uma reunião ou registar-se numa recepção (sorteada).
 
-**Exame oral do A1.2 (5–6 minutos)** **[I]**:
+**Exame oral do A1.2 (5–6 minutos)** — versão completa em [a1/revisao-2/exame.md](a1/revisao-2/exame.md) **[I]**:
 1. **Entrevista** (1–2 min): trabalho, tempos livres.
 2. **Passado e planos** (2 min): o fim-de-semana passado e os planos para a próxima semana.
 3. **Situação** (2 min): restaurante, loja, farmácia, direcções ou telefone (sorteada).
