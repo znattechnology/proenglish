@@ -1,6 +1,6 @@
 # B1.1 · Unidade 5 — How it works (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 5
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 5
 
 ## Objectivos da unidade
 
@@ -56,6 +56,6 @@ Novembro de 2027. As antenas saíram da alfândega a tempo (B1 4F). Na segunda, 
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (14 escutas, 8 pronúncias, a 5E com quatro vozes e som de exterior); imagens (a central, o quadro do processo, o aviso de segurança, os sinais); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (14 escutas, 8 pronúncias, a 5E com quatro vozes e som de exterior); imagens (a central, o quadro do processo, o aviso de segurança, os sinais); carregamento na plataforma.
 
 A seguir vêm a **revisão e o exame oral do B1.1**.

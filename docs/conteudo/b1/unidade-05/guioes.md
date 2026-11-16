@@ -49,7 +49,7 @@ Verificação: Lab 5A; perguntas 1 e 2 do questionário da unidade 5
 **PAULO:** And the panels? With all this sand, they get really dirty, don't they?
 **HANNAH:** Very dirty! They're cleaned every two weeks. In the windy months, every week.
 **NUNO:** Are they cleaned by hand?
-**HANNAH:** No, a small machine is used — it's driven along each row. And no drinking water is used: it's a dry system.
+**HANNAH:** No, a small machine is used — it's driven along each row. And no water is used: it's a dry system.
 **NUNO:** And the data from the sensors? That's our part.
 **HANNAH:** Exactly. The data is collected every minute and sent to the control room by the radio link. When the link goes down, nothing is received — and we're blind.
 **NUNO:** Not after this week. With the satellite, the data will probably arrive all the time.
@@ -66,7 +66,7 @@ is / are + particípio passado]
 **PROF:** In the passive, the important thing is the action, or the thing — not the person. "Is" or "are", plus the past participle: is changed, are cleaned, is sent.
 [PAUSA 5 s]
 
-[ECRÃ: The panels **are cleaned** every two weeks. · The data **is collected** every minute. · **Are** they **cleaned** by hand? · No drinking water **is used**.]
+[ECRÃ: The panels **are cleaned** every two weeks. · The data **is collected** every minute. · **Are** they **cleaned** by hand? · No water **is used**.]
 
 **PROF:** Singular: "is". Plural: "are". For questions, put "is" or "are" first: "Are they cleaned by hand?"
 [PAUSA 4 s]
@@ -158,7 +158,7 @@ Verificação: Lab 5B; perguntas 3 e 4 do questionário
 **PAULO:** Where were the panels made?
 **HANNAH:** In China. They were sent by ship to the port here in Moçâmedes. The inverters were made in Germany.
 **NUNO:** And the radio link? When was that installed?
-**HANNAH:** At the end of 2025 — by a small company from Luanda. It was the cheapest option.
+**HANNAH:** In 2025, during the construction — by a small company from Luanda. It was the cheapest option.
 **NUNO:** Ah. That explains a lot.
 **HANNAH:** Ha! Yes. If we chose again today, we'd choose differently. But that's why you're here.
 **PAULO:** How many people were employed during the construction?
@@ -256,7 +256,7 @@ Verificação: Lab 5C; conversa guiada "How is it done?"; perguntas 5 e 6 do que
 
 [ECRÃ: quarta-feira, 17 de Novembro, 16:00; a sala de controlo; uma mesa com cabos e caixas; no ecrã, "Satellite link: TEST"]
 
-**HANNAH:** OK, before the test — is everything connected?
+**HANNAH:** OK, before the test — everything's connected, isn't it?
 **PAULO:** Almost. Nuno, can you pass me the cable that goes to the router?
 **NUNO:** This one?
 **PAULO:** No, the one with the blue label. The one you had this morning.
@@ -290,10 +290,10 @@ the room **where** the old equipment is (lugar)]
 
 [ECRÃ: the report **(that) I sent you** · the cable **(that) you had** this morning · the moment **(that) I've been waiting for**]
 
-**PROF:** When there's another subject after the pronoun — "I", "you", "Paulo" — you can leave out "that" or "which". "The report I sent you." This is very common.
+**PROF:** When there's another subject after the pronoun — "I", "you", "Paulo" — you can leave out "that", "which" or "who". "The report I sent you." This is very common.
 [PAUSA 5 s]
 
-[ECRÃ: the cable **that goes** to the router → "that" é o sujeito: não sai · ✘ the cable goes to the router]
+[ECRÃ: the cable **that goes** to the router → "that" é o sujeito: não sai · ✘ Can you pass me the cable goes to the router?]
 
 **PROF:** But when "that" is the subject of the verb, you need it: "the cable that goes to the router".
 [PAUSA 4 s]
@@ -468,7 +468,7 @@ Verificação: Lab 5E
 
 ### 1. Apresentação (30 s)
 
-**PROF:** Do you remember Kofi, the network engineer from Accra? He met Nuno at the training in Johannesburg. Today he's at the Namibe plant with his colleague Wanjiru, from Nairobi. Their company has the same problem with sandstorms. Hannah gives them a tour. Listen for the steps of the process, and the safety rules.
+**PROF:** Do you remember Kofi, the network engineer from Accra? He met Nuno at the training in Johannesburg. Today he's at the Namibe plant with his colleague Wanjiru, from Nairobi. Their company has solar plants in Ghana and Kenya, with the same problem: dust and sand. Hannah gives them a tour. Listen for the steps of the process, and the safety rules.
 
 ### 2. Primeira escuta: a ideia geral (4 min)
 
@@ -547,8 +547,8 @@ Palavras-alvo: briefing, visitor, sign in, badge, crane, zone, lift (verbo), ala
   supervisor, in other words, what I mean is
 Reciclagem: verificar a compreensão (B1, 3C): Is that clear? / So, …?; 1.º condicional (A2, 8)
 Pronúncia: dar instruções com pausas curtas e a voz a descer no fim de cada passo
-Mediação: o Nuno explica em inglês o aviso de segurança, em português, que está no portão da zona da
-  grua
+Mediação: o Nuno explica em inglês o aviso de segurança, em português, que está na vedação da zona
+  da grua
 Contexto: sexta-feira, 19 de Novembro, 7:30; o portão da central; o Nuno com dois visitantes: o Femi
   (Morro Azul, de Luanda; primeira visita à central) e o Sipho (Mopane Systems; veio para ajudar com as
   antenas)
