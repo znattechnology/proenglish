@@ -22,6 +22,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [01-fontes-do-curso.md](01-fontes-do-curso.md) | Estudo das fontes (quadros, manuais, recursos abertos), regra legal e programa A1–C1 em 50 unidades. Versão partilhada com a equipa: [Claude Docs](https://claude.ai/artifact/Q2ANYkpHboytWvLWU8kTAS). |
 | [02-plano-A1.md](02-plano-A1.md) | Plano completo do nível A1, dividido em A1.1 e A1.2: unidades, aulas, objectivos, laboratório, tutor, reciclagem, colocação e avaliação. |
 | [03-plano-A2.md](03-plano-A2.md) | Plano completo do nível A2, dividido em A2.1 e A2.2, com a mesma quantidade de aulas do A1 e a revisão de cada aula. |
+| [04-plano-B1.md](04-plano-B1.md) | Plano completo do nível B1, dividido em B1.1 e B1.2, com a mesma quantidade de aulas do A2, os exames e a revisão de cada aula. |
 | [a1/unidade-01/](a1/unidade-01/README.md) | A1.1, unidade 1 "Hello!": guiões, laboratório, tutor e questionário. |
 | [a1/unidade-02/](a1/unidade-02/README.md) | A1.1, unidade 2 "Where are you from?": guiões, laboratório, tutor e questionário. |
 | [a1/unidade-03/](a1/unidade-03/README.md) | A1.1, unidade 3 "My job": guiões, laboratório, tutor e questionário. |
