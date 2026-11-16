@@ -1,6 +1,6 @@
 # A1.2 · Revisão 2 e exame oral
 
-**Estado:** primeira versão escrita e revista ao escrever; falta a revisão n.º 1, a leitura dos professores e as mudanças na plataforma descritas no [exame do A1.1](../revisao-1/exame.md#4-o-que-é-preciso-mudar-na-plataforma-para-este-exame-funcionar) · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), "Revisão 2 e exame oral do A1.2"
+**Estado:** primeira versão escrita e revista ao escrever; falta a revisão n.º 1 e a leitura dos professores; as mudanças na plataforma estão feitas ([exame](exame.md#4-na-plataforma)) · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), "Revisão 2 e exame oral do A1.2"
 
 ## Objectivo
 
@@ -15,7 +15,8 @@ No fim do A1.2 (e do A1), o aluno consegue falar 5 a 6 minutos sobre o trabalho,
 | [tutor.json](tutor.json) | "A day in town": ensaio do exame com o tutor (Riley, colega estrangeiro), com 6 critérios | Sim: campos do modelo `Situacao` |
 | [questionario.json](questionario.json) | 15 perguntas, três por unidade (U6 a U10), aprovação a 70% | Sim: formato `quiz_data` |
 | [exame.md](exame.md) | O exame oral do A1.2: o que verifica, as três partes, o guião do examinador, a escala do A1.2 e as mudanças na plataforma | Documento de referência |
-| [exame-situacoes.json](exame-situacoes.json) | As cinco situações da parte 3 (restaurante, loja, farmácia, direcções, telefone) | Sim, mas só depois das mudanças na plataforma |
+| [exame-situacoes.json](exame-situacoes.json) | As cinco situações da parte 3 (restaurante, loja, farmácia, direcções, telefone) | Sim: `manage.py carregar_exame_curso` |
+| [exame-guiao.json](exame-guiao.json) | O guião do exame para a plataforma: partes, perguntas, notas para o examinador e a escala do A1.2 | Sim: `manage.py carregar_exame_curso` |
 
 ## Decisões pedagógicas
 
@@ -29,6 +30,6 @@ No fim do A1.2 (e do A1), o aluno consegue falar 5 a 6 minutos sobre o trabalho,
 
 ## O que falta
 
-1. **As mudanças na plataforma** (as mesmas do A1.1): guião do examinador por nível, situações próprias do exame, escondidas do aluno, e escala por nível.
+1. **Carregar o exame no curso A1.2** (exame.md, secção 4): as mudanças na plataforma estão feitas.
 2. Leitura pelos professores.
 3. Vídeos (vozes: o examinador, a Lurdes, o Nuno e o Mateus já existem), áudio do laboratório e carregamento na plataforma.

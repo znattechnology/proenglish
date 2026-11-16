@@ -71,10 +71,18 @@ A plataforma dá uma nota de 0 a 100 a cada competência, a partir da transcriç
 
 ## 4. O que é preciso mudar na plataforma para este exame funcionar
 
-O exame oral da plataforma (`apps/practice/conversa/exame.py`) foi feito para cursos de trabalho de nível B1. Para o A1.1 há três problemas:
+**Feito em 16 de Novembro de 2026** (`apps/practice/conversa/exame.py`, testes em `apps/courses/api/tests/test_exame_nivel.py`). O exame oral da plataforma tinha sido feito para cursos de trabalho de nível B1; tinha três problemas para o A1, agora resolvidos:
 
-1. **O guião do examinador é igual para todos os níveis.** Pede 8 a 10 minutos, perguntas como "What would you do next, and why?" (condicional, nível B1) e uma pergunta de opinião no fim. Para o A1.1 é preciso o guião deste documento: 4 a 6 minutos, as três partes e as perguntas acima. **Proposta:** a estrutura do exame passa a depender do nível do curso (A1 com este guião; A2 e acima com o actual), ou o curso passa a guardar o seu próprio guião de exame.
-2. **As tarefas saem das primeiras 4 situações do curso.** Num curso A1.1 com os cenários do tutor das unidades 1 a 5, o exame usaria só as situações das unidades 1 e 2. **Proposta:** marcar as situações próprias do exame ([exame-situacoes.json](exame-situacoes.json), com `extras.exame = true`) e o examinador escolher uma ao acaso. Essas situações **não devem aparecer** na lista de conversas do aluno: hoje, uma situação activa do curso aparece lá, e o aluno poderia treinar a situação exacta do exame.
-3. **A escala de avaliação não tem nível.** O Claude avalia com critérios gerais; para o A1.1 deve receber a escala da secção 3, para não penalizar o aluno A1 por não usar estruturas de B1.
+1. **Guião por nível.** Um curso A1 deixa de usar o exame de B1 (8 a 10 minutos, "What would you do next, and why?", pergunta de opinião): usa um guião A1 por omissão (4 a 6 minutos, perguntas por partes, a versão mais simples de cada pergunta, uma situação sorteada). Cada curso pode guardar o seu próprio guião (`CourseGradingConfig.exam_script`), que ganha ao do nível: é o caso deste exame, em [exame-guiao.json](exame-guiao.json). Os cursos A2 e acima continuam com o exame geral.
+2. **Situações próprias do exame.** Uma situação do curso com `extras.exame = true` ([exame-situacoes.json](exame-situacoes.json)) é só do exame: **não aparece** na lista de conversas do aluno, não se pode começar uma conversa com ela e não conta como conversa do curso. Em cada exame sorteia-se uma; a avaliação usa a mesma. No ecrã do exame, o aluno vê só os títulos das situações possíveis.
+3. **Escala por nível.** O Claude recebe a estrutura do exame e a escala do guião (secção 3, em [exame-guiao.json](exame-guiao.json)), incluindo o que não baixa a nota; num curso A1 sem guião próprio, recebe a escala do A1 por omissão.
 
-Estas mudanças tocam no exame que já está em produção (o curso "English Communication Skills L1" tem o exame ligado), por isso devem ser feitas com testes e decididas antes de carregar o A1.1.
+**Como carregar este exame num curso** (na API, com o identificador do curso A1.1):
+
+```
+./venv/bin/python manage.py carregar_exame_curso <id do curso> \
+    --guiao ../../docs/conteudo/a1/revisao-1/exame-guiao.json \
+    --situacoes ../../docs/conteudo/a1/revisao-1/exame-situacoes.json
+```
+
+O curso tem de estar com o nível A1 (`Course.level`) para o examinador falar ao nível certo.

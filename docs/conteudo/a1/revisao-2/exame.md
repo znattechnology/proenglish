@@ -70,12 +70,14 @@ Como no A1.1: nota de 0 a 100 por competência (tarefa, gramática, vocabulário
 
 **Regras da plataforma que se mantêm:** as do A1.1 (80% das aulas do A1.2 concluídas; chamada verificada com pelo menos 2 minutos; repetir 7 dias depois de reprovar; 3 exames começados por semana no máximo; gravação só com consentimento, guardada um ano).
 
-## 4. O que é preciso mudar na plataforma
+## 4. Na plataforma
 
-As **mesmas três mudanças** descritas no [exame do A1.1, secção 4](../revisao-1/exame.md#4-o-que-é-preciso-mudar-na-plataforma-para-este-exame-funcionar), aplicadas ao A1.2:
+As três mudanças descritas no [exame do A1.1, secção 4](../revisao-1/exame.md#4-o-que-é-preciso-mudar-na-plataforma-para-este-exame-funcionar) **estão feitas** (16 de Novembro de 2026): guião por nível ou do curso, situações só do exame (escondidas do aluno e sorteadas) e escala por nível. Este exame está em [exame-guiao.json](exame-guiao.json) (partes, perguntas, notas para o examinador, escala e o que não baixa a nota) e [exame-situacoes.json](exame-situacoes.json) (as cinco situações). O sorteio funciona com qualquer número de situações.
 
-1. **Guião por nível:** o guião deste documento (5 a 6 minutos, três partes) para o curso A1.2.
-2. **Situações próprias do exame**, sorteadas, escondidas da lista de conversas do aluno: as cinco do [banco de situações](exame-situacoes.json).
-3. **Escala do A1.2** (secção 3) enviada ao Claude na avaliação.
+**Como carregar este exame num curso** (na API, com o identificador do curso A1.2):
 
-Uma diferença pequena: o A1.2 tem **cinco** situações em vez de três. Se a plataforma limitar o número de situações de exame, o sorteio deve funcionar com qualquer número.
+```
+./venv/bin/python manage.py carregar_exame_curso <id do curso> \
+    --guiao ../../docs/conteudo/a1/revisao-2/exame-guiao.json \
+    --situacoes ../../docs/conteudo/a1/revisao-2/exame-situacoes.json
+```

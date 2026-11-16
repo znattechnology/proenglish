@@ -1,6 +1,6 @@
 # A1.1 · Revisão 1 e exame oral
 
-**Estado:** primeira versão escrita e revista ([revisão n.º 1](revisao-1.md)); falta a leitura dos professores e as mudanças na plataforma descritas no [exame](exame.md#4-o-que-é-preciso-mudar-na-plataforma-para-este-exame-funcionar) · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), "Revisão 1 e exame oral do A1.1"
+**Estado:** primeira versão escrita e revista ([revisão n.º 1](revisao-1.md)); falta a leitura dos professores; as mudanças na plataforma estão feitas ([exame](exame.md#4-o-que-é-preciso-mudar-na-plataforma-para-este-exame-funcionar)) · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), "Revisão 1 e exame oral do A1.1"
 
 ## Objectivo
 
@@ -15,7 +15,8 @@ No fim do A1.1, o aluno consegue manter uma conversa de 4 a 6 minutos sobre si (
 | [tutor.json](tutor.json) | "Getting to know a new colleague": ensaio do exame com o tutor, com 6 critérios | Sim: campos do modelo `Situacao` |
 | [questionario.json](questionario.json) | 15 perguntas sobre as cinco unidades (U1–U3 três cada, U4 duas, U5 quatro), aprovação a 70% | Sim: formato `quiz_data` |
 | [exame.md](exame.md) | O exame oral do A1.1: o que verifica, as três partes, o guião do examinador (com versões mais simples de cada pergunta), a escala de avaliação do A1.1 e o que tem de mudar na plataforma | Documento de referência |
-| [exame-situacoes.json](exame-situacoes.json) | As três situações da parte 3 do exame (reunião, recepção, visitante) | Sim, mas só depois da mudança 2 da secção 4 do exame |
+| [exame-situacoes.json](exame-situacoes.json) | As três situações da parte 3 do exame (reunião, recepção, visitante) | Sim: `manage.py carregar_exame_curso` |
+| [exame-guiao.json](exame-guiao.json) | O guião do exame para a plataforma: partes, perguntas, notas para o examinador e a escala do A1.1 | Sim: `manage.py carregar_exame_curso` |
 
 ## Decisões pedagógicas
 
@@ -28,6 +29,6 @@ No fim do A1.1, o aluno consegue manter uma conversa de 4 a 6 minutos sobre si (
 
 ## O que falta
 
-1. **Decidir e fazer as mudanças na plataforma** (exame.md, secção 4): guião do examinador por nível, situações próprias do exame e escala do A1.1. Sem elas, o exame do A1.1 usaria o guião de B1.
+1. **Carregar o exame no curso A1.1** (exame.md, secção 4): as mudanças na plataforma estão feitas.
 2. Leitura pelos professores.
 3. Vídeos (R1B precisa de duas vozes novas: o examinador e a Lurdes), áudio do laboratório e carregamento na plataforma.
