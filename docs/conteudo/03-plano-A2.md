@@ -34,7 +34,7 @@ O tempo de estudo sobe um pouco em relação ao A1 (55 h) porque as conversas co
 | O tutor conduz quase tudo | O aluno também conduz: convida, propõe, reclama, explica um processo | Interacção mais equilibrada. |
 | Vozes do professor e de poucos colegas | "Real English" com 3 a 5 vozes, incluindo falantes não nativos (Nigéria, África do Sul, Portugal, Índia, China) | No trabalho em Angola, o inglês fala-se sobretudo com estrangeiros que também não são nativos. |
 | — | Falsos amigos do português, dois por unidade | Antecipação proposta no estudo das fontes (o Core Inventory põe-nos no C1) **[I]**. |
-| — | Mediação simples: explicar em inglês algo dito em português ou algo angolano | O CEFR Companion Volume trata a mediação desde o A2 **[NV — confirmar o descritor]**. |
+| — | Mediação simples: explicar em inglês algo dito em português ou algo angolano | O CEFR Companion Volume tem descritores de mediação para todos os níveis, incluindo o A2 **[NV — confirmar os descritores]**. |
 
 ## 2. Fontes que este plano segue
 
@@ -152,7 +152,7 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 | 2F | Real English | How I started | Identificar a ordem dos acontecimentos e a decisão mais importante em três histórias de carreira. |
 | 2G | Work & Life | Tell me about yourself | Contar à nova chefia, em 1 minuto, o seu percurso de estudos e de trabalho e responder a duas perguntas de seguimento. |
 
-- **Gramática:** *past simple* (mais 25 irregulares: *begin, become, bring, choose, feel, find, forget, grow, hear, keep, know, learn, lose, pay, ring, run, sell, send, spend, stand, teach, understand, wake, wear, win*); perguntas de sujeito (*Who called? What happened?*); *past continuous* (+, −, ?); *when / while*; *ago, in + ano, from … to*.
+- **Gramática:** *past simple* (mais 25 irregulares: *begin, become, bring, choose, feel, find, forget, grow, hear, keep, know, lose, mean, pay, ring, run, sell, send, spend, stand, teach, understand, wake, wear, win*); perguntas de sujeito (*Who called? What happened?*); *past continuous* (+, −, ?); *when / while*; *ago, in + ano, from … to*.
 - **Vocabulário (~70):** marcos da vida, estudos (*primary / secondary school, university, degree, course*), carreira (*apply for, get a job, promotion, leave a job*).
 - **Pronúncia:** *was /wəz/ working*; ligação consoante-vogal; o *-ed* (revisto).
 - **Falsos amigos:** *college* (≠ colégio); *pretend* (≠ pretender → *intend, plan*).
@@ -205,7 +205,7 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 - **Gramática:** comparativos (revistos; *-er / more / less*; *much cheaper*); *(not) as … as*; superlativos (*the -est / the most*; *the best / the worst*; *in / of*); *much / many / a lot of / a few / a little*; artigos com contáveis e incontáveis (*a / the / sem artigo*).
 - **Vocabulário (~60):** compras para a empresa, orçamentos, qualidade, serviços (*internet plan, delivery time, after-sales service*), cidades (*crowded, expensive, safe, quiet*).
 - **Pronúncia:** /ə/ fraco em *than, as, -er*; acento do superlativo (*the CHEAPest*).
-- **Falsos amigos:** *cheap* (não é pejorativo como "barato" pode ser — *cheap* pode querer dizer de má qualidade; *good value* é elogio); *exquisite* (≠ esquisito → *strange*).
+- **Falsos amigos:** *costume* (≠ costume → *habit*; *costume* é um traje); *exquisite* (≠ esquisito → *strange*).
 - **Mediação:** explicar a um colega estrangeiro um orçamento escrito em português (preço, prazo, garantia).
 - **Laboratório:** comparativos e superlativos; *as … as*; *much / many*; escuta de preços e prazos; resposta falada "Which is better for our office, and why?".
 - **Conversa guiada:** "Luanda or Benguela?" — comparar duas cidades para viver.
@@ -275,7 +275,7 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 - **Gramática:** *present perfect* (+, −, ?) com *ever / never*; particípios (regulares e 30 irregulares mais comuns); *present perfect / past simple*; *been / gone*; preposições de movimento; *What's the weather like?*.
 - **Vocabulário (~70):** viagens de serviço, aeroporto, hotel, transportes, tempo e clima (*hot, humid, rainy season, cool*), países e cidades da região (Lagos, Joanesburgo, Windhoek, Kinshasa, Lisboa).
 - **Pronúncia:** contracções *I've, you've, she's* (*has*), *haven't*; formas fracas de *have / has* nas perguntas.
-- **Falsos amigos:** *luggage* (≠ *language*); *parents* (≠ parentes → *relatives*).
+- **Falsos amigos:** *large* (≠ largo → *wide*; *large* quer dizer grande); *parents* (≠ parentes → *relatives*).
 - **Mediação:** explicar a uma colega estrangeira que chega a Luanda como apanhar um táxi do aeroporto e quanto custa.
 - **Laboratório:** particípios; *ever / never*; *present perfect / past simple*; *been / gone*; anúncios de aeroporto a ouvir; resposta falada "Have you ever travelled for work? Tell me about it.".
 - **Conversa guiada:** "Have you ever…?" — o tutor e o aluno trocam experiências.
