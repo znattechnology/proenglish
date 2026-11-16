@@ -268,6 +268,8 @@ Versão completa em [a2/revisao-1/](a2/revisao-1/README.md) **[I]**.
 
 ### Unidade 6 — Travelling for work (7 aulas)
 
+Versão completa em [a2/unidade-06/](a2/unidade-06/README.md) **[I]**.
+
 **Objectivos da unidade.** No fim, o aluno consegue:
 1. perguntar e falar de experiências com o *present perfect* e *ever / never* (*Have you ever been to Lagos? — Yes, I have. / No, I've never been there.*);
 2. passar da experiência para os pormenores com o *past simple* (*I've been to Lisbon. I went there in 2023 for a training course.*);

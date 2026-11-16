@@ -40,6 +40,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [a2/unidade-04/](a2/unidade-04/README.md) | A2.1, unidade 4 "Comparing and choosing": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [a2/unidade-05/](a2/unidade-05/README.md) | A2.1, unidade 5 "Health and safety": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [a2/revisao-1/](a2/revisao-1/README.md) | A2.1, revisão 1 e exame oral do A2.1: guiões, laboratório, ensaio com o tutor, questionário, exame, guião do exame e situações. |
+| [a2/unidade-06/](a2/unidade-06/README.md) | A2.2, unidade 6 "Travelling for work": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.

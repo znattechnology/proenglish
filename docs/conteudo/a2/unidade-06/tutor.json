@@ -1,0 +1,138 @@
+{
+ "unidade": "A2.2 · Unit 6 — Travelling for work",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a2-u6-guiada",
+   "nome": "A2 Unit 6 · Have you ever…?",
+   "tipo": "guiada",
+   "depois_da_aula": "6C",
+   "descricao": "O tutor e o aluno trocam experiências com \"Have you ever…?\": viagens, comida, situações. Depois de cada \"Yes, I have\", pedem pormenores no past simple.",
+   "papel_tutor": "Um professor simpático.",
+   "nivel": "A2",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Have you ever…?",
+    "Yes, I have. / No, I've never…",
+    "When did you…? What happened?"
+   ],
+   "extras": {
+    "brief": "Guided practice for an elementary learner (A2, unit 6). You are a friendly teacher. Ask the student \"Have you ever…?\" questions: been abroad, flown, lost your luggage, missed a bus or a flight, eaten something strange, met a famous person. When the student says \"Yes, I have\", ask for details in the past simple (\"When did you go?\", \"What happened?\"). Answer one or two of your own: you have been to Lisbon twice (the last time in 2024, for a conference), and you have never been to Brazil. Then ask the student to ask you two \"Have you ever…?\" questions. If the student says \"I've been to Lisbon in 2023\", model \"Ah, you went to Lisbon in 2023\". If they say \"I haven't never\", model \"I've never\". Use only A1 and A2.1 language plus A2 unit 6: the present perfect for experiences with ever / never (Have you ever been to…? I've never flown.), the past simple for details (When did you go?), been / gone, prepositions of movement (along, across, through, past, up, down), airport and hotel words, What's the weather like?. Do NOT use the present perfect with just, already, yet, for or since; \"will\" or \"going to\" for predictions; \"could\"; \"if\" sentences; \"would\" + verb (except \"would like\"); \"too\" or \"enough\". One question at a time.",
+    "primeira_fala": "Hello, {nome}! Today let's talk about experiences. Have you ever been abroad?",
+    "primeira_fala_simples": "Hello! Have you ever been to another country?",
+    "guiao": [
+     "When did you go? What did you do there?",
+     "Have you ever flown?",
+     "Have you ever lost something on a trip?",
+     "I've been to Lisbon twice. The last time was in 2024, for a conference. Now ask me two questions with \"Have you ever…?\"",
+     "Great conversation, {nome}! Well done."
+    ],
+    "frases": [
+     {
+      "en": "Yes, I have. I've been to Namibia.",
+      "pt": "Sim, já. Já estive na Namíbia."
+     },
+     {
+      "en": "No, I've never flown.",
+      "pt": "Não, nunca andei de avião."
+     },
+     {
+      "en": "I went there in 2022.",
+      "pt": "Fui lá em 2022."
+     },
+     {
+      "en": "Have you ever eaten muamba?",
+      "pt": "Já comeu muamba?"
+     }
+    ],
+    "palavras": [
+     "ever",
+     "never",
+     "been",
+     "have",
+     "went",
+     "when",
+     "did",
+     "flown"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a2-u6-livre",
+   "nome": "A2 Unit 6 · Lost luggage",
+   "tipo": "livre",
+   "depois_da_aula": "6G",
+   "descricao": "O aluno chega a Joanesburgo sem a mala. O tutor é Charlie, funcionário(a) do balcão de bagagens perdidas: pede os dados do voo, a descrição da mala, o que tem dentro, a morada do hotel e o telefone; o aluno tem de explicar, descrever e perguntar quando chega a mala.",
+   "papel_tutor": "Charlie, funcionário(a) do balcão de bagagens perdidas do aeroporto de Joanesburgo.",
+   "nivel": "A2",
+   "duracao_min": 6,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "My suitcase didn't arrive.",
+    "It's a large black suitcase.",
+    "I'm staying at the…",
+    "When can I have it?"
+   ],
+   "extras": {
+    "brief": "Role-play for an elementary learner (A2, unit 6). You are Charlie, at the lost luggage desk at Johannesburg airport (Charlie can be a man or a woman, to match your voice). The student arrived from Luanda an hour ago, and their suitcase didn't arrive. Ask, one at a time: \"How can I help you?\", \"What's your name and your flight number?\", \"What does your suitcase look like?\" (colour, size, any special thing), \"What's in it?\", \"Where are you staying, and what's your phone number?\". Ask once: \"Have you ever lost your luggage before?\". Then say: \"The suitcase is in Luanda. It's arriving on tomorrow's flight, and we're going to send it to your hotel.\" (an arrangement and a plan, not a prediction). If the student asks what to do tonight, suggest buying a few things and keeping the receipts. The student can invent the details. Use only A1 and A2.1 language plus A2 unit 6: the present perfect for experiences with ever / never (Have you ever been to…? I've never flown.), the past simple for details (When did you go?), been / gone, prepositions of movement (along, across, through, past, up, down), airport and hotel words, What's the weather like?. Do NOT use the present perfect with just, already, yet, for or since; \"will\" or \"going to\" for predictions; \"could\"; \"if\" sentences; \"would\" + verb (except \"would like\"); \"too\" or \"enough\". Short turns, one question at a time.",
+    "primeira_fala": "Good afternoon. Lost luggage desk. How can I help you?",
+    "primeira_fala_simples": "Hello. How can I help you?",
+    "guiao": [
+     "I'm sorry to hear that. What's your name and your flight number?",
+     "And what does your suitcase look like?",
+     "What's in it?",
+     "Have you ever lost your luggage before?",
+     "Where are you staying, and what's your phone number?",
+     "OK. The suitcase is in Luanda. It's arriving on tomorrow's flight, and we're going to send it to your hotel. Keep the receipts for anything you buy tonight.",
+     "You're welcome. Have a good stay in Johannesburg, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "My suitcase didn't arrive.",
+      "pt": "A minha mala não chegou."
+     },
+     {
+      "en": "It's a large black suitcase with a red ribbon.",
+      "pt": "É uma mala grande, preta, com uma fita vermelha."
+     },
+     {
+      "en": "I'm staying at the Jacaranda Park Hotel.",
+      "pt": "Estou no Jacaranda Park Hotel."
+     },
+     {
+      "en": "When can I have it?",
+      "pt": "Quando é que a posso ter?"
+     },
+     {
+      "en": "No, I've never lost my luggage before.",
+      "pt": "Não, nunca perdi a mala antes."
+     }
+    ],
+    "palavras": [
+     "suitcase",
+     "flight",
+     "large",
+     "black",
+     "staying",
+     "hotel",
+     "never",
+     "when"
+    ],
+    "minutos_sugeridos": 6
+   },
+   "criterios": [
+    "Explica o problema com calma (My suitcase didn't arrive).",
+    "Dá os dados pedidos: nome, voo, hotel e telefone.",
+    "Descreve a mala (cor, tamanho, uma marca) e o que tem dentro.",
+    "Responde à pergunta \"Have you ever…?\" com o present perfect.",
+    "Pergunta quando ou como recebe a mala.",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}
