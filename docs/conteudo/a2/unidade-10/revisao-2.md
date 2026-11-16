@@ -1,6 +1,6 @@
 # A2.2 · Unidade 10 — Revisão pedagógica n.º 2 (aula a aula)
 
-**Data:** 16 de Novembro de 2026 · **Âmbito:** releitura completa depois da [revisão n.º 1](revisao-1.md): cada escuta do laboratório lida só com a frase que o aluno ouve, cada resposta-modelo, o questionário, as falas do tutor contra qualquer resposta do aluno, e uma procura nova por orações relativas sem pronome (*a job you like*) · **Critérios:** os 7 do [plano do A2, secção 10](../../03-plano-A2.md#revisão-de-cada-aula) · **Resultado:** 5 correcções; nenhum erro de inglês nos modelos que o aluno repete.
+**Data:** 16 de Novembro de 2026 · **Âmbito:** releitura completa depois da [revisão n.º 1](revisao-1.md): cada escuta do laboratório lida só com a frase que o aluno ouve, cada resposta-modelo, o questionário, as falas do tutor contra qualquer resposta do aluno, e uma procura nova por orações relativas sem pronome (*a job you like*) · **Critérios:** os 7 do [plano do A2, secção 10](../../03-plano-A2.md#revisão-de-cada-aula) · **Resultado:** 4 problemas, corrigidos em 7 sítios; nenhum erro de inglês nos modelos que o aluno repete.
 
 ## O que se encontrou e o que se fez
 
