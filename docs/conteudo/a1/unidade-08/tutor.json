@@ -10,7 +10,7 @@
    "descricao": "O tutor é o vendedor de uma loja de roupa: o aluno pede uma peça, escolhe cor e tamanho, compara duas opções e paga.",
    "papel_tutor": "O vendedor de uma loja de roupa no Belas Shopping.",
    "nivel": "A1",
-   "duracao_min": 4,
+   "duracao_min": 5,
    "correccao": "suave",
    "area": "general",
    "frases": [

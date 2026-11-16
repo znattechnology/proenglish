@@ -22,6 +22,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.test import APIClient, APITestCase
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from apps.courses.api.student.video_courses.conteudo import codigo_opcao
 from apps.courses import tempo_video, transcricao
 from apps.courses.matriculas import matricular_em_curso
 from apps.courses.models import (
@@ -101,7 +102,7 @@ class FixB(Base):
                                           passing_score=70, created_by=self.prof)
 
     def responder(self, opcao):
-        return self.client.post(f'{V}/chapters/{self.aula.id}/quiz/attempts/', {'respostas': {'q1': opcao}},
+        return self.client.post(f'{V}/chapters/{self.aula.id}/quiz/attempts/', {'respostas': {'q1': codigo_opcao(self.aula.id, 'q1', opcao)}},
                                 format='json')
 
     # -- 1. certificado com nota antiga -------------------------------------

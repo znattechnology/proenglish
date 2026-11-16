@@ -10,7 +10,7 @@
    "descricao": "O tutor pergunta ao aluno pelo último fim-de-semana (onde esteve, o que fez) e conta o seu.",
    "papel_tutor": "Um professor simpático.",
    "nivel": "A1",
-   "duracao_min": 4,
+   "duracao_min": 5,
    "correccao": "suave",
    "area": "general",
    "frases": [

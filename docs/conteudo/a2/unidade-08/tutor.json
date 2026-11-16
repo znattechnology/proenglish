@@ -69,7 +69,7 @@
    "descricao": "O tutor é Drew, do apoio técnico. O portátil do aluno não liga à rede Wi-Fi: o ícone do Wi-Fi tem uma cruz vermelha e o ecrã diz \"No internet connection\". O aluno explica o problema, segue as instruções e confirma cada passo; no fim, anota o número de referência.",
    "papel_tutor": "Drew, técnico(a) do apoio técnico.",
    "nivel": "A2",
-   "duracao_min": 6,
+   "duracao_min": 10,
    "correccao": "suave",
    "area": "general",
    "frases": [

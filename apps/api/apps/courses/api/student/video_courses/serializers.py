@@ -96,7 +96,7 @@ class ChapterSerializer(serializers.ModelSerializer):
             return dados
         # As respostas certas nunca vão para o browser: a correcção é feita no servidor.
         if 'quiz_data' in dados:
-            dados['quiz_data'] = quiz_sem_respostas(dados['quiz_data'])
+            dados['quiz_data'] = quiz_sem_respostas(dados['quiz_data'], instance.pk)
         # A lição de prática ligada só vai quando os alunos a podem abrir.
         if dados.get('practice_lesson'):
             from .conteudo import licao_pratica_aberta

@@ -1202,7 +1202,7 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
                                                 chapter_quiz.limite_tentativas(request.user) - len(minhas)))
             for item, tentativa in zip(dados, queryset):
                 item['correccao'] = correccao_para_aluno(
-                    (tentativa.answers_data or {}).get('correccao'), revela)
+                    (tentativa.answers_data or {}).get('correccao'), revela, chapter_quiz.chapter_id)
 
         return Response({
             'message': 'Tentativas do questionário obtidas com sucesso',
@@ -1225,7 +1225,7 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
             return Response({'error': 'Envie as respostas: {"respostas": {"<pergunta>": "<opção>"}}.'},
                             status=status.HTTP_400_BAD_REQUEST)
         chapter = get_object_or_404(Chapter, id=self.kwargs['chapterId'])
-        pontos, maximo, correccao = corrigir_quiz(chapter.quiz_data, respostas)
+        pontos, maximo, correccao = corrigir_quiz(chapter.quiz_data, respostas, chapter.id)
         if maximo == 0:
             return Response({'error': 'Este questionário ainda não tem perguntas.'}, status=status.HTTP_400_BAD_REQUEST)
         if respondidas(correccao) == 0:
@@ -1259,7 +1259,7 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
         response_serializer = StudentQuizAttemptSerializer(attempt, context={'request': request})
         dados = dict(response_serializer.data)
         dados['revela_respostas'] = revela
-        dados['correccao'] = correccao_para_aluno(correccao, revela)
+        dados['correccao'] = correccao_para_aluno(correccao, revela, chapter.id)
         dados['tentativas_restantes'] = restantes
         dados['aula_concluida'] = aula_concluida
 
@@ -1327,7 +1327,7 @@ def get_student_quiz_summary(request, chapterId):
         if not t:
             return None
         dados = dict(StudentQuizAttemptSerializer(t, context={'request': request}).data)
-        dados['correccao'] = correccao_para_aluno((t.answers_data or {}).get('correccao'), revela)
+        dados['correccao'] = correccao_para_aluno((t.answers_data or {}).get('correccao'), revela, chapter.id)
         return dados
 
     summary_data = {

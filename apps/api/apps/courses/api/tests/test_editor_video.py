@@ -14,6 +14,7 @@ from django.utils import timezone
 from rest_framework.test import APIClient, APITestCase
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from apps.courses.api.student.video_courses.conteudo import codigo_opcao
 from apps.courses.matriculas import matricular_em_curso
 from apps.courses.models import (
     Chapter, ChapterProgress, ChapterQuiz, ChapterResource, Course, CourseSection,
@@ -331,7 +332,7 @@ class QuestionarioTests(Base):
         self.assertEqual([x['question'] for x in qs], ['Mudada?', 'Pergunta 1?'])
         self.assertNotIn('correctOptionId', qs[0])
         self.assertNotIn('isCorrect', qs[0]['options'][0])
-        respostas = {ids[0]: 'a', ids[1]: 'b'}
+        respostas = {ids[0]: codigo_opcao(a1['id'], ids[0], 'a'), ids[1]: codigo_opcao(a1['id'], ids[1], 'b')}
         t = self.client.post(f'{ALUNO}chapters/{a1["id"]}/quiz/attempts/', {'respostas': respostas}, format='json')
         self.assertEqual(t.status_code, 201, t.content)
         self.assertEqual(t.data['data']['score_percentage'], 100)

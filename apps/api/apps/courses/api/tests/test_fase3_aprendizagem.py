@@ -14,6 +14,7 @@ from django.utils import timezone
 from rest_framework.test import APIClient, APITestCase
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from apps.courses.api.student.video_courses.conteudo import codigo_opcao
 from apps.courses.matriculas import matricular_em_curso
 from apps.courses.models import (
     Chapter, ChapterProgress, ChapterQuiz, Course, CourseGradingConfig, CourseSection, GradeHistory,
@@ -76,7 +77,8 @@ class Base(APITestCase):
         if vazias:
             respostas = {}
         else:
-            respostas = {f'q{i}': ('a' if certas and i <= certas else 'b') for i in range(1, 5)}
+            respostas = {f'q{i}': codigo_opcao(self.cap_quiz.id, f'q{i}', 'a' if certas and i <= certas else 'b')
+                         for i in range(1, 5)}
         return self.client.post(f'{V}/chapters/{self.cap_quiz.id}/quiz/attempts/', {'respostas': respostas},
                                 format='json')
 
@@ -106,7 +108,7 @@ class QuizNaoRevelaRespostasTests(Base):
     def test_revela_quando_passa(self):
         d = self.responder(certas=3).json()  # 75% >= 70%
         self.assertTrue(d['revela_respostas'])
-        self.assertEqual(d['data']['correccao'][3]['opcoes_certas'], ['a'])
+        self.assertEqual(d['data']['correccao'][3]['opcoes_certas'], [codigo_opcao(self.cap_quiz.id, 'q4', 'a')])
         self.assertEqual(d['data']['correccao'][3]['explicacao'], 'Porque 4.')
 
     def test_revela_quando_esgota_tentativas_e_no_resumo(self):
@@ -120,7 +122,8 @@ class QuizNaoRevelaRespostasTests(Base):
         self.assertIn('opcoes_certas', d['data']['correccao'][0])
         resumo = self.client.get(f'{V}/chapters/{self.cap_quiz.id}/quiz/summary/').json()
         self.assertTrue(resumo['data']['revela_respostas'])
-        self.assertEqual(resumo['data']['last_attempt']['correccao'][0]['opcoes_certas'], ['a'])
+        self.assertEqual(resumo['data']['last_attempt']['correccao'][0]['opcoes_certas'],
+                         [codigo_opcao(self.cap_quiz.id, 'q1', 'a')])
         lista = self.client.get(f'{V}/chapters/{self.cap_quiz.id}/quiz/attempts/').json()
         self.assertTrue(lista['revela_respostas'])
         self.assertEqual(len(lista['data']), 2)

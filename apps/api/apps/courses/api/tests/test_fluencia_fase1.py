@@ -11,6 +11,7 @@ from django.utils import timezone
 from rest_framework.test import APIClient, APITestCase
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from apps.courses.api.student.video_courses.conteudo import codigo_opcao
 from apps.courses.matriculas import matricular_em_curso
 from apps.courses.models import (
     Chapter, ChapterProgress, ChapterQuiz, Course, CourseGradingConfig, CourseSection, StudentCourseGrade,
@@ -73,7 +74,7 @@ class Base(APITestCase):
         return self.client.put(f'{V}/users/{self.aluno.id}/progress/{self.curso.id}/update/', corpo, format='json')
 
     def responder(self, aula, certas):
-        respostas = {f'q{i}': ('a' if i <= certas else 'b') for i in range(1, 4)}
+        respostas = {f'q{i}': codigo_opcao(aula.id, f'q{i}', 'a' if i <= certas else 'b') for i in range(1, 4)}
         return self.client.post(f'{V}/chapters/{aula.id}/quiz/attempts/', {'respostas': respostas}, format='json')
 
     def concluida(self, aula):
