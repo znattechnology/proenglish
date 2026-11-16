@@ -26,7 +26,7 @@
     "guiao": [
      "Certainly. Could I see your ID card, please?",
      "Thank you. Anything else?",
-     "Of course. Here you are. Is there anything else?",
+     "Of course. I'll do that now. Is there anything else?",
      "I'm afraid I can't do that today, but I can make an appointment for you tomorrow. Is that OK?",
      "You're welcome, {nome}. Have a nice day!"
     ],
@@ -86,7 +86,7 @@
     "guiao": [
      "We ordered five printers, and the delivery was for last Friday. Nothing has arrived, and I've called twice this week!",
      "S-B, two, two, oh, one.",
-     "Yes, that's right. Our reception can't print invoices for the guests.",
+     "Yes. And our reception can't print invoices for the guests.",
      "When exactly?",
      "OK. And can you give us something for the delay?",
      "Fine. Could you send me an email to confirm?",

@@ -749,18 +749,18 @@
     {
      "tipo": "escuta",
      "frase": "My card doesn't work. I tried to pay at the supermarket this morning, and it said \"card blocked\".",
-     "enunciado": "What happened to Tunde's card?",
+     "enunciado": "What did the card machine say?",
      "opcoes": [
       {
-       "texto": "It said \"card blocked\".",
+       "texto": "card blocked",
        "certa": true
       },
       {
-       "texto": "It was broken.",
+       "texto": "card broken",
        "certa": false
       },
       {
-       "texto": "It was in the supermarket.",
+       "texto": "no money",
        "certa": false
       }
      ],
@@ -769,18 +769,18 @@
     {
      "tipo": "escuta",
      "frase": "That was me! I forgot my new PIN.",
-     "enunciado": "Why did Tunde type the wrong PIN?",
+     "enunciado": "What did Tunde forget?",
      "opcoes": [
       {
-       "texto": "He forgot his new PIN.",
+       "texto": "his new PIN",
        "certa": true
       },
       {
-       "texto": "Someone stole his card.",
+       "texto": "his passport",
        "certa": false
       },
       {
-       "texto": "The machine was broken.",
+       "texto": "his card",
        "certa": false
       }
      ],

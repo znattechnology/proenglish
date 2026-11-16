@@ -507,7 +507,7 @@ Verificação: Lab 9F; conversa livre "Angry customer"; pergunta 9 do questioná
 **NUNO:** I'm very sorry to hear that, Mr Okafor. Could I have your order number, please?
 **MR OKAFOR:** It's K-T, four, four, one, nine.
 **NUNO:** K-T, four, four, one, nine. Thank you. So, two laptops haven't arrived yet, and one has a broken screen. Is that right?
-**MR OKAFOR:** Yes. And my new staff start on Wednesday. They need laptops!
+**MR OKAFOR:** Yes. And my new staff are starting on Wednesday. They need laptops!
 **NUNO:** I understand. Let me check… The last two laptops are in our warehouse. I'll send them to your office today. And we'll replace the damaged one.
 **MR OKAFOR:** When?
 **NUNO:** We'll bring the new one by Wednesday morning, and we'll take the damaged one back. If there's any problem, I'll call you myself.
