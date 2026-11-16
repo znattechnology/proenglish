@@ -22,6 +22,7 @@ import {
 } from "@/dominios/conta/api";
 import { type NivelCefr, OPCOES_NIVEL, eNivel, nivelDoTeste, nomeCompletoNivel, sugerirPorNivel } from "@/dominios/conta/niveis";
 import { AREAS, METAS, PERGUNTAS } from "@/dominios/conta/primeiraEntrada";
+import { AvisoNivelBasico, useFaltaNivelBasico } from "@/componentes/cursos/NivelBasico";
 import { primeiroNome, useSessao } from "@/sessao/ContextoSessao";
 import { Aviso, BalaoFala, Botao, Cartao, Ecra, Osso, Texto, Titulo } from "@/ui";
 import { balao, cor, fonte, raio } from "@/tema";
@@ -423,24 +424,30 @@ function Perguntas({ aoTerminar, erro, aGuardar, aoPreferirConversa }: { aoTermi
   );
 }
 
-/** Passo 3: o nível e o curso por onde começar. */
+/**
+ * Passo 3: o nível e o curso por onde começar.
+ * Os cursos de sector pedem o nível básico: a quem ainda não o tem sugerimos o curso geral e
+ * mostramos o teste, em vez de um curso da área que a API não deixaria começar.
+ */
 function Pronto({ area, nivel }: { area: string | null; nivel: NivelCefr }) {
-  const { data: videos, isLoading: aCarregarVideo } = usePeCursosVideoDaAreaQuery(area);
+  const faltaBasico = useFaltaNivelBasico();
+  // Com o nível básico: os cursos da área. Sem ele: todos, para escolher um curso geral.
+  const { data: videos, isLoading: aCarregarVideo } = usePeCursosVideoDaAreaQuery(faltaBasico ? null : area);
   const { data: praticas, isLoading: aCarregarPratica, isError: erroPratica, refetch } = usePeCursosPraticaQuery();
   const [escolher, { isLoading: aEscolher }] = usePeEscolherCursoPraticaMutation();
   const [erro, setErro] = useState<string | null>(null);
-
-  const daArea = (praticas ?? []).filter((c) => c.category === area);
-  const pratica = sugerirPorNivel(daArea, nivel) ?? sugerirPorNivel(praticas ?? [], nivel);
-  const video = sugerirPorNivel(videos ?? [], nivel);
-
+  const abertas = (praticas ?? []).filter((c) => !c.requisito_basico);
+  const daArea = abertas.filter((c) => c.category === area);
+  const pratica = sugerirPorNivel(daArea, nivel) ?? sugerirPorNivel(abertas, nivel);
+  const video = sugerirPorNivel(faltaBasico ? (videos ?? []).filter((c) => !c.de_sector) : (videos ?? []), nivel);
+  const nomeArea = AREAS.find((a) => a.valor === area)?.nome;
+  const areaDeSector = !!area && area !== "General English";
   return (
     <>
       <View style={{ gap: 8 }}>
         <Titulo>{`O seu nível: ${nomeCompletoNivel(nivel)}`}</Titulo>
-        <Texto suave>Escolhemos o curso por onde começar. Pode mudar de nível e de área nas definições.</Texto>
+        <Texto suave>{faltaBasico && areaDeSector ? "Comece pelo curso geral: é ele que o leva ao nível básico que os cursos de sector pedem." : "Escolhemos o curso por onde começar. Pode mudar de nível e de área nas definições."}</Texto>
       </View>
-
       {aCarregarPratica ? (
         <Osso altura={170} />
       ) : erroPratica ? (
@@ -479,7 +486,7 @@ function Pronto({ area, nivel }: { area: string | null; nivel: NivelCefr }) {
       {aCarregarVideo ? null : video ? (
         <Cartao suave style={{ padding: 20 }}>
           <Texto v="legenda" forte suave>
-            Curso em vídeo da sua área
+            {video.de_sector ? "Curso em vídeo da sua área" : "Curso geral em vídeo"}
           </Texto>
           <Texto forte style={{ fontSize: 18, lineHeight: 24 }}>
             {video.title}
@@ -490,6 +497,9 @@ function Pronto({ area, nivel }: { area: string | null; nivel: NivelCefr }) {
         </Cartao>
       ) : null}
 
+      {faltaBasico && areaDeSector ? (
+        <AvisoNivelBasico texto={`Já tem o nível básico? Prove-o num teste de 20 minutos e entre logo nos cursos de ${nomeArea ?? "sector"}.`} />
+      ) : null}
       <Botao tipo="ligacao" style={{ marginTop: "auto" }} onPress={() => router.dismissTo("/inicio")}>
         Ir para o início
       </Botao>

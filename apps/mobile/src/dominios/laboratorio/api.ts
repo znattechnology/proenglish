@@ -150,7 +150,18 @@ export type Sequencia = {
   goal_completed: boolean;
 };
 
-export type CursoPratica = { id: string; title: string; description?: string; image?: string; category?: string; level?: string };
+export type CursoPratica = {
+  id: string;
+  title: string;
+  description?: string;
+  image?: string;
+  category?: string;
+  level?: string;
+  /** Curso de um sector. */
+  de_sector?: boolean;
+  /** Esta pessoa ainda precisa do nível básico para começar este curso. */
+  requisito_basico?: boolean;
+};
 
 export type ProgressoPratica = { hearts: number; points: number; active_course: string | { id: string; title?: string } | null; has_unlimited_hearts?: boolean };
 
@@ -275,6 +286,13 @@ const CATEGORIAS: Record<string, string> = {
   "Medical English": "Saúde",
   "Legal English": "Direito",
   "Technology English": "Tecnologia",
+  "Inglês Geral": "Geral",
+  "Oil & Gas": "Petróleo e Gás",
+  General: "Geral",
+  Banking: "Banca",
+  Technology: "Tecnologia",
+  Executive: "Executivo",
+  "AI Enhanced": "Inglês com IA",
 };
 export const categoriaPt = (c?: string) => (c ? (CATEGORIAS[c] ?? c) : undefined);
 

@@ -4,14 +4,14 @@ import { ExplorarCursos, useCatalogo } from "@/componentes/cursos/Explorar";
 import { Cabecalho, Ecra } from "@/ui";
 
 export default function EcraExplorar() {
-  const { catalogo, meus } = useCatalogo();
+  const { actualizar } = useCatalogo();
   const [aActualizar, setAActualizar] = useState(false);
   return (
     <Ecra
-      cabecalho={<Cabecalho titulo="Explorar cursos" />}
+      cabecalho={<Cabecalho titulo="Todos os cursos" />}
       aoActualizar={async () => {
         setAActualizar(true);
-        await Promise.allSettled([catalogo.refetch(), meus.refetch()]);
+        await actualizar();
         setAActualizar(false);
       }}
       aActualizar={aActualizar}

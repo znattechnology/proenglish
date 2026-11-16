@@ -53,7 +53,8 @@ export default function PaginaAula() {
   const seguinte = i >= 0 && i < lista.length - 1 ? lista[i + 1] : null;
   const voltar = <Cabecalho subtitulo={aqui ? `Aula ${aqui.numero} de ${lista.length}` : undefined} linha={false} aoVoltar={() => (router.canGoBack() ? router.back() : router.replace(`/curso/${courseId}`))} />;
 
-  if (curso.isError) return <Problema titulo="Não encontrámos este curso" courseId={courseId} erro={curso.error} />;
+  if (curso.isError) return <Problema titulo="Não conseguimos abrir este curso" courseId={courseId} erro={curso.error} aoTentar={() => void curso.refetch()} />;
+  if (inscricao.isError) return <Problema titulo="Não conseguimos abrir esta aula" courseId={courseId} erro={inscricao.error} aoTentar={() => void inscricao.refetch()} />;
   if (!curso.data || !inscricao.data) return <Esqueleto cabecalho={voltar} />;
   if (!podeVer) {
     return (

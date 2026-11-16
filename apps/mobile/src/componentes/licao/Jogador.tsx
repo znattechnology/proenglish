@@ -309,6 +309,24 @@ export function Jogador({ lessonId }: { lessonId: string }) {
       </Ecra>
     );
   }
+  if (isError && dadosErro?.codigo === "requisito_basico") {
+    return (
+      <Ecra cabecalho={null} style={{ paddingTop: 48 }}>
+        <View style={{ gap: 12 }}>
+          <Titulo>Este curso pede o nível básico</Titulo>
+          <Texto suave>{dadosErro.mensagem ?? "Os cursos de sector pedem, no mínimo, o nível básico de inglês. Faça o teste do nível básico ou comece pelo curso geral."}</Texto>
+        </View>
+        <View style={{ gap: 12, marginTop: "auto" }}>
+          <Botao larguraTotal href="/teste-basico" substituir>
+            Fazer o teste do nível básico
+          </Botao>
+          <Botao tipo="secundario" larguraTotal onPress={voltarAoTrilho}>
+            Voltar ao trilho
+          </Botao>
+        </View>
+      </Ecra>
+    );
+  }
   if (limiteAoConcluir) return <LimiteLicoes d={limiteAoConcluir} />;
   if (isError || !licao) {
     return (

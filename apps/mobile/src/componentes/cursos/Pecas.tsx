@@ -4,12 +4,14 @@
  */
 import { Image } from "expo-image";
 import { router } from "expo-router";
-import { BookOpen, ChevronRight } from "lucide-react-native";
-import { useEffect } from "react";
-import { Pressable, View } from "react-native";
+import { BookOpen, ChevronRight, Lock } from "lucide-react-native";
+import { useEffect, useState } from "react";
+import { ActivityIndicator, Pressable, View } from "react-native";
 import Svg, { Circle } from "react-native-svg";
 import { urlAbsoluto } from "@/api/config";
 import { contextoCurso, categoriaPt, nivelEmFrase, useProgressoCursoQuery, vistoHa, type CursoVideo } from "@/dominios/cursos/api";
+import { ROTA_TESTE_BASICO } from "@/dominios/cursos/testeBasico";
+import { type CursoPratica, useEscolherCursoPraticaMutation } from "@/dominios/laboratorio/api";
 import { Etiqueta, Osso, BarraProgresso, Texto } from "@/ui";
 import { balao, cor, fonte, raio } from "@/tema";
 
@@ -116,30 +118,45 @@ export function CartaoCursoInscrito({
   );
 }
 
-/** Curso do catálogo (Explorar): capa, área e nível, título, e se já está inscrito ou o plano. */
-export function CartaoCursoCatalogo({ curso, inscrito }: { curso: CursoVideo; inscrito?: boolean }) {
+/** Linha de baixo de um cartão do catálogo fechado pelo nível básico. */
+function PedeNivelBasico() {
+  return (
+    <View style={{ flexDirection: "row", alignItems: "center", gap: 6 }}>
+      <Lock size={14} color={cor.tinta} />
+      <Texto v="legenda" forte>
+        Pede o nível básico
+      </Texto>
+    </View>
+  );
+}
+
+/**
+ * Curso em vídeo do catálogo: capa, área e nível, título, e se já está inscrito ou o plano.
+ * `bloqueado`: curso de sector que ainda pede o nível básico (abre na mesma, para a pessoa o ver).
+ */
+export function CartaoCursoCatalogo({ curso, inscrito, bloqueado }: { curso: CursoVideo; inscrito?: boolean; bloqueado?: boolean }) {
   const acesso = curso.is_free ? "Gratuito" : curso.is_premium ? "Premium" : curso.access_level_display;
   const contexto = [categoriaPt(curso.category), nivelEmFrase(curso.level)].filter(Boolean).join(", ");
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel={[curso.title, contexto, inscrito ? "Inscrito" : acesso].filter(Boolean).join(". ")}
+      accessibilityLabel={[curso.title, "Aulas em vídeo", contexto, inscrito ? "Inscrito" : bloqueado ? "Pede o nível básico" : acesso].filter(Boolean).join(". ")}
       onPress={() => router.push(`/curso/${curso.courseId}`)}
       style={({ pressed }) => [{ flexDirection: "row", gap: 14, padding: 14, borderWidth: 1, borderColor: cor.linha, borderRadius: raio.md, backgroundColor: pressed ? cor.fundoSuave : cor.fundo }]}
     >
       <Capa imagem={curso.image} tamanho={76} />
       <View style={{ flex: 1, minWidth: 0, gap: 4 }}>
-        {contexto ? (
-          <Texto v="legenda" suave forte style={{ fontSize: 13, lineHeight: 18 }}>
-            {contexto}
-          </Texto>
-        ) : null}
+        <Texto v="legenda" suave forte style={{ fontSize: 13, lineHeight: 18 }}>
+          {["Aulas em vídeo", contexto].filter(Boolean).join(", ")}
+        </Texto>
         <Texto v="tituloXS">{curso.title}</Texto>
         <View style={{ flexDirection: "row", flexWrap: "wrap", alignItems: "center", gap: 8 }}>
           {inscrito ? (
             <Texto v="legenda" forte cor={cor.azulVivo}>
               Inscrito
             </Texto>
+          ) : bloqueado ? (
+            <PedeNivelBasico />
           ) : acesso ? (
             <Etiqueta tom={curso.is_premium ? "marca" : "neutro"}>{acesso}</Etiqueta>
           ) : null}
@@ -149,6 +166,58 @@ export function CartaoCursoCatalogo({ curso, inscrito }: { curso: CursoVideo; in
             </Texto>
           ) : null}
         </View>
+      </View>
+    </Pressable>
+  );
+}
+
+/**
+ * Curso do laboratório no catálogo: tocar escolhe-o como curso de prática e abre o trilho.
+ * Se ainda pedir o nível básico, abre o teste.
+ */
+export function CartaoCursoPratica({ curso, actual }: { curso: CursoPratica; actual?: boolean }) {
+  const [escolher, { isLoading }] = useEscolherCursoPraticaMutation();
+  const [erro, setErro] = useState(false);
+  const contexto = [categoriaPt(curso.category), nivelEmFrase(curso.level)].filter(Boolean).join(", ");
+  const bloqueado = !!curso.requisito_basico;
+  const abrir = async () => {
+    if (bloqueado) return router.push(ROTA_TESTE_BASICO);
+    if (actual) return router.push("/praticar");
+    setErro(false);
+    const r = await escolher(curso.id);
+    if ("error" in r && r.error) return setErro(true);
+    router.push("/praticar");
+  };
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={[curso.title, "Lições de prática", contexto, bloqueado ? "Pede o nível básico" : actual ? "É o seu curso de prática" : "Praticar"].filter(Boolean).join(". ")}
+      accessibilityState={{ busy: isLoading }}
+      disabled={isLoading}
+      onPress={() => void abrir()}
+      style={({ pressed }) => [{ flexDirection: "row", gap: 14, padding: 14, borderWidth: 1, borderColor: cor.linha, borderRadius: raio.md, backgroundColor: pressed ? cor.fundoSuave : cor.fundo }]}
+    >
+      <Capa imagem={curso.image} tamanho={76} />
+      <View style={{ flex: 1, minWidth: 0, gap: 4 }}>
+        <Texto v="legenda" suave forte style={{ fontSize: 13, lineHeight: 18 }}>
+          {["Lições de prática", contexto].filter(Boolean).join(", ")}
+        </Texto>
+        <Texto v="tituloXS">{curso.title}</Texto>
+        {erro ? (
+          <Texto v="legenda" cor={cor.errado}>
+            Não foi possível abrir o curso. Tente outra vez.
+          </Texto>
+        ) : bloqueado ? (
+          <PedeNivelBasico />
+        ) : (
+          <View style={{ flexDirection: "row", alignItems: "center", gap: 6 }}>
+            {isLoading ? <ActivityIndicator size="small" color={cor.azulVivo} /> : null}
+            <Texto v="legenda" forte cor={cor.azulVivo}>
+              {isLoading ? "A abrir…" : actual ? "Continuar a praticar" : "Praticar"}
+            </Texto>
+            {isLoading ? null : <ChevronRight size={16} color={cor.azulVivo} />}
+          </View>
+        )}
       </View>
     </Pressable>
   );

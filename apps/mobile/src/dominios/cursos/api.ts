@@ -25,6 +25,8 @@ export type CursoVideo = {
   is_free?: boolean;
   is_premium?: boolean;
   user_has_access?: boolean;
+  /** Curso de um sector: pede o nível básico (teste ou curso geral concluído). */
+  de_sector?: boolean;
 };
 
 export type ProgressoResumo = { courseId?: string; overallProgress: number; lastAccessedTimestamp?: string };
@@ -83,7 +85,15 @@ export type ProfessorPublico = {
 };
 
 export type DetalheCurso = { curso: Curso; temAcesso: boolean; conteudoLimitado: boolean };
-export type EstadoInscricao = { is_enrolled: boolean; has_access: boolean; can_enroll: boolean; access_level: NivelAcesso };
+export type EstadoInscricao = {
+  is_enrolled: boolean;
+  has_access: boolean;
+  can_enroll: boolean;
+  access_level: NivelAcesso;
+  /** Porque não se pode inscrever agora (p.ex. "requisito_basico"), com o texto para mostrar. */
+  codigo_sem_inscricao?: string | null;
+  motivo_sem_inscricao?: string | null;
+};
 
 export type Progresso = {
   overallProgress: number;
@@ -405,6 +415,14 @@ const CATEGORIAS: Record<string, string> = {
   "Medical English": "Saúde",
   "Legal English": "Direito",
   "Technology English": "Tecnologia",
+  "Inglês Geral": "Geral",
+  // Cursos de prática (laboratório)
+  "Oil & Gas": "Petróleo e Gás",
+  General: "Geral",
+  Banking: "Banca",
+  Technology: "Tecnologia",
+  Executive: "Executivo",
+  "AI Enhanced": "Inglês com IA",
 };
 
 /** Área do curso em português (a API devolve algumas em inglês). */

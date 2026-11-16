@@ -49,11 +49,12 @@ const REGRAS: Regra[] = [
   [/^\/user\/grades\/?$/, () => "/notas"],
   [/^\/user\/certificates\/?$/, () => "/certificados"],
   // Laboratório
-  [/^\/user\/laboratory(\/learn)?\/?$/, () => "/praticar"],
+  [/^\/user\/laboratory(\/learn(\/lesson)?)?\/?$/, () => "/praticar"],
   [/^\/user\/laboratory\/learn\/courses\/?$/, () => "/lab/escolher-curso"],
   [/^\/user\/laboratory\/learn\/shop\/?$/, () => "/lab/loja"],
   [/^\/user\/laboratory\/learn\/lesson\/([^/]+)\/?$/, (m) => `/licao/${m[1]}`],
   [/^\/user\/laboratory\/review\/?$/, () => "/revisao"],
+  [/^\/user\/teste-basico\/?$/, () => "/teste-basico"],
   [/^\/user\/laboratory\/achievements\/?$/, (_m, _q, ancora) => (ancora === "liga" ? "/liga" : "/conquistas")],
   [/^\/user\/laboratory\/leaderboard\/?$/, () => "/liga"],
   // Conversa

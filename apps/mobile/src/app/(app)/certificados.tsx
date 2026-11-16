@@ -51,7 +51,13 @@ export default function EcraCertificados() {
                 <Lock size={20} color={cor.tinta} style={{ marginTop: 1 }} />
                 <Texto style={{ flex: 1, fontSize: 15, lineHeight: 22 }}>O seu plano não inclui certificados. O progresso dos seus cursos fica guardado.</Texto>
               </View>
-              {data.oferta ? <OfertaPlano oferta={data.oferta} /> : null}
+              {data.oferta ? (
+                <OfertaPlano oferta={data.oferta} />
+              ) : (
+                <Botao tipo="secundario" larguraTotal href="/planos">
+                  Ver os planos
+                </Botao>
+              )}
             </View>
           ) : null}
 

@@ -11,6 +11,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { SinoNotificacoes } from "@/componentes/SinoNotificacoes";
 import { useIrParaPrimeiraEntrada } from "@/dominios/conta/primeiraEntrada";
 import { contextoCurso, useMeusCursosQuery, useProgressoCursoQuery, type CursoVideo } from "@/dominios/cursos/api";
+import { minutosDe, minSeg, useFalaResumoQuery } from "@/dominios/fala/api";
 import { saudacao, useInicioLigaQuery, useInicioRevisaoQuery, useInicioSequenciaQuery, useInicioVidasQuery, VIDAS_ILIMITADAS } from "@/dominios/inicio/api";
 import { useSessao } from "@/sessao/ContextoSessao";
 import { BalaoFala, BarraProgresso, Botao, Ecra, LinhaLista, Logo, MarcaIcone, Osso, Seccao, Texto, Titulo, Vidas } from "@/ui";
@@ -81,6 +82,8 @@ export default function Inicio() {
       ) : (
         <PrimeiroCurso />
       )}
+
+      {!aCarregar ? <SuaFala /> : null}
 
       {!aCarregar ? (
         <Seccao titulo="Praticar hoje">
@@ -180,6 +183,56 @@ function Topo({ sequencia, vidas, ilimitadas }: { sequencia?: number; vidas?: nu
   );
 }
 
+/**
+ * "A sua fala" (web components/pe/fala/Fala.tsx, ResumoFala): quanto falou, feito só com dados
+ * reais, e a meta de fala de hoje. Sem dados (ou com erro) não aparece.
+ */
+function SuaFala() {
+  const { data, refetch } = useFalaResumoQuery();
+  useFocusEffect(
+    useCallback(() => {
+      void refetch();
+    }, [refetch])
+  );
+  if (!data) return null;
+  const { hoje, semana } = data;
+  const vazio = semana.segundos === 0;
+  const faltam = Math.max(0, hoje.meta_min * 60 - hoje.segundos);
+  return (
+    <Pressable
+      accessibilityRole="link"
+      accessibilityLabel={`A sua fala. ${data.frase} Hoje: ${minutosDe(hoje.segundos)} de ${hoje.meta_min} minutos a falar.`}
+      onPress={() => router.push(vazio ? "/conversa" : "/conversa/progresso")}
+      style={({ pressed }) => ({ gap: 12, padding: 16, borderWidth: 1, borderColor: cor.linha, borderRadius: raio.md, backgroundColor: pressed ? cor.fundoSuave : cor.fundo })}
+    >
+      <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+        <Mic size={18} color={cor.azulMarca} />
+        <Texto v="rotulo" suave style={{ flex: 1 }}>
+          A sua fala
+        </Texto>
+        <Texto v="legenda" suave numeros>
+          <Texto v="rotulo" numeros>
+            {minutosDe(hoje.segundos)}
+          </Texto>
+          {` de ${hoje.meta_min} min hoje`}
+        </Texto>
+      </View>
+      <Texto v="tituloXS" style={{ fontSize: 17, lineHeight: 24 }}>
+        {data.frase}
+      </Texto>
+      <BarraProgresso valor={hoje.percentagem} rotulo={`Meta de fala de hoje: ${hoje.percentagem}%`} corBarra={hoje.cumprida ? cor.certo : undefined} />
+      <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+        <Texto v="legenda" suave style={{ flex: 1 }}>
+          {hoje.cumprida ? "Meta de fala cumprida." : hoje.segundos ? `Faltam ${minSeg(faltam)}.` : "Conta o tempo em que fala: conversas, lições, revisão e aulas."}
+        </Texto>
+        <Texto v="legenda" forte cor={cor.azulVivo}>
+          {vazio ? "Falar com o tutor" : "Ver o progresso"}
+        </Texto>
+      </View>
+    </Pressable>
+  );
+}
+
 /** O único destaque do ecrã: voltar ao curso onde ficou. */
 function Continuar({ curso, userId }: { curso: CursoVideo; userId: string }) {
   const { data: progresso, isLoading } = useProgressoCursoQuery({ userId, courseId: curso.courseId });
@@ -231,11 +284,11 @@ function PrimeiroCurso() {
           Escolha o seu primeiro curso
         </Texto>
         <Texto v="legenda" cor={cor.sobreMarca} style={{ fontSize: 15, lineHeight: 22 }}>
-          Há cursos por área profissional. A primeira aula leva cerca de 8 minutos.
+          Há o curso geral, do básico ao avançado, e cursos por sector. A primeira aula leva cerca de 8 minutos.
         </Texto>
       </View>
-      <Botao tipo="realce" tamanho="medio" larguraTotal href="/cursos/explorar">
-        Explorar cursos
+      <Botao tipo="realce" tamanho="medio" larguraTotal href="/cursos">
+        Ver os cursos
       </Botao>
     </BalaoFala>
   );

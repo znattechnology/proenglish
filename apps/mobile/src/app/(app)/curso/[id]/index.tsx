@@ -33,7 +33,9 @@ import {
 import { useSessao } from "@/sessao/ContextoSessao";
 import { Aviso, BarraProgresso, Botao, Cabecalho, Ecra, EstadoErro, Osso, Texto, Titulo } from "@/ui";
 import { balao, cor, fonte, raio } from "@/tema";
+import { AvisoNivelBasico } from "@/componentes/cursos/NivelBasico";
 import { SeparadoresCursos } from "@/componentes/cursos/Pecas";
+import { CODIGO_REQUISITO_BASICO, faltaNivelBasico } from "@/dominios/cursos/testeBasico";
 
 export default function PaginaCurso() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -81,7 +83,7 @@ export default function PaginaCurso() {
   return inscricao.data.is_enrolled && curso.data.temAcesso ? (
     <CursoInscrito curso={curso.data.curso} aoActualizar={actualizar} />
   ) : (
-    <CursoPorComecar curso={curso.data.curso} temAcesso={curso.data.temAcesso} aoActualizar={actualizar} />
+    <CursoPorComecar curso={curso.data.curso} temAcesso={curso.data.temAcesso} pedeNivelBasico={inscricao.data?.codigo_sem_inscricao === CODIGO_REQUISITO_BASICO} aoActualizar={actualizar} />
   );
 }
 
@@ -304,10 +306,13 @@ function CartaoExame({ courseId }: { courseId: string }) {
 /* ------------------------------------------------------------------ */
 /* Ainda não inscrito                                                  */
 /* ------------------------------------------------------------------ */
-function CursoPorComecar({ curso, temAcesso, aoActualizar }: { curso: Curso; temAcesso: boolean; aoActualizar: () => void }) {
+function CursoPorComecar({ curso, temAcesso, pedeNivelBasico, aoActualizar }: { curso: Curso; temAcesso: boolean; pedeNivelBasico: boolean; aoActualizar: () => void }) {
   const { data: sub } = useCursosPlanoActualQuery();
   const [inscrever, { isLoading }] = useInscreverCursoMutation();
   const [erro, setErro] = useState<string | null>(null);
+  // A API recusou a inscrição por faltar o nível básico (o estado da inscrição podia estar antigo).
+  const [recusadoBasico, setRecusadoBasico] = useState(false);
+  const faltaBasico = pedeNivelBasico || recusadoBasico;
   const plano = PLANO_DO_CURSO[curso.access_level] ?? PLANO_DO_CURSO.free;
   const lista = capitulosPorOrdem(curso);
   const total = curso.total_chapters || lista.length;
@@ -317,11 +322,21 @@ function CursoPorComecar({ curso, temAcesso, aoActualizar }: { curso: Curso; tem
   const comecar = async () => {
     setErro(null);
     const r = await inscrever(curso.courseId);
-    if ("error" in r && r.error) setErro(mensagemErro(r.error, "Não foi possível começar o curso. Tente outra vez."));
+    if ("error" in r && r.error) {
+      if (faltaNivelBasico(r.error)) return setRecusadoBasico(true);
+      setErro(mensagemErro(r.error, "Não foi possível começar o curso. Tente outra vez."));
+    }
     // A inscrição invalida o curso e o estado: o ecrã passa sozinho para a vista de inscrito.
   };
 
-  const rodape = temAcesso ? (
+  const rodape = temAcesso && faltaBasico ? (
+    <>
+      <AvisoNivelBasico texto="Este é um curso de sector: pede, no mínimo, o nível básico de inglês. Faça o teste ou comece pelo curso geral." />
+      <Botao tipo="ligacao" tamanho="pequeno" style={{ alignSelf: "center" }} onPress={() => router.dismissTo("/cursos")}>
+        Ver o curso geral
+      </Botao>
+    </>
+  ) : temAcesso ? (
     <>
       {erro ? <Aviso tom="erro">{erro}</Aviso> : null}
       <Botao larguraTotal carregando={isLoading} onPress={() => void comecar()}>

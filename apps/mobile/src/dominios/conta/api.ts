@@ -13,8 +13,8 @@ import type { NivelCefr } from "./niveis";
 
 export type Preferencias = { cidade?: string | null; area?: string | null; nivel?: NivelCefr | null; acolhimento?: "concluido" | null };
 
-export type CursoVideoSugerido = { courseId: string; title: string; category?: string; level?: string | null };
-export type CursoPraticaSugerido = { id: string; title: string; category?: string; level?: string | null };
+export type CursoVideoSugerido = { courseId: string; title: string; category?: string; level?: string | null; de_sector?: boolean };
+export type CursoPraticaSugerido = { id: string; title: string; category?: string; level?: string | null; de_sector?: boolean; requisito_basico?: boolean };
 
 type Paginado<T> = { data?: { count: number; results: T[] } };
 
