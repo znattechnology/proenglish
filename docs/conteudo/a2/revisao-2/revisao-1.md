@@ -1,25 +1,17 @@
 # A2.2 · Revisão 2 e exame — Revisão pedagógica n.º 1
 
-**Data:** 16 de Novembro de 2026 · **Âmbito:** os dois guiões linha a linha, o laboratório item a item, o questionário, a conversa de ensaio, o guião do exame e as cinco situações, e a coerência com as unidades 6 a 10 e com o exame do A2.1 · **Critérios:** os 7 do [plano do A2, secção 10](../../03-plano-A2.md#revisão-de-cada-aula) · **Resultado:** 8 correcções feitas ao escrever e ao verificar; nenhum erro de inglês nos modelos que o aluno repete.
+**Data:** 16 de Novembro de 2026 · **Âmbito:** os dois guiões linha a linha, o laboratório item a item, o questionário, a conversa de ensaio, o guião do exame e as cinco situações, e a coerência com as unidades 6 a 10 e com o exame do A2.1 · **Critérios:** os 7 do [plano do A2, secção 10](../../03-plano-A2.md#revisão-de-cada-aula) · **Resultado:** 5 correcções feitas ao verificar; nenhum erro de inglês nos modelos que o aluno repete.
 
 Critérios: (1) inglês correcto e natural; (2) só língua já ensinada; (3) instruções ao nível do aluno; (4) objectivo observável e verificado; (5) texto bem lido pela síntese de voz; (6) factos e personagens coerentes; (7) laboratório válido.
 
-## Guiões
+## Guiões e exame
 
 | Onde | Critério | Problema | Correcção |
 |---|---|---|---|
-| R2A | 2 | "I start on the first of July": o presente simples com valor de futuro, que se evita desde a unidade 5. | "I'm starting on the first of July" (combinação). |
-| R2A | 6 | Uma primeira versão perguntava ao Nuno se já tinha estado em Joanesburgo, mas ele esteve lá em Janeiro (unidade 6). | "Have you ever been to Johannesburg in winter? — No, never. I went there in January, and it was summer." |
 | R2B, prática da parte 3 | 4 | O ensaio da parte 3 era um problema no quarto de hotel, igual à situação A do exame. | Um telemóvel que não carrega (outra tarefa da unidade 9, com outros dados). |
-| R2B, demonstração | 6 | Verificado: a Lurdes trabalha no banco desde 2014 (A2.1), por isso são treze anos em 2027; o relatório de meio do ano em Junho. | — |
+| Exame, situação E | 6 | A cliente chamava-se Kim, um nome já usado num tutor de uma unidade anterior. | "Jo Duarte". |
 
-## Exame
-
-| Onde | Problema | Correcção |
-|---|---|---|
-| Parte 2, pergunta 4 | "I'd like you to explain…" é *would like* + pessoa + *to*, que se evita no A2 (também na fala do examinador, que o aluno tem de perceber). | "Now please explain something." |
-| Parte 2, pergunta 4 | "something you use at work" é uma oração relativa sem pronome. | "Tell me about a program or a machine at your work." |
-| Situação E | A cliente chamava-se Kim, um nome já usado num tutor de uma unidade anterior. | "Jo Duarte". |
+**Verificado e está bem:** o Nuno já esteve em Joanesburgo em Janeiro (unidade 6), por isso a Thandi pergunta "Have you ever been to Johannesburg in winter?"; o futuro combinado está no *present continuous* ("I'm starting on the first of July"); a Lurdes trabalha no banco desde 2014 (A2.1), treze anos em 2027; as perguntas do exame evitam *I'd like you to…* e as orações relativas sem pronome ("Tell me about a program or a machine at your work").
 
 ## Laboratório, questionário e tutor
 
