@@ -1,6 +1,6 @@
 # A2.1 · Unidade 1 — People at work (6 aulas)
 
-**Estado:** primeira versão escrita, com a revisão de cada aula ([revisão n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [03-plano-A2.md](../../03-plano-A2.md), unidade 1
+**Estado:** primeira versão escrita, com duas revisões aula a aula ([n.º 1](revisao-1.md) e [n.º 2](revisao-2.md)); falta a leitura dos professores · **Plano:** [03-plano-A2.md](../../03-plano-A2.md), unidade 1
 
 ## Objectivos da unidade
 
@@ -32,7 +32,7 @@ No fim da unidade, o aluno consegue:
 - **Trabalho:** junior, project, network, install, fix, support, accounts, annual, staff, department, manager, team leader, director, sales, finance, human resources (HR), customer service, kick-off meeting, role, contact person.
 - **Responsabilidades:** be responsible for, be in charge of, report to, deal with, look after, work with / for, train, organise, develop.
 - **Personalidade:** friendly, helpful, hard-working, organised, patient, reliable, confident, shy, serious, funny, quiet.
-- **Aparência:** tall, short, slim, beard, glasses, long / short / curly hair, in his / her forties.
+- **Aparência:** tall, short, slim, beard, wear glasses, long / short / curly hair, in his / her forties.
 - **Tempo:** these days, this month, at the moment, currently, still.
 - **Verbos de estado:** know, understand, remember, mean, think (opinião), want, need, like, love, hate, have (possuir).
 - **Cognatos com acento diferente:** responsible, technology, development, engineer, analyst, administrator, manager.
@@ -53,6 +53,6 @@ No fim da unidade, o aluno consegue:
 
 ## O que falta para publicar
 
-Leitura pelos professores; vídeos com o professor de IA (vozes novas: Nuno contratado, Rita, Arjun; vozes do A1: Sílvia, Mateus, Paulo, Thandi, João); áudio (13 escutas e 6 pronúncias, incluindo quatro sotaques na 1E); carregamento na plataforma; imagens (o organograma da Kalandula Tech na 1D; as chegadas do aeroporto na 1C; a videochamada na 1E).
+Leitura pelos professores; vídeos com o professor de IA (vozes novas: Nuno contratado, Rita, Arjun; vozes do A1: Sílvia, Mateus, Paulo, Thandi, João); áudio (13 escutas e 6 pronúncias, incluindo quatro sotaques na 1E); carregamento na plataforma; imagens (o organograma da Kalandula Tech na 1D; a recepção da Mussulo Energy na 1C; a videochamada na 1E).
 
 A seguir vem a **unidade 2, "Life stories"** (7 aulas).

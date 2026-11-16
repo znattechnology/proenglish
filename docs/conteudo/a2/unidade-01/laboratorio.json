@@ -140,7 +140,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "I usually support the staff on the phone, but this month I'm working on a big project.",
+     "frase": "I support the staff on the phone, and I fix computers. But this month I'm working on a big project.",
      "enunciado": "What is Nuno doing this month?",
      "opcoes": [
       {
@@ -422,7 +422,7 @@
     {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
-     "frase": "She [has] short black hair and glasses.",
+     "frase": "She [has] short black hair, and she wears glasses.",
      "opcoes": [
       {
        "texto": "is",
@@ -517,7 +517,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "She's tall and slim. She has short black hair and glasses. She's in her forties.",
+     "frase": "She's tall and slim. She has short black hair, and she wears glasses. She's in her forties.",
      "enunciado": "How old is Thandi?",
      "opcoes": [
       {
@@ -544,8 +544,8 @@
      "tipo": "responder",
      "enunciado": "What does your manager look like?",
      "frase": "has",
-     "resposta": "She's quite tall. She has long hair and glasses. She's in her fifties.",
-     "contexto": "A aparência: be + has."
+     "resposta": "She's quite tall. She has long hair, and she wears glasses. She's in her fifties.",
+     "contexto": "A aparência: be, has e wears."
     },
     {
      "tipo": "responder",
@@ -792,18 +792,18 @@
     {
      "tipo": "escuta",
      "frase": "I'm in Luanda for three months, so I'm learning some Portuguese. Slowly!",
-     "enunciado": "What is Thandi doing in Luanda, apart from work?",
+     "enunciado": "What language is Thandi learning in Luanda?",
      "opcoes": [
       {
-       "texto": "learning Portuguese",
+       "texto": "Portuguese",
        "certa": true
       },
       {
-       "texto": "teaching English",
+       "texto": "Zulu",
        "certa": false
       },
       {
-       "texto": "visiting her family",
+       "texto": "Spanish",
        "certa": false
       }
      ],
@@ -1052,14 +1052,14 @@
     },
     {
      "tipo": "escolher",
-     "enunciado": "O director diz: \"Estou noutra reunião, chego às onze.\" O que diz à Rita?",
+     "enunciado": "O director diz: \"Peço desculpa, tenho outra reunião agora. Volto às onze.\" O que diz à Rita?",
      "opcoes": [
       {
-       "texto": "He says he's in another meeting. He's going to come at eleven.",
+       "texto": "He says he's sorry, but he has another meeting now. He's going to come back at eleven.",
        "certa": true
       },
       {
-       "texto": "He says: \"Estou noutra reunião.\"",
+       "texto": "He says: \"Tenho outra reunião agora.\"",
        "certa": false
       },
       {

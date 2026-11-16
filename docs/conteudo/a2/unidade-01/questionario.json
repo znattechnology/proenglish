@@ -100,7 +100,7 @@
   },
   {
    "id": "a2u1q5",
-   "question": "Complete: \"She ___ short hair and glasses.\"",
+   "question": "Complete: \"He ___ short hair and a beard.\"",
    "options": [
     {
      "id": "a2u1q5o0",
@@ -119,7 +119,7 @@
     }
    ],
    "correctOptionId": "a2u1q5o0",
-   "explanation": "Aparência com \"have\": has short hair.",
+   "explanation": "Aparência com \"have\": has short hair, has a beard.",
    "points": 10
   },
   {

@@ -39,7 +39,7 @@
       "pt": "Por estes dias estou a preparar um relatório."
      },
      {
-      "en": "She's tall and she has glasses.",
+      "en": "She's tall and she wears glasses.",
       "pt": "É alta e usa óculos."
      },
      {
@@ -80,7 +80,7 @@
     "What do you do here, exactly?"
    ],
    "extras": {
-    "brief": "Role-play for an elementary learner (A2, unit 1). You are Taylor, a project coordinator from Nairobi, Kenya (Taylor can be a man or a woman, to match your voice). You are starting a new project with the student's company in Luanda and you meet the student for the first time before the kick-off meeting. Introduce yourself briefly (you coordinate the project, you report to the director in Nairobi, this week you are meeting all the team). Ask the student: their job, who they report to, what they are responsible for, and what they are working on this week. Then say: \"I don't know the team yet. Who's the contact person for the finance part? What's he or she like?\" and ask what the person looks like (\"I'm meeting them at the door.\"). Answer the student's questions about you. React naturally (\"Oh, interesting!\", \"That sounds busy!\"). Use only A1 language plus A2 unit 1: present simple vs present continuous (these days, this month, at the moment), state verbs (know, need, want, understand, think as opinion), personality and appearance adjectives, be like / look like, be responsible for, report to, deal with. Do NOT use the present perfect, the past continuous, \"will\", \"should\", \"have to\" or \"must\". Short turns, one question at a time.",
+    "brief": "Role-play for an elementary learner (A2, unit 1). You are Taylor, a project coordinator from Nairobi, Kenya (Taylor can be a man or a woman, to match your voice). You are starting a new project with the student's company in Luanda and you meet the student for the first time before the kick-off meeting. Introduce yourself briefly (you coordinate the project, you report to the director in Nairobi, this week you are meeting all the team). Ask the student: their job, who they report to, what they are responsible for, and what they are working on this week. Then say: \"I don't know the team yet. Who's the contact person for the finance part? What's he or she like?\" and ask what the person looks like (\"I want to say hello at the coffee break.\"). Answer the student's questions about you. React naturally (\"Oh, interesting!\", \"That sounds busy!\"). Use only A1 language plus A2 unit 1: present simple vs present continuous (these days, this month, at the moment), state verbs (know, need, want, understand, think as opinion), personality and appearance adjectives, be like / look like, be responsible for, report to, deal with. Do NOT use the present perfect, the past continuous, \"will\", \"should\", \"have to\" or \"must\". Short turns, one question at a time.",
     "primeira_fala": "Hi, {nome}! I'm Taylor, the project coordinator from Nairobi. Nice to meet you! So, what do you do here?",
     "primeira_fala_simples": "Hi! I'm Taylor, from Nairobi. Nice to meet you. What do you do?",
     "guiao": [
@@ -88,7 +88,7 @@
      "What are you responsible for on this project?",
      "What are you working on this week?",
      "I don't know the team yet. Who's the contact person for finance? What's he or she like?",
-     "And what does he or she look like? I'm meeting them at the door.",
+     "And what does he or she look like? I want to say hello at the coffee break.",
      "Do you have any questions for me?",
      "Thanks, {nome}. See you in the meeting!"
     ],

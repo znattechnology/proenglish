@@ -54,7 +54,7 @@ Verificação: Lab 1A; perguntas 1 e 2 do questionário da unidade 1
 **SÍLVIA:** Nuno! Welcome back! So you're working here now?
 **NUNO:** Yes! I'm a junior IT technician. I started today.
 **SÍLVIA:** Congratulations! And what do you do, exactly?
-**NUNO:** I usually support the staff on the phone, and I fix computers. But this month I'm working on a big project with Mateus. We're installing a new network at Mussulo Energy.
+**NUNO:** I support the staff on the phone, and I fix computers. That's my normal job. But this month I'm working on a big project with Mateus. We're installing a new network at Mussulo Energy.
 **SÍLVIA:** Mussulo Energy? They're a big client!
 **NUNO:** I know! And you? Are you still in accounts?
 **SÍLVIA:** Yes, I am. I usually check the payments and pay the suppliers. But these days I'm preparing the annual accounts, so I'm working late every day.
@@ -75,7 +75,7 @@ Verificação: Lab 1A; perguntas 1 e 2 do questionário da unidade 1
 
 **PROF:** The present simple is for your normal work: what you usually do, every day, every week. The present continuous is for now, and for this period: this week, this month, these days. It's temporary — it stops.
 [PAUSA 2 s]
-(PT: Em português dizemos muitas vezes "trabalho num projecto" para as duas coisas. Em inglês, o que é temporário — esta semana, este mês — vai para o present continuous.)
+(PT: Em português pode dizer-se "este mês trabalho num projecto grande", no presente simples. Em inglês, o que é temporário — esta semana, este mês — vai sempre para o present continuous: "This month I'm working on a big project.")
 
 [ECRÃ: palavras de tempo — present simple: **usually, always, every day, on Mondays** · present continuous: **now, at the moment, today, this week, this month, these days, currently**]
 
@@ -97,7 +97,7 @@ Verificação: Lab 1A; perguntas 1 e 2 do questionário da unidade 1
 
 ### 4. Pronúncia (1 min)
 
-**PROF:** Listen: I'm working. We're installing. She's preparing. Say "I'm", not "I am", when you speak.
+**PROF:** Listen: I'm working. We're installing. She's preparing. When we speak, we usually say "I'm", not "I am".
 [PAUSA 3 s]
 **PROF:** And the end of "-ing": working — not "workingue". Stop at the "ng" sound.
 [ECRÃ: work**ing** /ŋ/ — sem vogal no fim]
@@ -161,7 +161,7 @@ Verificação: Lab 1B; pergunta 3 do questionário
 **NUNO:** Yes, I understand. But I need access to the server room.
 **MATEUS:** Right. You need a card. Ask Ana at reception. Do you know Thandi Mokoena?
 **NUNO:** No, I don't know her. Who is she?
-**MATEUS:** She's an engineer from Johannesburg. Her company sells us the network equipment. She's working with us this month. She has a lot of experience.
+**MATEUS:** She's an engineer from Johannesburg. Her company sells us the network equipment. She's working with us on this project. She has a lot of experience.
 **NUNO:** Great. And what do I do first?
 **MATEUS:** Check the cables on the second floor. Here's the password for the laptop. Do you remember the old password?
 **NUNO:** No, I don't remember it, sorry.
@@ -186,6 +186,11 @@ Verificação: Lab 1B; pergunta 3 do questionário
 
 [ECRÃ: **think** — I **think** it's a good plan. (opinião → simple) · I'm **thinking** about the problem. (acção na cabeça → continuous)]
 [ECRÃ: **have** — She **has** a lot of experience. I **have** a laptop. (possuir → simple) · I'm **having** lunch / a meeting. (acção → continuous)]
+
+[ECRÃ: **like** — ✔ I **like** my job. ✘ I'm liking my job. · ✔ I like work**ing** with people. (A1: like + -ing)]
+
+**PROF:** Careful with "like". "I'm liking my job" is wrong. But "I like working with people" is right — the "-ing" is on the second verb, as in A1.
+[PAUSA 3 s]
 
 **PROF:** "I think it's good" is your opinion: simple. "I'm having lunch" is an action: you can use the continuous. But "I have a car": simple.
 [PAUSA 3 s]
@@ -232,7 +237,7 @@ Verificação: Lab 1B; pergunta 3 do questionário
 
 ### 6. Fecho (30 s)
 
-**PROF:** Well done! Know, need, want, like — no "-ing". Next lesson: describing people. What's your manager like?
+**PROF:** Well done! I know, I need, I want, I like — not "I'm knowing", not "I'm liking". Next lesson: describing people. What's your manager like?
 
 ---
 
@@ -244,14 +249,14 @@ Objectivo da aula: No fim, o aluno consegue descrever um colega pela personalida
   e distinguir as perguntas What's she like? (personalidade) e What does she look like? (aparência).
 Objectivo da unidade a que serve: 2
 Gramática-alvo: What's he / she like? — He's friendly and organised.; What does he / she look like?
-  — She's tall. She has short hair and glasses.; adjectivo + nome (a helpful colleague); very, quite,
-  a bit (a bit só com coisas negativas); 's e s' (my manager's office, my colleagues' names)
+  — She's tall. She has short hair. She wears glasses.; adjectivo + nome (a helpful colleague); very, quite,
+  a bit (a bit só com coisas negativas); wear glasses; 's e s' (my manager's office, my colleagues' names)
 Palavras-alvo: friendly, helpful, hard-working, organised, patient, reliable, confident, shy, serious,
-  funny, quiet, tall, short, slim, beard, glasses, long / short / curly hair, in his / her forties
+  funny, quiet, tall, short, slim, beard, wear glasses, long / short / curly hair, in his / her forties
 Reciclagem: have / has (A1, 4); be no passado (A1, 10); verbos de estado (1B)
 Pronúncia: acento em adjectivos de duas e três sílabas (FRIENDly, HELPful, ORganised, reLIable,
   CONfident)
-Contexto: o Nuno vai buscar a Thandi ao aeroporto e não a conhece; liga à Sílvia
+Contexto: o Nuno espera a Thandi na recepção da Mussulo Energy e não a conhece; liga à Sílvia
 Duração: 10 min
 Verificação: Lab 1C; perguntas 4, 5 e 6 do questionário
 ```
@@ -262,21 +267,21 @@ Verificação: Lab 1C; perguntas 4, 5 e 6 do questionário
 
 ### 2. Situação (1 min 30 s)
 
-[ECRÃ: as chegadas do aeroporto de Luanda; o Nuno com um papel "THANDI MOKOENA" e o telemóvel ao ouvido]
+[ECRÃ: a recepção da Mussulo Energy, 9h15; o Nuno com um papel "THANDI MOKOENA" e o telemóvel ao ouvido]
 
-**NUNO:** Sílvia, I'm at the airport. I'm waiting for Thandi, but I don't know her. What does she look like?
-**SÍLVIA:** She's tall and slim. She has short black hair and glasses. She's in her forties.
+**NUNO:** Sílvia, I'm at reception at Mussulo Energy. I'm waiting for Thandi, but I don't know her. What does she look like?
+**SÍLVIA:** She's tall and slim. She has short black hair, and she wears glasses. She's in her forties.
 **NUNO:** OK… And what's she like? Is she serious?
 **SÍLVIA:** In meetings, a bit. But she's very friendly and really helpful. And she's very organised — she always arrives early.
-**NUNO:** Early? The plane is late!
-**SÍLVIA:** Ha! That's not her problem, then. Oh, and she's quite funny. You're going to like her.
+**NUNO:** Early? It's nine fifteen, and she isn't here!
+**SÍLVIA:** Ha! Then it's the Luanda traffic. Oh, and she's quite funny. You're going to like her.
 **NUNO:** Wait… I think that's her. Tall, glasses… and she's smiling at my paper!
 
 ### 3. Língua (4 min)
 
 **Duas perguntas**
 
-[ECRÃ: **What does she look like?** → aparência: She's tall. She has glasses. · **What's she like?** → personalidade: She's friendly and organised.]
+[ECRÃ: **What does she look like?** → aparência: She's tall. She wears glasses. · **What's she like?** → personalidade: She's friendly and organised.]
 
 **PROF:** What does she look like? — the body, the face, the clothes. What's she like? — the person: friendly, serious, helpful.
 [PAUSA 3 s]
@@ -291,9 +296,9 @@ Verificação: Lab 1C; perguntas 4, 5 e 6 do questionário
 
 **Aparência**
 
-[ECRÃ: She's **tall / short / slim**. · He has **a beard**. · She has **glasses**. · He has **short / long / curly hair**. · She's **in her forties** (40–49).]
+[ECRÃ: She's **tall / short / slim**. · He has **a beard**. · She **wears glasses**. · He has **short / long / curly hair**. · She's **in her forties** (40–49).]
 
-**PROF:** Be: tall, short, slim. Have: a beard, glasses, short hair.
+**PROF:** Be: tall, short, slim. Have: a beard, short hair. Wear: glasses.
 [PAUSA 3 s]
 
 **Quanto**
@@ -355,7 +360,7 @@ Palavras-alvo: manager, team leader, staff, department, sales, finance, human re
   technology, engineer, analyst, administrator
 Reciclagem: present simple (A1, 3); possessivos (A1, 4)
 Pronúncia: acento de palavra em cognatos (reSPONsible, techNOLogy, deVELopment, engiNEER,
-  ANalyst, adMINistrator, MAnager)
+  ANalyst, adMINistrator, MANager)
 Falsos amigos: sympathetic (≠ simpático); actually (≠ actualmente)
 Contexto: o organograma da Kalandula Tech
 Duração: 10 min
@@ -409,6 +414,8 @@ Verificação: Lab 1D; perguntas 7, 8 e 9 do questionário
 **PROF:** ANalyst.
 [PAUSA 3 s]
 **PROF:** adMINistrator.
+[PAUSA 3 s]
+**PROF:** MANager.
 [PAUSA 3 s]
 
 ### 5. Falsos amigos (1 min)
@@ -481,7 +488,7 @@ Verificação: Lab 1E; pergunta 10 do questionário
 
 1. What's Rita in charge of? (all the systems at Mussulo Energy ✓ / the payments / the installation)
 2. How does Rita describe herself? (organised and a bit impatient ✓ / quiet and patient / funny and shy)
-3. What is Thandi doing in Luanda, apart from work? (learning Portuguese ✓ / teaching English / visiting her family)
+3. What language is Thandi learning in Luanda? (Portuguese ✓ / Zulu / Spanish)
 4. Why does Arjun start very early? (because of the time difference ✓ / because he lives far away / because he's the manager)
 5. Who does João report to? (Rita ✓ / Mateus / Thandi)
 
@@ -496,7 +503,7 @@ Verificação: Lab 1E; pergunta 10 do questionário
 **PROF:** Please send me your questions. [PAUSA 3 s]
 **PROF:** I'm happy to help with anything you need. [PAUSA 4 s]
 
-**PROF:** Did you notice? Arjun says "three hours later here". In India, the time is four and a half hours later than in Luanda. People round numbers when they speak!
+**PROF:** Did you notice? Arjun says "four hours later here". In India, the time is four and a half hours later than in Luanda. People round numbers when they speak!
 (PT: Nem sempre o que se diz é exacto; em reuniões é normal arredondar.)
 
 ### 5. A sua vez (1 min)
@@ -542,7 +549,7 @@ Verificação: Lab 1F; conversa livre "New project team"; perguntas 11 e 12 do q
 **NUNO:** Thank you. Good morning, everyone. I'm Nuno Kapinga. I'm a junior IT technician at Kalandula Tech. I report to Mateus. On this project, I'm responsible for the cables and the computers on the second floor. This week I'm checking all the cables.
 **RITA:** Welcome, Nuno. Are you from Luanda?
 **NUNO:** No, I'm from Lubango. I studied in Lubango, and now I live in Luanda. And you, Rita? What do you do here, exactly?
-**RITA:** I'm the IT manager. I look after all our systems. So if you have a problem with access, you talk to me.
+**RITA:** I'm the IT manager. I look after all our systems. So for any problem with access, talk to me.
 **NUNO:** Great. And who's the contact person for the second floor?
 **RITA:** João. João, can you help Nuno this week?
 **JOÃO:** Of course. I'm usually in the office from eight to four.
@@ -553,7 +560,7 @@ Verificação: Lab 1F; conversa livre "New project team"; perguntas 11 e 12 do q
 [ECRÃ: o Sr. Baptista entra na sala e diz umas palavras ao Nuno em português]
 
 **RITA:** Sorry, what did Mr Baptista say?
-**NUNO:** He says he's sorry, but he's in another meeting. He's going to come at eleven.
+**NUNO:** He says he's sorry, but he has another meeting now. He's going to come back at eleven.
 
 ### 3. Como se apresenta numa reunião (2 min)
 
@@ -581,7 +588,7 @@ Verificação: Lab 1F; conversa livre "New project team"; perguntas 11 e 12 do q
 
 **Mediação**
 
-**PROF:** Mr Baptista said something in Portuguese. Rita doesn't understand. Nuno explains it in English — short and simple: He says he's sorry. He's going to come at eleven.
+**PROF:** Mr Baptista said something in Portuguese. Rita doesn't understand. Nuno explains it in English — short and simple: He says he's sorry. He has another meeting now. He's going to come back at eleven.
 (PT: Explicar a um estrangeiro o que alguém disse em português é uma tarefa real do trabalho. Não traduza palavra a palavra: diga a ideia principal em frases simples.)
 
 ### 4. Pronúncia (30 s)
