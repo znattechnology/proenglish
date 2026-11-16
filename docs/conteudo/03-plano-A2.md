@@ -248,6 +248,8 @@ Versão completa em [a2/unidade-05/](a2/unidade-05/README.md) **[I]**.
 
 ### Revisão 1 e exame oral do A2.1
 
+Versão completa em [a2/revisao-1/](a2/revisao-1/README.md) **[I]**.
+
 **Objectivo:** o aluno consegue manter uma conversa de 6 a 7 minutos sobre o trabalho, as pessoas com quem trabalha e o seu percurso, contar uma história curta e resolver uma situação de trabalho (combinar, comparar e recomendar, ou dar conselho).
 
 | Aula | Título | Objectivo |
@@ -420,7 +422,7 @@ As peças e o peso são os do A1 ([plano do A1, secção 6](02-plano-A1.md#6-ava
 4. Usa a língua da unidade pelo menos três vezes.
 5. É compreendido sem o tutor ter de pedir para repetir mais de duas vezes.
 
-**Exame oral do A2.1 (6–7 minutos)** **[I]**:
+**Exame oral do A2.1 (6–7 minutos)** — versão completa em [a2/revisao-1/exame.md](a2/revisao-1/exame.md) **[I]**:
 1. **Entrevista** (2 min): o trabalho de agora, os colegas, o percurso (*Tell me about your job. What's your manager like? Where did you grow up?*).
 2. **Uma história** (1–2 min): o aluno conta uma situação do passado a partir de uma pergunta (*Tell me about a difficult day at work.*), com *past simple*, *past continuous* e sequenciadores.
 3. **Situação** (2–3 min), sorteada de quatro: remarcar uma reunião; convidar e combinar; comparar duas opções e recomendar; dar conselho a um colega doente.
@@ -567,5 +569,5 @@ No A1, cada unidade teve uma revisão pedagógica depois de escrita. No A2, **ca
 1. Revisão deste plano pelos professores (objectivos, ordem, situações de trabalho, falsos amigos).
 2. Confirmar no CEFR Companion Volume os descritores A2 de produção oral, interacção e mediação, e aferir a ordem da gramática com o resumo de unidades do Empower 2e A2 e o booklet GSE do Roadmap A2 (secção 2).
 3. Fechar o inventário de vocabulário A2 a partir da NGSL, aferido com Oxford 3000 A2 e Cambridge A2 Key.
-4. Escrever as unidades 1 a 5 do A2.1 (feito: [1](a2/unidade-01/README.md), [2](a2/unidade-02/README.md), [3](a2/unidade-03/README.md), [4](a2/unidade-04/README.md), [5](a2/unidade-05/README.md)), uma aula de cada vez, com a revisão de cada aula (secção 10); depois a revisão 1 e o exame do A2.1.
+4. Escrever as unidades 1 a 5 do A2.1 (feito: [1](a2/unidade-01/README.md), [2](a2/unidade-02/README.md), [3](a2/unidade-03/README.md), [4](a2/unidade-04/README.md), [5](a2/unidade-05/README.md); revisão 1 e exame: [a2/revisao-1](a2/revisao-1/README.md)), uma aula de cada vez, com a revisão de cada aula (secção 10); depois a revisão 1 e o exame do A2.1.
 5. Acrescentar à plataforma um guião de exame A2 por omissão (secção 6).

@@ -1,0 +1,81 @@
+{
+ "unidade": "A2.1 · Review 1",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a2-r1-ensaio",
+   "nome": "A2 Review 1 · Getting to know a new manager",
+   "tipo": "livre",
+   "depois_da_aula": "R1B",
+   "descricao": "Ensaio do exame oral do A2.1: o tutor é a nova chefia regional, que quer conhecer o aluno. Conversam sobre o trabalho, um colega e o percurso; o aluno conta uma situação difícil; no fim, a chefia pede ajuda para escolher entre duas opções.",
+   "papel_tutor": "Jesse, nova chefia regional, que chegou de Lisboa.",
+   "nivel": "A2",
+   "duracao_min": 7,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I usually… These days I'm…",
+    "I was … when…",
+    "I recommend…"
+   ],
+   "extras": {
+    "brief": "Exam rehearsal for an elementary learner (A2.1, units 1-5). You are Jesse, the new regional manager, who arrived from Lisbon last week (Jesse can be a man or a woman, to match your voice). Have a friendly conversation in three parts. 1) Work and background: what the student usually does and what they are working on these days; what a colleague or their manager is like; where they grew up and what they did after school. 2) A story: \"Tell me about a difficult day at work. What happened?\", then \"What were you doing when it started?\" and \"What happened in the end?\". 3) A choice: you need a hotel for a visitor. Hotel Marginal: 90 000 Kz a night, near the office, small rooms. Hotel Talatona: 70 000 Kz a night, far from the office, big rooms and a pool. Ask \"Which one do you recommend?\" and make one objection against the student's choice. If the student answers with one word, ask \"Can you tell me more?\" once. If the student asks \"Do you mean…?\", answer and repeat the question in other words. Answer the student's questions about you: you grew up in Lisbon, you studied economics, you came to Luanda last week, this weekend you're visiting the Miradouro da Lua. Use only A1 and A2 units 1-5 language: no present perfect, no will for predictions, no could, no if sentences, no too / enough. One question at a time. Correct gently by repeating the sentence correctly, only for: \"I born\" (→ I was born), \"I'm needing / I'm knowing\" (→ I need / I know), \"very cheaper\" (→ much cheaper), \"You should to\" (→ You should).",
+    "primeira_fala": "Hi, {nome}! I'm Jesse, the new regional manager. I arrived from Lisbon last week. Tell me about your job. What do you usually do?",
+    "primeira_fala_simples": "Hi! I'm Jesse, the new manager. What do you do at work?",
+    "guiao": [
+     "And what are you working on these days?",
+     "Tell me about a colleague. What's he or she like?",
+     "Where did you grow up, and what did you do after school?",
+     "Tell me about a difficult day at work. What happened?",
+     "What were you doing when it started?",
+     "And what happened in the end?",
+     "Now I need your help. A visitor is coming next week. Hotel Marginal is near the office, but it's more expensive and the rooms are small. Hotel Talatona is cheaper, with big rooms and a pool, but it's far. Which one do you recommend?",
+     "Thank you, {nome}. That was very helpful!"
+    ],
+    "frases": [
+     {
+      "en": "I usually deal with the clients.",
+      "pt": "Normalmente trato dos clientes."
+     },
+     {
+      "en": "These days I'm preparing a report.",
+      "pt": "Por estes dias estou a preparar um relatório."
+     },
+     {
+      "en": "I was presenting a report when my computer stopped.",
+      "pt": "Estava a apresentar um relatório quando o computador parou."
+     },
+     {
+      "en": "I recommend Hotel Marginal. It's a bit more expensive, but it's much closer.",
+      "pt": "Recomendo o Hotel Marginal. É um pouco mais caro, mas é muito mais perto."
+     },
+     {
+      "en": "That's a good question. Well…",
+      "pt": "Boa pergunta. Bem…"
+     }
+    ],
+    "palavras": [
+     "usually",
+     "these",
+     "days",
+     "like",
+     "born",
+     "was",
+     "when",
+     "end",
+     "recommend",
+     "cheaper"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": [
+    "Fala do trabalho habitual (present simple) e do deste período (present continuous), e descreve um colega.",
+    "Conta o seu percurso com o past simple (I was born…, I grew up…).",
+    "Conta uma situação difícil com o past continuous e o past simple, até ao fim (In the end…).",
+    "Recomenda um dos hotéis com comparações e responde à objecção com uma razão.",
+    "Responde com duas ou três frases ligadas e faz pelo menos uma pergunta ao tutor.",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}
