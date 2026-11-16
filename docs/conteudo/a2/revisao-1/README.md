@@ -1,6 +1,6 @@
 # A2.1 · Revisão 1 e exame oral
 
-**Estado:** primeira versão escrita e revista aula a aula ([revisão n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [03-plano-A2.md](../../03-plano-A2.md), "Revisão 1 e exame oral do A2.1"
+**Estado:** primeira versão escrita, com duas revisões ([n.º 1](revisao-1.md) e [n.º 2](revisao-2.md)); falta a leitura dos professores · **Plano:** [03-plano-A2.md](../../03-plano-A2.md), "Revisão 1 e exame oral do A2.1"
 
 ## Objectivo
 

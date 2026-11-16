@@ -42,7 +42,7 @@ O examinador sorteia **uma** das quatro situações ([banco de situações](exam
 
 | Situação | O examinador é… | O aluno tem de… |
 |---|---|---|
-| A. Move a meeting | um cliente, Sam Kiala | dizer porque liga, pedir desculpa e dar a razão, propor duas alternativas, repetir a nova data e confirmar por escrito (*I'll send you an email*). |
+| A. Move a meeting | um cliente, Sam Lopes | dizer porque liga, pedir desculpa e dar a razão, propor duas alternativas, repetir a nova data e confirmar por escrito (*I'll send you an email*). |
 | B. Invite and arrange | o Alex, colega de outro escritório, em Luanda esta semana | convidar (*Would you like to…?*), propor dia e hora, aceitar a recusa e propor outra, combinar onde se encontram. |
 | C. Compare and recommend | a chefia (duas impressoras, com preço, rapidez e garantia) | recomendar uma, comparar com pelo menos dois comparativos ou *(not) as … as*, dar duas razões, dizer uma desvantagem e responder à objecção. |
 | D. Advise a sick colleague | o Jamie, colega com febre e muito trabalho | aconselhar (*should / shouldn't*), dizer o que é ou não necessário (*have to / don't have to*) e oferecer ajuda (*I'll…*). |

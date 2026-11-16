@@ -400,9 +400,9 @@
     },
     {
      "tipo": "responder",
-     "enunciado": "I'm your colleague. I have a fever and a lot of work. What should I do?",
+     "enunciado": "I'm your colleague. I have back pain, and tomorrow I have to drive to Benguela for work. What should I do?",
      "frase": "should",
-     "resposta": "You should go home and see a doctor. You don't have to finish the report today. I'll tell the manager.",
+     "resposta": "You should see a doctor today. You don't have to drive — why don't you take the bus? I'll tell the manager.",
      "contexto": "should, don't have to e uma oferta com will."
     }
    ]

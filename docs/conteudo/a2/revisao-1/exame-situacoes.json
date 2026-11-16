@@ -5,15 +5,15 @@
   {
    "slug": "a2-1-exame-mudar-reuniao",
    "nome": "A2.1 exam · Move a meeting",
-   "papel_tutor": "A client, Sam Kiala, from a company in Luanda.",
-   "descricao": "The examiner is a client, Sam Kiala. The student has a meeting with Sam tomorrow at ten, at Sam's office, but the student needs to move it (the student chooses the reason, for example: the equipment is late, the manager is sick). The student calls Sam. The student must say why they are calling, apologise and give the reason, propose two other days or times (Are you available on…? How about…?), and confirm (I'll send you an email). The examiner refuses the first proposal once with a reason in the present continuous (I'm afraid I can't. I'm visiting a client in Viana.) and accepts the second if it is on a weekday between 9 and 5. At the end, the examiner asks the student to repeat the new day and time.",
+   "papel_tutor": "A client, Sam Lopes, from a company in Luanda.",
+   "descricao": "The examiner is a client, Sam Lopes. The student has a meeting with Sam tomorrow at ten, at Sam's office, but the student needs to move it (the student chooses the reason, for example: the equipment is late, the manager is sick). The student calls Sam. The student must say why they are calling, apologise and give the reason, propose two other days or times (Are you available on…? How about…?), and confirm (I'll send you an email). The examiner refuses the first proposal once with a reason in the present continuous (I'm afraid I can't. I'm visiting a client in Viana.) and accepts the second proposal (if it is at the weekend or at night, the examiner asks once for a weekday between 9 and 5, then accepts). At the end, the examiner asks the student to repeat the new day and time.",
    "nivel": "A2",
    "duracao_min": 3,
    "estado": "activo",
    "extras": {
     "exame": true,
     "parte": 3,
-    "frase_inicial": "Now a situation. I'm your client, Sam Kiala. We have a meeting tomorrow at ten, but you need to move it. You call me. Hello, Sam Kiala speaking."
+    "frase_inicial": "Now a situation. I'm your client, Sam Lopes. We have a meeting tomorrow at ten, but you need to move it. You call me. Hello, Sam Lopes speaking."
    },
    "frases": [
     "I'm calling about our meeting tomorrow.",

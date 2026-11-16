@@ -127,7 +127,8 @@ Objectivo da aula: No fim, o aluno consegue descrever as três partes do exame o
   (Do you mean…?).
 Objectivos de unidade que revê: U1–U5, todos
 Gramática revista: toda a do A2.1
-Língua nova (blocos fixos): That's a good question. Well… · Do you mean…?
+Língua nova (blocos fixos): That's a good question. Well… · Do you mean…? · background (= percurso de estudos e de
+  trabalho, a palavra que o examinador usa na parte 1)
 Situação: a Lurdes (dos exames do A1) faz o exame de demonstração do A2.1
 Duração: 10 min
 Verificação: conversa de ensaio; exame oral do A2.1
@@ -222,7 +223,7 @@ Verificação: conversa de ensaio; exame oral do A2.1
 **PROF:** Part two: Tell me about a difficult day at work, or at school. What happened?
 [PAUSA 20 s]
 [ECRÃ: I was … when … First, … Then … In the end, …]
-**PROF:** Part three: I'm your colleague. I have a terrible headache, and I have a lot of work. What should I do?
+**PROF:** Part three: I'm your colleague. I'm very stressed, and I can't sleep. What should I do?
 [PAUSA 10 s]
 [ECRÃ: You should … You don't have to … Why don't you … ?]
 
