@@ -179,7 +179,7 @@
     },
     {
      "tipo": "pronuncia",
-     "frase": "Sorry, can you say it again, please? Let me think.",
+     "frase": "Sorry, can you repeat that, please? Let me think.",
      "enunciado": "Ouça e repita as estratégias do exame."
     }
    ]
@@ -316,7 +316,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "I usually play basketball on Saturdays. On Sundays I call my family.",
+     "frase": "I usually play basketball on Saturdays. On Sundays I go to church with my family.",
      "enunciado": "O que faz o Nuno aos sábados?",
      "opcoes": [
       {
@@ -324,7 +324,7 @@
        "certa": true
       },
       {
-       "texto": "telefona à família",
+       "texto": "vai à igreja",
        "certa": false
       },
       {

@@ -23,7 +23,7 @@ O examinador faz **uma pergunta de cada vez**, fala devagar, usa só língua das
 | 1 | Hello, {nome}. Welcome to your speaking exam. What's your surname, and how do you spell it? | What's your surname? Spell it, please. |
 | 2 | Where are you from? | Your city? Your country? |
 | 3 | What do you do? | What's your job? |
-| 4 | Where do you work? | Your company? Your office? (Se o aluno disser que não trabalha: "Are you a student?") |
+| 4 | Where do you work? | Your company? Your office? (Se o aluno não trabalhar — estudante, desempregado, reformado —, aceitar e perguntar: "What do you do every day?") |
 | 5 | Tell me about your family. | Do you have brothers and sisters? Do you have children? |
 | 6 | (Seguimento, conforme a resposta) What's his / her name? How old is he / she? | — |
 
@@ -65,7 +65,7 @@ A plataforma dá uma nota de 0 a 100 a cada competência, a partir da transcriç
 | **Fluência** | Frases curtas seguidas, com poucas pausas longas. | Pausas frequentes, mas continua a falar; usa "Let me think". | Pausas longas e frases muito curtas. | Quase não consegue continuar sem ajuda. |
 | **Pronúncia** (só com gravação) | Percebe-se sempre; sons difíceis (/θ/, /ð/, *-s*) geralmente certos. | Percebe-se quase sempre, com sotaque português claro. | Percebe-se com esforço. | Difícil de perceber. |
 
-**O que NÃO baixa a nota no A1.1:** sotaque português; pedir para repetir ("Can you say it again, please?"); dizer "Let me think"; uma palavra em português seguida da explicação em inglês; respostas curtas quando a pergunta é de sim ou não.
+**O que NÃO baixa a nota no A1.1:** sotaque português; pedir para repetir ("Can you repeat that, please?"); dizer "Let me think"; uma palavra em português seguida da explicação em inglês; respostas curtas quando a pergunta é de sim ou não.
 
 **Regras da plataforma que se mantêm:** o exame abre com 80% das aulas do A1.1 concluídas; só conta a chamada verificada com pelo menos 2 minutos; depois de reprovar, repete-se 7 dias depois; no máximo 3 exames começados por semana; a gravação só com consentimento, guardada um ano.
 
@@ -74,7 +74,7 @@ A plataforma dá uma nota de 0 a 100 a cada competência, a partir da transcriç
 O exame oral da plataforma (`apps/practice/conversa/exame.py`) foi feito para cursos de trabalho de nível B1. Para o A1.1 há três problemas:
 
 1. **O guião do examinador é igual para todos os níveis.** Pede 8 a 10 minutos, perguntas como "What would you do next, and why?" (condicional, nível B1) e uma pergunta de opinião no fim. Para o A1.1 é preciso o guião deste documento: 4 a 6 minutos, as três partes e as perguntas acima. **Proposta:** a estrutura do exame passa a depender do nível do curso (A1 com este guião; A2 e acima com o actual), ou o curso passa a guardar o seu próprio guião de exame.
-2. **As tarefas saem das primeiras 4 situações do curso.** Num curso A1.1 com os cenários do tutor das unidades 1 a 5, o exame usaria só as situações das unidades 1 e 2. **Proposta:** marcar as situações próprias do exame ([exame-situacoes.json](exame-situacoes.json)) e o examinador escolher uma ao acaso.
+2. **As tarefas saem das primeiras 4 situações do curso.** Num curso A1.1 com os cenários do tutor das unidades 1 a 5, o exame usaria só as situações das unidades 1 e 2. **Proposta:** marcar as situações próprias do exame ([exame-situacoes.json](exame-situacoes.json), com `extras.exame = true`) e o examinador escolher uma ao acaso. Essas situações **não devem aparecer** na lista de conversas do aluno: hoje, uma situação activa do curso aparece lá, e o aluno poderia treinar a situação exacta do exame.
 3. **A escala de avaliação não tem nível.** O Claude avalia com critérios gerais; para o A1.1 deve receber a escala da secção 3, para não penalizar o aluno A1 por não usar estruturas de B1.
 
 Estas mudanças tocam no exame que já está em produção (o curso "English Communication Skills L1" tem o exame ligado), por isso devem ser feitas com testes e decididas antes de carregar o A1.1.

@@ -2,7 +2,7 @@
 
 Guiões para o professor de IA. Conteúdo original da ProEnglish. Convenções e personagens: ver os [guiões da unidade 1](../unidade-01/guioes.md) e as famílias e rotinas das [unidades 4](../unidade-04/guioes.md) e [5](../unidade-05/guioes.md).
 
-**Língua que a revisão pode usar:** tudo das unidades 1 a 5, e nada de novo, com uma excepção: três expressões para ganhar tempo e pedir ajuda num exame (*Let me think. I don't understand. Can you say it again, please?*).
+**Língua que a revisão pode usar:** tudo das unidades 1 a 5, e nada de novo, com uma excepção: duas expressões para ganhar tempo e pedir ajuda num exame (*Let me think. I don't understand.*). Para pedir que repitam, usa-se a frase da unidade 1: *Can you repeat that, please?*
 
 **Personagem nova:** **Nuno Kapinga**, estagiário de informática, de Lubango, 22 anos, primeiro dia na Kalandula Tech.
 
@@ -40,13 +40,13 @@ Verificação: laboratórios R1-1 e R1-2; conversa "Getting to know a new collea
 **PAULO:** Where are you from?
 **NUNO:** I'm from Lubango, in Huíla. I'm twenty-two.
 **PAULO:** What do you do here?
-**NUNO:** I'm an IT intern. I help the IT team with computers and the phones.
+**NUNO:** I'm an IT intern. I help the IT team with the computers and the phones.
 **PAULO:** Do you have a big family?
 **NUNO:** Yes, I do! I have three sisters. My mother is a nurse and my father has a small shop in Lubango.
 **PAULO:** What time do you start work?
 **NUNO:** At eight. I get up at six and I take a candongueiro. I'm never late!
 **PAULO:** And what do you do at the weekend?
-**NUNO:** I usually play basketball on Saturdays. On Sundays I call my family.
+**NUNO:** I usually play basketball on Saturdays. On Sundays I go to church with my family.
 **PAULO:** Great. Last question: how often do you speak English?
 **NUNO:** Every day! Well… sometimes. I speak English with clients, but not every day.
 **PAULO:** Thank you, Nuno. Welcome to the team!
@@ -104,10 +104,19 @@ Verificação: laboratórios R1-1 e R1-2; conversa "Getting to know a new collea
 [PAUSA 5 s]
 **PROF:** Tell me about your family.
 [PAUSA 10 s]
+[ECRÃ: I have … / I'm married / single. … / I prefer not to say.]
 **PROF:** What time do you get up? How do you go to work?
 [PAUSA 8 s]
 **PROF:** What do you usually do at the weekend?
 [PAUSA 8 s]
+
+**PROF:** Now you are the interviewer. Ask Nuno three questions.
+(PT: Agora é o entrevistador. Faça três perguntas ao Nuno.)
+[ECRÃ: fotografia do Nuno]
+[PAUSA 15 s]
+[ECRÃ: modelos — Where are you from? · What do you do? · Do you have brothers and sisters? · What time do you get up? · How do you go to work?]
+**PROF:** Good questions! Remember: questions with "be" (Where are you…?) and with "do" (What do you…?).
+(PT: Lembre-se: perguntas com "be" e perguntas com "do".)
 
 ### 6. Fecho (30 s)
 
@@ -121,12 +130,12 @@ Verificação: laboratórios R1-1 e R1-2; conversa "Getting to know a new collea
 ```
 Curso: A1.1        Unidade: Revisão 1        Aula: R1B — Getting ready for the speaking exam        Tipo: Revisão
 Objectivo da aula: No fim, o aluno consegue descrever as três partes do exame oral do A1.1, sabe o que é
-  avaliado e usa três estratégias quando não percebe ou precisa de tempo (Can you say it again,
+  avaliado e usa três estratégias quando não percebe ou precisa de tempo (Can you repeat that,
   please? / I don't understand. / Let me think.).
 Objectivos de unidade que revê: U1–U5, todos
 Gramática revista: toda a do A1.1
-Língua nova (blocos fixos): Let me think. · I don't understand. · Can you say it again, please?
-Situação: um aluno-modelo (Teresa) faz um exame de demonstração
+Língua nova (blocos fixos): Let me think. · I don't understand. (Can you repeat that, please? já é da unidade 1.)
+Situação: uma aluna-modelo (Lurdes) faz um exame de demonstração
 Duração: 10 min
 Verificação: conversa "Getting to know a new colleague" (ensaio); exame oral do A1.1
 ```
@@ -155,6 +164,9 @@ Verificação: conversa "Getting to know a new colleague" (ensaio); exame oral d
 **PROF:** Before the exam, you choose: record your voice, or not. With the recording, your pronunciation counts too.
 (PT: Antes do exame escolhe se aceita a gravação da voz. Com gravação, a pronúncia também conta para a nota. A gravação é guardada um ano, e pode pedir para a apagar.)
 
+**PROF:** The exam opens when you finish most of the A1.1 lessons. You can start it when you're ready.
+(PT: O exame abre quando tiver feito 80% das aulas do A1.1. Começa-o quando se sentir preparado. Se não passar, pode repetir uma semana depois.)
+
 ### 3. O que é avaliado (1 min 30 s)
 
 [ECRÃ: cinco ícones]
@@ -172,9 +184,9 @@ Verificação: conversa "Getting to know a new colleague" (ensaio); exame oral d
 
 ### 4. Três estratégias (2 min)
 
-[ECRÃ: **Can you say it again, please?** — Pode repetir, por favor? · **I don't understand.** — Não percebo. · **Let me think.** — Deixe-me pensar.]
+[ECRÃ: **Can you repeat that, please?** — Pode repetir, por favor? (unidade 1) · **I don't understand.** — Não percebo. · **Let me think.** — Deixe-me pensar.]
 
-**PROF:** Strategy one: you don't understand a question? Say: Sorry, can you say it again, please?
+**PROF:** Strategy one: you don't understand a question? Say: Sorry, can you repeat that, please? You know it from Unit 1!
 [PAUSA 4 s]
 **PROF:** Strategy two: still don't understand? Say: Sorry, I don't understand. The examiner says it in a different way.
 [PAUSA 4 s]
@@ -189,36 +201,39 @@ Verificação: conversa "Getting to know a new colleague" (ensaio); exame oral d
 
 ### 5. Um exame de demonstração (3 min)
 
-**PROF:** Now watch Teresa. She does a short practice exam. Listen to how she answers.
-(PT: Agora veja a Teresa a fazer um pequeno exame de treino. Repare em como responde.)
+**PROF:** Now watch Lurdes. She does a short practice exam. Listen to how she answers.
+(PT: Agora veja a Lurdes a fazer um pequeno exame de treino. Repare em como responde.)
 
-[ECRÃ: "Practice exam — Teresa"; ícone do examinador]
+[ECRÃ: "Practice exam — Lurdes"; ícone do examinador]
 
-**EXAMINADOR:** Hello, Teresa. Welcome to your speaking exam. What's your surname, and how do you spell it?
-**TERESA:** Hello. My surname is Cassoma. C, A, double S, O, M, A.
+**EXAMINADOR:** Hello, Lurdes. Welcome to your speaking exam. What's your surname, and how do you spell it?
+**LURDES:** Hello. My surname is Cassoma. C, A, double S, O, M, A.
 **EXAMINADOR:** Thank you. Where are you from?
-**TERESA:** I'm from Benguela, but I work in Luanda.
+**LURDES:** I'm from Benguela, but I work in Luanda.
 **EXAMINADOR:** What do you do?
-**TERESA:** I'm an accountant. I work for a bank.
+**LURDES:** I'm an accountant. I work for a bank.
 **EXAMINADOR:** Tell me about your family.
-**TERESA:** I'm married. My husband is a driver. We have two children, a boy and a girl.
+**LURDES:** I'm married. My husband is a driver. We have two children, a boy and a girl.
 **EXAMINADOR:** Now tell me about your day.
-**TERESA:** Let me think… I get up at five thirty. I take my children to school, and I start work at eight. I usually finish at four.
+**LURDES:** Let me think… I get up at five thirty. I take my children to school, and I start work at eight. I usually finish at four.
 **EXAMINADOR:** And your husband? What time does he start work?
-**TERESA:** Sorry, can you say it again, please?
+**LURDES:** Sorry, can you repeat that, please?
 **EXAMINADOR:** Your husband. What time does he start work?
-**TERESA:** Ah! He starts at six. He gets up very early.
+**LURDES:** Ah! He starts at six. He gets up very early.
 **EXAMINADOR:** Thank you. Now a situation. I'm your colleague. I need a meeting with you this week. When are you free?
-**TERESA:** I'm busy on Monday and Tuesday. How about Wednesday at ten?
+**LURDES:** I'm busy on Monday and Tuesday. How about Wednesday at ten?
 **EXAMINADOR:** Sorry, I'm busy on Wednesday morning.
-**TERESA:** OK. Is Thursday at two OK for you?
+**LURDES:** OK. Is Thursday at two OK for you?
 **EXAMINADOR:** Yes, that's fine.
-**TERESA:** Perfect. See you on Thursday at two.
-**EXAMINADOR:** Thank you, Teresa. The exam is finished.
+**LURDES:** Perfect. See you on Thursday at two.
+**EXAMINADOR:** Thank you, Lurdes. The exam is finished. You can press the finish button now.
 
-**PROF:** Look at what Teresa does well.
+**PROF:** At the end, the examiner says "press the finish button". Then you press "Finish" on the screen.
+(PT: No fim, o examinador pede que carregue em "Terminar" no ecrã. A nota chega pouco depois.)
+
+**PROF:** Look at what Lurdes does well.
 [ECRÃ: lista com vistos]
-**PROF:** She spells her name. She answers in full sentences. She uses "he starts" for her husband. She says "Let me think" and "Can you say it again, please?". And in the situation, she proposes a new day and confirms.
+**PROF:** She spells her name. She answers in full sentences. She uses "he starts" for her husband. She says "Let me think" and "Can you repeat that, please?". And in the situation, she proposes a new day and confirms.
 (PT: Soletra o nome, responde com frases completas, usa a 3.ª pessoa, usa as estratégias, e na situação propõe outro dia e confirma.)
 
 ### 6. Pratique cada parte (1 min)

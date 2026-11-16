@@ -244,7 +244,7 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 | Aula | Título | Objectivo |
 |---|---|---|
 | R1A | Review: me, my work, my day | Apresentar-se durante 2 minutos e fazer pelo menos três perguntas a outra pessoa; corrigir os 10 erros mais comuns do A1.1. |
-| R1B | Getting ready for the speaking exam | Conhecer as três partes do exame e o que se avalia, e usar três estratégias (*Can you say it again, please? I don't understand. Let me think.*). |
+| R1B | Getting ready for the speaking exam | Conhecer as três partes do exame e o que se avalia, e usar três estratégias (*Can you repeat that, please? I don't understand. Let me think.*). |
 
 - **Laboratório:** 2 lições de revisão (unidades 1–3 e 4–5), com os erros mais comuns.
 - **Conversa:** "Getting to know a new colleague" — ensaio do exame.
