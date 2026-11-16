@@ -84,7 +84,7 @@
     "primeira_fala_simples": "Hello, help desk. What's the problem?",
     "guiao": [
      "I see. What happened exactly? What does the screen say?",
-     "OK. First, click the Wi-Fi icon. Is the Wi-Fi on?",
+     "OK. First, click the Wi-Fi icon. Is the Wi-Fi on? If it's off, turn it on.",
      "Now turn the laptop off and on again. Tell me when it's on. What happens?",
      "Now choose the network \"Office-WiFi\" and type the password. It's on a card at reception.",
      "Is it working now?",
