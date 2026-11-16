@@ -82,7 +82,7 @@ export function Moldura({ site, actual, children }: { site: Site; actual: "inici
           </dl>
         ) : null}
         <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-4 py-10 md:flex-row md:flex-wrap md:items-center md:gap-x-10 md:px-6">
-          <Logo versao="azul-assinatura" altura={44} className="h-11 w-auto shrink-0 self-start md:self-center" />
+          <Logo versao="azul-assinatura" altura={64} className="h-16 w-auto shrink-0 self-start md:h-14 md:self-center" />
           <nav aria-label="Rodapé" className="flex flex-1 flex-wrap gap-x-6 gap-y-1 text-[15px]">
             <Link href="/termos" className="py-2">Termos de utilização</Link>
             <Link href="/privacidade" className="py-2">Privacidade</Link>
