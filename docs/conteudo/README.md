@@ -15,7 +15,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | Ficheiro | O que é |
 |---|---|
 | [01-fontes-do-curso.md](01-fontes-do-curso.md) | Estudo das fontes (quadros, manuais, recursos abertos), regra legal e programa A1–C1 em 50 unidades. Versão partilhada com a equipa: [Claude Docs](https://claude.ai/artifact/Q2ANYkpHboytWvLWU8kTAS). |
-| [02-plano-A1.md](02-plano-A1.md) | Plano completo do nível A1: unidades, aulas, objectivos, laboratório, tutor e avaliação. |
+| [02-plano-A1.md](02-plano-A1.md) | Plano completo do nível A1, dividido em A1.1 e A1.2: unidades, aulas, objectivos, laboratório, tutor, reciclagem, colocação e avaliação. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.
