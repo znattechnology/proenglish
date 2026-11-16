@@ -117,7 +117,7 @@
     {
      "tipo": "escuta",
      "frase": "Hello, I'm Sílvia. Nice to meet you.",
-     "enunciado": "What's her name?",
+     "enunciado": "Como se chama a pessoa que fala?",
      "opcoes": [
       {
        "texto": "Sílvia",
@@ -132,6 +132,12 @@
        "certa": false
       }
      ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Como se chama?",
+     "resposta": "What's your name?",
      "explicacao": ""
     },
     {
@@ -161,8 +167,8 @@
    "exercicios": [
     {
      "tipo": "escuta",
-     "frase": "My surname is Neto. N-E-T-O.",
-     "enunciado": "How do you spell the surname?",
+     "frase": "My surname is Neto. N, E, T, O.",
+     "enunciado": "Como se escreve o apelido?",
      "opcoes": [
       {
        "texto": "NETO",
@@ -247,8 +253,8 @@
     },
     {
      "tipo": "escuta",
-     "frase": "My email is ana dot domingos at kalandula dot co dot ao.",
-     "enunciado": "What's the email address?",
+     "frase": "My email is ana dot domingos at kalandula dot co dot A, O.",
+     "enunciado": "Qual é o e-mail?",
      "opcoes": [
       {
        "texto": "ana.domingos@kalandula.co.ao",
@@ -318,7 +324,7 @@
     {
      "tipo": "escuta",
      "frase": "My phone number is nine two three, four five one, eight zero six.",
-     "enunciado": "What's the phone number?",
+     "enunciado": "Qual é o número?",
      "opcoes": [
       {
        "texto": "923 451 806",
@@ -338,7 +344,7 @@
     {
      "tipo": "escuta",
      "frase": "Thirteen.",
-     "enunciado": "Which number do you hear?",
+     "enunciado": "Que número ouve?",
      "opcoes": [
       {
        "texto": "13",
@@ -398,9 +404,22 @@
     },
     {
      "tipo": "escuta",
-     "frase": "fifteen",
-     "enunciado": "Escreva o que ouve.",
-     "opcoes": [],
+     "frase": "Fifteen.",
+     "enunciado": "Que número ouve?",
+     "opcoes": [
+      {
+       "texto": "15",
+       "certa": true
+      },
+      {
+       "texto": "5",
+       "certa": false
+      },
+      {
+       "texto": "50",
+       "certa": false
+      }
+     ],
      "explicacao": ""
     },
     {
@@ -565,7 +584,7 @@
     {
      "tipo": "escuta",
      "frase": "Morning, Teresa. I'm David. Nice to meet you.",
-     "enunciado": "What's his name?",
+     "enunciado": "Como se chama o homem?",
      "opcoes": [
       {
        "texto": "David",
@@ -585,7 +604,7 @@
     {
      "tipo": "escuta",
      "frase": "Hello. I'm Richard Green. I have a meeting with you at three.",
-     "enunciado": "What time is the meeting?",
+     "enunciado": "A que horas é a reunião?",
      "opcoes": [
       {
        "texto": "3:00",
@@ -604,8 +623,8 @@
     },
     {
      "tipo": "escuta",
-     "frase": "It's nine two six, one one eight, four zero two.",
-     "enunciado": "What's the number?",
+     "frase": "It's nine two six, double one eight, four zero two.",
+     "enunciado": "Qual é o número?",
      "opcoes": [
       {
        "texto": "926 118 402",
@@ -624,8 +643,8 @@
     },
     {
      "tipo": "escuta",
-     "frase": "My name is Okafor. O-K-A-F-O-R.",
-     "enunciado": "How do you spell the name?",
+     "frase": "My name is Okafor. O, K, A, F, O, R.",
+     "enunciado": "Como se escreve o nome?",
      "opcoes": [
       {
        "texto": "OKAFOR",
@@ -695,18 +714,18 @@
    "exercicios": [
     {
      "tipo": "escolher",
-     "enunciado": "Quer apresentar a Sílvia a um colega. O que diz?",
+     "enunciado": "O chefe diz: \"This is Sílvia.\" O que responde à Sílvia?",
      "opcoes": [
       {
-       "texto": "This is Sílvia.",
+       "texto": "Nice to meet you.",
        "certa": true
       },
       {
-       "texto": "Here is Sílvia name.",
+       "texto": "This is Sílvia.",
        "certa": false
       },
       {
-       "texto": "She Sílvia.",
+       "texto": "Good night.",
        "certa": false
       }
      ],
@@ -715,7 +734,7 @@
     {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
-     "frase": "She's [an] accountant.",
+     "frase": "I'm [an] accountant.",
      "opcoes": [
       {
        "texto": "a",
@@ -780,8 +799,8 @@
     },
     {
      "tipo": "escuta",
-     "frase": "Hi, Paulo. Nice to meet you. I'm Sílvia, the accountant.",
-     "enunciado": "What's Sílvia's job?",
+     "frase": "Hi, Paulo. Nice to meet you. I'm Sílvia. I'm an accountant.",
+     "enunciado": "Qual é a profissão da Sílvia?",
      "opcoes": [
       {
        "texto": "accountant",
@@ -856,7 +875,7 @@
     {
      "tipo": "escuta",
      "frase": "My number is nine one two, double seven three, one four oh.",
-     "enunciado": "What's the number?",
+     "enunciado": "Qual é o número?",
      "opcoes": [
       {
        "texto": "912 773 140",
@@ -957,7 +976,7 @@
     },
     {
      "tipo": "pronuncia",
-     "frase": "This is Sílvia. She's an accountant.",
+     "frase": "Hi, I'm Sílvia. I'm an accountant.",
      "enunciado": "Ouça e repita em voz alta."
     },
     {

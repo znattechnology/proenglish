@@ -119,21 +119,21 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 ### Unidade 1 — Hello!
 
 **Objectivos da unidade.** No fim, o aluno consegue:
-1. cumprimentar e despedir-se, de forma formal e informal, conforme a hora do dia;
-2. dizer o nome e perguntar o nome de outra pessoa;
-3. soletrar o nome e ditar um endereço de e-mail;
-4. dizer e entender números de 0 a 20 e um número de telemóvel.
+1. cumprimentar, responder a "How are you?" e despedir-se, escolhendo a expressão certa para a hora do dia (*good morning / afternoon / evening*) e para a situação (*hello, hi; goodbye, see you tomorrow*);
+2. apresentar-se (*I'm… / My name is…*), perguntar o nome de outra pessoa (*What's your name? / And you?*) e responder quando lhe apresentam alguém (*This is… — Nice to meet you*);
+3. soletrar o nome e o apelido, dizer um endereço de e-mail (*at, dot*) e, quando não percebe, pedir que repitam ou soletrem;
+4. dizer os números de 0 a 20 e dizer e anotar um número de telemóvel ditado em grupos de três.
 
 | Aula | Tipo | Título | Objectivo da aula |
 |---|---|---|---|
-| 1A | Língua | Hello, I'm… | Cumprimentar, apresentar-se e despedir-se. |
-| 1B | Língua | Spell it, please | Soletrar o nome e ditar um e-mail (*at*, *dot*). |
-| 1C | Língua | My number is… | Dizer números de 0 a 20 e um número de telemóvel em grupos. |
-| 1D | Vocabulário e pronúncia | Sounds and letters | Distinguir os sons das letras que se confundem e ler palavras simples em voz alta. |
-| 1E | Real English | Hello at work | Entender cumprimentos, nomes soletrados e números de telefone ditos por pessoas diferentes, a velocidade quase natural. |
-| 1F | Work & Life | First day at the office | Apresentar-se na recepção e a um colega no primeiro dia. |
+| 1A | Língua | Hello, I'm… | Cumprimentar conforme a hora do dia, dizer e perguntar o nome, responder a "How are you?" e despedir-se. |
+| 1B | Língua | Spell it, please | Soletrar o nome e o apelido, dizer um e-mail com *at* e *dot* e pedir que repitam ou soletrem. |
+| 1C | Língua | My number is… | Dizer os números de 0 a 20 e dizer e anotar um número de telemóvel ditado em grupos de três. |
+| 1D | Vocabulário e pronúncia | Sounds and letters | Dizer as 26 letras pelos sete grupos de som e distinguir as que se confundem (A/E, E/I, G/J, H, W, Y). |
+| 1E | Real English | Hello at work | Identificar, em quatro conversas a velocidade quase natural, a parte do dia, um nome soletrado e um número de telefone. |
+| 1F | Work & Life | First day at the office | No primeiro dia, apresentar-se na recepção (nome, soletração, telefone) e a um colega com a profissão (*a/an*), e responder quando lhe apresentam alguém. |
 
-- **Gramática:** *be* com I e you (+, −, ?); contracções *I'm*, *you're*; *a/an*.
+- **Gramática:** *be* com I e you (+, −, ?); contracções *I'm*, *you're*; *a/an* com a profissão (*I'm a technician*). Blocos fixos, sem análise gramatical: *What's your name? My name is… This is…*
 - **Vocabulário (~40):** cumprimentos, despedidas, alfabeto, números 0–20, *first name, surname, email, phone number*.
 - **Pronúncia:** letras que se confundem (A/E/I, G/J); o /h/ de *hello*; *I'm*.
 - **Laboratório:** ordenar um diálogo; o cumprimento certo para a hora; ditado de letras e números; pronúncia de *nice to meet you*; resposta falada "What's your name? Spell it."

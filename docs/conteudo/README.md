@@ -6,7 +6,11 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 
 1. **Seguimos as fontes à risca no que se ensina e quando.** O âmbito e a sequência de cada nível vêm dos quadros de referência (Core Inventory, CEFR Companion Volume, listas de vocabulário por nível) e são aferidos com os manuais actuais (Speakout 3e, Empower 2e, English File 4e). Ver [01-fontes-do-curso.md](01-fontes-do-curso.md).
 2. **O conteúdo é sempre nosso.** Guiões, diálogos, exercícios, frases, "can-do" e cenários são escritos pela equipa. Nada se copia, adapta ou traduz de manuais comerciais. Material aberto (VOA, Tatoeba, Common Voice, NGSL, CMUdict) só entra com a origem e a licença registadas em cada item.
-3. **Cada unidade e cada aula têm objectivos definidos e verificáveis.** Um objectivo diz o que o aluno *consegue fazer* no fim ("consegue pedir uma refeição e perguntar o preço"), não o que se *estuda*. Cada objectivo tem a forma de o verificar (exercício, questionário ou conversa com o tutor).
+3. **Cada unidade e cada aula têm objectivos definidos e verificáveis.** Um objectivo diz o que o aluno *consegue fazer* no fim, não o que se *estuda*. Fórmula: **"No fim, o aluno consegue" + verbo observável + o quê + com que língua ou em que condições.** Exemplo: "consegue dizer e anotar um número de telemóvel ditado em grupos de três" (e não "conhecer os números").
+   - Verbos que se observam: dizer, perguntar, responder, pedir, soletrar, identificar, anotar, descrever, combinar. Evitar: saber, conhecer, compreender, aprender.
+   - O objectivo só pode exigir língua que a aula ensina. O que o aluno só ouve (sem produzir) diz-se "reconhecer" ou "identificar".
+   - Cada objectivo tem onde ser verificado: exercício do laboratório, pergunta do questionário ou critério da conversa com o tutor.
+   - Instruções e perguntas para o aluno em português até ao fim do A1.1, sempre que o inglês da pergunta seja mais difícil do que a língua que se avalia.
 4. **A fala vem primeiro.** Cada unidade termina numa conversa com o tutor e cada aula tem um momento de produção oral. A pronúncia mede-se pela inteligibilidade, não pela imitação de um sotaque nativo.
 5. **Contexto de Angola.** Nomes, lugares, moeda (kwanza), serviços (Multicaixa) e situações de trabalho são angolanos, salvo quando a situação pede outro país (viagem, colega estrangeiro).
 

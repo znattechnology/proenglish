@@ -80,7 +80,7 @@
     "guiao": [
      "Welcome! Nice to meet you. What's your name?",
      "Sorry, how do you spell that?",
-     "Are you the new IT technician?",
+     "Are you the new IT technician? Or are you an engineer?",
      "Great! What's your phone number?",
      "Thank you. Do you have a question for me?",
      "It's the end of the day. Goodbye, {nome}! See you tomorrow."

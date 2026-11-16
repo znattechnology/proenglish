@@ -6,10 +6,10 @@
 
 No fim da unidade, o aluno consegue:
 
-1. cumprimentar e despedir-se, de forma formal e informal, conforme a hora do dia;
-2. dizer o nome e perguntar o nome de outra pessoa;
-3. soletrar o nome e ditar um endereço de e-mail;
-4. dizer e entender números de 0 a 20 e um número de telemóvel.
+1. cumprimentar, responder a "How are you?" e despedir-se, escolhendo a expressão certa para a hora do dia (*good morning / afternoon / evening*) e para a situação (*hello, hi; goodbye, see you tomorrow*);
+2. apresentar-se (*I'm… / My name is…*), perguntar o nome de outra pessoa (*What's your name? / And you?*) e responder quando lhe apresentam alguém (*This is… — Nice to meet you*);
+3. soletrar o nome e o apelido, dizer um endereço de e-mail (*at, dot*) e, quando não percebe, pedir que repitam ou soletrem;
+4. dizer os números de 0 a 20 e dizer e anotar um número de telemóvel ditado em grupos de três.
 
 | Objectivo | Aulas | Laboratório | Tutor | Questionário |
 |---|---|---|---|---|
@@ -23,7 +23,7 @@ No fim da unidade, o aluno consegue:
 | Ficheiro | Conteúdo | Pronto a carregar? |
 |---|---|---|
 | [guioes.md](guioes.md) | Os 6 guiões das vídeo-aulas (1A a 1F), com ficha, falas do professor, diálogos, legendas em português, ecrãs e pausas | Para o professor de IA |
-| [laboratorio.json](laboratorio.json) | 7 lições de laboratório (1A a 1F e 1R de reciclagem), 66 exercícios, 17 deles falados | Sim: formato do editor do professor, validado com `pratica_formato.validar` (0 erros) |
+| [laboratorio.json](laboratorio.json) | 7 lições de laboratório (1A a 1F e 1R de reciclagem), 67 exercícios, 17 deles falados (11 de pronúncia e 6 de resposta livre) | Sim: formato do editor do professor, validado com `pratica_formato.validar` (0 erros) |
 | [tutor.json](tutor.json) | 2 cenários do tutor: guiada (depois da 1C) e livre (no fim), com guião, frases-alvo e critérios | Sim: campos do modelo `Situacao` |
 | [questionario.json](questionario.json) | Questionário da unidade: 12 perguntas, aprovação a 70%, 3 tentativas | Sim: formato `quiz_data` do capítulo |
 
@@ -54,6 +54,6 @@ No fim da unidade, o aluno consegue:
 
 1. **Revisão pelos professores** dos guiões, dos exercícios e do questionário.
 2. **Vídeo:** gravar as 6 aulas com o professor de IA a partir dos guiões (as vozes das personagens e as 8 vozes da 1E precisam de vozes diferentes).
-3. **Áudio do laboratório:** os exercícios de escuta (15) e de pronúncia (17) precisam de áudio gerado por síntese de voz. Depende de crédito na conta OpenAI (ou de outro serviço de voz).
+3. **Áudio do laboratório:** os exercícios de escuta (14) e de pronúncia (11) precisam de áudio gerado por síntese de voz. Depende de crédito na conta OpenAI (ou de outro serviço de voz).
 4. **Carregar na plataforma:** criar o curso A1.1 (vídeo e laboratório) e carregar a unidade 1 a partir destes ficheiros.
 5. **Imagens:** as aulas 1D (sete cores dos grupos de som) e 1F (escritório) precisam de imagens próprias ou de bancos livres.

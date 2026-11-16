@@ -23,11 +23,14 @@ A Kalandula Tech é uma empresa fictícia. Os contactos e e-mails usados são in
 
 ```
 Curso: A1.1        Unidade: 1        Aula: 1A — Hello, I'm…        Tipo: Língua
-Objectivo da aula: No fim, o aluno consegue cumprimentar, apresentar-se e despedir-se.
+Objectivo da aula: No fim, o aluno consegue cumprimentar conforme a hora do dia, dizer o nome
+  (I'm… / My name is…), perguntar o nome (What's your name? / And you?), responder a
+  "How are you?" e despedir-se.
 Objectivo da unidade a que serve: 1, 2
 Gramática-alvo: be com I e you (I'm / you're / Are you…? Yes, I am. / No, I'm not.)
-Palavras-alvo: hello, hi, good morning, good afternoon, good evening, goodbye, bye,
-  see you, how are you, fine, thanks, thank you, nice to meet you, name, I'm, you're
+Blocos fixos (aprendidos como expressões, sem análise): What's your name? My name is… And you?
+Palavras-alvo: hello, hi, good morning, good afternoon, good evening, good night, goodbye, bye,
+  see you tomorrow, how are you, fine, thanks, thank you, nice to meet you, name, I'm, you're
 Reciclagem: — (primeira aula)
 Pronúncia: o /h/ de hello e how; a contracção I'm
 Contexto: entrada da Kalandula Tech, Talatona, 8 horas da manhã
@@ -57,7 +60,7 @@ Verificação: Lab 1A (exercícios 1–9); perguntas 1, 2 e 3 do questionário d
 
 **ANA:** Good morning!
 **PAULO:** Good morning!
-**ANA:** I'm Ana. Ana Domingos.
+**ANA:** I'm Ana. Ana Domingos. What's your name?
 **PAULO:** Hello, Ana. I'm Paulo. Paulo Mendes.
 **ANA:** Nice to meet you, Paulo.
 **PAULO:** Nice to meet you, too.
@@ -101,8 +104,16 @@ Verificação: Lab 1A (exercícios 1–9); perguntas 1, 2 e 3 do questionário d
 **PROF:** To say your name: I'm Ana. I'm Paulo. "I'm" is "I am". We usually say "I'm".
 (PT: Para dizer o nome: "I'm…". "I'm" é a forma curta de "I am" e é a mais usada a falar.)
 
-**PROF:** Or: My name is Ana. My name's Ana.
+**PROF:** Or: My name is Ana.
 (PT: Também se pode dizer "My name is…".)
+
+**Perguntar o nome**
+
+[ECRÃ: **What's your name?** — Como se chama? · **I'm Paulo. And you?** — Sou o Paulo. E você?]
+
+**PROF:** To ask a name: What's your name? The answer: I'm Paulo. Then you ask back: And you?
+(PT: Para perguntar o nome: "What's your name?". Depois de responder, devolva a pergunta: "And you?")
+[PAUSA 4 s — o aluno repete "What's your name?"]
 
 **Perguntar: *Are you…?***
 
@@ -166,9 +177,13 @@ Verificação: Lab 1A (exercícios 1–9); perguntas 1, 2 e 3 do questionário d
 [PAUSA 5 s]
 [ECRÃ: I'm fine, thanks. And you?]
 
-**PROF:** I'm fine, thank you. Are you a student?
+**PROF:** I'm fine, thank you. Are you Paulo?
 [PAUSA 4 s]
-[ECRÃ: Yes, I am.]
+[ECRÃ: No, I'm not. I'm … / Yes, I am.]
+
+**PROF:** Now you ask me my name.
+[PAUSA 4 s]
+[ECRÃ: What's your name?]
 
 **PROF:** It's seven o'clock in the evening. You arrive at a meeting. What do you say?
 (PT: São sete da noite. Chega a uma reunião. O que diz?)
@@ -195,7 +210,8 @@ Verificação: Lab 1A (exercícios 1–9); perguntas 1, 2 e 3 do questionário d
 
 ```
 Curso: A1.1        Unidade: 1        Aula: 1B — Spell it, please        Tipo: Língua
-Objectivo da aula: No fim, o aluno consegue soletrar o nome e ditar um endereço de e-mail.
+Objectivo da aula: No fim, o aluno consegue soletrar o nome e o apelido letra a letra (incluindo
+  "double"), dizer um e-mail com "at" e "dot" e, quando não percebe, pedir que repitam ou soletrem.
 Objectivo da unidade a que serve: 3
 Gramática-alvo: perguntas úteis: How do you spell that? What's your email? Can you repeat that, please?
 Palavras-alvo: spell, letter, first name, surname, email, address, at (@), dot (.), dash (-),
@@ -226,9 +242,9 @@ Verificação: Lab 1B (exercícios 1–9); perguntas 4 e 5 do questionário
 **ANA:** How do you spell that?
 **PAULO:** M-E-N-D-E-S.
 **ANA:** Thank you. And what's your email address?
-**PAULO:** It's paulo dot mendes at kalandula dot co dot ao.
+**PAULO:** It's paulo dot mendes at kalandula dot co dot A-O.
 **ANA:** Sorry, can you repeat that, please?
-**PAULO:** Paulo dot mendes at kalandula dot co dot ao.
+**PAULO:** Paulo dot mendes at kalandula dot co dot A-O.
 **ANA:** Great. Thank you, Paulo.
 
 [ECRÃ: paulo.mendes@kalandula.co.ao — com "dot" por baixo de cada ponto e "at" por baixo de @]
@@ -263,11 +279,11 @@ Verificação: Lab 1B (exercícios 1–9); perguntas 4 e 5 do questionário
 | - | dash |
 | _ | underscore |
 
-**PROF:** In an email, @ is "at". The point is "dot". So: ana dot domingos at kalandula dot co dot ao.
+**PROF:** In an email, @ is "at". The point is "dot". So: ana dot domingos at kalandula dot co dot A-O.
 (PT: Num e-mail, @ diz-se "at" e o ponto diz-se "dot".)
 
-**PROF:** In Angola, many emails end in "dot co dot ao", or "dot ao".
-(PT: Muitos e-mails em Angola acabam em ".co.ao" ou ".ao".)
+**PROF:** In Angola, many emails end in "dot co dot A-O", or "dot A-O". We say the letters: A, O.
+(PT: Muitos e-mails em Angola acabam em ".co.ao" ou ".ao". O "ao" diz-se letra a letra: "A-O".)
 
 **Não percebi**
 
@@ -310,7 +326,8 @@ Verificação: Lab 1B (exercícios 1–9); perguntas 4 e 5 do questionário
 **PROF:** What's your surname? How do you spell that?
 [PAUSA 8 s]
 
-**PROF:** Listen to an email and say it with me: sílvia dot neto at kalandula dot co dot ao.
+**PROF:** Listen to an email and say it with me: silvia dot neto at kalandula dot co dot A-O.
+(PT: Nos e-mails não se usam acentos: "silvia", sem acento.)
 [PAUSA 6 s]
 
 **PROF:** Now I say an email very fast. You say: Sorry, can you repeat that, please?
@@ -318,8 +335,8 @@ Verificação: Lab 1B (exercícios 1–9); perguntas 4 e 5 do questionário
 [PAUSA 4 s]
 [ECRÃ: Sorry, can you repeat that, please?]
 
-**PROF:** Of course. João Baptista — all small letters, no dot — at kalandula dot co dot ao.
-(PT: Claro. "joaobaptista" tudo junto, em minúsculas.)
+**PROF:** Of course. J-O-A-O-B-A-P-T-I-S-T-A — all small letters, no dot — at kalandula dot co dot A-O.
+(PT: "joaobaptista" tudo junto, em minúsculas e sem acento.)
 
 **PROF (reciclagem — 1A):** Hello! I'm Sílvia. Nice to meet you.
 [PAUSA 4 s]
@@ -338,7 +355,8 @@ Verificação: Lab 1B (exercícios 1–9); perguntas 4 e 5 do questionário
 
 ```
 Curso: A1.1        Unidade: 1        Aula: 1C — My number is…        Tipo: Língua
-Objectivo da aula: No fim, o aluno consegue dizer números de 0 a 20 e dizer e entender um número de telemóvel.
+Objectivo da aula: No fim, o aluno consegue dizer os números de 0 a 20 e dizer e anotar um número de
+  telemóvel ditado em grupos de três (com "oh" e "double").
 Objectivo da unidade a que serve: 4
 Gramática-alvo: What's your phone number? It's… / My number is…
 Palavras-alvo: zero/oh, one … twenty, phone number, mobile, double, again, correct
@@ -362,7 +380,7 @@ Verificação: Lab 1C (exercícios 1–9); perguntas 6 e 7 do questionário
 **PAULO:** It's nine two three, four five one, eight zero six.
 **SR. BAPTISTA:** Nine two three, four five one, eight zero six?
 **PAULO:** Yes, that's correct.
-**SR. BAPTISTA:** Thank you. My number is nine one two, double seven, three, one four oh.
+**SR. BAPTISTA:** Thank you. My number is nine one two, double seven three, one four oh.
 **PAULO:** Sorry, can you repeat that, please?
 **SR. BAPTISTA:** Nine one two, double seven three, one four oh.
 **PAULO:** Thank you, Mr Baptista.
@@ -435,7 +453,8 @@ Verificação: Lab 1C (exercícios 1–9); perguntas 6 e 7 do questionário
 (PT: Pode inventar um número, se preferir.)
 [PAUSA 8 s]
 
-**PROF (reciclagem — 1B):** My email is teacher at proenglish dot ao. Can you repeat it?
+**PROF (reciclagem — 1B):** My email is teacher at proenglish dot A-O. Now you say it.
+[ECRÃ: teacher@proenglish.ao]
 [PAUSA 6 s]
 
 ### 6. Fecho (30 s)
@@ -449,7 +468,8 @@ Verificação: Lab 1C (exercícios 1–9); perguntas 6 e 7 do questionário
 
 ```
 Curso: A1.1        Unidade: 1        Aula: 1D — Sounds and letters        Tipo: Vocabulário e pronúncia
-Objectivo da aula: No fim, o aluno consegue dizer todas as letras do alfabeto e distinguir as que se confundem.
+Objectivo da aula: No fim, o aluno consegue dizer as 26 letras pelos sete grupos de som e distinguir,
+  a ouvir e a falar, as letras que se confundem (A/E, E/I, G/J, H, W, Y).
 Objectivo da unidade a que serve: 3
 Palavras-alvo: as 26 letras; as palavras da unidade (hello, name, email, phone, number…)
 Reciclagem: How do you spell that? (1B); números (1C)
@@ -540,7 +560,8 @@ Verificação: Lab 1D (exercícios 1–9); pergunta 8 do questionário
 
 ```
 Curso: A1.1        Unidade: 1        Aula: 1E — Hello at work        Tipo: Real English
-Objectivo da aula: No fim, o aluno consegue entender cumprimentos, nomes soletrados e números de telefone ditos por pessoas diferentes, a velocidade quase natural.
+Objectivo da aula: No fim, o aluno consegue identificar, em quatro conversas curtas a velocidade quase
+  natural, a parte do dia do cumprimento, um nome soletrado e um número de telefone.
 Objectivo da unidade a que serve: 1, 3, 4
 Língua: toda a unidade 1, sem estruturas novas
 Vozes: 8 vozes em 4 conversas (angolanas, nigerianas, britânicas e norte-americana), homens e mulheres
@@ -556,7 +577,7 @@ Verificação: Lab 1E (exercícios 1–8); pergunta 9 do questionário
 
 ### 2. Primeira escuta: a ideia geral (2 min)
 
-**PROF:** First, just one question: Is it morning, afternoon or evening? Listen.
+**PROF:** First, just one question: morning, afternoon or evening? Listen.
 (PT: Primeiro só uma pergunta: é de manhã, à tarde ou à noite?)
 
 **Conversa 1** (voz angolana, mulher; voz nigeriana, homem)
@@ -578,7 +599,7 @@ Verificação: Lab 1E (exercícios 1–8); pergunta 9 do questionário
 **Conversa 4** (voz nigeriana, homem; voz britânica, mulher)
 **HOMEM:** Good evening. My name is Okafor.
 **MULHER:** Sorry, how do you spell that?
-**HOMEM:** O-K-A-F-O-R.
+**HOMEM:** O, K, A, F, O, R.
 **MULHER:** Thank you, Mr Okafor. Have a good evening.
 
 [ECRÃ: as quatro respostas — 1 morning, 2 afternoon, 3 (não se diz), 4 evening]
@@ -589,12 +610,13 @@ Verificação: Lab 1E (exercícios 1–8); pergunta 9 do questionário
 ### 3. Segunda escuta: os pormenores (3 min)
 
 **PROF:** Listen again. Now answer these questions.
+(PT: Ouça outra vez e responda às perguntas. As perguntas estão em português; as respostas, em inglês.)
 [ECRÃ: as perguntas, uma de cada vez, com 3 opções]
 
-1. Conversa 1: Where does Teresa work? (Finance ✓ / IT / Reception)
-2. Conversa 2: What time is the meeting? (2:00 / 3:00 ✓ / 10:00)
-3. Conversa 3: What's Joana's number? (926 118 402 ✓ / 926 180 402 / 962 118 402)
-4. Conversa 4: Spell the name. (O-K-A-F-O-R ✓ / O-C-A-F-O-R / O-K-A-P-H-O-R)
+1. Conversa 1: Onde trabalha a Teresa? (Finance ✓ / IT / Reception)
+2. Conversa 2: A que horas é a reunião? (2:00 / 3:00 ✓ / 10:00)
+3. Conversa 3: Qual é o número da Joana? (926 118 402 ✓ / 926 180 402 / 962 118 402)
+4. Conversa 4: Como se escreve o nome? (O-K-A-F-O-R ✓ / O-C-A-F-O-R / O-K-A-P-H-O-R)
 
 *(As quatro conversas repetem-se. Depois de cada uma, aparece a pergunta com 8 s para responder e a resposta certa.)*
 
@@ -631,9 +653,11 @@ Verificação: Lab 1E (exercícios 1–8); pergunta 9 do questionário
 
 ```
 Curso: A1.1        Unidade: 1        Aula: 1F — First day at the office        Tipo: Work & Life
-Objectivo da aula: No fim, o aluno consegue apresentar-se na recepção e a um colega no primeiro dia de trabalho.
+Objectivo da aula: No fim, o aluno consegue, no primeiro dia de trabalho, apresentar-se na recepção
+  (nome, soletração, telefone), apresentar-se a um colega dizendo a profissão com a/an e reconhecer
+  quando lhe apresentam alguém (This is…).
 Objectivo da unidade a que serve: 1, 2, 3, 4
-Gramática-alvo: toda a unidade; a/an com profissões (receptivo: a technician, an accountant)
+Gramática-alvo: toda a unidade; a/an com profissões (I'm a technician / I'm an accountant); This is… (receptivo)
 Palavras-alvo: first day, new, welcome, colleague, desk, office, a/an
 Reciclagem: tudo da unidade 1
 Pronúncia: ritmo de "Nice to meet you" e "Welcome to the team"
@@ -655,15 +679,15 @@ Verificação: Lab 1F (exercícios 1–9); conversa livre "A new colleague"; per
 **PAULO:** M-E-N-D-E-S.
 **ANA:** Thank you. And your phone number?
 **PAULO:** Nine two three, four five one, eight zero six.
-**ANA:** Perfect. Mr Baptista is on the second floor.
+**ANA:** Perfect. Mr Baptista is in office twelve.
 **PAULO:** Thank you, Ana.
 
 ### 3. Situação, parte 2: a equipa (1 min 30 s)
 
 **SR. BAPTISTA:** Paulo! Good morning. Welcome to the team.
 **PAULO:** Thank you, Mr Baptista.
-**SR. BAPTISTA:** This is Sílvia. She's an accountant.
-**SÍLVIA:** Hi, Paulo. Nice to meet you.
+**SR. BAPTISTA:** This is Sílvia.
+**SÍLVIA:** Hi, Paulo. Nice to meet you. I'm an accountant.
 **PAULO:** Nice to meet you too, Sílvia.
 **SÍLVIA:** Are you the new IT technician?
 **PAULO:** Yes, I am. I'm a technician.
@@ -672,18 +696,18 @@ Verificação: Lab 1F (exercícios 1–9); conversa livre "A new colleague"; per
 
 ### 4. Língua (2 min)
 
-**Apresentar outra pessoa**
+**Quando lhe apresentam alguém**
 
-[ECRÃ: **This is Sílvia.** — Esta é a Sílvia.]
+[ECRÃ: **This is Sílvia.** — Esta é a Sílvia. → **Nice to meet you.**]
 
-**PROF:** To introduce another person, we say: This is Sílvia. This is Mr Baptista.
-(PT: Para apresentar outra pessoa: "This is…".)
+**PROF:** When someone introduces a person, they say: This is Sílvia. This is Mr Baptista. You answer: Nice to meet you.
+(PT: Quando lhe apresentam alguém, ouve "This is…" e responde "Nice to meet you". Na unidade 2 aprende a falar de outras pessoas: "she's", "he's".)
 
 **A ou an**
 
 [ECRÃ: **a** technician · **a** receptionist · **an** accountant · **an** engineer]
 
-**PROF:** For jobs, we say "a" or "an". "An" is before a vowel sound: an accountant, an engineer.
+**PROF:** For jobs, we say "a" or "an". "An" is before a vowel sound: I'm an accountant. I'm an engineer. I'm a technician.
 (PT: Antes de uma profissão diz-se "a" ou "an". Usa-se "an" antes de som de vogal: "an accountant".)
 
 **PROF:** In Portuguese, we say "Sou técnico". In English, we need "a": I'm a technician.

@@ -4,7 +4,7 @@
  "questions": [
   {
    "id": "u1q1",
-   "question": "It's 10 a.m. You arrive at a meeting. What do you say?",
+   "question": "São 10 horas da manhã. Chega a uma reunião. O que diz?",
    "options": [
     {
      "id": "u1q1o0",
@@ -28,7 +28,7 @@
   },
   {
    "id": "u1q2",
-   "question": "Choose the correct answer: \"Are you Paulo?\"",
+   "question": "Escolha a resposta certa: \"Are you Paulo?\"",
    "options": [
     {
      "id": "u1q2o0",
@@ -52,7 +52,7 @@
   },
   {
    "id": "u1q3",
-   "question": "Someone says \"Nice to meet you.\" What do you answer?",
+   "question": "Alguém lhe diz \"Nice to meet you.\" O que responde?",
    "options": [
     {
      "id": "u1q3o0",
@@ -76,7 +76,7 @@
   },
   {
    "id": "u1q4",
-   "question": "How do you say \"@\" in an email?",
+   "question": "Num e-mail, como se diz \"@\"?",
    "options": [
     {
      "id": "u1q4o0",
@@ -100,7 +100,7 @@
   },
   {
    "id": "u1q5",
-   "question": "You don't understand. What do you say?",
+   "question": "Não percebeu o que lhe disseram. O que diz?",
    "options": [
     {
      "id": "u1q5o0",
@@ -124,7 +124,7 @@
   },
   {
    "id": "u1q6",
-   "question": "Which is 13?",
+   "question": "Como se escreve 13 em inglês?",
    "options": [
     {
      "id": "u1q6o0",
@@ -148,7 +148,7 @@
   },
   {
    "id": "u1q7",
-   "question": "How do you say 922 in a phone number?",
+   "question": "Num número de telefone, como se diz 922?",
    "options": [
     {
      "id": "u1q7o0",
@@ -172,7 +172,7 @@
   },
   {
    "id": "u1q8",
-   "question": "Which letter has the same sound as \"A\"?",
+   "question": "Que letra tem o mesmo som que \"A\"?",
    "options": [
     {
      "id": "u1q8o0",
@@ -196,21 +196,21 @@
   },
   {
    "id": "u1q9",
-   "question": "\"Hi\" is…",
+   "question": "Quando se pode dizer \"Hi\"?",
    "options": [
     {
      "id": "u1q9o0",
-     "text": "for any time of the day",
+     "text": "A qualquer hora do dia",
      "isCorrect": true
     },
     {
      "id": "u1q9o1",
-     "text": "only for the morning",
+     "text": "Só de manhã",
      "isCorrect": false
     },
     {
      "id": "u1q9o2",
-     "text": "only for the evening",
+     "text": "Só à noite",
      "isCorrect": false
     }
    ],
@@ -220,7 +220,7 @@
   },
   {
    "id": "u1q10",
-   "question": "Complete: \"She's ___ accountant.\"",
+   "question": "Complete: \"I'm ___ accountant.\"",
    "options": [
     {
      "id": "u1q10o0",
@@ -244,7 +244,7 @@
   },
   {
    "id": "u1q11",
-   "question": "It's 8 p.m. You leave the office. What do you say?",
+   "question": "São 20 horas. Sai do escritório. O que diz aos colegas?",
    "options": [
     {
      "id": "u1q11o0",
@@ -268,7 +268,7 @@
   },
   {
    "id": "u1q12",
-   "question": "Choose the correct sentence.",
+   "question": "Escolha a frase correcta.",
    "options": [
     {
      "id": "u1q12o0",
