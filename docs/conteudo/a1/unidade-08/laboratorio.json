@@ -420,6 +420,25 @@
      "explicacao": ""
     },
     {
+     "tipo": "escolher",
+     "enunciado": "Há três portáteis. O C custa menos do que todos. Qual é a frase certa?",
+     "opcoes": [
+      {
+       "texto": "Laptop C is the cheapest.",
+       "certa": true
+      },
+      {
+       "texto": "Laptop C is the cheaper.",
+       "certa": false
+      },
+      {
+       "texto": "Laptop C is more cheapest.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Com três ou mais: \"the … -est\" (the cheapest) ou \"the most…\"."
+    },
+    {
      "tipo": "escuta",
      "frase": "Laptop B is more expensive, but it's faster and lighter.",
      "enunciado": "Como é o portátil B?",
@@ -1029,6 +1048,32 @@
      "enunciado": "Tenho uma constipação.",
      "resposta": "I have a cold.",
      "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada parte do corpo à tradução.",
+     "pares": [
+      {
+       "a": "head",
+       "b": "cabeça"
+      },
+      {
+       "a": "arm",
+       "b": "braço"
+      },
+      {
+       "a": "leg",
+       "b": "perna"
+      },
+      {
+       "a": "back",
+       "b": "costas"
+      },
+      {
+       "a": "throat",
+       "b": "garganta"
+      }
+     ]
     },
     {
      "tipo": "pronuncia",

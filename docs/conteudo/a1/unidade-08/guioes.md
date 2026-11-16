@@ -68,8 +68,8 @@ Verificação: Lab 8A (exercícios 1–10); perguntas 1, 2 e 3 do questionário 
 (PT: "This" e "that" para uma coisa — este e aquele. "These" e "those" para várias — estes e aqueles.)
 [PAUSA 2 s depois de cada palavra]
 
-**PROF:** Careful: "trousers" and "shoes" are always plural: these trousers, those shoes.
-(PT: "Trousers" (calças) é sempre plural, como "glasses" na unidade 4: "these trousers are…".)
+**PROF:** Careful: "trousers" and "jeans" are always plural: these trousers, those jeans.
+(PT: "Trousers" (calças) e "jeans" são sempre plurais, como "glasses" na unidade 4: "these trousers are…". Os sapatos vêm aos pares: "these shoes".)
 
 ***One* e *ones***
 
@@ -246,12 +246,14 @@ Verificação: Lab 8B (exercícios 1–10); perguntas 4 e 5 do questionário
 Curso: A1.2        Unidade: 8        Aula: 8C — Cheaper or better?        Tipo: Língua
 Objectivo da aula: No fim, o aluno consegue comparar dois produtos com comparativos (This laptop is
   cheaper than that one. The black one is bigger. It's more expensive, but it's better.) e
-  perguntar "Which one is better?".
+  perguntar "Which one is better?"; e, com três ou mais, dizer qual é o mais barato e o melhor
+  (the cheapest, the best).
 Objectivo da unidade a que serve: 3
 Gramática-alvo: adjectivo curto + -er + than (cheap → cheaper, fast → faster, small → smaller);
   -e + r (nice → nicer); consoante dobrada (big → bigger); -y → -ier (heavy → heavier,
   easy → easier); irregulares good → better, bad → worse; adjectivo longo: more + adjectivo
-  (more expensive, more comfortable); Which one is…?
+  (more expensive, more comfortable); Which one is…?; superlativo básico: the cheapest, the biggest,
+  the most expensive, the best
 Palavras-alvo: cheap, expensive, fast, slow, big, small, heavy, light, good, bad, new, old, easy,
   comfortable, price, quality, laptop
 Reciclagem: this / that one (8A); have/has (4B); preços (6C)
@@ -325,6 +327,14 @@ Verificação: Lab 8C (exercícios 1–10); perguntas 6 e 7 do questionário
 [ECRÃ: **Which one is** cheaper? · **Which one is better**, the black one or the grey one?]
 
 **PROF:** Which one is better? Which one is cheaper?
+[PAUSA 3 s]
+
+**Três ou mais: o mais barato, o melhor**
+
+[ECRÃ: três portáteis: A, B e C · Laptop C is **the cheapest**. · Laptop B is **the best**. · **the biggest** · **the most expensive**]
+
+**PROF:** With three or more things: the cheapest, the biggest, the most expensive. And: good, better, the best.
+(PT: Para comparar três ou mais coisas usa-se "the … -est" ou "the most…": "the cheapest" — o mais barato; "the best" — o melhor. Estude-o por agora para reconhecer e usar nestas formas; no A2 aprofunda-se.)
 [PAUSA 3 s]
 
 ### 4. Pronúncia (1 min)
@@ -434,9 +444,13 @@ Verificação: Lab 8D (exercícios 1–9); pergunta 8 do questionário
 
 ### 5. Fecho (1 min)
 
-**PROF (reciclagem — 6D):** What colour are your clothes today? Say two things.
+**PROF:** What colour are your clothes today? Say two things.
 [PAUSA 8 s]
 [ECRÃ: My shirt is white and my trousers are black.]
+
+**PROF (reciclagem — 4D):** What do you have in your bag today? Say two things and the colours.
+[PAUSA 8 s]
+[ECRÃ: I have a black wallet and my blue phone.]
 **PROF:** Lovely! In the Lab: clothes, colours and the two "a" sounds.
 (PT: No laboratório: roupa, cores e os dois sons de "a".)
 
@@ -533,7 +547,8 @@ Objectivo da aula: No fim, o aluno consegue explicar na farmácia o que sente (I
 Objectivo da unidade a que serve: 4
 Gramática-alvo: I have + a + sintoma; My … hurts; Can I have something for…?; imperativo nas
   instruções (Take… Drink… Don't…); frequência (twice a day, every eight hours — unidade 5)
-Palavras-alvo: headache, stomach ache, toothache, sore throat, a fever, a cough, a cold, the flu, malaria
+Palavras-alvo: head, eye, ear, tooth/teeth, throat, arm, hand, back, stomach, leg, foot/feet;
+  headache, stomach ache, toothache, sore throat, a fever, a cough, a cold, the flu, malaria
   (receptivo), tired, hurt, tablet, medicine, syrup, cream, a prescription, after meals, before
   meals, twice a day, three times a day, every eight hours, the doctor, the hospital
 Reciclagem: frequência (5D); Can I…? (8B); o mapa do bairro (7B)
@@ -587,6 +602,13 @@ Verificação: Lab 8F (exercícios 1–9); conversa livre "At the pharmacy"; per
 
 **PROF:** Something hurts? My back hurts. My arm hurts.
 (PT: Para outras dores: "My … hurts" — dói-me o/a…)
+
+[ECRÃ: uma figura com as partes do corpo: head (cabeça) · eye (olho) · ear (ouvido) · tooth / teeth (dente / dentes) · throat (garganta) · arm (braço) · hand (mão) · back (costas) · stomach (estômago) · leg (perna) · foot / feet (pé / pés)]
+
+**PROF:** Listen and repeat: head, eye, ear, tooth, throat, arm, hand, back, stomach, leg, foot.
+[PAUSA 2 s depois de cada palavra]
+**PROF:** Careful: one tooth, two teeth. One foot, two feet.
+(PT: Plurais irregulares, como "child — children" na unidade 4.)
 
 **Pedir na farmácia**
 

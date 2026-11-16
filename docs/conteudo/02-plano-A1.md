@@ -308,14 +308,14 @@ Em cada unidade: **objectivos da unidade** (o que o aluno consegue fazer no fim,
 **Objectivos da unidade.** No fim, o aluno consegue:
 1. escolher e pedir produtos numa loja com *this, that, these, those* e *one(s)*, cores e tamanhos (*How much is this shirt? I'd like the blue one. Do you have it in a medium?*);
 2. pedir autorização e ajuda com *can* e responder (*Can I try it on? Can you check my phone? — Yes, of course. / Sorry, you can't.*);
-3. comparar dois produtos com comparativos (*This laptop is cheaper than that one. It's more expensive, but it's better.*);
+3. comparar dois produtos com comparativos (*This laptop is cheaper than that one. It's more expensive, but it's better.*) e, com três ou mais, dizer qual é o mais barato e o melhor (*the cheapest, the best*);
 4. explicar na farmácia o que sente, pedir alguma coisa e entender as instruções (*I have a headache and a fever. Can I have something for a headache? — Take one tablet three times a day, after meals.*).
 
 | Aula | Tipo | Título | Objectivo da aula |
 |---|---|---|---|
 | 8A | Língua | This one or that one? | Escolher e pedir produtos com *this/that/these/those, one(s)*, cores e tamanhos. |
 | 8B | Língua | Can I…? Can you…? | Pedir autorização e ajuda com *can* (pedidos) e responder; telemóveis e saldo. |
-| 8C | Língua | Cheaper or better? | Comparar dois produtos (*-er … than, more …, better, worse*). |
+| 8C | Língua | Cheaper or better? | Comparar dois produtos (*-er … than, more …, better, worse*) e dizer o mais barato e o melhor (*the cheapest, the best*). |
 | 8D | Vocabulário e pronúncia | Shops and payments | Nomear roupa, cores, lojas e pagamentos; /æ/ e /ʌ/. |
 | 8E | Real English | At the shops | Identificar produto, cor ou tamanho, preço e pagamento em três conversas (sapataria, mercado, loja de telemóveis). |
 | 8F | Work & Life | At the pharmacy | Explicar o que sente, pedir alguma coisa e entender as instruções da farmacêutica. |
@@ -467,7 +467,7 @@ Cada item do Core Inventory A1 **[V]** e a unidade onde é ensinado.
 | | Imperativo (+, −) | 7, 8 |
 | | *There is/are* | 7 |
 | | Adjectivos comuns e demonstrativos | 4, 8 |
-| | Comparativos e superlativos | 8 (básico; desenvolvido no A2) |
+| | Comparativos e superlativos | 8C (comparativos; superlativo básico: *the cheapest, the best*; desenvolvido no A2) |
 | | Intensificadores muito básicos (*very, really*) | 6, 8 |
 | | *can/can't/could/couldn't* | 8, 9 (*could* só em pedidos; o resto no A2) |
 | | Verbo + -ing (*like/hate/love*) | 9 |
