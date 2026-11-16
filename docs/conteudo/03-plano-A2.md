@@ -325,6 +325,8 @@ Versão completa em [a2/unidade-07/](a2/unidade-07/README.md) **[I]**.
 
 ### Unidade 8 — Technology and problems
 
+Versão completa em [a2/unidade-08/](a2/unidade-08/README.md) **[I]**.
+
 **Objectivos da unidade.** No fim, o aluno consegue:
 1. explicar como funciona uma aplicação ou um equipamento com o condicional zero e instruções por ordem (*If you press this button, the screen turns off. First…, then…*);
 2. dizer o que vai acontecer numa situação provável com o 1.º condicional (*If the power goes off, we'll use the generator.*);

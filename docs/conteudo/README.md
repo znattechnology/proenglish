@@ -42,6 +42,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [a2/revisao-1/](a2/revisao-1/README.md) | A2.1, revisão 1 e exame oral do A2.1: guiões, laboratório, ensaio com o tutor, questionário, exame, guião do exame e situações. |
 | [a2/unidade-06/](a2/unidade-06/README.md) | A2.2, unidade 6 "Travelling for work": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [a2/unidade-07/](a2/unidade-07/README.md) | A2.2, unidade 7 "News and updates": guiões, laboratório, tutor, questionário e revisão aula a aula. |
+| [a2/unidade-08/](a2/unidade-08/README.md) | A2.2, unidade 8 "Technology and problems": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.

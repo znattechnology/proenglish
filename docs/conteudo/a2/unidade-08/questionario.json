@@ -1,0 +1,301 @@
+{
+ "title": "A2.2 Unit 8 quiz — Technology and problems",
+ "description": "Condicional zero e 1.º condicional, will para previsões, phrasal verbs da tecnologia e chamadas para o apoio técnico.",
+ "questions": [
+  {
+   "id": "a2u8q1",
+   "question": "Complete: \"If you click 'Cancel', nothing ___.\"",
+   "options": [
+    {
+     "id": "a2u8q1o0",
+     "text": "happens",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u8q1o1",
+     "text": "happen",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u8q1o2",
+     "text": "happening",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u8q1o0",
+   "explanation": "Condicional zero: presente nos dois lados.",
+   "points": 10
+  },
+  {
+   "id": "a2u8q2",
+   "question": "Qual é a ordem certa das palavras numa instrução?",
+   "options": [
+    {
+     "id": "a2u8q2o0",
+     "text": "First… Then… Finally…",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u8q2o1",
+     "text": "Finally… First… Then…",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u8q2o2",
+     "text": "Then… Finally… First…",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u8q2o0",
+   "explanation": "first → then → finally.",
+   "points": 10
+  },
+  {
+   "id": "a2u8q3",
+   "question": "Complete: \"If the power ___ off, we'll use the generator.\"",
+   "options": [
+    {
+     "id": "a2u8q3o0",
+     "text": "goes",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u8q3o1",
+     "text": "will go",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u8q3o2",
+     "text": "went",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u8q3o0",
+   "explanation": "Depois de if: present simple.",
+   "points": 10
+  },
+  {
+   "id": "a2u8q4",
+   "question": "Qual é a pergunta correcta?",
+   "options": [
+    {
+     "id": "a2u8q4o0",
+     "text": "What will we do if the system stops?",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u8q4o1",
+     "text": "What we will do if the system stops?",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u8q4o2",
+     "text": "What will we do if the system will stop?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u8q4o0",
+   "explanation": "What will… if + presente.",
+   "points": 10
+  },
+  {
+   "id": "a2u8q5",
+   "question": "Qual é a forma mais natural?",
+   "options": [
+    {
+     "id": "a2u8q5o0",
+     "text": "I don't think it'll rain.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u8q5o1",
+     "text": "I think it doesn't rain tomorrow.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u8q5o2",
+     "text": "I don't think it rains will.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u8q5o0",
+   "explanation": "Previsão negativa: I don't think + will.",
+   "points": 10
+  },
+  {
+   "id": "a2u8q6",
+   "question": "Complete: \"It ___ rain tomorrow.\" (provavelmente não)",
+   "options": [
+    {
+     "id": "a2u8q6o0",
+     "text": "probably won't",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u8q6o1",
+     "text": "won't probably",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u8q6o2",
+     "text": "probably not will",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u8q6o0",
+   "explanation": "probably antes de won't.",
+   "points": 10
+  },
+  {
+   "id": "a2u8q7",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "a2u8q7o0",
+     "text": "Turn it off, please.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u8q7o1",
+     "text": "Turn off it, please.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u8q7o2",
+     "text": "Turn it of, please.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u8q7o0",
+   "explanation": "O pronome vai no meio.",
+   "points": 10
+  },
+  {
+   "id": "a2u8q8",
+   "question": "Ouviu: \"It says 'wrong password'.\" Quer dizer:",
+   "options": [
+    {
+     "id": "a2u8q8o0",
+     "text": "Aparece no ecrã \"palavra-passe errada\".",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u8q8o1",
+     "text": "Alguém disse a palavra-passe.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u8q8o2",
+     "text": "A palavra-passe é nova.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u8q8o0",
+   "explanation": "It says… = aparece no ecrã.",
+   "points": 10
+  },
+  {
+   "id": "a2u8q9",
+   "question": "O técnico pede-lhe para desligar o equipamento. Já o fez. O que diz?",
+   "options": [
+    {
+     "id": "a2u8q9o0",
+     "text": "OK… done.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u8q9o1",
+     "text": "I will done.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u8q9o2",
+     "text": "Yes, yesterday.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u8q9o0",
+   "explanation": "Confirme cada passo.",
+   "points": 10
+  },
+  {
+   "id": "a2u8q10",
+   "question": "Reciclagem (A2, unidade 7). Complete: \"I've worked here ___ 2020.\"",
+   "options": [
+    {
+     "id": "a2u8q10o0",
+     "text": "since",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u8q10o1",
+     "text": "for",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u8q10o2",
+     "text": "ago",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u8q10o0",
+   "explanation": "since + momento.",
+   "points": 10
+  },
+  {
+   "id": "a2u8q11",
+   "question": "Reciclagem (A2, unidade 7). \"My laptop has crashed and I've lost my work!\" Qual é a melhor reacção?",
+   "options": [
+    {
+     "id": "a2u8q11o0",
+     "text": "Oh no, I'm sorry to hear that.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u8q11o1",
+     "text": "Congratulations!",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u8q11o2",
+     "text": "That's great news!",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u8q11o0",
+   "explanation": "Má notícia.",
+   "points": 10
+  },
+  {
+   "id": "a2u8q12",
+   "question": "Reciclagem (A2, unidade 6). Complete: \"Have you ever ___ your password?\"",
+   "options": [
+    {
+     "id": "a2u8q12o0",
+     "text": "forgotten",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u8q12o1",
+     "text": "forgot",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u8q12o2",
+     "text": "forget",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u8q12o0",
+   "explanation": "have + particípio.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
