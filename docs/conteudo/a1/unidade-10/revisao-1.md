@@ -18,7 +18,7 @@
 | 10F | Em 2026, o 11 de Novembro é uma quarta-feira; o relato falava de "long weekend". | "public holiday" e "the next day"; pergunta 4 da escuta ajustada. |
 | 10D | O Mateus marcava a reunião de equipa para "next Friday", mas a 10G mostra-a numa segunda-feira. | "And on Monday we're going to have the team meeting." |
 | 10C | *drove* aparecia no modelo de reciclagem antes de ser ensinado (estava só na 10E). | *drive → drove* passou para a tabela da 10C. |
-| Laboratório 10D e 10G | Espaço a meio da palavra ("I[\'m going to]…", com alternativas começadas por espaço). | Espaço à volta de palavras inteiras ("[I'm going to] visit…"). |
+| Laboratório 10D e 10G | Espaço a meio da palavra ("I[’m going to]…", com alternativas começadas por espaço). | Espaço à volta de palavras inteiras ("[I'm going to] visit…"). |
 | Laboratório 10R | As alternativas erradas de um exercício de dois espaços eram as respostas certas do outro espaço (*was / were*). | Alternativas *are* e *am*. Verificadas todas as unidades do A1: não há outro caso. |
 
 ## O que foi verificado e está bem
