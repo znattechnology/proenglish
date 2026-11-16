@@ -853,9 +853,9 @@
     },
     {
      "tipo": "responder",
-     "enunciado": "Good morning. I'm David Okoro, from Nigeria. I have a meeting here.",
+     "enunciado": "Good morning. I'm Alex Okoro, from Nigeria. I have a meeting here.",
      "frase": "Welcome",
-     "resposta": "Good morning, Mr Okoro. Welcome to Angola! I'm Ana. Is this your first time in Luanda?",
+     "resposta": "Good morning. Welcome to Angola! I'm Ana. Is this your first time in Luanda?",
      "contexto": "Receba o visitante e faça-lhe uma pergunta."
     }
    ]

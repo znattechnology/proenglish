@@ -12,7 +12,8 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
    - Cada objectivo tem onde ser verificado: exercício do laboratório, pergunta do questionário ou critério da conversa com o tutor.
    - Instruções e perguntas para o aluno em português até ao fim do A1.1, sempre que o inglês da pergunta seja mais difícil do que a língua que se avalia.
 4. **A fala vem primeiro.** Cada unidade termina numa conversa com o tutor e cada aula tem um momento de produção oral. A pronúncia mede-se pela inteligibilidade, não pela imitação de um sotaque nativo.
-5. **Contexto de Angola.** Nomes, lugares, moeda (kwanza), serviços (Multicaixa) e situações de trabalho são angolanos, salvo quando a situação pede outro país (viagem, colega estrangeiro).
+5. **Personagens que dependem de uma voz.** O tutor de conversa tem uma só voz para todos os cenários, e o professor de IA tem a voz que for escolhida na produção. Quando o tutor ou o professor fazem de personagem, o nome é neutro (Sam, Alex, Chris) e a personagem não fala de marido ou mulher. As personagens dos diálogos gravados, com vozes próprias, podem ter qualquer género.
+6. **Contexto de Angola.** Nomes, lugares, moeda (kwanza), serviços (Multicaixa) e situações de trabalho são angolanos, salvo quando a situação pede outro país (viagem, colega estrangeiro).
 
 ## Documentos
 

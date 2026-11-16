@@ -981,9 +981,9 @@
     },
     {
      "tipo": "responder",
-     "enunciado": "Hello! I'm your new colleague, Tomás. What's your name? How do you spell it?",
+     "enunciado": "Hello! I'm your new colleague, Sam. What's your name? How do you spell it?",
      "frase": "I'm",
-     "resposta": "Nice to meet you, Tomás. I'm Ana. A-N-A.",
+     "resposta": "Nice to meet you, Sam. I'm Ana. A-N-A.",
      "contexto": ""
     },
     {

@@ -60,8 +60,8 @@
    "nome": "Unit 2 · A visitor from South Africa",
    "tipo": "livre",
    "depois_da_aula": "2F",
-   "descricao": "O tutor é uma engenheira sul-africana que chega à empresa. O aluno recebe-a, pergunta-lhe de onde é e que línguas fala, responde às perguntas dela e apresenta um colega.",
-   "papel_tutor": "Thandi, engenheira sul-africana em visita à empresa.",
+   "descricao": "O tutor é um engenheiro ou engenheira sul-africano(a) que chega à empresa. O aluno recebe-o(a), pergunta-lhe de onde é e que línguas fala, responde às perguntas dela e apresenta um colega.",
+   "papel_tutor": "Sam Mokoena, engenheiro(a) sul-africano(a) em visita à empresa.",
    "nivel": "A1",
    "duracao_min": 5,
    "correccao": "suave",
@@ -72,9 +72,9 @@
     "This is… He's / She's…"
    ],
    "extras": {
-    "brief": "Role-play for a beginner (A1, unit 2). You are Thandi Mokoena, a South African engineer from Johannesburg, visiting the student's company in Luanda for a meeting. It is your first time in Luanda. You speak English and Zulu, not Portuguese. Wait for the student to welcome you. Answer their questions simply. Ask them: where they are from, their nationality, what languages they speak. Then ask \"Who is your colleague?\" so the student introduces a colleague with \"This is… He's / She's…\". Use very short sentences and only units 1-2 language. One question at a time.",
-    "primeira_fala": "Good morning! I'm Thandi Mokoena. I have a meeting here today.",
-    "primeira_fala_simples": "Good morning! I'm Thandi. I have a meeting here.",
+    "brief": "Role-play for a beginner (A1, unit 2). You are Sam Mokoena, a South African engineer from Johannesburg (Sam can be a man or a woman, to match your voice), visiting the student's company in Luanda for a meeting. It is your first time in Luanda. You speak English and Zulu, not Portuguese. Wait for the student to welcome you. Answer their questions simply. Ask them: where they are from, their nationality, what languages they speak. Then ask \"Who is your colleague?\" so the student introduces a colleague with \"This is… He's / She's…\". Use very short sentences and only units 1-2 language. One question at a time.",
+    "primeira_fala": "Good morning! I'm Sam Mokoena. I have a meeting here today.",
+    "primeira_fala_simples": "Good morning! I'm Sam. I have a meeting here.",
     "guiao": [
      "Thank you! I'm from Johannesburg, in South Africa. And you? Where are you from?",
      "Nice! How do you spell it?",
@@ -86,7 +86,7 @@
     "frases": [
      {
       "en": "Welcome to Angola!",
-      "pt": "Bem-vinda a Angola!"
+      "pt": "Bem-vindo(a) a Angola!"
      },
      {
       "en": "Is this your first time in Luanda?",
@@ -117,7 +117,7 @@
    },
    "criterios": [
     "Dá as boas-vindas e responde a todas as perguntas com uma frase completa ou uma resposta curta adequada.",
-    "Faz pelo menos duas perguntas à visitante (por exemplo, \"Where are you from?\" e \"Is this your first time in Luanda?\").",
+    "Faz pelo menos duas perguntas ao visitante (por exemplo, \"Where are you from?\" e \"Is this your first time in Luanda?\").",
     "Usa a língua da unidade pelo menos duas vezes (be com he/she/they, países e nacionalidades, I speak…).",
     "Apresenta um colega com \"This is… He's / She's…\".",
     "É compreendido sem o tutor pedir para repetir mais de duas vezes."

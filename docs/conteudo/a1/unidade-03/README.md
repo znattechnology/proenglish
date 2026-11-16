@@ -39,7 +39,7 @@ O objectivo 4 não tem conversa com o tutor própria: treina-se na prática guia
 
 ## Personagens
 
-A equipa da Kalandula Tech, o **Mateus** (engenheiro da Kalandula Tech, em projectos para empresas petrolíferas em Cabinda), a **Rosa** (recepcionista da Mussulo Energy, empresa fictícia na Ilha de Luanda) e a **Sra. Kiala** (Finanças, Mussulo Energy). Na 3E: **Helena** (caixa de banco, Luanda), **Jorge** (enfermeiro, Lubango), **Kevin** (engenheiro britânico numa plataforma perto do Soyo), **Esperança** (professora, Malanje). No tutor: **Daniel** (vendas, telecomunicações).
+A equipa da Kalandula Tech, o **Mateus** (engenheiro da Kalandula Tech, em projectos para empresas petrolíferas em Cabinda), a **Rosa** (recepcionista da Mussulo Energy, empresa fictícia na Ilha de Luanda) e a **Sra. Kiala** (Finanças, Mussulo Energy). Na 3E: **Helena** (caixa de banco, Luanda), **Jorge** (enfermeiro, Lubango), **Kevin** (engenheiro britânico numa plataforma perto do Soyo), **Esperança** (professora, Malanje). No tutor: **Chris** (vendas, telecomunicações; nome neutro).
 
 ## Decisões pedagógicas desta unidade
 

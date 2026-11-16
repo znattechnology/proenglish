@@ -316,6 +316,10 @@ Verificação: Lab 4C (exercícios 1–10); perguntas 6, 7 e 8 do questionário
 **PROF:** To ask: Whose phone is this? Whose keys are these?
 (PT: "Whose" pergunta de quem é. Com uma coisa: "is this"; com várias: "are these".)
 
+**PROF:** Careful: "whose" and "who's" sound the same. Whose = de quem. Who's = who is, quem é.
+(PT: "Whose" e "who's" dizem-se da mesma maneira, mas escrevem-se de forma diferente: "Whose bag is this?" (de quem é) e "Who's this?" (quem é).)
+[ECRÃ: **Whose** bag is this? — de quem · **Who's** this? — quem é]
+
 **Os plurais**
 
 [ECRÃ: tabela]
@@ -358,9 +362,13 @@ Verificação: Lab 4C (exercícios 1–10); perguntas 6, 7 e 8 do questionário
 **PROF:** One city, three…
 [PAUSA 3 s] **PROF:** cities.
 
-**PROF (reciclagem — 4B):** Sílvia has two children. What are their names?
+**PROF:** Sílvia and Carlos have two children. What are their names?
 [PAUSA 5 s]
 [ECRÃ: Their names are Kiesse and Tomé.]
+
+**PROF (reciclagem — 2B e 3A):** Look: Mateus's laptop. Where's Mateus from? What's his job?
+[PAUSA 6 s]
+[ECRÃ: He's from Huambo. He's an engineer.]
 
 ### 6. Fecho (30 s)
 
@@ -432,14 +440,18 @@ Verificação: Lab 4D (exercícios 1–9); pergunta 9 do questionário
 **PROF:** /z/: phones, keys, brothers. [PAUSA 2 s depois de cada]
 **PROF:** /ɪz/ — an extra syllable: glasses, watches, buses, offices. [PAUSA 2 s depois de cada]
 
-**PROF:** After s, sh, ch, x and ce, add a syllable: glass — glasses. Office — offices.
-(PT: Depois dos sons "s", "x", "ch" e "sh", o plural tem mais uma sílaba.)
+**PROF:** After s, sh, ch, x, ce and ge, add a syllable: glass — glasses. Office — offices. Page — pages.
+(PT: Depois dos sons "s", "x", "ch", "sh" e "j" (como em "page"), o plural tem mais uma sílaba.)
 
 ### 5. Fecho (1 min)
 
-**PROF (reciclagem — 4B):** What do you have in your bag? Say three things.
+**PROF:** What do you have in your bag? Say three things.
 [PAUSA 10 s]
 [ECRÃ: I have my phone, my keys and my ID card.]
+
+**PROF (reciclagem — 1B):** How do you spell "wallet"?
+[PAUSA 6 s]
+[ECRÃ: W, A, double L, E, T.]
 **PROF:** Well done! In the Lab, you listen to plurals and record your voice.
 (PT: Muito bem! No laboratório vai ouvir plurais e gravar a sua voz.)
 

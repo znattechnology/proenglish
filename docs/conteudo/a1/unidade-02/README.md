@@ -39,7 +39,7 @@ Reciclagem da unidade 1 em todas as aulas, no laboratório 2R e nas perguntas 11
 
 ## Personagens
 
-Equipa da Kalandula Tech (unidade 1) e **Mateus** (engenheiro, de Huambo), **Thandi Mokoena** (engenheira sul-africana, de Joanesburgo), **Sr. Okafor** (cliente nigeriano, de Lagos), **David Okoro** (visitante nigeriano, na prática guiada). Na 2E: **Amélia** (Maputo), **Patrick** (Kinshasa), **Emma** (Manchester).
+Equipa da Kalandula Tech (unidade 1) e **Mateus** (engenheiro, de Huambo), **Thandi Mokoena** (engenheira sul-africana, de Joanesburgo), **Sr. Okafor** (cliente nigeriano, de Lagos), **Alex Okoro** (visitante nigeriano(a), na prática guiada; nome neutro). Na 2E: **Amélia** (Maputo), **Patrick** (Kinshasa), **Emma** (Manchester).
 
 ## Decisões pedagógicas desta unidade
 

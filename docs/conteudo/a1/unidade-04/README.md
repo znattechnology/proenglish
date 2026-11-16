@@ -1,6 +1,6 @@
 # A1.1 · Unidade 4 — Family and friends
 
-**Estado:** primeira versão escrita e revista ao escrever, com os 6 critérios das revisões anteriores (incluindo "funciona num vídeo gravado"); falta a revisão n.º 1 e a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 4
+**Estado:** primeira versão escrita e revista ([revisão n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [02-plano-A1.md](../../02-plano-A1.md), unidade 4
 
 ## Objectivos da unidade
 
@@ -57,4 +57,4 @@ O objectivo 4 é de interacção e verifica-se na conversa livre com o tutor ("F
 
 ## O que falta para publicar
 
-O mesmo que nas unidades anteriores: revisão n.º 1, leitura pelos professores, vídeos com o professor de IA, áudio (13 escutas e 9 pronúncias), carregamento na plataforma e imagens (árvore genealógica do Paulo na 4A; objectos na sala de reuniões na 4C; mala com objectos na 4D; fotografias de família na 4F).
+O mesmo que nas unidades anteriores: leitura pelos professores, vídeos com o professor de IA, áudio (13 escutas e 9 pronúncias), carregamento na plataforma e imagens (árvore genealógica do Paulo na 4A; objectos na sala de reuniões na 4C; mala com objectos na 4D; fotografias de família na 4F).

@@ -610,9 +610,9 @@ Verificação: Lab 2F (exercícios 1–9); conversa livre "A visitor from South 
 **PROF:** Now you welcome a visitor. I'm the visitor.
 (PT: Agora recebe um visitante. Eu sou o visitante.)
 
-**PROF:** Good morning. I'm David Okoro. I have a meeting here.
+**PROF:** Good morning. I'm Alex Okoro. I have a meeting here.
 [PAUSA 5 s]
-[ECRÃ: Good morning, Mr Okoro. Welcome! I'm …]
+[ECRÃ: Good morning, Mr / Ms Okoro. Welcome! I'm …]
 
 **PROF:** Ask me where I'm from.
 [PAUSA 4 s]

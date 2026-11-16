@@ -744,17 +744,17 @@ Verificação: Lab 1F (exercícios 1–9); conversa livre "A new colleague"; per
 **PROF:** And your phone number?
 [PAUSA 8 s]
 
-**PROF:** Now I'm your new colleague. Hi! I'm Tomás. Nice to meet you.
+**PROF:** Now I'm your new colleague. Hi! I'm Sam. Nice to meet you.
 [PAUSA 5 s]
-[ECRÃ: Nice to meet you too, Tomás. I'm …]
+[ECRÃ: Nice to meet you too, Sam. I'm …]
 
 **PROF:** Are you the new accountant?
 [PAUSA 5 s]
 [ECRÃ: Yes, I am. / No, I'm not. I'm a/an …]
 
-**PROF:** It's six thirty in the evening. Say goodbye to Tomás.
+**PROF:** It's six thirty in the evening. Say goodbye to Sam.
 [PAUSA 5 s]
-[ECRÃ: Goodbye, Tomás! See you tomorrow.]
+[ECRÃ: Goodbye, Sam! See you tomorrow.]
 
 ### 7. Fecho (30 s)
 

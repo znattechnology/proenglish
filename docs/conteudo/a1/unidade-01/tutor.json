@@ -63,7 +63,7 @@
    "tipo": "livre",
    "depois_da_aula": "1F",
    "descricao": "Primeiro dia de trabalho: o tutor é um colega novo. O aluno cumprimenta, diz o nome, soletra-o, troca o número de telefone e despede-se.",
-   "papel_tutor": "Um colega simpático da nova equipa.",
+   "papel_tutor": "Sam, colega simpático(a) da nova equipa.",
    "nivel": "A1",
    "duracao_min": 5,
    "correccao": "suave",
@@ -74,9 +74,9 @@
     "See you tomorrow."
    ],
    "extras": {
-    "brief": "Role-play for an absolute beginner (A1, unit 1). It is the student's first day at work. You are a friendly new colleague, Tomás, an accountant. Greet the student according to the time of day, introduce yourself, ask their name and how to spell it, ask if they are the new technician, exchange phone numbers, and say goodbye. Use very short sentences and only unit 1 language (be with I/you, a/an + job, numbers 0-20, spelling, greetings). One question at a time. Encourage the student to ask you at least one question (e.g. \"And you?\"). At the end, say goodbye with \"See you tomorrow\".",
-    "primeira_fala": "Good morning! I'm Tomás. I'm an accountant. Are you new here?",
-    "primeira_fala_simples": "Good morning! I'm Tomás. Are you new?",
+    "brief": "Role-play for an absolute beginner (A1, unit 1). It is the student's first day at work. You are a friendly new colleague, Sam, an accountant (Sam can be a man or a woman, to match your voice). Greet the student according to the time of day, introduce yourself, ask their name and how to spell it, ask if they are the new technician, exchange phone numbers, and say goodbye. Use very short sentences and only unit 1 language (be with I/you, a/an + job, numbers 0-20, spelling, greetings). One question at a time. Encourage the student to ask you at least one question (e.g. \"And you?\"). At the end, say goodbye with \"See you tomorrow\".",
+    "primeira_fala": "Good morning! I'm Sam. I'm an accountant. Are you new here?",
+    "primeira_fala_simples": "Good morning! I'm Sam. Are you new?",
     "guiao": [
      "Welcome! Nice to meet you. What's your name?",
      "Sorry, how do you spell that?",

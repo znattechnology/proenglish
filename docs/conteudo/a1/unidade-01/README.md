@@ -38,7 +38,7 @@ No fim da unidade, o aluno consegue:
 ## Personagens e contexto
 
 - **Kalandula Tech**, empresa fictícia de tecnologia em Talatona, Luanda. E-mails inventados em `@kalandula.co.ao`.
-- **Ana Domingos** (recepcionista), **Paulo Mendes** (técnico de informática, novo), **Sr. João Baptista** (chefe), **Sílvia Neto** (contabilista), **Tomás** (contabilista, no cenário do tutor).
+- **Ana Domingos** (recepcionista), **Paulo Mendes** (técnico de informática, novo), **Sr. João Baptista** (chefe), **Sílvia Neto** (contabilista), **Sam** (contabilista; o colega da prática da 1F e do cenário do tutor, com nome neutro para servir a voz masculina ou feminina).
 - Na aula 1E (Real English): Teresa, David, Richard Green, Sr. Lopes, Joana e Sr. Okafor, com 8 vozes diferentes (angolanas, nigerianas, britânicas e norte-americana).
 
 ## Decisões pedagógicas desta unidade
