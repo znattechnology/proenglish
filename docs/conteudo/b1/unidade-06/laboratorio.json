@@ -1,0 +1,1502 @@
+{
+ "unidade": "B1.2 · Unit 6 — What happened?",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "6A",
+   "titulo": "It had already started",
+   "aula": "6A",
+   "objectivo": "Usar o past perfect para o que tinha acontecido antes de outro momento do passado.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "When I arrived, the fire team [had] already left.",
+     "opcoes": [
+      {
+       "texto": "has",
+       "certa": false
+      },
+      {
+       "texto": "have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "By the time Pieter arrived, Teodoro had already [put] out the fire.",
+     "opcoes": [
+      {
+       "texto": "putted",
+       "certa": false
+      },
+      {
+       "texto": "putting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "When we started the project, nobody [had] told us about the roof.",
+     "opcoes": [
+      {
+       "texto": "has",
+       "certa": false
+      },
+      {
+       "texto": "did",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd never [seen] snow before I went to Johannesburg.",
+     "opcoes": [
+      {
+       "texto": "saw",
+       "certa": false
+      },
+      {
+       "texto": "see",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Quando cheguei, ele já tinha saído.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "When I arrived, he had already left.",
+       "certa": true
+      },
+      {
+       "texto": "When I arrived, he already left.",
+       "certa": false
+      },
+      {
+       "texto": "When I arrived, he has already left.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"tinha saído\" → had left."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"By the time I arrived, he'd already turned off the power.\" What happened first?",
+     "opcoes": [
+      {
+       "texto": "He turned off the power.",
+       "certa": true
+      },
+      {
+       "texto": "I arrived.",
+       "certa": false
+      },
+      {
+       "texto": "Both at the same time.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Had you turned your phone off?",
+       "certa": true
+      },
+      {
+       "texto": "Did you had turned your phone off?",
+       "certa": false
+      },
+      {
+       "texto": "Had you turn your phone off?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Eles tinham acabado de sair quando eu cheguei.",
+     "resposta": "They had just left when I arrived.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Pieter. By the time I arrived, Teodoro had already turned off the power and put out the fire.",
+     "enunciado": "What had Teodoro done before Pieter arrived?",
+     "opcoes": [
+      {
+       "texto": "turned off the power and put out the fire",
+       "certa": true
+      },
+      {
+       "texto": "called Nuno",
+       "certa": false
+      },
+      {
+       "texto": "opened the server room for the fire team",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "He'd already turned off the power.",
+     "enunciado": "Ouça e repita, sem perder o \"'d\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of a day when you arrived late — at work, at school, at an airport. What had already happened when you arrived?",
+     "frase": "had",
+     "resposta": "Last year I was late for a job interview because of the traffic. When I arrived, the other candidates had already finished their tests, and the manager had gone to lunch. I'd never felt so embarrassed!",
+     "contexto": "Past perfect."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's the best thing to do when you arrive late for something important? Why?",
+     "frase": "because",
+     "resposta": "In my opinion, the best thing is to apologise quickly, because a long story wastes more time. Last year I arrived late to a meeting, but I'd already read the documents, so I could join the discussion.",
+     "contexto": "Uma opinião com o past perfect."
+    }
+   ]
+  },
+  {
+   "codigo": "6B",
+   "titulo": "While I was checking…",
+   "aula": "6B",
+   "objectivo": "Contar uma história com o past simple, o past continuous e o past perfect.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It [was raining] very hard at four o'clock.",
+     "opcoes": [
+      {
+       "texto": "was rain",
+       "certa": false
+      },
+      {
+       "texto": "raining",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "While Teodoro [was walking] back, the alarm went off.",
+     "opcoes": [
+      {
+       "texto": "is walking",
+       "certa": false
+      },
+      {
+       "texto": "walking",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "As soon as he [opened] the door, he saw a small fire.",
+     "opcoes": [
+      {
+       "texto": "was opening",
+       "certa": false
+      },
+      {
+       "texto": "opens",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He [had done] the fire training in December, so he knew what to do.",
+     "opcoes": [
+      {
+       "texto": "was doing",
+       "certa": false
+      },
+      {
+       "texto": "has done",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "While he was walking, the alarm went off.",
+       "certa": true
+      },
+      {
+       "texto": "While the alarm went off, he was walking.",
+       "certa": false
+      },
+      {
+       "texto": "While he walking, the alarm was going off.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It was raining, and Teodoro was doing his round.\" In the story, these sentences are…",
+     "opcoes": [
+      {
+       "texto": "the background",
+       "certa": true
+      },
+      {
+       "texto": "the main events",
+       "certa": false
+      },
+      {
+       "texto": "what happened before the story",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I was driving to work when my phone rang.",
+       "certa": true
+      },
+      {
+       "texto": "I was driving to work when my phone was ring.",
+       "certa": false
+      },
+      {
+       "texto": "I was drive to work when my phone rang.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Estava a chover quando o alarme disparou.",
+     "resposta": "It was raining when the alarm went off.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. At four twenty-one, the water was already dripping from the ceiling, next to the cable duct.",
+     "enunciado": "What was happening at four twenty-one?",
+     "opcoes": [
+      {
+       "texto": "Water was dripping from the ceiling.",
+       "certa": true
+      },
+      {
+       "texto": "The alarm was ringing.",
+       "certa": false
+      },
+      {
+       "texto": "The fire team was arriving.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "While he was walking back, the alarm went off.",
+     "enunciado": "Ouça e repita, com \"was\" fraco."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a surprise or a small problem in your life: what was happening, what happened, and what had happened before.",
+     "frase": "was",
+     "resposta": "Last month I was working at home when the power went off. I was writing an important report, and I hadn't saved it for an hour! But as soon as the power came back, I opened the file, and the program had saved a copy. What a relief!",
+     "contexto": "Os três tempos narrativos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you think every company needs fire training for all its staff? Why?",
+     "frase": "because",
+     "resposta": "Yes, I do, because a fire can start anywhere, and the first minutes are the most important. At the terminal in Lobito, the guard had done the training, so he knew what to do.",
+     "contexto": "Uma opinião com uma razão."
+    }
+   ]
+  },
+  {
+   "codigo": "6C",
+   "titulo": "Because of the rain",
+   "aula": "6C",
+   "objectivo": "Explicar causas e consequências com because / because of / due to / so / as a result / that's why.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The water stayed on the roof [because] the drain was blocked.",
+     "opcoes": [
+      {
+       "texto": "because of",
+       "certa": false
+      },
+      {
+       "texto": "due",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Because of] the rain, the water stayed on the roof.",
+     "opcoes": [
+      {
+       "texto": "Because",
+       "certa": false
+      },
+      {
+       "texto": "So",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The short circuit was [due to] two things.",
+     "opcoes": [
+      {
+       "texto": "due",
+       "certa": false
+      },
+      {
+       "texto": "because",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The drain was blocked, [so] the water stayed on the roof.",
+     "opcoes": [
+      {
+       "texto": "due to",
+       "certa": false
+      },
+      {
+       "texto": "because of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Devido à chuva, o voo atrasou.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Due to the rain, the flight was late.",
+       "certa": true
+      },
+      {
+       "texto": "Due the rain, the flight was late.",
+       "certa": false
+      },
+      {
+       "texto": "Because the rain, the flight was late.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The material hadn't arrived. That's why the duct was open.",
+       "certa": true
+      },
+      {
+       "texto": "The material hadn't arrived. As result, the duct was open.",
+       "certa": false
+      },
+      {
+       "texto": "The material hadn't arrived. Because of the duct was open.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which word comes before a full sentence, with a verb?",
+     "opcoes": [
+      {
+       "texto": "because",
+       "certa": true
+      },
+      {
+       "texto": "because of",
+       "certa": false
+      },
+      {
+       "texto": "due to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Por isso, cheguei atrasado.",
+     "resposta": "That's why I arrived late.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Pieter. The roof drain was completely blocked, so the water stayed on the roof.",
+     "enunciado": "Why did the water stay on the roof?",
+     "opcoes": [
+      {
+       "texto": "The drain was blocked.",
+       "certa": true
+      },
+      {
+       "texto": "The roof was new.",
+       "certa": false
+      },
+      {
+       "texto": "The duct was open.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Because of the rain, the water stayed on the roof.",
+     "enunciado": "Ouça e repita: \"because of\" ligado a \"the rain\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of a problem in your city or at your work. Explain the cause and the consequences, with \"because of\" or \"due to\", and \"so\" or \"as a result\".",
+     "frase": "result",
+     "resposta": "Last week there was a big traffic jam on the main road to my office. It was due to an accident between two lorries. As a result, I arrived an hour late, so I missed the morning meeting. That's why I now leave home at six thirty!",
+     "contexto": "Causa e consequência."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "In your opinion, are most accidents at work due to bad luck or to bad planning? Why?",
+     "frase": "due to",
+     "resposta": "In my view, most accidents are due to bad planning, not bad luck. For example, the fire in Lobito happened because a drain was blocked and a duct was open. Both things were easy to check.",
+     "contexto": "Uma opinião com due to."
+    }
+   ]
+  },
+  {
+   "codigo": "6D",
+   "titulo": "Then what happened?",
+   "aula": "6D",
+   "objectivo": "Contar com sequenciadores, dizer como se sentiu e reagir à história de outra pessoa.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[At first], it was just water.",
+     "opcoes": [
+      {
+       "texto": "At the first",
+       "certa": false
+      },
+      {
+       "texto": "In first",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[In the end], nobody was hurt.",
+     "opcoes": [
+      {
+       "texto": "In end",
+       "certa": false
+      },
+      {
+       "texto": "On the end",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "After a long time, the fire team [eventually] came.",
+     "opcoes": [
+      {
+       "texto": "possibly",
+       "certa": false
+      },
+      {
+       "texto": "maybe",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I was really [relieved] when I heard nobody was hurt.",
+     "opcoes": [
+      {
+       "texto": "relieving",
+       "certa": false
+      },
+      {
+       "texto": "relief",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Your friend says: \"I lost my wallet in a taxi.\" You say:",
+     "opcoes": [
+      {
+       "texto": "Oh no! What did you do?",
+       "certa": true
+      },
+      {
+       "texto": "Congratulations!",
+       "certa": false
+      },
+      {
+       "texto": "What a relief!",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Your friend says: \"They found my wallet!\" You say:",
+     "opcoes": [
+      {
+       "texto": "Thank goodness! What a relief!",
+       "certa": true
+      },
+      {
+       "texto": "Poor you!",
+       "certa": false
+      },
+      {
+       "texto": "You're joking! That's terrible.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Eventualmente mudamos de escritório\" (no sentido de \"talvez\"). Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Maybe we'll move to a new office.",
+       "certa": true
+      },
+      {
+       "texto": "Eventually we move office.",
+       "certa": false
+      },
+      {
+       "texto": "Eventual we move office.",
+       "certa": false
+      }
+     ],
+     "explicacao": "eventually = por fim; \"eventualmente\" (talvez) = maybe."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the best order for a story.",
+     "opcoes": [
+      {
+       "texto": "At first… Then… After that… In the end…",
+       "certa": true
+      },
+      {
+       "texto": "In the end… At first… Then…",
+       "certa": false
+      },
+      {
+       "texto": "After that… At first… In the end…",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. No way! Was anyone hurt?",
+     "enunciado": "How does Thandi feel?",
+     "opcoes": [
+      {
+       "texto": "surprised and worried",
+       "certa": true
+      },
+      {
+       "texto": "bored",
+       "certa": false
+      },
+      {
+       "texto": "happy",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "No way! What did you do then?",
+     "enunciado": "Ouça e repita, com a voz a subir."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a stressful day in your life, with \"at first\", \"then\", \"after that\" and \"in the end\". Say how you felt.",
+     "frase": "In the end",
+     "resposta": "The day of my driving test was really stressful. At first, everything went well. Then a dog ran in front of the car, and I stopped suddenly. After that, I was so nervous! In the end, I passed — but only just. I was so relieved.",
+     "contexto": "Sequenciadores e sentimentos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you prefer to tell stories or to listen to them? Why?",
+     "frase": "prefer",
+     "resposta": "I prefer to listen to them, because I learn a lot from other people's stories. But when I tell a story, I try to say how I felt, so people want to listen.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "6E",
+   "titulo": "Incidents",
+   "aula": "6E",
+   "objectivo": "Palavras e colocações de incidentes; contar em grupos de palavras; casualty e prejudice.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "leak",
+       "b": "fuga, infiltração"
+      },
+      {
+       "a": "injury",
+       "b": "ferimento"
+      },
+      {
+       "a": "damage",
+       "b": "estragos"
+      },
+      {
+       "a": "witness",
+       "b": "testemunha"
+      },
+      {
+       "a": "evacuate",
+       "b": "evacuar"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "As soon as he saw the smoke, he [raised] the alarm.",
+     "opcoes": [
+      {
+       "texto": "rose",
+       "certa": false
+      },
+      {
+       "texto": "lifted",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The water caused a lot of [damage].",
+     "opcoes": [
+      {
+       "texto": "damages",
+       "certa": false
+      },
+      {
+       "texto": "damaged",
+       "certa": false
+      }
+     ],
+     "explicacao": "damage é incontável."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Teodoro [put] out the fire with the extinguisher.",
+     "opcoes": [
+      {
+       "texto": "took",
+       "certa": false
+      },
+      {
+       "texto": "made",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I have to [write] a report about the incident.",
+     "opcoes": [
+      {
+       "texto": "fill",
+       "certa": false
+      },
+      {
+       "texto": "say",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Não houve vítimas.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "There were no casualties.",
+       "certa": true
+      },
+      {
+       "texto": "There were no coincidences.",
+       "certa": false
+      },
+      {
+       "texto": "There were no prejudices.",
+       "certa": false
+      }
+     ],
+     "explicacao": "casualty = vítima."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A empresa teve um prejuízo de cinco mil dólares.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The company had a loss of five thousand dollars.",
+       "certa": true
+      },
+      {
+       "texto": "The company had a prejudice of five thousand dollars.",
+       "certa": false
+      },
+      {
+       "texto": "The company had a casualty of five thousand dollars.",
+       "certa": false
+      }
+     ],
+     "explicacao": "prejudice = preconceito."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Foi por casualidade.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "It was by chance.",
+       "certa": true
+      },
+      {
+       "texto": "It was by casualty.",
+       "certa": false
+      },
+      {
+       "texto": "It was a casualty.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Nobody was hurt, but the water damaged two switches and a UPS.",
+     "enunciado": "What was the damage?",
+     "opcoes": [
+      {
+       "texto": "two switches and a UPS",
+       "certa": true
+      },
+      {
+       "texto": "the cameras and the roof",
+       "certa": false
+      },
+      {
+       "texto": "nothing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "When I arrived, the fire team had already left.",
+     "enunciado": "Ouça e repita, em dois grupos, com uma pausa no meio."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Teodoro had turned off the power, and put out the fire.",
+     "enunciado": "Ouça e repita, em dois grupos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe an incident you saw or heard about: what happened, was anyone hurt, and what was the damage?",
+     "frase": "damage",
+     "resposta": "Two years ago, there was a flood in my street because of the heavy rain. The water came into the shops, and they evacuated the school. Luckily, nobody was hurt, but there was a lot of damage. The bakery lost all its flour.",
+     "contexto": "Vocabulário de incidentes."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What is the most important thing to do in the first minutes of an emergency? Why?",
+     "frase": "first",
+     "resposta": "In my view, the first thing is to raise the alarm, so everyone can leave the building. Then you call the emergency services. Don't try to be a hero: people are more important than things.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "6F",
+   "titulo": "Real English: You'll never believe what happened",
+   "aula": "6F",
+   "objectivo": "Seguir três histórias e identificar a ordem dos acontecimentos e a causa.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Carlos. We were loading a ship at the port in Maputo when a crane suddenly stopped — with a container in the air!",
+     "enunciado": "What was the crane carrying when it stopped?",
+     "opcoes": [
+      {
+       "texto": "a container",
+       "certa": true
+      },
+      {
+       "texto": "a lorry",
+       "certa": false
+      },
+      {
+       "texto": "a ship",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Carlos. Someone had changed a setting in the crane's computer the day before, and nobody had tested it.",
+     "enunciado": "Why did the crane stop?",
+     "opcoes": [
+      {
+       "texto": "Someone had changed a setting, and nobody had tested it.",
+       "certa": true
+      },
+      {
+       "texto": "The power went off.",
+       "certa": false
+      },
+      {
+       "texto": "The driver was ill.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Neo. While the driver was crossing a river, the water came up very fast because of a storm in the hills.",
+     "enunciado": "Why did the river come up so fast?",
+     "opcoes": [
+      {
+       "texto": "There was a storm in the hills.",
+       "certa": true
+      },
+      {
+       "texto": "The bridge broke.",
+       "certa": false
+      },
+      {
+       "texto": "It rained in the city.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Neo. In the end, a farmer pulled the lorry out with his tractor.",
+     "enunciado": "How did they get the lorry out of the river?",
+     "opcoes": [
+      {
+       "texto": "A farmer pulled it out with a tractor.",
+       "certa": true
+      },
+      {
+       "texto": "The driver drove it out.",
+       "certa": false
+      },
+      {
+       "texto": "Another lorry pulled it out.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Mei. We'd installed an update the night before, and it had a mistake.",
+     "enunciado": "When did they install the update?",
+     "opcoes": [
+      {
+       "texto": "the night before",
+       "certa": true
+      },
+      {
+       "texto": "on payday at nine",
+       "certa": false
+      },
+      {
+       "texto": "a month before",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Mei. As a result, the app was down for four hours.",
+     "enunciado": "How long was the app down?",
+     "opcoes": [
+      {
+       "texto": "four hours",
+       "certa": true
+      },
+      {
+       "texto": "two hours",
+       "certa": false
+      },
+      {
+       "texto": "all day",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "All three stories have the same shape:",
+     "opcoes": [
+      {
+       "texto": "the situation, the problem, the cause, the end",
+       "certa": true
+      },
+      {
+       "texto": "only the end",
+       "certa": false
+      },
+      {
+       "texto": "only the cause",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "What is the lesson of Mei's story?",
+     "opcoes": [
+      {
+       "texto": "Don't install updates before payday.",
+       "certa": true
+      },
+      {
+       "texto": "Test every crane.",
+       "certa": false
+      },
+      {
+       "texto": "Watch the weather.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "You'll never believe what happened to us last year.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Someone had changed a setting the day before.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Which story did you like best? Tell it again in your own words: what happened, why, and how it ended.",
+     "frase": "In the end",
+     "resposta": "I liked Neo's story. One of their lorries was crossing a river when the water came up very fast, because of a storm in the hills. The driver climbed onto the roof and called the office. In the end, a farmer pulled the lorry out with a tractor.",
+     "contexto": "Recontar uma história."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Why do simple things cause big problems at work, in your opinion?",
+     "frase": "because",
+     "resposta": "I think it's because people don't check simple things. Everyone thinks someone else has done it. For example, nobody had tested the crane's setting, and nobody had sealed the duct in Lobito.",
+     "contexto": "Uma opinião com exemplos."
+    }
+   ]
+  },
+  {
+   "codigo": "6G",
+   "titulo": "Work & Life: Incident report",
+   "aula": "6G",
+   "objectivo": "Relatar um incidente em quatro partes, responder a perguntas difíceis e resumir o relato de uma testemunha.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Nuno starts the report. Choose the best start.",
+     "opcoes": [
+      {
+       "texto": "I'll explain in four parts: what happened, why, what we did, and what we're going to do.",
+       "certa": true
+      },
+      {
+       "texto": "OK. So. The fire.",
+       "certa": false
+      },
+      {
+       "texto": "I will explaining you everything.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "By four forty, the guard [had turned] off the power.",
+     "opcoes": [
+      {
+       "texto": "has turned",
+       "certa": false
+      },
+      {
+       "texto": "was turning",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "On Monday night, the contractor [hadn't] sealed the duct yet.",
+     "opcoes": [
+      {
+       "texto": "didn't",
+       "certa": false
+      },
+      {
+       "texto": "hasn't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Pieter's team is [going] to clean the drains every month.",
+     "opcoes": [
+      {
+       "texto": "go",
+       "certa": false
+      },
+      {
+       "texto": "will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Ingrid asks a difficult question. Choose the best start.",
+     "opcoes": [
+      {
+       "texto": "That's a fair question.",
+       "certa": true
+      },
+      {
+       "texto": "That's not my problem.",
+       "certa": false
+      },
+      {
+       "texto": "I don't know. Next question.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The statement says: \"estava a regressar da ronda quando ouvi o alarme\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "He says he was walking back from his round when he heard the alarm.",
+       "certa": true
+      },
+      {
+       "texto": "He says he returned the round when the alarm was hearing.",
+       "certa": false
+      },
+      {
+       "texto": "He says he is walking back when he hears the alarm.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence takes responsibility?",
+     "opcoes": [
+      {
+       "texto": "That was a mistake in our planning, and I take responsibility for it.",
+       "certa": true
+      },
+      {
+       "texto": "That was the contractor's fault, not mine.",
+       "certa": false
+      },
+      {
+       "texto": "These things happen.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Pieter. The damage is about eight thousand dollars. We're talking to the insurance company.",
+     "enunciado": "How much is the damage?",
+     "opcoes": [
+      {
+       "texto": "about eight thousand dollars",
+       "certa": true
+      },
+      {
+       "texto": "about eighteen thousand dollars",
+       "certa": false
+      },
+      {
+       "texto": "about eight hundred dollars",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. The cameras were back at one thirty in the afternoon — nine hours without images.",
+     "enunciado": "How long were the cameras without images?",
+     "opcoes": [
+      {
+       "texto": "nine hours",
+       "certa": true
+      },
+      {
+       "texto": "five hours",
+       "certa": false
+      },
+      {
+       "texto": "one hour",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "First, what happened. Second, why. Third, what we did. And finally, what we're going to do.",
+     "enunciado": "Ouça e repita, com uma pausa entre as quatro partes."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Report this incident in four parts: last night a power cut stopped the air conditioning; this morning two computers had stopped working; you moved the staff to the meeting room; a technician is coming, and you're going to buy a generator.",
+     "frase": "First",
+     "resposta": "First, what happened: last night a power cut stopped the air conditioning. Second, why it was a problem: by the morning, two computers had stopped working. Third, we moved the staff to the meeting room. Finally, a technician is coming, and we're going to buy a generator.",
+     "contexto": "Relato em quatro partes."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise this statement in English: \"Ontem, por volta das 15h, estava a arrumar caixas no armazém quando uma prateleira caiu. Uma caixa bateu-me no braço. A prateleira estava mal presa à parede. A Dona Rosa deu-me os primeiros socorros e fui ao hospital, mas não parti nada. — Mateus\"",
+     "frase": "says",
+     "resposta": "Mateus says he was putting boxes away in the warehouse at about three yesterday afternoon when a shelf fell. A box hit his arm. The shelf wasn't attached well to the wall. Rosa gave him first aid, and he went to the hospital, but nothing was broken.",
+     "contexto": "Mediação: o relato de uma testemunha."
+    }
+   ]
+  },
+  {
+   "codigo": "6R",
+   "titulo": "Unit 6 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 6 e reciclar o B1.1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "When we got to the airport, the plane [had] already left.",
+     "opcoes": [
+      {
+       "texto": "has",
+       "certa": false
+      },
+      {
+       "texto": "was",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [was cooking] when the power went off.",
+     "opcoes": [
+      {
+       "texto": "am cooking",
+       "certa": false
+      },
+      {
+       "texto": "cooking",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The flight was late [because of] the storm.",
+     "opcoes": [
+      {
+       "texto": "because",
+       "certa": false
+      },
+      {
+       "texto": "so",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[In the end], everything was fine.",
+     "opcoes": [
+      {
+       "texto": "In end",
+       "certa": false
+      },
+      {
+       "texto": "On the end",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The water caused a lot of damage.",
+       "certa": true
+      },
+      {
+       "texto": "The water caused a lot of damages.",
+       "certa": false
+      },
+      {
+       "texto": "The water made a lot of damages.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "While I was waiting for the bus, it started to rain.",
+       "certa": true
+      },
+      {
+       "texto": "While I waited for the bus, it was start to rain.",
+       "certa": false
+      },
+      {
+       "texto": "While I was waiting for the bus, it had start to rain.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 5). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The fire was put out by the guard.",
+       "certa": true
+      },
+      {
+       "texto": "The fire was putted out by the guard.",
+       "certa": false
+      },
+      {
+       "texto": "The fire put out by the guard.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 4). Complete: \"If we ___ a water sensor, we'd know about leaks immediately.\"",
+     "opcoes": [
+      {
+       "texto": "had",
+       "certa": true
+      },
+      {
+       "texto": "would have",
+       "certa": false
+      },
+      {
+       "texto": "have had",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 2). Complete: \"I've been ___ on this project since January.\"",
+     "opcoes": [
+      {
+       "texto": "working",
+       "certa": true
+      },
+      {
+       "texto": "work",
+       "certa": false
+      },
+      {
+       "texto": "worked",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Quando cheguei, a reunião já tinha começado.",
+     "resposta": "When I arrived, the meeting had already started.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Ingrid. Nuno, that's a very clear report. Please send it to me in writing today.",
+     "enunciado": "What does Ingrid want?",
+     "opcoes": [
+      {
+       "texto": "the report in writing today",
+       "certa": true
+      },
+      {
+       "texto": "a new meeting tomorrow",
+       "certa": false
+      },
+      {
+       "texto": "a call with the guard",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a problem at work and how it was solved.",
+     "frase": "solved",
+     "resposta": "Last month our printer stopped working on the day of a big presentation. At first, we didn't know why. Then the technician found the cause: someone had put the wrong paper in it. It was solved in an hour, and in the end, the presentation was fine.",
+     "contexto": "Uma história com causa e solução (45 segundos)."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your friend tells you: \"I missed my flight yesterday!\" React, and ask two questions.",
+     "frase": "What",
+     "resposta": "No way! What happened? Had you left home late, or was it the traffic? And what did you do then?",
+     "contexto": "Reagir e perguntar."
+    }
+   ]
+  }
+ ]
+}

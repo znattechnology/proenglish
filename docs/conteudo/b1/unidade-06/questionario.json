@@ -1,0 +1,301 @@
+{
+ "title": "B1.2 Unit 6 quiz — What happened?",
+ "description": "Past perfect, tempos narrativos, causa e consequência, sequenciadores, incidentes, casualty e prejudice.",
+ "questions": [
+  {
+   "id": "b1u6q1",
+   "question": "\"Quando cheguei, ele já tinha saído.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u6q1o0",
+     "text": "When I arrived, he had already left.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u6q1o1",
+     "text": "When I arrived, he already left.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u6q1o2",
+     "text": "When I arrived, he has already left.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u6q1o0",
+   "explanation": "\"tinha saído\" → had left.",
+   "points": 10
+  },
+  {
+   "id": "b1u6q2",
+   "question": "Complete: \"By the time the fire team arrived, the guard ___ the fire.\"",
+   "options": [
+    {
+     "id": "b1u6q2o0",
+     "text": "had put out",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u6q2o1",
+     "text": "has put out",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u6q2o2",
+     "text": "had putted out",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u6q2o0",
+   "explanation": "Antes de outro momento do passado: had + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b1u6q3",
+   "question": "Complete: \"While he ___ back, the alarm went off.\"",
+   "options": [
+    {
+     "id": "b1u6q3o0",
+     "text": "was walking",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u6q3o1",
+     "text": "is walking",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u6q3o2",
+     "text": "had walking",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u6q3o0",
+   "explanation": "A acção longa: past continuous.",
+   "points": 10
+  },
+  {
+   "id": "b1u6q4",
+   "question": "\"It was raining.\" Numa história, esta frase é…",
+   "options": [
+    {
+     "id": "b1u6q4o0",
+     "text": "o fundo (o que estava a acontecer)",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u6q4o1",
+     "text": "uma acção principal",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u6q4o2",
+     "text": "o que tinha acontecido antes",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u6q4o0",
+   "explanation": "Past continuous: o fundo.",
+   "points": 10
+  },
+  {
+   "id": "b1u6q5",
+   "question": "Complete: \"The flight was late ___ the storm.\"",
+   "options": [
+    {
+     "id": "b1u6q5o0",
+     "text": "because of",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u6q5o1",
+     "text": "because",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u6q5o2",
+     "text": "so",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u6q5o0",
+   "explanation": "Antes de um nome: because of.",
+   "points": 10
+  },
+  {
+   "id": "b1u6q6",
+   "question": "\"Por isso cheguei atrasado.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u6q6o0",
+     "text": "That's why I arrived late.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u6q6o1",
+     "text": "That's because I arrived late.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u6q6o2",
+     "text": "Because of I arrived late.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u6q6o0",
+   "explanation": "Por isso → that's why / so.",
+   "points": 10
+  },
+  {
+   "id": "b1u6q7",
+   "question": "Complete: \"The water caused a lot of ___.\"",
+   "options": [
+    {
+     "id": "b1u6q7o0",
+     "text": "damage",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u6q7o1",
+     "text": "damages",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u6q7o2",
+     "text": "damaged",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u6q7o0",
+   "explanation": "damage é incontável.",
+   "points": 10
+  },
+  {
+   "id": "b1u6q8",
+   "question": "\"Não houve vítimas.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u6q8o0",
+     "text": "There were no casualties.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u6q8o1",
+     "text": "There were no coincidences.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u6q8o2",
+     "text": "There were no prejudices.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u6q8o0",
+   "explanation": "Falso amigo: casualty = vítima.",
+   "points": 10
+  },
+  {
+   "id": "b1u6q9",
+   "question": "Num relato de incidente, a ordem mais clara é…",
+   "options": [
+    {
+     "id": "b1u6q9o0",
+     "text": "o que aconteceu, porquê, o que se fez, o que se vai fazer",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u6q9o1",
+     "text": "quem teve a culpa, e depois o que aconteceu",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u6q9o2",
+     "text": "só o que aconteceu",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u6q9o0",
+   "explanation": "As quatro partes do Nuno na 6G.",
+   "points": 10
+  },
+  {
+   "id": "b1u6q10",
+   "question": "Reciclagem (B1, unidade 5). Complete: \"The duct ___ sealed on Wednesday.\"",
+   "options": [
+    {
+     "id": "b1u6q10o0",
+     "text": "was",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u6q10o1",
+     "text": "were",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u6q10o2",
+     "text": "did",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u6q10o0",
+   "explanation": "Passiva no passado.",
+   "points": 10
+  },
+  {
+   "id": "b1u6q11",
+   "question": "Reciclagem (B1, unidade 4). Complete: \"If I ___ you, I'd write the report today.\"",
+   "options": [
+    {
+     "id": "b1u6q11o0",
+     "text": "were",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u6q11o1",
+     "text": "am",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u6q11o2",
+     "text": "will be",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u6q11o0",
+   "explanation": "If I were you.",
+   "points": 10
+  },
+  {
+   "id": "b1u6q12",
+   "question": "Reciclagem (B1, unidade 1). Complete: \"Could you tell me what time ___?\"",
+   "options": [
+    {
+     "id": "b1u6q12o0",
+     "text": "the meeting starts",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u6q12o1",
+     "text": "does the meeting start",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u6q12o2",
+     "text": "starts the meeting",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u6q12o0",
+   "explanation": "Pergunta indirecta: a ordem da afirmação.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
