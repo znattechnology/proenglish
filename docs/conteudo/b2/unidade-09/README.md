@@ -1,6 +1,6 @@
 # B2.2 · Unidade 9 — Mediation at work (7 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 9
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 9
 
 ## Objectivos da unidade
 
@@ -52,6 +52,6 @@ Fim de Maio e início de Junho de 2029. A Kuvango diz que a sala de controlo do 
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (19 escutas, 8 pronúncias, a 9F com quatro vozes, vento e gerador); imagens (o relatório da Elsa, a acta em inglês da 9E, a acta em português da 9G); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (19 escutas, 8 pronúncias, a 9F com quatro vozes, vento e gerador); imagens (o relatório da Elsa, a acta em inglês da 9E, a acta em português da 9G); carregamento na plataforma.
 
 A seguir vem a **unidade 10, "Choices"**, a última do B2.

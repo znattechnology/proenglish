@@ -69,7 +69,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [b2/unidade-06/](b2/unidade-06/README.md) | B2.2, unidade 6 "Health, safety and environment": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b2/unidade-07/](b2/unidade-07/README.md) | B2.2, unidade 7 "City life": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b2/unidade-08/](b2/unidade-08/README.md) | B2.2, unidade 8 "Reviews and reactions": guiões, laboratório, tutor, questionário e revisão aula a aula. |
-| [b2/unidade-09/](b2/unidade-09/README.md) | B2.2, unidade 9 "Mediation at work": guiões, laboratório, tutor e questionário. |
+| [b2/unidade-09/](b2/unidade-09/README.md) | B2.2, unidade 9 "Mediation at work": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.

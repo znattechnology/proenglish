@@ -31,7 +31,7 @@ Objectivo da unidade a que serve: 1
 Gramática-alvo: suggest + -ing / suggest that + sujeito + verbo (She suggested waiting. She suggested that
   we wait.); recommend + -ing / that; insist on + -ing / insist that; admit + -ing / that; deny + -ing /
   that; ✘ suggest someone to; revisão do B1: tell / ask someone to, said that
-Palavras-alvo: delay, control room, roof, schedule, postpone, move, keep, responsible, blame, fault, call
+Palavras-alvo: delay, control room, roof, cement, rain, booked, container, honest, object, arguing, call
 Reciclagem: discurso indirecto (B1, 7A–7C); was supposed to (B2, 6B)
 Pronúncia: o acento no verbo de relato (She suggested… He denied…) e o -ing ligado
 Contexto: segunda-feira, 28 de Maio de 2029, 17:00; o gabinete da Lerato; o Nuno relata uma chamada da
@@ -133,8 +133,9 @@ Objectivo da unidade a que serve: 1
 Gramática-alvo: verbo + pessoa + (not) to + infinitivo: warn / advise / urge / remind / persuade / encourage
   someone (not) to do something; warn someone that…; revisão: tell / ask someone (not) to (B1, 7C);
   contraste com suggest (sem pessoa + to)
-Palavras-alvo: safety visit, harness, heat, water, break, check, report, sign, procedure, sun, fatigue
-Reciclagem: tell / ask someone to (B1, 7C); be supposed to (B2, 6B)
+Palavras-alvo: safety visit, harness, heat, water, break, shade, supervisor, height, lunch break, check,
+  report
+Reciclagem: tell / ask someone to (B1, 7C)
 Pronúncia: "not to" ligado e com o acento no "not" (warned us not to)
 Contexto: quarta-feira, 30 de Maio, 7:00; a obra do Tômbwa; o Nuno passa à equipa os avisos da Ruth, depois
   da visita de segurança da semana anterior
@@ -241,9 +242,9 @@ Objectivo da unidade a que serve: 2
 Gramática-alvo: marcadores de síntese (In short… The key point is… Basically… In other words… To put it
   simply… The report covers three areas… Overall…); agrupar (Most of… The rest… Apart from…); reformular
   (paraphrase); a passiva para dar relevo aos resultados
-Palavras-alvo: summary, key point, findings, section, detail, technical, audience, paraphrase, overall, in
-  short, signal, coverage, packet loss
-Reciclagem: números aproximados (B2, 2E); marcadores de apresentação (B2, 2A)
+Palavras-alvo: summary, key point, area, pre-test, technical, paraphrase, in short, in other words,
+  basically, signal, delay, sensor, packet loss
+Reciclagem: números aproximados (B2, 2E)
 Pronúncia: a voz a descer no fim de cada ponto de uma síntese
 Contexto: sexta-feira, 1 de Junho, 15:00; o gabinete da Lerato; o Nuno tem o relatório de testes da Elsa (12
   páginas) e tem de o explicar à Hannah em dois minutos
@@ -344,8 +345,8 @@ Objectivo da unidade a que serve: 3
 Gramática-alvo: expressões fixas de avaliação: What worries / concerns me is (that)… · What I like about it
   is… · The good / bad news is (that)… · It's worth noting / mentioning that… · The key point, in my view,
   is… · On balance, … ; separar facto e opinião (The report says… — In my view…); graus de certeza (B2, 5A)
-Palavras-alvo: results, margin, risk, encouraging, worrying, on balance, buffer, deadline, test period
-Reciclagem: previsões graduadas (B2, 5A); may have (B2, 6C)
+Palavras-alvo: results, margin, risk, cost, container, offer, share, half and half, on balance, testing
+Reciclagem: previsões graduadas (be likely to, B2, 5A)
 Pronúncia: uma pausa curta depois de "What worries me is…" e de "The good news is…"
 Contexto: segunda-feira, 4 de Junho, 10:00; a sala provisória da obra; o Nuno e o Paulo preparam o que vão
   dizer à Hannah sobre os testes e o atraso da sala de controlo
@@ -570,7 +571,7 @@ Verificação: Lab 9F
 **SAPALO:** I know. But please understand: the cement arrived three weeks late, and that wasn't our fault. And we lost two days to rain in May.
 **HANNAH:** And the roof? Your team started it late.
 **SAPALO:** That's true. I admit it — we had the team on the road. That's maybe a week of the delay. Not a month.
-**KGOSI:** Can I come in? My problem is different. My engineers are booked until the end of August. If we can't test in June, we lose them.
+**KGOSI:** Can I come in? My problem is different. My engineers are free in June, but they're booked on another project in July and August. If we can't test in June, we lose them.
 **PAULO:** Then here's an idea. We put a temporary control room in a container — with air conditioning and a generator — next to the masts. Elsa's team can test from there from the eighteenth.
 **HANNAH:** How much would that cost?
 **PAULO:** About six thousand dollars, with the air conditioning. I'll send a quote by tomorrow.
@@ -587,7 +588,7 @@ Verificação: Lab 9F
 
 1. When will the control room be ready, according to Mr Sapalo? (on the thirty-first of August ✓ / at the end of July / in September)
 2. What does Mr Sapalo admit? (His team started the roof late. ✓ / The cement was their fault. / It rained for a month.)
-3. Why does Kgosi need to test in June? (His engineers are booked until the end of August. ✓ / The client insists. / The container is ready.)
+3. Why does Kgosi need to test in June? (His engineers are booked on another project in July and August. ✓ / The client insists. / The container is ready.)
 4. How much would the container cost? (about six thousand dollars ✓ / about sixty thousand dollars / about six hundred dollars)
 5. Why does Mr Sapalo refuse night work? (It's dangerous on a roof in the wind. ✓ / It's too expensive. / His team is on the road.)
 6. When will the final decision be made? (at tomorrow's site meeting ✓ / today / on Saturday)
@@ -629,9 +630,9 @@ Objectivo da aula: No fim, o aluno consegue sintetizar para uma administração 
 Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: verbos de relato; síntese; avaliação; a passiva de relato para
   reconhecer
-Palavras-alvo: briefing, site meeting, decision, cost-sharing, Saturday work, safety officer, buffer,
+Palavras-alvo: briefing, site meeting, decision, shared equally, Saturday work, safety officer, margin,
   opening date, risk, assessment
-Reciclagem: condições (B2, 3A); previsões (B2, 5A); a passiva (B2, 4A)
+Reciclagem: condições (B2, 3A); a passiva (B2, 4A); I'll get back to you (B2, 2D)
 Pronúncia: a síntese de um minuto: frases curtas, pausas, a voz a descer em cada decisão
 Mediação: a própria tarefa — o Nuno lê a acta da reunião de obra (em português) e faz a síntese em inglês
 Contexto: quinta-feira, 7 de Junho, 9:00; videochamada; o Nuno, em Luanda; a Celeste Kiala, a Ingrid e o

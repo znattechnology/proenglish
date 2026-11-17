@@ -1115,11 +1115,11 @@
     },
     {
      "tipo": "escuta",
-     "frase": "I'm Kgosi. My engineers are booked until the end of August. If we can't test in June, we lose them.",
+     "frase": "I'm Kgosi. My engineers are free in June, but they're booked on another project in July and August. If we can't test in June, we lose them.",
      "enunciado": "Why does Kgosi need to test in June?",
      "opcoes": [
       {
-       "texto": "His engineers are booked until the end of August.",
+       "texto": "His engineers are busy on another project in July and August.",
        "certa": true
       },
       {
