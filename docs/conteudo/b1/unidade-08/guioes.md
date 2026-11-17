@@ -545,7 +545,7 @@ Verificação: Lab 8F; conversa livre "Budget review"
 **NUNO:** I have three proposals. First, we pay for the equipment as soon as we sign the contract, so the exchange rate can't change in the middle. Second, for long stays, we book an apartment at a monthly rate — it's about thirty percent cheaper than a hotel. And third, we set aside a contingency of ten percent in every budget, for problems like the incident.
 **DAVID:** The first two, yes. The contingency — I'm not sure. If we add ten percent, our price will be higher than our competitors', and we might lose the contract.
 **NUNO:** I see your point. What about five percent? It's lower, but it still covers most small problems.
-**DAVID:** Five percent I can accept. Good. So, Nuno, this time next month, you'll be preparing the budget for the Namibe project, won't you?
+**DAVID:** Five percent I can accept. Good. So, Nuno, this time next month, you'll be preparing the budget for the next project, won't you?
 **NUNO:** That's right — with all three changes.
 **DAVID:** Excellent. Send me a summary today. Good work, everyone.
 

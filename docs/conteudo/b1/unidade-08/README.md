@@ -1,6 +1,6 @@
 # B1.2 · Unidade 8 — Money matters (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 8
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 8
 
 ## Objectivos da unidade
 
@@ -52,6 +52,6 @@ Março de 2028. O projecto do Lobito acabou com 65,5 milhões de kwanzas gastos,
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (14 escutas, 7 pronúncias, a 8E com quatro vozes); imagens (a folha de custos, os três gráficos, a tabela em português); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (14 escutas, 7 pronúncias, a 8E com quatro vozes); imagens (a folha de custos, os três gráficos, a tabela em português); carregamento na plataforma.
 
 A seguir vem a **unidade 9, "Media and opinions"**.
