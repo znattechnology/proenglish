@@ -530,7 +530,7 @@ Como no A2: **cada aula é revista uma a uma**, com os mesmos 7 critérios ([pla
 - **Exame:** guião, situações e escala por curso com `manage.py carregar_exame_curso`; sem guião, o curso usa o exame geral, que já é do nível B1 (secção 6).
 - **Tutor:** as conversas livres do B1 pedem ao tutor que discorde, interrompa ou mude de assunto uma vez; isto vai no *brief* de cada cenário e nos critérios, sem mudar o modelo `Situacao`.
 - **Cursos de sector:** o B1 é o nível natural dos cursos de sector mais exigentes (por exemplo, petróleo e gás, aviação). A regra actual pede só o nível básico; a direcção pode decidir, mais tarde, exigir o B1.1 para alguns cursos **[I]**.
-- **Laboratório:** a gravação de uma resposta falada tem no máximo 45 segundos (`gravacao.py`, `MAX_SEGUNDOS`); por isso as respostas faladas do B1 no laboratório têm até 45 segundos, e os turnos longos fazem-se com o tutor e no exame. Se a direcção quiser respostas de 1 minuto e meio no laboratório, o limite muda no código (API, web e app).
+- **Laboratório:** a gravação de uma resposta falada tem no máximo 45 segundos (`gravacao.py`, `MAX_SEGUNDOS`); por isso as respostas faladas do B1 no laboratório têm até 45 segundos, e os turnos longos fazem-se com o tutor e no exame. Em Novembro de 2026, a direcção subiu o limite para 90 segundos (para o B2); as respostas do B1 continuam a pedir até 45 segundos, que cabem no novo limite.
 - **Áudio:** as aulas "Real English" do B1 pedem conversas a várias vozes com sobreposições; é preciso confirmar se o serviço de voz as gera bem ou se se gravam vozes separadas e se montam.
 
 ## 12. Números do B1

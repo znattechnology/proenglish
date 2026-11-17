@@ -1,6 +1,6 @@
 # Plano do nível B2 — English Communication Skills
 
-**Nível:** B2 (vantagem) · **Curso:** English Communication Skills · **Versão:** 1, 17 de Novembro de 2026 · **Estado:** proposta para revisão pelos professores · **Nível anterior:** [04-plano-B1.md](04-plano-B1.md)
+**Nível:** B2 (vantagem) · **Curso:** English Communication Skills · **Versão:** 2, 17 de Novembro de 2026 (revista) · **Estado:** proposta para revisão pelos professores · **Nível anterior:** [04-plano-B1.md](04-plano-B1.md)
 
 ## 1. Resumo
 
@@ -46,7 +46,7 @@ O tempo sobe pouco em relação ao B1 (70 h): as vídeo-aulas passam a 11–13 m
 | Vocabulário | NGSL (CC BY-SA 4.0), aferida com o Oxford 3000 (B2) e o Oxford 5000 (B2) **[V quanto à existência das listas]** | Inventário próprio de cerca de 750 palavras e expressões novas **[I]**. Não há lista oficial Cambridge para o B2 **[V]**. |
 | Sequência e formato | Speakout 3e B2, Empower 2e B2, Roadmap B2 e B2+ (booklets GSE públicos) **[V quanto à existência; conteúdo por confirmar]** | Aferir a ordem da gramática. Não se copiam títulos, textos nem ordem das unidades. |
 | Objectivos profissionais | GSE para adultos profissionais; Business Partner B2 (liderança, apresentações, negociação, clientes) **[NV]** | As aulas Work & Life. |
-| Tarefas orais e exame | Cambridge B2 First, parte oral (entrevista; turno longo de cerca de 1 minuto a comparar duas fotografias; tarefa colaborativa com decisão; discussão; cerca de 14 minutos) **[V]** | Modelo dos exames do B2.1 e do B2.2, adaptado a uma conversa só de voz (sem fotografias) e ao limite de 10 minutos da plataforma (secção 6). |
+| Tarefas orais e exame | Cambridge B2 First, parte oral (entrevista; turno longo de cerca de 1 minuto a comparar duas fotografias; tarefa colaborativa com decisão; discussão; cerca de 14 minutos) **[V]** | Modelo dos exames do B2.1 e do B2.2, adaptado a uma conversa só de voz (sem fotografias) e aos 12 minutos que a plataforma permite agora (secção 6). |
 | Escuta com licença aberta | VOA Learning English (domínio público, excepto agências; sobretudo A2–B2) **[V]** | Temas e ideias para "Real English"; os textos são nossos. |
 
 ## 3. Estrutura de uma unidade
@@ -55,7 +55,7 @@ Igual à do B1 ([plano do B1, secção 3](04-plano-B1.md#3-estrutura-de-uma-unid
 
 | Aula | Tipo | Duração | Diferença em relação ao B1 |
 |---|---|---|---|
-| A, B, C | **Língua** | 11–13 min | O diálogo modelo tem mais vozes, ironia e humor simples, e mudanças de registo (formal / informal). A prática pede turnos de 45 segundos a 1 minuto e meio. |
+| A, B, C | **Língua** | 11–13 min | O diálogo modelo tem mais vozes, ironia e humor simples, e mudanças de registo (formal / informal). A prática pede turnos de 1 a 2 minutos. |
 | D | **Vocabulário e pronúncia** | 10–11 min | Colocações mais ricas e *phrasal verbs* com vários sentidos; formação de palavras (*technology → technological*); a pronúncia passa à fala ligada, à elisão e à entoação para mostrar atitude. Dois falsos amigos. |
 | E | **Real English** | 11–13 min | Escutas de 3 a 4 minutos, menos preparadas (falsos começos, sobreposições, humor), com sotaques de África, da Europa, da Ásia e das Américas. |
 | F (ou G) | **Work & Life** | 12–13 min | O aluno conduz a situação e faz uma **mediação** mais exigente: sintetizar e comentar, adaptando o registo a quem ouve (um director, um cliente, um colega). |
@@ -64,7 +64,7 @@ Nas unidades 2, 9 e 10 há uma quarta aula de língua, e as letras vão de A a G
 
 | Peça | Quantas por unidade | Duração | Diferença em relação ao B1 |
 |---|---|---|---|
-| Lição de laboratório | Uma por vídeo-aula | ~8 min, 11–13 exercícios | Duas respostas faladas por lição, uma delas de 40 a 45 segundos (o limite de gravação do laboratório é 45 segundos; os turnos mais longos fazem-se com o tutor e no exame). Mais exercícios de formação de palavras e de registo. |
+| Lição de laboratório | Uma por vídeo-aula | ~8 min, 11–13 exercícios | Duas respostas faladas por lição, uma delas de 60 a 90 segundos (o limite de gravação do laboratório subiu para 90 segundos em Novembro de 2026). Mais exercícios de formação de palavras e de registo. |
 | Lição de reciclagem | 1 | ~8 min, 13 exercícios | Metade da unidade, metade de unidades anteriores **do B2 e do B1**. |
 | Conversa guiada com o tutor | 1, depois da aula C | 7 min | O tutor pede ao aluno que desenvolva (*Can you expand on that? What's the strongest argument against it?*). |
 | Conversa livre com o tutor | 1, no fim da unidade | 10 min | O tutor muda de registo, discorda com argumentos, e pede uma síntese ou uma decisão no fim. |
@@ -80,7 +80,7 @@ Nas unidades 2, 9 e 10 há uma quarta aula de língua, e as letras vão de A a G
 |---|---|---|---|---|
 | 1 | Leading a team | 6 | Conduzir a primeira reunião da nova equipa: dar a palavra, delegar e tomar a iniciativa | orações relativas explicativas (*Elsa, who joined in May,…*), com *whose, where, which* a referir uma frase inteira; relativas com preposição (*the client we're working for*) |
 | 2 | Presentations | 7 | Apresentar a proposta do Tômbwa à administração da Morro Azul, com dados e gráficos | marcadores de discurso formal (*to begin with, moving on to, subsequently, to sum up*); adjectivos e advérbios para gráficos (*a sharp rise, rose steadily*); *future perfect* (*By 2030, we will have installed…*) |
-| 3 | Negotiating | 6 | Negociar preço, prazo e garantia com um fornecedor e chegar a um acordo | condicionais revistos e alargados (*provided that, as long as, unless, supposing*); linguagem tentativa (*We'd be prepared to… Would you consider…?*) |
+| 3 | Negotiating | 6 | Negociar com o cliente o contrato do Tômbwa (preço, prazos e penalizações) e chegar a um acordo | condicionais revistos e alargados (*provided that, as long as, unless, supposing*); linguagem tentativa (*We'd be prepared to… Would you consider…?*) |
 | 4 | Client care | 6 | Gerir a reclamação de um cliente zangado, com empatia, e propor uma solução | todas as formas da passiva (contínua, *present perfect*, com modais); *have / get something done* |
 | 5 | Innovation | 6 | Discutir com a direcção se a empresa deve usar inteligência artificial no apoio técnico | previsões (*will, going to, be likely to, be bound to*); *future continuous* (revisto) e *future perfect continuous*; especular sobre o futuro |
 | R1 | Revisão e exame oral B2.1 | 2 | — | — |
@@ -91,7 +91,7 @@ Nas unidades 2, 9 e 10 há uma quarta aula de língua, e as letras vão de A a G
 |---|---|---|---|---|
 | 6 | Health, safety and environment | 6 | Explicar à direcção um quase-acidente na obra e os riscos ambientais, e o que devia (ou não precisava de) ter sido feito | modais no passado: *needn't have / didn't need to*, *can't have, must have, might have* (revistos), *should have* (revisto), *was supposed to* |
 | 7 | City life | 6 | Defender numa reunião de bairro uma proposta para a mobilidade, com prós e contras | concessão e contraste alargados (*whereas, while, even if, nevertheless, admittedly*); desenvolver um argumento |
-| 8 | Reviews and reactions | 6 | Escrever oralmente uma crítica a um evento e reagir às opiniões dos outros, formal e informalmente | adjectivos e advérbios (graduáveis e não graduáveis: *very good / absolutely fantastic*; ordem dos adjectivos); reacções (*I'm not that bothered. Fair enough. That's so true!*) |
+| 8 | Reviews and reactions | 6 | Fazer oralmente a crítica de um evento e reagir às opiniões dos outros, formal e informalmente | adjectivos e advérbios (graduáveis e não graduáveis: *very good / absolutely fantastic*; ordem dos adjectivos); reacções (*I'm not that bothered. Fair enough. That's so true!*) |
 | 9 | Mediation at work | 7 | Sintetizar para a administração, em inglês, uma reunião de obra em português e dar a sua avaliação | discurso indirecto com verbos de relato variados (*suggest, recommend, insist, deny, admit, warn, claim, agree*); *It is said / reported that…* (só para reconhecer) |
 | 10 | Choices | 7 | Falar com a chefia de uma escolha de carreira: o que se ganha, o que se perde, o que se faria | *wish / if only* (presente e passado); *would* para hábitos do passado; *past perfect continuous*; condicionais mistos |
 | R2 | Revisão e exame oral B2.2 | 2 | — | — |
@@ -120,14 +120,14 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 | 1B | Língua | Which is why we need you | Usar *which* para comentar uma frase inteira (*…, which is great news*) e relativas com preposição (*the people we work with*). |
 | 1C | Língua | What's your take on this? | Dar a palavra, convidar quem não falou, retomar e resumir num grupo. |
 | 1D | Vocabulário e pronúncia | Teams and leadership | Gestão de equipas (*delegate, take on, step up, morale, accountable*), *phrasal verbs* de trabalho em equipa (*take over, back up, follow through*); pausas das relativas explicativas; falsos amigos. |
-| 1E | Real English | My first team | Identificar o erro e a lição de cada pessoa em quatro testemunhos de quem liderou uma equipa pela primeira vez. |
+| 1E | Real English | The stand-up | Identificar quem fica com cada tarefa e como a líder dá a palavra, corta uma digressão e retoma, numa reunião rápida de equipa a cinco vozes. |
 | 1F | Work & Life | The kick-off meeting | Conduzir a primeira reunião da equipa do Tômbwa: apresentar as pessoas, dar a palavra, delegar e fechar com os próximos passos; mediação: passar à equipa, em inglês, as instruções da direcção escritas em português. |
 
 - **Gramática:** relativas explicativas (*who, which, whose, where*; nunca *that*); *which* sobre uma frase inteira; relativas com preposição no fim (*the client we work for*) e, no registo formal, no início (*the client for whom…*, só para reconhecer).
 - **Vocabulário (~75):** equipas e liderança, delegação, responsabilidades, motivação.
 - **Pronúncia:** as relativas explicativas ditas com pausa antes e depois (como vírgulas na voz).
 - **Falsos amigos:** *support* (≠ suportar → *put up with, stand*; *support* = apoiar); *eventual* (≠ eventual → *possible*; *eventual* = final, que acaba por acontecer).
-- **Laboratório:** relativas explicativas ou de definição; juntar duas frases; frases para dar a palavra; resposta falada de 45 segundos "Describe the best team you've worked or studied in. What made it work?".
+- **Laboratório:** relativas explicativas ou de definição; juntar duas frases; frases para dar a palavra; resposta falada de 90 segundos "Describe the best team you've worked or studied in. What made it work?".
 - **Conversa guiada:** "Who's who in your team?" — o tutor pede ao aluno que descreva as pessoas com quem trabalha, com informação extra.
 - **Conversa livre:** "The kick-off meeting" — o tutor é um membro da equipa que fala demais e quer fazer tudo sozinho; o aluno conduz a reunião, retoma a palavra com cortesia, lembra que um colega ainda não falou e distribui as tarefas.
 
@@ -153,7 +153,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 - **Vocabulário (~75):** apresentações, gráficos, dados e números aproximados.
 - **Pronúncia:** acento de frase para dar ênfase, pausas de efeito, números aproximados (*roughly, just over, just under*).
 - **Falsos amigos:** *graphic* (≠ gráfico → *chart, graph*; *graphic* = visual, gráfico no sentido de design, ou chocante); *adequate* (≠ adequado → *suitable, appropriate*; *adequate* = suficiente).
-- **Laboratório:** escolher o marcador certo; descrever um gráfico; *future perfect*; resposta falada de 45 segundos "Present one goal for your team or your studies, and say what will have happened by the end of the year.".
+- **Laboratório:** escolher o marcador certo; descrever um gráfico; *future perfect*; resposta falada de 90 segundos "Present one goal for your team or your studies, and say what will have happened by the end of the year.".
 - **Conversa guiada:** "Walk me through it" — o tutor pede uma mini-apresentação (1 minuto) de um projecto do aluno e faz uma pergunta de seguimento.
 - **Conversa livre:** "Tough questions" — o tutor é um administrador céptico; o aluno apresenta uma proposta em 2 minutos e responde a três perguntas difíceis, uma das quais sem resposta imediata.
 
@@ -172,15 +172,15 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 | 3C | Língua | If you could…, we could… | Regatear: concessões em troca, *meet halfway*, e fechar (*So, do we have a deal?*). |
 | 3D | Vocabulário e pronúncia | Deals and contracts | Negociação e contratos (*terms, clause, deposit, penalty, warranty, bulk discount*), colocações (*reach a compromise, make a concession, strike a deal*); entoação tentativa; falsos amigos. |
 | 3E | Real English | The market and the boardroom | Identificar o que cada lado quer e o que cede em duas negociações: num mercado e numa reunião de empresa. |
-| 3F | Work & Life | The supplier deal | Negociar com o Kagiso (Tsodilo) o preço, o prazo e a garantia dos sensores do Tômbwa e chegar a um acordo; mediação: passar ao fornecedor as condições da direcção, escritas em português. |
+| 3F | Work & Life | The contract | Negociar com o director financeiro da Morro Azul o contrato do Tômbwa (preço, prazos e penalizações por atraso) e chegar a um acordo; mediação: passar ao cliente as condições da direcção da Kalandula Tech, escritas em português. |
 
 - **Gramática:** *provided / providing that, as long as, unless, supposing, in case*; condicionais revistos; *would / could / might* tentativos.
 - **Vocabulário (~70):** contratos, condições, preços, compras.
 - **Pronúncia:** entoação tentativa (subida no fim de uma proposta) e firme (descida numa recusa).
-- **Falsos amigos:** *billion* (≠ bilião → *a million million*; *billion* = mil milhões); *anticipate* (≠ antecipar → *bring forward*; *anticipate* = prever, esperar).
-- **Laboratório:** escolher o conector condicional; transformar uma frase directa numa tentativa; concessões em troca; resposta falada de 45 segundos "Describe a negotiation you had (at work, at a market, buying a car). What did each side give?".
+- **Falsos amigos:** *billion* (≠ bilião → *trillion*; *billion* = mil milhões); *anticipate* (≠ antecipar → *bring forward*; *anticipate* = prever, esperar).
+- **Laboratório:** escolher o conector condicional; transformar uma frase directa numa tentativa; concessões em troca; resposta falada de 90 segundos "Describe a negotiation you had (at work, at a market, buying a car). What did each side give?".
 - **Conversa guiada:** "Let's make a deal" — o tutor vende um carro usado; o aluno negoceia o preço com condições.
-- **Conversa livre:** "The supplier deal" — o tutor é um fornecedor duro; só cede quando o aluno oferece algo em troca; no fim, o aluno resume o acordo.
+- **Conversa livre:** "The contract" — o tutor é um director de compras duro; só cede quando o aluno oferece algo em troca; no fim, o aluno resume o acordo.
 
 ### Unidade 4 — Client care
 
@@ -203,7 +203,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 - **Vocabulário (~70):** reclamações, serviço ao cliente, garantias, seguros.
 - **Pronúncia:** tom e cortesia; formas fracas de *been* e *being*.
 - **Falsos amigos:** *claim* (≠ reclamar → *complain*; *claim* = afirmar, reivindicar, pedir uma indemnização); *requirement* (≠ requerimento → *application, request*; *requirement* = requisito).
-- **Laboratório:** formas da passiva; activa ou passiva; *have something done*; frases de empatia; resposta falada de 45 segundos "Tell me about a time you complained. How was it handled, and what should have been done?".
+- **Laboratório:** formas da passiva; activa ou passiva; *have something done*; frases de empatia; resposta falada de 90 segundos "Tell me about a time you complained. How was it handled, and what should have been done?".
 - **Conversa guiada:** "What's being done?" — o tutor é um cliente que pergunta pelo ponto de situação de um pedido; o aluno responde com a passiva.
 - **Conversa livre:** "An angry client" — o tutor está zangado e interrompe; o aluno acalma, explica, propõe uma solução e uma compensação; o tutor aceita só quando sente empatia real.
 
@@ -228,13 +228,13 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 - **Vocabulário (~75):** tecnologia, inteligência artificial, *fintech*, dados, privacidade.
 - **Pronúncia:** mudança de acento na formação de palavras.
 - **Falsos amigos:** *application* (≠ aplicação financeira → *investment*; *application* = candidatura, aplicação informática, pedido); *informatics* (≠ informática → *IT, computing*; *informatics* = ciência da informação, pouco usado).
-- **Laboratório:** grau de certeza; os três futuros; formação de palavras; resposta falada de 45 segundos "How will your job or your studies change in the next ten years?".
+- **Laboratório:** grau de certeza; os três futuros; formação de palavras; resposta falada de 90 segundos "How will your job or your studies change in the next ten years?".
 - **Conversa guiada:** "Crystal ball" — o tutor pergunta como o aluno vê o futuro de vários temas (trabalho, transportes, bancos) e pede graus de certeza.
 - **Conversa livre:** "Should we use AI?" — o tutor é um director entusiasta da tecnologia; o aluno tem de pesar riscos e benefícios e propor uma recomendação com condições.
 
 ### Revisão 1 e exame oral do B2.1
 
-**Objectivo:** o aluno consegue manter uma conversa de cerca de 10 minutos, fazer uma apresentação curta com dados, conduzir uma discussão, negociar e responder a um cliente, e especular sobre o futuro.
+**Objectivo:** o aluno consegue manter uma conversa de cerca de 12 minutos, fazer uma apresentação curta com dados, conduzir uma discussão, negociar e responder a um cliente, e especular sobre o futuro.
 
 | Aula | Título | Objectivo |
 |---|---|---|
@@ -264,14 +264,14 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 | 6B | Língua | It was supposed to be closed | Usar *was / were supposed to* e *be meant to* para o que estava previsto e não aconteceu. |
 | 6C | Língua | It may have been the wind | Especular sobre as causas de um acidente com *may / might / could / must / can't have*. |
 | 6D | Vocabulário e pronúncia | Risk and the environment | Segurança e ambiente (*near miss, hazard, risk assessment, spill, waste, emissions, biodiversity*), colocações (*carry out an inspection, reduce the risk, comply with*); grupos consonânticos (*risks, tests, months*); falsos amigos. |
-| 6E | Real English | A close call | Identificar a causa, as consequências e as medidas em três relatos de quase-acidentes. |
+| 6E | Real English | The toolbox talk | Identificar os riscos, as regras e as dúvidas dos trabalhadores numa conversa de segurança no início do turno, com várias vozes e ruído de obra. |
 | 6F | Work & Life | The near miss | Relatar à direcção um quase-acidente na obra do Tômbwa (um contentor que caiu de uma grua, sem feridos) e o risco para uma zona protegida, com causas, o que devia e não precisava de ter sido feito, e medidas; mediação: resumir em inglês um relatório de inspecção em português. |
 
 - **Gramática:** *needn't have / didn't need to*; *was supposed to / be meant to*; modais de especulação no passado (revistos e alargados); passiva com modais no passado (revista, B2 4B).
 - **Vocabulário (~75):** segurança no trabalho, ambiente, inspecções, licenças.
 - **Pronúncia:** grupos consonânticos no fim das palavras.
 - **Falsos amigos:** *prevent* (≠ prevenir → *warn*; *prevent* = impedir, evitar); *precise* (≠ precisar → *need*; *precise* = exacto).
-- **Laboratório:** *needn't have* ou *didn't need to*; especular sobre causas; vocabulário de risco; resposta falada de 45 segundos "Tell me about an accident or a near miss you saw or heard about. What may have caused it, and what should have been done?".
+- **Laboratório:** *needn't have* ou *didn't need to*; especular sobre causas; vocabulário de risco; resposta falada de 90 segundos "Tell me about an accident or a near miss you saw or heard about. What may have caused it, and what should have been done?".
 - **Conversa guiada:** "What went wrong?" — o tutor descreve três pequenos acidentes e o aluno especula sobre as causas.
 - **Conversa livre:** "Safety inspection" — o tutor é um inspector exigente; o aluno explica um incidente, as medidas e responde a perguntas sobre responsabilidades.
 
@@ -296,7 +296,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 - **Vocabulário (~75):** cidade, habitação, mobilidade, sociedade, ideias abstractas.
 - **Pronúncia:** ligação e elisão (*next day, last time, want to → wanna* só para reconhecer).
 - **Falsos amigos:** *mayor* (≠ maior → *bigger, older*; *mayor* = presidente da câmara); *pavement* (≠ pavimento → *floor, surface*; *pavement* = passeio).
-- **Laboratório:** escolher o conector de concessão; ordenar um argumento; ideias abstractas; resposta falada de 45 segundos "What's the biggest problem in your city, and what's the best solution? Give one argument against your own solution.".
+- **Laboratório:** escolher o conector de concessão; ordenar um argumento; ideias abstractas; resposta falada de 90 segundos "What's the biggest problem in your city, and what's the best solution? Give one argument against your own solution.".
 - **Conversa guiada:** "Two sides" — o tutor dá um tema e pede ao aluno que defenda primeiro um lado, depois o outro.
 - **Conversa livre:** "The neighbourhood meeting" — o tutor é um vizinho contra a proposta do aluno; o aluno argumenta, concede e responde às objecções.
 
@@ -321,7 +321,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 - **Vocabulário (~70):** cultura, arte, música, eventos, crítica, reacções.
 - **Pronúncia:** entoação de atitude (entusiasmo, ironia, indiferença).
 - **Falsos amigos:** *romance* (≠ romance → *novel*; *romance* = caso amoroso, história de amor); *spectacle* (≠ espectáculo → *show, performance*; *spectacle* = cena impressionante; *spectacles* = óculos).
-- **Laboratório:** intensificador certo; ordem dos adjectivos; reagir a uma opinião; resposta falada de 45 segundos "Review an event, a restaurant or a product you tried recently. Would you recommend it?".
+- **Laboratório:** intensificador certo; ordem dos adjectivos; reagir a uma opinião; resposta falada de 90 segundos "Review an event, a restaurant or a product you tried recently. Would you recommend it?".
 - **Conversa guiada:** "What did you think of it?" — o tutor conta uma experiência e o aluno reage; depois trocam.
 - **Conversa livre:** "Same opinion, two audiences" — o tutor faz primeiro de colega, depois de cliente; o aluno dá a mesma crítica nos dois registos.
 
@@ -347,7 +347,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 - **Vocabulário (~70):** relatórios, actas, verbos de relato, síntese.
 - **Pronúncia:** entoação de resumo (descida no fim de cada ponto).
 - **Falsos amigos:** *advise* (≠ avisar → *warn, let know*; *advise* = aconselhar); *reunion* (≠ reunião → *meeting*; *reunion* = reencontro).
-- **Laboratório:** verbo de relato e padrão certos; escolher a melhor síntese; resposta falada de 45 segundos "Summarise a meeting or a class you had this week for someone who wasn't there.".
+- **Laboratório:** verbo de relato e padrão certos; escolher a melhor síntese; resposta falada de 90 segundos "Summarise a meeting or a class you had this week for someone who wasn't there.".
 - **Conversa guiada:** "What did they say?" — o tutor pede ao aluno que relate uma discussão recente com verbos de relato variados.
 - **Conversa livre:** "Briefing the board" — o tutor é um administrador com pouco tempo; o aluno sintetiza uma reunião e o tutor pede-lhe que corte para um minuto e que dê a sua avaliação.
 
@@ -366,20 +366,20 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 | 10C | Língua | I'd been working there for years | Usar o *past perfect continuous* para acções que duravam até um momento do passado. |
 | 10D | Língua | If I hadn't…, I wouldn't be… | Ligar passado e presente com condicionais mistos. |
 | 10E | Vocabulário e pronúncia | Life choices | Carreira e escolhas (*turning point, take the plunge, weigh up, have second thoughts, settle down*), colocações; formas fracas (*I wish I'd*, *I'd have*); falsos amigos. |
-| 10F | Real English | Paths not taken | Identificar a escolha, o arrependimento (ou não) e o que cada pessoa faria hoje, em quatro testemunhos sobre escolhas de vida. |
+| 10F | Real English | Paths not taken | Seguir uma entrevista de podcast a uma pessoa que mudou de carreira aos quarenta anos: a escolha, as dúvidas, o que faria de outra forma. |
 | 10G | Work & Life | The offer | Falar com a Lerato de uma oferta de trabalho da Mopane em Joanesburgo: o que se ganha e se perde, o que se gostaria, e a decisão; mediação: explicar em inglês as condições da oferta, escritas em português. |
 
 - **Gramática:** *wish / if only*; *would* e *used to*; *past perfect continuous*; condicionais mistos.
 - **Vocabulário (~70):** carreira, escolhas de vida, mudanças, sentimentos.
 - **Pronúncia:** formas fracas e contracções (*I wish I'd known, I'd have stayed*).
 - **Falsos amigos:** *formation* (≠ formação → *training*; *formation* = formação geológica, disposição); *licence* (≠ licenciatura → *degree*; *licence* = carta, licença).
-- **Laboratório:** *wish* no presente ou no passado; *would* ou *used to*; condicionais mistos; resposta falada de 45 segundos "Tell me about a choice that changed your life. Do you have any regrets?".
+- **Laboratório:** *wish* no presente ou no passado; *would* ou *used to*; condicionais mistos; resposta falada de 90 segundos "Tell me about a choice that changed your life. Do you have any regrets?".
 - **Conversa guiada:** "If you could go back…" — o tutor pergunta por escolhas, hábitos antigos e desejos.
 - **Conversa livre:** "The offer" — o tutor é um amigo que ajuda o aluno a decidir sobre uma oferta de emprego noutro país; desafia cada argumento e pede uma decisão no fim.
 
 ### Revisão 2 e exame oral do B2.2
 
-**Objectivo:** o aluno consegue manter uma discussão de cerca de 10 minutos sobre temas concretos e abstractos, desenvolver um argumento com prós e contras, especular sobre o passado, mediar informação e falar de escolhas e arrependimentos.
+**Objectivo:** o aluno consegue manter uma discussão de cerca de 12 minutos sobre temas concretos e abstractos, desenvolver um argumento com prós e contras, especular sobre o passado, mediar informação e falar de escolhas e arrependimentos.
 
 | Aula | Título | Objectivo |
 |---|---|---|
@@ -404,23 +404,23 @@ As peças e o peso são os do A1, do A2 e do B1: questionário com aprovação a
 5. Usa a língua da unidade pelo menos três vezes, com variedade.
 6. É compreendido sempre, com pronúncia clara e natural.
 
-**Exame oral do B2.1 (cerca de 10 minutos)** **[I]**:
+**Exame oral do B2.1 (cerca de 12 minutos)** **[I]**:
 1. **Entrevista** (2 min): liderança, trabalho em equipa e planos (*Tell me about a team you've led or worked in. What will you have achieved by the end of the year?*).
-2. **Turno longo** (2 min): o aluno compara duas opções dadas pelo examinador (por exemplo, duas formas de formar uma equipa nova) durante cerca de 1 minuto e meio, e o examinador faz uma pergunta.
-3. **Tarefa de decisão** (3 min), sorteada de quatro: apresentar uma proposta e responder a perguntas; negociar um acordo; acalmar um cliente e propor uma solução; decidir sobre uma tecnologia nova. Em todas, o aluno e o examinador chegam a uma decisão.
-4. **Discussão** (2 min): uma pergunta abstracta ligada à tarefa, com um contra-argumento do examinador.
+2. **Turno longo** (2 min): o aluno compara duas opções dadas pelo examinador (por exemplo, duas formas de formar uma equipa nova) durante cerca de 1 minuto e meio, e o examinador faz duas perguntas (cerca de 3 min).
+3. **Tarefa de decisão** (4 min), sorteada de quatro: apresentar uma proposta e responder a perguntas; negociar um acordo; acalmar um cliente e propor uma solução; decidir sobre uma tecnologia nova. Em todas, o aluno e o examinador chegam a uma decisão.
+4. **Discussão** (3 min): uma pergunta abstracta ligada à tarefa, com dois contra-argumentos do examinador.
 
-**Exame oral do B2.2 (cerca de 10 minutos)** **[I]**:
+**Exame oral do B2.2 (cerca de 12 minutos)** **[I]**:
 1. **Entrevista** (2 min): escolhas, arrependimentos e a cidade (*Is there anything you wish you'd done differently? What would you change about where you live?*).
-2. **Turno longo** (2 min): o aluno compara duas opções sobre um tema da actualidade (por exemplo, duas soluções para o trânsito) e diz qual prefere e porquê.
-3. **Tarefa de decisão** (3 min), sorteada de quatro: relatar um quase-acidente e as medidas; defender uma proposta numa reunião; avaliar um evento para um patrocinador; sintetizar uma reunião para a direcção. Em todas, o aluno e o examinador chegam a uma decisão.
-4. **Discussão** (2 min): uma pergunta abstracta (sociedade, tecnologia, ambiente), com dois contra-argumentos do examinador.
+2. **Turno longo** (2 min): o aluno compara duas opções sobre um tema da actualidade (por exemplo, duas soluções para o trânsito) e diz qual prefere e porquê (cerca de 3 min, com duas perguntas do examinador).
+3. **Tarefa de decisão** (4 min), sorteada de quatro: relatar um quase-acidente e as medidas; defender uma proposta numa reunião; avaliar um evento para um patrocinador; sintetizar uma reunião para a direcção. Em todas, o aluno e o examinador chegam a uma decisão.
+4. **Discussão** (3 min): uma pergunta abstracta (sociedade, tecnologia, ambiente), com dois contra-argumentos do examinador.
 
 Como o exame é só de voz, não há fotografias como no B2 First: o turno longo compara duas opções descritas pelo examinador, e a tarefa colaborativa passa a ser uma decisão com o examinador **[I]**.
 
 **Escala do B2:** as cinco competências, com descritores do B2: argumentos claros e desenvolvidos, com ideias principais e pormenores (tarefa); variedade de estruturas complexas, erros que não impedem a compreensão e muitas vezes corrigidos (gramática); vocabulário variado, colocações, paráfrase quando falta uma palavra, alguma variação de registo (vocabulário); fala com espontaneidade, poucas pausas longas, conduz a conversa (fluência); pronúncia clara e natural, com entoação que mostra atitude (pronúncia). **O que não baixa a nota no B2:** sotaque; pedir para repetir; reformular; corrigir-se; ganhar tempo para pensar antes de uma pergunta abstracta.
 
-**Na plataforma:** o exame tem o limite de 10 minutos (`exame.py`, `validar_guiao` corta `max_minutos` entre 3 e 10). O B2 First tem cerca de 14 minutos com dois candidatos; com um só candidato e sem fotografias, 10 minutos chegam para as quatro partes, mas ficam no limite. **A decidir pela direcção:** manter os 10 minutos ou subir o limite da plataforma para 12 minutos (mudança pequena no código e nos testes). Como no B1, a discussão vai dentro de cada situação, porque a plataforma põe sempre a situação no fim.
+**Na plataforma:** por decisão da direcção (Novembro de 2026), o guião de um exame pode ir até 12 minutos (`exame.py`, `MAX_MINUTOS_GUIAO`); os exames do B2 usam os 12. O B2 First tem cerca de 14 minutos, mas com dois candidatos; com um só candidato e sem fotografias, 12 minutos chegam para as quatro partes. Como no B1, a discussão vai dentro de cada situação, porque a plataforma põe sempre a situação no fim.
 
 ## 7. Reciclagem
 
@@ -490,7 +490,7 @@ Cada item do Core Inventory B2 **[V — lista das notas de pesquisa]** e a unida
 
 Acrescentado para o público da ProEnglish **[I]**: liderança de equipas (1), apresentações a administrações (2), negociação com fornecedores (3), clientes zangados (4), inteligência artificial no trabalho (5), segurança e ambiente numa obra (6), mobilidade em Luanda (7), balanço de eventos para patrocinadores (8), síntese de reuniões para a direcção (9), escolhas de carreira (10), falsos amigos e mediação em todas as aulas Work & Life.
 
-Fica para o C1, como no Core Inventory e no estudo das fontes: inversão (*Not only… Never have I…*), orações clivadas (*What I need is…* como estrutura de ênfase alargada), condicionais com inversão (*Had we known…*), orações participiais, passivas narrativas avançadas, atenuação sistemática (*hedging*) e expressões idiomáticas em quantidade.
+Fica para o C1, como no Core Inventory e no estudo das fontes: inversão (*Not only… Never have I…*), orações clivadas como estrutura de ênfase ensinada e variada (*It was Paulo who…, What we need is…, All I want is…*) — no B2 entram só algumas expressões fixas (*What I mean is…*, do B1; *What worries me is…*, na 9D) —, condicionais com inversão (*Had we known…*), orações participiais, passivas narrativas avançadas, atenuação sistemática (*hedging*) e expressões idiomáticas em quantidade.
 
 ## 10. Guiões e revisão de cada aula
 
@@ -503,7 +503,7 @@ A ficha do B1, com os mesmos campos (incluindo **Falsos amigos** e **Mediação*
 - Pelo menos 95% das palavras estão no inventário A1 + A2 + B1 + B2 ou já foram ensinadas; as palavras técnicas aparecem primeiro no ecrã.
 - O professor fala à velocidade natural; nas aulas "Real English", fala espontânea, com falsos começos e sobreposições.
 - Tudo em inglês; o português só nos falsos amigos e na mediação.
-- O aluno fala em todas as aulas: pelo menos 6 momentos de resposta, e pelo menos 2 turnos de 45 segundos ou mais.
+- O aluno fala em todas as aulas: pelo menos 6 momentos de resposta, e pelo menos 2 turnos de 1 minuto ou mais.
 - Uma pergunta de opinião (desenvolvida, com contra-argumento quando possível) e uma pergunta de reciclagem em cada aula.
 - Nomes, lugares e situações angolanos; nenhum texto, diálogo ou exercício de um manual comercial; nenhum texto real de jornal (as notícias são escritas por nós, como no B1).
 - **Só língua do nível:** antes da unidade que a ensina, nenhuma estrutura nova do B2; nada de língua do C1 (secção 9). A procura automática de cada unidade inclui a lista do que ainda não foi ensinado.
@@ -523,9 +523,9 @@ Como no B1: **cada aula é revista uma a uma**, com os mesmos critérios, e a un
 ## 11. Ligação com o que já existe na plataforma
 
 - **Dois cursos:** o B2.1 e o B2.2 entram como dois cursos de vídeo e dois de laboratório na área "Geral", cada um com o seu exame oral e certificado.
-- **Exame:** guião, situações e escala por curso com `manage.py carregar_exame_curso`. O limite de 10 minutos fica apertado para o B2 (secção 6). Sem guião, o curso usa o exame geral da plataforma, que é do nível B1 e por isso **não serve para o B2**: o guião do B2 tem de estar carregado antes de o exame abrir.
-- **Tutor:** as conversas livres do B2 pedem ao tutor que mude de registo, discorda com argumentos e peça sínteses; isto vai no *brief* de cada cenário e nos critérios, sem mudar o modelo `Situacao`. A duração continua a ser de 3, 5 ou 10 minutos (o formulário do professor só aceita estes valores).
-- **Laboratório:** a gravação de uma resposta falada tem no máximo 45 segundos (`gravacao.py`, `MAX_SEGUNDOS`). No B2 isto limita os turnos longos no laboratório; **a decidir pela direcção:** manter, ou subir para 90 segundos (mudança na API, na web e na app).
+- **Exame:** guião, situações e escala por curso com `manage.py carregar_exame_curso`, com 12 minutos (secção 6). Sem guião, o curso usa o exame geral da plataforma, que é do nível B1 e por isso **não serve para o B2**: o guião do B2 tem de estar carregado antes de o exame abrir.
+- **Tutor:** as conversas livres do B2 pedem ao tutor que mude de registo, discorde com argumentos e peça sínteses; isto vai no *brief* de cada cenário e nos critérios, sem mudar o modelo `Situacao`. A duração continua a ser de 3, 5 ou 10 minutos (o formulário do professor só aceita estes valores).
+- **Laboratório:** a gravação de uma resposta falada passou de 45 para 90 segundos (`gravacao.py` e o `MAX_SEGUNDOS_GRAVACAO` da web e da app), por decisão da direcção (Novembro de 2026). As respostas faladas do B2 podem pedir até 90 segundos. A avaliação detalhada da pronúncia (Azure) usa só os primeiros 30 segundos de cada gravação, como antes; a transcrição e a avaliação pelo Claude usam a gravação toda.
 - **Cursos de sector:** o B2 é o nível em que os cursos de sector mais exigentes (petróleo e gás, aviação, banca) podem ser feitos com à-vontade.
 - **Áudio:** as aulas "Real English" do B2 pedem fala espontânea com sobreposições e sotaques variados; a mesma questão do B1 sobre o serviço de voz.
 
@@ -546,7 +546,28 @@ Como no B1: **cada aula é revista uma a uma**, com os mesmos critérios, e a un
 ## 13. Próximos passos
 
 1. Revisão deste plano pelos professores (objectivos, ordem da gramática, situações de trabalho, temas, falsos amigos).
-2. Decisões da direcção: o limite de 10 minutos do exame (secção 6) e o de 45 segundos do laboratório (secção 11).
+2. ~~Decisões da direcção sobre os limites do exame e do laboratório~~ — tomadas: 12 minutos e 90 segundos (secções 6 e 11).
 3. Confirmar no CEFR Companion Volume os descritores B2 de produção oral, interacção e mediação, e aferir a ordem da gramática com o Empower 2e B2 e os booklets GSE do Roadmap B2 e B2+.
 4. Fechar o inventário de vocabulário B2 a partir da NGSL, aferido com o Oxford 3000 e o Oxford 5000 (B2).
 5. Escrever as unidades 1 a 5 do B2.1, uma aula de cada vez, com a revisão de cada aula; depois a revisão 1 e o exame do B2.1.
+
+## 14. Registo da revisão (versão 2)
+
+Revisão do plano contra o plano do B1 (o que já foi ensinado e as histórias já contadas), o Core Inventory (secção 9) e os limites da plataforma, depois das decisões da direcção de 17 de Novembro de 2026.
+
+| # | Secção | Problema | Correcção |
+|---|---|---|---|
+| 1 | 1, 2, 6, 11, 13 | O plano partia do limite de 10 minutos por exame e de 45 segundos por gravação. | A direcção decidiu 12 minutos e 90 segundos, e a plataforma já foi alterada (`exame.MAX_MINUTOS_GUIAO = 12`; `gravacao.MAX_SEGUNDOS = 90`, na API, na web e na app). Os exames do B2 passam a 12 minutos (turno longo de cerca de 3 minutos, tarefa de 4, discussão de 3); as respostas faladas do laboratório pedem até 90 segundos; os turnos da prática nas aulas sobem para 1 a 2 minutos. |
+| 2 | 3F e conversa livre da unidade 3 | A negociação era com o Kagiso, da Tsodilo, sobre preço, prazo e garantia de sensores — a mesma situação da 7G do B1. | Passa a ser a negociação do contrato do Tômbwa com o director financeiro da Morro Azul (preço, prazos e penalizações), com o aluno do lado de quem vende. O tutor livre é um director de compras. |
+| 3 | 1E, 6E, 10F | Três escutas "Real English" repetiam o formato de testemunhos do B1 (6F e 10E: "três histórias", "quatro testemunhos"). | 1E: uma reunião rápida de equipa a cinco vozes; 6E: uma conversa de segurança no início do turno, com ruído de obra; 10F: uma entrevista de podcast a uma pessoa. |
+| 4 | 9 | O plano punha as orações clivadas no C1, mas a 9D ensina *What worries me is…* — uma clivada. | As clivadas como estrutura de ênfase ensinada e variada ficam no C1; no B2 entram só algumas expressões fixas (*What I mean is…*, *What worries me is…*). |
+| 5 | 3 (falsos amigos) | *billion* (≠ bilião → *a million million*) era confuso. | "bilião" (mil milhões de milhões) → *trillion*; *billion* = mil milhões. |
+| 6 | 4 (mapa) | "Escrever oralmente uma crítica". | "Fazer oralmente a crítica de um evento". |
+
+**Confirmado sem alterações:**
+
+- **Nada do B1 volta como gramática nova:** *although / despite* (B1 9A), *future continuous* (B1 8C), *can't have* e *should have* (B1 10), passiva simples e relativas de definição (B1 5), discurso indirecto básico (B1 7) aparecem como revistos, ao lado da forma seguinte.
+- **Situações com o mesmo tema, mas outro nível:** o cliente insatisfeito já foi do A2 (unidade 9) e o relato de incidente do B1 (6G); no B2, a reclamação pede empatia com um cliente zangado e todas as passivas, e o quase-acidente acrescenta o ambiente e *needn't have / was supposed to*.
+- **Contas:** 31 + 32 vídeo-aulas de unidade e 4 de revisão = 67; 36 + 37 lições de unidade, 2 + 2 de revisão = 77; vocabulário cerca de 750 (cerca de 2 700 com os níveis anteriores); 75 horas.
+- **Falsos amigos:** os vinte do B2 não repetem nenhum do A1, do A2 ou do B1.
+- **Limites que se mantêm:** as conversas com o tutor ficam em 3, 5 ou 10 minutos (o formulário do professor só aceita estes valores) e, por isso, a conversa guiada do B2 continua com 7 minutos sugeridos e a livre com 10.
