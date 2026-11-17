@@ -1,0 +1,1676 @@
+{
+ "unidade": "B2.2 · Unit 10 — Choices",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "10A",
+   "titulo": "I wish I had…",
+   "aula": "10A",
+   "objectivo": "Falar de desejos sobre o presente e de arrependimentos sobre o passado com wish e if only.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I don't know what I want. I wish I [knew].",
+     "opcoes": [
+      {
+       "texto": "know",
+       "certa": false
+      },
+      {
+       "texto": "would know",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I didn't learn to cook. I wish I [had learned].",
+     "opcoes": [
+      {
+       "texto": "learned",
+       "certa": false
+      },
+      {
+       "texto": "would have learned",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If only I [had] more time to decide.",
+     "opcoes": [
+      {
+       "texto": "have",
+       "certa": false
+      },
+      {
+       "texto": "would have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I can't do both. I wish I [could] do both.",
+     "opcoes": [
+      {
+       "texto": "can",
+       "certa": false
+      },
+      {
+       "texto": "will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Quem me dera saber.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I wish I knew.",
+       "certa": true
+      },
+      {
+       "texto": "I wish I know.",
+       "certa": false
+      },
+      {
+       "texto": "I wish I would know.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Quem me dera ter aprendido a cozinhar.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I wish I had learned to cook.",
+       "certa": true
+      },
+      {
+       "texto": "I wish I would have learned to cook.",
+       "certa": false
+      },
+      {
+       "texto": "I wish I learn to cook.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I wish she hadn't told me now.\" Did she tell him?",
+     "opcoes": [
+      {
+       "texto": "Yes, and he regrets it.",
+       "certa": true
+      },
+      {
+       "texto": "No.",
+       "certa": false
+      },
+      {
+       "texto": "Not yet.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is a wish about the present?",
+     "opcoes": [
+      {
+       "texto": "I wish Lubango were closer.",
+       "certa": true
+      },
+      {
+       "texto": "I wish I'd travelled more.",
+       "certa": false
+      },
+      {
+       "texto": "If only you'd listened to your mother.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Quem me dera viver mais perto da minha família.",
+     "resposta": "I wish I lived closer to my family.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. I don't know what I want. I wish I knew. If only I had more time to decide.",
+     "enunciado": "What does Nuno wish?",
+     "opcoes": [
+      {
+       "texto": "that he knew what he wanted",
+       "certa": true
+      },
+      {
+       "texto": "that he had a new job",
+       "certa": false
+      },
+      {
+       "texto": "that Thandi had called earlier",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. Sometimes I wish I'd travelled more when I was younger. But I'm happy.",
+     "enunciado": "What does Paulo regret, sometimes?",
+     "opcoes": [
+      {
+       "texto": "not travelling more when he was younger",
+       "certa": true
+      },
+      {
+       "texto": "staying in Viana",
+       "certa": false
+      },
+      {
+       "texto": "not learning to cook",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I wish I'd learned to cook.",
+     "enunciado": "Ouça e repita: \"I wish I'd\" curto, com o acento em \"wish\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me three things you wish were different now, and two things you wish you had done differently in the past.",
+     "frase": "I wish",
+     "resposta": "I wish I had more time for my children; I work until seven every day. I wish my office were closer to home, and I wish I could speak French. About the past: I wish I'd studied harder at school, and if only I'd bought a house when prices were lower!",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it useful to think about our regrets, or is it better to forget them? Why?",
+     "frase": "because",
+     "resposta": "It's useful for a short time, because regrets teach us something. But if you think about them every day, they stop you from living now. Learn the lesson, and then move on.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10B",
+   "titulo": "We would play for hours",
+   "aula": "10B",
+   "objectivo": "Falar de hábitos do passado com would e used to, e usar só used to para estados.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Every Saturday, Dad [would] wake us up at six.",
+     "opcoes": [
+      {
+       "texto": "will",
+       "certa": false
+      },
+      {
+       "texto": "was",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [used to] be scared of that road.",
+     "opcoes": [
+      {
+       "texto": "would",
+       "certa": false
+      },
+      {
+       "texto": "use to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We used to [live] above the shop.",
+     "opcoes": [
+      {
+       "texto": "living",
+       "certa": false
+      },
+      {
+       "texto": "lived",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I would [sit] up there and read comics.",
+     "opcoes": [
+      {
+       "texto": "sat",
+       "certa": false
+      },
+      {
+       "texto": "sitting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I used to be very shy.",
+       "certa": true
+      },
+      {
+       "texto": "I would be very shy.",
+       "certa": false
+      },
+      {
+       "texto": "I use to be very shy.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Estados: só used to."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "When I was a child, we would play football for hours.",
+       "certa": true
+      },
+      {
+       "texto": "When I was a child, we would to play football for hours.",
+       "certa": false
+      },
+      {
+       "texto": "When I was a child, we used play football for hours.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"We'd play every Saturday.\" This is…",
+     "opcoes": [
+      {
+       "texto": "a past habit",
+       "certa": true
+      },
+      {
+       "texto": "a conditional",
+       "certa": false
+      },
+      {
+       "texto": "a future plan",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which verb can NOT go with \"would\" for a past habit?",
+     "opcoes": [
+      {
+       "texto": "have (a dog)",
+       "certa": true
+      },
+      {
+       "texto": "play",
+       "certa": false
+      },
+      {
+       "texto": "visit",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Todos os verões, a minha avó fazia doce de manga.",
+     "resposta": "Every summer, my grandmother would make mango jam.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Teresa. Every Saturday, Dad would wake us up at six to help him in the shop.",
+     "enunciado": "What would Dad do every Saturday?",
+     "opcoes": [
+      {
+       "texto": "wake them up at six to help in the shop",
+       "certa": true
+      },
+      {
+       "texto": "take them to the beach",
+       "certa": false
+      },
+      {
+       "texto": "go to Luanda",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. I used to be scared of that road. All those curves.",
+     "enunciado": "What was Nuno scared of?",
+     "opcoes": [
+      {
+       "texto": "the road of the Serra da Leba",
+       "certa": true
+      },
+      {
+       "texto": "the mango tree",
+       "certa": false
+      },
+      {
+       "texto": "the shop",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Every Saturday, Dad would wake us up at six.",
+     "enunciado": "Ouça e repita: \"would\" curto."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe your childhood: a place, a person, a typical weekend. Use would for at least three repeated actions and used to for at least two states.",
+     "frase": "would",
+     "resposta": "I grew up in Malanje, in a house with a big yard. I used to be very shy, and I used to have a dog called Kito. Every Sunday, my grandfather would take us to the river. We would swim for hours, and he would tell us stories.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Was childhood better in the past than it is today? Why, or why not?",
+     "frase": "because",
+     "resposta": "In some ways, yes, because we used to play outside all day, and nobody had phones. But today children have more information and better medicine. I'd say it was different, not better.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10C",
+   "titulo": "I'd been working there for years",
+   "aula": "10C",
+   "objectivo": "Usar o past perfect continuous para acções que duravam até um momento do passado.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In 2026, I'd been [working] at Mopane for seven years.",
+     "opcoes": [
+      {
+       "texto": "worked",
+       "certa": false
+      },
+      {
+       "texto": "work",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My mother had [been] asking me to move back for years.",
+     "opcoes": [
+      {
+       "texto": "be",
+       "certa": false
+      },
+      {
+       "texto": "being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We'd been waiting for two hours when the bus [arrived].",
+     "opcoes": [
+      {
+       "texto": "had been arriving",
+       "certa": false
+      },
+      {
+       "texto": "has arrived",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd [known] her for years when we started working together.",
+     "opcoes": [
+      {
+       "texto": "been knowing",
+       "certa": false
+      },
+      {
+       "texto": "knowing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Ela trabalhava no banco há dez anos quando mudou de carreira.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "She'd been working at the bank for ten years when she changed careers.",
+       "certa": true
+      },
+      {
+       "texto": "She was working at the bank since ten years when she changed careers.",
+       "certa": false
+      },
+      {
+       "texto": "She's been working at the bank for ten years when she changed careers.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence focuses on the activity and how long it lasted?",
+     "opcoes": [
+      {
+       "texto": "I'd been travelling since five in the morning.",
+       "certa": true
+      },
+      {
+       "texto": "My suitcase had stayed in Johannesburg.",
+       "certa": false
+      },
+      {
+       "texto": "By December, I'd learned some Portuguese.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I'd known him for years.",
+       "certa": true
+      },
+      {
+       "texto": "I'd been knowing him for years.",
+       "certa": false
+      },
+      {
+       "texto": "I was knowing him for years.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I'd been feeling bored for months.\" When?",
+     "opcoes": [
+      {
+       "texto": "for months, before a moment in the past",
+       "certa": true
+      },
+      {
+       "texto": "now",
+       "certa": false
+      },
+      {
+       "texto": "in the future",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Estávamos à espera há duas horas quando o autocarro chegou.",
+     "resposta": "We'd been waiting for two hours when the bus arrived.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lerato. In 2026, I'd been working at Mopane in Johannesburg for seven years.",
+     "enunciado": "How long had Lerato been working at Mopane in 2026?",
+     "opcoes": [
+      {
+       "texto": "seven years",
+       "certa": true
+      },
+      {
+       "texto": "two years",
+       "certa": false
+      },
+      {
+       "texto": "eleven years",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. The question isn't am I ready. Nobody's ever ready. The question is: will I regret not trying?",
+     "enunciado": "What is the real question, according to Lerato?",
+     "opcoes": [
+      {
+       "texto": "Will I regret not trying?",
+       "certa": true
+      },
+      {
+       "texto": "Am I ready?",
+       "certa": false
+      },
+      {
+       "texto": "How much will I earn?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'd been working at Mopane for seven years.",
+     "enunciado": "Ouça e repita: \"I'd been\" curto."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me the story of a big change in your life or in the life of someone you know. What had been happening before it, how long, and what changed?",
+     "frase": "been",
+     "resposta": "In 2022, my brother had been working as a taxi driver in Luanda for eight years. He'd been saving money for a long time. One day, a friend offered him a shop in Benguela. He'd never run a business, but he took the risk. Now he has two shops.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Lerato says: \"Nobody's ever ready.\" Do you agree? Why?",
+     "frase": "because",
+     "resposta": "Yes, I agree, because if you wait until you feel ready, you never change anything. You learn most things after you start. But you should still plan — and save some money first.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10D",
+   "titulo": "If I hadn't…, I wouldn't be…",
+   "aula": "10D",
+   "objectivo": "Ligar passado e presente com condicionais mistos.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If you hadn't gone to the training, we [wouldn't know] each other now.",
+     "opcoes": [
+      {
+       "texto": "wouldn't have known",
+       "certa": false
+      },
+      {
+       "texto": "won't know",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I [hadn't made] that mistake, I wouldn't be a team leader today.",
+     "opcoes": [
+      {
+       "texto": "wouldn't make",
+       "certa": false
+      },
+      {
+       "texto": "didn't make",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I were braver, I'd [have said] yes on the first day.",
+     "opcoes": [
+      {
+       "texto": "said",
+       "certa": false
+      },
+      {
+       "texto": "had said",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I'd studied English at school, I'd [speak] it well now.",
+     "opcoes": [
+      {
+       "texto": "have spoken",
+       "certa": false
+      },
+      {
+       "texto": "spoken",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence connects a past action with a present result?",
+     "opcoes": [
+      {
+       "texto": "If I hadn't moved to Luanda, I wouldn't know my wife.",
+       "certa": true
+      },
+      {
+       "texto": "If I moved to Luanda, I'd know more people.",
+       "certa": false
+      },
+      {
+       "texto": "If I'd moved, I'd have met her.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If I hadn't gone, I wouldn't be here now.",
+       "certa": true
+      },
+      {
+       "texto": "If I wouldn't have gone, I wouldn't be here now.",
+       "certa": false
+      },
+      {
+       "texto": "If I didn't go, I wouldn't have been here now.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"If she weren't so shy, she'd have spoken in the meeting.\" Is she shy?",
+     "opcoes": [
+      {
+       "texto": "Yes — always.",
+       "certa": true
+      },
+      {
+       "texto": "No.",
+       "certa": false
+      },
+      {
+       "texto": "Only yesterday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"If I hadn't taken that course, I'd be a teacher now.\" Is the speaker a teacher now?",
+     "opcoes": [
+      {
+       "texto": "No.",
+       "certa": true
+      },
+      {
+       "texto": "Yes.",
+       "certa": false
+      },
+      {
+       "texto": "We do not know.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Se não tivesse ido à formação, não te conheceria.",
+     "resposta": "If I hadn't gone to the training, I wouldn't know you.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Mei. If I hadn't made that mistake with the app update, I wouldn't be a team leader today.",
+     "enunciado": "Why is Mei a team leader today?",
+     "opcoes": [
+      {
+       "texto": "because of a mistake she made and fixed",
+       "certa": true
+      },
+      {
+       "texto": "because she studied more",
+       "certa": false
+      },
+      {
+       "texto": "because Nuno helped her",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. If I were a braver person, I'd have said yes on the first day.",
+     "enunciado": "What does Nuno say about himself?",
+     "opcoes": [
+      {
+       "texto": "He is not brave enough to say yes quickly.",
+       "certa": true
+      },
+      {
+       "texto": "He said yes on the first day.",
+       "certa": false
+      },
+      {
+       "texto": "He is very brave.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "If I hadn't gone, I wouldn't be here.",
+     "enunciado": "Ouça e repita, com as formas curtas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of two decisions or events that changed your life. Say how your life would be different now if they had not happened, and one thing about your character that made you act in a certain way.",
+     "frase": "wouldn't",
+     "resposta": "If I hadn't taken that course in 2020, I wouldn't be working in IT now — I'd probably be a teacher, like my mother. And if I hadn't moved to Luanda, I wouldn't know my wife. If I were more patient, I'd have stayed at my first job longer.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you believe in luck, or do we make our own luck? Why?",
+     "frase": "because",
+     "resposta": "Both, I think, because luck gives you chances, but you have to see them and take them. Mei's mistake was bad luck, but fixing it was her own work.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10E",
+   "titulo": "Life choices",
+   "aula": "10E",
+   "objectivo": "Vocabulário de carreira e escolhas, formas fracas; formation e licence.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "a turning point",
+       "b": "um ponto de viragem"
+      },
+      {
+       "a": "take the plunge",
+       "b": "arriscar, dar o salto"
+      },
+      {
+       "a": "second thoughts",
+       "b": "dúvidas"
+      },
+      {
+       "a": "a gut feeling",
+       "b": "intuição"
+      },
+      {
+       "a": "a dead end",
+       "b": "um beco sem saída"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He got a better offer, so he [turned] down ours.",
+     "opcoes": [
+      {
+       "texto": "put",
+       "certa": false
+      },
+      {
+       "texto": "gave",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [weighing] up the pros and cons.",
+     "opcoes": [
+      {
+       "texto": "weighting",
+       "certa": false
+      },
+      {
+       "texto": "waiting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She finally took the [plunge] and opened a restaurant.",
+     "opcoes": [
+      {
+       "texto": "dive",
+       "certa": false
+      },
+      {
+       "texto": "jump in",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "They want to [settle] down near their families.",
+     "opcoes": [
+      {
+       "texto": "set",
+       "certa": false
+      },
+      {
+       "texto": "seat",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Tenho uma licenciatura em engenharia.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I have a degree in engineering.",
+       "certa": true
+      },
+      {
+       "texto": "I have a licence in engineering.",
+       "certa": false
+      },
+      {
+       "texto": "I have a licenciature in engineering.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: licence = carta, licença."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Formação profissional\" em inglês:",
+     "opcoes": [
+      {
+       "texto": "professional training",
+       "certa": true
+      },
+      {
+       "texto": "professional formation",
+       "certa": false
+      },
+      {
+       "texto": "professional formatting",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: formation = formação geológica, disposição."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I said yes, but now I'm having second thoughts.\" This means…",
+     "opcoes": [
+      {
+       "texto": "I'm not sure any more.",
+       "certa": true
+      },
+      {
+       "texto": "I'm very sure.",
+       "certa": false
+      },
+      {
+       "texto": "I've said no.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"That job was a dead end.\" This means…",
+     "opcoes": [
+      {
+       "texto": "It had no future.",
+       "certa": true
+      },
+      {
+       "texto": "It was dangerous.",
+       "certa": false
+      },
+      {
+       "texto": "It was at the end of the street.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Amélia. When I turned forty, I thought: if I don't do it now, I'll never do it. I weighed it up for six months, and then I resigned.",
+     "enunciado": "How long did Amélia weigh it up?",
+     "opcoes": [
+      {
+       "texto": "six months",
+       "certa": true
+      },
+      {
+       "texto": "six years",
+       "certa": false
+      },
+      {
+       "texto": "forty days",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I wish I'd known. I'd have stayed.",
+     "enunciado": "Ouça e repita as formas fracas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a choice that changed your life. Do you have any regrets?",
+     "frase": "regret",
+     "resposta": "The turning point was in 2019, when I left a bank to study nursing. I weighed up the options for months. My gut feeling said go. I had second thoughts in the first year. But I don't regret it: if I hadn't taken the plunge, I wouldn't love my job today.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "When you make a big decision, do you trust your gut feeling or a list of pros and cons? Why?",
+     "frase": "because",
+     "resposta": "I start with a list, because it helps me see everything. But in the end, I follow my gut feeling. If the list says yes and my stomach says no, I usually wait.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10F",
+   "titulo": "Real English: Paths not taken",
+   "aula": "10F",
+   "objectivo": "Seguir uma entrevista de podcast sobre uma mudança de carreira: a escolha, as dúvidas, os arrependimentos.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Amélia. I'd been working at the bank for eighteen years. I had a good salary, a car, everything.",
+     "enunciado": "How long had Amélia been working at the bank?",
+     "opcoes": [
+      {
+       "texto": "eighteen years",
+       "certa": true
+      },
+      {
+       "texto": "eight years",
+       "certa": false
+      },
+      {
+       "texto": "forty years",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Amélia. Every Sunday night, I would feel sick in my stomach. Every single Sunday.",
+     "enunciado": "What would happen every Sunday night?",
+     "opcoes": [
+      {
+       "texto": "She would feel sick in her stomach.",
+       "certa": true
+      },
+      {
+       "texto": "She would cook for thirty people.",
+       "certa": false
+      },
+      {
+       "texto": "She would visit her grandmother.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Amélia. My grandmother used to have a little food stall at the market in Benguela, and I would help her every holiday.",
+     "enunciado": "What did her grandmother use to have?",
+     "opcoes": [
+      {
+       "texto": "a little food stall at the market in Benguela",
+       "certa": true
+      },
+      {
+       "texto": "a restaurant in Luanda",
+       "certa": false
+      },
+      {
+       "texto": "a bank",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Amélia. When I turned forty, my grandmother died, and I thought: if I don't do it now, I'll never do it.",
+     "enunciado": "What made her decide, at forty?",
+     "opcoes": [
+      {
+       "texto": "Her grandmother died that year.",
+       "certa": true
+      },
+      {
+       "texto": "She lost her job.",
+       "certa": false
+      },
+      {
+       "texto": "Her mother asked her.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Amélia. Only one regret. I wish I'd done it ten years earlier.",
+     "enunciado": "What does Amélia wish?",
+     "opcoes": [
+      {
+       "texto": "that she had done it ten years earlier",
+       "certa": true
+      },
+      {
+       "texto": "that she had stayed at the bank",
+       "certa": false
+      },
+      {
+       "texto": "that she had a bigger restaurant",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Amélia. First, save money before you jump. I didn't, and it was terrible.",
+     "enunciado": "What is her first piece of advice?",
+     "opcoes": [
+      {
+       "texto": "Save money before you jump.",
+       "certa": true
+      },
+      {
+       "texto": "Never listen to your mother.",
+       "certa": false
+      },
+      {
+       "texto": "Open a restaurant.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which grammar does Amélia use to talk about her childhood?",
+     "opcoes": [
+      {
+       "texto": "would and used to",
+       "certa": true
+      },
+      {
+       "texto": "the future perfect",
+       "certa": false
+      },
+      {
+       "texto": "reported speech",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"If I hadn't waited so long, I'd have more energy now.\" This is…",
+     "opcoes": [
+      {
+       "texto": "a mixed conditional: past to present",
+       "certa": true
+      },
+      {
+       "texto": "a first conditional",
+       "certa": false
+      },
+      {
+       "texto": "a third conditional only",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I wish I'd done it ten years earlier.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "If I hadn't waited so long, I'd have more energy now.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell a friend Amélia's story: her life before, the turning point, her doubts, her regrets and her advice. Which piece of advice would you follow?",
+     "frase": "had been",
+     "resposta": "Amélia had been working at a bank for eighteen years when she decided to become a cook. She used to help her grandmother at a food stall. When her grandmother died, she took the plunge. The first year was hard. She wishes she'd done it earlier. I'd save money first, like she says.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Would you change careers at forty? Why, or why not?",
+     "frase": "because",
+     "resposta": "Yes, if I were unhappy, because forty isn't old — I'd still have twenty-five years of work ahead. But I'd do it carefully: save money first and try the new job at weekends before I resign.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10G",
+   "titulo": "Work & Life: The offer",
+   "aula": "10G",
+   "objectivo": "Discutir uma escolha importante e decidir com condições; explicar em inglês uma proposta em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "The letter says: \"Seja qual for a sua decisão, obrigado.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "He thanks me, whatever I decide.",
+       "certa": true
+      },
+      {
+       "texto": "He thanks me, be which be my decision.",
+       "certa": false
+      },
+      {
+       "texto": "He thanks me for any decision of mine.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The letter says: \"queremos que fique connosco\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "They'd like me to stay.",
+       "certa": true
+      },
+      {
+       "texto": "They want that I stay with them.",
+       "certa": false
+      },
+      {
+       "texto": "They want me staying with us.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "What worries Nuno most?",
+     "opcoes": [
+      {
+       "texto": "regret",
+       "certa": true
+      },
+      {
+       "texto": "money",
+       "certa": false
+      },
+      {
+       "texto": "the cold in Johannesburg",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'll accept Mopane's offer, [provided] that I can start in January.",
+     "opcoes": [
+      {
+       "texto": "provide",
+       "certa": false
+      },
+      {
+       "texto": "providing to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'll thank Mr Baptista and [turn] down his offer, politely.",
+     "opcoes": [
+      {
+       "texto": "put",
+       "certa": false
+      },
+      {
+       "texto": "give",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I left in October, I [wouldn't] see the plant open.",
+     "opcoes": [
+      {
+       "texto": "won't",
+       "certa": false
+      },
+      {
+       "texto": "didn't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I wish I [could] take him to Johannesburg with me.",
+     "opcoes": [
+      {
+       "texto": "can",
+       "certa": false
+      },
+      {
+       "texto": "will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. They're offering a promotion to project manager from the first of August, a twenty-five percent raise, and a company car.",
+     "enunciado": "What raise is Kalandula offering?",
+     "opcoes": [
+      {
+       "texto": "twenty-five percent",
+       "certa": true
+      },
+      {
+       "texto": "sixty percent",
+       "certa": false
+      },
+      {
+       "texto": "fifteen percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. Thandi wants you, not a date. January is three months later.",
+     "enunciado": "What is Lerato's idea?",
+     "opcoes": [
+      {
+       "texto": "ask Mopane for a later start, in January",
+       "certa": true
+      },
+      {
+       "texto": "accept the Kalandula offer",
+       "certa": false
+      },
+      {
+       "texto": "wait one more year",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thandi. January the seventh it is. Welcome to Mopane, Nuno!",
+     "enunciado": "When will Nuno start at Mopane?",
+     "opcoes": [
+      {
+       "texto": "on the seventh of January",
+       "certa": true
+      },
+      {
+       "texto": "on the first of October",
+       "certa": false
+      },
+      {
+       "texto": "on the first of August",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'll accept Mopane's offer, provided that I can start in January.",
+     "enunciado": "Ouça e repita, com calma e a voz a descer no fim."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Talk about a real or imagined choice between two options (two jobs, two cities, studying or working): what you would gain and lose, what worries you, what you wish, and what you decide, with a condition.",
+     "frase": "provided that",
+     "resposta": "I have to choose between a master's in Lisbon and a promotion here. In Lisbon, I'd gain a qualification, but I'd lose two years of salary. What worries me is getting stuck here. I've decided: I'll take the promotion, provided that I can study online at the same time.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain this offer in English: \"Proposta: Técnico Superior de Informática, Benguela. Início: 1 de Setembro. Salário: 650 000 Kz por mês. Casa paga durante os primeiros seis meses. Período experimental de 90 dias.\"",
+     "frase": "trial",
+     "resposta": "It's an offer for a senior IT technician job in Benguela, starting on the first of September. The salary is six hundred and fifty thousand kwanzas a month, and they'll pay for housing for the first six months. There's a ninety-day trial period.",
+     "contexto": "Mediação: as condições de uma proposta."
+    }
+   ]
+  },
+  {
+   "codigo": "10R",
+   "titulo": "Unit 10 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 10 do B2 e reciclar as unidades 7 a 9 do B2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I wish I [spoke] Zulu.",
+     "opcoes": [
+      {
+       "texto": "speak",
+       "certa": false
+      },
+      {
+       "texto": "would speak",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If only I [hadn't said] yes so quickly yesterday.",
+     "opcoes": [
+      {
+       "texto": "didn't say",
+       "certa": false
+      },
+      {
+       "texto": "wouldn't say",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "When we were kids, we [would] swim in the river every Sunday.",
+     "opcoes": [
+      {
+       "texto": "will",
+       "certa": false
+      },
+      {
+       "texto": "were",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I hadn't moved to Benguela, I [wouldn't be] so happy now.",
+     "opcoes": [
+      {
+       "texto": "won't be",
+       "certa": false
+      },
+      {
+       "texto": "wasn't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "We'd been driving for six hours when the car broke down.",
+       "certa": true
+      },
+      {
+       "texto": "We were driving since six hours when the car broke down.",
+       "certa": false
+      },
+      {
+       "texto": "We've been driving for six hours when the car broke down.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Tenho uma licenciatura em direito.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I have a law degree.",
+       "certa": true
+      },
+      {
+       "texto": "I have a licence in law.",
+       "certa": false
+      },
+      {
+       "texto": "I have a law formation.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 9). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "She suggested taking a year off.",
+       "certa": true
+      },
+      {
+       "texto": "She suggested me to take a year off.",
+       "certa": false
+      },
+      {
+       "texto": "She suggested to take me a year off.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 8). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The view was absolutely amazing.",
+       "certa": true
+      },
+      {
+       "texto": "The view was very amazing.",
+       "certa": false
+      },
+      {
+       "texto": "The view was a bit amazing.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 7). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Even though the salary is lower, I prefer this job.",
+       "certa": true
+      },
+      {
+       "texto": "Despite the salary is lower, I prefer this job.",
+       "certa": false
+      },
+      {
+       "texto": "Even the salary is lower, I prefer this job.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Quem me dera ter aceitado aquela proposta.",
+     "resposta": "I wish I had accepted that offer.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. If Kalandula hadn't trusted me with the Tômbwa proposal, I wouldn't have this choice today.",
+     "enunciado": "Why does Nuno have this choice today?",
+     "opcoes": [
+      {
+       "texto": "Kalandula trusted him with the Tômbwa proposal.",
+       "certa": true
+      },
+      {
+       "texto": "He studied in Johannesburg.",
+       "certa": false
+      },
+      {
+       "texto": "Thandi is his friend.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a choice that changed your life. Do you have any regrets?",
+     "frase": "wish",
+     "resposta": "Ten years ago, I left Huambo to study in Luanda. I'd been living with my parents all my life, so it was hard. I used to call my mother every night. If I hadn't moved, I wouldn't have this job. My only regret: I wish I'd visited my grandparents more often.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A friend asks: \"Should I accept a job abroad?\" Give two questions they should ask themselves, and one piece of advice.",
+     "frase": "regret",
+     "resposta": "First, ask yourself: what would you lose, and could you live with that? Second: in five years, would you regret not trying? My advice: talk to someone who has done it, and save some money before you go.",
+     "contexto": "Aconselhar sobre uma escolha."
+    }
+   ]
+  }
+ ]
+}

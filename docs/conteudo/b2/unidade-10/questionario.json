@@ -1,0 +1,301 @@
+{
+ "title": "B2.2 Unit 10 quiz — Choices",
+ "description": "wish / if only, would e used to, past perfect continuous, condicionais mistos, escolhas de vida, formation e licence.",
+ "questions": [
+  {
+   "id": "b2u10q1",
+   "question": "\"Quem me dera saber.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u10q1o0",
+     "text": "I wish I knew.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u10q1o1",
+     "text": "I wish I know.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u10q1o2",
+     "text": "I wish I would know.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u10q1o0",
+   "explanation": "wish + past simple (presente).",
+   "points": 10
+  },
+  {
+   "id": "b2u10q2",
+   "question": "\"Quem me dera ter aprendido a cozinhar.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u10q2o0",
+     "text": "I wish I had learned to cook.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u10q2o1",
+     "text": "I wish I would have learned to cook.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u10q2o2",
+     "text": "I wish I learn to cook.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u10q2o0",
+   "explanation": "wish + past perfect (passado).",
+   "points": 10
+  },
+  {
+   "id": "b2u10q3",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u10q3o0",
+     "text": "I used to be very shy.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u10q3o1",
+     "text": "I would be very shy.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u10q3o2",
+     "text": "I use to be very shy.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u10q3o0",
+   "explanation": "Estados: só used to.",
+   "points": 10
+  },
+  {
+   "id": "b2u10q4",
+   "question": "\"We'd play football every Saturday.\" Isto é…",
+   "options": [
+    {
+     "id": "b2u10q4o0",
+     "text": "um hábito do passado",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u10q4o1",
+     "text": "um condicional",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u10q4o2",
+     "text": "um plano para o futuro",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u10q4o0",
+   "explanation": "would para hábitos do passado.",
+   "points": 10
+  },
+  {
+   "id": "b2u10q5",
+   "question": "\"Ela trabalhava no banco há dez anos quando mudou de carreira.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u10q5o0",
+     "text": "She'd been working at the bank for ten years when she changed careers.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u10q5o1",
+     "text": "She was working at the bank since ten years when she changed careers.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u10q5o2",
+     "text": "She's been working at the bank for ten years when she changed careers.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u10q5o0",
+   "explanation": "Past perfect continuous.",
+   "points": 10
+  },
+  {
+   "id": "b2u10q6",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u10q6o0",
+     "text": "I'd known him for years.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u10q6o1",
+     "text": "I'd been knowing him for years.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u10q6o2",
+     "text": "I was knowing him for years.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u10q6o0",
+   "explanation": "Verbos de estado: forma simples.",
+   "points": 10
+  },
+  {
+   "id": "b2u10q7",
+   "question": "Qual frase liga uma acção passada a um resultado presente?",
+   "options": [
+    {
+     "id": "b2u10q7o0",
+     "text": "If I hadn't moved to Luanda, I wouldn't know my wife.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u10q7o1",
+     "text": "If I moved to Luanda, I'd know more people.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u10q7o2",
+     "text": "If I'd moved, I'd have met her.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u10q7o0",
+   "explanation": "Condicional misto: passado → presente.",
+   "points": 10
+  },
+  {
+   "id": "b2u10q8",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u10q8o0",
+     "text": "If I hadn't gone, I wouldn't be here now.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u10q8o1",
+     "text": "If I wouldn't have gone, I wouldn't be here now.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u10q8o2",
+     "text": "If I didn't go, I wouldn't have been here now.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u10q8o0",
+   "explanation": "if + past perfect, would + infinitivo.",
+   "points": 10
+  },
+  {
+   "id": "b2u10q9",
+   "question": "\"Tenho uma licenciatura em engenharia.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u10q9o0",
+     "text": "I have a degree in engineering.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u10q9o1",
+     "text": "I have a licence in engineering.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u10q9o2",
+     "text": "I have a licenciature in engineering.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u10q9o0",
+   "explanation": "Falso amigo: licence.",
+   "points": 10
+  },
+  {
+   "id": "b2u10q10",
+   "question": "\"Formação profissional\" em inglês:",
+   "options": [
+    {
+     "id": "b2u10q10o0",
+     "text": "professional training",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u10q10o1",
+     "text": "professional formation",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u10q10o2",
+     "text": "professional formatting",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u10q10o0",
+   "explanation": "Falso amigo: formation.",
+   "points": 10
+  },
+  {
+   "id": "b2u10q11",
+   "question": "Reciclagem (B2, unidade 9). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u10q11o0",
+     "text": "She suggested taking a year off.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u10q11o1",
+     "text": "She suggested me to take a year off.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u10q11o2",
+     "text": "She suggested to take me a year off.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u10q11o0",
+   "explanation": "suggest + -ing.",
+   "points": 10
+  },
+  {
+   "id": "b2u10q12",
+   "question": "Reciclagem (B2, unidade 7). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u10q12o0",
+     "text": "Even though the salary is lower, I prefer this job.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u10q12o1",
+     "text": "Despite the salary is lower, I prefer this job.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u10q12o2",
+     "text": "Even the salary is lower, I prefer this job.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u10q12o0",
+   "explanation": "even though + frase.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
