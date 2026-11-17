@@ -1,6 +1,6 @@
 # B1.2 · Revisão 2 e exame oral
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), "Revisão 2 e exame oral do B1.2"
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), "Revisão 2 e exame oral do B1.2"
 
 ## Objectivo
 
@@ -32,5 +32,5 @@ No fim do B1.2, o aluno consegue manter uma conversa de 9 a 10 minutos, contar u
 ## O que falta
 
 1. **Carregar o exame no curso B1.2** (exame.md, secção 4) — e o do B1.1 ([revisao-1/exame.md](../revisao-1/exame.md)).
-2. Revisão aula a aula e leitura pelos professores.
+2. Leitura pelos professores.
 3. Vídeos (vozes: o examinador, a Lurdes, o Nuno e a Mei já existem), áudio do laboratório e carregamento na plataforma.

@@ -1,6 +1,6 @@
 # B1.1 · Revisão 1 e exame oral
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), "Revisão 1 e exame oral do B1.1"
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), "Revisão 1 e exame oral do B1.1"
 
 ## Objectivo
 
@@ -32,5 +32,5 @@ No fim do B1.1, o aluno consegue manter uma conversa de 8 a 10 minutos sobre si,
 ## O que falta
 
 1. **Carregar o exame no curso B1.1** (exame.md, secção 4).
-2. Revisão aula a aula e leitura pelos professores.
+2. Leitura pelos professores.
 3. Vídeos (vozes: o examinador, a Lurdes, o Nuno e uma voz nova para o Chanda), áudio do laboratório e carregamento na plataforma.

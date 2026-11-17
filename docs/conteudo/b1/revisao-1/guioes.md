@@ -217,10 +217,10 @@ Verificação: conversa de ensaio; exame oral do B1.1
 **LURDES:** Then why don't we print half there, and send the other half to the copy shop near the bank? It'll probably cost about twenty thousand kwanzas, but we'll finish today.
 **EXAMINADOR:** Hmm. The copy shop? Those contracts are confidential.
 **LURDES:** That's a good point. In that case, I'd use the printer on the third floor and stay one hour later. It isn't as fast, but it's safe. And I'll call the technician for our printer now.
-**EXAMINADOR:** OK. Now a question for discussion. Is it better to pay more and be safe, or to save money and take a risk?
-**LURDES:** In my view, it's better to be safe, especially in a bank. There are two reasons. Firstly, our clients trust us with their information. Secondly, one mistake can cost much more than the money we save.
-**EXAMINADOR:** But some people say that a company that never takes risks never grows.
-**LURDES:** I see your point. Taking risks is important for new projects. But what I mean is: with clients' information, the risk is too big. So, in short, it depends on the risk.
+**EXAMINADOR:** OK. Now a question for discussion. Should companies pay for their staff's English lessons?
+**LURDES:** In my view, yes. There are two reasons. Firstly, staff who speak English can work with foreign clients, so the company earns more. Secondly, people feel valued, and they work better.
+**EXAMINADOR:** But some people say that staff leave the company after it pays for their lessons.
+**LURDES:** I see your point. Some people do leave. But what I mean is: if the company is a good place to work, most people stay. And the company can ask them to stay for a year after the course. So, in short, it's a good investment.
 **EXAMINADOR:** Thank you, Lurdes. The exam is finished. You can press the finish button now.
 
 **PROF:** Look at what Lurdes does well.

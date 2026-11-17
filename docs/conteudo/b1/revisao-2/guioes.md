@@ -33,10 +33,10 @@ Verificação: laboratórios B1R2-1 e B1R2-2; conversa de ensaio; questionário 
 
 ### 2. Situação: um ano depois (3 min 30 s)
 
-[ECRÃ: sexta-feira, 30 de Junho, 19:00; videochamada; o Nuno em casa, em Luanda; a Mei no escritório, em Lusaca]
+[ECRÃ: sexta-feira, 30 de Junho, 19:00 em Luanda (20:00 em Lusaca); videochamada; o Nuno em casa, em Luanda; a Mei no escritório, em Lusaca]
 
 **MEI:** Nuno! It's almost a year since Johannesburg. How are you?
-**NUNO:** Mei! Great to see you. You must be busy — it's seven o'clock and you're still at the office!
+**NUNO:** Mei! Great to see you. You must be busy — it's eight o'clock there, and you're still at the office!
 **MEI:** Ha, you're right. We're launching a new version of the app on Monday. And this time, we tested it for two weeks. If we had tested the last update, the app wouldn't have stopped on payday!
 **NUNO:** I remember your story. And what did your boss say after that?
 **MEI:** He told me to write the rules for every update. And he asked me if I wanted to lead the testing team. So now I'm a team leader!
@@ -48,7 +48,7 @@ Verificação: laboratórios B1R2-1 e B1R2-2; conversa de ensaio; questionário 
 **MEI:** Ouch. What would you do differently?
 **NUNO:** We should have checked the room before the installation. Although it was a hard lesson, the client was happy in the end. They want us for their new solar plant.
 **MEI:** That's fantastic. So, what will you be doing this time next year?
-**NUNO:** I'm hoping to be leading that project. And I'm planning to take the B2 English exam in December.
+**NUNO:** I'm hoping to be leading that project. And I'm planning to take the B2 English exam next year.
 **MEI:** You'll pass, I'm sure. Your English is so different from last July!
 **NUNO:** In order to improve, I talk to people like you. Let's not wait another year!
 
@@ -201,10 +201,10 @@ Verificação: conversa de ensaio; exame oral do B1.2
 **LURDES:** Sure. The supplier said the price was ninety dollars a chair. At first, she told me the delivery would take four weeks, but I explained that we needed them before the new office opens, and in the end she agreed to deliver in three. She asked if we could pay half in advance.
 **EXAMINADOR:** Half in advance? That's too much.
 **LURDES:** I know. I told her our normal rule is thirty percent, and she promised to check with her manager. She'll call me back on Monday.
-**EXAMINADOR:** OK. Now a question for discussion. Is it better to agree things by phone, or by email?
-**LURDES:** That's an interesting question. It depends on the situation. On the one hand, a phone call is faster, and you can negotiate. On the other hand, an email is a record — nobody can forget what they promised. So, overall, I think the best way is both: agree by phone, then confirm by email.
-**EXAMINADOR:** But some people say emails are slow and create misunderstandings.
-**LURDES:** I see your point. That's true for long emails. But what I mean is a short email after the call — three lines with the price and the date. That doesn't create problems; it prevents them.
+**EXAMINADOR:** OK. Now a question for discussion. Is it better to work for a big company or a small one?
+**LURDES:** That's an interesting question. It depends on the person. On the one hand, a big company like my bank gives you training and a stable salary. On the other hand, in a small company you do more things, and you learn faster. So, overall, I think a big company is better at the start of your career.
+**EXAMINADOR:** But some people say big companies are slow, and nobody listens to young people.
+**LURDES:** I see your point. That can be true. But what I mean is: at the start, you need good training and a good manager. My first manager at the bank taught me everything. After some years, a small company can be a great next step.
 **EXAMINADOR:** Thank you, Lurdes. The exam is finished. You can press the finish button now.
 
 **PROF:** Look at what Lurdes does well.
@@ -220,7 +220,7 @@ Verificação: conversa de ensaio; exame oral do B1.2
 **PROF:** Part two: Tell me about a problem you lived. What happened, why, and what did you do?
 [PAUSA 40 s]
 [ECRÃ: At first, … While … was … ing, … By the time … , … had already … As a result, … In the end, …]
-**PROF:** Part four: Is it important to admit mistakes at work? — Now I disagree: some people say it makes you look weak. Answer me.
+**PROF:** Part four: Should people change jobs often? — Now I disagree: some people say it's better to stay in one company for many years. Answer me.
 [PAUSA 25 s]
 [ECRÃ: That's an interesting question. On the one hand… On the other hand… So, overall… / I see your point, but…]
 
