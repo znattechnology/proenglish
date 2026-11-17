@@ -8,7 +8,7 @@ Guiões para o professor de IA. Conteúdo original da ProEnglish. Convenções: 
 
 **Nomes de empresas e lugares:** a Kalandula Tech, a Mopane Systems e a Morro Azul Energia são fictícias; a central do Tômbwa também (B1 9F).
 
-**Personagens:** **Nuno** (lidera pela primeira vez uma equipa: a proposta para a central do Tômbwa); **Lerato** (coordenadora; modelo de quem conduz uma reunião, na 1C); **Paulo** (apoio técnico, há mais de dez anos na Kalandula Tech — mais experiente do que o Nuno); **Sílvia** (directora financeira); **Thandi** (Mopane, Joanesburgo; conduz a reunião da 1E); **Sipho** (Mopane; responsável pela parte do satélite); **Hannah** (Morro Azul). Novos e fictícios: **Elsa Mendes** (engenheira electrotécnica júnior, de Benguela, na Kalandula Tech desde Maio de 2028; tímida nas reuniões); na 1E, **Bongani** e **Lindiwe** (engenheiros da Mopane) e **Rajesh** (analista da Mopane, de Durban).
+**Personagens:** **Nuno** (lidera pela primeira vez uma equipa: a proposta para a central do Tômbwa); **Lerato** (coordenadora; modelo de quem conduz uma reunião, na 1C); **Paulo Mendes** (apoio técnico; entrou na Kalandula Tech pouco antes do Nuno, em 2026, e foi quem o recebeu; é mais velho do que ele, e não quis liderar a equipa porque começou um mestrado à noite); **Sílvia** (directora financeira); **Thandi** (Mopane, Joanesburgo; conduz a reunião da 1E); **Sipho** (Mopane; responsável pela parte do satélite); **Hannah** e **Femi Adeyemi** (Morro Azul; o Femi é o director financeiro, B1 3F). Novos e fictícios: **Elsa Chilombo** (engenheira electrotécnica júnior, de Benguela, na Kalandula Tech desde Maio de 2028; tímida nas reuniões); na 1E, **Bongani** e **Lindiwe** (engenheiros da Mopane) e **Rajesh** (analista da Mopane, de Durban).
 
 **A história:** Setembro de 2028. A Morro Azul convidou a Kalandula Tech e a Mopane a apresentar uma proposta para o sistema de rede e de monitorização da nova central do Tômbwa; as obras começam em Outubro (B1 9F). A Lerato pôs o Nuno a liderar a equipa da proposta. Na segunda, 4, o Nuno apresenta a equipa à Hannah (1A); na terça, 5, fala com o Paulo, que tem mais anos de casa do que ele (1B); na quarta, 6, observa a Lerato a conduzir a reunião semanal (1C); na quinta, 7, assiste por vídeo à reunião rápida da equipa da Thandi (1E); na segunda, 11, conduz a primeira reunião da sua equipa (1F).
 
@@ -45,15 +45,15 @@ Verificação: Lab 1A; perguntas 1 e 2 do questionário da unidade 1
 **HANNAH:** Morning, Nuno! Lerato tells me you're leading the Tômbwa proposal. Congratulations.
 **NUNO:** Thanks, Hannah. It's my first time leading a team, so I'm a bit nervous — but excited. Can I introduce the team?
 **HANNAH:** Please. I'd like to know who I'll be talking to.
-**NUNO:** First, Paulo, who you know from the antennas in Namibe. He's been working with Kalandula for over ten years, so he'll look after the installation plan.
+**NUNO:** First, Paulo, who you know from the antennas in Namibe. He's been working on your network since the start, so he'll look after the installation plan.
 **HANNAH:** Great. Paulo knows our plant better than some of our own engineers.
-**NUNO:** Then Elsa Mendes, who joined us in May. She's an electrical engineer from Benguela, and she'll be in charge of testing. She's quiet, but she's very sharp.
+**NUNO:** Then Elsa Chilombo, who joined us in May. She's an electrical engineer from Benguela, and she'll be in charge of testing. She's quiet, but she's very sharp.
 **HANNAH:** Good to hear. And from Mopane?
 **NUNO:** Sipho, whose team worked with us on the satellite backup at your plant. He'll do the satellite part again, from Johannesburg.
 **HANNAH:** Perfect. That backup has saved us more than once.
 **NUNO:** And the plant itself — Tômbwa, where the work starts in October — is quite different from Namibe. It's even windier, and closer to the desert, so we'll need stronger antennas.
-**HANNAH:** True. And the proposal, which our board wants to see in October, needs to be clear about costs. Our new finance director is very careful.
-**NUNO:** Understood. We'll present it on the twelfth of October, if that still works for the board.
+**HANNAH:** True. And the proposal, which our board wants to see in October, needs to be clear about costs. And Femi will read every number.
+**NUNO:** Understood — I know Femi from the antennas project. We'll present it on the twelfth of October, if that still works for the board.
 **HANNAH:** It does. I'm looking forward to it.
 
 ### 3. Língua (4 min 30 s)
@@ -62,12 +62,12 @@ Verificação: Lab 1A; perguntas 1 e 2 do questionário da unidade 1
 
 [ECRÃ:
 Paulo, **who you know from Namibe**, will look after the installation.
-Elsa Mendes, **who joined us in May**, will be in charge of testing.
+Elsa Chilombo, **who joined us in May**, will be in charge of testing.
 Sipho, **whose team worked on the satellite backup**, will do the satellite part.
 Tômbwa, **where the work starts in October**, is different from Namibe.
 The proposal, **which the board wants in October**, needs clear costs.]
 
-**PROF:** These clauses add extra information. The sentence is complete without them: "Elsa Mendes will be in charge of testing." The extra part goes between commas — and in speech, between short pauses.
+**PROF:** These clauses add extra information. The sentence is complete without them: "Elsa Chilombo will be in charge of testing." The extra part goes between commas — and in speech, between short pauses.
 [PAUSA 6 s]
 
 **Definição ou informação extra?**
@@ -99,7 +99,7 @@ informação extra (B2) — Elsa, **who** joined in May, is here. (já sabemos q
 
 ### 4. Pronúncia (1 min)
 
-**PROF:** In speech, the commas become pauses, and the extra information is said a little lower and faster. Listen: Elsa Mendes, [pausa] who joined us in May, [pausa] will be in charge of testing.
+**PROF:** In speech, the commas become pauses, and the extra information is said a little lower and faster. Listen: Elsa Chilombo, [pausa] who joined us in May, [pausa] will be in charge of testing.
 [PAUSA 3 s]
 **PROF:** Repeat: Sipho, whose team worked on the backup, will do the satellite part.
 [PAUSA 6 s]
@@ -160,10 +160,10 @@ Verificação: Lab 1B; perguntas 3 e 4 do questionário
 
 **NUNO:** Paulo, have you got a minute? There's something I'd like to talk about.
 **PAULO:** Sure. Is it about the Tômbwa team?
-**NUNO:** Yes. Lerato asked me to lead it, which you probably know. And honestly, it feels a bit awkward. You've been here much longer than me.
+**NUNO:** Yes. Lerato asked me to lead it, which you probably know. And honestly, it feels a bit awkward. You're older than me, and you were here before me.
 **PAULO:** Ha! That's true. When you started, you used to ask me where the printer cables were.
 **NUNO:** Exactly — which is why I wanted to talk to you first. You're the person I learned most from. I don't want you to feel I'm giving you orders.
-**PAULO:** Nuno, I'm not upset. I didn't want to lead it — I've got two small kids and a lot of work, which means I can't travel to Tômbwa every month. But I appreciate the conversation.
+**PAULO:** Nuno, I'm not upset. I didn't want to lead it — I've just started a master's degree in the evenings, which means I can't travel to Tômbwa every month. But I appreciate the conversation.
 **NUNO:** Thank you. So, what I'd like is this: you're in charge of the installation plan, and I'll rely on you for anything technical. You're the one I'll come to with difficult questions.
 **PAULO:** That works. And Elsa? She's the one I'm a bit worried about. She hardly speaks in meetings.
 **NUNO:** I've noticed. She's the kind of person you need to ask directly. I'll give her the testing, which she's very good at.
@@ -177,7 +177,7 @@ Verificação: Lab 1B; perguntas 3 e 4 do questionário
 [ECRÃ:
 Lerato asked me to lead it, **which** you probably know. (= você sabe isso)
 You're the person I learned most from — **which is why** I wanted to talk to you. (= é por isso que)
-I've got two small kids, **which means** I can't travel every month. (= o que quer dizer que)]
+I've started a master's degree, **which means** I can't travel every month. (= o que quer dizer que)]
 
 **PROF:** Here, "which" doesn't refer to one noun. It refers to the whole idea before it. It's very common in conversation: "which is great", "which means…", "which is why…".
 [PAUSA 6 s]
@@ -207,7 +207,7 @@ the person **I learned most from** · the people **we work with** · the one **I
 
 **PROF:** "Which is why" follows the first idea without a long pause. And a preposition at the end is short and weak. Listen: You're the person I learned most from, which is why I wanted to talk to you.
 [PAUSA 3 s]
-**PROF:** Repeat: I've got two small kids, which means I can't travel every month.
+**PROF:** Repeat: I've started a master's degree, which means I can't travel every month.
 [PAUSA 6 s]
 **PROF:** The people we work with like short meetings.
 [PAUSA 5 s]
@@ -226,9 +226,9 @@ the person **I learned most from** · the people **we work with** · the one **I
 **PROF (opinião):** Should a new team leader talk to each person alone before the first meeting? Why?
 [PAUSA 25 s]
 
-**PROF (reciclagem — 1A):** Add extra information about Paulo: he has worked at Kalandula for over ten years.
+**PROF (reciclagem — 1A):** Add extra information about Paulo: he has worked on Morro Azul's network since the start.
 [PAUSA 6 s]
-[ECRÃ: Paulo, who has worked at Kalandula for over ten years, is in charge of the installation plan.]
+[ECRÃ: Paulo, who has worked on Morro Azul's network since the start, is in charge of the installation plan.]
 
 ### 6. Fecho (30 s)
 
@@ -562,9 +562,9 @@ Verificação: Lab 1F; conversa livre "The kick-off meeting"
 **NUNO:** Good morning, everyone, and welcome to our kick-off. Four items, and we'll finish by eleven. First, the objective. On the twelfth of October, we present our proposal to the Morro Azul board, which means we have exactly one month. Our objective is simple: to win the contract.
 **NUNO:** Before we start, Mr Baptista sent me a short note this morning. It's in Portuguese, so let me give you the main points.
 
-[ECRÃ: a nota, em português: "Nuno, para a equipa: 1) A proposta tem de incluir uma opção mais barata, sem satélite, porque o novo director financeiro da Morro Azul vai perguntar por ela. 2) Nada de promessas de prazos sem confirmar com o Paulo. 3) Quero ver o primeiro rascunho no dia 22. Boa sorte a todos. — J. Baptista"]
+[ECRÃ: a nota, em português: "Nuno, para a equipa: 1) A proposta tem de incluir uma opção mais barata, sem satélite, porque o Femi, o director financeiro da Morro Azul, vai perguntar por ela. 2) Nada de promessas de prazos sem confirmar com o Paulo. 3) Quero ver o primeiro rascunho no dia 22. Boa sorte a todos. — J. Baptista"]
 
-**NUNO:** Mr Baptista says three things. First, the proposal must include a cheaper option, without the satellite, because Morro Azul's new finance director will ask for one. Second, no promises about deadlines without checking with Paulo. And third, he wants to see the first draft on the twenty-second. He also wishes us good luck.
+**NUNO:** Mr Baptista says three things. First, the proposal must include a cheaper option, without the satellite, because Femi, Morro Azul's finance director, will ask for one. Second, no promises about deadlines without checking with Paulo. And third, he wants to see the first draft on the twenty-second. He also wishes us good luck.
 **PAULO:** I like rule number two!
 **NUNO:** Ha — I thought you would. Second item: roles. Paulo, who knows Morro Azul's plants better than anyone, is in charge of the installation plan. Elsa, who did such good work on the Lobito sensors in June, will be in charge of testing. Sipho, whose team worked on the Namibe backup, takes the satellite design — he'll be working from Johannesburg. And Rajesh, who's doing the costs, will work closely with Sílvia.
 **RAJESH:** Sounds good. Can I ask about the cheaper option? Without the satellite, the plant has no backup when the radio link goes down, which —
@@ -572,14 +572,14 @@ Verificação: Lab 1F; conversa livre "The kick-off meeting"
 **NUNO:** Sorry, Paulo — I know that story, and it's a good one, but let's keep it for the proposal itself: it's the perfect example for the board. Rajesh, please finish your point.
 **RAJESH:** Thanks. I was saying: if we took out the satellite, the price would drop by about fifteen percent, but the risk would go up.
 **NUNO:** Good point — we'll show both options, with the risk for each. Elsa, we haven't heard from you yet. How do you see the testing?
-**ELSA:** I'd like to test both options at the Namibe plant before the twenty-second. September is the windiest month there, which makes it the closest we can get to Tômbwa.
+**ELSA:** I'd like to test both options at the Namibe plant, in the two weeks after the draft. It's very windy there at this time of year, which makes it the closest we can get to Tômbwa.
 **NUNO:** That's a great idea. I'd like you to take that on with Paulo, if that's OK.
 **ELSA:** Yes, I'd be happy to.
 **NUNO:** And who'd like to write the one-page summary for the board? It needs someone who writes clearly.
 **RAJESH:** I'll do it — I wrote the one for Durban.
 **NUNO:** Third item, the timeline. Sipho, how long do you need for the satellite design?
 **SIPHO:** About ten working days. I started on Friday, when the wind data came in — thanks, Nuno — so I can send it by the twentieth.
-**NUNO:** Great. So, the next steps. Sipho: the satellite design by the twentieth. Paulo and Elsa: the tests in Namibe and the installation plan by the twenty-second. Rajesh: the costs for both options by the twenty-ninth, to Sílvia, and the summary for the board. And I'm going to put the first draft together for Mr Baptista on the twenty-second. We'll have a check-in every Monday at ten. Anything I've missed?
+**NUNO:** Great. So, the next steps. Sipho: the satellite design by the twentieth. Paulo: the installation plan by the twenty-second. Paulo and Elsa: the tests in Namibe in the two weeks after that. Rajesh: the costs for both options by the twenty-ninth, to Sílvia, and the summary for the board. And I'm going to put the first draft together for Mr Baptista on the twenty-second. We'll have a check-in every Monday at ten. Anything I've missed?
 **PAULO:** Only the coffee.
 **NUNO:** Ha! I'll bring it next Monday. Thank you, everyone. Let's win this one.
 

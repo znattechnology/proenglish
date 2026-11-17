@@ -1,6 +1,6 @@
 # B2.1 · Unidade 1 — Leading a team (6 aulas)
 
-**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 1
+**Estado:** primeira versão escrita, com duas revisões aula a aula ([n.º 1](revisao-1.md), [n.º 2](revisao-2.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 1
 
 ## Objectivos da unidade
 
@@ -40,14 +40,14 @@ No fim da unidade, o aluno consegue:
 - **Duas relativas lado a lado:** a 1A põe a relativa de definição do B1 (*The engineer who designed it…*) ao lado da explicativa (*Elsa, who joined in May, …*). A regra que o aluno leva: se já sabemos de quem ou de que se fala, a relativa é informação extra — vírgulas, pausas, nunca *that*, e o pronome nunca sai.
 - **"O que" → *which*:** o erro mais comum de quem fala português é *…, what is great*. A 1B trata-o à parte.
 - **A preposição no fim:** no inglês falado, *the people we work with*; o *with whom* aparece só para reconhecer (contratos, cartas formais).
-- **Liderar sem mandar:** o Nuno lidera pela primeira vez, e o Paulo, mais velho e mais experiente, fica na equipa. A 1B mostra a conversa difícil antes da primeira reunião; a 1F mostra como cortar a história do Paulo sem o desrespeitar ("it's a good one… the perfect example for the board").
+- **Liderar sem mandar:** o Nuno lidera pela primeira vez, e o Paulo, mais velho e na empresa desde antes dele, fica na equipa. A 1B mostra a conversa difícil antes da primeira reunião; a 1F mostra como cortar a história do Paulo sem o desrespeitar ("it's a good one… the perfect example for the board").
 - **Quem não fala:** a Elsa, tímida, tem a melhor ideia nas duas reuniões (1C e 1F) — mas só depois de ser convidada pelo nome.
 - **Turnos longos:** cada aula pede pelo menos uma resposta de cerca de 1 minuto (1 minuto e meio na 1F), e o laboratório tem uma resposta de até 90 segundos por lição.
 - **Uma só voz no tutor livre:** o tutor faz de duas pessoas (Chris e Robin) e diz sempre o nome antes de falar, para o aluno saber quem fala.
 
 ## A história
 
-Setembro de 2028. A Morro Azul convidou a Kalandula Tech e a Mopane a apresentar uma proposta para a rede e a monitorização da nova central solar do Tômbwa, e a Lerato pôs o Nuno a liderar a equipa. Na segunda, 4, o Nuno apresenta a equipa à Hannah (1A); na terça, 5, fala com o Paulo, que tem mais anos de casa e não quis liderar porque tem dois filhos pequenos (1B); na quarta, 6, a Lerato conduz a reunião semanal e a Elsa pede duas semanas de testes (1C); na quinta, 7, o Nuno assiste por vídeo à reunião rápida da equipa da Thandi, em Joanesburgo, onde o Sipho fica com o desenho do satélite (1E); na segunda, 11, o Nuno conduz a primeira reunião da sua equipa, passa as instruções do Sr. Baptista (incluir uma opção mais barata, sem satélite) e distribui as tarefas: a proposta é apresentada à administração da Morro Azul a 12 de Outubro (1F).
+Setembro de 2028. A Morro Azul convidou a Kalandula Tech e a Mopane a apresentar uma proposta para a rede e a monitorização da nova central solar do Tômbwa, e a Lerato pôs o Nuno a liderar a equipa. Na segunda, 4, o Nuno apresenta a equipa à Hannah (1A); na terça, 5, fala com o Paulo, que é mais velho, chegou à empresa antes dele e não quis liderar porque começou um mestrado à noite (1B); na quarta, 6, a Lerato conduz a reunião semanal e a Elsa pede duas semanas de testes (1C); na quinta, 7, o Nuno assiste por vídeo à reunião rápida da equipa da Thandi, em Joanesburgo, onde o Sipho fica com o desenho do satélite (1E); na segunda, 11, o Nuno conduz a primeira reunião da sua equipa, passa as instruções do Sr. Baptista (incluir uma opção mais barata, sem satélite, porque o Femi, director financeiro da Morro Azul, vai pedi-la) e distribui as tarefas: a proposta é apresentada à administração da Morro Azul a 12 de Outubro (1F).
 
 ## O que falta para publicar
 

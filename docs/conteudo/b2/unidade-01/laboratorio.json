@@ -176,7 +176,7 @@
     },
     {
      "tipo": "pronuncia",
-     "frase": "Elsa Mendes, who joined us in May, will be in charge of testing.",
+     "frase": "Elsa Chilombo, who joined us in May, will be in charge of testing.",
      "enunciado": "Ouça e repita, com uma pausa antes e outra depois de \"who joined us in May\"."
     },
     {
@@ -220,7 +220,7 @@
     {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
-     "frase": "I've got two small kids, which [means] I can't travel every month.",
+     "frase": "I've started a master's degree, which [means] I can't travel every month.",
      "opcoes": [
       {
        "texto": "mean",
@@ -349,11 +349,11 @@
     },
     {
      "tipo": "escuta",
-     "frase": "This is Paulo. I've got two small kids, which means I can't travel to Tômbwa every month.",
+     "frase": "This is Paulo. I didn't want to lead the team. I've just started a master's degree in the evenings, which means I can't travel to Tômbwa every month.",
      "enunciado": "Why didn't Paulo want to lead the team?",
      "opcoes": [
       {
-       "texto": "He can't travel every month because of his kids.",
+       "texto": "He's studying in the evenings and can't travel every month.",
        "certa": true
       },
       {
@@ -1066,18 +1066,18 @@
     },
     {
      "tipo": "escolher",
-     "enunciado": "The note says: \"o novo director financeiro da Morro Azul vai perguntar por ela\" (a opção mais barata). Nuno says:",
+     "enunciado": "The note says: \"o Femi, o director financeiro da Morro Azul, vai perguntar por ela\" (a opção mais barata). Nuno says:",
      "opcoes": [
       {
-       "texto": "Morro Azul's new finance director will ask for one.",
+       "texto": "Femi, Morro Azul's finance director, will ask for one.",
        "certa": true
       },
       {
-       "texto": "Morro Azul's new finance director will ask by her.",
+       "texto": "Femi, Morro Azul's finance director, will ask by her.",
        "certa": false
       },
       {
-       "texto": "The new director financial of Morro Azul will ask for her.",
+       "texto": "Femi, the director financial of Morro Azul, will ask for her.",
        "certa": false
       }
      ],
@@ -1394,8 +1394,8 @@
     },
     {
      "tipo": "ordenar",
-     "enunciado": "O Paulo, cuja equipa instalou as antenas, conhece bem a central.",
-     "resposta": "Paulo, whose team installed the antennas, knows the plant well.",
+     "enunciado": "A Hannah, cuja central fica no Namibe, conhece bem o vento.",
+     "resposta": "Hannah, whose plant is in Namibe, knows the wind well.",
      "explicacao": ""
     },
     {

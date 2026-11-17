@@ -172,7 +172,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 | 3C | Língua | If you could…, we could… | Regatear: concessões em troca, *meet halfway*, e fechar (*So, do we have a deal?*). |
 | 3D | Vocabulário e pronúncia | Deals and contracts | Negociação e contratos (*terms, clause, deposit, penalty, warranty, bulk discount*), colocações (*reach a compromise, make a concession, strike a deal*); entoação tentativa; falsos amigos. |
 | 3E | Real English | The market and the boardroom | Identificar o que cada lado quer e o que cede em duas negociações: num mercado e numa reunião de empresa. |
-| 3F | Work & Life | The contract | Negociar com o director financeiro da Morro Azul o contrato do Tômbwa (preço, prazos e penalizações por atraso) e chegar a um acordo; mediação: passar ao cliente as condições da direcção da Kalandula Tech, escritas em português. |
+| 3F | Work & Life | The contract | Negociar com o Femi Adeyemi, director financeiro da Morro Azul (B1 3F), o contrato do Tômbwa (preço, prazos e penalizações por atraso) e chegar a um acordo; mediação: passar ao cliente as condições da direcção da Kalandula Tech, escritas em português. |
 
 - **Gramática:** *provided / providing that, as long as, unless, supposing, in case*; condicionais revistos; *would / could / might* tentativos.
 - **Vocabulário (~70):** contratos, condições, preços, compras.
