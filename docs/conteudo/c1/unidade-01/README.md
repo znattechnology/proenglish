@@ -1,6 +1,6 @@
 # C1.1 · Unidade 1 — Making the case (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 1
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 1
 
 ## Objectivos da unidade
 
@@ -31,7 +31,7 @@ No fim da unidade, o aluno consegue:
 
 - **Ênfase:** What we need is… All I'm asking for is… The reason why… is that… The thing that… It was… that / who… It wasn't… — it was… It's not that…, it's that… do / does / did (enfático).
 - **Responder a objecções:** That's a fair point. I'll grant you that… You're right that… If I understand you correctly, your concern is… So the real question is… Let me turn that around… But consider this… Which is exactly why… The point I'd come back to is…
-- **Persuasão:** a strong case, compelling, convincing, persuasive, sound, flawed, win someone over, a selling point, the bottom line, buy-in, stakeholder, raise / address an objection, make / build / present a case, devil's advocate.
+- **Persuasão:** a strong case, compelling, convincing, persuasive, sound, flawed, win someone over, a selling point, the bottom line, buy-in, raise / address an objection, make / build / present a case, devil's advocate.
 - **Investimento:** return on investment (ROI), pay for itself, payback period, running costs, budget, pilot, review, retention clause.
 - **Formação:** training hub, technician, hands-on, certified, response time, fault, maintenance, survey.
 - **Falsos amigos:** consistent (coerente, constante; "consistente" = solid, well-founded, thick), terrific (excelente; "terrífico" = terrifying).
@@ -52,6 +52,6 @@ Janeiro de 2030. O Nuno começou na Mopane, em Joanesburgo, e quer criar um cent
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 1E com uma sala cheia e um microfone que falha); imagens (o diapositivo do Nuno, o inquérito em português); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 1E com uma sala cheia e um microfone que falha); imagens (o diapositivo do Nuno, o inquérito em português); carregamento na plataforma.
 
 A seguir vem a **unidade 2, "Diplomacy"**.

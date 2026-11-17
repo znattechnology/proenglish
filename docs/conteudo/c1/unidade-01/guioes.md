@@ -32,9 +32,9 @@ Gramática-alvo: What + sujeito + verbo + is / was + ideia em destaque (What we 
   was…); All + sujeito + verbo + is (All I'm asking for is…, all = a única coisa); The reason why… is…;
   The thing that… is…; The person who… is…; is / was conforme o tempo; com verbo: What we should do is
   (to) train them.
-Palavras-alvo: hub, training, technician, regional, investment, travel costs, pitch, proposal, budget,
-  priority, first impression
-Reciclagem: What worries me is… (B2, 9D); relativas (B2, 1)
+Palavras-alvo: hub, training, technician, regional, travel costs, set up, run, countries, proposal,
+  budget, first impression
+Reciclagem: What worries me is… (B2, 9D)
 Pronúncia: uma pausa curta antes da ideia em destaque e o acento forte nela (marcado por indicação)
 Contexto: segunda-feira, 14 de Janeiro de 2030, 8:30; o escritório da Mopane em Sandton, Joanesburgo; o
   Nuno, na segunda semana, conta à Thandi a ideia que trouxe de Angola
@@ -142,8 +142,8 @@ Gramática-alvo: It is / was + elemento em destaque + that / who + resto (It was
   it. It's not the equipment that matters, it's the people.); corrigir com it-clefts (It wasn't Luanda
   that sent the engineer, it was Joanesburgo.); do / does / did enfático no presente e no passado (We did
   test it. She does care.)
-Palavras-alvo: response time, fault, local, maintenance, difference, credit, contribution, misunderstanding,
-  correct, insist
+Palavras-alvo: response time, fault, local, maintenance, difference, credit, on the ground, fly in,
+  midnight, correct
 Reciclagem: passiva (B2, 4A); 1A
 Pronúncia: acento forte no elemento em destaque depois de It was…, e no do / does / did enfático
 Contexto: quarta-feira, 16 de Janeiro, 10:00; a sala de reuniões; o Nuno conta à equipa (o Bongani, a
@@ -247,9 +247,9 @@ Gramática-alvo: conceder (That's a fair point. I'll grant you that… You're ri
   understand you correctly, your concern is… So the real question is…); devolver (What would happen if we
   didn't…? Let me turn that around…); voltar (But consider this… The point I'd come back to is… Which is
   exactly why…); clivadas (1A, 1B) dentro da resposta
-Palavras-alvo: objection, devil's advocate, concern, risk, retain, loyalty, alternative, online, practical,
-  hands-on
-Reciclagem: concessão (B2, 7A); I take your point (B2, 7F); 1A e 1B
+Palavras-alvo: objection, devil's advocate, concern, competitor, retention, common practice, online,
+  hands-on, spare parts
+Reciclagem: concessão (B2, 7A); 1A e 1B
 Pronúncia: uma pausa depois de conceder e o tom a subir no "but consider this…"
 Contexto: sexta-feira, 18 de Janeiro, 16:00; o gabinete do Nuno; o Rajesh faz de advogado do diabo para
   preparar a reunião da direcção
@@ -346,9 +346,10 @@ Gramática-alvo: colocações (make / build / present a case, a compelling / con
   over, raise / address an objection, a return on investment, pay for itself, the bottom line, a selling
   point); adjectivos de força (compelling, persuasive, convincing, sound, flawed, weak)
 Palavras-alvo: compelling, persuasive, convincing, sound, flawed, a strong case, return on investment (ROI),
-  pay for itself, payback period, win over, selling point, the bottom line, buy-in, stakeholder
+  pay for itself, payback period, win over, selling point, the bottom line, buy-in
 Reciclagem: clivadas (1A, 1B); responder a objecções (1C)
-Pronúncia: acento contrastivo (I said the TRAINING, not the equipment — marcado por indicação)
+Pronúncia: acento contrastivo (I said the training hub, com o acento em "training" ou em "hub" — marcado por
+  indicação, sem maiúsculas)
 Falsos amigos: consistent (≠ consistente → solid, well-founded; consistent = coerente, constante);
   terrific (≠ terrífico → terrifying; terrific = excelente, fantástico)
 Contexto: ecrãs com expressões e exemplos da história
@@ -517,9 +518,9 @@ Objectivo da aula: No fim, o aluno consegue defender uma proposta diante de uma 
 Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: clivadas com what / all / the reason why / it; do enfático; conceder,
   reformular, devolver, voltar
-Palavras-alvo: board, proposal, payback, retention clause, pilot, approve, condition, survey, certified,
-  hands-on
-Reciclagem: números aproximados (B2, 2E); condições (B2, 3A); perguntas difíceis (B2, 2D)
+Palavras-alvo: board, proposal, running costs, retention clause, pilot, approve, review, survey,
+  certified, hands-on
+Reciclagem: números aproximados (B2, 2E); 1.º condicional (B1); I can live with that (B2, R1B)
 Pronúncia: a ideia em destaque com pausa e acento; a concessão com tom descendente
 Mediação: o Nuno apresenta à direcção, em inglês, os resultados de um inquérito feito em português às
   equipas de Angola e Moçambique
