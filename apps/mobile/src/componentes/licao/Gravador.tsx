@@ -1,7 +1,7 @@
 /**
  * Gravar a voz do aluno (pronúncia, Responder, revisão) com o expo-audio.
  * Antes do primeiro pedido de microfone mostra a explicação (tela PermissaoMicrofone do canvas).
- * Pára sozinha aos 45 s. Cada gravação acabada vai para `aoGravado` ({uri, segundos}).
+ * Pára sozinha ao fim de MAX_SEGUNDOS_GRAVACAO (90 s). Cada gravação acabada vai para `aoGravado` ({uri, segundos}).
  */
 import {
   getRecordingPermissionsAsync,
@@ -21,7 +21,7 @@ import { balao, cor } from "@/tema";
 import { Botao, Dialogo, Texto } from "@/ui";
 import { modoOuvir } from "./Audio";
 
-/** Mono, 64 kbit/s: 45 s ficam em ~360 KB (o servidor aceita até 5 MB). */
+/** Mono, 64 kbit/s: 90 s ficam em ~720 KB (o servidor aceita até 5 MB). */
 const OPCOES: RecordingOptions = { ...RecordingPresets.HIGH_QUALITY, numberOfChannels: 1, bitRate: 64000 };
 
 export type EstadoGravador = "parado" | "a-gravar" | "gravado" | "sem-permissao" | "sem-microfone";
@@ -129,7 +129,7 @@ function PedirMicrofone({ aberto, aoFechar, aoContinuar }: { aberto: boolean; ao
       texto="A seguir, o telemóvel pergunta se deixa usar o microfone. Toque em Permitir."
     >
       <View style={{ gap: 10 }}>
-        {["Só gravamos quando toca no microfone, e no máximo 45 segundos.", "A gravação serve para corrigir a sua pronúncia e não é partilhada."].map((t) => (
+        {[`Só gravamos quando toca no microfone, e no máximo ${MAX_SEGUNDOS_GRAVACAO} segundos.`, "A gravação serve para corrigir a sua pronúncia e não é partilhada."].map((t) => (
           <View key={t} style={{ flexDirection: "row", gap: 10 }}>
             <ShieldCheck size={20} color={cor.certo} />
             <Texto v="legenda" style={{ flex: 1, fontSize: 15, lineHeight: 22 }}>

@@ -4,7 +4,8 @@ Exame oral de um curso em vídeo (fase 6). Modelo: apps.courses.models.ExameOral
 Regras (decididas na fase 6):
 - Disponível quando o aluno tem pelo menos LIMIAR_PROGRESSO (80 %) das aulas do curso concluídas
   (certificados.progresso_actual) e ainda não passou. O certificado continua a pedir 100 %.
-- 8 a 10 minutos (MAX_SEGUNDOS, 600 s), fora da quota diária de minutos (isenta_quota) e sem pontos.
+- 8 a 10 minutos no exame geral (CONVERSA_EXAME_MAX_SEGUNDOS, 600 s); com o guião do curso, o que
+  o guião disser, até MAX_MINUTOS_GUIAO (12); fora da quota diária de minutos (isenta_quota) e sem pontos.
 - Depois de uma tentativa avaliada e reprovada, só se repete DIAS_REPETIR (7) dias depois.
   Tentativas sem nota (não ligou, ou o aluno quase não falou) não bloqueiam, mas no máximo
   MAX_TENTATIVAS_SEMANA sessões de exame começadas em 7 dias.
@@ -120,6 +121,9 @@ GUIAO_A1 = {
 }
 
 LIMITES_GUIAO = {'partes': 4, 'perguntas': 10, 'notas': 8, 'texto': 300}
+# Duração máxima de um exame com guião do curso: 12 minutos chegam para as quatro partes do B2
+# (entrevista, turno longo, tarefa de decisão e discussão) com um só candidato.
+MAX_MINUTOS_GUIAO = 12
 
 # Escala da avaliação: por competência, o que cada faixa de nota quer dizer no nível.
 FAIXAS = ('80-100', '60-79', '40-59', '0-39')
@@ -211,7 +215,7 @@ def validar_guiao(dados):
     limpo = {
         'nivel': _texto_guiao(dados.get('nivel'), 4).upper(),
         'duracao': _texto_guiao(dados.get('duracao'), 40) or '5 minutes',
-        'max_minutos': max(3, min(10, max_minutos)),
+        'max_minutos': max(3, min(MAX_MINUTOS_GUIAO, max_minutos)),
         'situacoes': max(0, min(3, n_situacoes)),
         'partes': partes,
         'notas': [t for t in (_texto_guiao(x) for x in (dados.get('notas') or [])[:LIMITES_GUIAO['notas']]) if t],

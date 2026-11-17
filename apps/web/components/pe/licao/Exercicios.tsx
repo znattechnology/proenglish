@@ -462,7 +462,7 @@ function ResultadoPronuncia({ frase, fala }: { frase: string; fala: ResultadoFal
 
 type EstadoGravacao = EstadoMicrofone;
 
-/** Grava com o MediaRecorder; cada gravação acabada vai para aoMudar como {tipo: "audio"}. Pára sozinha aos 45 s. */
+/** Grava com o MediaRecorder; cada gravação acabada vai para aoMudar como {tipo: "audio"}. Pára sozinha ao fim de MAX_SEGUNDOS_GRAVACAO (90 s). */
 function useGravador(aoMudar: Props["aoMudar"]) {
   // Só é montado no browser (a lição carrega depois dos dados), por isso pode ver-se já o suporte.
   const [estado, setEstado] = useState<EstadoGravacao>(() =>

@@ -1,7 +1,7 @@
 /** Regras comuns das gravações dos alunos (lições e revisão). */
 
 /** Gravações curtas: pára sozinha ao fim deste tempo (o servidor recusa ficheiros grandes). */
-export const MAX_SEGUNDOS_GRAVACAO = 45;
+export const MAX_SEGUNDOS_GRAVACAO = 90;
 
 export type EstadoMicrofone = "parado" | "a-gravar" | "gravado" | "sem-permissao" | "sem-microfone" | "sem-suporte";
 

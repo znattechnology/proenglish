@@ -2,7 +2,7 @@
 Regras comuns das gravações dos alunos (exercício de pronúncia, Responder, revisão, repetir frases
 da aula): tamanho máximo e as respostas 413/422 que pedem para gravar outra vez.
 
-- Gravação maior do que MAX_BYTES (o ecrã grava no máximo ~45 s; 5 MB chega e sobra) -> 413
+- Gravação maior do que MAX_BYTES (o ecrã grava no máximo 90 s, menos de 1 MB; 5 MB chega e sobra) -> 413
   'gravacao_grande', antes de a ler para a memória ou de a enviar a um fornecedor.
 - Sem fala (transcrição vazia: silêncio, só ruído) -> 422 'sem_fala'. Não chama o Claude, não
   tira vidas e não gasta análises.
@@ -14,7 +14,7 @@ from rest_framework import status
 from rest_framework.response import Response
 
 MAX_BYTES = 5 * 1024 * 1024
-MAX_SEGUNDOS = 45
+MAX_SEGUNDOS = 90
 
 MENSAGEM_SEM_FALA = 'Não ouvimos nada na gravação. Grave outra vez, mais perto do microfone.'
 MENSAGEM_INVALIDA = 'Não conseguimos ler esta gravação. Grave outra vez.'

@@ -11,7 +11,7 @@ import { pedir } from "@/api/base";
 import type { ResultadoPronuncia, ResultadoResponder } from "./api";
 
 /** Gravações curtas: param sozinhas ao fim deste tempo (o servidor recusa mais de 5 MB). */
-export const MAX_SEGUNDOS_GRAVACAO = 45;
+export const MAX_SEGUNDOS_GRAVACAO = 90;
 
 export type Gravacao = { uri: string; segundos: number };
 

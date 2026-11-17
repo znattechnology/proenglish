@@ -162,7 +162,7 @@ class ValidarGuiaoTests(Base):
         g = exame.validar_guiao({'max_minutos': 99, 'situacoes': 9, 'partes': [
             {'titulo': 'A', 'perguntas': [{'pergunta': 'Hi {nome}, {0} {x} ok?'}]}]})
         self.assertEqual(g['partes'][0]['perguntas'][0]['pergunta'], 'Hi {nome}, (0) (x) ok?')
-        self.assertEqual((g['max_minutos'], g['situacoes']), (10, 3))
+        self.assertEqual((g['max_minutos'], g['situacoes']), (12, 3))
         self.assertEqual(g['partes'][0]['perguntas'][0]['pergunta'].format(nome='Ana'), 'Hi Ana, (0) (x) ok?')
 
     def test_formas_invalidas(self):
