@@ -1,0 +1,301 @@
+{
+ "title": "B1.2 Unit 9 quiz — Media and opinions",
+ "description": "Contraste, finalidade e consequência, resumir e citar, notícias, filmes e livros, propaganda e novel.",
+ "questions": [
+  {
+   "id": "b1u9q1",
+   "question": "Complete: \"___ it was late, I couldn't stop.\"",
+   "options": [
+    {
+     "id": "b1u9q1o0",
+     "text": "Although",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u9q1o1",
+     "text": "Despite",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u9q1o2",
+     "text": "However",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u9q1o0",
+   "explanation": "although + frase.",
+   "points": 10
+  },
+  {
+   "id": "b1u9q2",
+   "question": "Complete: \"Despite ___, we played football.\"",
+   "options": [
+    {
+     "id": "b1u9q2o0",
+     "text": "the rain",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u9q2o1",
+     "text": "it rained",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u9q2o2",
+     "text": "of the rain",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u9q2o0",
+   "explanation": "despite + nome, sem of.",
+   "points": 10
+  },
+  {
+   "id": "b1u9q3",
+   "question": "\"Para poupar dinheiro\" em inglês:",
+   "options": [
+    {
+     "id": "b1u9q3o0",
+     "text": "to save money",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u9q3o1",
+     "text": "for save money",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u9q3o2",
+     "text": "for to save money",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u9q3o0",
+   "explanation": "Finalidade: to + verbo.",
+   "points": 10
+  },
+  {
+   "id": "b1u9q4",
+   "question": "Complete: \"I'll send it today ___ you can read it.\"",
+   "options": [
+    {
+     "id": "b1u9q4o0",
+     "text": "so that",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u9q4o1",
+     "text": "in order to",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u9q4o2",
+     "text": "for",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u9q4o0",
+   "explanation": "so that + frase.",
+   "points": 10
+  },
+  {
+   "id": "b1u9q5",
+   "question": "Escolha a forma correcta:",
+   "options": [
+    {
+     "id": "b1u9q5o0",
+     "text": "According to the article, …",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u9q5o1",
+     "text": "According the article, …",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u9q5o2",
+     "text": "According to me, …",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u9q5o0",
+   "explanation": "according to + a fonte.",
+   "points": 10
+  },
+  {
+   "id": "b1u9q6",
+   "question": "Um bom resumo responde a…",
+   "options": [
+    {
+     "id": "b1u9q6o0",
+     "text": "o quê, quem, onde, porquê e o que vem a seguir",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u9q6o1",
+     "text": "só o quê",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u9q6o2",
+     "text": "todos os pormenores",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u9q6o0",
+   "explanation": "Como na 9C.",
+   "points": 10
+  },
+  {
+   "id": "b1u9q7",
+   "question": "\"Vi a propaganda (um anúncio) na televisão.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u9q7o0",
+     "text": "I saw the advert on TV.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u9q7o1",
+     "text": "I saw the propaganda on TV.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u9q7o2",
+     "text": "I saw the novel on TV.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u9q7o0",
+   "explanation": "Falso amigo: propaganda é só política.",
+   "points": 10
+  },
+  {
+   "id": "b1u9q8",
+   "question": "\"A novela das nove\" (na televisão) em inglês:",
+   "options": [
+    {
+     "id": "b1u9q8o0",
+     "text": "the nine o'clock soap opera",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u9q8o1",
+     "text": "the nine o'clock novel",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u9q8o2",
+     "text": "the nine o'clock romance",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u9q8o0",
+   "explanation": "Falso amigo: novel = romance (livro).",
+   "points": 10
+  },
+  {
+   "id": "b1u9q9",
+   "question": "Num briefing, depois de resumir a notícia, a pergunta mais importante é…",
+   "options": [
+    {
+     "id": "b1u9q9o0",
+     "text": "O que significa isto para nós?",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u9q9o1",
+     "text": "Quem escreveu?",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u9q9o2",
+     "text": "Quantas palavras tem?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u9q9o0",
+   "explanation": "Como o Nuno na 9F.",
+   "points": 10
+  },
+  {
+   "id": "b1u9q10",
+   "question": "Reciclagem (B1, unidade 8). Complete: \"It ___ be the exchange rate. I'm almost sure.\"",
+   "options": [
+    {
+     "id": "b1u9q10o0",
+     "text": "must",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u9q10o1",
+     "text": "can't",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u9q10o2",
+     "text": "mustn't",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u9q10o0",
+   "explanation": "Dedução: must.",
+   "points": 10
+  },
+  {
+   "id": "b1u9q11",
+   "question": "Reciclagem (B1, unidade 8). Complete: \"Costs went up ___ 15%.\"",
+   "options": [
+    {
+     "id": "b1u9q11o0",
+     "text": "by",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u9q11o1",
+     "text": "of",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u9q11o2",
+     "text": "in",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u9q11o0",
+   "explanation": "by = a diferença.",
+   "points": 10
+  },
+  {
+   "id": "b1u9q12",
+   "question": "Reciclagem (B1, unidade 7). \"Ela disse-me que estava ocupada.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u9q12o0",
+     "text": "She told me she was busy.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u9q12o1",
+     "text": "She said me she was busy.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u9q12o2",
+     "text": "She told that she was busy.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u9q12o0",
+   "explanation": "tell + pessoa.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
