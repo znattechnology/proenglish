@@ -1,0 +1,1343 @@
+{
+ "unidade": "B1.2 · Unit 8 — Money matters",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "8A",
+   "titulo": "It must be a mistake",
+   "aula": "8A",
+   "objectivo": "Fazer deduções sobre o presente com must / might / could / can't.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "That [can't] be right. We didn't buy anything extra.",
+     "opcoes": [
+      {
+       "texto": "mustn't",
+       "certa": false
+      },
+      {
+       "texto": "must",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It [must] be the exchange rate. I'm almost sure.",
+     "opcoes": [
+      {
+       "texto": "can't",
+       "certa": false
+      },
+      {
+       "texto": "mustn't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It [might] be the price per night — I'm not sure.",
+     "opcoes": [
+      {
+       "texto": "can't",
+       "certa": false
+      },
+      {
+       "texto": "must to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Paulo isn't answering. His plane left at nine. He [must] be on the plane.",
+     "opcoes": [
+      {
+       "texto": "can't",
+       "certa": false
+      },
+      {
+       "texto": "mustn't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Não pode ser!\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "It can't be!",
+       "certa": true
+      },
+      {
+       "texto": "It mustn't be!",
+       "certa": false
+      },
+      {
+       "texto": "It doesn't can be!",
+       "certa": false
+      }
+     ],
+     "explicacao": "Na dedução, o contrário de must é can't."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"You must wear a helmet.\" Here, must means…",
+     "opcoes": [
+      {
+       "texto": "a rule",
+       "certa": true
+      },
+      {
+       "texto": "a guess",
+       "certa": false
+      },
+      {
+       "texto": "a possibility",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It must be the exchange rate.\" Here, must means…",
+     "opcoes": [
+      {
+       "texto": "I'm almost sure.",
+       "certa": true
+      },
+      {
+       "texto": "It's a rule.",
+       "certa": false
+      },
+      {
+       "texto": "It's impossible.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Deve ser um erro.",
+     "resposta": "It must be a mistake.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Sílvia. The budget was fifty-seven million kwanzas. We spent sixty-five and a half.",
+     "enunciado": "How much did they spend?",
+     "opcoes": [
+      {
+       "texto": "sixty-five and a half million kwanzas",
+       "certa": true
+      },
+      {
+       "texto": "fifty-seven million kwanzas",
+       "certa": false
+      },
+      {
+       "texto": "fifty-five million kwanzas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It must be the exchange rate. That can't be right.",
+     "enunciado": "Ouça e repita: \"must\" fraco, \"can't\" forte."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Make four guesses about your office or your home: a colleague who isn't there, a noise, a price, and a number on a document.",
+     "frase": "can't",
+     "resposta": "My colleague João isn't here today. He must be ill — he's never late. That noise outside might be the generator. This printer can't be new — it's so slow! And the electricity bill is double. That can't be right.",
+     "contexto": "Deduções."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's the best way to check a strange number on an invoice?",
+     "frase": "must",
+     "resposta": "First, I compare it with the last invoice. If the number is very different, it must be a mistake, or the price has changed. Then I call the supplier and ask them to explain it in writing.",
+     "contexto": "Uma opinião com dedução."
+    }
+   ]
+  },
+  {
+   "codigo": "8B",
+   "titulo": "Prices have gone up by 10%",
+   "aula": "8B",
+   "objectivo": "Números grandes, percentagens, fracções e tendências.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Costs went up [by] 15%.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "in",
+       "certa": false
+      }
+     ],
+     "explicacao": "by = a diferença."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The kwanza fell from 950 [to] 1 050 per dollar.",
+     "opcoes": [
+      {
+       "texto": "by",
+       "certa": false
+      },
+      {
+       "texto": "until",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "There was an increase [of] 10%.",
+     "opcoes": [
+      {
+       "texto": "with",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Hotel prices [rose] in February.",
+     "opcoes": [
+      {
+       "texto": "raised",
+       "certa": false
+      },
+      {
+       "texto": "rised",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "How do you say 65 500 000?",
+     "opcoes": [
+      {
+       "texto": "sixty-five and a half million",
+       "certa": true
+      },
+      {
+       "texto": "sixty-five millions and a half",
+       "certa": false
+      },
+      {
+       "texto": "sixty-five and half millions",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The project cost sixty-five million kwanzas.",
+       "certa": true
+      },
+      {
+       "texto": "The project cost sixty-five millions kwanzas.",
+       "certa": false
+      },
+      {
+       "texto": "The project cost sixty-five million of kwanzas.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Depois de um número, million não leva s."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Costs went up to 65 million.\" The number 65 million is…",
+     "opcoes": [
+      {
+       "texto": "the final total",
+       "certa": true
+      },
+      {
+       "texto": "the difference",
+       "certa": false
+      },
+      {
+       "texto": "the budget",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "¼ in English is…",
+     "opcoes": [
+      {
+       "texto": "a quarter",
+       "certa": true
+      },
+      {
+       "texto": "a fourteenth",
+       "certa": false
+      },
+      {
+       "texto": "a quart",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Sílvia. The kwanza has fallen by about ten percent against the dollar.",
+     "enunciado": "How much has the kwanza fallen?",
+     "opcoes": [
+      {
+       "texto": "by about ten percent",
+       "certa": true
+      },
+      {
+       "texto": "by about twenty percent",
+       "certa": false
+      },
+      {
+       "texto": "by about one percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Sílvia. Hotel prices in Lobito rose from fifty-five thousand to sixty-five thousand kwanzas a night.",
+     "enunciado": "How much is a night now?",
+     "opcoes": [
+      {
+       "texto": "sixty-five thousand kwanzas",
+       "certa": true
+      },
+      {
+       "texto": "fifty-five thousand kwanzas",
+       "certa": false
+      },
+      {
+       "texto": "fifteen thousand kwanzas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Fifteen percent. Fifty percent. Thirteen thousand. Thirty thousand.",
+     "enunciado": "Ouça e repita: -teen com acento no fim, -ty no princípio."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How have prices changed where you live in the last year? Talk about three things, with numbers and \"went up by\" or \"rose to\".",
+     "frase": "went up",
+     "resposta": "In my city, prices have gone up a lot this year. A bag of rice went up from five thousand to six thousand kwanzas — a rise of twenty percent. The taxi to my office rose to one thousand kwanzas. Only my rent stayed the same.",
+     "contexto": "Tendências com números."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Which price rise is the hardest for families: food, transport or school? Why?",
+     "frase": "because",
+     "resposta": "In my view, food is the hardest, because families can't cut down on it. You can walk instead of taking a taxi, but you can't stop eating! And food prices went up by about twenty percent where I live.",
+     "contexto": "Uma opinião com um número."
+    }
+   ]
+  },
+  {
+   "codigo": "8C",
+   "titulo": "This time next week",
+   "aula": "8C",
+   "objectivo": "Usar o future continuous para acções em curso no futuro e perguntas educadas.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This time next week, I'll [be presenting] the numbers.",
+     "opcoes": [
+      {
+       "texto": "presenting",
+       "certa": false
+      },
+      {
+       "texto": "be present",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Will] you be using the car on Monday?",
+     "opcoes": [
+      {
+       "texto": "Are",
+       "certa": false
+      },
+      {
+       "texto": "Do",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [won't be] travelling next week.",
+     "opcoes": [
+      {
+       "texto": "won't",
+       "certa": false
+      },
+      {
+       "texto": "am not be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "At ten on Friday, Paulo will be [flying] to Luanda.",
+     "opcoes": [
+      {
+       "texto": "fly",
+       "certa": false
+      },
+      {
+       "texto": "flew",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which question is the most polite?",
+     "opcoes": [
+      {
+       "texto": "Will you be using the meeting room this afternoon?",
+       "certa": true
+      },
+      {
+       "texto": "You use the meeting room this afternoon?",
+       "certa": false
+      },
+      {
+       "texto": "Use the meeting room this afternoon?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"This time next week, I'll be presenting the budget.\" At that moment, Nuno…",
+     "opcoes": [
+      {
+       "texto": "is in the middle of his presentation",
+       "certa": true
+      },
+      {
+       "texto": "has finished his presentation",
+       "certa": false
+      },
+      {
+       "texto": "is starting to prepare it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I'll be working at the bank all day on Monday.",
+       "certa": true
+      },
+      {
+       "texto": "I'll working at the bank all day on Monday.",
+       "certa": false
+      },
+      {
+       "texto": "I be working at the bank all day on Monday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Amanhã a esta hora, vou estar a viajar para Benguela.",
+     "resposta": "This time tomorrow, I'll be travelling to Benguela.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. We'll be finishing the two rooms here tomorrow, and then the engineer will be flying to Lobito on Friday.",
+     "enunciado": "When will the engineer be flying to Lobito?",
+     "opcoes": [
+      {
+       "texto": "on Friday",
+       "certa": true
+      },
+      {
+       "texto": "tomorrow",
+       "certa": false
+      },
+      {
+       "texto": "on Saturday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Will you be using the car on Monday?",
+     "enunciado": "Ouça e repita, com \"will you be\" ligado."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Imagine it's this time next week. What will you be doing in the morning, at lunchtime and in the evening?",
+     "frase": "I'll be",
+     "resposta": "This time next week, I'll be travelling to Benguela for a training course. At lunchtime, I'll probably be eating fish with my colleagues by the sea. And in the evening, I'll be studying English in my hotel room.",
+     "contexto": "Future continuous."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you plan your week in detail, or do you prefer to decide day by day? Why?",
+     "frase": "plan",
+     "resposta": "I plan my week in detail, because I have a lot of meetings. On Sunday evening I check my calendar, so on Monday I know what I'll be doing every day. But I always leave some time free for problems.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "8D",
+   "titulo": "Budgets and banking",
+   "aula": "8D",
+   "objectivo": "Palavras e colocações de orçamentos e finanças; pay back, cut down on, set aside; tax e commodity.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "budget",
+       "b": "orçamento"
+      },
+      {
+       "a": "invoice",
+       "b": "factura"
+      },
+      {
+       "a": "exchange rate",
+       "b": "câmbio"
+      },
+      {
+       "a": "loan",
+       "b": "empréstimo"
+      },
+      {
+       "a": "instalment",
+       "b": "prestação"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The project went [over] budget.",
+     "opcoes": [
+      {
+       "texto": "more",
+       "certa": false
+      },
+      {
+       "texto": "out",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We need to [cut] costs.",
+     "opcoes": [
+      {
+       "texto": "short",
+       "certa": false
+      },
+      {
+       "texto": "do",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We need to cut [down] on hotels.",
+     "opcoes": [
+      {
+       "texto": "off",
+       "certa": false
+      },
+      {
+       "texto": "up",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let's [set] aside five percent for problems.",
+     "opcoes": [
+      {
+       "texto": "make",
+       "certa": false
+      },
+      {
+       "texto": "take",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Taxa de juro.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "interest rate",
+       "certa": true
+      },
+      {
+       "texto": "interest tax",
+       "certa": false
+      },
+      {
+       "texto": "interest fee",
+       "certa": false
+      }
+     ],
+     "explicacao": "taxa → rate ou fee; tax = imposto."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Tax\" means…",
+     "opcoes": [
+      {
+       "texto": "imposto",
+       "certa": true
+      },
+      {
+       "texto": "taxa de juro",
+       "certa": false
+      },
+      {
+       "texto": "comissão",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Pela comodidade, pagamos por transferência.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "For convenience, we pay by transfer.",
+       "certa": true
+      },
+      {
+       "texto": "For commodity, we pay by transfer.",
+       "certa": false
+      },
+      {
+       "texto": "For comodity, we pay by transfer.",
+       "certa": false
+      }
+     ],
+     "explicacao": "commodity = mercadoria."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Joana. Last year I took out a small loan to buy more stock, and I'm still paying it back.",
+     "enunciado": "What is Joana still doing?",
+     "opcoes": [
+      {
+       "texto": "paying back a loan",
+       "certa": true
+      },
+      {
+       "texto": "looking for a loan",
+       "certa": false
+      },
+      {
+       "texto": "buying a new shop",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Share, change, budget. Cash, much, charge.",
+     "enunciado": "Ouça e repita os três sons."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How do you manage money at home or at work? Talk about a budget, one thing you cut down on, and something you set aside.",
+     "frase": "set aside",
+     "resposta": "At home, we make a budget every month. This year, food prices went up, so we cut down on eating out. And we set aside ten percent of our salaries for our children's school fees in September.",
+     "contexto": "Vocabulário de finanças."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it a good idea to take out a loan to buy a car? Why?",
+     "frase": "loan",
+     "resposta": "It depends. If you need the car for work, a loan can be a good idea. But interest rates are very high, so you pay back much more than the price of the car. I prefer to set aside money and buy a cheaper car.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "8E",
+   "titulo": "Real English: Where does the money go?",
+   "aula": "8E",
+   "objectivo": "Identificar os números, a tendência e a opinião em quatro conversas sobre preços e poupança.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Esperança. The price of my taxis went up by half, to three thousand kwanzas a day.",
+     "enunciado": "How much do Esperança's taxis cost a day now?",
+     "opcoes": [
+      {
+       "texto": "three thousand kwanzas",
+       "certa": true
+      },
+      {
+       "texto": "two thousand kwanzas",
+       "certa": false
+      },
+      {
+       "texto": "one thousand kwanzas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Esperança. Now I share a car with two colleagues, and we pay for the fuel together.",
+     "enunciado": "How does Esperança save money now?",
+     "opcoes": [
+      {
+       "texto": "She shares a car with two colleagues.",
+       "certa": true
+      },
+      {
+       "texto": "She walks to work.",
+       "certa": false
+      },
+      {
+       "texto": "She works from home.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kevin. Part of my salary is in pounds, so when the kwanza falls, my rent costs me less.",
+     "enunciado": "Why is a falling kwanza good news for Kevin?",
+     "opcoes": [
+      {
+       "texto": "Part of his salary is in pounds.",
+       "certa": true
+      },
+      {
+       "texto": "His rent went down in kwanzas.",
+       "certa": false
+      },
+      {
+       "texto": "He buys imported things.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Patrick. We've cut down on fuel by about fifteen percent since January.",
+     "enunciado": "How much did Patrick's company cut down on fuel?",
+     "opcoes": [
+      {
+       "texto": "about fifteen percent",
+       "certa": true
+      },
+      {
+       "texto": "about twenty-five percent",
+       "certa": false
+      },
+      {
+       "texto": "about fifty percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Joana. My problem is cash flow. My suppliers want to be paid in advance.",
+     "enunciado": "What is Joana's main problem?",
+     "opcoes": [
+      {
+       "texto": "cash flow",
+       "certa": true
+      },
+      {
+       "texto": "the exchange rate",
+       "certa": false
+      },
+      {
+       "texto": "her staff",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Joana. Next year I'll be looking for a supplier who accepts instalments.",
+     "enunciado": "What will Joana be looking for next year?",
+     "opcoes": [
+      {
+       "texto": "a supplier who accepts instalments",
+       "certa": true
+      },
+      {
+       "texto": "a new shop",
+       "certa": false
+      },
+      {
+       "texto": "a bigger loan",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Each person in the four conversations gives…",
+     "opcoes": [
+      {
+       "texto": "a number, a trend and an opinion",
+       "certa": true
+      },
+      {
+       "texto": "only a number",
+       "certa": false
+      },
+      {
+       "texto": "only an opinion",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Kevin says: \"It can't be easy for my colleagues.\" He thinks…",
+     "opcoes": [
+      {
+       "texto": "it's very difficult for them",
+       "certa": true
+      },
+      {
+       "texto": "it's easy for them",
+       "certa": false
+      },
+      {
+       "texto": "he doesn't know",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The price went up by half.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm still paying it back.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Whose situation is most like yours? Explain why, with one number and one opinion.",
+     "frase": "like",
+     "resposta": "My situation is most like Esperança's. My bus fare went up from two hundred to three hundred kwanzas this year — a rise of fifty percent. So now I share a car with my neighbour. In my view, companies should organise transport for their staff.",
+     "contexto": "Número e opinião."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Patrick says most companies waste money on bad planning, not on salaries. Do you agree? Why?",
+     "frase": "agree",
+     "resposta": "I partly agree. Bad planning costs a lot — for example, lorries that travel empty. But some companies also waste money on expensive offices and cars. In my view, good planning is the cheapest way to cut costs.",
+     "contexto": "Concordar em parte."
+    }
+   ]
+  },
+  {
+   "codigo": "8F",
+   "titulo": "Work & Life: The budget meeting",
+   "aula": "8F",
+   "objectivo": "Explicar um desvio de orçamento com números e causas, propor cortes e explicar uma tabela em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "The table says \"desvio +10%\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "That's ten percent more.",
+       "certa": true
+      },
+      {
+       "texto": "That's a deviation of more ten percent.",
+       "certa": false
+      },
+      {
+       "texto": "That deviates ten.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "How do you say \"8,5 milhões\" in English?",
+     "opcoes": [
+      {
+       "texto": "eight and a half million",
+       "certa": true
+      },
+      {
+       "texto": "eight comma five millions",
+       "certa": false
+      },
+      {
+       "texto": "eight and half millions",
+       "certa": false
+      }
+     ],
+     "explicacao": "A vírgula decimal portuguesa é um ponto em inglês."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Equipment went up [by] ten percent, due to the exchange rate.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "in",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Hotels and travel had the [biggest] increase: forty-two percent.",
+     "opcoes": [
+      {
+       "texto": "most big",
+       "certa": false
+      },
+      {
+       "texto": "bigger",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The contractor's costs [stayed] the same.",
+     "opcoes": [
+      {
+       "texto": "kept",
+       "certa": false
+      },
+      {
+       "texto": "remained to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "David refuses the ten percent contingency. Nuno says:",
+     "opcoes": [
+      {
+       "texto": "I see your point. What about five percent?",
+       "certa": true
+      },
+      {
+       "texto": "OK, no contingency then.",
+       "certa": false
+      },
+      {
+       "texto": "You're wrong. Ten percent is necessary.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A clear explanation of a budget line has…",
+     "opcoes": [
+      {
+       "texto": "the number, the trend and the cause",
+       "certa": true
+      },
+      {
+       "texto": "only the final number",
+       "certa": false
+      },
+      {
+       "texto": "every number in the table",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. First, we pay for the equipment as soon as we sign the contract, so the exchange rate can't change in the middle.",
+     "enunciado": "What is Nuno's first proposal?",
+     "opcoes": [
+      {
+       "texto": "to pay for the equipment when they sign the contract",
+       "certa": true
+      },
+      {
+       "texto": "to buy cheaper equipment",
+       "certa": false
+      },
+      {
+       "texto": "to pay in kwanzas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is David. If we add ten percent, our price will be higher than our competitors', and we might lose the contract.",
+     "enunciado": "Why does David refuse the ten percent?",
+     "opcoes": [
+      {
+       "texto": "They might lose the contract.",
+       "certa": true
+      },
+      {
+       "texto": "The bank says no.",
+       "certa": false
+      },
+      {
+       "texto": "Nuno made a mistake.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Fifteen percent over budget — not fifty!",
+     "enunciado": "Ouça e repita, com o acento certo em \"fifteen\" e em \"fifty\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain to your director: a training event cost 2.5 million kwanzas, not 2 million; the room stayed the same; food went up by 30%; ten more people came. Propose one cut.",
+     "frase": "propose",
+     "resposta": "The training cost two and a half million kwanzas — about twenty-five percent over budget. The room stayed the same. The food went up by thirty percent, and ten more people came. For the next event, I propose a registration deadline.",
+     "contexto": "Explicar um desvio."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain this table in English: \"Despesas do escritório — 1.º trimestre (mil Kz). Electricidade: 450 → 600 (+33%). Internet: 300 → 300 (0%). Papel e consumíveis: 200 → 150 (−25%).\"",
+     "frase": "went up",
+     "resposta": "It shows our office costs for the first three months. Electricity went up from four hundred and fifty to six hundred thousand kwanzas — an increase of a third. The internet stayed the same. And paper and supplies went down by a quarter.",
+     "contexto": "Mediação: o que importa na tabela."
+    }
+   ]
+  },
+  {
+   "codigo": "8R",
+   "titulo": "Unit 8 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 8 e reciclar as unidades 4 a 7 do B1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Paulo isn't here. His flight left an hour ago. He [must] be on the plane.",
+     "opcoes": [
+      {
+       "texto": "mustn't",
+       "certa": false
+      },
+      {
+       "texto": "can't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Prices rose [by] twenty percent.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "in",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This time tomorrow, I'll be [flying] to Lisbon.",
+     "opcoes": [
+      {
+       "texto": "fly",
+       "certa": false
+      },
+      {
+       "texto": "flown",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We need to cut [down] on taxis.",
+     "opcoes": [
+      {
+       "texto": "off",
+       "certa": false
+      },
+      {
+       "texto": "up",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "That can't be right.",
+       "certa": true
+      },
+      {
+       "texto": "That mustn't be right.",
+       "certa": false
+      },
+      {
+       "texto": "That doesn't can be right.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The company spent two million kwanzas.",
+       "certa": true
+      },
+      {
+       "texto": "The company spent two millions kwanzas.",
+       "certa": false
+      },
+      {
+       "texto": "The company spent two million of kwanzas.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 7). Kagiso: \"The price will go up.\" Report it.",
+     "opcoes": [
+      {
+       "texto": "He said the price would go up.",
+       "certa": true
+      },
+      {
+       "texto": "He said the price will going up.",
+       "certa": false
+      },
+      {
+       "texto": "He told the price would go up.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 6). Complete: \"Costs went up ___ the exchange rate.\"",
+     "opcoes": [
+      {
+       "texto": "because of",
+       "certa": true
+      },
+      {
+       "texto": "because",
+       "certa": false
+      },
+      {
+       "texto": "so",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 4). Complete: \"If we ___ an apartment, we'd save thirty percent.\"",
+     "opcoes": [
+      {
+       "texto": "booked",
+       "certa": true
+      },
+      {
+       "texto": "would book",
+       "certa": false
+      },
+      {
+       "texto": "will book",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Os custos subiram quinze por cento.",
+     "resposta": "Costs went up by fifteen percent.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is David. Five percent I can accept. Send me a summary today.",
+     "enunciado": "What does David accept?",
+     "opcoes": [
+      {
+       "texto": "a five percent contingency",
+       "certa": true
+      },
+      {
+       "texto": "a ten percent contingency",
+       "certa": false
+      },
+      {
+       "texto": "no contingency",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How have prices changed where you live, and how do you save money?",
+     "frase": "save",
+     "resposta": "Prices have gone up a lot. Food rose by about twenty percent, and my bus fare went up from two hundred to three hundred kwanzas. To save money, I cook at home, I share a car with a colleague, and I set aside ten percent of my salary every month.",
+     "contexto": "Preços e poupança (45 segundos)."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your colleague says the electricity bill is double this month. Make two guesses.",
+     "frase": "must",
+     "resposta": "That can't be right — we didn't use more electricity. It must be a mistake. Or it might be the new price: I think the rates went up in January.",
+     "contexto": "Deduções."
+    }
+   ]
+  }
+ ]
+}

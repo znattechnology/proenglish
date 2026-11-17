@@ -1,0 +1,301 @@
+{
+ "title": "B1.2 Unit 8 quiz — Money matters",
+ "description": "Dedução no presente, números e tendências, future continuous, finanças, tax e commodity.",
+ "questions": [
+  {
+   "id": "b1u8q1",
+   "question": "\"Deve ser o câmbio\" (tenho quase a certeza). Em inglês:",
+   "options": [
+    {
+     "id": "b1u8q1o0",
+     "text": "It must be the exchange rate.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u8q1o1",
+     "text": "It mustn't be the exchange rate.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u8q1o2",
+     "text": "It must to be the exchange rate.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u8q1o0",
+   "explanation": "Dedução: must + verbo.",
+   "points": 10
+  },
+  {
+   "id": "b1u8q2",
+   "question": "Complete: \"That ___ be right. We didn't buy anything.\"",
+   "options": [
+    {
+     "id": "b1u8q2o0",
+     "text": "can't",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u8q2o1",
+     "text": "mustn't",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u8q2o2",
+     "text": "must",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u8q2o0",
+   "explanation": "O contrário de must na dedução é can't.",
+   "points": 10
+  },
+  {
+   "id": "b1u8q3",
+   "question": "Complete: \"Costs went up ___ 15%.\"",
+   "options": [
+    {
+     "id": "b1u8q3o0",
+     "text": "by",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u8q3o1",
+     "text": "of",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u8q3o2",
+     "text": "in",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u8q3o0",
+   "explanation": "by = a diferença.",
+   "points": 10
+  },
+  {
+   "id": "b1u8q4",
+   "question": "\"65 500 000\" em inglês:",
+   "options": [
+    {
+     "id": "b1u8q4o0",
+     "text": "sixty-five and a half million",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u8q4o1",
+     "text": "sixty-five millions and a half",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u8q4o2",
+     "text": "sixty-five and half millions",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u8q4o0",
+   "explanation": "million sem s depois de um número.",
+   "points": 10
+  },
+  {
+   "id": "b1u8q5",
+   "question": "Complete: \"This time next week, I'll ___ the budget.\"",
+   "options": [
+    {
+     "id": "b1u8q5o0",
+     "text": "be presenting",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u8q5o1",
+     "text": "presenting",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u8q5o2",
+     "text": "be present",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u8q5o0",
+   "explanation": "Future continuous: will be + -ing.",
+   "points": 10
+  },
+  {
+   "id": "b1u8q6",
+   "question": "A pergunta mais cortês sobre os planos de alguém é…",
+   "options": [
+    {
+     "id": "b1u8q6o0",
+     "text": "Will you be using the car on Monday?",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u8q6o1",
+     "text": "You use the car on Monday?",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u8q6o2",
+     "text": "Use the car on Monday?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u8q6o0",
+   "explanation": "Will you be + -ing…?",
+   "points": 10
+  },
+  {
+   "id": "b1u8q7",
+   "question": "\"Taxa de juro\" em inglês:",
+   "options": [
+    {
+     "id": "b1u8q7o0",
+     "text": "interest rate",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u8q7o1",
+     "text": "interest tax",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u8q7o2",
+     "text": "interest fee",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u8q7o0",
+   "explanation": "Falso amigo: tax = imposto.",
+   "points": 10
+  },
+  {
+   "id": "b1u8q8",
+   "question": "\"Pela comodidade\" em inglês:",
+   "options": [
+    {
+     "id": "b1u8q8o0",
+     "text": "for convenience",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u8q8o1",
+     "text": "for commodity",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u8q8o2",
+     "text": "for comodity",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u8q8o0",
+   "explanation": "Falso amigo: commodity = mercadoria.",
+   "points": 10
+  },
+  {
+   "id": "b1u8q9",
+   "question": "Ao explicar uma linha de um orçamento, diga…",
+   "options": [
+    {
+     "id": "b1u8q9o0",
+     "text": "o número, a tendência e a causa",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u8q9o1",
+     "text": "só o total",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u8q9o2",
+     "text": "todos os números da tabela",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u8q9o0",
+   "explanation": "Como o Nuno na 8F.",
+   "points": 10
+  },
+  {
+   "id": "b1u8q10",
+   "question": "Reciclagem (B1, unidade 7). Kagiso: \"I'll send it.\" → \"He said he ___ send it.\"",
+   "options": [
+    {
+     "id": "b1u8q10o0",
+     "text": "would",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u8q10o1",
+     "text": "will be",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u8q10o2",
+     "text": "wills",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u8q10o0",
+   "explanation": "will → would.",
+   "points": 10
+  },
+  {
+   "id": "b1u8q11",
+   "question": "Reciclagem (B1, unidade 6). Complete: \"When I arrived, the meeting ___ already started.\"",
+   "options": [
+    {
+     "id": "b1u8q11o0",
+     "text": "had",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u8q11o1",
+     "text": "has",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u8q11o2",
+     "text": "was",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u8q11o0",
+   "explanation": "Past perfect.",
+   "points": 10
+  },
+  {
+   "id": "b1u8q12",
+   "question": "Reciclagem (B1, unidade 5). Complete: \"The damage ___ paid by the insurance.\"",
+   "options": [
+    {
+     "id": "b1u8q12o0",
+     "text": "was",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u8q12o1",
+     "text": "were",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u8q12o2",
+     "text": "did",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u8q12o0",
+   "explanation": "Passiva no passado.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
