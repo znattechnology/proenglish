@@ -51,7 +51,7 @@ Verificação: laboratórios B2R1-1 e B2R1-2; conversa de ensaio; questionário 
 **NUNO:** Then you say, "I'm afraid that's as far as we can go," and wait. They're bound to call you back — nobody else will rent that room for six months.
 **ELSA:** OK. And third: Joel told me that the laptops for the technicians haven't been ordered yet. They should have been ordered in December.
 **NUNO:** That's a problem, but not a disaster. Have them ordered today, and tell Hannah the truth if they're late. Remember Lumo: clients forgive mistakes, not lies.
-**ELSA:** True. And one more thing: Paulo, who's done this training before, says I should use HelpMate for the exercises. What do you think?
+**ELSA:** True. And one more thing: Rosa, who's supervising the HelpMate pilot, says I should use it for the exercises. What do you think?
 **NUNO:** It may well help — but the pilot only started on Monday. Let's see what we've learned by April before we use it with the technicians.
 **ELSA:** That makes sense. Thanks, Nuno. You sound like Lerato!
 **NUNO:** Ha! I'll take that as a compliment.
@@ -62,7 +62,7 @@ Verificação: laboratórios B2R1-1 e B2R1-2; conversa de ensaio; questionário 
 
 | Unidade | Língua | Frase da conversa |
 |---|---|---|
-| 1 | relativas explicativas; *which* | Lerato has asked me to lead the training, **which** is great. · Paulo, **who's done this training before**, says… |
+| 1 | relativas explicativas; *which* | Lerato has asked me to lead the training, **which** is great. · Rosa, **who's supervising the HelpMate pilot**, says… |
 | 2 | marcadores; *future perfect*; perguntas | Start with the purpose, give them the outline… · By June, they**'ll have done** all the safety courses. · I'll get back to you by Friday. |
 | 3 | condições; concessões em troca | We could sign for all six months, **provided that** you bring the price down. · That's as far as we can go. |
 | 4 | a passiva; *have something done* | The laptops **haven't been ordered** yet. They **should have been ordered** in December. · **Have them ordered** today. |

@@ -1,6 +1,6 @@
 # B2.1 · Revisão 1 e exame oral
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), "Revisão 1 e exame oral do B2.1"
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), "Revisão 1 e exame oral do B2.1"
 
 ## Objectivo
 
@@ -31,7 +31,6 @@ No fim do B2.1, o aluno consegue manter uma conversa de cerca de 12 minutos, com
 
 ## O que falta
 
-1. Revisão aula a aula.
-2. **Carregar o exame no curso B2.1** (exame.md, secção 4): sem o guião, o curso usa o exame geral, que é do B1.
-3. Leitura pelos professores.
-4. Vídeos (vozes: o examinador, a Lurdes, o Nuno e a Elsa já existem), áudio do laboratório e carregamento na plataforma.
+1. **Carregar o exame no curso B2.1** (exame.md, secção 4): sem o guião, o curso usa o exame geral, que é do B1.
+2. Leitura pelos professores.
+3. Vídeos (vozes: o examinador, a Lurdes, o Nuno e a Elsa já existem), áudio do laboratório e carregamento na plataforma.

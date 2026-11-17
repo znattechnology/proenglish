@@ -32,8 +32,8 @@ Objectivo da unidade a que serve: 1
 Gramática-alvo: needn't have + particípio (We needn't have booked the hotel. = reservámos, mas não era
   preciso); didn't need to + infinitivo (We didn't need to pay the agent. = não pagámos, porque não era
   preciso; ou não se sabe); don't need to / needn't no presente (revisão)
-Palavras-alvo: border, customs, paperwork, agent, hotel, booking, convoy, escort, delay, on time, worry
-Reciclagem: be bound to (B2, 5A); should have (B1, 10B)
+Palavras-alvo: border, customs, paperwork, agent, hotel, booking, crane, extra weeks, on time, worry, lesson
+Reciclagem: be bound to (B2, 5A)
 Pronúncia: needn't have dito curto (needn't've), com o acento em "needn't"
 Contexto: segunda-feira, 5 de Março de 2029, 18:00; a obra do Tômbwa; o primeiro camião da Kunene Freight
   (os cabos) chegou; o Nuno e o Paulo junto ao contentor
@@ -138,8 +138,8 @@ Gramática-alvo: was / were supposed to + infinitivo (The bases were supposed to
   estavam); be meant to (igual, um pouco mais formal); no presente, para regras (You're supposed to wear a
   helmet. = é a regra); wasn't supposed to (não devia, mas aconteceu); a passiva depois de supposed to
   (was supposed to be finished)
-Palavras-alvo: concrete base, foundation, schedule, behind schedule, builder, site manager, helmet, vest,
-  gloves, rule, fence, sign
+Palavras-alvo: concrete base, cement, supplier, schedule, behind schedule, builder, site manager, helmet,
+  rule, guard, visitor, sign in, unloading area
 Reciclagem: should have been + particípio (B2, 4B); previsões (B2, 5A)
 Pronúncia: supposed to dito como "suppose-to", sem o "d"
 Contexto: quarta-feira, 7 de Março, 8:00; a obra; o Nuno, o Paulo e a Hannah percorrem o terreno
@@ -238,7 +238,8 @@ Objectivo da unidade a que serve: 2
 Gramática-alvo: may / might / could have + particípio (possível); must have (quase certo); can't / couldn't
   have (impossível) — revistos do B1 (10C); alargados: na passiva (The sling must have been damaged.) e no
   contínuo (He can't have been watching the wind.)
-Palavras-alvo: crane, sling, strap, lift, gust, anemometer, worn, snap, swing, drum, diesel, spill, near miss
+Palavras-alvo: crane, sling, lift, gust, anemometer, worn, drum, diesel, spill, near miss, evidence, rush,
+  pressure
 Reciclagem: modais no passado (B1, 10C); was supposed to (6B)
 Pronúncia: must have been, may have been, can't have been ditos curtos, com o acento no modal
 Contexto: sexta-feira, 16 de Março, 8:00; a sala provisória da obra, no dia seguinte ao quase-acidente; o
@@ -522,9 +523,9 @@ Objectivo da aula: No fim, o aluno consegue relatar um quase-acidente à direcç
 Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: modais no passado (também na passiva e no contínuo); was supposed to;
   needn't have / didn't need to; a passiva com modais no passado
-Palavras-alvo: near miss, incident report, root cause, contributing factor, corrective action, spill,
+Palavras-alvo: near miss, incident report, direct cause, contributing factor, recommendation, spill,
   contained, protected area, inspection, exclusion zone
-Reciclagem: a passiva (B2, 4A e 4B); previsões (B2, 5A); responder a perguntas difíceis (B2, 2D)
+Reciclagem: a passiva (B2, 4A e 4B); future perfect (B2, 2C); responder a perguntas difíceis (B2, 2D)
 Pronúncia: factos com a voz firme e a descer; causas possíveis com a voz mais aberta
 Mediação: o Nuno resume à Ingrid, em inglês, o relatório de inspecção da Telma Cahinga, escrito em português
 Contexto: segunda-feira, 19 de Março, 15:00; videochamada; o Nuno e a Hannah na sala provisória do Tômbwa;

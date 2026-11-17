@@ -1,6 +1,6 @@
 # B2.2 · Unidade 6 — Health, safety and environment (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 6
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 6
 
 ## Objectivos da unidade
 
@@ -30,7 +30,7 @@ No fim da unidade, o aluno consegue:
 ## Vocabulário da unidade (cerca de 75 palavras e expressões)
 
 - **A obra:** site, builder, site manager, concrete base, foundation, schedule, behind schedule, crane, crane operator, lift, sling, banksman, container, unloading area, fence, sign, gate.
-- **Segurança:** hazard, risk, near miss, injury, risk assessment, PPE (helmet, vest, gloves), exclusion zone, toolbox talk, anemometer, gust, wind limit, worn, snap, swing, green tag, root cause, contributing factor, corrective action, incident report.
+- **Segurança:** hazard, risk, near miss, injury, risk assessment, PPE (helmet, vest, gloves), exclusion zone, toolbox talk, anemometer, gust, wind limit, worn, snap, swing, green tag, direct cause, contributing factor, recommendation, incident report.
 - **Ambiente:** spill, leak, drum, diesel, bund / bunded area, spill kit, contamination, waste, emissions, biodiversity, protected area.
 - **Colocações:** carry out an inspection / a risk assessment, reduce the risk, comply with regulations, report an incident, contain a spill, raise a concern, take out of service.
 - **A fronteira:** border, customs, paperwork, agent, booking, on time.
@@ -53,6 +53,6 @@ Março de 2029; as obras do Tômbwa começaram em Fevereiro. Na segunda, 5, o ca
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 6E com vento, gerador e camião); imagens (a obra, a cinta partida, o relatório da inspectora em português); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 6E com vento, gerador e camião); imagens (a obra, a cinta partida, o relatório da inspectora em português); carregamento na plataforma.
 
 A seguir vem a **unidade 7, "City life"**.
