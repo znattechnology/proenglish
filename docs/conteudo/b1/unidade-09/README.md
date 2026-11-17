@@ -1,6 +1,6 @@
 # B1.2 · Unidade 9 — Media and opinions (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 9
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 9
 
 ## Objectivos da unidade
 
@@ -52,6 +52,6 @@ Abril de 2028. Na segunda, 3, véspera do feriado, o Paulo recomenda uma série 
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (14 escutas, 8 pronúncias, a 9E com quatro vozes e som de estúdio de rádio); imagens (o artigo, as duas notícias em português, as regras de custos); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (14 escutas, 8 pronúncias, a 9E com quatro vozes e som de estúdio de rádio); imagens (o artigo, as duas notícias em português, as regras de custos); carregamento na plataforma.
 
 A seguir vem a **unidade 10, "Lessons learned"**, e depois a revisão e o exame oral do B1.2.
