@@ -1,0 +1,301 @@
+{
+ "title": "B2.1 Unit 2 quiz — Presentations",
+ "description": "Marcadores de discurso, tendências e gráficos, números aproximados, future perfect, perguntas do público, graphic e adequate.",
+ "questions": [
+  {
+   "id": "b2u2q1",
+   "question": "Complete: \"I'd like to start by ___ at last year's results.\"",
+   "options": [
+    {
+     "id": "b2u2q1o0",
+     "text": "looking",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u2q1o1",
+     "text": "look",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u2q1o2",
+     "text": "to look",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u2q1o0",
+   "explanation": "start by + -ing.",
+   "points": 10
+  },
+  {
+   "id": "b2u2q2",
+   "question": "Que frase introduz a parte mais importante de uma apresentação?",
+   "options": [
+    {
+     "id": "b2u2q2o0",
+     "text": "This brings me to the most important part.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u2q2o1",
+     "text": "I'm happy to take questions.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u2q2o2",
+     "text": "To begin with, …",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u2q2o0",
+   "explanation": "This brings me to… anuncia algo importante.",
+   "points": 10
+  },
+  {
+   "id": "b2u2q3",
+   "question": "Prices went from 200 to 220. Complete: \"Prices rose ___ ten percent.\"",
+   "options": [
+    {
+     "id": "b2u2q3o0",
+     "text": "by",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u2q3o1",
+     "text": "to",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u2q3o2",
+     "text": "of",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u2q3o0",
+   "explanation": "by = a diferença; to = o número final.",
+   "points": 10
+  },
+  {
+   "id": "b2u2q4",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u2q4o0",
+     "text": "There was a sharp fall in December.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u2q4o1",
+     "text": "There was a sharply fall in December.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u2q4o2",
+     "text": "It fell sharp in December.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u2q4o0",
+   "explanation": "Adjectivo + nome (a sharp fall); verbo + advérbio (fell sharply).",
+   "points": 10
+  },
+  {
+   "id": "b2u2q5",
+   "question": "\"Até Junho (o mais tardar), teremos instalado as antenas.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u2q5o0",
+     "text": "By June, we will have installed the antennas.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u2q5o1",
+     "text": "Until June, we will have installed the antennas.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u2q5o2",
+     "text": "By June, we will installed the antennas.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u2q5o0",
+   "explanation": "Future perfect: will have + particípio, com by.",
+   "points": 10
+  },
+  {
+   "id": "b2u2q6",
+   "question": "Complete: \"By the time the plant ___, we'll have tested the network.\"",
+   "options": [
+    {
+     "id": "b2u2q6o0",
+     "text": "opens",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u2q6o1",
+     "text": "will open",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u2q6o2",
+     "text": "opened",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u2q6o0",
+   "explanation": "Depois de by the time: presente.",
+   "points": 10
+  },
+  {
+   "id": "b2u2q7",
+   "question": "Não sabe um número que lhe perguntam. A melhor resposta é…",
+   "options": [
+    {
+     "id": "b2u2q7o0",
+     "text": "I'm afraid I don't have that figure with me. I'll get back to you on that by Friday.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u2q7o1",
+     "text": "Er… maybe two thousand? Or three?",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u2q7o2",
+     "text": "That's not an important question.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u2q7o0",
+   "explanation": "Nunca inventar um número.",
+   "points": 10
+  },
+  {
+   "id": "b2u2q8",
+   "question": "\"Vou dar-lhe uma resposta sobre isso até sexta.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u2q8o0",
+     "text": "I'll get back to you on that by Friday.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u2q8o1",
+     "text": "I'll return you the answer until Friday.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u2q8o2",
+     "text": "I'll give you a feedback until Friday.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u2q8o0",
+   "explanation": "get back to someone on something.",
+   "points": 10
+  },
+  {
+   "id": "b2u2q9",
+   "question": "\"O gráfico mostra as vendas.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u2q9o0",
+     "text": "The chart shows the sales.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u2q9o1",
+     "text": "The graphic shows the sales.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u2q9o2",
+     "text": "The graphical shows the sales.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u2q9o0",
+   "explanation": "Falso amigo: graphic = visual, de design.",
+   "points": 10
+  },
+  {
+   "id": "b2u2q10",
+   "question": "\"uma solução adequada\" (apropriada) em inglês:",
+   "options": [
+    {
+     "id": "b2u2q10o0",
+     "text": "a suitable solution",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u2q10o1",
+     "text": "an adequate solution",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u2q10o2",
+     "text": "an adequated solution",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u2q10o0",
+   "explanation": "Falso amigo: adequate = suficiente.",
+   "points": 10
+  },
+  {
+   "id": "b2u2q11",
+   "question": "Reciclagem (B2, unidade 1). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u2q11o0",
+     "text": "Celeste, who is a lawyer, chairs the board.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u2q11o1",
+     "text": "Celeste, that is a lawyer, chairs the board.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u2q11o2",
+     "text": "Celeste who is a lawyer, chairs the board.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u2q11o0",
+   "explanation": "Relativa explicativa: vírgulas e who.",
+   "points": 10
+  },
+  {
+   "id": "b2u2q12",
+   "question": "Reciclagem (B1, unidade 10). \"Ele devia ter dito que não sabia.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u2q12o0",
+     "text": "He should have said he didn't know.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u2q12o1",
+     "text": "He should said he didn't know.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u2q12o2",
+     "text": "He must have say he didn't know.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u2q12o0",
+   "explanation": "should have + particípio.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
