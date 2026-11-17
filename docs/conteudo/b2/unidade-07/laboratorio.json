@@ -1,0 +1,1463 @@
+{
+ "unidade": "B2.2 · Unit 7 — City life",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "7A",
+   "titulo": "Admittedly, it's expensive",
+   "aula": "7A",
+   "objectivo": "Conceder e contrastar com admittedly, while, whereas, nevertheless e even so.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The bus is flying, [whereas] we haven't moved for ten minutes.",
+     "opcoes": [
+      {
+       "texto": "despite",
+       "certa": false
+      },
+      {
+       "texto": "nevertheless",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Admittedly], there aren't many lines yet. Nevertheless, it's a start.",
+     "opcoes": [
+      {
+       "texto": "Despite",
+       "certa": false
+      },
+      {
+       "texto": "Whereas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Despite] the traffic, I'm staying in Viana.",
+     "opcoes": [
+      {
+       "texto": "Although",
+       "certa": false
+      },
+      {
+       "texto": "Whereas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The rent is high. [Even so], I love the neighbourhood.",
+     "opcoes": [
+      {
+       "texto": "Even though",
+       "certa": false
+      },
+      {
+       "texto": "Whereas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Lisbon has a metro, whereas Luanda doesn't.",
+       "certa": true
+      },
+      {
+       "texto": "Lisbon has a metro, nevertheless Luanda doesn't.",
+       "certa": false
+      },
+      {
+       "texto": "Lisbon has a metro, despite Luanda doesn't.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Although there are few lines, the bus is popular.",
+       "certa": true
+      },
+      {
+       "texto": "Despite there are few lines, the bus is popular.",
+       "certa": false
+      },
+      {
+       "texto": "Nevertheless there are few lines, the bus is popular.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Admittedly, it's expensive.\" The speaker…",
+     "opcoes": [
+      {
+       "texto": "accepts a weak point before defending an idea",
+       "certa": true
+      },
+      {
+       "texto": "is against the idea",
+       "certa": false
+      },
+      {
+       "texto": "is asking a question",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which word starts a new sentence after a concession?",
+     "opcoes": [
+      {
+       "texto": "Nevertheless",
+       "certa": true
+      },
+      {
+       "texto": "Whereas",
+       "certa": false
+      },
+      {
+       "texto": "Despite",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "É verdade que a renda é alta. Mesmo assim, adoro o bairro.",
+     "resposta": "Admittedly, the rent is high. Even so, I love the neighbourhood.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. Look at that bus. It's flying, whereas we haven't moved for ten minutes.",
+     "enunciado": "What is Paulo comparing?",
+     "opcoes": [
+      {
+       "texto": "the bus and their car in the traffic",
+       "certa": true
+      },
+      {
+       "texto": "two buses",
+       "certa": false
+      },
+      {
+       "texto": "Viana and Talatona",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Admittedly, your neighbours like their cars. Even so, an hour and a half every morning is crazy.",
+     "enunciado": "How long is Nuno's commute in the morning?",
+     "opcoes": [
+      {
+       "texto": "an hour and a half",
+       "certa": true
+      },
+      {
+       "texto": "half an hour",
+       "certa": false
+      },
+      {
+       "texto": "three hours",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Admittedly, there aren't many lines. Nevertheless, it's a start.",
+     "enunciado": "Ouça e repita, com uma pausa curta depois de \"admittedly\" e de \"nevertheless\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Compare two places you know (two neighbourhoods, two cities, or your city now and ten years ago). Use whereas or while to compare, admittedly to admit a weak point, and nevertheless or even so to defend your choice.",
+     "frase": "whereas",
+     "resposta": "I grew up in Huambo, but I live in Luanda now. Huambo is calm and green, whereas Luanda is noisy and full of cars. While Luanda has more jobs, Huambo has a better quality of life. Admittedly, there are fewer opportunities there. Even so, I'd go back tomorrow.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What would make you leave your car at home and use public transport?",
+     "frase": "if",
+     "resposta": "If the buses came on time and had air conditioning, I'd leave my car at home tomorrow. The problem isn't the price; it's that you never know when the bus is coming.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "7B",
+   "titulo": "Even if it costs more…",
+   "aula": "7B",
+   "objectivo": "Distinguir even if, even though e if, e usá-los para argumentar.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Even though] he retired last year, he still gives me lectures.",
+     "opcoes": [
+      {
+       "texto": "Even if",
+       "certa": false
+      },
+      {
+       "texto": "Whereas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Even if] the flat were free, I'd miss my mother's food.",
+     "opcoes": [
+      {
+       "texto": "Even though",
+       "certa": false
+      },
+      {
+       "texto": "Despite",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Even if] it rains tomorrow, the match will go on.",
+     "opcoes": [
+      {
+       "texto": "Even though",
+       "certa": false
+      },
+      {
+       "texto": "Whereas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[If] it rains, we'll stay at home.",
+     "opcoes": [
+      {
+       "texto": "Even though",
+       "certa": false
+      },
+      {
+       "texto": "Whereas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Mesmo que chova, vamos.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Even if it rains, we'll go.",
+       "certa": true
+      },
+      {
+       "texto": "Even though it rains, we'll go.",
+       "certa": false
+      },
+      {
+       "texto": "Even it rains, we'll go.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Embora esteja a chover, vamos na mesma.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Even though it's raining, we're going.",
+       "certa": true
+      },
+      {
+       "texto": "Despite it's raining, we're going.",
+       "certa": false
+      },
+      {
+       "texto": "Even it's raining, we're going.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Even though I love living with them, I want to be independent.\" Does the speaker love living with them?",
+     "opcoes": [
+      {
+       "texto": "Yes — it is a fact.",
+       "certa": true
+      },
+      {
+       "texto": "Maybe.",
+       "certa": false
+      },
+      {
+       "texto": "No.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Even if they offered me more money, I wouldn't leave.\" Did they offer more money?",
+     "opcoes": [
+      {
+       "texto": "No — it is imagined.",
+       "certa": true
+      },
+      {
+       "texto": "Yes.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, twice.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Mesmo que não fique com este, vou mudar-me este ano.",
+     "resposta": "Even if I don't take this one, I'm going to move this year.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. Even though I love living with my parents, I'd like to be independent.",
+     "enunciado": "Why does Paulo want to move?",
+     "opcoes": [
+      {
+       "texto": "He wants to be independent.",
+       "certa": true
+      },
+      {
+       "texto": "He does not like his parents.",
+       "certa": false
+      },
+      {
+       "texto": "His parents are moving.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. Even if I don't take this flat, I'm going to move this year, as long as I can pay the deposit.",
+     "enunciado": "What is Paulo's condition for moving this year?",
+     "opcoes": [
+      {
+       "texto": "that he can pay the deposit",
+       "certa": true
+      },
+      {
+       "texto": "that he takes this flat",
+       "certa": false
+      },
+      {
+       "texto": "that his father agrees",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Even if the flat were free, I'd miss her food.",
+     "enunciado": "Ouça e repita, com o acento em \"even\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Talk about where you live: one thing you would never change, even if you had more money; one problem you accept, even though it is annoying; and one condition that would make you move.",
+     "frase": "even though",
+     "resposta": "I live in Benguela, near the beach. Even if I earned twice as much, I wouldn't move to Luanda: I love the calm here. Even though the water is cut almost every week, I don't really mind. But if my company closed the Benguela office, I'd have to move.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "At what age should young people leave their parents' house? Why?",
+     "frase": "because",
+     "resposta": "There isn't one age, because it depends on money and on the family. In Angola, many people stay until they marry, and that's fine. What matters is that you're independent in your head, even if you still live at home.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "7C",
+   "titulo": "The main argument is…",
+   "aula": "7C",
+   "objectivo": "Construir um argumento em quatro partes e falar de ideias abstractas.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The [main] point is this: we're losing time we'll never get back.",
+     "opcoes": [
+      {
+       "texto": "mainly",
+       "certa": false
+      },
+      {
+       "texto": "principle",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "First of all, time. What's [more], money.",
+     "opcoes": [
+      {
+       "texto": "plus",
+       "certa": false
+      },
+      {
+       "texto": "also",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "All in [all], a shared minibus would give us back our evenings.",
+     "opcoes": [
+      {
+       "texto": "total",
+       "certa": false
+      },
+      {
+       "texto": "everything",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Quality] of life matters more than speed.",
+     "opcoes": [
+      {
+       "texto": "The quality of the",
+       "certa": false
+      },
+      {
+       "texto": "Qualities",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the best order for an argument?",
+     "opcoes": [
+      {
+       "texto": "main point, reasons, example, conclusion",
+       "certa": true
+      },
+      {
+       "texto": "example, conclusion, main point, reasons",
+       "certa": false
+      },
+      {
+       "texto": "conclusion, example, reasons, main point",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence introduces an example?",
+     "opcoes": [
+      {
+       "texto": "For instance, my neighbour leaves at six fifteen.",
+       "certa": true
+      },
+      {
+       "texto": "All in all, it makes sense.",
+       "certa": false
+      },
+      {
+       "texto": "The main point is this.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Inequality is growing in many cities.",
+       "certa": true
+      },
+      {
+       "texto": "The inequality is growing in many cities in general.",
+       "certa": false
+      },
+      {
+       "texto": "An inequality is growing in many cities.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"On top of that\" is used to…",
+     "opcoes": [
+      {
+       "texto": "add another, stronger reason",
+       "certa": true
+      },
+      {
+       "texto": "give the conclusion",
+       "certa": false
+      },
+      {
+       "texto": "admit a weak point",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Em suma, é a única solução que funciona a longo prazo.",
+     "resposta": "All in all, it's the only solution that works in the long run.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. That's a list, not an argument. Give me one main point first.",
+     "enunciado": "What is Lerato's advice?",
+     "opcoes": [
+      {
+       "texto": "Start with one main point.",
+       "certa": true
+      },
+      {
+       "texto": "Give ten reasons.",
+       "certa": false
+      },
+      {
+       "texto": "Speak faster.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. For instance, my neighbour Claire leaves at six fifteen to get to her school by eight.",
+     "enunciado": "When does Claire leave home?",
+     "opcoes": [
+      {
+       "texto": "at six fifteen",
+       "certa": true
+      },
+      {
+       "texto": "at eight",
+       "certa": false
+      },
+      {
+       "texto": "at seven thirty",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "First of all, time. What's more, money. On top of that, our quality of life.",
+     "enunciado": "Ouça e repita: a voz sobe em cada razão e desce na última."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's the biggest problem in your city, and what's the best solution? Build a four-part argument and give one argument against your own solution.",
+     "frase": "main point",
+     "resposta": "The main point is that Luanda needs public transport, not more roads. First of all, new roads fill up in months. What's more, buses move more people. For instance, the bus lane is always moving. Admittedly, buses need investment. Nevertheless, all in all, it's the only real solution.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Which matters more for a city: economic growth or quality of life? Why?",
+     "frase": "because",
+     "resposta": "Quality of life, because growth is only useful if people live better. A city can be rich and still have no water in half of its neighbourhoods. All in all, growth should serve quality of life, not the other way round.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "7D",
+   "titulo": "The city",
+   "aula": "7D",
+   "objectivo": "Vocabulário da cidade e da sociedade, colocações, fala rápida; mayor e pavement.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "urban sprawl",
+       "b": "crescimento desordenado da cidade"
+      },
+      {
+       "a": "housing shortage",
+       "b": "falta de habitação"
+      },
+      {
+       "a": "commute",
+       "b": "percurso casa-trabalho"
+      },
+      {
+       "a": "green space",
+       "b": "espaço verde"
+      },
+      {
+       "a": "residents",
+       "b": "moradores"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The council should [tackle] congestion.",
+     "opcoes": [
+      {
+       "texto": "attack to",
+       "certa": false
+      },
+      {
+       "texto": "take on with",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The campaign [raised] awareness of road safety.",
+     "opcoes": [
+      {
+       "texto": "rose",
+       "certa": false
+      },
+      {
+       "texto": "grew",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Nuno will put [forward] a proposal at the meeting.",
+     "opcoes": [
+      {
+       "texto": "ahead",
+       "certa": false
+      },
+      {
+       "texto": "front",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Traffic has an impact [on] our health.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"O maior bairro de Luanda\" em inglês:",
+     "opcoes": [
+      {
+       "texto": "the biggest neighbourhood in Luanda",
+       "certa": true
+      },
+      {
+       "texto": "the mayor neighbourhood of Luanda",
+       "certa": false
+      },
+      {
+       "texto": "the more big neighbourhood in Luanda",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: mayor = presidente da câmara."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"O pavimento está cheio de buracos.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The road surface is full of holes.",
+       "certa": true
+      },
+      {
+       "texto": "The pavement surface is full of holes.",
+       "certa": false
+      },
+      {
+       "texto": "The pavimento is full of holes.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: pavement = passeio."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Cars park on the pavement, so people walk in the road.\" The pavement is…",
+     "opcoes": [
+      {
+       "texto": "the path for people at the side of the road",
+       "certa": true
+      },
+      {
+       "texto": "the road itself",
+       "certa": false
+      },
+      {
+       "texto": "a car park",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In very informal speech, \"I'm going to go\" can sound like…",
+     "opcoes": [
+      {
+       "texto": "I'm gonna go",
+       "certa": true
+      },
+      {
+       "texto": "I wanna go",
+       "certa": false
+      },
+      {
+       "texto": "I'm going go",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Fernanda Lopes. The main problem today is urban sprawl: people live far from their jobs, so everybody commutes.",
+     "enunciado": "What does Fernanda say is the main problem?",
+     "opcoes": [
+      {
+       "texto": "urban sprawl",
+       "certa": true
+      },
+      {
+       "texto": "taxis",
+       "certa": false
+      },
+      {
+       "texto": "the heat",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Next time, let's take the bus.",
+     "enunciado": "Ouça e repita: \"next time\" ligado, sem o \"t\" de \"next\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe your neighbourhood or your town to a foreign visitor: the infrastructure, one problem the local council should tackle, and one thing that makes the quality of life good.",
+     "frase": "tackle",
+     "resposta": "I live in Cazenga, one of the busiest parts of Luanda. The infrastructure is improving: there's a new road and better street lighting. But drainage is still a big problem, and the council should tackle it first. What makes life good here is the community.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Who should solve a city's problems: the government, companies, or the residents? Why?",
+     "frase": "because",
+     "resposta": "All three, but the government first, because only the government can build drains and roads. Companies can help with transport for their staff, and residents can keep their streets clean and organise themselves.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "7E",
+   "titulo": "Real English: Luanda in 2040",
+   "aula": "7E",
+   "objectivo": "Seguir um debate a quatro vozes: a visão e os argumentos de cada pessoa.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Fernanda Lopes. My vision is a city of neighbourhoods, where each neighbourhood has its own schools, clinics and jobs.",
+     "enunciado": "What is Fernanda's vision?",
+     "opcoes": [
+      {
+       "texto": "a city of neighbourhoods",
+       "certa": true
+      },
+      {
+       "texto": "a city of cars",
+       "certa": false
+      },
+      {
+       "texto": "a city of bikes only",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Dário Kanga. I drive a taxi, and I've done it for nineteen years.",
+     "enunciado": "How long has Dário driven a taxi?",
+     "opcoes": [
+      {
+       "texto": "nineteen years",
+       "certa": true
+      },
+      {
+       "texto": "nine years",
+       "certa": false
+      },
+      {
+       "texto": "ninety years",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Yuri Pascoal. Whereas a car takes the space of ten people, a bicycle takes the space of one.",
+     "enunciado": "What is Yuri's argument?",
+     "opcoes": [
+      {
+       "texto": "A car takes much more space than a bicycle.",
+       "certa": true
+      },
+      {
+       "texto": "Bicycles are faster than cars.",
+       "certa": false
+      },
+      {
+       "texto": "Cars are cheaper than bicycles.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Yuri. Even though it's hot, people cycle in hot cities all over the world. With trees and shade, it works.",
+     "enunciado": "What does Yuri say about cycling in the heat?",
+     "opcoes": [
+      {
+       "texto": "People do it in hot cities all over the world.",
+       "certa": true
+      },
+      {
+       "texto": "It is impossible.",
+       "certa": false
+      },
+      {
+       "texto": "Only at night.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Fernanda. Green spaces make the city cooler, and they improve everyone's quality of life.",
+     "enunciado": "Why does Fernanda want green spaces?",
+     "opcoes": [
+      {
+       "texto": "They make the city cooler and improve quality of life.",
+       "certa": true
+      },
+      {
+       "texto": "For cars to park.",
+       "certa": false
+      },
+      {
+       "texto": "For tourists.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Dário. The first thing to tackle is water and drains, not bike lanes.",
+     "enunciado": "What should the city tackle first, according to Dário?",
+     "opcoes": [
+      {
+       "texto": "water and drains",
+       "certa": true
+      },
+      {
+       "texto": "bike lanes",
+       "certa": false
+      },
+      {
+       "texto": "new roads in rich areas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "At the end, Yuri says \"I can live with that.\" This means…",
+     "opcoes": [
+      {
+       "texto": "He accepts Dário's idea.",
+       "certa": true
+      },
+      {
+       "texto": "He wants to live in Dário's house.",
+       "certa": false
+      },
+      {
+       "texto": "He disagrees completely.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The three words for Luanda in 2040 are…",
+     "opcoes": [
+      {
+       "texto": "closer, fairer, greener",
+       "certa": true
+      },
+      {
+       "texto": "bigger, faster, richer",
+       "certa": false
+      },
+      {
+       "texto": "safer, cleaner, quieter",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Admittedly, that takes decades. Nevertheless, every new building should follow that idea.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Whereas a car takes the space of ten people, a bicycle takes the space of one.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell a colleague the three visions of Luanda in 2040, and say which one you agree with most, with one concession.",
+     "frase": "Admittedly",
+     "resposta": "Fernanda wants a city of neighbourhoods, with jobs close to home. Dário says we mustn't forget taxi drivers, and that water and drains come first. Yuri wants bike lanes everywhere. I agree with Dário most. Admittedly, bike lanes would be nice. Nevertheless, drains come first.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What one word would you choose for your city in 2040? Why?",
+     "frase": "because",
+     "resposta": "Safer, because people should be able to walk at night without fear. With more street lighting and more people in the streets, every neighbourhood would feel safer.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "7F",
+   "titulo": "Work & Life: The neighbourhood meeting",
+   "aula": "7F",
+   "objectivo": "Defender uma proposta numa reunião de moradores e explicar em inglês um comunicado em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Ravi says: \"Even if the minibus were free, I wouldn't use it.\" The best answer:",
+     "opcoes": [
+      {
+       "texto": "I take your point. It isn't for everyone, but you'd still have fewer cars at the gate.",
+       "certa": true
+      },
+      {
+       "texto": "You're wrong, Ravi.",
+       "certa": false
+      },
+      {
+       "texto": "Then don't come to the meetings.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The notice says: \"estará encerrada uma faixa em cada sentido\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "One lane in each direction will be closed.",
+       "certa": true
+      },
+      {
+       "texto": "A strip in each sense will be closed.",
+       "certa": false
+      },
+      {
+       "texto": "One lane will be closed in each sense.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The notice says: \"Recomenda-se o uso de transporte colectivo e a partilha de viaturas.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "They recommend public transport and car sharing.",
+       "certa": true
+      },
+      {
+       "texto": "They recommend collective transports and the sharing of vehicles.",
+       "certa": false
+      },
+      {
+       "texto": "They recommend to use collective transport.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Even though] you wouldn't use it, you'd still benefit.",
+     "opcoes": [
+      {
+       "texto": "Despite",
+       "certa": false
+      },
+      {
+       "texto": "Whereas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The trial only goes ahead as [long] as there are forty people.",
+     "opcoes": [
+      {
+       "texto": "soon",
+       "certa": false
+      },
+      {
+       "texto": "much",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Whereas] our cars will be stuck, the minibus will use the bus lane.",
+     "opcoes": [
+      {
+       "texto": "Despite",
+       "certa": false
+      },
+      {
+       "texto": "Nevertheless",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Admittedly], a minibus isn't as flexible as a car.",
+     "opcoes": [
+      {
+       "texto": "Even",
+       "certa": false
+      },
+      {
+       "texto": "Whereas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Two twenty-five-seat minibuses, fifteen thousand kwanzas a month per person, and a three-month trial.",
+     "enunciado": "How much will the minibus cost per person?",
+     "opcoes": [
+      {
+       "texto": "fifteen thousand kwanzas a month",
+       "certa": true
+      },
+      {
+       "texto": "fifty thousand kwanzas a month",
+       "certa": false
+      },
+      {
+       "texto": "fifteen thousand kwanzas a week",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. During the works, there'll be a temporary lane only for buses and vehicles with more than fifteen seats.",
+     "enunciado": "Which vehicles can use the temporary lane?",
+     "opcoes": [
+      {
+       "texto": "buses and vehicles with more than fifteen seats",
+       "certa": true
+      },
+      {
+       "texto": "all cars",
+       "certa": false
+      },
+      {
+       "texto": "taxis only",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Ravi. OK. I still won't use it. But I won't vote against it.",
+     "enunciado": "What does Ravi decide?",
+     "opcoes": [
+      {
+       "texto": "He will not vote against the proposal.",
+       "certa": true
+      },
+      {
+       "texto": "He will use the minibus.",
+       "certa": false
+      },
+      {
+       "texto": "He will vote against it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I take your point, Ravi. It isn't for everyone.",
+     "enunciado": "Ouça e repita, com calma e uma pausa depois de \"Ravi\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "At a meeting of your street or building, put forward a proposal (yours, or a community garden on an empty piece of land): main point, two reasons, an example, a concession, and an answer to \"Nobody will look after it after a month.\"",
+     "frase": "main point",
+     "resposta": "The main point is that the empty land on our street is wasted. First of all, it's full of rubbish. What's more, our children have nowhere to play. I propose a community garden. Admittedly, it needs work. I take your point: that's why we'll have a rota, two families a week.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain this notice in English to a foreign neighbour: \"O abastecimento de água será interrompido na quinta-feira, das 8h00 às 16h00, para reparação de uma conduta. Recomenda-se que os moradores façam reservas de água na véspera.\"",
+     "frase": "Thursday",
+     "resposta": "There's a notice: the water will be cut on Thursday from eight in the morning to four in the afternoon, because they're repairing a pipe. They say we should store some water the day before.",
+     "contexto": "Mediação: o essencial, com palavras simples."
+    }
+   ]
+  },
+  {
+   "codigo": "7R",
+   "titulo": "Unit 7 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 7 do B2 e reciclar as unidades 4 a 6 do B2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Luanda is busy, [whereas] Benguela is calm.",
+     "opcoes": [
+      {
+       "texto": "despite",
+       "certa": false
+      },
+      {
+       "texto": "even so",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Even though] it's raining, we're going to the beach.",
+     "opcoes": [
+      {
+       "texto": "Despite",
+       "certa": false
+      },
+      {
+       "texto": "Whereas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Even if] the bus were free, he wouldn't take it.",
+     "opcoes": [
+      {
+       "texto": "Even though",
+       "certa": false
+      },
+      {
+       "texto": "Despite",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Admittedly, the flat is small. [Nevertheless], it's close to the office.",
+     "opcoes": [
+      {
+       "texto": "Whereas",
+       "certa": false
+      },
+      {
+       "texto": "Despite",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Despite the rain, the meeting went on.",
+       "certa": true
+      },
+      {
+       "texto": "Despite it rained, the meeting went on.",
+       "certa": false
+      },
+      {
+       "texto": "Despite of the rain, the meeting went on.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The mayor opened the new park.\" Who opened it?",
+     "opcoes": [
+      {
+       "texto": "the head of the city government",
+       "certa": true
+      },
+      {
+       "texto": "the biggest man in the city",
+       "certa": false
+      },
+      {
+       "texto": "the oldest resident",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 6). \"Não precisávamos de ter levado o guarda-chuva.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "We needn't have taken the umbrella.",
+       "certa": true
+      },
+      {
+       "texto": "We didn't need taking the umbrella.",
+       "certa": false
+      },
+      {
+       "texto": "We needn't to take the umbrella yesterday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 6). \"A estrada devia estar pronta em Março\" (e não está). Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The road was supposed to be ready in March.",
+       "certa": true
+      },
+      {
+       "texto": "The road supposed to be ready in March.",
+       "certa": false
+      },
+      {
+       "texto": "The road was suppose to be ready in March.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 4). \"O condomínio vai mandar pintar o portão.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The condominium is going to have the gate painted.",
+       "certa": true
+      },
+      {
+       "texto": "The condominium is going to paint the gate by a company.",
+       "certa": false
+      },
+      {
+       "texto": "The condominium is going to have painted the gate.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Mesmo que chova, a reunião vai acontecer.",
+     "resposta": "Even if it rains, the meeting will go ahead.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Abílio Neto. If forty people sign up by Friday, the trial starts on the second of May.",
+     "enunciado": "When does the trial start, if forty people sign up?",
+     "opcoes": [
+      {
+       "texto": "on the second of May",
+       "certa": true
+      },
+      {
+       "texto": "on Friday",
+       "certa": false
+      },
+      {
+       "texto": "next year",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's the biggest problem in your city, and what's the best solution? Give one argument against your own solution.",
+     "frase": "Admittedly",
+     "resposta": "The biggest problem in Benguela is unemployment among young people. The best solution is short technical courses linked to real companies. Admittedly, companies don't always want to train people. Nevertheless, even if only half of them join, thousands of young people would have a chance.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A neighbour says: \"This proposal is a waste of money.\" Answer with a concession and a contrast.",
+     "frase": "I take your point",
+     "resposta": "I take your point — it isn't cheap. Admittedly, we'll pay a bit more this year. Nevertheless, whereas the old system breaks every month, the new one will last ten years. In the long run, it saves money.",
+     "contexto": "Conceder e contrastar."
+    }
+   ]
+  }
+ ]
+}

@@ -67,6 +67,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [b2/unidade-05/](b2/unidade-05/README.md) | B2.1, unidade 5 "Innovation": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b2/revisao-1/](b2/revisao-1/README.md) | B2.1, revisão 1 e exame oral: guiões, laboratório, ensaio com o tutor, questionário, o guião e as situações do exame, e revisão aula a aula. |
 | [b2/unidade-06/](b2/unidade-06/README.md) | B2.2, unidade 6 "Health, safety and environment": guiões, laboratório, tutor, questionário e revisão aula a aula. |
+| [b2/unidade-07/](b2/unidade-07/README.md) | B2.2, unidade 7 "City life": guiões, laboratório, tutor e questionário. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.

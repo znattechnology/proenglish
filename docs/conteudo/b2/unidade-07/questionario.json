@@ -1,0 +1,301 @@
+{
+ "title": "B2.2 Unit 7 quiz — City life",
+ "description": "Concessão e contraste, even if / even though, o argumento em quatro partes, a cidade, mayor e pavement.",
+ "questions": [
+  {
+   "id": "b2u7q1",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u7q1o0",
+     "text": "Lisbon has a metro, whereas Luanda doesn't.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u7q1o1",
+     "text": "Lisbon has a metro, nevertheless Luanda doesn't.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u7q1o2",
+     "text": "Lisbon has a metro, despite Luanda doesn't.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u7q1o0",
+   "explanation": "whereas junta duas frases que se comparam.",
+   "points": 10
+  },
+  {
+   "id": "b2u7q2",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u7q2o0",
+     "text": "Although there are few lines, the bus is popular.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u7q2o1",
+     "text": "Despite there are few lines, the bus is popular.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u7q2o2",
+     "text": "Nevertheless there are few lines, the bus is popular.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u7q2o0",
+   "explanation": "although + frase; despite + nome.",
+   "points": 10
+  },
+  {
+   "id": "b2u7q3",
+   "question": "\"Mesmo que chova, vamos.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u7q3o0",
+     "text": "Even if it rains, we'll go.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u7q3o1",
+     "text": "Even though it rains, we'll go.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u7q3o2",
+     "text": "Even it rains, we'll go.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u7q3o0",
+   "explanation": "even if = condição.",
+   "points": 10
+  },
+  {
+   "id": "b2u7q4",
+   "question": "\"Embora esteja a chover, vamos na mesma.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u7q4o0",
+     "text": "Even though it's raining, we're going.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u7q4o1",
+     "text": "Despite it's raining, we're going.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u7q4o2",
+     "text": "Even it's raining, we're going.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u7q4o0",
+   "explanation": "even though = facto.",
+   "points": 10
+  },
+  {
+   "id": "b2u7q5",
+   "question": "Qual é a melhor ordem para um argumento?",
+   "options": [
+    {
+     "id": "b2u7q5o0",
+     "text": "ideia principal, razões, exemplo, conclusão",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u7q5o1",
+     "text": "exemplo, conclusão, ideia principal, razões",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u7q5o2",
+     "text": "conclusão, exemplo, razões, ideia principal",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u7q5o0",
+   "explanation": "As quatro partes da 7C.",
+   "points": 10
+  },
+  {
+   "id": "b2u7q6",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u7q6o0",
+     "text": "Inequality is growing in many cities.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u7q6o1",
+     "text": "The inequality is growing in many cities in general.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u7q6o2",
+     "text": "An inequality is growing in many cities.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u7q6o0",
+   "explanation": "Nomes abstractos, normalmente sem \"the\".",
+   "points": 10
+  },
+  {
+   "id": "b2u7q7",
+   "question": "\"O maior bairro de Luanda\" em inglês:",
+   "options": [
+    {
+     "id": "b2u7q7o0",
+     "text": "the biggest neighbourhood in Luanda",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u7q7o1",
+     "text": "the mayor neighbourhood of Luanda",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u7q7o2",
+     "text": "the more big neighbourhood in Luanda",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u7q7o0",
+   "explanation": "Falso amigo: mayor = presidente da câmara.",
+   "points": 10
+  },
+  {
+   "id": "b2u7q8",
+   "question": "\"O pavimento está cheio de buracos.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u7q8o0",
+     "text": "The road surface is full of holes.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u7q8o1",
+     "text": "The pavement surface is full of holes.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u7q8o2",
+     "text": "The pavimento is full of holes.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u7q8o0",
+   "explanation": "Falso amigo: pavement = passeio.",
+   "points": 10
+  },
+  {
+   "id": "b2u7q9",
+   "question": "Complete: \"The council should ___ congestion.\"",
+   "options": [
+    {
+     "id": "b2u7q9o0",
+     "text": "tackle",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u7q9o1",
+     "text": "attack to",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u7q9o2",
+     "text": "take on with",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u7q9o0",
+   "explanation": "tackle a problem.",
+   "points": 10
+  },
+  {
+   "id": "b2u7q10",
+   "question": "Reciclagem (B2, unidade 6). \"Não precisávamos de ter levado o guarda-chuva.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u7q10o0",
+     "text": "We needn't have taken the umbrella.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u7q10o1",
+     "text": "We didn't need taking the umbrella.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u7q10o2",
+     "text": "We needn't to take the umbrella yesterday.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u7q10o0",
+   "explanation": "needn't have + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b2u7q11",
+   "question": "Reciclagem (B2, unidade 6). \"A estrada devia estar pronta em Março\" (e não está). Em inglês:",
+   "options": [
+    {
+     "id": "b2u7q11o0",
+     "text": "The road was supposed to be ready in March.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u7q11o1",
+     "text": "The road supposed to be ready in March.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u7q11o2",
+     "text": "The road was suppose to be ready in March.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u7q11o0",
+   "explanation": "was supposed to.",
+   "points": 10
+  },
+  {
+   "id": "b2u7q12",
+   "question": "Reciclagem (B2, unidade 4). \"Vamos mandar pintar o portão.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u7q12o0",
+     "text": "We're going to have the gate painted.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u7q12o1",
+     "text": "We're going to paint the gate by a company.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u7q12o2",
+     "text": "We're going to have painted the gate.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u7q12o0",
+   "explanation": "have something done.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
