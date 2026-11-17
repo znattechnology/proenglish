@@ -1,0 +1,142 @@
+{
+ "unidade": "B2.2 · Unit 8 — Reviews and reactions",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "b2-u8-guiada",
+   "nome": "B2 Unit 8 · What did you think of it?",
+   "tipo": "guiada",
+   "depois_da_aula": "8C",
+   "descricao": "O tutor é Robin, amigo bem-disposto. Conta três experiências recentes (um concerto, um restaurante novo, uma série) e o aluno reage com naturalidade e faz perguntas; depois trocam: o aluno conta uma experiência sua e o tutor reage, pedindo adjectivos fortes e advérbios de comentário.",
+   "papel_tutor": "Robin, amigo bem-disposto que gosta de contar o que fez no fim-de-semana.",
+   "nivel": "B2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Really? How was it?",
+    "No way! / Oh no, poor you!",
+    "It was absolutely brilliant / quite good.",
+    "Surprisingly, … / Unfortunately, …",
+    "I'm not that bothered about…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an upper-intermediate learner (B2.2, unit 8). You are Robin (a neutral name; never mention a husband or wife), a cheerful friend. First, tell the student about three recent experiences, one at a time, and wait for a reaction and a question each time: (1) a concert that was absolutely brilliant, but you lost your phone at the end; (2) a new restaurant that everyone says is fantastic, but you found overrated and overpriced; (3) a TV series you are not that bothered about, but everyone talks about. If the student reacts with only \"OK\" or \"Yes\", react yourself to show them (\"Really? Poor me, right?\") and ask: \"What would you say to that?\". Then swap: ask the student about an event, a meal or a film they saw recently, react naturally (No way! Fair enough. Lucky you!), and ask for strong adjectives and one comment adverb. If the student says \"very fantastic\" or \"very hilarious\", recast once with \"absolutely fantastic\". If the student puts adjectives in the wrong order, recast once. Use any A1, A2, B1 and B2.1 language, plus B2 units 6 to 8: needn't have, was supposed to, past speculation, concession and contrast, even if / even though, gradable and non-gradable adjectives with the right intensifiers, comment adverbs (surprisingly, frankly, apparently, luckily, unfortunately, hopefully), adjective order, and informal reactions. Speak at natural speed. Do NOT use: reporting verbs like suggest, recommend that, insist, deny, warn or advise, the reporting passive, \"wish / if only\", \"would\" for past habits, the past perfect continuous, or mixed conditionals. Short turns, one at a time; never more than three sentences.",
+    "primeira_fala": "Hi, {nome}! Guess what — I went to an absolutely brilliant concert on Saturday. But at the end, I lost my phone!",
+    "primeira_fala_simples": "Hi, {nome}! I went to a great concert, but I lost my phone. What do you say?",
+    "guiao": [
+     "Ha, thanks. Anyway, on Sunday I tried that new restaurant everyone talks about. Honestly? Overrated. And so expensive!",
+     "And everyone at work is talking about that new series. I'm not that bothered, to be honest.",
+     "Your turn! What did you do recently — a film, a meal, a concert? How was it?",
+     "Really? Tell me more. What was the best thing about it?",
+     "Would you recommend it?",
+     "Thanks, {nome}. I'll think about it — if I can find my phone!"
+    ],
+    "frases": [
+     {
+      "en": "Oh no, poor you! Did you find it?",
+      "pt": "Oh não, coitado! Encontraste-o?"
+     },
+     {
+      "en": "Really? Everyone says it's fantastic.",
+      "pt": "A sério? Toda a gente diz que é fantástico."
+     },
+     {
+      "en": "Fair enough. I'm not that bothered about series either.",
+      "pt": "Justo. Também não ligo muito a séries."
+     },
+     {
+      "en": "It was absolutely amazing. Surprisingly, it wasn't expensive.",
+      "pt": "Foi absolutamente incrível. Surpreendentemente, não foi caro."
+     },
+     {
+      "en": "We went to a lovely little Portuguese restaurant.",
+      "pt": "Fomos a um pequeno restaurante português muito simpático."
+     }
+    ],
+    "palavras": [
+     "really",
+     "no way",
+     "poor you",
+     "absolutely",
+     "surprisingly",
+     "bothered"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": null
+  },
+  {
+   "slug": "b2-u8-livre",
+   "nome": "B2 Unit 8 · Same opinion, two audiences",
+   "tipo": "livre",
+   "depois_da_aula": "8F",
+   "descricao": "O tutor faz primeiro de Sam, colega e amigo do aluno, e depois de Sam no papel de cliente que patrocinou um evento (o do aluno, ou um proposto: uma feira de emprego para estudantes, com 600 visitantes, em que o som falhou durante a palestra principal). O aluno dá a mesma crítica nos dois registos: informal com o colega, formal com o cliente; o tutor avisa quando muda de papel.",
+   "papel_tutor": "Sam: primeiro colega e amigo do aluno; depois, cliente e patrocinador do evento.",
+   "nivel": "B2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "It was absolutely brilliant, but… (informal)",
+    "Tell me about it! / Fair enough.",
+    "Overall, the event was very well received.",
+    "Unfortunately, … was interrupted…",
+    "For next year, we recommend…"
+   ],
+   "extras": {
+    "brief": "Role-play for an upper-intermediate learner (B2.2, unit 8). You are Sam (a neutral name; never mention a husband or wife). The conversation has two parts, and you say clearly when you change role. If the student has no event, give one: a job fair for students last Saturday, with about 600 visitors and 20 companies; the main talk was excellent, but the sound system failed for twenty minutes; lunch ran out at one o'clock. PART 1: you are the student's colleague and friend. Be informal, react a lot (No way! Tell me about it! Poor you!), and ask how it really went. Encourage strong adjectives and honesty. PART 2: say \"OK, now I'm the sponsor.\" You are the client who paid for the event. Be polite and formal. Ask for an overall assessment, the problems, the visitors' feedback and a recommendation. If the student stays too informal with the sponsor (\"the sound died, ha!\"), react with surprise once (\"I beg your pardon?\") so the student changes register. If the student uses \"very fantastic\" or \"very hilarious\", recast once. At the end, say in one sentence how well the student changed register. Use any A1, A2, B1 and B2.1 language, plus B2 units 6 to 8: needn't have, was supposed to, past speculation, concession and contrast, even if / even though, gradable and non-gradable adjectives with the right intensifiers, comment adverbs (surprisingly, frankly, apparently, luckily, unfortunately, hopefully), adjective order, and informal reactions. Speak at natural speed. Do NOT use: reporting verbs like suggest, recommend that, insist, deny, warn or advise, the reporting passive, \"wish / if only\", \"would\" for past habits, the past perfect continuous, or mixed conditionals. Short turns; never more than three sentences at a time.",
+    "primeira_fala": "Hey, {nome}! So, how was the big event on Saturday? Come on, tell me everything — the good and the bad!",
+    "primeira_fala_simples": "Hey, {nome}! How was the event on Saturday? Tell me!",
+    "guiao": [
+     "No way! And what went wrong?",
+     "Oh no, poor you! And what did people say?",
+     "OK, now I'm the sponsor. Good morning. I'd like your overall assessment of Saturday's event, please.",
+     "I see. Were there any problems?",
+     "And what was the visitors' feedback?",
+     "Thank you. What do you recommend for next year?",
+     "Thank you, {nome}. You changed register very well between the two conversations."
+    ],
+    "frases": [
+     {
+      "en": "It was absolutely brilliant — but the sound died in the middle of the main talk!",
+      "pt": "Foi absolutamente brilhante — mas o som foi abaixo a meio da palestra principal!"
+     },
+     {
+      "en": "Tell me about it! And the food ran out at one.",
+      "pt": "Nem me fales! E a comida acabou à uma."
+     },
+     {
+      "en": "Overall, the event was very well received.",
+      "pt": "De um modo geral, o evento foi muito bem recebido."
+     },
+     {
+      "en": "Unfortunately, the sound system was interrupted for about twenty minutes.",
+      "pt": "Infelizmente, o sistema de som esteve interrompido durante cerca de vinte minutos."
+     },
+     {
+      "en": "For next year, we recommend a backup sound system and more food.",
+      "pt": "Para o próximo ano, recomendamos um sistema de som de reserva e mais comida."
+     }
+    ],
+    "palavras": [
+     "absolutely",
+     "tell me about it",
+     "overall",
+     "unfortunately",
+     "well received",
+     "recommend"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Com o colega, fala de forma informal: reacções curtas, adjectivos fortes, humor.",
+    "Com o patrocinador, muda de registo: frases completas, a passiva, unfortunately / overall, sem gíria.",
+    "Usa os intensificadores certos com adjectivos graduáveis e não graduáveis (very good, absolutely brilliant).",
+    "Usa advérbios de comentário (surprisingly, frankly, unfortunately, apparently) com o sentido certo.",
+    "Dá o mesmo conteúdo nos dois registos (o que correu bem, os problemas, uma recomendação), e fala pelo menos uma vez 1 minuto ou mais sem ajuda.",
+    "É compreendido sem o tutor ter de pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}
