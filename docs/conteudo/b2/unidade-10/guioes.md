@@ -29,7 +29,7 @@ Objectivo da unidade a que serve: 1
 Gramática-alvo: wish / if only + past simple (o presente que gostaríamos que fosse diferente: I wish I knew.
   If only I spoke Zulu.); wish + could (I wish I could stay.); wish / if only + past perfect (o passado:
   I wish I had asked. If only I hadn't said yes.); were (I wish I were…, mais formal; was, na conversa)
-Palavras-alvo: offer, decision, secret, family, abroad, career, regret, chance, opportunity, homesick
+Palavras-alvo: offer, decision, secret, family, abroad, heart, flights, cook, regret, travel
 Reciclagem: 2.º e 3.º condicional (B1); even if (B2, 7B)
 Pronúncia: I wish I'd dito curto ("I wish-aid"), e o acento em "wish"
 Contexto: segunda-feira, 11 de Junho de 2029, 21:00; o alojamento da obra do Tômbwa; o Nuno e o Paulo, depois
@@ -143,8 +143,8 @@ Objectivo da unidade a que serve: 2
 Gramática-alvo: would + infinitivo para acções repetidas no passado (We would play football for hours.);
   used to para acções e estados (We used to live above the shop. I used to be shy.); ✘ would com estados
   (✘ We would live above the shop.); o past simple para acções únicas
-Palavras-alvo: childhood, street, neighbours, shop, customers, birthday, mango tree, chores, strict, spoil,
-  nostalgic, grow up
+Palavras-alvo: childhood, mango tree, climb, comics, shop, customers, sweets, spoiled, curves, scared,
+  nostalgic
 Reciclagem: used to (B1, 2); wish (10A)
 Pronúncia: would reduzido a 'd (we'd play) e used to dito "yoosta"
 Contexto: quarta-feira, 13 de Junho, 18:00; o Lubango; o quintal da casa da família; o Nuno e a irmã Teresa
@@ -246,7 +246,7 @@ Objectivo da unidade a que serve: 2
 Gramática-alvo: had been + -ing + for / since (duração até um momento do passado); contraste com o past
   perfect simples (acção terminada, resultado: I'd sold my car); com o past simple (o momento: when they
   asked me); verbos de estado no past perfect simples (I'd known her for years, não ✘ I'd been knowing)
-Palavras-alvo: move, transfer, abroad, settle, homesick, adapt, nervous, exciting, turning point, take a risk
+Palavras-alvo: move, abroad, team, bored, scared, suitcase, homesick, friends, turning point, regret, ready
 Reciclagem: present perfect continuous (B1, 2B); past perfect (B1, 6)
 Pronúncia: I'd been dito curto ("aid-bin")
 Contexto: sexta-feira, 15 de Junho, 13:00; um restaurante perto do escritório; a Lerato conta ao Nuno como
@@ -352,8 +352,7 @@ Gramática-alvo: passado imaginado → resultado no presente: If + past perfect,
   hadn't gone to the training, we wouldn't be friends now.); presente imaginado → resultado no passado:
   If + past simple, would have + particípio (If I were braver, I'd have said yes already.); revisão do 2.º
   e do 3.º condicional (B1)
-Palavras-alvo: training, meet, friendship, chance, coincidence, turning point, promotion, team leader,
-  brave, confident
+Palavras-alvo: training, quiet, mistake, app, payday, team leader, offer, brave, careful, coward
 Reciclagem: 2.º e 3.º condicional (B1, 4A e 10A); wish (10A)
 Pronúncia: as formas curtas: I'd be, I'd have, wouldn't be
 Contexto: segunda-feira, 18 de Junho, 19:00 em Luanda (20:00 em Lusaca); videochamada; a Mei liga ao Nuno
@@ -375,7 +374,7 @@ Verificação: Lab 10D; perguntas 7 e 8 do questionário
 **NUNO:** True. And if I hadn't been so nervous that week, you wouldn't laugh at me every time we talk!
 **MEI:** Ha! You were so quiet. Look at you now.
 **NUNO:** I know. If Lerato hadn't asked me to lead the Tômbwa proposal, I wouldn't be getting this offer.
-**MEI:** Exactly. And me — if I hadn't made that mistake with the app update, I wouldn't be a team leader today. My boss only noticed me because I fixed it.
+**MEI:** Exactly. And me — if our app hadn't crashed on that payday, I wouldn't be a team leader today. My boss only noticed me because I fixed it.
 **NUNO:** That's a nice way to see a mistake.
 **MEI:** So, what's stopping you?
 **NUNO:** My family, mainly. And Tômbwa — the plant opens in December. If I were a braver person, I'd have said yes on the first day.
@@ -455,7 +454,7 @@ Gramática-alvo: colocações (make a decision, weigh up the options, take a ris
   thoughts, follow your heart, keep your options open, a turning point, a dead end, a career break);
   phrasal verbs (settle down, move on, turn down, take up, give up)
 Palavras-alvo: turning point, take the plunge, weigh up, second thoughts, settle down, move on, turn down,
-  career break, dead end, relocate, pros and cons, gut feeling
+  career break, dead end, keep your options open, pros and cons, gut feeling
 Reciclagem: wish (10A); condicionais mistos (10D)
 Pronúncia: formas fracas: I wish I'd (I wish-aid), I'd have (I'd've), wouldn't have (wouldn't've)
 Falsos amigos: formation (≠ formação → training, education; formation = formação geológica, disposição);
@@ -625,8 +624,8 @@ Objectivo da aula: No fim, o aluno consegue discutir uma escolha importante — 
 Objectivo da unidade a que serve: 1, 3, 4
 Gramática-alvo: toda a da unidade: wish, would e used to, past perfect continuous, condicionais mistos; e
   do B2: concessão (admittedly, even so), condições (provided that), avaliação (what worries me is…)
-Palavras-alvo: offer, counter-offer, promotion, salary, relocation, company car, notice, start date, turn
-  down, accept, grateful
+Palavras-alvo: offer, promotion, raise, salary, relocation, company car, flights home, later start, turn
+  down, accept, regret
 Reciclagem: provided that (B2, 3A); What worries me is… (B2, 9D); admittedly / even so (B2, 7A)
 Pronúncia: uma decisão dita com calma e firmeza, a voz a descer no fim
 Mediação: o Nuno explica à Lerato, em inglês, a contraproposta da Kalandula, escrita em português pelo
@@ -655,7 +654,7 @@ Verificação: Lab 10G; conversa livre "The offer"
 **LERATO:** That's a generous letter. He really doesn't want to lose you.
 **NUNO:** I know. That makes it harder.
 **LERATO:** OK. Let's weigh it up. What would you gain in Johannesburg?
-**NUNO:** A bigger team, bigger projects, more money, and — honestly — the experience of living abroad. I'd been dreaming about that since the training in 2027.
+**NUNO:** A bigger team, bigger projects, more money, and — honestly — the experience of living abroad. I've been dreaming about that since the training in 2027.
 **LERATO:** And what would you lose?
 **NUNO:** My family. My father's seventy. When I was a kid, he would take me to the shop every Saturday. I wish I could take him to Johannesburg with me.
 **LERATO:** He'd hate it. Too cold!
@@ -680,7 +679,7 @@ Verificação: Lab 10G; conversa livre "The offer"
 | Momento | Língua | Exemplo do Nuno |
 |---|---|---|
 | 1. Apresentar as opções (mediação) | He says… They're offering… | They're offering a promotion, a raise, a company car… |
-| 2. O que se ganha | I'd gain… · I'd been dreaming about… | I'd been dreaming about that since the training in 2027. |
+| 2. O que se ganha | I'd gain… · I've been dreaming about… | I've been dreaming about that since the training in 2027. |
 | 3. O que se perde | I'd lose… · would (hábitos) · I wish I could… | When I was a kid, he would take me to the shop every Saturday. |
 | 4. A preocupação | What worries me is… · If I stay, I might wish I'd gone. | What worries me is regret. |
 | 5. Uma terceira via | Why choose between…? · Admittedly… Even so… | Ask Mopane for a later start. |

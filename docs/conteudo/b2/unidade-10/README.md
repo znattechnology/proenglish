@@ -1,6 +1,6 @@
 # B2.2 · Unidade 10 — Choices (7 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 10
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 10
 
 ## Objectivos da unidade
 
@@ -43,7 +43,7 @@ No fim da unidade, o aluno consegue:
 - ***Past perfect continuous* ou simples:** a actividade e a duração (*I'd been travelling since five*) ou o resultado (*my suitcase had stayed in Johannesburg*), com a história verdadeira da chegada da Lerato a Luanda (A2 7).
 - **Os dois condicionais mistos:** passado → presente (*If I hadn't gone, I wouldn't know you*) e presente → passado (*If I were braver, I'd have said yes*), com a tabela dos quatro condicionais.
 - **O fim da história do B2:** a 10F mostra uma estranha que usa toda a gramática da unidade ao contar a sua vida; a 10G junta tudo o que o Nuno aprendeu no B2 — mediação, *what worries me is*, *admittedly / even so*, *provided that* — numa decisão real. A decisão não é "A ou B": é uma versão melhor de uma delas (Joanesburgo, mas depois da abertura do Tômbwa).
-- **Coerência com os níveis anteriores:** o Nuno nasceu no Lubango em 2003, tem três irmãs e o pai tem uma pequena loja (A1–B1); entrou na Kalandula em Outubro de 2026 ("almost three years"); conheceu a Mei em Joanesburgo em Julho de 2027 (B1 1); a Lerato chegou a Luanda em Fevereiro de 2027, e a mala ficou em Joanesburgo (A2 7F); a Mei tornou-se chefe de equipa depois do erro na actualização da aplicação (B1 R2A).
+- **Coerência com os níveis anteriores:** o Nuno nasceu no Lubango em 2003, tem três irmãs e o pai tem uma pequena loja (A1–B1); entrou na Kalandula em Outubro de 2026 ("almost three years"); conheceu a Mei em Joanesburgo em Julho de 2027 (B1 1); a Lerato chegou a Luanda em Fevereiro de 2027, e a mala ficou em Joanesburgo (A2 7F); a Mei tornou-se chefe de equipa depois de corrigir a falha da aplicação no dia de pagamento (B1 R2A).
 
 ## A história
 
@@ -51,6 +51,6 @@ Junho de 2029. Na segunda, 11, a Thandi avisa o Nuno de que a Mopane lhe vai faz
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (19 escutas, 8 pronúncias, a 10F com uma entrevista de *podcast*); imagens (o quintal no Lubango, a carta do Sr. Baptista em português, a mensagem da Thandi); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (19 escutas, 8 pronúncias, a 10F com uma entrevista de *podcast*); imagens (o quintal no Lubango, a carta do Sr. Baptista em português, a mensagem da Thandi); carregamento na plataforma.
 
 A seguir vêm a **revisão e o exame oral do B2.2**.

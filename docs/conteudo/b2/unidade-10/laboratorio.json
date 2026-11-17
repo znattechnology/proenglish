@@ -795,11 +795,11 @@
     },
     {
      "tipo": "escuta",
-     "frase": "I'm Mei. If I hadn't made that mistake with the app update, I wouldn't be a team leader today.",
+     "frase": "I'm Mei. If our app hadn't crashed on that payday, I wouldn't be a team leader today. My boss only noticed me because I fixed it.",
      "enunciado": "Why is Mei a team leader today?",
      "opcoes": [
       {
-       "texto": "because of a mistake she made and fixed",
+       "texto": "because she fixed the app after it crashed",
        "certa": true
       },
       {
@@ -849,7 +849,7 @@
      "tipo": "responder",
      "enunciado": "Do you believe in luck, or do we make our own luck? Why?",
      "frase": "because",
-     "resposta": "Both, I think, because luck gives you chances, but you have to see them and take them. Mei's mistake was bad luck, but fixing it was her own work.",
+     "resposta": "Both, I think, because luck gives you chances, but you have to see them and take them. The crash of Mei's app was bad luck, but fixing it was her own work.",
      "contexto": "Uma opinião."
     }
    ]
