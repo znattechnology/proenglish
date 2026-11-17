@@ -1,0 +1,1463 @@
+{
+ "unidade": "B2.1 · Unit 4 — Client care",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "4A",
+   "titulo": "It's being fixed",
+   "aula": "4A",
+   "objectivo": "Dar o ponto de situação de um pedido com a passiva contínua e no present perfect.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The old radio has been repaired, and it's being [tested] this morning.",
+     "opcoes": [
+      {
+       "texto": "testing",
+       "certa": false
+      },
+      {
+       "texto": "test",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The final text [has been] prepared.",
+     "opcoes": [
+      {
+       "texto": "has",
+       "certa": false
+      },
+      {
+       "texto": "have been",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Your switches [are being] cleared at customs now.",
+     "opcoes": [
+      {
+       "texto": "are been",
+       "certa": false
+      },
+      {
+       "texto": "have being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The office [was being] cleaned when I arrived.",
+     "opcoes": [
+      {
+       "texto": "was been",
+       "certa": false
+      },
+      {
+       "texto": "has being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Está a ser revisto pelos nossos advogados.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "It's being reviewed by our lawyers.",
+       "certa": true
+      },
+      {
+       "texto": "It's been reviewing by our lawyers.",
+       "certa": false
+      },
+      {
+       "texto": "It is reviewing by our lawyers.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Has the training been added?",
+       "certa": true
+      },
+      {
+       "texto": "Has the training added?",
+       "certa": false
+      },
+      {
+       "texto": "Is the training been added?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The invoice has been paid.\" This means…",
+     "opcoes": [
+      {
+       "texto": "The invoice is paid now.",
+       "certa": true
+      },
+      {
+       "texto": "Someone is paying the invoice now.",
+       "certa": false
+      },
+      {
+       "texto": "The invoice will be paid.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "When do we use \"by\" in the passive?",
+     "opcoes": [
+      {
+       "texto": "when it matters who does the action",
+       "certa": true
+      },
+      {
+       "texto": "always",
+       "certa": false
+      },
+      {
+       "texto": "never",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "A encomenda foi enviada e está a ser desalfandegada.",
+     "resposta": "The order has been shipped, and it's being cleared at customs.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. The old radio has been repaired, and it's being tested in our lab this morning. It'll be sent to Namibe on Wednesday.",
+     "enunciado": "When will the radio be sent to Namibe?",
+     "opcoes": [
+      {
+       "texto": "on Wednesday",
+       "certa": true
+      },
+      {
+       "texto": "this morning",
+       "certa": false
+      },
+      {
+       "texto": "on Friday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. The final text is being reviewed by our lawyers today. It'll be sent to you by Wednesday at the latest.",
+     "enunciado": "Who is reviewing the final text?",
+     "opcoes": [
+      {
+       "texto": "the lawyers",
+       "certa": true
+      },
+      {
+       "texto": "Femi",
+       "certa": false
+      },
+      {
+       "texto": "Mr Baptista",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The radio has been repaired, and it's being tested this morning.",
+     "enunciado": "Ouça e repita: \"being\" com duas sílabas, \"been\" curto."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A client calls about an order, a repair or a document. Give a full update: what has been done, what is being done now, and what will be done next, with a day.",
+     "frase": "has been",
+     "resposta": "Thank you for calling. Your laptop has been checked by our technician. The new screen has been ordered, and it's being shipped now. When it arrives, it'll be installed the same day, and your laptop will be delivered by Friday. I'll call you when it's been tested.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "When you wait for something (a repair, a document, a delivery), what is worse: no news, or bad news? Why?",
+     "frase": "because",
+     "resposta": "No news is worse, because you can't plan anything. With bad news, at least you know where you are. A short message — \"It's being repaired, it'll be ready on Tuesday\" — makes a huge difference.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "4B",
+   "titulo": "It should have been checked",
+   "aula": "4B",
+   "objectivo": "Falar de regras e de erros com a passiva com modais e no past perfect.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Every contract must [be checked] by two people.",
+     "opcoes": [
+      {
+       "texto": "checked",
+       "certa": false
+      },
+      {
+       "texto": "been checked",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The final version should have [been] checked before it was sent.",
+     "opcoes": [
+      {
+       "texto": "be",
+       "certa": false
+      },
+      {
+       "texto": "being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Prices [can't be] changed after the director has signed.",
+     "opcoes": [
+      {
+       "texto": "can't",
+       "certa": false
+      },
+      {
+       "texto": "can't been",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The price [had been] changed, but an old draft was sent.",
+     "opcoes": [
+      {
+       "texto": "has being",
+       "certa": false
+      },
+      {
+       "texto": "had be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Devia ter sido verificado.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "It should have been checked.",
+       "certa": true
+      },
+      {
+       "texto": "It should been checked.",
+       "certa": false
+      },
+      {
+       "texto": "It should have checked.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It shouldn't have been sent without my signature.\" What happened?",
+     "opcoes": [
+      {
+       "texto": "It was sent without the signature, and that was wrong.",
+       "certa": true
+      },
+      {
+       "texto": "It wasn't sent.",
+       "certa": false
+      },
+      {
+       "texto": "It was sent with the signature.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is a rule?",
+     "opcoes": [
+      {
+       "texto": "Each version must be saved with the date.",
+       "certa": true
+      },
+      {
+       "texto": "The wrong version was sent.",
+       "certa": false
+      },
+      {
+       "texto": "The price had been changed.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Why is \"It should have been checked\" useful in a meeting?",
+     "opcoes": [
+      {
+       "texto": "You talk about the mistake without blaming a person.",
+       "certa": true
+      },
+      {
+       "texto": "It sounds more angry.",
+       "certa": false
+      },
+      {
+       "texto": "It hides the mistake.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Podia ter sido evitado.",
+     "resposta": "It could have been avoided.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Sílvia. The final version should have been checked before it was sent.",
+     "enunciado": "What should have happened?",
+     "opcoes": [
+      {
+       "texto": "The final version should have been checked.",
+       "certa": true
+      },
+      {
+       "texto": "The contract should have been cancelled.",
+       "certa": false
+      },
+      {
+       "texto": "Femi should have called earlier.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Sílvia. From now on, every contract must be checked by two people before it goes out.",
+     "enunciado": "What is the new rule?",
+     "opcoes": [
+      {
+       "texto": "Two people must check every contract.",
+       "certa": true
+      },
+      {
+       "texto": "Only Sílvia can send contracts.",
+       "certa": false
+      },
+      {
+       "texto": "Contracts must be sent on Fridays.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The final version should have been checked before it was sent.",
+     "enunciado": "Ouça e repita: \"should've been\" curto, o acento em \"checked\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of a mistake at work, at school or in your community. Explain what happened (with had been), what should have been done, and two new rules (with must be and can't be).",
+     "frase": "should have been",
+     "resposta": "Last month, our exam results were published with the wrong names. The list had been changed, but an old file was printed. It should have been checked by a second teacher. From now on, results must be checked by two people, and they can't be published without the director's signature.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "When something goes wrong at work, is it better to say who made the mistake, or to talk only about what should have been done? Why?",
+     "frase": "because",
+     "resposta": "Usually it's better to talk about what should have been done, because people are less afraid and they report problems faster. But the person who made the mistake should say it, like Nuno did. That builds trust.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "4C",
+   "titulo": "We'll have it replaced",
+   "aula": "4C",
+   "objectivo": "Dizer que um serviço é feito por outra pessoa com have / get something done.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm having the car [serviced] on Monday.",
+     "opcoes": [
+      {
+       "texto": "service",
+       "certa": false
+      },
+      {
+       "texto": "servicing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I had the windscreen [replaced] last week.",
+     "opcoes": [
+      {
+       "texto": "replace",
+       "certa": false
+      },
+      {
+       "texto": "to replace",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I need to get my hair [cut].",
+     "opcoes": [
+      {
+       "texto": "to cut",
+       "certa": false
+      },
+      {
+       "texto": "cutting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We'll [have] the site plans printed.",
+     "opcoes": [
+      {
+       "texto": "do",
+       "certa": false
+      },
+      {
+       "texto": "make",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Vou cortar o cabelo amanhã\" (no barbeiro). Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I'm going to get my hair cut tomorrow.",
+       "certa": true
+      },
+      {
+       "texto": "I'm going to cut my hair tomorrow.",
+       "certa": false
+      },
+      {
+       "texto": "I'm going to have cut my hair tomorrow.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Se é o barbeiro que corta: get / have something done."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I had the windscreen replaced.\" Who replaced it?",
+     "opcoes": [
+      {
+       "texto": "someone else, for me",
+       "certa": true
+      },
+      {
+       "texto": "I did it myself",
+       "certa": false
+      },
+      {
+       "texto": "nobody",
+       "certa": false
+      }
+     ],
+     "explicacao": "have + objecto + particípio = outra pessoa faz."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I had replaced the windscreen.\" Who replaced it?",
+     "opcoes": [
+      {
+       "texto": "I did, before another moment in the past",
+       "certa": true
+      },
+      {
+       "texto": "a mechanic, for me",
+       "certa": false
+      },
+      {
+       "texto": "nobody",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the most informal sentence.",
+     "opcoes": [
+      {
+       "texto": "I'm getting my phone fixed tomorrow.",
+       "certa": true
+      },
+      {
+       "texto": "I'm having my phone repaired tomorrow.",
+       "certa": false
+      },
+      {
+       "texto": "My phone is being repaired tomorrow.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Vamos mandar pintar os mastros de branco.",
+     "resposta": "We'll have the masts painted white.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. I dropped my phone in the car park. I'm getting the screen fixed tomorrow, in Mutamba.",
+     "enunciado": "What is Nuno doing tomorrow?",
+     "opcoes": [
+      {
+       "texto": "getting his phone screen fixed",
+       "certa": true
+      },
+      {
+       "texto": "buying a new phone",
+       "certa": false
+      },
+      {
+       "texto": "fixing the screen himself",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. I'd like to have the masts painted white before they leave Johannesburg.",
+     "enunciado": "What does Paulo want to have done?",
+     "opcoes": [
+      {
+       "texto": "the masts painted white",
+       "certa": true
+      },
+      {
+       "texto": "the antennas checked",
+       "certa": false
+      },
+      {
+       "texto": "the trucks cleaned",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I had it replaced last week.",
+     "enunciado": "Ouça e repita: \"had it\" ligado."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Talk about the services in your life: two things you've had done recently, one you're having done soon, and one you need to get done but keep putting off.",
+     "frase": "had",
+     "resposta": "Last month, I had my car serviced, and I got my glasses changed. Next week, I'm having the kitchen painted, so the house will be a mess. And I really need to get my passport renewed: it expires in March, and I keep putting it off.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you prefer to do yourself, and what do you prefer to pay someone to do? Why?",
+     "frase": "because",
+     "resposta": "I prefer to cook myself, because I enjoy it. But I always have my car repaired by a mechanic, because I don't know anything about engines, and a mistake could be dangerous.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "4D",
+   "titulo": "Complaints and service",
+   "aula": "4D",
+   "objectivo": "Vocabulário de reclamações e serviço, empatia, tom de voz; claim e requirement.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "compensation",
+       "b": "compensação, indemnização"
+      },
+      {
+       "a": "goodwill gesture",
+       "b": "gesto de boa vontade"
+      },
+      {
+       "a": "escalate",
+       "b": "passar ao nível superior"
+      },
+      {
+       "a": "follow up",
+       "b": "dar seguimento"
+      },
+      {
+       "a": "reassure",
+       "b": "tranquilizar"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'll [follow] up on your request tomorrow.",
+     "opcoes": [
+      {
+       "texto": "take",
+       "certa": false
+      },
+      {
+       "texto": "make",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If it isn't solved today, I'll [escalate] it to the director.",
+     "opcoes": [
+      {
+       "texto": "climb",
+       "certa": false
+      },
+      {
+       "texto": "rise",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We received a [complaint] from Lumo this morning.",
+     "opcoes": [
+      {
+       "texto": "reclamation",
+       "certa": false
+      },
+      {
+       "texto": "complain",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "A helmet is a [requirement] on site.",
+     "opcoes": [
+      {
+       "texto": "requisition",
+       "certa": false
+      },
+      {
+       "texto": "request",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"O cliente reclamou do atraso.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The client complained about the delay.",
+       "certa": true
+      },
+      {
+       "texto": "The client claimed about the delay.",
+       "certa": false
+      },
+      {
+       "texto": "The client reclaimed the delay.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: claim = afirmar; pedir uma indemnização."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Entreguei um requerimento na câmara.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I submitted an application to the city council.",
+       "certa": true
+      },
+      {
+       "texto": "I submitted a requirement to the city council.",
+       "certa": false
+      },
+      {
+       "texto": "I submitted a requiring to the city council.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: requirement = requisito."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "An angry client is shouting. Which sentence should you NEVER say?",
+     "opcoes": [
+      {
+       "texto": "Calm down.",
+       "certa": true
+      },
+      {
+       "texto": "I completely understand why you are upset.",
+       "certa": false
+      },
+      {
+       "texto": "Let me check exactly what happened.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence shows empathy?",
+     "opcoes": [
+      {
+       "texto": "That must have been very stressful.",
+       "certa": true
+      },
+      {
+       "texto": "That is not my department.",
+       "certa": false
+      },
+      {
+       "texto": "The system never fails.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. As compensation, we'd like to offer you one month of service free of charge.",
+     "enunciado": "What does Nuno offer?",
+     "opcoes": [
+      {
+       "texto": "one month of service free",
+       "certa": true
+      },
+      {
+       "texto": "a full refund",
+       "certa": false
+      },
+      {
+       "texto": "a new camera",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I completely understand why you are upset.",
+     "enunciado": "Ouça e repita, com um tom sincero, calmo e a descer."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a time you complained (in a shop, a bank, a hotel, or with a service at home). How was it handled, and what should have been done?",
+     "frase": "should have been",
+     "resposta": "Last year, my internet stopped for a week. I called five times, and I was always told it was being fixed. Nobody followed up, and my complaint was never escalated. It should have been escalated on the first day, and some compensation should have been offered.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it better to complain by phone, by email or in person? Why?",
+     "frase": "because",
+     "resposta": "It depends. By email, because there's a written record of everything. But for something urgent, I call first, and then I send an email to confirm what was said.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "4E",
+   "titulo": "Real English: On hold",
+   "aula": "4E",
+   "objectivo": "Seguir quatro chamadas para um centro de apoio: o problema, a emoção e a solução.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "My name's Daniel Okoro. I've been on hold for forty minutes! My office has had no internet since Friday.",
+     "enunciado": "How long was the first caller on hold?",
+     "opcoes": [
+      {
+       "texto": "forty minutes",
+       "certa": true
+      },
+      {
+       "texto": "fourteen minutes",
+       "certa": false
+      },
+      {
+       "texto": "four hours",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Benedita. A technician will be with you before eleven, and I'll call you myself at twelve.",
+     "enunciado": "When will the technician arrive?",
+     "opcoes": [
+      {
+       "texto": "before eleven",
+       "certa": true
+      },
+      {
+       "texto": "at twelve",
+       "certa": false
+      },
+      {
+       "texto": "on Saturday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Good morning, my dear. This is Dona Isabel. My grandson set up the internet, and now the little light is red.",
+     "enunciado": "Who set up the internet for the second caller?",
+     "opcoes": [
+      {
+       "texto": "her grandson",
+       "certa": true
+      },
+      {
+       "texto": "a technician",
+       "certa": false
+      },
+      {
+       "texto": "her daughter",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Benedita. The payment was taken twice because of a system error. The money will be returned within five working days.",
+     "enunciado": "When will the money be returned?",
+     "opcoes": [
+      {
+       "texto": "within five working days",
+       "certa": true
+      },
+      {
+       "texto": "today",
+       "certa": false
+      },
+      {
+       "texto": "in one hour",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Benedita. Your router is very old; it was installed in 2019. We'll have it replaced at no cost.",
+     "enunciado": "Why are the fourth caller's video calls frozen?",
+     "opcoes": [
+      {
+       "texto": "Her router is very old.",
+       "certa": true
+      },
+      {
+       "texto": "Her computer is broken.",
+       "certa": false
+      },
+      {
+       "texto": "The company is changing cables.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Benedita. Listen first. Every angry person has a real problem behind the anger.",
+     "enunciado": "What is Benedita's secret?",
+     "opcoes": [
+      {
+       "texto": "Listen first.",
+       "certa": true
+      },
+      {
+       "texto": "Talk fast.",
+       "certa": false
+      },
+      {
+       "texto": "Always give a refund.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "How does Benedita speak to the client in a hurry?",
+     "opcoes": [
+      {
+       "texto": "very briefly, with the solution and a time",
+       "certa": true
+      },
+      {
+       "texto": "slowly, with a lot of questions",
+       "certa": false
+      },
+      {
+       "texto": "with jokes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "What does Benedita do in every call?",
+     "opcoes": [
+      {
+       "texto": "She gives a clear solution and a time.",
+       "certa": true
+      },
+      {
+       "texto": "She transfers the call.",
+       "certa": false
+      },
+      {
+       "texto": "She asks the client to call back.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Forty minutes is far too long, and you are right to be angry.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "We'll have it replaced at no cost.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Choose two of the four calls. Tell a colleague the problem, how the client felt, and how Benedita solved it.",
+     "frase": "The first",
+     "resposta": "The first client was furious: his office had had no internet since Friday, and he'd been on hold for forty minutes. A technician was sent before eleven. The fourth client was sarcastic about her frozen calls. Her router was very old, so Benedita had it replaced at no cost.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Which of the four calls would be the most difficult for you? Why?",
+     "frase": "because",
+     "resposta": "The sarcastic one, because it's hard to know if the person is angry or joking. With an angry client, at least the problem is clear. Benedita used a little humour, which was clever.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "4F",
+   "titulo": "Work & Life: An angry client",
+   "aula": "4F",
+   "objectivo": "Atender um cliente zangado e explicar em inglês um relatório técnico em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Kwame is shouting about the cameras. Nuno's first words:",
+     "opcoes": [
+      {
+       "texto": "I'm very sorry. That must have been a terrible night. Is everyone safe?",
+       "certa": true
+      },
+      {
+       "texto": "Calm down, Mr Mensah.",
+       "certa": false
+      },
+      {
+       "texto": "That's impossible. Our cameras never fail.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The report says: \"a eliminação automática das gravações antigas foi desactivada\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "the setting that deletes old recordings was switched off",
+       "certa": true
+      },
+      {
+       "texto": "the automatic elimination of old gravations was deactivated",
+       "certa": false
+      },
+      {
+       "texto": "the old recordings were eliminated automatically",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The report says: \"O disco ficou cheio no sábado, cerca das 14h00.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "On Saturday, at about two o'clock, the disk was full.",
+       "certa": true
+      },
+      {
+       "texto": "On Saturday, at about fourteen, the disk stayed full.",
+       "certa": false
+      },
+      {
+       "texto": "The disk was filled on Saturday at fourteen hours.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "An alert was sent to your old address, which [hasn't been] used since September.",
+     "opcoes": [
+      {
+       "texto": "hasn't",
+       "certa": false
+      },
+      {
+       "texto": "isn't been",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The disk [was replaced] at nine forty this morning.",
+     "opcoes": [
+      {
+       "texto": "replaced",
+       "certa": false
+      },
+      {
+       "texto": "has replaced",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "From today, the alerts will [be tested] every month.",
+     "opcoes": [
+      {
+       "texto": "tested",
+       "certa": false
+      },
+      {
+       "texto": "been tested",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'll call you on Friday to [follow] up.",
+     "opcoes": [
+      {
+       "texto": "take",
+       "certa": false
+      },
+      {
+       "texto": "go",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kwame. Somebody tried to break into our Talatona shop last night, and there's no camera footage since Saturday afternoon.",
+     "enunciado": "What is the problem?",
+     "opcoes": [
+      {
+       "texto": "The cameras recorded nothing since Saturday afternoon.",
+       "certa": true
+      },
+      {
+       "texto": "The alarm did not work.",
+       "certa": false
+      },
+      {
+       "texto": "Something was stolen from the shop.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. As compensation, we'd like to offer you one month free, and three months of cloud backup at no cost.",
+     "enunciado": "What is the compensation?",
+     "opcoes": [
+      {
+       "texto": "one month free and three months of cloud backup",
+       "certa": true
+      },
+      {
+       "texto": "a full refund for the year",
+       "certa": false
+      },
+      {
+       "texto": "new cameras in all the shops",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kwame. I appreciate your honesty, Nuno. Most companies would have blamed the update or the email.",
+     "enunciado": "What does Kwame appreciate?",
+     "opcoes": [
+      {
+       "texto": "Nuno's honesty",
+       "certa": true
+      },
+      {
+       "texto": "Nuno's speed",
+       "certa": false
+      },
+      {
+       "texto": "the new cameras",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Mr Mensah, I am very sorry. That must have been a terrible night.",
+     "enunciado": "Ouça e repita, devagar e com a voz calma."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A client calls: their office internet stopped yesterday, and nobody answered their emails (a cable was cut by builders; the emails went to a colleague on holiday). Show empathy, explain with the passive, say what has been done, and offer compensation.",
+     "frase": "has been",
+     "resposta": "I'm very sorry — a day without internet must have been very difficult. Our cable was cut by builders in the street, and your emails were sent to a colleague on holiday. The cable has been repaired, and your connection has been tested. As compensation, we'd like to offer you one week free.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain this report to a client in English: \"Avaria no ar condicionado da sala de servidores. Causa: o filtro não foi limpo desde Junho. Acções: filtro substituído hoje; temperatura normal desde as 15h00.\"",
+     "frase": "had",
+     "resposta": "The air conditioning in your server room broke down because the filter hadn't been cleaned since June. The filter was replaced today, and the temperature has been normal since three o'clock.",
+     "contexto": "Mediação: a causa e o que já foi feito, com a passiva."
+    }
+   ]
+  },
+  {
+   "codigo": "4R",
+   "titulo": "Unit 4 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 4 do B2 e reciclar as unidades 2 e 3 do B2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The road [is being] repaired, so we have to go another way.",
+     "opcoes": [
+      {
+       "texto": "is been",
+       "certa": false
+      },
+      {
+       "texto": "has being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "All the invoices [have been] paid.",
+     "opcoes": [
+      {
+       "texto": "have being",
+       "certa": false
+      },
+      {
+       "texto": "are been",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The report should [have been] sent yesterday.",
+     "opcoes": [
+      {
+       "texto": "been",
+       "certa": false
+      },
+      {
+       "texto": "be have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I need to get my passport [renewed].",
+     "opcoes": [
+      {
+       "texto": "renew",
+       "certa": false
+      },
+      {
+       "texto": "renewing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The system had been updated before the problem started.",
+       "certa": true
+      },
+      {
+       "texto": "The system had updated before the problem started by them.",
+       "certa": false
+      },
+      {
+       "texto": "The system has been update before the problem.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"O cliente reclamou.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The client complained.",
+       "certa": true
+      },
+      {
+       "texto": "The client claimed.",
+       "certa": false
+      },
+      {
+       "texto": "The client reclaimed.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 3). Complete: \"We can lower the price, provided that you ___ today.\"",
+     "opcoes": [
+      {
+       "texto": "sign",
+       "certa": true
+      },
+      {
+       "texto": "will sign",
+       "certa": false
+      },
+      {
+       "texto": "would sign",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 3). Which is the most tentative?",
+     "opcoes": [
+      {
+       "texto": "I'm afraid that might be difficult for us.",
+       "certa": true
+      },
+      {
+       "texto": "That's impossible.",
+       "certa": false
+      },
+      {
+       "texto": "No.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 2). \"Até sexta, teremos reparado tudo.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "By Friday, we'll have repaired everything.",
+       "certa": true
+      },
+      {
+       "texto": "Until Friday, we'll have repaired everything.",
+       "certa": false
+      },
+      {
+       "texto": "By Friday, we'll repaired everything.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "O meu carro está a ser reparado esta semana.",
+     "resposta": "My car is being repaired this week.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. The disk was replaced this morning, the setting has been switched back on, and the recording has been tested.",
+     "enunciado": "Has the recording been tested?",
+     "opcoes": [
+      {
+       "texto": "Yes, it has.",
+       "certa": true
+      },
+      {
+       "texto": "No, it hasn't.",
+       "certa": false
+      },
+      {
+       "texto": "It's being tested now.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a time you complained. How was it handled, and what should have been done?",
+     "frase": "should have been",
+     "resposta": "Last year, a hotel in Benguela gave my room to someone else. I complained at reception, and I was told to wait. After two hours, I was given a smaller room. I should have been called before I arrived, and some compensation should have been offered.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A client is angry because a delivery is late. Show empathy, give an update with the passive, and confirm the next step.",
+     "frase": "being",
+     "resposta": "I completely understand why you're upset, and I'm sorry. Your order has been shipped, and it's being cleared at customs now. It'll be delivered on Thursday. I'll call you on Wednesday afternoon with an update.",
+     "contexto": "Empatia e ponto de situação."
+    }
+   ]
+  }
+ ]
+}
