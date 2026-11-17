@@ -437,7 +437,7 @@ As regras dos níveis anteriores mantêm-se, com três acrescentos **[I]**:
 | Concluiu o B1.2 na plataforma | B2.1, unidade 1 |
 | Resultado B2 no teste de nível da primeira entrada | B2.1, unidade 1 |
 | Já domina o que o B2.1 ensina (relativas explicativas, apresentações, negociação, todas as passivas, previsões), mas não os modais no passado alargados, os verbos de relato nem os condicionais mistos | Faz o teste de colocação no B2.2; se passar, começa no B2.2 |
-| Resultado C1 ou acima | C1 (plano por escrever) |
+| Resultado C1 ou acima | C1 ([06-plano-C1.md](06-plano-C1.md)) |
 
 **Teste de colocação no B2.2** **[I]:** 15 perguntas sobre as unidades 1 a 5 do B2 (do banco dos questionários) e uma conversa curta com o tutor (o ensaio da revisão 1 do B2). Quem passar começa no B2.2 sem certificado do B2.1.
 
