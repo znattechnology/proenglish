@@ -7,10 +7,10 @@ Leitura completa dos 6 guiões, das 7 lições do laboratório, dos 2 cenários 
 | # | Aula / ficheiro | Problema | Correcção |
 |---|---|---|---|
 | 1 | Todas as fichas | Palavras-alvo que não aparecem na aula (*pitch, priority, investment*; *contribution, misunderstanding, insist*; *retain, loyalty, alternative, practical*; *stakeholder*; *payback, condition*). | Trocadas pelas que as aulas usam (*set up, run, countries*; *on the ground, fly in, midnight*; *competitor, retention, common practice, spare parts*; *running costs, review*); o vocabulário do README acompanha. |
-| 2 | 1A, 1C, 1F | A reciclagem anunciava estruturas que as aulas não usam: as relativas (1A), *I take your point* (1C — o Nuno diz *That's a fair point*), as condições do B2 3A e as perguntas difíceis do B2 2D (1F). | 1A: só *What worries me is…*; 1C: só a concessão do B2 7A; 1F: os números aproximados, o 1.º condicional ("If the travel costs don't fall, we stop") e *I can live with that* (B2 R1B), que o Hendrik usa. |
+| 2 | 1A, 1C, 1F | A reciclagem anunciava estruturas que as aulas não usam: as relativas (1A), *I take your point* (1C — o Nuno diz *That's a fair point*), as condições do B2 3A e as perguntas difíceis do B2 2D (1F). | 1A: só *What worries me is…*; 1C: só a concessão do B2 7A; 1F: os números aproximados, o 1.º condicional ("If the travel costs don't fall, we stop") e *I can live with that* (B2 R1B), que o David usa. |
 | 3 | 1D (ficha) | A ficha marcava o acento contrastivo com maiúsculas (*the TRAINING*), contra a regra dos guiões. | "com o acento em 'training' ou em 'hub' — marcado por indicação, sem maiúsculas". |
 
-Já corrigido ao escrever (registado aqui para os professores): as contas do retorno do centro, que não incluíam o custo de funcionamento (as deslocações de 2029 passaram de 310 000 para 500 000 dólares, para que as contas batam: a metade, paga-se em ano e meio; a um terço, em três anos); o *A pilot I can live with* do Hendrik (*fronting*, unidade 8); a lista de países do centro (seis, incluindo a África do Sul, como no diapositivo); e quatro opções erradas que eram inglês correcto noutro contexto (*I'll give you that*, *turn that over*, *preoccupation*, *That's a just point*).
+Já corrigido ao escrever (registado aqui para os professores): as contas do retorno do centro, que não incluíam o custo de funcionamento (as deslocações de 2029 passaram de 310 000 para 500 000 dólares, para que as contas batam: a metade, paga-se em ano e meio; a um terço, em três anos); o *A pilot I can live with* do David (*fronting*, unidade 8); a lista de países do centro (seis, incluindo a África do Sul, como no diapositivo); e quatro opções erradas que eram inglês correcto noutro contexto (*I'll give you that*, *turn that over*, *preoccupation*, *That's a just point*).
 
 ## Confirmado sem alterações
 
@@ -21,3 +21,10 @@ Já corrigido ao escrever (registado aqui para os professores): as contas do ret
 - **Opções erradas:** nas clivadas e no *do* enfático, as opções erradas são agramaticais (*What we need it's*, *the thing what*, *did helped*, *which they*); nas perguntas de atitude, o enunciado diz qual se procura ("the most professional").
 - **Escutas:** as 17 têm uma só voz, dizem quem fala e contêm a resposta.
 - **Laboratório:** 93 exercícios, validado com `pratica_formato.validar` (0 erros); os cenários do tutor usam o nível C1, que a plataforma aceita.
+
+## Correcção posterior (durante a revisão da unidade 2)
+
+| # | Aula / ficheiro | Problema | Correcção |
+|---|---|---|---|
+| 4 | Todas (1C, 1F, laboratório, README) | O director financeiro da Mopane já existe: é o **David Nkosi**, sul-africano, desde o B1 8F (aprovou o orçamento do projecto do Lobito). A unidade tinha inventado outro, o "Hendrik Botha". | Passa a ser o David Nkosi, com a mesma personalidade céptica; a ficha de personagens diz de onde vem. |
+| 5 | 1F e laboratório | O director-geral chamava-se "Dr Lindani Mokoena" — o mesmo apelido da Thandi (Thandi Mokoena, desde o A1, unidade 2). | Dr Lindani **Mthembu**. |

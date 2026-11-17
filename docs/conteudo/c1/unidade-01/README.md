@@ -48,7 +48,7 @@ No fim da unidade, o aluno consegue:
 
 ## A história
 
-Janeiro de 2030. O Nuno começou na Mopane, em Joanesburgo, e quer criar um centro de formação regional, inspirado nos seis técnicos do Tômbwa. Na segunda, 14, conta a ideia à Thandi, agora a sua chefe (1A); na quarta, 16, corrige a Lindiwe — não foram as antenas, foram as pessoas — e a Inês, de Maputo, conta que é a ela que os clientes ligam à meia-noite (1B); na sexta, 18, o Rajesh faz de director financeiro (1C); na quinta, 24, o Nuno vê três *pitches* numa competição de *start-ups* em Braamfontein (1E); na quinta, 31, defende a proposta diante do Dr Mokoena e do Hendrik Botha, apresenta o inquérito às equipas de Angola e Moçambique e consegue um projecto-piloto de um ano, com revisão em Dezembro (1F).
+Janeiro de 2030. O Nuno começou na Mopane, em Joanesburgo, e quer criar um centro de formação regional, inspirado nos seis técnicos do Tômbwa. Na segunda, 14, conta a ideia à Thandi, agora a sua chefe (1A); na quarta, 16, corrige a Lindiwe — não foram as antenas, foram as pessoas — e a Inês, de Maputo, conta que é a ela que os clientes ligam à meia-noite (1B); na sexta, 18, o Rajesh faz de director financeiro (1C); na quinta, 24, o Nuno vê três *pitches* numa competição de *start-ups* em Braamfontein (1E); na quinta, 31, defende a proposta diante do Dr Mthembu e do David Nkosi, apresenta o inquérito às equipas de Angola e Moçambique e consegue um projecto-piloto de um ano, com revisão em Dezembro (1F).
 
 ## O que falta para publicar
 

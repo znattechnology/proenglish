@@ -1173,7 +1173,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "I'm Hendrik Botha. Two hundred and forty thousand dollars, Mr Kapinga. Plus ninety thousand a year.",
+     "frase": "I'm David Nkosi. Two hundred and forty thousand dollars, Mr Kapinga. Plus ninety thousand a year.",
      "enunciado": "How much would the hub cost to set up?",
      "opcoes": [
       {
@@ -1213,8 +1213,8 @@
     },
     {
      "tipo": "escuta",
-     "frase": "I'm Hendrik Botha. I can live with a pilot. With a review in December, and real numbers.",
-     "enunciado": "What does Hendrik accept?",
+     "frase": "I'm David Nkosi. I can live with a pilot. With a review in December, and real numbers.",
+     "enunciado": "What does David accept?",
      "opcoes": [
       {
        "texto": "a pilot with a review in December",
@@ -1425,8 +1425,8 @@
     },
     {
      "tipo": "escuta",
-     "frase": "This is Dr Mokoena. Then let's approve the pilot. Thandi, can you bring a detailed plan by the end of February?",
-     "enunciado": "What does Dr Mokoena decide?",
+     "frase": "This is Dr Mthembu. Then let's approve the pilot. Thandi, can you bring a detailed plan by the end of February?",
+     "enunciado": "What does Dr Mthembu decide?",
      "opcoes": [
       {
        "texto": "to approve the pilot",

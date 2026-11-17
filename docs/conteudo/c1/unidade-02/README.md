@@ -1,6 +1,6 @@
 # C1.1 · Unidade 2 — Diplomacy (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 2
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 2
 
 ## Objectivos da unidade
 
@@ -52,6 +52,6 @@ Fevereiro de 2030. O Nuno herda um projecto atrasado: um sistema de monitorizaç
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (18 escutas, 7 pronúncias, a 2E com três vozes e ruído de aeroporto); imagens (o *e-mail* do Nuno, a escala de certeza, a carta da Mussiro); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (18 escutas, 7 pronúncias, a 2E com três vozes e ruído de aeroporto); imagens (o *e-mail* do Nuno, a escala de certeza, a carta da Mussiro); carregamento na plataforma.
 
 A seguir vem a **unidade 3, "Strategy"**.

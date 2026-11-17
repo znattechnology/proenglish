@@ -31,9 +31,9 @@ Objectivo da unidade a que serve: 1
 Gramática-alvo: It would appear / seem that…; There seems / appears to be…; sujeito + seem / appear + to
   (have) + particípio (The forms seem to have been incomplete.); tend to; arguably; to some / a certain
   extent; I'm inclined to think…; would de distância (I would suggest…, I would say…)
-Palavras-alvo: delay, paperwork, customs, container, supplier, fault, apologise, draft, realistic,
+Palavras-alvo: delay, paperwork, customs, container, supplier, fault, apologise, control, realistic,
   in writing
-Reciclagem: modais de dedução no passado (B2, 6); clivadas (C1, 1A)
+Reciclagem: modais de dedução no passado (B2, 6)
 Pronúncia: o ritmo mais lento e o tom calmo de uma frase atenuada
 Contexto: segunda-feira, 4 de Fevereiro de 2030, 9:00; o gabinete da Thandi; o Nuno mostra-lhe o rascunho
   de um e-mail para a Mussiro Energia
@@ -142,7 +142,7 @@ Gramática-alvo: escala de certeza: I'm certain / (fairly / reasonably) confiden
   There's a good / fair / slim chance (that)…; It's (highly / somewhat) unlikely (that)…; I'd be surprised
   if + passado (I'd be surprised if it took more than ten days.); I wouldn't rule it out; I doubt (that)…
 Palavras-alvo: release, installation, rainy season, estimate, realistic, worst case, chance, rule out,
-  confirm, corrected forms
+  certificate, corrected forms
 Reciclagem: 2A; be bound to / be likely to (B2, 5)
 Pronúncia: o acento nos advérbios que graduam a certeza (fairly, highly, slim)
 Contexto: quarta-feira, 6 de Fevereiro, 11:00; uma chamada de vídeo com a Inês, em Maputo; o Bongani na sala
@@ -245,8 +245,8 @@ Gramática-alvo: recusar: I'm afraid we're not in a position to…; I'm afraid t
   agreed / my authority); I'd rather not…; That's not something we can agree to; dar a alternativa: What we
   can do is…; What I can offer is…; adiar: I'll need to check with…, Let me come back to you on that;
   amortecer: I appreciate that…, I understand your position, but…
-Palavras-alvo: account manager, air freight, warranty, shipment, at your cost, appreciate, authority, cover,
-  firm, goodwill
+Palavras-alvo: air freight, warranty, shipment, at your cost, appreciate, cover, supply problem,
+  preferred supplier, not ideal, come back to
 Reciclagem: clivadas (C1, 1A: What we can do is…); negociar com condições (B2, 3)
 Pronúncia: "I'm afraid" com tom descendente e suave, sem pausa longa antes do "no"
 Contexto: sexta-feira, 8 de Fevereiro, 15:00; chamada de vídeo entre o Nuno e a Clare Whitlock, da
@@ -346,7 +346,7 @@ Gramática-alvo: eufemismos e o seu sentido real (challenging = difícil, mau; a
   provavelmente não; going forward = a partir de agora; let someone go = despedir); adjectivos "suaves"
   (a little, slightly, somewhat, not entirely)
 Palavras-alvo: challenging, issue, not ideal, slight, going forward, bear in mind, let go, review,
-  stakeholder, transparent
+  convinced, reminder
 Reciclagem: atenuação (2A); certeza (2B); recusas (2C)
 Pronúncia: a entoação descendente-ascendente (It's possible… ; In theory… ; Usually…) que sugere "mas"
 Falsos amigos: gentle (≠ gentil → kind, polite; gentle = suave, delicado, brando); ingenuous (≠ engenhoso →
@@ -459,7 +459,7 @@ Verificação: Lab 2E
 
 [ECRÃ: chamada 1, 9:30 — Graham Ashworth, investidor, Londres]
 **ASHWORTH:** Mr Kapinga, thank you for sending the proposal for the training hub. I read it with great interest. It's a very brave proposal.
-**NUNO:** Thank you. Do you think your fund might invest?
+**NUNO:** Thank you. Do you think your fund might co-finance the full hub, after the pilot?
 **ASHWORTH:** Well. It's possible… I'm not sure the committee would be entirely comfortable with the risk at this stage. Perhaps we could revisit it in a year or two, when the pilot has some results.
 **NUNO:** I see. Thank you for being honest.
 **ASHWORTH:** Not at all. Do keep me informed.
@@ -474,15 +474,15 @@ Verificação: Lab 2E
 [ECRÃ: chamada 3, 16:00 — Tumelo, jurista da Mopane, do outro lado do corredor]
 **TUMELO:** Nuno, it's Tumelo from legal. I've read your draft letter to Mussiro. Interesting.
 **NUNO:** Interesting good, or interesting bad?
-**TUMELO:** With the greatest respect, I'd question whether paragraph three is a good idea. You say you "guarantee" the end of April.
+**TUMELO:** With the greatest respect, I'd question whether paragraph three is a good idea. You say Mopane accepts "full responsibility" for the delay.
 **NUNO:** I wanted to reassure them.
-**TUMELO:** I appreciate that. But "guarantee" is a legal word. If it rains in Nampula, it's also an expensive word. You might want to have another look.
+**TUMELO:** I appreciate that. But "full responsibility" is a legal phrase. If they go to court, it's also an expensive phrase — and it isn't even true: the paperwork and the supplier were part of it. You might want to have another look.
 **NUNO:** I'll change it today.
 **TUMELO:** Wonderful. That's all. [pausa] Oh, and the rest is fine. Mostly.
 
 [ECRÃ: Ashworth — "a very brave proposal", "not entirely comfortable", "revisit it in a year or two" = não vai investir agora · Achieng — "quite ambitious", "bear it in mind" = o preço é demasiado alto; mas convida a uma nova proposta: ainda há hipótese · Tumelo — "with the greatest respect, I'd question…", "you might want to have another look" = está errado; mude isso]
 
-**PROF:** The most negative? Ashworth: his "no" is polite — but it's a no, at least for now. Achieng says "too expensive" — but she opens a door. Tumelo says "you're wrong" — about one word.
+**PROF:** The most negative? Ashworth: his "no" is polite — but it's a no, at least for now. Achieng says "too expensive" — but she opens a door. Tumelo says "you're wrong" — about one phrase.
 [PAUSA 5 s]
 
 ### 3. Segunda escuta: os pormenores (3 min)
@@ -491,8 +491,8 @@ Verificação: Lab 2E
 2. What does Ashworth think of the risk? (His committee wouldn't be comfortable with it. ✓ / It's very low. / He didn't read the proposal.)
 3. What does Achieng like about the offer? (the technical side ✓ / the price / the delivery date)
 4. When does Achieng want the new version? (before the twenty-eighth ✓ / today / in a year)
-5. Which word in Nuno's letter worries Tumelo? ("guarantee" ✓ / "apologise" / "realistic")
-6. Why is that word a problem, according to Tumelo? (It's a legal word, and it could be expensive if it rains. ✓ / It's rude. / It's spelled wrong.)
+5. Which phrase in Nuno's letter worries Tumelo? ("full responsibility" ✓ / "we apologise" / "the end of April")
+6. Why is that phrase a problem, according to Tumelo? (It's a legal phrase that could be expensive in court, and it isn't fully true. ✓ / It's rude. / It's too informal.)
 
 *(Cada resposta repete-se; depois aparecem as perguntas, com 8 s para responder.)*
 
@@ -530,8 +530,8 @@ Objectivo da aula: No fim, o aluno consegue conduzir uma conversa delicada com u
   dar e propor um compromisso; e resumir em inglês uma carta formal escrita em português.
 Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: atenuação, graus de certeza, recusas diplomáticas e alternativas
-Palavras-alvo: terminate, penalty clause, compensation, handover, on site, worst case, goodwill, weekly
-  report, in writing, reassure
+Palavras-alvo: terminate, reserve the right, penalty clause, in full, handover, on site, substation,
+  predecessor, weekly report, in writing
 Reciclagem: clivadas (C1, 1); desculpas formais (B2, 4); concessão (B2, 7)
 Pronúncia: tom calmo diante de um cliente zangado; "I'm afraid" descendente; a descendente-ascendente
 Mediação: o Nuno resume à Thandi, em inglês, a carta formal da Mussiro Energia, escrita em português

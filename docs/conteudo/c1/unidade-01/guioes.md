@@ -8,7 +8,7 @@ Guiões para o professor de IA. Conteúdo original da ProEnglish. Convenções: 
 
 **Nomes de empresas e lugares:** a Mopane Systems, a Kalandula Tech e a Morro Azul Energia são fictícias, como o centro de formação proposto, a competição de *start-ups* da 1E e as três empresas que nela se apresentam. Joanesburgo, Sandton e Braamfontein existem.
 
-**Personagens:** **Nuno** (Project Lead para a África Austral na Mopane, em Joanesburgo, desde 7 de Janeiro de 2030 — B2 10G); **Thandi** (agora chefe do Nuno, Head of Projects); **Rajesh** (Mopane, custos, de Durban — B2 1E); **Bongani** e **Lindiwe** (Mopane — B2 1E). Novos e fictícios: **Dr Lindani Mokoena** (sul-africano, director-geral da Mopane); **Hendrik Botha** (sul-africano, director financeiro, céptico); **Inês Macuácua** (moçambicana, engenheira no escritório de Maputo, ligada por vídeo); na 1E, três fundadores de *start-ups* — **Thato** (sul-africana), **Kwabena** (ganês) e **Elena** (portuguesa, a viver em Joanesburgo) — e uma jurada, **Ms Dube**.
+**Personagens:** **Nuno** (Project Lead para a África Austral na Mopane, em Joanesburgo, desde 7 de Janeiro de 2030 — B2 10G); **Thandi** (agora chefe do Nuno, Head of Projects); **Rajesh** (Mopane, custos, de Durban — B2 1E); **Bongani** e **Lindiwe** (Mopane — B2 1E); **David Nkosi** (sul-africano, director financeiro da Mopane desde o B1 8F, onde aprovou o orçamento do projecto do Lobito; céptico). Novos e fictícios: **Dr Lindani Mthembu** (sul-africano, director-geral da Mopane); **Inês Macuácua** (moçambicana, engenheira no escritório de Maputo, ligada por vídeo); na 1E, três fundadores de *start-ups* — **Thato** (sul-africana), **Kwabena** (ganês) e **Elena** (portuguesa, a viver em Joanesburgo) — e uma jurada, **Ms Dube**.
 
 **A história:** Janeiro de 2030. O Nuno chegou a Joanesburgo; a central do Tômbwa abriu no fim de 2029 e os seis técnicos formados pela Kalandula fazem a manutenção (B2 3F, R1A). O Nuno quer convencer a Mopane a criar um **centro de formação regional** em Joanesburgo. Na segunda, 14, conta a ideia à Thandi (1A); na quarta, 16, explica à equipa porque o Tômbwa correu bem (1B); na sexta, 18, o Rajesh faz de advogado do diabo (1C); na quinta, 24, o Nuno vê uma competição de *start-ups* (1E); na quinta, 31, apresenta a proposta à direcção (1F).
 
@@ -62,7 +62,7 @@ Verificação: Lab 1A; perguntas 1 e 2 do questionário da unidade 1
 **NUNO:** Rajesh checked it. What I'm proposing is simple: two-week courses, sixty technicians a year, theory online first, then practice here, in a real lab.
 **THANDI:** And the cost?
 **NUNO:** About two hundred and forty thousand to set it up, and ninety thousand a year to run.
-**THANDI:** Hendrik will hate that number.
+**THANDI:** David will hate that number.
 **NUNO:** I know. All I'm asking for is half an hour with the board to make the case.
 **THANDI:** [sorri] Then make it a very good half hour. The board meets on the thirty-first.
 
@@ -265,7 +265,7 @@ Verificação: Lab 1C; conversa guiada "Convince me"; perguntas 5 e 6 do questio
 
 [ECRÃ: sexta-feira, 18 de Janeiro, 16:00; o gabinete do Nuno; o Rajesh de pé, com um café, a sorrir]
 
-**RAJESH:** OK, I'm Hendrik now. Ready to be destroyed?
+**RAJESH:** OK, I'm David now. Ready to be destroyed?
 **NUNO:** Go ahead.
 **RAJESH:** Two hundred and forty thousand dollars, Mr Kapinga. Why should we spend that in a difficult year?
 **NUNO:** That's a fair point — it's a lot of money. But consider this: last year, we spent five hundred thousand on travel. If the hub halves that, it pays for itself in about a year and a half — after the running costs.
@@ -275,7 +275,7 @@ Verificação: Lab 1C; conversa guiada "Convince me"; perguntas 5 e 6 do questio
 **NUNO:** If I understand you correctly, your concern is cost again. The reason why it should be here is the lab: our equipment, our engineers, our spare parts are all in Joburg. Moving all that to six countries would cost much more.
 **RAJESH:** Last one. Why not do it all online? It's the twenty-first century.
 **NUNO:** You're right that the theory works online — that's exactly why the first part is online. But you can't learn to repair a radio link on a screen. What these technicians need is two weeks of hands-on practice.
-**RAJESH:** [pausa] OK, Hendrik is impressed. Annoyed, but impressed.
+**RAJESH:** [pausa] OK, David is impressed. Annoyed, but impressed.
 **NUNO:** Ha! Any advice?
 **RAJESH:** Don't argue with every point. Agree with the true part first — then hit him with the numbers.
 
@@ -524,8 +524,8 @@ Reciclagem: números aproximados (B2, 2E); 1.º condicional (B1); I can live wit
 Pronúncia: a ideia em destaque com pausa e acento; a concessão com tom descendente
 Mediação: o Nuno apresenta à direcção, em inglês, os resultados de um inquérito feito em português às
   equipas de Angola e Moçambique
-Contexto: quinta-feira, 31 de Janeiro, 10:00; a sala da direcção da Mopane; o Dr Lindani Mokoena, o Hendrik
-  Botha e a Thandi; o Nuno de pé
+Contexto: quinta-feira, 31 de Janeiro, 10:00; a sala da direcção da Mopane; o Dr Lindani Mthembu, o David
+  Nkosi e a Thandi; o Nuno de pé
 Duração: 14 min
 Verificação: Lab 1F; conversa livre "The sceptical director"
 ```
@@ -536,31 +536,31 @@ Verificação: Lab 1F; conversa livre "The sceptical director"
 
 ### 2. Situação (6 min)
 
-[ECRÃ: quinta-feira, 31 de Janeiro, 10:00; a sala da direcção, no último andar; o Dr Mokoena à cabeceira; o Hendrik Botha com os braços cruzados; a Thandi; o Nuno de pé, ao lado de um ecrã: "One hub. Six countries. Three hours instead of two days."]
+[ECRÃ: quinta-feira, 31 de Janeiro, 10:00; a sala da direcção, no último andar; o Dr Mthembu à cabeceira; o David Nkosi com os braços cruzados; a Thandi; o Nuno de pé, ao lado de um ecrã: "One hub. Six countries. Three hours instead of two days."]
 
-**MOKOENA:** Mr Kapinga, welcome. Thandi says you have something for us.
-**NUNO:** Thank you, Dr Mokoena. In one sentence: what this region needs is technicians who can fix things themselves — and a place to train them. [pausa] At Tômbwa, in Angola, six local technicians were trained before the plant opened. The average response time to a fault went from two days to about three hours. It wasn't new equipment that did that — it was training.
+**MTHEMBU:** Mr Kapinga, welcome. Thandi says you have something for us.
+**NUNO:** Thank you, Dr Mthembu. In one sentence: what this region needs is technicians who can fix things themselves — and a place to train them. [pausa] At Tômbwa, in Angola, six local technicians were trained before the plant opened. The average response time to a fault went from two days to about three hours. It wasn't new equipment that did that — it was training.
 **NUNO:** What I'm proposing is a regional training hub here in Joburg: sixty technicians a year from six countries, two-week courses, theory online first, then practice in our lab.
-**MOKOENA:** And the people themselves — do they want it?
+**MTHEMBU:** And the people themselves — do they want it?
 **NUNO:** They do. We asked them. The survey is in Portuguese, because we sent it to Angola and Mozambique — let me give you the results.
 
 [ECRÃ: o inquérito, em português: "Inquérito às equipas técnicas de Angola e Moçambique — 48 respostas. Querem formação certificada: 85%. Esperam por um engenheiro de fora pelo menos uma vez por mês: 70%. Maior dificuldade: 'não há formação prática perto de nós' (61%); 'o equipamento muda depressa' (27%). Comentário frequente: 'Aprendemos a resolver os problemas sozinhos, mas sem certificado ninguém confia em nós.'"]
 
 **NUNO:** Forty-eight people answered. Eighty-five percent want certified training. Seventy percent wait for an engineer from outside at least once a month. And their biggest difficulty — for almost two thirds — is that there's no practical training near them. One comment sums it up: "We learn to solve problems on our own, but without a certificate, nobody trusts us."
-**BOTHA:** Very moving. Now the numbers. Two hundred and forty thousand dollars, Mr Kapinga. Plus ninety thousand a year. In a difficult year.
+**NKOSI:** Very moving. Now the numbers. Two hundred and forty thousand dollars, Mr Kapinga. Plus ninety thousand a year. In a difficult year.
 **NUNO:** That's a fair point — it is a lot of money. But consider this: last year, we spent about five hundred thousand dollars on flights and hotels for engineers outside South Africa. If the hub cuts that by half, it pays for itself in about a year and a half, running costs included. Even if it only cuts it by a third, it pays for itself in about three years.
-**BOTHA:** "If." And when we've trained them, they'll go and work for our competitors.
+**NKOSI:** "If." And when we've trained them, they'll go and work for our competitors.
 **NUNO:** I'll grant you that some will. But let me turn that around: what happens if we don't train anyone? We keep flying engineers in, and our clients keep waiting two days. And there's a simple answer to the risk: a two-year retention clause in the client contracts. It's common practice.
-**BOTHA:** Hmm. And why here? Luanda or Maputo would be cheaper.
+**NKOSI:** Hmm. And why here? Luanda or Maputo would be cheaper.
 **NUNO:** If I understand you correctly, your concern is cost. The reason why it should be here is that the lab, the spare parts and our best engineers are all in Joburg. Building that in six places would cost six times more.
-**BOTHA:** [pausa] I don't like spending money. You know that.
+**NKOSI:** [pausa] I don't like spending money. You know that.
 **NUNO:** I do know that. That's why I'm not asking for the full amount. All I'm asking for is a one-year pilot: thirty technicians, half the running cost, and a review in December. If the travel costs don't fall, we stop.
-**MOKOENA:** Hendrik?
-**BOTHA:** [longa pausa] I can live with a pilot. With a review in December — and real numbers, not "ifs".
-**MOKOENA:** Then let's approve the pilot. Thandi, can you and Mr Kapinga bring a detailed plan by the end of February?
+**MTHEMBU:** David?
+**NKOSI:** [longa pausa] I can live with a pilot. With a review in December — and real numbers, not "ifs".
+**MTHEMBU:** Then let's approve the pilot. Thandi, can you and Mr Kapinga bring a detailed plan by the end of February?
 **THANDI:** We will.
 **NUNO:** Thank you. You won't regret it.
-[ECRÃ: no corredor, a Thandi sorri para o Nuno: "Terrific. Hendrik never says yes in the first meeting."]
+[ECRÃ: no corredor, a Thandi sorri para o Nuno: "Terrific. David never says yes in the first meeting."]
 
 ### 3. Como se defende uma proposta diante de uma direcção céptica (2 min 30 s)
 
@@ -576,7 +576,7 @@ Verificação: Lab 1F; conversa livre "The sceptical director"
 | 6. Voltar ao argumento | The reason why… is that… | The reason why it should be here is that the lab… is in Joburg. |
 | 7. Baixar o pedido, sem perder a ideia | All I'm asking for is… | All I'm asking for is a one-year pilot. |
 
-**PROF:** Notice the last move. Nuno knows Hendrik won't approve two hundred and forty thousand dollars in the first meeting. So he makes the request smaller — a pilot, with a stop condition — without giving up the idea. And "All I'm asking for is…" makes it sound modest.
+**PROF:** Notice the last move. Nuno knows David won't approve two hundred and forty thousand dollars in the first meeting. So he makes the request smaller — a pilot, with a stop condition — without giving up the idea. And "All I'm asking for is…" makes it sound modest.
 [PAUSA 6 s]
 
 **A mediação**

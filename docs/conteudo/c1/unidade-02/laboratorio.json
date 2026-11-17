@@ -460,7 +460,7 @@
      "frase": "I'm afraid we're not in a [position] to pay for that.",
      "opcoes": [
       {
-       "texto": "situation",
+       "texto": "post",
        "certa": false
       },
       {
@@ -838,7 +838,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "This is Thandi. It's been a challenging year, and I'm afraid the budget has been reduced. Going forward, we'll focus on the website.",
+     "frase": "This is Ms Mahlangu, the director. It's been a challenging year, and I'm afraid the budget has been reduced. Going forward, we'll focus on the website.",
      "enunciado": "What will the team focus on from now on?",
      "opcoes": [
       {
@@ -965,19 +965,19 @@
     },
     {
      "tipo": "escuta",
-     "frase": "I'm Tumelo, from legal. With the greatest respect, I'd question whether paragraph three is a good idea. You say you guarantee the end of April.",
-     "enunciado": "Which word in Nuno's letter worries Tumelo?",
+     "frase": "I'm Tumelo, from legal. With the greatest respect, I'd question whether paragraph three is a good idea. You say Mopane accepts full responsibility for the delay.",
+     "enunciado": "Which phrase in Nuno's letter worries Tumelo?",
      "opcoes": [
       {
-       "texto": "guarantee",
+       "texto": "full responsibility",
        "certa": true
       },
       {
-       "texto": "apologise",
+       "texto": "we apologise",
        "certa": false
       },
       {
-       "texto": "realistic",
+       "texto": "the end of April",
        "certa": false
       }
      ],
@@ -985,11 +985,11 @@
     },
     {
      "tipo": "escuta",
-     "frase": "This is Tumelo. Guarantee is a legal word. If it rains in Nampula, it's also an expensive word.",
-     "enunciado": "Why is \"guarantee\" a problem, according to Tumelo?",
+     "frase": "This is Tumelo. Full responsibility is a legal phrase. If they go to court, it's also an expensive phrase, and it isn't even true.",
+     "enunciado": "Why is \"full responsibility\" a problem, according to Tumelo?",
      "opcoes": [
       {
-       "texto": "It's a legal word, and it could be expensive if it rains.",
+       "texto": "It could be expensive in court, and it isn't fully true.",
        "certa": true
       },
       {
@@ -997,7 +997,7 @@
        "certa": false
       },
       {
-       "texto": "It's spelled wrong.",
+       "texto": "It's too informal.",
        "certa": false
       }
      ],
