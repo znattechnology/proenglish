@@ -32,7 +32,8 @@ Gramática-alvo: provided / providing that e as long as (= só se); unless (= if
   (= imagine que…, e se…?); in case (por precaução); os quatro condicionais revistos (0: if it rains, the
   link fails; 1.º: if they sign, we'll start; 2.º: if they asked, we'd say; 3.º: if we had known, we'd have
   …); depois de provided that / as long as / unless / in case: presente para o futuro
-Palavras-alvo: price, discount, deposit, penalty, limit, condition, terms, upfront, delay, bottom line
+Palavras-alvo: price, deposit, penalty, limit, maximum, delay, fault, papers, fortune, off the record,
+  bottom line
 Reciclagem: 2.º e 3.º condicional (B1, 4A e 10A); future perfect (B2, 2C)
 Pronúncia: provided that e as long as ditos como um bloco, sem pausa no meio
 Contexto: quarta-feira, 18 de Outubro de 2028, 15:00; o gabinete da Sílvia; a Sílvia, o Paulo e o Nuno
@@ -152,8 +153,8 @@ Gramática-alvo: would, could, might para suavizar (We'd be prepared to… That 
   That might be difficult for us.); perguntas indirectas e tentativas (Would you consider…? Could you
   possibly…? Would it be possible to…?); o passado contínuo de cortesia (We were hoping for… I was
   wondering if…); amortecedores (I'm afraid… To be honest… With respect…)
-Palavras-alvo: subject to, terms, position, flexible, consider, possibly, wonder, prepared to, with
-  respect, reasonable
+Palavras-alvo: subject to, figure, deposit, position, consider, wonder, prepared to, with respect,
+  reasonable, suit
 Reciclagem: perguntas indirectas (B1, 1B); 2.º condicional (B1, 4A)
 Pronúncia: subida no fim de uma proposta (Would you consider twenty percent?) e voz suave em
   "I'm afraid…"
@@ -262,8 +263,8 @@ Gramática-alvo: concessões condicionais (If you could…, we could… · We co
   · on condition that…); meio-termo (Let's meet halfway. Shall we split the difference?); recusar (I'm
   afraid that's as far as we can go. That's our final offer.); fechar (So, do we have a deal? It's a deal.
   Let me sum up what we've agreed.)
-Palavras-alvo: quote, rate, per truck, load, shipment, discount, final offer, meet halfway, split the
-  difference, deal, in writing
+Palavras-alvo: quote, per truck, shipment, border, insurance, in advance, final offer, meet halfway,
+  split the difference, deal, in writing
 Reciclagem: provided that, unless (3A); linguagem tentativa (3B)
 Pronúncia: descida firme em "That's as far as we can go."
 Contexto: terça-feira, 31 de Outubro, 11:00; videochamada; o Nuno, em Luanda, e o Moses Haufiku, da
@@ -476,7 +477,7 @@ Verificação: Lab 3E
 
 [ECRÃ: quarta-feira, 1 de Novembro, 21:00; o Nuno no sofá, com auscultadores; no telemóvel: "Give and Take — Episode 14: The market and the boardroom"]
 
-**PROF:** First: in each negotiation, who gets a better deal?
+**PROF:** First: what is the final deal in each negotiation?
 
 [ECRÃ: 1 — Um mercado em Lusaca, sábado de manhã: o Chanda, de férias em casa, compra tecidos para a irmã]
 

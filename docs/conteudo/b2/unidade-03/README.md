@@ -1,6 +1,6 @@
 # B2.1 · Unidade 3 — Negotiating (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 3
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 3
 
 ## Objectivos da unidade
 
@@ -53,6 +53,6 @@ Outubro e início de Novembro de 2028. Na quarta, 18, a Hannah diz ao Nuno que a
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 3E com ruído de mercado e quatro vozes); imagens (a cotação dos camiões, a carta do Sr. Baptista em português); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 3E com ruído de mercado e quatro vozes); imagens (a cotação dos camiões, a carta do Sr. Baptista em português); carregamento na plataforma.
 
 A seguir vem a **unidade 4, "Client care"**.

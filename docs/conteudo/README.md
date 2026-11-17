@@ -62,7 +62,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [b1/revisao-2/](b1/revisao-2/README.md) | B1.2, revisão 2 e exame oral: guiões, laboratório, ensaio com o tutor, questionário, o guião e as situações do exame, e revisão aula a aula. |
 | [b2/unidade-01/](b2/unidade-01/README.md) | B2.1, unidade 1 "Leading a team": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b2/unidade-02/](b2/unidade-02/README.md) | B2.1, unidade 2 "Presentations": guiões, laboratório, tutor, questionário e revisão aula a aula. |
-| [b2/unidade-03/](b2/unidade-03/README.md) | B2.1, unidade 3 "Negotiating": guiões, laboratório, tutor e questionário. |
+| [b2/unidade-03/](b2/unidade-03/README.md) | B2.1, unidade 3 "Negotiating": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.
