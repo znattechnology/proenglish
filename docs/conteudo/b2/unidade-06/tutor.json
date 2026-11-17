@@ -1,0 +1,141 @@
+{
+ "unidade": "B2.2 · Unit 6 — Health, safety and environment",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "b2-u6-guiada",
+   "nome": "B2 Unit 6 · What went wrong?",
+   "tipo": "guiada",
+   "depois_da_aula": "6C",
+   "descricao": "O tutor é Sam, responsável de segurança, que descreve três pequenos acidentes (uma escada que caiu, um cheiro a queimado na sala dos servidores, um carro da empresa com um pneu rebentado) e pede ao aluno que especule sobre as causas com graus de certeza, diga o que devia ter sido feito e o que estava previsto.",
+   "papel_tutor": "Sam, responsável de segurança de uma empresa, calmo e curioso.",
+   "nivel": "B2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "It must have been…",
+    "It may / might have been…",
+    "It can't have been…",
+    "It was supposed to…",
+    "It should have been…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an upper-intermediate learner (B2.2, unit 6). You are Sam (a neutral name; never mention a husband or wife), the safety officer of a company. Describe three small incidents, one at a time, with two or three clues each, and ask the student what may have caused it: (1) a ladder fell in the warehouse on Monday afternoon; the floor had just been cleaned; the ladder is ten years old; (2) there was a smell of burning in the server room at night; the air conditioning was supposed to be serviced last month; a new server was installed on Friday; (3) a company car had a burst tyre on the road to Benguela; the driver says he checked the tyres; the car had driven 500 km on a dirt road the day before. For each one, ask: what must, may or can't have happened; what was supposed to happen; and what should have been done. Add one new clue if the student is too sure. If the student says \"mustn't have\", recast once with \"can't have\". If the student says \"it must have damaged\" for a passive meaning, recast once with \"it must have been damaged\". Use any A1, A2, B1 and B2.1 language, plus B2 unit 6: needn't have / didn't need to, was supposed to / be meant to, and speculation about the past (may / might / could / must / can't have, also passive and continuous). Speak at natural speed. Do NOT use: \"whereas / while (for contrast) / admittedly / even if / even though / nevertheless\", reporting verbs like suggest, insist, deny, warn or advise, the reporting passive, \"wish / if only\", \"would\" for past habits, the past perfect continuous, or mixed conditionals. Short turns, one question at a time; never more than three sentences.",
+    "primeira_fala": "Hi, {nome}. I'm Sam, from safety. I've had three strange little incidents this week, and I'd like your opinion. First: on Monday afternoon, a ladder fell in the warehouse. Luckily, nobody was on it. What do you think happened?",
+    "primeira_fala_simples": "Hi, {nome}. A ladder fell in the warehouse on Monday. Why do you think it fell?",
+    "guiao": [
+     "Interesting. One more clue: the floor had just been cleaned. Does that change your idea?",
+     "Second incident: on Wednesday night, there was a smell of burning in the server room. What may have caused it?",
+     "The air conditioning was supposed to be serviced last month. What should have been done?",
+     "Third: a company car had a burst tyre on the road to Benguela. The driver says he checked the tyres. What do you think?",
+     "Thanks, {nome}. You think like a safety officer!"
+    ],
+    "frases": [
+     {
+      "en": "The ladder must have slipped on the wet floor.",
+      "pt": "A escada deve ter escorregado no chão molhado."
+     },
+     {
+      "en": "The new server may have been too hot for the room.",
+      "pt": "O servidor novo pode ter aquecido demasiado a sala."
+     },
+     {
+      "en": "The driver can't have checked the tyres after the dirt road.",
+      "pt": "O condutor não pode ter verificado os pneus depois da estrada de terra."
+     },
+     {
+      "en": "The air conditioning was supposed to be serviced last month.",
+      "pt": "O ar condicionado devia ter tido manutenção no mês passado."
+     },
+     {
+      "en": "It should have been checked before the trip.",
+      "pt": "Devia ter sido verificado antes da viagem."
+     }
+    ],
+    "palavras": [
+     "must have",
+     "may have",
+     "can't have",
+     "supposed to",
+     "should have been",
+     "cause"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": null
+  },
+  {
+   "slug": "b2-u6-livre",
+   "nome": "B2 Unit 6 · Safety inspection",
+   "tipo": "livre",
+   "depois_da_aula": "6F",
+   "descricao": "O tutor é Robin, inspector de segurança exigente. O aluno explica um incidente (o seu, ou um proposto: num armazém, uma palete caiu de uma prateleira alta; um empilhador estava a trabalhar sem ajudante; ninguém ficou ferido) e as medidas tomadas. O tutor faz perguntas sobre os factos, as causas, o que estava previsto, as responsabilidades e o que não era preciso ter sido feito, e só aceita respostas que separam factos de suposições.",
+   "papel_tutor": "Robin, inspector de segurança exigente mas justo.",
+   "nivel": "B2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I'll start with the facts, then the causes, then the measures.",
+    "It was supposed to…",
+    "It must / may have…",
+    "I can't say for sure, so I'd rather not guess.",
+    "We needn't have… / We didn't need to…"
+   ],
+   "extras": {
+    "brief": "Role-play for an upper-intermediate learner (B2.2, unit 6). You are Robin (a neutral name; never mention a husband or wife), a demanding but fair safety inspector. The student must report an incident. If the student has none, give one: in a warehouse, a pallet fell from a high shelf onto the floor during the night shift; a forklift driver was working alone, without the helper the rules require; nobody was hurt; some boxes of water were damaged. Ask, one question at a time: what happened, exactly (facts only); what was supposed to happen (the rule); what may or must have caused it; who was responsible for checking; what should have been done; whether anything was done afterwards that wasn't necessary; and what measures are in place now. If the student mixes facts and guesses, or is too sure without evidence, ask: \"Do you know that, or are you guessing?\". Praise an honest \"I can't say for sure\". Push once on responsibility (\"So whose fault was it?\") and accept an answer that explains causes without blaming one person unfairly. At the end, say whether the measures are enough and why. Use any A1, A2, B1 and B2.1 language, plus B2 unit 6: needn't have / didn't need to, was supposed to / be meant to, and speculation about the past (may / might / could / must / can't have, also passive and continuous). Speak at natural speed. Do NOT use: \"whereas / while (for contrast) / admittedly / even if / even though / nevertheless\", reporting verbs like suggest, insist, deny, warn or advise, the reporting passive, \"wish / if only\", \"would\" for past habits, the past perfect continuous, or mixed conditionals. Short turns; never more than three sentences at a time.",
+    "primeira_fala": "Good morning, {nome}. I'm Robin, from the safety inspectorate. I've read that you had an incident last week. Could you tell me exactly what happened — the facts first, please?",
+    "primeira_fala_simples": "Good morning, {nome}. Please tell me about the incident. Facts first.",
+    "guiao": [
+     "Thank you. What was supposed to happen? What does the rule say?",
+     "And what do you think caused it?",
+     "Do you know that, or are you guessing?",
+     "So whose fault was it?",
+     "Was anything done afterwards that, looking back, wasn't necessary?",
+     "What measures are in place now?",
+     "Thank you, {nome}. I think those measures are reasonable. I'll come back in a month to check."
+    ],
+    "frases": [
+     {
+      "en": "I'll start with the facts. At about two in the morning, a pallet fell from the top shelf.",
+      "pt": "Começo pelos factos. Por volta das duas da manhã, uma palete caiu da prateleira de cima."
+     },
+     {
+      "en": "The driver was supposed to work with a helper.",
+      "pt": "O condutor devia trabalhar com um ajudante."
+     },
+     {
+      "en": "The pallet may have been placed badly.",
+      "pt": "A palete pode ter sido mal colocada."
+     },
+     {
+      "en": "I can't say for sure, so I'd rather not guess.",
+      "pt": "Não posso dizer com certeza, por isso prefiro não adivinhar."
+     },
+     {
+      "en": "We needn't have stopped the whole warehouse; only one aisle was affected.",
+      "pt": "Não precisávamos de ter parado o armazém todo; só um corredor foi afectado."
+     }
+    ],
+    "palavras": [
+     "facts",
+     "supposed to",
+     "may have",
+     "must have",
+     "needn't have",
+     "measures"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Separa os factos das suposições, e começa pelos factos.",
+    "Diz o que estava previsto ou era a regra com was supposed to / be meant to.",
+    "Especula sobre as causas com graus de certeza (must / may / might / can't have, também na passiva e no contínuo), e admite quando não sabe.",
+    "Explica o que devia ter sido feito (should have been…) e o que não era preciso (needn't have / didn't need to), sem culpar alguém de forma injusta.",
+    "Descreve medidas concretas para o futuro, e fala pelo menos uma vez 1 minuto ou mais sem ajuda.",
+    "É compreendido sem o tutor ter de pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

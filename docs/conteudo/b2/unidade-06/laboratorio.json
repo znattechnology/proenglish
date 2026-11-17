@@ -1,0 +1,1463 @@
+{
+ "unidade": "B2.2 · Unit 6 — Health, safety and environment",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "6A",
+   "titulo": "We needn't have worried",
+   "aula": "6A",
+   "objectivo": "Distinguir needn't have done de didn't need to do.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We needn't have [booked] the extra hotel nights.",
+     "opcoes": [
+      {
+       "texto": "book",
+       "certa": false
+      },
+      {
+       "texto": "to book",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We didn't need to [pay] the customs agent.",
+     "opcoes": [
+      {
+       "texto": "paid",
+       "certa": false
+      },
+      {
+       "texto": "paying",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [needn't have] taken my umbrella. It didn't rain.",
+     "opcoes": [
+      {
+       "texto": "didn't need",
+       "certa": false
+      },
+      {
+       "texto": "needn't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Hannah was worried about the road. She needn't have [been].",
+     "opcoes": [
+      {
+       "texto": "be",
+       "certa": false
+      },
+      {
+       "texto": "being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Não precisávamos de ter reservado o hotel.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "We needn't have booked the hotel.",
+       "certa": true
+      },
+      {
+       "texto": "We didn't need booking the hotel.",
+       "certa": false
+      },
+      {
+       "texto": "We needn't to have booked the hotel.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"We needn't have cooked so much food.\" Did they cook a lot?",
+     "opcoes": [
+      {
+       "texto": "Yes, and it was more than necessary.",
+       "certa": true
+      },
+      {
+       "texto": "No, they cooked nothing.",
+       "certa": false
+      },
+      {
+       "texto": "No, because it was not necessary.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I didn't need to take a taxi — Paulo gave me a lift.\" Did the speaker take a taxi?",
+     "opcoes": [
+      {
+       "texto": "No.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, and it was a waste.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, twice.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence means \"it was done, but it was not necessary\"?",
+     "opcoes": [
+      {
+       "texto": "We needn't have called the fire brigade.",
+       "certa": true
+      },
+      {
+       "texto": "We didn't need to call the fire brigade.",
+       "certa": false
+      },
+      {
+       "texto": "We don't need to call the fire brigade.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Não foi preciso pagar ao despachante.",
+     "resposta": "We didn't need to pay the customs agent.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. We needn't have booked the extra hotel nights in Ondjiva. That's three nights we paid for nothing.",
+     "enunciado": "What did Nuno pay for that was not necessary?",
+     "opcoes": [
+      {
+       "texto": "three hotel nights in Ondjiva",
+       "certa": true
+      },
+      {
+       "texto": "a customs agent",
+       "certa": false
+      },
+      {
+       "texto": "a second crane",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. I called the builders this morning, when the truck left the border, so they didn't rent the second crane.",
+     "enunciado": "Why didn't the builders rent a second crane?",
+     "opcoes": [
+      {
+       "texto": "Paulo told them the truck was on time.",
+       "certa": true
+      },
+      {
+       "texto": "The crane was too expensive.",
+       "certa": false
+      },
+      {
+       "texto": "The crane was broken.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "We needn't have booked the hotel.",
+     "enunciado": "Ouça e repita: \"needn't have\" curto, com o acento em \"needn't\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a time you worried or prepared too much (an exam, a trip, a meeting or a visit). What did you do that you needn't have done, and what didn't you need to do in the end?",
+     "frase": "needn't have",
+     "resposta": "Last year, my boss from Johannesburg visited our office. I stayed until midnight preparing forty slides. I needn't have bothered: she only wanted to talk over coffee. I needn't have bought a new suit either! In the end, I didn't need to present anything.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it better to prepare too much or too little? Why?",
+     "frase": "because",
+     "resposta": "Too much, I think, because when you're well prepared, you're calmer, although you don't use everything. But there's a limit: forty slides for a coffee is too much!",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "6B",
+   "titulo": "It was supposed to be ready",
+   "aula": "6B",
+   "objectivo": "Falar do que estava previsto e não aconteceu com was supposed to e be meant to, e de regras.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The bases were [supposed] to be finished on Monday.",
+     "opcoes": [
+      {
+       "texto": "suppose",
+       "certa": false
+      },
+      {
+       "texto": "supposing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The cement was [meant] to arrive last week.",
+     "opcoes": [
+      {
+       "texto": "mean",
+       "certa": false
+      },
+      {
+       "texto": "meaning",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You're supposed [to wear] a helmet everywhere on the site.",
+     "opcoes": [
+      {
+       "texto": "wear",
+       "certa": false
+      },
+      {
+       "texto": "wearing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The road was supposed to [be done] by February.",
+     "opcoes": [
+      {
+       "texto": "done",
+       "certa": false
+      },
+      {
+       "texto": "been done",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A estrada devia estar pronta em Fevereiro\" (era o plano, e não está). Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The road was supposed to be ready in February.",
+       "certa": true
+      },
+      {
+       "texto": "The road supposed to be ready in February.",
+       "certa": false
+      },
+      {
+       "texto": "The road was suppose to be ready in February.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"He's not supposed to be in the unloading area.\" This means…",
+     "opcoes": [
+      {
+       "texto": "It's against the rules, but he's there.",
+       "certa": true
+      },
+      {
+       "texto": "He's never in the unloading area.",
+       "certa": false
+      },
+      {
+       "texto": "He has to be in the unloading area.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence only reports the plan, without blaming anyone?",
+     "opcoes": [
+      {
+       "texto": "The bases were supposed to be ready on Monday.",
+       "certa": true
+      },
+      {
+       "texto": "The bases should have been ready on Monday.",
+       "certa": false
+      },
+      {
+       "texto": "The builders failed with the bases.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Visitors are supposed to sign in at the gate.\" This is…",
+     "opcoes": [
+      {
+       "texto": "a rule",
+       "certa": true
+      },
+      {
+       "texto": "a plan that failed",
+       "certa": false
+      },
+      {
+       "texto": "a prediction",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "O voo devia sair às nove, mas saiu à uma.",
+     "resposta": "The flight was supposed to leave at nine, but it left at one.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Hannah. The cement was meant to arrive last week, but the supplier sent it to Namibe city by mistake.",
+     "enunciado": "Why is the cement late?",
+     "opcoes": [
+      {
+       "texto": "It was sent to Namibe city by mistake.",
+       "certa": true
+      },
+      {
+       "texto": "The road was closed.",
+       "certa": false
+      },
+      {
+       "texto": "The supplier had no cement.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. You're supposed to wear a helmet everywhere on this site!",
+     "enunciado": "What is the rule?",
+     "opcoes": [
+      {
+       "texto": "Wear a helmet everywhere on the site.",
+       "certa": true
+      },
+      {
+       "texto": "Wear a helmet only near the crane.",
+       "certa": false
+      },
+      {
+       "texto": "Sign in at the gate.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The bases were supposed to be finished on Monday.",
+     "enunciado": "Ouça e repita: \"supposed to\" sem o \"d\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of a plan that went wrong (a trip, a party, a project, a delivery). What was supposed to happen, what actually happened, and one rule people don't always follow where you work or study.",
+     "frase": "supposed to",
+     "resposta": "My cousin's wedding was supposed to start at three. The band was meant to arrive at two, but they got stuck in traffic, and the food came at nine instead of six. At my office, we're supposed to leave our desks clean every evening, but almost nobody does.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Why do people break safety rules, even when they know them?",
+     "frase": "because",
+     "resposta": "Mostly because they're in a hurry, or because nothing bad has happened before. People think: I've done it a hundred times. The problem is that the hundred-and-first time can be the accident.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "6C",
+   "titulo": "It may have been the wind",
+   "aula": "6C",
+   "objectivo": "Especular sobre as causas de um acidente com may / might / could / must / can't have, na passiva e no contínuo.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The sling must have [been] damaged before yesterday.",
+     "opcoes": [
+      {
+       "texto": "be",
+       "certa": false
+      },
+      {
+       "texto": "being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He can't have been [watching] the wind.",
+     "opcoes": [
+      {
+       "texto": "watched",
+       "certa": false
+      },
+      {
+       "texto": "watch",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Someone [must] have left the drums there after refuelling.",
+     "opcoes": [
+      {
+       "texto": "mustn't",
+       "certa": false
+      },
+      {
+       "texto": "must to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The operator [may] not have known how strong the wind was.",
+     "opcoes": [
+      {
+       "texto": "would to",
+       "certa": false
+      },
+      {
+       "texto": "must to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Ele não pode ter visto o vento.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "He can't have seen the wind.",
+       "certa": true
+      },
+      {
+       "texto": "He mustn't have seen the wind.",
+       "certa": false
+      },
+      {
+       "texto": "He can't saw the wind.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The sling must have been worn for weeks.",
+       "certa": true
+      },
+      {
+       "texto": "The sling must have worn for weeks by someone.",
+       "certa": false
+      },
+      {
+       "texto": "The sling must been worn for weeks.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It could have killed them.\" Did anyone die?",
+     "opcoes": [
+      {
+       "texto": "No — it was possible, but it did not happen.",
+       "certa": true
+      },
+      {
+       "texto": "Yes.",
+       "certa": false
+      },
+      {
+       "texto": "We do not know.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is the most certain?",
+     "opcoes": [
+      {
+       "texto": "Someone must have left the drums there.",
+       "certa": true
+      },
+      {
+       "texto": "Someone may have left the drums there.",
+       "certa": false
+      },
+      {
+       "texto": "Someone might have left the drums there.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Podiam estar com pressa.",
+     "resposta": "They could have been rushing.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. Look at this sling. It's worn on one side. It must have been damaged before yesterday.",
+     "enunciado": "What does Paulo think about the sling?",
+     "opcoes": [
+      {
+       "texto": "It was damaged before the accident.",
+       "certa": true
+      },
+      {
+       "texto": "It was new.",
+       "certa": false
+      },
+      {
+       "texto": "It broke because of the diesel.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. My anemometer showed gusts of fifty-two kilometres an hour at ten thirty. Our limit is forty.",
+     "enunciado": "What was the strongest wind at ten thirty?",
+     "opcoes": [
+      {
+       "texto": "fifty-two kilometres an hour",
+       "certa": true
+      },
+      {
+       "texto": "forty kilometres an hour",
+       "certa": false
+      },
+      {
+       "texto": "twenty-five kilometres an hour",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "He can't have been watching the wind.",
+     "enunciado": "Ouça e repita: \"can't have been\" curto, com o acento em \"can't\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about an accident or a near miss you saw or heard about. What may have caused it, and what should have been done?",
+     "frase": "may have",
+     "resposta": "Last month, a taxi hit a motorbike near my house. Nobody was badly hurt. The driver must have been looking at his phone. The motorbike may have been going too fast, too. It can't have been the road: it was dry. The driver should have been stopped by the police long ago.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "After an accident, is it more important to find out what happened or who is responsible? Why?",
+     "frase": "because",
+     "resposta": "What happened, because if you only look for someone to blame, people hide their mistakes. When you understand the causes, you can change the rules and prevent the next accident.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "6D",
+   "titulo": "Risk and the environment",
+   "aula": "6D",
+   "objectivo": "Vocabulário de segurança e ambiente, colocações, grupos consonânticos; prevent e precise.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "near miss",
+       "b": "quase-acidente"
+      },
+      {
+       "a": "hazard",
+       "b": "perigo, fonte de risco"
+      },
+      {
+       "a": "risk assessment",
+       "b": "avaliação de riscos"
+      },
+      {
+       "a": "spill",
+       "b": "derrame"
+      },
+      {
+       "a": "exclusion zone",
+       "b": "zona interdita"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Ruth will [carry] out an inspection on Monday.",
+     "opcoes": [
+      {
+       "texto": "make",
+       "certa": false
+      },
+      {
+       "texto": "do",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "All contractors must comply [with] the safety regulations.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The spill was [contained] by eleven thirty.",
+     "opcoes": [
+      {
+       "texto": "contented",
+       "certa": false
+      },
+      {
+       "texto": "contended",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "An exclusion zone [prevents] accidents.",
+     "opcoes": [
+      {
+       "texto": "previews",
+       "certa": false
+      },
+      {
+       "texto": "warns",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Previne o Paulo de que a grua vem amanhã.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Let Paulo know that the crane is coming tomorrow.",
+       "certa": true
+      },
+      {
+       "texto": "Prevent Paulo that the crane is coming tomorrow.",
+       "certa": false
+      },
+      {
+       "texto": "Precise Paulo that the crane is coming tomorrow.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: prevent = impedir, evitar."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Precisamos de mais cintas.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "We need more slings.",
+       "certa": true
+      },
+      {
+       "texto": "We precise more slings.",
+       "certa": false
+      },
+      {
+       "texto": "We are precise of more slings.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: precise = exacto."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A worn sling\" is…",
+     "opcoes": [
+      {
+       "texto": "a hazard",
+       "certa": true
+      },
+      {
+       "texto": "a risk assessment",
+       "certa": false
+      },
+      {
+       "texto": "an injury",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence uses \"prevent\" correctly?",
+     "opcoes": [
+      {
+       "texto": "Helmets prevent many head injuries.",
+       "certa": true
+      },
+      {
+       "texto": "Please prevent me before you come.",
+       "certa": false
+      },
+      {
+       "texto": "I prevented him about the wind.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Ruth. A risk assessment must be carried out before every lift, and all contractors must comply with the regulations.",
+     "enunciado": "What must be done before every lift?",
+     "opcoes": [
+      {
+       "texto": "a risk assessment",
+       "certa": true
+      },
+      {
+       "texto": "a toolbox talk",
+       "certa": false
+      },
+      {
+       "texto": "a fire drill",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The risks were assessed. We carried out tests for three months.",
+     "enunciado": "Ouça e repita: todas as consoantes no fim das palavras."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe the main hazards in your workplace, your school or your home, the risks they create, and what is done, or should be done, to reduce them.",
+     "frase": "hazard",
+     "resposta": "In our office, the biggest hazard is the cables under the desks: someone could trip and fall. The generator is another hazard: it's noisy and produces emissions. A risk assessment was carried out last year, but the cables haven't been moved. They should be covered.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should companies pay a fine for every environmental mistake, even small ones? Why?",
+     "frase": "because",
+     "resposta": "Yes, a small fine, because small mistakes become habits. But the money should go to cleaning and training, not just to the government. The aim is to change behaviour.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "6E",
+   "titulo": "Real English: The toolbox talk",
+   "aula": "6E",
+   "objectivo": "Seguir uma conversa de segurança com várias vozes e ruído: riscos, regras e dúvidas.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kgosi. A container fell from three metres, and two of our people were five metres away. Nobody was hurt.",
+     "enunciado": "How far away were the two workers?",
+     "opcoes": [
+      {
+       "texto": "five metres",
+       "certa": true
+      },
+      {
+       "texto": "fifteen metres",
+       "certa": false
+      },
+      {
+       "texto": "fifty metres",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Kgosi. Before every lift, the lift supervisor measures the wind. If it's over forty kilometres an hour, no lift.",
+     "enunciado": "What is the maximum wind speed for a lift?",
+     "opcoes": [
+      {
+       "texto": "forty kilometres an hour",
+       "certa": true
+      },
+      {
+       "texto": "fifty-two kilometres an hour",
+       "certa": false
+      },
+      {
+       "texto": "fifteen kilometres an hour",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kgosi. If the two anemometers don't agree, we use the higher number.",
+     "enunciado": "Which number do they use if the anemometers don't agree?",
+     "opcoes": [
+      {
+       "texto": "the higher number",
+       "certa": true
+      },
+      {
+       "texto": "the lower number",
+       "certa": false
+      },
+      {
+       "texto": "the crane's number",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Kgosi. The exclusion zone is fifteen metres around every lift. Nobody walks in it.",
+     "enunciado": "How big is the exclusion zone?",
+     "opcoes": [
+      {
+       "texto": "fifteen metres around every lift",
+       "certa": true
+      },
+      {
+       "texto": "five metres",
+       "certa": false
+      },
+      {
+       "texto": "fifty metres",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. Every morning, the slings are checked and they get a green tag. No green tag, no lift.",
+     "enunciado": "What does a green tag on a sling mean?",
+     "opcoes": [
+      {
+       "texto": "It was checked that morning.",
+       "certa": true
+      },
+      {
+       "texto": "It is new.",
+       "certa": false
+      },
+      {
+       "texto": "It is for diesel drums.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Kgosi. The drums are only allowed in the fuel area, with the bund: the little wall that keeps a spill inside.",
+     "enunciado": "What is a bund?",
+     "opcoes": [
+      {
+       "texto": "a small wall that keeps a spill inside",
+       "certa": true
+      },
+      {
+       "texto": "a type of crane",
+       "certa": false
+      },
+      {
+       "texto": "a safety vest",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "If you see someone in the exclusion zone, you…",
+     "opcoes": [
+      {
+       "texto": "shout \"Stop!\", and everything stops",
+       "certa": true
+      },
+      {
+       "texto": "call the police",
+       "certa": false
+      },
+      {
+       "texto": "wait until the lift ends",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Why does Kgosi use very short sentences like \"No green tag, no lift\"?",
+     "opcoes": [
+      {
+       "texto": "They are easy to remember with noise around.",
+       "certa": true
+      },
+      {
+       "texto": "He is angry.",
+       "certa": false
+      },
+      {
+       "texto": "He does not speak English well.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "No green tag, no lift.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "If you're not sure, stop and ask.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague missed the toolbox talk. Tell them what happened on Thursday, the new rules, and what to do if they see someone in the exclusion zone.",
+     "frase": "must have",
+     "resposta": "On Thursday, a container fell from a crane, five metres from two technicians. Nobody was hurt, but a worn sling must have broken in strong wind. From today, the wind is measured before every lift, the slings are checked every morning, and if you see someone in the zone, you shout \"Stop!\".",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should everybody on a site have the right to stop the work? Why?",
+     "frase": "because",
+     "resposta": "Yes, because the person who sees the danger is often not the boss. If only managers can stop the work, it might be too late. Of course, people need to use that right seriously.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "6F",
+   "titulo": "Work & Life: The near miss",
+   "aula": "6F",
+   "objectivo": "Relatar um quase-acidente à direcção e resumir em inglês um relatório de inspecção em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Nuno starts his report. The best first sentence:",
+     "opcoes": [
+      {
+       "texto": "I'll start with the facts, then the causes, then the measures.",
+       "certa": true
+      },
+      {
+       "texto": "It wasn't our fault, I think.",
+       "certa": false
+      },
+      {
+       "texto": "The operator is the problem.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The report says: \"Causa directa: rotura de uma cinta de elevação\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "The direct cause was the sling: it broke.",
+       "certa": true
+      },
+      {
+       "texto": "The direct cause was a rupture of an elevation belt.",
+       "certa": false
+      },
+      {
+       "texto": "The direct cause broke the sling.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The report says: \"combustível fora da área com bacia de retenção\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "The fuel was stored outside the bunded area.",
+       "certa": true
+      },
+      {
+       "texto": "The fuel was outside the retention basin area of the bath.",
+       "certa": false
+      },
+      {
+       "texto": "The fuel retained the area outside.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The drums weren't [supposed] to be there.",
+     "opcoes": [
+      {
+       "texto": "suppose",
+       "certa": false
+      },
+      {
+       "texto": "supposing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The sling should have [been] taken out of service.",
+     "opcoes": [
+      {
+       "texto": "be",
+       "certa": false
+      },
+      {
+       "texto": "being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Looking back, we needn't have [closed] the whole site.",
+     "opcoes": [
+      {
+       "texto": "close",
+       "certa": false
+      },
+      {
+       "texto": "closing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I can't say for sure, so I'd rather not [guess].",
+     "opcoes": [
+      {
+       "texto": "to guess",
+       "certa": false
+      },
+      {
+       "texto": "guessing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. The spill was contained by eleven thirty, and the contaminated sand was removed on Friday.",
+     "enunciado": "When was the spill contained?",
+     "opcoes": [
+      {
+       "texto": "by eleven thirty",
+       "certa": true
+      },
+      {
+       "texto": "on Friday",
+       "certa": false
+      },
+      {
+       "texto": "at ten forty",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. If the anemometer had been repaired, the operator would have known the wind was too strong.",
+     "enunciado": "What would the operator have known if the anemometer had been repaired?",
+     "opcoes": [
+      {
+       "texto": "that the wind was too strong",
+       "certa": true
+      },
+      {
+       "texto": "that the sling was worn",
+       "certa": false
+      },
+      {
+       "texto": "that the drums were there",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Ruth. On Thursday, I'd like to see the exclusion zone during a real lift.",
+     "enunciado": "What does Ruth want to see on Thursday?",
+     "opcoes": [
+      {
+       "texto": "the exclusion zone during a real lift",
+       "certa": true
+      },
+      {
+       "texto": "the diesel drums",
+       "certa": false
+      },
+      {
+       "texto": "the protected area",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The sling broke. The operator may have been under pressure.",
+     "enunciado": "Ouça e repita: o facto com a voz firme, a causa possível com a voz mais aberta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Report a near miss to your manager (yours, or a heavy shelf that fell over at night; it was supposed to be fixed to the wall): the facts, the possible causes, what should have been done, and the measures.",
+     "frase": "supposed to",
+     "resposta": "I'll start with the facts. On Tuesday night, the big shelf in the archive fell over. Nobody was hurt. The shelf was supposed to be fixed to the wall, but it wasn't. The screws must have come out. It should have been checked when we moved in. From now on, all shelves will be checked.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise this report in English: \"Inspecção ao armazém, 12/04. Extintores: 2 de 6 fora de validade. Saída de emergência bloqueada por caixas. Recomendações: substituir os extintores esta semana; desimpedir a saída hoje.\"",
+     "frase": "was inspected",
+     "resposta": "The warehouse was inspected on the twelfth of April. Two of the six fire extinguishers were out of date, and the emergency exit was blocked by boxes. The inspector recommends replacing the extinguishers this week and clearing the exit today.",
+     "contexto": "Mediação: a estrutura do relatório, com os termos certos."
+    }
+   ]
+  },
+  {
+   "codigo": "6R",
+   "titulo": "Unit 6 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 6 do B2 e reciclar as unidades 3 a 5 do B2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We needn't have [bought] so much water. Half of it is still here.",
+     "opcoes": [
+      {
+       "texto": "buy",
+       "certa": false
+      },
+      {
+       "texto": "to buy",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The meeting was [supposed] to start at nine.",
+     "opcoes": [
+      {
+       "texto": "suppose",
+       "certa": false
+      },
+      {
+       "texto": "supposing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The door must have [been] left open.",
+     "opcoes": [
+      {
+       "texto": "be",
+       "certa": false
+      },
+      {
+       "texto": "being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She can't have [been] working — her computer was off all day.",
+     "opcoes": [
+      {
+       "texto": "be",
+       "certa": false
+      },
+      {
+       "texto": "being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "We didn't need to call the fire brigade.",
+       "certa": true
+      },
+      {
+       "texto": "We didn't need calling the fire brigade.",
+       "certa": false
+      },
+      {
+       "texto": "We needn't to call the fire brigade yesterday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Precisamos de dados exactos.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "We need precise data.",
+       "certa": true
+      },
+      {
+       "texto": "We precise exact data.",
+       "certa": false
+      },
+      {
+       "texto": "We need prevent data.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 5). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The cement is bound to arrive late.",
+       "certa": true
+      },
+      {
+       "texto": "The cement will bound to arrive late.",
+       "certa": false
+      },
+      {
+       "texto": "The cement bound to arrive late.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 4). \"Está a ser reparado.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "It's being repaired.",
+       "certa": true
+      },
+      {
+       "texto": "It's been repairing.",
+       "certa": false
+      },
+      {
+       "texto": "It's being repair.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 3). Complete: \"We'll lift the container, ___ the wind is under forty.\"",
+     "opcoes": [
+      {
+       "texto": "as long as",
+       "certa": true
+      },
+      {
+       "texto": "unless",
+       "certa": false
+      },
+      {
+       "texto": "in case",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "A cinta devia ter sido retirada de serviço.",
+     "resposta": "The sling should have been taken out of service.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. The bases were supposed to be ready on Monday. Now they'll be ready on Friday, if the cement arrives.",
+     "enunciado": "When will the bases be ready now?",
+     "opcoes": [
+      {
+       "texto": "on Friday, if the cement arrives",
+       "certa": true
+      },
+      {
+       "texto": "on Monday",
+       "certa": false
+      },
+      {
+       "texto": "next month",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about an accident or a near miss you saw or heard about. What may have caused it, and what should have been done?",
+     "frase": "should have",
+     "resposta": "Last year, a ladder fell in our warehouse while a colleague was on it. He only broke his arm. The ladder must have been old, and it may have been on a wet floor. It should have been checked and replaced, and someone should have held it.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your team prepared a lot for a visit that was cancelled. Tell your manager what was supposed to happen, what you needn't have done, and what you didn't need to do.",
+     "frase": "needn't have",
+     "resposta": "The client was supposed to visit on Tuesday, but the visit was cancelled on Monday night. We needn't have printed all the reports, and we needn't have ordered lunch for twenty. At least we didn't need to rent the car — we hadn't booked it yet.",
+     "contexto": "Needn't have e didn't need to."
+    }
+   ]
+  }
+ ]
+}
