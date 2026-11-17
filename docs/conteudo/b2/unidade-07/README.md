@@ -1,6 +1,6 @@
 # B2.2 · Unidade 7 — City life (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 7
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 7
 
 ## Objectivos da unidade
 
@@ -55,6 +55,6 @@ Abril de 2029. O Nuno passa três semanas em Luanda; vive no condomínio "Jardim
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 7E com quatro vozes num estúdio); imagens (o trânsito e a faixa de autocarros, o anúncio do apartamento, o comunicado em português); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 7E com quatro vozes num estúdio); imagens (o trânsito e a faixa de autocarros, o anúncio do apartamento, o comunicado em português); carregamento na plataforma.
 
 A seguir vem a **unidade 8, "Reviews and reactions"**.

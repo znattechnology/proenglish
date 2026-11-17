@@ -26,8 +26,8 @@ Objectivo da unidade a que serve: 2
 Gramática-alvo: whereas / while + frase (contraste entre duas coisas: The bus lane is fast, whereas the
   normal lanes are stuck.); admittedly (concedo que…: Admittedly, it's expensive.); nevertheless / even so
   (mesmo assim, depois de uma concessão); revisão: although, despite, however (B1, 9A)
-Palavras-alvo: traffic, traffic jam, bus lane, rush hour, commute, public transport, taxi, minibus,
-  pollution, road works, solution
+Palavras-alvo: traffic, bus lane, rush hour, commute, public transport, bus line, minibus, condominium,
+  price, crazy
 Reciclagem: although, despite, however (B1, 9A); was supposed to (B2, 6B)
 Pronúncia: admittedly e nevertheless com uma pausa curta a seguir, e a voz a subir na concessão
 Contexto: segunda-feira, 9 de Abril de 2029, 7:40; o carro do Paulo, parado no trânsito; o Paulo e o Nuno
@@ -53,7 +53,7 @@ Verificação: Lab 7A; perguntas 1 e 2 do questionário da unidade 7
 **PAULO:** Fair point. And the price is good, although the buses are full at rush hour.
 **NUNO:** You know what I'd like? A minibus for my condominium. A hundred and twenty families, almost all of us driving to Talatona or to the centre at the same time.
 **PAULO:** That's a nice idea. Admittedly, your neighbours like their cars.
-**NUNO:** I know. Even so, an hour and a half every morning is crazy. I've calculated it: that's about twelve hours a week in the car.
+**NUNO:** I know. Even so, an hour and a half every morning is crazy. I've calculated it: that's about fifteen hours a week in the car.
 **PAULO:** Ouch. Whereas I spend about eight — and I live in Viana!
 **NUNO:** Then you should come to the meeting too!
 **PAULO:** Ha! Despite the traffic, I'm not moving to your condominium. My mother cooks too well.
@@ -131,8 +131,7 @@ Objectivo da unidade a que serve: 2
 Gramática-alvo: even though + facto (Even though Viana is far, I stay.); even if + condição (Even if the rent
   were lower, I'd stay. / Even if it rains, we'll go.); contraste com if; even if com o 1.º e o 2.º
   condicional; as long as / unless (B2, 3A) revistos
-Palavras-alvo: rent, flat, deposit, landlord, move out, share, independent, neighbourhood, distance,
-  housing, afford
+Palavras-alvo: rent, flat, deposit, move out, share, stranger, independent, afford, salary, fuel, retired
 Reciclagem: condicionais 1.º e 2.º (B1, 4A); as long as, unless (B2, 3A)
 Pronúncia: even if e even though com o acento em "even"
 Contexto: quarta-feira, 11 de Abril, 13:00; a cantina; o Paulo conta ao Nuno que está a pensar sair de
@@ -238,9 +237,9 @@ Objectivo da unidade a que serve: 1, 3
 Gramática-alvo: marcadores de argumento (The main point is… First of all… What's more… On top of that…
   For instance… All in all… That's why…); nomes abstractos (quality of life, sustainability, inequality,
   growth, safety, wellbeing, community); concessão dentro do argumento (7A)
-Palavras-alvo: argument, point, reason, evidence, example, conclusion, objection, quality of life,
+Palavras-alvo: argument, point, reason, list, example, conclusion, object (verbo), quality of life,
   sustainability, inequality, community, wellbeing
-Reciclagem: admittedly / nevertheless (7A); marcadores de apresentação (B2, 2A); números aproximados (B2, 2E)
+Reciclagem: admittedly / nevertheless (7A); números aproximados (B2, 2E)
 Pronúncia: subida em cada razão de uma lista e descida na conclusão
 Contexto: sexta-feira, 13 de Abril, 17:00; o gabinete da Lerato; o Nuno ensaia o argumento para a reunião
   de condóminos
@@ -519,7 +518,7 @@ Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: concessão e contraste; even if / even though; marcadores de argumento
 Palavras-alvo: residents' meeting, proposal, minibus, trial, sign up, monthly fee, objection, vote, majority,
   bus lane, road works
-Reciclagem: condições (B2, 3A); previsões (B2, 5A); linguagem tentativa (B2, 3B)
+Reciclagem: condições (B2, 3A); a passiva (B2, 4A); linguagem tentativa (B2, 3B)
 Pronúncia: responder a uma objecção com calma: "I take your point" com a voz a descer e uma pausa
 Mediação: o Nuno explica aos vizinhos, em inglês, um comunicado da administração municipal escrito em
   português (texto fictício, escrito pela ProEnglish)
