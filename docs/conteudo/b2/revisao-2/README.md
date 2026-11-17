@@ -1,6 +1,6 @@
 # B2.2 · Revisão 2 e exame oral
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), "Revisão 2 e exame oral do B2.2"
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), "Revisão 2 e exame oral do B2.2"
 
 ## Objectivo
 
@@ -30,7 +30,6 @@ No fim do B2.2 — e do nível B2 —, o aluno consegue manter uma discussão de
 
 ## O que falta
 
-1. Revisão aula a aula.
-2. **Carregar o exame no curso B2.2** (exame.md, secção 4) — e o do B2.1 ([revisao-1/exame.md](../revisao-1/exame.md)): sem os guiões, os cursos usam o exame geral, que é do B1.
-3. Leitura pelos professores.
-4. Vídeos (vozes: o examinador, a Lurdes, o Nuno, o Paulo e a Elsa já existem), áudio do laboratório e carregamento na plataforma.
+1. **Carregar o exame no curso B2.2** (exame.md, secção 4) — e o do B2.1 ([revisao-1/exame.md](../revisao-1/exame.md)): sem os guiões, os cursos usam o exame geral, que é do B1.
+2. Leitura pelos professores.
+3. Vídeos (vozes: o examinador, a Lurdes, o Nuno, o Paulo e a Elsa já existem), áudio do laboratório e carregamento na plataforma.

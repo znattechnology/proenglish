@@ -88,7 +88,7 @@ Verificação: laboratórios B2R2-1 e B2R2-2; conversa de ensaio; questionário 
 | ~~We needn't to have booked the hotel.~~ | We needn't have booked the hotel. | 6 |
 | ~~It was suppose to be ready on Monday.~~ | It was supposed to be ready on Monday. | 6 |
 | ~~Despite it was late, we kept working.~~ | Although it was late, … / Despite the late hour, … | 7 |
-| ~~Even if he's my boss, he never listens.~~ (é um facto) | Even though he's my boss, he never listens. | 7 |
+| ~~Nevertheless the traffic, I arrived on time.~~ | Despite the traffic, I arrived on time. | 7 |
 | ~~The concert was very fantastic.~~ | The concert was absolutely fantastic. | 8 |
 | ~~a Portuguese small restaurant~~ | a small Portuguese restaurant | 8 |
 | ~~She suggested us to wait.~~ | She suggested waiting. / She suggested that we wait. | 9 |

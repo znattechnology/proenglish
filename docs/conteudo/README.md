@@ -71,7 +71,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [b2/unidade-08/](b2/unidade-08/README.md) | B2.2, unidade 8 "Reviews and reactions": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b2/unidade-09/](b2/unidade-09/README.md) | B2.2, unidade 9 "Mediation at work": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b2/unidade-10/](b2/unidade-10/README.md) | B2.2, unidade 10 "Choices": guiões, laboratório, tutor, questionário e revisão aula a aula. |
-| [b2/revisao-2/](b2/revisao-2/README.md) | B2.2, revisão 2 e exame oral: guiões, laboratório, ensaio com o tutor, questionário, o guião e as situações do exame. |
+| [b2/revisao-2/](b2/revisao-2/README.md) | B2.2, revisão 2 e exame oral: guiões, laboratório, ensaio com o tutor, questionário, o guião e as situações do exame, e revisão aula a aula. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.
