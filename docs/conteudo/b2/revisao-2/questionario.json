@@ -1,0 +1,373 @@
+{
+ "title": "B2.2 Review 2 quiz — Units 6 to 10",
+ "description": "Três perguntas por unidade, das unidades 6 a 10 do B2.",
+ "questions": [
+  {
+   "id": "b2r2q1",
+   "question": "Unidade 6. \"Não precisávamos de ter reservado o hotel.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2r2q1o0",
+     "text": "We needn't have booked the hotel.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q1o1",
+     "text": "We needn't to have booked the hotel.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q1o2",
+     "text": "We didn't need booking the hotel.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q1o0",
+   "explanation": "needn't have + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q2",
+   "question": "Unidade 6. \"A estrada devia estar pronta em Março\" (e não está). Em inglês:",
+   "options": [
+    {
+     "id": "b2r2q2o0",
+     "text": "The road was supposed to be ready in March.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q2o1",
+     "text": "The road was suppose to be ready in March.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q2o2",
+     "text": "The road supposed to be ready in March.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q2o0",
+   "explanation": "was supposed to.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q3",
+   "question": "Unidade 6. \"Ele não pode ter visto o vento.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2r2q3o0",
+     "text": "He can't have seen the wind.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q3o1",
+     "text": "He mustn't have seen the wind.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q3o2",
+     "text": "He can't saw the wind.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q3o0",
+   "explanation": "can't have + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q4",
+   "question": "Unidade 7. Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2r2q4o0",
+     "text": "Although it was late, we kept working.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q4o1",
+     "text": "Despite it was late, we kept working.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q4o2",
+     "text": "Whereas it was late, we kept working.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q4o0",
+   "explanation": "although + frase.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q5",
+   "question": "Unidade 7. \"Embora seja o meu chefe, nunca ouve.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2r2q5o0",
+     "text": "Even though he is my boss, he never listens.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q5o1",
+     "text": "Even if he is my boss, he never listens.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q5o2",
+     "text": "Even he is my boss, he never listens.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q5o0",
+   "explanation": "even though = facto.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q6",
+   "question": "Unidade 7. \"O maior bairro\" em inglês:",
+   "options": [
+    {
+     "id": "b2r2q6o0",
+     "text": "the biggest neighbourhood",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q6o1",
+     "text": "the mayor neighbourhood",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q6o2",
+     "text": "the more big neighbourhood",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q6o0",
+   "explanation": "Falso amigo: mayor.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q7",
+   "question": "Unidade 8. Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2r2q7o0",
+     "text": "The concert was absolutely fantastic.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q7o1",
+     "text": "The concert was very fantastic.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q7o2",
+     "text": "The concert was a bit fantastic.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q7o0",
+   "explanation": "Não graduável: absolutely.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q8",
+   "question": "Unidade 8. Escolha a ordem certa.",
+   "options": [
+    {
+     "id": "b2r2q8o0",
+     "text": "a small Portuguese restaurant",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q8o1",
+     "text": "a Portuguese small restaurant",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q8o2",
+     "text": "a restaurant small Portuguese",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q8o0",
+   "explanation": "tamanho → origem.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q9",
+   "question": "Unidade 8. \"O espectáculo começa às nove.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2r2q9o0",
+     "text": "The show starts at nine.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q9o1",
+     "text": "The spectacle starts at nine.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q9o2",
+     "text": "The spectacles start at nine.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q9o0",
+   "explanation": "Falso amigo: spectacle.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q10",
+   "question": "Unidade 9. \"Ela sugeriu-nos que esperássemos.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2r2q10o0",
+     "text": "She suggested that we wait.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q10o1",
+     "text": "She suggested us to wait.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q10o2",
+     "text": "She suggested to us waiting to.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q10o0",
+   "explanation": "suggest + that / -ing.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q11",
+   "question": "Unidade 9. Complete: \"He denied ___ the delay.\"",
+   "options": [
+    {
+     "id": "b2r2q11o0",
+     "text": "causing",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q11o1",
+     "text": "to cause",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q11o2",
+     "text": "cause",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q11o0",
+   "explanation": "deny + -ing.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q12",
+   "question": "Unidade 9. \"Avisa-me quando chegares.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2r2q12o0",
+     "text": "Let me know when you arrive.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q12o1",
+     "text": "Advise me when you arrive.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q12o2",
+     "text": "Advise me when you will arrive.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q12o0",
+   "explanation": "Falso amigo: advise.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q13",
+   "question": "Unidade 10. \"Quem me dera saber a resposta.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2r2q13o0",
+     "text": "I wish I knew the answer.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q13o1",
+     "text": "I wish I know the answer.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q13o2",
+     "text": "I wish I would know the answer.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q13o0",
+   "explanation": "wish + past simple.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q14",
+   "question": "Unidade 10. Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2r2q14o0",
+     "text": "As a child, I used to be very shy.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q14o1",
+     "text": "As a child, I would be very shy.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q14o2",
+     "text": "As a child, I use to be very shy.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q14o0",
+   "explanation": "Estados: só used to.",
+   "points": 10
+  },
+  {
+   "id": "b2r2q15",
+   "question": "Unidade 10. Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2r2q15o0",
+     "text": "If I hadn't moved, I wouldn't be here now.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2r2q15o1",
+     "text": "If I wouldn't have moved, I wouldn't be here now.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2r2q15o2",
+     "text": "If I didn't move, I wouldn't have been here now.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2r2q15o0",
+   "explanation": "Condicional misto.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

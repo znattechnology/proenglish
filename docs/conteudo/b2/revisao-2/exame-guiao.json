@@ -1,0 +1,91 @@
+{
+ "formato": "CourseGradingConfig.exam_script (apps/practice/conversa/exame.py, validar_guiao); carregar com manage.py carregar_exame_curso",
+ "nivel": "B2",
+ "duracao": "11 to 12 minutes",
+ "max_minutos": 12,
+ "situacoes": 1,
+ "partes": [
+  {
+   "titulo": "Interview",
+   "minutos": "about 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Hello, {nome}. Welcome to your B2.2 speaking exam. Is there anything you wish you had done differently in your studies or your career?",
+     "simples": "Is there anything you wish you had done differently?"
+    },
+    {
+     "pergunta": "What would you change about the place where you live, and why?",
+     "simples": "What would you change in your town?"
+    },
+    {
+     "pergunta": "When you were a child, what would you do at the weekends? How is it different for children now?",
+     "simples": "What did you do at the weekends as a child?"
+    }
+   ]
+  },
+  {
+   "titulo": "Long turn",
+   "minutos": "about 3 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Now please talk for about one and a half minutes. A city wants less plastic waste. Option one: a ban on plastic bags in all shops. Option two: a small deposit on bottles and cans, paid back when people return them. Compare them, and tell me which you would choose and why.",
+     "simples": "Less plastic: ban plastic bags, or pay people to return bottles? Which is better, and why?"
+    },
+    {
+     "pergunta": "Thank you. What might people who prefer the other option say?",
+     "simples": "What would people who disagree with you say?"
+    },
+    {
+     "pergunta": "What would need to happen for your option to work?",
+     "simples": "What is necessary for your idea to work?"
+    }
+   ]
+  }
+ ],
+ "notas": [
+  "Ask one question at a time and wait. Do not correct, teach or give hints during the exam.",
+  "If the student answers with one word or one short sentence, ask Could you say a bit more about that? once per question.",
+  "In Part 2, let the student talk for about one and a half minutes without interrupting. If they stop early, or describe the options without choosing, ask And which would you choose, and why? once.",
+  "If the student does not work, adapt the questions to their studies, their family or their community.",
+  "In the situation, create the difficulty described in it once. The task is not finished until you and the student reach a clear decision; if the student does not close it, ask So, what do we decide?",
+  "After the situation, ask its discussion question. Then give the first opposite view and wait for the answer; then give the second opposite view and wait. This is Part 4 (about 3 minutes).",
+  "If the student says That is an interesting question, That may be true, but..., To some extent..., I see where you are coming from, Sorry, I mean... or asks Do you mean...?, continue normally.",
+  "Use any B1 and B2 language, but no C1 structures such as inversion (Had I known...) or cleft sentences for emphasis."
+ ],
+ "escala": {
+  "tarefa": {
+   "80-100": "Developed arguments with reasons and examples; compares the two options and chooses; carries the situation to a clear decision, including the difficulty; answers both counter-arguments, accepting what is fair and defending the main view.",
+   "60-79": "Answers with some development; compares the options but the choice is short; reaches a decision with some help; answers the counter-arguments, but briefly or by simply repeating the first view.",
+   "40-59": "Short answers; describes without comparing; the situation ends without a real decision; little answer to the counter-arguments.",
+   "0-39": "Answers few questions, or answers in Portuguese."
+  },
+  "gramatica": {
+   "80-100": "A wide range of B2 structures (past modals including passive forms, needn't have and was supposed to, concession with even though or admittedly, reporting verbs with the right patterns, wish, mixed conditionals); mistakes are rare and often self-corrected.",
+   "60-79": "Uses several B2.2 structures with some mistakes (for example suggested us to, or I wish I know), but the meaning is always clear.",
+   "40-59": "Mostly B1 and B2.1 structures; mistakes sometimes make the meaning unclear.",
+   "0-39": "Very few correct sentences."
+  },
+  "vocabulario": {
+   "80-100": "Varied vocabulary and collocations from B2 units 6-10 (safety and risk, the city, culture and reviews, reports and meetings, life choices); precise intensifiers and comment adverbs; paraphrases easily; adapts the register.",
+   "60-79": "Enough vocabulary for the tasks, with some collocations; some pauses to find words; paraphrases some missing words.",
+   "40-59": "Limited vocabulary; repeats the same words; often stops.",
+   "0-39": "Very few words, or many Portuguese words."
+  },
+  "fluencia": {
+   "80-100": "Speaks spontaneously and with ease in long, organised turns; leads the decision task and the debate; few long pauses.",
+   "60-79": "Some long turns; pauses to organise ideas but keeps going; follows the examiner in the task.",
+   "40-59": "Short turns and long pauses; needs help to continue.",
+   "0-39": "Can hardly continue without help."
+  }
+ },
+ "nao_baixa": [
+  "a Portuguese or Angolan accent",
+  "asking the examiner to repeat or to explain a question",
+  "saying That is an interesting question or Let me think to get time before an abstract question",
+  "pauses to organise ideas in the long turn",
+  "paraphrasing a missing word: What I mean is... or In other words...",
+  "correcting yourself with Sorry, I mean...",
+  "disagreeing with the examiner, politely, or accepting part of the examiner's view",
+  "one isolated mistake when the structure is clearly B2"
+ ]
+}

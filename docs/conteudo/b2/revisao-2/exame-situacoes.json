@@ -1,0 +1,86 @@
+{
+ "exame": "B2.2",
+ "formato": "apps/practice/models.py Situacao (situações próprias do exame; extras.exame = true; carregar com manage.py carregar_exame_curso)",
+ "situacoes": [
+  {
+   "slug": "b2-2-exame-incidente",
+   "nome": "B2.2 exam · Report a near miss",
+   "papel_tutor": "The safety manager of the student's company or school.",
+   "descricao": "The examiner is a safety manager. At a school sports day organised by the student's company, a metal goal post fell over in the wind; a child had been standing next to it a minute before; nobody was hurt. The goal post was supposed to be fixed to the ground. The student reports the facts, possible causes with degrees of certainty (must / may / can't have), what should and needn't have been done, and measures. Difficulty: the examiner asks once \"So whose fault was it?\" and does not accept a guess. Decision: agree on two measures. Discussion: Do we worry too much about safety today? Opposite view 1: children need to take some risks to learn. Opposite view 2: every new rule makes things more expensive.",
+   "nivel": "B2",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. I'm the safety manager. I heard that a goal post fell over at the sports day on Saturday. Please tell me what happened."
+   },
+   "frases": [
+    "I'll start with the facts.",
+    "It was supposed to be…",
+    "It must / may have…",
+    "We needn't have… / It should have been…"
+   ]
+  },
+  {
+   "slug": "b2-2-exame-proposta",
+   "nome": "B2.2 exam · Defend a proposal",
+   "papel_tutor": "A sceptical colleague in a meeting at the student's workplace.",
+   "descricao": "The examiner is a sceptical colleague in a staff meeting. The student proposes their own idea, or this one: moving the start of the working day from 7:30 to 9:00, to avoid the worst traffic. The student builds an argument (main point, reasons, an example), concedes weak points (admittedly… even so…) and answers objections. Difficulty: the examiner objects strongly once (Our clients call at eight!). Decision: agree on what to do, for example a trial. Discussion: Should governments pay people to live outside the big cities? Opposite view 1: people should be free to choose where to live. Opposite view 2: jobs, not money, bring people to small towns.",
+   "nivel": "B2",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. We're in a staff meeting, and I'm your colleague. I hear you have a proposal for us. Go ahead — but I warn you, I'm not easy to convince."
+   },
+   "frases": [
+    "The main point is…",
+    "What's more… For instance…",
+    "Admittedly, … Even so, …",
+    "I take your point, but…"
+   ]
+  },
+  {
+   "slug": "b2-2-exame-evento",
+   "nome": "B2.2 exam · Evaluate an event for a sponsor",
+   "papel_tutor": "The sponsor of an event organised by the student.",
+   "descricao": "The examiner is the sponsor of an event the student organised: their own, or a charity football tournament for young people, last weekend, with about 1,200 visitors. It went well, but it rained on Sunday and there were too few toilets; a survey says 78% were satisfied. The student gives a formal, balanced assessment, with precise adjectives and comment adverbs, and a recommendation. Difficulty: the sponsor asks once about a problem the student did not mention (I heard the first aid tent opened late). Decision: agree whether to sponsor it again, and on what condition. Discussion: Should companies sponsor sport and culture, or spend that money on their employees? Opposite view 1: sponsorship is just advertising. Opposite view 2: happy employees matter more than the company's image.",
+   "nivel": "B2",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. I'm the sponsor of your event last weekend, and I'd like your assessment before we decide about next year. How did it go?"
+   },
+   "frases": [
+    "Overall, the event was very well received.",
+    "Unfortunately, …",
+    "Almost four out of five visitors…",
+    "We recommend…, provided that…"
+   ]
+  },
+  {
+   "slug": "b2-2-exame-reuniao",
+   "nome": "B2.2 exam · Brief your director",
+   "papel_tutor": "The student's director, who has very little time.",
+   "descricao": "The examiner is the student's director, who missed a meeting that was held in Portuguese. The student summarises it: their own, or a meeting about moving the company's warehouse to Viana in October, where logistics insisted on a bigger loading area, IT admitted that the network would not be ready until November, and HR warned that six people might leave because of the distance. The student reports with varied reporting verbs, then gives an assessment. Difficulty: the director interrupts once (Too long. The essentials in thirty seconds!). Decision: agree on the next step. Discussion: Will machines one day translate so well that nobody needs to learn languages? Opposite view 1: translation apps are already very good. Opposite view 2: speaking someone's language builds trust that no machine can.",
+   "nivel": "B2",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. I'm your director, and I missed yesterday's meeting about the warehouse. It was in Portuguese. Can you brief me — quickly?"
+   },
+   "frases": [
+    "… insisted on… / … admitted that… / … warned that…",
+    "In short, …",
+    "What worries me is…",
+    "I recommend… / Shall we…?"
+   ]
+  }
+ ]
+}

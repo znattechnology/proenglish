@@ -1,0 +1,82 @@
+{
+ "unidade": "B2.2 · Review 2",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "b2-r2-ensaio",
+   "nome": "B2 Review 2 · Exam rehearsal: the safety audit",
+   "tipo": "livre",
+   "depois_da_aula": "R2B",
+   "descricao": "Ensaio do exame oral do B2.2: o tutor é Quinn, auditor(a) externo(a) de segurança e de recursos humanos. Pergunta pelas escolhas e pela cidade do aluno; pede-lhe que compare duas formas de passar as férias; ouve o relato de um quase-acidente na cozinha do escritório e decide com ele as medidas; no fim, faz uma pergunta abstracta e discorda duas vezes.",
+   "papel_tutor": "Quinn, auditor(a) externo(a) de segurança e de recursos humanos, de visita à empresa do aluno.",
+   "nivel": "B2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I wish I'd…",
+    "The first option… The second, on the other hand,…",
+    "It must / may have… · It was supposed to…",
+    "Shall we go for…? I could live with that.",
+    "That may be true, but… / I see where you're coming from."
+   ],
+   "extras": {
+    "brief": "Exam rehearsal for an upper-intermediate learner (B2.2, units 6-10). You are Quinn (a neutral name; never mention a husband or wife), an external auditor for safety and human resources, visiting the student's company. Have a conversation in four parts, one question at a time. 1) Choices and the city: a choice the student made and whether they wish they had done anything differently; what they would change about where they live; what they would do at weekends as a child. 2) Long turn: ask the student to compare two ways of taking holidays — one long trip a year, or several short breaks — for about one minute and a half, and to choose; then ask what the people who prefer the other option might say. 3) Decision: last week, a microwave in the office kitchen caught fire; a colleague put it out with a fire extinguisher; nobody was hurt; the microwave was old and was supposed to be replaced in January. Ask the student to report it (facts, possible causes, what should and needn't have been done) and agree on two measures with you; disagree once with one measure. 4) Discussion: ask \"Should social media be banned for children under sixteen?\"; whatever the student says, give two different opposite views, one at a time, and wait for an answer to each. If the student answers with one word, ask \"Could you say a bit more about that?\" once. Do not correct during the conversation, except by repeating once, correctly: \"suggested us to\", \"very fantastic\", \"I wish I know\", \"Even if\" for a fact. Use any A1 to B2 language (B2 units 1 to 10). Do NOT use C1 structures: inversion (Had I known…, Never have I…), cleft sentences for emphasis (It was… who…), or systematic hedging (It would seem that…, arguably).",
+    "primeira_fala": "Hello, {nome}. I'm Quinn, the external auditor. Before we look at safety, I'd like to know you a little. Is there any choice in your life or career that you wish you'd made differently?",
+    "primeira_fala_simples": "Hello, {nome}. I'm Quinn. Is there anything you wish you'd done differently?",
+    "guiao": [
+     "I see. And what would you change about the place where you live?",
+     "When you were a child, what would you do at the weekends?",
+     "Now, two ways to take holidays: one long trip a year, or several short breaks. Could you compare them for a minute or so and choose?",
+     "What might people who prefer the other option say?",
+     "Now, the incident in the kitchen last week. Could you tell me what happened, and what may have caused it?",
+     "What should have been done — and was anything done that wasn't necessary?",
+     "I'm not sure about that measure. What else could we do?",
+     "Last question: should social media be banned for children under sixteen?",
+     "Some people say parents, not governments, should decide. What do you think?",
+     "And others say children would just find a way around the ban. How would you answer that?",
+     "Thank you, {nome}. That was a very good conversation."
+    ],
+    "frases": [
+     {
+      "en": "I wish I'd studied abroad when I had the chance.",
+      "pt": "Quem me dera ter estudado no estrangeiro quando tive a oportunidade."
+     },
+     {
+      "en": "Several short breaks are cheaper. A long trip, on the other hand, lets you really rest.",
+      "pt": "Várias férias curtas são mais baratas. Uma viagem longa, por outro lado, deixa-nos descansar a sério."
+     },
+     {
+      "en": "The microwave was supposed to be replaced in January. It must have overheated.",
+      "pt": "O micro-ondas devia ter sido substituído em Janeiro. Deve ter aquecido demais."
+     },
+     {
+      "en": "Shall we go for a new microwave and a short fire training for everyone?",
+      "pt": "Avançamos com um micro-ondas novo e uma formação curta sobre incêndios para todos?"
+     },
+     {
+      "en": "I see where you're coming from. Even so, I think a law would help parents.",
+      "pt": "Percebo o seu ponto de vista. Mesmo assim, acho que uma lei ajudaria os pais."
+     }
+    ],
+    "palavras": [
+     "wish",
+     "on the other hand",
+     "supposed to",
+     "must have",
+     "shall we",
+     "that may be true"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Fala de escolhas e desejos com wish e condicionais mistos, e da infância com would / used to.",
+    "Compara as duas formas de passar férias e escolhe com razões e uma concessão, falando pelo menos 1 minuto sem ajuda.",
+    "Relata o incidente com os modais no passado, was supposed to e needn't have, e chega a um acordo sobre as medidas.",
+    "Na discussão, concede o que é justo e volta à sua posição (That may be true, but… To some extent… Even so…), respondendo aos dois contra-argumentos.",
+    "Usa uma variedade de estruturas e de vocabulário do B2, com erros que não impedem a compreensão.",
+    "É compreendido sem o tutor ter de pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}
