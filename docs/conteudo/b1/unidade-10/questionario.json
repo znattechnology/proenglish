@@ -1,0 +1,301 @@
+{
+ "title": "B1.2 Unit 10 quiz — Lessons learned",
+ "description": "3.º condicional, should have, especular sobre o passado, balanço, esperanças e planos, data e balance.",
+ "questions": [
+  {
+   "id": "b1u10q1",
+   "question": "\"Se tivéssemos esperado, teríamos perdido uma semana.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u10q1o0",
+     "text": "If we had waited, we would have lost a week.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u10q1o1",
+     "text": "If we would have waited, we would have lost a week.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u10q1o2",
+     "text": "If we waited, we will have lost a week.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u10q1o0",
+   "explanation": "if + past perfect, would have + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b1u10q2",
+   "question": "Complete: \"If I had set an alarm, I ___ have missed the flight.\"",
+   "options": [
+    {
+     "id": "b1u10q2o0",
+     "text": "wouldn't",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u10q2o1",
+     "text": "didn't",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u10q2o2",
+     "text": "won't",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u10q2o0",
+   "explanation": "A segunda parte: would (not) have.",
+   "points": 10
+  },
+  {
+   "id": "b1u10q3",
+   "question": "\"Devíamos ter verificado.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u10q3o0",
+     "text": "We should have checked.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u10q3o1",
+     "text": "We should checked.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u10q3o2",
+     "text": "We should to have checked.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u10q3o0",
+   "explanation": "should have + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b1u10q4",
+   "question": "Numa reunião de balanço, a frase mais profissional é…",
+   "options": [
+    {
+     "id": "b1u10q4o0",
+     "text": "We should have checked the room first.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u10q4o1",
+     "text": "You should have checked the room first!",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u10q4o2",
+     "text": "The contractor is the problem.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u10q4o0",
+   "explanation": "\"We\", e factos, não pessoas.",
+   "points": 10
+  },
+  {
+   "id": "b1u10q5",
+   "question": "\"Deve ter sido o cabo.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u10q5o0",
+     "text": "It must have been the cable.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u10q5o1",
+     "text": "It must be the cable yesterday.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u10q5o2",
+     "text": "It must had been the cable.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u10q5o0",
+   "explanation": "Especular sobre o passado: must have + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b1u10q6",
+   "question": "\"Não pode ter sido o tempo.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u10q6o0",
+     "text": "It can't have been the weather.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u10q6o1",
+     "text": "It mustn't have been the weather.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u10q6o2",
+     "text": "It can't be the weather yesterday.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u10q6o0",
+   "explanation": "O contrário de must have é can't have.",
+   "points": 10
+  },
+  {
+   "id": "b1u10q7",
+   "question": "\"Qual é a data da reunião?\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u10q7o0",
+     "text": "What's the date of the meeting?",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u10q7o1",
+     "text": "What's the data of the meeting?",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u10q7o2",
+     "text": "What's the day-data of the meeting?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u10q7o0",
+   "explanation": "Falso amigo: data = dados.",
+   "points": 10
+  },
+  {
+   "id": "b1u10q8",
+   "question": "\"A reunião de balanço\" em inglês:",
+   "options": [
+    {
+     "id": "b1u10q8o0",
+     "text": "the review meeting",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u10q8o1",
+     "text": "the balance meeting",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u10q8o2",
+     "text": "the balancing meeting",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u10q8o0",
+   "explanation": "Falso amigo: balance = equilíbrio, saldo.",
+   "points": 10
+  },
+  {
+   "id": "b1u10q9",
+   "question": "Um bom balanço de projecto tem…",
+   "options": [
+    {
+     "id": "b1u10q9o0",
+     "text": "o que correu bem, o que se faria de outra forma e as recomendações",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u10q9o1",
+     "text": "só os erros e quem os fez",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u10q9o2",
+     "text": "só o que correu bem",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u10q9o0",
+   "explanation": "As três partes do Nuno na 10F.",
+   "points": 10
+  },
+  {
+   "id": "b1u10q10",
+   "question": "Reciclagem (B1, unidade 9). Complete: \"___ the rain, we finished on time.\"",
+   "options": [
+    {
+     "id": "b1u10q10o0",
+     "text": "Despite",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u10q10o1",
+     "text": "Although",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u10q10o2",
+     "text": "However",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u10q10o0",
+   "explanation": "despite + nome.",
+   "points": 10
+  },
+  {
+   "id": "b1u10q11",
+   "question": "Reciclagem (B1, unidade 8). Complete: \"That ___ be right. We didn't buy anything.\"",
+   "options": [
+    {
+     "id": "b1u10q11o0",
+     "text": "can't",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u10q11o1",
+     "text": "mustn't",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u10q11o2",
+     "text": "must",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u10q11o0",
+   "explanation": "Dedução no presente.",
+   "points": 10
+  },
+  {
+   "id": "b1u10q12",
+   "question": "Reciclagem (B1, unidade 7). Lerato: \"Send me the report.\" → \"She told me ___ her the report.\"",
+   "options": [
+    {
+     "id": "b1u10q12o0",
+     "text": "to send",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u10q12o1",
+     "text": "send",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u10q12o2",
+     "text": "sending",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u10q12o0",
+   "explanation": "told + pessoa + to.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

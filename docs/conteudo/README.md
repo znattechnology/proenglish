@@ -57,6 +57,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [b1/unidade-07/](b1/unidade-07/README.md) | B1.2, unidade 7 "Calls and video calls": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b1/unidade-08/](b1/unidade-08/README.md) | B1.2, unidade 8 "Money matters": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b1/unidade-09/](b1/unidade-09/README.md) | B1.2, unidade 9 "Media and opinions": guiões, laboratório, tutor, questionário e revisão aula a aula. |
+| [b1/unidade-10/](b1/unidade-10/README.md) | B1.2, unidade 10 "Lessons learned": guiões, laboratório, tutor e questionário. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.

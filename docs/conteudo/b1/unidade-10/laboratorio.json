@@ -1,0 +1,1310 @@
+{
+ "unidade": "B1.2 · Unit 10 — Lessons learned",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "10A",
+   "titulo": "If we had known…",
+   "aula": "10A",
+   "objectivo": "Imaginar um passado diferente com o 3.º condicional.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If we [had sealed] the duct earlier, there wouldn't have been a fire.",
+     "opcoes": [
+      {
+       "texto": "would seal",
+       "certa": false
+      },
+      {
+       "texto": "sealed",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If Teodoro hadn't done the training, the damage would [have been] much worse.",
+     "opcoes": [
+      {
+       "texto": "be",
+       "certa": false
+      },
+      {
+       "texto": "had been",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If we had paid earlier, we [could] have saved three million.",
+     "opcoes": [
+      {
+       "texto": "can",
+       "certa": false
+      },
+      {
+       "texto": "will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I had set an alarm, I [wouldn't] have missed the flight.",
+     "opcoes": [
+      {
+       "texto": "didn't",
+       "certa": false
+      },
+      {
+       "texto": "won't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Se tivéssemos esperado, teríamos perdido uma semana.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "If we had waited, we would have lost a week.",
+       "certa": true
+      },
+      {
+       "texto": "If we would have waited, we would have lost a week.",
+       "certa": false
+      },
+      {
+       "texto": "If we waited, we will have lost a week.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"If we had checked the room, there wouldn't have been a fire.\" Did they check the room?",
+     "opcoes": [
+      {
+       "texto": "No.",
+       "certa": true
+      },
+      {
+       "texto": "Yes.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, but too late.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is about the past?",
+     "opcoes": [
+      {
+       "texto": "If I had been the leader, I'd have booked an apartment.",
+       "certa": true
+      },
+      {
+       "texto": "If I were the leader, I'd book an apartment.",
+       "certa": false
+      },
+      {
+       "texto": "If I'm the leader, I'll book an apartment.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Se tivéssemos sabido, teríamos esperado.",
+     "resposta": "If we had known, we would have waited.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. If we had waited for customs, the antennas would have arrived after the crane left.",
+     "enunciado": "What would have happened if they had waited for customs?",
+     "opcoes": [
+      {
+       "texto": "The antennas would have arrived too late.",
+       "certa": true
+      },
+      {
+       "texto": "The crane would have stayed longer.",
+       "certa": false
+      },
+      {
+       "texto": "Customs would have been faster.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "If we'd known, we would've waited.",
+     "enunciado": "Ouça e repita: \"would've\" curto."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of an important decision in your life. What happened? If you had made a different decision, what would have happened?",
+     "frase": "If I had",
+     "resposta": "Five years ago, I decided to study accounting in Luanda. If I had stayed in Benguela, I wouldn't have met my wife at university. I might have become a teacher, like my father. I'm happy with my decision.",
+     "contexto": "3.º condicional."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you think it is useful to think about decisions in the past? Why?",
+     "frase": "because",
+     "resposta": "Yes, I think so, because we learn from them. But we shouldn't think about them too much. If I had worried about every decision, I would never have changed jobs.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10B",
+   "titulo": "We should have checked",
+   "aula": "10B",
+   "objectivo": "Lamentar e criticar com should have / shouldn't have, e reagir com tacto.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We should [have checked] the duct before the installation.",
+     "opcoes": [
+      {
+       "texto": "checked",
+       "certa": false
+      },
+      {
+       "texto": "to have checked",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We [shouldn't] have trusted the forecast.",
+     "opcoes": [
+      {
+       "texto": "mustn't",
+       "certa": false
+      },
+      {
+       "texto": "didn't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Maybe we [could] have planned more time.",
+     "opcoes": [
+      {
+       "texto": "can",
+       "certa": false
+      },
+      {
+       "texto": "will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It wasn't only your [fault].",
+     "opcoes": [
+      {
+       "texto": "guilt",
+       "certa": false
+      },
+      {
+       "texto": "blame of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Devíamos ter verificado.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "We should have checked.",
+       "certa": true
+      },
+      {
+       "texto": "We should checked.",
+       "certa": false
+      },
+      {
+       "texto": "We should to have checked.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In a review meeting, which sentence is the most professional?",
+     "opcoes": [
+      {
+       "texto": "We should have checked the room first.",
+       "certa": true
+      },
+      {
+       "texto": "You should have checked the room first!",
+       "certa": false
+      },
+      {
+       "texto": "The contractor is the problem.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I shouldn't have eaten a big lunch.\" It means…",
+     "opcoes": [
+      {
+       "texto": "I ate a big lunch, and it was a mistake.",
+       "certa": true
+      },
+      {
+       "texto": "I didn't eat a big lunch.",
+       "certa": false
+      },
+      {
+       "texto": "I must eat a big lunch.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Não devíamos ter confiado na previsão.",
+     "resposta": "We shouldn't have trusted the forecast.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. We were the project leaders. We should have checked the duct before we installed anything.",
+     "enunciado": "What does Lerato say they should have done?",
+     "opcoes": [
+      {
+       "texto": "checked the duct before the installation",
+       "certa": true
+      },
+      {
+       "texto": "called the contractor",
+       "certa": false
+      },
+      {
+       "texto": "cleaned the roof",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "We should have checked the duct.",
+     "enunciado": "Ouça e repita: \"should've\" curto, com o acento em \"checked\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of a project, a trip or an event that didn't go perfectly. Say two things you should have done, one you shouldn't have done, and one that went well.",
+     "frase": "should have",
+     "resposta": "Last year I organised my sister's wedding party. We should have booked the hall earlier, and we should have asked for help with the food. I shouldn't have invited so many people from work! But the music was fantastic.",
+     "contexto": "Lamentar."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your colleague says: \"The project failed, and it was my fault.\" Answer with tact.",
+     "frase": "could have",
+     "resposta": "It wasn't only your fault. We were a team. Maybe we could have planned more time, and we should have asked the client more questions. Let's write down the lessons for the next project.",
+     "contexto": "Responder com tacto."
+    }
+   ]
+  },
+  {
+   "codigo": "10C",
+   "titulo": "It must have been the cable",
+   "aula": "10C",
+   "objectivo": "Especular sobre o passado com must have / might have / could have / can't have.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The cable is half out of the socket. Someone [must have] kicked it.",
+     "opcoes": [
+      {
+       "texto": "can't have",
+       "certa": false
+      },
+      {
+       "texto": "must",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It [can't have] been the weather. The satellite worked in bigger storms.",
+     "opcoes": [
+      {
+       "texto": "mustn't have",
+       "certa": false
+      },
+      {
+       "texto": "must have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "They [might have] moved the cable when they were cleaning.",
+     "opcoes": [
+      {
+       "texto": "might",
+       "certa": false
+      },
+      {
+       "texto": "must to have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The office is wet. It must have [rained] in the night.",
+     "opcoes": [
+      {
+       "texto": "rain",
+       "certa": false
+      },
+      {
+       "texto": "raining",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Deve ter sido o cabo.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "It must have been the cable.",
+       "certa": true
+      },
+      {
+       "texto": "It must be the cable yesterday.",
+       "certa": false
+      },
+      {
+       "texto": "It must had been the cable.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Não pode ter sido o tempo.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "It can't have been the weather.",
+       "certa": true
+      },
+      {
+       "texto": "It mustn't have been the weather.",
+       "certa": false
+      },
+      {
+       "texto": "It can't be the weather yesterday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is about the past?",
+     "opcoes": [
+      {
+       "texto": "The router must have lost power.",
+       "certa": true
+      },
+      {
+       "texto": "The router must be off.",
+       "certa": false
+      },
+      {
+       "texto": "The router might be broken.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ele pode ter estado a conduzir.",
+     "resposta": "He might have been driving.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Hannah. The radio link went down at three, and the satellite didn't switch on. We were blind for forty minutes.",
+     "enunciado": "How long were they without data?",
+     "opcoes": [
+      {
+       "texto": "forty minutes",
+       "certa": true
+      },
+      {
+       "texto": "four hours",
+       "certa": false
+      },
+      {
+       "texto": "fourteen minutes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It can't have been the weather. Someone must have kicked it.",
+     "enunciado": "Ouça e repita: \"must've\" curto, \"can't\" longo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You arrive at work: the door is open, the lights are on, and there are two coffee cups on your desk. Make four guesses about what happened.",
+     "frase": "must have",
+     "resposta": "The cleaner can't have left the door open — she's very careful. The guard might have come in during the night. Or my manager could have worked late. Two cups mean two people must have been here.",
+     "contexto": "Especular sobre o passado."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it better to find the cause of a problem, or just to fix it quickly? Why?",
+     "frase": "because",
+     "resposta": "Both, but the cause is more important, because the problem can come back. In Namibe, if they had only fixed the satellite, the loose cable might have caused the same problem again.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10D",
+   "titulo": "Reviews and decisions",
+   "aula": "10D",
+   "objectivo": "Palavras e colocações de balanço; esperanças e planos; should've, would've; data e balance.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "outcome",
+       "b": "resultado final"
+      },
+      {
+       "a": "feedback",
+       "b": "comentários, opinião"
+      },
+      {
+       "a": "achievement",
+       "b": "conquista, feito"
+      },
+      {
+       "a": "review",
+       "b": "reunião de balanço"
+      },
+      {
+       "a": "data",
+       "b": "dados"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We made a mistake, but we [learned] a lesson.",
+     "opcoes": [
+      {
+       "texto": "took",
+       "certa": false
+      },
+      {
+       "texto": "did",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We finished on time. We [met] the deadline.",
+     "opcoes": [
+      {
+       "texto": "reached to",
+       "certa": false
+      },
+      {
+       "texto": "did",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm hoping [to] lead the next project.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We took a [risk] with the customs agent, and it worked.",
+     "opcoes": [
+      {
+       "texto": "danger",
+       "certa": false
+      },
+      {
+       "texto": "chance of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Qual é a data da reunião?\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "What's the date of the meeting?",
+       "certa": true
+      },
+      {
+       "texto": "What's the data of the meeting?",
+       "certa": false
+      },
+      {
+       "texto": "What's the day-data of the meeting?",
+       "certa": false
+      }
+     ],
+     "explicacao": "data = dados."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A reunião de balanço é na sexta.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The review meeting is on Friday.",
+       "certa": true
+      },
+      {
+       "texto": "The balance meeting is on Friday.",
+       "certa": false
+      },
+      {
+       "texto": "The balancing meeting is on Friday.",
+       "certa": false
+      }
+     ],
+     "explicacao": "balance = equilíbrio, saldo."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct spelling.",
+     "opcoes": [
+      {
+       "texto": "We should have checked.",
+       "certa": true
+      },
+      {
+       "texto": "We should of checked.",
+       "certa": false
+      },
+      {
+       "texto": "We should off checked.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Ingrid. The feedback from our team is very positive. It's a real achievement.",
+     "enunciado": "How is Morro Azul's feedback?",
+     "opcoes": [
+      {
+       "texto": "very positive",
+       "certa": true
+      },
+      {
+       "texto": "negative",
+       "certa": false
+      },
+      {
+       "texto": "they haven't given it yet",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "We should've checked. It would've been worse. It might've been the cable.",
+     "enunciado": "Ouça e repita as formas fracas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Look back at the last year: your biggest achievement, one lesson you learned, and what you are hoping to do next year.",
+     "frase": "I'm hoping to",
+     "resposta": "My biggest achievement this year was the new client database. We met every deadline, and the feedback was great. The main lesson: ask the users first. Next year, I'm hoping to lead a team, and I'm planning to take a course.",
+     "contexto": "Balanço e planos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What is more useful for you: positive feedback or negative feedback? Why?",
+     "frase": "feedback",
+     "resposta": "Both, but negative feedback helps me more, because it shows me what to improve. Of course, it should be fair and specific. Positive feedback is important too: it shows me what to keep doing.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10E",
+   "titulo": "Real English: What I'd do differently",
+   "aula": "10E",
+   "objectivo": "Identificar o erro, a lição e o plano de cada pessoa em quatro testemunhos.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kofi. I chose the cheapest supplier, and we had to replace half of the equipment after a year.",
+     "enunciado": "What happened to Kofi's cheap equipment?",
+     "opcoes": [
+      {
+       "texto": "They had to replace half of it after a year.",
+       "certa": true
+      },
+      {
+       "texto": "It never arrived.",
+       "certa": false
+      },
+      {
+       "texto": "It was stolen.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Kofi. Now I always ask for references from other clients.",
+     "enunciado": "What does Kofi always do now?",
+     "opcoes": [
+      {
+       "texto": "He asks for references from other clients.",
+       "certa": true
+      },
+      {
+       "texto": "He chooses the cheapest supplier.",
+       "certa": false
+      },
+      {
+       "texto": "He buys from Ghana only.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Neo. I worked fourteen hours a day, and I got really ill. I should have asked for help much earlier.",
+     "enunciado": "Why did Neo get ill?",
+     "opcoes": [
+      {
+       "texto": "She worked fourteen hours a day.",
+       "certa": true
+      },
+      {
+       "texto": "She travelled too much.",
+       "certa": false
+      },
+      {
+       "texto": "She ate badly.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. We should have tested the radio link in the windy season before we chose it.",
+     "enunciado": "What should Hannah's team have done?",
+     "opcoes": [
+      {
+       "texto": "tested the radio link in the windy season",
+       "certa": true
+      },
+      {
+       "texto": "bought a satellite first",
+       "certa": false
+      },
+      {
+       "texto": "built the plant in Luanda",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Tomás. I promised the school in nine months. It took fourteen months.",
+     "enunciado": "How long did Tomás's school take?",
+     "opcoes": [
+      {
+       "texto": "fourteen months",
+       "certa": true
+      },
+      {
+       "texto": "nine months",
+       "certa": false
+      },
+      {
+       "texto": "four months",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Tomás. Since then, I never give a deadline without my team.",
+     "enunciado": "What is Tomás's rule now?",
+     "opcoes": [
+      {
+       "texto": "He never gives a deadline without his team.",
+       "certa": true
+      },
+      {
+       "texto": "He never builds schools.",
+       "certa": false
+      },
+      {
+       "texto": "He always adds two months.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Each story has the same shape:",
+     "opcoes": [
+      {
+       "texto": "the mistake, the lesson, the plan",
+       "certa": true
+      },
+      {
+       "texto": "only the mistake",
+       "certa": false
+      },
+      {
+       "texto": "only someone else's fault",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Neo says: \"I'm planning to take a long holiday.\" This means…",
+     "opcoes": [
+      {
+       "texto": "She's decided.",
+       "certa": true
+      },
+      {
+       "texto": "She isn't sure.",
+       "certa": false
+      },
+      {
+       "texto": "She took it last year.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "If I had compared quality, we would have saved money.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I shouldn't have promised a date.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about your \"best mistake\": what happened, what you should have done, the lesson, and your plan.",
+     "frase": "should have",
+     "resposta": "At my first job, I didn't ask questions, because I didn't want to look stupid. I should have asked much more. The lesson: a question takes one minute, a mistake takes one day. Now I'm hoping to help new colleagues ask questions.",
+     "contexto": "Erro, lição e plano."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Can a mistake be good? Why or why not?",
+     "frase": "mistake",
+     "resposta": "Yes, a mistake can be good if you learn from it. Hannah's team had problems with the radio link, but now they know how to build the second plant. The only bad mistake is the one you make twice.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10F",
+   "titulo": "Work & Life: Project review",
+   "aula": "10F",
+   "objectivo": "Conduzir parte de uma reunião de balanço e resumir um inquérito de satisfação.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Nuno starts his part of the review. Choose the best start.",
+     "opcoes": [
+      {
+       "texto": "First, what went well.",
+       "certa": true
+      },
+      {
+       "texto": "First, whose fault it was.",
+       "certa": false
+      },
+      {
+       "texto": "First, I want to complain.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If we [had] done that, there wouldn't have been a fire.",
+     "opcoes": [
+      {
+       "texto": "would have",
+       "certa": false
+      },
+      {
+       "texto": "have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We should have [paid] for the equipment when we signed.",
+     "opcoes": [
+      {
+       "texto": "pay",
+       "certa": false
+      },
+      {
+       "texto": "payed",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [planning] to take the B2 English exam next year.",
+     "opcoes": [
+      {
+       "texto": "thinking",
+       "certa": false
+      },
+      {
+       "texto": "hoping for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Pieter says: \"The roof was our responsibility.\" Nuno answers:",
+     "opcoes": [
+      {
+       "texto": "That's kind, Pieter. Let's say we both learned a lesson.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, it was your fault.",
+       "certa": false
+      },
+      {
+       "texto": "No, it was the contractor.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The survey says \"Satisfação geral: 4,3 em 5\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "The general satisfaction was four point three out of five.",
+       "certa": true
+      },
+      {
+       "texto": "The general satisfaction was four comma three in five.",
+       "certa": false
+      },
+      {
+       "texto": "The satisfaction general was four and three of five.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The survey says \"avisar com mais antecedência\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "They want more notice.",
+       "certa": true
+      },
+      {
+       "texto": "They want to advise more ancient.",
+       "certa": false
+      },
+      {
+       "texto": "They want more anticipation.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Before the backup, the plant lost about thirty hours a month. Now, almost zero.",
+     "enunciado": "How many hours a month did the plant lose before the backup?",
+     "opcoes": [
+      {
+       "texto": "about thirty",
+       "certa": true
+      },
+      {
+       "texto": "about thirteen",
+       "certa": false
+      },
+      {
+       "texto": "about three",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Ingrid. I agree with all three. For Tômbwa, we'd like the same team.",
+     "enunciado": "What does Ingrid want for Tômbwa?",
+     "opcoes": [
+      {
+       "texto": "the same team",
+       "certa": true
+      },
+      {
+       "texto": "a new supplier",
+       "certa": false
+      },
+      {
+       "texto": "a different plan",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "First, what went well. Second, what we'd do differently. Third, our recommendations.",
+     "enunciado": "Ouça e repita, com pausas entre as três partes."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Lead the review of a project, an event or a course: one thing that went well (with a number), one thing you should have done differently, one recommendation, and your plan.",
+     "frase": "should have",
+     "resposta": "First, our training week had ninety people, and the feedback was very good. Second, we should have booked a bigger room — if we had, people wouldn't have stood at the back. My recommendation: register people early. Next year, I'm hoping to organise it again.",
+     "contexto": "Conduzir um balanço."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise this survey in English: \"Formação de Março — 45 respostas. Satisfação geral: 4,1 em 5. O melhor: os exemplos práticos (88% satisfeitos). A melhorar: a sala era pequena; o almoço chegou tarde.\"",
+     "frase": "It says",
+     "resposta": "It says forty-five people answered, and the general satisfaction was four point one out of five. The best part was the practical examples — eighty-eight percent were satisfied. What should improve: the room was small, and lunch arrived late.",
+     "contexto": "Mediação: números, o melhor e o que melhorar."
+    }
+   ]
+  },
+  {
+   "codigo": "10R",
+   "titulo": "Unit 10 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 10 e reciclar as unidades 7 a 9 do B1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I [had known], I would have called you.",
+     "opcoes": [
+      {
+       "texto": "knew",
+       "certa": false
+      },
+      {
+       "texto": "would know",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You look tired. You [should have] gone to bed earlier.",
+     "opcoes": [
+      {
+       "texto": "should",
+       "certa": false
+      },
+      {
+       "texto": "must have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Her bag and her coat aren't here. She [must have] left early.",
+     "opcoes": [
+      {
+       "texto": "can't have",
+       "certa": false
+      },
+      {
+       "texto": "must",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm hoping [to] get a new job next year.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "that I",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If we had left earlier, we wouldn't have missed the train.",
+       "certa": true
+      },
+      {
+       "texto": "If we would have left earlier, we wouldn't have missed the train.",
+       "certa": false
+      },
+      {
+       "texto": "If we left earlier, we wouldn't have miss the train.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "It can't have been Paulo. He was in Namibe.",
+       "certa": true
+      },
+      {
+       "texto": "It mustn't have been Paulo. He was in Namibe.",
+       "certa": false
+      },
+      {
+       "texto": "It can't been Paulo. He was in Namibe.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 9). Complete: \"___ the rain, we finished on time.\"",
+     "opcoes": [
+      {
+       "texto": "Despite",
+       "certa": true
+      },
+      {
+       "texto": "Although",
+       "certa": false
+      },
+      {
+       "texto": "However",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 8). Complete: \"This time next week, I'll ___ on holiday.\"",
+     "opcoes": [
+      {
+       "texto": "be travelling",
+       "certa": true
+      },
+      {
+       "texto": "travelling",
+       "certa": false
+      },
+      {
+       "texto": "be travel",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 7). Lerato: \"Send me the report.\" Report it.",
+     "opcoes": [
+      {
+       "texto": "She told me to send her the report.",
+       "certa": true
+      },
+      {
+       "texto": "She told me send her the report.",
+       "certa": false
+      },
+      {
+       "texto": "She said me to send her the report.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Devia ter perguntado mais cedo.",
+     "resposta": "I should have asked earlier.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. You're right. It's half out of the socket. Someone must have kicked it.",
+     "enunciado": "What happened to the cable?",
+     "opcoes": [
+      {
+       "texto": "Someone kicked it, and it came half out.",
+       "certa": true
+      },
+      {
+       "texto": "It was cut in the storm.",
+       "certa": false
+      },
+      {
+       "texto": "The cleaners took it away.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a decision you made. What would you do differently?",
+     "frase": "would have",
+     "resposta": "Two years ago, I bought a car with a bank loan. The interest was very high. If I had waited a year and saved money, I would have paid much less. I should have compared banks too. Next time, I'm planning to save first.",
+     "contexto": "Uma decisão e o que faria de outra forma (45 segundos)."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "The printer stopped working yesterday, and nobody knows why. Make three guesses about the past.",
+     "frase": "must have",
+     "resposta": "Someone must have printed a very big document. Or the paper might have got stuck inside. It can't have been the cable — I checked it this morning.",
+     "contexto": "Especular sobre o passado."
+    }
+   ]
+  }
+ ]
+}
