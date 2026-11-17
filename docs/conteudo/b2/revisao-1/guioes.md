@@ -200,7 +200,7 @@ Verificação: conversa de ensaio; exame oral do B2.1
 **EXAMINADOR:** Hello, Lurdes. Welcome to your B2.1 speaking exam. Tell me about a team you work with.
 **LURDES:** I work in the accounts team at the bank's office in Benguela. There are five of us. My manager, who's been at the bank for twenty years, is very calm, which helps a lot at the end of the month. And Joaquim, whose desk is next to mine, is the IT person for the whole floor.
 **EXAMINADOR:** What will you have achieved by the end of this year?
-**LURDES:** By December, I'll have finished my master's in finance, and I'll have been working at the bank for eight years. I hope I'll have become a team leader, too.
+**LURDES:** By December, I'll have finished my master's in finance, and I'll have been working at the bank for fifteen years — since 2014. I hope I'll have become a team leader, too.
 **EXAMINADOR:** Thank you. Now, Part 2. Your bank wants to reduce the queues in its branches. Option one: more staff at the busiest hours. Option two: an app where clients book a time. Compare them for about one and a half minutes, and say which you'd choose.
 **LURDES:** OK. The first option, more staff at peak hours, is simple, and clients like talking to a person. But it's expensive, and the queues will come back if the branch gets busier. The second, on the other hand, costs less in the long run, and clients don't waste time waiting. But many of our older clients don't use apps, so they're unlikely to book anything. The main difference is who it helps: staff help everyone, the app helps clients with smartphones. If I had to choose, I'd go for the app — provided that we keep one counter without appointments for older clients.
 **EXAMINADOR:** What could go wrong with the app?

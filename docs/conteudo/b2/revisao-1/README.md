@@ -26,7 +26,7 @@ No fim do B2.1, o aluno consegue manter uma conversa de cerca de 12 minutos, com
 - **O exame segue o B2 First adaptado a uma conversa só de voz:** o turno longo compara duas opções descritas pelo examinador (em vez de fotografias), a tarefa colaborativa passa a ser uma decisão com o examinador, e a discussão tem dois contra-argumentos. Ocupa os 12 minutos que a plataforma agora permite.
 - **Quatro situações, uma por tarefa das unidades 2, 3, 4 e 5,** sempre com uma dificuldade e uma decisão. A unidade 1 verifica-se na parte 1.
 - **O exame de demonstração, o laboratório e o tutor usam dados e perguntas diferentes dos do exame:** a fila do banco, o carro ou o autocarro, o tipo de escritório (turnos longos); a sala de conferências de um hotel e o retiro da equipa (tarefas); salários públicos, teletrabalho e chefes escolhidos pela equipa (discussões). O exame usa a formação de novos funcionários, a cantina, os portáteis, os microfones e o reconhecimento facial.
-- **A Lurdes volta como aluna-modelo** (contabilista num banco de Benguela, desde o A2), agora no seu primeiro exame do B2.
+- **A Lurdes volta como aluna-modelo** (contabilista num banco de Benguela desde 2014; aluna-modelo dos exames desde o A1), agora no seu primeiro exame do B2.
 - **Sem mudanças no código:** o limite de 12 minutos já foi alterado (Novembro de 2026); o guião, a escala e as situações carregam-se por curso.
 
 ## O que falta
