@@ -1,6 +1,6 @@
 # B2.1 · Unidade 2 — Presentations (7 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 2
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 2
 
 ## Objectivos da unidade
 
@@ -33,7 +33,7 @@ No fim da unidade, o aluno consegue:
 - **Tendências:** rise, increase, go up, fall, drop, decrease, go down, peak, level off, fluctuate, remain stable, trend; sharp(ly), steady / steadily, slight(ly), gradual(ly), dramatic(ally); rise by / to / from… to.
 - **Dados e diapositivos:** slide, chart, graph, bar chart, pie chart, line graph, table, figure, axis, data, findings, handout, on average, a quarter, a third, two thirds.
 - **Números aproximados:** roughly, approximately, about, around, just over, just under, nearly, almost.
-- **Prazos:** timeline, phase, milestone, lay cables, install, mast, on schedule, behind schedule, by, by then, by the time.
+- **Prazos:** timeline, phase, lay cables, put up, install, mast, control room, by, by then, by the time, until.
 - **Perguntas:** That's a good / fair question. Let me think about that for a moment. So, if I understand correctly, you're asking… I'm afraid I don't have that figure with me. I'll get back to you on that by… Can I come back to that at the end? Does that answer your question?
 - **Falsos amigos:** graphic (visual, de design, ou chocante; "gráfico" = chart, graph), adequate (suficiente, à justa; "adequado" = suitable, appropriate).
 
@@ -49,10 +49,10 @@ No fim da unidade, o aluno consegue:
 
 ## A história
 
-Fim de Setembro e início de Outubro de 2028. Na terça, 26, a Lerato faz o Nuno recomeçar a abertura da apresentação (2A); na quarta, 27, a Elsa, do Namibe, ajuda-o a descrever o gráfico das horas sem rede (2B); na quinta, 28, o Paulo explica o calendário da instalação, com duas semanas de margem por causa da alfândega (2C); na segunda, 2 de Outubro, a Sílvia e a Lerato fazem de administração num ensaio, e o Nuno aprende a não adivinhar números (2D); na quinta, 5, vê três aberturas gravadas num fórum de energia em Windhoek (2F); na quinta, 12, apresenta a proposta à administração da Morro Azul — a Celeste Kiala, a Ingrid, o Femi e a Hannah —, explica em inglês a tabela de custos em português e promete o número de empregos locais para segunda-feira. A administração decide até ao fim do mês (2G).
+Fim de Setembro e início de Outubro de 2028. Na terça, 26, a Lerato faz o Nuno recomeçar a abertura da apresentação (2A); na quarta, 27, a Elsa, do Namibe, ajuda-o a descrever o gráfico das horas sem rede (2B); na quinta, 28, o Paulo explica o calendário da instalação, com duas semanas de margem por causa da alfândega (2C); na segunda, 2 de Outubro, a Sílvia e a Lerato fazem de administração num ensaio, e o Nuno aprende a não adivinhar números (2D); na quinta, 5, vê três aberturas gravadas num fórum de energia em Windhoek (fictício) (2F); na quinta, 12, apresenta a proposta à administração da Morro Azul — a Celeste Kiala, a Ingrid, o Femi e a Hannah —, explica em inglês a tabela de custos em português e promete o número de empregos locais para segunda-feira. A administração decide até ao fim do mês (2G).
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (19 escutas, 8 pronúncias, a 2F com três oradores numa sala com eco); imagens (o gráfico das horas sem rede, o calendário da instalação, a tabela de custos em português, os diapositivos); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (19 escutas, 8 pronúncias, a 2F com três oradores numa sala com eco); imagens (o gráfico das horas sem rede, o calendário da instalação, a tabela de custos em português, os diapositivos); carregamento na plataforma.
 
 A seguir vem a **unidade 3, "Negotiating"**.

@@ -6,7 +6,7 @@ Guiões para o professor de IA. Conteúdo original da ProEnglish. Convenções: 
 
 **Não usar nesta unidade:** *provided that, as long as, supposing* (unidade 3); a passiva contínua, no *present perfect* e com modais, e *have something done* (unidade 4); *be bound to*, *be likely to* e o *future perfect continuous* (*will have been doing*, unidade 5); *needn't have*, *was supposed to* (unidade 6); *whereas, admittedly, even if, nevertheless* (unidade 7); verbos de relato como *suggest, insist, deny, warn* (unidade 9); *wish / if only*, *would* para hábitos do passado e os condicionais mistos (unidade 10).
 
-**Nomes de empresas e lugares:** a Kalandula Tech, a Mopane Systems e a Morro Azul Energia são fictícias, como a central do Tômbwa e o "Southern Africa Energy Forum" da 2F.
+**Nomes de empresas e lugares:** a Kalandula Tech, a Mopane Systems e a Morro Azul Energia são fictícias, como a central do Tômbwa e o "Windhoek Clean Power Forum" da 2F.
 
 **Personagens:** **Nuno**; **Lerato** (coordenadora; treina o Nuno); **Paulo Mendes** (apoio técnico; plano de instalação); **Elsa Chilombo** (testes); **Sílvia** (directora financeira da Kalandula Tech); **Rajesh** (Mopane; custos); **Sr. Baptista** (director da Kalandula Tech; só por escrito). Da Morro Azul: **Ingrid Solberg** (directora de operações, B1 9F e 10F); **Femi Adeyemi** (director financeiro, B1 3F); **Hannah Becker** (engenheira de projecto, por vídeo). Novos e fictícios: **Celeste Kiala** (presidente do conselho de administração da Morro Azul, de Luanda); na 2F, **Tobias Shikongo** (namibiano), **Aïcha Diallo** (senegalesa) e **Martin Hale** (britânico), oradores num fórum de energia.
 
@@ -225,7 +225,7 @@ a fall **of** 22 hours · **at** its peak]
 [ECRÃ: The number of students fell slightly.] [PAUSA 6 s] [ECRÃ: There was a slight fall in the number of students.]
 
 **PROF:** Now a longer turn. Look at this chart and describe it: the trend, the peak, the biggest change and the end.
-[ECRÃ: gráfico de linhas: "Customers per month, Kitanda Café, Benguela, 2028": Jan 900; Feb 950; Mar 1 000; Apr 1 600 (abertura da esplanada); May 1 650; Jun 1 600; Jul 1 200 (obras na rua); Aug 1 250]
+[ECRÃ: gráfico de linhas: "Customers per month, a café in Benguela, 2028": Jan 900; Feb 950; Mar 1 000; Apr 1 600 (abertura da esplanada); May 1 650; Jun 1 600; Jul 1 200 (obras na rua); Aug 1 250]
 [PAUSA 60 s]
 [ECRÃ: modelo — The chart shows the number of customers per month at a café in Benguela in 2028. From January to March, the number rose steadily, from nine hundred to a thousand. In April, there was a sharp rise, to sixteen hundred, when the café opened its terrace. It peaked in May, at sixteen hundred and fifty, and then fell sharply in July, to twelve hundred, because of the roadworks. In August, it rose slightly again.]
 
@@ -252,8 +252,8 @@ Objectivo da unidade a que serve: 3
 Gramática-alvo: will have + particípio; won't have + particípio; Will you have…? Yes, we will. / No, we
   won't.; by + momento (by June, by the end of 2029, by then, by the time the plant opens); contraste
   com o future continuous (B1, 8C: this time next year, we'll be testing)
-Palavras-alvo: timeline, phase, milestone, lay cables, install, mast, commission, complete, on schedule,
-  ahead of schedule, behind schedule, by then
+Palavras-alvo: timeline, phase, lay cables, put up, mast, install, control room, extra weeks, by then,
+  by the time
 Reciclagem: future continuous (B1, 8C); going to e will (A2)
 Pronúncia: will have → we'll've, dito curto, e won't have
 Contexto: quinta-feira, 28 de Setembro, 9:30; o Paulo, de volta do Namibe por um dia, mostra ao Nuno o
@@ -276,7 +276,7 @@ Verificação: Lab 2C; perguntas 5 e 6 do questionário
 **NUNO:** OK. Phase two?
 **PAULO:** April and May: the antennas and the satellite. By the end of May, we'll have installed everything — if the antennas arrive on time.
 **NUNO:** After Namibe, I'll believe that when I see it!
-**PAULO:** Ha! That's why I've planned two extra weeks. Then phase three, June to August: testing. By the end of August, Elsa will have tested the network for three months, in the windiest season.
+**PAULO:** Ha! That's why I've planned two extra weeks. Then phase three, June to August: testing. By the end of August, Elsa will have tested the network for three months, in real conditions.
 **NUNO:** And the control room? Will we have finished it by May too?
 **PAULO:** No, we won't have finished it by May. The building won't be ready until July. So, this time next year, we'll be finishing the control room — but the network will already be working.
 **NUNO:** And when does the plant open?
@@ -360,8 +360,8 @@ Gramática-alvo: ganhar tempo (That's a good question. Let me think about that f
   reformular (So, if I understand correctly, you're asking… Do you mean…?); admitir (I'm afraid I don't
   have that figure with me.); prometer (I'll get back to you on that by Friday.); verificar (Does that
   answer your question?); adiar (Can I come back to that at the end?)
-Palavras-alvo: question, point, figure, detail, rephrase, get back to, follow up, as I mentioned,
-  in short, to be honest
+Palavras-alvo: question, figure, insurance, paperwork, customs, nasty, get back to, as I mentioned,
+  put it another way, in short
 Reciclagem: which sobre uma frase (B2 1B); should have (B1, 10B)
 Pronúncia: entoação calma e a descer em "That's a good question." (não a subir, para não parecer
   surpreendido)
@@ -381,7 +381,7 @@ Verificação: Lab 2D; conversa guiada "Walk me through it"; perguntas 7 e 8 do 
 
 **LERATO:** Right. We're the board now, and we're not nice. Sílvia, you first.
 **SÍLVIA:** Mr Kapinga, the radio link works most of the time. Why should we pay nine hundred dollars a month for a satellite we hardly use?
-**NUNO:** That's a good question. Let me put it another way: what does one hour offline cost you? In Namibe, the plant lost about thirty hours a month before the satellite. Each hour without data means engineers driving out to the plant, and decisions made without information. Nine hundred dollars is less than one day of an engineer's time, which makes the satellite very cheap insurance.
+**NUNO:** That's a good question. Let me put it another way: what does one hour offline cost you? In Namibe, the plant lost about thirty hours a month before the satellite. Each hour without data means engineers driving out to the plant, and decisions made without information. Nine hundred dollars a month is about thirty dollars a day — much less than one trip to the plant, which makes the satellite very cheap insurance.
 **SÍLVIA:** Hmm. Good answer.
 **LERATO:** My turn. In Namibe, the antennas were stuck in customs. What happens if that happens again?
 **NUNO:** So, if I understand correctly, you're asking what our plan is if the equipment arrives late. As I mentioned in the timeline, we've planned two extra weeks for that. And this time, we'll start the customs paperwork in December, two months before the work begins.
@@ -595,11 +595,11 @@ Verificação: Lab 2F
 
 ### 1. Apresentação (30 s)
 
-**PROF:** In June, Lerato spoke at the Southern Africa Energy Forum in Windhoek. She sent Nuno three recorded openings from the forum — "one good, one bad, one in between". Listen to each, and decide: which is strong, which is weak, and why?
+**PROF:** In June, Lerato spoke at the Windhoek Clean Power Forum. She sent Nuno three recorded openings from the forum — "one good, one bad, one in between". Listen to each, and decide: which is strong, which is weak, and why?
 
 ### 2. Primeira escuta: as três aberturas (5 min)
 
-[ECRÃ: quinta-feira, 5 de Outubro, 18:00; o Nuno em casa, com o portátil; um vídeo de uma sala de conferências; no fundo, "Southern Africa Energy Forum — Windhoek, June 2028"]
+[ECRÃ: quinta-feira, 5 de Outubro, 18:00; o Nuno em casa, com o portátil; um vídeo de uma sala de conferências; no fundo, "Windhoek Clean Power Forum — June 2028"]
 
 **PROF:** First: which speaker starts with a story?
 
@@ -674,7 +674,7 @@ Objectivo da aula: No fim, o aluno consegue apresentar uma proposta com estrutur
 Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: marcadores, tendências, números aproximados, future perfect,
   responder a perguntas
-Palavras-alvo: proposal, option, downtime, insurance, approximately, local jobs, maintenance, annex
+Palavras-alvo: proposal, option, downtime, annex, local jobs, recommend, decision
 Reciclagem: relativas explicativas e which (B2 1A e 1B); 2.º condicional (B1, 4A)
 Pronúncia: ênfase e pausa antes dos números-chave
 Mediação: o Nuno explica em inglês ao Femi e à Ingrid a tabela de custos da Kalandula Tech, que está em
@@ -697,7 +697,7 @@ Verificação: Lab 2G; conversa livre "Tough questions"
 **NUNO:** Thank you, Dr Kiala. Good morning, everyone. Imagine it's a Sunday in September, and a sandstorm hits your plant. For six hours, you can't see a single sensor. [pausa] That happened in Namibe last year. The purpose of this presentation is to show you how we'll make sure it never happens at Tômbwa. I'd like to start by looking at what we learned in Namibe. Then I'll move on to our two options, the timeline, and finally the costs.
 **NUNO:** To begin with, Namibe. I'd like to draw your attention to this chart. In 2027, the plant was offline for just over thirty hours a month, and in September, it peaked at nearly forty. In November, the satellite started working, and the downtime fell sharply. Since January, it's levelled off at under one hour a month. Even in our worst month this year, the plant lost less than an hour.
 **NUNO:** This brings me to Tômbwa. Option A is the Namibe solution: a radio link with a satellite backup. Option B is the radio link alone, which is roughly fifteen percent cheaper, but in a windy month it could mean twenty or thirty hours offline. Our tests in Namibe last week confirmed both figures.
-**NUNO:** Moving on to the timeline. If you choose us in November, by the end of March we'll have laid all the cables and put up the masts. By the end of May, we'll have installed the antennas and the satellite. And by the time the plant opens, we'll have tested the network for three months, in the windiest season.
+**NUNO:** Moving on to the timeline. If you choose us in November, by the end of March we'll have laid all the cables and put up the masts. By the end of May, we'll have installed the antennas and the satellite. And by the time the plant opens, we'll have tested the network for three months, in real conditions.
 **NUNO:** To sum up: Namibe shows the problem, option A solves it, and option B saves money but adds risk. We recommend option A, and we'd like you to choose the option that suits your plant. Thank you for your attention. I'm happy to take questions.
 **CELESTE:** Thank you. Very clear. Femi?
 **FEMI:** Thank you, Mr Kapinga. The cost table in the annex is in Portuguese, and my Portuguese isn't good enough for numbers. Could you take us through it?
