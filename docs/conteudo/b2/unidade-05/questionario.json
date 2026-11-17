@@ -1,0 +1,301 @@
+{
+ "title": "B2.1 Unit 5 quiz — Innovation",
+ "description": "Previsões graduadas, future perfect continuous, what if e prós e contras, formação de palavras, application e informatics.",
+ "questions": [
+  {
+   "id": "b2u5q1",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u5q1o0",
+     "text": "The trucks are bound to be late.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u5q1o1",
+     "text": "The trucks will bound to be late.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u5q1o2",
+     "text": "The trucks bound to be late.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u5q1o0",
+   "explanation": "be bound to + infinitivo.",
+   "points": 10
+  },
+  {
+   "id": "b2u5q2",
+   "question": "Qual é a frase com MENOS certeza?",
+   "options": [
+    {
+     "id": "b2u5q2o0",
+     "text": "The meeting is unlikely to start late.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u5q2o1",
+     "text": "The meeting is bound to start late.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u5q2o2",
+     "text": "The meeting may well start late.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u5q2o0",
+   "explanation": "unlikely = pouco provável.",
+   "points": 10
+  },
+  {
+   "id": "b2u5q3",
+   "question": "\"Em Março, faz dois anos e meio que trabalho cá.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u5q3o0",
+     "text": "By March, I'll have been working here for two and a half years.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u5q3o1",
+     "text": "By March, I'll be working here for two and a half years.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u5q3o2",
+     "text": "By March, I'll have working here for two and a half years.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u5q3o0",
+   "explanation": "Future perfect continuous: will have been + -ing.",
+   "points": 10
+  },
+  {
+   "id": "b2u5q4",
+   "question": "Complete: \"This time next year, I'll ___ to Tômbwa once a month.\"",
+   "options": [
+    {
+     "id": "b2u5q4o0",
+     "text": "be travelling",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u5q4o1",
+     "text": "have been travelled",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u5q4o2",
+     "text": "travelled",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u5q4o0",
+   "explanation": "Future continuous: a meio da acção.",
+   "points": 10
+  },
+  {
+   "id": "b2u5q5",
+   "question": "\"Por um lado… por outro lado…\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u5q5o0",
+     "text": "On the one hand… on the other hand…",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u5q5o1",
+     "text": "In one hand… in the other hand…",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u5q5o2",
+     "text": "By one side… by the other side…",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u5q5o0",
+   "explanation": "On the one hand / on the other hand.",
+   "points": 10
+  },
+  {
+   "id": "b2u5q6",
+   "question": "Complete: \"It depends ___ the price.\"",
+   "options": [
+    {
+     "id": "b2u5q6o0",
+     "text": "on",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u5q6o1",
+     "text": "of",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u5q6o2",
+     "text": "from",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u5q6o0",
+   "explanation": "depend on.",
+   "points": 10
+  },
+  {
+   "id": "b2u5q7",
+   "question": "\"Fiz uma aplicação a prazo no banco.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u5q7o0",
+     "text": "I made a fixed-term investment at the bank.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u5q7o1",
+     "text": "I made a fixed-term application at the bank.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u5q7o2",
+     "text": "I did an application to term at the bank.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u5q7o0",
+   "explanation": "Falso amigo: application = candidatura, programa.",
+   "points": 10
+  },
+  {
+   "id": "b2u5q8",
+   "question": "Complete: \"It's a very ___ idea.\"",
+   "options": [
+    {
+     "id": "b2u5q8o0",
+     "text": "innovative",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u5q8o1",
+     "text": "innovate",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u5q8o2",
+     "text": "innovation",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u5q8o0",
+   "explanation": "Adjectivo: innovative.",
+   "points": 10
+  },
+  {
+   "id": "b2u5q9",
+   "question": "\"Trabalho no departamento de informática.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u5q9o0",
+     "text": "I work in the IT department.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u5q9o1",
+     "text": "I work in the informatics department.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u5q9o2",
+     "text": "I work in the informatic department.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u5q9o0",
+   "explanation": "Falso amigo: informatics é raro.",
+   "points": 10
+  },
+  {
+   "id": "b2u5q10",
+   "question": "Reciclagem (B2, unidade 4). \"Está a ser reparado.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u5q10o0",
+     "text": "It's being repaired.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u5q10o1",
+     "text": "It's been repairing.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u5q10o2",
+     "text": "It's repairing by them.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u5q10o0",
+   "explanation": "Passiva contínua.",
+   "points": 10
+  },
+  {
+   "id": "b2u5q11",
+   "question": "Reciclagem (B2, unidade 4). \"Vou mandar arranjar o carro.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u5q11o0",
+     "text": "I'm going to have my car repaired.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u5q11o1",
+     "text": "I'm going to repair my car by a mechanic.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u5q11o2",
+     "text": "I'm going to have repaired my car.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u5q11o0",
+   "explanation": "have something done.",
+   "points": 10
+  },
+  {
+   "id": "b2u5q12",
+   "question": "Reciclagem (B2, unidade 3). Complete: \"We'll try it, ___ it doesn't cost too much.\"",
+   "options": [
+    {
+     "id": "b2u5q12o0",
+     "text": "as long as",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u5q12o1",
+     "text": "unless",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u5q12o2",
+     "text": "in case",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u5q12o0",
+   "explanation": "as long as = só se.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

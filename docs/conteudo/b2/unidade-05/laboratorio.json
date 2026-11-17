@@ -1,0 +1,1463 @@
+{
+ "unidade": "B2.1 · Unit 5 — Innovation",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "5A",
+   "titulo": "It's bound to happen",
+   "aula": "5A",
+   "objectivo": "Fazer previsões com graus de certeza.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The trucks are [bound] to be late at the border.",
+     "opcoes": [
+      {
+       "texto": "bind",
+       "certa": false
+      },
+      {
+       "texto": "bounded",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Rain is very [unlikely] in Tômbwa.",
+     "opcoes": [
+      {
+       "texto": "unlike",
+       "certa": false
+      },
+      {
+       "texto": "improbably",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The builders [may] well finish the control room late.",
+     "opcoes": [
+      {
+       "texto": "can",
+       "certa": false
+      },
+      {
+       "texto": "will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It [definitely won't] rain tomorrow.",
+     "opcoes": [
+      {
+       "texto": "definitely not will",
+       "certa": false
+      },
+      {
+       "texto": "not definitely will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The trucks are likely to be late.",
+       "certa": true
+      },
+      {
+       "texto": "The trucks will likely to be late.",
+       "certa": false
+      },
+      {
+       "texto": "The trucks likely to be late.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The wind is bound to get stronger.",
+       "certa": true
+      },
+      {
+       "texto": "The wind will bound to get stronger.",
+       "certa": false
+      },
+      {
+       "texto": "The wind bounds to get stronger.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the most certain?",
+     "opcoes": [
+      {
+       "texto": "The meeting is bound to start late.",
+       "certa": true
+      },
+      {
+       "texto": "The meeting may well start late.",
+       "certa": false
+      },
+      {
+       "texto": "The meeting is unlikely to start late.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"There's a good chance that it'll rain.\" How sure is the speaker?",
+     "opcoes": [
+      {
+       "texto": "quite sure — about 80%",
+       "certa": true
+      },
+      {
+       "texto": "completely sure",
+       "certa": false
+      },
+      {
+       "texto": "not sure at all",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "É pouco provável que os preços desçam este ano.",
+     "resposta": "Prices are unlikely to fall this year.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Hannah. In the afternoon, the wind is bound to get stronger. It always does.",
+     "enunciado": "What does Hannah predict?",
+     "opcoes": [
+      {
+       "texto": "The wind will get stronger in the afternoon.",
+       "certa": true
+      },
+      {
+       "texto": "It will rain in the afternoon.",
+       "certa": false
+      },
+      {
+       "texto": "The wind will stop in the afternoon.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. Rain is very unlikely here. It rains maybe twice a year. But when it does, the road floods.",
+     "enunciado": "What happens when it rains in Tômbwa?",
+     "opcoes": [
+      {
+       "texto": "The road floods.",
+       "certa": true
+      },
+      {
+       "texto": "The panels break.",
+       "certa": false
+      },
+      {
+       "texto": "The builders stop for a week.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The trucks are bound to be late at the border.",
+     "enunciado": "Ouça e repita: \"bound to\" como um bloco."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Make five predictions about next year (your work, your city, your family or your country), from \"definitely\" to \"definitely won't\", and explain one of them.",
+     "frase": "bound to",
+     "resposta": "Next year, my company will definitely open the Lubango office. Prices are bound to go up again in January. There's a good chance that I'll get a promotion, and my sister may well move to Huambo. But the traffic in Luanda definitely won't get better: there are more cars every month.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Are you an optimist or a pessimist when you make predictions? Why?",
+     "frase": "because",
+     "resposta": "I'm a careful optimist, because things usually go better than I fear. But at work I always plan for the worst case, like Paulo with the extra two weeks for the border.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "5B",
+   "titulo": "We'll have been testing it",
+   "aula": "5B",
+   "objectivo": "Usar o future perfect continuous e escolher entre os três futuros.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "By March, I'll have [been working] here for two and a half years.",
+     "opcoes": [
+      {
+       "texto": "be worked",
+       "certa": false
+      },
+      {
+       "texto": "being working",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "By two o'clock, Paulo will have been [driving] for eight hours.",
+     "opcoes": [
+      {
+       "texto": "drive",
+       "certa": false
+      },
+      {
+       "texto": "driven",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This time next year, I'll [be travelling] to Tômbwa once a month.",
+     "opcoes": [
+      {
+       "texto": "travelling",
+       "certa": false
+      },
+      {
+       "texto": "have travel",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "By August, we'll [have finished] the installation.",
+     "opcoes": [
+      {
+       "texto": "be finished",
+       "certa": false
+      },
+      {
+       "texto": "had finished",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Em Março, faz dois anos e meio que trabalho cá.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "By March, I'll have been working here for two and a half years.",
+       "certa": true
+      },
+      {
+       "texto": "By March, I'll be working here for two and a half years.",
+       "certa": false
+      },
+      {
+       "texto": "By March, I'll have working here for two and a half years.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is about the duration of an action up to a future moment?",
+     "opcoes": [
+      {
+       "texto": "By June, I'll have been studying for a year.",
+       "certa": true
+      },
+      {
+       "texto": "By June, I'll have finished the course.",
+       "certa": false
+      },
+      {
+       "texto": "This time next June, I'll be studying.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"By August, we'll have finished the installation.\" The installation…",
+     "opcoes": [
+      {
+       "texto": "will be complete before August ends",
+       "certa": true
+      },
+      {
+       "texto": "will be in progress in August",
+       "certa": false
+      },
+      {
+       "texto": "will start in August",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Ana started medicine in 2025. It is now 2026. Talk about 2031:",
+     "opcoes": [
+      {
+       "texto": "she will have been studying medicine for six years",
+       "certa": true
+      },
+      {
+       "texto": "she will be studying medicine since six years",
+       "certa": false
+      },
+      {
+       "texto": "she has been studying medicine for six years",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Até Junho, terei estado a estudar inglês durante um ano.",
+     "resposta": "By June, I'll have been studying English for a year.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. I started in October 2026, so by March, I'll have been working here for two and a half years.",
+     "enunciado": "When did Nuno start at Kalandula?",
+     "opcoes": [
+      {
+       "texto": "in October 2026",
+       "certa": true
+      },
+      {
+       "texto": "in March 2026",
+       "certa": false
+      },
+      {
+       "texto": "in October 2028",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. In June, I'll have been preparing for the B2 exam for a whole year. I'm taking it in July.",
+     "enunciado": "When is Nuno taking the B2 exam?",
+     "opcoes": [
+      {
+       "texto": "in July",
+       "certa": true
+      },
+      {
+       "texto": "in June",
+       "certa": false
+      },
+      {
+       "texto": "next December",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "By March, I'll have been working here for two and a half years.",
+     "enunciado": "Ouça e repita: \"I'll have been\" curto."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Talk about your next year with the three futures: how long you'll have been doing something by a certain date, one thing you'll have finished, and what you'll be doing this time next year.",
+     "frase": "have been",
+     "resposta": "By June, I'll have been working at the bank for five years, and I'll have been studying English for almost a year. By then, I'll have finished my accounting course. And this time next year, I'll probably be working in a new department.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Are annual reviews useful, or just a formality? Why?",
+     "frase": "because",
+     "resposta": "They're useful when the manager is honest, because you hear things nobody tells you during the year. If it's just a form to fill in, it's a waste of time. Nuno's review was useful: he learned he says yes too often.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "5C",
+   "titulo": "What if robots…?",
+   "aula": "5C",
+   "objectivo": "Especular sobre o futuro com what if / suppose / imagine e pesar prós e contras.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What if we [used] drones to clean the panels?",
+     "opcoes": [
+      {
+       "texto": "would use",
+       "certa": false
+      },
+      {
+       "texto": "will used",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[On] the one hand, it would save time.",
+     "opcoes": [
+      {
+       "texto": "In",
+       "certa": false
+      },
+      {
+       "texto": "At",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It depends [on] the price.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "from",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The main [drawback] is the cost.",
+     "opcoes": [
+      {
+       "texto": "withdraw",
+       "certa": false
+      },
+      {
+       "texto": "backdraw",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Por um lado… por outro lado…\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "On the one hand… on the other hand…",
+       "certa": true
+      },
+      {
+       "texto": "In one hand… in the other hand…",
+       "certa": false
+      },
+      {
+       "texto": "By one side… by the other side…",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which question is more imaginary?",
+     "opcoes": [
+      {
+       "texto": "What if the robot made a mistake?",
+       "certa": true
+      },
+      {
+       "texto": "What if the robot makes a mistake?",
+       "certa": false
+      },
+      {
+       "texto": "The robot makes mistakes.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"In the long run\" means…",
+     "opcoes": [
+      {
+       "texto": "after a long time",
+       "certa": true
+      },
+      {
+       "texto": "very quickly",
+       "certa": false
+      },
+      {
+       "texto": "during a race",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence gives a disadvantage?",
+     "opcoes": [
+      {
+       "texto": "The main drawback is the cost of repairs.",
+       "certa": true
+      },
+      {
+       "texto": "The main advantage is safety.",
+       "certa": false
+      },
+      {
+       "texto": "It would save a lot of time.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "E se trabalhássemos quatro dias por semana?",
+     "resposta": "What if we worked four days a week?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Elsa. The main advantage is safety: nobody climbs a mast in the midday sun. The main drawback is jobs.",
+     "enunciado": "What does Elsa say is the main drawback?",
+     "opcoes": [
+      {
+       "texto": "jobs",
+       "certa": true
+      },
+      {
+       "texto": "safety",
+       "certa": false
+      },
+      {
+       "texto": "the price of drones",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Maybe drones for cleaning, yes. For repairs, not yet.",
+     "enunciado": "What does Nuno think about drones?",
+     "opcoes": [
+      {
+       "texto": "yes for cleaning, not yet for repairs",
+       "certa": true
+      },
+      {
+       "texto": "yes for everything",
+       "certa": false
+      },
+      {
+       "texto": "no for everything",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "What if the robot makes a mistake?",
+     "enunciado": "Ouça e repita: \"what if\" como um bloco, com a voz a subir no fim."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Choose one idea: robots in hospitals, self-driving taxis in Luanda, or a four-day working week. Imagine it with what if or suppose, give one advantage and one drawback, and conclude with \"it depends on\".",
+     "frase": "depends on",
+     "resposta": "What if Luanda had self-driving taxis? On the one hand, they might be safer, because they don't get tired. On the other hand, the main drawback is jobs: thousands of people drive taxis. In the long run, it could work, but it depends on the roads and the rules.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Would you trust a robot to do your job, or part of it? Which part?",
+     "frase": "part",
+     "resposta": "Part of it, yes. A robot could do the boring part — typing the same data every day. But I wouldn't trust it to talk to an angry client. That part needs a person.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "5D",
+   "titulo": "Tech talk",
+   "aula": "5D",
+   "objectivo": "Vocabulário de tecnologia, formação de palavras com mudança de acento; application e informatics.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "data privacy",
+       "b": "protecção de dados"
+      },
+      {
+       "a": "pilot",
+       "b": "projecto-piloto"
+      },
+      {
+       "a": "user-friendly",
+       "b": "fácil de usar"
+      },
+      {
+       "a": "cutting-edge",
+       "b": "de ponta"
+      },
+      {
+       "a": "roll out",
+       "b": "lançar, estender a todos"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's a very [innovative] idea.",
+     "opcoes": [
+      {
+       "texto": "innovate",
+       "certa": false
+      },
+      {
+       "texto": "innovation",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We need a quick [analysis] of the data.",
+     "opcoes": [
+      {
+       "texto": "analyse",
+       "certa": false
+      },
+      {
+       "texto": "analytical",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The [technological] sector is growing fast.",
+     "opcoes": [
+      {
+       "texto": "technologic",
+       "certa": false
+      },
+      {
+       "texto": "technology",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let's run a pilot first, and then [roll] it out to all offices.",
+     "opcoes": [
+      {
+       "texto": "turn",
+       "certa": false
+      },
+      {
+       "texto": "put",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Fiz uma aplicação a prazo no banco.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I made a fixed-term investment at the bank.",
+       "certa": true
+      },
+      {
+       "texto": "I made a fixed-term application at the bank.",
+       "certa": false
+      },
+      {
+       "texto": "I did an application to term at the bank.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: application = candidatura, programa, pedido."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Trabalho no departamento de informática.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I work in the IT department.",
+       "certa": true
+      },
+      {
+       "texto": "I work in the informatics department.",
+       "certa": false
+      },
+      {
+       "texto": "I work in the informatic department.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: informatics é raro e académico."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Fill in the application.\" This means…",
+     "opcoes": [
+      {
+       "texto": "Complete the form.",
+       "certa": true
+      },
+      {
+       "texto": "Invest your money.",
+       "certa": false
+      },
+      {
+       "texto": "Download the program.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which word has the stress on a different syllable from \"technology\"?",
+     "opcoes": [
+      {
+       "texto": "technological",
+       "certa": true
+      },
+      {
+       "texto": "technologies",
+       "certa": false
+      },
+      {
+       "texto": "technologist",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lerato. We'll run a pilot in one office, then roll it out to all offices, and phase out the old system.",
+     "enunciado": "What will they do first?",
+     "opcoes": [
+      {
+       "texto": "run a pilot in one office",
+       "certa": true
+      },
+      {
+       "texto": "roll it out to all offices",
+       "certa": false
+      },
+      {
+       "texto": "phase out the old system",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "technology, technological. Innovate, innovation. Analyse, analysis.",
+     "enunciado": "Ouça e repita: o acento muda quando a palavra cresce."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How will your job or your studies change in the next ten years? Talk about one technology, how sure you are, one advantage, one drawback, and what you will need to learn.",
+     "frase": "likely",
+     "resposta": "I'm an accountant, and my job is bound to change. Routine work is likely to be automated — software already reads invoices. That's great: no more data entry. But there may well be fewer junior jobs. I'll need to learn data analysis, which a machine is unlikely to explain well to clients.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Which technology has changed your life most in the last five years?",
+     "frase": "changed",
+     "resposta": "Mobile banking has changed my life most. Five years ago, I spent hours in bank queues every month. Now I pay everything from my phone in a few minutes, even my children's school fees.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "5E",
+   "titulo": "Real English: Will AI take my job?",
+   "aula": "5E",
+   "objectivo": "Seguir um debate a quatro vozes: a previsão e o argumento de cada pessoa.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Sizwe. In call centres in South Africa, AI is bound to replace thousands of jobs in the next five years.",
+     "enunciado": "Where does Sizwe say AI will replace jobs?",
+     "opcoes": [
+      {
+       "texto": "in call centres",
+       "certa": true
+      },
+      {
+       "texto": "in hospitals",
+       "certa": false
+      },
+      {
+       "texto": "in banks",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Tunde. My company uses AI, and we've hired forty people this year, not fired them.",
+     "enunciado": "How many people did Tunde's company hire this year?",
+     "opcoes": [
+      {
+       "texto": "forty",
+       "certa": true
+      },
+      {
+       "texto": "fourteen",
+       "certa": false
+      },
+      {
+       "texto": "four hundred",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Sizwe. Forty programmers, Tunde. Not forty call-centre workers.",
+     "enunciado": "What is Sizwe's point about the forty people?",
+     "opcoes": [
+      {
+       "texto": "They're programmers, not call-centre workers.",
+       "certa": true
+      },
+      {
+       "texto": "They were fired later.",
+       "certa": false
+      },
+      {
+       "texto": "They're from Johannesburg.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Marta Kiluange. AI is very likely to change most jobs, but it's unlikely to replace most people. The real question is skills.",
+     "enunciado": "What does Marta say is the real question?",
+     "opcoes": [
+      {
+       "texto": "skills",
+       "certa": true
+      },
+      {
+       "texto": "money",
+       "certa": false
+      },
+      {
+       "texto": "robots",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Marta Kiluange. AI makes mistakes, very confident mistakes.",
+     "enunciado": "What kind of mistakes does AI make, according to Marta?",
+     "opcoes": [
+      {
+       "texto": "very confident mistakes",
+       "certa": true
+      },
+      {
+       "texto": "small mistakes",
+       "certa": false
+      },
+      {
+       "texto": "no mistakes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Tunde. Agreed. Companies should pay for the training; it's in our interest.",
+     "enunciado": "What do Tunde and Sizwe agree on?",
+     "opcoes": [
+      {
+       "texto": "Companies should pay for training.",
+       "certa": true
+      },
+      {
+       "texto": "There will be more jobs.",
+       "certa": false
+      },
+      {
+       "texto": "AI should be banned.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In ten years, Marta predicts…",
+     "opcoes": [
+      {
+       "texto": "about the same number of jobs, but different ones",
+       "certa": true
+      },
+      {
+       "texto": "many more jobs",
+       "certa": false
+      },
+      {
+       "texto": "many fewer jobs",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Can I come in there?\" is used to…",
+     "opcoes": [
+      {
+       "texto": "interrupt politely in a debate",
+       "certa": true
+      },
+      {
+       "texto": "enter a room",
+       "certa": false
+      },
+      {
+       "texto": "ask for a job",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "AI is very likely to change most jobs, but it is unlikely to replace most people.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Can I come in there?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell a colleague what each guest predicted and why, and say who you agree with most.",
+     "frase": "agree with",
+     "resposta": "Sizwe thinks there'll be fewer jobs: AI is bound to replace call-centre jobs. Tunde thinks there'll be more, because new technology always creates jobs. Marta thinks the number will be about the same, but the jobs will be different, so skills are the key. I agree with Marta most.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "In your country, which jobs are most likely to change because of AI?",
+     "frase": "likely",
+     "resposta": "Bank and call-centre jobs are the most likely to change, I think, because a lot of the work is answering the same questions. Teachers and nurses are less likely to be replaced, but they'll use AI too.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "5F",
+   "titulo": "Work & Life: Should we use AI?",
+   "aula": "5F",
+   "objectivo": "Pesar benefícios e riscos de uma tecnologia, recomendar com condições e explicar uma notícia em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Thandi is very enthusiastic about HelpMate. Nuno starts:",
+     "opcoes": [
+      {
+       "texto": "I think it's very promising — but I'd like to look at both sides.",
+       "certa": true
+      },
+      {
+       "texto": "No. It's a terrible idea.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, let's start tomorrow.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The article says: \"58% disseram que preferem falar com uma pessoa\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "Fifty-eight percent said they prefer a person.",
+       "certa": true
+      },
+      {
+       "texto": "Fifty-eight percent said they prefer to speak with a people.",
+       "certa": false
+      },
+      {
+       "texto": "Fifty-eight per hundred preferred a person speaking.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The article says: \"antes de alguém dar pelo erro\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "before anyone noticed",
+       "certa": true
+      },
+      {
+       "texto": "before someone gave the error",
+       "certa": false
+      },
+      {
+       "texto": "before anyone gave by the mistake",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Our clients' data must [be encrypted].",
+     "opcoes": [
+      {
+       "texto": "encrypted",
+       "certa": false
+      },
+      {
+       "texto": "been encrypted",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "By the end of the pilot, we'll have [been using] it for three months.",
+     "opcoes": [
+      {
+       "texto": "used",
+       "certa": false
+      },
+      {
+       "texto": "be using",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Either way, we're [unlikely] to lose much.",
+     "opcoes": [
+      {
+       "texto": "unlike",
+       "certa": false
+      },
+      {
+       "texto": "unlikelihood",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "A pilot, [provided] that we start on the eighth of January.",
+     "opcoes": [
+      {
+       "texto": "provide",
+       "certa": false
+      },
+      {
+       "texto": "providing to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Rosa. To be honest, I'm a bit worried. What if HelpMate does it better than me?",
+     "enunciado": "Why is Rosa worried?",
+     "opcoes": [
+      {
+       "texto": "She is afraid HelpMate could replace her.",
+       "certa": true
+      },
+      {
+       "texto": "She thinks HelpMate is too expensive.",
+       "certa": false
+      },
+      {
+       "texto": "She does not speak English.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Every week, a sample of its answers is checked by Rosa. And no jobs are cut.",
+     "enunciado": "What will Rosa do?",
+     "opcoes": [
+      {
+       "texto": "check a sample of the answers every week",
+       "certa": true
+      },
+      {
+       "texto": "stop working on the help desk",
+       "certa": false
+      },
+      {
+       "texto": "programme HelpMate",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thandi. About two thousand dollars a month for both companies. Less than one new employee.",
+     "enunciado": "How much does HelpMate cost?",
+     "opcoes": [
+      {
+       "texto": "about two thousand dollars a month",
+       "certa": true
+      },
+      {
+       "texto": "about two hundred dollars a month",
+       "certa": false
+      },
+      {
+       "texto": "about twenty thousand dollars a month",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "On four conditions. One: it only answers simple questions. Two: our clients' data must be encrypted.",
+     "enunciado": "Ouça e repita, com pausas entre as condições."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your company, school or family is thinking about a new technology. Weigh the benefits and the risks, ask \"what if\", make two predictions, and recommend a decision with conditions.",
+     "frase": "on the other hand",
+     "resposta": "Our school wants cameras in every classroom. On the one hand, they're likely to reduce theft. On the other hand, what if the videos were shared online? My recommendation: try two classrooms for one term, provided that only the director sees the videos and they're deleted after a week.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain these results in English, choosing the most important numbers: \"Inquérito sobre teletrabalho: 74% querem trabalhar em casa pelo menos um dia por semana; 41% dizem que a internet em casa não é suficiente; 12% preferem não trabalhar em casa.\"",
+     "frase": "percent",
+     "resposta": "According to the survey, almost three quarters of the staff want to work from home at least one day a week. But forty-one percent say their internet at home isn't good enough. So we'll probably need to help with the internet.",
+     "contexto": "Mediação: os números que mudam a decisão."
+    }
+   ]
+  },
+  {
+   "codigo": "5R",
+   "titulo": "Unit 5 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 5 do B2 e reciclar as unidades 3 e 4 do B2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She [is] bound to win — she always does.",
+     "opcoes": [
+      {
+       "texto": "will",
+       "certa": false
+      },
+      {
+       "texto": "has",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Prices are [likely] to go up in January.",
+     "opcoes": [
+      {
+       "texto": "likelihood",
+       "certa": false
+      },
+      {
+       "texto": "like",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "By December, I'll have been [living] in Luanda for ten years.",
+     "opcoes": [
+      {
+       "texto": "live",
+       "certa": false
+      },
+      {
+       "texto": "lived",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[What] if we hired two more people?",
+     "opcoes": [
+      {
+       "texto": "How",
+       "certa": false
+      },
+      {
+       "texto": "Why",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "It probably won't rain.",
+       "certa": true
+      },
+      {
+       "texto": "It won't probably rain.",
+       "certa": false
+      },
+      {
+       "texto": "It not probably will rain.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Uma aplicação financeira\" em inglês:",
+     "opcoes": [
+      {
+       "texto": "an investment",
+       "certa": true
+      },
+      {
+       "texto": "an application",
+       "certa": false
+      },
+      {
+       "texto": "an informatics",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 4). \"Está a ser reparado.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "It's being repaired.",
+       "certa": true
+      },
+      {
+       "texto": "It's been repairing.",
+       "certa": false
+      },
+      {
+       "texto": "It's repairing by them.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 4). \"Vou mandar arranjar o carro.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I'm going to have my car repaired.",
+       "certa": true
+      },
+      {
+       "texto": "I'm going to repair my car by a mechanic.",
+       "certa": false
+      },
+      {
+       "texto": "I'm going to have repaired my car.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 3). Complete: \"We'll try it, ___ it doesn't cost too much.\"",
+     "opcoes": [
+      {
+       "texto": "as long as",
+       "certa": true
+      },
+      {
+       "texto": "unless",
+       "certa": false
+      },
+      {
+       "texto": "in case",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "É quase certo que o camião vai chegar atrasado.",
+     "resposta": "The truck is bound to arrive late.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. By the end of the pilot, we'll have been using it for three months, and we'll have real numbers.",
+     "enunciado": "What will they have by the end of the pilot?",
+     "opcoes": [
+      {
+       "texto": "real numbers",
+       "certa": true
+      },
+      {
+       "texto": "a new assistant",
+       "certa": false
+      },
+      {
+       "texto": "more employees",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How will your job or your studies change in the next ten years?",
+     "frase": "will",
+     "resposta": "In ten years, my job as a bank clerk will definitely be different. Most payments are likely to be automatic, and there may well be fewer branches. I'll need to learn to give financial advice, because that's unlikely to be done well by a machine.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your manager wants to replace all paper forms with an app. Give one benefit, one risk and a recommendation with a condition.",
+     "frase": "provided that",
+     "resposta": "The main benefit is speed: forms would be processed in minutes. The risk is that older clients may not use apps. I'd recommend the app, provided that paper forms are kept for one more year.",
+     "contexto": "Recomendar com uma condição."
+    }
+   ]
+  }
+ ]
+}
