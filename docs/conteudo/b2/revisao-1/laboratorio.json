@@ -1,0 +1,419 @@
+{
+ "unidade": "B2.1 · Review 1",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "B2R1-1",
+   "titulo": "Review 1: teams, presentations and deals",
+   "aula": "R1A",
+   "objectivo": "Rever as unidades 1 a 3 do B2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My manager, [who] has been here for twenty years, is very calm.",
+     "opcoes": [
+      {
+       "texto": "that",
+       "certa": false
+      },
+      {
+       "texto": "which",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The road is closed, [which] is a problem.",
+     "opcoes": [
+      {
+       "texto": "what",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd like to start by [looking] at the numbers.",
+     "opcoes": [
+      {
+       "texto": "look",
+       "certa": false
+      },
+      {
+       "texto": "to look",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[By] June, we'll have installed the antennas.",
+     "opcoes": [
+      {
+       "texto": "Until",
+       "certa": false
+      },
+      {
+       "texto": "Since",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We won't sign unless they [agree] to a maximum.",
+     "opcoes": [
+      {
+       "texto": "don't agree",
+       "certa": false
+      },
+      {
+       "texto": "will agree",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Would you consider lowering the price?",
+       "certa": true
+      },
+      {
+       "texto": "Would you consider to lower the price?",
+       "certa": false
+      },
+      {
+       "texto": "Would you consider lower the price?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Prices went from 200 to 240. Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Prices rose by twenty percent.",
+       "certa": true
+      },
+      {
+       "texto": "Prices rose to twenty percent.",
+       "certa": false
+      },
+      {
+       "texto": "Prices raised by twenty percent.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A quiet colleague in a meeting. The best sentence:",
+     "opcoes": [
+      {
+       "texto": "Rui, we haven't heard from you yet. What's your take?",
+       "certa": true
+      },
+      {
+       "texto": "Rui, why are you so quiet?",
+       "certa": false
+      },
+      {
+       "texto": "Rui, say something.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the best way to give something and ask for something in exchange.",
+     "opcoes": [
+      {
+       "texto": "If you could lower the price, we could sign for a year.",
+       "certa": true
+      },
+      {
+       "texto": "Lower the price, please.",
+       "certa": false
+      },
+      {
+       "texto": "We will sign for a year.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Podemos assinar por seis meses, desde que baixem o preço.",
+     "resposta": "We can sign for six months, provided that you lower the price.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. By the time the plant opens, the technicians will have been training for ten months.",
+     "enunciado": "How long will the technicians have been training?",
+     "opcoes": [
+      {
+       "texto": "ten months",
+       "certa": true
+      },
+      {
+       "texto": "six months",
+       "certa": false
+      },
+      {
+       "texto": "two years",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "We could sign for all six months, provided that you bring the price down.",
+     "enunciado": "Ouça e repita: \"provided that\" como um bloco."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Introduce your team or your class to a new colleague, with extra information about two people, and say what you will have achieved together by the end of the year.",
+     "frase": "whose",
+     "resposta": "Let me introduce my team. Ana, who's been here for ten years, knows every client. Mário, whose father started the company, does our IT. By the end of the year, we'll have opened the Huambo office, and we'll have trained five new people.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A supplier asks for a much higher price than you expected. Answer tentatively, offer something in exchange, and close the deal.",
+     "frase": "provided that",
+     "resposta": "To be honest, that's more than we were hoping for. Would you consider a lower price if we ordered for the whole year? We'd be prepared to pay thirty percent in advance, provided that delivery is in March. So, do we have a deal?",
+     "contexto": "Negociar."
+    }
+   ]
+  },
+  {
+   "codigo": "B2R1-2",
+   "titulo": "Review 1: clients, the future and the exam",
+   "aula": "R1B",
+   "objectivo": "Rever as unidades 4 e 5 do B2 e preparar o exame oral.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's being [repaired] now.",
+     "opcoes": [
+      {
+       "texto": "repair",
+       "certa": false
+      },
+      {
+       "texto": "repairing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The laptops should have [been] ordered in December.",
+     "opcoes": [
+      {
+       "texto": "be",
+       "certa": false
+      },
+      {
+       "texto": "being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm going to get my hair [cut] tomorrow.",
+     "opcoes": [
+      {
+       "texto": "to cut",
+       "certa": false
+      },
+      {
+       "texto": "cutting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The trucks [are] bound to be late.",
+     "opcoes": [
+      {
+       "texto": "will",
+       "certa": false
+      },
+      {
+       "texto": "will be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "By March, I'll have [been working] here for two years.",
+     "opcoes": [
+      {
+       "texto": "be worked",
+       "certa": false
+      },
+      {
+       "texto": "being working",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "An angry client calls. The best first sentence:",
+     "opcoes": [
+      {
+       "texto": "I'm very sorry. That must have been very stressful.",
+       "certa": true
+      },
+      {
+       "texto": "Calm down, please.",
+       "certa": false
+      },
+      {
+       "texto": "It wasn't our fault.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In the long turn, which sentence compares the two options?",
+     "opcoes": [
+      {
+       "texto": "The second, on the other hand, is cheaper but slower.",
+       "certa": true
+      },
+      {
+       "texto": "The second option is an option.",
+       "certa": false
+      },
+      {
+       "texto": "I don't know which is better.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In the decision task, which sentence closes the decision?",
+     "opcoes": [
+      {
+       "texto": "So, we've agreed on three days, with lunch included.",
+       "certa": true
+      },
+      {
+       "texto": "Maybe. We can see.",
+       "certa": false
+      },
+      {
+       "texto": "That's an interesting question.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I could live with that\" means…",
+     "opcoes": [
+      {
+       "texto": "I can accept that.",
+       "certa": true
+      },
+      {
+       "texto": "I want to live there.",
+       "certa": false
+      },
+      {
+       "texto": "I can't accept that.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Se tivesse de escolher, ficava com a segunda opção.",
+     "resposta": "If I had to choose, I'd go for the second option.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lurdes. The main difference is who it helps. If I had to choose, I'd go for the app, provided that we keep one counter for older clients.",
+     "enunciado": "What does Lurdes choose?",
+     "opcoes": [
+      {
+       "texto": "the app, with one counter for older clients",
+       "certa": true
+      },
+      {
+       "texto": "more staff at peak hours",
+       "certa": false
+      },
+      {
+       "texto": "neither option",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Compare two ways to travel to work, by car or by a company bus, and choose one with a reason.",
+     "frase": "on the other hand",
+     "resposta": "The first option, the car, is faster and more flexible. The second, on the other hand, is cheaper, and you can read or rest on the way. The main difference is freedom. If I had to choose, I'd go for the bus, because Luanda traffic is too stressful to drive every day.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should people work from home? Give your opinion with two sides, then answer this: \"Some people say you can't build a team on a screen.\"",
+     "frase": "I see your point",
+     "resposta": "It depends on the job. On the one hand, people save hours in traffic. On the other hand, it's harder to learn from colleagues. So, overall, two days at home is a good balance. I see your point about teams, but a team can meet in person once a week.",
+     "contexto": "Opinião e contra-argumento."
+    }
+   ]
+  }
+ ]
+}

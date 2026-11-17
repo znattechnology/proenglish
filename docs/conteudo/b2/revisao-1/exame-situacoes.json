@@ -1,0 +1,86 @@
+{
+ "exame": "B2.1",
+ "formato": "apps/practice/models.py Situacao (situações próprias do exame; extras.exame = true; carregar com manage.py carregar_exame_curso)",
+ "situacoes": [
+  {
+   "slug": "b2-1-exame-proposta",
+   "nome": "B2.1 exam · Present a proposal",
+   "papel_tutor": "A board member of the student's company, interested but careful with money.",
+   "descricao": "The examiner is a board member. The student presents a proposal in about one and a half minutes: their own, or this one: a staff canteen with healthy lunches, costing 15 million kwanzas to set up. The student needs a purpose, one figure and one deadline (future perfect). Difficulty: the examiner asks one detailed question the student cannot know (the cost per lunch in year two); the best answer admits it and promises a date. Decision: agree on whether to approve, and on what condition. Discussion: Should every important decision be based on numbers? Opposite view 1: some of the best business decisions came from intuition. Opposite view 2: numbers can be chosen to hide problems.",
+   "nivel": "B2",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. I'm a member of the board, and you have a proposal for us. You have about one and a half minutes — please go ahead."
+   },
+   "frases": [
+    "The purpose of this proposal is…",
+    "By…, we'll have…",
+    "I'm afraid I don't have that figure with me. I'll get back to you by…",
+    "Shall we go for…?"
+   ]
+  },
+  {
+   "slug": "b2-1-exame-negociar",
+   "nome": "B2.1 exam · Negotiate a deal",
+   "papel_tutor": "A supplier of laptops, friendly but tough on price.",
+   "descricao": "The examiner is a supplier. The student's company wants 20 laptops. The supplier's offer: 950 dollars each, delivery in six weeks, a one-year warranty, 50% paid in advance. The student wants a better price, faster delivery and a longer warranty. The student must use tentative language and offer something in exchange for each concession. Difficulty: the examiner refuses one request completely (I'm afraid that's impossible). Decision: reach a deal on all the points, and the student sums it up. Discussion: Is it always better to reach a compromise? Opposite view 1: sometimes a compromise means nobody gets what they really need. Opposite view 2: tough negotiators get better results.",
+   "nivel": "B2",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. I'm a supplier. You want twenty laptops, and my offer is nine hundred and fifty dollars each, delivery in six weeks, one year of warranty, and half paid in advance. What do you think?"
+   },
+   "frases": [
+    "Would you consider…?",
+    "If you could…, we could…",
+    "…, provided that…",
+    "Let me sum up what we've agreed:…"
+   ]
+  },
+  {
+   "slug": "b2-1-exame-cliente",
+   "nome": "B2.1 exam · An angry client",
+   "papel_tutor": "An angry client of the student's company.",
+   "descricao": "The examiner is an angry client. The student's company organised the sound and screens for the client's conference last Friday: the microphones failed for the first forty minutes, in front of two hundred guests. The student must show empathy, explain what happened with passives (the student can invent the cause), say what has been done, and propose a solution and compensation. Difficulty: the examiner interrupts once and rejects the first compensation as too small. Decision: agree on the compensation and the next step. Discussion: Is the customer always right? Opposite view 1: some clients use complaints to pay less. Opposite view 2: if you don't agree with the client, you lose them.",
+   "nivel": "B2",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. I'm your client, and I'm very unhappy. At my conference on Friday, your microphones didn't work for forty minutes, in front of two hundred guests. What happened?"
+   },
+   "frases": [
+    "I completely understand why you are upset.",
+    "The… was… / It should have been…",
+    "It has been… / It will be…",
+    "As compensation, we'd like to offer…"
+   ]
+  },
+  {
+   "slug": "b2-1-exame-tecnologia",
+   "nome": "B2.1 exam · A new technology",
+   "papel_tutor": "An enthusiastic director of the student's company.",
+   "descricao": "The examiner is a director who wants to replace the paper attendance book with a face-recognition system at the entrance, starting next month. The student must weigh the benefits and the risks (privacy, mistakes, cost, staff reactions), make predictions with degrees of certainty, and recommend a decision with conditions. Difficulty: the examiner pushes once to start immediately (Everyone else is doing it!). Decision: agree on what to do and on the conditions. Discussion: Will technology make work more human or less human? Opposite view 1: machines will do the boring tasks, so people will have time for people. Opposite view 2: we already talk to screens more than to colleagues.",
+   "nivel": "B2",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. I'm a director here, and I want to replace our paper attendance book with face recognition at the entrance, from next month. What do you think?"
+   },
+   "frases": [
+    "On the one hand… On the other hand…",
+    "… is bound to… / … is unlikely to…",
+    "What if…?",
+    "I would recommend…, provided that…"
+   ]
+  }
+ ]
+}

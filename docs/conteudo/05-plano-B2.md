@@ -239,7 +239,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 | Aula | Título | Objectivo |
 |---|---|---|
 | R1A | Review: leading, presenting and negotiating | Usar numa conversa nova as relativas explicativas, os marcadores de discurso, o *future perfect*, os condicionais com *provided that / unless*, a passiva e as previsões; corrigir os 10 erros mais comuns do B2.1. |
-| R1B | Getting ready for the B2.1 speaking exam | Conhecer as partes do exame e o que se avalia, e usar duas estratégias: comparar duas opções num turno longo (*Whereas the first…, the second…*) e chegar a uma decisão com o examinador (*Shall we go for…? I could live with that.*). |
+| R1B | Getting ready for the B2.1 speaking exam | Conhecer as partes do exame e o que se avalia, e usar duas estratégias: comparar duas opções num turno longo (*The first option… The second, on the other hand,…*; *whereas* só entra na unidade 7) e chegar a uma decisão com o examinador (*Shall we go for…? I could live with that.*). |
 
 - **Laboratório:** 2 lições de revisão (unidades 1–3 e 4–5).
 - **Conversa:** ensaio do exame com o tutor.

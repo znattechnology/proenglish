@@ -1,0 +1,91 @@
+{
+ "formato": "CourseGradingConfig.exam_script (apps/practice/conversa/exame.py, validar_guiao); carregar com manage.py carregar_exame_curso",
+ "nivel": "B2",
+ "duracao": "11 to 12 minutes",
+ "max_minutos": 12,
+ "situacoes": 1,
+ "partes": [
+  {
+   "titulo": "Interview",
+   "minutos": "about 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Hello, {nome}. Welcome to your B2.1 speaking exam. Tell me about a team you work or study in. Who are the people, and what is your role?",
+     "simples": "Tell me about the people you work or study with."
+    },
+    {
+     "pergunta": "What will you have achieved by the end of this year, at work or in your studies?",
+     "simples": "What do you want to finish this year?"
+    },
+    {
+     "pergunta": "How do you think your job or your studies will change in the next five years? How sure are you?",
+     "simples": "Will your job change in the future?"
+    }
+   ]
+  },
+  {
+   "titulo": "Long turn",
+   "minutos": "about 3 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Now please talk for about one and a half minutes. A company must train ten new employees. Option one: a two-week course with a trainer. Option two: a month working next to an experienced colleague, a mentor. Compare them, and tell me which you would choose and why.",
+     "simples": "Training new staff: a two-week course, or a month with an experienced colleague? Which is better, and why?"
+    },
+    {
+     "pergunta": "Thank you. What could go wrong with the option you chose?",
+     "simples": "What problems could there be with your choice?"
+    },
+    {
+     "pergunta": "If you were the manager, how would you know that the training had worked?",
+     "simples": "How can a manager check that training worked?"
+    }
+   ]
+  }
+ ],
+ "notas": [
+  "Ask one question at a time and wait. Do not correct, teach or give hints during the exam.",
+  "If the student answers with one word or one short sentence, ask Could you say a bit more about that? once per question.",
+  "In Part 2, let the student talk for about one and a half minutes without interrupting. If they stop early, or describe the options without choosing, ask And which would you choose, and why? once.",
+  "If the student does not work, adapt the questions to their studies, their family or their community.",
+  "In the situation, create the difficulty described in it once. The task is not finished until you and the student reach a clear decision; if the student does not close it, ask So, what do we decide?",
+  "After the situation, ask its discussion question. Then give the first opposite view and wait for the answer; then give the second opposite view and wait. This is Part 4 (about 3 minutes).",
+  "If the student says That is an interesting question, What I mean is..., Sorry, I mean..., I see your point, but... or asks Do you mean...?, continue normally.",
+  "Use any B1 and B2.1 language, but not whereas, even if, admittedly, wish, if only, mixed conditionals or reporting verbs like suggest or insist."
+ ],
+ "escala": {
+  "tarefa": {
+   "80-100": "Clear, developed answers with main ideas and details; compares the two options and chooses with reasons; carries the situation to a clear decision, including the difficulty; answers both counter-arguments with reasons.",
+   "60-79": "Answers with some development; compares the options but the choice is short; reaches a decision with some help; answers the counter-arguments, but briefly.",
+   "40-59": "Short answers; describes the options without comparing; the situation ends without a real decision; little answer to the counter-arguments.",
+   "0-39": "Answers few questions, or answers in Portuguese."
+  },
+  "gramatica": {
+   "80-100": "A range of complex structures (non-defining relative clauses, passives in different tenses, the future perfect and future perfect continuous, conditions with provided that or unless, tentative would and could); mistakes are rare and often self-corrected.",
+   "60-79": "Uses several B2.1 structures with some mistakes (for example until for by, or will bound to), but the meaning is always clear.",
+   "40-59": "Mostly B1 structures; mistakes sometimes make the meaning unclear.",
+   "0-39": "Very few correct sentences."
+  },
+  "vocabulario": {
+   "80-100": "Varied vocabulary and collocations from B2 units 1-5 (teams, presentations, contracts, clients, technology); paraphrases easily when a word is missing; some change of register.",
+   "60-79": "Enough vocabulary for the tasks, with some collocations; some pauses to find words; paraphrases some missing words.",
+   "40-59": "Limited vocabulary; repeats the same words; often stops.",
+   "0-39": "Very few words, or many Portuguese words."
+  },
+  "fluencia": {
+   "80-100": "Speaks spontaneously in long, organised turns; leads the decision task; few long pauses.",
+   "60-79": "Some long turns; pauses to organise ideas but keeps going; follows the examiner in the task.",
+   "40-59": "Short turns and long pauses; needs help to continue.",
+   "0-39": "Can hardly continue without help."
+  }
+ },
+ "nao_baixa": [
+  "a Portuguese or Angolan accent",
+  "asking the examiner to repeat or to explain a question",
+  "saying That is an interesting question or Let me think to get time before an abstract question",
+  "pauses to organise ideas in the long turn",
+  "paraphrasing a missing word: What I mean is... or In other words...",
+  "correcting yourself with Sorry, I mean...",
+  "disagreeing with the examiner, politely",
+  "one isolated mistake when the structure is clearly B2"
+ ]
+}
