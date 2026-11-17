@@ -1,0 +1,1676 @@
+{
+ "unidade": "B2.2 · Unit 9 — Mediation at work",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "9A",
+   "titulo": "She suggested waiting",
+   "aula": "9A",
+   "objectivo": "Relatar com suggest, recommend, insist on, admit e deny, com os padrões certos.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Hannah suggested [moving] the tests to September.",
+     "opcoes": [
+      {
+       "texto": "to move",
+       "certa": false
+      },
+      {
+       "texto": "us to move",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He denied [causing] the delay.",
+     "opcoes": [
+      {
+       "texto": "to cause",
+       "certa": false
+      },
+      {
+       "texto": "cause",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Thandi insisted [on] keeping June.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He admitted [starting] the roof late.",
+     "opcoes": [
+      {
+       "texto": "to start",
+       "certa": false
+      },
+      {
+       "texto": "start",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Ela sugeriu-nos que esperássemos.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "She suggested that we wait.",
+       "certa": true
+      },
+      {
+       "texto": "She suggested us to wait.",
+       "certa": false
+      },
+      {
+       "texto": "She suggested to us waiting to.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Mr Sapalo recommended waiting until Wednesday.",
+       "certa": true
+      },
+      {
+       "texto": "Mr Sapalo recommended us to wait until Wednesday.",
+       "certa": false
+      },
+      {
+       "texto": "Mr Sapalo recommended to wait us until Wednesday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Rui: \"I didn't break the printer!\" Report it.",
+     "opcoes": [
+      {
+       "texto": "Rui denied breaking the printer.",
+       "certa": true
+      },
+      {
+       "texto": "Rui denied to break the printer.",
+       "certa": false
+      },
+      {
+       "texto": "Rui denied that breaking the printer.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"He admitted that they had started late.\" He…",
+     "opcoes": [
+      {
+       "texto": "said it was true, although it was not good for him",
+       "certa": true
+      },
+      {
+       "texto": "said it was not true",
+       "certa": false
+      },
+      {
+       "texto": "asked if it was true",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "O Paulo sugeriu que usássemos um contentor.",
+     "resposta": "Paulo suggested that we use a container.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Mr Sapalo denied causing the delay. He insisted that the cement had arrived three weeks late.",
+     "enunciado": "What did Mr Sapalo insist?",
+     "opcoes": [
+      {
+       "texto": "that the cement had arrived three weeks late",
+       "certa": true
+      },
+      {
+       "texto": "that his team was late",
+       "certa": false
+      },
+      {
+       "texto": "that the tests should wait",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Thandi insisted on keeping June, because Mopane's engineers are booked for July and August.",
+     "enunciado": "Why did Thandi insist on June?",
+     "opcoes": [
+      {
+       "texto": "Mopane's engineers are booked in July and August.",
+       "certa": true
+      },
+      {
+       "texto": "June is cheaper.",
+       "certa": false
+      },
+      {
+       "texto": "The client wants June.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "He denied causing the delay. She insisted on keeping June.",
+     "enunciado": "Ouça e repita, com o acento nos verbos de relato."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of a recent discussion at work, at school or in your family. Report it to someone who was not there with at least four reporting verbs (suggest, insist on, admit, deny, recommend).",
+     "frase": "suggested",
+     "resposta": "Last Sunday, my family discussed Christmas. My mother suggested going to Huambo. My brother insisted on staying in Luanda, because of work. My father admitted that he didn't want to drive twelve hours. In the end, my sister recommended inviting my grandmother here.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "In a meeting, is it better to report exactly what people said, or just the decisions? Why?",
+     "frase": "because",
+     "resposta": "Usually just the decisions, because people are busy. But when there's a disagreement, it's important to report who insisted on what, because the decision might change later.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9B",
+   "titulo": "He warned us not to…",
+   "aula": "9B",
+   "objectivo": "Relatar avisos e conselhos com warn, advise, urge, remind e persuade + pessoa + to.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She warned us [not to] get relaxed.",
+     "opcoes": [
+      {
+       "texto": "don't",
+       "certa": false
+      },
+      {
+       "texto": "not",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She reminded us [to drink] water every hour.",
+     "opcoes": [
+      {
+       "texto": "drinking",
+       "certa": false
+      },
+      {
+       "texto": "drink",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She advised [everyone] to take a break in the shade.",
+     "opcoes": [
+      {
+       "texto": "to everyone",
+       "certa": false
+      },
+      {
+       "texto": "for everyone",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She persuaded the builders [to move] their lunch break.",
+     "opcoes": [
+      {
+       "texto": "moving",
+       "certa": false
+      },
+      {
+       "texto": "that move",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The doctor warned me not to eat so much salt.",
+       "certa": true
+      },
+      {
+       "texto": "The doctor warned me to not eating so much salt.",
+       "certa": false
+      },
+      {
+       "texto": "The doctor warned to me not eat so much salt.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "She advised us to take a break.",
+       "certa": true
+      },
+      {
+       "texto": "She suggested us to take a break.",
+       "certa": false
+      },
+      {
+       "texto": "She advised to us to take a break.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"She persuaded him to stay.\" Did he stay?",
+     "opcoes": [
+      {
+       "texto": "Yes.",
+       "certa": true
+      },
+      {
+       "texto": "No.",
+       "certa": false
+      },
+      {
+       "texto": "We do not know.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Lembraram-me de enviar o relatório.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "They reminded me to send the report.",
+       "certa": true
+      },
+      {
+       "texto": "They remembered me to send the report.",
+       "certa": false
+      },
+      {
+       "texto": "They reminded me sending the report.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ela incentivou-nos a acabar antes das duas.",
+     "resposta": "She encouraged us to finish before two.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Ruth reminded us to drink water every hour, and she advised everyone to take a ten-minute break every two hours.",
+     "enunciado": "How often should they take a break?",
+     "opcoes": [
+      {
+       "texto": "every two hours",
+       "certa": true
+      },
+      {
+       "texto": "every hour",
+       "certa": false
+      },
+      {
+       "texto": "twice a day",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Ruth asked Kgosi to check the harnesses every morning, not every week.",
+     "enunciado": "What did Ruth ask Kgosi to do?",
+     "opcoes": [
+      {
+       "texto": "check the harnesses every morning",
+       "certa": true
+      },
+      {
+       "texto": "check the harnesses every week",
+       "certa": false
+      },
+      {
+       "texto": "buy new harnesses",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "She warned us not to get relaxed.",
+     "enunciado": "Ouça e repita, com o acento em \"not\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Pass on the advice someone gave you (a doctor, a teacher, a manager, a parent). Use at least four of these verbs: warn, advise, remind, urge, persuade, encourage.",
+     "frase": "advised",
+     "resposta": "When I started my first job, my manager gave me great advice. She warned me not to promise dates I couldn't keep. She advised me to write everything down after meetings, and she reminded me to back up my files. She also encouraged me to ask questions.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it easier to follow advice from a manager or from a friend? Why?",
+     "frase": "because",
+     "resposta": "From a friend, because I know they only want the best for me. With a manager, I sometimes wonder if the advice is for me or for the company. But good managers give the best professional advice.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9C",
+   "titulo": "The key point is…",
+   "aula": "9C",
+   "objectivo": "Sintetizar: escolher o essencial, agrupar e reformular para outro público.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The report [covers] three areas: the radio link, the satellite and the sensors.",
+     "opcoes": [
+      {
+       "texto": "treats of",
+       "certa": false
+      },
+      {
+       "texto": "resumes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In other [words], the network works.",
+     "opcoes": [
+      {
+       "texto": "wording",
+       "certa": false
+      },
+      {
+       "texto": "speaking",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Most of the sensors are fine, [apart] from two.",
+     "opcoes": [
+      {
+       "texto": "except",
+       "certa": false
+      },
+      {
+       "texto": "besides of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In [short], two sensors need fixing.",
+     "opcoes": [
+      {
+       "texto": "resume",
+       "certa": false
+      },
+      {
+       "texto": "summary",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "What is the first question before you summarise?",
+     "opcoes": [
+      {
+       "texto": "What does the listener need to know?",
+       "certa": true
+      },
+      {
+       "texto": "How many pages is the report?",
+       "certa": false
+      },
+      {
+       "texto": "Who wrote the report?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Packet loss below one percent\" in simple words:",
+     "opcoes": [
+      {
+       "texto": "The signal is almost always perfect.",
+       "certa": true
+      },
+      {
+       "texto": "One percent of the packets are lost forever.",
+       "certa": false
+      },
+      {
+       "texto": "The packets are very small.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Attendance has decreased by approximately 40%.\" In simple words:",
+     "opcoes": [
+      {
+       "texto": "Almost half the people who came before didn't come this time.",
+       "certa": true
+      },
+      {
+       "texto": "Forty people came.",
+       "certa": false
+      },
+      {
+       "texto": "Attendance went up a little.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence closes a summary?",
+     "opcoes": [
+      {
+       "texto": "In short, the network works, and two sensors need fixing.",
+       "certa": true
+      },
+      {
+       "texto": "Resuming, the network works.",
+       "certa": false
+      },
+      {
+       "texto": "Let me start with the details.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Por outras palavras, o projecto não tem dinheiro suficiente.",
+     "resposta": "In other words, the project doesn't have enough money.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. Hannah needs to know if the network will work, and what could go wrong. Not how the antennas were aligned.",
+     "enunciado": "What does Hannah need to know?",
+     "opcoes": [
+      {
+       "texto": "if the network will work and what could go wrong",
+       "certa": true
+      },
+      {
+       "texto": "how the antennas were aligned",
+       "certa": false
+      },
+      {
+       "texto": "how many pages the report has",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. The key point is that nothing in the report stops us from starting the tests on the eighteenth.",
+     "enunciado": "What is the key point?",
+     "opcoes": [
+      {
+       "texto": "The tests can start on the eighteenth.",
+       "certa": true
+      },
+      {
+       "texto": "The tests must wait.",
+       "certa": false
+      },
+      {
+       "texto": "The report is too long.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The network works. The backup works, with a tiny delay. Two sensors need fixing.",
+     "enunciado": "Ouça e repita, com a voz a descer no fim de cada ponto."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise a meeting or a class you had this week for someone who was not there: the main areas, one sentence for each, and the key point.",
+     "frase": "key point",
+     "resposta": "On Tuesday we had our monthly sales meeting. It covered three areas: the results, the new product and the holidays. Results were ten percent above target. The new product launches in July, but the date could change. The key point is that July will be busy.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it harder to summarise something you know very well, or something you know little about? Why?",
+     "frase": "because",
+     "resposta": "Something I know very well, because everything seems important and I want to say it all. When I know little, I only remember the main points — which is actually what a summary needs.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9D",
+   "titulo": "What worries me is…",
+   "aula": "9D",
+   "objectivo": "Avaliar e comentar ao passar informação, separando factos e opinião.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What worries me [is] the margin.",
+     "opcoes": [
+      {
+       "texto": "it's",
+       "certa": false
+      },
+      {
+       "texto": "are",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The good [news] is that the sensors are a ten-minute job.",
+     "opcoes": [
+      {
+       "texto": "new",
+       "certa": false
+      },
+      {
+       "texto": "notice",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's worth [noting] that the container costs about six thousand dollars.",
+     "opcoes": [
+      {
+       "texto": "to note",
+       "certa": false
+      },
+      {
+       "texto": "note",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "On [balance], it's a manageable delay.",
+     "opcoes": [
+      {
+       "texto": "balancing",
+       "certa": false
+      },
+      {
+       "texto": "the balance",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "What worries me is the testing.",
+       "certa": true
+      },
+      {
+       "texto": "What worries me it's the testing.",
+       "certa": false
+      },
+      {
+       "texto": "What worries me are the testing.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is an opinion, not a fact?",
+     "opcoes": [
+      {
+       "texto": "In my view, the date is not at risk.",
+       "certa": true
+      },
+      {
+       "texto": "The report says the network works.",
+       "certa": false
+      },
+      {
+       "texto": "Mr Sapalo says the end of August.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The good news is that…\" is followed by…",
+     "opcoes": [
+      {
+       "texto": "something positive",
+       "certa": true
+      },
+      {
+       "texto": "a problem",
+       "certa": false
+      },
+      {
+       "texto": "a question",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In a briefing, what should come first?",
+     "opcoes": [
+      {
+       "texto": "the facts",
+       "certa": true
+      },
+      {
+       "texto": "your opinion",
+       "certa": false
+      },
+      {
+       "texto": "a joke",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "A boa notícia é que os testes começam a tempo.",
+     "resposta": "The good news is that the tests start on time.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. What worries me is the testing. If we wait for the real control room, we'll only test for three months.",
+     "enunciado": "What worries Paulo?",
+     "opcoes": [
+      {
+       "texto": "the testing period",
+       "certa": true
+      },
+      {
+       "texto": "the cost of the container",
+       "certa": false
+      },
+      {
+       "texto": "the sensors",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. On balance, I think we should offer to share the cost, half and half.",
+     "enunciado": "What does Nuno think they should do with the cost?",
+     "opcoes": [
+      {
+       "texto": "share it, half and half",
+       "certa": true
+      },
+      {
+       "texto": "pay it all",
+       "certa": false
+      },
+      {
+       "texto": "make Kuvango pay it all",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "What worries me is… the margin.",
+     "enunciado": "Ouça e repita, com uma pausa depois de \"is\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Pass on a piece of news from your work, your studies or your town. Facts first, then your view: one good thing, one worry, and your conclusion \"on balance\".",
+     "frase": "What worries me",
+     "resposta": "Our company is moving to a new office in Talatona in September. It's bigger, and it has parking. The good news is that we'll have meeting rooms. What worries me is the traffic for half of the team. On balance, it's a good move, if the company helps with transport.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "When you pass on bad news, is it better to start with the good news or with the bad? Why?",
+     "frase": "because",
+     "resposta": "With the bad news, I think, because people feel the good news is just a trick if you start with it. But I always finish with something positive, or with a solution.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9E",
+   "titulo": "Reports and minutes",
+   "aula": "9E",
+   "objectivo": "Vocabulário de relatórios e actas, padrões dos verbos de relato, passiva de relato; advise e reunion.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "minutes",
+       "b": "acta"
+      },
+      {
+       "a": "agenda",
+       "b": "ordem de trabalhos"
+      },
+      {
+       "a": "attendees",
+       "b": "presentes"
+      },
+      {
+       "a": "action point",
+       "b": "tarefa com responsável e prazo"
+      },
+      {
+       "a": "outcome",
+       "b": "resultado, decisão"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Who's going to [take] the minutes today?",
+     "opcoes": [
+      {
+       "texto": "make",
+       "certa": false
+      },
+      {
+       "texto": "do",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Hannah will [circulate] the minutes this afternoon.",
+     "opcoes": [
+      {
+       "texto": "circle",
+       "certa": false
+      },
+      {
+       "texto": "turn",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We [reached] a decision after an hour.",
+     "opcoes": [
+      {
+       "texto": "arrived",
+       "certa": false
+      },
+      {
+       "texto": "arrived to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "\"Avisa-me se houver problemas.\" → Let me [know] if there are problems.",
+     "opcoes": [
+      {
+       "texto": "advise",
+       "certa": false
+      },
+      {
+       "texto": "warn",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Avisei-o do risco.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I warned him about the risk.",
+       "certa": true
+      },
+      {
+       "texto": "I advised him of the risk.",
+       "certa": false
+      },
+      {
+       "texto": "I advised him the risk.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: advise = aconselhar."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A reunião de obra é às oito.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The site meeting is at eight.",
+       "certa": true
+      },
+      {
+       "texto": "The site reunion is at eight.",
+       "certa": false
+      },
+      {
+       "texto": "The reunion of work is at eight.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: reunion = reencontro."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The builders are said to be behind.\" This means…",
+     "opcoes": [
+      {
+       "texto": "People say the builders are behind.",
+       "certa": true
+      },
+      {
+       "texto": "The builders said they were behind.",
+       "certa": false
+      },
+      {
+       "texto": "Someone told the builders to stay behind.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which verb takes a person + to?",
+     "opcoes": [
+      {
+       "texto": "advise",
+       "certa": true
+      },
+      {
+       "texto": "suggest",
+       "certa": false
+      },
+      {
+       "texto": "deny",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. Action point: Paulo sends the container quote by tomorrow. I'll circulate the minutes this afternoon.",
+     "enunciado": "What is Paulo's action point?",
+     "opcoes": [
+      {
+       "texto": "send the container quote by tomorrow",
+       "certa": true
+      },
+      {
+       "texto": "circulate the minutes",
+       "certa": false
+      },
+      {
+       "texto": "call the minister",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Item one: the control room. Outcome: a new date tomorrow. Action point: Paulo sends the quote.",
+     "enunciado": "Ouça e repita, com a voz a descer no fim de cada ponto."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Report the minutes of a meeting you attended: the attendees, two items, the outcome of each, and two action points with an owner and a deadline. Use at least two reporting verbs.",
+     "frase": "action points",
+     "resposta": "Last Thursday, twelve people attended our building meeting. Item one: the water tank. The administrator admitted the pump was old and recommended replacing it. Item two: parking. Mrs Dias insisted on numbered spaces. Action points: three quotes by the fifteenth; the painting by Mrs Dias.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Are minutes useful, or does nobody read them? Why?",
+     "frase": "because",
+     "resposta": "They're useful, because three months later nobody remembers who promised what. But they must be short: a list of decisions and action points, not a story of the whole meeting.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9F",
+   "titulo": "Real English: The site meeting",
+   "aula": "9F",
+   "objectivo": "Seguir uma reunião de obra e identificar o que cada pessoa propôs, recusou, admitiu ou exigiu.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Benvindo Sapalo. I'll be direct. The control room will be ready on the thirty-first of August. Not before.",
+     "enunciado": "When will the control room be ready?",
+     "opcoes": [
+      {
+       "texto": "on the thirty-first of August",
+       "certa": true
+      },
+      {
+       "texto": "at the end of July",
+       "certa": false
+      },
+      {
+       "texto": "in September",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Mr Sapalo. That's true. I admit it: we had the team on the road. That's maybe a week of the delay.",
+     "enunciado": "What does Mr Sapalo admit?",
+     "opcoes": [
+      {
+       "texto": "His team started the roof late.",
+       "certa": true
+      },
+      {
+       "texto": "The cement was their fault.",
+       "certa": false
+      },
+      {
+       "texto": "It rained for a month.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kgosi. My engineers are booked until the end of August. If we can't test in June, we lose them.",
+     "enunciado": "Why does Kgosi need to test in June?",
+     "opcoes": [
+      {
+       "texto": "His engineers are booked until the end of August.",
+       "certa": true
+      },
+      {
+       "texto": "The client insists.",
+       "certa": false
+      },
+      {
+       "texto": "The container is ready.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. About six thousand dollars, with the air conditioning. I'll send a quote by tomorrow.",
+     "enunciado": "How much would the container cost?",
+     "opcoes": [
+      {
+       "texto": "about six thousand dollars",
+       "certa": true
+      },
+      {
+       "texto": "about sixty thousand dollars",
+       "certa": false
+      },
+      {
+       "texto": "about six hundred dollars",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Mr Sapalo. Night work on a roof, in this wind? I'm not putting my people at risk. Saturdays, maybe. Nights, never.",
+     "enunciado": "Why does Mr Sapalo refuse night work?",
+     "opcoes": [
+      {
+       "texto": "It is dangerous on a roof in the wind.",
+       "certa": true
+      },
+      {
+       "texto": "It is too expensive.",
+       "certa": false
+      },
+      {
+       "texto": "His team is on the road.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. We decide everything at tomorrow's site meeting with Helena Teixeira.",
+     "enunciado": "When will the final decision be made?",
+     "opcoes": [
+      {
+       "texto": "at tomorrow's site meeting",
+       "certa": true
+      },
+      {
+       "texto": "today",
+       "certa": false
+      },
+      {
+       "texto": "on Saturday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Who suggested the container?",
+     "opcoes": [
+      {
+       "texto": "Paulo",
+       "certa": true
+      },
+      {
+       "texto": "Kgosi",
+       "certa": false
+      },
+      {
+       "texto": "Mr Sapalo",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which reporting verb fits what Mr Sapalo did with night work?",
+     "opcoes": [
+      {
+       "texto": "refused",
+       "certa": true
+      },
+      {
+       "texto": "suggested",
+       "certa": false
+      },
+      {
+       "texto": "admitted",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "That's true. I admit it.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Saturdays, maybe. Nights, never.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Nuno missed the meeting. Report it to him with reporting verbs: what Mr Sapalo admitted and refused, what Paulo suggested, what Kgosi proposed, and what Hannah decided.",
+     "frase": "admitted",
+     "resposta": "Mr Sapalo insisted that the control room would only be ready on the thirty-first of August. He admitted starting the roof late. Paulo suggested using a container. Kgosi proposed working at night, but Sapalo refused. Hannah agreed to decide everything at tomorrow's meeting.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Was Mr Sapalo right to refuse night work, even if it causes more delay? Why?",
+     "frase": "because",
+     "resposta": "Yes, because no deadline is worth an accident. After the near miss in March, nobody should take risks at height in the wind. Saturdays are a safer way to recover time.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9G",
+   "titulo": "Work & Life: Briefing the board",
+   "aula": "9G",
+   "objectivo": "Sintetizar em inglês, para uma administração, uma reunião em português, com avaliação, e cortar para um minuto.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "The minutes say: \"reafirmou que o atraso do cimento não é da responsabilidade da Kuvango\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "He insisted that the cement delay was not Kuvango's responsibility.",
+       "certa": true
+      },
+      {
+       "texto": "He reaffirmed that the cement delay is not of the responsibility of Kuvango.",
+       "certa": false
+      },
+      {
+       "texto": "He denied to be responsible for the cement.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The minutes say: \"a Eng.ª Teixeira exigiu a presença de um técnico de segurança\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "Helena Teixeira insisted on having a safety officer on site.",
+       "certa": true
+      },
+      {
+       "texto": "Helena Teixeira exigied a safety technician.",
+       "certa": false
+      },
+      {
+       "texto": "Helena Teixeira suggested us to have a safety officer.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Celeste asks for the assessment \"in one minute\". Nuno…",
+     "opcoes": [
+      {
+       "texto": "gives only the conclusion, one good point, one worry and a recommendation",
+       "certa": true
+      },
+      {
+       "texto": "repeats all the facts faster",
+       "certa": false
+      },
+      {
+       "texto": "says he needs more time",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Kuvango [agreed] to work on Saturdays from the ninth of June.",
+     "opcoes": [
+      {
+       "texto": "accepted",
+       "certa": false
+      },
+      {
+       "texto": "admitted",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd recommend [asking] Kuvango for a weekly written update.",
+     "opcoes": [
+      {
+       "texto": "to ask",
+       "certa": false
+      },
+      {
+       "texto": "that asking",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The opening date isn't at risk, as [long] as the container works.",
+     "opcoes": [
+      {
+       "texto": "soon",
+       "certa": false
+      },
+      {
+       "texto": "far",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I don't have the details. I'll get [back] to you on that by Monday.",
+     "opcoes": [
+      {
+       "texto": "again",
+       "certa": false
+      },
+      {
+       "texto": "return",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. The meeting approved Paulo's proposal: an air-conditioned container, installed by the fifteenth of June.",
+     "enunciado": "When will the container be installed?",
+     "opcoes": [
+      {
+       "texto": "by the fifteenth of June",
+       "certa": true
+      },
+      {
+       "texto": "by the eighteenth of June",
+       "certa": false
+      },
+      {
+       "texto": "by the thirty-first of August",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. The cost is about six thousand dollars, shared equally between Kuvango and Kalandula.",
+     "enunciado": "Who pays for the container?",
+     "opcoes": [
+      {
+       "texto": "Kuvango and Kalandula, half each",
+       "certa": true
+      },
+      {
+       "texto": "Morro Azul",
+       "certa": false
+      },
+      {
+       "texto": "Kuvango alone",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Celeste Kiala. Thank you, Mr Kapinga. That was exactly what I needed, and in less than a minute.",
+     "enunciado": "What does Celeste think of the briefing?",
+     "opcoes": [
+      {
+       "texto": "It was exactly what she needed.",
+       "certa": true
+      },
+      {
+       "texto": "It was too long.",
+       "certa": false
+      },
+      {
+       "texto": "It was not clear.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "In short: the opening date isn't at risk. The good news is that the tests start on time.",
+     "enunciado": "Ouça e repita: frases curtas, com pausas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise a meeting for a manager who was not there (yours, or an office move: the director confirmed the date, a colleague insisted on parking, IT admitted needing two more weeks). Give the facts with reporting verbs, then your assessment.",
+     "frase": "insisted",
+     "resposta": "Yesterday's meeting covered three points. The director confirmed that we move on the first of September. Ana insisted on parking for everyone. IT admitted needing two more weeks. My assessment: the date isn't at risk. What worries me is that the clients don't know yet.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Now cut it: the same office-move meeting, in three sentences, for a director who has one minute.",
+     "frase": "worries me",
+     "resposta": "We move on the first of September, with parking for everyone. IT needs two extra weeks, but the date isn't at risk. What worries me is that the clients don't know yet.",
+     "contexto": "Sintetizar para um minuto."
+    }
+   ]
+  },
+  {
+   "codigo": "9R",
+   "titulo": "Unit 9 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 9 do B2 e reciclar as unidades 6 a 8 do B2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The manager suggested [having] the meeting on Friday.",
+     "opcoes": [
+      {
+       "texto": "to have",
+       "certa": false
+      },
+      {
+       "texto": "us to have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She reminded me [to call] the client.",
+     "opcoes": [
+      {
+       "texto": "calling",
+       "certa": false
+      },
+      {
+       "texto": "call",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He refused [to sign] the document.",
+     "opcoes": [
+      {
+       "texto": "signing",
+       "certa": false
+      },
+      {
+       "texto": "sign",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The good news [is] that everyone passed.",
+     "opcoes": [
+      {
+       "texto": "are",
+       "certa": false
+      },
+      {
+       "texto": "were",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The doctor advised me to rest.",
+       "certa": true
+      },
+      {
+       "texto": "The doctor suggested me to rest.",
+       "certa": false
+      },
+      {
+       "texto": "The doctor advised to me resting.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Avisa-me quando chegares.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Let me know when you arrive.",
+       "certa": true
+      },
+      {
+       "texto": "Advise me when you arrive.",
+       "certa": false
+      },
+      {
+       "texto": "Advise me when you will arrive.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 8). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The meeting was absolutely exhausting.",
+       "certa": true
+      },
+      {
+       "texto": "The meeting was very exhausting completely.",
+       "certa": false
+      },
+      {
+       "texto": "The meeting was a bit exhausted.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 7). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Even though it was late, we finished the minutes.",
+       "certa": true
+      },
+      {
+       "texto": "Despite it was late, we finished the minutes.",
+       "certa": false
+      },
+      {
+       "texto": "Even it was late, we finished the minutes.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 6). \"A sala devia estar pronta em Julho.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The room was supposed to be ready in July.",
+       "certa": true
+      },
+      {
+       "texto": "The room supposed to be ready in July.",
+       "certa": false
+      },
+      {
+       "texto": "The room was suppose to be ready in July.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ele negou ter causado o atraso.",
+     "resposta": "He denied causing the delay.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. I agree with Mr Sapalo on that. Ruth would never accept night work at height.",
+     "enunciado": "What does Hannah agree with?",
+     "opcoes": [
+      {
+       "texto": "refusing night work at height",
+       "certa": true
+      },
+      {
+       "texto": "working at night",
+       "certa": false
+      },
+      {
+       "texto": "paying for the container",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise a meeting or a class you had this week for someone who was not there.",
+     "frase": "suggested",
+     "resposta": "This week, our English class discussed working from home. The teacher suggested starting with the advantages. Two students insisted that the office is better for learning. In the end, we agreed on two days at home. The key point: it depends on the job.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your colleague missed the safety talk. Pass on three warnings or pieces of advice with warn, remind and advise.",
+     "frase": "reminded",
+     "resposta": "The safety officer warned us not to use our phones near the crane. She reminded everyone to wear helmets at all times, and she advised us to drink water every hour, because of the heat.",
+     "contexto": "Verbos de relato + pessoa + to."
+    }
+   ]
+  }
+ ]
+}
