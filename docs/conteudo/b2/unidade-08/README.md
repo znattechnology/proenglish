@@ -1,6 +1,6 @@
 # B2.2 · Unidade 8 — Reviews and reactions (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 8
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 8
 
 ## Objectivos da unidade
 
@@ -34,7 +34,7 @@ No fim da unidade, o aluno consegue:
 - **Advérbios de comentário:** surprisingly, frankly, honestly, apparently, luckily, fortunately, unfortunately, obviously, hopefully, admittedly.
 - **Reacções:** Really? No way! Are you joking? Seriously? Oh no, poor you! That's a shame. Tell me about it! That's so true! Fair enough. I'm not that bothered. I don't mind either way. Whatever you prefer. Good for you! Lucky you!
 - **Cultura e críticas:** concert, gig, show, exhibition, festival, line-up, venue, stage, audience, crowd, performance, review, rating, stars, critic, sold out, standing ovation, a must-see, live up to expectations, value for money.
-- **O balanço:** feedback, survey, respondents, satisfied, complaint, queue, capacity, sponsor, well received, overall.
+- **O balanço:** feedback, survey, responses, satisfied, complaint, queue, capacity, sponsor, well received, overall.
 - **Falsos amigos:** romance (caso amoroso, história de amor; "romance" = novel), spectacle (cena impressionante; spectacles = óculos; "espectáculo" = show, performance).
 
 ## Decisões pedagógicas desta unidade
@@ -54,6 +54,6 @@ Maio de 2029. A Morro Azul patrocina o "Festival Mar e Deserto", na cidade do Na
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 8E com música e multidão); imagens (as críticas na internet, as fotografias do festival, o inquérito em português); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 8E com música e multidão); imagens (as críticas na internet, as fotografias do festival, o inquérito em português); carregamento na plataforma.
 
 A seguir vem a **unidade 9, "Mediation at work"**.

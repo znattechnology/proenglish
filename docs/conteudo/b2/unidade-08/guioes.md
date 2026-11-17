@@ -27,9 +27,9 @@ Gramática-alvo: adjectivos graduáveis (good, bad, big, tired, funny, interesti
   bit, quite (= razoavelmente), fairly, rather; adjectivos não graduáveis ou extremos (brilliant, fantastic,
   awful, terrible, huge, exhausted, hilarious, fascinating, perfect) com absolutely, completely, totally,
   quite (= completamente); really com os dois
-Palavras-alvo: concert, film, show, singer, band, ending, plot, acting, brilliant, awful, hilarious,
-  fascinating, exhausted, disappointing
-Reciclagem: even though (B2, 7B); comparativos (B1)
+Palavras-alvo: concert, film, crowded, sound, goosebumps, trailer, ending, plot, acting, brilliant, awful,
+  hilarious, exhausted, disappointing
+Reciclagem: even though (B2, 7B)
 Pronúncia: acento forte no intensificador (absolutely brilliant), e voz animada
 Contexto: segunda-feira, 7 de Maio de 2029, 13:00; a cantina; a Elsa conta ao Nuno e ao Paulo o concerto de
   sexta e o filme de domingo
@@ -131,7 +131,7 @@ Objectivo da unidade a que serve: 1
 Gramática-alvo: advérbios de comentário no início da frase, com vírgula (Surprisingly, the food was
   cheap.) ou antes do adjectivo (surprisingly good); a ordem dos adjectivos: opinião, tamanho, idade, forma,
   cor, origem, material, finalidade (a lovely old colonial building; a small blue wooden boat)
-Palavras-alvo: review, rating, stars, room, view, staff, service, overpriced, value for money, cosy,
+Palavras-alvo: review, stars, room, staff, seafront, chef, terrace, harbour, overpriced, value for money,
   spacious, colonial, recommend (com nome: I recommend the fish)
 Reciclagem: admittedly (B2, 7A); números aproximados (B2, 2E)
 Pronúncia: o advérbio de comentário com uma pausa e o tom da atitude (surpresa, franqueza, pena)
@@ -236,8 +236,8 @@ Gramática-alvo: reacções curtas: interesse (Really? Oh, did you? How was it?)
   joking! Seriously?), simpatia (Oh no, poor you! That's a shame.), acordo (Tell me about it! That's so true!
   Absolutely.), aceitar (Fair enough.), indiferença (I'm not that bothered. I don't mind either way. Whatever
   you prefer.), alegria pelo outro (Good for you! Lucky you!); perguntas-eco (She's leaving. — Is she?)
-Palavras-alvo: weekend, plans, football, match, beach, lie-in, bothered, mind, joking, lucky
-Reciclagem: question tags (B1); so / neither (A2)
+Palavras-alvo: weekend, football, final, beach, lie-in, bothered, mind, joking, lucky, legendary
+Reciclagem: question tags (B1)
 Pronúncia: entoação de atitude: entusiasmo (voz alta e larga), surpresa (subida forte), indiferença (voz
   plana) — e a ironia de "Great." dito sem entusiasmo
 Contexto: sexta-feira, 11 de Maio, 17:30; o escritório, ao fim do dia; o Nuno, o Paulo e a Elsa falam do
@@ -357,7 +357,7 @@ Gramática-alvo: colocações (give / put on a performance, get good / bad revie
   a sell-out show, sold out, a standing ovation); adjectivos de crítica (overrated, underrated, a must-see,
   predictable, moving, gripping, catchy)
 Palavras-alvo: concert, gig, exhibition, festival, line-up, venue, stage, audience, crowd, performance,
-  review, critic, overrated, underrated, must-see, catchy, moving
+  review, sold out, overrated, underrated, must-see, catchy, moving
 Reciclagem: graduáveis e não graduáveis (8A); advérbios de comentário (8B)
 Pronúncia: entoação para entusiasmo, ironia e indiferença na mesma frase
 Falsos amigos: romance (≠ romance → novel; romance = caso amoroso, história de amor); spectacle (≠
@@ -534,9 +534,9 @@ Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: intensificadores, advérbios de comentário, reacções; mudar de registo
   (informal: It went really well! The Wi-Fi died, though. · formal: Overall, the zone was very well
   received. Unfortunately, the connection was interrupted…)
-Palavras-alvo: feedback, survey, respondents, satisfied, complaint, queue, capacity, sponsor, well received,
+Palavras-alvo: feedback, survey, responses, satisfied, complaint, queue, capacity, sponsor, well received,
   overall, next year
-Reciclagem: a passiva (B2, 4A); números aproximados e percentagens (B2, 2E); may have (B2, 6C)
+Reciclagem: a passiva (B2, 4A); números aproximados e percentagens (B2, 2E); past perfect (B1)
 Pronúncia: o mesmo facto dito com o tom de uma conversa entre colegas e com o tom de uma reunião formal
 Mediação: o Nuno resume à Ingrid, em inglês, as respostas do inquérito aos visitantes, escrito em português
 Contexto: segunda-feira, 21 de Maio, 9:00 (a equipa, no escritório) e 11:00 (videochamada com a Ingrid)
