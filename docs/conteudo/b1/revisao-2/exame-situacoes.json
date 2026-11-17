@@ -1,0 +1,86 @@
+{
+ "exame": "B1.2",
+ "formato": "apps/practice/models.py Situacao (situações próprias do exame; extras.exame = true; carregar com manage.py carregar_exame_curso)",
+ "situacoes": [
+  {
+   "slug": "b1-2-exame-recado",
+   "nome": "B1.2 exam · Report a call",
+   "papel_tutor": "The student's manager, who missed an important call.",
+   "descricao": "The examiner is the student's manager. This morning the student had a phone call with a hotel about the company's conference next month (the student invents the details: dates, number of rooms, price, conditions). The student must report the call with reported speech: what the hotel said, what they asked, and what they promised or agreed to do. Difficulty: once, the examiner asks for a detail the student did not mention (Did they say if breakfast is included? When do they need an answer?), and the student must answer or say how they will find out. Discussion question: Is it better to agree things by phone or by email? Opposite view: some people say phone calls are better, because emails are slow and create misunderstandings.",
+   "nivel": "B1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm your manager. This morning you had a call with a hotel about our conference next month, and I missed it. What did they say?"
+   },
+   "frases": [
+    "They said…",
+    "She asked if…",
+    "He promised to… / They agreed to…",
+    "I'll call them back and check."
+   ]
+  },
+  {
+   "slug": "b1-2-exame-orcamento",
+   "nome": "B1.2 exam · Explain a budget overspend",
+   "papel_tutor": "The finance director of the student's company.",
+   "descricao": "The examiner is the finance director. A project or an event the student organised went over budget: the student can use their own, or this one: a training week, budgeted at four million kwanzas, that cost five million. The student must explain the difference with numbers and percentages (went up by, rose to), give the causes (due to, because of, as a result) and propose changes for next time. Difficulty: once, the examiner refuses one of the proposals with a reason, and the student must offer another or a smaller version. Discussion question: Should every budget have money for unexpected problems? Opposite view: some people say an extra amount makes the price too high, and you lose clients.",
+   "nivel": "B1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm the finance director, and I've seen the final numbers of your last project — it went over budget. Can you explain what happened?"
+   },
+   "frases": [
+    "It was about … percent over budget.",
+    "The biggest increase was…, due to…",
+    "For next time, I propose…",
+    "I see your point. What about…?"
+   ]
+  },
+  {
+   "slug": "b1-2-exame-noticia",
+   "nome": "B1.2 exam · Summarise and comment on the news",
+   "papel_tutor": "A foreign colleague who does not read the local news.",
+   "descricao": "The examiner is a foreign colleague who does not read the Angolan news. The student must summarise a piece of news or an article they read or heard recently — real or invented — in four to six sentences (what, who, where, why, what next), say where it comes from (according to…), and give their opinion. Difficulty: once, the examiner questions the source or the facts (Are you sure? Where did you read it? Is that a reliable source?), and the student must answer. Discussion question: Is social media a good place to get the news? Opposite view: some people say social media is faster and closer to real life than newspapers.",
+   "nivel": "B1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm a colleague from abroad, and I don't read the local news. Have you read or heard anything interesting this week? Can you tell me about it?"
+   },
+   "frases": [
+    "According to…",
+    "The main point is that…",
+    "In my opinion, …",
+    "I read it on… It is a reliable source because…"
+   ]
+  },
+  {
+   "slug": "b1-2-exame-balanco",
+   "nome": "B1.2 exam · A project review",
+   "papel_tutor": "A client in a review meeting with the student's company.",
+   "descricao": "The examiner is a client in a review meeting. The project can be the student's own, or this one: the student's company organised a three-day training course for the client's staff; the feedback was good, but on the first day the course started an hour late and there were not enough computers. The student must say what went well, what they should have done differently (should have, the third conditional) and make recommendations, without blaming anyone. Difficulty: once, the examiner raises the problem seriously and does not accept a vague answer (But why did nobody check the computers?). Discussion question: Is it important to admit mistakes at work? Opposite view: some people say admitting mistakes makes you look weak.",
+   "nivel": "B1",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm your client, and this is the review meeting of the project you did for us. Tell me: how do you think it went?"
+   },
+   "frases": [
+    "First, what went well…",
+    "You're right. We should have…",
+    "If we had…, … would have…",
+    "For the next project, I recommend…"
+   ]
+  }
+ ]
+}

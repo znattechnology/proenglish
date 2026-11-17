@@ -1,0 +1,386 @@
+{
+ "unidade": "B1.2 · Review 2",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "B1R2-1",
+   "titulo": "Review 2: stories, calls and money",
+   "aula": "R2A",
+   "objectivo": "Rever as unidades 6 a 8 do B1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "When I arrived, the meeting [had] already started.",
+     "opcoes": [
+      {
+       "texto": "has",
+       "certa": false
+      },
+      {
+       "texto": "was",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Because] the drain was blocked, the water stayed on the roof.",
+     "opcoes": [
+      {
+       "texto": "Because of",
+       "certa": false
+      },
+      {
+       "texto": "Due to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She [told] me she was busy.",
+     "opcoes": [
+      {
+       "texto": "said",
+       "certa": false
+      },
+      {
+       "texto": "spoke",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He asked where the rooms [were].",
+     "opcoes": [
+      {
+       "texto": "were they",
+       "certa": false
+      },
+      {
+       "texto": "did be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "That [can't] be right. We didn't buy anything.",
+     "opcoes": [
+      {
+       "texto": "mustn't",
+       "certa": false
+      },
+      {
+       "texto": "must",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "It cost sixty-five million kwanzas.",
+       "certa": true
+      },
+      {
+       "texto": "It cost sixty-five millions kwanzas.",
+       "certa": false
+      },
+      {
+       "texto": "It cost sixty-five million of kwanzas.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Lerato: \"Call Kagiso tomorrow.\" Report it.",
+     "opcoes": [
+      {
+       "texto": "She told me to call Kagiso the next day.",
+       "certa": true
+      },
+      {
+       "texto": "She told me call Kagiso the next day.",
+       "certa": false
+      },
+      {
+       "texto": "She said me to call Kagiso the next day.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which question is the most polite?",
+     "opcoes": [
+      {
+       "texto": "Will you be using the car tomorrow?",
+       "certa": true
+      },
+      {
+       "texto": "You use the car tomorrow?",
+       "certa": false
+      },
+      {
+       "texto": "Use the car tomorrow?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. While the night guard was doing his round, there was a short circuit. By the time I arrived, he'd already put out the fire.",
+     "enunciado": "What had the guard done by the time Nuno arrived?",
+     "opcoes": [
+      {
+       "texto": "He had put out the fire.",
+       "certa": true
+      },
+      {
+       "texto": "He had called Nuno.",
+       "certa": false
+      },
+      {
+       "texto": "He had left the terminal.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ele perguntou-me se eu queria liderar a equipa.",
+     "resposta": "He asked me if I wanted to lead the team.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "By the time I arrived, he'd already put out the fire.",
+     "enunciado": "Ouça e repita, em dois grupos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a problem or an incident at work or at home: what happened, why, and what you did.",
+     "frase": "had",
+     "resposta": "Last year our office lost its internet for a day. At first, we didn't know why. Then the technician found that a construction company had cut a cable in the street. As a result, we worked from a café. In the end, the connection came back at six.",
+     "contexto": "Uma história com causas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Report a call or a meeting you had recently: what did the other person say, ask and promise?",
+     "frase": "asked",
+     "resposta": "Yesterday my manager called me. She said the board wanted the report two days earlier, and she asked me if I could finish it by Tuesday. I told her it would be difficult. She promised to give me help from another team.",
+     "contexto": "Discurso indirecto."
+    }
+   ]
+  },
+  {
+   "codigo": "B1R2-2",
+   "titulo": "Review 2: opinions, lessons and the exam",
+   "aula": "R2B",
+   "objectivo": "Rever as unidades 9 e 10 do B1 e preparar o exame oral.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Although] it was late, I stayed.",
+     "opcoes": [
+      {
+       "texto": "Despite",
+       "certa": false
+      },
+      {
+       "texto": "However",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I came here [to] learn English.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "for to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If we had known, we [would have] waited.",
+     "opcoes": [
+      {
+       "texto": "would",
+       "certa": false
+      },
+      {
+       "texto": "had",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We should [have checked] the room.",
+     "opcoes": [
+      {
+       "texto": "checked",
+       "certa": false
+      },
+      {
+       "texto": "to check",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It [can't have] been the weather. The satellite worked in bigger storms.",
+     "opcoes": [
+      {
+       "texto": "mustn't have",
+       "certa": false
+      },
+      {
+       "texto": "must have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "According to the article, prices went up.",
+       "certa": true
+      },
+      {
+       "texto": "According the article, prices went up.",
+       "certa": false
+      },
+      {
+       "texto": "According to me, prices went up.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In part 2 of the B1.2 exam, you…",
+     "opcoes": [
+      {
+       "texto": "tell a story about a problem you lived",
+       "certa": true
+      },
+      {
+       "texto": "describe a photo",
+       "certa": false
+      },
+      {
+       "texto": "explain a safety procedure",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In the discussion, you need a few seconds to think. You say:",
+     "opcoes": [
+      {
+       "texto": "That's an interesting question.",
+       "certa": true
+      },
+      {
+       "texto": "Next question, please.",
+       "certa": false
+      },
+      {
+       "texto": "I have no idea.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lurdes. If we had had a second connection, we wouldn't have closed for a day.",
+     "enunciado": "What does Lurdes think?",
+     "opcoes": [
+      {
+       "texto": "A second connection would have kept the branch open.",
+       "certa": true
+      },
+      {
+       "texto": "The branch should close every day.",
+       "certa": false
+      },
+      {
+       "texto": "The connection was fine.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Por um lado, é mais rápido; por outro lado, é mais caro.",
+     "resposta": "On the one hand, it's faster. On the other hand, it's more expensive.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "That's an interesting question. It depends on the situation.",
+     "enunciado": "Ouça e repita, sem pressa."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it better to agree things by phone or by email? Show both sides and give your view.",
+     "frase": "On the one hand",
+     "resposta": "That's an interesting question. On the one hand, a phone call is faster, and you can negotiate. On the other hand, an email is a record. So, overall, I think the best way is both: agree by phone, then confirm by email.",
+     "contexto": "Opinião organizada (45 segundos)."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a decision you made this year. What should you have done differently, and what are you hoping to do next?",
+     "frase": "should have",
+     "resposta": "This year I changed teams at work. I should have asked more questions before I accepted, because the hours are longer. But I'm learning a lot. Next year, I'm hoping to lead a small project.",
+     "contexto": "Lições e planos."
+    }
+   ]
+  }
+ ]
+}

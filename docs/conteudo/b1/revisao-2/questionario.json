@@ -1,0 +1,373 @@
+{
+ "title": "B1.2 Review 2 quiz — Units 6 to 10",
+ "description": "Três perguntas por unidade, das unidades 6 a 10 do B1.",
+ "questions": [
+  {
+   "id": "b1r2q1",
+   "question": "Unidade 6. \"Quando cheguei, a reunião já tinha começado.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1r2q1o0",
+     "text": "When I arrived, the meeting had already started.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q1o1",
+     "text": "When I arrived, the meeting has already started.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q1o2",
+     "text": "When I arrived, the meeting had already start.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q1o0",
+   "explanation": "Past perfect.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q2",
+   "question": "Unidade 6. Complete: \"The flight was late ___ the storm.\"",
+   "options": [
+    {
+     "id": "b1r2q2o0",
+     "text": "because of",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q2o1",
+     "text": "because",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q2o2",
+     "text": "so",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q2o0",
+   "explanation": "because of + nome.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q3",
+   "question": "Unidade 6. Complete: \"The water caused a lot of ___.\"",
+   "options": [
+    {
+     "id": "b1r2q3o0",
+     "text": "damage",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q3o1",
+     "text": "damages",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q3o2",
+     "text": "damaged",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q3o0",
+   "explanation": "damage é incontável.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q4",
+   "question": "Unidade 7. \"Ela disse-me que estava ocupada.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1r2q4o0",
+     "text": "She told me she was busy.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q4o1",
+     "text": "She said me she was busy.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q4o2",
+     "text": "She told that she was busy.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q4o0",
+   "explanation": "tell + pessoa.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q5",
+   "question": "Unidade 7. Kagiso: \"Where are the rooms?\" → \"He asked where ___.\"",
+   "options": [
+    {
+     "id": "b1r2q5o0",
+     "text": "the rooms were",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q5o1",
+     "text": "were the rooms",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q5o2",
+     "text": "did the rooms be",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q5o0",
+   "explanation": "A ordem da afirmação.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q6",
+   "question": "Unidade 7. \"Disse-me para não pagar.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1r2q6o0",
+     "text": "She told me not to pay.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q6o1",
+     "text": "She told me don't pay.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q6o2",
+     "text": "She said me not to pay.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q6o0",
+   "explanation": "told + pessoa + not to.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q7",
+   "question": "Unidade 8. Complete: \"That ___ be right. We didn't buy anything.\"",
+   "options": [
+    {
+     "id": "b1r2q7o0",
+     "text": "can't",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q7o1",
+     "text": "mustn't",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q7o2",
+     "text": "must",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q7o0",
+   "explanation": "Dedução: can't.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q8",
+   "question": "Unidade 8. Complete: \"Costs went up ___ 15%.\"",
+   "options": [
+    {
+     "id": "b1r2q8o0",
+     "text": "by",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q8o1",
+     "text": "of",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q8o2",
+     "text": "in",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q8o0",
+   "explanation": "by = a diferença.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q9",
+   "question": "Unidade 8. Complete: \"This time next week, I'll ___ the budget.\"",
+   "options": [
+    {
+     "id": "b1r2q9o0",
+     "text": "be presenting",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q9o1",
+     "text": "presenting",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q9o2",
+     "text": "be present",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q9o0",
+   "explanation": "Future continuous.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q10",
+   "question": "Unidade 9. Complete: \"Despite ___, we played football.\"",
+   "options": [
+    {
+     "id": "b1r2q10o0",
+     "text": "the rain",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q10o1",
+     "text": "it rained",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q10o2",
+     "text": "of the rain",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q10o0",
+   "explanation": "despite + nome.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q11",
+   "question": "Unidade 9. \"Para poupar dinheiro\" em inglês:",
+   "options": [
+    {
+     "id": "b1r2q11o0",
+     "text": "to save money",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q11o1",
+     "text": "for save money",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q11o2",
+     "text": "for to save money",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q11o0",
+   "explanation": "to + verbo.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q12",
+   "question": "Unidade 9. \"A novela das nove\" (na televisão) em inglês:",
+   "options": [
+    {
+     "id": "b1r2q12o0",
+     "text": "the nine o'clock soap opera",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q12o1",
+     "text": "the nine o'clock novel",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q12o2",
+     "text": "the nine o'clock romance",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q12o0",
+   "explanation": "novel = romance.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q13",
+   "question": "Unidade 10. \"Se tivéssemos esperado, teríamos perdido uma semana.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1r2q13o0",
+     "text": "If we had waited, we would have lost a week.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q13o1",
+     "text": "If we would have waited, we would have lost a week.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q13o2",
+     "text": "If we waited, we will have lost a week.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q13o0",
+   "explanation": "3.º condicional.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q14",
+   "question": "Unidade 10. \"Devíamos ter verificado.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1r2q14o0",
+     "text": "We should have checked.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q14o1",
+     "text": "We should checked.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q14o2",
+     "text": "We should to have checked.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q14o0",
+   "explanation": "should have + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b1r2q15",
+   "question": "Unidade 10. \"Não pode ter sido o tempo.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1r2q15o0",
+     "text": "It can't have been the weather.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r2q15o1",
+     "text": "It mustn't have been the weather.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r2q15o2",
+     "text": "It can't be the weather yesterday.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r2q15o0",
+   "explanation": "can't have + particípio.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
