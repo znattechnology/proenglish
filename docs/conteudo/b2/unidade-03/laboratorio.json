@@ -1,0 +1,1463 @@
+{
+ "unidade": "B2.1 · Unit 3 — Negotiating",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "3A",
+   "titulo": "Provided that…",
+   "aula": "3A",
+   "objectivo": "Pôr condições com provided that, as long as, unless, supposing e in case, e rever os quatro condicionais.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We can lower the price, provided that they [pay] thirty percent when they sign.",
+     "opcoes": [
+      {
+       "texto": "will pay",
+       "certa": false
+      },
+      {
+       "texto": "would pay",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "No penalties for customs delays, [unless] the delay is our fault.",
+     "opcoes": [
+      {
+       "texto": "if",
+       "certa": false
+      },
+      {
+       "texto": "provided",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Take these numbers [in case] they call you before the meeting.",
+     "opcoes": [
+      {
+       "texto": "unless",
+       "certa": false
+      },
+      {
+       "texto": "provided that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Supposing] Femi asks for one percent a week, what do we say?",
+     "opcoes": [
+      {
+       "texto": "Provided",
+       "certa": false
+      },
+      {
+       "texto": "Unless",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Unless the delay is our fault\" means…",
+     "opcoes": [
+      {
+       "texto": "if the delay is not our fault",
+       "certa": true
+      },
+      {
+       "texto": "if the delay is our fault",
+       "certa": false
+      },
+      {
+       "texto": "because the delay is our fault",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "We won't sign unless they agree to a maximum.",
+       "certa": true
+      },
+      {
+       "texto": "We won't sign unless they don't agree to a maximum.",
+       "certa": false
+      },
+      {
+       "texto": "We won't sign unless they will agree to a maximum.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Depois de unless, sem not e com o presente."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Leve o guarda-chuva, para o caso de chover.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Take an umbrella in case it rains.",
+       "certa": true
+      },
+      {
+       "texto": "Take an umbrella if it will rain.",
+       "certa": false
+      },
+      {
+       "texto": "Take an umbrella unless it rains.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is about an imaginary past?",
+     "opcoes": [
+      {
+       "texto": "If we hadn't hired the agent, the antennas would have missed the crane.",
+       "certa": true
+      },
+      {
+       "texto": "If they pay thirty percent, we will order early.",
+       "certa": false
+      },
+      {
+       "texto": "If they asked for one percent, we'd say no.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Podemos descer o preço, desde que paguem um sinal de trinta por cento.",
+     "resposta": "We can lower the price, provided that they pay a thirty percent deposit.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Sílvia. We can go down to three hundred and eighty-five thousand, provided that they pay thirty percent when they sign.",
+     "enunciado": "What is Sílvia's condition for the lowest price?",
+     "opcoes": [
+      {
+       "texto": "a thirty percent deposit at signing",
+       "certa": true
+      },
+      {
+       "texto": "a one-year contract",
+       "certa": false
+      },
+      {
+       "texto": "no penalties",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. Half a percent a week is fair, as long as there's a maximum of five percent.",
+     "enunciado": "What does Paulo want with the penalties?",
+     "opcoes": [
+      {
+       "texto": "a maximum of five percent",
+       "certa": true
+      },
+      {
+       "texto": "one percent a week",
+       "certa": false
+      },
+      {
+       "texto": "no penalties at all",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "As long as there's a maximum, half a percent is fair.",
+     "enunciado": "Ouça e repita: \"as long as\" como um bloco."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You're selling something: your car, your services or your company's product. Set your conditions with provided that, as long as and unless, and prepare one \"supposing\" question.",
+     "frase": "provided that",
+     "resposta": "I'm selling my car for six million kwanzas. I can go down to five and a half, provided that the buyer pays in cash. As long as it's this month, I'll include new tyres. I won't go below five unless there's a problem with the engine. And supposing someone offers a swap? I'll say no.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it a good idea to decide your limits before a negotiation? Why?",
+     "frase": "because",
+     "resposta": "Yes, because in the middle of a negotiation it's easy to say yes too quickly. If you know your bottom line before you start, you can be flexible on small things and firm on the important ones.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "3B",
+   "titulo": "Would you consider…?",
+   "aula": "3B",
+   "objectivo": "Propor, pedir e recusar com linguagem tentativa e cortês.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Would you consider [lowering] the price?",
+     "opcoes": [
+      {
+       "texto": "to lower",
+       "certa": false
+      },
+      {
+       "texto": "lower",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [afraid] that might be difficult for us.",
+     "opcoes": [
+      {
+       "texto": "scared",
+       "certa": false
+      },
+      {
+       "texto": "fearing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We were [hoping] for something closer to three hundred and seventy.",
+     "opcoes": [
+      {
+       "texto": "hope",
+       "certa": false
+      },
+      {
+       "texto": "hoped",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I was [wondering] if Sílvia could join us.",
+     "opcoes": [
+      {
+       "texto": "wonder",
+       "certa": false
+      },
+      {
+       "texto": "asking me",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the most tentative?",
+     "opcoes": [
+      {
+       "texto": "Would you consider a lower figure?",
+       "certa": true
+      },
+      {
+       "texto": "Lower the price.",
+       "certa": false
+      },
+      {
+       "texto": "We want a lower price now.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"That's impossible.\" A more diplomatic way:",
+     "opcoes": [
+      {
+       "texto": "I'm afraid that might be difficult for us.",
+       "certa": true
+      },
+      {
+       "texto": "That's not possible for you.",
+       "certa": false
+      },
+      {
+       "texto": "No way.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"With respect, that's quite high.\" \"With respect\" comes…",
+     "opcoes": [
+      {
+       "texto": "before a disagreement",
+       "certa": true
+      },
+      {
+       "texto": "after a compliment",
+       "certa": false
+      },
+      {
+       "texto": "at the end of a meeting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"We were hoping for 370.\" The speaker is talking about…",
+     "opcoes": [
+      {
+       "texto": "now, politely",
+       "certa": true
+      },
+      {
+       "texto": "last year",
+       "certa": false
+      },
+      {
+       "texto": "a hope that has ended",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Seria possível discutir os três pontos juntos?",
+     "resposta": "Would it be possible to discuss the three points together?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Femi. To be honest, four hundred and twelve thousand is more than we were hoping to pay.",
+     "enunciado": "What does Femi think about the price?",
+     "opcoes": [
+      {
+       "texto": "It's more than they were hoping to pay.",
+       "certa": true
+      },
+      {
+       "texto": "It's a fair price.",
+       "certa": false
+      },
+      {
+       "texto": "It's less than they expected.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. With respect, one percent a week is quite high. Would it be possible to discuss all three points in person?",
+     "enunciado": "What does Nuno propose?",
+     "opcoes": [
+      {
+       "texto": "to meet and discuss the three points",
+       "certa": true
+      },
+      {
+       "texto": "to accept one percent",
+       "certa": false
+      },
+      {
+       "texto": "to cancel the contract",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Would you consider twenty percent?",
+     "enunciado": "Ouça e repita, com a voz a subir no fim."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A client phones and asks for a big discount, a longer time to pay and free delivery. Answer each point tentatively, without saying yes or no, and propose a meeting.",
+     "frase": "Would it be possible",
+     "resposta": "Thank you for calling. We'd be prepared to look at the price, but I'm afraid twenty percent might be difficult. To be honest, sixty days to pay could be a problem; we were hoping for thirty. Free delivery is something we could consider. Would it be possible to meet next week?",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is tentative language a sign of weakness or of strength? Why?",
+     "frase": "because",
+     "resposta": "Of strength, I think, because you can say no without making the other person angry. A strong negotiator is firm on the idea and soft with the words. Shouting is easy; staying polite under pressure is hard.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "3C",
+   "titulo": "If you could…, we could…",
+   "aula": "3C",
+   "objectivo": "Regatear: concessões em troca, meio-termo, recusar e fechar.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If you [could] bring the price down, we could give you all three shipments.",
+     "opcoes": [
+      {
+       "texto": "can",
+       "certa": false
+      },
+      {
+       "texto": "will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I could do six thousand five hundred, in [exchange] for a signed agreement.",
+     "opcoes": [
+      {
+       "texto": "change",
+       "certa": false
+      },
+      {
+       "texto": "swap",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Six thousand four hundred — and that's as [far] as I can go.",
+     "opcoes": [
+      {
+       "texto": "long",
+       "certa": false
+      },
+      {
+       "texto": "much",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Shall we meet [halfway]?",
+     "opcoes": [
+      {
+       "texto": "in half",
+       "certa": false
+      },
+      {
+       "texto": "the middle",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Moses asks: \"So, do we have a deal?\" Nuno agrees:",
+     "opcoes": [
+      {
+       "texto": "It's a deal.",
+       "certa": true
+      },
+      {
+       "texto": "Is a deal.",
+       "certa": false
+      },
+      {
+       "texto": "We have dealt.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Nuno offers 6,000. Moses offers 6,500. \"Let's split the difference\" means…",
+     "opcoes": [
+      {
+       "texto": "6,250",
+       "certa": true
+      },
+      {
+       "texto": "6,000",
+       "certa": false
+      },
+      {
+       "texto": "6,500",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence gives something and asks for something in exchange?",
+     "opcoes": [
+      {
+       "texto": "We could pay in advance if you could deliver in March.",
+       "certa": true
+      },
+      {
+       "texto": "Please deliver in March.",
+       "certa": false
+      },
+      {
+       "texto": "We will pay in advance.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Why does Nuno sum up at the end?",
+     "opcoes": [
+      {
+       "texto": "so that both sides agree on every number and condition",
+       "certa": true
+      },
+      {
+       "texto": "because he forgot the price",
+       "certa": false
+      },
+      {
+       "texto": "to start the negotiation again",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Se pudesse baixar o preço, podíamos dar-lhe os três transportes.",
+     "resposta": "If you could lower the price, we could give you all three shipments.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Moses. Six thousand four hundred, and that's as far as I can go.",
+     "enunciado": "What is Moses's final price per truck?",
+     "opcoes": [
+      {
+       "texto": "six thousand four hundred dollars",
+       "certa": true
+      },
+      {
+       "texto": "six thousand dollars",
+       "certa": false
+      },
+      {
+       "texto": "six thousand eight hundred dollars",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Three trucks at six thousand four hundred each, with insurance included, and the first truck paid in advance.",
+     "enunciado": "What is included in the price?",
+     "opcoes": [
+      {
+       "texto": "the insurance",
+       "certa": true
+      },
+      {
+       "texto": "the customs fees",
+       "certa": false
+      },
+      {
+       "texto": "a fourth truck",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "That's as far as we can go.",
+     "enunciado": "Ouça e repita, com a voz firme e a descer."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe a negotiation you had (at work, at a market, buying a car or renting a house). What did each side want, what did each side give, and what was the final deal?",
+     "frase": "If",
+     "resposta": "Last year I rented a flat in Talatona. The owner wanted six months in advance; I wanted a lower rent. I said that if she could lower the rent, I could pay three months in advance. She agreed, provided that I signed for two years. We met halfway: ten percent off and a two-year contract.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "In your country, is it normal to bargain in shops or markets? Where is it normal, and where isn't it?",
+     "frase": "normal",
+     "resposta": "In markets, it's normal to bargain — the seller expects it. In supermarkets and big shops, it isn't normal, because the prices are fixed. With cars and houses, almost everybody negotiates.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "3D",
+   "titulo": "Deals and contracts",
+   "aula": "3D",
+   "objectivo": "Vocabulário de contratos e negociação, colocações, entoação tentativa e firme; billion e anticipate.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "deposit",
+       "b": "sinal"
+      },
+      {
+       "a": "instalment",
+       "b": "prestação"
+      },
+      {
+       "a": "warranty",
+       "b": "garantia"
+      },
+      {
+       "a": "invoice",
+       "b": "factura"
+      },
+      {
+       "a": "clause",
+       "b": "cláusula"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "After three hours, we [reached] a compromise.",
+     "opcoes": [
+      {
+       "texto": "arrived",
+       "certa": false
+      },
+      {
+       "texto": "got to do",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "They made a [concession] on the deposit.",
+     "opcoes": [
+      {
+       "texto": "concessional",
+       "certa": false
+      },
+      {
+       "texto": "conceding",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Can we [bring] the meeting forward to Tuesday?",
+     "opcoes": [
+      {
+       "texto": "anticipate",
+       "certa": false
+      },
+      {
+       "texto": "take",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The antennas have a three-year [warranty].",
+     "opcoes": [
+      {
+       "texto": "warrant",
+       "certa": false
+      },
+      {
+       "texto": "guarantor",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"mil milhões de dólares\" em inglês:",
+     "opcoes": [
+      {
+       "texto": "a billion dollars",
+       "certa": true
+      },
+      {
+       "texto": "a trillion dollars",
+       "certa": false
+      },
+      {
+       "texto": "a thousand billion dollars",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: billion = mil milhões; \"bilião\" = trillion."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"um bilião\" (um milhão de milhões) em inglês:",
+     "opcoes": [
+      {
+       "texto": "a trillion",
+       "certa": true
+      },
+      {
+       "texto": "a billion",
+       "certa": false
+      },
+      {
+       "texto": "a million billion",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"We anticipate some delays at the border.\" This means…",
+     "opcoes": [
+      {
+       "texto": "We expect some delays.",
+       "certa": true
+      },
+      {
+       "texto": "We are bringing the delays forward.",
+       "certa": false
+      },
+      {
+       "texto": "We are cancelling the delays.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: anticipate = prever, esperar; \"antecipar\" = bring forward."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Antecipar a reunião para segunda.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Bring the meeting forward to Monday.",
+       "certa": true
+      },
+      {
+       "texto": "Anticipate the meeting to Monday.",
+       "certa": false
+      },
+      {
+       "texto": "Advance us the meeting on Monday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Sílvia. They pay a thirty percent deposit when they sign, and the rest in two instalments.",
+     "enunciado": "How do they pay the rest?",
+     "opcoes": [
+      {
+       "texto": "in two instalments",
+       "certa": true
+      },
+      {
+       "texto": "in cash",
+       "certa": false
+      },
+      {
+       "texto": "all at the end",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "We could include the insurance — but that's our final offer.",
+     "enunciado": "Ouça e repita: a subir em \"insurance\", a descer em \"final offer\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain the main terms of a contract you know (phone, rental, loan or work): the price, how you pay, the penalty if something goes wrong, and the warranty or guarantee.",
+     "frase": "penalty",
+     "resposta": "My phone contract is for two years. I paid a small deposit, and the rest is paid in monthly instalments. If I break the contract early, there's a penalty of three months. The phone has a one-year warranty. I tried to negotiate, but the shop didn't make any concessions.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you read every clause of a contract before you sign? Why, or why not?",
+     "frase": "because",
+     "resposta": "Not always, to be honest, because some contracts have twenty pages. But I always read the price, the penalties and how to cancel. For a big contract, like a house, I ask a lawyer.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "3E",
+   "titulo": "Real English: The market and the boardroom",
+   "aula": "3E",
+   "objectivo": "Seguir duas negociações em velocidade natural: o que cada lado quer, cede e acorda.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Mrs Banda. That one is one hundred and eighty kwacha. Very good quality, from Kitwe.",
+     "enunciado": "How much is one chitenge at the start?",
+     "opcoes": [
+      {
+       "texto": "180 kwacha",
+       "certa": true
+      },
+      {
+       "texto": "160 kwacha",
+       "certa": false
+      },
+      {
+       "texto": "400 kwacha",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Chanda. I need three, for my sister, my mother and my aunt. If you give me three for four hundred, I'll buy them now.",
+     "enunciado": "Who is Chanda buying for?",
+     "opcoes": [
+      {
+       "texto": "his sister, his mother and his aunt",
+       "certa": true
+      },
+      {
+       "texto": "his wife and two daughters",
+       "certa": false
+      },
+      {
+       "texto": "his colleagues in Lobito",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Mrs Banda. Four hundred and sixty, and I'll give you a small bag for them. That's my last price.",
+     "enunciado": "What does Mrs Banda add to the deal?",
+     "opcoes": [
+      {
+       "texto": "a small bag",
+       "certa": true
+      },
+      {
+       "texto": "a fourth chitenge",
+       "certa": false
+      },
+      {
+       "texto": "free delivery",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Grace. We need support twenty-four hours a day, not just office hours. At the same price.",
+     "enunciado": "What does Grace want?",
+     "opcoes": [
+      {
+       "texto": "support twenty-four hours a day at the same price",
+       "certa": true
+      },
+      {
+       "texto": "a lower price for office hours",
+       "certa": false
+      },
+      {
+       "texto": "two more engineers in her office",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thandi. Twenty-four-hour support at the same monthly price, provided that you sign for three years instead of one.",
+     "enunciado": "What does Thandi first ask for in exchange?",
+     "opcoes": [
+      {
+       "texto": "a three-year contract",
+       "certa": true
+      },
+      {
+       "texto": "a higher price",
+       "certa": false
+      },
+      {
+       "texto": "a one-year contract",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Grace. As long as your engineers answer within one hour at night, we have a deal.",
+     "enunciado": "How fast must the engineers answer at night?",
+     "opcoes": [
+      {
+       "texto": "within one hour",
+       "certa": true
+      },
+      {
+       "texto": "within two days",
+       "certa": false
+      },
+      {
+       "texto": "within ten minutes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In both negotiations…",
+     "opcoes": [
+      {
+       "texto": "each side gives something to get something",
+       "certa": true
+      },
+      {
+       "texto": "one side gives everything",
+       "certa": false
+      },
+      {
+       "texto": "nobody agrees",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The final deal in the boardroom:",
+     "opcoes": [
+      {
+       "texto": "two years, 24-hour support, 5% more in the second year",
+       "certa": true
+      },
+      {
+       "texto": "three years, office hours, the same price",
+       "certa": false
+      },
+      {
+       "texto": "one year, 24-hour support, 10% more",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "If you give me three for four hundred, I'll buy them now.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "As long as it's not more than five percent.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell a colleague about the two negotiations: what each side wanted, what each side gave, and the final deals.",
+     "frase": "In the market",
+     "resposta": "In the market, Chanda wanted a lower price, and Mrs Banda wanted to sell more. He bought three for four hundred and sixty kwacha, and she added a bag. In the boardroom, Grace wanted twenty-four-hour support at the same price. Thandi agreed, provided that the contract was for two years.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Which negotiation was harder, the market or the boardroom? Why?",
+     "frase": "because",
+     "resposta": "The boardroom, I think, because there was more money and a long contract. In the market, if you don't agree, you walk to the next stall. But the market needs more humour!",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "3F",
+   "titulo": "Work & Life: The contract",
+   "aula": "3F",
+   "objectivo": "Negociar um contrato, chegar a acordo e resumi-lo; passar em inglês condições escritas em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "The letter says: \"desde que o contrato seja assinado até 30 de Novembro\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "provided that we sign by the thirtieth of November",
+       "certa": true
+      },
+      {
+       "texto": "since the contract is signed until the thirtieth of November",
+       "certa": false
+      },
+      {
+       "texto": "as soon as the contract will be signed by November",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The letter says: \"Com os melhores cumprimentos, J. Baptista\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "(nothing — he doesn't translate the formal ending)",
+       "certa": true
+      },
+      {
+       "texto": "With the best compliments, J. Baptista.",
+       "certa": false
+      },
+      {
+       "texto": "With my best greetings.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Femi wants one percent a week with no maximum. Sílvia answers:",
+     "opcoes": [
+      {
+       "texto": "With respect, Femi, that is a risk no company can take.",
+       "certa": true
+      },
+      {
+       "texto": "No. Never.",
+       "certa": false
+      },
+      {
+       "texto": "OK, if the board wants it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Customs delays don't count, as long as we [deliver] all the papers by the fifteenth of December.",
+     "opcoes": [
+      {
+       "texto": "will deliver",
+       "certa": false
+      },
+      {
+       "texto": "delivered",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If you [could] keep the thirty percent deposit, we could go to three hundred and eighty-five.",
+     "opcoes": [
+      {
+       "texto": "can",
+       "certa": false
+      },
+      {
+       "texto": "will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We'd be prepared [to add] training for six technicians.",
+     "opcoes": [
+      {
+       "texto": "add",
+       "certa": false
+      },
+      {
+       "texto": "adding",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let me sum up what we've [agreed].",
+     "opcoes": [
+      {
+       "texto": "agreed on it",
+       "certa": false
+      },
+      {
+       "texto": "accorded",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Femi. The board was hoping for three hundred and seventy, ten percent at signing, and one percent a week.",
+     "enunciado": "What deposit did the board want?",
+     "opcoes": [
+      {
+       "texto": "ten percent",
+       "certa": true
+      },
+      {
+       "texto": "thirty percent",
+       "certa": false
+      },
+      {
+       "texto": "forty percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. We could train six technicians from Tômbwa, at no cost, so they can look after the network after we leave.",
+     "enunciado": "What does Nuno add to the deal?",
+     "opcoes": [
+      {
+       "texto": "free training for six local technicians",
+       "certa": true
+      },
+      {
+       "texto": "a lower deposit",
+       "certa": false
+      },
+      {
+       "texto": "a second satellite",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Femi. Send me the final text by Monday, and I'll take it to the board.",
+     "enunciado": "What does Femi want by Monday?",
+     "opcoes": [
+      {
+       "texto": "the final text of the contract",
+       "certa": true
+      },
+      {
+       "texto": "the first payment",
+       "certa": false
+      },
+      {
+       "texto": "the antennas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The price is three hundred and eighty-five thousand dollars. You pay thirty percent when we sign.",
+     "enunciado": "Ouça e repita, com uma pausa entre os pontos e a voz a descer."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You are buying a service (cleaning, a school bus or internet). The supplier asks for a high price, a big deposit and a long contract. Refuse one point with respect, offer something in exchange, and sum up the deal.",
+     "frase": "sum up",
+     "resposta": "To be honest, we were hoping for a lower price. With respect, fifty percent in advance is too much. If you could bring the price down to eighty thousand a month, we could sign for one year. So, let me sum up: eighty thousand a month, one year, three months in advance.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Pass on these conditions in English: \"Aceitamos o preço de 1 800 000 Kz, desde que a instalação fique pronta até 30 de Abril. Pagamos 40% na encomenda e 60% no fim. Com os melhores cumprimentos, A Direcção\"",
+     "frase": "provided that",
+     "resposta": "Our director accepts the price of one million eight hundred thousand kwanzas, provided that the installation is ready by the thirtieth of April. We'll pay forty percent when we order and sixty percent at the end.",
+     "contexto": "Mediação: as condições, sem as fórmulas formais."
+    }
+   ]
+  },
+  {
+   "codigo": "3R",
+   "titulo": "Unit 3 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 3 do B2 e reciclar as unidades 1 e 2 do B2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You can't enter the site [unless] you have a helmet.",
+     "opcoes": [
+      {
+       "texto": "if",
+       "certa": false
+      },
+      {
+       "texto": "in case",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Bring a copy of the contract [in case] they ask for it.",
+     "opcoes": [
+      {
+       "texto": "unless",
+       "certa": false
+      },
+      {
+       "texto": "provided",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Would you consider [giving] us a discount?",
+     "opcoes": [
+      {
+       "texto": "to give",
+       "certa": false
+      },
+      {
+       "texto": "give",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If you could deliver earlier, we [could] order more units.",
+     "opcoes": [
+      {
+       "texto": "can",
+       "certa": false
+      },
+      {
+       "texto": "will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "We'll deliver on Friday, provided that you confirm the order today.",
+       "certa": true
+      },
+      {
+       "texto": "We'll deliver on Friday, provided that you will confirm the order today.",
+       "certa": false
+      },
+      {
+       "texto": "We'll deliver on Friday, unless you don't confirm the order today.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Mil milhões\" em inglês:",
+     "opcoes": [
+      {
+       "texto": "a billion",
+       "certa": true
+      },
+      {
+       "texto": "a trillion",
+       "certa": false
+      },
+      {
+       "texto": "a million million",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 2). \"Até Março, teremos assinado o contrato.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "By March, we will have signed the contract.",
+       "certa": true
+      },
+      {
+       "texto": "Until March, we will have signed the contract.",
+       "certa": false
+      },
+      {
+       "texto": "By March, we will signed the contract.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 2). Prices went from 100 to 130. Complete: \"Prices rose ___ thirty percent.\"",
+     "opcoes": [
+      {
+       "texto": "by",
+       "certa": true
+      },
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 1). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Femi, who is Nigerian, is the finance director.",
+       "certa": true
+      },
+      {
+       "texto": "Femi, that is Nigerian, is the finance director.",
+       "certa": false
+      },
+      {
+       "texto": "Femi who is Nigerian, is the finance director.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "É o nosso preço final, receio.",
+     "resposta": "I'm afraid that's our final offer.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Femi. Half a percent, a five percent cap, and customs excluded only with the papers on time. Agreed.",
+     "enunciado": "What does Femi agree to?",
+     "opcoes": [
+      {
+       "texto": "half a percent a week, with a five percent cap",
+       "certa": true
+      },
+      {
+       "texto": "one percent a week, with no cap",
+       "certa": false
+      },
+      {
+       "texto": "no penalties at all",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe a negotiation you had (at work, at a market, buying a car or a house). What did each side give?",
+     "frase": "in exchange",
+     "resposta": "When I bought my car, the seller wanted four million kwanzas. I offered three and a half, in exchange for paying in cash that day. He asked me to pay for the new tyres. We met halfway: three million seven hundred, tyres included. We were both happy.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A client wants a ten percent discount. Answer tentatively and offer the discount only in exchange for something.",
+     "frase": "if",
+     "resposta": "Thank you for asking. To be honest, ten percent might be difficult for us. But we could consider five percent if you could pay half in advance. And if you sign for two years, we could look at ten. Would that work for you?",
+     "contexto": "Conceder em troca."
+    }
+   ]
+  }
+ ]
+}

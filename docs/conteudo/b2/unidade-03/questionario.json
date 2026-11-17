@@ -1,0 +1,301 @@
+{
+ "title": "B2.1 Unit 3 quiz — Negotiating",
+ "description": "Condições (provided that, unless, in case), linguagem tentativa, concessões em troca, contratos, billion e anticipate.",
+ "questions": [
+  {
+   "id": "b2u3q1",
+   "question": "Complete: \"We can lower the price, provided that they ___ thirty percent.\"",
+   "options": [
+    {
+     "id": "b2u3q1o0",
+     "text": "pay",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u3q1o1",
+     "text": "will pay",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u3q1o2",
+     "text": "would pay",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u3q1o0",
+   "explanation": "Depois de provided that: presente para o futuro.",
+   "points": 10
+  },
+  {
+   "id": "b2u3q2",
+   "question": "\"Unless the delay is our fault\" significa…",
+   "options": [
+    {
+     "id": "b2u3q2o0",
+     "text": "if the delay is not our fault",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u3q2o1",
+     "text": "if the delay is our fault",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u3q2o2",
+     "text": "because the delay is our fault",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u3q2o0",
+   "explanation": "unless = if … not.",
+   "points": 10
+  },
+  {
+   "id": "b2u3q3",
+   "question": "Qual é a frase mais tentativa?",
+   "options": [
+    {
+     "id": "b2u3q3o0",
+     "text": "Would you consider a lower figure?",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u3q3o1",
+     "text": "Lower the price.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u3q3o2",
+     "text": "We want a lower price now.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u3q3o0",
+   "explanation": "would / could / might suavizam.",
+   "points": 10
+  },
+  {
+   "id": "b2u3q4",
+   "question": "Complete: \"Would you consider ___ the price?\"",
+   "options": [
+    {
+     "id": "b2u3q4o0",
+     "text": "lowering",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u3q4o1",
+     "text": "to lower",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u3q4o2",
+     "text": "lower",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u3q4o0",
+   "explanation": "consider + -ing.",
+   "points": 10
+  },
+  {
+   "id": "b2u3q5",
+   "question": "Complete: \"If you ___ bring the price down, we could give you all three shipments.\"",
+   "options": [
+    {
+     "id": "b2u3q5o0",
+     "text": "could",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u3q5o1",
+     "text": "can",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u3q5o2",
+     "text": "will",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u3q5o0",
+   "explanation": "If you could…, we could… (concessão em troca).",
+   "points": 10
+  },
+  {
+   "id": "b2u3q6",
+   "question": "Para fechar uma negociação, pergunta-se…",
+   "options": [
+    {
+     "id": "b2u3q6o0",
+     "text": "So, do we have a deal?",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u3q6o1",
+     "text": "So, it's a deal?",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u3q6o2",
+     "text": "So, we have dealt?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u3q6o0",
+   "explanation": "Do we have a deal? — It's a deal.",
+   "points": 10
+  },
+  {
+   "id": "b2u3q7",
+   "question": "\"Mil milhões de dólares\" em inglês:",
+   "options": [
+    {
+     "id": "b2u3q7o0",
+     "text": "a billion dollars",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u3q7o1",
+     "text": "a trillion dollars",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u3q7o2",
+     "text": "a thousand billion dollars",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u3q7o0",
+   "explanation": "Falso amigo: billion = mil milhões.",
+   "points": 10
+  },
+  {
+   "id": "b2u3q8",
+   "question": "\"Antecipar a reunião para segunda.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u3q8o0",
+     "text": "Bring the meeting forward to Monday.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u3q8o1",
+     "text": "Anticipate the meeting to Monday.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u3q8o2",
+     "text": "Advance us the meeting on Monday.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u3q8o0",
+   "explanation": "Falso amigo: anticipate = prever.",
+   "points": 10
+  },
+  {
+   "id": "b2u3q9",
+   "question": "Complete: \"After three hours, we ___ a compromise.\"",
+   "options": [
+    {
+     "id": "b2u3q9o0",
+     "text": "reached",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u3q9o1",
+     "text": "arrived",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u3q9o2",
+     "text": "got to do",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u3q9o0",
+   "explanation": "reach a compromise / an agreement.",
+   "points": 10
+  },
+  {
+   "id": "b2u3q10",
+   "question": "Reciclagem (B2, unidade 2). \"Até Março, teremos assinado o contrato.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u3q10o0",
+     "text": "By March, we will have signed the contract.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u3q10o1",
+     "text": "Until March, we will have signed the contract.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u3q10o2",
+     "text": "By March, we will signed the contract.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u3q10o0",
+   "explanation": "Future perfect com by.",
+   "points": 10
+  },
+  {
+   "id": "b2u3q11",
+   "question": "Reciclagem (B2, unidade 2). Prices went from 100 to 130. \"Prices rose ___ thirty percent.\"",
+   "options": [
+    {
+     "id": "b2u3q11o0",
+     "text": "by",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u3q11o1",
+     "text": "to",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u3q11o2",
+     "text": "of",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u3q11o0",
+   "explanation": "by = a diferença.",
+   "points": 10
+  },
+  {
+   "id": "b2u3q12",
+   "question": "Reciclagem (B2, unidade 1). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u3q12o0",
+     "text": "Femi, who is Nigerian, is the finance director.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u3q12o1",
+     "text": "Femi, that is Nigerian, is the finance director.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u3q12o2",
+     "text": "Femi who is Nigerian, is the finance director.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u3q12o0",
+   "explanation": "Relativa explicativa: vírgulas e who.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
