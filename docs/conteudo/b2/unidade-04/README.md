@@ -1,6 +1,6 @@
 # B2.1 · Unidade 4 — Client care (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 4
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 4
 
 ## Objectivos da unidade
 
@@ -49,10 +49,10 @@ No fim da unidade, o aluno consegue:
 
 ## A história
 
-Novembro de 2028. Na segunda, 13, o Nuno substitui a Rosa no apoio ao cliente e responde à Hannah, ao Femi e a um cliente à espera de dois *switches* (4A). Na quarta, 15, o Femi recebe uma versão do contrato com o preço antigo; o Nuno assume o erro, e a Sílvia cria três regras novas (4B). Na sexta, 17, o Nuno e o Paulo falam do que têm de mandar arranjar antes da primeira viagem ao Tômbwa; o contrato será assinado na terça, 28 (4C). A 4E é uma reportagem de rádio sobre a Litoral Telecom. Na segunda, 20, o Kwame Mensah, da Lumo Electronics, telefona furioso: as câmaras da loja de Talatona não gravaram nada desde sábado, e houve uma tentativa de assalto no domingo à noite. O Nuno manda o Joel à loja, liga de volta duas horas depois com o relatório, assume os dois erros da Kalandula, explica o que foi feito, oferece um mês grátis e três meses de cópia de segurança na *cloud*, e marca uma chamada de seguimento para sexta (4F).
+Novembro de 2028. Na segunda, 13, o Nuno substitui a Rosa no apoio ao cliente e responde à Hannah, ao Femi e a um cliente à espera de dois *switches* (4A). Na quarta, 15, o Femi recebe uma versão do contrato com o preço antigo; o Nuno assume o erro, e a Sílvia cria três regras novas (4B). Na sexta, 17, o Nuno e o Paulo falam do que têm de mandar arranjar antes da primeira viagem ao Tômbwa; o contrato será assinado na terça, 28 (4C). A 4E é uma reportagem de rádio sobre a Litoral Telecom. Na segunda, 20, o Kwame Mensah, da Lumo Electronics, telefona furioso: as câmaras da loja de Talatona não gravaram nada desde sábado, e houve uma tentativa de assalto no domingo à noite. O Nuno manda o Joel à loja, liga de volta antes das duas horas prometidas, com o relatório, assume os dois erros da Kalandula, explica o que foi feito, oferece um mês grátis e três meses de cópia de segurança na *cloud*, e marca uma chamada de seguimento para sexta (4F).
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 4E com música de espera, telefones e seis vozes); imagens (a lista de pedidos, o relatório do Joel em português); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 4E com música de espera, telefones e seis vozes); imagens (a lista de pedidos, o relatório do Joel em português); carregamento na plataforma.
 
 A seguir vem a **unidade 5, "Innovation"**, a última do B2.1.

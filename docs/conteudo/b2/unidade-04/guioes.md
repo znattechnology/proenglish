@@ -32,8 +32,8 @@ Objectivo da unidade a que serve: 1
 Gramática-alvo: passiva contínua (is / are being + particípio; was / were being + particípio); passiva no
   present perfect (has / have been + particípio); revisão da passiva simples (B1, 5A e 5B) e com will
   (will be installed); by só quando importa quem faz
-Palavras-alvo: request, status, update, order, ship, process, review, approve, deliver, install,
-  track, reference number
+Palavras-alvo: request, status, update, order, ship, clear customs, repair, review, approve, deliver,
+  install, reference number
 Reciclagem: passiva simples no presente e no passado (B1, 5A e 5B); future perfect (B2, 2C)
 Pronúncia: being dito com duas sílabas claras; been curto e fraco no meio da frase
 Contexto: segunda-feira, 13 de Novembro de 2028, 9:00 a 10:00; o Nuno substitui a Rosa no apoio ao
@@ -149,7 +149,8 @@ Objectivo da unidade a que serve: 1
 Gramática-alvo: modal + be + particípio (must be approved, should be sent, can't be changed, will be
   checked); modal + have been + particípio (should have been checked, shouldn't have been sent, could have
   been avoided); passiva no past perfect (had been changed, had been sent)
-Palavras-alvo: draft, version, approve, check, mistake, rule, procedure, sign off, double-check, from now on
+Palavras-alvo: draft, version, approve, check, mistake, rule, procedure, sign off, signature, embarrassing,
+  from now on
 Reciclagem: should have (B1, 10B); 3.º condicional (B1, 10A)
 Pronúncia: should have been dito curto (should've been) e o acento no particípio
 Contexto: quarta-feira, 15 de Novembro, 11:00; o gabinete da Sílvia; a Sílvia e o Nuno; uma chamada do
@@ -461,8 +462,8 @@ Objectivo da aula: No fim, o aluno consegue seguir quatro chamadas reais para um
 Objectivo da unidade a que serve: 1, 3, 4
 Língua: A1, A2, B1, as unidades 1 a 3 do B2 e a unidade 4 até à 4D, sem estruturas novas
 Vozes: a repórter de rádio (britânica); Benedita (angolana, operadora); quatro clientes: Daniel Okoro,
-  nigeriano (zangado), Dona Isabel, angolana idosa (confusa), um homem sul-africano (com pressa), uma mulher
-  angolana jovem (sarcástica)
+  nigeriano (zangado), Mrs Coleman, britânica idosa que vive em Luanda (confusa), um homem sul-africano (com pressa),
+  uma mulher queniana jovem (sarcástica)
 Velocidade: natural; música de espera, toques de telefone e barulho de escritório
 Duração: 12 min
 Verificação: Lab 4E
@@ -486,7 +487,7 @@ Verificação: Lab 4E
 
 [ECRÃ: Chamada 2]
 
-**CALLER 2:** Good morning, my dear. This is Dona Isabel. My grandson set up the internet, and now the little light is red. Is the internet broken?
+**CALLER 2:** Good morning, my dear. This is Mrs Coleman. My grandson set up the internet, and now the little light is red. Is the internet broken?
 **BENEDITA:** Good morning! Don't worry, we'll look at it together. Can you see the box with the lights? … Good. Is there a small button at the back? … Please press it for ten seconds. … Is the light green now?
 **CALLER 2:** It's green! Oh, thank you. You're very patient.
 **BENEDITA:** It's a pleasure. Have a lovely day.
@@ -584,7 +585,7 @@ Verificação: Lab 4F; conversa livre "An angry client"
 **KWAME:** No. Nothing.
 **NUNO:** Thank you. I'm sending Joel, our technician, to the shop right now. He'll be there by nine. I'll call you back within two hours with a full explanation. Is that OK?
 **KWAME:** Two hours. Not one minute more.
-[ECRÃ: 10:20; o Nuno lê o relatório do Joel, em português]
+[ECRÃ: 10:05; o Nuno lê o relatório do Joel, em português]
 [ECRÃ: o relatório: "Loja de Talatona — gravador das câmaras. Causa: na actualização do software de 10/11, a eliminação automática das gravações antigas foi desactivada e não foi reactivada. O disco ficou cheio no sábado, 18/11, cerca das 14h00; a partir daí não foi gravado nada. O alerta de 'disco cheio' foi enviado para um endereço da Lumo que já não é usado (info@ antigo). Acções: disco substituído hoje às 9h40; eliminação automática reactivada; gravação testada e a funcionar. As lojas da Maianga e do Kilamba foram verificadas: sem problemas. Joel Cassule"]
 **NUNO:** Mr Mensah, it's Nuno. I have the full report.
 **KWAME:** I'm listening.
