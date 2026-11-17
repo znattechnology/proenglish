@@ -147,7 +147,7 @@ Verificação: Lab 10B; perguntas 3 e 4 do questionário
 **LERATO:** These slides are good. But slide four is a bit hard on the contractor. "The contractor didn't seal the duct."
 **NUNO:** It's true, though.
 **LERATO:** It's true. But we were the project leaders. We should have checked the duct before we installed anything.
-**NUNO:** You're right. I should have asked about it on the Friday. I saw it was open.
+**NUNO:** You're right. I should have checked the duct myself on the Friday, before we left.
 **SÍLVIA:** It wasn't only your fault, Nuno. Maybe we could have planned more time for the installation. The calendar was very tight.
 **PAULO:** And we shouldn't have trusted the forecast. In Lobito, it rains a lot in January.
 **LERATO:** OK. So let's write it like this: "We should have checked the room before the installation, and we should have planned more time." "We", not "the contractor".
@@ -155,7 +155,7 @@ Verificação: Lab 10B; perguntas 3 e 4 do questionário
 **SÍLVIA:** I should have looked at the exchange rate more carefully in October. Everyone knew the kwanza was falling.
 **LERATO:** We all could have done that. But we learned the lesson — that's why we have the new rules.
 **PAULO:** What about the customs certificate? Mopane should have sent it with the antennas.
-**LERATO:** Yes, but Thandi took responsibility immediately, and Mopane paid half of the agent. Let's say: "The shipping documents should have been complete." Short and fair.
+**LERATO:** Yes, but Thandi took responsibility immediately, and Mopane paid half of the agent's fee. Let's say: "The shipping documents should have been complete." Short and fair.
 **NUNO:** OK. "We", not "they". Facts, not blame.
 
 ### 3. Língua (4 min)
@@ -253,10 +253,10 @@ Verificação: Lab 10C; conversa guiada "If I had known…"; perguntas 5 e 6 do 
 **NUNO:** Forty minutes? That's strange. The satellite has worked every time since November. Something must have changed.
 **HANNAH:** I thought so too. Could it have been the weather? The storm was very strong.
 **NUNO:** It can't have been the weather. The satellite worked during much bigger storms in February. What do the logs say?
-**HANNAH:** The router says "no power" from three to three forty.
-**NUNO:** No power? Then the satellite router must have lost its power supply. Was anyone working in the room on Saturday?
+**HANNAH:** The satellite router says "no power" since Saturday afternoon. The radio link came back at three forty — that's why we were blind for forty minutes.
+**NUNO:** Since Saturday? Then the router must have lost its power supply on Saturday. Was anyone working in the room that day?
 **HANNAH:** Let me check… Yes — Domingos's team cleaned the control room on Saturday morning.
-**NUNO:** Ah. They might have moved the router's power cable when they were cleaning. If the cable was loose, the battery could have run out on Sunday.
+**NUNO:** Ah. They might have moved the router's power cable when they were cleaning. And nobody noticed, because the radio link was working all Saturday.
 **HANNAH:** That makes sense. But they always clean on Saturdays, and nothing happened before.
 **NUNO:** True. Then maybe they cleaned behind the cabinet for the first time. Can you look at the cable now?
 **HANNAH:** [pausa] You're right. It's half out of the socket. Someone must have kicked it.

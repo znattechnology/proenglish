@@ -1,6 +1,6 @@
 # B1.2 · Unidade 10 — Lessons learned (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 10
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 10
 
 ## Objectivos da unidade
 
@@ -50,10 +50,10 @@ No fim da unidade, o aluno consegue:
 
 ## A história
 
-Junho de 2028. Na segunda, 5, o Nuno e o Paulo preparam os diapositivos e imaginam o que teria acontecido com outras decisões (10A). Na terça, 6, a Lerato pede-lhes que escrevam os erros com "we", e não com o nome do empreiteiro (10B). Na quarta, 7, a Hannah conta que o satélite não ligou durante um corte no domingo; o Nuno deduz que alguém deve ter desligado o cabo durante a limpeza — e assim foi (10C). Na sexta, 16, na reunião de balanço com a Morro Azul, o Nuno conduz uma parte: o que correu bem, o que fariam de outra forma, as recomendações para o Tômbwa e o inquérito de satisfação (4,3 em 5; "Uma equipa que admite os erros e resolve"). A Ingrid quer a mesma equipa para a nova central (10F).
+Junho de 2028. Na segunda, 5, o Nuno e o Paulo preparam os diapositivos e imaginam o que teria acontecido com outras decisões (10A). Na terça, 6, a Lerato pede-lhes que escrevam os erros com "we", e não com o nome do empreiteiro (10B). Na quarta, 7, a Hannah conta que o satélite não ligou durante um corte no domingo; o Nuno deduz que alguém deve ter desligado o cabo durante a limpeza de sábado — e assim foi (10C). Na sexta, 16, na reunião de balanço com a Morro Azul, o Nuno conduz uma parte: o que correu bem, o que fariam de outra forma, as recomendações para o Tômbwa e o inquérito de satisfação (4,3 em 5; "Uma equipa que admite os erros e resolve"). A Ingrid quer a mesma equipa para a nova central (10F).
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (13 escutas, 7 pronúncias, a 10E com quatro vozes); imagens (os diapositivos do balanço, os registos do router, o inquérito em português); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (13 escutas, 7 pronúncias, a 10E com quatro vozes); imagens (os diapositivos do balanço, os registos do router, o inquérito em português); carregamento na plataforma.
 
 A seguir vêm a **revisão e o exame oral do B1.2**.
