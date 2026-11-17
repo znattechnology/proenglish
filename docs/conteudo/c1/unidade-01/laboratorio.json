@@ -1,0 +1,1463 @@
+{
+ "unidade": "C1.1 · Unit 1 — Making the case",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "1A",
+   "titulo": "What we need is…",
+   "aula": "1A",
+   "objectivo": "Dar ênfase com clivadas com what, all, the reason why e the thing that.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What we need [is] a regional training hub.",
+     "opcoes": [
+      {
+       "texto": "it's",
+       "certa": false
+      },
+      {
+       "texto": "are",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "All I'm asking [for] is half an hour with the board.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The reason [why] it's working is that local technicians fix almost everything.",
+     "opcoes": [
+      {
+       "texto": "because",
+       "certa": false
+      },
+      {
+       "texto": "what",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The thing [that] worries me is the cost of travel.",
+     "opcoes": [
+      {
+       "texto": "what",
+       "certa": false
+      },
+      {
+       "texto": "it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the sentence with emphasis on \"more time\".",
+     "opcoes": [
+      {
+       "texto": "What we need is more time.",
+       "certa": true
+      },
+      {
+       "texto": "We need more time, what.",
+       "certa": false
+      },
+      {
+       "texto": "It is more time what we need.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "What surprised me was the price.",
+       "certa": true
+      },
+      {
+       "texto": "What surprised me it was the price.",
+       "certa": false
+      },
+      {
+       "texto": "What it surprised me was the price.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"All I want is an answer by Friday.\" The speaker wants…",
+     "opcoes": [
+      {
+       "texto": "only one thing: an answer by Friday",
+       "certa": true
+      },
+      {
+       "texto": "many answers",
+       "certa": false
+      },
+      {
+       "texto": "everything by Friday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "What we should do is train them here.",
+       "certa": true
+      },
+      {
+       "texto": "What we should do is we train them here.",
+       "certa": false
+      },
+      {
+       "texto": "What we should do is training them here of.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "O que nos surpreendeu foi o preço.",
+     "resposta": "What surprised us was the price.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. What we need is a regional training hub here in Joburg, for technicians from all six countries.",
+     "enunciado": "What does Nuno propose?",
+     "opcoes": [
+      {
+       "texto": "a regional training hub in Johannesburg",
+       "certa": true
+      },
+      {
+       "texto": "more engineers in Luanda",
+       "certa": false
+      },
+      {
+       "texto": "a new office in Maputo",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. The reason why Tômbwa is working so well is that six local technicians can fix almost everything themselves.",
+     "enunciado": "Why is Tômbwa working so well, according to Nuno?",
+     "opcoes": [
+      {
+       "texto": "Local technicians can fix almost everything.",
+       "certa": true
+      },
+      {
+       "texto": "The equipment is new.",
+       "certa": false
+      },
+      {
+       "texto": "Engineers fly in every week.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "What we need is… a regional training hub.",
+     "enunciado": "Ouça e repita, com uma pausa antes da ideia em destaque."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell your manager about your first impressions of a new team (real or imagined) and propose one change, with at least four cleft sentences.",
+     "frase": "What",
+     "resposta": "What surprised me most was how friendly everyone is. What works well is the Monday meeting. What doesn't work is file sharing: the reason why we lose time is that everyone uses a different system. What I'd suggest is one shared folder. All I'm asking for is one afternoon.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it better to propose big changes in your first months in a new job, or to wait until you know the place? Why?",
+     "frase": "The reason why",
+     "resposta": "I'd wait a little. The reason why is simple: in the first months, you don't know why things are done in a certain way. What I'd do is take notes, ask questions, and propose one small change first.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "1B",
+   "titulo": "It was Tômbwa that…",
+   "aula": "1B",
+   "objectivo": "Dar ênfase com clivadas com it e com do / does / did enfático, também para corrigir.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It was the technicians [who] solved the problem.",
+     "opcoes": [
+      {
+       "texto": "what",
+       "certa": false
+      },
+      {
+       "texto": "which they",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It [wasn't] the equipment that changed everything. It was the people.",
+     "opcoes": [
+      {
+       "texto": "didn't",
+       "certa": false
+      },
+      {
+       "texto": "isn't been",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Mopane did [help] with the satellite part.",
+     "opcoes": [
+      {
+       "texto": "helped",
+       "certa": false
+      },
+      {
+       "texto": "helping",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Clients [do] complain. They just call Inês, not you.",
+     "opcoes": [
+      {
+       "texto": "are",
+       "certa": false
+      },
+      {
+       "texto": "does",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Correct this, politely: \"Paulo installed the satellite.\" (It was Sipho's team.)",
+     "opcoes": [
+      {
+       "texto": "It wasn't Paulo who installed the satellite — it was Sipho's team.",
+       "certa": true
+      },
+      {
+       "texto": "Paulo didn't installed the satellite, Sipho's team yes.",
+       "certa": false
+      },
+      {
+       "texto": "It was Sipho's team what installed it, not Paulo.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "It was Kalandula that trained them.",
+       "certa": true
+      },
+      {
+       "texto": "It was Kalandula who it trained them.",
+       "certa": false
+      },
+      {
+       "texto": "Was Kalandula that trained them.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I do think the board will listen.\" The word \"do\"…",
+     "opcoes": [
+      {
+       "texto": "adds emphasis",
+       "certa": true
+      },
+      {
+       "texto": "makes a question",
+       "certa": false
+      },
+      {
+       "texto": "makes it negative",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It's not that our engineers are slow. It's that…\" The speaker is…",
+     "opcoes": [
+      {
+       "texto": "correcting the reason for a problem",
+       "certa": true
+      },
+      {
+       "texto": "agreeing completely",
+       "certa": false
+      },
+      {
+       "texto": "asking for help",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Não foi o equipamento que mudou tudo; foram as pessoas.",
+     "resposta": "It wasn't the equipment that changed everything; it was the people.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Inês. In Maputo, when something breaks, it's always someone from Joburg who has to fly in.",
+     "enunciado": "What happens in Maputo when something breaks?",
+     "opcoes": [
+      {
+       "texto": "Someone from Johannesburg has to fly in.",
+       "certa": true
+      },
+      {
+       "texto": "Local technicians fix it.",
+       "certa": false
+      },
+      {
+       "texto": "Nobody fixes it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Inês. They do complain, Lindiwe, just not to you! It's me they call at midnight.",
+     "enunciado": "Who do the clients call at midnight?",
+     "opcoes": [
+      {
+       "texto": "Inês",
+       "certa": true
+      },
+      {
+       "texto": "Lindiwe",
+       "certa": false
+      },
+      {
+       "texto": "Nuno",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It wasn't the equipment — it was the people.",
+     "enunciado": "Ouça e repita, com o acento em \"equipment\" e em \"people\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell the story of a success at work, at school or in your community, and correct one common misunderstanding about why it worked. Use It was… that / who…, It wasn't… it was…, and one emphatic do or did.",
+     "frase": "It was",
+     "resposta": "Last year our school's results improved a lot. Everyone thinks it was the new computers that made the difference. But it wasn't the computers — it was the extra reading hour every morning. It was our director who insisted on it. The computers did help, but much less.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "When a project succeeds, who usually gets the credit, and who should? Why?",
+     "frase": "who",
+     "resposta": "Usually it's the manager who gets the credit. But it's often the people on the ground who did the real work. A good manager does take responsibility for failures, and shares the credit for successes.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "1C",
+   "titulo": "I take your point, but consider this…",
+   "aula": "1C",
+   "objectivo": "Responder a contra-argumentos: conceder, reformular, devolver e voltar ao argumento.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "That's a [fair] point. But consider this…",
+     "opcoes": [
+      {
+       "texto": "right",
+       "certa": false
+      },
+      {
+       "texto": "just",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'll [grant] you that some will leave.",
+     "opcoes": [
+      {
+       "texto": "offer",
+       "certa": false
+      },
+      {
+       "texto": "permit",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let me turn that [around]: what happens if we don't train anyone?",
+     "opcoes": [
+      {
+       "texto": "up",
+       "certa": false
+      },
+      {
+       "texto": "off",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I understand you correctly, your [concern] is cost.",
+     "opcoes": [
+      {
+       "texto": "worry of",
+       "certa": false
+      },
+      {
+       "texto": "concerning",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which answer to an objection is the most professional?",
+     "opcoes": [
+      {
+       "texto": "That's a fair point. But consider this: we spent more on travel.",
+       "certa": true
+      },
+      {
+       "texto": "No, you're wrong, because we spent more on travel.",
+       "certa": false
+      },
+      {
+       "texto": "That's not true. Look at the numbers.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Let me turn that around.\" The speaker is going to…",
+     "opcoes": [
+      {
+       "texto": "look at the objection from the opposite side",
+       "certa": true
+      },
+      {
+       "texto": "change the subject",
+       "certa": false
+      },
+      {
+       "texto": "end the meeting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the best first move when you answer a fair objection?",
+     "opcoes": [
+      {
+       "texto": "concede the true part",
+       "certa": true
+      },
+      {
+       "texto": "say it is wrong",
+       "certa": false
+      },
+      {
+       "texto": "ignore it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Which is exactly why the first part is online.\" The speaker is…",
+     "opcoes": [
+      {
+       "texto": "coming back to the main argument",
+       "certa": true
+      },
+      {
+       "texto": "agreeing with the objection only",
+       "certa": false
+      },
+      {
+       "texto": "changing the plan",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Concedo-lhe que alguns vão sair.",
+     "resposta": "I'll grant you that some will leave.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Rajesh. And when we've trained them, they'll leave for a competitor.",
+     "enunciado": "What is Rajesh's objection?",
+     "opcoes": [
+      {
+       "texto": "Trained people will go to a competitor.",
+       "certa": true
+      },
+      {
+       "texto": "The hub is too far.",
+       "certa": false
+      },
+      {
+       "texto": "The courses are too long.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. You're right that the theory works online. But you can't learn to repair a radio link on a screen.",
+     "enunciado": "What can't be learned online, according to Nuno?",
+     "opcoes": [
+      {
+       "texto": "to repair a radio link",
+       "certa": true
+      },
+      {
+       "texto": "the theory",
+       "certa": false
+      },
+      {
+       "texto": "English",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "That's a fair point. But consider this…",
+     "enunciado": "Ouça e repita: a concessão a descer, uma pausa, e \"but consider this\" a subir."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Make the case for one change in your workplace, school or town. Then answer: \"We tried something like that before, and it didn't work.\" Concede, reformulate, turn it around and come back to your point.",
+     "frase": "grant you",
+     "resposta": "What I'm proposing is a weekly English club at lunch. I'll grant you that a course failed three years ago. If I understand you correctly, your concern is that people won't come. But that course was in the evening. Which is exactly why I'd start with thirty minutes at lunch.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it a good idea to ask a colleague to play devil's advocate before an important meeting? Why?",
+     "frase": "because",
+     "resposta": "Yes, because it's much better to hear the hard questions from a friend than from the board. What a devil's advocate gives you is time to prepare your answers.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "1D",
+   "titulo": "Persuasion",
+   "aula": "1D",
+   "objectivo": "Vocabulário da persuasão e do investimento, acento contrastivo; consistent e terrific.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "a strong case",
+       "b": "bons argumentos"
+      },
+      {
+       "a": "compelling",
+       "b": "muito convincente"
+      },
+      {
+       "a": "flawed",
+       "b": "com uma falha"
+      },
+      {
+       "a": "pay for itself",
+       "b": "pagar-se a si próprio"
+      },
+      {
+       "a": "the bottom line",
+       "b": "o essencial"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Nuno [made] a strong case for the hub.",
+     "opcoes": [
+      {
+       "texto": "did",
+       "certa": false
+      },
+      {
+       "texto": "gave",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She [won] the sceptics over with a simple story.",
+     "opcoes": [
+      {
+       "texto": "gained",
+       "certa": false
+      },
+      {
+       "texto": "earned",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The new system would pay [for] itself in two years.",
+     "opcoes": [
+      {
+       "texto": "by",
+       "certa": false
+      },
+      {
+       "texto": "to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We need to [address] that objection before the meeting.",
+     "opcoes": [
+      {
+       "texto": "answer to",
+       "certa": false
+      },
+      {
+       "texto": "reply to it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Um argumento consistente\" (sólido) em inglês:",
+     "opcoes": [
+      {
+       "texto": "a solid argument",
+       "certa": true
+      },
+      {
+       "texto": "a consistent argument",
+       "certa": false
+      },
+      {
+       "texto": "a consistence argument",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: consistent = coerente, constante."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Your presentation was terrific!\" This is…",
+     "opcoes": [
+      {
+       "texto": "a compliment",
+       "certa": true
+      },
+      {
+       "texto": "an insult",
+       "certa": false
+      },
+      {
+       "texto": "a warning",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: terrific = excelente."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Um acidente terrífico\" em inglês:",
+     "opcoes": [
+      {
+       "texto": "a terrifying accident",
+       "certa": true
+      },
+      {
+       "texto": "a terrific accident",
+       "certa": false
+      },
+      {
+       "texto": "a terrified accident",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Her results are consistent.\" This means her results are…",
+     "opcoes": [
+      {
+       "texto": "always about the same",
+       "certa": true
+      },
+      {
+       "texto": "very thick",
+       "certa": false
+      },
+      {
+       "texto": "surprising",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. The bottom line is simple: if the hub halves our travel costs, it pays for itself in about a year and a half.",
+     "enunciado": "How long would the hub take to pay for itself if it halves travel costs?",
+     "opcoes": [
+      {
+       "texto": "about a year and a half",
+       "certa": true
+      },
+      {
+       "texto": "about ten years",
+       "certa": false
+      },
+      {
+       "texto": "about two months",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It wasn't the equipment — it was the people.",
+     "enunciado": "Ouça e repita, com o acento contrastivo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Make the case for a product, a project or an idea you believe in: its main selling point, the benefit, one objection you would address, and the bottom line.",
+     "frase": "bottom line",
+     "resposta": "I'd like to make the case for solar water heaters in school kitchens. The main selling point is cost: they pay for themselves in about two years. The usual objection is the initial price, and that's fair. But the bottom line is simple: it's the cheapest hot water they'll ever have.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What persuades you more: numbers or stories? Why?",
+     "frase": "because",
+     "resposta": "Stories catch my attention, but numbers make me decide. What works best is a short story with one strong number, because I remember the story and I trust the number.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "1E",
+   "titulo": "Real English: The pitch",
+   "aula": "1E",
+   "objectivo": "Avaliar três pitches: a ideia mais forte, onde foi posta e a resposta ao júri.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thato. The app tells farmers the best day to sell, using market prices. Our farmers earned twenty percent more last season.",
+     "enunciado": "How much more did Thato's farmers earn last season?",
+     "opcoes": [
+      {
+       "texto": "twenty percent",
+       "certa": true
+      },
+      {
+       "texto": "forty percent",
+       "certa": false
+      },
+      {
+       "texto": "two percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Ms Dube. Twenty percent is interesting. Why did I have to wait ninety seconds to hear it?",
+     "enunciado": "What is Ms Dube's criticism of Thato's pitch?",
+     "opcoes": [
+      {
+       "texto": "Her strongest point came too late.",
+       "certa": true
+      },
+      {
+       "texto": "The app was too expensive.",
+       "certa": false
+      },
+      {
+       "texto": "She spoke too fast.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kwabena. ShopPay lets small shops send an invoice by message and get paid the same day. Three thousand shops use it.",
+     "enunciado": "How many shops use ShopPay?",
+     "opcoes": [
+      {
+       "texto": "three thousand",
+       "certa": true
+      },
+      {
+       "texto": "three hundred",
+       "certa": false
+      },
+      {
+       "texto": "thirty thousand",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Kwabena. It wasn't banks that taught us this. It was the shop owners in Soweto, who told us what they needed.",
+     "enunciado": "Who taught Kwabena what small shops need?",
+     "opcoes": [
+      {
+       "texto": "the shop owners in Soweto",
+       "certa": true
+      },
+      {
+       "texto": "the banks",
+       "certa": false
+      },
+      {
+       "texto": "his professors",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Elena. Our device learns your normal day, and it alerts your family when something changes.",
+     "enunciado": "What does Elena's device do?",
+     "opcoes": [
+      {
+       "texto": "It alerts the family when a person's normal day changes.",
+       "certa": true
+      },
+      {
+       "texto": "It calls an ambulance every day.",
+       "certa": false
+      },
+      {
+       "texto": "It films the house.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Elena. I understand why you'd say that. But consider this: the grandmother decides who sees the data.",
+     "enunciado": "How does Elena answer the \"spying\" objection?",
+     "opcoes": [
+      {
+       "texto": "The grandmother decides who sees the data.",
+       "certa": true
+      },
+      {
+       "texto": "The device has no camera.",
+       "certa": false
+      },
+      {
+       "texto": "Nobody sees the data.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which founder put the strongest idea at the very start?",
+     "opcoes": [
+      {
+       "texto": "Kwabena",
+       "certa": true
+      },
+      {
+       "texto": "Thato",
+       "certa": false
+      },
+      {
+       "texto": "nobody",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Kwabena answers the jury: \"I'll grant you that they could.\" He is…",
+     "opcoes": [
+      {
+       "texto": "conceding before coming back to his point",
+       "certa": true
+      },
+      {
+       "texto": "giving up",
+       "certa": false
+      },
+      {
+       "texto": "changing his idea",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "What every small shop in this city needs is one thing: to get paid on time.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I understand why you'd say that. But consider this…",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You are on the jury. Say which pitch you would choose to win, and why, and give one piece of advice to each founder.",
+     "frase": "What made",
+     "resposta": "I'd choose Kwabena. What made his pitch strong was the first sentence: in five seconds, I knew the problem and the solution. My advice to Thato: start with the twenty percent. To Elena: the idea is terrific, but the privacy answer should be in the pitch itself.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should a pitch start with a number, a story or a problem? Why?",
+     "frase": "because",
+     "resposta": "With a problem, I think, because people only care about a solution when they feel the problem. Then a number shows it's real. A story is great too, but it must be very short.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "1F",
+   "titulo": "Work & Life: The training hub",
+   "aula": "1F",
+   "objectivo": "Defender uma proposta diante de uma direcção céptica e apresentar em inglês um inquérito em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Nuno opens with one sentence. The best one:",
+     "opcoes": [
+      {
+       "texto": "What this region needs is technicians who can fix things themselves.",
+       "certa": true
+      },
+      {
+       "texto": "Good morning, I have many slides today.",
+       "certa": false
+      },
+      {
+       "texto": "I think maybe a hub could be good, if possible.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The survey says: \"Querem formação certificada: 85%.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "Eighty-five percent want certified training.",
+       "certa": true
+      },
+      {
+       "texto": "Eighty-five percent want a certified formation.",
+       "certa": false
+      },
+      {
+       "texto": "Eighty-five per hundred want certificate formation.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The comment says: \"sem certificado ninguém confia em nós\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "without a certificate, nobody trusts us",
+       "certa": true
+      },
+      {
+       "texto": "without certificate, nobody confides in us",
+       "certa": false
+      },
+      {
+       "texto": "nobody has confidence of us without certification",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'll [grant] you that some will leave for competitors.",
+     "opcoes": [
+      {
+       "texto": "offer",
+       "certa": false
+      },
+      {
+       "texto": "concede you",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "All I'm [asking] for is a one-year pilot.",
+     "opcoes": [
+      {
+       "texto": "asked",
+       "certa": false
+      },
+      {
+       "texto": "ask",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It [wasn't] new equipment that did that. It was training.",
+     "opcoes": [
+      {
+       "texto": "didn't",
+       "certa": false
+      },
+      {
+       "texto": "isn't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The reason why it should be here [is] that the lab is in Joburg.",
+     "opcoes": [
+      {
+       "texto": "was being",
+       "certa": false
+      },
+      {
+       "texto": "are",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Hendrik Botha. Two hundred and forty thousand dollars, Mr Kapinga. Plus ninety thousand a year.",
+     "enunciado": "How much would the hub cost to set up?",
+     "opcoes": [
+      {
+       "texto": "two hundred and forty thousand dollars",
+       "certa": true
+      },
+      {
+       "texto": "ninety thousand dollars",
+       "certa": false
+      },
+      {
+       "texto": "five hundred thousand dollars",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. There's a simple answer to the risk: a two-year retention clause in the client contracts.",
+     "enunciado": "What is Nuno's answer to the risk that people leave?",
+     "opcoes": [
+      {
+       "texto": "a two-year retention clause",
+       "certa": true
+      },
+      {
+       "texto": "higher salaries",
+       "certa": false
+      },
+      {
+       "texto": "no training at all",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Hendrik Botha. I can live with a pilot. With a review in December, and real numbers.",
+     "enunciado": "What does Hendrik accept?",
+     "opcoes": [
+      {
+       "texto": "a pilot with a review in December",
+       "certa": true
+      },
+      {
+       "texto": "the full hub immediately",
+       "certa": false
+      },
+      {
+       "texto": "nothing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "What this region needs is… technicians who can fix things themselves.",
+     "enunciado": "Ouça e repita, com uma pausa e o acento na ideia em destaque."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Defend a proposal of your own before a sceptical director: the main idea in one sentence, one proof with a cleft sentence, answers to \"It's too expensive\" and \"It won't last\", and a smaller request at the end.",
+     "frase": "All I'm asking",
+     "resposta": "What our office needs is a small solar system for the server room. Last year, it was the power cuts that stopped our work. That's a fair point: it isn't cheap, but we spend more on diesel. I'll grant you batteries don't last forever. All I'm asking for is a six-month trial.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Present these results in English, with two numbers and one comment: \"Inquérito aos clientes (120 respostas): 76% compram cá todas as semanas; 58% querem pagar com o telemóvel; queixa principal: as filas ao sábado (44%). Comentário: 'Gosto de cá vir, mas ao sábado desisto.'\"",
+     "frase": "customers",
+     "resposta": "We asked a hundred and twenty customers. About three quarters shop here every week, and more than half want to pay by phone. The main complaint is the Saturday queues. One comment says it all: \"I like coming here, but on Saturdays I give up.\"",
+     "contexto": "Mediação: dois números e uma voz real."
+    }
+   ]
+  },
+  {
+   "codigo": "1R",
+   "titulo": "Unit 1 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 1 do C1 e reciclar as unidades 8 a 10 do B2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What I liked most [was] the second speaker.",
+     "opcoes": [
+      {
+       "texto": "it was",
+       "certa": false
+      },
+      {
+       "texto": "were",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It was my sister [who] organised everything.",
+     "opcoes": [
+      {
+       "texto": "which",
+       "certa": false
+      },
+      {
+       "texto": "what",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We [did] send the report. Check your spam folder.",
+     "opcoes": [
+      {
+       "texto": "have",
+       "certa": false
+      },
+      {
+       "texto": "were",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "All I'm asking for [is] a little patience.",
+     "opcoes": [
+      {
+       "texto": "are",
+       "certa": false
+      },
+      {
+       "texto": "it is",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The thing that worries me is the deadline.",
+       "certa": true
+      },
+      {
+       "texto": "The thing what worries me is the deadline.",
+       "certa": false
+      },
+      {
+       "texto": "The thing worries me it is the deadline.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A very consistent argument\" means…",
+     "opcoes": [
+      {
+       "texto": "an argument without contradictions",
+       "certa": true
+      },
+      {
+       "texto": "a very thick argument",
+       "certa": false
+      },
+      {
+       "texto": "a long argument",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 10). \"Quem me dera ter começado mais cedo.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I wish I had started earlier.",
+       "certa": true
+      },
+      {
+       "texto": "I wish I started earlier yesterday.",
+       "certa": false
+      },
+      {
+       "texto": "I wish I would have started earlier.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 9). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "She suggested starting with a pilot.",
+       "certa": true
+      },
+      {
+       "texto": "She suggested us to start with a pilot.",
+       "certa": false
+      },
+      {
+       "texto": "She suggested to start us with a pilot.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 8). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The presentation was absolutely brilliant.",
+       "certa": true
+      },
+      {
+       "texto": "The presentation was very brilliant completely.",
+       "certa": false
+      },
+      {
+       "texto": "The presentation was a bit brilliant.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Foi a Inês quem nos avisou do problema.",
+     "resposta": "It was Inês who told us about the problem.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Dr Mokoena. Then let's approve the pilot. Thandi, can you bring a detailed plan by the end of February?",
+     "enunciado": "What does Dr Mokoena decide?",
+     "opcoes": [
+      {
+       "texto": "to approve the pilot",
+       "certa": true
+      },
+      {
+       "texto": "to reject the hub",
+       "certa": false
+      },
+      {
+       "texto": "to wait until December",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Make the case for one change in your workplace, school or town. What's the strongest argument against it, and how would you answer it?",
+     "frase": "What",
+     "resposta": "What our town needs is a night bus to the hospital. The reason why is simple: nurses finish at midnight and walk home in the dark. The strongest objection is cost. That's a fair point. But consider this: one accident costs more than a year of buses.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague says: \"Your idea won't work. People won't change.\" Answer with a concession and a cleft sentence.",
+     "frase": "fair point",
+     "resposta": "That's a fair point — people don't like change. But it isn't the change they dislike, it's being forced. What I'm proposing is a three-month trial, and anyone can say no.",
+     "contexto": "Responder a uma objecção."
+    }
+   ]
+  }
+ ]
+}
