@@ -1,0 +1,301 @@
+{
+ "title": "C1.1 Unit 2 quiz — Diplomacy",
+ "description": "Atenuação, graus de certeza, recusas diplomáticas, linguagem institucional, gentle e ingenuous.",
+ "questions": [
+  {
+   "id": "c1u2q1",
+   "question": "Escolha a frase mais diplomática.",
+   "options": [
+    {
+     "id": "c1u2q1o0",
+     "text": "It would appear that there was a problem with the paperwork.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u2q1o1",
+     "text": "Customs made a stupid mistake.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u2q1o2",
+     "text": "It is not our fault, it is the customs.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u2q1o0",
+   "explanation": "It would appear that… atenua a causa.",
+   "points": 10
+  },
+  {
+   "id": "c1u2q2",
+   "question": "Complete: \"There ___ to have been a delay on the supplier's side.\"",
+   "options": [
+    {
+     "id": "c1u2q2o0",
+     "text": "seems",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u2q2o1",
+     "text": "seem",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u2q2o2",
+     "text": "seeming",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u2q2o0",
+   "explanation": "There seems to have been… (singular).",
+   "points": 10
+  },
+  {
+   "id": "c1u2q3",
+   "question": "Qual exprime a probabilidade MAIS BAIXA?",
+   "options": [
+    {
+     "id": "c1u2q3o0",
+     "text": "It's highly unlikely that…",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u2q3o1",
+     "text": "In all likelihood…",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u2q3o2",
+     "text": "There's a good chance that…",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u2q3o0",
+   "explanation": "highly unlikely ≈ 10%.",
+   "points": 10
+  },
+  {
+   "id": "c1u2q4",
+   "question": "Complete: \"I'd be surprised if it ___ more than ten days.\"",
+   "options": [
+    {
+     "id": "c1u2q4o0",
+     "text": "took",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u2q4o1",
+     "text": "will take",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u2q4o2",
+     "text": "takes it",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u2q4o0",
+   "explanation": "I'd be surprised if + passado.",
+   "points": 10
+  },
+  {
+   "id": "c1u2q5",
+   "question": "Escolha a recusa mais diplomática.",
+   "options": [
+    {
+     "id": "c1u2q5o0",
+     "text": "I'm afraid we're not in a position to pay for that. What we can do is…",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u2q5o1",
+     "text": "No. We don't pay.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u2q5o2",
+     "text": "We're not in position of paying.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u2q5o0",
+   "explanation": "Suavizar, recusar, dar uma alternativa.",
+   "points": 10
+  },
+  {
+   "id": "c1u2q6",
+   "question": "\"That's not ideal.\" Em inglês diplomático, quer muitas vezes dizer…",
+   "options": [
+    {
+     "id": "c1u2q6o0",
+     "text": "Isso é um problema sério.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u2q6o1",
+     "text": "Isso é perfeito.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u2q6o2",
+     "text": "Isso é um pormenor.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u2q6o0",
+   "explanation": "Eufemismo.",
+   "points": 10
+  },
+  {
+   "id": "c1u2q7",
+   "question": "\"Foi muito gentil da sua parte.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1u2q7o0",
+     "text": "That was very kind of you.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u2q7o1",
+     "text": "That was very gentle of you.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u2q7o2",
+     "text": "That was very gentil of you.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u2q7o0",
+   "explanation": "Falso amigo: gentle = suave, delicado.",
+   "points": 10
+  },
+  {
+   "id": "c1u2q8",
+   "question": "\"Uma solução engenhosa\" em inglês:",
+   "options": [
+    {
+     "id": "c1u2q8o0",
+     "text": "an ingenious solution",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u2q8o1",
+     "text": "an ingenuous solution",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u2q8o2",
+     "text": "an engineous solution",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u2q8o0",
+   "explanation": "Falso amigo: ingenuous = ingénuo.",
+   "points": 10
+  },
+  {
+   "id": "c1u2q9",
+   "question": "\"Your price is quite ambitious.\" A compradora quer dizer…",
+   "options": [
+    {
+     "id": "c1u2q9o0",
+     "text": "que o preço é demasiado alto",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u2q9o1",
+     "text": "que o preço é baixo",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u2q9o2",
+     "text": "que gosta muito do preço",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u2q9o0",
+   "explanation": "Ler nas entrelinhas.",
+   "points": 10
+  },
+  {
+   "id": "c1u2q10",
+   "question": "Reciclagem (C1, unidade 1). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u2q10o0",
+     "text": "It wasn't the equipment that changed everything — it was the people.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u2q10o1",
+     "text": "It wasn't the equipment what changed everything — it was the people.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u2q10o2",
+     "text": "Wasn't the equipment that changed everything — was the people.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u2q10o0",
+   "explanation": "Clivada com it.",
+   "points": 10
+  },
+  {
+   "id": "c1u2q11",
+   "question": "Reciclagem (C1, unidade 1). Complete: \"I'll ___ you that some will leave.\"",
+   "options": [
+    {
+     "id": "c1u2q11o0",
+     "text": "grant",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u2q11o1",
+     "text": "offer",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u2q11o2",
+     "text": "permit",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u2q11o0",
+   "explanation": "I'll grant you that… (concessão).",
+   "points": 10
+  },
+  {
+   "id": "c1u2q12",
+   "question": "Reciclagem (B2, unidade 6). \"Tenho quase a certeza de que se esqueceram.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1u2q12o0",
+     "text": "They must have forgotten.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u2q12o1",
+     "text": "They must forgot.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u2q12o2",
+     "text": "They should had forgotten.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u2q12o0",
+   "explanation": "must have + particípio.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
