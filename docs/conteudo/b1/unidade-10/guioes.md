@@ -232,7 +232,7 @@ Objectivo da aula: No fim, o aluno consegue especular sobre o passado com must h
 Objectivo da unidade a que serve: 2
 Gramática-alvo: must / might / could / can't + have + particípio; a diferença para a dedução no presente
   (B1, 8A); can't have (não mustn't have)
-Palavras-alvo: power cut, outage, log, switch over, update, cable, loose, battery, record, happen, cause
+Palavras-alvo: power cut, outage, log, switch over, update, cable, loose, socket, cabinet, record, happen, cause
 Reciclagem: dedução no presente (B1, 8A); tempos narrativos (B1, 6B)
 Pronúncia: must've, might've, can't have (o "t" de can't quase não se ouve, mas o "a" é longo)
 Contexto: quarta-feira, 7 de Junho, 9:00; videochamada; o Nuno em Luanda; a Hannah na sala de controlo do
@@ -269,7 +269,7 @@ Verificação: Lab 10C; conversa guiada "If I had known…"; perguntas 5 e 6 do 
 
 [ECRÃ:
 quase certo que SIM — Someone **must have kicked** it.
-possível — They **might have moved** the cable. · The battery **could have run out**.
+possível — They **might have moved** the cable. · The router **could have lost** power on Saturday.
 quase certo que NÃO — It **can't have been** the weather.
 must / might / could / can't + **have** + particípio]
 
