@@ -1,6 +1,6 @@
 # Plano do nível C1 — English Communication Skills
 
-**Nível:** C1 (autonomia) · **Curso:** English Communication Skills · **Versão:** 1, 17 de Novembro de 2026 · **Estado:** proposta para revisão pelos professores · **Nível anterior:** [05-plano-B2.md](05-plano-B2.md) · **É o último nível do curso** (o curso vai de A1 a C1, como no [estudo das fontes](01-fontes-do-curso.md); o Core Inventory também termina no C1)
+**Nível:** C1 (autonomia) · **Curso:** English Communication Skills · **Versão:** 2, 17 de Novembro de 2026 (revista) · **Estado:** proposta para revisão pelos professores · **Nível anterior:** [05-plano-B2.md](05-plano-B2.md) · **É o último nível do curso** (o curso vai de A1 a C1, como no [estudo das fontes](01-fontes-do-curso.md); o Core Inventory também termina no C1)
 
 ## 1. Resumo
 
@@ -90,7 +90,7 @@ Nas unidades 3, 9 e 10 há uma aula a mais, e as letras vão de A a G.
 |---|---|---|---|---|
 | 6 | Compliance and ethics | 6 | Num concurso, recusar um pedido de "comissão" sem perder a relação, e explicar a política anticorrupção; mediação de uma cláusula de contrato em português | elipse e substituição (*so, not, do so, one(s), neither… nor*); linguagem jurídica e técnica (*shall, hereby, notwithstanding* — só para reconhecer) |
 | 7 | Science and change | 6 | Explicar a armazenagem de energia em baterias a uma reunião de comunidade, com analogias e sem jargão | o futuro no passado (*was going to, was about to, was to have been, would*); atitudes face ao futuro (*be on the verge of, be set to, be due to, be bound to* revisto) |
-| 8 | On air | 6 | Ser entrevistado na rádio sobre o primeiro ano do Tômbwa e moderar um painel no fórum de Windhoek | *fronting* (*Expensive it may be, but…; This I can promise you.*); marcadores de discurso oral (*mind you, that said, as it happens, to be fair*) |
+| 8 | On air | 6 | Ser entrevistado na rádio sobre os primeiros meses da central do Tômbwa e moderar um painel no fórum de Windhoek | *fronting* (*Expensive it may be, but…; This I can promise you.*); marcadores de discurso oral (*mind you, that said, as it happens, to be fair*) |
 | 9 | Register | 7 | Dar a mesma notícia (uma reorganização) à directora-geral, à equipa e a um amigo, e trabalhar uma recepção de *networking* | expressões idiomáticas; linguagem vaga (*or so, -ish, give or take, sort of, and so on*); *phrasal verbs* separáveis (*turn the offer down / turn down the offer / turn it down*) |
 | 10 | Capstone: the deal | 7 | Conduzir a negociação final de um contrato regional com uma empresa moçambicana e a Morro Azul, e fechar o acordo | integração: toda a gramática do C1, com mediação do português |
 
@@ -268,7 +268,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 - **Gramática:** elipse e substituição; *shall / may* nos contratos; modais de obrigação revistos.
 - **Vocabulário (~80):** contratos, conformidade, ética, protecção de dados.
 - **Pronúncia:** acento em palavras jurídicas longas (*confidentiality, liability, jurisdiction*).
-- **Falsos amigos:** *process* (≠ processo judicial → *lawsuit, case*; *process* = processo, procedimento); *devolve* (≠ devolver → *return, give back*; *devolve* = delegar poderes).
+- **Falsos amigos:** *exonerate* (≠ exonerar → *dismiss, remove from office*; *exonerate* = ilibar, declarar inocente); *devolve* (≠ devolver → *return, give back*; *devolve* = delegar poderes).
 - **Laboratório:** elipse e substituição; explicar uma cláusula; frases para recusar; resposta falada de 90 segundos "Describe an ethical dilemma at work or in daily life. What would you do, and why?".
 - **Conversa guiada:** "In plain English" — o tutor lê frases de contratos e pede ao aluno que as explique em inglês simples.
 - **Conversa livre:** "The offer you should refuse" — o tutor é um intermediário simpático que insiste numa "pequena comissão"; o aluno recusa com firmeza, sem acusar, e mantém a porta aberta para um negócio limpo.
@@ -313,7 +313,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 | 8C | Língua | The key message is… | Responder a entrevistas: mensagem-chave, "ponte" para o que se quer dizer (*What's important here is…*), recusar uma premissa falsa, retomar a palavra. |
 | 8D | Vocabulário e pronúncia | Media and public speaking | Media e falar em público (*soundbite, off the record, panel, moderator, Q&A, on air*); ritmo, pausas e ênfase no discurso público; falsos amigos. |
 | 8E | Real English | The tough interview | Seguir uma entrevista de rádio dura a uma ministra (fictícia) e identificar as perguntas que ela respondeu, as que contornou e como. |
-| 8F | Work & Life | Live from Windhoek | Ser entrevistado na rádio sobre o primeiro ano da central do Tômbwa e, depois, moderar um painel de três oradores no fórum de Windhoek; mediação: apresentar um orador a partir de uma biografia em português. |
+| 8F | Work & Life | Live from Windhoek | Ser entrevistado na rádio sobre os primeiros meses da central do Tômbwa e, depois, moderar um painel de três oradores no fórum de Windhoek; mediação: apresentar um orador a partir de uma biografia em português. |
 
 - **Gramática:** *fronting*; marcadores de discurso oral.
 - **Vocabulário (~75):** media, entrevistas, eventos, falar em público.
@@ -370,7 +370,7 @@ Em cada unidade: **objectivos da unidade**, **aulas** com o objectivo de cada um
 - **Gramática:** integração de toda a gramática do C1, com reciclagem do B2.
 - **Vocabulário (~70):** negociação complexa, contratos, acordos.
 - **Pronúncia:** avaliação integrada: ênfase, atenuação, ritmo, registo.
-- **Falsos amigos:** *sanction* (≠ sanção só como castigo; *sanction* = também aprovação oficial: *the board sanctioned the deal*); *cargo* (≠ cargo → *position, post*; *cargo* = carga).
+- **Falsos amigos:** *pretension* (≠ pretensão → *claim, demand, what one is asking for*; *pretension* = presunção, vaidade); *cargo* (≠ cargo → *position, post*; *cargo* = carga).
 - **Laboratório:** escolher a táctica; desbloquear; resumir um acordo; resposta falada de 90 segundos "Describe the most difficult negotiation you've had or seen. What were the interests behind the positions?".
 - **Conversa guiada:** "Find the interest" — o tutor diz posições fixas e o aluno faz perguntas para descobrir os interesses por trás.
 - **Conversa livre:** "The final round" — o tutor representa a outra parte, com uma exigência de última hora e uma táctica de pressão; o aluno mantém o seu limite, encontra uma solução e resume o acordo.
@@ -481,7 +481,7 @@ Cada item do Core Inventory C1 **[V — lista das notas de pesquisa]** e a unida
 
 Acrescentado por outras fontes ou para o público da ProEnglish **[I]**: orações clivadas (prática geral do ensino; o Core Inventory não as lista), condicionais com inversão, orações participiais, elipse e substituição, *fronting* (do esboço C1 do estudo das fontes e de Business Partner C1); mediação de textos técnicos, jurídicos e científicos e de conflitos; entrevistas e painéis; negociação com várias partes.
 
-**Os vinte falsos amigos do C1** (nenhum repete os do A1 ao B2): *consistent, terrific* (1); *gentle, ingenuous* (2); *policy / politics, intend* (3); *disgust, expert* (4); *instance, actual* (5); *process, devolve* (6); *experience, physician* (7); *legend, editor* (8); *push, lunch* (9); *sanction, cargo* (10). *Actual* é diferente de *actually* (B1): o adjectivo, nos relatórios, opõe o real ao previsto.
+**Os vinte falsos amigos do C1** (nenhum repete os do A1 ao B2): *consistent, terrific* (1); *gentle, ingenuous* (2); *policy / politics, intend* (3); *disgust, expert* (4); *instance, actual* (5); *exonerate, devolve* (6); *experience, physician* (7); *legend, editor* (8); *push, lunch* (9); *pretension, cargo* (10). *Actual* é diferente de *actually* (B1): o adjectivo, nos relatórios, opõe o real ao previsto.
 
 **O que fica fora do curso (C2):** estilo literário, retórica avançada, humor e jogos de palavras subtis, variedades regionais do inglês em profundidade.
 
@@ -539,7 +539,7 @@ Como no B2: **cada aula é revista uma a uma**, com os mesmos critérios, e a un
 
 **Como se chega às 80 horas [I]:** vídeo-aulas cerca de 38 h (35 minutos de estudo por aula de 13); laboratório cerca de 12 h; conversas com o tutor cerca de 8 h; questionários e exames cerca de 3 h; revisão diária cerca de 19 h.
 
-**O curso completo (A1 a C1):** cinco níveis, dez cursos, 50 unidades, dez exames orais; cerca de 330 horas de estudo **[I — somar com os planos anteriores]**.
+**O curso completo (A1 a C1):** cinco níveis, dez cursos, 50 unidades, dez exames orais; cerca de 340 horas de estudo (55 + 60 + 70 + 75 + 80) **[I]**.
 
 ## 13. Próximos passos
 
@@ -547,3 +547,24 @@ Como no B2: **cada aula é revista uma a uma**, com os mesmos critérios, e a un
 2. Confirmar no CEFR Companion Volume os descritores C1 de produção oral, interacção, mediação e controlo fonológico, e aferir a ordem da gramática com o Empower 2e C1, o English File 4e Advanced e o Business Partner C1.
 3. Fechar o inventário de vocabulário C1 a partir do Oxford 5000 (C1) e da Oxford Phrase List, aferido com a NGSL e o English Vocabulary Profile.
 4. Escrever as unidades 1 a 5 do C1.1, uma aula de cada vez, com a revisão de cada aula; depois a revisão 1 e o exame do C1.1.
+
+## 14. Registo da revisão (versão 2)
+
+Revisão do plano contra o plano do B2 (o que já foi ensinado e a história), o Core Inventory C1 (secção 9), os falsos amigos do A1 ao B2, as contas e o código da plataforma.
+
+| # | Secção | Problema | Correcção |
+|---|---|---|---|
+| 1 | 5 (U6) e 9 | *process* não é um verdadeiro falso amigo: "processo" também quer dizer *process*, e o sentido jurídico ("processo judicial" → *lawsuit*) é só um dos sentidos. | *exonerate* (≠ exonerar → *dismiss*; *exonerate* = ilibar), que serve a unidade de ética e conformidade. |
+| 2 | 5 (U10) e 9 | *sanction* também não é falso amigo: em português, "sancionar uma lei" é aprová-la — o duplo sentido existe nas duas línguas. | *pretension* (≠ pretensão → *claim, demand*; *pretension* = presunção) — útil numa negociação, porque "as nossas pretensões" se diz muito em Angola. |
+| 3 | 4 (U8) e 5 (8F) | "O primeiro ano do Tômbwa": a central abre no fim de 2029, e a unidade 8 passa-se entre Julho e Novembro de 2030. | "Os primeiros meses da central do Tômbwa". |
+| 4 | 12 | O total do curso dizia "cerca de 330 horas". | 55 (A1) + 60 (A2) + 70 (B1) + 75 (B2) + 80 (C1) = **cerca de 340 horas**. |
+| 5 | 11 e 13 | O teste de nível da primeira entrada estava "por confirmar". | Confirmado no código: a escala vai de A1 a C2 (`apps/courses/niveis.py`) e a conversa de diagnóstico pode devolver C1 (`apps/practice/conversa/diagnostico.py`). Não é preciso mudar nada; o passo saiu da lista. |
+
+**Confirmado sem alterações:**
+
+- **Contas:** 31 aulas de unidade no C1.1 (6 + 6 + 7 + 6 + 6) e 32 no C1.2 (6 + 6 + 6 + 7 + 7), mais 2 de revisão em cada = 67; 36 + 37 lições de laboratório de unidade, mais 2 + 2 de revisão = 77; cerca de 15 horas de vídeo (67 aulas de 12 a 14 minutos); vocabulário cerca de 800 (cerca de 3 500 com os níveis anteriores, que somam cerca de 2 700 no fim do B2).
+- **Nada do B2 volta como novidade:** os condicionais mistos (B2 10D), o *wish* (B2 10A), todas as passivas (B2 4), a passiva de relato reconhecida (B2 9E), *be bound to* (B2 5A), *gonna / wanna* (B2 7D, para reconhecer) e o *What worries me is…* (B2 9D) aparecem como revisão alargada, e a ficha de cada aula diz-o.
+- **Cobertura do Core Inventory C1:** todas as funções, gramática, conectores, vocabulário e temas da tabela C1 têm uma unidade (secção 9); o que vem de outras fontes (clivadas, inversão condicional, participiais, elipse, *fronting*) está assinalado.
+- **Falsos amigos:** os vinte do C1 (depois das correcções 1 e 2) não repetem nenhum dos 63 do A1 ao B2; *actual* é distinto de *actually* (B1).
+- **A história:** continua o B2 sem contradições: o Nuno começa na Mopane a 7 de Janeiro de 2030 (B2 10G), a central do Tômbwa abre no fim de 2029, e o fórum de Windhoek é o da 2F do B2 (fictício).
+- **Exames:** o C1 Advanced da Cambridge dura cerca de 15 minutos com dois candidatos; com um só candidato e opções descritas por voz, os 12 minutos da plataforma chegam. O turno longo com três opções (escolher duas) segue o formato do C1 Advanced.
