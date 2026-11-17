@@ -1,0 +1,140 @@
+{
+ "unidade": "B2.1 · Unit 1 — Leading a team",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "b2-u1-guiada",
+   "nome": "B2 Unit 1 · Who's who in your team?",
+   "tipo": "guiada",
+   "depois_da_aula": "1C",
+   "descricao": "O tutor é Alex, colega novo na empresa do aluno. Pede ao aluno que lhe descreva as pessoas com quem trabalha ou estuda, com informação extra, e que diga como corre uma reunião típica.",
+   "papel_tutor": "Alex, colega que começou esta semana e quer conhecer a equipa.",
+   "nivel": "B2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "…, who…, …",
+    "…, whose…, …",
+    "…, which is why…",
+    "the people I work with",
+    "What's your take on…?"
+   ],
+   "extras": {
+    "brief": "Guided practice for an upper-intermediate learner (B2.1, unit 1). You are Alex (a neutral name; never mention a husband or wife), who started at the student's company (or school) this week. Ask the student, one question at a time, to tell you about: their manager or teacher; two colleagues (what each does, and something extra about each); the place where they work or study; how a typical team meeting goes (who talks the most, who is quiet); and what the student would change about those meetings. Ask follow-up questions that invite extra information (\"Oh, and how long has she been there?\"). If the student uses \"that\" in a clause with extra information (for example \"My boss, that is very nice, …\"), recast once with \"Oh, your boss, who is very nice, …\". If the student says \"whose\" wrongly (for example \"who his team\"), recast once with \"whose team\". If the student would rather not talk about colleagues, ask about a sports team, a church group or the student's family. Use any A1, A2 and B1 language, plus B2 unit 1: non-defining relative clauses (who, which, whose, where), \"which\" about a whole sentence (…, which is why…), relative clauses with the preposition at the end (the people we work with), and the language of chairing a meeting and delegating. Speak at natural speed. Do NOT use: the future perfect (will have done), \"provided that / as long as / supposing\", passives in the continuous or with modals, \"have something done\", \"be bound to\", \"needn't have\", \"whereas / admittedly / nevertheless\", reporting verbs like suggest, insist, deny or warn, \"wish / if only\", or mixed conditionals. Short turns, one question at a time; never more than three sentences.",
+    "primeira_fala": "Hi, {nome}! I'm Alex — I started here on Monday, and I'm still learning who everyone is. Could you tell me about your manager?",
+    "primeira_fala_simples": "Hi, {nome}! I'm new here. Who's your manager?",
+    "guiao": [
+     "Interesting! And who are the two people you work with the most?",
+     "And the place itself — what can you tell me about where you work or study?",
+     "How does a typical team meeting go? Who talks the most, and who is quiet?",
+     "If you could change one thing about those meetings, what would it be?",
+     "Thanks, {nome} — now I know who to talk to!"
+    ],
+    "frases": [
+     {
+      "en": "My manager, who has been here for ten years, is very organised.",
+      "pt": "A minha chefe, que está cá há dez anos, é muito organizada."
+     },
+     {
+      "en": "Rui, whose desk is next to mine, does our IT.",
+      "pt": "O Rui, cuja secretária fica ao lado da minha, trata da informática."
+     },
+     {
+      "en": "Our office is in Talatona, where most of our clients are.",
+      "pt": "O nosso escritório fica em Talatona, onde está a maioria dos clientes."
+     },
+     {
+      "en": "Ana never speaks in meetings, which is a pity.",
+      "pt": "A Ana nunca fala nas reuniões, o que é pena."
+     },
+     {
+      "en": "The people I work with are very helpful.",
+      "pt": "As pessoas com quem trabalho são muito prestáveis."
+     }
+    ],
+    "palavras": [
+     "who",
+     "whose",
+     "where",
+     "which",
+     "with",
+     "meeting"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": null
+  },
+  {
+   "slug": "b2-u1-livre",
+   "nome": "B2 Unit 1 · The kick-off meeting",
+   "tipo": "livre",
+   "depois_da_aula": "1F",
+   "descricao": "O aluno conduz a primeira reunião de uma equipa (o projecto do aluno, ou um proposto: abrir uma nova loja em Benguela em três meses). O tutor faz de dois membros: Chris, que fala demais, conta histórias e quer fazer tudo sozinho, e Robin, que só fala quando o aluno o convida pelo nome. O aluno abre a reunião, dá a palavra, corta as digressões do Chris, convida o Robin, delega e fecha com os próximos passos.",
+   "papel_tutor": "Chris (fala demais e quer fazer tudo) e Robin (calado; só fala quando é convidado pelo nome), membros da equipa do aluno.",
+   "nivel": "B2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Our objective is… and we'll finish by…",
+    "Sorry, Chris — great story, but let's park that.",
+    "Robin, we haven't heard from you yet.",
+    "I'd like you to… / Who'd like to…?",
+    "So, the next steps… Anything I've missed?"
+   ],
+   "extras": {
+    "brief": "Role-play for an upper-intermediate learner (B2.1, unit 1). The student chairs the kick-off meeting of a new team. If the student has no project, give one: opening a new shop in Benguela in three months. You play two team members, both with neutral names (never mention a husband or wife). CHRIS talks too much, tells long stories about past projects, and wants to do every task alone. ROBIN is quiet and only speaks when the student invites Robin by name; Robin then has a good, practical idea (for example, hiring local staff early). Always start with \"Chris here:\" or \"Robin here:\", so the student knows who is speaking. Start as Chris, after the student opens the meeting. Twice, start a long story that is off the topic; stop as soon as the student cuts it politely, and accept it with good humour. When the student delegates, Chris first wants every task (\"I can do the budget AND the suppliers AND the shop design!\"); accept only when the student gives a clear reason or a different role. If the student never invites Robin, after about five minutes say as Chris: \"Robin hasn't said anything, by the way.\" At the end, if the student doesn't sum up, ask as Chris: \"So, who's doing what?\" Use any A1, A2 and B1 language, plus B2 unit 1: non-defining relative clauses (who, which, whose, where), \"which\" about a whole sentence (…, which is why…), relative clauses with the preposition at the end (the people we work with), and the language of chairing a meeting and delegating. Speak at natural speed. Do NOT use: the future perfect (will have done), \"provided that / as long as / supposing\", passives in the continuous or with modals, \"have something done\", \"be bound to\", \"needn't have\", \"whereas / admittedly / nevertheless\", reporting verbs like suggest, insist, deny or warn, \"wish / if only\", or mixed conditionals. Short turns; never more than three sentences at a time.",
+    "primeira_fala": "Chris here: morning, {nome}! Robin's here too. So, this is our first meeting — how do you want to start?",
+    "primeira_fala_simples": "Chris here: hi, {nome}! Robin is here too. Please start the meeting.",
+    "guiao": [
+     "Chris here: great. Oh, this reminds me of the shop we opened in Lobito in 2019 — the landlord was a really funny guy, and one day he…",
+     "Chris here: OK, fair enough. So, who does what? Honestly, I can do the budget, the suppliers and the shop design myself.",
+     "Robin here: thanks for asking. I think we should hire the local staff early — it took two months last time.",
+     "Chris here: by the way, the paint we used in Lobito was terrible, you won't believe what happened…",
+     "Chris here: so, who's doing what, and when do we meet again?",
+     "Chris here: perfect. Robin here: thanks, {nome}. Good meeting."
+    ],
+    "frases": [
+     {
+      "en": "Our objective is to open the shop by March, and we'll finish by ten.",
+      "pt": "O nosso objectivo é abrir a loja até Março, e acabamos às dez."
+     },
+     {
+      "en": "Sorry, Chris — great story, but let's park that for now.",
+      "pt": "Desculpa, Chris — boa história, mas vamos deixá-la para depois."
+     },
+     {
+      "en": "Robin, we haven't heard from you yet. What's your take?",
+      "pt": "Robin, ainda não te ouvimos. Qual é a tua opinião?"
+     },
+     {
+      "en": "Chris, I'd like you to take on the suppliers, because you know them well.",
+      "pt": "Chris, gostava que ficasses com os fornecedores, porque os conheces bem."
+     },
+     {
+      "en": "So, the next steps: Chris, the suppliers by Friday; Robin, the job adverts by Monday. Anything I've missed?",
+      "pt": "Então, os próximos passos: Chris, os fornecedores até sexta; Robin, os anúncios de emprego até segunda. Esqueci-me de alguma coisa?"
+     }
+    ],
+    "palavras": [
+     "objective",
+     "take",
+     "park",
+     "heard",
+     "delegate",
+     "next steps"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Abre a reunião com o objectivo e o tempo, e apresenta pessoas ou lugares com informação extra (who, whose, where, which).",
+    "Corta as digressões do Chris com cortesia (algo positivo e \"let's park that\") e retoma o assunto.",
+    "Convida o Robin pelo nome, com uma pergunta concreta, antes de o tutor o lembrar.",
+    "Delega tarefas com clareza e com uma razão (I'd like you to…, Could you take on…?, Who'd like to…?), sem aceitar que o Chris faça tudo.",
+    "Fecha com os próximos passos (quem, o quê, até quando), e fala pelo menos uma vez 1 minuto ou mais sem ajuda.",
+    "É compreendido sem o tutor ter de pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

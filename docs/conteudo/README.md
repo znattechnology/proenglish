@@ -60,6 +60,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [b1/unidade-09/](b1/unidade-09/README.md) | B1.2, unidade 9 "Media and opinions": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b1/unidade-10/](b1/unidade-10/README.md) | B1.2, unidade 10 "Lessons learned": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b1/revisao-2/](b1/revisao-2/README.md) | B1.2, revisão 2 e exame oral: guiões, laboratório, ensaio com o tutor, questionário, o guião e as situações do exame, e revisão aula a aula. |
+| [b2/unidade-01/](b2/unidade-01/README.md) | B2.1, unidade 1 "Leading a team": guiões, laboratório, tutor e questionário. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.
