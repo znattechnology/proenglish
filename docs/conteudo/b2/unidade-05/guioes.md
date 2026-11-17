@@ -26,8 +26,9 @@ Objectivo da unidade a que serve: 1
 Gramática-alvo: be bound to + infinitivo (quase certo); be likely / unlikely to + infinitivo; may well (bem
   possível); there's a good chance (that)…; will definitely / probably, probably won't, definitely won't
   (B1, 4C); a posição de definitely e probably (antes de won't, depois de will)
-Palavras-alvo: site, sand, dune, wind, forecast, delay, border, rain, flood, generator, prediction
-Reciclagem: will probably, might, I doubt (B1, 4C); future perfect (B2, 2C)
+Palavras-alvo: site, sand, wind, border, rain, flood, concrete base, filter, equipment cabinet, risk plan,
+  prediction
+Reciclagem: will probably, probably won't (B1, 4C); future perfect (B2, 2C)
 Pronúncia: bound to dito como um bloco (bound-to), e o acento em "likely" e "unlikely"
 Contexto: quarta-feira, 6 de Dezembro de 2028, 11:00; o terreno da futura central do Tômbwa, perto do
   deserto; o Nuno, o Paulo, a Elsa e a Hannah, com capacetes e coletes
@@ -135,8 +136,8 @@ Objectivo da unidade a que serve: 2
 Gramática-alvo: will have been + -ing + for…, by…; contraste: future continuous (this time next year, I'll
   be travelling — a meio da acção), future perfect (by June, I'll have finished — acção terminada),
   future perfect continuous (by June, I'll have been studying for a year — duração até esse momento)
-Palavras-alvo: appraisal, review, goal, progress, promotion, responsibility, career, achievement,
-  feedback, development
+Palavras-alvo: annual review, responsibility, development, feedback, strengths, improve, budget, team,
+  say yes / say no
 Reciclagem: present perfect continuous (B1, 2B); future perfect (B2, 2C)
 Pronúncia: will have been dito curto (I'll've been)
 Contexto: terça-feira, 12 de Dezembro, 15:00; o gabinete da Lerato; a avaliação anual do Nuno
@@ -240,8 +241,8 @@ Objectivo da unidade a que serve: 3
 Gramática-alvo: suppose / imagine / what if + presente (possível) ou passado (imaginado): What if drones
   cleaned the panels? Suppose a robot does the inspections — what then?; pesar (On the one hand… on the
   other hand… The main advantage / drawback is… The risk is that… It depends on…); previsões (5A)
-Palavras-alvo: drone, robot, automate, inspection, advantage, drawback, risk, benefit, replace, skill,
-  in the long run
+Palavras-alvo: drone, robot, inspection, clean, repair, responsible, advantage, drawback, safety, jobs,
+  in the short run, in the long run
 Reciclagem: 2.º condicional (B1, 4A); previsões graduadas (5A)
 Pronúncia: what if dito como um bloco, com a voz a subir no fim da pergunta
 Contexto: quarta-feira, 13 de Dezembro, 13:00; a cantina; o Nuno, o Paulo e a Elsa almoçam e falam do
@@ -535,7 +536,7 @@ Objectivo da aula: No fim, o aluno consegue discutir a adopção de uma tecnolog
 Objectivo da unidade a que serve: 1, 3, 4
 Gramática-alvo: toda a da unidade: previsões graduadas, os três futuros, what if / suppose, prós e contras;
   condições (B2, 3A)
-Palavras-alvo: assistant, pilot, data privacy, encrypted, server, human check, roll out, recommendation,
+Palavras-alvo: assistant, pilot, data privacy, encrypted, server, sample, roll out, recommendation,
   condition, supervise
 Reciclagem: provided that, as long as, unless (B2, 3A); a passiva (B2, 4A e 4B); linguagem tentativa (B2, 3B)
 Pronúncia: uma recomendação com as condições ditas em lista, com pausas

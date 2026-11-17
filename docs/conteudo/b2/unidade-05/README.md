@@ -1,6 +1,6 @@
 # B2.1 · Unidade 5 — Innovation (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 5
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 5
 
 ## Objectivos da unidade
 
@@ -31,7 +31,7 @@ No fim da unidade, o aluno consegue:
 
 - **Previsões:** will definitely, be bound to, be likely / unlikely to, it's likely that, may well, there's a good chance (that), probably won't, definitely won't, prediction, forecast, risk plan.
 - **O terreno:** site, sand, dune, wind, rain, flood, road, concrete base, filter, equipment cabinet.
-- **Carreira:** annual review, appraisal, goal, progress, promotion, responsibility, development, feedback, strengths.
+- **Carreira:** annual review, promotion, responsibility, development, feedback, strengths, improve, budget, say yes / say no.
 - **Especular:** what if, suppose, imagine, on the one hand / on the other hand, the main advantage / benefit / drawback, the risk is that, it depends on, in the short run / in the long run.
 - **Tecnologia:** artificial intelligence (AI), automation, algorithm, data privacy, cybersecurity, cloud, app, start-up, fintech, pilot, drone, robot, encrypted, server, user-friendly, cutting-edge; roll out, scale up, phase out, set up.
 - **Famílias de palavras:** innovate / innovation / innovative; automate / automation / automated; analyse / analysis / analytical; technology / technological; rely / reliable / reliability.
@@ -52,6 +52,6 @@ Dezembro de 2028. O contrato do Tômbwa foi assinado a 28 de Novembro. Na quarta
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 5E com quatro vozes num estúdio de rádio); imagens (o terreno do Tômbwa, a avaliação anual, o diapositivo do HelpMate, a notícia em português); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 5E com quatro vozes num estúdio de rádio); imagens (o terreno do Tômbwa, a avaliação anual, o diapositivo do HelpMate, a notícia em português); carregamento na plataforma.
 
 A seguir vem a **revisão e o exame oral do B2.1**.

@@ -64,7 +64,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [b2/unidade-02/](b2/unidade-02/README.md) | B2.1, unidade 2 "Presentations": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b2/unidade-03/](b2/unidade-03/README.md) | B2.1, unidade 3 "Negotiating": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [b2/unidade-04/](b2/unidade-04/README.md) | B2.1, unidade 4 "Client care": guiões, laboratório, tutor, questionário e revisão aula a aula. |
-| [b2/unidade-05/](b2/unidade-05/README.md) | B2.1, unidade 5 "Innovation": guiões, laboratório, tutor e questionário. |
+| [b2/unidade-05/](b2/unidade-05/README.md) | B2.1, unidade 5 "Innovation": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.
