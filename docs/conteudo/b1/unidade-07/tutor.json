@@ -25,8 +25,8 @@
     "primeira_fala": "Good morning. This is Jesse Mwangi, from Lakeside Paper Supplies in Nairobi. Could I speak to the office manager, Alex Lopes, please?",
     "primeira_fala_simples": "Good morning. This is Jesse Mwangi. Could I speak to Alex Lopes, please?",
     "guiao": [
-     "Oh, I see. Could you take a message, please?",
-     "Sure. My surname is Mwangi. That's M-W-A-N-G-I.",
+     "Oh, I see. Yes, I'd like to leave a message, please.",
+     "My name is Jesse Mwangi. That's M-W-A-N-G-I.",
      "My number is plus two five four, seven one two, three four five, six seven eight.",
      "And my email is jesse dot mwangi at lakesidepaper dot co dot ke. Lakesidepaper is one word.",
      "The message is: the printer paper will arrive on Thursday, not Tuesday. Could you ask Alex to call me back before four o'clock, to confirm the delivery address?",
@@ -93,9 +93,9 @@
      "Great. So, how many desks do you need, and when?",
      "OK. Our price is two hundred and — sorry, can you hear me?",
      "Sorry about that. I said two hundred and fifty dollars a desk, delivery in five weeks, and fifty percent in advance.",
-     "Hmm. I understand. What price did you have in mind?",
+     "So, what do you think about these conditions?",
      "Sorry, you broke up. Could you say that again?",
-     "OK, I can do that, if you confirm the order this week.",
+     "OK. Is there anything else — the price, the delivery or the payment?",
      "So, can you tell me what we agreed?",
      "That's it. I'll send it in writing today. Thanks, {nome}!"
     ],

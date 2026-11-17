@@ -1,6 +1,6 @@
 # B1.2 · Unidade 7 — Calls and video calls (7 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 7
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [04-plano-B1.md](../../04-plano-B1.md), unidade 7
 
 ## Objectivos da unidade
 
@@ -53,6 +53,6 @@ Fevereiro de 2028. Depois do incidente do Lobito, a Morro Azul quer sensores de 
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (15 escutas, 8 pronúncias, a 7F com som de videochamada, cortes e eco); imagens (o recado da Lesego, a nota do Sr. Baptista, o quadro das condições); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (15 escutas, 8 pronúncias, a 7F com som de videochamada, cortes e eco); imagens (o recado da Lesego, a nota do Sr. Baptista, o quadro das condições); carregamento na plataforma.
 
 A seguir vem a **unidade 8, "Money matters"**.

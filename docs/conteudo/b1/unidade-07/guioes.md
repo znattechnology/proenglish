@@ -363,7 +363,7 @@ Verificação: Lab 7D; conversa guiada "Take a message"; pergunta 7 do question�
 **LESEGO:** Good morning, Tsodilo Sensors, Lesego speaking. How can I help you?
 **NUNO:** Good morning. This is Nuno Kapinga, from Kalandula Tech in Luanda. Could I speak to Kagiso Sebina, please?
 **LESEGO:** I'm afraid Kagiso's in a meeting at the moment. Can I take a message?
-**NUNO:** Yes, please. Could you ask him to call me back today? It's about the contract for the water sensors.
+**NUNO:** Yes, please. Could you ask him to call me back today? It's about our order for the water sensors.
 **LESEGO:** Of course. Could you spell your surname, please?
 **NUNO:** Sure. It's K-A-P-I-N-G-A. Kapinga.
 **LESEGO:** K-A-P-I-N-G-A. And your number?
@@ -372,11 +372,11 @@ Verificação: Lab 7D; conversa guiada "Take a message"; pergunta 7 do question�
 **NUNO:** That's right. And could you ask him to send the price in writing, with the delivery date? My email is nuno dot kapinga at kalandula tech dot co dot ao. "Kalandula tech" is one word.
 **LESEGO:** Nuno dot kapinga at kalandulatech, one word, dot co dot ao. Got it.
 **NUNO:** Perfect. And one more thing: the discount is only until the fifteenth, so it's quite urgent.
-**LESEGO:** So, just to check: you'd like Kagiso to call you back today about the contract, and to send you the price in writing with the delivery date, before the fifteenth. Is that right?
+**LESEGO:** So, just to check: you'd like Kagiso to call you back today about the order, and to send you the price in writing with the delivery date, before the fifteenth. Is that right?
 **NUNO:** Exactly. Thank you, Lesego.
 **LESEGO:** You're welcome. I'll give him the message as soon as he's free. Goodbye!
 
-[ECRÃ: o recado da Lesego: "For Kagiso — Nuno Kapinga, Kalandula Tech (Luanda), +244 923 456 718, nuno.kapinga@kalandulatech.co.ao. Please call back today (contract, water sensors). Send price in writing + delivery date. Urgent: discount until 15 Feb."]
+[ECRÃ: o recado da Lesego: "For Kagiso — Nuno Kapinga, Kalandula Tech (Luanda), +244 923 456 718, nuno.kapinga@kalandulatech.co.ao. Please call back today (order, water sensors). Send price in writing + delivery date. Urgent: discount until 15 Feb."]
 
 ### 3. Língua (4 min)
 

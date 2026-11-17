@@ -540,7 +540,7 @@
        "certa": false
       },
       {
-       "texto": "here",
+       "texto": "talks",
        "certa": false
       }
      ],
@@ -782,7 +782,7 @@
      "frase": "Can you see my [screen]?",
      "opcoes": [
       {
-       "texto": "monitor",
+       "texto": "display it",
        "certa": false
       },
       {
