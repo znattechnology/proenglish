@@ -27,7 +27,7 @@
     {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
-     "frase": "Sipho, [whose] team built the backup, will do the satellite part.",
+     "frase": "Sipho, [whose] team worked on the backup, will do the satellite part.",
      "opcoes": [
       {
        "texto": "who",
@@ -183,7 +183,7 @@
      "tipo": "responder",
      "enunciado": "Introduce three people from your work, your studies or your family to a new colleague. For each person, add extra information with who, whose or where.",
      "frase": "whose",
-     "resposta": "Let me introduce my team. Ana, who's been with us for fifteen years, knows every client by name. Mário, whose father started the company, knows its whole history. And our office is in Talatona, where most of our clients are, which is very convenient.",
+     "resposta": "Let me introduce my team. Ana, who's been with us for fifteen years, knows every client by name. Mário, whose father started the company, knows its whole history. And our office is in Talatona, where most of our clients are.",
      "contexto": "Resposta longa: até 90 segundos."
     },
     {
@@ -918,7 +918,7 @@
     },
     {
      "tipo": "escuta",
-     "frase": "I'm Sipho. I'm happy to take over the satellite design, but I'll need the wind data from Morro Azul.",
+     "frase": "I'm Sipho. I'm happy to take on the satellite design, but I'll need the wind data from Morro Azul.",
      "enunciado": "What does Sipho need?",
      "opcoes": [
       {
@@ -1008,7 +1008,7 @@
      "tipo": "responder",
      "enunciado": "You missed the stand-up. Tell a colleague who took each task, and how Thandi kept the meeting short.",
      "frase": "who",
-     "resposta": "Bongani, who knows the bank's systems, is backing Lindiwe up on Monday. Rajesh is doing the Tômbwa costs, and Sipho, who designed the Namibe backup, is taking over the satellite part. Nuno is sending the wind data. Thandi kept it short with a quick round.",
+     "resposta": "Bongani, who knows the bank's systems, is backing Lindiwe up on Monday. Rajesh is doing the Tômbwa costs, and Sipho, who worked on the Namibe backup, is taking on the satellite part. Nuno is sending the wind data. Thandi kept it short with a quick round.",
      "contexto": "Resposta longa: até 90 segundos."
     },
     {
@@ -1168,19 +1168,19 @@
     },
     {
      "tipo": "escuta",
-     "frase": "I'm Rajesh. Without the satellite, the price drops by about fifteen percent, but the risk goes up.",
-     "enunciado": "What happens without the satellite?",
+     "frase": "I'm Rajesh. If we took out the satellite, the price would drop by about fifteen percent, but the risk would go up.",
+     "enunciado": "What would happen without the satellite?",
      "opcoes": [
       {
-       "texto": "The price drops by about 15%, but the risk goes up.",
+       "texto": "The price would drop by about 15%, but the risk would go up.",
        "certa": true
       },
       {
-       "texto": "The price goes up by about 15%.",
+       "texto": "The price would go up by about 15%.",
        "certa": false
       },
       {
-       "texto": "The price and the risk stay the same.",
+       "texto": "The price and the risk would stay the same.",
        "certa": false
       }
      ],
@@ -1302,15 +1302,15 @@
      "enunciado": "Choose the correct sentence.",
      "opcoes": [
       {
-       "texto": "Sipho, whose team built the backup, works in Johannesburg.",
+       "texto": "Sipho, whose team worked on the backup, lives in Johannesburg.",
        "certa": true
       },
       {
-       "texto": "Sipho, who his team built the backup, works in Johannesburg.",
+       "texto": "Sipho, who his team worked on the backup, lives in Johannesburg.",
        "certa": false
       },
       {
-       "texto": "Sipho, who's team built the backup, works in Johannesburg.",
+       "texto": "Sipho, who's team worked on the backup, lives in Johannesburg.",
        "certa": false
       }
      ],
@@ -1400,8 +1400,8 @@
     },
     {
      "tipo": "escuta",
-     "frase": "This is Thandi. So, to sum up: Bongani backs Lindiwe up on Monday, and Sipho takes over the satellite design.",
-     "enunciado": "Who takes over the satellite design?",
+     "frase": "This is Thandi. So, to sum up: Bongani backs Lindiwe up on Monday, and Sipho takes on the satellite design.",
+     "enunciado": "Who takes on the satellite design?",
      "opcoes": [
       {
        "texto": "Sipho",

@@ -1,6 +1,6 @@
 # B2.1 · Unidade 1 — Leading a team (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 1
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [05-plano-B2.md](../../05-plano-B2.md), unidade 1
 
 ## Objectivos da unidade
 
@@ -29,9 +29,9 @@ No fim da unidade, o aluno consegue:
 
 ## Vocabulário da unidade (cerca de 75 palavras e expressões)
 
-- **Equipas e liderança:** team, team leader, lead, join, role, in charge of, look after, report to, rely on, count on, experienced, keen, sharp, quiet, respect, honest, awkward, mentor, background, field.
+- **Equipas e liderança:** team, team leader, lead, join, role, in charge of, look after, report to, rely on, count on, experienced, keen, sharp, quiet, respect, honest, awkward, upset, appreciate, mentor.
 - **Delegar e responsabilidade:** delegate, take on, take over, step up, step down, back up, follow through, workload, priority, strengths, morale, accountable, responsibility, lead by example, boost morale, set priorities, give feedback.
-- **Conduzir uma reunião:** kick-off, stand-up, objective, item, round, input, view, take (*What's your take?*), the floor, park (*let's park that*), sidetrack, get back on track, sum up, the bottom line, next steps, check-in, milestone, draft, deadline.
+- **Conduzir uma reunião:** kick-off, stand-up, objective, item, timeline, round, view, take (*What's your take?*), the floor, park (*let's park that*), get back on track, sum up, the bottom line, next steps, check-in, milestone, draft, deadline.
 - **Frases:** Would you like to start? How do you see it? We haven't heard from you yet. Let's hear from… Great story, but let's park that for now. Coming back to… So, where we are is this… I'd like you to… Who'd like to…? Can you take that on? Anything I've missed?
 - **Falsos amigos:** support (apoiar; "suportar" = put up with, stand), eventual (final; "eventual" = possible).
 
@@ -51,6 +51,6 @@ Setembro de 2028. A Morro Azul convidou a Kalandula Tech e a Mopane a apresentar
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (14 escutas, 7 pronúncias, a 1E com cinco vozes, sobreposição e ruído de escritório); imagens (o quadro das reuniões, a nota do Sr. Baptista em português); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (14 escutas, 7 pronúncias, a 1E com cinco vozes, sobreposição e ruído de escritório); imagens (o quadro das reuniões, a nota do Sr. Baptista em português); carregamento na plataforma.
 
 A seguir vem a **unidade 2, "Presentations"**.
