@@ -4,10 +4,10 @@
 #   cp caddy/Caddyfile caddy/Caddyfile.bak-$(date +%F)
 #   docker compose exec caddy caddy validate --config /etc/caddy/Caddyfile
 #   docker compose exec caddy caddy reload   --config /etc/caddy/Caddyfile
-# Por agora só o endereço sslip.io (aponta sozinho para o servidor e o Caddy obtém o certificado).
-# Quando houver domínio: acrescentá-lo a esta linha (p.ex. "api.novodominio.ao, proenglish-api...")
-# e a ALLOWED_HOSTS no .env, e mudar a variável API_URL do repositório no GitHub.
-proenglish-api.2.31.122.170.sslip.io {
+# Domínio: api.proenglish.ao (DNS na Angoweb, registo A para o servidor), desde 18/11/2026.
+# O endereço sslip.io fica como alternativa. Um nome novo junta-se a esta linha, a ALLOWED_HOSTS no
+# .env e, se passar a ser o principal, à variável API_URL do repositório no GitHub.
+api.proenglish.ao, proenglish-api.2.31.122.170.sslip.io {
 	encode zstd gzip
 
 	# Vídeos e gravações das aulas chegam a dezenas de MB.
@@ -31,9 +31,9 @@ proenglish-api.2.31.122.170.sslip.io {
 }
 
 # ── ProEnglish web (Next.js, mesmo projecto compose) ───────────────────────
-# Quando houver domínio: acrescentá-lo aqui (p.ex. "novodominio.ao, www.novodominio.ao, ...")
-# e definir WEB_URL no GitHub (a web guarda o endereço dentro da imagem).
-proenglish.2.31.122.170.sslip.io {
+# Domínio: proenglish.ao e www.proenglish.ao (WEB_URL no GitHub; a web guarda o endereço dentro
+# da imagem, por isso mudar de endereço pede uma nova publicação da web).
+proenglish.ao, www.proenglish.ao, proenglish.2.31.122.170.sslip.io {
 	encode zstd gzip
 
 	header {

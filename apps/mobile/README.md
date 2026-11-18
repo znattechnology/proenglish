@@ -38,7 +38,7 @@ Antes de entregar: `npx tsc --noEmit` e `npx expo lint`.
 
 ## Testar no telefone (sem as lojas)
 
-A app de teste fala com o servidor (`https://proenglish-api.2.31.122.170.sslip.io/api/v1`): o
+A app de teste fala com o servidor (`https://api.proenglish.ao/api/v1`): o
 endereço entra no build por `EXPO_PUBLIC_API_URL` (`eas.json` e o script `telefone:ios`).
 
 ### Android: APK por ligação (grátis)
