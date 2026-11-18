@@ -1,6 +1,6 @@
 # C1.2 · Unidade 10 — Capstone: the deal (7 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 10 · É a última unidade do curso.
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 10 · É a última unidade do curso.
 
 ## Objectivos da unidade
 
@@ -51,6 +51,6 @@ Novembro de 2030. A Mopane ganha o Niassa, com uma condição: um contrato regio
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (19 escutas, 8 pronúncias, a 10F com português, uma intérprete e uma pausa longa); imagens (a tabela do acordo, a sala em Maputo); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (19 escutas, 8 pronúncias, a 10F com português, uma intérprete e uma pausa longa); imagens (a tabela do acordo, a sala em Maputo); carregamento na plataforma.
 
 A seguir vêm a **revisão 2 e o exame oral do C1.2** — os últimos do curso.

@@ -39,7 +39,7 @@ Gramática-alvo: Their position is… but their interest is…; Our walk-away po
   best alternative is…; What we can trade is…; We'll open with…, and keep… in reserve; I'd rather concede
   on… than on…; condicionais e cenários revistos (C1, 3)
 Palavras-alvo: position, interest, walk-away point, alternative, concession, trade, open with, in reserve,
-  term sheet, award
+  budget, volume
 Reciclagem: posições e interesses (C1, 4C); cenários e condicionais (C1, 3); clivadas (C1, 1)
 Pronúncia: o acento nos contrastes (em "position" e em "interest" — marcado por indicação, sem maiúsculas)
 Contexto: segunda-feira, 4 de Novembro de 2030, 9:00; o gabinete da Thandi; a carta da Mussiro com o
@@ -71,6 +71,8 @@ Verificação: Lab 10A; perguntas 1 e 2 do questionário da unidade 10
 **NUNO:** Our best alternative is what we already have: the Niassa installation. Two point four million. Not bad — just not five years.
 **THANDI:** So we can walk away. That's what makes us calm. What can we trade?
 **NUNO:** Response time — four hours in Nampula now, Niassa later. Local technicians — more, but over time. And something they don't expect: we train twenty of their technicians in Joburg in year one.
+**RAJESH:** Twenty places is a third of next year's courses — if the board confirms the hub in December.
+**NUNO:** After this contract, I think it will.
 **THANDI:** Keep that in reserve. Don't open with your best card.
 **NUNO:** I'd rather concede on time than on the cap. And I'd rather give them training than price.
 **THANDI:** Then that's the order. Price last.
@@ -138,7 +140,7 @@ Gramática-alvo: nomear o impasse (We seem to have reached an impasse. We're goi
   Let's park that and come back to it.); responder à pressão (I'm not comfortable with that. That's not
   something I can agree to under pressure. I'd need to take that back to my team. If that's a condition,
   I'm afraid we'll have to stop here.); nomear a táctica com calma (I understand the deadline, but…)
-Palavras-alvo: impasse, deadlock, ultimatum, pressure, tactic, deadline, park, step back, last-minute,
+Palavras-alvo: impasse, board, ultimatum, pressure, tactic, deadline, park, step back, discount,
   condition
 Reciclagem: atenuação e recusas (C1, 2); inversão negativa (C1, 4); elipse (C1, 6A)
 Pronúncia: a voz calma sob pressão: mais lenta e mais baixa
@@ -237,7 +239,7 @@ Gramática-alvo: subject to + nome (subject to board approval — depende de); o
   acordados, antes do contrato); confirmar (Just to confirm what we've agreed… Is that your understanding
   too?)
 Palavras-alvo: subject to, approval, on condition that, with effect from, in the event of, term sheet,
-  summary, confirm, cap, break clause
+  summary, confirm, cap, court
 Reciclagem: linguagem de contratos (C1, 6B); condições (B2, 3); orações participiais (C1, 5A)
 Pronúncia: o ritmo de um resumo: uma ideia por frase, pausas entre os pontos
 Contexto: sexta-feira, 8 de Novembro, 11:00; o gabinete do Tumelo; o Nuno com um primeiro resumo dos pontos
@@ -335,7 +337,7 @@ Objectivo da aula: No fim, o aluno consegue usar numa negociação curta, com na
   de relato, elipse, futuro no passado, fronting, marcadores e registo.
 Objectivo da unidade a que serve: 2
 Gramática-alvo: revisão integrada: uma estrutura de cada unidade do C1, numa conversa real
-Palavras-alvo: office, rent, furniture, internet, split, share, fair, costs, lease, deal
+Palavras-alvo: office, rent, furniture, internet, split, share, fair, desks, table, deal
 Reciclagem: C1, unidades 1 a 9
 Pronúncia: a naturalidade: as estruturas do C1 ditas sem esforço, no meio da conversa
 Contexto: segunda-feira, 11 de Novembro, 17:00; videochamada entre o Nuno, em Joanesburgo, e o Paulo, em
@@ -423,7 +425,7 @@ Objectivo da unidade a que serve: 2, 4
 Gramática-alvo: colocações (reach / strike / close a deal, a sticking point, a deal-breaker, a sweetener,
   have leverage, sign off on, hammer out the details, a done deal, meet someone halfway, walk away from);
   verbos da negociação (concede, compromise, trade, insist, accept, reject)
-Palavras-alvo: term sheet, deal-breaker, sticking point, sweetener, leverage, sign off on, hammer out,
+Palavras-alvo: close a deal, deal-breaker, sticking point, sweetener, leverage, sign off on, hammer out,
   meet halfway, walk away, a done deal, concede, compromise
 Reciclagem: 10A a 10D
 Pronúncia: a voz do fecho: firme, calorosa e descendente
@@ -602,8 +604,8 @@ Objectivo da aula: No fim, o aluno consegue conduzir a ronda final de uma negoci
   exigência de última hora, trocar concessões e fechar um acordo resumido com precisão.
 Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a do C1
-Palavras-alvo: round, common ground, sticking point, sweetener, deal-breaker, meet halfway, subject to,
-  with effect from, a done deal, handshake
+Palavras-alvo: round, partnership, not negotiable, sweetener, deal-breaker, meet halfway, subject to,
+  with effect from, break clause, frankly
 Reciclagem: C1, unidades 1 a 9
 Pronúncia: a voz do fecho: firme, calorosa e descendente
 Mediação: a meio da reunião, o Dr Cumbe fala em português sobre a pressão do governo provincial; o Nuno passa
