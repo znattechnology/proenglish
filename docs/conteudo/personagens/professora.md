@@ -2,7 +2,12 @@
 
 Ficha da professora de IA que dá todas as vídeo-aulas, do A1 ao C1, e que é a cara da marca na publicidade. Decisões de 18 de Novembro de 2026: uma só professora, mulher angolana entre os 32 e os 36 anos, rosto gerado por IA, nome Luena.
 
-## 1. Nome: Luena
+## 1. Nome: Luena Kambala Sebastião
+
+**Nome completo: Luena Kambala Sebastião.** Segue o padrão de muitos nomes angolanos: o nome próprio (Luena), um apelido de origem banta (Kambala) e um apelido de origem portuguesa herdado do pai (Sebastião). Nenhum destes apelidos está usado nos guiões. No dia-a-dia e na marca é só **Professora Luena**.
+
+Alternativas, se preferir: Luena Mufuma Bernardo; Luena Kassule Kitumba.
+
 
 **Professora Luena** (em inglês, *Teacher Luena*; diz-se *lu-É-na*), escolhido a 18 de Novembro de 2026. É o nome do rio e da capital do Moxico: angolano, curto, fácil de dizer em português e em inglês, e não está usado em nenhum guião. Antes da publicidade, verificar que não há figura pública nem marca registada com o nome na área do ensino.
 
