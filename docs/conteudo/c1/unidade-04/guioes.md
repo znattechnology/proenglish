@@ -31,9 +31,9 @@ Objectivo da unidade a que serve: 1
 Gramática-alvo: advérbio negativo ou restritivo + auxiliar + sujeito + verbo: Never have I seen…; Rarely /
   Seldom do we…; Not once has he told me…; At no time did I say…; Under no circumstances will I…; o
   auxiliar do tempo certo (have / do / did / will / can); com be: Never was I so embarrassed.
-Palavras-alvo: embarrassed, schedule, inform, copy (in), complaint, tension, team, respect, client,
-  trust
-Reciclagem: inversão condicional (C1, 3B); atenuação (C1, 2A)
+Palavras-alvo: embarrassed, schedule, furious, separately, complaint, take sides, team, client, trust,
+  wise
+Reciclagem: inversão condicional (C1, 3B)
 Pronúncia: o acento forte no advérbio negativo no início (Never, Not once, Under no circumstances)
 Contexto: segunda-feira, 8 de Abril de 2030, 8:15; o gabinete do Nuno; a Thandi entra com um café e
   encontra o Nuno a ler um e-mail da Inês
@@ -138,9 +138,9 @@ Objectivo da unidade a que serve: 1, 2
 Gramática-alvo: Not only did she…, but she also…; No sooner had we… than…; Hardly had I… when…; Little did I
   know (that)…; Only when… did I…; Only then did I… (a inversão vai na oração principal: Only when he called
   did I understand.)
-Palavras-alvo: copy in, contradict, promise, field, signal, side of the story, frustrated, find out,
-  responsible, deadline
-Reciclagem: 4A; tempos narrativos (B2, 2)
+Palavras-alvo: side, flooded, access road, promise, team group, find out, joke, apologise, responsible,
+  deadline
+Reciclagem: 4A; past perfect e tempos narrativos (B1, 6)
 Pronúncia: o ritmo de uma narrativa com ênfase; o acento em "only" e "little"
 Contexto: quarta-feira, 10 de Abril, 17:00; o Nuno ao telefone com o Bongani, que está numa subestação perto
   de Nampula; ruído de vento e de um gerador
@@ -170,6 +170,8 @@ Verificação: Lab 4B; perguntas 3 e 4 do questionário
 **BONGANI:** I'm responsible for the deadline. David will review this project. If she promises dates, I'm the one who breaks them. All I want is: no promises without me.
 **NUNO:** That's clear. Thank you for being honest, Bongani.
 **BONGANI:** [ri-se, cansado] Never have I been so honest on a windy hill.
+**NUNO:** That was a lot of "not only" and "little did I know", Bongani. You've been rehearsing.
+**BONGANI:** Since Saturday. In the car.
 
 ### 3. Língua (4 min)
 
@@ -188,6 +190,9 @@ Verificação: Lab 4B; perguntas 3 e 4 do questionário
 
 [ECRÃ: ✘ No sooner had we fixed the road when it rained. · ✘ Only when he called I found out. · ✘ Not only she wrote… · ✔ No sooner had we fixed the road than it rained. · ✔ Only when he called did I find out. · ✔ Not only did she write…]
 [PAUSA 5 s]
+
+**PROF:** Bongani uses many inversions because he has rehearsed this speech for days — Nuno notices it. In a normal phone call, one or two are enough.
+[PAUSA 4 s]
 
 **PROF:** Notice also how Bongani's story changes when Nuno asks one simple question: "Is Inês in that group?" Each side of a conflict usually has a part of the truth.
 [PAUSA 5 s]
@@ -213,7 +218,7 @@ Verificação: Lab 4B; perguntas 3 e 4 do questionário
 **PROF (opinião):** In a conflict, is it fair to listen to one side first? What are the risks?
 [PAUSA 25 s]
 
-**PROF (reciclagem — B2, 2):** Tell it with the past perfect: "The team left. Then the client arrived."
+**PROF (reciclagem — B1, 6):** Tell it with the past perfect: "The team left. Then the client arrived."
 [PAUSA 6 s]
 [ECRÃ: When the client arrived, the team had already left.]
 
@@ -234,7 +239,7 @@ Gramática-alvo: reformular: So what you're saying is (that)…; What I'm hearin
   but…; If I've understood you correctly, …; ir ao interesse: What would need to change for…? What matters
   most to you here? It sounds as though what really matters to you is…; validar sem concordar: I can see
   why that upset you. That must have been frustrating.
-Palavras-alvo: position, interest, upset, frustrating, respect, recognition, reformulate, validate,
+Palavras-alvo: position, interest, upset, frustrating, respect, engineer, reformulate, validate,
   common ground, side
 Reciclagem: clivadas (C1, 1: What really matters is…); reformular (C1, 1C); modais no passado (B2, 6)
 Pronúncia: tom calmo, ritmo lento e pausas de escuta
@@ -514,9 +519,9 @@ Objectivo da aula: No fim, o aluno consegue mediar um conflito entre duas pessoa
 Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: inversão negativa (com moderação), reformular, validar, interesses,
   terreno comum; propor (What if we…? How would you feel about…?) e fechar (So, to sum up, we've agreed…)
-Palavras-alvo: ground rules, interrupt, apologise, agreement, check-in call, in copy, sign off, credit,
-  common ground, clear the air
-Reciclagem: clivadas (C1, 1); diplomacia (C1, 2); condicionais (C1, 3)
+Palavras-alvo: ground rules, interrupt, apologise, agreement, fifteen-minute call, copy, reports,
+  handover, common ground, clear the air
+Reciclagem: 2.º condicional em propostas (What if the two of you had…?); validar e reformular (4C)
 Pronúncia: tom calmo e neutro do mediador; um pedido de desculpas sincero (descendente, sem "but")
 Mediação: a Inês, emocionada, passa ao português; o Nuno transmite ao Bongani, em inglês, o que ela disse
 Contexto: terça-feira, 23 de Abril, 9:00 (depois da Páscoa); videochamada a três: o Nuno em Joanesburgo,
@@ -533,14 +538,14 @@ Verificação: Lab 4F; conversa livre "The mediator"
 
 [ECRÃ: terça-feira, 23 de Abril, 9:00; três janelas no ecrã: o Nuno em Joanesburgo, a Inês em Maputo, o Bongani em Nampula, num contentor com uma ventoinha]
 
-**NUNO:** Thank you both. Before we start, three ground rules. One: each person speaks without being interrupted. Two: we talk about what happened, not about what kind of person anyone is. Three: we don't finish without an agreement. OK?
+**NUNO:** Thank you both. The aim today is simple: to clear the air, and to leave with an agreement. Before we start, three ground rules. One: each person speaks without being interrupted. Two: we talk about what happened, not about what kind of person anyone is. Three: we don't finish without an agreement. OK?
 **INÊS:** OK.
 **BONGANI:** Fine.
 **NUNO:** I've spoken to each of you, and I won't decide who's right. Inês, would you start?
 **INÊS:** On the fifth, I told the client substation seven would be ready. It wasn't. I didn't know the team had moved. It isn't the first time.
 **NUNO:** Thank you. Bongani?
 **BONGANI:** The road to seven flooded, so I moved the team. I posted it in the team group. I didn't check that Inês was in it. That was my mistake. But she promised the client a date I never gave.
-**NUNO:** So what I'm hearing from both of you is the same thing: each of you found out about a decision after the client did.
+**NUNO:** So what I'm hearing from both of you is the same thing — and that's our common ground: each of you found out about a decision after the client did.
 **BONGANI:** [pausa] I suppose so.
 **NUNO:** Inês, there was something else.
 **INÊS:** [respira] The reports. And… [passa ao português, emocionada] Eu não sou tradutora. Estudei engenharia electrotécnica cinco anos. Quando o cliente me pergunta uma data, eu tenho de responder alguma coisa — não posso dizer "não sei, pergunte ao Bongani".

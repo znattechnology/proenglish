@@ -1,6 +1,6 @@
 # C1.1 · Unidade 4 — Conflict (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 4
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 4
 
 ## Objectivos da unidade
 
@@ -51,6 +51,6 @@ Abril de 2030. Nove das doze subestações de Nampula estão ligadas, e as últi
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (16 escutas, 7 pronúncias, a 4B com vento e um gerador, a 4E com três vozes); imagens (o *e-mail* da Inês, as três janelas da videochamada); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (16 escutas, 7 pronúncias, a 4B com vento e um gerador, a 4E com três vozes); imagens (o *e-mail* da Inês, as três janelas da videochamada); carregamento na plataforma.
 
 A seguir vem a **unidade 5, "Data and reports"**, a última do C1.1.
