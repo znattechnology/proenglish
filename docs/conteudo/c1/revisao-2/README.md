@@ -1,6 +1,6 @@
 # C1.2 · Revisão 2 e exame oral
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), "Revisão 2 e exame oral do C1.2" · É o fim do curso.
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), "Revisão 2 e exame oral do C1.2" · É o fim do curso.
 
 ## Objectivo
 
@@ -25,12 +25,12 @@ No fim do C1.2, o aluno consegue manter uma discussão de cerca de 12 minutos co
 - **Duas estratégias novas, em blocos fixos:** responder com estrutura a uma pergunta abstracta (*There are two ways of looking at this… Much depends on… Where I come down is…*) e acompanhar o registo da personagem da parte 3.
 - **O exame avalia o registo (unidade 9) em todas as situações:** cada personagem tem um registo indicado na descrição, que o examinador mantém desde a primeira frase.
 - **Quatro situações, uma por tarefa das unidades 6, 7, 8 e 10**, cada uma com uma dificuldade e uma decisão.
-- **O exame de demonstração, o laboratório e o tutor usam dados e perguntas diferentes dos do exame:** uma agência bancária, o plástico, uma aplicação bancária, as agências e a tecnologia e a liberdade (demonstração); o hospital e a honestidade nos negócios (laboratório); a pegada de carbono, o arrendamento do escritório e a negociação na escola (ensaio). O exame usa as pessoas com quem o aluno fala, o que se esperava no seu campo, as notícias, as contas da electricidade, o fornecedor simpático, os processos electrónicos, a carreira de autocarros e a cantina da universidade.
+- **O exame de demonstração, o laboratório e o tutor usam dados e perguntas diferentes dos do exame:** uma decisão do banco, o trânsito, uma aplicação bancária, as agências e a tecnologia e a liberdade (demonstração); o hospital e a honestidade nos negócios (laboratório); a pegada de carbono, o arrendamento do escritório e a negociação na escola (ensaio). O exame usa as pessoas com quem o aluno fala, o que se esperava no seu campo, as notícias, as contas da electricidade, o fornecedor simpático, os processos electrónicos, a carreira de autocarros e a cantina da universidade.
 - **A Lurdes faz o seu último exame** e lembra o caminho do curso: do "My name is Lurdes" do A1 a discutir política bancária em inglês.
 - **Sem mudanças no código:** o nível C1 já existe na plataforma, e o guião, a escala e as situações carregam-se por curso.
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (4 escutas, 2 pronúncias; o exame de demonstração com duas vozes); criar o curso C1.2 na plataforma e carregar o exame com `carregar_exame_curso`.
+Leitura pelos professores; vídeos com o professor de IA; áudio (4 escutas, 2 pronúncias; o exame de demonstração com duas vozes); criar o curso C1.2 na plataforma e carregar o exame com `carregar_exame_curso`.
 
 **Com esta pasta, o curso English Communication Skills fica escrito do A1 ao C1.**

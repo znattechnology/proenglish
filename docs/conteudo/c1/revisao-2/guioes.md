@@ -50,7 +50,7 @@ Verificação: laboratórios C1R2-1 e C1R2-2; conversa de ensaio; questionário 
 **LINDIWE:** One more thing. Mr Sithole's assistant sent me a gift. A very nice bottle of whisky. Before the negotiation.
 **NUNO:** Over fifty dollars?
 **LINDIWE:** I'm afraid so.
-**NUNO:** Then you know the policy. Declare it to Tumelo, and send it back with a kind note. Strictly speaking, it's a gift. In practice, before a negotiation, it's a grey area — and we don't do grey areas.
+**NUNO:** Then you know the policy. Declare it to Tumelo, and send it back with a kind note. Strictly speaking, small gifts are allowed — under fifty dollars, and declared. This one isn't small, and before a negotiation it wouldn't even be a grey area.
 **LINDIWE:** I was going to keep it for Christmas. [ri-se] Fine. I'll send it back.
 **NUNO:** And Lindiwe — on the radio, speak like a person, not like a contract. Save "notwithstanding" for Tumelo.
 **LINDIWE:** Mind you, you sound more like Thandi every day.
@@ -62,13 +62,13 @@ Verificação: laboratórios C1R2-1 e C1R2-2; conversa de ensaio; questionário 
 
 | Unidade | Exemplo da conversa |
 |---|---|
-| 6. Compliance and ethics | Over fifty dollars? — I'm afraid so. · Strictly speaking, it's a gift. In practice, … it's a grey area. |
+| 6. Compliance and ethics | Over fifty dollars? — I'm afraid so. · Strictly speaking, small gifts are allowed… This one isn't small. |
 | 7. Science and change | Think of it as a bucket that fills with sun. · I was going to keep it for Christmas. |
 | 8. On air | Difficult as it is, that's the honest answer. · Mind you, … · That, I'll take as a compliment. |
 | 9. Register | Got it. · Save "notwithstanding" for Tumelo. · speak like a person, not like a contract |
 | 10. The deal | Their position is… Their interest is… · our walk-away point · that's not something I can agree to under pressure · Subject to our board · Is that your understanding too? |
 
-**PROF:** Notice how the units connect. Ethics and negotiation meet in the whisky: a gift before a negotiation is a grey area. Science and media meet on the radio: an analogy, one number, and honesty about what you can't promise. And register runs through everything: "Got it" to Nuno, "That's a very reasonable question" to a listener.
+**PROF:** Notice how the units connect. Ethics and negotiation meet in the whisky: a big gift just before a negotiation isn't even a grey area. Science and media meet on the radio: an analogy, one number, and honesty about what you can't promise. And register runs through everything: "Got it" to Nuno, "That's a very reasonable question" to a listener.
 [PAUSA 7 s]
 
 ### 4. Os erros mais comuns do C1.2 (2 min 30 s)
@@ -166,12 +166,12 @@ Verificação: laboratório C1R2-2; conversa de ensaio com o tutor
 
 [ECRÃ: a Lurdes, em casa, em Benguela, com auscultadores; "Demonstration — C1.2 speaking exam"]
 
-**EXAMINER:** Hello, Lurdes. Welcome to your C1.2 speaking exam. Tell me about a change at your bank that was supposed to happen, but didn't.
+**EXAMINER:** Hello, Lurdes. Welcome to your C1.2 speaking exam. Tell me about a decision at your bank that people disagreed with.
 **LURDES:** Two years ago, the bank was going to close our branch and move everything online. Everyone thought it would happen within a year. Then the older clients protested — and, to be fair, they were right. So the branch is still open, but half the space is now a digital help desk.
-**EXAMINER:** Thank you. Now Part 2. A town wants to reduce plastic waste. Three options: a ban on plastic bags, a deposit on bottles, or recycling bins in every street. Choose two, compare them and say which would work better.
-**LURDES:** Of the three, the two I'd like to talk about are the deposit and the bins. I'd leave aside the ban — it was tried before, and it's hard to enforce. A deposit gives people a reason: get your money back. Bins, on the other hand, only work if someone empties them — and in my town, that's a big "if". It could well be that the deposit works faster. If I had to choose, I'd go for the deposit.
-**EXAMINER:** What might go wrong with the deposit?
-**LURDES:** Shops might not want to handle the bottles. In which case, the town would need collection points — at the markets, for example.
+**EXAMINER:** Thank you. Now Part 2. A town wants to reduce traffic in the centre. Three options: a charge for cars entering the centre, more buses, or safe cycle lanes. Choose two, compare them and say which would work better.
+**LURDES:** Of the three, the two I'd like to talk about are the buses and the cycle lanes. I'd leave aside the charge — it's hard to enforce, and it hits small traders hardest. More buses give people a real alternative. Cycle lanes, on the other hand, only work if they're safe — and in my town, that's a big "if". It could well be that the buses work faster. If I had to choose, I'd go for the buses.
+**EXAMINER:** What might go wrong with the buses?
+**LURDES:** If they're stuck in the same traffic, nobody will use them. In which case, the town would need bus-only lanes — at least at rush hour.
 **EXAMINER:** Thank you. Now Part 3. I'm one of your older clients, and I don't trust this new mobile banking app. My grandson says I should use it. Why should I?
 **LURDES:** That's a very reasonable question. Think of the app as a small branch in your pocket — the same account, the same money, but open at night and on Sundays. You don't have to use it for everything… *(a tarefa continua: o cliente pergunta "And if I lose my phone?"; a Lurdes explica, sem jargão, que o telemóvel perdido se bloqueia com uma chamada; não promete que nada pode correr mal; e combinam uma sessão de meia hora no balcão, com o neto)*
 **EXAMINER:** Thank you. Part 4. Should banks close branches when almost everything can be done online?

@@ -84,7 +84,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [c1/unidade-08/](c1/unidade-08/README.md) | C1.2, unidade 8 "On air": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [c1/unidade-09/](c1/unidade-09/README.md) | C1.2, unidade 9 "Register": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [c1/unidade-10/](c1/unidade-10/README.md) | C1.2, unidade 10 "Capstone: the deal": guiões, laboratório, tutor, questionário e revisão aula a aula. |
-| [c1/revisao-2/](c1/revisao-2/README.md) | C1.2, revisão 2 e exame oral: guiões, laboratório, ensaio com o tutor, questionário, o guião e as situações do exame. |
+| [c1/revisao-2/](c1/revisao-2/README.md) | C1.2, revisão 2 e exame oral: guiões, laboratório, ensaio com o tutor, questionário, o guião e as situações do exame, e revisão aula a aula. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.

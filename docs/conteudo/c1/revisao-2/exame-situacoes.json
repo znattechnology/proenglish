@@ -6,14 +6,14 @@
    "slug": "c1-2-exame-etica",
    "nome": "C1.2 exam · The friendly supplier",
    "papel_tutor": "A friendly, informal supplier who is bidding for a contract and offers the student a favour.",
-   "descricao": "Register: friendly and informal. The student manages purchasing at a company that is choosing a supplier of office equipment; a decision is due next week. The examiner is one of the suppliers, very friendly. Difficulty: the examiner invites the student to a weekend at a beach resort \"to discuss the project\", and then asks for a small favour: a look at the other suppliers' prices. When the student refuses, the examiner insists once: everyone does it, it is just friendship. Decision: the student refuses without accusing and proposes a clean alternative (a meeting at the office, with a colleague). Discussion: Should companies ban all gifts from suppliers, even small ones? Opposite view 1: small gifts are part of good relationships in many cultures. Opposite view 2: a total ban is easier to apply than a grey limit.",
+   "descricao": "Register: friendly and informal. The student manages purchasing at a company that is choosing a supplier of office equipment; a decision is due next week. The examiner is one of the suppliers, very friendly. Difficulty: the examiner offers a free laptop \"for your daughter's studies\", and then asks for a small favour: a look at the other suppliers' prices. When the student refuses, the examiner insists once: everyone does it, it is just friendship. Decision: the student refuses without accusing and proposes a clean alternative (a meeting at the office, with a colleague). Discussion: Should companies ban all gifts from suppliers, even small ones? Opposite view 1: small gifts are part of good relationships in many cultures. Opposite view 2: a total ban is easier to apply than a grey limit.",
    "nivel": "C1",
    "duracao_min": 5,
    "estado": "activo",
    "extras": {
     "exame": true,
     "parte": 3,
-    "frase_inicial": "Now Part 3. I'm one of the suppliers bidding for your office equipment contract. Hi! Great to see you again. Listen, I've got a little idea for this weekend…"
+    "frase_inicial": "Now Part 3. I'm one of the suppliers bidding for your office equipment contract. Hi! Great to see you again. Listen, I've got a little something for your family…"
    },
    "frases": [
     "That's very kind of you, but I'm afraid that's not something I can accept.",
@@ -26,7 +26,7 @@
    "slug": "c1-2-exame-explicar",
    "nome": "C1.2 exam · The worried patient",
    "papel_tutor": "An older patient at a local clinic, worried and suspicious, who does not understand technical words.",
-   "descricao": "Register: plain, calm and respectful. The student works at a local clinic that is moving from paper files to electronic health records next month. The examiner is an older patient who is worried. The student explains, without jargon, what is changing and why, with an analogy and an example. Difficulty: the examiner misunderstands once (So anyone can read my file on the internet?) and then asks for a guarantee that nothing will ever go wrong, which the student should not give. Decision: agree on a next step (for example, a visit with a nurse to see the system, or a consent form). Discussion: Is it the duty of experts to explain their work to the public? Opposite view 1: experts are paid to work, not to teach. Opposite view 2: when people do not understand science, they stop trusting it.",
+   "descricao": "Register: plain, calm and respectful. The student works at a local clinic that is moving from paper files to electronic health records next month. The examiner is an older patient who is worried. The student explains, without jargon, what is changing and why, with an analogy and an example. Difficulty: the examiner misunderstands once (So anyone can read my file on the internet?) and then asks for a guarantee that nothing will ever go wrong, which the student should not give. Decision: agree on a next step (for example, a visit with a nurse to see the system, or a consent form). Discussion: Should people be able to refuse new technology in public services? Opposite view 1: if everyone can refuse, services never improve. Opposite view 2: forcing technology on people destroys their trust.",
    "nivel": "C1",
    "duracao_min": 5,
    "estado": "activo",
@@ -46,7 +46,7 @@
    "slug": "c1-2-exame-radio",
    "nome": "C1.2 exam · Live on the radio",
    "papel_tutor": "A pushy live-radio journalist who interrupts and uses false premises.",
-   "descricao": "Register: short, calm and clear. The student represents the town council: a new bus service between the suburbs and the centre started three months late and 12 percent over budget, but 4,000 people now use it every day. The examiner is a live-radio journalist. Difficulty: the examiner states one false premise (Isn't it true that nobody uses it?), interrupts the student once, and asks one question the student should not answer (what one named driver earns). Decision: the student ends with one clear key message and one concrete promise. Discussion: Do the media make public trust in institutions stronger or weaker? Opposite view 1: journalists hold the powerful to account. Opposite view 2: hard interviews reward clever talkers, not honest people.",
+   "descricao": "Register: short, calm and clear. The student represents the town council: a new bus service between the suburbs and the centre started three months late and 12 percent over budget, but 4,000 people now use it every day. The examiner is a live-radio journalist. Difficulty: the examiner states one false premise (Isn't it true that nobody uses it?), interrupts the student once, and asks one question the student should not answer (what one named driver earns). Decision: the student ends with one clear key message and one concrete promise. Discussion: Should public officials be obliged to give live interviews? Opposite view 1: the public has a right to question the people it pays. Opposite view 2: live interviews favour good performers over good managers.",
    "nivel": "C1",
    "duracao_min": 5,
    "estado": "activo",
