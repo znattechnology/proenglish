@@ -42,7 +42,7 @@ Verificação: Lab 1A (exercícios 1–9); perguntas 1, 2 e 3 do questionário d
 
 [ECRÃ: logótipo ProEnglish; título "Hello, I'm…"]
 
-**PROF:** Hello! Welcome to ProEnglish. I'm your teacher.
+**PROF:** Hello! Welcome to ProEnglish. I'm Luena, your teacher.
 (PT: Olá! Bem-vindo à ProEnglish. Sou o seu professor.)
 
 **PROF:** Today you learn to say hello, to say your name, and to say goodbye. In English!
@@ -165,7 +165,7 @@ Verificação: Lab 1A (exercícios 1–9); perguntas 1, 2 e 3 do questionário d
 [PAUSA 4 s]
 [ECRÃ (depois da pausa): Good morning!]
 
-**PROF:** I'm your teacher. What's your name? Say: I'm…, and your name.
+**PROF:** I'm Luena, your teacher. What's your name? Say: I'm…, and your name.
 [PAUSA 5 s]
 [ECRÃ: I'm …]
 

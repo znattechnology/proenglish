@@ -506,8 +506,8 @@ Verificação: Lab 4E (exercícios 1–8); pergunta 10 do questionário
 
 **PROF:** Listen and repeat.
 **PROF:** I have a big family. [PAUSA 3 s]
-**PROF:** My wife's name is Ngozi. [PAUSA 3 s]
-(PT: A minha mulher chama-se Ngozi.)
+**PROF:** My husband's name is Tunde. [PAUSA 3 s]
+(PT: O meu marido chama-se Tunde.)
 **PROF:** We have three children: two boys and a girl. [PAUSA 4 s]
 **PROF:** It's my mother and me. [PAUSA 3 s]
 (PT: Somos eu e a minha mãe.)

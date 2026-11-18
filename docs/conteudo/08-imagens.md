@@ -27,7 +27,7 @@ Análise de 18 de Novembro de 2026. Os números saem de uma contagem automática
 | Conquistas | Hoje são emojis; medalhas próprias | **~30** | Nano Banana Pro |
 | Site público e app | Imagem principal, secções, estados vazios, acolhimento | **~35** | Nano Banana Pro |
 | Logótipos das empresas fictícias | Kalandula Tech, Mopane Systems, Mussulo Energy, Morro Azul Energia, Mussiro… | ~8 | Rascunho com IA, acabamento à mão |
-| Professor de IA dos vídeos | O rosto do professor | 1 a 3 | Depende da ferramenta de vídeo, ainda por escolher |
+| Professora Luena (vídeos e publicidade) | O rosto da marca: ver [personagens/professora.md](personagens/professora.md) | 5 a 10 | Nano Banana Pro, sempre fotográfica; a animação depende da ferramenta de vídeo |
 
 **O que não se gera:**
 - **testemunhos do site:** têm de ser de alunos reais; uma cara inventada seria um testemunho falso;

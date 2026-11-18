@@ -1,8 +1,39 @@
 {
-  "nota": "Piloto das imagens (docs/conteudo/08-imagens.md, secção 8). Fase 1: os três estilos (só o Nuno). Depois de escolhido o estilo, o texto de 'estilo' passa a ser o escolhido e a imagem aprovada entra como referência nas fichas.",
+  "nota": "Piloto das imagens (docs/conteudo/08-imagens.md, secção 8). Fase 0: a professora Luena (personagens/professora.md), sempre fotográfica, com estilo próprio. Fase 1: os três estilos (só o Nuno). Depois de escolhido o estilo, o texto de 'estilo' passa a ser o escolhido e a imagem aprovada entra como referência nas fichas.",
   "estilo": "PREENCHER DEPOIS DA FASE 1 com o estilo escolhido",
   "regras": "Do not include any text, letters, numbers, logos, watermarks or captions anywhere in the image. Contemporary Angola, 2026. Respectful, natural, non-stereotyped depiction of African professionals. No real people, no real brands.",
   "imagens": [
+    {
+      "id": "professora-visual-a", "fase": 0, "modelo": "pro", "proporcao": "4:5", "tamanho": "2K", "referencias": [],
+      "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
+      "descricao": "Luena, a beautiful Black Angolan woman aged 34, English teacher. Dark-brown skin, high cheekbones, expressive dark-brown eyes, deep dimples when she smiles, a small gap between her two front teeth, a tiny beauty mark near the outer corner of her left eye. Full, curvy figure typical of many Angolan women: defined waist, wide hips, medium height. Warm, friendly, confident smile; approachable and professional. Wears a well-tailored deep navy blazer over a plain ivory blouse, small gold earrings, and an accent in Angolan samakaka print fabric. Elegant and modest, never sensual. Hair: long black box braids gathered in a high, neat bun. Waist-up portrait, looking at the camera, plain warm-grey studio background.",
+      "uso": "professora: visual A"
+    },
+    {
+      "id": "professora-visual-b", "fase": 0, "modelo": "pro", "proporcao": "4:5", "tamanho": "2K", "referencias": [],
+      "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
+      "descricao": "Luena, a beautiful Black Angolan woman aged 34, English teacher. Dark-brown skin, high cheekbones, expressive dark-brown eyes, deep dimples when she smiles, a small gap between her two front teeth, a tiny beauty mark near the outer corner of her left eye. Full, curvy figure typical of many Angolan women: defined waist, wide hips, medium height. Warm, friendly, confident smile; approachable and professional. Wears a well-tailored deep navy blazer over a plain ivory blouse, small gold earrings, and an accent in Angolan samakaka print fabric. Elegant and modest, never sensual. Hair: short, natural, well-defined black coils. Waist-up portrait, looking at the camera, plain warm-grey studio background.",
+      "uso": "professora: visual B"
+    },
+    {
+      "id": "professora-visual-c", "fase": 0, "modelo": "pro", "proporcao": "4:5", "tamanho": "2K", "referencias": [],
+      "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
+      "descricao": "Luena, a beautiful Black Angolan woman aged 34, English teacher. Dark-brown skin, high cheekbones, expressive dark-brown eyes, deep dimples when she smiles, a small gap between her two front teeth, a tiny beauty mark near the outer corner of her left eye. Full, curvy figure typical of many Angolan women: defined waist, wide hips, medium height. Warm, friendly, confident smile; approachable and professional. Wears a well-tailored deep navy blazer over a plain ivory blouse, small gold earrings, and an accent in Angolan samakaka print fabric. Elegant and modest, never sensual. Hair: shoulder-length black braids worn loose, with a headwrap in samakaka print. Waist-up portrait, looking at the camera, plain warm-grey studio background.",
+      "uso": "professora: visual C"
+    },
+    {
+      "id": "ficha-professora", "fase": 0, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
+      "descricao": "Character reference sheet on a plain light-grey background: the same woman from the reference image shown four times side by side — front view, three-quarter view, full body standing (showing her curvy figure in the same professional outfit), and a row of three facial expressions (smiling, explaining, gently correcting). Luena, a beautiful Black Angolan woman aged 34, English teacher. Dark-brown skin, high cheekbones, expressive dark-brown eyes, deep dimples when she smiles, a small gap between her two front teeth, a tiny beauty mark near the outer corner of her left eye. Full, curvy figure typical of many Angolan women: defined waist, wide hips, medium height. Warm, friendly, confident smile; approachable and professional. Wears a well-tailored deep navy blazer over a plain ivory blouse, small gold earrings, and an accent in Angolan samakaka print fabric. Elegant and modest, never sensual.",
+      "uso": "bíblia de personagens (pôr em referencias o visual aprovado)"
+    },
+    {
+      "id": "professora-enquadramento", "fase": 0, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": ["ficha-professora"],
+      "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
+      "descricao": "Luena, the same woman from the reference sheet, seated at a light wooden desk in a bright teaching studio, framed from the waist up slightly left of centre, looking straight into the camera and smiling as if starting a lesson. Behind her: a large window with a soft-focus view of the Bay of Luanda, green plants, a low bookshelf, and a golden-yellow mug on the desk. Calm, uncluttered background suitable for on-screen text on the right side.",
+      "uso": "imagem base das vídeo-aulas (ferramenta de vídeo)"
+    },
+
     {
       "id": "estilo-foto", "fase": 1, "modelo": "pro", "proporcao": "3:2", "tamanho": "1K",
       "estilo": "Realistic editorial photograph, natural window light, shallow depth of field, 35mm lens, warm but neutral colour grading, like a corporate magazine portrait.",
