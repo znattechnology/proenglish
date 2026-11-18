@@ -46,15 +46,15 @@ Verificação: laboratórios C1R1-1 e C1R1-2; conversa de ensaio; questionário 
 **INÊS:** OK. Second: the competitor. Everyone says a foreign company has offered them a lower price.
 **NUNO:** "Everyone says" isn't a fact. If it comes up: "A lower offer is said to be on the table. I'm not in a position to comment on it. What I can tell you is what our price includes."
 **INÊS:** Third: the board will ask about risks. The rainy season, the roads in Niassa…
-**NUNO:** Give them scenarios. In the most likely case, eighteen months. In the worst case — if the rains are as bad as last year — twenty-one. And had we planned Nampula around the rains, we would have finished on time. Say that. It shows you've learned.
+**NUNO:** Give them scenarios. In the most likely case, eighteen months. In the worst case — if the rains are as bad as last year — twenty-one. And had we planned Nampula around the rainy season, we would have lost far fewer weeks. Say that. It shows you've learned.
 **INÊS:** "Had we planned…" — very formal.
 **NUNO:** It's a board. One inversion, at the right moment.
 **INÊS:** And Bongani? He'll be on site again.
 **NUNO:** How are things with him now?
 **INÊS:** [sorri] Not once in six weeks has he forgotten our Monday call. I never thought I'd say that.
-**NUNO:** Then say it to Mussiro — in other words. They saw the tension in March.
+**NUNO:** Then say it to Mussiro — in other words. They saw the tension in April.
 **INÊS:** Last thing: numbers. Their engineers will check everything.
-**NUNO:** Then be honest with approximations. Having done Nampula, you know the real costs. "Just under four million dollars", not "about four million", if it's three point nine. And if you don't know a number, say so, and give them a date.
+**NUNO:** Then be honest with approximations. Having done Nampula, you know the real costs. "Just under two and a half million dollars", not "about two and a half million", if it's two point four. And if you don't know a number, say so, and give them a date.
 **INÊS:** You sound like Thandi.
 **NUNO:** [ri-se] Everyone in this company ends up sounding like Thandi. I'll take it as a compliment.
 
@@ -66,7 +66,7 @@ Verificação: laboratórios C1R1-1 e C1R1-2; conversa de ensaio; questionário 
 |---|---|
 | 1. Making the case | It was your work in Nampula that got us this invitation. · What Niassa needs is… · Concede first, then come back. |
 | 2. Diplomacy | I'm not in a position to comment on it. What I can tell you is… |
-| 3. Strategy | In the most likely case… In the worst case… · Had we planned Nampula around the rains, we would have finished on time. |
+| 3. Strategy | In the most likely case… In the worst case… · Had we planned Nampula around the rainy season, we would have lost far fewer weeks. |
 | 4. Conflict | Not once in six weeks has he forgotten our Monday call. |
 | 5. Data and reports | A lower offer is said to be on the table. · Having done Nampula, you know the real costs. · just under four million |
 
@@ -97,7 +97,7 @@ Verificação: laboratórios C1R1-1 e C1R1-2; conversa de ensaio; questionário 
 
 **PROF:** Now you. Imagine a colleague asks you for advice before an important presentation — to a client, a board or a committee. Give five pieces of advice in about one and a half minutes, using one structure from each unit of C1.1.
 [PAUSA 90 s]
-[ECRÃ: modelo — What you need is one strong opening sentence. If they mention last year's problem, concede it: "It was a difficult year — I won't deny it." If they ask about a rumour, say "It's said to be true, but I'm not in a position to confirm it." Had I prepared my first big presentation better, I'd have practised the questions, not the slides. Never have I seen a board forgive a wrong number. And having checked every figure, you'll feel much calmer.]
+[ECRÃ: modelo — What you need is one strong opening sentence. If they mention last year's problem, concede it: "It was a difficult year — I won't deny it." If they ask about a rumour, say "It's said to be happening, but I'm not in a position to confirm it." Had I prepared my first big presentation better, I'd have practised the questions, not the slides. Never have I seen a board forgive a wrong number. And having checked every figure, you'll feel much calmer.]
 
 ### 6. Fecho (30 s)
 

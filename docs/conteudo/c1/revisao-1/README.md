@@ -1,6 +1,6 @@
 # C1.1 · Revisão 1 e exame oral
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), "Revisão 1 e exame oral do C1.1"
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), "Revisão 1 e exame oral do C1.1"
 
 ## Objectivo
 
@@ -31,6 +31,6 @@ No fim do C1.1, o aluno consegue manter uma conversa de cerca de 12 minutos com 
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (4 escutas, 2 pronúncias; o exame de demonstração com duas vozes); criar o curso C1.1 na plataforma e carregar o exame com `carregar_exame_curso`.
+Leitura pelos professores; vídeos com o professor de IA; áudio (4 escutas, 2 pronúncias; o exame de demonstração com duas vozes); criar o curso C1.1 na plataforma e carregar o exame com `carregar_exame_curso`.
 
 A seguir vem o **C1.2, a começar pela unidade 6, "Compliance and ethics"**.

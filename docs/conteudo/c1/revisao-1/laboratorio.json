@@ -75,7 +75,7 @@
     {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
-     "frase": "[Had] we planned around the rains, we would have finished on time.",
+     "frase": "[Had] we planned around the rainy season, we would have lost far fewer weeks.",
      "opcoes": [
       {
        "texto": "Have",
@@ -301,7 +301,7 @@
      "frase": "Of the three, the two I'd like to talk [about] are the laboratory and the English lessons.",
      "opcoes": [
       {
-       "texto": "of",
+       "texto": "for",
        "certa": false
       },
       {
