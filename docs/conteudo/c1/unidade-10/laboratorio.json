@@ -1,0 +1,1676 @@
+{
+ "unidade": "C1.2 · Unit 10 — Capstone: the deal",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "10A",
+   "titulo": "Interests, not positions",
+   "aula": "10A",
+   "objectivo": "Preparar uma negociação: posições, interesses, ponto de saída, alternativa e concessões.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Our walk-[away] point is nine hundred and fifty thousand.",
+     "opcoes": [
+      {
+       "texto": "out",
+       "certa": false
+      },
+      {
+       "texto": "off",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If there's no deal, our best [alternative] is the Niassa installation.",
+     "opcoes": [
+      {
+       "texto": "alternate",
+       "certa": false
+      },
+      {
+       "texto": "option of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Keep the training in [reserve].",
+     "opcoes": [
+      {
+       "texto": "reservation",
+       "certa": false
+      },
+      {
+       "texto": "reserved",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd rather concede [on] time than on the cap.",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is an INTEREST, not a position?",
+     "opcoes": [
+      {
+       "texto": "Mussiro needs reliability and local jobs.",
+       "certa": true
+      },
+      {
+       "texto": "Mussiro wants nine hundred thousand.",
+       "certa": false
+      },
+      {
+       "texto": "Mussiro says four hours or no deal.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Why does knowing your best alternative keep you calm?",
+     "opcoes": [
+      {
+       "texto": "You know you can walk away from a bad deal.",
+       "certa": true
+      },
+      {
+       "texto": "You always get what you want.",
+       "certa": false
+      },
+      {
+       "texto": "The other side will accept everything.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Keep it in reserve\" means…",
+     "opcoes": [
+      {
+       "texto": "don't offer it at the start",
+       "certa": true
+      },
+      {
+       "texto": "offer it first",
+       "certa": false
+      },
+      {
+       "texto": "never offer it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Their position is nine hundred thousand.\" A position is…",
+     "opcoes": [
+      {
+       "texto": "what someone asks for",
+       "certa": true
+      },
+      {
+       "texto": "why someone asks for it",
+       "certa": false
+      },
+      {
+       "texto": "the place where someone sits",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Prefiro ceder no prazo do que no limite das penalizações.",
+     "resposta": "I'd rather concede on time than on the penalty cap.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Rajesh. Nine hundred and fifty thousand a year. Below that, we lose money in Niassa. And never penalties without a cap.",
+     "enunciado": "What is Mopane's walk-away point?",
+     "opcoes": [
+      {
+       "texto": "nine hundred and fifty thousand a year",
+       "certa": true
+      },
+      {
+       "texto": "one point one million",
+       "certa": false
+      },
+      {
+       "texto": "nine hundred thousand",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. Keep that in reserve. Don't open with your best card.",
+     "enunciado": "What is Thandi's advice about the training offer?",
+     "opcoes": [
+      {
+       "texto": "Don't offer it at the start.",
+       "certa": true
+      },
+      {
+       "texto": "Offer it immediately.",
+       "certa": false
+      },
+      {
+       "texto": "Never offer it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Their position is nine hundred thousand. Their interest is reliability.",
+     "enunciado": "Ouça e repita, com o acento em \"position\" e \"interest\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Prepare a negotiation from your life or work: the other side's position and interest, your interests, your walk-away point, your best alternative, what you can trade, and the order.",
+     "frase": "walk-away point",
+     "resposta": "I'm renewing my rent. The landlord's position is a twenty percent increase; his interest is a reliable tenant. My walk-away point is ten percent. My best alternative is a smaller flat nearby. I can trade a two-year contract, and I'll keep paying in advance in reserve.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it a good idea to tell the other side your walk-away point? Why, or why not?",
+     "frase": "because",
+     "resposta": "Usually not, because they'll offer exactly that and no more. But sometimes, near the end, saying \"below this, we walk away\" honestly can unblock an impasse.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10B",
+   "titulo": "We seem to have reached an impasse",
+   "aula": "10B",
+   "objectivo": "Desbloquear impasses e responder a tácticas de pressão.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We seem to have [reached] an impasse.",
+     "opcoes": [
+      {
+       "texto": "arrived",
+       "certa": false
+      },
+      {
+       "texto": "got to at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let's take a step [back].",
+     "opcoes": [
+      {
+       "texto": "behind",
+       "certa": false
+      },
+      {
+       "texto": "after",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Suppose, for the sake [of] argument, we include training.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let's [park] that and come back to it.",
+     "opcoes": [
+      {
+       "texto": "parking",
+       "certa": false
+      },
+      {
+       "texto": "stop at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Someone says: \"We need your answer tonight.\" The best response:",
+     "opcoes": [
+      {
+       "texto": "I understand the deadline, but that's not something I can agree to under pressure.",
+       "certa": true
+      },
+      {
+       "texto": "OK, yes, we accept everything.",
+       "certa": false
+      },
+      {
+       "texto": "You're lying about the deadline.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A new demand comes at the very end. The best response:",
+     "opcoes": [
+      {
+       "texto": "A new condition at the end isn't how we've worked so far. Let's look at what we could offer instead.",
+       "certa": true
+      },
+      {
+       "texto": "Fine, we accept it.",
+       "certa": false
+      },
+      {
+       "texto": "That's a stupid demand.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"What would it take for you to move on price?\" This question…",
+     "opcoes": [
+      {
+       "texto": "asks what the other side needs in order to change",
+       "certa": true
+      },
+      {
+       "texto": "refuses to negotiate",
+       "certa": false
+      },
+      {
+       "texto": "ends the meeting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Under pressure, your voice should be…",
+     "opcoes": [
+      {
+       "texto": "slower and lower",
+       "certa": true
+      },
+      {
+       "texto": "faster and higher",
+       "certa": false
+      },
+      {
+       "texto": "louder and angrier",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Estamos a andar às voltas.",
+     "resposta": "We're going round in circles.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thandi, playing Femi. And one more thing: our board wants a fifteen percent discount on top. Or we talk to your competitor.",
+     "enunciado": "What tactic does \"Femi\" use?",
+     "opcoes": [
+      {
+       "texto": "a last-minute demand with a threat",
+       "certa": true
+      },
+      {
+       "texto": "a long silence",
+       "certa": false
+      },
+      {
+       "texto": "a joke",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Rajesh. You named the tactic without accusing her.",
+     "enunciado": "What did Nuno do well, according to Rajesh?",
+     "opcoes": [
+      {
+       "texto": "He named the tactic without accusing anyone.",
+       "certa": true
+      },
+      {
+       "texto": "He accepted the discount.",
+       "certa": false
+      },
+      {
+       "texto": "He left the room.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I understand the deadline. But that's not something I can agree to under pressure.",
+     "enunciado": "Ouça e repita, devagar e com a voz baixa."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of a negotiation that got stuck. Describe the impasse and one pressure tactic, and say what you would say to unblock it, with at least four expressions from this lesson.",
+     "frase": "step back",
+     "resposta": "When I bought my car, we were going round in circles on price. Then the seller said another buyer was coming at five. I'd say: \"I understand, but I can't agree to that under pressure. Let's take a step back. What would it take for you to move?\"",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Are pressure tactics ever acceptable in a negotiation? Where is the line?",
+     "frase": "line",
+     "resposta": "A real deadline is fair; a false one isn't. I'd draw the line at lying: inventing another buyer or a board meeting that doesn't exist. That damages trust for the next deal.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10C",
+   "titulo": "Subject to…",
+   "aula": "10C",
+   "objectivo": "Resumir e confirmar um acordo com precisão.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "All of this is [subject] to approval by the three boards.",
+     "opcoes": [
+      {
+       "texto": "object",
+       "certa": false
+      },
+      {
+       "texto": "submit",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The fee is one million dollars, with [effect] from 1 January 2031.",
+     "opcoes": [
+      {
+       "texto": "affect",
+       "certa": false
+      },
+      {
+       "texto": "effects of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In the [event] of a missed response time, a penalty applies.",
+     "opcoes": [
+      {
+       "texto": "events",
+       "certa": false
+      },
+      {
+       "texto": "eventual",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Penalties are [capped] at five percent of the annual fee.",
+     "opcoes": [
+      {
+       "texto": "hatted",
+       "certa": false
+      },
+      {
+       "texto": "topped of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "It's all subject to the boards' approval.",
+       "certa": true
+      },
+      {
+       "texto": "It's all subject to the boards approve it.",
+       "certa": false
+      },
+      {
+       "texto": "It's all subject that the boards approve.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is followed by a full sentence?",
+     "opcoes": [
+      {
+       "texto": "provided that",
+       "certa": true
+      },
+      {
+       "texto": "subject to",
+       "certa": false
+      },
+      {
+       "texto": "in the event of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "What is the most important last question of a summary?",
+     "opcoes": [
+      {
+       "texto": "Is that your understanding too?",
+       "certa": true
+      },
+      {
+       "texto": "Can we go home now?",
+       "certa": false
+      },
+      {
+       "texto": "Do you like the deal?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Tumelo criticises \"mostly in dollars\" and \"some penalties\" because…",
+     "opcoes": [
+      {
+       "texto": "they are vague and will cause arguments later",
+       "certa": true
+      },
+      {
+       "texto": "they are too formal",
+       "certa": false
+      },
+      {
+       "texto": "they are wrong grammar",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Desde que a estrada nova esteja concluída.",
+     "resposta": "Provided that the new road is complete.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Tumelo. Every word of that will start an argument in a year. Mostly? Later? Some?",
+     "enunciado": "What is wrong with Nuno's first summary?",
+     "opcoes": [
+      {
+       "texto": "It is too vague.",
+       "certa": true
+      },
+      {
+       "texto": "It is too long.",
+       "certa": false
+      },
+      {
+       "texto": "It is in Portuguese.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Response time is four hours in Nampula and six in Niassa, reducing to four from year three, provided that the new road is complete.",
+     "enunciado": "When will the Niassa response time become four hours?",
+     "opcoes": [
+      {
+       "texto": "from year three, if the new road is complete",
+       "certa": true
+      },
+      {
+       "texto": "from day one",
+       "certa": false
+      },
+      {
+       "texto": "never",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The annual fee is one million dollars, with effect from the first of January. All subject to approval by the three boards.",
+     "enunciado": "Ouça e repita, com uma pausa entre os pontos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Sum up an agreement you know or imagine (a rent, a job offer, a purchase) in four or five precise points, each with its condition, and end with a confirmation question.",
+     "frase": "understanding",
+     "resposta": "Just to confirm: the salary is three hundred thousand kwanzas a month, with effect from February. The company pays my English course, on condition that I stay two years. In the event of a transfer, housing is paid for six months. Is that your understanding too?",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it better to agree on a short summary and trust each other, or to write everything down in detail? Why?",
+     "frase": "because",
+     "resposta": "Write it down, because memory changes and people leave. A clear summary protects the relationship: nobody has to argue later about what was said.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10D",
+   "titulo": "The whole C1",
+   "aula": "10D",
+   "objectivo": "Usar toda a gramática do C1 numa negociação curta.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What Kalandula wants [is] simple: fifty-fifty.",
+     "opcoes": [
+      {
+       "texto": "it's",
+       "certa": false
+      },
+      {
+       "texto": "are",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Had we [split] it fifty-fifty, Rajesh would never have spoken to me again.",
+     "opcoes": [
+      {
+       "texto": "splitted",
+       "certa": false
+      },
+      {
+       "texto": "split it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Never [have] I seen a company use as much data as yours.",
+     "opcoes": [
+      {
+       "texto": "I have",
+       "certa": false
+      },
+      {
+       "texto": "did",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Expensive it may [be], but we'll need it.",
+     "opcoes": [
+      {
+       "texto": "is",
+       "certa": false
+      },
+      {
+       "texto": "being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It would appear that Kalandula has twelve people.\" This structure is from unit…",
+     "opcoes": [
+      {
+       "texto": "2 (hedging)",
+       "certa": true
+      },
+      {
+       "texto": "8 (fronting)",
+       "certa": false
+      },
+      {
+       "texto": "9 (register)",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Our furniture is said to be arriving next week.\" This structure is…",
+     "opcoes": [
+      {
+       "texto": "a reporting passive",
+       "certa": true
+      },
+      {
+       "texto": "a cleft sentence",
+       "certa": false
+      },
+      {
+       "texto": "a mixed conditional",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Is yours ready? — It is.\" This is…",
+     "opcoes": [
+      {
+       "texto": "ellipsis",
+       "certa": true
+      },
+      {
+       "texto": "inversion",
+       "certa": false
+      },
+      {
+       "texto": "fronting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"We were going to buy a big table, but nobody wanted to pay.\" This is…",
+     "opcoes": [
+      {
+       "texto": "the future in the past",
+       "certa": true
+      },
+      {
+       "texto": "a reporting passive",
+       "certa": false
+      },
+      {
+       "texto": "a participle clause",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Tendo visto os números do ano passado, pagamos dois terços.",
+     "resposta": "Having looked at last year's figures, we'll pay two thirds.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. Never have I seen a company use as much data as yours. Satellite links, monitoring, videos.",
+     "enunciado": "Why should Mopane pay more for the internet?",
+     "opcoes": [
+      {
+       "texto": "Mopane uses much more data.",
+       "certa": true
+      },
+      {
+       "texto": "Mopane has more people.",
+       "certa": false
+      },
+      {
+       "texto": "Kalandula has no internet.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Deal: rent by desks, internet two thirds to us, the table half each, and the coffee's on me.",
+     "enunciado": "How will they share the rent?",
+     "opcoes": [
+      {
+       "texto": "by desks",
+       "certa": true
+      },
+      {
+       "texto": "fifty-fifty",
+       "certa": false
+      },
+      {
+       "texto": "Mopane pays all",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "What Kalandula wants is simple. Had we split it fifty-fifty, Rajesh would never have spoken to me again.",
+     "enunciado": "Ouça e repita, com naturalidade."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Negotiate something small with a friend (a shared lunch, a gift, a trip, a flat) using at least five C1 structures naturally: a cleft, a hedge, an inversion, a participle clause, ellipsis, fronting, a marker, a summary.",
+     "frase": "What I",
+     "resposta": "What I'd suggest is splitting the trip by days. It would appear you're staying four days and I'm staying six. Having looked at the prices, that's fairer. Mind you, you'll drive: never have I seen anyone park like you! So, just to confirm: hotel by days, car half each.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Which C1 structure do you find most useful in real life? Why?",
+     "frase": "because",
+     "resposta": "Cleft sentences, because they put the important idea where people notice it: \"What we need is…\". I use them in meetings every week now.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10E",
+   "titulo": "Deal-making",
+   "aula": "10E",
+   "objectivo": "Vocabulário de acordos complexos, a voz do fecho; pretension e cargo.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "a sticking point",
+       "b": "um ponto de bloqueio"
+      },
+      {
+       "a": "a deal-breaker",
+       "b": "algo que faz cair o acordo"
+      },
+      {
+       "a": "a sweetener",
+       "b": "uma contrapartida atractiva"
+      },
+      {
+       "a": "leverage",
+       "b": "poder negocial"
+      },
+      {
+       "a": "a done deal",
+       "b": "algo decidido"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let's meet [halfway]: one million.",
+     "opcoes": [
+      {
+       "texto": "in the half",
+       "certa": false
+      },
+      {
+       "texto": "middleway",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "All three boards must sign [off] on it.",
+     "opcoes": [
+      {
+       "texto": "up",
+       "certa": false
+      },
+      {
+       "texto": "out",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The lawyers will [hammer] out the details.",
+     "opcoes": [
+      {
+       "texto": "nail",
+       "certa": false
+      },
+      {
+       "texto": "beat",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We're ready to walk [away] from a bad deal.",
+     "opcoes": [
+      {
+       "texto": "off",
+       "certa": false
+      },
+      {
+       "texto": "over",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"As nossas pretensões são razoáveis.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "What we're asking for is reasonable.",
+       "certa": true
+      },
+      {
+       "texto": "Our pretensions are reasonable.",
+       "certa": false
+      },
+      {
+       "texto": "Our pretences are reasonable.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: pretension = vaidade, presunção."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"O cargo de director\" em inglês:",
+     "opcoes": [
+      {
+       "texto": "the position of director",
+       "certa": true
+      },
+      {
+       "texto": "the cargo of director",
+       "certa": false
+      },
+      {
+       "texto": "the charge of director",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: cargo = carga."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A man without pretensions\" is…",
+     "opcoes": [
+      {
+       "texto": "a simple, modest man",
+       "certa": true
+      },
+      {
+       "texto": "a man with no requests",
+       "certa": false
+      },
+      {
+       "texto": "an unemployed man",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the firm way to close a deal?",
+     "opcoes": [
+      {
+       "texto": "So, we have a deal. (falling tone)",
+       "certa": true
+      },
+      {
+       "texto": "So, we have a deal? (rising tone)",
+       "certa": false
+      },
+      {
+       "texto": "Maybe we have a deal, I think?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. Unlimited penalties are a deal-breaker for us. We'd rather walk away.",
+     "enunciado": "What is a deal-breaker for Mopane?",
+     "opcoes": [
+      {
+       "texto": "unlimited penalties",
+       "certa": true
+      },
+      {
+       "texto": "a five percent cap",
+       "certa": false
+      },
+      {
+       "texto": "paying in meticais",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "So, we have a deal. Thank you all.",
+     "enunciado": "Ouça e repita, com o tom firme e descendente."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe a deal you know with at least six words from this lesson: the sticking point, a deal-breaker, the sweetener, who had leverage, how they met halfway, and when it became a done deal.",
+     "frase": "sticking point",
+     "resposta": "When my uncle sold his shop, the main sticking point was the stock. For him, including it all was a deal-breaker. The buyer had leverage, but they met halfway: half the stock. The sweetener was a month of training. By Friday, it was a done deal.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Who usually has more leverage in a negotiation, the buyer or the seller? Why?",
+     "frase": "leverage",
+     "resposta": "Whoever has the better alternative has more leverage. If there are many sellers, the buyer has it; if the product is rare, the seller has it.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10F",
+   "titulo": "Real English: Behind closed doors",
+   "aula": "10F",
+   "objectivo": "Seguir uma negociação com intérprete e perceber onde quase falhou.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm the narrator. A logistics company wants to rent two warehouses at a port for ten years.",
+     "enunciado": "How long does the company want to rent the warehouses?",
+     "opcoes": [
+      {
+       "texto": "ten years",
+       "certa": true
+      },
+      {
+       "texto": "three months",
+       "certa": false
+      },
+      {
+       "texto": "one year",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Karen Visser. We're ready to sign for ten years, provided that we can bring in our own forklift drivers for the first year.",
+     "enunciado": "What does Ms Visser want for the first year?",
+     "opcoes": [
+      {
+       "texto": "to bring in her own forklift drivers",
+       "certa": true
+      },
+      {
+       "texto": "a lower rent",
+       "certa": false
+      },
+      {
+       "texto": "more warehouses",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Benvinda, the interpreter. Mr Macamo says: our pretensions are simple, local workers from day one.",
+     "enunciado": "Which word caused the problem?",
+     "opcoes": [
+      {
+       "texto": "pretensions",
+       "certa": true
+      },
+      {
+       "texto": "workers",
+       "certa": false
+      },
+      {
+       "texto": "simple",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Karen Visser. Our concern is safety: our machines are new, and an accident in the first month would be a disaster.",
+     "enunciado": "What is Ms Visser's real concern?",
+     "opcoes": [
+      {
+       "texto": "safety, with new machines",
+       "certa": true
+      },
+      {
+       "texto": "money",
+       "certa": false
+      },
+      {
+       "texto": "time",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Jaime Cossa. Suppose your drivers train ours for the first three months, side by side?",
+     "enunciado": "What does Mr Cossa propose?",
+     "opcoes": [
+      {
+       "texto": "that her drivers train local drivers for three months",
+       "certa": true
+      },
+      {
+       "texto": "to cancel the deal",
+       "certa": false
+      },
+      {
+       "texto": "to change the interpreter",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Karen Visser. Local drivers trained by ours for three months, then local drivers only, subject to our safety test.",
+     "enunciado": "What happens after three months?",
+     "opcoes": [
+      {
+       "texto": "local drivers only, if they pass the safety test",
+       "certa": true
+      },
+      {
+       "texto": "foreign drivers only",
+       "certa": false
+      },
+      {
+       "texto": "the contract ends",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Who saved the deal?",
+     "opcoes": [
+      {
+       "texto": "Mr Cossa, who spoke both languages, and the interpreter, who admitted her mistake",
+       "certa": true
+      },
+      {
+       "texto": "Ms Visser alone",
+       "certa": false
+      },
+      {
+       "texto": "nobody",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Something got lost in translation.\" This means…",
+     "opcoes": [
+      {
+       "texto": "The meaning changed when it was translated.",
+       "certa": true
+      },
+      {
+       "texto": "The translator left.",
+       "certa": false
+      },
+      {
+       "texto": "A document was lost.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I think something got lost in translation.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Then we're not so far apart.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You are the negotiation instructor. Explain what went wrong, who saved the deal and how, and give one piece of advice for negotiating across two languages.",
+     "frase": "lost in translation",
+     "resposta": "The interpreter translated \"pretensões\" as \"pretensions\", which means vanity, and Ms Visser felt insulted. Mr Cossa said something got lost in translation. They went back to interests: jobs and safety. My advice: ask before you react.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should important negotiations use a professional interpreter, or is it better if one person speaks both languages? Why?",
+     "frase": "interpreter",
+     "resposta": "Both, ideally. A professional interpreter is neutral, but someone who knows both cultures notices when a word sounds wrong. In this case, that person saved the deal.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "10G",
+   "titulo": "Work & Life: The regional deal",
+   "aula": "10G",
+   "objectivo": "Conduzir a ronda final de uma negociação com várias partes, com mediação do português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Dr Cumbe says: \"Vou ser franco. O governo provincial disse-nos claramente: sem técnicos moçambicanos, este contrato não passa.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "Dr Cumbe says, frankly, that the provincial government told them clearly: without Mozambican technicians, this contract won't be approved.",
+       "certa": true
+      },
+      {
+       "texto": "Dr Cumbe is frank. The province government said without technicians the contract does not pass.",
+       "certa": false
+      },
+      {
+       "texto": "Dr Cumbe says they don't want technicians.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Femi asks for unlimited penalties at the end. Nuno's best answer:",
+     "opcoes": [
+      {
+       "texto": "I understand the risk. That said, unlimited penalties are a deal-breaker for us. What we can do is cap them at five percent.",
+       "certa": true
+      },
+      {
+       "texto": "OK, unlimited penalties are fine.",
+       "certa": false
+      },
+      {
+       "texto": "That's a ridiculous demand, Femi.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "How does Nuno open the meeting?",
+     "opcoes": [
+      {
+       "texto": "with the interests all three companies share",
+       "certa": true
+      },
+      {
+       "texto": "with the price",
+       "certa": false
+      },
+      {
+       "texto": "with a threat",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Suppose, for the sake of argument, we meet [halfway] on price.",
+     "opcoes": [
+      {
+       "texto": "in half",
+       "certa": false
+      },
+      {
+       "texto": "middle",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "…reducing to four from year three, [provided] that the new road is complete.",
+     "opcoes": [
+      {
+       "texto": "providing of",
+       "certa": false
+      },
+      {
+       "texto": "provision",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "…penalties apply, capped [at] five percent of the annual fee.",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "on",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Then, [subject] to our boards, I think we have a deal.",
+     "opcoes": [
+      {
+       "texto": "submit",
+       "certa": false
+      },
+      {
+       "texto": "object",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Femi Adeyemi. Then the training is the sweetener. Fine.",
+     "enunciado": "What does Femi accept as the sweetener?",
+     "opcoes": [
+      {
+       "texto": "the training of twenty technicians",
+       "certa": true
+      },
+      {
+       "texto": "a lower price",
+       "certa": false
+      },
+      {
+       "texto": "unlimited penalties",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Rajesh. Seventy-thirty, seventy in dollars, thirty in meticais, with the exchange rate reviewed every year.",
+     "enunciado": "How will the fee be paid?",
+     "opcoes": [
+      {
+       "texto": "seventy percent in dollars and thirty in meticais",
+       "certa": true
+      },
+      {
+       "texto": "all in meticais",
+       "certa": false
+      },
+      {
+       "texto": "all in dollars",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Dr Cumbe. Last February, I was ready to cancel your contract. Little did I know I'd be signing a bigger one with you a year later.",
+     "enunciado": "What does Dr Cumbe remember?",
+     "opcoes": [
+      {
+       "texto": "In February he was ready to cancel the contract.",
+       "certa": true
+      },
+      {
+       "texto": "He met Nuno in Johannesburg.",
+       "certa": false
+      },
+      {
+       "texto": "He signed the first contract in February.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Then, subject to our boards, I think we have a deal.",
+     "enunciado": "Ouça e repita, com o tom firme, caloroso e descendente."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Close a negotiation with two other parties: open with the common interests, unblock one impasse, refuse one last-minute demand with an alternative, and sum up the deal in four precise points, ending with a confirmation question.",
+     "frase": "everyone's understanding",
+     "resposta": "We all want a clean, affordable market. Let's take a step back: the council pays the roof, the sellers pay the cleaning. Free parking every day is a deal-breaker; Sundays we can do. So: rent from January, roof, cleaning, Sunday parking. Is that everyone's understanding?",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell the others, in English, what this partner said: \"Quero ser claro: a nossa associação não aceita aumentos de renda este ano. Se o mercado ficar mais limpo e seguro, podemos falar de um aumento no próximo ano, mas só depois de uma reunião com todos os vendedores.\"",
+     "frase": "wants to be clear",
+     "resposta": "He wants to be clear: their association won't accept any rent increase this year. If the market becomes cleaner and safer, they could talk about an increase next year, but only after a meeting with all the sellers.",
+     "contexto": "Mediação: fiel, na terceira pessoa."
+    }
+   ]
+  },
+  {
+   "codigo": "10R",
+   "titulo": "Unit 10 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 10 e todo o C1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Our walk-away [point] is ten percent.",
+     "opcoes": [
+      {
+       "texto": "place",
+       "certa": false
+      },
+      {
+       "texto": "line of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We seem to have [reached] an impasse.",
+     "opcoes": [
+      {
+       "texto": "arrived",
+       "certa": false
+      },
+      {
+       "texto": "come",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's all subject [to] board approval.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let's meet [halfway].",
+     "opcoes": [
+      {
+       "texto": "middle",
+       "certa": false
+      },
+      {
+       "texto": "in half",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "In the event of a delay, a penalty applies.",
+       "certa": true
+      },
+      {
+       "texto": "In the event of there is a delay, a penalty applies.",
+       "certa": false
+      },
+      {
+       "texto": "In event of a delay, applies a penalty.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Ela tem um cargo importante.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "She has an important position.",
+       "certa": true
+      },
+      {
+       "texto": "She has an important cargo.",
+       "certa": false
+      },
+      {
+       "texto": "She has an important charge of.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 9). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "They offered a discount, but we turned it down.",
+       "certa": true
+      },
+      {
+       "texto": "They offered a discount, but we turned down it.",
+       "certa": false
+      },
+      {
+       "texto": "They offered a discount, but we down turned it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 5). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Having compared the offers, we chose the second.",
+       "certa": true
+      },
+      {
+       "texto": "Having compared the offers, the second was chosen by it.",
+       "certa": false
+      },
+      {
+       "texto": "Compared the offers, we chose second.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 1). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "What we need is a fair deal.",
+       "certa": true
+      },
+      {
+       "texto": "What we need it's a fair deal.",
+       "certa": false
+      },
+      {
+       "texto": "What we need are a fair deal.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Mal sabia eu que ia assinar um contrato maior.",
+     "resposta": "Little did I know I would sign a bigger contract.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. That, Nuno, is exactly what English at this level is for.",
+     "enunciado": "What is English at this level for, according to Thandi?",
+     "opcoes": [
+      {
+       "texto": "understanding what people need and saying it so they can hear it",
+       "certa": true
+      },
+      {
+       "texto": "speaking very fast",
+       "certa": false
+      },
+      {
+       "texto": "using difficult grammar",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe the most difficult negotiation you have had or seen. What were the interests behind the positions?",
+     "frase": "interest",
+     "resposta": "My hardest negotiation was with my brother about our parents' house. His position was to sell; mine was to keep it. His interest was money for his children's studies; mine was a place for the family. We found a deal: rent it out.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Looking back at the whole course, what has changed most in the way you speak English?",
+     "frase": "changed",
+     "resposta": "What has changed most is my confidence. At the start, I translated every sentence from Portuguese. Now I choose how to say things: formally, diplomatically, or with friends, more relaxed.",
+     "contexto": "Uma reflexão final."
+    }
+   ]
+  }
+ ]
+}

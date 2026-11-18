@@ -1,0 +1,140 @@
+{
+ "unidade": "C1.2 · Unit 10 — Capstone: the deal",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "c1-u10-guiada",
+   "nome": "C1 Unit 10 · Find the interest",
+   "tipo": "guiada",
+   "depois_da_aula": "10B",
+   "descricao": "O tutor é Sam, colega que treina negociações. Diz cinco posições fixas de outras pessoas (um senhorio, um fornecedor, um chefe, um cliente, um vizinho) e o aluno faz perguntas para descobrir o interesse por trás de cada uma e propõe uma solução que o sirva.",
+   "papel_tutor": "Sam, colega que treina negociações e diz posições fixas.",
+   "nivel": "C1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "What would it take for you to…?",
+    "Can I ask why that matters so much?",
+    "Suppose, for the sake of argument, …",
+    "So your real interest is…",
+    "What if we…?"
+   ],
+   "extras": {
+    "brief": "Guided practice for an advanced learner (C1.2, unit 10). You are Sam (a neutral name; never mention a husband or wife), a colleague who trains negotiators. You play five different people, one at a time, each with a fixed position and a hidden interest. Say who you are first. (1) A landlord: \"The rent goes up 30 percent.\" (hidden interest: a roof repair he cannot pay for). (2) A supplier: \"Payment in advance, or no delivery.\" (hidden interest: a client who did not pay last year). (3) A manager: \"No working from home.\" (hidden interest: new staff who need to learn from others). (4) A client: \"We want a 20 percent discount.\" (hidden interest: a fixed budget this year, more money next year). (5) A neighbour: \"Cut down that tree.\" (hidden interest: leaves blocking his gutter). Repeat the position if the student argues against it. Reveal the hidden interest only when the student asks a good question about why (Why does that matter so much? What would it take…?). When the interest is out, accept a solution that serves it. After each person, say in one sentence what question worked. Use any language from A1 to C1 (the whole course): cleft sentences, hedging and degrees of certainty, diplomatic refusals, mixed conditionals and inversion, negative inversion, participle clauses and reporting passives, ellipsis, the future in the past, fronting and discourse markers, register, idioms and vague language, and the negotiation language of unit 10 (interests and positions, walk-away point, We seem to have reached an impasse, Let's take a step back, Suppose, for the sake of argument, subject to, provided that, with effect from, in the event of, capped at). Speak at natural speed. Short turns; never more than three sentences.",
+    "primeira_fala": "Hi, {nome}! Five people, five fixed positions. Your job: find what they really need. First, I'm your landlord: \"The rent goes up thirty percent next month.\"",
+    "primeira_fala_simples": "Hi, {nome}! I'm your landlord. The rent goes up thirty percent. Ask me why.",
+    "guiao": [
+     "Now I'm a supplier: \"Payment in advance, or no delivery.\"",
+     "Now I'm your manager: \"No working from home. Full stop.\"",
+     "Now I'm a client: \"We want a twenty percent discount.\"",
+     "Last one, I'm your neighbour: \"Cut down that tree.\"",
+     "Well done, {nome}. Five positions, five interests."
+    ],
+    "frases": [
+     {
+      "en": "Can I ask why that matters so much right now?",
+      "pt": "Posso perguntar porque é que isso é tão importante agora?"
+     },
+     {
+      "en": "What would it take for you to keep the rent as it is?",
+      "pt": "O que seria preciso para manter a renda como está?"
+     },
+     {
+      "en": "So your real interest is the roof, not the rent.",
+      "pt": "Então o seu verdadeiro interesse é o telhado, não a renda."
+     },
+     {
+      "en": "Suppose, for the sake of argument, I paid half of the repair.",
+      "pt": "Suponhamos, só para discutir, que eu pagava metade da reparação."
+     },
+     {
+      "en": "What if we paid half in advance and half on delivery?",
+      "pt": "E se pagássemos metade adiantado e metade na entrega?"
+     }
+    ],
+    "palavras": [
+     "why",
+     "what would it take",
+     "interest",
+     "suppose",
+     "what if",
+     "sake"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": null
+  },
+  {
+   "slug": "c1-u10-livre",
+   "nome": "C1 Unit 10 · The final round",
+   "tipo": "livre",
+   "depois_da_aula": "10G",
+   "descricao": "O tutor é Morgan, que representa a outra parte na ronda final de uma negociação (a do aluno, ou proposta: um contrato de três anos de limpeza para um hospital). Faz uma exigência de última hora e usa uma táctica de pressão; o aluno mantém o limite, encontra uma solução, resume o acordo e confirma.",
+   "papel_tutor": "Morgan, que representa a outra parte na ronda final de uma negociação.",
+   "nivel": "C1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "What we both want is…",
+    "We seem to have reached an impasse. Let's take a step back.",
+    "I understand. That said, … is a deal-breaker for us. What we can do is…",
+    "…subject to…, provided that…, with effect from…",
+    "Is that your understanding too?"
+   ],
+   "extras": {
+    "brief": "Role-play for an advanced learner (C1.2, unit 10). You are Morgan (a neutral name; never mention a husband or wife), the director of operations of the other side in the final round of a negotiation. If the student has no case, use this one: the student's company offers a three-year cleaning contract for a private hospital in Luanda. Open points: price (student proposes 18 million kwanzas a month; you want 15), night shifts (you want two cleaners every night; they offer one), penalties for missed cleaning (you want no limit), contract length (three years; you want a break after one). The student's hidden walk-away point should be decided by the student. Let the student open. If the student opens with common interests, respond warmly. Hold your position on price twice. Then create an impasse (\"We're going round in circles.\"). Accept a creative option (more night cover in exchange for price, a break clause after two years, a cap on penalties). Near the end, make one last-minute demand with pressure: \"Our board meets tonight — and they want free cleaning of the new wing as well, or we sign with the other company.\" Accept a calm refusal with an alternative; push once if the student panics or accepts. At the end, if the student sums up precisely with conditions and asks for confirmation, agree. If the summary is vague, ask \"What exactly do you mean by…?\" Use any language from A1 to C1 (the whole course): cleft sentences, hedging and degrees of certainty, diplomatic refusals, mixed conditionals and inversion, negative inversion, participle clauses and reporting passives, ellipsis, the future in the past, fronting and discourse markers, register, idioms and vague language, and the negotiation language of unit 10 (interests and positions, walk-away point, We seem to have reached an impasse, Let's take a step back, Suppose, for the sake of argument, subject to, provided that, with effect from, in the event of, capped at). Speak at natural speed. Short turns; never more than three sentences at a time.",
+    "primeira_fala": "Good morning, {nome}. Last round — I hope. We have four open points and two hours. Where would you like to start?",
+    "primeira_fala_simples": "Good morning, {nome}. This is our last meeting. Where do you want to start?",
+    "guiao": [
+     "Fifteen million a month. That is our number.",
+     "We're going round in circles, aren't we?",
+     "Hmm. That could work. And the night shifts?",
+     "One more thing: our board meets tonight, and they want free cleaning of the new wing too — or we sign with the other company.",
+     "All right. Sum it up for me, then.",
+     "Then, subject to our board, we have a deal. Thank you, {nome}."
+    ],
+    "frases": [
+     {
+      "en": "What we both want is a hospital that is clean every night, at a price that lasts three years.",
+      "pt": "O que ambos queremos é um hospital limpo todas as noites, a um preço que dure três anos."
+     },
+     {
+      "en": "We seem to have reached an impasse on price. Let's take a step back.",
+      "pt": "Parece que chegámos a um impasse no preço. Vamos dar um passo atrás."
+     },
+     {
+      "en": "Suppose, for the sake of argument, we add a second cleaner at night for sixteen and a half million.",
+      "pt": "Suponhamos, só para discutir, que acrescentamos um segundo funcionário à noite por dezasseis milhões e meio."
+     },
+     {
+      "en": "I understand the deadline. That said, free cleaning of the new wing is a deal-breaker. What we can do is a separate quote by Friday.",
+      "pt": "Percebo o prazo. Dito isto, a limpeza gratuita da ala nova faz cair o acordo. O que podemos fazer é um orçamento separado até sexta."
+     },
+     {
+      "en": "Just to confirm: sixteen and a half million a month, with effect from January, penalties capped at five percent, subject to both boards. Is that your understanding too?",
+      "pt": "Só para confirmar: dezasseis milhões e meio por mês, com efeito a partir de Janeiro, penalizações com um máximo de cinco por cento, sujeito às duas administrações. É também o seu entendimento?"
+     }
+    ],
+    "palavras": [
+     "what we both",
+     "impasse",
+     "step back",
+     "deal-breaker",
+     "subject to",
+     "understanding"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Abre pelos interesses comuns e conduz a conversa com propostas, não só com recusas.",
+    "Desbloqueia o impasse com calma (Let's take a step back, Suppose, for the sake of argument…) e troca concessões em vez de as dar.",
+    "Resiste à exigência de última hora sem pânico e sem acusar, com uma alternativa, e mantém o seu ponto de saída.",
+    "Resume o acordo com precisão, ponto a ponto, com as condições (subject to, provided that, with effect from, capped at), e pede confirmação.",
+    "Usa com naturalidade uma variedade de estruturas do C1 e desenvolve pelo menos uma vez uma intervenção de 1 minuto e meio ou mais.",
+    "É compreendido sem esforço; a voz do fecho é firme, calorosa e descendente."
+   ]
+  }
+ ]
+}

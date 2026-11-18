@@ -1,0 +1,301 @@
+{
+ "title": "C1.2 Unit 10 quiz — Capstone: the deal",
+ "description": "Preparar uma negociação, desbloquear impasses, resumir um acordo, vocabulário de acordos, pretension e cargo.",
+ "questions": [
+  {
+   "id": "c1u10q1",
+   "question": "Qual destas é um INTERESSE, e não uma posição?",
+   "options": [
+    {
+     "id": "c1u10q1o0",
+     "text": "A Mussiro precisa de fiabilidade e de empregos locais.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u10q1o1",
+     "text": "A Mussiro quer novecentos mil.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u10q1o2",
+     "text": "A Mussiro diz: quatro horas ou nada.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u10q1o0",
+   "explanation": "O interesse é a razão por trás do pedido.",
+   "points": 10
+  },
+  {
+   "id": "c1u10q2",
+   "question": "Complete: \"Our walk-___ point is nine hundred and fifty thousand.\"",
+   "options": [
+    {
+     "id": "c1u10q2o0",
+     "text": "away",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u10q2o1",
+     "text": "out",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u10q2o2",
+     "text": "off",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u10q2o0",
+   "explanation": "walk-away point.",
+   "points": 10
+  },
+  {
+   "id": "c1u10q3",
+   "question": "Alguém diz: \"We need your answer tonight.\" A melhor resposta:",
+   "options": [
+    {
+     "id": "c1u10q3o0",
+     "text": "I understand the deadline, but that's not something I can agree to under pressure.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u10q3o1",
+     "text": "OK, we accept everything.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u10q3o2",
+     "text": "You're lying about the deadline.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u10q3o0",
+   "explanation": "Nomear a pressão com calma.",
+   "points": 10
+  },
+  {
+   "id": "c1u10q4",
+   "question": "Complete: \"Suppose, for the sake ___ argument, we include training.\"",
+   "options": [
+    {
+     "id": "c1u10q4o0",
+     "text": "of",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u10q4o1",
+     "text": "to",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u10q4o2",
+     "text": "for",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u10q4o0",
+   "explanation": "for the sake of argument.",
+   "points": 10
+  },
+  {
+   "id": "c1u10q5",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u10q5o0",
+     "text": "It's all subject to the boards' approval.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u10q5o1",
+     "text": "It's all subject to the boards approve it.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u10q5o2",
+     "text": "It's all subject that the boards approve.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u10q5o0",
+   "explanation": "subject to + nome.",
+   "points": 10
+  },
+  {
+   "id": "c1u10q6",
+   "question": "Qual destas é seguida de uma frase completa?",
+   "options": [
+    {
+     "id": "c1u10q6o0",
+     "text": "provided that",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u10q6o1",
+     "text": "subject to",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u10q6o2",
+     "text": "in the event of",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u10q6o0",
+   "explanation": "provided that + frase.",
+   "points": 10
+  },
+  {
+   "id": "c1u10q7",
+   "question": "\"As nossas pretensões são razoáveis.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1u10q7o0",
+     "text": "What we're asking for is reasonable.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u10q7o1",
+     "text": "Our pretensions are reasonable.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u10q7o2",
+     "text": "Our pretences are reasonable.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u10q7o0",
+   "explanation": "Falso amigo: pretension = vaidade.",
+   "points": 10
+  },
+  {
+   "id": "c1u10q8",
+   "question": "\"O cargo de director\" em inglês:",
+   "options": [
+    {
+     "id": "c1u10q8o0",
+     "text": "the position of director",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u10q8o1",
+     "text": "the cargo of director",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u10q8o2",
+     "text": "the charge of director",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u10q8o0",
+   "explanation": "Falso amigo: cargo = carga.",
+   "points": 10
+  },
+  {
+   "id": "c1u10q9",
+   "question": "Complete: \"Unlimited penalties are a deal-___ for us.\"",
+   "options": [
+    {
+     "id": "c1u10q9o0",
+     "text": "breaker",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u10q9o1",
+     "text": "stopper of",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u10q9o2",
+     "text": "killer of",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u10q9o0",
+   "explanation": "a deal-breaker.",
+   "points": 10
+  },
+  {
+   "id": "c1u10q10",
+   "question": "Reciclagem (C1, unidade 9). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u10q10o0",
+     "text": "They offered a discount, but we turned it down.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u10q10o1",
+     "text": "They offered a discount, but we turned down it.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u10q10o2",
+     "text": "They offered a discount, but we down turned it.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u10q10o0",
+   "explanation": "O pronome no meio.",
+   "points": 10
+  },
+  {
+   "id": "c1u10q11",
+   "question": "Reciclagem (C1, unidade 4). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u10q11o0",
+     "text": "Little did I know I would sign a bigger contract.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u10q11o1",
+     "text": "Little I knew I would sign a bigger contract.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u10q11o2",
+     "text": "Little did I knew I would sign a bigger contract.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u10q11o0",
+   "explanation": "Inversão negativa.",
+   "points": 10
+  },
+  {
+   "id": "c1u10q12",
+   "question": "Reciclagem (C1, unidade 8). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u10q12o0",
+     "text": "Expensive it may be, but we need it.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u10q12o1",
+     "text": "Expensive may it be, but we need it.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u10q12o2",
+     "text": "It expensive may be, but we need it.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u10q12o0",
+   "explanation": "Fronting.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
