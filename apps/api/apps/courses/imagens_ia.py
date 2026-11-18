@@ -30,6 +30,8 @@ import os
 import shutil
 from dataclasses import dataclass
 
+import requests
+
 URL_INTERACOES = 'https://generativelanguage.googleapis.com/v1beta/interactions'
 URL_GENERATE = 'https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent'
 
@@ -233,8 +235,18 @@ def gerar(manifesto, itens, saida, csv_custos, chave, variantes=1, limite_usd=2.
             if gasto + previsto > limite_usd + 1e-9:
                 escrever(f'Limite de US$ {limite_usd:.2f} atingido: {item["id"]} ficou por gerar.')
                 return gasto
-            imagem, _ = pedir(chave, modelo, texto_do_pedido(manifesto, item), referencias,
-                              item.get('proporcao', '1:1'), item.get('tamanho', '1K'), api=api, sessao=sessao)
+            # A API às vezes não responde (tempo esgotado): tenta outra vez e, se falhar, passa à seguinte.
+            imagem = None
+            for tentativa in (1, 2):
+                try:
+                    imagem, _ = pedir(chave, modelo, texto_do_pedido(manifesto, item), referencias,
+                                      item.get('proporcao', '1:1'), item.get('tamanho', '1K'), api=api, sessao=sessao)
+                    break
+                except requests.exceptions.RequestException as e:
+                    escrever(f'{item["id"]}: sem resposta da API ({type(e).__name__}), tentativa {tentativa} de 2.')
+            if imagem is None:
+                escrever(f'{item["id"]}: ficou por gerar.')
+                continue
             n = proxima_variante(saida, item['id'])
             os.makedirs(os.path.join(saida, item['id']), exist_ok=True)
             ficheiro = os.path.join(saida, item['id'], f'{item["id"]}-{n}.png')
