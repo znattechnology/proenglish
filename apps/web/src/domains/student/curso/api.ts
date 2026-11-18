@@ -277,8 +277,9 @@ export const cursoApi = createApi({
       providesTags: (_r, _e, id) => [{ type: "Progresso", id }],
     }),
     /** O passo seguinte do aluno em toda a plataforma (null se não há nada por fazer). */
-    proximoPasso: build.query<ProximoPasso | null, void>({
-      query: () => `${BASE}/percurso/proximo/`,
+    proximoPasso: build.query<ProximoPasso | null, { licao?: string; situacao?: string } | void>({
+      // licao / situacao: o que o aluno acabou de fazer, para o "a seguir" ficar no mesmo curso.
+      query: (depois) => ({ url: `${BASE}/percurso/proximo/`, params: depois ?? undefined }),
       transformResponse: (r: { proximo: ProximoPasso | null }) => r?.proximo ?? null,
       providesTags: [{ type: "Progresso", id: "PROXIMO" }],
     }),

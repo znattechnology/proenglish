@@ -17,7 +17,7 @@ import { CartaoRevisao } from "@/components/pe/revisao/CartaoRevisao";
 import { ResumoFala } from "@/components/pe/fala/Fala";
 import { usePerfilQuery } from "@/src/domains/student/perfil/api";
 import { hrefDoPasso, nomeDoPasso, useProximoPassoQuery, type ProximoPasso } from "@/src/domains/student/curso/api";
-import { duracaoDoPasso } from "@/components/pe/curso/Percurso";
+import { accaoDoPasso, duracaoDoPasso } from "@/components/pe/curso/Percurso";
 
 /** A API representa "vidas ilimitadas" (planos pagos) com 999. */
 const VIDAS_ILIMITADAS = 999;
@@ -178,14 +178,6 @@ function Contadores({ sequencia, vidas }: { sequencia?: number; vidas?: number }
       {vidas !== undefined ? <Vidas quantas={vidas} ilimitadas={ilimitadas(vidas)} /> : null}
     </div>
   );
-}
-
-/** O texto do botão diz o que acontece a seguir. */
-function accaoDoPasso(p: ProximoPasso["passo"]) {
-  if (p.tipo === "aula") return "Ver a aula";
-  if (p.tipo === "questionario") return "Fazer o questionário";
-  if (p.tipo === "pratica") return "Praticar no laboratório";
-  return "Falar com o tutor";
 }
 
 /** O único destaque do ecrã: o passo seguinte do curso onde ficou. */

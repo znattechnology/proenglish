@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import { useEffect } from "react";
 import { CheckCircle2, ChevronLeft, Circle, Mic } from "lucide-react";
 import { BalaoFala, Botao, Etiqueta, Osso } from "@/components/pe";
+import { ASeguir } from "@/components/pe/curso/Percurso";
+import { useProximoPassoQuery } from "@/src/domains/student/curso/api";
 import { Pagina } from "@/components/pe/estudante/Pagina";
 import { cnPe } from "@/lib/pe";
 import { COMPETENCIAS, useResumoQuery, type Ajuste, type PadraoConversa, type Resumo } from "@/src/domains/student/conversa/api";
@@ -57,6 +59,8 @@ function quando(iso: string) {
 
 function Conteudo({ r }: { r: Resumo }) {
   const minutos = r.minutos_cobrados;
+  // O passo seguinte do percurso do curso a que esta conversa pertence (se pertencer a algum).
+  const { data: seguinte } = useProximoPassoQuery(r.situacao.id ? { situacao: r.situacao.id } : undefined, { refetchOnMountOrArgChange: true });
   const notas = r.notas
     ? (["geral", "fluencia", "gramatica", "pronuncia", "vocabulario"] as const).filter((k) => r.notas![k] !== null).map((k) => ({ k, nome: COMPETENCIAS[k], valor: r.notas![k] as number }))
     : [];
@@ -76,6 +80,8 @@ function Conteudo({ r }: { r: Resumo }) {
           </Link>
         </Botao>
       </div>
+
+      {seguinte ? <ASeguir proximo={seguinte} className="max-w-[760px]" /> : null}
 
       {r.fala ? (
         <p className="m-0 flex max-w-[760px] items-start gap-3 rounded-pe-md border border-pe-linha px-4 py-3 text-[17px] leading-[26px]">

@@ -191,13 +191,41 @@ def cursos_em_curso(user):
     return cursos
 
 
-def proximo_passo(user):
+def _curso_do_contexto(licao_id=None, situacao=None):
+    """Id do curso em vídeo a que pertence a lição de laboratório ou a conversa que o aluno acabou."""
+    import uuid
+
+    from apps.courses.models import Chapter
+    from apps.practice.models import Situacao
+
+    if licao_id:
+        try:
+            licao_id = uuid.UUID(str(licao_id))
+        except (ValueError, TypeError):
+            return None
+        return (Chapter.objects.filter(practice_lesson_id=licao_id)
+                .values_list('section__course_id', flat=True).first())
+    if situacao:
+        return (Situacao.objects.filter(slug=str(situacao)[:40], aula__isnull=False)
+                .values_list('curso_id', flat=True).first())
+    return None
+
+
+def proximo_passo(user, licao_id=None, situacao=None):
     """
     O passo seguinte do aluno em toda a plataforma: o primeiro passo por fazer do curso em que
     mexeu mais recentemente (ou, se esse já está todo feito, do seguinte). None se não há nada
     por fazer.
+
+    licao_id / situacao: o que o aluno acabou de fazer (uma lição de laboratório ou uma conversa).
+    Se pertence ao percurso de um curso dele, esse curso passa à frente: o "a seguir" continua
+    no mesmo curso.
     """
-    for curso in cursos_em_curso(user):
+    cursos = cursos_em_curso(user)
+    do_contexto = _curso_do_contexto(licao_id, situacao)
+    if do_contexto:
+        cursos.sort(key=lambda c: c.id != do_contexto)
+    for curso in cursos:
         dados = percurso(user, curso)
         if dados['proximo']:
             return {'curso': dados['curso'], 'passo': dados['proximo'],

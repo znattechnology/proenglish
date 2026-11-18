@@ -3,7 +3,8 @@ Percurso de um curso em vídeo e passo seguinte do aluno. Montado em /api/v1/stu
 
   GET <courseId>/percurso/     as unidades, as aulas e os passos de cada aula (aula, questionário,
                                laboratório, conversa), com o estado de cada um e o passo seguinte
-  GET percurso/proximo/        o passo seguinte do aluno em toda a plataforma (ou null)
+  GET percurso/proximo/        o passo seguinte do aluno em toda a plataforma (ou null);
+                               ?licao=<id> ou ?situacao=<slug> diz o que o aluno acabou de fazer
 
 As regras de acesso são as das aulas (inscrição activa, plano, curso aberto). O que conta como
 feito e a ordem dos passos são decididos em apps/courses/percurso.py.
@@ -33,4 +34,7 @@ class ProximoPasso(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
-        return Response({'proximo': percurso.proximo_passo(request.user)})
+        # ?licao=<id> ou ?situacao=<slug>: o que o aluno acabou de fazer (o "a seguir" fica nesse curso).
+        return Response({'proximo': percurso.proximo_passo(
+            request.user, licao_id=request.query_params.get('licao'),
+            situacao=request.query_params.get('situacao'))})

@@ -8,6 +8,7 @@ import { Aviso, Botao, Etiqueta, Osso } from "@/components/pe";
 import { Questionario } from "@/components/pe/curso/Questionario";
 import { TextoRico } from "@/components/pe/curso/TextoRico";
 import { ConversaDaAula, RepetirEmVozAlta } from "@/components/pe/curso/FalaDaAula";
+import { ASeguir } from "@/components/pe/curso/Percurso";
 import { cnPe } from "@/lib/pe";
 import { useDjangoAuth } from "@/hooks/useDjangoAuth";
 import { mensagemErro } from "@/src/domains/student/subscricao/api";
@@ -18,6 +19,7 @@ import {
   temQuestionario,
   TIPO_PT,
   useCapituloQuery,
+  usePercursoQuery,
   useCursoQuery,
   useInscricaoQuery,
   useMarcarCapituloMutation,
@@ -169,6 +171,11 @@ function Conteudo({
   seguinte: CapituloNoCurso | null;
 }) {
   const [marcar, { isLoading }] = useMarcarCapituloMutation();
+  // O passo seguinte do percurso (o servidor decide); volta a ser lido quando a aula fica vista.
+  const { data: percurso } = usePercursoQuery(courseId, { refetchOnMountOrArgChange: true });
+  const passo = percurso?.proximo ?? null;
+  // O vídeo desta aula e a lição de laboratório dela já têm o seu lugar nesta página.
+  const mostrarSeguinte = !!passo && !(passo.aula_id === cap.chapterId && (passo.tipo === "aula" || passo.tipo === "pratica" || passo.tipo === "questionario"));
   const [erro, setErro] = useState<string | null>(null);
   // O progresso pode chegar depois de a aula abrir: conta o que vem do servidor e o que se marcou agora.
   const [vistoAgora, setVisto] = useState(false);
@@ -280,6 +287,10 @@ function Conteudo({
       ) : null}
 
       {comVideo && fala?.frases.length ? <ConversaDaAula chapterId={cap.chapterId} dados={fala} /> : null}
+
+      {mostrarSeguinte && percurso && passo ? (
+        <ASeguir proximo={{ curso: percurso.curso, passo, feitos: percurso.feitos, total: percurso.total }} />
+      ) : null}
 
       {recursos?.length ? (
         <section aria-labelledby="titulo-recursos" className="flex flex-col gap-2">

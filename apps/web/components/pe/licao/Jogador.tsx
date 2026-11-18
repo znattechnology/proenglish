@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CheckCircle2, Heart } from "lucide-react";
 import { Botao, Etiqueta, Osso } from "@/components/pe";
+import { ASeguir } from "@/components/pe/curso/Percurso";
+import { useProximoPassoQuery } from "@/src/domains/student/curso/api";
 import { Dialogo } from "@/components/pe/Dialogo";
 import { FolhaOferta, OfertaPlano } from "@/components/pe/subscricao/Oferta";
 import type { Oferta } from "@/src/domains/student/subscricao/api";
@@ -529,6 +531,8 @@ function LicaoConcluida({
 }) {
   const { data: trilho } = useTrilhoQuery(licao.curso.id);
   const proxima = trilho?.unidades.flatMap((u) => u.licoes).find((l) => l.estado === "actual" && l.id !== licao.id);
+  // O passo seguinte do percurso do curso em vídeo a que esta lição pertence (se pertencer a algum).
+  const { data: seguinte } = useProximoPassoQuery({ licao: licao.id }, { refetchOnMountOrArgChange: true });
   const pontos = pontosInicio !== null ? Math.max(0, conclusao.total_points - pontosInicio) : conclusao.points_awarded;
   const minutos = Math.max(1, Math.round(segundos / 60));
   const metaFalta = Math.max(0, conclusao.daily_goal_minutes - conclusao.minutes_today);
@@ -569,9 +573,11 @@ function LicaoConcluida({
 
       <PedirLembrete sequencia={conclusao.streak} />
 
+      {seguinte ? <ASeguir proximo={seguinte} /> : null}
+
       <div className="mt-auto flex flex-col gap-3 md:mt-2 md:flex-row-reverse md:justify-start">
         {proxima ? (
-          <Botao asChild tipo="realce" className="md:min-w-[220px]">
+          <Botao asChild tipo={seguinte ? "secundario" : "realce"} className="md:min-w-[220px]">
             <Link href={`/user/laboratory/learn/lesson/${proxima.id}`}>Próxima lição</Link>
           </Botao>
         ) : null}

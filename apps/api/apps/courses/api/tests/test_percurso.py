@@ -214,6 +214,33 @@ class ApiTests(Base):
         self.assertEqual(r.data['proximo']['passo']['titulo'], 'Aula do segundo')
         self.assertEqual((r.data['proximo']['feitos'], r.data['proximo']['total']), (0, 1))
 
+    def test_proximo_passo_fica_no_curso_do_que_o_aluno_acabou(self):
+        segundo = self.criar_curso('PC- Segundo')
+        seccao = CourseSection.objects.create(course=segundo, sectionTitle='Unit 1', order=1)
+        self.criar_aula(seccao, 'Aula do segundo', 1)
+        matricular_em_curso(self.aluno, segundo)
+        agora = timezone.now()
+        for curso, quando in ((self.curso, agora - timedelta(days=3)), (segundo, agora)):
+            UserCourseProgress.objects.update_or_create(
+                user=self.aluno, course=curso,
+                defaults={'enrollmentDate': agora, 'overallProgress': 0.0, 'lastAccessedTimestamp': quando})
+        self.entrar(self.aluno)
+        # Sem contexto: o curso mais recente. Com a lição ou a conversa do outro curso: esse curso.
+        self.assertEqual(self.client.get(f'{V}/percurso/proximo/').data['proximo']['curso']['titulo'], 'PC- Segundo')
+        for parametros in ({'licao': str(self.licao.id)}, {'situacao': 'pc-guiada'}):
+            r = self.client.get(f'{V}/percurso/proximo/', parametros)
+            self.assertEqual(r.data['proximo']['curso']['titulo'], 'PC- Curso C1', parametros)
+        # Contexto inválido ou de um curso em que o aluno não está: ignora-se, sem erro.
+        alheio = self.criar_curso('PC- Alheio')
+        seccao = CourseSection.objects.create(course=alheio, sectionTitle='U', order=1)
+        aula = self.criar_aula(seccao, 'Alheia', 1)
+        Situacao.objects.create(slug='pc-alheia', nome='x', descricao='x', curso=alheio, aula=aula,
+                                estado=Situacao.ACTIVO)
+        for parametros in ({'licao': 'nao-e-id'}, {'situacao': 'nao-existe'}, {'situacao': 'pc-alheia'}):
+            r = self.client.get(f'{V}/percurso/proximo/', parametros)
+            self.assertEqual(r.status_code, 200, parametros)
+            self.assertEqual(r.data['proximo']['curso']['titulo'], 'PC- Segundo', parametros)
+
     def test_proximo_passo_sem_cursos_e_null(self):
         self.entrar(self.outro)
         r = self.client.get(f'{V}/percurso/proximo/')
