@@ -1,0 +1,301 @@
+{
+ "title": "C1.1 Unit 4 quiz — Conflict",
+ "description": "Inversão negativa, reformular e separar posições de interesses, vocabulário do conflito, disgust e expert.",
+ "questions": [
+  {
+   "id": "c1u4q1",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u4q1o0",
+     "text": "Never have I seen such a well-organised event.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u4q1o1",
+     "text": "Never I have seen such a well-organised event.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u4q1o2",
+     "text": "Never have seen I such a well-organised event.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u4q1o0",
+   "explanation": "Advérbio negativo + auxiliar + sujeito.",
+   "points": 10
+  },
+  {
+   "id": "c1u4q2",
+   "question": "Complete: \"At no time ___ I agree to that.\"",
+   "options": [
+    {
+     "id": "c1u4q2o0",
+     "text": "did",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u4q2o1",
+     "text": "do",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u4q2o2",
+     "text": "have",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u4q2o0",
+   "explanation": "Sem auxiliar no tempo passado: did.",
+   "points": 10
+  },
+  {
+   "id": "c1u4q3",
+   "question": "Complete: \"No sooner had we fixed the road ___ it rained again.\"",
+   "options": [
+    {
+     "id": "c1u4q3o0",
+     "text": "than",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u4q3o1",
+     "text": "when",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u4q3o2",
+     "text": "that",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u4q3o0",
+   "explanation": "No sooner… than…",
+   "points": 10
+  },
+  {
+   "id": "c1u4q4",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u4q4o0",
+     "text": "Only when Dr Cumbe called me did I find out.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u4q4o1",
+     "text": "Only when did Dr Cumbe call me I found out.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u4q4o2",
+     "text": "Only when Dr Cumbe called me I found out.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u4q4o0",
+   "explanation": "Com only when, a inversão vai na oração principal.",
+   "points": 10
+  },
+  {
+   "id": "c1u4q5",
+   "question": "Qual destas é uma POSIÇÃO, e não um interesse?",
+   "options": [
+    {
+     "id": "c1u4q5o0",
+     "text": "\"I won't speak to him.\"",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u4q5o1",
+     "text": "\"I want to know the plan before the client.\"",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u4q5o2",
+     "text": "\"I want my work to be recognised.\"",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u4q5o0",
+   "explanation": "A posição é o que se diz que se quer; o interesse é a razão.",
+   "points": 10
+  },
+  {
+   "id": "c1u4q6",
+   "question": "\"That must have been frustrating.\" O falante está a…",
+   "options": [
+    {
+     "id": "c1u4q6o0",
+     "text": "reconhecer o sentimento, sem dizer quem tem razão",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u4q6o1",
+     "text": "concordar que a outra pessoa tem razão",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u4q6o2",
+     "text": "criticar a outra pessoa",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u4q6o0",
+   "explanation": "Validar não é concordar.",
+   "points": 10
+  },
+  {
+   "id": "c1u4q7",
+   "question": "\"Ela teve um grande desgosto.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1u4q7o0",
+     "text": "She was heartbroken.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u4q7o1",
+     "text": "She had a big disgust.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u4q7o2",
+     "text": "She was very disgusting.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u4q7o0",
+   "explanation": "Falso amigo: disgust = nojo.",
+   "points": 10
+  },
+  {
+   "id": "c1u4q8",
+   "question": "\"Ela é muito esperta.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1u4q8o0",
+     "text": "She's very clever.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u4q8o1",
+     "text": "She's very expert.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u4q8o2",
+     "text": "She's an esperta.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u4q8o0",
+   "explanation": "Falso amigo: expert = especialista.",
+   "points": 10
+  },
+  {
+   "id": "c1u4q9",
+   "question": "Complete: \"A good mediator never takes ___.\"",
+   "options": [
+    {
+     "id": "c1u4q9o0",
+     "text": "sides",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u4q9o1",
+     "text": "parts",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u4q9o2",
+     "text": "side of",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u4q9o0",
+   "explanation": "take sides = tomar partido.",
+   "points": 10
+  },
+  {
+   "id": "c1u4q10",
+   "question": "Reciclagem (C1, unidade 3). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u4q10o0",
+     "text": "Had we known, we would have warned you.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u4q10o1",
+     "text": "Hadn't we known, we would have warned you.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u4q10o2",
+     "text": "Had known we, we would have warned you.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u4q10o0",
+   "explanation": "Inversão condicional.",
+   "points": 10
+  },
+  {
+   "id": "c1u4q11",
+   "question": "Reciclagem (C1, unidade 3). Complete: \"Clients may refuse, in ___ case we review the price.\"",
+   "options": [
+    {
+     "id": "c1u4q11o0",
+     "text": "which",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u4q11o1",
+     "text": "what",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u4q11o2",
+     "text": "that",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u4q11o0",
+   "explanation": "in which case.",
+   "points": 10
+  },
+  {
+   "id": "c1u4q12",
+   "question": "Reciclagem (C1, unidade 2). Complete: \"I'd be surprised if it ___ more than ten days.\"",
+   "options": [
+    {
+     "id": "c1u4q12o0",
+     "text": "took",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u4q12o1",
+     "text": "will take",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u4q12o2",
+     "text": "takes it",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u4q12o0",
+   "explanation": "I'd be surprised if + passado.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
