@@ -142,7 +142,11 @@ function Formulario({ p, aoComecar }: { p: Preparar; aoComecar: (s: NovaSessao) 
                     <span className="font-semibold leading-[22px]">{s.titulo}</span>
                     <span className="text-[14px] leading-5 text-pe-tinta-suave">
                       {s.descricao} {s.minutos_sugeridos} minutos.
-                      {s.curso ? ` Do curso «${s.curso.titulo}».` : ""}
+                      {s.aula
+                        ? ` ${s.tipo_conversa === "guiada" ? "Conversa guiada" : s.tipo_conversa === "livre" ? "Conversa livre" : "Conversa"} depois da aula «${s.aula.titulo}»${s.curso ? `, do curso «${s.curso.titulo}»` : ""}.`
+                        : s.curso
+                          ? ` Do curso «${s.curso.titulo}».`
+                          : ""}
                     </span>
                   </span>
                 </label>

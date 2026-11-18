@@ -165,6 +165,47 @@ export type NotasDeTodos = {
   summary: { total_courses: number; courses_with_grades: number; average_grade: { percentage: number; letter: string } | number; certificates_earned: number; eligible_for_certificate: number };
 };
 
+/* Percurso do curso (apps/api/apps/courses/percurso.py): o servidor decide a ordem e o que está feito. */
+export type TipoPasso = "aula" | "questionario" | "pratica" | "conversa";
+export type Passo = {
+  chave: string;
+  tipo: TipoPasso;
+  titulo: string;
+  estado: "feito" | "actual" | "por_fazer";
+  minutos: number | null;
+  aula_id: string;
+  unidade: string;
+  licao_id?: string;
+  curso_pratica_id?: string;
+  situacao?: string;
+  tipo_conversa?: "guiada" | "livre" | "";
+};
+export type Percurso = {
+  curso: { id: string; titulo: string };
+  unidades: { id: string; titulo: string; aulas: { id: string; titulo: string; passos: Passo[] }[] }[];
+  proximo: Passo | null;
+  feitos: number;
+  total: number;
+};
+export type ProximoPasso = { curso: { id: string; titulo: string }; passo: Passo; feitos: number; total: number };
+
+/** Para onde leva um passo do percurso. */
+export function hrefDoPasso(courseId: string, passo: Passo) {
+  if (passo.tipo === "pratica" && passo.licao_id) return `/user/laboratory/learn/lesson/${passo.licao_id}`;
+  if (passo.tipo === "conversa" && passo.situacao) return `/user/laboratory/speaking/real-time?situacao=${encodeURIComponent(passo.situacao)}`;
+  return `/user/courses/${courseId}/chapters/${passo.aula_id}`;
+}
+
+/** O nome do tipo de passo, como o aluno o lê. */
+export function nomeDoPasso(passo: Pick<Passo, "tipo" | "tipo_conversa">) {
+  if (passo.tipo === "aula") return "Aula";
+  if (passo.tipo === "questionario") return "Questionário";
+  if (passo.tipo === "pratica") return "Laboratório";
+  if (passo.tipo_conversa === "guiada") return "Conversa guiada";
+  if (passo.tipo_conversa === "livre") return "Conversa livre";
+  return "Conversa com o tutor";
+}
+
 type Envelope<T> = { message?: string; data: T };
 const dados = <T,>(r: Envelope<T> | T) => (r && typeof r === "object" && "data" in (r as object) ? (r as Envelope<T>).data : (r as T));
 
@@ -230,6 +271,17 @@ export const cursoApi = createApi({
       invalidatesTags: (_r, _e, a) => [{ type: "Quiz", id: a.chapterId }, { type: "Progresso", id: a.courseId }, { type: "Notas", id: a.courseId }, { type: "Notas", id: "TODAS" }],
       onQueryStarted: quandoCorrerBem(aposCurso),
     }),
+    /** O percurso do curso: os passos de cada aula (aula, questionário, laboratório, conversa) e o seguinte. */
+    percurso: build.query<Percurso, string>({
+      query: (courseId) => `${BASE}/${courseId}/percurso/`,
+      providesTags: (_r, _e, id) => [{ type: "Progresso", id }],
+    }),
+    /** O passo seguinte do aluno em toda a plataforma (null se não há nada por fazer). */
+    proximoPasso: build.query<ProximoPasso | null, void>({
+      query: () => `${BASE}/percurso/proximo/`,
+      transformResponse: (r: { proximo: ProximoPasso | null }) => r?.proximo ?? null,
+      providesTags: [{ type: "Progresso", id: "PROXIMO" }],
+    }),
     notasDeTodos: build.query<NotasDeTodos, void>({
       query: () => `${BASE}/grades/all/`,
       transformResponse: dados<NotasDeTodos>,
@@ -267,6 +319,8 @@ export const {
   useCapituloQuery,
   useRecursosQuery,
   useProgressoQuery,
+  usePercursoQuery,
+  useProximoPassoQuery,
   useMarcarCapituloMutation,
   useResumoQuizQuery,
   useResponderQuizMutation,

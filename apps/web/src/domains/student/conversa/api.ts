@@ -31,6 +31,9 @@ export type Preparar = {
     nivel: Nivel | null;
     correcao: Correcao | null;
     curso: { id: string; titulo: string } | null;
+    /** Lugar no percurso do curso: a aula depois da qual se faz e o tipo (null nas conversas soltas). */
+    aula: { id: string; titulo: string; unidade: string } | null;
+    tipo_conversa: "guiada" | "livre" | null;
   }[];
   /** Frases-alvo por situação (id da situação -> 2 a 4 frases). */
   objectivos: Record<string, Objectivo[]>;

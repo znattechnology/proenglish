@@ -22,9 +22,13 @@ import {
   useInscreverMutation,
   useInscricaoQuery,
   useNotasQuery,
+  usePercursoQuery,
   useProgressoQuery,
+  hrefDoPasso,
+  nomeDoPasso,
   type Curso,
 } from "@/src/domains/student/curso/api";
+import { PassosDaAula, duracaoDoPasso } from "@/components/pe/curso/Percurso";
 
 export default function PaginaCurso() {
   const { courseId } = useParams<{ courseId: string }>();
@@ -57,6 +61,11 @@ function CursoInscrito({ curso }: { curso: Curso }) {
   const { user } = useDjangoAuth();
   const { data: progresso } = useProgressoQuery({ userId: user?.id ?? "", courseId: curso.courseId }, { skip: !user });
   const { data: notas } = useNotasQuery(curso.courseId);
+  // O percurso (aula, laboratório, conversas) vem do servidor; volta a ser lido sempre que se entra na página,
+  // porque o laboratório e as conversas terminam noutros ecrãs.
+  const { data: percurso } = usePercursoQuery(curso.courseId, { refetchOnMountOrArgChange: true });
+  const passosPorAula = new Map((percurso?.unidades ?? []).flatMap((u) => u.aulas).map((a) => [a.id, a.passos] as const));
+  const proximo = percurso?.proximo ?? null;
   const lista = capitulosPorOrdem(curso);
   const feitos = concluidos(progresso);
   const seguinte = lista.find((c) => !feitos.has(c.chapterId));
@@ -83,7 +92,17 @@ function CursoInscrito({ curso }: { curso: Curso }) {
               </span>
             </div>
           </div>
-          {seguinte ? (
+          {proximo ? (
+            <div className="flex flex-col gap-2 md:shrink-0 md:items-end">
+              <span className="text-[15px] leading-[22px]">
+                A seguir: {nomeDoPasso(proximo).toLowerCase()}
+                {duracaoDoPasso(proximo) ? `, ${duracaoDoPasso(proximo)}` : ""}
+              </span>
+              <Botao asChild tipo="realce">
+                <Link href={hrefDoPasso(curso.courseId, proximo)}>{proximo.tipo === "questionario" ? "Fazer o questionário" : proximo.titulo}</Link>
+              </Botao>
+            </div>
+          ) : seguinte ? (
             <Botao asChild tipo="realce" className="md:shrink-0">
               <Link href={`/user/courses/${curso.courseId}/chapters/${seguinte.chapterId}`}>
                 {nFeitos ? `Continuar: aula ${seguinte.numero}` : "Começar a primeira aula"}
@@ -141,6 +160,7 @@ function CursoInscrito({ curso }: { curso: Curso }) {
                           </span>
                           <span className="shrink-0 text-[14px] font-normal text-pe-tinta-suave">{TIPO_PT[c.type] ?? c.type}</span>
                         </Link>
+                        <PassosDaAula courseId={curso.courseId} passos={passosPorAula.get(c.chapterId) ?? []} />
                       </li>
                     );
                   })}

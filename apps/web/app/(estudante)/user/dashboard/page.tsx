@@ -16,6 +16,8 @@ import { PedidoOpiniao } from "@/components/pe/opiniao/PedidoOpiniao";
 import { CartaoRevisao } from "@/components/pe/revisao/CartaoRevisao";
 import { ResumoFala } from "@/components/pe/fala/Fala";
 import { usePerfilQuery } from "@/src/domains/student/perfil/api";
+import { hrefDoPasso, nomeDoPasso, useProximoPassoQuery, type ProximoPasso } from "@/src/domains/student/curso/api";
+import { duracaoDoPasso } from "@/components/pe/curso/Percurso";
 
 /** A API representa "vidas ilimitadas" (planos pagos) com 999. */
 const VIDAS_ILIMITADAS = 999;
@@ -38,7 +40,12 @@ export default function Inicio() {
   const vidas = estadoVidas ? (estadoVidas.unlimited ? VIDAS_ILIMITADAS : estadoVidas.current) : undefined;
   const { data: cursos, isLoading: aCarregarCursos, isError: erroCursos, refetch } = useMeusCursosQuery(userId, { skip: !userId });
 
-  const [primeiro, ...outros] = cursos ?? [];
+  // O passo seguinte é decidido pelo servidor (aula, laboratório ou conversa); lê-se de novo a cada entrada.
+  const { data: proximo } = useProximoPassoQuery(undefined, { skip: !user, refetchOnMountOrArgChange: true });
+  // O curso em destaque é o do passo seguinte; sem passo, o primeiro da lista.
+  const emDestaque = (proximo && cursos?.find((c) => c.courseId === proximo.curso.id)) || cursos?.[0];
+  const primeiro = emDestaque;
+  const outros = (cursos ?? []).filter((c) => c.courseId !== emDestaque?.courseId);
 
   // Quem acabou de criar conta e ainda não escolheu área nem fez o acolhimento vai primeiro para lá.
   const router = useRouter();
@@ -77,7 +84,7 @@ export default function Inicio() {
             ) : erroCursos ? (
               <ErroCursos aoTentar={refetch} />
             ) : primeiro ? (
-              <Continuar curso={primeiro} userId={userId} />
+              <Continuar curso={primeiro} userId={userId} proximo={proximo?.curso.id === primeiro.courseId ? proximo : null} />
             ) : (
               <PrimeiroCurso />
             )}
@@ -173,11 +180,62 @@ function Contadores({ sequencia, vidas }: { sequencia?: number; vidas?: number }
   );
 }
 
-/** O único destaque do ecrã: voltar ao curso onde ficou. */
-function Continuar({ curso, userId }: { curso: CursoVideo; userId: string }) {
+/** O texto do botão diz o que acontece a seguir. */
+function accaoDoPasso(p: ProximoPasso["passo"]) {
+  if (p.tipo === "aula") return "Ver a aula";
+  if (p.tipo === "questionario") return "Fazer o questionário";
+  if (p.tipo === "pratica") return "Praticar no laboratório";
+  return "Falar com o tutor";
+}
+
+/** O único destaque do ecrã: o passo seguinte do curso onde ficou. */
+function Continuar({ curso, userId, proximo }: { curso: CursoVideo; userId: string; proximo: ProximoPasso | null }) {
   const { data: progresso, isLoading } = useProgressoCursoQuery({ userId, courseId: curso.courseId });
   const pct = Math.round(progresso?.overallProgress ?? 0);
   const comecou = pct > 0;
+
+  if (proximo) {
+    const p = proximo.passo;
+    const duracao = duracaoDoPasso(p);
+    return (
+      <section
+        aria-labelledby="titulo-continuar"
+        className="pe-sobre-marca flex flex-col gap-4 rounded-pe-fala bg-pe-azul-marca px-6 py-6 text-pe-sobre-marca md:px-8"
+      >
+        <div className="flex flex-col gap-1">
+          <span className="text-pe-legenda font-semibold">
+            A seguir em {curso.title}, {p.unidade}
+          </span>
+          <h2 id="titulo-continuar" className="m-0 text-[22px] font-bold leading-7 md:text-pe-titulo-m">
+            {p.tipo === "questionario" ? `Questionário da ${p.unidade}` : p.titulo}
+          </h2>
+          <span className="text-[15px] leading-[22px]">
+            {nomeDoPasso(p)}
+            {duracao ? `, cerca de ${duracao}` : ""}
+          </span>
+        </div>
+        <div className="flex items-center gap-3">
+          <BarraProgresso
+            valor={proximo.total ? Math.round((100 * proximo.feitos) / proximo.total) : 0}
+            rotulo={`Passos feitos em ${curso.title}`}
+            cor="realce"
+            className="flex-1 bg-white/20"
+          />
+          <span className="text-pe-legenda font-semibold tabular-nums">
+            {proximo.feitos} de {proximo.total} passos
+          </span>
+        </div>
+        <div className="flex flex-col gap-3 md:flex-row md:items-center">
+          <Botao asChild tipo="realce" className="self-stretch md:self-start">
+            <Link href={hrefDoPasso(curso.courseId, p)}>{accaoDoPasso(p)}</Link>
+          </Botao>
+          <Link href={`/user/courses/${curso.courseId}`} className="self-center text-[15px] font-semibold text-pe-sobre-marca underline-offset-[3px] hover:text-pe-realce md:self-auto">
+            Ver o percurso todo
+          </Link>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section
