@@ -33,15 +33,17 @@ Estes dados são para dar coerência à personagem e à publicidade. Nas aulas f
 
 ## 4. Aspecto (a referência para as imagens)
 
-- **Mulher negra angolana, bonita**, pele castanho-escura, maçãs do rosto altas, olhos castanho-escuros e expressivos.
-- **Corpo típico de muitas angolanas:** curvilíneo e cheio, cintura marcada, ancas largas; altura média (cerca de 1,68 m).
-- **Traços próprios, para não parecer um rosto "de banco de imagens":**
-  - covinhas quando sorri;
-  - um pequeno espaço entre os dentes da frente;
-  - um sinal pequeno junto ao canto do olho esquerdo.
-- **Cabelo:** uma marca fixa; escolhe-se no piloto entre três propostas (ver secção 6).
-- **Roupa de aula:** blazer azul-marinho (#000066) bem cortado, blusa lisa, e **um elemento em samakaka** (lenço, gola ou forro do blazer). Brincos dourados. Sempre o mesmo conjunto nas aulas, para ser reconhecível.
+Revisto a 18/11/2026, depois das três primeiras propostas: a primeira versão parecia pouco angolana (cabelo natural, espaço entre os dentes) e não destacava a beleza nem o cuidado com a aparência, que em Angola contam muito.
+
+- **Mulher angolana muito bonita, de Luanda**, pele castanho-escura **perfeitamente lisa e uniforme**, luminosa e sem manchas nem brilho, rosto oval e cheio, maçãs do rosto altas e arredondadas, olhos grandes e expressivos com pestanas longas, sobrancelhas bem desenhadas, lábios cheios.
+- **Dentes perfeitos, sem espaços.** Covinhas ao sorrir (o traço que a torna reconhecível).
+- **Vaidosa e cuidada:** maquilhagem elegante e natural, batom rosa-nude com brilho, unhas arranjadas, brincos e pulseira finos em dourado.
+- **Cabelo:** nunca natural. **Cabelo brasileiro** em aplique ou peruca (*lace*), muito usado em Luanda; escolhe-se no piloto entre liso comprido, ondulado com madeixas mel e *bob* liso pelos ombros.
+- **Corpo típico de muitas angolanas:** curvilíneo e cheio, cintura marcada, peito e ancas generosos; altura média. As imagens a 3/4 do corpo deixam ver a figura.
+- **Roupa de aula:** blazer azul-marinho (#000066) bem cortado e cintado, blusa de seda marfim com decote discreto, calças justas azul-marinho, e um pormenor em **samakaka** (lenço ou lenço de bolso). Sempre o mesmo conjunto, para ser reconhecível.
 - **Cenário fixo:** um estúdio claro com uma janela para a baía de Luanda, plantas e uma estante; uma caneca amarela (#ffc72c).
+
+A moda de Luanda tem forte influência brasileira (cabelo e roupa comprados no Brasil e vendidos em Luanda); fontes: [WEF](https://www.weforum.org/stories/2017/05/these-angolan-women-spot-fashion-trends-in-brazil-and-bring-them-back-to-africa/), [How We Made It in Africa](https://www.howwemadeitinafrica.com/women-spot-fashion-trends-brazil-bring-back-angola/58802/).
 
 ## 5. Regras
 
@@ -53,10 +55,10 @@ Estes dados são para dar coerência à personagem e à publicidade. Nas aulas f
 
 ## 6. Imagens no piloto (`imagens/piloto.json`, fase 0)
 
-1. **Três visuais** (retrato a meio corpo, 4:5; `professora-visual-a`, `-b`, `-c`):
-   - A: tranças longas apanhadas num coque alto;
-   - B: cabelo natural curto e definido;
-   - C: tranças soltas pelos ombros, com lenço em samakaka.
+1. **Três visuais** (a 3/4 do corpo, 4:5; `professora-visual-a`, `-b`, `-c`):
+   - A: cabelo brasileiro liso e comprido;
+   - B: peruca ondulada comprida com madeixas mel;
+   - C: peruca *bob* lisa pelos ombros.
 2. Depois de escolhido o visual (põe-se o id dele em `referencias` da `ficha-professora`): a **folha de referência** (frente, três quartos, corpo inteiro e expressões), com o visual aprovado como referência.
 3. **O enquadramento das aulas** (16:9, a meio corpo no estúdio), que serve de imagem base para a ferramenta de vídeo.
 

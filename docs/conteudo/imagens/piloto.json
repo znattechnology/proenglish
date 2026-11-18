@@ -4,100 +4,183 @@
   "regras": "Do not include any text, letters, numbers, logos, watermarks or captions anywhere in the image. Contemporary Angola, 2026. Respectful, natural, non-stereotyped depiction of African professionals. No real people, no real brands.",
   "imagens": [
     {
-      "id": "professora-visual-a", "fase": 0, "modelo": "pro", "proporcao": "4:5", "tamanho": "2K", "referencias": [],
+      "id": "professora-visual-a",
+      "fase": 0,
+      "modelo": "pro",
+      "proporcao": "4:5",
+      "tamanho": "2K",
+      "referencias": [],
       "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
-      "descricao": "Luena, a beautiful Black Angolan woman aged 34, English teacher. Dark-brown skin, high cheekbones, expressive dark-brown eyes, deep dimples when she smiles, a small gap between her two front teeth, a tiny beauty mark near the outer corner of her left eye. Full, curvy figure typical of many Angolan women: defined waist, wide hips, medium height. Warm, friendly, confident smile; approachable and professional. Wears a well-tailored deep navy blazer over a plain ivory blouse, small gold earrings, and an accent in Angolan samakaka print fabric. Elegant and modest, never sensual. Hair: long black box braids gathered in a high, neat bun. Waist-up portrait, looking at the camera, plain warm-grey studio background.",
+      "descricao": "Luena, a strikingly beautiful Angolan woman aged 34 from Luanda, English teacher. Flawless, perfectly smooth and even-toned warm deep-brown skin with a soft healthy glow, clear complexion with no blemishes, spots, marks or oily shine, soft oval face with full cheeks and high rounded cheekbones, large expressive dark-brown almond eyes with long lashes, well-groomed defined eyebrows, full lips with a glossy nude-rose lipstick, perfect even white teeth with no gaps, soft dimples when she smiles. Polished, glamorous but natural make-up and manicured nails, like a well-dressed Luanda professional who takes great care of her appearance. Full, curvy hourglass figure typical of many Angolan women: generous bust and hips, defined waist, medium height. Wears a perfectly tailored deep navy blazer cinched at the waist over a fitted ivory silk blouse with a modest neckline, slim navy trousers, delicate gold earrings and a thin gold bracelet, and a small accent in Angolan samakaka print fabric (pocket square or scarf). Elegant, confident and very friendly, with a warm, inviting smile. Classy and modest, never sensual. Hair: long, sleek, straight Brazilian hair extensions in deep black-brown, falling past the shoulders, with a soft side part and glossy shine. Three-quarter length portrait from mid-thigh up, standing slightly turned, one hand lightly at her waist, looking at the camera, in a bright modern studio with a soft warm-grey background.",
       "uso": "professora: visual A"
     },
     {
-      "id": "professora-visual-b", "fase": 0, "modelo": "pro", "proporcao": "4:5", "tamanho": "2K", "referencias": [],
+      "id": "professora-visual-b",
+      "fase": 0,
+      "modelo": "pro",
+      "proporcao": "4:5",
+      "tamanho": "2K",
+      "referencias": [],
       "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
-      "descricao": "Luena, a beautiful Black Angolan woman aged 34, English teacher. Dark-brown skin, high cheekbones, expressive dark-brown eyes, deep dimples when she smiles, a small gap between her two front teeth, a tiny beauty mark near the outer corner of her left eye. Full, curvy figure typical of many Angolan women: defined waist, wide hips, medium height. Warm, friendly, confident smile; approachable and professional. Wears a well-tailored deep navy blazer over a plain ivory blouse, small gold earrings, and an accent in Angolan samakaka print fabric. Elegant and modest, never sensual. Hair: short, natural, well-defined black coils. Waist-up portrait, looking at the camera, plain warm-grey studio background.",
+      "descricao": "Luena, a strikingly beautiful Angolan woman aged 34 from Luanda, English teacher. Flawless, perfectly smooth and even-toned warm deep-brown skin with a soft healthy glow, clear complexion with no blemishes, spots, marks or oily shine, soft oval face with full cheeks and high rounded cheekbones, large expressive dark-brown almond eyes with long lashes, well-groomed defined eyebrows, full lips with a glossy nude-rose lipstick, perfect even white teeth with no gaps, soft dimples when she smiles. Polished, glamorous but natural make-up and manicured nails, like a well-dressed Luanda professional who takes great care of her appearance. Full, curvy hourglass figure typical of many Angolan women: generous bust and hips, defined waist, medium height. Wears a perfectly tailored deep navy blazer cinched at the waist over a fitted ivory silk blouse with a modest neckline, slim navy trousers, delicate gold earrings and a thin gold bracelet, and a small accent in Angolan samakaka print fabric (pocket square or scarf). Elegant, confident and very friendly, with a warm, inviting smile. Classy and modest, never sensual. Hair: long Brazilian body-wave hair (lace wig) in dark chocolate brown with subtle honey-caramel highlights, voluminous soft waves past the shoulders, middle part. Three-quarter length portrait from mid-thigh up, standing slightly turned, one hand lightly at her waist, looking at the camera, in a bright modern studio with a soft warm-grey background.",
       "uso": "professora: visual B"
     },
     {
-      "id": "professora-visual-c", "fase": 0, "modelo": "pro", "proporcao": "4:5", "tamanho": "2K", "referencias": [],
+      "id": "professora-visual-c",
+      "fase": 0,
+      "modelo": "pro",
+      "proporcao": "4:5",
+      "tamanho": "2K",
+      "referencias": [],
       "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
-      "descricao": "Luena, a beautiful Black Angolan woman aged 34, English teacher. Dark-brown skin, high cheekbones, expressive dark-brown eyes, deep dimples when she smiles, a small gap between her two front teeth, a tiny beauty mark near the outer corner of her left eye. Full, curvy figure typical of many Angolan women: defined waist, wide hips, medium height. Warm, friendly, confident smile; approachable and professional. Wears a well-tailored deep navy blazer over a plain ivory blouse, small gold earrings, and an accent in Angolan samakaka print fabric. Elegant and modest, never sensual. Hair: shoulder-length black braids worn loose, with a headwrap in samakaka print. Waist-up portrait, looking at the camera, plain warm-grey studio background.",
+      "descricao": "Luena, a strikingly beautiful Angolan woman aged 34 from Luanda, English teacher. Flawless, perfectly smooth and even-toned warm deep-brown skin with a soft healthy glow, clear complexion with no blemishes, spots, marks or oily shine, soft oval face with full cheeks and high rounded cheekbones, large expressive dark-brown almond eyes with long lashes, well-groomed defined eyebrows, full lips with a glossy nude-rose lipstick, perfect even white teeth with no gaps, soft dimples when she smiles. Polished, glamorous but natural make-up and manicured nails, like a well-dressed Luanda professional who takes great care of her appearance. Full, curvy hourglass figure typical of many Angolan women: generous bust and hips, defined waist, medium height. Wears a perfectly tailored deep navy blazer cinched at the waist over a fitted ivory silk blouse with a modest neckline, slim navy trousers, delicate gold earrings and a thin gold bracelet, and a small accent in Angolan samakaka print fabric (pocket square or scarf). Elegant, confident and very friendly, with a warm, inviting smile. Classy and modest, never sensual. Hair: sleek shoulder-length bob lace wig, jet black, straight with a slight inward curl at the ends and a deep side part. Three-quarter length portrait from mid-thigh up, standing slightly turned, one hand lightly at her waist, looking at the camera, in a bright modern studio with a soft warm-grey background.",
       "uso": "professora: visual C"
     },
     {
-      "id": "ficha-professora", "fase": 0, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "id": "ficha-professora",
+      "fase": 0,
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
       "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
-      "descricao": "Character reference sheet on a plain light-grey background: the same woman from the reference image shown four times side by side — front view, three-quarter view, full body standing (showing her curvy figure in the same professional outfit), and a row of three facial expressions (smiling, explaining, gently correcting). Luena, a beautiful Black Angolan woman aged 34, English teacher. Dark-brown skin, high cheekbones, expressive dark-brown eyes, deep dimples when she smiles, a small gap between her two front teeth, a tiny beauty mark near the outer corner of her left eye. Full, curvy figure typical of many Angolan women: defined waist, wide hips, medium height. Warm, friendly, confident smile; approachable and professional. Wears a well-tailored deep navy blazer over a plain ivory blouse, small gold earrings, and an accent in Angolan samakaka print fabric. Elegant and modest, never sensual.",
+      "descricao": "Character reference sheet on a plain light-grey background: the same woman from the reference image shown four times side by side — front view, three-quarter view, full body standing (showing her curvy figure in the same professional outfit and heels), and a row of three facial expressions (smiling, explaining, gently correcting). Same face, same hair, same outfit as the reference. Luena, a strikingly beautiful Angolan woman aged 34 from Luanda, English teacher. Flawless, perfectly smooth and even-toned warm deep-brown skin with a soft healthy glow, clear complexion with no blemishes, spots, marks or oily shine, soft oval face with full cheeks and high rounded cheekbones, large expressive dark-brown almond eyes with long lashes, well-groomed defined eyebrows, full lips with a glossy nude-rose lipstick, perfect even white teeth with no gaps, soft dimples when she smiles. Polished, glamorous but natural make-up and manicured nails, like a well-dressed Luanda professional who takes great care of her appearance. Full, curvy hourglass figure typical of many Angolan women: generous bust and hips, defined waist, medium height. Wears a perfectly tailored deep navy blazer cinched at the waist over a fitted ivory silk blouse with a modest neckline, slim navy trousers, delicate gold earrings and a thin gold bracelet, and a small accent in Angolan samakaka print fabric (pocket square or scarf). Elegant, confident and very friendly, with a warm, inviting smile. Classy and modest, never sensual.",
       "uso": "bíblia de personagens (pôr em referencias o visual aprovado)"
     },
     {
-      "id": "professora-enquadramento", "fase": 0, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": ["ficha-professora"],
+      "id": "professora-enquadramento",
+      "fase": 0,
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-professora"
+      ],
       "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
       "descricao": "Luena, the same woman from the reference sheet, seated at a light wooden desk in a bright teaching studio, framed from the waist up slightly left of centre, looking straight into the camera and smiling as if starting a lesson. Behind her: a large window with a soft-focus view of the Bay of Luanda, green plants, a low bookshelf, and a golden-yellow mug on the desk. Calm, uncluttered background suitable for on-screen text on the right side.",
       "uso": "imagem base das vídeo-aulas (ferramenta de vídeo)"
     },
-
     {
-      "id": "estilo-foto", "fase": 1, "modelo": "pro", "proporcao": "3:2", "tamanho": "1K",
+      "id": "estilo-foto",
+      "fase": 1,
+      "modelo": "pro",
+      "proporcao": "3:2",
+      "tamanho": "1K",
       "estilo": "Realistic editorial photograph, natural window light, shallow depth of field, 35mm lens, warm but neutral colour grading, like a corporate magazine portrait.",
       "descricao": "Nuno, a 22-year-old Angolan man from Lubango, IT intern on his first day at a small technology company in Talatona, Luanda. Slim build, short black hair with a neat fade, clean-shaven, friendly and slightly nervous smile. Light-blue short-sleeved shirt, dark trousers, a staff lanyard without any visible text. He sits at a table in a bright modern office kitchenette with a coffee mug, looking at someone off-camera.",
       "uso": "escolha do estilo"
     },
     {
-      "id": "estilo-ilustracao", "fase": 1, "modelo": "pro", "proporcao": "3:2", "tamanho": "1K",
+      "id": "estilo-ilustracao",
+      "fase": 1,
+      "modelo": "pro",
+      "proporcao": "3:2",
+      "tamanho": "1K",
       "estilo": "Semi-realistic digital illustration, soft painterly shading, warm palette with deep navy and golden yellow accents, clean shapes, like a modern educational picture book for adults.",
       "descricao": "Nuno, a 22-year-old Angolan man from Lubango, IT intern on his first day at a small technology company in Talatona, Luanda. Slim build, short black hair with a neat fade, clean-shaven, friendly and slightly nervous smile. Light-blue short-sleeved shirt, dark trousers, a staff lanyard without any visible text. He sits at a table in a bright modern office kitchenette with a coffee mug, looking at someone off-camera.",
       "uso": "escolha do estilo"
     },
     {
-      "id": "estilo-vectorial", "fase": 1, "modelo": "pro", "proporcao": "3:2", "tamanho": "1K",
+      "id": "estilo-vectorial",
+      "fase": 1,
+      "modelo": "pro",
+      "proporcao": "3:2",
+      "tamanho": "1K",
       "estilo": "Flat vector illustration, simple geometric shapes, limited palette of deep navy #000066, golden yellow #FFC72C, white and warm greys, subtle grain texture, no outlines.",
       "descricao": "Nuno, a 22-year-old Angolan man from Lubango, IT intern on his first day at a small technology company in Talatona, Luanda. Slim build, short black hair with a neat fade, clean-shaven, friendly and slightly nervous smile. Light-blue short-sleeved shirt, dark trousers, a staff lanyard without any visible text. He sits at a table in a bright modern office kitchenette with a coffee mug, looking at someone off-camera.",
       "uso": "escolha do estilo"
     },
-
     {
-      "id": "ficha-nuno", "fase": 2, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "id": "ficha-nuno",
+      "fase": 2,
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
       "descricao": "Character reference sheet on a plain light-grey background: the same man shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Nuno Kapinga, 22, Angolan, from Lubango, IT intern. Slim build, about 1.75 m, short black hair with a neat fade, clean-shaven, warm brown eyes. Light-blue short-sleeved shirt, dark trousers, black shoes, staff lanyard without text.",
       "uso": "bíblia de personagens"
     },
     {
-      "id": "ficha-paulo", "fase": 2, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "id": "ficha-paulo",
+      "fase": 2,
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
       "descricao": "Character reference sheet on a plain light-grey background: the same man shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Paulo Mendes, 29, Angolan, IT technician from Viana (Luanda). Medium build, round face, short curly black hair, short neat beard, rectangular dark-framed glasses. White shirt with sleeves rolled up, grey trousers, a smartwatch.",
       "uso": "bíblia de personagens"
     },
     {
-      "id": "ficha-silvia", "fase": 2, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "id": "ficha-silvia",
+      "fase": 2,
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
       "descricao": "Character reference sheet on a plain light-grey background: the same woman shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Sílvia Neto, 36, Angolan accountant, married with two young children. Medium height, natural black hair in a low bun, small gold earrings. Mustard-yellow blouse, navy pencil skirt, low heels, carries a folder.",
       "uso": "bíblia de personagens"
     },
     {
-      "id": "ficha-ana", "fase": 2, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "id": "ficha-ana",
+      "fase": 2,
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
       "descricao": "Character reference sheet on a plain light-grey background: the same woman shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Ana Domingos, 27, Angolan receptionist. Slim, shoulder-length braids, bright smile. Navy blazer over a white top, black trousers, a small headset around her neck.",
       "uso": "bíblia de personagens"
     },
     {
-      "id": "ficha-mateus", "fase": 2, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "id": "ficha-mateus",
+      "fase": 2,
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
       "descricao": "Character reference sheet on a plain light-grey background: the same man shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Mateus, 34, Angolan engineer from Huambo who works on oil-industry projects in Cabinda. Tall and broad-shouldered, shaved head, short moustache. Khaki work shirt with rolled sleeves, dark jeans, safety boots; a white hard hat in one hand in the full-body view.",
       "uso": "bíblia de personagens"
     },
     {
-      "id": "ficha-baptista", "fase": 2, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "id": "ficha-baptista",
+      "fase": 2,
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
       "descricao": "Character reference sheet on a plain light-grey background: the same man shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, serious). Sr. João Baptista, 54, Angolan manager, Paulo's boss. Slightly heavy build, greying short hair and a grey moustache, reading glasses on a cord. Dark-grey suit, white shirt, no tie.",
       "uso": "bíblia de personagens"
     },
-
     {
-      "id": "lugar-kalandula-entrada", "fase": 3, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "id": "lugar-kalandula-entrada",
+      "fase": 3,
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
       "descricao": "Empty reception area of a small modern technology company in Talatona, Luanda, at 8 a.m.: a light wooden reception desk, a computer, plants, a glass wall, morning sunlight, a sofa for visitors. No people. No signs or logos with text.",
       "uso": "lugar recorrente (A1 1A…)"
     },
     {
-      "id": "lugar-kalandula-copa", "fase": 3, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "id": "lugar-kalandula-copa",
+      "fase": 3,
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
       "descricao": "Empty office kitchenette of the same small technology company in Talatona, Luanda: a long table with chairs, a coffee machine, a fridge, a window with a view of palm trees and low buildings, mid-morning light. No people. No text anywhere.",
       "uso": "lugar recorrente (A1 R1A, 6A…)"
     },
-
     {
-      "id": "cena-a1-r1a", "fase": 4, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K",
-      "referencias": ["ficha-paulo", "ficha-nuno", "lugar-kalandula-copa"],
+      "id": "cena-a1-r1a",
+      "fase": 4,
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-paulo",
+        "ficha-nuno",
+        "lugar-kalandula-copa"
+      ],
       "descricao": "In the office kitchenette from the reference image, Paulo (from his reference sheet) holds up his phone to record a short interview with Nuno (from his reference sheet), who sits at the table with a coffee mug, smiling a little shyly. Mid-morning light.",
       "uso": "A1 R1A — Meet the team"
     }
