@@ -1,0 +1,86 @@
+{
+ "exame": "C1.2",
+ "formato": "apps/practice/models.py Situacao (situações próprias do exame; extras.exame = true; carregar com manage.py carregar_exame_curso)",
+ "situacoes": [
+  {
+   "slug": "c1-2-exame-etica",
+   "nome": "C1.2 exam · The friendly supplier",
+   "papel_tutor": "A friendly, informal supplier who is bidding for a contract and offers the student a favour.",
+   "descricao": "Register: friendly and informal. The student manages purchasing at a company that is choosing a supplier of office equipment; a decision is due next week. The examiner is one of the suppliers, very friendly. Difficulty: the examiner invites the student to a weekend at a beach resort \"to discuss the project\", and then asks for a small favour: a look at the other suppliers' prices. When the student refuses, the examiner insists once: everyone does it, it is just friendship. Decision: the student refuses without accusing and proposes a clean alternative (a meeting at the office, with a colleague). Discussion: Should companies ban all gifts from suppliers, even small ones? Opposite view 1: small gifts are part of good relationships in many cultures. Opposite view 2: a total ban is easier to apply than a grey limit.",
+   "nivel": "C1",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. I'm one of the suppliers bidding for your office equipment contract. Hi! Great to see you again. Listen, I've got a little idea for this weekend…"
+   },
+   "frases": [
+    "That's very kind of you, but I'm afraid that's not something I can accept.",
+    "Strictly speaking…",
+    "Perhaps they do. Either way, I won't.",
+    "What I'd suggest instead is…"
+   ]
+  },
+  {
+   "slug": "c1-2-exame-explicar",
+   "nome": "C1.2 exam · The worried patient",
+   "papel_tutor": "An older patient at a local clinic, worried and suspicious, who does not understand technical words.",
+   "descricao": "Register: plain, calm and respectful. The student works at a local clinic that is moving from paper files to electronic health records next month. The examiner is an older patient who is worried. The student explains, without jargon, what is changing and why, with an analogy and an example. Difficulty: the examiner misunderstands once (So anyone can read my file on the internet?) and then asks for a guarantee that nothing will ever go wrong, which the student should not give. Decision: agree on a next step (for example, a visit with a nurse to see the system, or a consent form). Discussion: Is it the duty of experts to explain their work to the public? Opposite view 1: experts are paid to work, not to teach. Opposite view 2: when people do not understand science, they stop trusting it.",
+   "nivel": "C1",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. I'm one of the older patients at your clinic. My neighbour says you're putting all our medical files on the computer. I don't like it at all. What is this about?"
+   },
+   "frases": [
+    "That's a very reasonable question.",
+    "Think of it as…",
+    "I'm afraid I can't promise… What I can promise is…",
+    "Would you like to come and see it?"
+   ]
+  },
+  {
+   "slug": "c1-2-exame-radio",
+   "nome": "C1.2 exam · Live on the radio",
+   "papel_tutor": "A pushy live-radio journalist who interrupts and uses false premises.",
+   "descricao": "Register: short, calm and clear. The student represents the town council: a new bus service between the suburbs and the centre started three months late and 12 percent over budget, but 4,000 people now use it every day. The examiner is a live-radio journalist. Difficulty: the examiner states one false premise (Isn't it true that nobody uses it?), interrupts the student once, and asks one question the student should not answer (what one named driver earns). Decision: the student ends with one clear key message and one concrete promise. Discussion: Do the media make public trust in institutions stronger or weaker? Opposite view 1: journalists hold the powerful to account. Opposite view 2: hard interviews reward clever talkers, not honest people.",
+   "nivel": "C1",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. You're live on air with me. Your new bus service started three months late. Success or embarrassment?"
+   },
+   "frases": [
+    "That's not quite right. …",
+    "If I could just finish…",
+    "I'm not in a position to… What I can tell you is…",
+    "This I can promise you:…"
+   ]
+  },
+  {
+   "slug": "c1-2-exame-acordo",
+   "nome": "C1.2 exam · The final round",
+   "papel_tutor": "The formal head of purchasing of a university, in the final round of a negotiation.",
+   "descricao": "Register: formal. The student's company offers a three-year catering contract for a university canteen. Open points: price per meal (student 1,500 kwanzas; examiner 1,200), local produce (examiner wants 60 percent from year one), and penalties (examiner wants no limit). The student decides their own walk-away point. Difficulty: after one creative option is found, the examiner makes a last-minute demand with a false deadline (free coffee for all staff, and an answer tonight). Decision: the student sums up the deal point by point, with conditions, and asks for confirmation. Discussion: Is a good negotiator someone who wins, or someone who makes the other side happy too? Opposite view 1: your job is to get the best deal for your company. Opposite view 2: a deal the other side hates will not last.",
+   "nivel": "C1",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. Good afternoon. I'm the head of purchasing at the university. Thank you for your revised proposal. I'm afraid one thousand five hundred kwanzas per meal is still well above our budget."
+   },
+   "frases": [
+    "What we both want is…",
+    "We seem to have reached an impasse. Let's take a step back.",
+    "I understand the deadline, but…",
+    "Just to confirm… subject to… Is that your understanding too?"
+   ]
+  }
+ ]
+}

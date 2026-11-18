@@ -1,0 +1,91 @@
+{
+ "formato": "CourseGradingConfig.exam_script (apps/practice/conversa/exame.py, validar_guiao); carregar com manage.py carregar_exame_curso",
+ "nivel": "C1",
+ "duracao": "11 to 12 minutes",
+ "max_minutos": 12,
+ "situacoes": 1,
+ "partes": [
+  {
+   "titulo": "Interview",
+   "minutos": "about 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Hello, {nome}. Welcome to your C1.2 speaking exam. Tell me about the people you deal with at work or in your studies. Do you speak to all of them in the same way?",
+     "simples": "Do you speak in the same way to everyone at work or in your studies?"
+    },
+    {
+     "pergunta": "What is something that people in your field expected ten years ago, but that never happened? Why not?",
+     "simples": "What did people expect in your field that did not happen?"
+    },
+    {
+     "pergunta": "Where do you get your news, and how do you decide what to trust?",
+     "simples": "Where do you get your news? Do you trust it?"
+    }
+   ]
+  },
+  {
+   "titulo": "Long turn",
+   "minutos": "about 3 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Now please talk for about one and a half minutes. A country wants to cut its electricity bills. Three options: solar panels on every public building, a national campaign to reduce waste, or higher prices for the biggest users. Choose two, compare them, and say which would work better.",
+     "simples": "Three ways to cut electricity bills: solar on public buildings, a campaign, or higher prices for big users. Choose two and compare them."
+    },
+    {
+     "pergunta": "Thank you. Who would be most likely to oppose your choice, and how would you persuade them?",
+     "simples": "Who would be against your choice? How would you convince them?"
+    },
+    {
+     "pergunta": "Imagine you had one minute on the radio to explain your choice. What would your key message be?",
+     "simples": "On the radio, what would be your main message?"
+    }
+   ]
+  }
+ ],
+ "notas": [
+  "Ask one question at a time and wait. Do not correct, teach or give hints. If the student takes time to think, reformulates, corrects themselves, explains a technical word simply or disagrees politely, continue normally.",
+  "If the student answers with one word or one short sentence, ask Could you say a bit more about that? once per question.",
+  "In Part 2, let the student talk for about one and a half minutes without interrupting. If they describe all three options or do not choose, ask And which would you choose, and why? once.",
+  "If the student does not work, adapt the questions to their studies, their family or their community.",
+  "In the situation, speak in the register of the character described (formal, neutral or plain and calm) from the first sentence, and keep it. Create the difficulty described once. The task ends only with a clear decision; if the student does not close it, ask So, what do we decide?",
+  "Notice whether the student matches the register of the character. Do not comment on it during the exam.",
+  "After the situation, ask its discussion question. Give the first opposite view and wait; then the second and wait. This is Part 4 (about 3 minutes). Expect structure and nuance.",
+  "Use any language up to C1 unit 10. Speak at natural speed, but avoid idioms in Part 4 and with the student when the character would not use them."
+ ],
+ "escala": {
+  "tarefa": {
+   "80-100": "Complete, well-organised answers; chooses two of the three options, compares, speculates and chooses with reasons; handles the difficulty in Part 3 and reaches a clear decision; answers both counter-arguments with structure and nuance.",
+   "60-79": "Developed answers; compares two options with some speculation; reaches a decision with some help; answers the counter-arguments, but with little structure.",
+   "40-59": "Short or unfocused answers; does not really choose; the situation ends without a decision; simple agreement or disagreement in Part 4.",
+   "0-39": "Answers few questions, or answers in Portuguese."
+  },
+  "gramatica": {
+   "80-100": "The full range of C1 structures used naturally and flexibly (ellipsis, the future in the past, fronting, inversion, participle clauses, reporting passives, phrasal verbs in the right order); mistakes are rare and hard to notice.",
+   "60-79": "Uses several C1.2 structures with some mistakes of form (for example I don't hope so, or turned down it), but the meaning is always clear.",
+   "40-59": "Mostly B2 structures; few C1 structures; mistakes sometimes make the meaning unclear.",
+   "0-39": "Very few correct complex sentences."
+  },
+  "vocabulario": {
+   "80-100": "Precise, wide vocabulary from C1 units 6-10 (ethics, science and technology, media, negotiation); explains technical words simply; register clearly adapted to the character in Part 3.",
+   "60-79": "Good range with some collocations; register mostly adapted; some imprecise words.",
+   "40-59": "Limited range; one register for everyone; general words instead of precise ones.",
+   "0-39": "Very few words, or many Portuguese words."
+  },
+  "fluencia": {
+   "80-100": "Speaks almost effortlessly in long, organised turns; leads the task; handles abstract questions with only brief pauses.",
+   "60-79": "Mostly fluent, with some pauses to find structures; follows rather than leads.",
+   "40-59": "Short turns and frequent pauses; needs help to continue.",
+   "0-39": "Can hardly continue without help."
+  }
+ },
+ "nao_baixa": [
+  "a Portuguese or Angolan accent",
+  "asking the examiner to repeat or to explain a question",
+  "taking a moment to think before an abstract question",
+  "explaining a technical word in simple terms instead of using it",
+  "correcting yourself with Sorry, I mean...",
+  "disagreeing with the examiner politely, or agreeing only in part",
+  "leaving one of the three options aside in Part 2",
+  "one isolated mistake when the structure is clearly C1"
+ ]
+}
