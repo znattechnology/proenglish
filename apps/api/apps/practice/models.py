@@ -1599,3 +1599,25 @@ class Situacao(models.Model):
 
     def __str__(self):
         return f"{self.nome} ({self.slug})"
+
+
+class ConfiguracaoTutor(models.Model):
+    """
+    O modelo de IA do tutor de conversa (no Vapi) e o tempo máximo de cada conversa. Uma só linha,
+    editada pelo admin (/api/v1/admin/tutor/); sem linha, valem as definições do servidor
+    (CONVERSA_VAPI_PROVEDOR, CONVERSA_VAPI_MODELO, CONVERSA_MAX_MINUTOS_SESSAO). Os minutos por
+    plano (dia, mês, teste) ficam nos planos (SubscriptionPlan).
+    """
+    PROVEDORES = [('anthropic', 'Anthropic (Claude)'), ('openai', 'OpenAI (GPT)')]
+    provedor = models.CharField(max_length=20, choices=PROVEDORES, default='anthropic')
+    modelo = models.CharField(max_length=80)
+    max_minutos_sessao = models.PositiveSmallIntegerField(default=15)
+    alterado_em = models.DateTimeField(auto_now=True)
+    alterado_por = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+
+    class Meta:
+        db_table = 'configuracao_tutor'
+        verbose_name = 'Configuração do tutor de conversa'
+
+    def __str__(self):
+        return f'{self.provedor}/{self.modelo}'

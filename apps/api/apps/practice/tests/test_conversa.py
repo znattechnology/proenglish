@@ -105,7 +105,8 @@ class PrepararTests(Base):
         self.assertEqual(d['modo'], 'simulado')
         self.assertIsNone(d['vapi'])
         self.assertEqual(d['quota'], {'plano': 'Premium Plus', 'minutos_dia': 20, 'minutos_usados': 0,
-                                      'minutos_restantes': 20, 'max_minutos_sessao': 15,
+                                      'minutos_restantes': 20, 'minutos_mes': None, 'minutos_usados_mes': 0,
+                                      'minutos_restantes_mes': None, 'max_minutos_sessao': 15,
                                       'pode_comecar': True, 'motivo': None})
 
     def test_exige_autenticacao(self):

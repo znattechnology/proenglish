@@ -14,6 +14,7 @@ const DESTINOS = [
   { nome: "Cursos", href: "/admin/courses", prefixos: ["/admin/courses"] },
   { nome: "Subscrições e pagamentos", href: "/admin/subscriptions", prefixos: ["/admin/subscriptions"] },
   { nome: "Planos e códigos", href: "/admin/plans", prefixos: ["/admin/plans"] },
+  { nome: "Tutor de conversa", href: "/admin/tutor", prefixos: ["/admin/tutor"] },
   { nome: "Opiniões e testemunhos", href: "/admin/feedback", prefixos: ["/admin/feedback"] },
   { nome: "Conteúdo do site", href: "/admin/site", prefixos: ["/admin/site"] },
   { nome: "Ganhos dos professores", href: "/admin/earnings", prefixos: ["/admin/earnings"] },

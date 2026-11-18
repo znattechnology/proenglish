@@ -16,11 +16,14 @@ from apps.subscriptions.models import SubscriptionPlan, UserSubscription
 MOTIVO_SEM_MINUTOS = 'sem_minutos'
 MOTIVO_PLANO_SEM_TUTOR = 'plano_sem_tutor'
 MOTIVO_TESTE_EXPIRADO = 'teste_expirado'
+MOTIVO_SEM_MINUTOS_MES = 'sem_minutos_mes'
 
 MENSAGENS = {
     MOTIVO_SEM_MINUTOS: 'Já usou os minutos de conversa de hoje. Volte amanhã ou assine um plano com mais minutos.',
     MOTIVO_PLANO_SEM_TUTOR: 'O seu plano não inclui conversa com o tutor.',
     MOTIVO_TESTE_EXPIRADO: 'O seu período de teste terminou. Escolha um plano para continuar a conversar.',
+    MOTIVO_SEM_MINUTOS_MES: ('Já usou os minutos de conversa deste mês. Renovam no dia 1 do próximo mês, '
+                             'ou pode passar a um plano com mais minutos.'),
 }
 
 
@@ -55,18 +58,22 @@ def estado_quota(user, sub=None):
     plano, expirada = _plano_efectivo(sub)
     limite, teste_acabou = limite_diario(sub)
     usados = sub.daily_speaking_minutes_used
-    max_sessao = settings.CONVERSA_MAX_MINUTOS_SESSAO
+    from .configuracao import actual
+    max_sessao = actual()['max_minutos_sessao']   # editável no admin
+    # Mensal (só nos planos que o têm): o que acabar primeiro, o do dia ou o do mês.
+    limite_mes = plano.monthly_speaking_minutes
+    usados_mes = sub.monthly_speaking_minutes_used
+    restantes_mes = None if limite_mes is None else max(0, limite_mes - usados_mes)
 
-    if limite is None:
-        restantes = None
-        max_minutos = max_sessao
-    else:
-        restantes = max(0, limite - usados)
-        max_minutos = min(max_sessao, restantes)
+    restantes = None if limite is None else max(0, limite - usados)
+    candidatos = [x for x in (restantes, restantes_mes) if x is not None]
+    max_minutos = min([max_sessao, *candidatos])
 
     motivo = None
     if limite is not None and limite <= 0:
         motivo = MOTIVO_TESTE_EXPIRADO if teste_acabou else MOTIVO_PLANO_SEM_TUTOR
+    elif restantes_mes is not None and restantes_mes < 1:
+        motivo = MOTIVO_SEM_MINUTOS_MES
     elif restantes is not None and restantes < 1:
         motivo = MOTIVO_SEM_MINUTOS
 
@@ -74,7 +81,11 @@ def estado_quota(user, sub=None):
         'plano': plano.name,
         'minutos_dia': limite,
         'minutos_usados': usados,
-        'minutos_restantes': restantes,
+        'minutos_restantes': restantes if restantes_mes is None else (
+            restantes_mes if restantes is None else min(restantes, restantes_mes)),
+        'minutos_mes': limite_mes,
+        'minutos_usados_mes': usados_mes,
+        'minutos_restantes_mes': restantes_mes,
         'max_minutos_sessao': max_minutos if motivo is None else 0,
         'pode_comecar': motivo is None,
         'motivo': motivo,

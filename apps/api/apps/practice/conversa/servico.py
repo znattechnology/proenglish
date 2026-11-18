@@ -249,13 +249,15 @@ def _contexto(user, situacao):
 
 def modelo_vapi(instrucoes):
     """O modelo que o Vapi usa na chamada, com o prompt desta sessão."""
+    from .configuracao import actual
+    cfg = actual()   # o admin escolhe o fornecedor e o modelo (sem mudar o código)
     modelo = {
-        'provider': settings.CONVERSA_VAPI_PROVEDOR,
-        'model': settings.CONVERSA_VAPI_MODELO,
+        'provider': cfg['provedor'],
+        'model': cfg['modelo'],
         'maxTokens': 250,
         'messages': [{'role': 'system', 'content': instrucoes}],
     }
-    if settings.CONVERSA_VAPI_PROVEDOR == 'openai':
+    if cfg['provedor'] == 'openai':
         modelo['temperature'] = 0.6  # os modelos Claude actuais não aceitam temperature
     return modelo
 
@@ -529,7 +531,8 @@ def fechar(sessao, sub, segundos, transcricao, ligou, agora=None, avaliavel=True
     a_cobrar = minutos - ja_cobrados
     if a_cobrar > 0 and do_dia and not isenta:
         UserSubscription.objects.filter(pk=sub.pk).update(
-            daily_speaking_minutes_used=F('daily_speaking_minutes_used') + a_cobrar)
+            daily_speaking_minutes_used=F('daily_speaking_minutes_used') + a_cobrar,
+            monthly_speaking_minutes_used=F('monthly_speaking_minutes_used') + a_cobrar)
     return sessao, segundos_cobrar
 
 

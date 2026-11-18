@@ -45,7 +45,11 @@ def _analises(plano):
 
 
 def _conversa(plano):
-    return _mais(plano.daily_speaking_minutes)
+    """Minutos de conversa comparáveis entre planos: o limite mensal, ou o diário × 30."""
+    if plano.monthly_speaking_minutes is not None:
+        return plano.monthly_speaking_minutes
+    return _mais(plano.daily_speaking_minutes if plano.daily_speaking_minutes is None
+                 else plano.daily_speaking_minutes * 30)
 
 
 def melhora(plano, actual, recurso):
@@ -75,7 +79,9 @@ def ganhos(plano):
                  else _por_dia(plano.daily_lessons_limit, 'lição nova', 'lições novas'))
     g[ANALISES] = ('Análises de pronúncia sem limite' if not plano.daily_ai_analyses_limit
                    else _por_dia(plano.daily_ai_analyses_limit, 'análise de pronúncia', 'análises de pronúncia'))
-    if plano.daily_speaking_minutes is None:
+    if plano.monthly_speaking_minutes:
+        g[CONVERSA] = f'{plano.monthly_speaking_minutes} minutos de conversa com o tutor por mês'
+    elif plano.daily_speaking_minutes is None:
         g[CONVERSA] = 'Conversa com o tutor sem limite de tempo'
     elif plano.daily_speaking_minutes > 0:
         g[CONVERSA] = (f'{plano.daily_speaking_minutes} minutos de conversa com o tutor por dia')

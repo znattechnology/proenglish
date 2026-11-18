@@ -102,6 +102,12 @@ class SubscriptionPlan(models.Model):
         default=0,
         help_text="Minutos diários de speaking durante o trial"
     )
+    # Limite mensal da conversa com o tutor (Vapi, o recurso mais caro). None = sem limite mensal.
+    # Soma-se ao diário: vale o que acabar primeiro. O mês é o de calendário, na hora de Angola.
+    monthly_speaking_minutes = models.IntegerField(
+        null=True, blank=True,
+        help_text="Minutos de conversa com o tutor por mês (vazio = sem limite mensal)"
+    )
 
     # Recursos premium
     offline_downloads = models.BooleanField(default=False)
@@ -215,6 +221,9 @@ class UserSubscription(models.Model):
     last_reset_date = models.DateField(default=get_current_date)
     daily_lessons_used = models.IntegerField(default=0)
     daily_speaking_minutes_used = models.IntegerField(default=0)
+    # Minutos de conversa gastos no mês `speaking_month` ("2026-11"); renova no dia 1.
+    monthly_speaking_minutes_used = models.IntegerField(default=0)
+    speaking_month = models.CharField(max_length=7, blank=True, default='')
     daily_listening_minutes_used = models.IntegerField(default=0)
     daily_ai_analyses_used = models.IntegerField(default=0)
 
@@ -295,6 +304,11 @@ class UserSubscription(models.Model):
             self.last_reset_date = today
             campos = ['daily_lessons_used', 'daily_speaking_minutes_used', 'daily_listening_minutes_used',
                       'daily_ai_analyses_used', 'last_reset_date']
+        mes = today.strftime('%Y-%m')
+        if self.speaking_month != mes:
+            self.monthly_speaking_minutes_used = 0
+            self.speaking_month = mes
+            campos += ['monthly_speaking_minutes_used', 'speaking_month']
         licoes = licoes_novas_hoje(self.user_id)
         if licoes != self.daily_lessons_used:
             self.daily_lessons_used = licoes

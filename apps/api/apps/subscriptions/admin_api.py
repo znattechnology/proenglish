@@ -143,6 +143,10 @@ def _plano_repr(p, contagens=None):
             'licoes_dia': p.daily_lessons_limit or None,
             'vidas': p.hearts_limit or None,
             'conversa_min_dia': p.daily_speaking_minutes,
+            'conversa_min_mes': p.monthly_speaking_minutes,
+            'teste_conversa_min_dia': p.trial_speaking_minutes,
+            # Gratuito: dias depois do registo em que há tutor (com teste_conversa_min_dia por dia).
+            'teste_conversa_dias': p.trial_days,
             'sessoes_nativo_mes': p.native_teacher_sessions,
             'protecoes_semana': p.streak_freeze,
             # Avaliações de pronúncia detalhadas (Azure) por dia; 0 = nenhuma.
@@ -239,7 +243,8 @@ def _validar_plano(p, d):
         if not isinstance(lim, dict):
             erros['limites'] = ['Indique os limites como um objecto.']
         else:
-            outros = sorted(set(lim) - {'licoes_dia', 'vidas', 'conversa_min_dia', 'sessoes_nativo_mes',
+            outros = sorted(set(lim) - {'licoes_dia', 'vidas', 'conversa_min_dia', 'conversa_min_mes',
+                                        'teste_conversa_min_dia', 'teste_conversa_dias', 'sessoes_nativo_mes',
                                         'protecoes_semana', 'pronuncia_detalhada_dia'})
             if outros:
                 erros['limites'] = [f'Limite desconhecido: {", ".join(outros)}.']
@@ -257,6 +262,19 @@ def _validar_plano(p, d):
                              nulo=True)
                 if 'limites.conversa_min_dia' not in erros:
                     p.daily_speaking_minutes = v
+            if 'conversa_min_mes' in lim:
+                v = _inteiro(lim['conversa_min_mes'], 'limites.conversa_min_mes', erros, minimo=0, maximo=44640,
+                             nulo=True)
+                if 'limites.conversa_min_mes' not in erros:
+                    p.monthly_speaking_minutes = v
+            if 'teste_conversa_min_dia' in lim:
+                v = _inteiro(lim['teste_conversa_min_dia'], 'limites.teste_conversa_min_dia', erros, minimo=0, maximo=1440)
+                if v is not None:
+                    p.trial_speaking_minutes = v
+            if 'teste_conversa_dias' in lim:
+                v = _inteiro(lim['teste_conversa_dias'], 'limites.teste_conversa_dias', erros, minimo=0, maximo=60)
+                if v is not None:
+                    p.trial_days = v
             if 'sessoes_nativo_mes' in lim:
                 v = _inteiro(lim['sessoes_nativo_mes'], 'limites.sessoes_nativo_mes', erros, minimo=0, maximo=100)
                 if v is not None:

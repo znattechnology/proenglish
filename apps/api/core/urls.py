@@ -10,6 +10,7 @@ from django.conf.urls.static import static
 
 from apps.courses.api.student.colocacao import colocacao as colocacao_aluno
 from apps.courses.api.student.colocacao import teste as teste_colocacao
+from apps.practice.conversa.configuracao import tutor as configuracao_tutor
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -33,6 +34,7 @@ urlpatterns = [
     
     # Admin APIs
     path('api/v1/admin/site/', include('apps.site.urls_admin')),
+    path('api/v1/admin/tutor/', configuracao_tutor, name='admin_tutor'),
     path('api/v1/admin/cursos/', include('apps.courses.api.urls_admin_cursos')),
     path('api/v1/admin/ganhos/', include('apps.pagamentos.urls_ganhos_admin')),
     path('api/v1/admin/', include('apps.pagamentos.admin_api.urls')),
