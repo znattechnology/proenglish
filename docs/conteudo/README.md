@@ -82,7 +82,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [c1/unidade-06/](c1/unidade-06/README.md) | C1.2, unidade 6 "Compliance and ethics": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [c1/unidade-07/](c1/unidade-07/README.md) | C1.2, unidade 7 "Science and change": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [c1/unidade-08/](c1/unidade-08/README.md) | C1.2, unidade 8 "On air": guiões, laboratório, tutor, questionário e revisão aula a aula. |
-| [c1/unidade-09/](c1/unidade-09/README.md) | C1.2, unidade 9 "Register": guiões, laboratório, tutor e questionário. |
+| [c1/unidade-09/](c1/unidade-09/README.md) | C1.2, unidade 9 "Register": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.

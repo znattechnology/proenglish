@@ -1,6 +1,6 @@
 # C1.2 · Unidade 9 — Register (7 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 9
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 9
 
 ## Objectivos da unidade
 
@@ -16,7 +16,7 @@ No fim da unidade, o aluno consegue:
 | 1. Registo | 9A, 9F, 9G | 9A, 9F, 9G, 9R | Guiada e livre | 1, 2 |
 | 2. Expressões idiomáticas | 9B, 9E, 9F | 9B, 9E, 9R | Livre | 3, 4 |
 | 3. Linguagem vaga | 9C, 9F, 9G | 9C, 9R | Guiada e livre | 5, 6 |
-| 4. Phrasal verbs | 9D, 9G | 9D, 9G, 9R | Guiada | 7, 8 |
+| 4. Phrasal verbs | 9D, 9G | 9D, 9G, 9R | Guiada | 7 |
 
 ## O que está nesta pasta
 
@@ -25,7 +25,7 @@ No fim da unidade, o aluno consegue:
 | [guioes.md](guioes.md) | Os 7 guiões (9A a 9G), 12 a 14 minutos cada | Para o professor de IA |
 | [laboratorio.json](laboratorio.json) | 8 lições (9A a 9G e 9R), 106 exercícios: 18 de escuta, 8 de pronúncia, 16 de resposta falada (duas por lição, uma delas até 90 segundos) | Sim: validado com `pratica_formato.validar` (0 erros) |
 | [tutor.json](tutor.json) | Conversa guiada (depois da 9C): "Formal or friendly?" (Emerson faz de directora, de colega e de amigo, e o aluno dá a mesma notícia a cada um); livre (no fim): "The networking evening" (Morgan, um desconhecido numa recepção, começa formal e descontrai se o aluno o acompanhar) | Sim: campos do modelo `Situacao` (nível C1); 10 minutos |
-| [questionario.json](questionario.json) | 12 perguntas (10 da unidade e 2 de reciclagem das unidades 7 e 8), aprovação a 70% | Sim: formato `quiz_data` |
+| [questionario.json](questionario.json) | 12 perguntas (9 da unidade e 3 de reciclagem das unidades 6, 7 e 8), aprovação a 70% | Sim: formato `quiz_data` |
 
 ## Vocabulário da unidade (cerca de 90 palavras e expressões)
 
@@ -53,6 +53,6 @@ Outubro de 2030. A Mussiro decide o Niassa até ao fim do mês; a abertura da Ma
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (18 escutas, 8 pronúncias, a 9F com ruído de sala e música); imagens (as três janelas do 9A, o organigrama, o comunicado da Kalandula); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (18 escutas, 8 pronúncias, a 9F com ruído de sala e música); imagens (as três janelas do 9A, o organigrama, o comunicado da Kalandula); carregamento na plataforma.
 
 A seguir vem a **unidade 10, "Capstone: the deal"** — a última do curso.

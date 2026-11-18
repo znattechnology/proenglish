@@ -172,26 +172,26 @@
   },
   {
    "id": "c1u9q8",
-   "question": "Escolha a frase correcta.",
+   "question": "Reciclagem (C1, unidade 6). \"Will the meeting be cancelled?\" (espera que não)",
    "options": [
     {
      "id": "c1u9q8o0",
-     "text": "I can't put up with it.",
+     "text": "I hope not.",
      "isCorrect": true
     },
     {
      "id": "c1u9q8o1",
-     "text": "I can't put it up with.",
+     "text": "I don't hope so.",
      "isCorrect": false
     },
     {
      "id": "c1u9q8o2",
-     "text": "I can't put up it with.",
+     "text": "I hope no.",
      "isCorrect": false
     }
    ],
    "correctOptionId": "c1u9q8o0",
-   "explanation": "Os phrasal verbs de três partes não se separam.",
+   "explanation": "hope + not.",
    "points": 10
   },
   {

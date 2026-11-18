@@ -34,9 +34,9 @@ Gramática-alvo: formal (passivas, nomes em vez de verbos, inversão e linguagem
   directas: The opening is two weeks late.); coloquial (contracções, phrasal verbs, linguagem vaga,
   expressões: Bad news — the opening's slipped a couple of weeks.); marcas de registo (inform / tell /
   let know; require / need / want; postpone / put off / push back; however / but / though)
-Palavras-alvo: register, formal, neutral, informal, postpone, push back, inform, require, tone,
-  audience
-Reciclagem: inversão condicional (C1, 3B); passivas (B2, 4); 8B
+Palavras-alvo: register, formal, neutral, informal, postpone, push back, inform, require, rude,
+  cold
+Reciclagem: inversão condicional (C1, 3B); passivas (B2, 4)
 Pronúncia: o tom de cada registo: formal (ritmo regular, palavras completas), coloquial (contracções, ritmo
   rápido)
 Contexto: terça-feira, 1 de Outubro de 2030, 9:00; o Nuno ao computador; a abertura da instalação da Marula
@@ -136,8 +136,8 @@ Gramática-alvo: the ball is in their court (agora é com eles); a win-win (bom 
   volta ao início); on the same page (de acordo, com a mesma informação); get the ball rolling (pôr as coisas
   a andar); a ballpark figure (um número aproximado); the elephant in the room (o problema de que ninguém
   fala); cut corners (fazer as coisas mal para poupar); evitar clichés (think outside the box)
-Palavras-alvo: idiom, decision, wait, tender, result, figure, risk, cliché, non-native, plain
-Reciclagem: graus de certeza (C1, 2B); condicionais (C1, 3); 9A
+Palavras-alvo: idiom, decision, wait, tender, price, figure, references, cliché, word for word, plain
+Reciclagem: graus de certeza (C1, 2B); 9A
 Pronúncia: o acento na palavra-chave da expressão (the ball's in their COURT — marcado por indicação)
 Contexto: quinta-feira, 3 de Outubro, 18:00; o escritório quase vazio; o Nuno e o Rajesh à espera de notícias
   da Mussiro sobre o concurso do Niassa
@@ -241,7 +241,7 @@ Gramática-alvo: números e horas (fifty or so, sevenish, thirty-ish, give or ta
   of, loads of, a couple of, a few); suavizar (sort of, kind of, a bit); listas (and so on, and stuff like
   that, or something); registo: em conversa informal sim; em relatórios e com clientes, não (aí: about,
   approximately, roughly — C1 5C)
-Palavras-alvo: vague, approximate, informal, chat, drinks, weekend, plans, roughly, loads, stuff
+Palavras-alvo: vague, approximate, journalists, opening, satellite, weekend, shade, roughly, loads, stuff
 Reciclagem: números aproximados formais (C1, 5C); 9A e 9B
 Pronúncia: o ritmo descontraído da conversa: reduções e acento leve em "-ish", "or so"
 Contexto: sexta-feira, 4 de Outubro, 18:30; uma esplanada em Braamfontein; copos depois do trabalho com a
@@ -344,7 +344,7 @@ Gramática-alvo: separáveis: nome antes ou depois da partícula (set up the off
   them); de três partes, nunca separáveis (put up with, come up with, get away with, look forward to, run
   out of, catch up on, keep up with); registo: phrasal verbs são neutros ou informais; o equivalente formal
   (establish, decline, tolerate)
-Palavras-alvo: reorganisation, structure, office, set up, take over, turn down, hand over, come up with,
+Palavras-alvo: reorganisation, rumours, office, set up, take over, turn down, hand over, come up with,
   put off, look forward to
 Reciclagem: 9A (registo); elipse (C1, 6A)
 Pronúncia: o acento na partícula (turn it DOWN, set it UP — marcado por indicação)
@@ -641,9 +641,9 @@ Objectivo da aula: No fim, o aluno consegue dar a mesma notícia a três públic
 Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: registo formal, neutro e coloquial; expressões idiomáticas; linguagem vaga;
   phrasal verbs
-Palavras-alvo: reorganisation, structure, promotion, take over, set up, briefing, announcement, rumour,
-  joint office, communiqué
-Reciclagem: graus de certeza (C1, 2B); fronting e marcadores (C1, 8); elipse (C1, 6A)
+Palavras-alvo: reorganisation, structure, promotion, take over, look after, brief, facts, rumour,
+  joint office, note
+Reciclagem: inversão condicional (C1, 3B: Should we be awarded…); passivas (B2, 4: will be taken over by…)
 Pronúncia: três vozes para três registos: formal e pausada; clara e calorosa; rápida e descontraída
 Mediação: o Nuno passa à equipa, em inglês, o comunicado interno da Kalandula sobre o escritório conjunto,
   escrito em português
