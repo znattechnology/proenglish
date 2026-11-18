@@ -370,6 +370,8 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=False, cast=bool)
+# Segundos até desistir do servidor SMTP: sem isto, um SMTP que não responde prende o pedido.
+EMAIL_TIMEOUT = config('EMAIL_TIMEOUT', default=20, cast=int)
 
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='noreply@proenglish.com')
 CONTACT_EMAIL = config('CONTACT_EMAIL', default='contact@proenglish.com')
