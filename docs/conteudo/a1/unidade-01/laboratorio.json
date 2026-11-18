@@ -187,6 +187,27 @@
     },
     {
      "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"email\"",
+     "opcoes": [
+      {
+       "texto": "desk",
+       "certa": false,
+       "imagem": "desk"
+      },
+      {
+       "texto": "email",
+       "certa": true,
+       "imagem": "email"
+      },
+      {
+       "texto": "mobile phone",
+       "certa": false,
+       "imagem": "mobile-phone"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
      "enunciado": "Num e-mail, como se diz o símbolo @?",
      "opcoes": [
       {
@@ -318,6 +339,27 @@
       {
        "a": "15",
        "b": "fifteen"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"mobile phone\"",
+     "opcoes": [
+      {
+       "texto": "mobile phone",
+       "certa": true,
+       "imagem": "mobile-phone"
+      },
+      {
+       "texto": "screen",
+       "certa": false,
+       "imagem": "screen"
+      },
+      {
+       "texto": "computer",
+       "certa": false,
+       "imagem": "computer"
       }
      ]
     },
@@ -461,6 +503,27 @@
       }
      ],
      "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"mobile phone\"",
+     "opcoes": [
+      {
+       "texto": "car keys",
+       "certa": false,
+       "imagem": "car-keys"
+      },
+      {
+       "texto": "mobile phone",
+       "certa": true,
+       "imagem": "mobile-phone"
+      },
+      {
+       "texto": "calendar",
+       "certa": false,
+       "imagem": "calendar"
+      }
+     ]
     },
     {
      "tipo": "escuta",
@@ -730,6 +793,27 @@
       }
      ],
      "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"desk\"",
+     "opcoes": [
+      {
+       "texto": "laptop",
+       "certa": false,
+       "imagem": "laptop"
+      },
+      {
+       "texto": "calendar",
+       "certa": false,
+       "imagem": "calendar"
+      },
+      {
+       "texto": "desk",
+       "certa": true,
+       "imagem": "desk"
+      }
+     ]
     },
     {
      "tipo": "completar",

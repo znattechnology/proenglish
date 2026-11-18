@@ -25,6 +25,48 @@
      "explicacao": ""
     },
     {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"shoes\"",
+     "opcoes": [
+      {
+       "texto": "T-shirt",
+       "certa": false,
+       "imagem": "t-shirt"
+      },
+      {
+       "texto": "shoes",
+       "certa": true,
+       "imagem": "shoes"
+      },
+      {
+       "texto": "shirt",
+       "certa": false,
+       "imagem": "shirt"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"trousers\"",
+     "opcoes": [
+      {
+       "texto": "dress",
+       "certa": false,
+       "imagem": "dress"
+      },
+      {
+       "texto": "shirt",
+       "certa": false,
+       "imagem": "shirt"
+      },
+      {
+       "texto": "trousers",
+       "certa": true,
+       "imagem": "trousers"
+      }
+     ]
+    },
+    {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
      "frase": "How much are [those] shoes? (longe)",
@@ -181,6 +223,48 @@
     },
     {
      "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"screen\"",
+     "opcoes": [
+      {
+       "texto": "screen",
+       "certa": true,
+       "imagem": "screen"
+      },
+      {
+       "texto": "charger",
+       "certa": false,
+       "imagem": "charger"
+      },
+      {
+       "texto": "battery",
+       "certa": false,
+       "imagem": "battery"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"receipt\"",
+     "opcoes": [
+      {
+       "texto": "soft drink",
+       "certa": false,
+       "imagem": "soft-drink"
+      },
+      {
+       "texto": "receipt",
+       "certa": true,
+       "imagem": "receipt"
+      },
+      {
+       "texto": "glass of juice",
+       "certa": false,
+       "imagem": "glass-of-juice"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
      "enunciado": "Quer que o técnico veja o telemóvel. O que pergunta?",
      "opcoes": [
       {
@@ -329,6 +413,27 @@
       }
      ],
      "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"laptop\"",
+     "opcoes": [
+      {
+       "texto": "photo",
+       "certa": false,
+       "imagem": "photo"
+      },
+      {
+       "texto": "laptop",
+       "certa": true,
+       "imagem": "laptop"
+      },
+      {
+       "texto": "ID card",
+       "certa": false,
+       "imagem": "id-card"
+      }
+     ]
     },
     {
      "tipo": "completar",
@@ -501,6 +606,48 @@
       {
        "a": "suit",
        "b": "fato"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"tie\"",
+     "opcoes": [
+      {
+       "texto": "tie",
+       "certa": true,
+       "imagem": "tie"
+      },
+      {
+       "texto": "trainers",
+       "certa": false,
+       "imagem": "trainers"
+      },
+      {
+       "texto": "sandals",
+       "certa": false,
+       "imagem": "sandals"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"jeans\"",
+     "opcoes": [
+      {
+       "texto": "jacket",
+       "certa": false,
+       "imagem": "jacket"
+      },
+      {
+       "texto": "jeans",
+       "certa": true,
+       "imagem": "jeans"
+      },
+      {
+       "texto": "suit",
+       "certa": false,
+       "imagem": "suit"
       }
      ]
     },
@@ -795,6 +942,48 @@
       {
        "a": "a cold",
        "b": "constipação"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"cold\"",
+     "opcoes": [
+      {
+       "texto": "cold",
+       "certa": true,
+       "imagem": "cold"
+      },
+      {
+       "texto": "cream",
+       "certa": false,
+       "imagem": "cream"
+      },
+      {
+       "texto": "stomach",
+       "certa": false,
+       "imagem": "stomach"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"leg\"",
+     "opcoes": [
+      {
+       "texto": "leg",
+       "certa": true,
+       "imagem": "leg"
+      },
+      {
+       "texto": "headache",
+       "certa": false,
+       "imagem": "headache"
+      },
+      {
+       "texto": "foot",
+       "certa": false,
+       "imagem": "foot"
       }
      ]
     },

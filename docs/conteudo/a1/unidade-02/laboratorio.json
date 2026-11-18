@@ -745,6 +745,27 @@
      "explicacao": ""
     },
     {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"coffee\"",
+     "opcoes": [
+      {
+       "texto": "breakfast",
+       "certa": false,
+       "imagem": "breakfast"
+      },
+      {
+       "texto": "funge",
+       "certa": false,
+       "imagem": "funge"
+      },
+      {
+       "texto": "coffee",
+       "certa": true,
+       "imagem": "coffee"
+      }
+     ]
+    },
+    {
      "tipo": "ordenar",
      "enunciado": "É a primeira vez que está em Luanda?",
      "resposta": "Is this your first time in Luanda?",

@@ -29,6 +29,48 @@
     },
     {
      "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"egg\"",
+     "opcoes": [
+      {
+       "texto": "bread",
+       "certa": false,
+       "imagem": "bread"
+      },
+      {
+       "texto": "cheese",
+       "certa": false,
+       "imagem": "cheese"
+      },
+      {
+       "texto": "egg",
+       "certa": true,
+       "imagem": "egg"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"cake\"",
+     "opcoes": [
+      {
+       "texto": "cake",
+       "certa": true,
+       "imagem": "cake"
+      },
+      {
+       "texto": "juice",
+       "certa": false,
+       "imagem": "juice"
+      },
+      {
+       "texto": "sandwich",
+       "certa": false,
+       "imagem": "sandwich"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
      "enunciado": "Qual é a frase correcta?",
      "opcoes": [
       {
@@ -186,6 +228,48 @@
      "explicacao": "\"I'd like\" é educado; \"I want\" soa exigente."
     },
     {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"glass of juice\"",
+     "opcoes": [
+      {
+       "texto": "croissant",
+       "certa": false,
+       "imagem": "croissant"
+      },
+      {
+       "texto": "coffee with milk",
+       "certa": false,
+       "imagem": "coffee-with-milk"
+      },
+      {
+       "texto": "glass of juice",
+       "certa": true,
+       "imagem": "glass-of-juice"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"bottle of water\"",
+     "opcoes": [
+      {
+       "texto": "cake",
+       "certa": false,
+       "imagem": "cake"
+      },
+      {
+       "texto": "bottle of water",
+       "certa": true,
+       "imagem": "bottle-of-water"
+      },
+      {
+       "texto": "coffee with milk",
+       "certa": false,
+       "imagem": "coffee-with-milk"
+      }
+     ]
+    },
+    {
      "tipo": "ordenar",
      "enunciado": "Pode dar-me um café simples, por favor?",
      "resposta": "Can I have a black coffee, please?",
@@ -326,6 +410,48 @@
       }
      ],
      "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"bank card\"",
+     "opcoes": [
+      {
+       "texto": "bank card",
+       "certa": true,
+       "imagem": "bank-card"
+      },
+      {
+       "texto": "the bill",
+       "certa": false,
+       "imagem": "the-bill"
+      },
+      {
+       "texto": "cash",
+       "certa": false,
+       "imagem": "cash"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"receipt\"",
+     "opcoes": [
+      {
+       "texto": "cash",
+       "certa": false,
+       "imagem": "cash"
+      },
+      {
+       "texto": "bank card",
+       "certa": false,
+       "imagem": "bank-card"
+      },
+      {
+       "texto": "receipt",
+       "certa": true,
+       "imagem": "receipt"
+      }
+     ]
     },
     {
      "tipo": "escuta",
@@ -499,6 +625,48 @@
       {
        "a": "vegetables",
        "b": "legumes"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"chicken\"",
+     "opcoes": [
+      {
+       "texto": "juice",
+       "certa": false,
+       "imagem": "juice"
+      },
+      {
+       "texto": "chicken",
+       "certa": true,
+       "imagem": "chicken"
+      },
+      {
+       "texto": "calulu",
+       "certa": false,
+       "imagem": "calulu"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"banana\"",
+     "opcoes": [
+      {
+       "texto": "banana",
+       "certa": true,
+       "imagem": "banana"
+      },
+      {
+       "texto": "funge",
+       "certa": false,
+       "imagem": "funge"
+      },
+      {
+       "texto": "tea",
+       "certa": false,
+       "imagem": "tea"
       }
      ]
     },
@@ -788,6 +956,48 @@
       }
      ],
      "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"the bill\"",
+     "opcoes": [
+      {
+       "texto": "the bill",
+       "certa": true,
+       "imagem": "the-bill"
+      },
+      {
+       "texto": "dessert",
+       "certa": false,
+       "imagem": "dessert"
+      },
+      {
+       "texto": "main course",
+       "certa": false,
+       "imagem": "main-course"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"main course\"",
+     "opcoes": [
+      {
+       "texto": "main course",
+       "certa": true,
+       "imagem": "main-course"
+      },
+      {
+       "texto": "the bill",
+       "certa": false,
+       "imagem": "the-bill"
+      },
+      {
+       "texto": "dessert",
+       "certa": false,
+       "imagem": "dessert"
+      }
+     ]
     },
     {
      "tipo": "escolher",

@@ -195,6 +195,48 @@
      "explicacao": "Com \"he/she/it\", o verbo leva \"s\"."
     },
     {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"watch TV\"",
+     "opcoes": [
+      {
+       "texto": "go to work",
+       "certa": false,
+       "imagem": "go-to-work"
+      },
+      {
+       "texto": "go to bed",
+       "certa": false,
+       "imagem": "go-to-bed"
+      },
+      {
+       "texto": "watch TV",
+       "certa": true,
+       "imagem": "watch-tv"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"go to bed\"",
+     "opcoes": [
+      {
+       "texto": "have breakfast",
+       "certa": false,
+       "imagem": "have-breakfast"
+      },
+      {
+       "texto": "get up",
+       "certa": false,
+       "imagem": "get-up"
+      },
+      {
+       "texto": "go to bed",
+       "certa": true,
+       "imagem": "go-to-bed"
+      }
+     ]
+    },
+    {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
      "frase": "She [starts] work at seven thirty.",
@@ -367,6 +409,27 @@
       }
      ],
      "explicacao": "Com \"he/she\": \"doesn't\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"walk\"",
+     "opcoes": [
+      {
+       "texto": "walk",
+       "certa": true,
+       "imagem": "walk"
+      },
+      {
+       "texto": "take the bus",
+       "certa": false,
+       "imagem": "take-the-bus"
+      },
+      {
+       "texto": "drive",
+       "certa": false,
+       "imagem": "drive"
+      }
+     ]
     },
     {
      "tipo": "escolher",
@@ -688,6 +751,48 @@
      ]
     },
     {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"boat\"",
+     "opcoes": [
+      {
+       "texto": "plane",
+       "certa": false,
+       "imagem": "plane"
+      },
+      {
+       "texto": "car",
+       "certa": false,
+       "imagem": "car"
+      },
+      {
+       "texto": "boat",
+       "certa": true,
+       "imagem": "boat"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"take a shower\"",
+     "opcoes": [
+      {
+       "texto": "have breakfast",
+       "certa": false,
+       "imagem": "have-breakfast"
+      },
+      {
+       "texto": "read",
+       "certa": false,
+       "imagem": "read"
+      },
+      {
+       "texto": "take a shower",
+       "certa": true,
+       "imagem": "take-a-shower"
+      }
+     ]
+    },
+    {
      "tipo": "ordenar",
      "enunciado": "Tomo o pequeno-almoço às seis e meia.",
      "resposta": "I have breakfast at six thirty.",
@@ -950,6 +1055,27 @@
       }
      ],
      "explicacao": "\"On\" com dias."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"calendar\"",
+     "opcoes": [
+      {
+       "texto": "battery",
+       "certa": false,
+       "imagem": "battery"
+      },
+      {
+       "texto": "cup",
+       "certa": false,
+       "imagem": "cup"
+      },
+      {
+       "texto": "calendar",
+       "certa": true,
+       "imagem": "calendar"
+      }
+     ]
     },
     {
      "tipo": "completar",

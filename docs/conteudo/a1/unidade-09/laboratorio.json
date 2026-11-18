@@ -35,6 +35,48 @@
      ]
     },
     {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"swim\"",
+     "opcoes": [
+      {
+       "texto": "iron",
+       "certa": false,
+       "imagem": "iron"
+      },
+      {
+       "texto": "swim",
+       "certa": true,
+       "imagem": "swim"
+      },
+      {
+       "texto": "go to the beach",
+       "certa": false,
+       "imagem": "go-to-the-beach"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"listen to music\"",
+     "opcoes": [
+      {
+       "texto": "sing",
+       "certa": false,
+       "imagem": "sing"
+      },
+      {
+       "texto": "clean the house",
+       "certa": false,
+       "imagem": "clean-the-house"
+      },
+      {
+       "texto": "listen to music",
+       "certa": true,
+       "imagem": "listen-to-music"
+      }
+     ]
+    },
+    {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
      "frase": "I love [dancing].",
@@ -187,6 +229,48 @@
       }
      ],
      "explicacao": "\"Can\" é igual para todas as pessoas, e o verbo fica simples."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"dance\"",
+     "opcoes": [
+      {
+       "texto": "swim",
+       "certa": false,
+       "imagem": "swim"
+      },
+      {
+       "texto": "cook",
+       "certa": false,
+       "imagem": "cook"
+      },
+      {
+       "texto": "dance",
+       "certa": true,
+       "imagem": "dance"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"drive\"",
+     "opcoes": [
+      {
+       "texto": "drive",
+       "certa": true,
+       "imagem": "drive"
+      },
+      {
+       "texto": "swim",
+       "certa": false,
+       "imagem": "swim"
+      },
+      {
+       "texto": "dance",
+       "certa": false,
+       "imagem": "dance"
+      }
+     ]
     },
     {
      "tipo": "escolher",
@@ -625,6 +709,27 @@
       }
      ],
      "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"cook\"",
+     "opcoes": [
+      {
+       "texto": "listen to music",
+       "certa": false,
+       "imagem": "listen-to-music"
+      },
+      {
+       "texto": "do yoga",
+       "certa": false,
+       "imagem": "do-yoga"
+      },
+      {
+       "texto": "cook",
+       "certa": true,
+       "imagem": "cook"
+      }
+     ]
     },
     {
      "tipo": "completar",

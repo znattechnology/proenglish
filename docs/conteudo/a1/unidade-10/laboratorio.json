@@ -25,6 +25,27 @@
      "explicacao": ""
     },
     {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"sunny\"",
+     "opcoes": [
+      {
+       "texto": "birthday",
+       "certa": false,
+       "imagem": "birthday"
+      },
+      {
+       "texto": "sunny",
+       "certa": true,
+       "imagem": "sunny"
+      },
+      {
+       "texto": "cat",
+       "certa": false,
+       "imagem": "cat"
+      }
+     ]
+    },
+    {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
      "frase": "The roads [were] very bad.",
@@ -174,6 +195,27 @@
       }
      ],
      "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"rain\"",
+     "opcoes": [
+      {
+       "texto": "rain",
+       "certa": true,
+       "imagem": "rain"
+      },
+      {
+       "texto": "sunny",
+       "certa": false,
+       "imagem": "sunny"
+      },
+      {
+       "texto": "birthday",
+       "certa": false,
+       "imagem": "birthday"
+      }
+     ]
     },
     {
      "tipo": "completar",
@@ -681,6 +723,27 @@
      ]
     },
     {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"birthday\"",
+     "opcoes": [
+      {
+       "texto": "rain",
+       "certa": false,
+       "imagem": "rain"
+      },
+      {
+       "texto": "wedding",
+       "certa": false,
+       "imagem": "wedding"
+      },
+      {
+       "texto": "birthday",
+       "certa": true,
+       "imagem": "birthday"
+      }
+     ]
+    },
+    {
      "tipo": "escuta",
      "frase": "The eleventh of November.",
      "enunciado": "Que data ouve?",
@@ -984,6 +1047,27 @@
       }
      ],
      "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"report\"",
+     "opcoes": [
+      {
+       "texto": "report",
+       "certa": true,
+       "imagem": "report"
+      },
+      {
+       "texto": "watch",
+       "certa": false,
+       "imagem": "watch"
+      },
+      {
+       "texto": "ID card",
+       "certa": false,
+       "imagem": "id-card"
+      }
+     ]
     },
     {
      "tipo": "completar",

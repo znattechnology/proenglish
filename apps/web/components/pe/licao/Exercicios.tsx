@@ -53,6 +53,9 @@ function Escolha({ ex, bloqueado, visual, aoMudar }: Props) {
   const [id, setId] = useState<string | null>(null);
   const opcoes = ex.opcoes ?? [];
   const comImagens = opcoes.some((o) => o.imagem);
+  // Todas com imagem ("Escolha a imagem: a receipt"): o texto da opção não se vê (seria a resposta),
+  // mas o leitor de ecrã continua a lê-lo.
+  const soImagens = opcoes.length > 0 && opcoes.every((o) => o.imagem);
   const vf = ex.tipo === "TRUE_FALSE";
 
   const escolher = (oid: string) => {
@@ -117,7 +120,7 @@ function Escolha({ ex, bloqueado, visual, aoMudar }: Props) {
               ) : vf ? null : (
                 <Numero n={i + 1} />
               )}
-              <span className="min-w-0">{o.texto}</span>
+              <span className={cnPe("min-w-0", soImagens && "sr-only")}>{o.texto}</span>
             </button>
           );
         })}

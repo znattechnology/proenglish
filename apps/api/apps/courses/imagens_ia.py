@@ -274,8 +274,8 @@ def aprovar(saida, ident, variante):
     return destino
 
 
-def publicar(saida, ident, prefixo='conteudo/imagens'):
-    """Envia a imagem aprovada para o bucket (R2) em WebP e devolve o endereço público."""
+def publicar(saida, ident, prefixo='conteudo/imagens', largura_max=None):
+    """Envia a imagem aprovada para o bucket (R2) em WebP (reduzida a largura_max) e devolve o endereço público."""
     from io import BytesIO
 
     from django.conf import settings
@@ -289,7 +289,10 @@ def publicar(saida, ident, prefixo='conteudo/imagens'):
     if not armazenamento.configurado():
         raise ErroImagens('O armazenamento (R2) não está configurado.')
     buffer = BytesIO()
-    Image.open(aprovada).convert('RGB').save(buffer, 'WEBP', quality=88, method=6)
+    imagem = Image.open(aprovada).convert('RGB')
+    if largura_max and imagem.width > largura_max:
+        imagem = imagem.resize((largura_max, round(imagem.height * largura_max / imagem.width)), Image.LANCZOS)
+    imagem.save(buffer, 'WEBP', quality=88, method=6)
     chave = f'{prefixo.strip("/")}/{ident}.webp'
     armazenamento.cliente().put_object(Bucket=settings.AWS_STORAGE_BUCKET_NAME, Key=chave, Body=buffer.getvalue(),
                                        ContentType='image/webp', CacheControl='public, max-age=31536000')

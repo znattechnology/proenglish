@@ -25,6 +25,48 @@
      "explicacao": "Uma coisa: \"there's\" (there is)."
     },
     {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"school\"",
+     "opcoes": [
+      {
+       "texto": "school",
+       "certa": true,
+       "imagem": "school"
+      },
+      {
+       "texto": "cinema",
+       "certa": false,
+       "imagem": "cinema"
+      },
+      {
+       "texto": "hospital",
+       "certa": false,
+       "imagem": "hospital"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"pharmacy\"",
+     "opcoes": [
+      {
+       "texto": "park",
+       "certa": false,
+       "imagem": "park"
+      },
+      {
+       "texto": "bank",
+       "certa": false,
+       "imagem": "bank"
+      },
+      {
+       "texto": "pharmacy",
+       "certa": true,
+       "imagem": "pharmacy"
+      }
+     ]
+    },
+    {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
      "frase": "[There are] two pharmacies in our street.",
@@ -168,6 +210,27 @@
       {
        "a": "near",
        "b": "perto de"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"corner\"",
+     "opcoes": [
+      {
+       "texto": "corner",
+       "certa": true,
+       "imagem": "corner"
+      },
+      {
+       "texto": "street",
+       "certa": false,
+       "imagem": "street"
+      },
+      {
+       "texto": "building",
+       "certa": false,
+       "imagem": "building"
       }
      ]
     },
@@ -336,6 +399,48 @@
      "explicacao": ""
     },
     {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"traffic lights\"",
+     "opcoes": [
+      {
+       "texto": "road",
+       "certa": false,
+       "imagem": "road"
+      },
+      {
+       "texto": "street",
+       "certa": false,
+       "imagem": "street"
+      },
+      {
+       "texto": "traffic lights",
+       "certa": true,
+       "imagem": "traffic-lights"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"road\"",
+     "opcoes": [
+      {
+       "texto": "roundabout",
+       "certa": false,
+       "imagem": "roundabout"
+      },
+      {
+       "texto": "street",
+       "certa": false,
+       "imagem": "street"
+      },
+      {
+       "texto": "road",
+       "certa": true,
+       "imagem": "road"
+      }
+     ]
+    },
+    {
      "tipo": "pares",
      "enunciado": "Ligue cada expressão à tradução.",
      "pares": [
@@ -498,6 +603,48 @@
       {
        "a": "police station",
        "b": "esquadra"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"hotel\"",
+     "opcoes": [
+      {
+       "texto": "hotel",
+       "certa": true,
+       "imagem": "hotel"
+      },
+      {
+       "texto": "bank",
+       "certa": false,
+       "imagem": "bank"
+      },
+      {
+       "texto": "church",
+       "certa": false,
+       "imagem": "church"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"police station\"",
+     "opcoes": [
+      {
+       "texto": "church",
+       "certa": false,
+       "imagem": "church"
+      },
+      {
+       "texto": "police station",
+       "certa": true,
+       "imagem": "police-station"
+      },
+      {
+       "texto": "toilets",
+       "certa": false,
+       "imagem": "toilets"
       }
      ]
     },
@@ -779,6 +926,48 @@
       }
      ],
      "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"lift\"",
+     "opcoes": [
+      {
+       "texto": "lift",
+       "certa": true,
+       "imagem": "lift"
+      },
+      {
+       "texto": "entrance",
+       "certa": false,
+       "imagem": "entrance"
+      },
+      {
+       "texto": "reception",
+       "certa": false,
+       "imagem": "reception"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"entrance\"",
+     "opcoes": [
+      {
+       "texto": "entrance",
+       "certa": true,
+       "imagem": "entrance"
+      },
+      {
+       "texto": "reception",
+       "certa": false,
+       "imagem": "reception"
+      },
+      {
+       "texto": "stairs",
+       "certa": false,
+       "imagem": "stairs"
+      }
+     ]
     },
     {
      "tipo": "escolher",

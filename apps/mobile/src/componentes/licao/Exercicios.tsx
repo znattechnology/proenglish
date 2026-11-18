@@ -77,6 +77,8 @@ function Escolha({ ex, bloqueado, visual, aoMudar }: Props) {
   const [id, setId] = useState<string | null>(null);
   const opcoes = ex.opcoes ?? [];
   const comImagens = opcoes.some((o) => o.imagem);
+  // Todas com imagem: o texto não se vê (seria a resposta); o leitor de ecrã lê-o (accessibilityLabel).
+  const soImagens = opcoes.length > 0 && opcoes.every((o) => o.imagem);
   const vf = ex.tipo === "TRUE_FALSE";
 
   const escolher = (oid: string) => {
@@ -125,13 +127,15 @@ function Escolha({ ex, bloqueado, visual, aoMudar }: Props) {
               ) : vf ? null : (
                 <NumeroOpcao n={i + 1} />
               )}
+              {soImagens ? null : (
               <Texto
-                forte={sel || vf}
-                centro={comImagens || vf}
-                style={{ flexShrink: 1, fontSize: vf ? 19 : comImagens ? 17 : 18, lineHeight: vf ? 26 : 24 }}
-              >
-                {o.texto}
-              </Texto>
+                  forte={sel || vf}
+                  centro={comImagens || vf}
+                  style={{ flexShrink: 1, fontSize: vf ? 19 : comImagens ? 17 : 18, lineHeight: vf ? 26 : 24 }}
+                >
+                  {o.texto}
+                </Texto>
+              )}
             </Pressable>
           );
         })}

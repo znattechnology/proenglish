@@ -40,6 +40,48 @@
     },
     {
      "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"father\"",
+     "opcoes": [
+      {
+       "texto": "father",
+       "certa": true,
+       "imagem": "father"
+      },
+      {
+       "texto": "baby",
+       "certa": false,
+       "imagem": "baby"
+      },
+      {
+       "texto": "grandmother",
+       "certa": false,
+       "imagem": "grandmother"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"son\"",
+     "opcoes": [
+      {
+       "texto": "grandmother",
+       "certa": false,
+       "imagem": "grandmother"
+      },
+      {
+       "texto": "father",
+       "certa": false,
+       "imagem": "father"
+      },
+      {
+       "texto": "son",
+       "certa": true,
+       "imagem": "son"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
      "enunciado": "\"Parents\" quer dizer:",
      "opcoes": [
       {
@@ -166,6 +208,48 @@
       }
      ],
      "explicacao": "\"I have\"; \"he/she has\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"cat\"",
+     "opcoes": [
+      {
+       "texto": "birthday",
+       "certa": false,
+       "imagem": "birthday"
+      },
+      {
+       "texto": "cat",
+       "certa": true,
+       "imagem": "cat"
+      },
+      {
+       "texto": "dog",
+       "certa": false,
+       "imagem": "dog"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"house\"",
+     "opcoes": [
+      {
+       "texto": "fitting room",
+       "certa": false,
+       "imagem": "fitting-room"
+      },
+      {
+       "texto": "house",
+       "certa": true,
+       "imagem": "house"
+      },
+      {
+       "texto": "phone shop",
+       "certa": false,
+       "imagem": "phone-shop"
+      }
+     ]
     },
     {
      "tipo": "completar",
@@ -320,6 +404,48 @@
       }
      ],
      "explicacao": "Primeiro a pessoa, depois 's, depois a coisa."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"laptop\"",
+     "opcoes": [
+      {
+       "texto": "ID card",
+       "certa": false,
+       "imagem": "id-card"
+      },
+      {
+       "texto": "mobile phone",
+       "certa": false,
+       "imagem": "mobile-phone"
+      },
+      {
+       "texto": "laptop",
+       "certa": true,
+       "imagem": "laptop"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"bag\"",
+     "opcoes": [
+      {
+       "texto": "cup",
+       "certa": false,
+       "imagem": "cup"
+      },
+      {
+       "texto": "mobile phone",
+       "certa": false,
+       "imagem": "mobile-phone"
+      },
+      {
+       "texto": "bag",
+       "certa": true,
+       "imagem": "bag"
+      }
+     ]
     },
     {
      "tipo": "pares",
@@ -499,6 +625,48 @@
       {
        "a": "umbrella",
        "b": "guarda-chuva"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"keys\"",
+     "opcoes": [
+      {
+       "texto": "watch",
+       "certa": false,
+       "imagem": "watch"
+      },
+      {
+       "texto": "laptop",
+       "certa": false,
+       "imagem": "laptop"
+      },
+      {
+       "texto": "keys",
+       "certa": true,
+       "imagem": "keys"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"glasses\"",
+     "opcoes": [
+      {
+       "texto": "laptop",
+       "certa": false,
+       "imagem": "laptop"
+      },
+      {
+       "texto": "umbrella",
+       "certa": false,
+       "imagem": "umbrella"
+      },
+      {
+       "texto": "glasses",
+       "certa": true,
+       "imagem": "glasses"
       }
      ]
     },
@@ -781,6 +949,27 @@
       }
      ],
      "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"photo\"",
+     "opcoes": [
+      {
+       "texto": "visitor card",
+       "certa": false,
+       "imagem": "visitor-card"
+      },
+      {
+       "texto": "report",
+       "certa": false,
+       "imagem": "report"
+      },
+      {
+       "texto": "photo",
+       "certa": true,
+       "imagem": "photo"
+      }
+     ]
     },
     {
      "tipo": "completar",

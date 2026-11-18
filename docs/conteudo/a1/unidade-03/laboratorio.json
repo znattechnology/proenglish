@@ -39,6 +39,48 @@
      ]
     },
     {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"doctor\"",
+     "opcoes": [
+      {
+       "texto": "doctor",
+       "certa": true,
+       "imagem": "doctor"
+      },
+      {
+       "texto": "salesperson",
+       "certa": false,
+       "imagem": "salesperson"
+      },
+      {
+       "texto": "driver",
+       "certa": false,
+       "imagem": "driver"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"IT technician\"",
+     "opcoes": [
+      {
+       "texto": "IT technician",
+       "certa": true,
+       "imagem": "it-technician"
+      },
+      {
+       "texto": "student",
+       "certa": false,
+       "imagem": "student"
+      },
+      {
+       "texto": "bank teller",
+       "certa": false,
+       "imagem": "bank-teller"
+      }
+     ]
+    },
+    {
      "tipo": "completar",
      "enunciado": "Complete a frase.",
      "frase": "I'm [a] nurse.",
@@ -169,6 +211,48 @@
       }
      ],
      "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"drive\"",
+     "opcoes": [
+      {
+       "texto": "drive",
+       "certa": true,
+       "imagem": "drive"
+      },
+      {
+       "texto": "get up",
+       "certa": false,
+       "imagem": "get-up"
+      },
+      {
+       "texto": "sing",
+       "certa": false,
+       "imagem": "sing"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"mobile phone\"",
+     "opcoes": [
+      {
+       "texto": "mobile phone",
+       "certa": true,
+       "imagem": "mobile-phone"
+      },
+      {
+       "texto": "charger",
+       "certa": false,
+       "imagem": "charger"
+      },
+      {
+       "texto": "umbrella",
+       "certa": false,
+       "imagem": "umbrella"
+      }
+     ]
     },
     {
      "tipo": "completar",
@@ -329,6 +413,27 @@
      ]
     },
     {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"form\"",
+     "opcoes": [
+      {
+       "texto": "form",
+       "certa": true,
+       "imagem": "form"
+      },
+      {
+       "texto": "photo",
+       "certa": false,
+       "imagem": "photo"
+      },
+      {
+       "texto": "keys",
+       "certa": false,
+       "imagem": "keys"
+      }
+     ]
+    },
+    {
      "tipo": "ordenar",
      "enunciado": "Onde vive?",
      "resposta": "Where do you live?",
@@ -471,6 +576,48 @@
       {
        "a": "receptionist",
        "b": "hotel"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"hospital\"",
+     "opcoes": [
+      {
+       "texto": "restaurant",
+       "certa": false,
+       "imagem": "restaurant"
+      },
+      {
+       "texto": "oil company",
+       "certa": false,
+       "imagem": "oil-company"
+      },
+      {
+       "texto": "hospital",
+       "certa": true,
+       "imagem": "hospital"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"shop\"",
+     "opcoes": [
+      {
+       "texto": "oil company",
+       "certa": false,
+       "imagem": "oil-company"
+      },
+      {
+       "texto": "shop",
+       "certa": true,
+       "imagem": "shop"
+      },
+      {
+       "texto": "bank",
+       "certa": false,
+       "imagem": "bank"
       }
      ]
     },
@@ -760,6 +907,27 @@
       }
      ],
      "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"visitor card\"",
+     "opcoes": [
+      {
+       "texto": "charger",
+       "certa": false,
+       "imagem": "charger"
+      },
+      {
+       "texto": "visitor card",
+       "certa": true,
+       "imagem": "visitor-card"
+      },
+      {
+       "texto": "desk",
+       "certa": false,
+       "imagem": "desk"
+      }
+     ]
     },
     {
      "tipo": "completar",
