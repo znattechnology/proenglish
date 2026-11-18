@@ -1,0 +1,74 @@
+{
+  "nota": "Piloto das imagens (docs/conteudo/08-imagens.md, secção 8). Fase 1: os três estilos (só o Nuno). Depois de escolhido o estilo, o texto de 'estilo' passa a ser o escolhido e a imagem aprovada entra como referência nas fichas.",
+  "estilo": "PREENCHER DEPOIS DA FASE 1 com o estilo escolhido",
+  "regras": "Do not include any text, letters, numbers, logos, watermarks or captions anywhere in the image. Contemporary Angola, 2026. Respectful, natural, non-stereotyped depiction of African professionals. No real people, no real brands.",
+  "imagens": [
+    {
+      "id": "estilo-foto", "fase": 1, "modelo": "pro", "proporcao": "3:2", "tamanho": "1K",
+      "estilo": "Realistic editorial photograph, natural window light, shallow depth of field, 35mm lens, warm but neutral colour grading, like a corporate magazine portrait.",
+      "descricao": "Nuno, a 22-year-old Angolan man from Lubango, IT intern on his first day at a small technology company in Talatona, Luanda. Slim build, short black hair with a neat fade, clean-shaven, friendly and slightly nervous smile. Light-blue short-sleeved shirt, dark trousers, a staff lanyard without any visible text. He sits at a table in a bright modern office kitchenette with a coffee mug, looking at someone off-camera.",
+      "uso": "escolha do estilo"
+    },
+    {
+      "id": "estilo-ilustracao", "fase": 1, "modelo": "pro", "proporcao": "3:2", "tamanho": "1K",
+      "estilo": "Semi-realistic digital illustration, soft painterly shading, warm palette with deep navy and golden yellow accents, clean shapes, like a modern educational picture book for adults.",
+      "descricao": "Nuno, a 22-year-old Angolan man from Lubango, IT intern on his first day at a small technology company in Talatona, Luanda. Slim build, short black hair with a neat fade, clean-shaven, friendly and slightly nervous smile. Light-blue short-sleeved shirt, dark trousers, a staff lanyard without any visible text. He sits at a table in a bright modern office kitchenette with a coffee mug, looking at someone off-camera.",
+      "uso": "escolha do estilo"
+    },
+    {
+      "id": "estilo-vectorial", "fase": 1, "modelo": "pro", "proporcao": "3:2", "tamanho": "1K",
+      "estilo": "Flat vector illustration, simple geometric shapes, limited palette of deep navy #000066, golden yellow #FFC72C, white and warm greys, subtle grain texture, no outlines.",
+      "descricao": "Nuno, a 22-year-old Angolan man from Lubango, IT intern on his first day at a small technology company in Talatona, Luanda. Slim build, short black hair with a neat fade, clean-shaven, friendly and slightly nervous smile. Light-blue short-sleeved shirt, dark trousers, a staff lanyard without any visible text. He sits at a table in a bright modern office kitchenette with a coffee mug, looking at someone off-camera.",
+      "uso": "escolha do estilo"
+    },
+
+    {
+      "id": "ficha-nuno", "fase": 2, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "descricao": "Character reference sheet on a plain light-grey background: the same man shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Nuno Kapinga, 22, Angolan, from Lubango, IT intern. Slim build, about 1.75 m, short black hair with a neat fade, clean-shaven, warm brown eyes. Light-blue short-sleeved shirt, dark trousers, black shoes, staff lanyard without text.",
+      "uso": "bíblia de personagens"
+    },
+    {
+      "id": "ficha-paulo", "fase": 2, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "descricao": "Character reference sheet on a plain light-grey background: the same man shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Paulo Mendes, 29, Angolan, IT technician from Viana (Luanda). Medium build, round face, short curly black hair, short neat beard, rectangular dark-framed glasses. White shirt with sleeves rolled up, grey trousers, a smartwatch.",
+      "uso": "bíblia de personagens"
+    },
+    {
+      "id": "ficha-silvia", "fase": 2, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "descricao": "Character reference sheet on a plain light-grey background: the same woman shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Sílvia Neto, 36, Angolan accountant, married with two young children. Medium height, natural black hair in a low bun, small gold earrings. Mustard-yellow blouse, navy pencil skirt, low heels, carries a folder.",
+      "uso": "bíblia de personagens"
+    },
+    {
+      "id": "ficha-ana", "fase": 2, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "descricao": "Character reference sheet on a plain light-grey background: the same woman shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Ana Domingos, 27, Angolan receptionist. Slim, shoulder-length braids, bright smile. Navy blazer over a white top, black trousers, a small headset around her neck.",
+      "uso": "bíblia de personagens"
+    },
+    {
+      "id": "ficha-mateus", "fase": 2, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "descricao": "Character reference sheet on a plain light-grey background: the same man shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Mateus, 34, Angolan engineer from Huambo who works on oil-industry projects in Cabinda. Tall and broad-shouldered, shaved head, short moustache. Khaki work shirt with rolled sleeves, dark jeans, safety boots; a white hard hat in one hand in the full-body view.",
+      "uso": "bíblia de personagens"
+    },
+    {
+      "id": "ficha-baptista", "fase": 2, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "descricao": "Character reference sheet on a plain light-grey background: the same man shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, serious). Sr. João Baptista, 54, Angolan manager, Paulo's boss. Slightly heavy build, greying short hair and a grey moustache, reading glasses on a cord. Dark-grey suit, white shirt, no tie.",
+      "uso": "bíblia de personagens"
+    },
+
+    {
+      "id": "lugar-kalandula-entrada", "fase": 3, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "descricao": "Empty reception area of a small modern technology company in Talatona, Luanda, at 8 a.m.: a light wooden reception desk, a computer, plants, a glass wall, morning sunlight, a sofa for visitors. No people. No signs or logos with text.",
+      "uso": "lugar recorrente (A1 1A…)"
+    },
+    {
+      "id": "lugar-kalandula-copa", "fase": 3, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K", "referencias": [],
+      "descricao": "Empty office kitchenette of the same small technology company in Talatona, Luanda: a long table with chairs, a coffee machine, a fridge, a window with a view of palm trees and low buildings, mid-morning light. No people. No text anywhere.",
+      "uso": "lugar recorrente (A1 R1A, 6A…)"
+    },
+
+    {
+      "id": "cena-a1-r1a", "fase": 4, "modelo": "pro", "proporcao": "16:9", "tamanho": "2K",
+      "referencias": ["ficha-paulo", "ficha-nuno", "lugar-kalandula-copa"],
+      "descricao": "In the office kitchenette from the reference image, Paulo (from his reference sheet) holds up his phone to record a short interview with Nuno (from his reference sheet), who sits at the table with a coffee mug, smiling a little shyly. Mid-morning light.",
+      "uso": "A1 R1A — Meet the team"
+    }
+  ]
+}
