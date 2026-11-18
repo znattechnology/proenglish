@@ -89,3 +89,17 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.
+
+## Carregar na plataforma
+
+Cada nível dá dois cursos (por exemplo, C1.1 com as unidades 1 a 5 e a revisão 1; C1.2 com as unidades 6 a 10 e a revisão 2). Para cada um:
+
+1. Criar, na área do professor, o curso em vídeo e o curso de laboratório que o acompanha (do mesmo professor).
+2. Verificar as pastas sem escrever nada:
+   `manage.py carregar_unidades_curso - --verificar docs/conteudo/c1/unidade-01 … docs/conteudo/c1/revisao-1`
+3. Carregar as aulas, os questionários, o laboratório e as conversas com o tutor, pela ordem das pastas:
+   `manage.py carregar_unidades_curso <id do curso em vídeo> --laboratorio <id do curso de laboratório> docs/conteudo/c1/unidade-01 … docs/conteudo/c1/revisao-1`
+4. Carregar o exame oral:
+   `manage.py carregar_exame_curso <id do curso em vídeo> --guiao docs/conteudo/c1/revisao-1/exame-guiao.json --situacoes docs/conteudo/c1/revisao-1/exame-situacoes.json`
+
+O comando pode correr várias vezes: actualiza o que já existe e não substitui lições com respostas de alunos nem questionários com tentativas (só com `--forcar`). As aulas ficam sem vídeo e os exercícios de escuta e de pronúncia sem áudio: enviam-se depois.
