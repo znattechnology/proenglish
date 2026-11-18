@@ -172,26 +172,26 @@
   },
   {
    "id": "c1u3q8",
-   "question": "\"It's a calculated risk.\" Isto soa…",
+   "question": "Reciclagem (C1, unidade 1). Escolha a frase correcta.",
    "options": [
     {
      "id": "c1u3q8o0",
-     "text": "responsável: o risco foi medido",
+     "text": "All I'm asking for is a one-year pilot.",
      "isCorrect": true
     },
     {
      "id": "c1u3q8o1",
-     "text": "louco: ninguém pensou nisso",
+     "text": "All I'm asking for it's a one-year pilot.",
      "isCorrect": false
     },
     {
      "id": "c1u3q8o2",
-     "text": "seguro: não há risco",
+     "text": "All what I'm asking is a one-year pilot.",
      "isCorrect": false
     }
    ],
    "correctOptionId": "c1u3q8o0",
-   "explanation": "a calculated risk.",
+   "explanation": "Clivada com all.",
    "points": 10
   },
   {

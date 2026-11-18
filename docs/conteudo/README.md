@@ -75,7 +75,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [b2/revisao-2/](b2/revisao-2/README.md) | B2.2, revisão 2 e exame oral: guiões, laboratório, ensaio com o tutor, questionário, o guião e as situações do exame, e revisão aula a aula. |
 | [c1/unidade-01/](c1/unidade-01/README.md) | C1.1, unidade 1 "Making the case": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [c1/unidade-02/](c1/unidade-02/README.md) | C1.1, unidade 2 "Diplomacy": guiões, laboratório, tutor, questionário e revisão aula a aula. |
-| [c1/unidade-03/](c1/unidade-03/README.md) | C1.1, unidade 3 "Strategy": guiões, laboratório, tutor e questionário. |
+| [c1/unidade-03/](c1/unidade-03/README.md) | C1.1, unidade 3 "Strategy": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.

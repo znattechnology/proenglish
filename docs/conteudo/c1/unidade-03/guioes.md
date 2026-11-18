@@ -36,9 +36,9 @@ Gramática-alvo: If + past perfect, would + infinitivo (agora / no futuro): If w
   we wouldn't know the market now / we wouldn't be opening there next year; If + past simple (estado
   actual), would have + particípio: If we were bigger, we'd have won the tender; If + were to (hipótese
   formal sobre o futuro): If we were to open in Windhoek, we'd need a partner
-Palavras-alvo: grow, expand, tender, local presence, partnership, market, reference, hindsight, board,
-  proposal, budget
-Reciclagem: condicionais mistos (B2, 10D); I wish / if only (B2, 10A); clivadas (C1, 1)
+Palavras-alvo: grow, tender, local presence, people on the ground, market, look back, lesson, painful,
+  board, proposal, budget
+Reciclagem: condicionais mistos (B2, 10D); I wish / if only (B2, 10A)
 Pronúncia: as formas reduzidas we'd, wouldn't have ("wouldn't-uv"), hadn't
 Contexto: segunda-feira, 4 de Março de 2030, 8:30; o gabinete da Thandi; a direcção pediu uma proposta de
   crescimento para 2031
@@ -139,9 +139,9 @@ Gramática-alvo: Had + sujeito + particípio (= If… had…); Should + sujeito 
   If…, menos provável); Were + sujeito + to + infinitivo (= If… were to…); Had it not been for… (= se não
   fosse…, no passado); Were it not for… (= se não fosse…, no presente); a negativa sem contracção (Had we
   not…, nunca Hadn't we…)
-Palavras-alvo: memo, formal, board paper, recommendation, approve, approval, partner, assumption, register,
-  pompous
-Reciclagem: 3A; atenuação (C1, 2A); escrita formal (B2, 4)
+Palavras-alvo: memo, formal, board paper, approve, recommendation, currency risk, obvious choice,
+  register, pompous, for the board
+Reciclagem: 3A; atenuação (C1, 2A)
 Pronúncia: o acento no auxiliar no início (Had we known…, Should the board…)
 Contexto: quarta-feira, 6 de Março, 15:00; o gabinete da Thandi; o primeiro rascunho do memorando do Nuno
   para a direcção
@@ -161,7 +161,7 @@ Verificação: Lab 3B; perguntas 3 e 4 do questionário
 **NUNO:** What's wrong with it?
 **THANDI:** Nothing is wrong. It's the register. Look: "If we had had an office in Windhoek, we would have won the tender." For the board, I'd write: "Had we had an office in Windhoek, we would have won the tender."
 **NUNO:** "Had we had" — two "hads"?
-**THANDI:** It looks strange, but it's correct. The first one replaces "if". Next: "If the board approves the Luanda option…" — in a board paper: "Should the board approve the Luanda option, the office could open in January."
+**THANDI:** It looks strange, but it's correct. The first one replaces "if". Next: "If the board approves our recommendation…" — in a board paper: "Should the board approve our recommendation, the office could open in January."
 **NUNO:** "Should" — so it's less certain?
 **THANDI:** A little more distant, and more polite. And here: "If we were to open in Windhoek, we would need the full budget." Formal version?
 **NUNO:** "Were we to open in Windhoek, we would need the full budget."
@@ -245,8 +245,8 @@ Objectivo da unidade a que serve: 1, 3
 Gramática-alvo: given that + facto (= uma vez que); assuming (that) + hipótese aceite; otherwise (= se não);
   in which case (= e nesse caso); as a result of which (formal, depois de vírgula); provided (that) / as long
   as (condição); supposing (hipótese a examinar)
-Palavras-alvo: currency, exchange rate, depreciation, payment terms, cash flow, revenue, in dollars, break
-  even, share, depend on
+Palavras-alvo: currency, revenue, in dollars, price in kwanzas, payments, cash, profit, manageable,
+  fragile, budget
 Reciclagem: condicionais (3A, 3B); números aproximados (B2, 2E)
 Pronúncia: a pausa antes de "otherwise" e "in which case"
 Contexto: sexta-feira, 8 de Março, 10:00; o gabinete do Rajesh; uma folha de cálculo com os três cenários
@@ -345,9 +345,9 @@ Objectivo da unidade a que serve: 3
 Gramática-alvo: In the best-case / worst-case scenario, …; The most likely outcome is…; The upside / downside
   is (that)…; It's a calculated risk; It's not without risk; on balance; comparar: by far the…, nowhere near
   as… as…, slightly more… than…; graus de certeza (C1, 2B)
-Palavras-alvo: scenario, outcome, upside, downside, calculated risk, fragile, on balance, workshop, compare,
-  depend
-Reciclagem: graus de certeza (C1, 2B); comparativos fortes (B2, 1); 3A a 3C
+Palavras-alvo: scenario, outcome, upside, downside, calculated risk, safe bet, on balance, stable
+  currency, nowhere near, compare
+Reciclagem: graus de certeza (C1, 2B); 3A a 3C
 Pronúncia: o acento contrastivo ao comparar (Luanda is cheaper, but Windhoek is safer)
 Contexto: quarta-feira, 13 de Março, 14:00; a sala de reuniões; um workshop com o Bongani, a Lindiwe, o
   Rajesh, a Inês (por vídeo) e o Nuno ao quadro
@@ -445,7 +445,7 @@ Gramática-alvo: colocações (gain / lose market share, get / gain a foothold i
   sustain / sustainable / sustainability, opportunity, infrastructure)
 Palavras-alvo: market share, foothold, diversify, diversification, scale up, exposure, break even,
   long-term, strategic, sustainable, infrastructure, opportunity
-Reciclagem: cenários (3D); persuasão (C1, 1D)
+Reciclagem: cenários (3D)
 Pronúncia: acento em palavras longas e na mudança de classe (STRAtegy / straTEgic — marcado por indicação)
 Falsos amigos: policy / politics (≠ uma só palavra "política": policy = política de uma empresa ou de um
   governo, um conjunto de regras; politics = a actividade política, os partidos); intend (≠ entender →
@@ -610,8 +610,8 @@ Objectivo da aula: No fim, o aluno consegue apresentar três cenários estratég
   mercado escrito em português.
 Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: condicionais mistos, inversão condicional, conectores, cenários
-Palavras-alvo: option, foothold, currency risk, exposure, cash reserve, dollar contracts, review, approve,
-  condition, market study
+Palavras-alvo: option, foothold, currency risk, exposure, cash reserve, contracts in dollars, review,
+  condition, independent study, calculated risk
 Reciclagem: clivadas e contra-argumentos (C1, 1); atenuação e certeza (C1, 2)
 Pronúncia: o ritmo de uma apresentação a uma direcção; uma inversão bem colocada
 Mediação: o Nuno explica à direcção, em inglês, os dados de um estudo de mercado angolano escrito em
@@ -633,7 +633,7 @@ Verificação: Lab 3G; conversa livre "The strategy session"
 **NUNO:** Thank you. You asked us where Mopane should grow in 2031, with five hundred thousand dollars. We looked at three options: Luanda, Nampula and Windhoek. I'll show you all three honestly — and then tell you which one we recommend.
 **NUNO:** [muda o diapositivo] Windhoek: the most stable currency, and a painful lesson. Had we had an office there last year, we would very probably have won a two-million-dollar tender. But it would take the whole budget, and it depends entirely on tenders: most likely one point two million in year three, and four hundred thousand if we win nothing.
 **NUNO:** Nampula: cheap — three hundred thousand — and a client we've just won back. But Mussiro would be seventy percent of the revenue. If they left, we'd drop to six hundred thousand.
-**NUNO:** And Luanda: an office shared with Kalandula, who pay half. Most likely two point four million in year three. Even in the worst case, one point six.
+**NUNO:** And Luanda: an office shared with Kalandula, who pay half — and a real foothold in the biggest market of the three. Most likely two point four million in year three. Even in the worst case, one point six.
 **MTHEMBU:** And the risk in Luanda?
 **NUNO:** The currency, and slow payments. Let me show you what the market says — the study is in Portuguese.
 
@@ -641,9 +641,9 @@ Verificação: Lab 3G; conversa livre "The strategy session"
 
 **NUNO:** An independent study — Mbinda, in Luanda — counts eighteen new solar and telecoms projects planned in the south by 2032. Sixty percent of operators say their biggest problem is the lack of local maintenance — exactly what we did at Tômbwa. Payments take ninety days on average, and the currency risk is high. Their recommendation is the same as ours: contracts linked to the dollar wherever possible.
 **NKOSI:** "Wherever possible." And when it isn't possible?
-**NUNO:** In which case we price in kwanzas and review every six months. And we keep a cash reserve of three months. That's why I'd call Luanda a calculated risk — not a safe bet.
+**NUNO:** In which case we price in kwanzas and review every six months. And we keep a cash reserve of three months. That's how we reduce our exposure — and why I'd call Luanda a calculated risk, not a safe bet.
 **NKOSI:** Supposing the kwanza fell forty percent, not thirty?
-**NUNO:** Then we'd be close to one point three million — still above the most likely outcome in Windhoek, and still well above the cost.
+**NUNO:** Then we'd be close to one point three million — still above the most likely outcome in Windhoek.
 **MTHEMBU:** What if Kalandula were bought by a competitor?
 **NUNO:** It's a fair question. The agreement would include a clause: should either company change owners, the other can buy its half of the office. Tumelo is drafting it.
 **NKOSI:** [pausa] Mr Kapinga, I have to ask. You're from Luanda. Would you recommend Luanda if you weren't Angolan?

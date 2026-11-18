@@ -998,11 +998,11 @@
        "certa": true
       },
       {
-       "texto": "I'm not interested in policy.",
+       "texto": "I'm not interested in politic.",
        "certa": false
       },
       {
-       "texto": "I'm not interested in politic.",
+       "texto": "I'm not interested in the politicals.",
        "certa": false
       }
      ],

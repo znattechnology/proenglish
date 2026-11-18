@@ -1,6 +1,6 @@
 # C1.1 · Unidade 3 — Strategy (7 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 3
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 3
 
 ## Objectivos da unidade
 
@@ -15,7 +15,7 @@ No fim da unidade, o aluno consegue:
 |---|---|---|---|---|
 | 1. Condicionais mistos | 3A, 3C, 3G | 3A, 3G, 3R | Guiada e livre | 1, 2 |
 | 2. Inversão condicional | 3B, 3F, 3G | 3B, 3G, 3R | Guiada e livre | 3, 4 |
-| 3. Cenários e conectores | 3C, 3D, 3E | 3C, 3D, 3E | Guiada e livre | 5 a 10 |
+| 3. Cenários e conectores | 3C, 3D, 3E | 3C, 3D, 3E | Guiada e livre | 5 a 7, 9, 10 |
 | 4. Uma estratégia diante de uma direcção | 3G | 3G | Livre | — |
 
 ## O que está nesta pasta
@@ -25,7 +25,7 @@ No fim da unidade, o aluno consegue:
 | [guioes.md](guioes.md) | Os 7 guiões (3A a 3G), 12 a 14 minutos cada | Para o professor de IA |
 | [laboratorio.json](laboratorio.json) | 8 lições (3A a 3G e 3R), 108 exercícios: 20 de escuta, 8 de pronúncia, 16 de resposta falada (duas por lição, uma delas até 90 segundos) | Sim: validado com `pratica_formato.validar` (0 erros) |
 | [tutor.json](tutor.json) | Conversa guiada (depois da 3C): "What if…?" (Kai muda o passado e o presente do aluno e pede as consequências, depois uma versão formal e uma cadeia de conectores); livre (no fim): "The strategy session" (Jordan, administrador que prefere outra opção, faz três perguntas "e se…?" e uma pessoal) | Sim: campos do modelo `Situacao` (nível C1); 10 minutos |
-| [questionario.json](questionario.json) | 12 perguntas (10 da unidade e 2 de reciclagem da unidade 2), aprovação a 70% | Sim: formato `quiz_data` |
+| [questionario.json](questionario.json) | 12 perguntas (9 da unidade e 3 de reciclagem das unidades 1 e 2), aprovação a 70% | Sim: formato `quiz_data` |
 
 ## Vocabulário da unidade (cerca de 80 palavras e expressões)
 
@@ -52,6 +52,6 @@ Março de 2030. A direcção da Mopane tem 500 000 dólares para crescer num só
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (20 escutas, 8 pronúncias, a 3F com quatro vozes e interrupções); imagens (a tabela dos três cenários, o estudo da Mbinda Consultores); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (20 escutas, 8 pronúncias, a 3F com quatro vozes e interrupções); imagens (a tabela dos três cenários, o estudo da Mbinda Consultores); carregamento na plataforma.
 
 A seguir vem a **unidade 4, "Conflict"**.
