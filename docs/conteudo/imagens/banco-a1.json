@@ -1,0 +1,623 @@
+{
+ "nota": "Banco de imagens do laboratório do A1 (18/11/2026), Nano Banana 2.1 a 1K. O id é o nome usado em laboratorio.json (\"imagem\": \"receipt\") e o ficheiro publicado é conteudo/imagens/<id>.webp. Grupos 1 a 3: objectos, comida e bebida, transportes.",
+ "estilo": "Clean, friendly flat illustration for an English-learning app: a single subject centred on a plain white background, soft shadows, rounded shapes, limited palette with deep navy #000066 and golden yellow #FFC72C accents plus natural colours, consistent line weight.",
+ "regras": "Do not include any text, letters, numbers, logos, brand names or watermarks anywhere in the image. One subject only (or one small group when the description says so), fully visible, centred, generous white margin.",
+ "imagens": [
+  {
+   "id": "desk",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "An office desk with a desk lamp and a closed notebook, no computer.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "computer",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A desktop computer: monitor with a blank light-blue screen, keyboard and mouse.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "laptop",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "An open laptop computer seen from a three-quarter angle, blank blue screen.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "mobile-phone",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A modern smartphone standing upright, blank dark screen.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "email",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A closed paper envelope with a small navy at-sign shape on a round badge, like an email icon.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "calendar",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A wall calendar page with a grid of empty squares and two rings at the top, no numbers or words.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "photo",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A printed photograph showing a smiling family in a simple picture frame.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "id-card",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A plastic identity card with a small portrait photo and blank grey lines instead of text.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "visitor-card",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A visitor badge on a navy lanyard, with blank grey lines instead of text.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "form",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A paper form on a clipboard with empty boxes and blank lines, a pen next to it.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "report",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A stapled printed report with a simple bar chart on the cover, no words or numbers.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "printer",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "An office printer with a sheet of blank paper coming out.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "bag",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A brown leather work bag (briefcase-style shoulder bag).",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "keys",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A small bunch of three metal keys on a ring.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "car-keys",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A car key with a black remote fob and a metal key on a ring.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "glasses",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A pair of dark-framed reading glasses.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "wallet",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A brown leather wallet, closed.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "umbrella",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "An open umbrella in navy blue with a golden-yellow handle.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "cup",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A white mug.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "watch",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A wristwatch with a leather strap, clock face with simple marks and no numbers.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "charger",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A phone charger plug with its cable coiled.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "battery",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A phone battery level icon shown as a large battery shape, half full in green.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "screen",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A flat computer monitor screen, blank light-blue display.",
+   "uso": "banco A1: objectos"
+  },
+  {
+   "id": "bread",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A loaf of bread and a few slices.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "rice",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A bowl of white rice.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "milk",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A glass of milk next to a carton of milk with no text.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "sugar",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A bowl of white sugar with a spoon.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "butter",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A block of butter on a small dish with a butter knife.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "cheese",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A wedge of yellow cheese.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "egg",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A brown egg and a fried egg.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "banana",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A bunch of ripe yellow bananas.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "orange",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "An orange fruit with a leaf, and one half cut open.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "apple",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A red apple with a leaf.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "mango",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A ripe mango, one whole and one cut into cubes.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "pineapple",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A whole pineapple.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "papaya",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A papaya cut in half showing orange flesh and black seeds.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "fruit",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A bowl of mixed tropical fruit: banana, mango, orange and pineapple.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "vegetables",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A group of vegetables: tomatoes, carrots, onion, cabbage and peppers.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "salad",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A bowl of green salad with tomato and cucumber.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "potatoes",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A few potatoes and a bowl of chips.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "beans",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A bowl of cooked beans.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "chicken",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A roast chicken leg on a plate.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "beef",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A grilled beef steak on a plate.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "fish",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A whole grilled fish on a plate with lemon.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "meat",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "Pieces of raw red meat on a wooden board.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "sandwich",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A sandwich with lettuce, tomato and cheese, cut in half.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "croissant",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A golden croissant.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "cake",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A slice of chocolate cake on a small plate.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "juice",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A glass of orange juice with a straw.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "glass-of-juice",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A tall glass full of mango juice.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "bottle-of-water",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A plastic bottle of water with a blank label.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "coffee",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A white cup of coffee on a saucer with steam rising.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "black-coffee",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A small cup of black coffee (espresso) on a saucer.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "coffee-with-milk",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A glass cup of coffee with milk (light brown).",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "tea",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A cup of tea with a tea bag string hanging over the side.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "soft-drink",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A glass of cola with ice cubes and a can without any label text.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "funge",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "Angolan funge: a smooth white mound of cassava porridge on a plate, as served in Angola.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "muamba",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "Angolan chicken muamba: chicken stew in orange-red palm oil sauce with okra, in a clay pot.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "calulu",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "Angolan calulu: dried fish and vegetable stew with okra and leafy greens, in a bowl.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "mufete",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "Angolan mufete: grilled fish with boiled beans in palm oil, boiled sweet potato, plantain and sliced onion on a plate.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "breakfast",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A breakfast tray: coffee, bread with butter, an egg and a glass of juice.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "lunch",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A lunch plate with rice, beans, chicken and salad.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "dinner",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A dinner plate with grilled fish and vegetables, a fork and knife, and a small lit candle beside it, on the plain white background (no dark background, no circle behind).",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "starter",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A small starter plate with a little soup bowl.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "main-course",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A main course plate with grilled meat, rice and vegetables.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "dessert",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A dessert bowl of fruit salad with a scoop of ice cream.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "the-bill",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A restaurant bill on a small tray with a pen, the paper with blank grey lines only.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "receipt",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A paper shop receipt, slightly curled, with blank grey lines instead of any writing.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "bank-card",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A bank card with a chip, plain navy with no numbers or names.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "cash",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A small stack of generic banknotes in muted colours, with no numbers, words or faces.",
+   "uso": "banco A1: comida"
+  },
+  {
+   "id": "car",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A small modern car seen from the side.",
+   "uso": "banco A1: transportes"
+  },
+  {
+   "id": "bus",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A city bus seen from the side.",
+   "uso": "banco A1: transportes"
+  },
+  {
+   "id": "taxi",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A taxi car with a roof sign that has no text.",
+   "uso": "banco A1: transportes"
+  },
+  {
+   "id": "candongueiro",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "The typical Luanda minibus taxi (candongueiro): an old Toyota HiAce-style van seen from the side, painted light sky-blue on the lower half and white on the upper half, sliding side door open, no text.",
+   "uso": "banco A1: transportes"
+  },
+  {
+   "id": "motorbike",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A motorbike seen from the side.",
+   "uso": "banco A1: transportes"
+  },
+  {
+   "id": "plane",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A passenger aeroplane flying.",
+   "uso": "banco A1: transportes"
+  },
+  {
+   "id": "boat",
+   "modelo": "2.1",
+   "proporcao": "1:1",
+   "tamanho": "1K",
+   "descricao": "A small fishing boat on the water.",
+   "uso": "banco A1: transportes"
+  }
+ ]
+}
