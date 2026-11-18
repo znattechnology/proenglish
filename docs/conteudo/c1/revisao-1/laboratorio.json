@@ -1,0 +1,452 @@
+{
+ "unidade": "C1.1 · Review 1 — Units 1 to 5",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "C1R1-1",
+   "titulo": "Review 1: persuasion, diplomacy and strategy",
+   "aula": "R1A",
+   "objectivo": "Rever as unidades 1 a 3 do C1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What Niassa needs [is] what Nampula got, on time.",
+     "opcoes": [
+      {
+       "texto": "it's",
+       "certa": false
+      },
+      {
+       "texto": "are",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It was your work in Nampula [that] got us this invitation.",
+     "opcoes": [
+      {
+       "texto": "what",
+       "certa": false
+      },
+      {
+       "texto": "who it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "There [seems] to be a problem with the invoice.",
+     "opcoes": [
+      {
+       "texto": "seem",
+       "certa": false
+      },
+      {
+       "texto": "seeming",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd be surprised if it [took] a week.",
+     "opcoes": [
+      {
+       "texto": "will take",
+       "certa": false
+      },
+      {
+       "texto": "takes it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Had] we planned around the rains, we would have finished on time.",
+     "opcoes": [
+      {
+       "texto": "Have",
+       "certa": false
+      },
+      {
+       "texto": "If",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the most diplomatic answer to a question about a rumour.",
+     "opcoes": [
+      {
+       "texto": "I'm not in a position to comment on it. What I can tell you is…",
+       "certa": true
+      },
+      {
+       "texto": "That's a stupid rumour.",
+       "certa": false
+      },
+      {
+       "texto": "No comment. Next question.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Had we not signed, we would have lost the client.",
+       "certa": true
+      },
+      {
+       "texto": "Hadn't we signed, we would have lost the client.",
+       "certa": false
+      },
+      {
+       "texto": "Had not we signed, we would have lost the client.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Phase one was late. I won't pretend otherwise. What I can show you is what we've changed.\" The speaker…",
+     "opcoes": [
+      {
+       "texto": "concedes first, then comes back to the main point",
+       "certa": true
+      },
+      {
+       "texto": "denies the problem",
+       "certa": false
+      },
+      {
+       "texto": "changes the subject",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the strongest way to say \"very probably not\"?",
+     "opcoes": [
+      {
+       "texto": "It's highly unlikely.",
+       "certa": true
+      },
+      {
+       "texto": "There's a good chance.",
+       "certa": false
+      },
+      {
+       "texto": "I wouldn't rule it out.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Inês. Mussiro has invited us to propose for phase two, twenty substations in Niassa. And Dr Cumbe wants me to present it.",
+     "enunciado": "What has Mussiro invited Mopane to do?",
+     "opcoes": [
+      {
+       "texto": "propose for phase two in Niassa",
+       "certa": true
+      },
+      {
+       "texto": "repair Nampula",
+       "certa": false
+      },
+      {
+       "texto": "cancel the contract",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. In the most likely case, eighteen months. In the worst case, if the rains are as bad as last year, twenty-one.",
+     "enunciado": "What is the worst case for phase two?",
+     "opcoes": [
+      {
+       "texto": "twenty-one months",
+       "certa": true
+      },
+      {
+       "texto": "eighteen months",
+       "certa": false
+      },
+      {
+       "texto": "twelve months",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "What Niassa needs is what Nampula got: on time, the second time.",
+     "enunciado": "Ouça e repita, com uma pausa antes da ideia em destaque."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Make the case for one change in your workplace, school or town to a sceptical listener: the main idea with a cleft, one concession, one degree of certainty, and one mixed conditional.",
+     "frase": "What",
+     "resposta": "What our office needs is a quiet room. It isn't the noise itself that tires us; it's the interruptions. I'll grant you it costs a little. I'm fairly confident productivity would rise. If we'd had one last year, we wouldn't have missed two deadlines.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague asks you to promise a date you cannot control. Refuse with diplomacy and offer an alternative.",
+     "frase": "I'm afraid",
+     "resposta": "I'm afraid I'm not in a position to promise Friday: it depends on the supplier. What I can do is call them this afternoon and give you a realistic date by tomorrow morning.",
+     "contexto": "Recusar com diplomacia."
+    }
+   ]
+  },
+  {
+   "codigo": "C1R1-2",
+   "titulo": "Review 1: conflict, data and the exam",
+   "aula": "R1B",
+   "objectivo": "Rever as unidades 4 e 5 do C1 e praticar as estratégias do exame.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Not once in six weeks [has] he forgotten our Monday call.",
+     "opcoes": [
+      {
+       "texto": "have",
+       "certa": false
+      },
+      {
+       "texto": "did",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Only when he called [did] I understand.",
+     "opcoes": [
+      {
+       "texto": "I",
+       "certa": false
+      },
+      {
+       "texto": "had",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Having] done Nampula, you know the real costs.",
+     "opcoes": [
+      {
+       "texto": "Have",
+       "certa": false
+      },
+      {
+       "texto": "Had",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The company is said [to] be planning a merger.",
+     "opcoes": [
+      {
+       "texto": "that",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Of the three, the two I'd like to talk [about] are the laboratory and the English lessons.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "on them",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Having analysed the data, we reached a clear conclusion.",
+       "certa": true
+      },
+      {
+       "texto": "Having analysed the data, the conclusion is clear.",
+       "certa": false
+      },
+      {
+       "texto": "Analysed the data, we reached a conclusion clear.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In Part 2 of the C1.1 exam, you…",
+     "opcoes": [
+      {
+       "texto": "choose two of three options, compare them and speculate",
+       "certa": true
+      },
+      {
+       "texto": "describe all three options in detail",
+       "certa": false
+      },
+      {
+       "texto": "talk about a photo",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The examiner gives a counter-argument. Which answer shows nuance?",
+     "opcoes": [
+      {
+       "texto": "That's true up to a point, but…",
+       "certa": true
+      },
+      {
+       "texto": "Yes, you are right.",
+       "certa": false
+      },
+      {
+       "texto": "No, that is wrong.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which of these does NOT lower your mark?",
+     "opcoes": [
+      {
+       "texto": "correcting yourself: \"Sorry, I mean…\"",
+       "certa": true
+      },
+      {
+       "texto": "answering in Portuguese",
+       "certa": false
+      },
+      {
+       "texto": "one-word answers",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lurdes. Of the three, the two I'd like to talk about are the laboratory and the English lessons. I'd leave aside the longer days.",
+     "enunciado": "Which option does Lurdes leave aside?",
+     "opcoes": [
+      {
+       "texto": "the longer days",
+       "certa": true
+      },
+      {
+       "texto": "the laboratory",
+       "certa": false
+      },
+      {
+       "texto": "the English lessons",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lurdes. Where I come down is: the child chooses, the teacher guides, and the parents are told.",
+     "enunciado": "What is Lurdes's final position?",
+     "opcoes": [
+      {
+       "texto": "The child chooses, guided by a teacher.",
+       "certa": true
+      },
+      {
+       "texto": "The parents decide everything.",
+       "certa": false
+      },
+      {
+       "texto": "Children never choose.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "That's true up to a point, but a fourteen-year-old might choose what's easy, not what's useful.",
+     "enunciado": "Ouça e repita."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A town has money for one project: a new market, a public library or a health centre. Choose two, compare them, speculate, and choose.",
+     "frase": "Of the three",
+     "resposta": "Of the three, the two I'd like to talk about are the library and the health centre. I'd leave aside the market: there are three already. It could well be that a library changes young people's futures. The health centre, on the other hand, saves lives now. I'd go for the health centre.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Someone says: \"Exams don't show what people can really do.\" Give a nuanced answer.",
+     "frase": "up to a point",
+     "resposta": "That's true up to a point, but without exams, employers would have nothing to compare. I'd go along with it, with one reservation: exams should test what people use at work. Where I come down is: fewer exams, but better ones.",
+     "contexto": "Matizar uma opinião."
+    }
+   ]
+  }
+ ]
+}
