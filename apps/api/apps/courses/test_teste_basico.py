@@ -70,14 +70,14 @@ class RequisitoBasicoTest(TestCase):
 
     def test_teste_aprovado_abre_os_sectores(self):
         t = svc.iniciar(self.aluno)
-        t = svc.submeter(self.aluno, t.id, _respostas(t, 14))   # 70%
+        t = svc.submeter(self.aluno, t.id, _respostas(t, 21))   # 70% de 30
         self.assertTrue(t.aprovado)
         self.assertIsNone(ciclo.bloqueio_inscricao(self.aluno, self.sector))
         self.assertIsNone(ciclo.bloqueio_requisito_pratica(self.aluno, self.pratica_sector))
 
     def test_teste_reprovado_nao_abre_e_obriga_a_esperar(self):
         t = svc.iniciar(self.aluno)
-        t = svc.submeter(self.aluno, t.id, _respostas(t, 13))   # 65%
+        t = svc.submeter(self.aluno, t.id, _respostas(t, 20))   # 67% de 30
         self.assertFalse(t.aprovado)
         self.assertIsNotNone(ciclo.bloqueio_inscricao(self.aluno, self.sector))
         e = svc.estado(self.aluno)
@@ -100,7 +100,7 @@ class RequisitoBasicoTest(TestCase):
         t = svc.iniciar(self.aluno)
         TesteNivelBasico.objects.filter(pk=t.pk).update(expira_em=timezone.now() - timedelta(minutes=5))
         with self.assertRaises(svc.ErroTeste) as c:
-            svc.submeter(self.aluno, t.id, _respostas(t, 20))
+            svc.submeter(self.aluno, t.id, _respostas(t, svc.N_PERGUNTAS))
         self.assertEqual(c.exception.codigo, 'tempo_esgotado')
         e = svc.estado(self.aluno)
         self.assertFalse(e['tem_nivel_basico'])
@@ -110,12 +110,12 @@ class RequisitoBasicoTest(TestCase):
         t = svc.iniciar(self.aluno)
         svc.submeter(self.aluno, t.id, _respostas(t, 0))
         with self.assertRaises(svc.ErroTeste) as c:
-            svc.submeter(self.aluno, t.id, _respostas(t, 20))
+            svc.submeter(self.aluno, t.id, _respostas(t, svc.N_PERGUNTAS))
         self.assertEqual(c.exception.codigo, 'ja_entregue')
         outro = User.objects.create_user(email='outro-tb@exemplo.ao', name='outro-tb', password='x', role='student')
         t2 = svc.iniciar(outro)
         with self.assertRaises(svc.ErroTeste) as c:
-            svc.submeter(self.aluno, t2.id, _respostas(t2, 20))
+            svc.submeter(self.aluno, t2.id, _respostas(t2, svc.N_PERGUNTAS))
         self.assertEqual(c.exception.codigo, 'not_found')
 
     def test_respostas_invalidas_contam_como_erradas(self):
@@ -125,7 +125,7 @@ class RequisitoBasicoTest(TestCase):
         self.assertEqual(t.certas, 0)
 
     def test_banco_tem_perguntas_suficientes_e_bem_formadas(self):
-        self.assertGreaterEqual(len(svc.BANCO), svc.N_PERGUNTAS * 2)
+        self.assertGreaterEqual(len(svc.BANCOS[svc.NIVEL_BASICO]), svc.N_PERGUNTAS * 2)
         ids = [p[0] for p in svc.BANCO]
         self.assertEqual(len(ids), len(set(ids)))
         for _, enunciado, opcoes in svc.BANCO:
@@ -154,10 +154,10 @@ class TesteBasicoApiTest(TestCase):
         self.assertEqual(len(r.data['perguntas']), svc.N_PERGUNTAS)
         self.assertEqual(set(r.data['perguntas'][0]), {'id', 'enunciado', 'opcoes'})
         t = TesteNivelBasico.objects.get(pk=r.data['id'])
-        r = self.c.post(f'/api/v1/student/teste-basico/{t.id}/entregar/', {'respostas': _respostas(t, 20)}, format='json')
+        r = self.c.post(f'/api/v1/student/teste-basico/{t.id}/entregar/', {'respostas': _respostas(t, svc.N_PERGUNTAS)}, format='json')
         self.assertEqual(r.status_code, 200)
         self.assertTrue(r.data['aprovado'])
-        self.assertEqual(r.data['certas'], 20)
+        self.assertEqual(r.data['certas'], svc.N_PERGUNTAS)
         self.assertTrue(r.data['estado']['tem_nivel_basico'])
         # já aprovado: não abre outro teste
         self.assertEqual(self.c.post('/api/v1/student/teste-basico/iniciar/').status_code, 400)

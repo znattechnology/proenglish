@@ -9,6 +9,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from apps.courses.api.student.colocacao import colocacao as colocacao_aluno
+from apps.courses.api.student.colocacao import teste as teste_colocacao
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -44,6 +45,7 @@ urlpatterns = [
     path('api/v1/student/practice-courses/', include('apps.courses.api.student.practice_courses.urls')),
     path('api/v1/student/teste-basico/', include('apps.courses.api.student.urls_teste_basico')),
     path('api/v1/student/colocacao/', colocacao_aluno, name='colocacao'),
+    path('api/v1/student/colocacao/teste/', teste_colocacao, name='colocacao_teste'),
     path('api/v1/student/revisao/', include('apps.perfil.urls_revisao')),  # revisão de hoje
     path('api/v1/student/fala/', include('apps.perfil.urls_fala')),  # minutos a falar, meta de fala (fase 3)
     

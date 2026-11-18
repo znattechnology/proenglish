@@ -13,9 +13,14 @@ from apps.core.models import BaseModel
 
 class TesteNivelBasico(BaseModel):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='testes_basico')
-    # Nível testado (A1, A2, B1, B2). O teste do nível básico é o do A2.
+    # O nível mais alto testado (A1 a B2). O teste do nível básico só tem o A2.
     nivel = models.CharField(max_length=2, default='A2')
-    # [{"id": "<pergunta>", "ordem": [índices das opções pela ordem mostrada]}]
+    # Os níveis com perguntas neste teste, e a nota de cada um: {"A1": {"certas", "total", "aprovado"}}.
+    niveis = models.JSONField(default=list, blank=True)
+    resultado = models.JSONField(default=dict, blank=True)
+    # Teste de colocação: o nível que o aluno escolheu (A2 a C1). Vazio no teste do nível básico.
+    para = models.CharField(max_length=2, blank=True, default='')
+    # [{"id": "<pergunta>", "ordem": [índices das opções pela ordem mostrada], "nivel": "A1"}]
     perguntas = models.JSONField(default=list)
     # Perguntas anuladas porque o aluno saiu do ecrã do teste (ids); contam como erradas.
     anuladas = models.JSONField(default=list, blank=True)

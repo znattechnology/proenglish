@@ -7,17 +7,21 @@ geral (English Communication Skills). Tem-no quem:
 - foi aprovado no teste do nível básico (este módulo).
 
 Quem já estava inscrito ou já fazia um curso de sector continua; a regra vale para entradas novas.
-O teste é corrigido no servidor: 20 perguntas sorteadas do banco, 70% para aprovar, 20 minutos.
+O teste é corrigido no servidor: 30 perguntas sorteadas do banco, 70% para aprovar, 30 minutos.
 Quem reprova (ou deixa o tempo acabar) pode repetir ao fim de 24 horas.
+
+O mesmo motor serve o teste de colocação do curso geral (apps/courses/colocacao.py): um teste pode
+cobrir vários níveis (p.ex. A1, A2, B1 e B2 para quem escolhe o C1), com as 30 perguntas repartidas pelos níveis e
+a nota de cada nível em separado. Um teste "prova" o último nível aprovado (70%) seguido a partir
+do primeiro que testou; o teste do nível básico só tem perguntas do A2 e prova o A2.
 
 Ecrã inteiro (a mesma regra do LabTIC, contra a consulta de outras páginas ou de uma IA): o teste
 corre em ecrã inteiro e, se o aluno sai (outro separador, outra janela ou outra app), o cliente
 pede a anulação da pergunta em que estava. A anulação fica aqui, no servidor: a pergunta conta
 como errada e a resposta que vier depois é ignorada.
 
-O mesmo teste existe para cada nível (A1, A2, B1 e B2): é o teste de colocação do curso geral
-(apps/courses/colocacao.py). O "teste do nível básico" é o do A2. Os bancos do A1 ao B2 vêm dos
-questionários das unidades (bancos_colocacao.json, gerado por manage.py gerar_bancos_colocacao).
+Os bancos do A1 ao B2 vêm dos questionários das unidades (bancos_colocacao.json, gerado por
+manage.py gerar_bancos_colocacao); o do A2 junta-lhes o banco próprio do teste do nível básico.
 """
 import json
 import os
@@ -27,9 +31,9 @@ from datetime import timedelta
 from django.db import transaction
 from django.utils import timezone
 
-N_PERGUNTAS = 20
+N_PERGUNTAS = 30
 PERCENTAGEM_APROVACAO = 70
-DURACAO = timedelta(minutes=20)
+DURACAO = timedelta(minutes=30)
 TOLERANCIA_ENTREGA = timedelta(seconds=30)   # rede lenta ao entregar no último segundo
 ESPERA_REPETIR = timedelta(hours=24)
 
@@ -39,6 +43,7 @@ MENSAGEM = ('Os cursos de sector pedem, no mínimo, o nível básico de inglês.
 AREAS_GERAIS = {'Geral'}
 NIVEL_BASICO = 'A2'
 NIVEIS_TESTE = ('A1', 'A2', 'B1', 'B2')
+MINUTOS_POR_PERGUNTA = 1
 
 # (id, enunciado, [opções; a primeira é a certa]). Níveis A1 e A2: o que o nível básico ensina.
 BANCO = [
@@ -86,6 +91,7 @@ BANCO = [
 ]
 
 
+
 def _carregar_bancos():
     caminho = os.path.join(os.path.dirname(__file__), 'bancos_colocacao.json')
     bancos = {n: [] for n in NIVEIS_TESTE}
@@ -103,19 +109,55 @@ _POR_ID = {p[0]: p for banco in BANCOS.values() for p in banco}
 
 
 def _indice(nivel):
-    from apps.courses import niveis
-    return niveis.indice(nivel)
+    return NIVEIS_TESTE.index(nivel) if nivel in NIVEIS_TESTE else -1
 
 
-def nivel_valido(nivel):
-    return nivel if nivel in NIVEIS_TESTE and len(BANCOS.get(nivel) or []) >= N_PERGUNTAS else None
+def perguntas_por_nivel(niveis):
+    """As 30 perguntas repartidas pelos níveis; o que sobra vai para os de baixo (C1: 8, 8, 7, 7)."""
+    base, resto = divmod(N_PERGUNTAS, max(1, len(niveis)))
+    return {n: base + (1 if i < resto else 0) for i, n in enumerate(sorted(niveis, key=_indice))}
+
+
+def aprova(certas, total):
+    return total > 0 and certas * 100 >= PERCENTAGEM_APROVACAO * total
+
+
+# ---------------------------------------------------------------------------
+# O que um teste prova
+# ---------------------------------------------------------------------------
+
+def nivel_provado(t):
+    """O nível que esta tentativa (entregue) prova, ou None."""
+    if t.submetido_em is None:
+        return None
+    if not t.para:                                   # teste do nível básico (só A2)
+        return t.nivel if t.aprovado else None
+    provado = None
+    for nivel in sorted(t.niveis or [], key=_indice):
+        r = (t.resultado or {}).get(nivel) or {}
+        if not r.get('aprovado'):
+            break
+        provado = nivel
+    return provado
+
+
+def nivel_provado_de(user):
+    """O nível mais alto que os testes desta pessoa provam (None se nenhum)."""
+    from apps.courses.models import TesteNivelBasico
+    agora = timezone.now()
+    melhor = None
+    for t in TesteNivelBasico.objects.filter(user=user):
+        _fechar_expirada(t, agora)
+        n = nivel_provado(t)
+        if n and _indice(n) > _indice(melhor):
+            melhor = n
+    return melhor
 
 
 def aprovado_no_nivel(user, nivel):
-    """True se foi aprovado no teste deste nível ou de um acima (quem passa no B1 também sabe o A1)."""
-    from apps.courses.models import TesteNivelBasico
-    acima = [n for n in NIVEIS_TESTE if _indice(n) >= _indice(nivel)]
-    return TesteNivelBasico.objects.filter(user=user, aprovado=True, nivel__in=acima).exists()
+    """True se os testes provam este nível ou um acima (quem prova o B1 também sabe o A1)."""
+    provado = nivel_provado_de(user)
+    return provado is not None and _indice(provado) >= _indice(nivel)
 
 
 def curso_de_sector(course):
@@ -142,12 +184,16 @@ def falta_requisito(user, course):
     return not tem_nivel_basico(user)
 
 
+# ---------------------------------------------------------------------------
+# Tentativas
+# ---------------------------------------------------------------------------
+
 def _fechar_expirada(t, agora):
     """Uma tentativa que ficou por entregar conta como reprovada (senão via-se as perguntas à vontade)."""
     if t.submetido_em is None and agora > t.expira_em + TOLERANCIA_ENTREGA:
+        _corrigir(t, {})
         t.submetido_em = t.expira_em
-        t.total = len(t.perguntas)
-        t.save(update_fields=['submetido_em', 'total', 'updated_at'])
+        t.save(update_fields=['submetido_em', 'certas', 'total', 'aprovado', 'resultado', 'updated_at'])
 
 
 def _perguntas_cliente(t):
@@ -159,15 +205,20 @@ def _perguntas_cliente(t):
 
 
 def _tentativa_dict(t, com_perguntas=False):
+    entregue = t.submetido_em is not None
     d = {
         'id': str(t.id),
         'nivel': t.nivel,
+        'niveis': list(t.niveis or [t.nivel]),
+        'para': t.para or None,
         'iniciado_em': t.created_at.isoformat(),
         'expira_em': t.expira_em.isoformat(),
-        'submetido_em': t.submetido_em.isoformat() if t.submetido_em else None,
-        'certas': t.certas if t.submetido_em else None,
+        'submetido_em': t.submetido_em.isoformat() if entregue else None,
+        'certas': t.certas if entregue else None,
         'total': t.total or len(t.perguntas),
-        'aprovado': t.aprovado if t.submetido_em else None,
+        'aprovado': t.aprovado if entregue else None,
+        'resultado': t.resultado if entregue else None,
+        'provado': nivel_provado(t) if entregue else None,
         'anuladas': list(t.anuladas or []),
     }
     if com_perguntas:
@@ -175,19 +226,28 @@ def _tentativa_dict(t, com_perguntas=False):
     return d
 
 
-def ultima_tentativa(user, nivel):
+def ultima_tentativa(user, para=''):
+    """A última tentativa do teste do nível básico (para='') ou dos testes de colocação (para=None: qualquer)."""
     from apps.courses.models import TesteNivelBasico
-    ultima = TesteNivelBasico.objects.filter(user=user, nivel=nivel).first()
+    qs = TesteNivelBasico.objects.filter(user=user)
+    qs = qs.exclude(para='') if para is None else qs.filter(para=para)
+    ultima = qs.first()
     if ultima:
         _fechar_expirada(ultima, timezone.now())
     return ultima
 
 
-def estado(user, nivel=NIVEL_BASICO):
-    """O que o ecrã do teste precisa: se já tem o nível, se pode tentar e quando."""
+def regras(n_perguntas=N_PERGUNTAS):
+    return {'perguntas': n_perguntas, 'aprovacao': PERCENTAGEM_APROVACAO,
+            'minutos': n_perguntas * MINUTOS_POR_PERGUNTA,
+            'espera_horas': int(ESPERA_REPETIR.total_seconds() // 3600)}
+
+
+def estado(user):
+    """O ecrã do teste do nível básico: se já tem o nível, se pode tentar e quando."""
     agora = timezone.now()
-    ultima = ultima_tentativa(user, nivel)
-    tem = tem_nivel_basico(user) if nivel == NIVEL_BASICO else aprovado_no_nivel(user, nivel)
+    ultima = ultima_tentativa(user, '')
+    tem = tem_nivel_basico(user)
     em_curso = ultima if ultima and ultima.submetido_em is None else None
     proxima = None
     if not tem and ultima and ultima.submetido_em is not None and not ultima.aprovado:
@@ -195,49 +255,53 @@ def estado(user, nivel=NIVEL_BASICO):
         if quando > agora:
             proxima = quando
     return {
-        'nivel': nivel,
+        'nivel': NIVEL_BASICO,
         'aprovado_no_nivel': tem,
-        'tem_nivel_basico': tem if nivel == NIVEL_BASICO else tem_nivel_basico(user),
+        'tem_nivel_basico': tem,
         'pode_iniciar': not tem and proxima is None,
         'proxima_tentativa_em': proxima.isoformat() if proxima else None,
         'em_curso': _tentativa_dict(em_curso, com_perguntas=True) if em_curso else None,
         'ultima': _tentativa_dict(ultima) if ultima and ultima.submetido_em else None,
-        'regras': {'perguntas': N_PERGUNTAS, 'aprovacao': PERCENTAGEM_APROVACAO,
-                   'minutos': int(DURACAO.total_seconds() // 60),
-                   'espera_horas': int(ESPERA_REPETIR.total_seconds() // 3600)},
+        'regras': regras(),
     }
 
 
 class ErroTeste(Exception):
-    def __init__(self, codigo, mensagem, status=400):
+    def __init__(self, codigo, mensagem, status=400, **extra):
         super().__init__(mensagem)
-        self.codigo, self.mensagem, self.status = codigo, mensagem, status
+        self.codigo, self.mensagem, self.status, self.extra = codigo, mensagem, status, extra
 
 
-def iniciar(user, nivel=NIVEL_BASICO):
-    """Abre uma tentativa (ou devolve a que está em curso). Lança ErroTeste se não pode."""
-    from django.contrib.auth import get_user_model
+def criar(user, niveis, para=''):
+    """Sorteia as perguntas (de cada nível) e abre a tentativa. Não verifica regras: quem chama verifica."""
     from apps.courses.models import TesteNivelBasico
-    if not nivel_valido(nivel):
-        raise ErroTeste('validation_error', 'Não há teste para este nível.')
-    with transaction.atomic():
-        get_user_model().objects.select_for_update().filter(pk=user.pk).first()
-        e = estado(user, nivel)
-        if e['aprovado_no_nivel']:
-            raise ErroTeste('ja_aprovado', 'Já tem o nível básico: pode inscrever-se em qualquer curso de sector.'
-                            if nivel == NIVEL_BASICO else f'Já foi aprovado no teste do nível {nivel}.')
-        if e['em_curso']:
-            return TesteNivelBasico.objects.filter(user=user, nivel=nivel).first()
-        if not e['pode_iniciar']:
-            raise ErroTeste('espera', 'Pode repetir o teste 24 horas depois da última tentativa.', 429)
-        sorteadas = random.sample(BANCOS[nivel], N_PERGUNTAS)
-        perguntas = []
-        for pid, _, opcoes in sorteadas:
+    niveis = sorted(niveis, key=_indice)
+    quantas = perguntas_por_nivel(niveis)
+    perguntas = []
+    for nivel in niveis:
+        for pid, _, opcoes in random.sample(BANCOS[nivel], quantas[nivel]):
             ordem = list(range(len(opcoes)))
             random.shuffle(ordem)
-            perguntas.append({'id': pid, 'ordem': ordem})
-        return TesteNivelBasico.objects.create(user=user, nivel=nivel, perguntas=perguntas, total=len(perguntas),
-                                               expira_em=timezone.now() + DURACAO)
+            perguntas.append({'id': pid, 'ordem': ordem, 'nivel': nivel})
+    return TesteNivelBasico.objects.create(
+        user=user, nivel=niveis[-1], niveis=niveis, para=para, perguntas=perguntas, total=len(perguntas),
+        expira_em=timezone.now() + timedelta(minutes=len(perguntas) * MINUTOS_POR_PERGUNTA))
+
+
+def iniciar(user):
+    """Abre o teste do nível básico (ou devolve o que está em curso). Lança ErroTeste se não pode."""
+    from django.contrib.auth import get_user_model
+    from apps.courses.models import TesteNivelBasico
+    with transaction.atomic():
+        get_user_model().objects.select_for_update().filter(pk=user.pk).first()
+        e = estado(user)
+        if e['tem_nivel_basico']:
+            raise ErroTeste('ja_aprovado', 'Já tem o nível básico: pode inscrever-se em qualquer curso de sector.')
+        if e['em_curso']:
+            return TesteNivelBasico.objects.filter(user=user, para='').first()
+        if not e['pode_iniciar']:
+            raise ErroTeste('espera', 'Pode repetir o teste 24 horas depois da última tentativa.', 429)
+        return criar(user, [NIVEL_BASICO])
 
 
 def anular(user, teste_id, pergunta_id):
@@ -255,6 +319,29 @@ def anular(user, teste_id, pergunta_id):
             t.anuladas = [*(t.anuladas or []), pergunta_id]
             t.save(update_fields=['anuladas', 'updated_at'])
         return t
+
+
+def _corrigir(t, respostas):
+    """Nota de cada nível e a global. As anuladas e as que faltam contam como erradas."""
+    anuladas = set(t.anuladas or [])
+    por_nivel = {}
+    for item in t.perguntas:
+        nivel = item.get('nivel') or t.nivel
+        r = por_nivel.setdefault(nivel, {'certas': 0, 'total': 0})
+        r['total'] += 1
+        if item['id'] in anuladas:
+            continue
+        escolha = respostas.get(item['id'])
+        if isinstance(escolha, bool) or not isinstance(escolha, int):
+            continue
+        if 0 <= escolha < len(item['ordem']) and item['ordem'][escolha] == 0:
+            r['certas'] += 1
+    for r in por_nivel.values():
+        r['aprovado'] = aprova(r['certas'], r['total'])
+    t.resultado = por_nivel
+    t.certas = sum(r['certas'] for r in por_nivel.values())
+    t.total = len(t.perguntas)
+    t.aprovado = bool(por_nivel) and all(r['aprovado'] for r in por_nivel.values())
 
 
 def submeter(user, teste_id, respostas):
@@ -275,19 +362,7 @@ def submeter(user, teste_id, respostas):
         if agora > t.expira_em + TOLERANCIA_ENTREGA:
             _fechar_expirada(t, agora)
             raise ErroTeste('tempo_esgotado', 'O tempo do teste acabou. Pode repetir daqui a 24 horas.', 410)
-        certas = 0
-        anuladas = set(t.anuladas or [])
-        for item in t.perguntas:
-            if item['id'] in anuladas:
-                continue
-            escolha = respostas.get(item['id'])
-            if isinstance(escolha, bool) or not isinstance(escolha, int):
-                continue
-            if 0 <= escolha < len(item['ordem']) and item['ordem'][escolha] == 0:
-                certas += 1
-        t.certas = certas
-        t.total = len(t.perguntas)
-        t.aprovado = certas * 100 >= PERCENTAGEM_APROVACAO * t.total
+        _corrigir(t, respostas)
         t.submetido_em = agora
-        t.save(update_fields=['certas', 'total', 'aprovado', 'submetido_em', 'updated_at'])
+        t.save(update_fields=['certas', 'total', 'aprovado', 'resultado', 'submetido_em', 'updated_at'])
         return t
