@@ -120,8 +120,7 @@ def estado(user):
         'ultima': teste_basico._tentativa_dict(ultima) if ultima and ultima.submetido_em else None,
         'proxima_tentativa_em': proxima.isoformat() if proxima else None,
         'colocacao': prefs.get('colocacao'),
-        'regras': {'aprovacao': teste_basico.PERCENTAGEM_APROVACAO,
-                   'espera_horas': int(teste_basico.ESPERA_REPETIR.total_seconds() // 3600)},
+        'regras': {k: v for k, v in teste_basico.regras().items() if k in ('aprovacao', 'espera_horas')},
     }
 
 
@@ -152,7 +151,10 @@ def iniciar_teste(user, escolhido):
         if proxima is not None:
             raise ErroColocacao('espera', 'Pode repetir o teste de colocação 24 horas depois do último.', 429,
                                 proxima_tentativa_em=proxima.isoformat())
-        return teste_basico.criar(user, niveis_do_teste(escolhido), para=escolhido)
+        try:
+            return teste_basico.criar(user, niveis_do_teste(escolhido), para=escolhido)
+        except teste_basico.ErroTeste as e:
+            raise ErroColocacao(e.codigo, e.mensagem, e.status) from e
 
 
 def nivel_final(user, escolhido):
@@ -211,5 +213,6 @@ def colocar(user, escolhido):
             motivo = 'sem_curso'
     return {'nivel': final, 'escolhido': escolhido, 'no_nivel_escolhido': final == escolhido,
             'provado': teste_basico.nivel_provado_de(user),
+            'tem_nivel_basico': teste_basico.tem_nivel_basico(user),
             'curso': _curso_dict(curso), 'inscrito': inscrito, 'motivo': motivo,
             'curso_pratica': _curso_dict(pratica)}

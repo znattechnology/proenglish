@@ -3,6 +3,7 @@
  * que outras mostram, estas funções avisam as outras, para não ficarem ecrãs desactualizados.
  */
 import type { ThunkDispatch, UnknownAction } from "@reduxjs/toolkit";
+import { perfilApi } from "@/src/domains/student/perfil/api";
 import { progressoApi } from "@/src/domains/student/progresso/api";
 import { studentVideoCourseApiSlice } from "@/src/domains/student/video-courses/api/studentVideoCourseApiSlice";
 import { studentPracticeApiSlice } from "@/src/domains/student/practice-courses/api/studentPracticeApiSlice";
@@ -18,6 +19,16 @@ export function aposEstudo(dispatch: Despacho) {
 export function aposCurso(dispatch: Despacho) {
   dispatch(studentVideoCourseApiSlice.util.invalidateTags(["StudentVideoCourse", "VideoProgress", "CourseEnrollment"]));
   aposEstudo(dispatch);
+}
+
+/**
+ * Depois da colocação no curso geral: o servidor inscreveu no curso em vídeo, mudou o curso de
+ * prática activo e guardou o nível nas preferências.
+ */
+export function aposColocacao(dispatch: Despacho) {
+  aposCurso(dispatch);
+  dispatch(studentPracticeApiSlice.util.invalidateTags(["StudentProgress", "StudentUnit", "StudentCourse"]));
+  dispatch(perfilApi.util.invalidateTags(["Perfil"]));
 }
 
 /** A meta diária mudou: a sequência e as estatísticas mostram a meta nova. */

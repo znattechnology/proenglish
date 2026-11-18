@@ -224,11 +224,20 @@ function EscolherMeta({ valor, aoMudar }: { valor: number; aoMudar: (v: number) 
   );
 }
 
+/** O último teste de colocação cobriu o nível abaixo deste? (Então o servidor coloca pelo resultado dele.) */
+const cobre = (n: NivelDisponivel, ultima: TentativaTeste | null) => {
+  const anterior = n.niveis_teste[n.niveis_teste.length - 1];
+  return !!anterior && !!ultima?.niveis.includes(anterior);
+};
+
 /**
- * Entra sem fazer teste: A1, níveis anteriores já provados, ou já fez o teste de colocação há menos
- * de 24 horas (o servidor coloca-o pelo resultado desse teste).
+ * Entra sem fazer teste: A1, níveis anteriores já provados, ou já fez há menos de 24 horas um teste
+ * de colocação que chega a este nível (o servidor coloca-o pelo resultado desse teste).
  */
-const entraSemTeste = (n: NivelDisponivel, espera: string | null) => n.pode_entrar || !!espera;
+const entraSemTeste = (n: NivelDisponivel, espera: string | null, ultima: TentativaTeste | null) => n.pode_entrar || (!!espera && cobre(n, ultima));
+
+/** Na espera de 24 horas, um nível que o último teste não cobriu só abre com um teste novo. */
+const bloqueado = (n: NivelDisponivel, espera: string | null, ultima: TentativaTeste | null) => !n.pode_entrar && !!espera && !cobre(n, ultima);
 
 /** Passo 2: o nível em que começa. O teste de colocação, quando é preciso, faz-se aqui mesmo. */
 function EscolherNivel({ aoColocar }: { aoColocar: (r: ResultadoColocacao, tentativa: TentativaTeste | null) => void }) {
@@ -237,6 +246,8 @@ function EscolherNivel({ aoColocar }: { aoColocar: (r: ResultadoColocacao, tenta
   const [colocar, { isLoading: aColocar }] = useColocarMutation();
   const [escolhido, setEscolhido] = useState<NivelColocacao | null>(null);
   const [emTeste, setEmTeste] = useState<NivelDisponivel | null>(null);
+  // "Sair do teste": volta à lista mesmo com um teste a meio (que se retoma ao escolher o nível outra vez).
+  const [saiuDoTeste, setSaiuDoTeste] = useState(false);
   // O teste entregue, enquanto o servidor guarda o nível (ou se falhar, para tentar outra vez).
   const [entregue, setEntregue] = useState<TentativaTeste | null>(null);
   const [erro, setErro] = useState<string | null>(null);
@@ -260,7 +271,7 @@ function EscolherNivel({ aoColocar }: { aoColocar: (r: ResultadoColocacao, tenta
   const cabecalho = <Progresso passo={2} />;
   // Um teste de colocação a meio retoma-se logo (o tempo continua a contar).
   const aMeio = data?.em_curso?.perguntas ? data.em_curso : null;
-  const noTeste = emTeste ?? (aMeio ? data?.niveis.find((n) => n.nivel === aMeio.para) ?? null : null);
+  const noTeste = emTeste ?? (aMeio && !saiuDoTeste ? data?.niveis.find((n) => n.nivel === aMeio.para) ?? null : null);
 
   if (noTeste && entregue)
     return (
@@ -283,8 +294,11 @@ function EscolherNivel({ aoColocar }: { aoColocar: (r: ResultadoColocacao, tenta
     return (
       <TesteDeColocacao
         n={noTeste}
-        aMeio={aMeio}
-        aoVoltar={() => setEmTeste(null)}
+        aMeio={aMeio?.para === noTeste.nivel ? aMeio : null}
+        aoVoltar={() => {
+          setEmTeste(null);
+          setSaiuDoTeste(true);
+        }}
         aoEntregar={(t) => {
           setEntregue(t);
           void aplicar(noTeste.nivel, t);
@@ -314,7 +328,7 @@ function EscolherNivel({ aoColocar }: { aoColocar: (r: ResultadoColocacao, tenta
     ? "Escolha um nível"
     : aColocar
       ? "A guardar…"
-      : entraSemTeste(sel, espera)
+      : entraSemTeste(sel, espera, data.ultima)
         ? sel.pode_entrar
           ? `Começar no ${sel.nivel}`
           : "Continuar"
@@ -326,18 +340,24 @@ function EscolherNivel({ aoColocar }: { aoColocar: (r: ResultadoColocacao, tenta
       style={{ gap: 20, paddingTop: 8 }}
       rodape={
         <>
-          {sel && !sel.pode_entrar && espera ? (
+          {sel && espera && !sel.pode_entrar && !bloqueado(sel, espera, data.ultima) ? (
             <Aviso>{`Já fez o teste de colocação. Pode repeti-lo a partir de ${dataHora(espera)}; até lá, começa no nível que esse teste mostrou.`}</Aviso>
+          ) : null}
+          {sel && espera && bloqueado(sel, espera, data.ultima) ? (
+            <Aviso>{`O teste que fez não chega ao ${sel.nivel}. Pode fazer um teste novo a partir de ${dataHora(espera)}; até lá, escolha um nível até ao ${data.ultima?.para ?? ""}.`}</Aviso>
           ) : null}
           {erro ? <Aviso tom="erro">{erro}</Aviso> : null}
           <Botao
             larguraTotal
-            disabled={!sel}
+            disabled={!sel || bloqueado(sel, espera, data.ultima)}
             carregando={aColocar}
             onPress={() => {
               if (!sel) return;
-              if (entraSemTeste(sel, espera)) void aplicar(sel.nivel, null);
-              else setEmTeste(sel);
+              if (entraSemTeste(sel, espera, data.ultima)) void aplicar(sel.nivel, null);
+              else {
+                setSaiuDoTeste(false);
+                setEmTeste(sel);
+              }
             }}
           >
             {textoBotao}
@@ -474,7 +494,7 @@ function TesteDeColocacao({ n, aMeio, aoVoltar, aoEntregar }: { n: NivelDisponiv
 function Pronto({ r, tentativa, area }: { r: ResultadoColocacao; tentativa: TentativaTeste | null; area: string | null }) {
   const sector = !!area && area !== AREA_GERAL;
   const nomeArea = AREAS.find((a) => a.valor === area)?.nome;
-  const temBasico = ["B1", "B2", "C1"].includes(r.nivel);
+  const temBasico = r.tem_nivel_basico;
   const resultado = tentativa?.resultado ? Object.entries(tentativa.resultado) : [];
 
   let texto: string | null = null;

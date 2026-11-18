@@ -24,16 +24,16 @@ Os bancos do A1 ao B2 vêm dos questionários das unidades (bancos_colocacao.jso
 manage.py gerar_bancos_colocacao); o do A2 junta-lhes o banco próprio do teste do nível básico.
 """
 import json
+import logging
 import os
 import random
 from datetime import timedelta
 
-from django.db import transaction
+from django.db import models, transaction
 from django.utils import timezone
 
 N_PERGUNTAS = 30
 PERCENTAGEM_APROVACAO = 70
-DURACAO = timedelta(minutes=30)
 TOLERANCIA_ENTREGA = timedelta(seconds=30)   # rede lenta ao entregar no último segundo
 ESPERA_REPETIR = timedelta(hours=24)
 
@@ -92,10 +92,16 @@ BANCO = [
 
 
 
+logger = logging.getLogger(__name__)
+
+
 def _carregar_bancos():
     caminho = os.path.join(os.path.dirname(__file__), 'bancos_colocacao.json')
     bancos = {n: [] for n in NIVEIS_TESTE}
-    if os.path.exists(caminho):
+    if not os.path.exists(caminho):
+        logger.error('Falta %s: os testes de colocação do A1, B1 e B2 não abrem '
+                     '(gerar com manage.py gerar_bancos_colocacao).', caminho)
+    else:
         with open(caminho, encoding='utf-8') as f:
             for nivel, perguntas in json.load(f).items():
                 if nivel in bancos:
@@ -146,7 +152,10 @@ def nivel_provado_de(user):
     from apps.courses.models import TesteNivelBasico
     agora = timezone.now()
     melhor = None
-    for t in TesteNivelBasico.objects.filter(user=user):
+    # Só interessam os entregues e os por entregar já fora de prazo (que fecham aqui como reprovados).
+    candidatos = (TesteNivelBasico.objects.filter(user=user)
+                  .filter(models.Q(submetido_em__isnull=False) | models.Q(expira_em__lt=agora - TOLERANCIA_ENTREGA)))
+    for t in candidatos:
         _fechar_expirada(t, agora)
         n = nivel_provado(t)
         if n and _indice(n) > _indice(melhor):
@@ -168,8 +177,12 @@ def curso_de_sector(course):
 
 
 def tem_nivel_basico(user):
-    from apps.courses.models import CourseCertificate
-    if aprovado_no_nivel(user, NIVEL_BASICO):
+    from apps.courses.models import CourseCertificate, TesteNivelBasico
+    # Caminho rápido (chamado por cada curso nas listas): o teste do nível básico aprovado.
+    if TesteNivelBasico.objects.filter(user=user, para='', aprovado=True).exists():
+        return True
+    if (TesteNivelBasico.objects.filter(user=user).exclude(para='').exists()
+            and aprovado_no_nivel(user, NIVEL_BASICO)):
         return True
     from apps.courses import ciclo
     gerais = [valor for valor, rotulo in ciclo.AREAS.items() if rotulo in AREAS_GERAIS]
@@ -277,6 +290,8 @@ def criar(user, niveis, para=''):
     from apps.courses.models import TesteNivelBasico
     niveis = sorted(niveis, key=_indice)
     quantas = perguntas_por_nivel(niveis)
+    if any(len(BANCOS.get(n) or []) < quantas[n] for n in niveis):
+        raise ErroTeste('teste_indisponivel', 'O teste não está disponível neste momento. Tente mais tarde.', 503)
     perguntas = []
     for nivel in niveis:
         for pid, _, opcoes in random.sample(BANCOS[nivel], quantas[nivel]):

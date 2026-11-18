@@ -153,7 +153,8 @@ export function Perguntas({ t, aoEntregar }: { t: TentativaTeste; aoEntregar: (r
   const falta = useFalta(t.expira_em);
   const p = perguntas[indice];
   const ultima = indice === perguntas.length - 1;
-  const respondidas = Object.keys(respostas).length;
+  // As anuladas já não se respondem: contam como tratadas (como na app).
+  const respondidas = perguntas.filter((q) => respostas[q.id] !== undefined || anuladas.includes(q.id)).length;
   const anulada = !!p && anuladas.includes(p.id);
 
   const ecra = useVigiaEcraInteiro(aVigiar, () => {
@@ -161,6 +162,11 @@ export function Perguntas({ t, aoEntregar }: { t: TentativaTeste; aoEntregar: (r
     setAviso(indice + 1);
     if (anuladas.includes(p.id)) return;
     setAnuladas((a) => [...a, p.id]);
+    // A resposta que tivesse dado deixa de contar.
+    const resto = { ...ultimas.current };
+    delete resto[p.id];
+    ultimas.current = resto;
+    setRespostas(resto);
     void anularNoServidor({ id: t.id, pergunta: p.id });
   });
 

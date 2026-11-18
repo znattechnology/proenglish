@@ -53,8 +53,15 @@ export function useVigiaEcraInteiro(activo: boolean, aoSair: () => void) {
       fora.current = true;
       aoSairRef.current();
     };
+    // De volta à página sem passar pelo ecrã inteiro (iPhone, ecrã inteiro recusado, ou mudou de
+    // janela sem sair do ecrã inteiro): a próxima saída volta a contar. Fora do ecrã inteiro, onde é
+    // suportado, só conta outra vez depois de o aluno voltar ao ecrã inteiro (voltar()).
+    const regressou = () => {
+      if (!suportaEcraInteiro() || document.fullscreenElement) fora.current = false;
+    };
     const aoMudarVisibilidade = () => {
       if (document.visibilityState === "hidden") sair();
+      else regressou();
     };
     const aoMudarEcra = () => {
       if (document.fullscreenElement) {
@@ -68,10 +75,12 @@ export function useVigiaEcraInteiro(activo: boolean, aoSair: () => void) {
     document.addEventListener("visibilitychange", aoMudarVisibilidade);
     document.addEventListener("fullscreenchange", aoMudarEcra);
     window.addEventListener("blur", sair);
+    window.addEventListener("focus", regressou);
     return () => {
       document.removeEventListener("visibilitychange", aoMudarVisibilidade);
       document.removeEventListener("fullscreenchange", aoMudarEcra);
       window.removeEventListener("blur", sair);
+      window.removeEventListener("focus", regressou);
     };
   }, [activo, suporta]);
 

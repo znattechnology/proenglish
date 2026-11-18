@@ -4,6 +4,7 @@
  * perguntas de todos os níveis abaixo do escolhido (70% em cada nível); o aluno entra a seguir ao
  * último nível aprovado sem falhar nenhum abaixo, a contar do A1. O servidor decide e inscreve.
  */
+import { aposColocacao, quandoCorrerBem } from "../sincronizar";
 import { cursoApi } from "./api";
 import type { NivelTeste, TentativaTeste } from "./testeBasico";
 
@@ -35,6 +36,7 @@ export type ResultadoColocacao = {
   escolhido: NivelColocacao;
   no_nivel_escolhido: boolean;
   provado: NivelTeste | null;
+  tem_nivel_basico: boolean;
   curso: { id: string; titulo: string } | null;
   inscrito: boolean;
   motivo: "plano" | "sem_curso" | string | null;
@@ -54,6 +56,7 @@ export const colocacaoApi = cursoApi.enhanceEndpoints({ addTagTypes: ["Colocacao
     colocar: build.mutation<ResultadoColocacao, NivelColocacao>({
       query: (nivel) => ({ url: "/student/colocacao/", method: "POST", body: { nivel } }),
       invalidatesTags: ["Colocacao", "Curso", "Inscricao"],
+      onQueryStarted: quandoCorrerBem(aposColocacao),
     }),
   }),
 });

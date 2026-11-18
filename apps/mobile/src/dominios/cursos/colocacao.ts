@@ -36,6 +36,7 @@ export type ResultadoColocacao = {
   escolhido: NivelColocacao;
   no_nivel_escolhido: boolean;
   provado: NivelTeste | null;
+  tem_nivel_basico: boolean;
   curso: { id: string; titulo: string } | null;
   inscrito: boolean;
   motivo: "plano" | "sem_curso" | (string & {}) | null;

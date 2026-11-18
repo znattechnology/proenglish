@@ -113,6 +113,7 @@ class ColocacaoTest(TestCase):
         self.assertEqual((r.data['nivel'], r.data['escolhido'], r.data['no_nivel_escolhido']), ('B1', 'C1', False))
         self.assertTrue(CourseEnrollment.objects.filter(user=self.aluno, course=self.b1_1).exists())
         self.assertTrue(svc.tem_nivel_basico(self.aluno))   # provou o A2
+        self.assertTrue(r.data['tem_nivel_basico'])
 
     def test_escolhe_c1_e_erra_tudo_comeca_no_a1(self):
         d = self._fazer_teste('C1')
@@ -195,6 +196,12 @@ class ColocacaoTest(TestCase):
         outro = APIClient()
         outro.force_authenticate(self.prof)
         self.assertEqual(outro.post(f'{T}{t.id}/anular/', {'pergunta': t.perguntas[0]['id']}, format='json').status_code, 404)
+
+    def test_banco_insuficiente_da_503_e_nao_500(self):
+        from unittest import mock
+        with mock.patch.dict(svc.BANCOS, {'A1': svc.BANCOS['A1'][:3]}):
+            r = self.c.post(f'{U}teste/', {'nivel': 'A2'}, format='json')
+        self.assertEqual((r.status_code, r.data['code']), (503, 'teste_indisponivel'))
 
     def test_bancos_e_funcoes_auxiliares(self):
         for nivel in svc.NIVEIS_TESTE:
