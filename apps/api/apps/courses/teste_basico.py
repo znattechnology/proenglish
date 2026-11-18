@@ -9,7 +9,13 @@ geral (English Communication Skills). Tem-no quem:
 Quem já estava inscrito ou já fazia um curso de sector continua; a regra vale para entradas novas.
 O teste é corrigido no servidor: 20 perguntas sorteadas do banco, 70% para aprovar, 20 minutos.
 Quem reprova (ou deixa o tempo acabar) pode repetir ao fim de 24 horas.
+
+O mesmo teste existe para cada nível (A1, A2, B1 e B2): é o teste de colocação do curso geral
+(apps/courses/colocacao.py). O "teste do nível básico" é o do A2. Os bancos do A1 ao B2 vêm dos
+questionários das unidades (bancos_colocacao.json, gerado por manage.py gerar_bancos_colocacao).
 """
+import json
+import os
 import random
 from datetime import timedelta
 
@@ -26,6 +32,8 @@ CODIGO = 'requisito_basico'
 MENSAGEM = ('Os cursos de sector pedem, no mínimo, o nível básico de inglês. '
             'Faça o teste do nível básico ou comece pelo curso geral.')
 AREAS_GERAIS = {'Geral'}
+NIVEL_BASICO = 'A2'
+NIVEIS_TESTE = ('A1', 'A2', 'B1', 'B2')
 
 # (id, enunciado, [opções; a primeira é a certa]). Níveis A1 e A2: o que o nível básico ensina.
 BANCO = [
@@ -71,7 +79,38 @@ BANCO = [
     ('b39', 'We ___ got a meeting at ten.', ['have', 'has', 'are']),
     ('b40', 'I do not have ___ questions.', ['any', 'some', 'much']),
 ]
-_POR_ID = {p[0]: p for p in BANCO}
+
+
+def _carregar_bancos():
+    caminho = os.path.join(os.path.dirname(__file__), 'bancos_colocacao.json')
+    bancos = {n: [] for n in NIVEIS_TESTE}
+    if os.path.exists(caminho):
+        with open(caminho, encoding='utf-8') as f:
+            for nivel, perguntas in json.load(f).items():
+                if nivel in bancos:
+                    bancos[nivel] = [tuple(p) for p in perguntas]
+    bancos[NIVEL_BASICO] = list(BANCO) + bancos[NIVEL_BASICO]
+    return bancos
+
+
+BANCOS = _carregar_bancos()
+_POR_ID = {p[0]: p for banco in BANCOS.values() for p in banco}
+
+
+def _indice(nivel):
+    from apps.courses import niveis
+    return niveis.indice(nivel)
+
+
+def nivel_valido(nivel):
+    return nivel if nivel in NIVEIS_TESTE and len(BANCOS.get(nivel) or []) >= N_PERGUNTAS else None
+
+
+def aprovado_no_nivel(user, nivel):
+    """True se foi aprovado no teste deste nível ou de um acima (quem passa no B1 também sabe o A1)."""
+    from apps.courses.models import TesteNivelBasico
+    acima = [n for n in NIVEIS_TESTE if _indice(n) >= _indice(nivel)]
+    return TesteNivelBasico.objects.filter(user=user, aprovado=True, nivel__in=acima).exists()
 
 
 def curso_de_sector(course):
@@ -82,8 +121,8 @@ def curso_de_sector(course):
 
 
 def tem_nivel_basico(user):
-    from apps.courses.models import CourseCertificate, TesteNivelBasico
-    if TesteNivelBasico.objects.filter(user=user, aprovado=True).exists():
+    from apps.courses.models import CourseCertificate
+    if aprovado_no_nivel(user, NIVEL_BASICO):
         return True
     from apps.courses import ciclo
     gerais = [valor for valor, rotulo in ciclo.AREAS.items() if rotulo in AREAS_GERAIS]
@@ -117,6 +156,7 @@ def _perguntas_cliente(t):
 def _tentativa_dict(t, com_perguntas=False):
     d = {
         'id': str(t.id),
+        'nivel': t.nivel,
         'iniciado_em': t.created_at.isoformat(),
         'expira_em': t.expira_em.isoformat(),
         'submetido_em': t.submetido_em.isoformat() if t.submetido_em else None,
@@ -129,14 +169,19 @@ def _tentativa_dict(t, com_perguntas=False):
     return d
 
 
-def estado(user):
-    """O que o ecrã do teste precisa: se já tem o nível, se pode tentar e quando."""
+def ultima_tentativa(user, nivel):
     from apps.courses.models import TesteNivelBasico
-    agora = timezone.now()
-    ultima = TesteNivelBasico.objects.filter(user=user).first()
+    ultima = TesteNivelBasico.objects.filter(user=user, nivel=nivel).first()
     if ultima:
-        _fechar_expirada(ultima, agora)
-    tem = tem_nivel_basico(user)
+        _fechar_expirada(ultima, timezone.now())
+    return ultima
+
+
+def estado(user, nivel=NIVEL_BASICO):
+    """O que o ecrã do teste precisa: se já tem o nível, se pode tentar e quando."""
+    agora = timezone.now()
+    ultima = ultima_tentativa(user, nivel)
+    tem = tem_nivel_basico(user) if nivel == NIVEL_BASICO else aprovado_no_nivel(user, nivel)
     em_curso = ultima if ultima and ultima.submetido_em is None else None
     proxima = None
     if not tem and ultima and ultima.submetido_em is not None and not ultima.aprovado:
@@ -144,7 +189,9 @@ def estado(user):
         if quando > agora:
             proxima = quando
     return {
-        'tem_nivel_basico': tem,
+        'nivel': nivel,
+        'aprovado_no_nivel': tem,
+        'tem_nivel_basico': tem if nivel == NIVEL_BASICO else tem_nivel_basico(user),
         'pode_iniciar': not tem and proxima is None,
         'proxima_tentativa_em': proxima.isoformat() if proxima else None,
         'em_curso': _tentativa_dict(em_curso, com_perguntas=True) if em_curso else None,
@@ -161,26 +208,29 @@ class ErroTeste(Exception):
         self.codigo, self.mensagem, self.status = codigo, mensagem, status
 
 
-def iniciar(user):
+def iniciar(user, nivel=NIVEL_BASICO):
     """Abre uma tentativa (ou devolve a que está em curso). Lança ErroTeste se não pode."""
     from django.contrib.auth import get_user_model
     from apps.courses.models import TesteNivelBasico
+    if not nivel_valido(nivel):
+        raise ErroTeste('validation_error', 'Não há teste para este nível.')
     with transaction.atomic():
         get_user_model().objects.select_for_update().filter(pk=user.pk).first()
-        e = estado(user)
-        if e['tem_nivel_basico']:
-            raise ErroTeste('ja_aprovado', 'Já tem o nível básico: pode inscrever-se em qualquer curso de sector.')
+        e = estado(user, nivel)
+        if e['aprovado_no_nivel']:
+            raise ErroTeste('ja_aprovado', 'Já tem o nível básico: pode inscrever-se em qualquer curso de sector.'
+                            if nivel == NIVEL_BASICO else f'Já foi aprovado no teste do nível {nivel}.')
         if e['em_curso']:
-            return TesteNivelBasico.objects.filter(user=user).first()
+            return TesteNivelBasico.objects.filter(user=user, nivel=nivel).first()
         if not e['pode_iniciar']:
             raise ErroTeste('espera', 'Pode repetir o teste 24 horas depois da última tentativa.', 429)
-        sorteadas = random.sample(BANCO, N_PERGUNTAS)
+        sorteadas = random.sample(BANCOS[nivel], N_PERGUNTAS)
         perguntas = []
         for pid, _, opcoes in sorteadas:
             ordem = list(range(len(opcoes)))
             random.shuffle(ordem)
             perguntas.append({'id': pid, 'ordem': ordem})
-        return TesteNivelBasico.objects.create(user=user, perguntas=perguntas, total=len(perguntas),
+        return TesteNivelBasico.objects.create(user=user, nivel=nivel, perguntas=perguntas, total=len(perguntas),
                                                expira_em=timezone.now() + DURACAO)
 
 

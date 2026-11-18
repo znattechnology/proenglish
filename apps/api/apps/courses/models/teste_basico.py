@@ -1,5 +1,5 @@
 """
-Teste do nível básico: o requisito para entrar num curso de sector sem ter feito o curso geral
+Teste de nível (A1 a B2; o do A2 é o teste do nível básico): o requisito para entrar num curso de sector sem ter feito o curso geral
 (apps/courses/teste_basico.py tem o banco de perguntas e as regras).
 
 Uma tentativa por linha. As perguntas sorteadas e a ordem das opções ficam aqui, no servidor:
@@ -13,6 +13,8 @@ from apps.core.models import BaseModel
 
 class TesteNivelBasico(BaseModel):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='testes_basico')
+    # Nível testado (A1, A2, B1, B2). O teste do nível básico é o do A2.
+    nivel = models.CharField(max_length=2, default='A2')
     # [{"id": "<pergunta>", "ordem": [índices das opções pela ordem mostrada]}]
     perguntas = models.JSONField(default=list)
     expira_em = models.DateTimeField()

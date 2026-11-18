@@ -1,0 +1,5410 @@
+{
+"A1": [
+[
+"a1-revisao-1-r1q1",
+"São 21h. Chega a uma reunião. O que diz?",
+[
+"Good evening.",
+"Good night.",
+"Good afternoon."
+]
+],
+[
+"a1-revisao-1-r1q2",
+"Num e-mail, como se diz \".\"?",
+[
+"dot",
+"point",
+"at"
+]
+],
+[
+"a1-revisao-1-r1q3",
+"Como se diz 88 num número de telefone?",
+[
+"double eight",
+"eighty-eight",
+"two eight"
+]
+],
+[
+"a1-revisao-1-r1q4",
+"Escolha a resposta certa: \"Is she Mozambican?\"",
+[
+"Yes, she is.",
+"Yes, she's.",
+"Yes, she are."
+]
+],
+[
+"a1-revisao-1-r1q5",
+"Como se diz \"Ele tem 40 anos\"?",
+[
+"He's forty.",
+"He has forty years.",
+"He's forty years."
+]
+],
+[
+"a1-revisao-1-r1q6",
+"Em que palavra a sílaba forte é a última?",
+[
+"Portuguese",
+"Angola",
+"Portugal"
+]
+],
+[
+"a1-revisao-1-r1q7",
+"Qual é a frase correcta?",
+[
+"I'm an engineer.",
+"I'm engineer.",
+"I'm a engineer."
+]
+],
+[
+"a1-revisao-1-r1q8",
+"\"What do you do?\" quer dizer:",
+[
+"Qual é a sua profissão?",
+"O que está a fazer?",
+"Como está?"
+]
+],
+[
+"a1-revisao-1-r1q9",
+"Quer confirmar um número. O que pergunta?",
+[
+"Is that correct?",
+"Is correct?",
+"That is correct you?"
+]
+],
+[
+"a1-revisao-1-r1q10",
+"Complete: \"Sílvia and Carlos have two children. ___ names are Kiesse and Tomé.\"",
+[
+"Their",
+"There",
+"They"
+]
+],
+[
+"a1-revisao-1-r1q11",
+"Qual é o plural de \"person\"?",
+[
+"people",
+"persons",
+"peoples"
+]
+],
+[
+"a1-revisao-1-r1q12",
+"Complete: \"She ___ to work by bus.\"",
+[
+"goes",
+"go",
+"gos"
+]
+],
+[
+"a1-revisao-1-r1q13",
+"Qual é a pergunta correcta?",
+[
+"Does he drive to work?",
+"Does he drives to work?",
+"Do he drive to work?"
+]
+],
+[
+"a1-revisao-1-r1q14",
+"\"Half past six\" é:",
+[
+"6:30",
+"5:30",
+"6:15"
+]
+],
+[
+"a1-revisao-1-r1q15",
+"Complete: \"See you ___ Friday ___ ten.\"",
+[
+"on … at",
+"in … at",
+"at … on"
+]
+],
+[
+"a1-revisao-2-r2q1",
+"Complete: \"How ___ sugar do you want?\"",
+[
+"much",
+"many",
+"any"
+]
+],
+[
+"a1-revisao-2-r2q2",
+"O empregado pergunta \"Would you like a dessert?\" Não quer. O que diz?",
+[
+"No, thank you. That's all.",
+"No, I don't like.",
+"No, I wouldn't."
+]
+],
+[
+"a1-revisao-2-r2q3",
+"Como se diz 2 500 kwanzas?",
+[
+"two thousand five hundred kwanzas",
+"two thousands five hundreds kwanzas",
+"two thousand and five kwanzas"
+]
+],
+[
+"a1-revisao-2-r2q4",
+"Qual é a frase correcta?",
+[
+"There are two banks in my street.",
+"It has two banks in my street.",
+"There is two banks in my street."
+]
+],
+[
+"a1-revisao-2-r2q5",
+"Is there a café near here? — Sim. O que responde?",
+[
+"Yes, there is.",
+"Yes, there's.",
+"Yes, it is."
+]
+],
+[
+"a1-revisao-2-r2q6",
+"\"Go straight on\" quer dizer:",
+[
+"Siga em frente.",
+"Vire à direita.",
+"Atravesse a rua."
+]
+],
+[
+"a1-revisao-2-r2q7",
+"Complete: \"I like the blue shirt. Can I try ___ on?\"",
+[
+"it",
+"one",
+"them"
+]
+],
+[
+"a1-revisao-2-r2q8",
+"Qual é a frase correcta?",
+[
+"This laptop is more expensive than that one.",
+"This laptop is expensiver than that one.",
+"This laptop is more expensive that that one."
+]
+],
+[
+"a1-revisao-2-r2q9",
+"A farmacêutica diz \"Take one tablet twice a day\". Quantas vezes?",
+[
+"duas vezes por dia",
+"uma vez por dia",
+"de duas em duas horas"
+]
+],
+[
+"a1-revisao-2-r2q10",
+"Qual é a pergunta correcta?",
+[
+"Can you swim?",
+"Do you can swim?",
+"Can you to swim?"
+]
+],
+[
+"a1-revisao-2-r2q11",
+"Ao telefone, a colega não está. Como pergunta quem fala?",
+[
+"Who's calling, please?",
+"Who are you?",
+"Who is speak?"
+]
+],
+[
+"a1-revisao-2-r2q12",
+"Complete: \"Look! It ___.\"",
+[
+"'s raining",
+"rains",
+"rain"
+]
+],
+[
+"a1-revisao-2-r2q13",
+"Complete: \"Where ___ you yesterday?\"",
+[
+"were",
+"was",
+"did"
+]
+],
+[
+"a1-revisao-2-r2q14",
+"Qual é o passado de \"take\"?",
+[
+"took",
+"taked",
+"taken"
+]
+],
+[
+"a1-revisao-2-r2q15",
+"Qual é a frase correcta?",
+[
+"We're going to have a party on the 20th.",
+"We going to have a party on the 20th.",
+"We're going to having a party in the 20th."
+]
+],
+[
+"a1-unidade-01-u1q1",
+"São 10 horas da manhã. Chega a uma reunião. O que diz?",
+[
+"Good morning.",
+"Good evening.",
+"Good night."
+]
+],
+[
+"a1-unidade-01-u1q2",
+"Escolha a resposta certa: \"Are you Paulo?\"",
+[
+"Yes, I am.",
+"Yes, I'm.",
+"Yes, I is."
+]
+],
+[
+"a1-unidade-01-u1q3",
+"Alguém lhe diz \"Nice to meet you.\" O que responde?",
+[
+"Nice to meet you, too.",
+"Good night.",
+"I'm fine."
+]
+],
+[
+"a1-unidade-01-u1q4",
+"Num e-mail, como se diz \"@\"?",
+[
+"at",
+"dot",
+"and"
+]
+],
+[
+"a1-unidade-01-u1q5",
+"Não percebeu o que lhe disseram. O que diz?",
+[
+"Sorry, can you repeat that, please?",
+"How do you spell that?",
+"Nice to meet you."
+]
+],
+[
+"a1-unidade-01-u1q6",
+"Como se escreve 13 em inglês?",
+[
+"thirteen",
+"three",
+"thirty"
+]
+],
+[
+"a1-unidade-01-u1q7",
+"Num número de telefone, como se diz 922?",
+[
+"nine double two",
+"nine twenty-two",
+"nine two"
+]
+],
+[
+"a1-unidade-01-u1q8",
+"Que letra tem o mesmo som que \"A\"?",
+[
+"K",
+"E",
+"I"
+]
+],
+[
+"a1-unidade-01-u1q9",
+"Quando se pode dizer \"Hi\"?",
+[
+"A qualquer hora do dia",
+"Só de manhã",
+"Só à noite"
+]
+],
+[
+"a1-unidade-01-u1q10",
+"Complete: \"I'm ___ accountant.\"",
+[
+"an",
+"a",
+"the"
+]
+],
+[
+"a1-unidade-01-u1q11",
+"São 20 horas. Sai do escritório. O que diz aos colegas?",
+[
+"Good night! See you tomorrow.",
+"Good evening! Nice to meet you.",
+"Good morning!"
+]
+],
+[
+"a1-unidade-01-u1q12",
+"Escolha a frase correcta.",
+[
+"I'm a technician.",
+"I'm technician.",
+"I a technician."
+]
+],
+[
+"a1-unidade-02-u2q1",
+"Qual é a frase correcta?",
+[
+"I'm from Angola.",
+"I'm from Angolan.",
+"I'm Angola."
+]
+],
+[
+"a1-unidade-02-u2q2",
+"Qual é a nacionalidade de alguém de Moçambique?",
+[
+"Mozambican",
+"Mozambiquese",
+"Mozambique"
+]
+],
+[
+"a1-unidade-02-u2q3",
+"Complete: \"Thandi ___ South African.\"",
+[
+"is",
+"are",
+"am"
+]
+],
+[
+"a1-unidade-02-u2q4",
+"Escolha a resposta certa: \"Are they from Lagos?\"",
+[
+"Yes, they are.",
+"Yes, they're.",
+"Yes, they is."
+]
+],
+[
+"a1-unidade-02-u2q5",
+"Complete: \"Mr Okafor ___ Angolan. He's Nigerian.\"",
+[
+"isn't",
+"aren't",
+"not"
+]
+],
+[
+"a1-unidade-02-u2q6",
+"Como se diz 40?",
+[
+"forty",
+"fourty",
+"fourteen"
+]
+],
+[
+"a1-unidade-02-u2q7",
+"Como se diz \"Tenho 25 anos\"?",
+[
+"I'm twenty-five.",
+"I have twenty-five years.",
+"I'm twenty-five years."
+]
+],
+[
+"a1-unidade-02-u2q8",
+"Em que palavra a sílaba forte é a última?",
+[
+"Portuguese",
+"Portugal",
+"Angola"
+]
+],
+[
+"a1-unidade-02-u2q9",
+"\"I'm in Luanda this year\" quer dizer:",
+[
+"Este ano estou em Luanda.",
+"Sou de Luanda.",
+"Vivo em Luanda há um ano."
+]
+],
+[
+"a1-unidade-02-u2q10",
+"Chega uma visita estrangeira. Qual é a melhor frase?",
+[
+"Welcome to Angola! Where are you from?",
+"Welcome in Angola! From where you are?",
+"Good welcome! Where you from?"
+]
+],
+[
+"a1-unidade-02-u2q11",
+"Reciclagem (unidade 1). Como se diz 77 num número de telefone?",
+[
+"double seven",
+"seventy-seven",
+"two seven"
+]
+],
+[
+"a1-unidade-02-u2q12",
+"Reciclagem (unidade 1). Não percebeu um nome. O que diz?",
+[
+"Sorry, how do you spell that?",
+"Sorry, how do you speak that?",
+"Sorry, what do you spell?"
+]
+],
+[
+"a1-unidade-03-u3q1",
+"Qual é a frase correcta?",
+[
+"I'm an accountant.",
+"I'm accountant.",
+"I'm a accountant."
+]
+],
+[
+"a1-unidade-03-u3q2",
+"Está desempregado. O que diz?",
+[
+"I'm unemployed.",
+"I'm an unemployed.",
+"I don't job."
+]
+],
+[
+"a1-unidade-03-u3q3",
+"\"What do you do?\" quer dizer:",
+[
+"Qual é a sua profissão?",
+"O que está a fazer?",
+"Como está?"
+]
+],
+[
+"a1-unidade-03-u3q4",
+"Complete: \"I ___ work on Sundays.\"",
+[
+"don't",
+"not",
+"am not"
+]
+],
+[
+"a1-unidade-03-u3q5",
+"Escolha a resposta certa: \"Do you use a computer at work?\"",
+[
+"Yes, I do.",
+"Yes, I use.",
+"Yes, I am."
+]
+],
+[
+"a1-unidade-03-u3q6",
+"Complete: \"I work ___ an oil company.\"",
+[
+"for",
+"to",
+"of"
+]
+],
+[
+"a1-unidade-03-u3q7",
+"Como pergunta onde a pessoa vive?",
+[
+"Where do you live?",
+"Where you live?",
+"Where are you live?"
+]
+],
+[
+"a1-unidade-03-u3q8",
+"Quer confirmar os dados. O que pergunta?",
+[
+"Is that correct?",
+"Is correct?",
+"Are you correct that?"
+]
+],
+[
+"a1-unidade-03-u3q9",
+"Em que palavra a sílaba forte é a última?",
+[
+"engineer",
+"manager",
+"hospital"
+]
+],
+[
+"a1-unidade-03-u3q10",
+"\"I work at night\" quer dizer:",
+[
+"Trabalho à noite.",
+"Trabalho até à noite.",
+"Não trabalho à noite."
+]
+],
+[
+"a1-unidade-03-u3q11",
+"Reciclagem (unidades 1 e 3). Na recepção perguntam \"Can you spell your surname?\". O que faz?",
+[
+"Diz as letras do apelido.",
+"Diz o número de telefone.",
+"Diz o nome da empresa."
+]
+],
+[
+"a1-unidade-03-u3q12",
+"Reciclagem (unidade 2). Como apresenta uma colega?",
+[
+"This is Rosa. She's a receptionist.",
+"This is Rosa. She receptionist.",
+"Here Rosa. Is receptionist."
+]
+],
+[
+"a1-unidade-04-u4q1",
+"\"Parents\" quer dizer:",
+[
+"pai e mãe",
+"parentes",
+"irmãos"
+]
+],
+[
+"a1-unidade-04-u4q2",
+"Complete: \"This is my sister. ___ name is Joana.\"",
+[
+"Her",
+"His",
+"She"
+]
+],
+[
+"a1-unidade-04-u4q3",
+"Complete: \"My brother ___ two children.\"",
+[
+"has",
+"have",
+"is"
+]
+],
+[
+"a1-unidade-04-u4q4",
+"Escolha a resposta certa: \"Do you have a car?\"",
+[
+"No, I don't.",
+"No, I not.",
+"No, I not have."
+]
+],
+[
+"a1-unidade-04-u4q5",
+"Como se diz \"Sou casado\"?",
+[
+"I'm married.",
+"I have married.",
+"I married."
+]
+],
+[
+"a1-unidade-04-u4q6",
+"Como se diz \"a mala da Ana\"?",
+[
+"Ana's bag",
+"the bag of Ana",
+"bag Ana's"
+]
+],
+[
+"a1-unidade-04-u4q7",
+"Complete: \"Sílvia and Carlos have two children. ___ children are Kiesse and Tomé.\"",
+[
+"Their",
+"There",
+"They"
+]
+],
+[
+"a1-unidade-04-u4q8",
+"Qual é o plural de \"person\"?",
+[
+"people",
+"persons",
+"peoples"
+]
+],
+[
+"a1-unidade-04-u4q9",
+"Em que palavra o plural tem uma sílaba a mais?",
+[
+"watches",
+"keys",
+"books"
+]
+],
+[
+"a1-unidade-04-u4q10",
+"Ouviu \"We have three children: two boys and a girl.\" Quantas filhas tem esta pessoa?",
+[
+"uma",
+"duas",
+"três"
+]
+],
+[
+"a1-unidade-04-u4q11",
+"Reciclagem (unidade 2). Como se diz \"O meu filho tem dez anos\"?",
+[
+"My son is ten.",
+"My son has ten years.",
+"My son has ten."
+]
+],
+[
+"a1-unidade-04-u4q12",
+"Reciclagem (unidade 3). Complete: \"My wife is ___ lawyer.\"",
+[
+"a",
+"an",
+"—"
+]
+],
+[
+"a1-unidade-05-u5q1",
+"\"Half past seven\" é:",
+[
+"7:30",
+"6:30",
+"7:15"
+]
+],
+[
+"a1-unidade-05-u5q2",
+"Como se diz 16h45 de forma digital?",
+[
+"four forty-five p.m.",
+"sixteen forty-five",
+"four forty-five a.m."
+]
+],
+[
+"a1-unidade-05-u5q3",
+"Complete: \"Paulo ___ up at six.\"",
+[
+"gets",
+"get",
+"getting"
+]
+],
+[
+"a1-unidade-05-u5q4",
+"Complete: \"She ___ TV in the evening.\"",
+[
+"watches",
+"watchs",
+"watch"
+]
+],
+[
+"a1-unidade-05-u5q5",
+"Complete: \"My father ___ two cars.\"",
+[
+"has",
+"have",
+"haves"
+]
+],
+[
+"a1-unidade-05-u5q6",
+"Qual é a frase correcta?",
+[
+"He doesn't work on Sundays.",
+"He doesn't works on Sundays.",
+"He don't work on Sundays."
+]
+],
+[
+"a1-unidade-05-u5q7",
+"Escolha a resposta certa: \"Does she drive to work?\"",
+[
+"Yes, she does.",
+"Yes, she drives.",
+"Yes, she is."
+]
+],
+[
+"a1-unidade-05-u5q8",
+"Qual é a frase correcta?",
+[
+"I'm never late.",
+"I never am late.",
+"I don't never late."
+]
+],
+[
+"a1-unidade-05-u5q9",
+"\"Traffic jam\" quer dizer:",
+[
+"engarrafamento",
+"compota",
+"trânsito livre"
+]
+],
+[
+"a1-unidade-05-u5q10",
+"Ouviu: \"I work at night, from seven p.m. to seven a.m.\" Quando trabalha esta pessoa?",
+[
+"das 19h às 7h",
+"das 7h às 19h",
+"das 17h às 7h"
+]
+],
+[
+"a1-unidade-05-u5q11",
+"Complete: \"Can we meet ___ Tuesday ___ ten?\"",
+[
+"on … at",
+"in … at",
+"at … on"
+]
+],
+[
+"a1-unidade-05-u5q12",
+"Quer confirmar a reunião. O que diz?",
+[
+"Perfect. See you on Wednesday at two.",
+"Perfect. See you in Wednesday in two.",
+"Perfect. You see Wednesday two."
+]
+],
+[
+"a1-unidade-06-u6q1",
+"Qual é a frase correcta?",
+[
+"I'd like some bread.",
+"I'd like a bread.",
+"I'd like breads."
+]
+],
+[
+"a1-unidade-06-u6q2",
+"Complete: \"How ___ eggs do you need?\"",
+[
+"many",
+"much",
+"lot"
+]
+],
+[
+"a1-unidade-06-u6q3",
+"Qual é a forma mais educada de pedir num café?",
+[
+"I'd like a tea, please.",
+"I want a tea.",
+"Tea."
+]
+],
+[
+"a1-unidade-06-u6q4",
+"O empregado pergunta \"Anything else?\". O que quer dizer?",
+[
+"Mais alguma coisa?",
+"Mais nada.",
+"Outra coisa qualquer."
+]
+],
+[
+"a1-unidade-06-u6q5",
+"Complete: \"a ___ of water\"",
+[
+"bottle",
+"piece",
+"cup"
+]
+],
+[
+"a1-unidade-06-u6q6",
+"Como se diz 3 500 Kz?",
+[
+"three thousand five hundred kwanzas",
+"three thousands five hundreds kwanzas",
+"thirty-five hundred kwanza"
+]
+],
+[
+"a1-unidade-06-u6q7",
+"Complete: \"How much ___ the mangoes?\"",
+[
+"are",
+"is",
+"do"
+]
+],
+[
+"a1-unidade-06-u6q8",
+"\"Spicy\" quer dizer:",
+[
+"picante",
+"salgado",
+"doce"
+]
+],
+[
+"a1-unidade-06-u6q9",
+"Ouviu: \"It comes with rice and salad.\" O que quer dizer?",
+[
+"Vem com arroz e salada.",
+"Chega com arroz e salada.",
+"Come arroz e salada."
+]
+],
+[
+"a1-unidade-06-u6q10",
+"Quer pedir a conta no restaurante. O que diz?",
+[
+"Can we have the bill, please?",
+"Can we have the account, please?",
+"Can we pay the count?"
+]
+],
+[
+"a1-unidade-06-u6q11",
+"Reciclagem (unidade 5). Complete: \"My boss ___ fish.\"",
+[
+"likes",
+"like",
+"liking"
+]
+],
+[
+"a1-unidade-06-u6q12",
+"Reciclagem (unidade 4). Como se diz \"o almoço da Thandi\"?",
+[
+"Thandi's lunch",
+"the lunch of Thandi",
+"Thandi lunch's"
+]
+],
+[
+"a1-unidade-07-u7q1",
+"Como se diz \"Há dois bancos na rua\"?",
+[
+"There are two banks in the street.",
+"There is two banks in the street.",
+"It has two banks in the street."
+]
+],
+[
+"a1-unidade-07-u7q2",
+"Complete: \"There ___ any cinemas near here.\"",
+[
+"aren't",
+"isn't",
+"not"
+]
+],
+[
+"a1-unidade-07-u7q3",
+"Escolha a resposta certa: \"Is there an ATM near here?\"",
+[
+"Yes, there is.",
+"Yes, there's.",
+"Yes, it has."
+]
+],
+[
+"a1-unidade-07-u7q4",
+"O banco fica do outro lado da rua, virado para o escritório:",
+[
+"The bank is opposite the office.",
+"The bank is in front of the office.",
+"The bank is next to the office."
+]
+],
+[
+"a1-unidade-07-u7q5",
+"Complete: \"The pharmacy is between the office ___ the hospital.\"",
+[
+"and",
+"or",
+"with"
+]
+],
+[
+"a1-unidade-07-u7q6",
+"\"Go straight on\" quer dizer:",
+[
+"Siga em frente.",
+"Vire à direita.",
+"Vá depressa."
+]
+],
+[
+"a1-unidade-07-u7q7",
+"Qual é a forma correcta de dar uma direcção?",
+[
+"Turn left at the traffic lights.",
+"You turning left in the traffic lights.",
+"Turns left on the traffic lights."
+]
+],
+[
+"a1-unidade-07-u7q8",
+"Que palavra tem o som /ð/ (com voz)?",
+[
+"there",
+"three",
+"thank"
+]
+],
+[
+"a1-unidade-07-u7q9",
+"Ouviu: \"It's about ten minutes on foot.\" Quer dizer:",
+[
+"São uns dez minutos a pé.",
+"São dez minutos de carro.",
+"Fica a dez pés."
+]
+],
+[
+"a1-unidade-07-u7q10",
+"Ao telefone, como se identifica?",
+[
+"This is Ana Domingos.",
+"I am Ana Domingos speaking you.",
+"Here is Ana."
+]
+],
+[
+"a1-unidade-07-u7q11",
+"\"Ground floor\" é:",
+[
+"rés-do-chão",
+"primeiro andar",
+"chão da rua"
+]
+],
+[
+"a1-unidade-07-u7q12",
+"Reciclagem (unidade 5). Complete: \"Can we meet ___ Monday ___ ten?\"",
+[
+"on … at",
+"in … on",
+"at … in"
+]
+],
+[
+"a1-unidade-08-u8q1",
+"Os sapatos estão longe de si. Como pergunta o preço?",
+[
+"How much are those shoes?",
+"How much is that shoes?",
+"How much are these shoe?"
+]
+],
+[
+"a1-unidade-08-u8q2",
+"Qual é a frase correcta?",
+[
+"I'd like a black jacket.",
+"I'd like a jacket black.",
+"I'd like a blacks jacket."
+]
+],
+[
+"a1-unidade-08-u8q3",
+"Não quer repetir o nome. Complete: \"I like the red ___.\"",
+[
+"one",
+"ones",
+"it"
+]
+],
+[
+"a1-unidade-08-u8q4",
+"Qual é a pergunta correcta?",
+[
+"Can I pay by card?",
+"Can I to pay by card?",
+"Do I can pay by card?"
+]
+],
+[
+"a1-unidade-08-u8q5",
+"\"Can you help me?\" — Não pode. O que responde?",
+[
+"Sorry, I can't.",
+"No, I can.",
+"Sorry, I don't can."
+]
+],
+[
+"a1-unidade-08-u8q6",
+"Complete: \"This laptop is ___ than that one.\"",
+[
+"cheaper",
+"more cheap",
+"more cheaper"
+]
+],
+[
+"a1-unidade-08-u8q7",
+"Complete: \"The new phone is ___ than the old one.\"",
+[
+"better",
+"gooder",
+"more good"
+]
+],
+[
+"a1-unidade-08-u8q8",
+"Que palavra tem o mesmo som de \"a\" que \"cup\"?",
+[
+"money",
+"cash",
+"black"
+]
+],
+[
+"a1-unidade-08-u8q9",
+"Ouviu: \"Can you give me a discount?\" O que pede a pessoa?",
+[
+"um desconto",
+"um recibo",
+"o troco"
+]
+],
+[
+"a1-unidade-08-u8q10",
+"Qual é a frase correcta?",
+[
+"I have a fever.",
+"I have fever.",
+"I'm fever."
+]
+],
+[
+"a1-unidade-08-u8q11",
+"A farmacêutica diz: \"Take one tablet twice a day.\" Quantas vezes por dia?",
+[
+"duas",
+"uma",
+"três"
+]
+],
+[
+"a1-unidade-08-u8q12",
+"Reciclagem (unidade 6). Na farmácia, como pergunta o preço?",
+[
+"How much is it?",
+"How many is it?",
+"How much it costs?"
+]
+],
+[
+"a1-unidade-09-u9q1",
+"Qual é a frase correcta?",
+[
+"I love dancing.",
+"I love dance.",
+"I love to dancing."
+]
+],
+[
+"a1-unidade-09-u9q2",
+"Como se escreve \"run\" + -ing?",
+[
+"running",
+"runing",
+"runningg"
+]
+],
+[
+"a1-unidade-09-u9q3",
+"Qual é a frase correcta?",
+[
+"He can drive.",
+"He cans drive.",
+"He can drives."
+]
+],
+[
+"a1-unidade-09-u9q4",
+"Como se diz \"Não sei nadar nada\"?",
+[
+"I can't swim at all.",
+"I can't swim nothing.",
+"I don't can swim."
+]
+],
+[
+"a1-unidade-09-u9q5",
+"Complete: \"Sílvia ___ having lunch now.\"",
+[
+"is",
+"are",
+"has"
+]
+],
+[
+"a1-unidade-09-u9q6",
+"Escolha a resposta certa: \"Are they working?\"",
+[
+"Yes, they are.",
+"Yes, they do.",
+"Yes, they working."
+]
+],
+[
+"a1-unidade-09-u9q7",
+"Complete: \"I usually ___ the bus, but today I'm driving.\"",
+[
+"take",
+"am taking",
+"taking"
+]
+],
+[
+"a1-unidade-09-u9q8",
+"Qual é a frase correcta?",
+[
+"I want a coffee now.",
+"I'm wanting a coffee now.",
+"I wanting a coffee now."
+]
+],
+[
+"a1-unidade-09-u9q9",
+"Qual é o verbo certo? \"I ___ yoga every morning.\"",
+[
+"do",
+"play",
+"go"
+]
+],
+[
+"a1-unidade-09-u9q10",
+"Ouviu: \"We're playing a match right now!\" O que estão a fazer?",
+[
+"a jogar um jogo",
+"a ver um jogo",
+"a marcar um jogo"
+]
+],
+[
+"a1-unidade-09-u9q11",
+"Está a conduzir e o telefone toca. O que diz?",
+[
+"Sorry, I'm driving. Can I call you back later?",
+"Sorry, I drive. I call you later.",
+"I'm drive now."
+]
+],
+[
+"a1-unidade-09-u9q12",
+"Uma pessoa liga para um colega que não está. O que oferece?",
+[
+"Can I take a message?",
+"Can I give a message?",
+"Can I do a message?"
+]
+],
+[
+"a1-unidade-10-u10q1",
+"Complete: \"They ___ at the wedding.\"",
+[
+"were",
+"was",
+"are"
+]
+],
+[
+"a1-unidade-10-u10q2",
+"Como se diz \"na sexta passada\"?",
+[
+"last Friday",
+"the last Friday",
+"in last Friday"
+]
+],
+[
+"a1-unidade-10-u10q3",
+"Complete: \"Yesterday I ___ my mother.\"",
+[
+"visited",
+"visit",
+"visiting"
+]
+],
+[
+"a1-unidade-10-u10q4",
+"Qual é a frase correcta?",
+[
+"I didn't watch the match.",
+"I didn't watched the match.",
+"I not watched the match."
+]
+],
+[
+"a1-unidade-10-u10q5",
+"Escolha a resposta certa: \"Did you finish the report?\"",
+[
+"Yes, I did.",
+"Yes, I finished.",
+"Yes, I do."
+]
+],
+[
+"a1-unidade-10-u10q6",
+"Qual é o passado de \"buy\"?",
+[
+"bought",
+"buyed",
+"brought"
+]
+],
+[
+"a1-unidade-10-u10q7",
+"Qual é a pergunta correcta?",
+[
+"Where did you go?",
+"Where did you went?",
+"Where you went?"
+]
+],
+[
+"a1-unidade-10-u10q8",
+"Complete: \"Next week I ___ visit a client.\"",
+[
+"'m going to",
+"going to",
+"'m go to"
+]
+],
+[
+"a1-unidade-10-u10q9",
+"Are you going to travel? — Sim. O que responde?",
+[
+"Yes, I am.",
+"Yes, I do.",
+"Yes, I going."
+]
+],
+[
+"a1-unidade-10-u10q10",
+"Como se diz 11/11?",
+[
+"the eleventh of November",
+"the eleven of November",
+"November the eleven"
+]
+],
+[
+"a1-unidade-10-u10q11",
+"Ouviu: \"I didn't go anywhere.\" Quer dizer:",
+[
+"Não fui a lado nenhum.",
+"Fui a todo o lado.",
+"Não fui à loja."
+]
+],
+[
+"a1-unidade-10-u10q12",
+"Num ponto da semana, como explica um problema?",
+[
+"I didn't finish the report because the client was late.",
+"I don't finished the report because the client is late.",
+"I not finish report because late client."
+]
+]
+],
+"A2": [
+[
+"a2-revisao-1-a2r1q1",
+"Complete: \"These days I ___ on a big project.\"",
+[
+"'m working",
+"work",
+"working"
+]
+],
+[
+"a2-revisao-1-a2r1q2",
+"Qual é a frase correcta?",
+[
+"I understand the plan.",
+"I'm understanding the plan.",
+"I understanding the plan."
+]
+],
+[
+"a2-revisao-1-a2r1q3",
+"\"What does he look like?\" — Qual é a resposta?",
+[
+"He's tall, and he has a beard.",
+"He's very friendly.",
+"He likes football."
+]
+],
+[
+"a2-revisao-1-a2r1q4",
+"Qual é o passado de \"choose\"?",
+[
+"chose",
+"choosed",
+"choosen"
+]
+],
+[
+"a2-revisao-1-a2r1q5",
+"Qual é a pergunta correcta?",
+[
+"Who sent the email?",
+"Who did send the email?",
+"Who did sent the email?"
+]
+],
+[
+"a2-revisao-1-a2r1q6",
+"Complete: \"I ___ dinner when the phone rang.\"",
+[
+"was having",
+"am having",
+"have"
+]
+],
+[
+"a2-revisao-1-a2r1q7",
+"Está marcado na agenda. Qual é a frase mais natural?",
+[
+"I'm meeting the client on Friday at ten.",
+"I'm meet the client on Friday at ten.",
+"I met the client on Friday at ten next week."
+]
+],
+[
+"a2-revisao-1-a2r1q8",
+"\"There's no paper!\" — Qual é a melhor resposta?",
+[
+"I'll get some.",
+"I get some.",
+"I'm going to get some next month."
+]
+],
+[
+"a2-revisao-1-a2r1q9",
+"Qual é a recusa mais educada?",
+[
+"I'm afraid I can't. I'm working late. Maybe another time.",
+"No, I don't want.",
+"No. Bye."
+]
+],
+[
+"a2-revisao-1-a2r1q10",
+"Complete: \"Model B is ___ cheaper than Model A.\"",
+[
+"much",
+"very",
+"more"
+]
+],
+[
+"a2-revisao-1-a2r1q11",
+"Complete: \"We only have ___ plugs.\"",
+[
+"a few",
+"a little",
+"much"
+]
+],
+[
+"a2-revisao-1-a2r1q12",
+"\"This quote is exquisite\" quer dizer:",
+[
+"Este orçamento é belíssimo.",
+"Este orçamento é esquisito.",
+"Este orçamento é caro."
+]
+],
+[
+"a2-revisao-1-a2r1q13",
+"Complete: \"You look tired. You ___ go home.\"",
+[
+"should",
+"should to",
+"must to"
+]
+],
+[
+"a2-revisao-1-a2r1q14",
+"\"You don't have to sign out\" quer dizer:",
+[
+"Não é preciso registar a saída.",
+"É proibido registar a saída.",
+"Tem de registar a saída."
+]
+],
+[
+"a2-revisao-1-a2r1q15",
+"\"Estou constipado\" em inglês é:",
+[
+"I have a cold.",
+"I'm constipated.",
+"I'm constipate."
+]
+],
+[
+"a2-revisao-2-a2r2q1",
+"Qual é a frase correcta?",
+[
+"I've never been to Lagos.",
+"I've never went to Lagos.",
+"I never have been to Lagos."
+]
+],
+[
+"a2-revisao-2-a2r2q2",
+"\"She's gone to Lobito\" quer dizer:",
+[
+"Foi para o Lobito e ainda lá está.",
+"Esteve no Lobito e já voltou.",
+"Vai ao Lobito amanhã."
+]
+],
+[
+"a2-revisao-2-a2r2q3",
+"Complete: \"I've been to Lisbon. I ___ there in 2023.\"",
+[
+"went",
+"'ve gone",
+"go"
+]
+],
+[
+"a2-revisao-2-a2r2q4",
+"Complete: \"I've ___ heard the news!\"",
+[
+"just",
+"yet",
+"since"
+]
+],
+[
+"a2-revisao-2-a2r2q5",
+"Complete: \"Have you finished the report ___?\"",
+[
+"yet",
+"since",
+"ago"
+]
+],
+[
+"a2-revisao-2-a2r2q6",
+"Complete: \"I've worked here ___ three years.\"",
+[
+"for",
+"since",
+"during"
+]
+],
+[
+"a2-revisao-2-a2r2q7",
+"Complete: \"If you press this button, the screen ___ off.\"",
+[
+"turns",
+"will turning",
+"turned"
+]
+],
+[
+"a2-revisao-2-a2r2q8",
+"Complete: \"If the power ___ off, we'll use the generator.\"",
+[
+"goes",
+"'ll go",
+"went"
+]
+],
+[
+"a2-revisao-2-a2r2q9",
+"Complete: \"I think it ___ be ready on Friday.\"",
+[
+"'ll",
+"'s going",
+"is"
+]
+],
+[
+"a2-revisao-2-a2r2q10",
+"Qual é o pedido mais educado?",
+[
+"Could you check the invoice, please?",
+"Check the invoice.",
+"I want the invoice now."
+]
+],
+[
+"a2-revisao-2-a2r2q11",
+"Complete: \"I forgot ___ the email.\"",
+[
+"to send",
+"send",
+"sended"
+]
+],
+[
+"a2-revisao-2-a2r2q12",
+"\"Atender o telefone\" em inglês é:",
+[
+"answer the phone",
+"attend the phone",
+"atend the phone"
+]
+],
+[
+"a2-revisao-2-a2r2q13",
+"Complete: \"He checks everything ___.\"",
+[
+"carefully",
+"careful",
+"carefuly"
+]
+],
+[
+"a2-revisao-2-a2r2q14",
+"Complete: \"I'm good ___ organising things.\"",
+[
+"at",
+"to",
+"of"
+]
+],
+[
+"a2-revisao-2-a2r2q15",
+"\"Ela é muito sensível.\" Em inglês:",
+[
+"She's very sensitive.",
+"She's very sensible.",
+"She's very sensibel."
+]
+],
+[
+"a2-unidade-01-a2u1q1",
+"Complete: \"These days I ___ on a new project.\"",
+[
+"'m working",
+"work",
+"working"
+]
+],
+[
+"a2-unidade-01-a2u1q2",
+"Complete: \"Kalandula Tech ___ networks for companies.\"",
+[
+"installs",
+"is installing",
+"install"
+]
+],
+[
+"a2-unidade-01-a2u1q3",
+"Choose the correct sentence.",
+[
+"I need your help now.",
+"I'm needing your help now.",
+"I needing your help now."
+]
+],
+[
+"a2-unidade-01-a2u1q4",
+"Which question asks about personality?",
+[
+"What's he like?",
+"What does he look like?",
+"What does he like?"
+]
+],
+[
+"a2-unidade-01-a2u1q5",
+"Complete: \"He ___ short hair and a beard.\"",
+[
+"has",
+"is",
+"have"
+]
+],
+[
+"a2-unidade-01-a2u1q6",
+"Reciclagem (A1, unidade 10). Choose the correct sentence.",
+[
+"Next month we're going to start a new project.",
+"Next month we going to start a new project.",
+"Next month we're going to starting a new project."
+]
+],
+[
+"a2-unidade-01-a2u1q7",
+"Complete: \"I'm responsible ___ the new network.\"",
+[
+"for",
+"of",
+"to"
+]
+],
+[
+"a2-unidade-01-a2u1q8",
+"\"Simpático\" em inglês é:",
+[
+"friendly / nice",
+"sympathetic",
+"sympathic"
+]
+],
+[
+"a2-unidade-01-a2u1q9",
+"Reciclagem (A1, unidade 9). Choose the correct sentence.",
+[
+"She likes working with people, and she can speak French.",
+"She likes work with people, and she can to speak French.",
+"She liking working with people, and she cans speak French."
+]
+],
+[
+"a2-unidade-01-a2u1q10",
+"Ouviu: \"I report to Rita.\" Quer dizer:",
+[
+"A Rita é a minha chefe.",
+"Eu escrevo relatórios para a Rita.",
+"A Rita trabalha para mim."
+]
+],
+[
+"a2-unidade-01-a2u1q11",
+"Numa reunião de arranque, qual é a melhor apresentação?",
+[
+"I'm Nuno. I'm a junior technician. I report to Mateus, and this week I'm checking the cables.",
+"I'm Nuno. I am checking usually the cables.",
+"Nuno. Technician. Cables."
+]
+],
+[
+"a2-unidade-01-a2u1q12",
+"Reciclagem (A1, unidade 10). Choose the correct question.",
+[
+"When did you start your job?",
+"When did you started your job?",
+"When you started your job?"
+]
+],
+[
+"a2-unidade-02-a2u2q1",
+"Como se diz \"Nasci em 1995\"?",
+[
+"I was born in 1995.",
+"I born in 1995.",
+"I am born in 1995."
+]
+],
+[
+"a2-unidade-02-a2u2q2",
+"Qual é o passado de \"teach\"?",
+[
+"taught",
+"teached",
+"thought"
+]
+],
+[
+"a2-unidade-02-a2u2q3",
+"Choose the correct question.",
+[
+"What happened at the meeting?",
+"What did happen at the meeting?",
+"What did happened at the meeting?"
+]
+],
+[
+"a2-unidade-02-a2u2q4",
+"Complete: \"I ___ dinner when the power went off.\"",
+[
+"was cooking",
+"am cooking",
+"were cooking"
+]
+],
+[
+"a2-unidade-02-a2u2q5",
+"Complete: \"___ we were waiting, Paulo called the technician.\"",
+[
+"While",
+"During",
+"Then"
+]
+],
+[
+"a2-unidade-02-a2u2q6",
+"Qual destas frases conta como acabou a história?",
+[
+"In the end, the driver brought it back.",
+"At the end, the driver brought it back.",
+"Finally of the story, the driver brought it back."
+]
+],
+[
+"a2-unidade-02-a2u2q7",
+"\"I pretend to change jobs\" quer dizer:",
+[
+"Finjo que vou mudar de emprego.",
+"Pretendo mudar de emprego.",
+"Mudei de emprego."
+]
+],
+[
+"a2-unidade-02-a2u2q8",
+"Ouviu: \"I was working in my uncle's shop when a friend told me about a job in Angola.\" O que aconteceu primeiro?",
+[
+"Ele já trabalhava na loja do tio.",
+"O amigo falou-lhe do emprego.",
+"Ele foi para Angola."
+]
+],
+[
+"a2-unidade-02-a2u2q9",
+"Para terminar \"Tell me about yourself\", qual é a melhor frase?",
+[
+"Now I'm a team leader, and this month I'm working on a new project.",
+"Now I was a team leader.",
+"Now I am work on a new project."
+]
+],
+[
+"a2-unidade-02-a2u2q10",
+"Reciclagem (A2, unidade 1). Choose the correct sentence.",
+[
+"I need more time this week.",
+"I'm needing more time this week.",
+"I needing more time this week."
+]
+],
+[
+"a2-unidade-02-a2u2q11",
+"Reciclagem (A2, unidade 1). \"What's your new colleague like?\" — Choose the answer.",
+[
+"He's very helpful, but a bit shy.",
+"He's tall and he has a beard.",
+"He likes football."
+]
+],
+[
+"a2-unidade-02-a2u2q12",
+"Reciclagem (A1, unidade 10). Choose the correct sentence.",
+[
+"Next year I'm going to apply for a new job.",
+"Next year I going to apply for a new job.",
+"Next year I'm going to applied for a new job."
+]
+],
+[
+"a2-unidade-03-a2u3q1",
+"Está marcado na agenda. Qual é a frase mais natural?",
+[
+"I'm seeing the doctor on Monday at nine.",
+"I'm see the doctor on Monday at nine.",
+"I saw the doctor on Monday at nine next week."
+]
+],
+[
+"a2-unidade-03-a2u3q2",
+"Qual destas frases é uma intenção sem data?",
+[
+"I'm going to visit Namibia one day.",
+"I'm flying to Windhoek on Friday at six.",
+"I'm meeting the client tomorrow."
+]
+],
+[
+"a2-unidade-03-a2u3q3",
+"\"There's no coffee!\" — Qual é a melhor resposta?",
+[
+"I'll buy some.",
+"I buy some.",
+"I'm going to buy some next month."
+]
+],
+[
+"a2-unidade-03-a2u3q4",
+"Qual é a oferta correcta?",
+[
+"Shall I carry your bag?",
+"Will I carry your bag?",
+"Do I carry your bag?"
+]
+],
+[
+"a2-unidade-03-a2u3q5",
+"Complete: \"Would you like ___ to the party?\"",
+[
+"to come",
+"coming",
+"come"
+]
+],
+[
+"a2-unidade-03-a2u3q6",
+"Qual é a recusa mais educada?",
+[
+"I'm afraid I can't. I'm working late. Maybe another time.",
+"No, I don't want.",
+"No. I'm busy."
+]
+],
+[
+"a2-unidade-03-a2u3q7",
+"\"Vou assistir à reunião\" em inglês é:",
+[
+"I'm going to attend the meeting.",
+"I'm going to assist the meeting.",
+"I'm going to see at the meeting."
+]
+],
+[
+"a2-unidade-03-a2u3q8",
+"Ouviu: \"The equipment isn't arriving today. It's arriving on Friday, at four.\" O que mudou?",
+[
+"O equipamento chega na sexta, não hoje.",
+"O equipamento foi cancelado.",
+"O equipamento chega hoje às quatro."
+]
+],
+[
+"a2-unidade-03-a2u3q9",
+"Ao telefone, para mudar uma reunião, qual é a melhor frase para começar?",
+[
+"I'm calling about our meeting tomorrow.",
+"I call because meeting.",
+"Hello, meeting tomorrow no."
+]
+],
+[
+"a2-unidade-03-a2u3q10",
+"Reciclagem (A2, unidade 2). Complete: \"I ___ a shower when you called.\"",
+[
+"was having",
+"am having",
+"have"
+]
+],
+[
+"a2-unidade-03-a2u3q11",
+"Reciclagem (A2, unidade 2). Como se diz \"Nasci em Malanje\"?",
+[
+"I was born in Malanje.",
+"I born in Malanje.",
+"I am born in Malanje."
+]
+],
+[
+"a2-unidade-03-a2u3q12",
+"Reciclagem (A2, unidade 1). \"What does she look like?\" — Qual é a resposta?",
+[
+"She's short, and she has curly hair.",
+"She's very patient.",
+"She likes cooking."
+]
+],
+[
+"a2-unidade-04-a2u4q1",
+"Complete: \"Model B is ___ cheaper than Model A.\"",
+[
+"much",
+"very",
+"more"
+]
+],
+[
+"a2-unidade-04-a2u4q2",
+"\"Model B isn't as good as Model A\" quer dizer:",
+[
+"O Model A é melhor.",
+"O Model B é melhor.",
+"São iguais."
+]
+],
+[
+"a2-unidade-04-a2u4q3",
+"Complete: \"It's the most crowded beach ___ Luanda.\"",
+[
+"in",
+"of",
+"at"
+]
+],
+[
+"a2-unidade-04-a2u4q4",
+"Complete: \"How ___ time do we have?\"",
+[
+"much",
+"many",
+"lot"
+]
+],
+[
+"a2-unidade-04-a2u4q5",
+"Qual é a frase correcta?",
+[
+"I need some information.",
+"I need some informations.",
+"I need an information."
+]
+],
+[
+"a2-unidade-04-a2u4q6",
+"\"Exquisite\" quer dizer:",
+[
+"belíssimo, requintado",
+"esquisito, estranho",
+"caro"
+]
+],
+[
+"a2-unidade-04-a2u4q7",
+"Ouviu: \"The traffic is as bad as here!\" Quer dizer:",
+[
+"O trânsito é tão mau como aqui.",
+"O trânsito é pior do que aqui.",
+"Aqui não há trânsito."
+]
+],
+[
+"a2-unidade-04-a2u4q8",
+"Numa recomendação, qual é a melhor forma de falar da desvantagem?",
+[
+"It's a bit more expensive, but it's within budget.",
+"It's expensive. Sorry.",
+"It isn't a disadvantage, it's perfect."
+]
+],
+[
+"a2-unidade-04-a2u4q9",
+"Qual é a melhor frase para começar uma recomendação?",
+[
+"I recommend PowerSafe Angola.",
+"Maybe PowerSafe, I don't know.",
+"PowerSafe is a supplier."
+]
+],
+[
+"a2-unidade-04-a2u4q10",
+"Reciclagem (A2, unidade 3). \"I'm cold.\" — Qual é a melhor resposta?",
+[
+"I'll close the window.",
+"I close the window.",
+"I'm going to close the window next week."
+]
+],
+[
+"a2-unidade-04-a2u4q11",
+"Reciclagem (A2, unidade 3). Está marcado na agenda. Qual é a frase mais natural?",
+[
+"I'm meeting the supplier on Friday at ten.",
+"I'm meet the supplier on Friday at ten.",
+"I met the supplier on Friday at ten next week."
+]
+],
+[
+"a2-unidade-04-a2u4q12",
+"Reciclagem (A2, unidade 2). Complete: \"We ___ the quotes when the client called.\"",
+[
+"were reading",
+"are reading",
+"read now"
+]
+],
+[
+"a2-unidade-05-a2u5q1",
+"Complete: \"You look tired. You ___ rest.\"",
+[
+"should",
+"should to",
+"shoulding"
+]
+],
+[
+"a2-unidade-05-a2u5q2",
+"Qual é a pergunta correcta?",
+[
+"What should I do?",
+"What I should do?",
+"What do I should do?"
+]
+],
+[
+"a2-unidade-05-a2u5q3",
+"Complete: \"She ___ sign the papers before we start.\"",
+[
+"has to",
+"have to",
+"has"
+]
+],
+[
+"a2-unidade-05-a2u5q4",
+"\"I don't have to work on Saturday\" quer dizer:",
+[
+"Não é preciso trabalhar ao sábado.",
+"É proibido trabalhar ao sábado.",
+"Tenho de trabalhar ao sábado."
+]
+],
+[
+"a2-unidade-05-a2u5q5",
+"\"You mustn't smoke here\" quer dizer:",
+[
+"É proibido fumar aqui.",
+"Não é preciso fumar aqui.",
+"Devia fumar aqui."
+]
+],
+[
+"a2-unidade-05-a2u5q6",
+"Não é necessário usar gravata. Qual é a frase?",
+[
+"You don't have to wear a tie.",
+"You mustn't wear a tie.",
+"You haven't to wear a tie."
+]
+],
+[
+"a2-unidade-05-a2u5q7",
+"\"Estou constipado\" em inglês é:",
+[
+"I have a cold.",
+"I'm constipated.",
+"I'm constipate."
+]
+],
+[
+"a2-unidade-05-a2u5q8",
+"Ouviu: \"The doctor says I have to stop the car every hour and walk.\" O médico diz que ele...",
+[
+"tem de parar o carro de hora a hora e andar.",
+"devia deixar de conduzir.",
+"não precisa de parar."
+]
+],
+[
+"a2-unidade-05-a2u5q9",
+"Está doente e liga à chefia. Qual é a melhor frase para começar?",
+[
+"I'm calling because I'm sick. I can't come in today.",
+"I no come today, sick.",
+"Hello. I'm not working because I don't want."
+]
+],
+[
+"a2-unidade-05-a2u5q10",
+"Reciclagem (A2, unidade 4). Complete: \"It's the best clinic ___ Luanda.\"",
+[
+"in",
+"of",
+"at"
+]
+],
+[
+"a2-unidade-05-a2u5q11",
+"Reciclagem (A2, unidade 3). \"I have a headache.\" — Qual é a melhor resposta?",
+[
+"I'll get you some water.",
+"I get you some water.",
+"I'm going to get you some water next week."
+]
+],
+[
+"a2-unidade-05-a2u5q12",
+"Reciclagem (A2, unidade 2). Complete: \"I ___ dinner when I started to feel sick.\"",
+[
+"was having",
+"am having",
+"have"
+]
+],
+[
+"a2-unidade-06-a2u6q1",
+"Complete: \"Have you ever ___ to Lagos?\"",
+[
+"been",
+"went",
+"go"
+]
+],
+[
+"a2-unidade-06-a2u6q2",
+"Qual é a frase correcta?",
+[
+"I've never flown.",
+"I haven't never flown.",
+"I've never flew."
+]
+],
+[
+"a2-unidade-06-a2u6q3",
+"Complete: \"I ___ to Lisbon in 2023.\"",
+[
+"went",
+"'ve been",
+"'ve gone"
+]
+],
+[
+"a2-unidade-06-a2u6q4",
+"\"Have you ever missed a flight?\" — \"Yes, I have.\" Qual é a melhor pergunta a seguir?",
+[
+"When did it happen?",
+"When has it happened?",
+"When it happened?"
+]
+],
+[
+"a2-unidade-06-a2u6q5",
+"\"She's gone to Lobito\" quer dizer:",
+[
+"Foi para o Lobito e está lá agora.",
+"Já esteve no Lobito.",
+"Vai para o Lobito na próxima semana."
+]
+],
+[
+"a2-unidade-06-a2u6q6",
+"Complete: \"Go ___ the doors and up the stairs.\"",
+[
+"through",
+"along",
+"across"
+]
+],
+[
+"a2-unidade-06-a2u6q7",
+"\"Large\" quer dizer:",
+[
+"grande",
+"largo",
+"comprido"
+]
+],
+[
+"a2-unidade-06-a2u6q8",
+"Ouviu: \"My car broke down near Huambo.\" Quer dizer:",
+[
+"O carro avariou perto do Huambo.",
+"O carro partiu-se no Huambo.",
+"Vendeu o carro no Huambo."
+]
+],
+[
+"a2-unidade-06-a2u6q9",
+"No hotel, a reserva está errada. Qual é a melhor frase?",
+[
+"I'm sorry, there's a problem. The reservation is for four nights.",
+"You are wrong. Four nights!",
+"I no have four nights?"
+]
+],
+[
+"a2-unidade-06-a2u6q10",
+"Reciclagem (A2, unidade 5). \"You don't have to bring a tie\" quer dizer:",
+[
+"Não é preciso trazer gravata.",
+"É proibido trazer gravata.",
+"Tem de trazer gravata."
+]
+],
+[
+"a2-unidade-06-a2u6q11",
+"Reciclagem (A2, unidade 4). Complete: \"It's the best hotel ___ Johannesburg.\"",
+[
+"in",
+"of",
+"at"
+]
+],
+[
+"a2-unidade-06-a2u6q12",
+"Reciclagem (A2, unidade 3). Está marcado. Qual é a frase mais natural?",
+[
+"We're flying to Johannesburg on Monday.",
+"We're fly to Johannesburg on Monday.",
+"We flew to Johannesburg next Monday."
+]
+],
+[
+"a2-unidade-07-a2u7q1",
+"Qual é a frase correcta?",
+[
+"I've just sent the email.",
+"I just have sent the email.",
+"I've sent just the email."
+]
+],
+[
+"a2-unidade-07-a2u7q2",
+"\"My car has broken down.\" Qual é a melhor reacção?",
+[
+"Oh no, I'm sorry to hear that.",
+"Congratulations!",
+"That's great news!"
+]
+],
+[
+"a2-unidade-07-a2u7q3",
+"Complete: \"We haven't trained the staff ___.\"",
+[
+"yet",
+"since",
+"ago"
+]
+],
+[
+"a2-unidade-07-a2u7q4",
+"\"We're behind schedule\" quer dizer:",
+[
+"Estamos atrasados.",
+"Estamos dentro do prazo.",
+"Já acabámos."
+]
+],
+[
+"a2-unidade-07-a2u7q5",
+"Complete: \"I've worked here ___ 2005.\"",
+[
+"since",
+"for",
+"ago"
+]
+],
+[
+"a2-unidade-07-a2u7q6",
+"\"Trabalho aqui há três anos.\" Em inglês:",
+[
+"I've worked here for three years.",
+"I work here for three years.",
+"I've worked here since three years."
+]
+],
+[
+"a2-unidade-07-a2u7q7",
+"Numa conversa de circunstância, qual é a melhor resposta a \"Is this your first time in Angola?\"",
+[
+"Yes, it is. I've never been here before. It's very different from India!",
+"Yes.",
+"Why?"
+]
+],
+[
+"a2-unidade-07-a2u7q8",
+"\"The meeting was boring.\" Como se sentiu a pessoa?",
+[
+"bored",
+"boring",
+"bore"
+]
+],
+[
+"a2-unidade-07-a2u7q9",
+"Num ponto de situação, como diz o que ainda não está feito e porquê?",
+[
+"We haven't trained the staff yet, because the room wasn't ready.",
+"We didn't train already the staff.",
+"Staff not trained, room."
+]
+],
+[
+"a2-unidade-07-a2u7q10",
+"Reciclagem (A2, unidade 6). Complete: \"I ___ to Lisbon in 2023.\"",
+[
+"went",
+"'ve been",
+"'ve gone"
+]
+],
+[
+"a2-unidade-07-a2u7q11",
+"Reciclagem (A2, unidade 6). \"Have you ever been to Lagos?\" — \"No, ___\"",
+[
+"I haven't.",
+"I didn't.",
+"I haven't never."
+]
+],
+[
+"a2-unidade-07-a2u7q12",
+"Reciclagem (A2, unidade 4). Complete: \"This system is ___ faster than the old one.\"",
+[
+"much",
+"very",
+"more"
+]
+],
+[
+"a2-unidade-08-a2u8q1",
+"Complete: \"If you click 'Cancel', nothing ___.\"",
+[
+"happens",
+"happen",
+"happening"
+]
+],
+[
+"a2-unidade-08-a2u8q2",
+"Qual é a ordem certa das palavras numa instrução?",
+[
+"First… Then… Finally…",
+"Finally… First… Then…",
+"Then… Finally… First…"
+]
+],
+[
+"a2-unidade-08-a2u8q3",
+"Complete: \"If the power ___ off, we'll use the generator.\"",
+[
+"goes",
+"will go",
+"went"
+]
+],
+[
+"a2-unidade-08-a2u8q4",
+"Qual é a pergunta correcta?",
+[
+"What will we do if the system stops?",
+"What we will do if the system stops?",
+"What will we do if the system will stop?"
+]
+],
+[
+"a2-unidade-08-a2u8q5",
+"Qual é a forma mais natural?",
+[
+"I don't think it'll rain.",
+"I think it doesn't rain tomorrow.",
+"I don't think it rains will."
+]
+],
+[
+"a2-unidade-08-a2u8q6",
+"Complete: \"It ___ rain tomorrow.\" (provavelmente não)",
+[
+"probably won't",
+"won't probably",
+"probably not will"
+]
+],
+[
+"a2-unidade-08-a2u8q7",
+"Qual é a frase correcta?",
+[
+"Turn it off, please.",
+"Turn off it, please.",
+"Turn it of, please."
+]
+],
+[
+"a2-unidade-08-a2u8q8",
+"Ouviu: \"It says 'wrong password'.\" Quer dizer:",
+[
+"Aparece no ecrã \"palavra-passe errada\".",
+"Alguém disse a palavra-passe.",
+"A palavra-passe é nova."
+]
+],
+[
+"a2-unidade-08-a2u8q9",
+"O técnico pede-lhe para desligar o equipamento. Já o fez. O que diz?",
+[
+"OK… done.",
+"I will done.",
+"Yes, yesterday."
+]
+],
+[
+"a2-unidade-08-a2u8q10",
+"Reciclagem (A2, unidade 7). Complete: \"I've worked here ___ 2020.\"",
+[
+"since",
+"for",
+"ago"
+]
+],
+[
+"a2-unidade-08-a2u8q11",
+"Reciclagem (A2, unidade 7). \"My laptop has crashed and I've lost my work!\" Qual é a melhor reacção?",
+[
+"Oh no, I'm sorry to hear that.",
+"Congratulations!",
+"That's great news!"
+]
+],
+[
+"a2-unidade-08-a2u8q12",
+"Reciclagem (A2, unidade 6). Complete: \"Have you ever ___ your password?\"",
+[
+"forgotten",
+"forgot",
+"forget"
+]
+],
+[
+"a2-unidade-09-a2u9q1",
+"Qual é o pedido mais educado?",
+[
+"Could you print the invoice, please?",
+"Print the invoice.",
+"I want the invoice now."
+]
+],
+[
+"a2-unidade-09-a2u9q2",
+"Qual é a melhor recusa?",
+[
+"I'm afraid I can't, but I can do it tomorrow.",
+"No.",
+"I can't. Bye."
+]
+],
+[
+"a2-unidade-09-a2u9q3",
+"Complete: \"I've called you three times, but it ___ doesn't work.\"",
+[
+"still",
+"yet",
+"since"
+]
+],
+[
+"a2-unidade-09-a2u9q4",
+"\"A internet está lenta desde quinta-feira.\" Em inglês:",
+[
+"The internet has been slow since Thursday.",
+"The internet is slow since Thursday.",
+"The internet was slow since Thursday."
+]
+],
+[
+"a2-unidade-09-a2u9q5",
+"Complete: \"I enjoy ___ with clients.\"",
+[
+"working",
+"to work",
+"work"
+]
+],
+[
+"a2-unidade-09-a2u9q6",
+"Complete: \"I forgot ___ the email.\"",
+[
+"to send",
+"send",
+"sended"
+]
+],
+[
+"a2-unidade-09-a2u9q7",
+"\"Atender um cliente\" em inglês é:",
+[
+"serve a customer",
+"attend a customer",
+"atend a customer"
+]
+],
+[
+"a2-unidade-09-a2u9q8",
+"Numa boa resposta a uma reclamação, o que deve haver?",
+[
+"desculpa, a razão e uma solução",
+"só \"desculpe\"",
+"uma explicação longa sem solução"
+]
+],
+[
+"a2-unidade-09-a2u9q9",
+"Um cliente diz que a encomenda não chegou. Qual é a melhor primeira frase?",
+[
+"I'm very sorry to hear that. Could I have your order number, please?",
+"It isn't my problem.",
+"Are you sure?"
+]
+],
+[
+"a2-unidade-09-a2u9q10",
+"Reciclagem (A2, unidade 8). Complete: \"If the technician doesn't come today, I ___ call the manager.\"",
+[
+"'ll",
+"'m",
+"did"
+]
+],
+[
+"a2-unidade-09-a2u9q11",
+"Reciclagem (A2, unidade 7). Complete: \"We haven't received the order ___.\"",
+[
+"yet",
+"since",
+"ago"
+]
+],
+[
+"a2-unidade-09-a2u9q12",
+"Reciclagem (A2, unidade 5). \"You mustn't open the box before the technician comes\" quer dizer:",
+[
+"É proibido abrir a caixa antes de o técnico chegar.",
+"Não é preciso abrir a caixa.",
+"Tem de abrir a caixa."
+]
+],
+[
+"a2-unidade-10-a2u10q1",
+"Complete: \"I'm good ___ solving problems.\"",
+[
+"at",
+"to",
+"of"
+]
+],
+[
+"a2-unidade-10-a2u10q2",
+"Qual é a melhor resposta sobre um ponto fraco?",
+[
+"I'm not very good at writing reports, but I'm doing a course.",
+"I don't have any weaknesses.",
+"I'm bad at everything."
+]
+],
+[
+"a2-unidade-10-a2u10q3",
+"Complete: \"He checks everything ___.\"",
+[
+"carefully",
+"careful",
+"carefuly"
+]
+],
+[
+"a2-unidade-10-a2u10q4",
+"\"Ela fala bem inglês.\" Em inglês:",
+[
+"She speaks English well.",
+"She speaks well English.",
+"She speaks English good."
+]
+],
+[
+"a2-unidade-10-a2u10q5",
+"\"How long have you worked there?\" Qual é a resposta certa?",
+[
+"I've worked there since 2023.",
+"I work there since 2023.",
+"I worked there since 2023."
+]
+],
+[
+"a2-unidade-10-a2u10q6",
+"\"Where do you see yourself in five years?\" Qual é a melhor resposta?",
+[
+"I want to be a manager.",
+"I was a manager.",
+"I've been a manager."
+]
+],
+[
+"a2-unidade-10-a2u10q7",
+"\"Realizámos o projecto em seis meses.\" Em inglês:",
+[
+"We did the project in six months.",
+"We realised the project in six months.",
+"We realized the project in six months."
+]
+],
+[
+"a2-unidade-10-a2u10q8",
+"Uma boa resposta a \"Why do you want this job?\" tem…",
+[
+"experiência, uma qualidade e um objectivo",
+"só o salário",
+"uma história longa sobre a família"
+]
+],
+[
+"a2-unidade-10-a2u10q9",
+"No fim da entrevista, qual é a melhor pergunta?",
+[
+"Could you tell me more about the training?",
+"Can I go now?",
+"No questions."
+]
+],
+[
+"a2-unidade-10-a2u10q10",
+"Reciclagem (A2, unidade 9). Complete: \"Could you ___ me the form, please?\"",
+[
+"send",
+"to send",
+"sending"
+]
+],
+[
+"a2-unidade-10-a2u10q11",
+"Reciclagem (A2, unidade 8). Complete: \"If I ___ the job, I'll call you.\"",
+[
+"get",
+"'ll get",
+"got"
+]
+],
+[
+"a2-unidade-10-a2u10q12",
+"Reciclagem (A2, unidade 7). Complete: \"I've ___ finished my CV.\"",
+[
+"already",
+"yet",
+"since"
+]
+]
+],
+"B1": [
+[
+"b1-revisao-1-b1r1q1",
+"Unidade 1. Complete: \"Do you know where ___?\"",
+[
+"the station is",
+"is the station",
+"the station is it"
+]
+],
+[
+"b1-revisao-1-b1r1q2",
+"Unidade 1. Complete: \"You live in Luanda, ___?\"",
+[
+"don't you",
+"doesn't it",
+"isn't it"
+]
+],
+[
+"b1-revisao-1-b1r1q3",
+"Unidade 1. \"Gosto de café.\" — \"Eu também.\" Em inglês:",
+[
+"So do I.",
+"So am I.",
+"Me also do."
+]
+],
+[
+"b1-revisao-1-b1r1q4",
+"Unidade 2. \"Trabalho aqui desde 2020.\" Em inglês:",
+[
+"I've been working here since 2020.",
+"I'm working here since 2020.",
+"I work here since 2020."
+]
+],
+[
+"b1-revisao-1-b1r1q5",
+"Unidade 2. Complete: \"I didn't ___ to speak English at school.\"",
+[
+"use",
+"used",
+"using"
+]
+],
+[
+"b1-revisao-1-b1r1q6",
+"Unidade 2. Complete: \"The instructions were ___.\"",
+[
+"confusing",
+"confused",
+"confuse"
+]
+],
+[
+"b1-revisao-1-b1r1q7",
+"Unidade 3. \"Concordo contigo.\" Em inglês:",
+[
+"I agree with you.",
+"I'm agree with you.",
+"I agree you."
+]
+],
+[
+"b1-revisao-1-b1r1q8",
+"Unidade 3. Complete: \"There are too ___ meetings this week.\"",
+[
+"many",
+"much",
+"enough"
+]
+],
+[
+"b1-revisao-1-b1r1q9",
+"Unidade 3. \"Pode resumir as decisões?\" Em inglês:",
+[
+"Could you summarise the decisions?",
+"Could you resume the decisions?",
+"Could you resumen the decisions?"
+]
+],
+[
+"b1-revisao-1-b1r1q10",
+"Unidade 4. Complete: \"If I ___ you, I'd call the supplier.\"",
+[
+"were",
+"am",
+"will be"
+]
+],
+[
+"b1-revisao-1-b1r1q11",
+"Unidade 4. Complete (20%): \"The crane ___ work tomorrow.\"",
+[
+"probably won't",
+"won't probably",
+"will not probably"
+]
+],
+[
+"b1-revisao-1-b1r1q12",
+"Unidade 4. Complete: \"Don't worry — I'll sort ___.\"",
+[
+"it out",
+"out it",
+"it of"
+]
+],
+[
+"b1-revisao-1-b1r1q13",
+"Unidade 5. Complete: \"The plant ___ built in 2025.\"",
+[
+"was",
+"were",
+"did"
+]
+],
+[
+"b1-revisao-1-b1r1q14",
+"Unidade 5. \"O relatório que te enviei.\" Em inglês:",
+[
+"the report I sent you",
+"the report that I sent it to you",
+"the report who I sent you"
+]
+],
+[
+"b1-revisao-1-b1r1q15",
+"Unidade 5. Complete: \"You ___ touch the inverters. It's dangerous.\"",
+[
+"mustn't",
+"don't have to",
+"must to"
+]
+],
+[
+"b1-revisao-2-b1r2q1",
+"Unidade 6. \"Quando cheguei, a reunião já tinha começado.\" Em inglês:",
+[
+"When I arrived, the meeting had already started.",
+"When I arrived, the meeting has already started.",
+"When I arrived, the meeting had already start."
+]
+],
+[
+"b1-revisao-2-b1r2q2",
+"Unidade 6. Complete: \"The flight was late ___ the storm.\"",
+[
+"because of",
+"because",
+"so"
+]
+],
+[
+"b1-revisao-2-b1r2q3",
+"Unidade 6. Complete: \"The water caused a lot of ___.\"",
+[
+"damage",
+"damages",
+"damaged"
+]
+],
+[
+"b1-revisao-2-b1r2q4",
+"Unidade 7. \"Ela disse-me que estava ocupada.\" Em inglês:",
+[
+"She told me she was busy.",
+"She said me she was busy.",
+"She told that she was busy."
+]
+],
+[
+"b1-revisao-2-b1r2q5",
+"Unidade 7. Kagiso: \"Where are the rooms?\" → \"He asked where ___.\"",
+[
+"the rooms were",
+"were the rooms",
+"did the rooms be"
+]
+],
+[
+"b1-revisao-2-b1r2q6",
+"Unidade 7. \"Disse-me para não pagar.\" Em inglês:",
+[
+"She told me not to pay.",
+"She told me don't pay.",
+"She said me not to pay."
+]
+],
+[
+"b1-revisao-2-b1r2q7",
+"Unidade 8. Complete: \"That ___ be right. We didn't buy anything.\"",
+[
+"can't",
+"mustn't",
+"must"
+]
+],
+[
+"b1-revisao-2-b1r2q8",
+"Unidade 8. Complete: \"Costs went up ___ 15%.\"",
+[
+"by",
+"of",
+"in"
+]
+],
+[
+"b1-revisao-2-b1r2q9",
+"Unidade 8. Complete: \"This time next week, I'll ___ the budget.\"",
+[
+"be presenting",
+"presenting",
+"be present"
+]
+],
+[
+"b1-revisao-2-b1r2q10",
+"Unidade 9. Complete: \"Despite ___, we played football.\"",
+[
+"the rain",
+"it rained",
+"of the rain"
+]
+],
+[
+"b1-revisao-2-b1r2q11",
+"Unidade 9. \"Para poupar dinheiro\" em inglês:",
+[
+"to save money",
+"for save money",
+"for to save money"
+]
+],
+[
+"b1-revisao-2-b1r2q12",
+"Unidade 9. \"A novela das nove\" (na televisão) em inglês:",
+[
+"the nine o'clock soap opera",
+"the nine o'clock novel",
+"the nine o'clock romance"
+]
+],
+[
+"b1-revisao-2-b1r2q13",
+"Unidade 10. \"Se tivéssemos esperado, teríamos perdido uma semana.\" Em inglês:",
+[
+"If we had waited, we would have lost a week.",
+"If we would have waited, we would have lost a week.",
+"If we waited, we will have lost a week."
+]
+],
+[
+"b1-revisao-2-b1r2q14",
+"Unidade 10. \"Devíamos ter verificado.\" Em inglês:",
+[
+"We should have checked.",
+"We should checked.",
+"We should to have checked."
+]
+],
+[
+"b1-revisao-2-b1r2q15",
+"Unidade 10. \"Não pode ter sido o tempo.\" Em inglês:",
+[
+"It can't have been the weather.",
+"It mustn't have been the weather.",
+"It can't be the weather yesterday."
+]
+],
+[
+"b1-unidade-01-b1u1q1",
+"Complete: \"You're from Lubango, ___?\"",
+[
+"aren't you",
+"isn't it",
+"don't you"
+]
+],
+[
+"b1-unidade-01-b1u1q2",
+"Complete: \"You arrived yesterday, ___?\"",
+[
+"didn't you",
+"don't you",
+"isn't it"
+]
+],
+[
+"b1-unidade-01-b1u1q3",
+"Qual é a forma educada de \"Where is room four?\"",
+[
+"Could you tell me where room four is?",
+"Could you tell me where is room four?",
+"Could you tell me where does room four is?"
+]
+],
+[
+"b1-unidade-01-b1u1q4",
+"Complete: \"Do you know ___ the canteen takes cards?\"",
+[
+"if",
+"is",
+"what"
+]
+],
+[
+"b1-unidade-01-b1u1q5",
+"\"Lerato invited Nuno.\" Pergunte pela Lerato:",
+[
+"Who invited Nuno?",
+"Who did invite Nuno?",
+"Who did Nuno invite?"
+]
+],
+[
+"b1-unidade-01-b1u1q6",
+"\"I don't like long meetings.\" Também não gosta. Responde:",
+[
+"Neither do I.",
+"So do I.",
+"Neither am I."
+]
+],
+[
+"b1-unidade-01-b1u1q7",
+"\"Tenho um compromisso às três.\" Em inglês:",
+[
+"I have an appointment at three.",
+"I have a compromise at three.",
+"I am compromised at three."
+]
+],
+[
+"b1-unidade-01-b1u1q8",
+"Qual é a melhor forma de fechar uma conversa num evento?",
+[
+"It was great talking to you. Let's keep in touch — I'll email you on Monday.",
+"OK. Bye.",
+"Finished. I go now."
+]
+],
+[
+"b1-unidade-01-b1u1q9",
+"O Kofi pergunta: \"Do you want to come to dinner?\" Qual é a resposta certa?",
+[
+"Yes! Count me in.",
+"So do I.",
+"Neither do I."
+]
+],
+[
+"b1-unidade-01-b1u1q10",
+"Reciclagem (A2, unidade 6). Complete: \"I ___ to Johannesburg last year.\"",
+[
+"went",
+"'ve been",
+"have gone"
+]
+],
+[
+"b1-unidade-01-b1u1q11",
+"Reciclagem (A2, unidade 6). Complete: \"I've worked here ___ 2024.\"",
+[
+"since",
+"for",
+"during"
+]
+],
+[
+"b1-unidade-01-b1u1q12",
+"Reciclagem (A2, unidade 8). Complete: \"If it ___, we'll stay inside.\"",
+[
+"rains",
+"will rain",
+"rained"
+]
+],
+[
+"b1-unidade-02-b1u2q1",
+"\"Costumo trabalhar ao sábado.\" Em inglês:",
+[
+"I usually work on Saturdays.",
+"I use to work on Saturdays.",
+"I used to work on Saturdays."
+]
+],
+[
+"b1-unidade-02-b1u2q2",
+"Complete: \"I didn't ___ to speak English at school.\"",
+[
+"use",
+"used",
+"using"
+]
+],
+[
+"b1-unidade-02-b1u2q3",
+"Complete: \"How long have you ___ working here?\"",
+[
+"been",
+"be",
+"being"
+]
+],
+[
+"b1-unidade-02-b1u2q4",
+"\"Conheço a Thandi desde 2026.\" Em inglês:",
+[
+"I've known Thandi since 2026.",
+"I've been knowing Thandi since 2026.",
+"I know Thandi since 2026."
+]
+],
+[
+"b1-unidade-02-b1u2q5",
+"Complete: \"I've ___ the client three times today.\"",
+[
+"called",
+"been calling",
+"calling"
+]
+],
+[
+"b1-unidade-02-b1u2q6",
+"\"I've been writing the report.\" O relatório está…",
+[
+"talvez ainda por acabar",
+"acabado",
+"por começar"
+]
+],
+[
+"b1-unidade-02-b1u2q7",
+"Complete: \"The instructions were ___.\"",
+[
+"confusing",
+"confused",
+"confuse"
+]
+],
+[
+"b1-unidade-02-b1u2q8",
+"\"Foi uma grande decepção.\" Em inglês:",
+[
+"It was a big disappointment.",
+"It was a big deception.",
+"It was a big deceiving."
+]
+],
+[
+"b1-unidade-02-b1u2q9",
+"Uma boa resposta sobre o seu ano de trabalho tem…",
+[
+"antes, agora e o passo seguinte",
+"só os problemas",
+"só o salário"
+]
+],
+[
+"b1-unidade-02-b1u2q10",
+"Reciclagem (B1, unidade 1). Complete: \"Do you know ___ the bus leaves?\"",
+[
+"what time",
+"what time does",
+"at what time does"
+]
+],
+[
+"b1-unidade-02-b1u2q11",
+"Reciclagem (B1, unidade 1). Complete: \"Let's get a coffee, ___?\"",
+[
+"shall we",
+"don't we",
+"do we"
+]
+],
+[
+"b1-unidade-02-b1u2q12",
+"Reciclagem (A2, unidade 6). Complete: \"I ___ to Namibe last month.\"",
+[
+"went",
+"have been",
+"'ve gone"
+]
+],
+[
+"b1-unidade-03-b1u3q1",
+"\"Acho que não é boa ideia.\" Complete: \"I ___ it's a good idea.\"",
+[
+"don't think",
+"think not",
+"not think"
+]
+],
+[
+"b1-unidade-03-b1u3q2",
+"Uma opinião forte tem…",
+[
+"uma opinião, uma razão e um exemplo",
+"só uma opinião",
+"uma opinião e uma pergunta"
+]
+],
+[
+"b1-unidade-03-b1u3q3",
+"\"Concordo contigo.\" Em inglês:",
+[
+"I agree with you.",
+"I am agree with you.",
+"I'm agree with you."
+]
+],
+[
+"b1-unidade-03-b1u3q4",
+"Numa reunião com um cliente, a forma mais cortês de discordar é…",
+[
+"I'm not sure I agree.",
+"That's wrong.",
+"I totally disagree."
+]
+],
+[
+"b1-unidade-03-b1u3q5",
+"\"Desculpe interromper, mas…\" Em inglês:",
+[
+"Sorry to interrupt, but…",
+"Sorry for interrupt, but…",
+"Sorry interrupting, but…"
+]
+],
+[
+"b1-unidade-03-b1u3q6",
+"Complete: \"The masts aren't high ___.\"",
+[
+"enough",
+"too",
+"so"
+]
+],
+[
+"b1-unidade-03-b1u3q7",
+"Complete: \"There are too ___ tasks for one week.\"",
+[
+"many",
+"much",
+"enough"
+]
+],
+[
+"b1-unidade-03-b1u3q8",
+"Complete: \"It's ___ a big job!\"",
+[
+"such",
+"so",
+"too"
+]
+],
+[
+"b1-unidade-03-b1u3q9",
+"\"Pode resumir as decisões?\" Em inglês:",
+[
+"Could you summarise the decisions?",
+"Could you resume the decisions?",
+"Could you resumen the decisions?"
+]
+],
+[
+"b1-unidade-03-b1u3q10",
+"Reciclagem (B1, unidade 2). Complete: \"How long have you ___ working on this?\"",
+[
+"been",
+"be",
+"being"
+]
+],
+[
+"b1-unidade-03-b1u3q11",
+"Reciclagem (B1, unidade 2). \"Dançava kizomba todos os sábados\" (agora já não). Em inglês:",
+[
+"I used to dance kizomba every Saturday.",
+"I use to dance kizomba every Saturday.",
+"I usually dance kizomba every Saturday."
+]
+],
+[
+"b1-unidade-03-b1u3q12",
+"Reciclagem (A2, unidade 5). Complete: \"You ___ talk to Lerato about it.\" (um conselho)",
+[
+"should",
+"should to",
+"must to"
+]
+],
+[
+"b1-unidade-04-b1u4q1",
+"\"Se eu tivesse mais tempo, estudava mais.\" Complete: \"If I ___ more time, I'd study more.\"",
+[
+"had",
+"would have",
+"will have"
+]
+],
+[
+"b1-unidade-04-b1u4q2",
+"Complete: \"If I ___ you, I'd call the supplier.\"",
+[
+"were",
+"am",
+"will be"
+]
+],
+[
+"b1-unidade-04-b1u4q3",
+"Um amigo seu tem uma entrevista de emprego amanhã. Ele diz…",
+[
+"If I get the job, I'll move to Luanda.",
+"If I get the job, I'd move to Luanda.",
+"If I would get the job, I'll move to Luanda."
+]
+],
+[
+"b1-unidade-04-b1u4q4",
+"\"If customs accepted documents by email, we'd have the antennas today.\" A alfândega aceita documentos por e-mail?",
+[
+"Não.",
+"Sim.",
+"Sim, desde hoje."
+]
+],
+[
+"b1-unidade-04-b1u4q5",
+"Complete (20%): \"The crane ___ work on the twenty-fifth.\"",
+[
+"probably won't",
+"won't probably",
+"will not probably"
+]
+],
+[
+"b1-unidade-04-b1u4q6",
+"\"Will it rain?\" Acha que não (20%). Responde:",
+[
+"I doubt it.",
+"Definitely.",
+"I doubt."
+]
+],
+[
+"b1-unidade-04-b1u4q7",
+"Complete: \"Don't worry — I'll sort ___.\"",
+[
+"it out",
+"out it",
+"it of"
+]
+],
+[
+"b1-unidade-04-b1u4q8",
+"\"Assumo o erro.\" Em inglês:",
+[
+"I admit my mistake.",
+"I assume my mistake.",
+"I suppose my mistake."
+]
+],
+[
+"b1-unidade-04-b1u4q9",
+"Uma boa recomendação…",
+[
+"compara os custos e os riscos de cada opção",
+"dá só a opção mais barata",
+"esconde os problemas"
+]
+],
+[
+"b1-unidade-04-b1u4q10",
+"Reciclagem (B1, unidade 3). Complete: \"There are too ___ meetings this week.\"",
+[
+"many",
+"much",
+"enough"
+]
+],
+[
+"b1-unidade-04-b1u4q11",
+"Reciclagem (B1, unidade 3). \"I see your point, but…\" quer dizer…",
+[
+"Percebo, mas tenho outra ideia.",
+"Concordo totalmente.",
+"Não percebo o que diz."
+]
+],
+[
+"b1-unidade-04-b1u4q12",
+"Reciclagem (A2, unidade 8). Complete: \"If the power goes off, we ___ the generator.\"",
+[
+"'ll use",
+"'d use",
+"used"
+]
+],
+[
+"b1-unidade-05-b1u5q1",
+"Complete: \"The panels ___ cleaned every two weeks.\"",
+[
+"are",
+"is",
+"do"
+]
+],
+[
+"b1-unidade-05-b1u5q2",
+"\"Fala-se inglês aqui.\" Em inglês:",
+[
+"English is spoken here.",
+"English speaks here.",
+"Here speaks English."
+]
+],
+[
+"b1-unidade-05-b1u5q3",
+"Complete: \"The plant ___ built in 2025.\"",
+[
+"was",
+"were",
+"did"
+]
+],
+[
+"b1-unidade-05-b1u5q4",
+"Escolha a pergunta correcta.",
+[
+"When was the plant built?",
+"When the plant was built?",
+"When was built the plant?"
+]
+],
+[
+"b1-unidade-05-b1u5q5",
+"Complete: \"Lourenço is the technician ___ works at night.\"",
+[
+"who",
+"which",
+"where"
+]
+],
+[
+"b1-unidade-05-b1u5q6",
+"\"O relatório que te enviei.\" Em inglês:",
+[
+"the report I sent you",
+"the report that I sent it to you",
+"the report who I sent you"
+]
+],
+[
+"b1-unidade-05-b1u5q7",
+"Complete: \"You ___ touch the inverters. It's dangerous.\"",
+[
+"mustn't",
+"don't have to",
+"must to"
+]
+],
+[
+"b1-unidade-05-b1u5q8",
+"\"Angola produz petróleo.\" Em inglês:",
+[
+"Angola produces oil.",
+"Angola produces petrol.",
+"Angola produces fabric."
+]
+],
+[
+"b1-unidade-05-b1u5q9",
+"Num briefing de segurança, quando um visitante não percebe uma palavra, o melhor é…",
+[
+"explicá-la com palavras mais simples e um exemplo",
+"repeti-la mais alto",
+"passar à frente"
+]
+],
+[
+"b1-unidade-05-b1u5q10",
+"Reciclagem (B1, unidade 4). Complete: \"If I ___ more time, I'd study every day.\"",
+[
+"had",
+"would have",
+"will have"
+]
+],
+[
+"b1-unidade-05-b1u5q11",
+"Reciclagem (B1, unidade 4). \"Will it rain?\" Acha que não. Responde:",
+[
+"I doubt it.",
+"Definitely.",
+"I doubt."
+]
+],
+[
+"b1-unidade-05-b1u5q12",
+"Reciclagem (A2, unidade 5). \"Não é preciso trazer o computador.\" Em inglês:",
+[
+"You don't have to bring your computer.",
+"You mustn't bring your computer.",
+"You don't must bring your computer."
+]
+],
+[
+"b1-unidade-06-b1u6q1",
+"\"Quando cheguei, ele já tinha saído.\" Em inglês:",
+[
+"When I arrived, he had already left.",
+"When I arrived, he had already leave.",
+"When I arrived, he has already left."
+]
+],
+[
+"b1-unidade-06-b1u6q2",
+"Complete: \"By the time the fire team arrived, the guard ___ the fire.\"",
+[
+"had put out",
+"has put out",
+"had putted out"
+]
+],
+[
+"b1-unidade-06-b1u6q3",
+"Complete: \"While he ___ back, the alarm went off.\"",
+[
+"was walking",
+"is walking",
+"had walking"
+]
+],
+[
+"b1-unidade-06-b1u6q4",
+"\"It was raining.\" Numa história, esta frase é…",
+[
+"o fundo (o que estava a acontecer)",
+"uma acção principal",
+"o que tinha acontecido antes"
+]
+],
+[
+"b1-unidade-06-b1u6q5",
+"Complete: \"The flight was late ___ the storm.\"",
+[
+"because of",
+"because",
+"so"
+]
+],
+[
+"b1-unidade-06-b1u6q6",
+"\"Por isso cheguei atrasado.\" Em inglês:",
+[
+"That's why I arrived late.",
+"That's because I arrived late.",
+"Because of I arrived late."
+]
+],
+[
+"b1-unidade-06-b1u6q7",
+"Complete: \"The water caused a lot of ___.\"",
+[
+"damage",
+"damages",
+"damaged"
+]
+],
+[
+"b1-unidade-06-b1u6q8",
+"\"Não houve vítimas.\" Em inglês:",
+[
+"There were no casualties.",
+"There were no coincidences.",
+"There were no prejudices."
+]
+],
+[
+"b1-unidade-06-b1u6q9",
+"Num relato de incidente, a ordem mais clara é…",
+[
+"o que aconteceu, porquê, o que se fez, o que se vai fazer",
+"quem teve a culpa, e depois o que aconteceu",
+"só o que aconteceu"
+]
+],
+[
+"b1-unidade-06-b1u6q10",
+"Reciclagem (B1, unidade 5). Complete: \"The duct ___ sealed on Wednesday.\"",
+[
+"was",
+"were",
+"did"
+]
+],
+[
+"b1-unidade-06-b1u6q11",
+"Reciclagem (B1, unidade 4). Complete: \"If I ___ you, I'd write the report today.\"",
+[
+"were",
+"am",
+"will be"
+]
+],
+[
+"b1-unidade-06-b1u6q12",
+"Reciclagem (B1, unidade 1). Complete: \"Could you tell me what time ___?\"",
+[
+"the meeting starts",
+"does the meeting start",
+"starts the meeting"
+]
+],
+[
+"b1-unidade-07-b1u7q1",
+"\"Ela disse-me que estava ocupada.\" Em inglês:",
+[
+"She told me she was busy.",
+"She said me she was busy.",
+"She told that she was busy."
+]
+],
+[
+"b1-unidade-07-b1u7q2",
+"Kagiso: \"I'll send the price.\" → \"He said he ___ send the price.\"",
+[
+"would",
+"will be",
+"wills"
+]
+],
+[
+"b1-unidade-07-b1u7q3",
+"Kagiso: \"Where are the rooms?\" → \"He asked where ___.\"",
+[
+"the rooms were",
+"were the rooms",
+"did the rooms be"
+]
+],
+[
+"b1-unidade-07-b1u7q4",
+"Lerato: \"Are you free?\" → \"She asked ___ I was free.\"",
+[
+"if",
+"that",
+"do"
+]
+],
+[
+"b1-unidade-07-b1u7q5",
+"\"Disse-me para não pagar.\" Em inglês:",
+[
+"She told me not to pay.",
+"She told me don't pay.",
+"She said me not to pay."
+]
+],
+[
+"b1-unidade-07-b1u7q6",
+"Complete: \"He explained ___ the software was included.\"",
+[
+"that",
+"me that",
+"to me to"
+]
+],
+[
+"b1-unidade-07-b1u7q7",
+"\"Fala o Nuno\" (ao telefone). Em inglês:",
+[
+"This is Nuno.",
+"Here is Nuno.",
+"I am Nuno speaking."
+]
+],
+[
+"b1-unidade-07-b1u7q8",
+"\"Não me recordo do número.\" Em inglês:",
+[
+"I don't remember the number.",
+"I don't record the number.",
+"I don't recorder the number."
+]
+],
+[
+"b1-unidade-07-b1u7q9",
+"Ao telefone, quando alguém lhe dá um número, o mais profissional é…",
+[
+"lê-lo de volta para confirmar",
+"não dizer nada",
+"pedir para o enviar mais tarde"
+]
+],
+[
+"b1-unidade-07-b1u7q10",
+"Reciclagem (B1, unidade 6). Complete: \"When I arrived, the meeting ___ already started.\"",
+[
+"had",
+"has",
+"was"
+]
+],
+[
+"b1-unidade-07-b1u7q11",
+"Reciclagem (B1, unidade 6). Complete: \"The flight was late ___ the storm.\"",
+[
+"because of",
+"because",
+"so"
+]
+],
+[
+"b1-unidade-07-b1u7q12",
+"Reciclagem (B1, unidade 5). Complete: \"The sample ___ sent by courier on Friday.\"",
+[
+"was",
+"were",
+"did"
+]
+],
+[
+"b1-unidade-08-b1u8q1",
+"\"Deve ser o câmbio\" (tenho quase a certeza). Em inglês:",
+[
+"It must be the exchange rate.",
+"It mustn't be the exchange rate.",
+"It must to be the exchange rate."
+]
+],
+[
+"b1-unidade-08-b1u8q2",
+"Complete: \"That ___ be right. We didn't buy anything.\"",
+[
+"can't",
+"mustn't",
+"must"
+]
+],
+[
+"b1-unidade-08-b1u8q3",
+"Complete: \"Costs went up ___ 15%.\"",
+[
+"by",
+"of",
+"in"
+]
+],
+[
+"b1-unidade-08-b1u8q4",
+"\"65 500 000\" em inglês:",
+[
+"sixty-five and a half million",
+"sixty-five millions and a half",
+"sixty-five and half millions"
+]
+],
+[
+"b1-unidade-08-b1u8q5",
+"Complete: \"This time next week, I'll ___ the budget.\"",
+[
+"be presenting",
+"presenting",
+"be present"
+]
+],
+[
+"b1-unidade-08-b1u8q6",
+"A pergunta mais cortês sobre os planos de alguém é…",
+[
+"Will you be using the car on Monday?",
+"You use the car on Monday?",
+"Use the car on Monday?"
+]
+],
+[
+"b1-unidade-08-b1u8q7",
+"\"Taxa de juro\" em inglês:",
+[
+"interest rate",
+"interest tax",
+"interest fee"
+]
+],
+[
+"b1-unidade-08-b1u8q8",
+"\"Pela comodidade\" em inglês:",
+[
+"for convenience",
+"for commodity",
+"for comodity"
+]
+],
+[
+"b1-unidade-08-b1u8q9",
+"Ao explicar uma linha de um orçamento, diga…",
+[
+"o número, a tendência e a causa",
+"só o total",
+"todos os números da tabela"
+]
+],
+[
+"b1-unidade-08-b1u8q10",
+"Reciclagem (B1, unidade 7). Kagiso: \"I'll send it.\" → \"He said he ___ send it.\"",
+[
+"would",
+"will be",
+"wills"
+]
+],
+[
+"b1-unidade-08-b1u8q11",
+"Reciclagem (B1, unidade 6). Complete: \"When I arrived, the meeting ___ already started.\"",
+[
+"had",
+"has",
+"was"
+]
+],
+[
+"b1-unidade-08-b1u8q12",
+"Reciclagem (B1, unidade 5). Complete: \"The damage ___ paid by the insurance.\"",
+[
+"was",
+"were",
+"did"
+]
+],
+[
+"b1-unidade-09-b1u9q1",
+"Complete: \"___ it was late, I couldn't stop.\"",
+[
+"Although",
+"Despite",
+"However"
+]
+],
+[
+"b1-unidade-09-b1u9q2",
+"Complete: \"Despite ___, we played football.\"",
+[
+"the rain",
+"it rained",
+"of the rain"
+]
+],
+[
+"b1-unidade-09-b1u9q3",
+"\"Para poupar dinheiro\" em inglês:",
+[
+"to save money",
+"for save money",
+"for to save money"
+]
+],
+[
+"b1-unidade-09-b1u9q4",
+"Complete: \"I'll send it today ___ you can read it.\"",
+[
+"so that",
+"in order to",
+"for"
+]
+],
+[
+"b1-unidade-09-b1u9q5",
+"Escolha a forma correcta:",
+[
+"According to the article, …",
+"According the article, …",
+"According to me, …"
+]
+],
+[
+"b1-unidade-09-b1u9q6",
+"Um bom resumo responde a…",
+[
+"o quê, quem, onde, porquê e o que vem a seguir",
+"só o quê",
+"todos os pormenores"
+]
+],
+[
+"b1-unidade-09-b1u9q7",
+"\"Vi a propaganda (um anúncio) na televisão.\" Em inglês:",
+[
+"I saw the advert on TV.",
+"I saw the propaganda on TV.",
+"I saw the novel on TV."
+]
+],
+[
+"b1-unidade-09-b1u9q8",
+"\"A novela das nove\" (na televisão) em inglês:",
+[
+"the nine o'clock soap opera",
+"the nine o'clock novel",
+"the nine o'clock romance"
+]
+],
+[
+"b1-unidade-09-b1u9q9",
+"Num briefing, depois de resumir a notícia, a pergunta mais importante é…",
+[
+"O que significa isto para nós?",
+"Quem escreveu?",
+"Quantas palavras tem?"
+]
+],
+[
+"b1-unidade-09-b1u9q10",
+"Reciclagem (B1, unidade 8). Complete: \"It ___ be the exchange rate. I'm almost sure.\"",
+[
+"must",
+"can't",
+"mustn't"
+]
+],
+[
+"b1-unidade-09-b1u9q11",
+"Reciclagem (B1, unidade 8). Complete: \"Costs went up ___ 15%.\"",
+[
+"by",
+"of",
+"in"
+]
+],
+[
+"b1-unidade-09-b1u9q12",
+"Reciclagem (B1, unidade 7). \"Ela disse-me que estava ocupada.\" Em inglês:",
+[
+"She told me she was busy.",
+"She said me she was busy.",
+"She told that she was busy."
+]
+],
+[
+"b1-unidade-10-b1u10q1",
+"\"Se tivéssemos esperado, teríamos perdido uma semana.\" Em inglês:",
+[
+"If we had waited, we would have lost a week.",
+"If we would have waited, we would have lost a week.",
+"If we waited, we will have lost a week."
+]
+],
+[
+"b1-unidade-10-b1u10q2",
+"Complete: \"If I had set an alarm, I ___ have missed the flight.\"",
+[
+"wouldn't",
+"didn't",
+"won't"
+]
+],
+[
+"b1-unidade-10-b1u10q3",
+"\"Devíamos ter verificado.\" Em inglês:",
+[
+"We should have checked.",
+"We should checked.",
+"We should to have checked."
+]
+],
+[
+"b1-unidade-10-b1u10q4",
+"Numa reunião de balanço, a frase mais profissional é…",
+[
+"We should have checked the room first.",
+"You should have checked the room first!",
+"The contractor is the problem."
+]
+],
+[
+"b1-unidade-10-b1u10q5",
+"\"Deve ter sido o cabo.\" Em inglês:",
+[
+"It must have been the cable.",
+"It must be the cable yesterday.",
+"It must had been the cable."
+]
+],
+[
+"b1-unidade-10-b1u10q6",
+"\"Não pode ter sido o tempo.\" Em inglês:",
+[
+"It can't have been the weather.",
+"It mustn't have been the weather.",
+"It can't be the weather yesterday."
+]
+],
+[
+"b1-unidade-10-b1u10q7",
+"\"Qual é a data da reunião?\" Em inglês:",
+[
+"What's the date of the meeting?",
+"What's the data of the meeting?",
+"What's the day-data of the meeting?"
+]
+],
+[
+"b1-unidade-10-b1u10q8",
+"\"A reunião de balanço\" em inglês:",
+[
+"the review meeting",
+"the balance meeting",
+"the balancing meeting"
+]
+],
+[
+"b1-unidade-10-b1u10q9",
+"Um bom balanço de projecto tem…",
+[
+"o que correu bem, o que se faria de outra forma e as recomendações",
+"só os erros e quem os fez",
+"só o que correu bem"
+]
+],
+[
+"b1-unidade-10-b1u10q10",
+"Reciclagem (B1, unidade 9). Complete: \"___ the rain, we finished on time.\"",
+[
+"Despite",
+"Although",
+"However"
+]
+],
+[
+"b1-unidade-10-b1u10q11",
+"Reciclagem (B1, unidade 8). Complete: \"That ___ be right. We didn't buy anything.\"",
+[
+"can't",
+"mustn't",
+"must"
+]
+],
+[
+"b1-unidade-10-b1u10q12",
+"Reciclagem (B1, unidade 7). Lerato: \"Send me the report.\" → \"She told me ___ her the report.\"",
+[
+"to send",
+"send",
+"sending"
+]
+]
+],
+"B2": [
+[
+"b2-revisao-1-b2r1q1",
+"Unidade 1. Escolha a frase correcta.",
+[
+"Elsa, who joined in May, is from Benguela.",
+"Elsa, that joined in May, is from Benguela.",
+"Elsa who joined in May, is from Benguela."
+]
+],
+[
+"b2-revisao-1-b2r1q2",
+"Unidade 1. \"…, o que é óptimo.\" Em inglês:",
+[
+"…, which is great.",
+"…, what is great.",
+"…, that is great."
+]
+],
+[
+"b2-revisao-1-b2r1q3",
+"Unidade 1. Complete: \"When the manager left, Elsa ___ the project.\"",
+[
+"took over",
+"took off",
+"took out"
+]
+],
+[
+"b2-revisao-1-b2r1q4",
+"Unidade 2. Complete: \"I'd like to start by ___ at the results.\"",
+[
+"looking",
+"look",
+"to look"
+]
+],
+[
+"b2-revisao-1-b2r1q5",
+"Unidade 2. \"Até Junho, teremos instalado as antenas.\" Em inglês:",
+[
+"By June, we will have installed the antennas.",
+"Until June, we will have installed the antennas.",
+"By June, we will installed the antennas."
+]
+],
+[
+"b2-revisao-1-b2r1q6",
+"Unidade 2. Prices went from 200 to 240. \"Prices rose ___ twenty percent.\"",
+[
+"by",
+"to",
+"of"
+]
+],
+[
+"b2-revisao-1-b2r1q7",
+"Unidade 3. Complete: \"We won't sign unless they ___ to a maximum.\"",
+[
+"agree",
+"don't agree",
+"will agree"
+]
+],
+[
+"b2-revisao-1-b2r1q8",
+"Unidade 3. Complete: \"Would you consider ___ the price?\"",
+[
+"lowering",
+"to lower",
+"lower"
+]
+],
+[
+"b2-revisao-1-b2r1q9",
+"Unidade 3. \"Mil milhões\" em inglês:",
+[
+"a billion",
+"a trillion",
+"a million million"
+]
+],
+[
+"b2-revisao-1-b2r1q10",
+"Unidade 4. \"Está a ser reparado.\" Em inglês:",
+[
+"It's being repaired.",
+"It's been repairing.",
+"It's being repair."
+]
+],
+[
+"b2-revisao-1-b2r1q11",
+"Unidade 4. \"Devia ter sido verificado.\" Em inglês:",
+[
+"It should have been checked.",
+"It should been checked.",
+"It should have checked."
+]
+],
+[
+"b2-revisao-1-b2r1q12",
+"Unidade 4. \"O cliente reclamou.\" Em inglês:",
+[
+"The client complained.",
+"The client claimed.",
+"The client reclaimed."
+]
+],
+[
+"b2-revisao-1-b2r1q13",
+"Unidade 5. Escolha a frase correcta.",
+[
+"The trucks are bound to be late.",
+"The trucks will bound to be late.",
+"The trucks bound to be late."
+]
+],
+[
+"b2-revisao-1-b2r1q14",
+"Unidade 5. \"Em Março, faz dois anos que trabalho cá.\" Em inglês:",
+[
+"By March, I'll have been working here for two years.",
+"By March, I'll be working here for two years.",
+"By March, I'll have working here for two years."
+]
+],
+[
+"b2-revisao-1-b2r1q15",
+"Unidade 5. \"Trabalho no departamento de informática.\" Em inglês:",
+[
+"I work in the IT department.",
+"I work in the informatics department.",
+"I work in the informatic department."
+]
+],
+[
+"b2-revisao-2-b2r2q1",
+"Unidade 6. \"Não precisávamos de ter reservado o hotel.\" Em inglês:",
+[
+"We needn't have booked the hotel.",
+"We needn't to have booked the hotel.",
+"We didn't need booking the hotel."
+]
+],
+[
+"b2-revisao-2-b2r2q2",
+"Unidade 6. \"A estrada devia estar pronta em Março\" (e não está). Em inglês:",
+[
+"The road was supposed to be ready in March.",
+"The road was suppose to be ready in March.",
+"The road supposed to be ready in March."
+]
+],
+[
+"b2-revisao-2-b2r2q3",
+"Unidade 6. \"Ele não pode ter visto o vento.\" Em inglês:",
+[
+"He can't have seen the wind.",
+"He mustn't have seen the wind.",
+"He can't saw the wind."
+]
+],
+[
+"b2-revisao-2-b2r2q4",
+"Unidade 7. Escolha a frase correcta.",
+[
+"Although it was late, we kept working.",
+"Despite it was late, we kept working.",
+"Whereas it was late, we kept working."
+]
+],
+[
+"b2-revisao-2-b2r2q5",
+"Unidade 7. \"Embora seja o meu chefe, nunca ouve.\" Em inglês:",
+[
+"Even though he is my boss, he never listens.",
+"Despite he is my boss, he never listens.",
+"Even he is my boss, he never listens."
+]
+],
+[
+"b2-revisao-2-b2r2q6",
+"Unidade 7. \"O maior bairro\" em inglês:",
+[
+"the biggest neighbourhood",
+"the mayor neighbourhood",
+"the more big neighbourhood"
+]
+],
+[
+"b2-revisao-2-b2r2q7",
+"Unidade 8. Escolha a frase correcta.",
+[
+"The concert was absolutely fantastic.",
+"The concert was very fantastic.",
+"The concert was a bit fantastic."
+]
+],
+[
+"b2-revisao-2-b2r2q8",
+"Unidade 8. Escolha a ordem certa.",
+[
+"a small Portuguese restaurant",
+"a Portuguese small restaurant",
+"a restaurant small Portuguese"
+]
+],
+[
+"b2-revisao-2-b2r2q9",
+"Unidade 8. \"O espectáculo começa às nove.\" Em inglês:",
+[
+"The show starts at nine.",
+"The spectacle starts at nine.",
+"The spectacles start at nine."
+]
+],
+[
+"b2-revisao-2-b2r2q10",
+"Unidade 9. \"Ela sugeriu-nos que esperássemos.\" Em inglês:",
+[
+"She suggested that we wait.",
+"She suggested us to wait.",
+"She suggested to us waiting to."
+]
+],
+[
+"b2-revisao-2-b2r2q11",
+"Unidade 9. Complete: \"He denied ___ the delay.\"",
+[
+"causing",
+"to cause",
+"cause"
+]
+],
+[
+"b2-revisao-2-b2r2q12",
+"Unidade 9. \"Avisa-me quando chegares.\" Em inglês:",
+[
+"Let me know when you arrive.",
+"Advise me when you arrive.",
+"Advise me when you will arrive."
+]
+],
+[
+"b2-revisao-2-b2r2q13",
+"Unidade 10. \"Quem me dera saber a resposta.\" Em inglês:",
+[
+"I wish I knew the answer.",
+"I wish I know the answer.",
+"I wish I would know the answer."
+]
+],
+[
+"b2-revisao-2-b2r2q14",
+"Unidade 10. Escolha a frase correcta.",
+[
+"As a child, I used to be very shy.",
+"As a child, I would be very shy.",
+"As a child, I use to be very shy."
+]
+],
+[
+"b2-revisao-2-b2r2q15",
+"Unidade 10. Escolha a frase correcta.",
+[
+"If I hadn't moved, I wouldn't be here now.",
+"If I wouldn't have moved, I wouldn't be here now.",
+"If I didn't move, I wouldn't have been here now."
+]
+],
+[
+"b2-unidade-01-b2u1q1",
+"Escolha a frase correcta.",
+[
+"Elsa, who joined in May, will lead the testing.",
+"Elsa, that joined in May, will lead the testing.",
+"Elsa who joined in May, will lead the testing."
+]
+],
+[
+"b2-unidade-01-b2u1q2",
+"Complete: \"Sipho, ___ team worked on the backup, will do the satellite part.\"",
+[
+"whose",
+"who",
+"who's"
+]
+],
+[
+"b2-unidade-01-b2u1q3",
+"\"…, o que é óptimo.\" Em inglês:",
+[
+"…, which is great.",
+"…, what is great.",
+"…, that is great."
+]
+],
+[
+"b2-unidade-01-b2u1q4",
+"Escolha a frase correcta numa conversa.",
+[
+"These are the people we work with.",
+"These are the people with who we work.",
+"These are the people we work with them."
+]
+],
+[
+"b2-unidade-01-b2u1q5",
+"Numa reunião, uma colega ainda não falou. A frase mais adequada é…",
+[
+"Elsa, we haven't heard from you yet. What's your take?",
+"Elsa, why are you so quiet?",
+"Elsa, you must speak now."
+]
+],
+[
+"b2-unidade-01-b2u1q6",
+"Um colega conta uma história longa fora do assunto. A melhor reacção é…",
+[
+"Great story, but let's park that for now.",
+"Stop talking, please.",
+"That's not important."
+]
+],
+[
+"b2-unidade-01-b2u1q7",
+"\"Não suporto o barulho.\" Em inglês:",
+[
+"I can't stand the noise.",
+"I can't support the noise.",
+"I don't support the noise."
+]
+],
+[
+"b2-unidade-01-b2u1q8",
+"\"um eventual atraso\" em inglês:",
+[
+"a possible delay",
+"an eventual delay",
+"an eventually delay"
+]
+],
+[
+"b2-unidade-01-b2u1q9",
+"Complete: \"When the manager left, Elsa ___ the project.\"",
+[
+"took over",
+"took off",
+"took out"
+]
+],
+[
+"b2-unidade-01-b2u1q10",
+"Reciclagem (B1, unidade 10). \"Devíamos ter avisado o cliente.\" Em inglês:",
+[
+"We should have warned the client.",
+"We should warned the client.",
+"We must warned the client."
+]
+],
+[
+"b2-unidade-01-b2u1q11",
+"Reciclagem (B1, unidade 9). Complete: \"___ it was late, the team kept working.\"",
+[
+"Although",
+"Despite",
+"However"
+]
+],
+[
+"b2-unidade-01-b2u1q12",
+"Reciclagem (B1, unidade 8). Complete: \"This time next month, we'll ___ the new system.\"",
+[
+"be testing",
+"testing",
+"be test"
+]
+],
+[
+"b2-unidade-02-b2u2q1",
+"Complete: \"I'd like to start by ___ at last year's results.\"",
+[
+"looking",
+"look",
+"to look"
+]
+],
+[
+"b2-unidade-02-b2u2q2",
+"Que frase introduz a parte mais importante de uma apresentação?",
+[
+"This brings me to the most important part.",
+"I'm happy to take questions.",
+"To begin with, …"
+]
+],
+[
+"b2-unidade-02-b2u2q3",
+"Prices went from 200 to 220. Complete: \"Prices rose ___ ten percent.\"",
+[
+"by",
+"to",
+"of"
+]
+],
+[
+"b2-unidade-02-b2u2q4",
+"Escolha a frase correcta.",
+[
+"There was a sharp fall in December.",
+"There was a sharply fall in December.",
+"It fell sharp in December."
+]
+],
+[
+"b2-unidade-02-b2u2q5",
+"\"Até Junho (o mais tardar), teremos instalado as antenas.\" Em inglês:",
+[
+"By June, we will have installed the antennas.",
+"Until June, we will have installed the antennas.",
+"By June, we will installed the antennas."
+]
+],
+[
+"b2-unidade-02-b2u2q6",
+"Complete: \"By the time the plant ___, we'll have tested the network.\"",
+[
+"opens",
+"will open",
+"opened"
+]
+],
+[
+"b2-unidade-02-b2u2q7",
+"Não sabe um número que lhe perguntam. A melhor resposta é…",
+[
+"I'm afraid I don't have that figure with me. I'll get back to you on that by Friday.",
+"Er… maybe two thousand? Or three?",
+"That's not an important question."
+]
+],
+[
+"b2-unidade-02-b2u2q8",
+"\"Vou dar-lhe uma resposta sobre isso até sexta.\" Em inglês:",
+[
+"I'll get back to you on that by Friday.",
+"I'll return you the answer until Friday.",
+"I'll give you a feedback until Friday."
+]
+],
+[
+"b2-unidade-02-b2u2q9",
+"\"O gráfico mostra as vendas.\" Em inglês:",
+[
+"The chart shows the sales.",
+"The graphic shows the sales.",
+"The graphical shows the sales."
+]
+],
+[
+"b2-unidade-02-b2u2q10",
+"\"uma solução adequada\" (apropriada) em inglês:",
+[
+"a suitable solution",
+"an adequate solution",
+"an adequated solution"
+]
+],
+[
+"b2-unidade-02-b2u2q11",
+"Reciclagem (B2, unidade 1). Escolha a frase correcta.",
+[
+"Celeste, who is a lawyer, chairs the board.",
+"Celeste, that is a lawyer, chairs the board.",
+"Celeste who is a lawyer, chairs the board."
+]
+],
+[
+"b2-unidade-02-b2u2q12",
+"Reciclagem (B1, unidade 10). \"Ele devia ter dito que não sabia.\" Em inglês:",
+[
+"He should have said he didn't know.",
+"He should said he didn't know.",
+"He must have say he didn't know."
+]
+],
+[
+"b2-unidade-03-b2u3q1",
+"Complete: \"We can lower the price, provided that they ___ thirty percent.\"",
+[
+"pay",
+"will pay",
+"would pay"
+]
+],
+[
+"b2-unidade-03-b2u3q2",
+"\"Unless the delay is our fault\" significa…",
+[
+"if the delay is not our fault",
+"if the delay is our fault",
+"because the delay is our fault"
+]
+],
+[
+"b2-unidade-03-b2u3q3",
+"Qual é a frase mais tentativa?",
+[
+"Would you consider a lower figure?",
+"Lower the price.",
+"We want a lower price now."
+]
+],
+[
+"b2-unidade-03-b2u3q4",
+"Complete: \"Would you consider ___ the price?\"",
+[
+"lowering",
+"to lower",
+"lower"
+]
+],
+[
+"b2-unidade-03-b2u3q5",
+"Complete: \"If you ___ bring the price down, we could give you all three shipments.\"",
+[
+"could",
+"can",
+"will"
+]
+],
+[
+"b2-unidade-03-b2u3q6",
+"Para fechar uma negociação, pergunta-se…",
+[
+"So, do we have a deal?",
+"So, it's a deal?",
+"So, we have dealt?"
+]
+],
+[
+"b2-unidade-03-b2u3q7",
+"\"Mil milhões de dólares\" em inglês:",
+[
+"a billion dollars",
+"a trillion dollars",
+"a thousand billion dollars"
+]
+],
+[
+"b2-unidade-03-b2u3q8",
+"\"Antecipar a reunião para segunda.\" Em inglês:",
+[
+"Bring the meeting forward to Monday.",
+"Anticipate the meeting to Monday.",
+"Advance us the meeting on Monday."
+]
+],
+[
+"b2-unidade-03-b2u3q9",
+"Complete: \"After three hours, we ___ a compromise.\"",
+[
+"reached",
+"arrived",
+"got to do"
+]
+],
+[
+"b2-unidade-03-b2u3q10",
+"Reciclagem (B2, unidade 2). \"Até Março, teremos assinado o contrato.\" Em inglês:",
+[
+"By March, we will have signed the contract.",
+"Until March, we will have signed the contract.",
+"By March, we will signed the contract."
+]
+],
+[
+"b2-unidade-03-b2u3q11",
+"Reciclagem (B2, unidade 2). Prices went from 100 to 130. \"Prices rose ___ thirty percent.\"",
+[
+"by",
+"to",
+"of"
+]
+],
+[
+"b2-unidade-03-b2u3q12",
+"Reciclagem (B2, unidade 1). Escolha a frase correcta.",
+[
+"Femi, who is Nigerian, is the finance director.",
+"Femi, that is Nigerian, is the finance director.",
+"Femi who is Nigerian, is the finance director."
+]
+],
+[
+"b2-unidade-04-b2u4q1",
+"\"Está a ser revisto pelos nossos advogados.\" Em inglês:",
+[
+"It's being reviewed by our lawyers.",
+"It's been reviewing by our lawyers.",
+"It is reviewing by our lawyers."
+]
+],
+[
+"b2-unidade-04-b2u4q2",
+"Complete: \"The invoice ___ paid.\" (já está paga)",
+[
+"has been",
+"has",
+"is being"
+]
+],
+[
+"b2-unidade-04-b2u4q3",
+"\"Devia ter sido verificado.\" Em inglês:",
+[
+"It should have been checked.",
+"It should been checked.",
+"It should have checked."
+]
+],
+[
+"b2-unidade-04-b2u4q4",
+"Complete: \"Every contract must ___ by two people.\"",
+[
+"be checked",
+"checked",
+"been checked"
+]
+],
+[
+"b2-unidade-04-b2u4q5",
+"\"Vou cortar o cabelo amanhã\" (no barbeiro). Em inglês:",
+[
+"I'm going to get my hair cut tomorrow.",
+"I'm going to cut my hair tomorrow.",
+"I'm going to have cut my hair tomorrow."
+]
+],
+[
+"b2-unidade-04-b2u4q6",
+"\"I had the windscreen replaced.\" Quem substituiu o pára-brisas?",
+[
+"outra pessoa, a pedido do falante",
+"o próprio falante",
+"ninguém"
+]
+],
+[
+"b2-unidade-04-b2u4q7",
+"\"O cliente reclamou do atraso.\" Em inglês:",
+[
+"The client complained about the delay.",
+"The client claimed about the delay.",
+"The client reclaimed the delay."
+]
+],
+[
+"b2-unidade-04-b2u4q8",
+"\"Um capacete é um requisito na obra.\" Em inglês:",
+[
+"A helmet is a requirement on site.",
+"A helmet is a requisition on site.",
+"A helmet is a request on site."
+]
+],
+[
+"b2-unidade-04-b2u4q9",
+"Um cliente está furioso. A melhor primeira frase é…",
+[
+"I'm very sorry. That must have been very stressful.",
+"Calm down, please.",
+"It's not my fault."
+]
+],
+[
+"b2-unidade-04-b2u4q10",
+"Reciclagem (B2, unidade 3). Complete: \"We can lower the price, provided that you ___ today.\"",
+[
+"sign",
+"will sign",
+"would sign"
+]
+],
+[
+"b2-unidade-04-b2u4q11",
+"Reciclagem (B2, unidade 3). \"Mil milhões\" em inglês:",
+[
+"a billion",
+"a trillion",
+"a million million"
+]
+],
+[
+"b2-unidade-04-b2u4q12",
+"Reciclagem (B2, unidade 2). \"Até sexta, teremos reparado tudo.\" Em inglês:",
+[
+"By Friday, we'll have repaired everything.",
+"Until Friday, we'll have repaired everything.",
+"By Friday, we'll repaired everything."
+]
+],
+[
+"b2-unidade-05-b2u5q1",
+"Escolha a frase correcta.",
+[
+"The trucks are bound to be late.",
+"The trucks will bound to be late.",
+"The trucks bound to be late."
+]
+],
+[
+"b2-unidade-05-b2u5q2",
+"Qual é a frase com MENOS certeza?",
+[
+"The meeting is unlikely to start late.",
+"The meeting is bound to start late.",
+"The meeting may well start late."
+]
+],
+[
+"b2-unidade-05-b2u5q3",
+"\"Em Março, faz dois anos e meio que trabalho cá.\" Em inglês:",
+[
+"By March, I'll have been working here for two and a half years.",
+"By March, I'll be working here for two and a half years.",
+"By March, I'll have working here for two and a half years."
+]
+],
+[
+"b2-unidade-05-b2u5q4",
+"Complete: \"This time next year, I'll ___ to Tômbwa once a month.\"",
+[
+"be travelling",
+"have been travelled",
+"travelled"
+]
+],
+[
+"b2-unidade-05-b2u5q5",
+"\"Por um lado… por outro lado…\" Em inglês:",
+[
+"On the one hand… on the other hand…",
+"In one hand… in the other hand…",
+"By one side… by the other side…"
+]
+],
+[
+"b2-unidade-05-b2u5q6",
+"Complete: \"It depends ___ the price.\"",
+[
+"on",
+"of",
+"from"
+]
+],
+[
+"b2-unidade-05-b2u5q7",
+"\"Fiz uma aplicação a prazo no banco.\" Em inglês:",
+[
+"I made a fixed-term investment at the bank.",
+"I made a fixed-term application at the bank.",
+"I did an application to term at the bank."
+]
+],
+[
+"b2-unidade-05-b2u5q8",
+"Complete: \"It's a very ___ idea.\"",
+[
+"innovative",
+"innovate",
+"innovation"
+]
+],
+[
+"b2-unidade-05-b2u5q9",
+"\"Trabalho no departamento de informática.\" Em inglês:",
+[
+"I work in the IT department.",
+"I work in the informatics department.",
+"I work in the informatic department."
+]
+],
+[
+"b2-unidade-05-b2u5q10",
+"Reciclagem (B2, unidade 4). \"Está a ser reparado.\" Em inglês:",
+[
+"It's being repaired.",
+"It's been repairing.",
+"It's repairing by them."
+]
+],
+[
+"b2-unidade-05-b2u5q11",
+"Reciclagem (B2, unidade 4). \"Vou mandar arranjar o carro.\" Em inglês:",
+[
+"I'm going to have my car repaired.",
+"I'm going to repair my car by a mechanic.",
+"I'm going to have repaired my car."
+]
+],
+[
+"b2-unidade-05-b2u5q12",
+"Reciclagem (B2, unidade 3). Complete: \"We'll try it, ___ it doesn't cost too much.\"",
+[
+"as long as",
+"unless",
+"in case"
+]
+],
+[
+"b2-unidade-06-b2u6q1",
+"\"Não precisávamos de ter reservado o hotel.\" Em inglês:",
+[
+"We needn't have booked the hotel.",
+"We didn't need booking the hotel.",
+"We needn't to have booked the hotel."
+]
+],
+[
+"b2-unidade-06-b2u6q2",
+"\"I didn't need to take a taxi.\" O falante apanhou um táxi?",
+[
+"Não.",
+"Sim, e foi um desperdício.",
+"Sim, duas vezes."
+]
+],
+[
+"b2-unidade-06-b2u6q3",
+"\"A estrada devia estar pronta em Fevereiro\" (e não está). Em inglês:",
+[
+"The road was supposed to be ready in February.",
+"The road supposed to be ready in February.",
+"The road was suppose to be ready in February."
+]
+],
+[
+"b2-unidade-06-b2u6q4",
+"\"You're supposed to wear a helmet.\" Isto é…",
+[
+"uma regra",
+"um plano que falhou",
+"uma previsão"
+]
+],
+[
+"b2-unidade-06-b2u6q5",
+"\"Ele não pode ter visto o vento.\" Em inglês:",
+[
+"He can't have seen the wind.",
+"He mustn't have seen the wind.",
+"He can't saw the wind."
+]
+],
+[
+"b2-unidade-06-b2u6q6",
+"Complete: \"The sling must have ___ damaged before yesterday.\"",
+[
+"been",
+"be",
+"being"
+]
+],
+[
+"b2-unidade-06-b2u6q7",
+"\"Previne o Paulo de que a grua vem amanhã.\" Em inglês:",
+[
+"Let Paulo know that the crane is coming tomorrow.",
+"Prevent Paulo that the crane is coming tomorrow.",
+"Precise Paulo that the crane is coming tomorrow."
+]
+],
+[
+"b2-unidade-06-b2u6q8",
+"\"Precisamos de mais cintas.\" Em inglês:",
+[
+"We need more slings.",
+"We precise more slings.",
+"We are precise of more slings."
+]
+],
+[
+"b2-unidade-06-b2u6q9",
+"Complete: \"Ruth will ___ out an inspection on Monday.\"",
+[
+"carry",
+"make",
+"do"
+]
+],
+[
+"b2-unidade-06-b2u6q10",
+"Reciclagem (B2, unidade 5). Escolha a frase correcta.",
+[
+"The cement is bound to arrive late.",
+"The cement will bound to arrive late.",
+"The cement bound to arrive late."
+]
+],
+[
+"b2-unidade-06-b2u6q11",
+"Reciclagem (B2, unidade 4). \"Devia ter sido verificado.\" Em inglês:",
+[
+"It should have been checked.",
+"It should been checked.",
+"It should have checked."
+]
+],
+[
+"b2-unidade-06-b2u6q12",
+"Reciclagem (B2, unidade 3). Complete: \"We'll lift it, ___ the wind is under forty.\"",
+[
+"as long as",
+"unless",
+"in case"
+]
+],
+[
+"b2-unidade-07-b2u7q1",
+"Escolha a frase correcta.",
+[
+"Lisbon has a metro, whereas Luanda doesn't.",
+"Lisbon has a metro, nevertheless Luanda doesn't.",
+"Lisbon has a metro, despite Luanda doesn't."
+]
+],
+[
+"b2-unidade-07-b2u7q2",
+"Escolha a frase correcta.",
+[
+"Although there are few lines, the bus is popular.",
+"Despite there are few lines, the bus is popular.",
+"Nevertheless there are few lines, the bus is popular."
+]
+],
+[
+"b2-unidade-07-b2u7q3",
+"\"Mesmo que chova, vamos.\" Em inglês:",
+[
+"Even if it rains, we'll go.",
+"Even though it rains, we'll go.",
+"Even it rains, we'll go."
+]
+],
+[
+"b2-unidade-07-b2u7q4",
+"\"Embora esteja a chover, vamos na mesma.\" Em inglês:",
+[
+"Even though it's raining, we're going.",
+"Despite it's raining, we're going.",
+"Even it's raining, we're going."
+]
+],
+[
+"b2-unidade-07-b2u7q5",
+"Qual é a melhor ordem para um argumento?",
+[
+"ideia principal, razões, exemplo, conclusão",
+"exemplo, conclusão, ideia principal, razões",
+"conclusão, exemplo, razões, ideia principal"
+]
+],
+[
+"b2-unidade-07-b2u7q6",
+"Escolha a frase correcta.",
+[
+"Inequality is growing in many cities.",
+"The inequality is growing in many cities in general.",
+"An inequality is growing in many cities."
+]
+],
+[
+"b2-unidade-07-b2u7q7",
+"\"O maior bairro de Luanda\" em inglês:",
+[
+"the biggest neighbourhood in Luanda",
+"the mayor neighbourhood of Luanda",
+"the more big neighbourhood in Luanda"
+]
+],
+[
+"b2-unidade-07-b2u7q8",
+"\"O pavimento está cheio de buracos.\" Em inglês:",
+[
+"The road surface is full of holes.",
+"The pavement surface is full of holes.",
+"The pavimento is full of holes."
+]
+],
+[
+"b2-unidade-07-b2u7q9",
+"Complete: \"The council should ___ congestion.\"",
+[
+"tackle",
+"attack to",
+"take on with"
+]
+],
+[
+"b2-unidade-07-b2u7q10",
+"Reciclagem (B2, unidade 6). \"Não precisávamos de ter levado o guarda-chuva.\" Em inglês:",
+[
+"We needn't have taken the umbrella.",
+"We didn't need taking the umbrella.",
+"We needn't to take the umbrella yesterday."
+]
+],
+[
+"b2-unidade-07-b2u7q11",
+"Reciclagem (B2, unidade 6). \"A estrada devia estar pronta em Março\" (e não está). Em inglês:",
+[
+"The road was supposed to be ready in March.",
+"The road supposed to be ready in March.",
+"The road was suppose to be ready in March."
+]
+],
+[
+"b2-unidade-07-b2u7q12",
+"Reciclagem (B2, unidade 4). \"Vamos mandar pintar o portão.\" Em inglês:",
+[
+"We're going to have the gate painted.",
+"We're going to paint the gate by a company.",
+"We're going to have painted the gate."
+]
+],
+[
+"b2-unidade-08-b2u8q1",
+"Escolha a frase correcta.",
+[
+"The hotel was absolutely huge.",
+"The hotel was very huge.",
+"The hotel was a bit huge."
+]
+],
+[
+"b2-unidade-08-b2u8q2",
+"Complete: \"The food was ___ good.\"",
+[
+"extremely",
+"absolutely",
+"completely"
+]
+],
+[
+"b2-unidade-08-b2u8q3",
+"\"Apparently, the chef left last month.\" O falante…",
+[
+"ouviu dizer",
+"viu o chef sair",
+"tem a certeza porque é o chef"
+]
+],
+[
+"b2-unidade-08-b2u8q4",
+"Escolha a ordem certa.",
+[
+"a beautiful old wooden table",
+"a wooden old beautiful table",
+"an old beautiful wooden table"
+]
+],
+[
+"b2-unidade-08-b2u8q5",
+"Um amigo diz: \"My car broke down on the way here.\" Responde:",
+[
+"Oh no, poor you!",
+"Lucky you!",
+"Fair enough."
+]
+],
+[
+"b2-unidade-08-b2u8q6",
+"Qual reacção pode soar mal-educada?",
+[
+"Whatever.",
+"Whatever you prefer.",
+"I don't mind either way."
+]
+],
+[
+"b2-unidade-08-b2u8q7",
+"\"Li um romance de Pepetela.\" Em inglês:",
+[
+"I read a novel by Pepetela.",
+"I read a romance by Pepetela.",
+"I read a romance of Pepetela."
+]
+],
+[
+"b2-unidade-08-b2u8q8",
+"\"O espectáculo começa às nove.\" Em inglês:",
+[
+"The show starts at nine.",
+"The spectacle starts at nine.",
+"The spectacles start at nine."
+]
+],
+[
+"b2-unidade-08-b2u8q9",
+"\"Everyone says it's great, but it isn't.\" O filme é…",
+[
+"overrated",
+"underrated",
+"a must-see"
+]
+],
+[
+"b2-unidade-08-b2u8q10",
+"Reciclagem (B2, unidade 7). Escolha a frase correcta.",
+[
+"Even though it was expensive, we enjoyed it.",
+"Despite it was expensive, we enjoyed it.",
+"Even it was expensive, we enjoyed it."
+]
+],
+[
+"b2-unidade-08-b2u8q11",
+"Reciclagem (B2, unidade 6). \"Não precisávamos de ter comprado tantos bilhetes.\" Em inglês:",
+[
+"We needn't have bought so many tickets.",
+"We didn't need buying so many tickets.",
+"We needn't to buy so many tickets yesterday."
+]
+],
+[
+"b2-unidade-08-b2u8q12",
+"Reciclagem (B2, unidade 5). Escolha a frase correcta.",
+[
+"The festival is bound to be crowded.",
+"The festival will bound to be crowded.",
+"The festival bound to be crowded."
+]
+],
+[
+"b2-unidade-09-b2u9q1",
+"\"Ela sugeriu-nos que esperássemos.\" Em inglês:",
+[
+"She suggested that we wait.",
+"She suggested us to wait.",
+"She suggested to us waiting to."
+]
+],
+[
+"b2-unidade-09-b2u9q2",
+"Complete: \"He denied ___ the delay.\"",
+[
+"causing",
+"to cause",
+"cause"
+]
+],
+[
+"b2-unidade-09-b2u9q3",
+"Complete: \"Thandi insisted ___ keeping June.\"",
+[
+"on",
+"to",
+"for"
+]
+],
+[
+"b2-unidade-09-b2u9q4",
+"Escolha a frase correcta.",
+[
+"She advised us to take a break.",
+"She suggested us to take a break.",
+"She advised to us to take a break."
+]
+],
+[
+"b2-unidade-09-b2u9q5",
+"Complete: \"She warned us ___ get relaxed.\"",
+[
+"not to",
+"to not",
+"not"
+]
+],
+[
+"b2-unidade-09-b2u9q6",
+"\"Packet loss below one percent\", em palavras simples:",
+[
+"The signal is almost always perfect.",
+"One percent of the packets are lost forever.",
+"The packets are very small."
+]
+],
+[
+"b2-unidade-09-b2u9q7",
+"Escolha a frase correcta.",
+[
+"What worries me is the testing.",
+"What worries me it's the testing.",
+"What worries me are the testing."
+]
+],
+[
+"b2-unidade-09-b2u9q8",
+"Complete: \"The good ___ is that the tests start on time.\"",
+[
+"news",
+"new",
+"notice"
+]
+],
+[
+"b2-unidade-09-b2u9q9",
+"\"Avisei-o do risco.\" Em inglês:",
+[
+"I warned him about the risk.",
+"I advised him of the risk.",
+"I advised him the risk."
+]
+],
+[
+"b2-unidade-09-b2u9q10",
+"\"A reunião de obra é às oito.\" Em inglês:",
+[
+"The site meeting is at eight.",
+"The site reunion is at eight.",
+"The reunion of work is at eight."
+]
+],
+[
+"b2-unidade-09-b2u9q11",
+"Reciclagem (B2, unidade 8). Escolha a frase correcta.",
+[
+"The meeting was absolutely exhausting.",
+"The meeting was very exhausting completely.",
+"The meeting was a bit exhausted."
+]
+],
+[
+"b2-unidade-09-b2u9q12",
+"Reciclagem (B2, unidade 6). \"A sala devia estar pronta em Julho\" (e não está). Em inglês:",
+[
+"The room was supposed to be ready in July.",
+"The room supposed to be ready in July.",
+"The room was suppose to be ready in July."
+]
+],
+[
+"b2-unidade-10-b2u10q1",
+"\"Quem me dera saber.\" Em inglês:",
+[
+"I wish I knew.",
+"I wish I know.",
+"I wish I would know."
+]
+],
+[
+"b2-unidade-10-b2u10q2",
+"\"Quem me dera ter aprendido a cozinhar.\" Em inglês:",
+[
+"I wish I had learned to cook.",
+"I wish I would have learned to cook.",
+"I wish I learn to cook."
+]
+],
+[
+"b2-unidade-10-b2u10q3",
+"Escolha a frase correcta.",
+[
+"I used to be very shy.",
+"I would be very shy.",
+"I use to be very shy."
+]
+],
+[
+"b2-unidade-10-b2u10q4",
+"\"We'd play football every Saturday.\" Isto é…",
+[
+"um hábito do passado",
+"um condicional",
+"um plano para o futuro"
+]
+],
+[
+"b2-unidade-10-b2u10q5",
+"\"Ela trabalhava no banco há dez anos quando mudou de carreira.\" Em inglês:",
+[
+"She'd been working at the bank for ten years when she changed careers.",
+"She was working at the bank since ten years when she changed careers.",
+"She's been working at the bank for ten years when she changed careers."
+]
+],
+[
+"b2-unidade-10-b2u10q6",
+"Escolha a frase correcta.",
+[
+"I'd known him for years.",
+"I'd been knowing him for years.",
+"I was knowing him for years."
+]
+],
+[
+"b2-unidade-10-b2u10q7",
+"Qual frase liga uma acção passada a um resultado presente?",
+[
+"If I hadn't moved to Luanda, I wouldn't know my wife.",
+"If I moved to Luanda, I'd know more people.",
+"If I'd moved, I'd have met her."
+]
+],
+[
+"b2-unidade-10-b2u10q8",
+"Escolha a frase correcta.",
+[
+"If I hadn't gone, I wouldn't be here now.",
+"If I wouldn't have gone, I wouldn't be here now.",
+"If I didn't go, I wouldn't have been here now."
+]
+],
+[
+"b2-unidade-10-b2u10q9",
+"\"Tenho uma licenciatura em engenharia.\" Em inglês:",
+[
+"I have a degree in engineering.",
+"I have a licence in engineering.",
+"I have a licenciature in engineering."
+]
+],
+[
+"b2-unidade-10-b2u10q10",
+"\"Formação profissional\" em inglês:",
+[
+"professional training",
+"professional formation",
+"professional formatting"
+]
+],
+[
+"b2-unidade-10-b2u10q11",
+"Reciclagem (B2, unidade 9). Escolha a frase correcta.",
+[
+"She suggested taking a year off.",
+"She suggested me to take a year off.",
+"She suggested to take me a year off."
+]
+],
+[
+"b2-unidade-10-b2u10q12",
+"Reciclagem (B2, unidade 7). Escolha a frase correcta.",
+[
+"Even though the salary is lower, I prefer this job.",
+"Despite the salary is lower, I prefer this job.",
+"Even the salary is lower, I prefer this job."
+]
+]
+]
+}

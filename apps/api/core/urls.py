@@ -7,6 +7,8 @@ from django.urls import path, include, re_path
 from django.views.static import serve as media_serve
 from django.conf import settings
 from django.conf.urls.static import static
+
+from apps.courses.api.student.colocacao import colocacao as colocacao_aluno
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -41,6 +43,7 @@ urlpatterns = [
     path('api/v1/student/video-courses/', include('apps.courses.api.student.video_courses.urls')),
     path('api/v1/student/practice-courses/', include('apps.courses.api.student.practice_courses.urls')),
     path('api/v1/student/teste-basico/', include('apps.courses.api.student.urls_teste_basico')),
+    path('api/v1/student/colocacao/', colocacao_aluno, name='colocacao'),
     path('api/v1/student/revisao/', include('apps.perfil.urls_revisao')),  # revisão de hoje
     path('api/v1/student/fala/', include('apps.perfil.urls_fala')),  # minutos a falar, meta de fala (fase 3)
     
