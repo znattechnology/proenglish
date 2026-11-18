@@ -1,6 +1,6 @@
 # C1.1 · Unidade 5 — Data and reports (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 5 · É a última unidade do C1.1.
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 5 · É a última unidade do C1.1.
 
 ## Objectivos da unidade
 
@@ -51,6 +51,6 @@ Maio de 2030. A entrega de Nampula é feita a 10 de Maio pela Inês e pelo Bonga
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (18 escutas, 7 pronúncias, a 5E com som de conferência telefónica); imagens (a tabela do trimestre, a folha de Angola, o gráfico da Nyala); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (18 escutas, 7 pronúncias, a 5E com som de conferência telefónica); imagens (a tabela do trimestre, a folha de Angola, o gráfico da Nyala); carregamento na plataforma.
 
 A seguir vêm a **revisão 1 e o exame oral do C1.1**.

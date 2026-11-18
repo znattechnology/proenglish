@@ -41,9 +41,9 @@ Gramática-alvo: particípio presente (Looking at the figures, we can see…; Tr
   particípio passado (Compared with last year, …; Based on the survey, …; Faced with the delay, …); particípio
   perfeito (Having analysed the data, we…; Having completed the handover, …); negativa (Not having received
   the payment, …); o erro do sujeito trocado (Having analysed the data, the conclusion is… ✘)
-Palavras-alvo: summary, figures, quarter, target, revenue, margin, travel costs, analyse, condense,
-  executive summary
-Reciclagem: conectores (C1, 3C); passiva (B2, 4)
+Palavras-alvo: summary, figures, quarter, target, revenue, travel costs, analyse, combine, paragraph,
+  lowest level
+Reciclagem: conectores (C1, 3C)
 Pronúncia: a pausa depois da oração participial
 Contexto: segunda-feira, 6 de Maio de 2030, 10:00; o gabinete do Rajesh; o primeiro rascunho do resumo do
   relatório trimestral
@@ -147,8 +147,8 @@ Gramática-alvo: sujeito + is / are + said / thought / believed / expected / rep
   (presente ou futuro: is expected to fall), to be + -ing (is said to be planning), to have + particípio
   (passado: is thought to have cost); It is said / thought / believed / expected that… ; It was found /
   agreed / decided that…; a diferença entre facto e relato
-Palavras-alvo: rumour, confirmed, unconfirmed, source, expected, forecast, tender, phase, competitor,
-  analyst
+Palavras-alvo: rumour, confirmed, unofficially, fact, expected, forecast, phase, competitor, penalty,
+  handover
 Reciclagem: atenuação (C1, 2A); passivas (B2, 4); passiva de relato reconhecida (B2, 9E)
 Pronúncia: o ritmo de "is thought to have" ("is-THOUGHT-tuh-uv") e "is said to be"
 Contexto: quarta-feira, 8 de Maio, 9:00; a chamada semanal da equipa: o Nuno e o Rajesh em Joanesburgo, a Inês
@@ -176,7 +176,7 @@ Verificação: Lab 5B; perguntas 3 e 4 do questionário
 **RAJESH:** That's harder. The delay is thought to have cost us about three hundred and fifty thousand in the first quarter — but that money isn't lost, it's moved to the second quarter.
 **NUNO:** So "is thought to have cost" isn't right. We know the number.
 **RAJESH:** True. Then: "The delay moved three hundred and fifty thousand dollars of revenue into the second quarter." Fact.
-**INÊS:** And one more rumour. A Chinese competitor is believed to have offered Mussiro a lower price for phase two.
+**INÊS:** And one more rumour. A foreign competitor is believed to have offered Mussiro a lower price for phase two.
 **NUNO:** Believed by whom?
 **INÊS:** By Dr Cumbe's assistant. Over coffee.
 **NUNO:** [sorri] Then it goes in the "heard" list. With a question mark.
@@ -253,9 +253,9 @@ Gramática-alvo: acima: a fraction over, just over, well over, getting on for (q
   shy of, just under, well under, the best part of (quase todo); à volta: in the region of, roughly, around,
   approximately; fracções e proporções (roughly a third, nearly half, two in five, nine out of ten); quando
   arredondar e quando dar o número exacto
-Palavras-alvo: approximately, roughly, fraction, shy of, region, proportion, round, precise, audience,
-  rehearse
-Reciclagem: números aproximados (B2, 2E); orações participiais (5A)
+Palavras-alvo: approximately, roughly, fraction, shy of, region, round, honest, board, rehearse,
+  exact
+Reciclagem: tendências (B2, 2B); orações participiais (5A)
 Pronúncia: o ritmo de números longos; o acento no número que importa
 Contexto: sexta-feira, 10 de Maio, 18:00; o gabinete da Thandi; a entrega de Nampula foi feita de manhã; o
   Nuno ensaia os números da apresentação
@@ -333,7 +333,7 @@ Verificação: Lab 5C; conversa guiada "Talk me through the numbers"; perguntas 
 **PROF (opinião):** Do numbers in presentations convince you, or do you need to see them written? Why?
 [PAUSA 25 s]
 
-**PROF (reciclagem — B2, 2E):** Say it as a trend: revenue went from 4.1 to 4.6 million in a year.
+**PROF (reciclagem — B2, 2B):** Say it as a trend: revenue went from 4.1 to 4.6 million in a year.
 [PAUSA 6 s]
 [ECRÃ: Revenue rose by twelve percent / grew steadily, from four point one to four point six million.]
 
@@ -357,7 +357,7 @@ Gramática-alvo: colocações (meet / miss / exceed a target, a positive / negat
   recover, dip)
 Palavras-alvo: KPI, benchmark, variance, margin, year on year, outlier, on track, breakdown, forecast,
   dip, recover, plateau
-Reciclagem: tendências (B2, 2); aproximar (5C)
+Reciclagem: tendências (B2, 2B); aproximar (5C)
 Pronúncia: o ritmo de uma apresentação de números: pausa antes do número importante, acento nele
 Falsos amigos: instance (≠ instância → authority, court; instance = exemplo, caso: for instance); actual (≠
   actual → current; actual = real, efectivo: actual vs. planned)
@@ -524,9 +524,9 @@ Objectivo da aula: No fim, o aluno consegue apresentar um relatório trimestral 
   explicar em inglês uma folha de cálculo em português.
 Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: orações participiais, passivas de relato, números aproximados
-Palavras-alvo: quarterly report, variance, breakdown, margin, on track, outlier, receivables, forecast,
+Palavras-alvo: quarterly report, variance, breakdown, margin, on track, outlier, warning, worst case,
   recommendation, spreadsheet
-Reciclagem: clivadas (C1, 1); atenuação e certeza (C1, 2); cenários (C1, 3)
+Reciclagem: graus de certeza (C1, 2B); cenários (C1, 3D); I should have… (B1, 10)
 Pronúncia: o ritmo de uma apresentação de números a uma administração
 Mediação: o Nuno explica à administração, em inglês, a folha de cálculo de Angola, em português
 Contexto: quinta-feira, 23 de Maio, 10:00; a sala da administração; o Dr Mthembu, o David Nkosi, a Ms Naledi
@@ -544,7 +544,7 @@ Verificação: Lab 5F; conversa livre "The board meeting"
 [ECRÃ: quinta-feira, 23 de Maio, 10:00; a sala da administração; o Dr Mthembu, o David Nkosi, a Naledi Moyo com um lápis e o relatório impresso, e a Thandi; no ecrã: "Southern Africa — Q1 2030"]
 
 **NUNO:** Thank you. Three messages, then the detail. One: revenue was just over four point six million dollars — twelve percent up year on year, but eight percent below target. Two: almost all of that variance is timing, not loss. Three: the region is on track for the year.
-**NUNO:** [muda o diapositivo] Here's the breakdown of the variance. Three hundred and fifty thousand dollars is the Mussiro payment, which moved into the second quarter with the Nampula delay. Having completed the handover on the tenth of May, we'll receive it in June. The other fifty thousand or so comes from the kwanza, which fell six percent in the quarter.
+**NUNO:** [muda o diapositivo] Here's the breakdown of the variance. Three hundred and fifty thousand dollars is the Mussiro payment, which moved into the second quarter with the Nampula delay. Having completed the handover on the tenth of May, we'll receive it in June. The other fifty thousand, approximately, comes from the kwanza, which fell six percent in the quarter.
 **NKOSI:** And the margin?
 **NUNO:** It dipped to twenty-one percent, against a target of twenty-four. That's the penalty — sixty thousand dollars — and the cost of keeping an engineer on site. Both were decisions, not accidents.
 **MOYO:** Mr Kapinga, page four. Customer satisfaction, "four point one". How many clients answered the survey?
