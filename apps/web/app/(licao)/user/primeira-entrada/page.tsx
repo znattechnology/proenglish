@@ -11,11 +11,12 @@ import {
   testeNecessario,
   useColocacaoQuery,
   useColocarMutation,
+  useIniciarTesteColocacaoMutation,
   type NivelColocacao,
   type NivelDisponivel,
   type ResultadoColocacao,
 } from "@/src/domains/student/curso/colocacao";
-import { useEstadoTesteBasicoQuery, useIniciarTesteBasicoMutation, type NivelTeste, type TentativaTeste } from "@/src/domains/student/curso/testeBasico";
+import type { TentativaTeste } from "@/src/domains/student/curso/testeBasico";
 import { mensagemErro } from "@/src/domains/student/subscricao/api";
 import { AREAS, errosDoServidor, useGuardarPerfilMutation, useMetaQuery, useMudarMetaMutation, usePerfilQuery } from "@/src/domains/student/perfil/api";
 
@@ -42,7 +43,8 @@ const dataHora = (iso: string) => new Date(iso).toLocaleString("pt-PT", { day: "
 
 /**
  * Primeira entrada: área e meta diária; o nível em que começa o English Communication Skills
- * (A1 entra logo; outro nível pede o teste escrito do nível anterior, 70%, em ecrã inteiro); e o
+ * (A1 entra logo; outro nível pede um teste de 30 perguntas dos níveis abaixo, 70% em cada, em
+ * ecrã inteiro); e o
  * curso onde ficou inscrito. Quem decide o nível e faz a inscrição é o servidor (/student/colocacao/).
  * Ocupa o ecrã inteiro, sem a navegação, como as lições.
  */
@@ -137,7 +139,7 @@ export default function PrimeiraEntrada() {
               <span className="text-[14px] leading-5 text-pe-tinta-suave">Pode mudar isto nas definições.</span>
             </fieldset>
 
-            <p className="m-0 text-pe-tinta-suave">A seguir: escolhe o nível em que quer começar.</p>
+            <p className="m-0 text-pe-tinta-suave">A seguir: escolha o nível em que quer começar.</p>
             {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
             <Botao
               className="self-start"
@@ -175,7 +177,7 @@ function EscolherNivel({ aoColocar }: { aoColocar: (r: ResultadoColocacao, tenta
   const { data, isLoading, isError, refetch } = useColocacaoQuery();
   const [colocar, { isLoading: aColocar }] = useColocarMutation();
   const [escolhido, setEscolhido] = useState<NivelColocacao | null>(null);
-  const [emTeste, setEmTeste] = useState<{ nivel: NivelColocacao; teste: NivelTeste } | null>(null);
+  const [emTeste, setEmTeste] = useState<NivelDisponivel | null>(null);
   const [erro, setErro] = useState<string | null>(null);
 
   const aplicar = async (nivel: NivelColocacao, tentativa: TentativaTeste | null) => {
@@ -183,13 +185,18 @@ function EscolherNivel({ aoColocar }: { aoColocar: (r: ResultadoColocacao, tenta
     try {
       aoColocar(await colocar(nivel).unwrap(), tentativa);
     } catch (e) {
-      const teste = testeNecessario(e);
-      if (teste) setEmTeste({ nivel, teste });
+      const n = data?.niveis.find((x) => x.nivel === nivel);
+      if (testeNecessario(e) && n) setEmTeste(n);
       else setErro(mensagemErro(e, "Não foi possível guardar o nível. Tente outra vez."));
     }
   };
 
-  if (emTeste) return <TesteDeColocacao {...emTeste} aoVoltar={() => setEmTeste(null)} aoEntregar={(t) => void aplicar(emTeste.nivel, t)} />;
+  // Um teste de colocação a meio retoma-se logo (o tempo continua a contar).
+  const aMeio = data?.em_curso?.perguntas ? data.em_curso : null;
+  const nivelAMeio = aMeio ? data?.niveis.find((n) => n.nivel === aMeio.para) ?? null : null;
+  const noTeste = emTeste ?? nivelAMeio;
+  if (noTeste)
+    return <TesteDeColocacao n={noTeste} aMeio={aMeio} aoVoltar={() => setEmTeste(null)} aoEntregar={(t) => void aplicar(noTeste.nivel, t)} />;
   if (isLoading) return <Osso className="h-[420px] rounded-pe-md" />;
   if (isError || !data)
     return (
@@ -200,14 +207,16 @@ function EscolherNivel({ aoColocar }: { aoColocar: (r: ResultadoColocacao, tenta
     );
 
   const sel = data.niveis.find((n) => n.nivel === escolhido) ?? null;
-  const entraSemTeste = (n: NivelDisponivel) => !n.teste || n.pode_entrar || (n.teste_reprovado && !!n.proxima_tentativa_em);
+  // Já fez um teste de colocação há menos de 24 horas: o servidor coloca-o pelo resultado desse teste.
+  const espera = data.proxima_tentativa_em;
+  const semTeste = (n: NivelDisponivel) => n.pode_entrar || !!espera;
 
   return (
     <>
       <div className="flex flex-col gap-2">
         <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9 md:text-[34px] md:leading-[42px]">Em que nível quer começar?</h1>
         <p className="m-0 max-w-[60ch] text-pe-tinta-suave">
-          No A1 começa logo. Para outro nível, faz primeiro um teste escrito do nível anterior: {data.regras.perguntas} perguntas em {data.regras.minutos} minutos, com {data.regras.aprovacao}% para entrar.
+          No A1 começa logo. Para outro nível, faz um teste escrito de 30 perguntas com todos os níveis abaixo do que escolheu: começa no nível a seguir ao último em que acertar {data.regras.aprovacao}%, a contar do A1.
         </p>
       </div>
       <div role="radiogroup" aria-label="Níveis" className="flex flex-col gap-2.5">
@@ -231,23 +240,13 @@ function EscolherNivel({ aoColocar }: { aoColocar: (r: ResultadoColocacao, tenta
               <span className="flex min-w-0 flex-1 flex-col gap-0.5">
                 <span className="font-semibold leading-[22px]">{n.nome}</span>
                 <span className="text-[14px] leading-5 text-pe-tinta-suave">{n.descricao}</span>
-                <span className={cnPe("mt-1 flex items-center gap-1.5 text-[14px] font-semibold leading-5", n.teste && !n.pode_entrar ? "text-pe-azul-marca" : "text-pe-certo")}>
-                  {!n.teste ? (
-                    <>
-                      <Check aria-hidden className="size-4" />
-                      Começa logo
-                    </>
-                  ) : n.pode_entrar ? (
-                    <>
-                      <Check aria-hidden className="size-4" />
-                      Já passou no teste do {n.teste}
-                    </>
-                  ) : (
-                    <>
-                      <Lock aria-hidden className="size-4" />
-                      {n.teste_em_curso ? `Teste do ${n.teste} a meio` : `Pede o teste do ${n.teste}`}
-                    </>
-                  )}
+                <span className={cnPe("mt-1 flex items-center gap-1.5 text-[14px] font-semibold leading-5", n.pode_entrar ? "text-pe-certo" : "text-pe-azul-marca")}>
+                  {n.pode_entrar ? <Check aria-hidden className="size-4" /> : <Lock aria-hidden className="size-4" />}
+                  {n.niveis_teste.length === 0
+                    ? "Começa logo"
+                    : n.pode_entrar
+                      ? "Já tem os níveis anteriores"
+                      : `Teste de ${n.perguntas} perguntas: ${n.niveis_teste.join(", ")}`}
                 </span>
               </span>
             </button>
@@ -255,9 +254,9 @@ function EscolherNivel({ aoColocar }: { aoColocar: (r: ResultadoColocacao, tenta
         })}
       </div>
 
-      {sel && sel.teste && sel.teste_reprovado && sel.proxima_tentativa_em && !sel.pode_entrar ? (
+      {sel && !sel.pode_entrar && espera ? (
         <Aviso tipo="info">
-          Não passou no último teste do {sel.teste}. Pode repetir a partir de {dataHora(sel.proxima_tentativa_em)}; até lá, começa no {sel.teste}.
+          Já fez o teste de colocação. Pode repeti-lo a partir de {dataHora(espera)}; até lá, começa no nível que esse teste mostrou.
         </Aviso>
       ) : null}
       {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
@@ -266,53 +265,49 @@ function EscolherNivel({ aoColocar }: { aoColocar: (r: ResultadoColocacao, tenta
         disabled={!sel || aColocar}
         onClick={() => {
           if (!sel) return;
-          if (entraSemTeste(sel) || !sel.teste) void aplicar(sel.nivel, null);
-          else setEmTeste({ nivel: sel.nivel, teste: sel.teste });
+          if (semTeste(sel)) void aplicar(sel.nivel, null);
+          else setEmTeste(sel);
         }}
       >
-        {!sel ? "Escolha um nível" : aColocar ? "A guardar…" : entraSemTeste(sel) ? (sel.pode_entrar || !sel.teste ? `Começar no ${sel.nivel}` : `Começar no ${sel.teste}`) : `Fazer o teste do ${sel.teste}`}
+        {!sel ? "Escolha um nível" : aColocar ? "A guardar…" : semTeste(sel) ? (sel.pode_entrar ? `Começar no ${sel.nivel}` : "Continuar") : "Fazer o teste de colocação"}
       </Botao>
     </>
   );
 }
 
-/** O teste do nível anterior, aqui mesmo: regras, ecrã inteiro e as perguntas. */
-function TesteDeColocacao({ nivel, teste, aoVoltar, aoEntregar }: { nivel: NivelColocacao; teste: NivelTeste; aoVoltar: () => void; aoEntregar: (t: TentativaTeste) => void }) {
-  const { data, isLoading } = useEstadoTesteBasicoQuery(teste);
-  const [iniciar, { isLoading: aIniciar }] = useIniciarTesteBasicoMutation();
+/** O teste de colocação, aqui mesmo: regras, ecrã inteiro e as perguntas. */
+function TesteDeColocacao({ n, aMeio, aoVoltar, aoEntregar }: { n: NivelDisponivel; aMeio: TentativaTeste | null; aoVoltar: () => void; aoEntregar: (t: TentativaTeste) => void }) {
+  const [iniciar, { isLoading: aIniciar }] = useIniciarTesteColocacaoMutation();
   const [tentativa, setTentativa] = useState<TentativaTeste | null>(null);
   const [erro, setErro] = useState<string | null>(null);
-  const aDecorrer = tentativa ?? (data?.em_curso?.perguntas ? data.em_curso : null);
+  const aDecorrer = tentativa ?? aMeio;
 
   if (aDecorrer) return <Perguntas key={aDecorrer.id} t={aDecorrer} aoEntregar={aoEntregar} />;
-  if (isLoading || !data) return <Osso className="h-[320px] rounded-pe-md" />;
-  const r = data.regras;
-  const certas = Math.ceil((r.perguntas * r.aprovacao) / 100);
 
   return (
     <>
       <div className="flex flex-col gap-2">
-        <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9 md:text-[34px] md:leading-[42px]">Teste do nível {teste}</h1>
+        <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9 md:text-[34px] md:leading-[42px]">Teste para começar no {n.nivel}</h1>
         <p className="m-0 max-w-[60ch] text-pe-tinta-suave">
-          Para começar no {nivel}, mostre que já domina o {teste}. Se passar, entra no {nivel}; se não, começa no {teste} e pode repetir o teste {r.espera_horas} horas depois.
+          O teste tem perguntas de {n.niveis_teste.join(", ")}. Cada nível conta em separado: começa no nível a seguir ao último em que acertar 70%, a contar do A1. Se acertar em todos, começa no {n.nivel}.
         </p>
       </div>
       <dl className="m-0 grid w-full gap-x-8 gap-y-4 rounded-pe-fala bg-pe-fundo-suave p-6 sm:grid-cols-3">
         <div className="flex flex-col-reverse">
           <dt className="text-[14px] leading-5 text-pe-tinta-suave">perguntas de escolha</dt>
-          <dd className="m-0 font-pe-titulo text-[28px] font-bold leading-9 tabular-nums">{r.perguntas}</dd>
+          <dd className="m-0 font-pe-titulo text-[28px] font-bold leading-9 tabular-nums">{n.perguntas}</dd>
         </div>
         <div className="flex flex-col-reverse">
           <dt className="text-[14px] leading-5 text-pe-tinta-suave">minutos, sem pausa</dt>
-          <dd className="m-0 font-pe-titulo text-[28px] font-bold leading-9 tabular-nums">{r.minutos}</dd>
+          <dd className="m-0 font-pe-titulo text-[28px] font-bold leading-9 tabular-nums">{n.minutos}</dd>
         </div>
         <div className="flex flex-col-reverse">
-          <dt className="text-[14px] leading-5 text-pe-tinta-suave">certas para passar</dt>
-          <dd className="m-0 font-pe-titulo text-[28px] font-bold leading-9 tabular-nums">{certas}</dd>
+          <dt className="text-[14px] leading-5 text-pe-tinta-suave">certas em cada nível</dt>
+          <dd className="m-0 font-pe-titulo text-[28px] font-bold leading-9 tabular-nums">70%</dd>
         </div>
       </dl>
       <Aviso tipo="info">
-        O teste abre em ecrã inteiro. Se sair do ecrã (outro separador, outra janela ou outra app), a pergunta em que está é anulada e conta como errada.
+        O teste abre em ecrã inteiro. Se sair do ecrã (outro separador, outra janela ou outra app), a pergunta em que está é anulada e conta como errada. Só pode repetir o teste 24 horas depois.
       </Aviso>
       {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
       <div className="flex flex-wrap items-center gap-4">
@@ -322,7 +317,7 @@ function TesteDeColocacao({ nivel, teste, aoVoltar, aoEntregar }: { nivel: Nivel
             setErro(null);
             await entrarEcraInteiro();
             try {
-              setTentativa(await iniciar(teste).unwrap());
+              setTentativa(await iniciar(n.nivel).unwrap());
             } catch (e) {
               setErro(mensagemErro(e, "Não foi possível abrir o teste. Tente outra vez."));
             }
@@ -342,24 +337,34 @@ function Pronto({ r, tentativa, area }: { r: ResultadoColocacao; tentativa: Tent
   const sector = !!area && area !== GERAL;
   const nomeArea = AREAS.find((a) => a.valor === area)?.nome;
   const temBasico = ["B1", "B2", "C1"].includes(r.nivel);
-  const precisa = tentativa ? Math.ceil(tentativa.total * 0.7) : 0;
+  const resultado = tentativa?.resultado ? Object.entries(tentativa.resultado) : [];
 
   return (
     <>
       <div className="flex flex-col gap-2">
         <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9 md:text-[34px] md:leading-[42px]">Começa no {r.nivel}</h1>
-        {tentativa ? (
-          r.no_nivel_escolhido ? (
-            <p className="m-0 text-pe-tinta-suave">Passou no teste do {tentativa.nivel}: acertou {tentativa.certas} de {tentativa.total}.</p>
-          ) : (
-            <p className="m-0 text-pe-tinta-suave">
-              No teste do {tentativa.nivel} acertou {tentativa.certas} de {tentativa.total} (eram precisas {precisa}). Começa no {r.nivel}; pode repetir o teste daqui a 24 horas para subir ao {r.escolhido}.
-            </p>
-          )
-        ) : !r.no_nivel_escolhido ? (
-          <p className="m-0 text-pe-tinta-suave">Ainda não pode repetir o teste para o {r.escolhido}: começa no {r.nivel} e tenta outra vez mais tarde.</p>
-        ) : null}
+        {r.no_nivel_escolhido ? (
+          tentativa ? <p className="m-0 text-pe-tinta-suave">Passou em todos os níveis do teste.</p> : null
+        ) : (
+          <p className="m-0 text-pe-tinta-suave">
+            Escolheu o {r.escolhido}, mas o teste mostrou que o melhor é começar no {r.nivel}. Pode repetir o teste daqui a 24 horas para subir.
+          </p>
+        )}
       </div>
+
+      {resultado.length ? (
+        <ul aria-label="Resultado por nível" className="m-0 grid list-none gap-2 p-0 sm:grid-cols-4">
+          {resultado.map(([nivel, x]) => (
+            <li key={nivel} className={cnPe("flex flex-col rounded-pe-md px-4 py-3", x?.aprovado ? "bg-pe-certo-suave" : "bg-pe-fundo-suave")}>
+              <span className="font-pe-titulo text-[18px] font-bold">{nivel}</span>
+              <span className="text-[14px] leading-5 tabular-nums">
+                {x?.certas} de {x?.total} certas
+              </span>
+              <span className="text-[14px] font-semibold leading-5">{x?.aprovado ? "Passou" : "Não passou"}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
 
       {r.curso ? (
         <section aria-labelledby="t-curso" className="flex flex-col gap-3 rounded-pe-md border border-pe-linha p-5 md:p-6">
@@ -400,7 +405,7 @@ function Pronto({ r, tentativa, area }: { r: ResultadoColocacao; tentativa: Tent
         <p className="m-0 text-[15px] leading-[22px] text-pe-tinta-suave">
           {temBasico
             ? `Já tem o nível básico: pode também inscrever-se nos cursos de ${nomeArea}.`
-            : `Os cursos de ${nomeArea} abrem-se quando chegar ao nível básico (A2 concluído ou o teste do A2).`}
+            : `Os cursos de ${nomeArea} abrem-se quando chegar ao nível básico (A2 concluído ou provado num teste).`}
         </p>
       ) : null}
 

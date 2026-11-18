@@ -1,6 +1,6 @@
 /**
- * Testes de nível (A1, A2, B1, B2). O do A2 é o teste do nível básico, o requisito para entrar num
- * curso de sector; os outros servem a colocação no curso geral (apps/courses/colocacao.py).
+ * Teste do nível básico (A2), o requisito para entrar num curso de sector. O mesmo motor serve o
+ * teste de colocação do curso geral (colocacao.ts): anular e entregar são os mesmos endereços.
  * API Django: /api/v1/student/teste-basico/ (as perguntas vêm sem as respostas; a nota é do servidor).
  * Se o aluno sai do ecrã do teste, a pergunta em que estava é anulada no servidor (/anular/).
  */
@@ -15,9 +15,15 @@ export type PerguntaTeste = { id: string; enunciado: string; opcoes: string[] };
 
 export type NivelTeste = "A1" | "A2" | "B1" | "B2";
 
+export type ResultadoNivel = { certas: number; total: number; aprovado: boolean };
+
 export type TentativaTeste = {
   id: string;
   nivel: NivelTeste;
+  niveis: NivelTeste[];
+  para: string | null;
+  resultado: Partial<Record<NivelTeste, ResultadoNivel>> | null;
+  provado: NivelTeste | null;
   anuladas: string[];
   iniciado_em: string;
   expira_em: string;
@@ -41,12 +47,12 @@ export type EstadoTesteBasico = {
 
 export const testeBasicoApi = cursoApi.enhanceEndpoints({ addTagTypes: ["TesteBasico"] }).injectEndpoints({
   endpoints: (build) => ({
-    estadoTesteBasico: build.query<EstadoTesteBasico, NivelTeste | void>({
-      query: (nivel) => (nivel ? `${BASE}/?nivel=${nivel}` : `${BASE}/`),
+    estadoTesteBasico: build.query<EstadoTesteBasico, void>({
+      query: () => `${BASE}/`,
       providesTags: ["TesteBasico"],
     }),
-    iniciarTesteBasico: build.mutation<TentativaTeste, NivelTeste | void>({
-      query: (nivel) => ({ url: `${BASE}/iniciar/`, method: "POST", body: nivel ? { nivel } : {} }),
+    iniciarTesteBasico: build.mutation<TentativaTeste, void>({
+      query: () => ({ url: `${BASE}/iniciar/`, method: "POST" }),
       invalidatesTags: ["TesteBasico"],
     }),
     anularPerguntaTeste: build.mutation<{ anuladas: string[] }, { id: string; pergunta: string }>({
