@@ -1,0 +1,1483 @@
+{
+ "unidade": "C1.1 · Unit 5 — Data and reports",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "5A",
+   "titulo": "Having analysed the data…",
+   "aula": "5A",
+   "objectivo": "Condensar informação com orações participiais, com o sujeito certo.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Having] analysed the data, we found that revenue was eight percent below target.",
+     "opcoes": [
+      {
+       "texto": "Have",
+       "certa": false
+      },
+      {
+       "texto": "Had",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Compared] with last year, revenue grew by twelve percent.",
+     "opcoes": [
+      {
+       "texto": "Comparing of",
+       "certa": false
+      },
+      {
+       "texto": "Compare",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Faced] with a delay in Nampula, we kept an engineer on site.",
+     "opcoes": [
+      {
+       "texto": "Facing of",
+       "certa": false
+      },
+      {
+       "texto": "Face",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Looking] at travel costs, we can see a fall of eighteen percent.",
+     "opcoes": [
+      {
+       "texto": "Looked",
+       "certa": false
+      },
+      {
+       "texto": "Look",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Having analysed the data, we reached a clear conclusion.",
+       "certa": true
+      },
+      {
+       "texto": "Having analysed the data, the conclusion is clear.",
+       "certa": false
+      },
+      {
+       "texto": "Having analysed the data, it is clear the conclusion.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Looking at the figures, we can see that revenue is down.",
+       "certa": true
+      },
+      {
+       "texto": "Looking at the figures, revenue is down.",
+       "certa": false
+      },
+      {
+       "texto": "Looked at the figures, we can see revenue down.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Having fallen by eighteen percent, the board will be pleased with travel costs.\" What is wrong?",
+     "opcoes": [
+      {
+       "texto": "The sentence says that the board fell by eighteen percent.",
+       "certa": true
+      },
+      {
+       "texto": "Nothing: it is correct.",
+       "certa": false
+      },
+      {
+       "texto": "\"Having\" should be \"Have\".",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Having completed the handover, the team…\" means the team…",
+     "opcoes": [
+      {
+       "texto": "first completed the handover, then did something else",
+       "certa": true
+      },
+      {
+       "texto": "is completing the handover now",
+       "certa": false
+      },
+      {
+       "texto": "will complete the handover",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Com base no inquérito, recomendamos dois professores novos.",
+     "resposta": "Based on the survey, we recommend two new teachers.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Rajesh. Your summary is correct. But it's seven sentences for three ideas. The board reads the first paragraph, that's all.",
+     "enunciado": "What is the problem with Nuno's summary?",
+     "opcoes": [
+      {
+       "texto": "It is too long for the ideas it has.",
+       "certa": true
+      },
+      {
+       "texto": "The numbers are wrong.",
+       "certa": false
+      },
+      {
+       "texto": "It is in Portuguese.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Rajesh. Having fallen by eighteen percent, travel costs are now at their lowest level in three years.",
+     "enunciado": "What happened to travel costs?",
+     "opcoes": [
+      {
+       "texto": "They fell by eighteen percent.",
+       "certa": true
+      },
+      {
+       "texto": "They rose by eighteen percent.",
+       "certa": false
+      },
+      {
+       "texto": "They stayed the same.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Having analysed the data, we found that revenue was eight percent below target.",
+     "enunciado": "Ouça e repita, com uma pausa depois da oração participial."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise the results of something you know (a project, a shop, a class, a team) for busy readers, with at least three participle clauses.",
+     "frase": "Compared with",
+     "resposta": "Looking at our school's results this year, we can see clear progress. Compared with last year, the pass rate rose from sixty to seventy-two percent. Having introduced a reading hour, we saw the biggest change in the first years. Based on this, we recommend two maths teachers.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should a report give the bad news in the first paragraph, or later? Why?",
+     "frase": "because",
+     "resposta": "In the first paragraph, because the readers will find it anyway. Having read the bad news first, they'll trust the good news more.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "5B",
+   "titulo": "It is thought to have…",
+   "aula": "5B",
+   "objectivo": "Relatar o que se diz, se pensa ou se espera, distinguindo factos de relatos.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The kwanza is expected [to] fall another five percent by the end of the year.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Mussiro is said to be [planning] a second phase in Niassa.",
+     "opcoes": [
+      {
+       "texto": "plan",
+       "certa": false
+      },
+      {
+       "texto": "planned",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "A competitor is believed to [have] offered Mussiro a lower price.",
+     "opcoes": [
+      {
+       "texto": "had",
+       "certa": false
+      },
+      {
+       "texto": "has",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It was [agreed] that Inês presents the handover on Friday.",
+     "opcoes": [
+      {
+       "texto": "agree",
+       "certa": false
+      },
+      {
+       "texto": "agreeing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Mussiro is said to be planning a second phase.",
+       "certa": true
+      },
+      {
+       "texto": "Mussiro is said that it is planning a second phase.",
+       "certa": false
+      },
+      {
+       "texto": "Mussiro is saying to be planning a second phase.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence (the offer was in the past).",
+     "opcoes": [
+      {
+       "texto": "The competitor is believed to have offered a lower price.",
+       "certa": true
+      },
+      {
+       "texto": "The competitor is believed to offer a lower price yesterday.",
+       "certa": false
+      },
+      {
+       "texto": "The competitor is believed having offered a lower price.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Mussiro is said to be planning a second phase.\" This is…",
+     "opcoes": [
+      {
+       "texto": "information that is not confirmed",
+       "certa": true
+      },
+      {
+       "texto": "a confirmed fact",
+       "certa": false
+      },
+      {
+       "texto": "a decision Mopane made",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "When should you NOT use \"is thought to have\"?",
+     "opcoes": [
+      {
+       "texto": "when you know the fact or the number for certain",
+       "certa": true
+      },
+      {
+       "texto": "when the information is a rumour",
+       "certa": false
+      },
+      {
+       "texto": "when you are not sure",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Pensa-se que o incêndio começou na cozinha.",
+     "resposta": "The fire is thought to have started in the kitchen.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Inês. The fact: the penalty has been paid. The rumour: Mussiro is said to be planning a second phase in Niassa province.",
+     "enunciado": "What is the fact that Inês reports?",
+     "opcoes": [
+      {
+       "texto": "The penalty has been paid.",
+       "certa": true
+      },
+      {
+       "texto": "Mussiro is planning a second phase.",
+       "certa": false
+      },
+      {
+       "texto": "A competitor has won the contract.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Bongani. Eleven substations are online. The last one is expected to be connected on Friday morning.",
+     "enunciado": "When is the last substation expected to be connected?",
+     "opcoes": [
+      {
+       "texto": "on Friday morning",
+       "certa": true
+      },
+      {
+       "texto": "next month",
+       "certa": false
+      },
+      {
+       "texto": "today",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Inês. A Chinese competitor is believed to have offered Mussiro a lower price. I heard it from Dr Cumbe's assistant, over coffee.",
+     "enunciado": "How did Inês hear about the competitor?",
+     "opcoes": [
+      {
+       "texto": "from Dr Cumbe's assistant, over coffee",
+       "certa": true
+      },
+      {
+       "texto": "in an official letter",
+       "certa": false
+      },
+      {
+       "texto": "from the newspaper",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "A competitor is believed to have offered a lower price.",
+     "enunciado": "Ouça e repita, com o acento em \"believed\" e \"offered\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Give a short news update about your sector, town or company: two facts, and three things that are said, thought or expected, with reporting passives.",
+     "frase": "is said to",
+     "resposta": "Here's the news from Benguela. The new bridge opened on Monday, and it was found that traffic in the centre fell by a third. The mayor is said to be planning a second bridge. It's expected to cost over twenty million dollars.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should rumours ever go into a report for a board? Why, or why not?",
+     "frase": "rumour",
+     "resposta": "Sometimes, if they matter and they're clearly marked. A rumour about a competitor can help the board prepare. But it must say \"is said to\", never present a rumour as a fact.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "5C",
+   "titulo": "A fraction over…",
+   "aula": "5C",
+   "objectivo": "Aproximar e qualificar números sem perder o rigor.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Revenue was just shy [of] the five-million target.",
+     "opcoes": [
+      {
+       "texto": "from",
+       "certa": false
+      },
+      {
+       "texto": "to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The payment is in the [region] of three hundred thousand.",
+     "opcoes": [
+      {
+       "texto": "country",
+       "certa": false
+      },
+      {
+       "texto": "zone",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Travel costs fell by [nearly] a fifth.",
+     "opcoes": [
+      {
+       "texto": "near",
+       "certa": false
+      },
+      {
+       "texto": "nearby",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It took the best [part] of a year.",
+     "opcoes": [
+      {
+       "texto": "piece",
+       "certa": false
+      },
+      {
+       "texto": "side",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Satisfaction was 4.1, and the target was 4.0. The honest description:",
+     "opcoes": [
+      {
+       "texto": "just over the target",
+       "certa": true
+      },
+      {
+       "texto": "well over the target",
+       "certa": false
+      },
+      {
+       "texto": "far beyond the target",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "18% is…",
+     "opcoes": [
+      {
+       "texto": "nearly a fifth",
+       "certa": true
+      },
+      {
+       "texto": "roughly a half",
+       "certa": false
+      },
+      {
+       "texto": "well over a third",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Getting on for a thousand\" means…",
+     "opcoes": [
+      {
+       "texto": "almost a thousand",
+       "certa": true
+      },
+      {
+       "texto": "more than two thousand",
+       "certa": false
+      },
+      {
+       "texto": "exactly a thousand",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "When should you give the exact number, according to Thandi?",
+     "opcoes": [
+      {
+       "texto": "when the exact number helps the listener",
+       "certa": true
+      },
+      {
+       "texto": "never",
+       "certa": false
+      },
+      {
+       "texto": "only for small numbers",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Cerca de três quartos dos clientes responderam.",
+     "resposta": "Roughly three quarters of the clients answered.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. Point one isn't well over. Say just over, or slightly above.",
+     "enunciado": "Why does Thandi correct Nuno?",
+     "opcoes": [
+      {
+       "texto": "\"Well over\" is not honest for a difference of 0.1.",
+       "certa": true
+      },
+      {
+       "texto": "The number was wrong.",
+       "certa": false
+      },
+      {
+       "texto": "He spoke too fast.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Handed over this morning. Inês presented, Bongani did the technical part.",
+     "enunciado": "Who presented the handover?",
+     "opcoes": [
+      {
+       "texto": "Inês",
+       "certa": true
+      },
+      {
+       "texto": "Bongani",
+       "certa": false
+      },
+      {
+       "texto": "Thandi",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Revenue was just over four point six million, just shy of the five-million target.",
+     "enunciado": "Ouça e repita, com o acento em \"four point six\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Present four or five numbers from your life or work for a listener who will hear them only once. Approximate where it helps, and give one number exactly.",
+     "frase": "roughly",
+     "resposta": "Our shop had a good year. Sales were just over twelve million kwanzas, roughly a fifth more than last year. Nearly half came from three customers, which is a risk. Rent is well over a third of our costs. And we closed for exactly one week.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do numbers in presentations convince you, or do you need to see them written? Why?",
+     "frase": "because",
+     "resposta": "I need to see them written, because I forget spoken numbers quickly. In a presentation, I remember one or two rounded numbers, like \"nearly half\", and I trust the written report for the rest.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "5D",
+   "titulo": "KPIs and annual reports",
+   "aula": "5D",
+   "objectivo": "Vocabulário de indicadores e relatórios; instance e actual.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "a variance",
+       "b": "um desvio"
+      },
+      {
+       "a": "year on year",
+       "b": "em relação ao ano anterior"
+      },
+      {
+       "a": "an outlier",
+       "b": "um caso fora da média"
+      },
+      {
+       "a": "on track",
+       "b": "no bom caminho"
+      },
+      {
+       "a": "a breakdown",
+       "b": "uma discriminação"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We [missed] the revenue target by eight percent.",
+     "opcoes": [
+      {
+       "texto": "lost",
+       "certa": false
+      },
+      {
+       "texto": "failed",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Revenue grew twelve percent year [on] year.",
+     "opcoes": [
+      {
+       "texto": "at",
+       "certa": false
+      },
+      {
+       "texto": "to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The margin [dipped] to twenty-one percent.",
+     "opcoes": [
+      {
+       "texto": "dived of",
+       "certa": false
+      },
+      {
+       "texto": "sank of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The Luanda office is on [track] to open in January.",
+     "opcoes": [
+      {
+       "texto": "way",
+       "certa": false
+      },
+      {
+       "texto": "line",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A situação actual\" em inglês:",
+     "opcoes": [
+      {
+       "texto": "the current situation",
+       "certa": true
+      },
+      {
+       "texto": "the actual situation",
+       "certa": false
+      },
+      {
+       "texto": "the actually situation",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: actual = real."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The actual cost was higher than planned.\" \"Actual\" means…",
+     "opcoes": [
+      {
+       "texto": "real",
+       "certa": true
+      },
+      {
+       "texto": "present",
+       "certa": false
+      },
+      {
+       "texto": "future",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"For instance\" means…",
+     "opcoes": [
+      {
+       "texto": "for example",
+       "certa": true
+      },
+      {
+       "texto": "in court",
+       "certa": false
+      },
+      {
+       "texto": "at once",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Em última instância\" (no fim de tudo) em inglês:",
+     "opcoes": [
+      {
+       "texto": "ultimately",
+       "certa": true
+      },
+      {
+       "texto": "in the last instance of",
+       "certa": false
+      },
+      {
+       "texto": "at the final instancing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. Angola was the outlier, well above target. The rest of the region is on track.",
+     "enunciado": "Which country was the outlier?",
+     "opcoes": [
+      {
+       "texto": "Angola",
+       "certa": true
+      },
+      {
+       "texto": "Mozambique",
+       "certa": false
+      },
+      {
+       "texto": "Namibia",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The margin dipped to twenty-one percent.",
+     "enunciado": "Ouça e repita, com uma pausa antes do número."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Present three KPIs of something you know: targets met or missed, one variance and its reason, one outlier, and whether things are on track.",
+     "frase": "on track",
+     "resposta": "We track three KPIs. Attendance exceeded the target: ninety-two percent. Exam results missed it by four points, a negative variance caused by a strike. The evening class is the outlier, well above average. Overall, we're on track for the year.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Can a company measure too much? What happens when people only care about KPIs?",
+     "frase": "KPI",
+     "resposta": "Yes. When people only care about KPIs, they work for the number, not for the client. If the KPI is calls per hour, people end calls quickly, even when the problem isn't solved.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "5E",
+   "titulo": "Real English: The earnings call",
+   "aula": "5E",
+   "objectivo": "Seguir uma conferência de resultados e identificar como as más notícias são apresentadas.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thuli Zwane, chief financial officer of Nyala Telecom. Revenue rose seven percent year on year, to just over two point three billion rand.",
+     "enunciado": "How much did revenue rise year on year?",
+     "opcoes": [
+      {
+       "texto": "seven percent",
+       "certa": true
+      },
+      {
+       "texto": "twenty percent",
+       "certa": false
+      },
+      {
+       "texto": "three percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thuli Zwane. Mobile data was the outlier, up a fraction over twenty percent.",
+     "enunciado": "Which part of the business was the outlier?",
+     "opcoes": [
+      {
+       "texto": "mobile data",
+       "certa": true
+      },
+      {
+       "texto": "energy costs",
+       "certa": false
+      },
+      {
+       "texto": "new customers",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thuli Zwane. Energy costs rose by the best part of a third, driven by power cuts and diesel prices.",
+     "enunciado": "Why did energy costs rise?",
+     "opcoes": [
+      {
+       "texto": "power cuts and diesel prices",
+       "certa": true
+      },
+      {
+       "texto": "new offices",
+       "certa": false
+      },
+      {
+       "texto": "higher salaries",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thuli Zwane. The margin dipped to twenty-six percent, from twenty-nine.",
+     "enunciado": "What happened to the margin?",
+     "opcoes": [
+      {
+       "texto": "It dipped from twenty-nine to twenty-six percent.",
+       "certa": true
+      },
+      {
+       "texto": "It rose to twenty-nine percent.",
+       "certa": false
+      },
+      {
+       "texto": "It stayed the same.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Farida Ismail. You have just shy of three thousand sites, and four hundred have solar. So roughly one in seven.",
+     "enunciado": "What proportion of the sites have solar?",
+     "opcoes": [
+      {
+       "texto": "roughly one in seven",
+       "certa": true
+      },
+      {
+       "texto": "about half",
+       "certa": false
+      },
+      {
+       "texto": "all of them",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Farida Ismail. So for three years, most of your network depends on diesel.",
+     "enunciado": "What did Farida Ismail show with her questions?",
+     "opcoes": [
+      {
+       "texto": "Most of the network will depend on diesel for three years.",
+       "certa": true
+      },
+      {
+       "texto": "The results are excellent.",
+       "certa": false
+      },
+      {
+       "texto": "The CFO is leaving.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Turning to costs, the picture is more challenging.\" This means the costs news is…",
+     "opcoes": [
+      {
+       "texto": "bad",
+       "certa": true
+      },
+      {
+       "texto": "excellent",
+       "certa": false
+      },
+      {
+       "texto": "not important",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which analyst got the real story with simple questions?",
+     "opcoes": [
+      {
+       "texto": "Farida Ismail",
+       "certa": true
+      },
+      {
+       "texto": "Owen Price",
+       "certa": false
+      },
+      {
+       "texto": "neither",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Looking at the quarter as a whole, we're pleased with the progress.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Having invested in solar at four hundred sites, we expect the margin to recover.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Nuno's team sells network equipment to Nyala. Tell your manager what the call means for Mopane: the good news, the bad news, and one opportunity.",
+     "frase": "opportunity",
+     "resposta": "Revenue is up seven percent and mobile data a fraction over twenty. But energy costs rose by the best part of a third, and only about one in seven sites has solar. That's our opportunity: we can offer solar-powered maintenance at more sites.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should companies use words like \"challenging\" for bad results, or speak more plainly? Why?",
+     "frase": "because",
+     "resposta": "They should speak more plainly, because analysts see the numbers anyway. A word like \"challenging\" is fine if the number comes right after it.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "5F",
+   "titulo": "Work & Life: The quarterly report",
+   "aula": "5F",
+   "objectivo": "Apresentar um relatório trimestral a uma administração e explicar uma folha de cálculo em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Prazo médio de recebimento: 97 dias.\" In a presentation, Nuno says:",
+     "opcoes": [
+      {
+       "texto": "Clients took ninety-seven days on average to pay.",
+       "certa": true
+      },
+      {
+       "texto": "The medium term of receiving was ninety-seven days.",
+       "certa": false
+      },
+      {
+       "texto": "The average reception delay is of ninety-seven days.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Avarias resolvidas localmente: 88%.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "Almost nine in ten faults were solved locally.",
+       "certa": true
+      },
+      {
+       "texto": "Eighty-eight avarias were resolved locally.",
+       "certa": false
+      },
+      {
+       "texto": "The local resolution of faults is of eighty-eight.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Naledi Moyo asks how many clients answered the survey. The best answer:",
+     "opcoes": [
+      {
+       "texto": "Thirty-eight, out of fifty-two. I should have put that on the slide.",
+       "certa": true
+      },
+      {
+       "texto": "Enough of them.",
+       "certa": false
+      },
+      {
+       "texto": "I'd rather not say.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Here's the [breakdown] of the variance.",
+     "opcoes": [
+      {
+       "texto": "breakup",
+       "certa": false
+      },
+      {
+       "texto": "breakage",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Having] completed the handover on the tenth of May, we'll receive the payment in June.",
+     "opcoes": [
+      {
+       "texto": "Have",
+       "certa": false
+      },
+      {
+       "texto": "Had",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Mussiro is said to be [planning] a second phase.",
+     "opcoes": [
+      {
+       "texto": "plan",
+       "certa": false
+      },
+      {
+       "texto": "planned",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Based] on the first quarter, I'd keep the annual target.",
+     "opcoes": [
+      {
+       "texto": "Basing of",
+       "certa": false
+      },
+      {
+       "texto": "Base",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Almost all of that variance is timing, not loss. The region is on track for the year.",
+     "enunciado": "What is Nuno's main message about the variance?",
+     "opcoes": [
+      {
+       "texto": "It's mostly timing, not lost money.",
+       "certa": true
+      },
+      {
+       "texto": "It's a big loss.",
+       "certa": false
+      },
+      {
+       "texto": "It's the kwanza only.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. The fall in travel costs comes mainly from Tômbwa, where local technicians solve almost every fault themselves.",
+     "enunciado": "Where does the fall in travel costs mainly come from?",
+     "opcoes": [
+      {
+       "texto": "Tômbwa",
+       "certa": true
+      },
+      {
+       "texto": "the training hub",
+       "certa": false
+      },
+      {
+       "texto": "Windhoek",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm David Nkosi. Ninety-seven days. That's exactly the risk we discussed in March.",
+     "enunciado": "What risk does David mean?",
+     "opcoes": [
+      {
+       "texto": "slow payments in Angola",
+       "certa": true
+      },
+      {
+       "texto": "the rainy season",
+       "certa": false
+      },
+      {
+       "texto": "a competitor",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Three messages, then the detail.",
+     "enunciado": "Ouça e repita, com calma."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Present a short quarterly report to a board: three messages first, a breakdown of one variance, one honest admission, one rumour marked as a rumour, and a recommendation with a degree of certainty.",
+     "frase": "Three messages",
+     "resposta": "Three messages. Sales were just over nine million kwanzas, up a tenth. We missed the target by five percent, because the oven arrived late. We're on track. Our survey had only forty answers. A supermarket is said to be opening nearby. I'd keep the target.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Present this spreadsheet in English, with one piece of good news and one warning: \"Loja de Benguela: Vendas: 14 200 000 Kz (meta: 15 000 000 Kz). Clientes novos: 312. Devoluções: 2,1% (meta: 3%). Stock parado há mais de 90 dias: 18% do total.\"",
+     "frase": "warning",
+     "resposta": "Sales in Benguela were just over fourteen million kwanzas, slightly below target. The good news is three hundred and twelve new customers, and returns well under target. One warning: nearly a fifth of the stock has not moved for over ninety days.",
+     "contexto": "Mediação: uma boa notícia e um aviso."
+    }
+   ]
+  },
+  {
+   "codigo": "5R",
+   "titulo": "Unit 5 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 5 do C1 e reciclar as unidades 1 a 4 do C1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Having] finished the report, she sent it to the board.",
+     "opcoes": [
+      {
+       "texto": "Had",
+       "certa": false
+      },
+      {
+       "texto": "Has",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The minister is expected [to] arrive at ten.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The bridge is thought to [have] cost twice the budget.",
+     "opcoes": [
+      {
+       "texto": "had",
+       "certa": false
+      },
+      {
+       "texto": "be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "About a fifth is [roughly] twenty percent.",
+     "opcoes": [
+      {
+       "texto": "rough",
+       "certa": false
+      },
+      {
+       "texto": "roughness",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Compared with last year, sales rose by ten percent.",
+       "certa": true
+      },
+      {
+       "texto": "Compared with last year, the sales rising ten percent.",
+       "certa": false
+      },
+      {
+       "texto": "Comparing with last year, it rose the sales ten percent.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The actual figures\" are…",
+     "opcoes": [
+      {
+       "texto": "the real figures",
+       "certa": true
+      },
+      {
+       "texto": "the present-day figures",
+       "certa": false
+      },
+      {
+       "texto": "the planned figures",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 4). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Never have I seen such clear figures.",
+       "certa": true
+      },
+      {
+       "texto": "Never I have seen such clear figures.",
+       "certa": false
+      },
+      {
+       "texto": "Never have seen I such clear figures.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 3). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Were it not for the kwanza, we would be on target.",
+       "certa": true
+      },
+      {
+       "texto": "Was it not for the kwanza, we would be on target.",
+       "certa": false
+      },
+      {
+       "texto": "Were not it for the kwanza, we would be on target.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 2). Which shows the HIGHEST certainty?",
+     "opcoes": [
+      {
+       "texto": "I'm reasonably confident.",
+       "certa": true
+      },
+      {
+       "texto": "I wouldn't rule it out.",
+       "certa": false
+      },
+      {
+       "texto": "It's highly unlikely.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Espera-se que a margem recupere no segundo semestre.",
+     "resposta": "The margin is expected to recover in the second half.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Naledi Moyo. Clear. Honest. Add the response rate.",
+     "enunciado": "What does Naledi Moyo ask Nuno to add?",
+     "opcoes": [
+      {
+       "texto": "the response rate of the survey",
+       "certa": true
+      },
+      {
+       "texto": "more slides",
+       "certa": false
+      },
+      {
+       "texto": "a new target",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Present one set of figures from your work, studies or town: what they show, what is thought to explain them, and what you would recommend.",
+     "frase": "thought to",
+     "resposta": "Looking at our town's water bills, we can see a rise of nearly a third in two years. The increase is thought to have been caused by old pipes that lose water. Based on this, I'd recommend replacing the pipes in the centre first.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A board member doubts one of your numbers. Answer honestly and briefly.",
+     "frase": "should have",
+     "resposta": "You're right to ask. The figure is based on forty answers out of sixty, roughly two thirds. I should have put that on the slide. It's still the best response we've had.",
+     "contexto": "Responder a uma dúvida sobre os números."
+    }
+   ]
+  }
+ ]
+}

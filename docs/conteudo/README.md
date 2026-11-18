@@ -77,6 +77,7 @@ Esta pasta é a referência da equipa para tudo o que se ensina na plataforma. A
 | [c1/unidade-02/](c1/unidade-02/README.md) | C1.1, unidade 2 "Diplomacy": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [c1/unidade-03/](c1/unidade-03/README.md) | C1.1, unidade 3 "Strategy": guiões, laboratório, tutor, questionário e revisão aula a aula. |
 | [c1/unidade-04/](c1/unidade-04/README.md) | C1.1, unidade 4 "Conflict": guiões, laboratório, tutor, questionário e revisão aula a aula. |
+| [c1/unidade-05/](c1/unidade-05/README.md) | C1.1, unidade 5 "Data and reports": guiões, laboratório, tutor e questionário. |
 | [notas-fontes/](notas-fontes/) | Notas de pesquisa com as ligações para cada fonte. |
 
 Convenção usada nos documentos: **[V]** verificado em documento primário; **[NV]** não confirmado; **[I]** proposta ou inferência da equipa.
