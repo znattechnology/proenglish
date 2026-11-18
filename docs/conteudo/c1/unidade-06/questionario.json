@@ -1,0 +1,301 @@
+{
+ "title": "C1.2 Unit 6 quiz — Compliance and ethics",
+ "description": "Elipse e substituição, linguagem de contratos, dilemas éticos, vocabulário de conformidade, exonerate e devolve.",
+ "questions": [
+  {
+   "id": "c1u6q1",
+   "question": "Escolha a frase correcta: \"Will the deadline move?\" (espera que não)",
+   "options": [
+    {
+     "id": "c1u6q1o0",
+     "text": "I hope not.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u6q1o1",
+     "text": "I don't hope so.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u6q1o2",
+     "text": "I hope no.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u6q1o0",
+   "explanation": "hope + not; nunca \"I don't hope so\".",
+   "points": 10
+  },
+  {
+   "id": "c1u6q2",
+   "question": "\"I can't come on Friday.\" Também não pode. Diz:",
+   "options": [
+    {
+     "id": "c1u6q2o0",
+     "text": "Neither can I.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u6q2o1",
+     "text": "So can I.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u6q2o2",
+     "text": "Neither I can't.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u6q2o0",
+   "explanation": "Neither + auxiliar + sujeito.",
+   "points": 10
+  },
+  {
+   "id": "c1u6q3",
+   "question": "\"Mussiro may terminate the contract.\" Em inglês simples:",
+   "options": [
+    {
+     "id": "c1u6q3o0",
+     "text": "Mussiro is allowed to cancel the contract.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u6q3o1",
+     "text": "Mussiro will cancel the contract.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u6q3o2",
+     "text": "Mussiro must cancel the contract.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u6q3o0",
+   "explanation": "may = permissão, não certeza.",
+   "points": 10
+  },
+  {
+   "id": "c1u6q4",
+   "question": "\"The contractor shall be liable for any damage.\" Quer dizer…",
+   "options": [
+    {
+     "id": "c1u6q4o0",
+     "text": "o contratado paga qualquer dano",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u6q4o1",
+     "text": "o contratado pode pagar se quiser",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u6q4o2",
+     "text": "ninguém paga os danos",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u6q4o0",
+   "explanation": "shall = obrigação; liable = legalmente responsável.",
+   "points": 10
+  },
+  {
+   "id": "c1u6q5",
+   "question": "Um funcionário pede 20 dólares, sem recibo, para libertar as peças mais depressa. Isto é…",
+   "options": [
+    {
+     "id": "c1u6q5o0",
+     "text": "um pagamento de facilitação, proibido pela política",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u6q5o1",
+     "text": "uma taxa normal",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u6q5o2",
+     "text": "um presente",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u6q5o0",
+   "explanation": "Nenhum pagamento de facilitação, qualquer que seja o valor.",
+   "points": 10
+  },
+  {
+   "id": "c1u6q6",
+   "question": "Complete: \"The question is ___ it could influence the award.\"",
+   "options": [
+    {
+     "id": "c1u6q6o0",
+     "text": "whether",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u6q6o1",
+     "text": "what",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u6q6o2",
+     "text": "that if",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u6q6o0",
+   "explanation": "The question is whether…",
+   "points": 10
+  },
+  {
+   "id": "c1u6q7",
+   "question": "\"O ministro foi exonerado.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1u6q7o0",
+     "text": "The minister was dismissed.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u6q7o1",
+     "text": "The minister was exonerated.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u6q7o2",
+     "text": "The minister was exonerating.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u6q7o0",
+   "explanation": "Falso amigo: exonerate = ilibar.",
+   "points": 10
+  },
+  {
+   "id": "c1u6q8",
+   "question": "\"Devolvi o portátil.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1u6q8o0",
+     "text": "I returned the laptop.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u6q8o1",
+     "text": "I devolved the laptop.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u6q8o2",
+     "text": "I devoluted the laptop.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u6q8o0",
+   "explanation": "Falso amigo: devolve = delegar poderes.",
+   "points": 10
+  },
+  {
+   "id": "c1u6q9",
+   "question": "Complete: \"All suppliers must comply ___ our code of conduct.\"",
+   "options": [
+    {
+     "id": "c1u6q9o0",
+     "text": "with",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u6q9o1",
+     "text": "to",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u6q9o2",
+     "text": "at",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u6q9o0",
+   "explanation": "comply with.",
+   "points": 10
+  },
+  {
+   "id": "c1u6q10",
+   "question": "Reciclagem (C1, unidade 5). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u6q10o0",
+     "text": "He is said to have approached two other bidders.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u6q10o1",
+     "text": "He is said that he approached two other bidders.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u6q10o2",
+     "text": "He is saying to have approached two other bidders.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u6q10o0",
+   "explanation": "Passiva de relato no passado.",
+   "points": 10
+  },
+  {
+   "id": "c1u6q11",
+   "question": "Reciclagem (C1, unidade 4). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u6q11o0",
+     "text": "Under no circumstances will we pay a commission.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u6q11o1",
+     "text": "Under no circumstances we will pay a commission.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u6q11o2",
+     "text": "Under no circumstances pay we a commission.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u6q11o0",
+   "explanation": "Inversão negativa.",
+   "points": 10
+  },
+  {
+   "id": "c1u6q12",
+   "question": "Reciclagem (C1, unidade 3). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u6q12o0",
+     "text": "Had we paid, we would have lost our name.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u6q12o1",
+     "text": "Hadn't we paid, we would have kept our name.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u6q12o2",
+     "text": "Had paid we, we would have lost our name.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u6q12o0",
+   "explanation": "Inversão condicional.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

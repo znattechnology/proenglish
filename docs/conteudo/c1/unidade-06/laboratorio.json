@@ -1,0 +1,1454 @@
+{
+ "unidade": "C1.2 · Unit 6 — Compliance and ethics",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "6A",
+   "titulo": "I'm afraid not",
+   "aula": "6A",
+   "objectivo": "Evitar repetições com elipse e substituição.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Will the deadline move? — I hope [not].",
+     "opcoes": [
+      {
+       "texto": "no",
+       "certa": false
+      },
+      {
+       "texto": "don't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Do we need a local partner? — I'm afraid [so].",
+     "opcoes": [
+      {
+       "texto": "yes",
+       "certa": false
+      },
+      {
+       "texto": "it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Kalandula can bid with us, and so [can] a local firm.",
+     "opcoes": [
+      {
+       "texto": "does",
+       "certa": false
+      },
+      {
+       "texto": "is",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I haven't signed. — Neither [have] I.",
+     "opcoes": [
+      {
+       "texto": "did",
+       "certa": false
+      },
+      {
+       "texto": "am",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct answer: \"Has Bongani signed the safety form?\" (yes)",
+     "opcoes": [
+      {
+       "texto": "He has.",
+       "certa": true
+      },
+      {
+       "texto": "He has signed.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, he has it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I hope not.",
+       "certa": true
+      },
+      {
+       "texto": "I don't hope so.",
+       "certa": false
+      },
+      {
+       "texto": "I hope no.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I can't come on Friday.\" You can't either. You say:",
+     "opcoes": [
+      {
+       "texto": "Neither can I.",
+       "certa": true
+      },
+      {
+       "texto": "So can I.",
+       "certa": false
+      },
+      {
+       "texto": "Neither I can't.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"…shall inform Mussiro in writing if they wish to do so.\" \"Do so\" means…",
+     "opcoes": [
+      {
+       "texto": "visit the sites (the action already mentioned)",
+       "certa": true
+      },
+      {
+       "texto": "sign the contract",
+       "certa": false
+      },
+      {
+       "texto": "pay a fee",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Nós não visitámos Nampula, e devíamos ter visitado.",
+     "resposta": "We didn't visit Nampula, and we should have.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Inês. At least thirty percent of the work must go to a Mozambican company.",
+     "enunciado": "How much of the work must go to a Mozambican company?",
+     "opcoes": [
+      {
+       "texto": "at least thirty percent",
+       "certa": true
+      },
+      {
+       "texto": "all of it",
+       "certa": false
+      },
+      {
+       "texto": "ten percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Inês. The old substations near Lichinga are very different from the ones in Nampula.",
+     "enunciado": "What does Inês say about the substations near Lichinga?",
+     "opcoes": [
+      {
+       "texto": "They are very different from the ones in Nampula.",
+       "certa": true
+      },
+      {
+       "texto": "They are new.",
+       "certa": false
+      },
+      {
+       "texto": "They are the same as in Nampula.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Has he signed? — He has. So can we. Neither have I.",
+     "enunciado": "Ouça e repita, com o acento no auxiliar."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague asks you quick questions about a project or event you are organising. Imagine the questions and answer naturally, without repeating (I think so, I'm afraid not, So did…, Neither has…, the one…).",
+     "frase": "I'm afraid not",
+     "resposta": "Is the venue booked? It is, the one near the airport. Will the minister come? I hope so. Has the caterer confirmed? He hasn't yet, and neither has the sound company. Can we change the date? I'm afraid not. We'd like to, but we can't.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you think big tenders are fair to small local companies? Why, or why not?",
+     "frase": "because",
+     "resposta": "Not always, because they ask for guarantees and references that small companies can't give. Rules that make big companies share the work with local firms help, though. At least, I think so.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "6B",
+   "titulo": "The supplier shall…",
+   "aula": "6B",
+   "objectivo": "Reconhecer a linguagem de contratos e explicá-la em inglês simples.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra ao sentido em inglês simples.",
+     "pares": [
+      {
+       "a": "shall",
+       "b": "must (obrigação)"
+      },
+      {
+       "a": "may",
+       "b": "is allowed to (permissão)"
+      },
+      {
+       "a": "notwithstanding",
+       "b": "even though… says something different"
+      },
+      {
+       "a": "liable for",
+       "b": "legally responsible for"
+      },
+      {
+       "a": "in breach of",
+       "b": "not following, breaking"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Mussiro may terminate the contract.\" In plain English:",
+     "opcoes": [
+      {
+       "texto": "Mussiro is allowed to cancel the contract.",
+       "certa": true
+      },
+      {
+       "texto": "Mussiro will cancel the contract.",
+       "certa": false
+      },
+      {
+       "texto": "Mussiro must cancel the contract.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The bidder shall submit a guarantee.\" In plain English:",
+     "opcoes": [
+      {
+       "texto": "The bidder must give a guarantee.",
+       "certa": true
+      },
+      {
+       "texto": "The bidder can give a guarantee if it wants.",
+       "certa": false
+      },
+      {
+       "texto": "The bidder gave a guarantee.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The contractor shall be liable for any damage caused by its subcontractors.\" This means…",
+     "opcoes": [
+      {
+       "texto": "The contractor pays for damage caused by its subcontractors.",
+       "certa": true
+      },
+      {
+       "texto": "The subcontractors are never responsible.",
+       "certa": false
+      },
+      {
+       "texto": "Nobody pays for the damage.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Notwithstanding clause 9, Mussiro may terminate…\" means…",
+     "opcoes": [
+      {
+       "texto": "Even though clause 9 says something different, Mussiro can terminate.",
+       "certa": true
+      },
+      {
+       "texto": "Because of clause 9, Mussiro must terminate.",
+       "certa": false
+      },
+      {
+       "texto": "Clause 9 is cancelled.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In plain [English], this means we must give a guarantee.",
+     "opcoes": [
+      {
+       "texto": "words of English",
+       "certa": false
+      },
+      {
+       "texto": "language English",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The contractor is in [breach] of clause 21.",
+     "opcoes": [
+      {
+       "texto": "break",
+       "certa": false
+      },
+      {
+       "texto": "broken",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Tumelo. Clause nine gives us thirty days to fix any problem. But if we break clause twenty-one, they can cancel immediately.",
+     "enunciado": "What happens if Mopane breaks clause twenty-one?",
+     "opcoes": [
+      {
+       "texto": "Mussiro can cancel the contract immediately.",
+       "certa": true
+      },
+      {
+       "texto": "Mopane gets thirty days to fix it.",
+       "certa": false
+      },
+      {
+       "texto": "Nothing happens.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Tumelo. Any company that asks to soften the anti-corruption clause tells the client something about itself.",
+     "enunciado": "Why does Tumelo advise against asking to change clause twenty-one?",
+     "opcoes": [
+      {
+       "texto": "It would send a bad message about Mopane.",
+       "certa": true
+      },
+      {
+       "texto": "It is too expensive.",
+       "certa": false
+      },
+      {
+       "texto": "Mussiro never changes clauses.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "confidentiality, liability, jurisdiction, obligation",
+     "enunciado": "Ouça e repita cada palavra, com um só acento forte."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain three obligations and one right of a contract or set of rules you know (phone, rent, gym, school) in plain English to a friend who is about to sign.",
+     "frase": "In plain English",
+     "resposta": "In plain English, you must pay by the fifth of each month, give two months' notice to leave, and not paint the walls without permission. The landlord may visit, but only with a day's notice. And clause eight says you're liable for any damage.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Why do you think contracts are written in such difficult language? Should they be simpler?",
+     "frase": "should",
+     "resposta": "Partly because every word must have only one meaning in court. But many contracts are difficult for no reason. They should be simpler, or at least come with a plain English summary.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "6C",
+   "titulo": "Where do we draw the line?",
+   "aula": "6C",
+   "objectivo": "Discutir um dilema ético e tomar uma posição fundamentada.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's a grey [area].",
+     "opcoes": [
+      {
+       "texto": "part",
+       "certa": false
+      },
+      {
+       "texto": "colour",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The question is [whether] it could influence the award.",
+     "opcoes": [
+      {
+       "texto": "what",
+       "certa": false
+      },
+      {
+       "texto": "that if",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Strictly] speaking, it is not a payment to anyone.",
+     "opcoes": [
+      {
+       "texto": "Strict",
+       "certa": false
+      },
+      {
+       "texto": "Strictness",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd feel uncomfortable [saying] yes to that.",
+     "opcoes": [
+      {
+       "texto": "to say of",
+       "certa": false
+      },
+      {
+       "texto": "say",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Mopane paid the flights of two Mussiro technicians, as written in the contract. This is…",
+     "opcoes": [
+      {
+       "texto": "not a grey area: it is documented and transparent",
+       "certa": true
+      },
+      {
+       "texto": "a bribe",
+       "certa": false
+      },
+      {
+       "texto": "a facilitation payment",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "An official asks for 20 dollars, with no receipt, to release your parts faster. This is…",
+     "opcoes": [
+      {
+       "texto": "a facilitation payment, not allowed by the policy",
+       "certa": true
+      },
+      {
+       "texto": "a normal fee",
+       "certa": false
+      },
+      {
+       "texto": "a gift",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"There's a difference between a courtesy and a condition.\" A condition is…",
+     "opcoes": [
+      {
+       "texto": "something you must pay to get what you are entitled to",
+       "certa": true
+      },
+      {
+       "texto": "a coffee offered freely",
+       "certa": false
+      },
+      {
+       "texto": "a contract clause",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It would set a bad precedent.\" This means…",
+     "opcoes": [
+      {
+       "texto": "It would make the same thing more likely in future.",
+       "certa": true
+      },
+      {
+       "texto": "It happened before.",
+       "certa": false
+      },
+      {
+       "texto": "It is illegal.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Em princípio, não é permitido.",
+     "resposta": "In principle, it isn't allowed.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Bongani. An official told me the spare parts would take three days, or twenty minutes for twenty dollars. No receipt.",
+     "enunciado": "What did the official offer Bongani?",
+     "opcoes": [
+      {
+       "texto": "faster parts for twenty dollars, with no receipt",
+       "certa": true
+      },
+      {
+       "texto": "a free coffee",
+       "certa": false
+      },
+      {
+       "texto": "a discount on the parts",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. Next time, call Tumelo from the border. He'll write to the customs office, officially.",
+     "enunciado": "What should Bongani do next time?",
+     "opcoes": [
+      {
+       "texto": "call Tumelo, who will write to customs officially",
+       "certa": true
+      },
+      {
+       "texto": "pay the official",
+       "certa": false
+      },
+      {
+       "texto": "go home",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Technically, yes, but it's in the contract.",
+     "enunciado": "Ouça e repita, com uma pausa antes de \"but\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe an ethical dilemma at work or in daily life: why it is a grey area, the arguments on each side, where you would draw the line, and what you would do.",
+     "frase": "grey area",
+     "resposta": "A friend offered to move my mother up a hospital waiting list. It's a grey area: she's family, and nobody pays anything. But the question is whether another patient waits longer, and they would. I'd feel uncomfortable accepting, so I'd say no.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is a small payment to speed up a procedure always wrong, or does it depend on the situation?",
+     "frase": "precedent",
+     "resposta": "I think it's wrong, even when it's small, because it sets a precedent: next time the price is higher, and people without money wait longer. In practice it's hard to refuse, but in principle the answer is no.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "6D",
+   "titulo": "Compliance",
+   "aula": "6D",
+   "objectivo": "Vocabulário de conformidade e anticorrupção; exonerate e devolve.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "a conflict of interest",
+       "b": "um conflito de interesses"
+      },
+      {
+       "a": "due diligence",
+       "b": "verificação prévia"
+      },
+      {
+       "a": "a whistle-blower",
+       "b": "um denunciante"
+      },
+      {
+       "a": "a kickback",
+       "b": "luvas"
+      },
+      {
+       "a": "consent",
+       "b": "consentimento"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "All suppliers must comply [with] our code of conduct.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Tumelo will carry [out] due diligence on the partner.",
+     "opcoes": [
+      {
+       "texto": "on",
+       "certa": false
+      },
+      {
+       "texto": "off",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You must [disclose] any gift over fifty dollars.",
+     "opcoes": [
+      {
+       "texto": "discover",
+       "certa": false
+      },
+      {
+       "texto": "disclosure",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Any employee can [raise] a concern, anonymously.",
+     "opcoes": [
+      {
+       "texto": "rise",
+       "certa": false
+      },
+      {
+       "texto": "arise",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"O ministro foi exonerado.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The minister was dismissed.",
+       "certa": true
+      },
+      {
+       "texto": "The minister was exonerated.",
+       "certa": false
+      },
+      {
+       "texto": "The minister was exonerating.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: exonerate = ilibar."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The investigation exonerated the manager.\" The manager…",
+     "opcoes": [
+      {
+       "texto": "was shown to be innocent",
+       "certa": true
+      },
+      {
+       "texto": "lost his job",
+       "certa": false
+      },
+      {
+       "texto": "was arrested",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Devolvi o portátil.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I returned the laptop.",
+       "certa": true
+      },
+      {
+       "texto": "I devolved the laptop.",
+       "certa": false
+      },
+      {
+       "texto": "I devoluted the laptop.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: devolve = delegar poderes."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The company devolved purchasing decisions to the regional offices.\" This means…",
+     "opcoes": [
+      {
+       "texto": "Regional offices can now make those decisions.",
+       "certa": true
+      },
+      {
+       "texto": "The company returned the purchases.",
+       "certa": false
+      },
+      {
+       "texto": "The company cancelled the purchases.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Tumelo. Lindiwe's cousin works at the local partner, so she must declare a conflict of interest.",
+     "enunciado": "Why must Lindiwe declare a conflict of interest?",
+     "opcoes": [
+      {
+       "texto": "Her cousin works at the local partner.",
+       "certa": true
+      },
+      {
+       "texto": "She received a gift.",
+       "certa": false
+      },
+      {
+       "texto": "She works for Mussiro.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "compliance, diligence, confidential, disclosure",
+     "enunciado": "Ouça e repita cada palavra."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain to a new colleague three rules of a code of conduct: what they must declare, what they must refuse, and how they can raise a concern.",
+     "frase": "raise a concern",
+     "resposta": "Three rules. First, declare any conflict of interest. Second, refuse any gift over fifty dollars, and disclose the small ones. Third, if you see something wrong, raise a concern, anonymously if you prefer. We have zero tolerance for bribes.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should whistle-blowers be rewarded? Why, or why not?",
+     "frase": "because",
+     "resposta": "Protected, yes; rewarded, I'm not sure. Protection is essential, because people lose jobs for telling the truth. But big rewards could encourage false reports.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "6E",
+   "titulo": "Real English: The grey area",
+   "aula": "6E",
+   "objectivo": "Seguir uma discussão sobre três casos de ética e identificar as posições.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Zinhle. A supplier sends you an invoice. By mistake, it's ten thousand dollars too low. Do you tell them?",
+     "enunciado": "How much too low is the invoice?",
+     "opcoes": [
+      {
+       "texto": "ten thousand dollars",
+       "certa": true
+      },
+      {
+       "texto": "fifteen dollars",
+       "certa": false
+      },
+      {
+       "texto": "fifteen thousand dollars",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Halima Said. They'll find the error in their audit. You lose ten thousand dollars of trust to save ten thousand dollars.",
+     "enunciado": "Why should you tell the supplier, according to Halima Said?",
+     "opcoes": [
+      {
+       "texto": "They'll find it in their audit, and you'll lose trust.",
+       "certa": true
+      },
+      {
+       "texto": "It's the law.",
+       "certa": false
+      },
+      {
+       "texto": "The supplier is a friend.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Zinhle. A good employee adds fifteen dollars of taxis to his expenses, taxis he didn't take. Every month.",
+     "enunciado": "How much does the employee add every month?",
+     "opcoes": [
+      {
+       "texto": "fifteen dollars",
+       "certa": true
+      },
+      {
+       "texto": "fifty dollars",
+       "certa": false
+      },
+      {
+       "texto": "fifteen thousand dollars",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Tunde Adebayo. There's a difference between a habit and a character. Talk to him first. Find out why.",
+     "enunciado": "What would Professor Adebayo do first?",
+     "opcoes": [
+      {
+       "texto": "talk to the employee and find out why",
+       "certa": true
+      },
+      {
+       "texto": "fire him",
+       "certa": false
+      },
+      {
+       "texto": "ignore it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Zinhle. A salesperson joins from a competitor, with a list of the competitor's clients on her phone.",
+     "enunciado": "What does the new salesperson have on her phone?",
+     "opcoes": [
+      {
+       "texto": "a list of the competitor's clients",
+       "certa": true
+      },
+      {
+       "texto": "her salary",
+       "certa": false
+      },
+      {
+       "texto": "a new product",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Halima Said. My final word: write things down.",
+     "enunciado": "What is Halima Said's final advice?",
+     "opcoes": [
+      {
+       "texto": "Write things down.",
+       "certa": true
+      },
+      {
+       "texto": "Never hire from competitors.",
+       "certa": false
+      },
+      {
+       "texto": "Fire everyone.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In which case do the two guests disagree?",
+     "opcoes": [
+      {
+       "texto": "the employee with the taxi expenses",
+       "certa": true
+      },
+      {
+       "texto": "the invoice error",
+       "certa": false
+      },
+      {
+       "texto": "the competitor's client list",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Why do both guests answer case three in one word?",
+     "opcoes": [
+      {
+       "texto": "It is not a grey area.",
+       "certa": true
+      },
+      {
+       "texto": "They are tired.",
+       "certa": false
+      },
+      {
+       "texto": "They did not understand.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Strictly speaking, it's their mistake. But ethics isn't about what's strictly speaking.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Some questions aren't grey.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Choose one of the three cases and give your position: is it a grey area, what is the strongest argument on the other side, and where do you draw the line?",
+     "frase": "draw the line",
+     "resposta": "Case two is the hardest. Fifteen dollars is nothing, but every month is a habit. The strongest argument on the other side is to find out why first. I'd talk to him once and ask him to pay it back. That's where I'd draw the line.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Who do you agree with more, the professor or the compliance director? Why?",
+     "frase": "because",
+     "resposta": "The compliance director, because rules only work if everyone knows they're applied. But I like the professor's question: what would you want if you were on the other side?",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "6F",
+   "titulo": "Work & Life: The \"commission\"",
+   "aula": "6F",
+   "objectivo": "Recusar um pedido impróprio sem acusar e explicar uma cláusula em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Directa ou indirectamente\" — Nuno explains:",
+     "opcoes": [
+      {
+       "texto": "directly or indirectly, and that includes through a consultant",
+       "certa": true
+      },
+      {
+       "texto": "only directly",
+       "certa": false
+      },
+      {
+       "texto": "in a direct or indirect address",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"…com o objectivo de influenciar a adjudicação.\" In plain English:",
+     "opcoes": [
+      {
+       "texto": "…to influence who wins.",
+       "certa": true
+      },
+      {
+       "texto": "…with the objective of influencing the adjudication of.",
+       "certa": false
+      },
+      {
+       "texto": "…to adjust the judges.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Matsinhe says: \"Everyone does it. Your competitors will.\" The best answer:",
+     "opcoes": [
+      {
+       "texto": "Perhaps they will. Perhaps they won't. Either way, we won't.",
+       "certa": true
+      },
+      {
+       "texto": "No, they won't, they're honest.",
+       "certa": false
+      },
+      {
+       "texto": "Then maybe we should too.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the best way to refuse without accusing?",
+     "opcoes": [
+      {
+       "texto": "I'm afraid that's not something we can do.",
+       "certa": true
+      },
+      {
+       "texto": "That's a bribe, and you're a criminal.",
+       "certa": false
+      },
+      {
+       "texto": "I'll think about it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Our policy is very clear, and so [is] the tender.",
+     "opcoes": [
+      {
+       "texto": "does",
+       "certa": false
+      },
+      {
+       "texto": "has",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd rather not [continue] this conversation.",
+     "opcoes": [
+      {
+       "texto": "to continue",
+       "certa": false
+      },
+      {
+       "texto": "continuing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If we lose because our price is too high, I can live [with] that.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "by",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Ernesto Matsinhe. A success fee, three percent, only if you win. Paid to my company, for consultancy.",
+     "enunciado": "What does Matsinhe ask for?",
+     "opcoes": [
+      {
+       "texto": "three percent if Mopane wins, paid to his company",
+       "certa": true
+      },
+      {
+       "texto": "a fixed fee of three thousand dollars",
+       "certa": false
+      },
+      {
+       "texto": "a job at Mopane",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. I refused, and I reported it to Tumelo within the hour.",
+     "enunciado": "What did Nuno do after refusing?",
+     "opcoes": [
+      {
+       "texto": "He reported it to Tumelo within the hour.",
+       "certa": true
+      },
+      {
+       "texto": "He told Mussiro immediately.",
+       "certa": false
+      },
+      {
+       "texto": "He did nothing.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lúcia Tembe. We have opened an internal review. Mussiro does not work with intermediaries in its tenders.",
+     "enunciado": "What did Mussiro do?",
+     "opcoes": [
+      {
+       "texto": "It opened an internal review.",
+       "certa": true
+      },
+      {
+       "texto": "It cancelled the tender.",
+       "certa": false
+      },
+      {
+       "texto": "It hired Matsinhe.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Perhaps they will. Perhaps they won't. Either way, we won't.",
+     "enunciado": "Ouça e repita, com firmeza calma."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Someone offers to \"help\" you (a job, a licence, a contract, a school place) for a payment or a favour. Refuse firmly without accusing, don't argue with \"everyone does it\", end the conversation and leave a clean door open.",
+     "frase": "I'm afraid",
+     "resposta": "Thank you for thinking of me, but I'll be direct: I'm afraid that's not something I can do. Perhaps other people do. Either way, I won't. I'd rather not continue this conversation. If there's an official way to speed things up, I'd be happy to hear it.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain this clause in plain English: \"O prestador obriga-se a não divulgar a terceiros, durante a vigência do contrato e nos cinco anos seguintes ao seu termo, qualquer informação a que tenha acesso, salvo autorização prévia e escrita do cliente.\"",
+     "frase": "In plain English",
+     "resposta": "In plain English: we can't share any information we see in this contract with anyone outside, during the contract or for five years after it ends. The only exception is if the client gives us permission first, in writing.",
+     "contexto": "Mediação: inglês simples."
+    }
+   ]
+  },
+  {
+   "codigo": "6R",
+   "titulo": "Unit 6 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 6 do C1 e reciclar o C1.1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Is the office open on Sunday? — I don't think [so].",
+     "opcoes": [
+      {
+       "texto": "it",
+       "certa": false
+      },
+      {
+       "texto": "yes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She didn't sign, and [neither] did I.",
+     "opcoes": [
+      {
+       "texto": "either",
+       "certa": false
+      },
+      {
+       "texto": "also",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The supplier [shall] deliver within thirty days.",
+     "opcoes": [
+      {
+       "texto": "shalls",
+       "certa": false
+      },
+      {
+       "texto": "shall to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We need the clients' [consent] to use their data.",
+     "opcoes": [
+      {
+       "texto": "consentment",
+       "certa": false
+      },
+      {
+       "texto": "consensus of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I'm afraid not.",
+       "certa": true
+      },
+      {
+       "texto": "I'm afraid no.",
+       "certa": false
+      },
+      {
+       "texto": "I'm not afraid so.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Mussiro may visit the site.\" In plain English:",
+     "opcoes": [
+      {
+       "texto": "Mussiro is allowed to visit the site.",
+       "certa": true
+      },
+      {
+       "texto": "Mussiro will certainly visit the site.",
+       "certa": false
+      },
+      {
+       "texto": "Mussiro must visit the site.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 5). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Matsinhe is said to have approached two other bidders.",
+       "certa": true
+      },
+      {
+       "texto": "Matsinhe is said that he approached two other bidders.",
+       "certa": false
+      },
+      {
+       "texto": "Matsinhe is saying to have approached two other bidders.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 4). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Under no circumstances will we pay a commission.",
+       "certa": true
+      },
+      {
+       "texto": "Under no circumstances we will pay a commission.",
+       "certa": false
+      },
+      {
+       "texto": "Under no circumstances pay we a commission.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 2). Which refusal is the most diplomatic?",
+     "opcoes": [
+      {
+       "texto": "I'm afraid that's not something we can do.",
+       "certa": true
+      },
+      {
+       "texto": "No way.",
+       "certa": false
+      },
+      {
+       "texto": "Forget it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "A política é muito clara, e o concurso também.",
+     "resposta": "The policy is very clear, and so is the tender.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Whether Matsinhe knows anyone on the committee isn't for us to judge. Tumelo will write to Mussiro, facts only.",
+     "enunciado": "What will Tumelo send to Mussiro?",
+     "opcoes": [
+      {
+       "texto": "the facts, with no accusations",
+       "certa": true
+      },
+      {
+       "texto": "an accusation against Matsinhe",
+       "certa": false
+      },
+      {
+       "texto": "a new price",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe an ethical dilemma at work or in daily life. What would you do, and why?",
+     "frase": "grey area",
+     "resposta": "A supplier invited my team to a football final during a tender. Strictly speaking it's hospitality, but it's a grey area, because the timing could influence us. I'd thank them, refuse, and declare the invitation to compliance.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague asks: \"Is a calendar from a supplier a problem?\" Answer briefly, with ellipsis and the policy.",
+     "frase": "think so",
+     "resposta": "I don't think so, as long as it's small and you declare it. A weekend at a resort would be, though. Neither should be accepted during a tender.",
+     "contexto": "Resposta curta, com elipse."
+    }
+   ]
+  }
+ ]
+}
