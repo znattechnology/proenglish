@@ -120,6 +120,7 @@ def colocar(user, escolhido):
         prefs = dict(user.preferences) if isinstance(user.preferences, dict) else {}
         prefs['nivel'] = final
         prefs['colocacao'] = {'nivel': final, 'escolhido': escolhido, 'em': timezone.now().isoformat()}
+        prefs['acolhimento'] = 'concluido'   # a colocação é o fim da primeira entrada
         user.preferences = prefs
         user.save(update_fields=['preferences'])
 

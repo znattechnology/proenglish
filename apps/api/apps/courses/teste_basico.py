@@ -10,6 +10,11 @@ Quem já estava inscrito ou já fazia um curso de sector continua; a regra vale 
 O teste é corrigido no servidor: 20 perguntas sorteadas do banco, 70% para aprovar, 20 minutos.
 Quem reprova (ou deixa o tempo acabar) pode repetir ao fim de 24 horas.
 
+Ecrã inteiro (a mesma regra do LabTIC, contra a consulta de outras páginas ou de uma IA): o teste
+corre em ecrã inteiro e, se o aluno sai (outro separador, outra janela ou outra app), o cliente
+pede a anulação da pergunta em que estava. A anulação fica aqui, no servidor: a pergunta conta
+como errada e a resposta que vier depois é ignorada.
+
 O mesmo teste existe para cada nível (A1, A2, B1 e B2): é o teste de colocação do curso geral
 (apps/courses/colocacao.py). O "teste do nível básico" é o do A2. Os bancos do A1 ao B2 vêm dos
 questionários das unidades (bancos_colocacao.json, gerado por manage.py gerar_bancos_colocacao).
@@ -163,6 +168,7 @@ def _tentativa_dict(t, com_perguntas=False):
         'certas': t.certas if t.submetido_em else None,
         'total': t.total or len(t.perguntas),
         'aprovado': t.aprovado if t.submetido_em else None,
+        'anuladas': list(t.anuladas or []),
     }
     if com_perguntas:
         d['perguntas'] = _perguntas_cliente(t)
@@ -234,6 +240,23 @@ def iniciar(user, nivel=NIVEL_BASICO):
                                                expira_em=timezone.now() + DURACAO)
 
 
+def anular(user, teste_id, pergunta_id):
+    """Anula uma pergunta da tentativa em curso (o aluno saiu do ecrã do teste). Idempotente."""
+    from apps.courses.models import TesteNivelBasico
+    with transaction.atomic():
+        t = TesteNivelBasico.objects.select_for_update().filter(pk=teste_id, user=user).first()
+        if t is None:
+            raise ErroTeste('not_found', 'Teste não encontrado.', 404)
+        if t.submetido_em is not None:
+            raise ErroTeste('ja_entregue', 'Este teste já foi entregue.', 409)
+        if pergunta_id not in {item['id'] for item in t.perguntas}:
+            raise ErroTeste('validation_error', 'Essa pergunta não faz parte do teste.')
+        if pergunta_id not in (t.anuladas or []):
+            t.anuladas = [*(t.anuladas or []), pergunta_id]
+            t.save(update_fields=['anuladas', 'updated_at'])
+        return t
+
+
 def submeter(user, teste_id, respostas):
     """
     respostas: {id da pergunta: índice da opção escolhida, pela ordem mostrada}. O que faltar conta
@@ -253,7 +276,10 @@ def submeter(user, teste_id, respostas):
             _fechar_expirada(t, agora)
             raise ErroTeste('tempo_esgotado', 'O tempo do teste acabou. Pode repetir daqui a 24 horas.', 410)
         certas = 0
+        anuladas = set(t.anuladas or [])
         for item in t.perguntas:
+            if item['id'] in anuladas:
+                continue
             escolha = respostas.get(item['id'])
             if isinstance(escolha, bool) or not isinstance(escolha, int):
                 continue

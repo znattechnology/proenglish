@@ -5,6 +5,7 @@ GET  /api/v1/student/teste-basico/?nivel=A2        estado: tem o nível? pode te
 POST /api/v1/student/teste-basico/iniciar/ {nivel} abre a tentativa e devolve as perguntas (sem respostas)
 
 `nivel` é opcional (A2, o nível básico, por omissão); A1, B1 e B2 são os testes de colocação.
+POST /api/v1/student/teste-basico/<id>/anular/     {pergunta} -> o aluno saiu do ecrã: a pergunta conta como errada
 POST /api/v1/student/teste-basico/<id>/entregar/   {respostas: {pergunta: índice}} -> corrige no servidor
 """
 from rest_framework.decorators import api_view, permission_classes
@@ -53,3 +54,13 @@ def entregar(request, teste_id):
     except svc.ErroTeste as e:
         return _erro(e)
     return Response({**svc._tentativa_dict(t), 'estado': svc.estado(request.user, t.nivel)})
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def anular(request, teste_id):
+    try:
+        t = svc.anular(request.user, teste_id, str(request.data.get('pergunta') or ''))
+    except svc.ErroTeste as e:
+        return _erro(e)
+    return Response({'anuladas': list(t.anuladas)})

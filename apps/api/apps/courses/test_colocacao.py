@@ -73,6 +73,7 @@ class ColocacaoTest(TestCase):
         self.assertTrue(CourseEnrollment.objects.filter(user=self.aluno, course=self.a1_1).exists())
         self.aluno.refresh_from_db()
         self.assertEqual(self.aluno.preferences['nivel'], 'A1')
+        self.assertEqual(self.aluno.preferences['acolhimento'], 'concluido')
 
     def test_outro_nivel_sem_teste_devolve_409(self):
         r = self.c.post(U, {'nivel': 'B1'}, format='json')
@@ -139,6 +140,29 @@ class ColocacaoTest(TestCase):
         self.assertEqual(r.data['nivel'], 'B2')
         self.assertTrue(all(p['id'].startswith('b2-') for p in r.data['perguntas']))
         self.assertEqual(self.c.post('/api/v1/student/teste-basico/iniciar/', {'nivel': 'C1'}, format='json').status_code, 400)
+
+    def test_pergunta_anulada_conta_como_errada_mesmo_respondida(self):
+        r = self.c.post('/api/v1/student/teste-basico/iniciar/', {'nivel': 'A1'}, format='json')
+        t = TesteNivelBasico.objects.get(pk=r.data['id'])
+        for item in t.perguntas[:7]:                               # saiu do ecrã em 7 perguntas
+            a = self.c.post(f'/api/v1/student/teste-basico/{t.id}/anular/', {'pergunta': item['id']}, format='json')
+            self.assertEqual(a.status_code, 200, a.data)
+        self.c.post(f'/api/v1/student/teste-basico/{t.id}/anular/', {'pergunta': t.perguntas[0]['id']}, format='json')
+        t.refresh_from_db()
+        self.assertEqual(len(t.anuladas), 7)                       # idempotente
+        r = self.c.post(f'/api/v1/student/teste-basico/{t.id}/entregar/', {'respostas': _respostas(t, 20)}, format='json')
+        self.assertEqual((r.data['certas'], r.data['aprovado']), (13, False))   # 13/20 < 70%
+        self.assertEqual(len(r.data['anuladas']), 7)
+
+    def test_anular_pergunta_de_fora_ou_teste_entregue(self):
+        r = self.c.post('/api/v1/student/teste-basico/iniciar/', {'nivel': 'A1'}, format='json')
+        t = TesteNivelBasico.objects.get(pk=r.data['id'])
+        self.assertEqual(self.c.post(f'/api/v1/student/teste-basico/{t.id}/anular/', {'pergunta': 'x'}, format='json').status_code, 400)
+        self.c.post(f'/api/v1/student/teste-basico/{t.id}/entregar/', {'respostas': {}}, format='json')
+        self.assertEqual(self.c.post(f'/api/v1/student/teste-basico/{t.id}/anular/', {'pergunta': t.perguntas[0]['id']}, format='json').status_code, 409)
+        outro = APIClient()
+        outro.force_authenticate(self.prof)
+        self.assertEqual(outro.post(f'/api/v1/student/teste-basico/{t.id}/anular/', {'pergunta': t.perguntas[0]['id']}, format='json').status_code, 404)
 
     def test_nivel_do_teste(self):
         self.assertEqual([colocacao.nivel_do_teste(n) for n in colocacao.NIVEIS_ESCOLHA], [None, 'A1', 'A2', 'B1', 'B2'])

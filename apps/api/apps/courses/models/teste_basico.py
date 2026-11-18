@@ -17,6 +17,8 @@ class TesteNivelBasico(BaseModel):
     nivel = models.CharField(max_length=2, default='A2')
     # [{"id": "<pergunta>", "ordem": [índices das opções pela ordem mostrada]}]
     perguntas = models.JSONField(default=list)
+    # Perguntas anuladas porque o aluno saiu do ecrã do teste (ids); contam como erradas.
+    anuladas = models.JSONField(default=list, blank=True)
     expira_em = models.DateTimeField()
     submetido_em = models.DateTimeField(null=True, blank=True)
     certas = models.PositiveSmallIntegerField(default=0)
