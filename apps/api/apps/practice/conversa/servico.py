@@ -926,6 +926,10 @@ def preparar(user):
         item['nivel'] = s['nivel'] if do_professor and s['nivel'] in NIVEIS else None
         item['correcao'] = s['correcao'] if do_professor and s['correcao'] in CORRECOES else None
         item['curso'] = {'id': str(obj.curso_id), 'titulo': obj.curso.title} if obj.curso_id else None
+        # Lugar no percurso do curso (courses/percurso.py): a aula depois da qual se faz, e o tipo.
+        item['aula'] = ({'id': str(obj.aula_id), 'titulo': obj.aula.title, 'unidade': obj.aula.section.sectionTitle}
+                        if obj.aula_id else None)
+        item['tipo_conversa'] = obj.tipo_conversa or None
         situacoes.append(item)
         dicts.append(s)
     preferencias = preferencias_padrao(user)

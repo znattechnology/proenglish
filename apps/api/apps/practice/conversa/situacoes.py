@@ -421,5 +421,5 @@ def situacoes_visiveis(user):
     return (Situacao.objects.filter(estado=Situacao.ACTIVO).exclude(q_situacao_de_exame())
             .filter(Q(curso__isnull=True, criado_por__isnull=True) | Q(curso_id__in=cursos)
                     | Q(curso__isnull=True, criado_por_id__in=professores))
-            .select_related('curso')
+            .select_related('curso', 'aula__section')
             .order_by(F('criado_por_id').asc(nulls_first=True), 'ordem', 'created_at'))

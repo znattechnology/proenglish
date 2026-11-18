@@ -1582,6 +1582,15 @@ class Situacao(models.Model):
                                    related_name='situacoes_criadas')
     ordem = models.PositiveIntegerField(default=100)
     extras = models.JSONField(default=dict, blank=True)
+    # Lugar da conversa no percurso do curso (apps/courses/percurso.py): a aula depois da qual o
+    # aluno a deve fazer, e se é a conversa guiada (a meio da unidade) ou a livre (no fim).
+    # Vazios = conversa solta do curso (aparece só na lista de conversas).
+    GUIADA = 'guiada'
+    LIVRE = 'livre'
+    TIPOS_CONVERSA = [GUIADA, LIVRE]
+    aula = models.ForeignKey('courses.Chapter', on_delete=models.SET_NULL, null=True, blank=True,
+                             related_name='situacoes_conversa')
+    tipo_conversa = models.CharField(max_length=10, blank=True, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
