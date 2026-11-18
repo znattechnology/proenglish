@@ -10,7 +10,11 @@ Cada aula (Chapter) dá até quatro tipos de passo, por esta ordem:
   conversa      as conversas com o tutor ligadas à aula (Situacao.aula), a guiada antes da livre.
 
 Estado de um passo: "feito", "actual" (o primeiro por fazer em todo o curso: é o passo seguinte) ou
-"por_fazer". O percurso é uma recomendação: não bloqueia nada (as regras de acesso de cada peça
+"por_fazer".
+
+Unidades de amostra (apps/courses/amostra.py): sem o plano do curso, os passos das secções fora da
+amostra (e as lições de laboratório fora das unidades da amostra) vêm com bloqueado = true e nunca
+são o passo seguinte. Quando só faltam passos bloqueados, proximo é None e plano_necessario = true. O percurso é uma recomendação: não bloqueia nada (as regras de acesso de cada peça
 continuam nos sítios delas).
 
 O que conta como feito é decidido aqui, no servidor:
@@ -94,8 +98,18 @@ def _questionarios(user, aulas):
     return {q.chapter_id: questionario_feito(user, q) for q in activos}
 
 
+def _licao_fechada(user, licao, cache):
+    """A lição de laboratório está fora das unidades de amostra e a pessoa não tem o plano."""
+    from apps.courses import amostra
+    curso = licao.unit.course
+    if curso.id not in cache:
+        cache[curso.id] = amostra.unidades_pratica_bloqueadas(user, curso) or set()
+    return licao.unit_id in cache[curso.id]
+
+
 def percurso(user, curso):
     """O percurso do curso para este aluno (ver o topo do módulo)."""
+    from apps.courses import amostra
     from apps.courses.models import Chapter, ChapterProgress, CourseSection
 
     seccoes = list(CourseSection.objects.filter(course=curso).order_by('order', 'created_at'))
@@ -108,6 +122,9 @@ def percurso(user, curso):
     licoes = _licoes_feitas(user, aulas)
     situacoes = _situacoes_por_aula(curso)
     conversas = _conversas_feitas(user, [s.slug for lista in situacoes.values() for s in lista])
+
+    seccoes_fechadas = amostra.seccoes_bloqueadas(user, curso) or set()
+    unidades_fechadas = {}
 
     aulas_por_seccao = {}
     for aula in aulas:
@@ -145,28 +162,40 @@ def percurso(user, curso):
                     'minutos': extras.get('minutos_sugeridos') or s.duracao_min,
                     'situacao': s.slug, 'tipo_conversa': s.tipo_conversa,
                 })
+            seccao_fechada = seccao.id in seccoes_fechadas
             for i, passo in enumerate(passos):
                 passo['chave'] = f"{aula.id}:{passo['tipo']}:{passo.get('situacao') or i}"
                 passo['aula_id'] = str(aula.id)
                 passo['unidade'] = seccao.sectionTitle
+                passo['bloqueado'] = seccao_fechada or (
+                    passo['tipo'] == PRATICA and _licao_fechada(user, licao, unidades_fechadas))
             passos_todos.extend(passos)
-            itens.append({'id': str(aula.id), 'titulo': aula.title, 'passos': passos})
-        unidades.append({'id': str(seccao.id), 'titulo': seccao.sectionTitle, 'aulas': itens})
+            itens.append({'id': str(aula.id), 'titulo': aula.title, 'bloqueada': seccao_fechada, 'passos': passos})
+        unidades.append({'id': str(seccao.id), 'titulo': seccao.sectionTitle, 'bloqueada': seccao.id in seccoes_fechadas,
+                         'aulas': itens})
 
     proximo = None
+    plano_necessario = False
     for passo in passos_todos:
         if passo.pop('feito'):
             passo['estado'] = FEITO
-        elif proximo is None:
+        elif proximo is None and not passo['bloqueado']:
             passo['estado'] = ACTUAL
             proximo = passo
         else:
             passo['estado'] = POR_FAZER
+            if passo['bloqueado'] and proximo is None:
+                plano_necessario = True
     feitos = sum(1 for p in passos_todos if p['estado'] == FEITO)
     return {
         'curso': {'id': str(curso.id), 'titulo': curso.title},
+        # Unidades de amostra: 'total' | 'amostra' | None, e quantas (apps/courses/amostra.py).
+        'acesso': amostra.acesso(user, curso),
+        'unidades_amostra': amostra.unidades_amostra(curso),
         'unidades': unidades,
         'proximo': proximo,
+        # Só faltam passos fechados pelo plano (unidades de amostra): o "a seguir" é assinar um plano.
+        'plano_necessario': proximo is None and plano_necessario,
         'feitos': feitos,
         'total': len(passos_todos),
     }
@@ -182,8 +211,10 @@ def cursos_em_curso(user):
     agora = timezone.now()
     inscritos = CourseEnrollment.objects.filter(user=user, is_active=True).filter(
         Q(expires_at__isnull=True) | Q(expires_at__gt=agora)).values_list('course_id', flat=True)
+    # Com o plano do curso, ou num curso com unidades de amostra (apps/courses/amostra.py).
+    from apps.courses import amostra
     cursos = [c for c in Course.objects.filter(ciclo.q_conteudo_aluno(), course_type='video', id__in=list(inscritos))
-              if c.user_has_access(user)]
+              if amostra.pode_inscrever(user, c)]
     ultimos = dict(UserCourseProgress.objects.filter(user=user, course__in=cursos)
                    .values_list('course_id', 'lastAccessedTimestamp'))
     antigo = datetime.datetime.min.replace(tzinfo=datetime.timezone.utc)

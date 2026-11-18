@@ -267,7 +267,9 @@ def create_transaction(request):
     bloqueio = ciclo.bloqueio_inscricao(request.user, course)
     if bloqueio:
         return Response(corpo_erro(bloqueio[1], bloqueio[0]), status=bloqueio[2])
-    if not course.user_has_access(request.user):
+    # Sem o plano só nos cursos com unidades de amostra (apps/courses/amostra.py).
+    from apps.courses import amostra
+    if not amostra.pode_inscrever(request.user, course):
         return Response(corpo_erro('Não tem a subscrição necessária para este curso.', 'SUBSCRIPTION_REQUIRED'),
                         status=status.HTTP_403_FORBIDDEN)
     

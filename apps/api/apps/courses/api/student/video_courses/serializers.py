@@ -88,8 +88,12 @@ class ChapterSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         from .conteudo import CAMPOS_DE_CONTEUDO, quiz_sem_respostas
         dados = super().to_representation(instance)
-        # Quem não está inscrito vê só a estrutura do curso (títulos, tipos, ordem).
-        if self.context.get('so_estrutura'):
+        # Unidades de amostra (apps/courses/amostra.py): aula fora da amostra para quem não tem o plano.
+        dados['bloqueada'] = instance.section_id in self.context.get('seccoes_bloqueadas', ())
+        # Quem não está inscrito vê só a estrutura do curso (títulos, tipos, ordem); num curso com
+        # amostra, o conteúdo só vai nas aulas das secções da amostra.
+        if (self.context.get('so_estrutura')
+                and instance.section_id not in self.context.get('seccoes_com_conteudo', ())):
             for campo in CAMPOS_DE_CONTEUDO:
                 dados.pop(campo, None)
             dados.pop('comments', None)
@@ -158,6 +162,12 @@ class CourseSectionSerializer(serializers.ModelSerializer):
             many=True,
             context=context
         ).data
+
+    def to_representation(self, instance):
+        dados = super().to_representation(instance)
+        # Secção fora das unidades de amostra, para quem não tem o plano do curso.
+        dados['bloqueada'] = instance.id in self.context.get('seccoes_bloqueadas', ())
+        return dados
 
 
 class CourseSectionCreateSerializer(serializers.ModelSerializer):
@@ -263,12 +273,16 @@ class CourseDetailSerializer(serializers.ModelSerializer):
     is_free = serializers.ReadOnlyField()
     is_premium = serializers.ReadOnlyField()
     user_has_access = serializers.SerializerMethodField()
+    # Unidades de amostra (apps/courses/amostra.py): 'total' | 'amostra' | None, e quantas.
+    acesso = serializers.SerializerMethodField()
+    unidades_amostra = serializers.SerializerMethodField()
 
     class Meta:
         model = Course
         fields = [
             'courseId', 'title', 'description', 'category', 'image',
             'level', 'status', 'template', 'teacher', 'teacherId', 'teacherName',
+            'acesso', 'unidades_amostra',
             'sections', 'enrollments', 'total_sections', 'total_chapters',
             'total_enrollments', 'access_level', 'access_level_display',
             'is_free', 'is_premium', 'is_featured', 'user_has_access',
@@ -351,6 +365,15 @@ class CourseDetailSerializer(serializers.ModelSerializer):
             # For unauthenticated users, only free courses are accessible
             return obj.access_level == 'free'
         return obj.user_has_access(request.user)
+
+    def get_acesso(self, obj):
+        from apps.courses import amostra
+        request = self.context.get('request')
+        return amostra.acesso(getattr(request, 'user', None), obj, total=self.get_user_has_access(obj))
+
+    def get_unidades_amostra(self, obj):
+        from apps.courses import amostra
+        return amostra.unidades_amostra(obj)
 
     @classmethod
     def optimize_queryset(cls, queryset, include_sections=True, include_enrollments=True):
@@ -635,7 +658,8 @@ class TransactionCreateSerializer(serializers.ModelSerializer):
                 user = self.context['request'].user
 
                 # Check if user has subscription access for premium courses
-                if course.access_level != 'free' and not course.user_has_access(user):
+                from apps.courses import amostra
+                if course.access_level != 'free' and not amostra.pode_inscrever(user, course):
                     access_messages = {
                         'premium': 'Este curso requer um plano Premium ou superior.',
                         'premium_plus': 'Este curso é exclusivo para assinantes Premium Plus.',

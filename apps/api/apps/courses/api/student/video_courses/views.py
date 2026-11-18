@@ -5,6 +5,8 @@ This module contains all API views for student video course-related operations,
 maintaining the same endpoints and response format as the Express API.
 """
 
+import uuid
+
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from rest_framework import generics, status, permissions
@@ -41,7 +43,7 @@ class EnrollmentRequiredMixin:
             ...
     """
 
-    def check_enrollment(self, course):
+    def check_enrollment(self, course, chapter=None, parcial=False):
         """
         Check if the current user is enrolled in the course and has proper subscription.
 
@@ -49,6 +51,9 @@ class EnrollmentRequiredMixin:
 
         Args:
             course: The Course model instance
+            chapter: a aula pedida; sem o plano do curso, só abre se estiver numa unidade de
+                amostra (apps/courses/amostra.py). Fora da amostra: 403 plano_insuficiente.
+            parcial: o pedido é do curso (p.ex. o percurso) e basta ter parte dele (a amostra).
 
         Raises:
             PermissionDenied: If user is not enrolled or doesn't have proper subscription
@@ -89,6 +94,15 @@ class EnrollmentRequiredMixin:
         # SECURITY: Check subscription access for non-free courses
         # This is checked AFTER enrollment to prevent information leakage
         if not course.user_has_access(user):
+            # Unidades de amostra: sem o plano, só as aulas das primeiras unidades.
+            from apps.courses import amostra
+            if amostra.unidades_amostra(course) > 0:
+                if chapter is not None:
+                    if chapter.section_id in amostra.ids_seccoes_amostra(course):
+                        return
+                    raise amostra.PlanoNecessario()
+                if parcial:
+                    return
             access_messages = {
                 'premium': 'Este curso requer um plano Premium ou superior. A sua subscrição pode ter expirado.',
                 'premium_plus': 'Este curso é exclusivo para assinantes Premium Plus.',
@@ -118,9 +132,14 @@ class EstadoCursoMixin:
         from apps.courses import ciclo as _ciclo
         if course.status == _ciclo.PUBLICADO:
             return
-        from .conteudo import pode_ver_conteudo
-        if not pode_ver_conteudo(self.request.user, course):
+        from .conteudo import pode_ver_parte
+        if not pode_ver_parte(self.request.user, course):
             raise NotFound('Curso não encontrado.')
+
+    def contexto_amostra(self, course):
+        """Secções com conteúdo / bloqueadas num curso com unidades de amostra (conteudo.contexto_seccoes)."""
+        from .conteudo import contexto_seccoes
+        return contexto_seccoes(self.request.user, course)
 
 
 class SubscriptionAccessMixin(EstadoCursoMixin):
@@ -163,6 +182,11 @@ class SubscriptionAccessMixin(EstadoCursoMixin):
 
         # Check subscription access
         if not course.user_has_access(user):
+            # Curso com unidades de amostra: a estrutura vê-se; o conteúdo só nas aulas da amostra
+            # (contexto_amostra nos serializers, check_enrollment com a aula).
+            from apps.courses import amostra
+            if amostra.unidades_amostra(course) > 0:
+                return True
             access_messages = {
                 'premium': 'Este curso requer um plano Premium ou superior.',
                 'premium_plus': 'Este curso é exclusivo para assinantes Premium Plus.',
@@ -332,8 +356,8 @@ class CourseDetailView(generics.RetrieveAPIView):
         instance = self.get_object()
         user = request.user
         if instance.status != ciclo.PUBLICADO:
-            from .conteudo import pode_ver_conteudo
-            if not pode_ver_conteudo(user, instance):
+            from .conteudo import pode_ver_parte
+            if not pode_ver_parte(user, instance):
                 from rest_framework.exceptions import NotFound
                 raise NotFound("Curso não encontrado ou não está publicado")
 
@@ -353,7 +377,10 @@ class CourseDetailView(generics.RetrieveAPIView):
         include_comments = request.query_params.get('include_chapter_comments', 'false').lower() == 'true'
 
         # SECURITY: Limit content for users without subscription access
-        if not user_has_access and instance.access_level != 'free':
+        # (num curso com unidades de amostra a estrutura das aulas vê-se: o conteúdo só nas da amostra)
+        from apps.courses import amostra
+        n_amostra = amostra.unidades_amostra(instance)
+        if not user_has_access and instance.access_level != 'free' and n_amostra == 0:
             # Show only basic course info and section titles (no chapters)
             include_chapters = False
             include_comments = False
@@ -387,8 +414,9 @@ class CourseDetailView(generics.RetrieveAPIView):
         context['include_chapters'] = include_chapters
         context['include_chapter_comments'] = include_comments
         context['user_has_subscription_access'] = user_has_access
-        from .conteudo import pode_ver_conteudo
+        from .conteudo import contexto_seccoes, pode_ver_conteudo
         context['so_estrutura'] = not pode_ver_conteudo(user, instance)
+        context.update(contexto_seccoes(user, instance))
 
         serializer = self.get_serializer(instance, context=context)
 
@@ -400,7 +428,10 @@ class CourseDetailView(generics.RetrieveAPIView):
                 'has_access': user_has_access,
                 'access_level': instance.access_level,
                 'access_level_display': instance.access_level_display,
-                'content_limited': not user_has_access and instance.access_level != 'free'
+                'content_limited': not user_has_access and instance.access_level != 'free',
+                # Unidades de amostra: 'total' | 'amostra' | None (apps/courses/amostra.py).
+                'acesso': amostra.acesso(user, instance, total=user_has_access),
+                'unidades_amostra': n_amostra,
             }
         }
 
@@ -428,7 +459,9 @@ def create_transaction(request):
         try:
             course = Course.objects.get(id=course_id)
             # Check if user has subscription access for non-free courses
-            if not course.user_has_access(request.user):
+            # (ou o curso tem unidades de amostra: inscreve-se e abre só essas).
+            from apps.courses import amostra
+            if not amostra.pode_inscrever(request.user, course):
                 access_messages = {
                     'premium': 'Este curso requer um plano Premium ou superior.',
                     'premium_plus': 'Este curso é exclusivo para assinantes Premium Plus.',
@@ -632,6 +665,30 @@ def _marcar_vista(progresso, capitulo):
     return True
 
 
+def _exigir_aulas_da_amostra(dados, course):
+    """
+    Sem o plano do curso: todas as aulas do pedido (chapter_id e sections[].chapters[]) têm de
+    estar nas secções da amostra; senão 403 plano_insuficiente e nada é gravado.
+    """
+    from apps.courses import amostra
+    ids = [dados.get('chapter_id')] if dados.get('chapter_id') else []
+    seccoes = dados.get('sections') if isinstance(dados.get('sections'), list) else []
+    ids += [c.get('chapterId') for sec in seccoes if isinstance(sec, dict)
+            for c in (sec.get('chapters') or []) if isinstance(c, dict) and c.get('chapterId')]
+    if not ids:
+        return
+    abertas = amostra.ids_seccoes_amostra(course)
+    validos = []
+    for i in ids:
+        try:
+            validos.append(uuid.UUID(str(i)))
+        except (ValueError, TypeError, AttributeError):
+            continue  # ids inválidos são ignorados mais à frente, como antes
+    fora = Chapter.objects.filter(id__in=validos, section__course=course).exclude(section_id__in=abertas)
+    if fora.exists():
+        raise amostra.PlanoNecessario()
+
+
 @api_view(['PUT'])
 @permission_classes([permissions.IsAuthenticated])
 def update_user_course_progress(request, userId, courseId):
@@ -657,12 +714,17 @@ def update_user_course_progress(request, userId, courseId):
     except UserCourseProgress.DoesNotExist:
         progress = None
 
-    # Só regista progresso quem está inscrito e tem o plano do curso (antes qualquer aluno podia).
-    if not course.user_has_access(user):
+    # Só regista progresso quem está inscrito e tem o plano do curso (antes qualquer aluno podia),
+    # ou, num curso com unidades de amostra, nas aulas da amostra (apps/courses/amostra.py).
+    from apps.courses import amostra
+    total = course.user_has_access(user)
+    if not total and amostra.unidades_amostra(course) <= 0:
         raise PermissionDenied('Não tem a subscrição necessária para este curso.')
-    from .conteudo import pode_ver_conteudo
-    if not pode_ver_conteudo(user, course):
+    from .conteudo import pode_ver_parte
+    if not pode_ver_parte(user, course):
         raise PermissionDenied('Precisa de estar inscrito neste curso para registar progresso.')
+    if not total:
+        _exigir_aulas_da_amostra(request.data, course)
 
     if progress is None:
         # Create progress if it doesn't exist
@@ -781,8 +843,16 @@ class CourseSectionListView(SubscriptionAccessMixin, generics.ListAPIView):
         # SECURITY: Check subscription access
         self.check_subscription_access(course)
         self.check_estado_curso(course)
+        self._curso = course
 
         return super().list(request, *args, **kwargs)
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        curso = getattr(self, '_curso', None)
+        if curso is not None:
+            context.update(self.contexto_amostra(curso))
+        return context
 
 
 class CourseSectionDetailView(SubscriptionAccessMixin, generics.RetrieveAPIView):
@@ -811,7 +881,9 @@ class CourseSectionDetailView(SubscriptionAccessMixin, generics.RetrieveAPIView)
         self.check_subscription_access(course)
         self.check_estado_curso(course)
 
-        serializer = self.get_serializer(instance)
+        context = self.get_serializer_context()
+        context.update(self.contexto_amostra(course))
+        serializer = self.get_serializer_class()(instance, context=context)
         return Response(serializer.data)
 
 
@@ -862,6 +934,8 @@ class ChapterListView(SubscriptionAccessMixin, generics.ListAPIView):
         context = super().get_serializer_context()
         curso = getattr(self, '_curso', None)
         context['so_estrutura'] = curso is None or not pode_ver_conteudo(self.request.user, curso)
+        if curso is not None:
+            context.update(self.contexto_amostra(curso))
         return context
 
 
@@ -886,7 +960,7 @@ class ChapterDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIView):
         """Override to check enrollment before returning object."""
         obj = super().get_object()
         course = self.get_course_from_chapter(obj)
-        self.check_enrollment(course)
+        self.check_enrollment(course, chapter=obj)
         # Hora a que o aluno abriu a aula: o tempo de vídeo creditado não passa do tempo real
         # desde aqui (apps.courses.tempo_video).
         if course.teacher_id != self.request.user.id:
@@ -917,7 +991,7 @@ class ChapterCommentListCreateView(EnrollmentRequiredMixin, generics.ListCreateA
                 Chapter.objects.filter(ciclo.q_aula_visivel()).select_related('section__course'),
                 id=self.kwargs['chapterId']
             )
-            self.check_enrollment(self.get_course_from_chapter(chapter))
+            self.check_enrollment(self.get_course_from_chapter(chapter), chapter=chapter)
             self._cached_chapter = chapter
         return self._cached_chapter
 
@@ -971,7 +1045,7 @@ class ChapterResourceListView(EnrollmentRequiredMixin, generics.ListAPIView):
         if queryset.exists():
             first_resource = queryset.first()
             course = self.get_course_from_resource(first_resource)
-            self.check_enrollment(course)
+            self.check_enrollment(course, chapter=first_resource.chapter)
 
         serializer = self.get_serializer(queryset, many=True)
 
@@ -1006,7 +1080,7 @@ class ChapterResourceDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIVie
         """Override to check enrollment before returning object."""
         obj = super().get_object()
         course = self.get_course_from_resource(obj)
-        self.check_enrollment(course)
+        self.check_enrollment(course, chapter=obj.chapter)
         return obj
 
     def retrieve(self, request, *args, **kwargs):
@@ -1058,7 +1132,7 @@ class ChapterQuizListView(EnrollmentRequiredMixin, generics.ListAPIView):
 
         # Check enrollment
         course = self.get_course_from_quiz(quiz)
-        self.check_enrollment(course)
+        self.check_enrollment(course, chapter=quiz.chapter)
 
         serializer = self.get_serializer(quiz)
 
@@ -1094,7 +1168,7 @@ class ChapterQuizDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIView):
         """Override to check enrollment before returning object."""
         obj = super().get_object()
         course = self.get_course_from_quiz(obj)
-        self.check_enrollment(course)
+        self.check_enrollment(course, chapter=obj.chapter)
         return obj
 
     def retrieve(self, request, *args, **kwargs):
@@ -1161,7 +1235,7 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
         if chapter_quiz is None:
             from rest_framework.exceptions import NotFound
             raise NotFound('Este capítulo não tem questionário.')
-        self.check_enrollment(self.get_course_from_quiz(chapter_quiz))
+        self.check_enrollment(self.get_course_from_quiz(chapter_quiz), chapter=chapter_quiz.chapter)
 
         # Check if quiz is active
         if not chapter_quiz.is_active:
@@ -1190,7 +1264,7 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
         if chapter_quiz is not None:
             curso = self.get_course_from_quiz(chapter_quiz)
             if curso.teacher_id != request.user.id:
-                self.check_enrollment(curso)
+                self.check_enrollment(curso, chapter=chapter_quiz.chapter)
         queryset = list(self.filter_queryset(self.get_queryset()))
         serializer = self.get_serializer(queryset, many=True)
         dados = [dict(d) for d in serializer.data]
@@ -1281,11 +1355,15 @@ def get_student_quiz_summary(request, chapterId):
     Só para quem pode ver o conteúdo do curso (inscrito com o plano certo, o professor do
     curso ou administrador). `revela_respostas` diz se a correcção traz as opções certas.
     """
-    from .conteudo import pode_ver_conteudo, correccao_para_aluno, pode_revelar_respostas
+    from .conteudo import pode_ver_aula, correccao_para_aluno, pode_revelar_respostas
 
     chapter = get_object_or_404(Chapter.objects.filter(ciclo.q_aula_visivel()).select_related('section__course'),
                                 id=chapterId)
-    if not pode_ver_conteudo(request.user, chapter.section.course):
+    if not pode_ver_aula(request.user, chapter):
+        from apps.courses import amostra
+        if (amostra.unidades_amostra(chapter.section.course) > 0
+                and not amostra.aula_aberta(request.user, chapter)):
+            raise amostra.PlanoNecessario()
         return Response({'error': 'Precisa de estar inscrito neste curso para ver o questionário.'},
                         status=status.HTTP_403_FORBIDDEN)
     try:
@@ -1379,6 +1457,8 @@ def check_course_enrollment_status(request, courseId):
 
     # Check subscription access
     has_access = course.user_has_access(request.user)
+    from apps.courses import amostra
+    n_amostra = amostra.unidades_amostra(course)
 
     # Get enrollment details if enrolled
     enrollment_data = None
@@ -1395,7 +1475,8 @@ def check_course_enrollment_status(request, courseId):
 
     # Determine if user can enroll (needs proper subscription for non-free courses)
     bloqueio_inscricao = ciclo.bloqueio_inscricao(request.user, course)
-    can_enroll = has_access and not is_enrolled and bloqueio_inscricao is None
+    # Num curso com unidades de amostra também se pode inscrever sem o plano (abre só essas).
+    can_enroll = (has_access or n_amostra > 0) and not is_enrolled and bloqueio_inscricao is None
 
     # Get subscription info for premium courses
     subscription_info = None
@@ -1418,6 +1499,9 @@ def check_course_enrollment_status(request, courseId):
             'access_level_display': course.access_level_display,
             'is_free': course.is_free,
             'is_premium': course.is_premium,
+            # Unidades de amostra: 'total' | 'amostra' | None (apps/courses/amostra.py).
+            'acesso': amostra.acesso(request.user, course, total=has_access),
+            'unidades_amostra': n_amostra,
             'enrollment_details': enrollment_data,
             'subscription_info': subscription_info,
             'estado': ciclo.estado(course),

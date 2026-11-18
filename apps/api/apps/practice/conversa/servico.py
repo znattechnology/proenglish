@@ -90,6 +90,11 @@ def validar_pedido(data, user=None, situacao=None):
             situacao = obter_situacao(slug)
         else:
             obj = situacoes_visiveis(user).filter(slug=slug).first()
+            # Situação ligada a uma aula fora das unidades de amostra (apps/courses/amostra.py):
+            # sem o plano do curso não começa.
+            from apps.courses import amostra
+            if obj is not None and amostra.situacao_bloqueada(user, obj):
+                raise ErroConversa(403, amostra.CODIGO_PLANO, amostra.MENSAGEM_PLANO)
             situacao = situacao_dict(obj) if obj else None
     if not situacao:
         erros['situacao'] = 'Escolha uma situação válida.'
@@ -917,7 +922,9 @@ def _perfil_da_sessao(sessao, dados):
 
 def preparar(user):
     from .situacoes import AREAS, preferencias_padrao
+    from apps.courses import amostra
     situacoes, dicts = [], []
+    fechadas = {}
     for obj in situacoes_visiveis(user):
         s = situacao_dict(obj)
         item = {k: s[k] for k in ('id', 'titulo', 'minutos_sugeridos', 'area')}
@@ -933,6 +940,8 @@ def preparar(user):
         item['aula'] = ({'id': str(obj.aula_id), 'titulo': obj.aula.title, 'unidade': obj.aula.section.sectionTitle}
                         if obj.aula_id else None)
         item['tipo_conversa'] = obj.tipo_conversa or None
+        # Ligada a uma aula fora das unidades de amostra: não começa sem o plano do curso.
+        item['bloqueada'] = amostra.situacao_bloqueada(user, obj, fechadas)
         situacoes.append(item)
         dicts.append(s)
     preferencias = preferencias_padrao(user)

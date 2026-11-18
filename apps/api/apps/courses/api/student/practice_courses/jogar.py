@@ -205,19 +205,31 @@ def trilho_curso(request, course_id):
         return Response({"codigo": bloqueio[0], "mensagem": bloqueio[1]}, status=403)
     # A mesma regra que bloqueia jogar/ e challenge-progress/ (apps.practice.acesso_licoes).
     licoes = acesso_licoes.estados_das_licoes(request.user, curso)
-    unidades = {u.id: {"id": str(u.id), "titulo": u.title, "descricao": u.description, "ordem": u.order, "licoes": []}
+    # Unidades de amostra (apps/courses/amostra.py): sem o plano, as outras unidades vêm fechadas
+    # (bloqueada_plano) e nenhuma lição delas é a "actual".
+    from apps.courses import amostra
+    total_acesso = acesso_licoes._sem_restricoes(request.user, curso) or amostra.acesso_total(request.user, curso)
+    fechadas = amostra.unidades_pratica_bloqueadas(request.user, curso, total=total_acesso) or set()
+    unidades = {u.id: {"id": str(u.id), "titulo": u.title, "descricao": u.description, "ordem": u.order,
+                       "bloqueada": u.id in fechadas, "licoes": []}
                 for u in PracticeUnit.objects.filter(course=curso).order_by("order")}
     feitas = 0
     for l, estado in licoes:
         if estado == "feita":
             feitas += 1
+        bloqueada_plano = l.unit_id in fechadas
+        if bloqueada_plano and estado == "actual":
+            estado = "bloqueada"
         unidades[l.unit_id]["licoes"].append(
             {"id": str(l.id), "titulo": l.title, "ordem": l.order, "estado": estado,
+             "bloqueada_plano": bloqueada_plano,
              "exercicios": l.total, "exercicios_feitos": min(l.feitos, l.total)}
         )
     total = len(licoes)
     return Response({
-        "curso": {"id": str(curso.id), "titulo": curso.title, "categoria": curso.category, "nivel": curso.level},
+        "curso": {"id": str(curso.id), "titulo": curso.title, "categoria": curso.category, "nivel": curso.level,
+                  "acesso": amostra.acesso(request.user, curso, total=total_acesso),
+                  "unidades_amostra": amostra.unidades_amostra(curso)},
         "licoes_feitas": feitas,
         "licoes_total": total,
         "percentagem": round(100 * feitas / total) if total else 0,

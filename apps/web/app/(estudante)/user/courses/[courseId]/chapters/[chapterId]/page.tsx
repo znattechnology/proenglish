@@ -28,6 +28,7 @@ import {
   videosVistos,
   type CapituloNoCurso,
 } from "@/src/domains/student/curso/api";
+import { ROTA_PLANOS, TEXTO_PLANOS_PAGOS } from "@/components/pe/curso/Amostra";
 
 type Linha = { start: number; end: number; text: string };
 
@@ -36,20 +37,40 @@ export default function PaginaAula() {
   const { user } = useDjangoAuth();
   const { data: dados, isError: erroCurso } = useCursoQuery(courseId);
   const { data: inscricao } = useInscricaoQuery(courseId);
-  const podeVer = !!inscricao?.is_enrolled && !!dados?.temAcesso;
-  const { data: cap, isError: erroCap, refetch } = useCapituloQuery(chapterId, { skip: !podeVer });
-  const { data: progresso } = useProgressoQuery({ userId: user?.id ?? "", courseId }, { skip: !user || !podeVer });
-
   const lista = useMemo(() => (dados ? capitulosPorOrdem(dados.curso) : []), [dados]);
   const i = lista.findIndex((c) => c.chapterId === chapterId);
   const aqui = lista[i];
+  // Unidades de amostra: sem o plano, só as aulas que a API não marca como bloqueadas.
+  const amostra = !dados?.temAcesso && dados?.acesso === "amostra";
+  const podeVer = !!inscricao?.is_enrolled && (!!dados?.temAcesso || (amostra && !!aqui && !aqui.bloqueada));
+  const { data: cap, isError: erroCap, refetch } = useCapituloQuery(chapterId, { skip: !podeVer });
+  const { data: progresso } = useProgressoQuery({ userId: user?.id ?? "", courseId }, { skip: !user || !podeVer });
+
   const anterior = i > 0 ? lista[i - 1] : null;
-  const seguinte = i >= 0 && i < lista.length - 1 ? lista[i + 1] : null;
+  const seguinte = i >= 0 && i < lista.length - 1 && !lista[i + 1].bloqueada ? lista[i + 1] : null;
   const feitos = concluidos(progresso);
   const vistos = videosVistos(progresso);
 
   if (erroCurso) return <Problema titulo="Não encontrámos este curso" courseId={courseId} />;
   if (!dados || !inscricao) return <EsqueletoAula />;
+  if (!podeVer && inscricao.is_enrolled && amostra && aqui?.bloqueada) {
+    return (
+      <main className="mx-auto flex w-full max-w-[720px] flex-col items-start gap-4 px-5 py-10">
+        <h1 className="m-0 text-pe-titulo-m">{TEXTO_PLANOS_PAGOS}</h1>
+        <p className="m-0 text-pe-tinta-suave">
+          {aqui.title}, {aqui.seccao}. As primeiras unidades de {dados.curso.title} são gratuitas; esta faz parte dos planos pagos.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Botao asChild tipo="realce">
+            <Link href={ROTA_PLANOS}>Ver os planos</Link>
+          </Botao>
+          <Botao asChild tipo="secundario">
+            <Link href={`/user/courses/${courseId}`}>Voltar ao curso</Link>
+          </Botao>
+        </div>
+      </main>
+    );
+  }
   if (!podeVer) {
     return (
       <main className="mx-auto flex w-full max-w-[720px] flex-col items-start gap-4 px-5 py-10">

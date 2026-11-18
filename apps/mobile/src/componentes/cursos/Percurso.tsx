@@ -4,11 +4,12 @@
  * O servidor decide a ordem e o que está feito; aqui só se mostra.
  */
 import { router } from "expo-router";
-import { Check, Dumbbell, ListChecks, Mic, Play } from "lucide-react-native";
+import { Check, Dumbbell, ListChecks, Lock, Mic, Play } from "lucide-react-native";
 import { Pressable, View, type StyleProp, type ViewStyle } from "react-native";
 import { accaoDoPasso, nomeDoPasso, rotaDoPasso, type Passo, type ProximoPasso, type TipoPasso } from "@/dominios/cursos/api";
 import { Botao, Texto } from "@/ui";
 import { cor, raio } from "@/tema";
+import { DisponivelNosPlanos, TEXTO_PLANOS_PAGOS } from "@/componentes/cursos/Amostra";
 
 const ICONE: Record<TipoPasso, typeof Mic> = { aula: Play, questionario: ListChecks, pratica: Dumbbell, conversa: Mic };
 
@@ -28,6 +29,23 @@ export function PassosDaAula({ courseId, passos }: { courseId: string; passos: P
         const actual = p.estado === "actual";
         const nome = nomeDoPasso(p);
         const duracao = duracaoDoPasso(p);
+        if (p.bloqueado && !feito) {
+          // Fora das unidades de amostra: sem ligação para o passo, só para os planos.
+          return (
+            <View key={p.chave} style={{ gap: 2, paddingVertical: 4, borderBottomWidth: 1, borderColor: cor.fundoForte }}>
+              <View accessible accessibilityLabel={`${nome}${p.tipo === "questionario" ? "" : `: ${p.titulo}`}, ${TEXTO_PLANOS_PAGOS.toLowerCase()}`} style={{ flexDirection: "row", alignItems: "center", gap: 10, minHeight: 40 }}>
+                <View style={{ width: 24, height: 24, borderRadius: 12, alignItems: "center", justifyContent: "center", backgroundColor: cor.fundoForte }}>
+                  <Lock size={13} color={cor.tintaSuave} />
+                </View>
+                <Texto numberOfLines={2} suave style={{ flex: 1, fontSize: 14, lineHeight: 20 }}>
+                  {nome}
+                  {p.tipo === "questionario" ? "" : `: ${p.titulo}`}
+                </Texto>
+              </View>
+              <DisponivelNosPlanos style={{ marginLeft: 34 }} />
+            </View>
+          );
+        }
         return (
           <Pressable
             key={p.chave}

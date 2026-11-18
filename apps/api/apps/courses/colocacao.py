@@ -179,7 +179,7 @@ def colocar(user, escolhido):
     """Aplica a colocação: guarda o nível e inscreve no curso geral desse nível. Devolve o resultado."""
     from django.contrib.auth import get_user_model
 
-    from apps.courses import ciclo
+    from apps.courses import amostra, ciclo
     from apps.courses.matriculas import matricular_em_curso
     from apps.practice.models import UserProgress
 
@@ -197,7 +197,8 @@ def colocar(user, escolhido):
         curso = curso_geral(final)
         inscrito, motivo, pratica = False, None, None
         if curso is not None:
-            if not curso.user_has_access(user):
+            # Sem o plano, só num curso com unidades de amostra (apps/courses/amostra.py).
+            if not amostra.pode_inscrever(user, curso):
                 motivo = 'plano'
             elif (bloqueio := ciclo.bloqueio_inscricao(user, curso)) is not None:
                 motivo = bloqueio[0]

@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen, Check, ClipboardCheck, Dumbbell, Mic } from "lucide-react";
+import { BookOpen, Check, ClipboardCheck, Dumbbell, Lock, Mic } from "lucide-react";
 import { cnPe } from "@/lib/pe";
 import { Botao } from "@/components/pe";
+import { DisponivelNosPlanos } from "@/components/pe/curso/Amostra";
 import { hrefDoPasso, nomeDoPasso, type Passo, type ProximoPasso, type TipoPasso } from "@/src/domains/student/curso/api";
 
 const ICONE: Record<TipoPasso, React.ReactNode> = {
@@ -31,6 +32,21 @@ export function PassosDaAula({ courseId, passos }: { courseId: string; passos: P
         const feito = p.estado === "feito";
         const actual = p.estado === "actual";
         const duracao = duracaoDoPasso(p);
+        if (p.bloqueado && !feito) {
+          // Fora das unidades de amostra: sem ligação para o passo, só para os planos.
+          return (
+            <li key={p.chave} className="flex min-h-12 flex-wrap items-center gap-x-3 border-b border-pe-fundo-forte py-1 text-[15px] text-pe-tinta-suave">
+              <span aria-hidden className="flex size-6 shrink-0 items-center justify-center rounded-full bg-pe-fundo-forte [&>svg]:size-3.5">
+                <Lock />
+              </span>
+              <span className="min-w-0 flex-1">
+                {nomeDoPasso(p)}
+                {p.tipo !== "questionario" ? <span>: {p.titulo}</span> : null}
+              </span>
+              <DisponivelNosPlanos />
+            </li>
+          );
+        }
         return (
           <li key={p.chave}>
             <Link

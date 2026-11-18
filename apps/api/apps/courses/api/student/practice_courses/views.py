@@ -149,7 +149,7 @@ class CoursesListView(generics.ListAPIView):
         # Check if user is authenticated for progress calculation
         user = request.user if request.user.is_authenticated else None
 
-        from apps.courses import teste_basico
+        from apps.courses import amostra, teste_basico
         from apps.courses.ciclo import bloqueio_requisito_pratica
 
         for course in courses:
@@ -166,6 +166,10 @@ class CoursesListView(generics.ListAPIView):
                 # Curso de sector; e se esta pessoa ainda precisa do nível básico para o começar.
                 'de_sector': teste_basico.curso_de_sector(course),
                 'requisito_basico': bool(user) and bloqueio_requisito_pratica(user, course) is not None,
+                # Unidades de amostra (apps/courses/amostra.py): 'total' | 'amostra' | None.
+                'access_level': course.access_level,
+                'acesso': amostra.acesso(user, course),
+                'unidades_amostra': amostra.unidades_amostra(course),
             }
 
             # Add statistics if requested for student course selection
@@ -265,9 +269,12 @@ class CourseUnitsView(generics.ListAPIView):
     def get_serializer_context(self):
         # Só a estrutura (sem enunciados nem opções) e sem as lições ainda incompletas.
         from apps.practice.acesso_licoes import ids_escondidas
+        from apps.courses import amostra
         context = super().get_serializer_context()
         curso = getattr(self, '_curso', None)
         context['licoes_escondidas'] = ids_escondidas(curso) if curso is not None else set()
+        context['unidades_bloqueadas'] = (
+            (amostra.unidades_pratica_bloqueadas(self.request.user, curso) or set()) if curso is not None else set())
         return context
 
 
@@ -1753,14 +1760,19 @@ def get_units_with_progress(request, course_id):
 
     # O aluno recebe só a estrutura e o progresso (sem enunciados, opções nem respostas) e não vê
     # as lições ainda incompletas; o ecrã da lição usa lessons/<id>/jogar/.
+    from apps.courses import amostra
     from apps.practice.acesso_licoes import ids_escondidas
     serializer_class = PracticeUnitProfessorSerializer if dono else PracticeUnitSerializer
+    total = dono or amostra.acesso_total(request.user, course)
     units_serializer = serializer_class(
         units,
         many=True,
         context={'request': request, 'mostrar_respostas': dono,
-                 'licoes_escondidas': set() if dono else ids_escondidas(course)}
+                 'licoes_escondidas': set() if dono else ids_escondidas(course),
+                 'unidades_bloqueadas': amostra.unidades_pratica_bloqueadas(request.user, course, total=total) or set()}
     )
+    course_data['acesso'] = amostra.acesso(request.user, course, total=total)
+    course_data['unidades_amostra'] = amostra.unidades_amostra(course)
 
     return Response({
         'course': course_data,

@@ -44,7 +44,7 @@ class _BaseAula(EnrollmentRequiredMixin, APIView):
             Chapter.objects.filter(ciclo.q_conteudo_aluno('section__course__'), ciclo.q_aula_visivel(),
                                    section__course__course_type='video').select_related('section__course'),
             id=self.kwargs['chapterId'])
-        self.check_enrollment(self.get_course_from_chapter(chapter))
+        self.check_enrollment(self.get_course_from_chapter(chapter), chapter=chapter)
         return chapter
 
 

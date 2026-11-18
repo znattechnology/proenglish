@@ -8,7 +8,8 @@ A mesma regra que o trilho (GET .../courses/<id>/trilho/) mostra:
   em vídeo em que o aluno está inscrito (ligada_a_aula_do_aluno).
 O curso tem de estar publicado (ou arquivado a manter, para quem já o fazia; ver
 apps/courses/ciclo.py), e o professor pode desligar a repetição (definição pode_repetir).
-E o plano tem de dar acesso ao curso (Course.access_level: free / premium / premium_plus).
+E o plano tem de dar acesso ao curso (Course.access_level: free / premium / premium_plus), salvo
+nas unidades de amostra de um curso pago (apps/courses/amostra.py).
 
 O professor do curso e os administradores não têm restrições.
 
@@ -145,10 +146,15 @@ def erro_acesso_licao(user, licao):
     if requisito:
         return {'codigo': requisito[0], 'mensagem': requisito[1], 'teste': '/user/teste-basico'}
     if not curso.user_has_access(user):
-        return {
-            'codigo': CODIGO_PLANO,
-            'mensagem': MENSAGENS_PLANO.get(curso.access_level, 'O seu plano não dá acesso a este curso.'),
-        }
+        # Unidades de amostra (apps/courses/amostra.py): sem o plano, só as lições dessas unidades.
+        from apps.courses import amostra
+        if amostra.unidades_amostra(curso) <= 0:
+            return {
+                'codigo': CODIGO_PLANO,
+                'mensagem': MENSAGENS_PLANO.get(curso.access_level, 'O seu plano não dá acesso a este curso.'),
+            }
+        if licao.unit_id not in amostra.ids_unidades_pratica_amostra(curso):
+            return {'codigo': CODIGO_PLANO, 'mensagem': amostra.MENSAGEM_PLANO}
     for outra, estado in estados_das_licoes(user, curso):
         if outra.id == licao.id:
             if estado == 'bloqueada' and not ligada_a_aula_do_aluno(user, licao):

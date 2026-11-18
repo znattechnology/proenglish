@@ -26,7 +26,8 @@ class PercursoDoCurso(EnrollmentRequiredMixin, APIView):
     def get(self, request, courseId):
         course = get_object_or_404(Course.objects.filter(ciclo.q_conteudo_aluno(), course_type='video'),
                                    id=courseId)
-        self.check_enrollment(course)
+        # parcial: num curso com unidades de amostra basta a amostra (os passos fechados vêm marcados).
+        self.check_enrollment(course, parcial=True)
         return Response(percurso.percurso(request.user, course))
 
 

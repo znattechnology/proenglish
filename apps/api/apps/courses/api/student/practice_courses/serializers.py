@@ -184,6 +184,12 @@ class PracticeUnitSerializer(serializers.ModelSerializer):
         licoes = [l for l in obj.lessons.all() if l.id not in escondidas]
         return PracticeLessonSerializer(licoes, many=True, context=self.context).data
 
+    def to_representation(self, instance):
+        dados = super().to_representation(instance)
+        # Unidade fora das unidades de amostra, para quem não tem o plano (apps/courses/amostra.py).
+        dados['bloqueada'] = instance.id in (self.context.get('unidades_bloqueadas') or ())
+        return dados
+
 
 class ChallengeOptionProfessorSerializer(serializers.ModelSerializer):
     """Opção com a resposta certa, para o professor dono do curso. Não muda de exercício."""

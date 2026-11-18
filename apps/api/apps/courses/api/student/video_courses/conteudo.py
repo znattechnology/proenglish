@@ -2,7 +2,8 @@
 O que um estudante pode ver de um curso em vídeo, e correcção dos questionários no servidor.
 
 - O conteúdo dos capítulos (texto, vídeo, recursos, transcrição, questionário) só vai para
-  quem está inscrito e tem o plano certo (ou é o professor do curso, ou administrador).
+  quem está inscrito e tem o plano certo (ou é o professor do curso, ou administrador), ou para
+  quem está inscrito e a aula está numa unidade de amostra (apps/courses/amostra.py).
   Os outros vêem só a estrutura: títulos, tipos e ordem.
 - As respostas certas e as explicações dos questionários nunca saem para o browser antes
   de o estudante responder: a correcção é feita aqui.
@@ -30,11 +31,8 @@ def e_staff(user):
     return e_administrador(user)
 
 
-def pode_ver_conteudo(user, course):
-    if not user or not user.is_authenticated:
-        return False
-    if course.teacher_id == user.id or e_staff(user):
-        return True
+def _inscricao_valida(user, course):
+    """Inscrição activa e não expirada num curso aberto (sem olhar para o plano)."""
     # Estado do curso: rascunho/em revisão ou arquivado a fechar -> sem conteúdo.
     from apps.courses.ciclo import bloqueio_conteudo
     if bloqueio_conteudo(user, course):
@@ -45,7 +43,54 @@ def pode_ver_conteudo(user, course):
         return False
     if inscricao.expires_at and timezone.now() > inscricao.expires_at:
         return False
-    return course.user_has_access(user)
+    return True
+
+
+def pode_ver_conteudo(user, course):
+    """O curso todo: inscrito e com o plano do curso (ou professor do curso / administrador)."""
+    if not user or not user.is_authenticated:
+        return False
+    if course.teacher_id == user.id or e_staff(user):
+        return True
+    return _inscricao_valida(user, course) and course.user_has_access(user)
+
+
+def pode_ver_parte(user, course):
+    """
+    Pelo menos parte do curso: o curso todo, ou inscrito num curso com unidades de amostra
+    (apps/courses/amostra.py). Cada aula continua a passar por pode_ver_aula.
+    """
+    if pode_ver_conteudo(user, course):
+        return True
+    if not user or not user.is_authenticated:
+        return False
+    from apps.courses import amostra
+    return amostra.unidades_amostra(course) > 0 and _inscricao_valida(user, course)
+
+
+def pode_ver_aula(user, chapter):
+    """O conteúdo desta aula: o curso todo, ou inscrito e a aula está numa unidade da amostra."""
+    course = chapter.section.course
+    if pode_ver_conteudo(user, course):
+        return True
+    if not user or not user.is_authenticated:
+        return False
+    from apps.courses import amostra
+    return chapter.section_id in amostra.ids_seccoes_amostra(course) and _inscricao_valida(user, course)
+
+
+def contexto_seccoes(user, course):
+    """
+    Para os serializers de um curso com unidades de amostra, a quem não tem o plano do curso:
+    seccoes_com_conteudo (secções da amostra, só se inscrito) e seccoes_bloqueadas (as outras).
+    Vazio quando o curso não tem amostra ou a pessoa tem acesso total (fica tudo como antes).
+    """
+    from apps.courses import amostra
+    if amostra.unidades_amostra(course) <= 0 or amostra.acesso_total(user, course):
+        return {}
+    abertas = set(amostra.ids_seccoes_amostra(course)) if pode_ver_parte(user, course) else set()
+    return {'so_estrutura': True, 'seccoes_com_conteudo': abertas,
+            'seccoes_bloqueadas': amostra.seccoes_bloqueadas(user, course, total=False) or set()}
 
 
 def licao_pratica_aberta(chapter):

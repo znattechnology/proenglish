@@ -12,14 +12,15 @@ const P = "/student/practice-courses";
 /* ------------------------------------------------------------------ */
 export type EstadoLicao = "feita" | "actual" | "bloqueada";
 
-export type LicaoTrilho = { id: string; titulo: string; ordem: number; estado: EstadoLicao; exercicios: number; exercicios_feitos: number };
+export type LicaoTrilho = { id: string; titulo: string; ordem: number; estado: EstadoLicao; bloqueada_plano?: boolean; exercicios: number; exercicios_feitos: number };
 
 export type Trilho = {
-  curso: { id: string; titulo: string; categoria?: string; nivel?: string };
+  curso: { id: string; titulo: string; categoria?: string; nivel?: string; acesso?: "total" | "amostra" | null; unidades_amostra?: number };
   licoes_feitas: number;
   licoes_total: number;
   percentagem: number;
-  unidades: { id: string; titulo: string; descricao?: string; ordem: number; licoes: LicaoTrilho[] }[];
+  /** bloqueada: fora das unidades de amostra, para quem não tem o plano do curso. */
+  unidades: { id: string; titulo: string; descricao?: string; ordem: number; bloqueada?: boolean; licoes: LicaoTrilho[] }[];
 };
 
 export type Opcao = { id: string; texto: string; imagem: string | null; audio: string | null };

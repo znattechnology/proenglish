@@ -13,6 +13,7 @@ import { urlAbsoluto } from "@/api/config";
 import { mensagemErro } from "@/api/erros";
 import { RepetirEmVozAlta, UsarNumaConversa } from "@/componentes/cursos/FalaDaAula";
 import { ASeguir } from "@/componentes/cursos/Percurso";
+import { TEXTO_PLANOS_PAGOS } from "@/componentes/cursos/Amostra";
 import { SeparadoresCursos } from "@/componentes/cursos/Pecas";
 import { TextoRico } from "@/componentes/cursos/TextoRico";
 import { tocarDesde } from "@/componentes/cursos/leitor";
@@ -44,20 +45,37 @@ export default function PaginaAula() {
   const { utilizador } = useSessao();
   const curso = useCursoDetalheQuery(courseId);
   const inscricao = useInscricaoCursoQuery(courseId);
-  const podeVer = !!inscricao.data?.is_enrolled && !!curso.data?.temAcesso;
-  const cap = useCapituloCursoQuery(chapterId, { skip: !podeVer });
-  const progresso = useProgressoCursoQuery({ userId: utilizador?.id ?? "", courseId }, { skip: !utilizador || !podeVer });
-
   const lista = useMemo(() => (curso.data ? capitulosPorOrdem(curso.data.curso) : []), [curso.data]);
   const i = lista.findIndex((c) => c.chapterId === chapterId);
   const aqui = lista[i];
+  // Unidades de amostra: sem o plano, só as aulas que a API não marca como bloqueadas.
+  const amostra = !curso.data?.temAcesso && curso.data?.acesso === "amostra";
+  const podeVer = !!inscricao.data?.is_enrolled && (!!curso.data?.temAcesso || (amostra && !!aqui && !aqui.bloqueada));
+  const cap = useCapituloCursoQuery(chapterId, { skip: !podeVer });
+  const progresso = useProgressoCursoQuery({ userId: utilizador?.id ?? "", courseId }, { skip: !utilizador || !podeVer });
+
   const anterior = i > 0 ? lista[i - 1] : null;
-  const seguinte = i >= 0 && i < lista.length - 1 ? lista[i + 1] : null;
+  const seguinte = i >= 0 && i < lista.length - 1 && !lista[i + 1].bloqueada ? lista[i + 1] : null;
   const voltar = <Cabecalho subtitulo={aqui ? `Aula ${aqui.numero} de ${lista.length}` : undefined} linha={false} aoVoltar={() => (router.canGoBack() ? router.back() : router.replace(`/curso/${courseId}`))} />;
 
   if (curso.isError) return <Problema titulo="Não conseguimos abrir este curso" courseId={courseId} erro={curso.error} aoTentar={() => void curso.refetch()} />;
   if (inscricao.isError) return <Problema titulo="Não conseguimos abrir esta aula" courseId={courseId} erro={inscricao.error} aoTentar={() => void inscricao.refetch()} />;
   if (!curso.data || !inscricao.data) return <Esqueleto cabecalho={voltar} />;
+  if (!podeVer && inscricao.data.is_enrolled && amostra && aqui?.bloqueada) {
+    return (
+      <Ecra cabecalho={voltar}>
+        <EstadoVazio
+          titulo={TEXTO_PLANOS_PAGOS}
+          texto={`${aqui.title}, ${aqui.seccao}. As primeiras unidades de ${curso.data.curso.title} são gratuitas; esta faz parte dos planos pagos.`}
+          accao={
+            <Botao larguraTotal href="/planos">
+              Ver os planos
+            </Botao>
+          }
+        />
+      </Ecra>
+    );
+  }
   if (!podeVer) {
     return (
       <Ecra cabecalho={voltar}>

@@ -39,6 +39,7 @@ import { balao, cor, fonte, raio } from "@/tema";
 import { AvisoNivelBasico } from "@/componentes/cursos/NivelBasico";
 import { SeparadoresCursos } from "@/componentes/cursos/Pecas";
 import { duracaoDoPasso, PassosDaAula } from "@/componentes/cursos/Percurso";
+import { DisponivelNosPlanos, TEXTO_PLANOS_PAGOS } from "@/componentes/cursos/Amostra";
 import { CODIGO_REQUISITO_BASICO, faltaNivelBasico } from "@/dominios/cursos/testeBasico";
 
 export default function PaginaCurso() {
@@ -84,10 +85,12 @@ export default function PaginaCurso() {
     curso.refetch();
     inscricao.refetch();
   };
-  return inscricao.data.is_enrolled && curso.data.temAcesso ? (
+  // Num curso com unidades de amostra, quem não tem o plano também se inscreve e abre essas unidades.
+  const amostra = !curso.data.temAcesso && curso.data.acesso === "amostra";
+  return inscricao.data.is_enrolled && (curso.data.temAcesso || amostra) ? (
     <CursoInscrito curso={curso.data.curso} aoActualizar={actualizar} />
   ) : (
-    <CursoPorComecar curso={curso.data.curso} temAcesso={curso.data.temAcesso} pedeNivelBasico={inscricao.data?.codigo_sem_inscricao === CODIGO_REQUISITO_BASICO} aoActualizar={actualizar} />
+    <CursoPorComecar curso={curso.data.curso} temAcesso={curso.data.temAcesso} amostra={amostra ? curso.data.unidadesAmostra : 0} pedeNivelBasico={inscricao.data?.codigo_sem_inscricao === CODIGO_REQUISITO_BASICO} aoActualizar={actualizar} />
   );
 }
 
@@ -112,7 +115,9 @@ function CursoInscrito({ curso, aoActualizar }: { curso: Curso; aoActualizar: ()
   const [aActualizar, setAActualizar] = useState(false);
   const lista = capitulosPorOrdem(curso);
   const feitos = concluidos(progresso.data);
-  const seguinte = lista.find((c) => !feitos.has(c.chapterId));
+  // As aulas fora das unidades de amostra (bloqueada) nunca são a seguinte.
+  const seguinte = lista.find((c) => !feitos.has(c.chapterId) && !c.bloqueada);
+  const faltaPlano = !!percurso.data?.plano_necessario || (!seguinte && lista.some((c) => c.bloqueada && !feitos.has(c.chapterId)));
   const nFeitos = lista.filter((c) => feitos.has(c.chapterId)).length;
   const pct = lista.length ? Math.round((100 * nFeitos) / lista.length) : 0;
   const area = categoriaPt(curso.category);
@@ -163,6 +168,15 @@ function CursoInscrito({ curso, aoActualizar }: { curso: Curso; aoActualizar: ()
               {accaoDoPasso(proximo)}
             </Botao>
           </View>
+        ) : faltaPlano ? (
+          <View style={{ gap: 8 }}>
+            <Texto v="legenda" cor={cor.sobreMarca} style={{ fontSize: 15, lineHeight: 22 }}>
+              As unidades seguintes estão disponíveis nos planos pagos.
+            </Texto>
+            <Botao tipo="realce" tamanho="medio" larguraTotal href="/planos">
+              Ver os planos
+            </Botao>
+          </View>
         ) : seguinte ? (
           <Botao tipo="realce" tamanho="medio" larguraTotal href={`/curso/${curso.courseId}/aula/${seguinte.chapterId}`}>
             {nFeitos ? `Continuar: aula ${seguinte.numero}` : "Começar a primeira aula"}
@@ -198,13 +212,37 @@ function CursoInscrito({ curso, aoActualizar }: { curso: Curso; aoActualizar: ()
                 <Texto v="tituloXS" accessibilityRole="header" style={{ flex: 1, fontSize: 17, lineHeight: 24 }}>
                   {s.sectionTitle}
                 </Texto>
-                <Texto v="legenda" suave numeros>
-                  {feitosS} de {caps.length}
-                </Texto>
+                {s.bloqueada ? null : (
+                  <Texto v="legenda" suave numeros>
+                    {feitosS} de {caps.length}
+                  </Texto>
+                )}
               </View>
+              {s.bloqueada ? <DisponivelNosPlanos style={{ alignSelf: "flex-start" }} /> : null}
               {caps.map((c) => {
                 const feita = feitos.has(c.chapterId);
                 const actual = proximo ? proximo.aula_id === c.chapterId && proximo.tipo === "aula" : seguinte?.chapterId === c.chapterId;
+                if (c.bloqueada) {
+                  // Fora das unidades de amostra: só o título, sem abrir a aula.
+                  return (
+                    <View
+                      key={c.chapterId}
+                      accessible
+                      accessibilityLabel={`Aula ${c.numero}: ${c.title}, ${TEXTO_PLANOS_PAGOS.toLowerCase()}`}
+                      style={{ flexDirection: "row", alignItems: "center", gap: 12, minHeight: 52, paddingVertical: 4, borderBottomWidth: 1, borderColor: cor.fundoForte }}
+                    >
+                      <View style={{ width: 28, height: 28, borderRadius: 14, alignItems: "center", justifyContent: "center", backgroundColor: cor.fundoForte }}>
+                        <Lock size={14} color={cor.tintaSuave} />
+                      </View>
+                      <Texto suave style={{ flex: 1, fontSize: 15, lineHeight: 22 }}>
+                        {c.title}
+                      </Texto>
+                      <Texto v="legenda" suave>
+                        {duracaoAula(c.duracao_s) ?? TIPO_PT[c.type] ?? c.type}
+                      </Texto>
+                    </View>
+                  );
+                }
                 return (
                   <View key={c.chapterId}>
                   <Pressable
@@ -333,7 +371,7 @@ function CartaoExame({ courseId }: { courseId: string }) {
 /* ------------------------------------------------------------------ */
 /* Ainda não inscrito                                                  */
 /* ------------------------------------------------------------------ */
-function CursoPorComecar({ curso, temAcesso, pedeNivelBasico, aoActualizar }: { curso: Curso; temAcesso: boolean; pedeNivelBasico: boolean; aoActualizar: () => void }) {
+function CursoPorComecar({ curso, temAcesso, amostra, pedeNivelBasico, aoActualizar }: { curso: Curso; temAcesso: boolean; amostra: number; pedeNivelBasico: boolean; aoActualizar: () => void }) {
   const { data: sub } = useCursosPlanoActualQuery();
   const [inscrever, { isLoading }] = useInscreverCursoMutation();
   const [erro, setErro] = useState<string | null>(null);
@@ -356,14 +394,16 @@ function CursoPorComecar({ curso, temAcesso, pedeNivelBasico, aoActualizar }: { 
     // A inscrição invalida o curso e o estado: o ecrã passa sozinho para a vista de inscrito.
   };
 
-  const rodape = temAcesso && faltaBasico ? (
+  // Curso com unidades de amostra: começa-se sem o plano (só essas unidades abrem).
+  const podeComecar = temAcesso || amostra > 0;
+  const rodape = podeComecar && faltaBasico ? (
     <>
       <AvisoNivelBasico texto="Este é um curso de sector: pede, no mínimo, o nível básico de inglês. Faça o teste ou comece pelo curso geral." />
       <Botao tipo="ligacao" tamanho="pequeno" style={{ alignSelf: "center" }} onPress={() => router.dismissTo("/cursos")}>
         Ver o curso geral
       </Botao>
     </>
-  ) : temAcesso ? (
+  ) : podeComecar ? (
     <>
       {erro ? <Aviso tom="erro">{erro}</Aviso> : null}
       <Botao larguraTotal carregando={isLoading} onPress={() => void comecar()}>
@@ -406,7 +446,9 @@ function CursoPorComecar({ curso, temAcesso, pedeNivelBasico, aoActualizar }: { 
               ? curso.access_level === "free"
                 ? "Este curso é gratuito para todos."
                 : `Incluído no seu plano ${sub?.plan.name ?? plano.nome}.`
-              : `Este curso faz parte do ${plano.nome}. O seu plano é o ${sub?.plan.name ?? "Gratuito"}.`}
+              : amostra > 0
+                ? `${amostra === 1 ? "A primeira unidade é gratuita" : `As primeiras ${amostra} unidades são gratuitas`}. As outras estão disponíveis nos planos pagos.`
+                : `Este curso faz parte do ${plano.nome}. O seu plano é o ${sub?.plan.name ?? "Gratuito"}.`}
           </Texto>
         </View>
 
@@ -434,6 +476,7 @@ function CursoPorComecar({ curso, temAcesso, pedeNivelBasico, aoActualizar }: { 
                       ? `${aulas} ${aulas === 1 ? "aula" : "aulas"}${quest ? `, ${quest} ${quest === 1 ? "questionário" : "questionários"}` : ""}`
                       : s.sectionDescription || "Conteúdo disponível com o plano certo"}
                   </Texto>
+                  {s.bloqueada ? <DisponivelNosPlanos style={{ alignSelf: "flex-start" }} /> : null}
                 </View>
               </View>
             );

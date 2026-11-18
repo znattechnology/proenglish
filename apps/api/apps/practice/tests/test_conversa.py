@@ -96,7 +96,7 @@ class PrepararTests(Base):
                           'conversa_livre'])
         self.assertEqual(d['situacoes'][0]['titulo'], 'Pedir um relatório')
         self.assertEqual(set(d['situacoes'][0]), {'id', 'titulo', 'descricao', 'minutos_sugeridos', 'nivel', 'area',
-                                                  'correcao', 'curso', 'aula', 'tipo_conversa'})
+                                                  'correcao', 'curso', 'aula', 'tipo_conversa', 'bloqueada'})
         self.assertIsNone(d['situacoes'][0]['curso'])
         self.assertIsNone(d['situacoes'][0]['aula'])
         self.assertEqual(d['niveis'], ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'])

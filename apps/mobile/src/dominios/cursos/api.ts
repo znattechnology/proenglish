@@ -51,9 +51,14 @@ export type Capitulo = {
   quiz_enabled?: boolean;
   quiz_data?: QuizData | null;
   practice_lesson?: string | null;
+  /** Fora das unidades de amostra, para quem não tem o plano do curso: só a estrutura. */
+  bloqueada?: boolean;
 };
 
-export type Seccao = { sectionId: string; sectionTitle: string; sectionDescription?: string; order: number; chapters: Capitulo[] };
+export type Seccao = { sectionId: string; sectionTitle: string; sectionDescription?: string; order: number; chapters: Capitulo[]; bloqueada?: boolean };
+
+/** O que o aluno pode abrir de um curso: tudo, só as unidades de amostra, ou nada (o servidor decide). */
+export type Acesso = "total" | "amostra" | null;
 
 export type Curso = {
   courseId: string;
@@ -69,6 +74,9 @@ export type Curso = {
   access_level: NivelAcesso;
   access_level_display: string;
   user_has_access: boolean;
+  acesso?: Acesso;
+  /** Quantas unidades abertas a todos (0 = nenhuma). */
+  unidades_amostra?: number;
 };
 
 export type ProfessorPublico = {
@@ -85,12 +93,14 @@ export type ProfessorPublico = {
   alunos: number;
 };
 
-export type DetalheCurso = { curso: Curso; temAcesso: boolean; conteudoLimitado: boolean };
+export type DetalheCurso = { curso: Curso; temAcesso: boolean; conteudoLimitado: boolean; acesso: Acesso; unidadesAmostra: number };
 export type EstadoInscricao = {
   is_enrolled: boolean;
   has_access: boolean;
   can_enroll: boolean;
   access_level: NivelAcesso;
+  acesso?: Acesso;
+  unidades_amostra?: number;
   /** Porque não se pode inscrever agora (p.ex. "requisito_basico"), com o texto para mostrar. */
   codigo_sem_inscricao?: string | null;
   motivo_sem_inscricao?: string | null;
@@ -241,11 +251,17 @@ export type Passo = {
   curso_pratica_id?: string;
   situacao?: string;
   tipo_conversa?: string;
+  /** Fora das unidades de amostra: disponível nos planos pagos (nunca é o passo seguinte). */
+  bloqueado?: boolean;
 };
 export type Percurso = {
   curso: { id: string; titulo: string };
-  unidades: { id: string; titulo: string; aulas: { id: string; titulo: string; passos: Passo[] }[] }[];
+  acesso?: Acesso;
+  unidades_amostra?: number;
+  unidades: { id: string; titulo: string; bloqueada?: boolean; aulas: { id: string; titulo: string; bloqueada?: boolean; passos: Passo[] }[] }[];
   proximo: Passo | null;
+  /** Só faltam passos fechados pelo plano. */
+  plano_necessario?: boolean;
   feitos: number;
   total: number;
 };
@@ -308,7 +324,7 @@ export const cursosApi = api
       }),
       cursoDetalhe: build.query<DetalheCurso, string>({
         query: (id) => `${BASE}/${id}/`,
-        transformResponse: (r: Envelope<Curso> & { access_info?: { has_access: boolean; content_limited: boolean } }) => ({
+        transformResponse: (r: Envelope<Curso> & { access_info?: { has_access: boolean; content_limited: boolean; acesso?: Acesso; unidades_amostra?: number } }) => ({
           curso: {
             ...r.data,
             sections: (r.data.sections ?? [])
@@ -318,6 +334,8 @@ export const cursosApi = api
           },
           temAcesso: r.access_info?.has_access ?? r.data.user_has_access,
           conteudoLimitado: !!r.access_info?.content_limited,
+          acesso: r.access_info?.acesso ?? r.data.acesso ?? null,
+          unidadesAmostra: r.access_info?.unidades_amostra ?? r.data.unidades_amostra ?? 0,
         }),
         providesTags: (_r, _e, id) => [{ type: "Curso", id }],
       }),

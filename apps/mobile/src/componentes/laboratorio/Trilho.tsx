@@ -3,7 +3,7 @@
  * LaboratorioMovel.dc.html: contadores no topo, unidades com a faixa em balão e os discos em serpentina.
  */
 import { router } from "expo-router";
-import { Check, ChevronRight, Flame, Heart, RotateCcw, Star, Trophy, Zap } from "lucide-react-native";
+import { Check, ChevronRight, Flame, Heart, Lock, RotateCcw, Star, Trophy, Zap } from "lucide-react-native";
 import { useState } from "react";
 import { Pressable, View } from "react-native";
 import Svg, { Circle } from "react-native-svg";
@@ -11,6 +11,7 @@ import { fmt, ILIMITADAS, type EstadoVidas, type LicaoTrilho, type Sequencia, ty
 import { nFrases, useResumoRevisaoQuery } from "@/dominios/revisao/api";
 import { balao, cor, fonte, raio } from "@/tema";
 import { Botao, Dialogo, MarcaIcone, Osso, Texto } from "@/ui";
+import { DisponivelNosPlanos } from "@/componentes/cursos/Amostra";
 
 /** Sombras sólidas dos discos (as mesmas do canvas e da web). */
 const SOMBRA = { feita: "#00003d", actual: "#c79500", bloqueada: cor.linha } as const;
@@ -96,7 +97,7 @@ export function TrilhoLicoes({ trilho }: { trilho: Trilho }) {
   return (
     <View style={{ gap: 8 }}>
       {trilho.unidades.map((u) => {
-        const aberta = u.licoes.some((l) => l.estado !== "bloqueada");
+        const aberta = !u.bloqueada && u.licoes.some((l) => l.estado !== "bloqueada");
         return (
           <View key={u.id} style={{ gap: 8, paddingBottom: 24 }}>
             <View
@@ -112,6 +113,7 @@ export function TrilhoLicoes({ trilho }: { trilho: Trilho }) {
               <Texto accessibilityRole="header" cor={aberta ? cor.sobreMarca : cor.tintaSuave} style={{ fontFamily: fonte.titulo, fontSize: 19, lineHeight: 24 }}>
                 {u.titulo}
               </Texto>
+              {u.bloqueada ? <DisponivelNosPlanos style={{ alignSelf: "flex-start" }} /> : null}
             </View>
             <View style={{ alignItems: "center", gap: 18, paddingTop: 14 }}>
               {u.licoes.map((l, i) => {
@@ -143,10 +145,11 @@ function Disco({ estado, children }: { estado: LicaoTrilho["estado"]; children: 
 
 function No({ licao, ultima, aoPraticar }: { licao: LicaoTrilho; ultima: boolean; aoPraticar: () => void }) {
   const { estado } = licao;
-  const nome = { feita: "concluída, praticar outra vez", actual: "lição actual", bloqueada: "por abrir" }[estado];
+  const plano = !!licao.bloqueada_plano && estado !== "feita";
+  const nome = plano ? "disponível nos planos pagos" : { feita: "concluída, praticar outra vez", actual: "lição actual", bloqueada: "por abrir" }[estado];
   const rotulo = `${licao.titulo}, ${nome}`;
   const corIcone = estado === "feita" ? cor.sobreMarca : estado === "actual" ? cor.tinta : cor.linhaForte;
-  const Icone = estado === "feita" ? Check : ultima ? Trophy : Star;
+  const Icone = estado === "feita" ? Check : plano ? Lock : ultima ? Trophy : Star;
   const icone = <Icone size={32} color={corIcone} strokeWidth={estado === "feita" ? 3 : 2} />;
 
   if (estado === "actual") {
