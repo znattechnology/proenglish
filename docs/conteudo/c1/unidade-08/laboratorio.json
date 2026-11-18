@@ -1,0 +1,1466 @@
+{
+ "unidade": "C1.2 · Unit 8 — On air",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "8A",
+   "titulo": "Expensive it may be, but…",
+   "aula": "8A",
+   "objectivo": "Dar ênfase e contraste com fronting.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This I [can] promise you.",
+     "opcoes": [
+      {
+       "texto": "can I",
+       "certa": false
+      },
+      {
+       "texto": "do can",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Much of this we [owe] to Kalandula.",
+     "opcoes": [
+      {
+       "texto": "owe it",
+       "certa": false
+      },
+      {
+       "texto": "are owing of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Difficult [as] it was, the local team fixed it in four hours.",
+     "opcoes": [
+      {
+       "texto": "like",
+       "certa": false
+      },
+      {
+       "texto": "so",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Expensive it may [be], but it costs less than flying engineers in.",
+     "opcoes": [
+      {
+       "texto": "is",
+       "certa": false
+      },
+      {
+       "texto": "being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "This I can promise you.",
+       "certa": true
+      },
+      {
+       "texto": "This can I promise you.",
+       "certa": false
+      },
+      {
+       "texto": "This I can to promise you.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Small as it was, the room was full.",
+       "certa": true
+      },
+      {
+       "texto": "As small it was, the room was full.",
+       "certa": false
+      },
+      {
+       "texto": "Small as was it, the room was full.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Difficult as it was, the team fixed it.\" This means…",
+     "opcoes": [
+      {
+       "texto": "Although it was difficult, the team fixed it.",
+       "certa": true
+      },
+      {
+       "texto": "Because it was difficult, the team fixed it.",
+       "certa": false
+      },
+      {
+       "texto": "The team fixed it as quickly as it was difficult.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "When does fronting sound natural?",
+     "opcoes": [
+      {
+       "texto": "in a speech or an interview, once or twice",
+       "certa": true
+      },
+      {
+       "texto": "in every sentence",
+       "certa": false
+      },
+      {
+       "texto": "when ordering food",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Isto posso prometer-lhe.",
+     "resposta": "This I can promise you.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Much of this we owe to Kalandula. They trained the technicians, not us.",
+     "enunciado": "Who trained the technicians, according to Nuno?",
+     "opcoes": [
+      {
+       "texto": "Kalandula",
+       "certa": true
+      },
+      {
+       "texto": "Mopane",
+       "certa": false
+      },
+      {
+       "texto": "Morro Azul",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. Use these once or twice. Every sentence back to front, and you'll sound like a politician.",
+     "enunciado": "What is Thandi's warning?",
+     "opcoes": [
+      {
+       "texto": "Don't use fronting in every sentence.",
+       "certa": true
+      },
+      {
+       "texto": "Never use fronting.",
+       "certa": false
+      },
+      {
+       "texto": "Speak like a politician.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "This I can promise you. Difficult as it was, the team fixed it in four hours.",
+     "enunciado": "Ouça e repita, com uma pausa depois do elemento à frente."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Give a short speech about a project, a team or a person you are proud of: three key messages, one short story, and fronting twice (once for emphasis, once for concession).",
+     "frase": "as it was",
+     "resposta": "Our community library opened in one small room behind the church. Small as it was, it had three hundred members in six months. Much of this we owe to two retired teachers. It's free, open every day and run by volunteers. This I can promise you: it's worth supporting.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you trust people who speak very well in public, or do you trust them less? Why?",
+     "frase": "because",
+     "resposta": "I trust them a little less at first, because good speakers can make anything sound true. Then I look at what they've done. Words I can forgive; empty promises, not.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "8B",
+   "titulo": "That said…",
+   "aula": "8B",
+   "objectivo": "Usar marcadores da fala fluente para matizar, corrigir e acrescentar.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You'll be great. That [said], live radio is different.",
+     "opcoes": [
+      {
+       "texto": "saying",
+       "certa": false
+      },
+      {
+       "texto": "told",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Nobody remembered. [Mind] you, the engineers did.",
+     "opcoes": [
+      {
+       "texto": "Remind",
+       "certa": false
+      },
+      {
+       "texto": "Minding",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If [anything], a hard question is a gift.",
+     "opcoes": [
+      {
+       "texto": "something",
+       "certa": false
+      },
+      {
+       "texto": "nothing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Come to think [of] it, I know one of your speakers.",
+     "opcoes": [
+      {
+       "texto": "at",
+       "certa": false
+      },
+      {
+       "texto": "on",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The hotel was beautiful. That said, the food was terrible.\" \"That said\" means…",
+     "opcoes": [
+      {
+       "texto": "however",
+       "certa": true
+      },
+      {
+       "texto": "because",
+       "certa": false
+      },
+      {
+       "texto": "for example",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"As it happens, I had an interview with them last year.\" \"As it happens\" means…",
+     "opcoes": [
+      {
+       "texto": "by chance; in fact",
+       "certa": true
+      },
+      {
+       "texto": "as usual",
+       "certa": false
+      },
+      {
+       "texto": "in the future",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The traffic isn't worse. If anything, it's better.\" The speaker thinks…",
+     "opcoes": [
+      {
+       "texto": "the traffic may even be better",
+       "certa": true
+      },
+      {
+       "texto": "the traffic is much worse",
+       "certa": false
+      },
+      {
+       "texto": "there is no traffic",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which marker means \"para ser justo\"?",
+     "opcoes": [
+      {
+       "texto": "to be fair",
+       "certa": true
+      },
+      {
+       "texto": "mind you",
+       "certa": false
+      },
+      {
+       "texto": "come to think of it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Para ser justo, a maioria dos apresentadores não quer apanhar ninguém.",
+     "resposta": "To be fair, most presenters aren't trying to trap anyone.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lerato. As it happens, yes, in Windhoek, two years ago. I said megawatts when I meant kilowatts.",
+     "enunciado": "What mistake did Lerato make on air?",
+     "opcoes": [
+      {
+       "texto": "She said megawatts instead of kilowatts.",
+       "certa": true
+      },
+      {
+       "texto": "She forgot her name.",
+       "certa": false
+      },
+      {
+       "texto": "She arrived late.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. Give him a time limit before you start, in front of everyone. Then it's not personal.",
+     "enunciado": "What is Lerato's advice about Tobias?",
+     "opcoes": [
+      {
+       "texto": "Give a time limit to everyone at the start.",
+       "certa": true
+      },
+      {
+       "texto": "Stop him rudely.",
+       "certa": false
+      },
+      {
+       "texto": "Don't invite him.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "That said, live radio is different. Mind you, the engineers remembered.",
+     "enunciado": "Ouça e repita, com a pausa depois do marcador."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Give a friend advice before an important event (an interview, a speech, an exam, a first day at work). Use at least four markers: that said, mind you, as it happens, to be fair, if anything, come to think of it.",
+     "frase": "That said",
+     "resposta": "You'll be fine; you know the job. That said, prepare one example for each question. As it happens, I had an interview there last year. To be fair, they were kind. Mind you, they asked about weaknesses three times. If anything, nerves will help you.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it better to admit a mistake immediately in public, or to correct it later, quietly? Why?",
+     "frase": "because",
+     "resposta": "Immediately, because people forgive a quick correction, but not a hidden one. To be fair, it's harder in the moment. If anything, it makes you look more confident.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "8C",
+   "titulo": "The key message is…",
+   "aula": "8C",
+   "objectivo": "Mensagem-chave, ponte, recusar a premissa e retomar a palavra numa entrevista.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I don't accept that [premise].",
+     "opcoes": [
+      {
+       "texto": "promise",
+       "certa": false
+      },
+      {
+       "texto": "premiss of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What's important [here] is that a fault now takes three hours.",
+     "opcoes": [
+      {
+       "texto": "hear",
+       "certa": false
+      },
+      {
+       "texto": "it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I could just [finish] the first point…",
+     "opcoes": [
+      {
+       "texto": "finishing",
+       "certa": false
+      },
+      {
+       "texto": "to finish",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm not in a [position] to talk about their finances.",
+     "opcoes": [
+      {
+       "texto": "posture",
+       "certa": false
+      },
+      {
+       "texto": "post of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A question contains a false fact. What should you do first?",
+     "opcoes": [
+      {
+       "texto": "Correct the fact calmly, then answer.",
+       "certa": true
+      },
+      {
+       "texto": "Ignore it and answer.",
+       "certa": false
+      },
+      {
+       "texto": "Attack the journalist.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "What is the difference between a bridge and dodging?",
+     "opcoes": [
+      {
+       "texto": "A bridge answers, then moves to what matters; dodging never answers.",
+       "certa": true
+      },
+      {
+       "texto": "There is no difference.",
+       "certa": false
+      },
+      {
+       "texto": "A bridge is ruder.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the softest way to refuse a premise?",
+     "opcoes": [
+      {
+       "texto": "That's not quite right.",
+       "certa": true
+      },
+      {
+       "texto": "That's a lie.",
+       "certa": false
+      },
+      {
+       "texto": "You are completely wrong.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You are interrupted. What should your voice do?",
+     "opcoes": [
+      {
+       "texto": "go a little lower and slower",
+       "certa": true
+      },
+      {
+       "texto": "go higher and faster",
+       "certa": false
+      },
+      {
+       "texto": "stop completely",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "A verdadeira questão é se as pessoas estão melhor.",
+     "resposta": "The real question is whether people are better off.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Refilwe. Isn't Tômbwa just a South African company training Angolans to buy more South African equipment?",
+     "enunciado": "What is false in Refilwe's question?",
+     "opcoes": [
+      {
+       "texto": "A South African company trained the technicians.",
+       "certa": true
+      },
+      {
+       "texto": "Tômbwa is in Angola.",
+       "certa": false
+      },
+      {
+       "texto": "The technicians are Angolan.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. In March, a sandstorm damaged an antenna at night. The local team fixed it in four hours.",
+     "enunciado": "How long did the local team take to fix the antenna?",
+     "opcoes": [
+      {
+       "texto": "four hours",
+       "certa": true
+      },
+      {
+       "texto": "two days",
+       "certa": false
+      },
+      {
+       "texto": "a week",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "If I could just finish the first point…",
+     "enunciado": "Ouça e repita, com a voz calma e mais baixa."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A journalist asks: \"Isn't your industry part of the problem, not the solution?\" Correct any false premise, bridge to one key message, tell one short story, and end with a soundbite.",
+     "frase": "question the idea",
+     "resposta": "I'd question the idea that we're part of the problem. Banks have made mistakes. What's important here is what a bank does for small businesses. Last year we lent to forty market sellers; thirty-eight paid back, and twelve now employ others. Small loans, big change.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should company leaders give interviews when things go wrong, or let the communications team speak? Why?",
+     "frase": "because",
+     "resposta": "The leader should speak, because people want to hear from the person responsible. The communications team can prepare them. That said, a leader who isn't ready can make things worse.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "8D",
+   "titulo": "Media and public speaking",
+   "aula": "8D",
+   "objectivo": "Vocabulário dos media e de falar em público; legend e editor.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "on air",
+       "b": "no ar"
+      },
+      {
+       "a": "off the record",
+       "b": "em confidência"
+      },
+      {
+       "a": "a soundbite",
+       "b": "frase curta e marcante"
+      },
+      {
+       "a": "a keynote speech",
+       "b": "discurso principal"
+      },
+      {
+       "a": "a press release",
+       "b": "comunicado de imprensa"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Now let's open the [floor] to questions.",
+     "opcoes": [
+      {
+       "texto": "ground",
+       "certa": false
+      },
+      {
+       "texto": "room of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The sandstorm repair made the local [headlines].",
+     "opcoes": [
+      {
+       "texto": "heads",
+       "certa": false
+      },
+      {
+       "texto": "titles of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Nuno is [moderating] a panel of three speakers.",
+     "opcoes": [
+      {
+       "texto": "moderating of",
+       "certa": false
+      },
+      {
+       "texto": "moderate",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I was [misquoted] in the article.",
+     "opcoes": [
+      {
+       "texto": "misquote",
+       "certa": false
+      },
+      {
+       "texto": "bad quoted",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Um filme com legendas\" em inglês:",
+     "opcoes": [
+      {
+       "texto": "a film with subtitles",
+       "certa": true
+      },
+      {
+       "texto": "a film with legends",
+       "certa": false
+      },
+      {
+       "texto": "a film with legendas",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: legend = lenda."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A editora publicou o livro.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The publisher published the book.",
+       "certa": true
+      },
+      {
+       "texto": "The editor published the book.",
+       "certa": false
+      },
+      {
+       "texto": "The editress published the book.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: editor = redactor, revisor."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"He's a football legend.\" This means he is…",
+     "opcoes": [
+      {
+       "texto": "a famous player that people remember",
+       "certa": true
+      },
+      {
+       "texto": "a subtitle in a football film",
+       "certa": false
+      },
+      {
+       "texto": "a football journalist",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Address\" in \"address an audience\" means…",
+     "opcoes": [
+      {
+       "texto": "speak to",
+       "certa": true
+      },
+      {
+       "texto": "write the address of",
+       "certa": false
+      },
+      {
+       "texto": "avoid",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Refilwe. With journalists, nothing is off the record unless you've both agreed before you speak.",
+     "enunciado": "When is something really off the record?",
+     "opcoes": [
+      {
+       "texto": "when both sides agreed before you speak",
+       "certa": true
+      },
+      {
+       "texto": "always, if you say so",
+       "certa": false
+      },
+      {
+       "texto": "never",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Nine months ago, a fault took two days to fix. Today, it takes three hours.",
+     "enunciado": "Ouça e repita, com pausas de efeito."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Prepare the opening of a short keynote speech at an event you know: greet the audience, give one soundbite, say what you will address, and use two pauses for effect.",
+     "frase": "address",
+     "resposta": "Good morning, everyone. Ten years ago, our town had one clinic. Today, it has four. That's the story I want to tell you: four clinics in ten years. I'll address three things: the money, the people and the mistakes. Then I'll open the floor.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do the media help or harm public understanding of science and technology? Why?",
+     "frase": "help",
+     "resposta": "Both. They help when a journalist explains a study clearly. They harm when a headline says \"proves\" and the study only \"suggests\". Good science journalism is rare, but it exists.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "8E",
+   "titulo": "Real English: The tough interview",
+   "aula": "8E",
+   "objectivo": "Identificar respostas reais, pontes e recusas numa entrevista dura.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Chipo. Last winter, people in the capital had power cuts of up to eight hours a day.",
+     "enunciado": "How long were the power cuts last winter?",
+     "opcoes": [
+      {
+       "texto": "up to eight hours a day",
+       "certa": true
+      },
+      {
+       "texto": "up to four hours a day",
+       "certa": false
+      },
+      {
+       "texto": "two days",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Minister Ruth Kalumba. To be fair, the cuts were caused by two power stations breaking down at the same time.",
+     "enunciado": "What caused the cuts, according to the minister?",
+     "opcoes": [
+      {
+       "texto": "two power stations breaking down at the same time",
+       "certa": true
+      },
+      {
+       "texto": "a storm",
+       "certa": false
+      },
+      {
+       "texto": "the price of diesel",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Minister Kalumba. And this I can promise you: no planned cut will be longer than four hours.",
+     "enunciado": "What does the minister promise this winter?",
+     "opcoes": [
+      {
+       "texto": "no planned cut longer than four hours",
+       "certa": true
+      },
+      {
+       "texto": "no more cuts at all",
+       "certa": false
+      },
+      {
+       "texto": "cheaper electricity",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Chipo. That's not what you said, Minister. I have the recording.",
+     "enunciado": "What does Chipo have?",
+     "opcoes": [
+      {
+       "texto": "a recording of last year's promise",
+       "certa": true
+      },
+      {
+       "texto": "a new contract",
+       "certa": false
+      },
+      {
+       "texto": "a letter from the minister",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Minister Kalumba. I won't comment on people's families on the radio.",
+     "enunciado": "Does the minister say whether the owner is a relative?",
+     "opcoes": [
+      {
+       "texto": "No, she refuses to comment.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, he is.",
+       "certa": false
+      },
+      {
+       "texto": "No, he isn't.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Minister Kalumba. Yes. By about eight percent. I'd rather tell your listeners now than surprise them in January.",
+     "enunciado": "How much will electricity prices rise next year?",
+     "opcoes": [
+      {
+       "texto": "by about eight percent",
+       "certa": true
+      },
+      {
+       "texto": "by four percent",
+       "certa": false
+      },
+      {
+       "texto": "they won't rise",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which answer was the most direct?",
+     "opcoes": [
+      {
+       "texto": "the answer about electricity prices",
+       "certa": true
+      },
+      {
+       "texto": "the answer about the contract",
+       "certa": false
+      },
+      {
+       "texto": "none of them",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "On the contract question, the minister…",
+     "opcoes": [
+      {
+       "texto": "used a bridge and then refused to answer",
+       "certa": true
+      },
+      {
+       "texto": "gave a full answer",
+       "certa": false
+      },
+      {
+       "texto": "admitted a mistake",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Difficult as it is to admit, we were too optimistic.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'd rather tell your listeners now than surprise them in January.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You are a media trainer. Tell the minister what worked in her interview, what didn't, and what she should have said on the contract question.",
+     "frase": "should have",
+     "resposta": "The best moment was the last answer: \"Yes, by about eight percent.\" Honest and short. Admitting you were too optimistic was brave. What didn't work was the contract: the bridge was too obvious. You should have said clearly whether he is a relative.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should politicians always answer every question, or do they have a right not to answer some?",
+     "frase": "right",
+     "resposta": "They have a right not to answer questions about private life. But on public money, they should always answer. If anything, refusing makes people think the worst.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "8F",
+   "titulo": "Work & Life: Live from Windhoek",
+   "aula": "8F",
+   "objectivo": "Dar uma entrevista de rádio, moderar um painel e apresentar um orador a partir de uma biografia em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Presidente do conselho de administração desde 2026.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "She has chaired the board since 2026.",
+       "certa": true
+      },
+      {
+       "texto": "She is president of the administration council since 2026.",
+       "certa": false
+      },
+      {
+       "texto": "She chaired the board since 2026 until now of.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Jurista de formação.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "She is a lawyer by training.",
+       "certa": true
+      },
+      {
+       "texto": "She is a jurist of formation.",
+       "certa": false
+      },
+      {
+       "texto": "She has a juridical formation of.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Tobias has talked for eleven minutes. The best way to stop him:",
+     "opcoes": [
+      {
+       "texto": "Tobias, I'm going to have to stop you there. Could you give us your last example in one sentence?",
+       "certa": true
+      },
+      {
+       "texto": "Stop talking, please.",
+       "certa": false
+      },
+      {
+       "texto": "Nobody wants to hear this, Tobias.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "What makes Nuno's final summary good?",
+     "opcoes": [
+      {
+       "texto": "It mentions all three speakers.",
+       "certa": true
+      },
+      {
+       "texto": "It repeats the title.",
+       "certa": false
+      },
+      {
+       "texto": "It gives his own opinion only.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let me [bring] in Aïcha.",
+     "opcoes": [
+      {
+       "texto": "put",
+       "certa": false
+      },
+      {
+       "texto": "carry",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In the [interest] of time, let's open the floor.",
+     "opcoes": [
+      {
+       "texto": "interesting",
+       "certa": false
+      },
+      {
+       "texto": "intention",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "To sum [up], what I've heard is…",
+     "opcoes": [
+      {
+       "texto": "on",
+       "certa": false
+      },
+      {
+       "texto": "it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Two of the three companies are Angolan. That said, yes, we all make money from it.",
+     "enunciado": "How many of the three companies are Angolan?",
+     "opcoes": [
+      {
+       "texto": "two",
+       "certa": true
+      },
+      {
+       "texto": "one",
+       "certa": false
+      },
+      {
+       "texto": "three",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Our training centre in Johannesburg has already trained thirty technicians from six countries.",
+     "enunciado": "How many technicians has the training centre trained?",
+     "opcoes": [
+      {
+       "texto": "thirty",
+       "certa": true
+      },
+      {
+       "texto": "six",
+       "certa": false
+      },
+      {
+       "texto": "three hundred",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Aïcha Diallo. Training is the easy part. Keeping trained people is the hard part.",
+     "enunciado": "What is Aïcha Diallo's point?",
+     "opcoes": [
+      {
+       "texto": "Keeping trained people is harder than training them.",
+       "certa": true
+      },
+      {
+       "texto": "Training is impossible.",
+       "certa": false
+      },
+      {
+       "texto": "Salaries are too high.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm going to have to stop you there. Could you give us your last example in one sentence?",
+     "enunciado": "Ouça e repita, com um tom cordial e firme."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Moderate a panel on a topic you know: open with a time rule, introduce two speakers in one sentence each, stop a speaker who talks too long (politely, with a way out), and give a final summary that mentions everyone.",
+     "frase": "sum up",
+     "resposta": "Welcome. Forty minutes, three speakers: five minutes each, and I'll be strict. Dr Fortunato runs the children's hospital; Mr Bumba has taught maths for thirty years. Mr Bumba, I'm going to have to stop you there. To sum up, both of you say it all starts in the first five years.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Introduce this speaker in English: \"Joaquina Neto é directora da escola técnica de Ondjiva desde 2027. Engenheira electrotécnica de formação, trabalhou dez anos em redes eléctricas no sul de Angola. Criou o primeiro curso nocturno de electricidade para adultos da província.\"",
+     "frase": "by training",
+     "resposta": "Joaquina Neto has been the director of the technical school in Ondjiva since 2027. She's an electrical engineer by training, and she spent ten years maintaining power networks in southern Angola. She also started the province's first evening electricity course for adults.",
+     "contexto": "Mediação: apresentar um orador."
+    }
+   ]
+  },
+  {
+   "codigo": "8R",
+   "titulo": "Unit 8 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 8 do C1 e reciclar as unidades 6 e 7 e o C1.1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Slow it may [be], but it's reliable.",
+     "opcoes": [
+      {
+       "texto": "is",
+       "certa": false
+      },
+      {
+       "texto": "being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "That I will never [forget].",
+     "opcoes": [
+      {
+       "texto": "forgetting",
+       "certa": false
+      },
+      {
+       "texto": "to forget",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "To be [fair], she was very patient.",
+     "opcoes": [
+      {
+       "texto": "fairly",
+       "certa": false
+      },
+      {
+       "texto": "fairness",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We're on air [in] ten seconds.",
+     "opcoes": [
+      {
+       "texto": "at",
+       "certa": false
+      },
+      {
+       "texto": "on",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Strange as it may seem, nobody complained.",
+       "certa": true
+      },
+      {
+       "texto": "As strange it may seem, nobody complained.",
+       "certa": false
+      },
+      {
+       "texto": "Strange as may it seem, nobody complained.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"He's the editor of a newspaper.\" He…",
+     "opcoes": [
+      {
+       "texto": "decides what the newspaper publishes",
+       "certa": true
+      },
+      {
+       "texto": "owns the printing company",
+       "certa": false
+      },
+      {
+       "texto": "sells the newspaper",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 7). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The interview was to have been at seven, but it started at eight.",
+       "certa": true
+      },
+      {
+       "texto": "The interview was to be have at seven.",
+       "certa": false
+      },
+      {
+       "texto": "The interview was to had been at seven.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 6). \"Will you be on the panel?\" (yes, you think)",
+     "opcoes": [
+      {
+       "texto": "I think so.",
+       "certa": true
+      },
+      {
+       "texto": "I think it.",
+       "certa": false
+      },
+      {
+       "texto": "I think yes so.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 4). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Never have I seen such a full room.",
+       "certa": true
+      },
+      {
+       "texto": "Never I have seen such a full room.",
+       "certa": false
+      },
+      {
+       "texto": "Never have seen I such a full room.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Por acaso, conheço um dos oradores.",
+     "resposta": "As it happens, I know one of the speakers.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Celeste Kiala. You read my biography better than I wrote it.",
+     "enunciado": "What does Celeste Kiala say to Nuno?",
+     "opcoes": [
+      {
+       "texto": "He read her biography very well.",
+       "certa": true
+      },
+      {
+       "texto": "He made mistakes in her biography.",
+       "certa": false
+      },
+      {
+       "texto": "She wrote a new biography.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A journalist asks: \"Isn't your industry part of the problem, not the solution?\" Answer.",
+     "frase": "real question",
+     "resposta": "That's not quite right. Our industry has made mistakes, I won't deny it. But the real question is what we do now. Last year, we cut our emissions by a fifth, and we trained forty local people. That, I think, is part of the solution.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Use two markers to give a balanced opinion: \"Social media is good for business.\"",
+     "frase": "That said",
+     "resposta": "It can be very useful: a small shop can reach thousands of people for free. That said, it takes a lot of time. Mind you, so does any advertising.",
+     "contexto": "Marcadores para matizar."
+    }
+   ]
+  }
+ ]
+}

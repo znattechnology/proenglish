@@ -1,0 +1,301 @@
+{
+ "title": "C1.2 Unit 8 quiz — On air",
+ "description": "Fronting, marcadores da fala fluente, técnicas de entrevista, moderar um painel, legend e editor.",
+ "questions": [
+  {
+   "id": "c1u8q1",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u8q1o0",
+     "text": "This I can promise you.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u8q1o1",
+     "text": "This can I promise you.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u8q1o2",
+     "text": "This I can to promise you.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u8q1o0",
+   "explanation": "Fronting sem inversão.",
+   "points": 10
+  },
+  {
+   "id": "c1u8q2",
+   "question": "Complete: \"Difficult ___ it was, the team fixed it.\"",
+   "options": [
+    {
+     "id": "c1u8q2o0",
+     "text": "as",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u8q2o1",
+     "text": "like",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u8q2o2",
+     "text": "so",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u8q2o0",
+   "explanation": "Adjectivo + as + sujeito + verbo.",
+   "points": 10
+  },
+  {
+   "id": "c1u8q3",
+   "question": "\"That said\" quer dizer…",
+   "options": [
+    {
+     "id": "c1u8q3o0",
+     "text": "no entanto",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u8q3o1",
+     "text": "porque",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u8q3o2",
+     "text": "por exemplo",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u8q3o0",
+   "explanation": "That said = however.",
+   "points": 10
+  },
+  {
+   "id": "c1u8q4",
+   "question": "\"The traffic isn't worse. If anything, it's better.\" O falante pensa que…",
+   "options": [
+    {
+     "id": "c1u8q4o0",
+     "text": "o trânsito talvez esteja até melhor",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u8q4o1",
+     "text": "o trânsito está muito pior",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u8q4o2",
+     "text": "não há trânsito",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u8q4o0",
+   "explanation": "if anything = até pelo contrário.",
+   "points": 10
+  },
+  {
+   "id": "c1u8q5",
+   "question": "Uma pergunta contém um facto falso. O que deve fazer primeiro?",
+   "options": [
+    {
+     "id": "c1u8q5o0",
+     "text": "Corrigir o facto com calma, e depois responder.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u8q5o1",
+     "text": "Ignorar e responder.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u8q5o2",
+     "text": "Atacar o jornalista.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u8q5o0",
+   "explanation": "Recusar a premissa.",
+   "points": 10
+  },
+  {
+   "id": "c1u8q6",
+   "question": "Complete: \"If I could just ___ the first point…\"",
+   "options": [
+    {
+     "id": "c1u8q6o0",
+     "text": "finish",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u8q6o1",
+     "text": "finishing",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u8q6o2",
+     "text": "to finish",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u8q6o0",
+   "explanation": "could + infinitivo sem to.",
+   "points": 10
+  },
+  {
+   "id": "c1u8q7",
+   "question": "\"Um filme com legendas\" em inglês:",
+   "options": [
+    {
+     "id": "c1u8q7o0",
+     "text": "a film with subtitles",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u8q7o1",
+     "text": "a film with legends",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u8q7o2",
+     "text": "a film with legendas",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u8q7o0",
+   "explanation": "Falso amigo: legend = lenda.",
+   "points": 10
+  },
+  {
+   "id": "c1u8q8",
+   "question": "\"A editora publicou o livro.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1u8q8o0",
+     "text": "The publisher published the book.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u8q8o1",
+     "text": "The editor published the book.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u8q8o2",
+     "text": "The editress published the book.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u8q8o0",
+   "explanation": "Falso amigo: editor = redactor, revisor.",
+   "points": 10
+  },
+  {
+   "id": "c1u8q9",
+   "question": "Complete: \"Now let's open the ___ to questions.\"",
+   "options": [
+    {
+     "id": "c1u8q9o0",
+     "text": "floor",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u8q9o1",
+     "text": "ground",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u8q9o2",
+     "text": "room of",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u8q9o0",
+   "explanation": "open the floor.",
+   "points": 10
+  },
+  {
+   "id": "c1u8q10",
+   "question": "Reciclagem (C1, unidade 7). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u8q10o0",
+     "text": "We are on the verge of a breakthrough.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u8q10o1",
+     "text": "We are on the verge to a breakthrough.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u8q10o2",
+     "text": "We are on verge of breakthrough to.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u8q10o0",
+   "explanation": "on the verge of + nome.",
+   "points": 10
+  },
+  {
+   "id": "c1u8q11",
+   "question": "Reciclagem (C1, unidade 6). \"I haven't prepared.\" Também não preparou. Diz:",
+   "options": [
+    {
+     "id": "c1u8q11o0",
+     "text": "Neither have I.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u8q11o1",
+     "text": "So have I.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u8q11o2",
+     "text": "Neither I have.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u8q11o0",
+   "explanation": "Neither + auxiliar + sujeito.",
+   "points": 10
+  },
+  {
+   "id": "c1u8q12",
+   "question": "Reciclagem (C1, unidade 2). Qual é a recusa mais diplomática?",
+   "options": [
+    {
+     "id": "c1u8q12o0",
+     "text": "I'm not in a position to talk about that. What I can tell you is…",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u8q12o1",
+     "text": "No comment.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u8q12o2",
+     "text": "That's none of your business.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u8q12o0",
+   "explanation": "Recusar com uma alternativa.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

@@ -1,0 +1,142 @@
+{
+ "unidade": "C1.2 · Unit 8 — On air",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "c1-u8-guiada",
+   "nome": "C1 Unit 8 · Press conference",
+   "tipo": "guiada",
+   "depois_da_aula": "8C",
+   "descricao": "O tutor é Jordan, jornalista numa conferência de imprensa. O aluno escolhe a sua organização (ou uma proposta: uma rede de clínicas privadas) e duas mensagens-chave; o tutor faz seis perguntas rápidas, duas com premissas falsas e uma pessoal, e o aluno responde com mensagens-chave, pontes e correcções calmas.",
+   "papel_tutor": "Jordan, jornalista numa conferência de imprensa.",
+   "nivel": "C1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "What's important here is…",
+    "The real question is…",
+    "That's not quite right.",
+    "I'm not in a position to… What I can tell you is…",
+    "If I could just finish…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an advanced learner (C1.2, unit 8). You are Jordan (a neutral name; never mention a husband or wife), a journalist at a press conference. First ask the student which organisation they represent and their two key messages. If they have none, offer: a network of private clinics that opened two new clinics this year; messages: shorter waiting times, and local doctors. Then ask six quick questions, one at a time: (1) an easy one (\"What's new this year?\"); (2) one with a false premise (\"Your prices doubled this year, didn't they?\" — say this even if it is not true); (3) a hostile one (\"Aren't you just making money from sick people?\"); (4) one the student should not answer (\"What does your director earn?\"); (5) one where you interrupt the answer after a few words; (6) one asking for a final soundbite. After each answer, say in one short sentence what worked (a correction, a bridge, a key message). If the student accepts a false premise, point it out once. If the student dodges completely, say \"That isn't an answer.\" Use any language from A1 to B2, all of C1.1, C1 units 6 and 7, and C1 unit 8: fronting (This I can promise you. Difficult as it was, … Expensive it may be, but…), discourse markers (that said, mind you, as it happens, to be fair, if anything, come to think of it), interview techniques (key messages, bridging, refusing a false premise, If I could just finish…) and panel moderation. Speak at natural speed. Do NOT teach or use systematically the idioms and informal vague language of unit 9 (the ball is in their court, give or take, -ish, or so, kind of, sort of). Short turns; never more than three sentences.",
+    "primeira_fala": "Good morning, {nome}. Jordan, from the business news. Before we start: which organisation do you represent, and what are the two things you want people to remember today?",
+    "primeira_fala_simples": "Good morning, {nome}. Which organisation do you represent? What are your two main messages?",
+    "guiao": [
+     "Thank you. First question: what's new this year?",
+     "Your prices doubled this year, didn't they?",
+     "Aren't you just making money from people's problems?",
+     "What does your director earn?",
+     "And what about the complaints we keep hearing about—",
+     "Last one: give our readers one sentence they should remember.",
+     "Thank you, {nome}. That was a very controlled press conference."
+    ],
+    "frases": [
+     {
+      "en": "What's important here is that waiting times fell from three weeks to four days.",
+      "pt": "O que importa aqui é que os tempos de espera desceram de três semanas para quatro dias."
+     },
+     {
+      "en": "That's not quite right. Our prices rose by six percent, not a hundred.",
+      "pt": "Isso não é bem assim. Os nossos preços subiram seis por cento, não cem."
+     },
+     {
+      "en": "The real question is whether patients are better off. And they are.",
+      "pt": "A verdadeira questão é se os doentes estão melhor. E estão."
+     },
+     {
+      "en": "I'm not in a position to talk about salaries. What I can tell you is how they're decided.",
+      "pt": "Não estou em condições de falar de salários. O que posso dizer é como são decididos."
+     },
+     {
+      "en": "If I could just finish the first point…",
+      "pt": "Se me deixar só terminar o primeiro ponto…"
+     }
+    ],
+    "palavras": [
+     "important here",
+     "real question",
+     "quite right",
+     "position",
+     "just finish",
+     "remember"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": null
+  },
+  {
+   "slug": "c1-u8-livre",
+   "nome": "C1 Unit 8 · The hard interview",
+   "tipo": "livre",
+   "depois_da_aula": "8F",
+   "descricao": "O tutor é Robin, jornalista de rádio insistente, num programa em directo. Entrevista o aluno sobre a sua organização ou um projecto (ou um proposto: um novo mercado municipal, aberto com seis meses de atraso). Interrompe, reformula perguntas, usa premissas falsas e volta à pergunta que o aluno contornou.",
+   "papel_tutor": "Robin, jornalista de rádio insistente, num programa em directo.",
+   "nivel": "C1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "That's not quite right.",
+    "The real question is…",
+    "This I can promise you:…",
+    "If I could just finish…",
+    "That said, …"
+   ],
+   "extras": {
+    "brief": "Role-play for an advanced learner (C1.2, unit 8). You are Robin (a neutral name; never mention a husband or wife), a persistent live-radio journalist. Interview the student, live, about their organisation or a project. If they have none, use this one: the student represents the town council, which opened a new municipal market six months late and ten percent over budget; it now has 300 stalls and is busy. Start: \"You're live on air.\" Ask about five questions, one at a time: (1) an open question; (2) one with a false premise (\"It cost twice the budget, didn't it?\"); (3) one about the delay (\"Who is responsible?\"); (4) a hostile one (\"Isn't this just a project to win votes?\"); (5) a final one asking for a promise. Interrupt the student once in the middle of a long answer. If the student bridges without answering, come back to the same question once: \"You didn't answer: who is responsible?\". If the student answers honestly and then bridges, accept it and move on. If the student accepts a false premise, use it against them. Reward calm corrections, honest admissions, short stories and a clear final message. Use any language from A1 to B2, all of C1.1, C1 units 6 and 7, and C1 unit 8: fronting (This I can promise you. Difficult as it was, … Expensive it may be, but…), discourse markers (that said, mind you, as it happens, to be fair, if anything, come to think of it), interview techniques (key messages, bridging, refusing a false premise, If I could just finish…) and panel moderation. Speak at natural speed. Do NOT teach or use systematically the idioms and informal vague language of unit 9 (the ball is in their court, give or take, -ish, or so, kind of, sort of). Short turns; never more than three sentences at a time.",
+    "primeira_fala": "Good morning, and you're live on air. With me is {nome}. The new market opened last month — six months late. Success or embarrassment?",
+    "primeira_fala_simples": "You're live on air, {nome}. The new market opened six months late. Was it a success?",
+    "guiao": [
+     "It cost twice the budget, didn't it?",
+     "So who is responsible for the delay?",
+     "You didn't answer: who is responsible?",
+     "Isn't this just a project to win votes before the election?",
+     "Last question: what can you promise our listeners?",
+     "Thank you, {nome}. Straight answers, for once."
+    ],
+    "frases": [
+     {
+      "en": "That's not quite right. It was ten percent over budget, not double.",
+      "pt": "Isso não é bem assim. Ficou dez por cento acima do orçamento, não o dobro."
+     },
+     {
+      "en": "The delay was our responsibility. That said, the market now has three hundred stalls, and it is full.",
+      "pt": "O atraso foi da nossa responsabilidade. Dito isto, o mercado tem agora trezentas bancas, e está cheio."
+     },
+     {
+      "en": "If I could just finish: we paid the contractor less because of the delay.",
+      "pt": "Se me deixar só terminar: pagámos menos ao empreiteiro por causa do atraso."
+     },
+     {
+      "en": "The real question is whether the sellers are better off. Ask them.",
+      "pt": "A verdadeira questão é se os vendedores estão melhor. Pergunte-lhes."
+     },
+     {
+      "en": "This I can promise you: the next phase will be on time, or we will explain why, on this programme.",
+      "pt": "Isto posso prometer: a próxima fase será a tempo, ou viremos explicar porquê, neste programa."
+     }
+    ],
+    "palavras": [
+     "quite right",
+     "real question",
+     "just finish",
+     "that said",
+     "promise",
+     "responsib"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Corrige as premissas falsas com calma (That's not quite right…) em vez de as aceitar ou de atacar o jornalista.",
+    "Responde às perguntas difíceis e depois faz a ponte para a mensagem-chave; não foge à mesma pergunta duas vezes.",
+    "Retoma a palavra quando é interrompido (If I could just finish…) sem levantar a voz.",
+    "Usa fronting e marcadores da fala fluente com naturalidade (This I can promise you…, That said, …, To be fair, …).",
+    "Conta pelo menos uma história curta ou dá um número memorável, e desenvolve pelo menos uma vez uma resposta de 1 minuto e meio ou mais.",
+    "É compreendido sem esforço; o tom calmo e o ritmo regular transmitem confiança."
+   ]
+  }
+ ]
+}
