@@ -2,40 +2,25 @@
  * Teste do nível básico (web: components/pe/acolhimento/TesteBasico.tsx): o requisito para entrar
  * num curso de sector sem ter feito o curso geral. Ecrã inteiro: entrada, perguntas (uma por ecrã,
  * com o tempo a contar) e resultado. O servidor sorteia as perguntas, conta o tempo e dá a nota.
+ * Sem nível, a API dá o teste do A2. Sair da app durante o teste anula a pergunta (PerguntasTeste).
  */
-import { router, Stack } from "expo-router";
-import { Check, Clock, X } from "lucide-react-native";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Pressable, View } from "react-native";
+import { router } from "expo-router";
+import { Check, X } from "lucide-react-native";
+import { useState } from "react";
+import { View } from "react-native";
 import { mensagemErro } from "@/api/erros";
+import { dataHora, PerguntasTeste, REGRA_SAIR_DA_APP } from "@/componentes/cursos/PerguntasTeste";
 import {
   type EstadoTesteBasico,
   type TentativaTeste,
-  useEntregarTesteBasicoMutation,
   useEstadoTesteBasicoQuery,
   useIniciarTesteBasicoMutation,
 } from "@/dominios/cursos/testeBasico";
-import { balao, cor, raio } from "@/tema";
-import { ACarregar, Aviso, BarraProgresso, Botao, Cabecalho, Dialogo, Ecra, EstadoErro, Numero, Texto, Titulo } from "@/ui";
-
-const MESES = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-function dataHora(iso: string) {
-  const d = new Date(iso);
-  return `${d.getDate()} de ${MESES[d.getMonth()]}, ${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
-}
+import { balao, cor } from "@/tema";
+import { ACarregar, Aviso, Botao, Cabecalho, Ecra, EstadoErro, Numero, Texto, Titulo } from "@/ui";
 
 const sair = () => (router.canGoBack() ? router.back() : router.replace("/cursos"));
 const verCursos = () => router.dismissTo("/cursos");
-
-/** Segundos que faltam até `iso`, actualizados a cada segundo. */
-function useFalta(iso: string) {
-  const [agora, setAgora] = useState(() => Date.now());
-  useEffect(() => {
-    const t = setInterval(() => setAgora(Date.now()), 1000);
-    return () => clearInterval(t);
-  }, [iso]);
-  return Math.max(0, Math.round((new Date(iso).getTime() - agora) / 1000));
-}
 
 export default function EcraTesteBasico() {
   const { data, isLoading, isError, error, refetch } = useEstadoTesteBasicoQuery();
@@ -63,7 +48,7 @@ export default function EcraTesteBasico() {
     );
   if (resultado) return <Resultado t={resultado} estado={data} />;
   if (data.tem_nivel_basico) return <Aprovado />;
-  if (data.em_curso?.perguntas) return <Perguntas key={data.em_curso.id} t={data.em_curso} aoEntregar={setResultado} />;
+  if (data.em_curso?.perguntas) return <PerguntasTeste key={data.em_curso.id} t={data.em_curso} aoEntregar={setResultado} aoSair={sair} />;
   return <Entrada estado={data} aIniciar={aIniciar} erro={erro} aoComecar={() => void comecar()} />;
 }
 
@@ -103,6 +88,7 @@ function Entrada({ estado, aIniciar, erro, aoComecar }: { estado: EstadoTesteBas
           {[
             "São perguntas de escolha, uma de cada vez. Pode voltar atrás e mudar a resposta.",
             "O tempo começa a contar quando abrir o teste e não pára se sair da app.",
+            REGRA_SAIR_DA_APP,
             `Se não aprovar, pode repetir ${r.espera_horas} horas depois.`,
           ].map((t) => (
             <View key={t} style={{ flexDirection: "row", gap: 10 }}>
@@ -119,153 +105,6 @@ function Entrada({ estado, aIniciar, erro, aoComecar }: { estado: EstadoTesteBas
           <Texto suave>Entretanto, o curso geral English Communication Skills leva-o ao nível básico, a falar desde a primeira lição.</Texto>
         </>
       )}
-    </Ecra>
-  );
-}
-
-function Perguntas({ t, aoEntregar }: { t: TentativaTeste; aoEntregar: (r: TentativaTeste) => void }) {
-  const perguntas = useMemo(() => t.perguntas ?? [], [t.perguntas]);
-  const [indice, setIndice] = useState(0);
-  const [respostas, setRespostas] = useState<Record<string, number>>({});
-  // As respostas mais recentes, para a entrega automática quando o tempo acaba.
-  const ultimas = useRef<Record<string, number>>({});
-  const [entregar, { isLoading }] = useEntregarTesteBasicoMutation();
-  const [erro, setErro] = useState<string | null>(null);
-  const [aSair, setASair] = useState(false);
-  const falta = useFalta(t.expira_em);
-  const p = perguntas[indice];
-  const ultima = indice === perguntas.length - 1;
-  const respondidas = Object.keys(respostas).length;
-  const porResponder = perguntas.length - respondidas;
-
-  const enviar = async () => {
-    setErro(null);
-    const r = await entregar({ id: t.id, respostas: ultimas.current });
-    if ("data" in r && r.data) return aoEntregar(r.data);
-    setErro(mensagemErro("error" in r ? r.error : null, "Não foi possível entregar o teste. Verifique a ligação e tente outra vez."));
-  };
-
-  // Tempo esgotado: entrega o que houver (o servidor aceita uns segundos de tolerância).
-  useEffect(() => {
-    const id = setTimeout(() => void enviar(), Math.max(0, new Date(t.expira_em).getTime() - Date.now()));
-    return () => clearTimeout(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [t.expira_em]);
-
-  if (!p) return null;
-  const relogio = `${Math.floor(falta / 60)}:${String(falta % 60).padStart(2, "0")}`;
-  const poucoTempo = falta <= 60;
-
-  return (
-    <Ecra
-      cabecalho={
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 12, paddingLeft: 12, paddingRight: 20, minHeight: 60 }}>
-          <Pressable accessibilityRole="button" accessibilityLabel="Sair do teste" hitSlop={8} onPress={() => setASair(true)} style={{ width: 44, height: 44, alignItems: "center", justifyContent: "center" }}>
-            <X size={24} color={cor.tinta} />
-          </Pressable>
-          <View style={{ flex: 1 }}>
-            <BarraProgresso valor={(respondidas / perguntas.length) * 100} rotulo={`${respondidas} de ${perguntas.length} respondidas`} />
-          </View>
-          <View
-            accessible
-            accessibilityLabel={`Faltam ${Math.floor(falta / 60)} minutos e ${falta % 60} segundos`}
-            style={{ flexDirection: "row", alignItems: "center", gap: 6, paddingHorizontal: 10, paddingVertical: 6, borderRadius: raio.sm, backgroundColor: poucoTempo ? cor.erradoSuave : cor.fundoSuave }}
-          >
-            <Clock size={16} color={poucoTempo ? cor.errado : cor.tinta} />
-            <Texto v="rotulo" numeros cor={poucoTempo ? cor.errado : cor.tinta}>
-              {relogio}
-            </Texto>
-          </View>
-        </View>
-      }
-      rodape={
-        <>
-          {erro ? <Aviso tom="erro">{erro}</Aviso> : null}
-          <View style={{ flexDirection: "row", gap: 12 }}>
-            <Botao tipo="secundario" disabled={indice === 0 || isLoading} onPress={() => setIndice((i) => i - 1)}>
-              Anterior
-            </Botao>
-            <View style={{ flex: 1 }}>
-              {ultima ? (
-                <Botao larguraTotal carregando={isLoading} onPress={() => void enviar()}>
-                  {isLoading ? "A entregar…" : "Entregar o teste"}
-                </Botao>
-              ) : (
-                <Botao larguraTotal onPress={() => setIndice((i) => i + 1)}>
-                  {respostas[p.id] === undefined ? "Saltar" : "Seguinte"}
-                </Botao>
-              )}
-            </View>
-          </View>
-        </>
-      }
-      style={{ gap: 20 }}
-    >
-      <Stack.Screen options={{ gestureEnabled: false }} />
-      <View style={{ gap: 8 }}>
-        <Texto v="rotulo" suave numeros>
-          Pergunta {indice + 1} de {perguntas.length}
-        </Texto>
-        <Texto v="tituloM" accessibilityRole="header" accessibilityLanguage="en" style={{ fontSize: 24, lineHeight: 32 }}>
-          {p.enunciado}
-        </Texto>
-      </View>
-      <View accessibilityRole="radiogroup" accessibilityLabel="Opções de resposta" style={{ gap: 10 }}>
-        {p.opcoes.map((o, i) => {
-          const escolhida = respostas[p.id] === i;
-          return (
-            <Pressable
-              key={o}
-              accessibilityRole="radio"
-              accessibilityState={{ checked: escolhida }}
-              accessibilityLanguage="en"
-              onPress={() => {
-                ultimas.current = { ...ultimas.current, [p.id]: i };
-                setRespostas(ultimas.current);
-              }}
-              style={({ pressed }) => ({
-                minHeight: 56,
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 12,
-                paddingHorizontal: 16,
-                paddingVertical: 12,
-                borderRadius: raio.md,
-                borderWidth: 2,
-                borderColor: escolhida ? cor.azulMarca : cor.linha,
-                backgroundColor: escolhida || pressed ? cor.fundoSuave : cor.fundo,
-              })}
-            >
-              <View style={{ width: 22, height: 22, borderRadius: 11, borderWidth: 2, borderColor: escolhida ? cor.azulMarca : cor.linhaForte, alignItems: "center", justifyContent: "center" }}>
-                {escolhida ? <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: cor.azulMarca }} /> : null}
-              </View>
-              <Texto forte={escolhida} style={{ flex: 1, fontSize: 18, lineHeight: 26 }}>
-                {o}
-              </Texto>
-            </Pressable>
-          );
-        })}
-      </View>
-      {ultima && porResponder > 0 ? (
-        <Texto v="legenda" suave>
-          {porResponder === 1 ? "Falta responder a 1 pergunta." : `Faltam ${porResponder} perguntas por responder.`} As que ficarem em branco contam como erradas.
-        </Texto>
-      ) : null}
-      <Dialogo aberto={aSair} aoFechar={() => setASair(false)} titulo="Sair do teste?" texto="O tempo continua a contar. Pode voltar enquanto não acabar; se o tempo acabar sem entregar, a tentativa conta como reprovada.">
-        <Botao larguraTotal onPress={() => setASair(false)}>
-          Continuar o teste
-        </Botao>
-        <Botao
-          tipo="ligacao"
-          larguraTotal
-          onPress={() => {
-            setASair(false);
-            sair();
-          }}
-        >
-          Sair do teste
-        </Botao>
-      </Dialogo>
     </Ecra>
   );
 }

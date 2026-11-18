@@ -1,108 +1,54 @@
 /**
- * Primeira entrada (PrimeiraEntrada.dc.html; web app/(licao)/user/primeira-entrada/page.tsx):
- * 1. área e meta diária; 2. nível — o teste falado com o tutor (/conversa/teste-nivel, do agente
- * CONVERSA) ou, em alternativa, 5 perguntas escritas; 3. o curso por onde começar.
- *
- * Volta do teste falado: o ecrã do teste chama `router.dismissTo("/primeira-entrada?nivel=B1")` (aberto com `?volta=/primeira-entrada`).
- * Recebido o `nivel`, guardamos { nivel, acolhimento: "concluido" } e passamos ao passo 3.
+ * Primeira entrada (web app/(licao)/user/primeira-entrada/page.tsx):
+ * 1. o que quer aprender (inglês geral ou de uma área) e a meta diária;
+ * 2. o nível em que começa o English Communication Skills, de A1 a C1: o A1 entra logo; outro
+ *    nível pede um teste escrito com perguntas dos níveis abaixo, feito aqui mesmo (TODO: o início
+ *    do teste de colocação espera o novo contrato da API; ver iniciarTesteColocacao);
+ * 3. o curso onde ficou inscrito.
+ * Quem decide o nível e faz a inscrição é o servidor (/student/colocacao/), que também guarda
+ * { nivel, acolhimento: "concluido" } nas preferências.
  */
-import { router, Stack, useFocusEffect, useLocalSearchParams } from "expo-router";
-import { BookOpen, Briefcase, Check, Fuel, Globe, Landmark, Laptop, Mic, Scale, Stethoscope } from "lucide-react-native";
-import { type ComponentType, useCallback, useEffect, useRef, useState } from "react";
+import { router, Stack } from "expo-router";
+import { BookOpen, Briefcase, Check, Fuel, Globe, Landmark, Laptop, Lock, Scale, Stethoscope } from "lucide-react-native";
+import { type ComponentType, useState } from "react";
 import { Pressable, View } from "react-native";
 import { mensagemErro } from "@/api/erros";
-import {
-  type Preferencias,
-  usePeCursosPraticaQuery,
-  usePeCursosVideoDaAreaQuery,
-  usePeEscolherCursoPraticaMutation,
-  usePeGuardarPreferenciasMutation,
-  usePeMetaQuery,
-  usePeMudarMetaMutation,
-} from "@/dominios/conta/api";
-import { type NivelCefr, OPCOES_NIVEL, eNivel, nivelDoTeste, nomeCompletoNivel, sugerirPorNivel } from "@/dominios/conta/niveis";
-import { AREAS, METAS, PERGUNTAS } from "@/dominios/conta/primeiraEntrada";
-import { AvisoNivelBasico, useFaltaNivelBasico } from "@/componentes/cursos/NivelBasico";
+import { dataHora, PerguntasTeste, REGRA_SAIR_DA_APP } from "@/componentes/cursos/PerguntasTeste";
+import { type Preferencias, usePeGuardarPreferenciasMutation, usePeMetaQuery, usePeMudarMetaMutation } from "@/dominios/conta/api";
+import { AREA_GERAL, AREAS, METAS, rotuloArea } from "@/dominios/conta/primeiraEntrada";
+import { type NivelColocacao, type NivelDisponivel, type ResultadoColocacao, testeNecessario, useColocacaoQuery, useColocarMutation, useIniciarTesteColocacaoMutation } from "@/dominios/cursos/colocacao";
+import type { TentativaTeste } from "@/dominios/cursos/testeBasico";
 import { primeiroNome, useSessao } from "@/sessao/ContextoSessao";
-import { Aviso, BalaoFala, Botao, Cartao, Ecra, Osso, Texto, Titulo } from "@/ui";
+import { ACarregar, Aviso, Botao, Cartao, Ecra, Numero, Osso, Texto, Titulo } from "@/ui";
 import { balao, cor, fonte, raio } from "@/tema";
+
 
 type IconeLucide = ComponentType<{ size?: number; color?: string }>;
 const ICONES: Record<string, IconeLucide> = {
+  [AREA_GERAL]: Globe,
   "Industry English": Fuel,
   "Financial English": Landmark,
   "Business English": Briefcase,
   "Medical English": Stethoscope,
   "Legal English": Scale,
   "Technical English": Laptop,
-  "General English": Globe,
 };
 
 const ERRO_GUARDAR = "Não foi possível guardar. Tente outra vez.";
 
 export default function PrimeiraEntrada() {
-  const p = useLocalSearchParams<{ nivel?: string; perguntas?: string }>();
-  const { utilizador, actualizarUtilizador } = useSessao();
+  const { utilizador } = useSessao();
   const pref = (utilizador?.preferences ?? {}) as Preferencias;
   const [passo, setPasso] = useState<1 | 2 | 3>(1);
   const [area, setArea] = useState<string | null>(null);
   const { data: metaGuardada } = usePeMetaQuery();
   const [metaEscolhida, setMeta] = useState<number | null>(null);
   const meta = metaEscolhida ?? metaGuardada?.daily_goal_minutes ?? 10;
-  const [nivel, setNivel] = useState<NivelCefr | null>(null);
-  const [porPerguntas, setPorPerguntas] = useState(false);
   const [guardar, { isLoading: aGuardar }] = usePeGuardarPreferenciasMutation();
   const [mudarMeta, { isLoading: aMudarMeta }] = usePeMudarMetaMutation();
   const [erro, setErro] = useState<string | null>(null);
+  const [resultado, setResultado] = useState<{ r: ResultadoColocacao; tentativa: TentativaTeste | null } | null>(null);
   const areaEscolhida = area ?? pref.area ?? null;
-  const abriuTeste = useRef(false);
-  const nivelTratado = useRef<string | null>(null);
-
-  // Volta do teste falado com ?perguntas=1: a pessoa preferiu as perguntas escritas.
-  useFocusEffect(
-    useCallback(() => {
-      if (p.perguntas !== "1") return;
-      setPasso(2);
-      setPorPerguntas(true);
-    }, [p.perguntas])
-  );
-
-  const terminarTeste = useCallback(
-    async (n: NivelCefr) => {
-      setErro(null);
-      try {
-        await guardar({ nivel: n, acolhimento: "concluido" }).unwrap();
-        setNivel(n);
-        setPasso(3);
-        void actualizarUtilizador();
-      } catch (e) {
-        setPasso(2);
-        setErro(mensagemErro(e, ERRO_GUARDAR));
-      }
-    },
-    [guardar, actualizarUtilizador]
-  );
-
-  // Volta do teste falado com ?nivel=XX.
-  useEffect(() => {
-    const n = p.nivel?.toUpperCase();
-    if (!eNivel(n) || nivelTratado.current === n) return;
-    nivelTratado.current = n;
-    void terminarTeste(n);
-  }, [p.nivel, terminarTeste]);
-
-  // Se o teste falado guardou ele próprio o nível, ao voltar passa-se ao passo 3.
-  useFocusEffect(
-    useCallback(() => {
-      if (abriuTeste.current) void actualizarUtilizador();
-    }, [actualizarUtilizador])
-  );
-  useEffect(() => {
-    if (abriuTeste.current && passo === 2 && pref.acolhimento === "concluido" && eNivel(pref.nivel)) {
-      setNivel(pref.nivel);
-      setPasso(3);
-    }
-  }, [pref.acolhimento, pref.nivel, passo]);
 
   const continuarPasso1 = async () => {
     if (!areaEscolhida) return;
@@ -115,19 +61,17 @@ export default function PrimeiraEntrada() {
     }
   };
 
-  const cabecalho = <Progresso passo={passo} />;
-
   return (
     <>
       <Stack.Screen options={{ gestureEnabled: false }} />
       {passo === 1 ? (
         <Ecra
-          cabecalho={cabecalho}
+          cabecalho={<Progresso passo={1} />}
           style={{ gap: 22, paddingTop: 8 }}
           rodape={
             <>
               <Texto v="legenda" suave>
-                A seguir: uma conversa curta com o tutor para saber o seu nível. Depois começa a primeira lição.
+                A seguir: escolha o nível em que quer começar.
               </Texto>
               {erro ? <Aviso tom="erro">{erro}</Aviso> : null}
               <Botao larguraTotal disabled={!areaEscolhida} carregando={aGuardar || aMudarMeta} onPress={() => void continuarPasso1()}>
@@ -135,7 +79,7 @@ export default function PrimeiraEntrada() {
               </Botao>
               {!areaEscolhida ? (
                 <Texto v="legenda" suave centro>
-                  Escolha a área para continuar.
+                  Escolha o que quer aprender para continuar.
                 </Texto>
               ) : null}
             </>
@@ -147,25 +91,15 @@ export default function PrimeiraEntrada() {
           <EscolherArea valor={areaEscolhida} aoMudar={setArea} />
           <EscolherMeta valor={meta} aoMudar={setMeta} />
         </Ecra>
-      ) : passo === 2 ? (
-        <Ecra cabecalho={cabecalho} style={{ gap: 24, paddingTop: 8 }}>
-          {porPerguntas ? (
-            <Perguntas aoTerminar={(n) => void terminarTeste(n)} erro={erro} aGuardar={aGuardar} aoPreferirConversa={() => setPorPerguntas(false)} />
-          ) : (
-            <TesteFalado
-              erro={erro}
-              aoComecar={() => {
-                abriuTeste.current = true;
-                router.push("/conversa/teste-nivel?volta=/primeira-entrada");
-              }}
-              aoPreferirPerguntas={() => setPorPerguntas(true)}
-            />
-          )}
-        </Ecra>
+      ) : passo === 2 || !resultado ? (
+        <EscolherNivel
+          aoColocar={(r, tentativa) => {
+            setResultado({ r, tentativa });
+            setPasso(3);
+          }}
+        />
       ) : (
-        <Ecra cabecalho={cabecalho} style={{ gap: 24, paddingTop: 8 }}>
-          <Pronto area={areaEscolhida} nivel={nivel ?? "B1"} />
-        </Ecra>
+        <Pronto r={resultado.r} tentativa={resultado.tentativa} area={areaEscolhida} />
       )}
     </>
   );
@@ -189,23 +123,27 @@ function EscolherArea({ valor, aoMudar }: { valor: string | null; aoMudar: (v: s
   return (
     <View style={{ gap: 12 }}>
       <Titulo v="tituloXS" style={{ fontFamily: fonte.tituloMedio, fontSize: 18, lineHeight: 24 }}>
-        Em que área trabalha?
+        O que quer aprender?
       </Titulo>
-      <View accessibilityRole="radiogroup" accessibilityLabel="Área" style={{ flexDirection: "row", flexWrap: "wrap", gap: 10 }}>
+      <View accessibilityRole="radiogroup" accessibilityLabel="O que quer aprender" style={{ flexDirection: "row", flexWrap: "wrap", gap: 10 }}>
         {AREAS.map((a) => {
           const sel = a.valor === valor;
+          const geral = a.valor === AREA_GERAL;
           const Icone = ICONES[a.valor] ?? BookOpen;
+          const rotulo = rotuloArea(a);
           return (
             <Pressable
               key={a.valor}
               accessibilityRole="radio"
               accessibilityState={{ checked: sel }}
-              accessibilityLabel={a.nome}
+              accessibilityLabel={geral ? `${rotulo}. English Communication Skills, para qualquer profissão` : rotulo}
               onPress={() => aoMudar(a.valor)}
               style={({ pressed }) => ({
-                width: "48%",
+                width: geral ? "100%" : "48%",
                 flexGrow: 1,
-                gap: 8,
+                flexDirection: geral ? "row" : "column",
+                alignItems: geral ? "center" : "flex-start",
+                gap: geral ? 12 : 8,
                 padding: 14,
                 borderRadius: raio.md,
                 borderWidth: sel ? 2 : 1.5,
@@ -216,13 +154,26 @@ function EscolherArea({ valor, aoMudar }: { valor: string | null; aoMudar: (v: s
               <View style={[balao.pequeno, { width: 40, height: 40, borderTopLeftRadius: 14, borderTopRightRadius: 14, borderBottomRightRadius: 14, alignItems: "center", justifyContent: "center", backgroundColor: sel ? cor.azulMarca : cor.fundoForte }]}>
                 <Icone size={22} color={sel ? cor.sobreMarca : cor.tinta} />
               </View>
-              <Texto forte={sel} style={{ lineHeight: 22 }}>
-                {a.nome}
-              </Texto>
+              <View style={{ flex: geral ? 1 : undefined, gap: 2 }}>
+                <Texto forte={sel || geral} style={{ lineHeight: 22 }}>
+                  {rotulo}
+                </Texto>
+                {geral ? (
+                  <Texto v="legenda" suave>
+                    <Texto v="legenda" suave accessibilityLanguage="en">
+                      English Communication Skills
+                    </Texto>
+                    , para qualquer profissão
+                  </Texto>
+                ) : null}
+              </View>
             </Pressable>
           );
         })}
       </View>
+      <Texto v="legenda" suave>
+        Todos começam pelo inglês geral. Os cursos de cada área abrem-se a partir do nível básico (A2).
+      </Texto>
     </View>
   );
 }
@@ -273,236 +224,336 @@ function EscolherMeta({ valor, aoMudar }: { valor: number; aoMudar: (v: number) 
   );
 }
 
-/** Passo 2, caminho principal: abre o teste de nível falado (ecrã do agente CONVERSA). */
-function TesteFalado({ erro, aoComecar, aoPreferirPerguntas }: { erro: string | null; aoComecar: () => void; aoPreferirPerguntas: () => void }) {
-  return (
-    <>
-      <View style={{ gap: 8 }}>
-        <Titulo>Qual é o seu nível a falar?</Titulo>
-        <Texto suave>
-          Uma conversa curta com o tutor, em inglês. Começa com perguntas fáceis sobre si e vai subindo: o seu trabalho, um problema que resolveu, uma opinião. No fim mostramos o seu nível em cada competência.
-        </Texto>
-      </View>
-      <View style={{ gap: 10 }}>
-        {[
-          "Não gasta os minutos de conversa do seu plano.",
-          "Não há respostas erradas: o tutor não corrige nem dá notas durante a conversa.",
-          "A conversa não é gravada. Guardamos só o texto do que disse.",
-        ].map((t) => (
-          <View key={t} style={{ flexDirection: "row", gap: 10 }}>
-            <Check size={18} color={cor.certo} style={{ marginTop: 3 }} />
-            <Texto v="legenda" style={{ flex: 1, fontSize: 15, lineHeight: 22 }}>
-              {t}
-            </Texto>
-          </View>
-        ))}
-      </View>
-      {erro ? <Aviso tom="erro">{erro}</Aviso> : null}
-      <View style={{ gap: 8, marginTop: "auto" }}>
-        <Botao larguraTotal icone={<Mic size={20} color={cor.sobreMarca} />} onPress={aoComecar}>
-          Começar a conversa
-        </Botao>
-        <Botao tipo="ligacao" tamanho="medio" style={{ alignSelf: "center" }} onPress={aoPreferirPerguntas}>
-          Prefiro responder a perguntas
-        </Botao>
-      </View>
-    </>
-  );
-}
+/**
+ * Entra sem fazer teste: A1, níveis anteriores já provados, ou já fez o teste de colocação há menos
+ * de 24 horas (o servidor coloca-o pelo resultado desse teste).
+ */
+const entraSemTeste = (n: NivelDisponivel, espera: string | null) => n.pode_entrar || !!espera;
 
-/** Passo 2, alternativa: 5 perguntas escritas, ou escolher o nível à mão. */
-function Perguntas({ aoTerminar, erro, aGuardar, aoPreferirConversa }: { aoTerminar: (n: NivelCefr) => void; erro: string | null; aGuardar: boolean; aoPreferirConversa: () => void }) {
-  const [i, setI] = useState(0);
-  const [respostas, setRespostas] = useState<boolean[]>([]);
-  const [escolha, setEscolha] = useState<number | null>(null);
-  const [escolherAMao, setEscolherAMao] = useState(false);
-  const p = PERGUNTAS[i];
-  const ultima = i === PERGUNTAS.length - 1;
+/** Passo 2: o nível em que começa. O teste de colocação, quando é preciso, faz-se aqui mesmo. */
+function EscolherNivel({ aoColocar }: { aoColocar: (r: ResultadoColocacao, tentativa: TentativaTeste | null) => void }) {
+  const { actualizarUtilizador } = useSessao();
+  const { data, isLoading, isError, refetch } = useColocacaoQuery();
+  const [colocar, { isLoading: aColocar }] = useColocarMutation();
+  const [escolhido, setEscolhido] = useState<NivelColocacao | null>(null);
+  const [emTeste, setEmTeste] = useState<NivelDisponivel | null>(null);
+  // O teste entregue, enquanto o servidor guarda o nível (ou se falhar, para tentar outra vez).
+  const [entregue, setEntregue] = useState<TentativaTeste | null>(null);
+  const [erro, setErro] = useState<string | null>(null);
 
-  const seguinte = (acertou: boolean) => {
-    const novas = [...respostas];
-    novas[i] = acertou;
-    setRespostas(novas);
-    setEscolha(null);
-    if (ultima) aoTerminar(nivelDoTeste(novas.filter(Boolean).length));
-    else setI(i + 1);
+  const aplicar = async (nivel: NivelColocacao, tentativa: TentativaTeste | null) => {
+    setErro(null);
+    try {
+      const r = await colocar(nivel).unwrap();
+      void actualizarUtilizador();
+      aoColocar(r, tentativa);
+    } catch (e) {
+      // O servidor pede o teste: abre-se a entrada do teste de colocação.
+      const n = data?.niveis.find((x) => x.nivel === nivel);
+      if (testeNecessario(e) && n) {
+        setEntregue(null);
+        setEmTeste(n);
+      } else setErro(mensagemErro(e, "Não foi possível guardar o nível. Tente outra vez."));
+    }
   };
 
-  if (escolherAMao)
+  const cabecalho = <Progresso passo={2} />;
+  // Um teste de colocação a meio retoma-se logo (o tempo continua a contar).
+  const aMeio = data?.em_curso?.perguntas ? data.em_curso : null;
+  const noTeste = emTeste ?? (aMeio ? data?.niveis.find((n) => n.nivel === aMeio.para) ?? null : null);
+
+  if (noTeste && entregue)
     return (
-      <>
-        <Titulo>Qual é o seu nível de inglês?</Titulo>
-        <View style={{ gap: 10 }}>
-          {OPCOES_NIVEL.map((n) => (
-            <Pressable
-              key={n.valor}
-              accessibilityRole="button"
-              disabled={aGuardar}
-              onPress={() => aoTerminar(n.valor)}
-              style={({ pressed }) => ({ minHeight: 56, paddingVertical: 10, paddingHorizontal: 16, gap: 2, borderRadius: raio.sm, borderWidth: 2, borderColor: cor.azulMarca, backgroundColor: pressed ? cor.fundoSuave : cor.fundo })}
-            >
-              <Texto forte cor={cor.azulMarca}>
-                {n.nome}
-              </Texto>
-              <Texto v="legenda" suave>
-                {n.descricao}
-              </Texto>
-            </Pressable>
-          ))}
-        </View>
-        {erro ? <Aviso tom="erro">{erro}</Aviso> : null}
-        <Botao tipo="ligacao" onPress={() => setEscolherAMao(false)}>
-          Fazer as perguntas
-        </Botao>
-      </>
+      <Ecra
+        cabecalho={cabecalho}
+        style={{ gap: 20, paddingTop: 8 }}
+        rodape={
+          erro ? (
+            <Botao larguraTotal carregando={aColocar} onPress={() => void aplicar(noTeste.nivel, entregue)}>
+              Tentar outra vez
+            </Botao>
+          ) : undefined
+        }
+      >
+        <Titulo>Teste entregue</Titulo>
+        {erro ? <Aviso tom="erro">{erro}</Aviso> : <ACarregar linhas={2} rotulo="A guardar o seu nível" />}
+      </Ecra>
+    );
+  if (noTeste && data)
+    return (
+      <TesteDeColocacao
+        n={noTeste}
+        aMeio={aMeio}
+        aoVoltar={() => setEmTeste(null)}
+        aoEntregar={(t) => {
+          setEntregue(t);
+          void aplicar(noTeste.nivel, t);
+        }}
+      />
+    );
+  if (isLoading)
+    return (
+      <Ecra cabecalho={cabecalho} style={{ gap: 12, paddingTop: 8 }}>
+        <Osso altura={36} />
+        {[0, 1, 2, 3, 4].map((i) => (
+          <Osso key={i} altura={96} />
+        ))}
+      </Ecra>
+    );
+  if (isError || !data)
+    return (
+      <Ecra cabecalho={cabecalho} style={{ gap: 16, paddingTop: 8 }}>
+        <Titulo>Não conseguimos carregar os níveis</Titulo>
+        <Botao onPress={() => void refetch()}>Tentar outra vez</Botao>
+      </Ecra>
     );
 
+  const sel = data.niveis.find((n) => n.nivel === escolhido) ?? null;
+  const espera = data.proxima_tentativa_em;
+  const textoBotao = !sel
+    ? "Escolha um nível"
+    : aColocar
+      ? "A guardar…"
+      : entraSemTeste(sel, espera)
+        ? sel.pode_entrar
+          ? `Começar no ${sel.nivel}`
+          : "Continuar"
+        : "Fazer o teste de colocação";
+
   return (
-    <>
+    <Ecra
+      cabecalho={cabecalho}
+      style={{ gap: 20, paddingTop: 8 }}
+      rodape={
+        <>
+          {sel && !sel.pode_entrar && espera ? (
+            <Aviso>{`Já fez o teste de colocação. Pode repeti-lo a partir de ${dataHora(espera)}; até lá, começa no nível que esse teste mostrou.`}</Aviso>
+          ) : null}
+          {erro ? <Aviso tom="erro">{erro}</Aviso> : null}
+          <Botao
+            larguraTotal
+            disabled={!sel}
+            carregando={aColocar}
+            onPress={() => {
+              if (!sel) return;
+              if (entraSemTeste(sel, espera)) void aplicar(sel.nivel, null);
+              else setEmTeste(sel);
+            }}
+          >
+            {textoBotao}
+          </Botao>
+        </>
+      }
+    >
       <View style={{ gap: 8 }}>
-        <Titulo>Complete a frase</Titulo>
-        <Texto suave>{`Pergunta ${i + 1} de ${PERGUNTAS.length}. Não há problema em errar: serve só para escolher por onde começa.`}</Texto>
-      </View>
-      <BalaoFala>
-        <Texto v="voz" cor={cor.sobreMarca} style={{ fontSize: 24, lineHeight: 34 }}>
-          {p.frase[0]}
-          <Texto v="voz" cor={cor.sobreMarca} style={{ fontFamily: fonte.textoForte, fontSize: 24, lineHeight: 34, fontStyle: "normal", textDecorationLine: "underline", textDecorationColor: cor.realce }}>
-            {escolha === null ? "   " : ` ${p.opcoes[escolha]} `}
-          </Texto>
-          {p.frase[1]}
+        <Titulo>Em que nível quer começar?</Titulo>
+        <Texto suave>
+          {`No A1 começa logo. Para outro nível, faz um teste escrito de 30 perguntas com todos os níveis abaixo do que escolheu: começa no nível a seguir ao último em que acertar ${data.regras.aprovacao}%, a contar do A1.`}
         </Texto>
-      </BalaoFala>
-      <View accessibilityRole="radiogroup" accessibilityLabel="Opções" style={{ gap: 10 }}>
-        {p.opcoes.map((o, k) => {
-          const sel = escolha === k;
+      </View>
+      <View accessibilityRole="radiogroup" accessibilityLabel="Níveis" style={{ gap: 10 }}>
+        {data.niveis.map((n) => {
+          const activo = n.nivel === escolhido;
+          const aberto = n.pode_entrar;
+          const estado =
+            n.niveis_teste.length === 0 ? "Começa logo" : n.pode_entrar ? "Já tem os níveis anteriores" : `Teste de ${n.perguntas} perguntas: ${n.niveis_teste.join(", ")}`;
           return (
             <Pressable
-              key={o}
+              key={n.nivel}
               accessibilityRole="radio"
-              accessibilityState={{ checked: sel }}
-              accessibilityLanguage="en"
-              onPress={() => setEscolha(k)}
+              accessibilityState={{ checked: activo }}
+              accessibilityLabel={`${n.nivel}, ${n.nome}. ${n.descricao}. ${estado}`}
+              onPress={() => setEscolhido(n.nivel)}
               style={({ pressed }) => ({
-                minHeight: 52,
                 flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 8,
-                paddingHorizontal: 16,
-                borderRadius: raio.sm,
-                borderWidth: sel ? 2 : 1.5,
-                borderColor: sel ? cor.azulMarca : cor.linhaForte,
-                backgroundColor: sel || pressed ? cor.fundoSuave : cor.fundo,
+                alignItems: "flex-start",
+                gap: 14,
+                paddingHorizontal: 14,
+                paddingVertical: 14,
+                borderRadius: raio.md,
+                borderWidth: activo ? 2 : 1.5,
+                borderColor: activo ? cor.azulMarca : cor.linha,
+                backgroundColor: activo || pressed ? cor.fundoSuave : cor.fundo,
               })}
             >
-              {sel ? <Check size={16} color={cor.tinta} /> : null}
-              <Texto forte style={{ fontSize: 17 }}>
-                {o}
-              </Texto>
+              <View style={[balao.pequeno, { width: 48, height: 48, borderTopLeftRadius: 16, borderTopRightRadius: 16, borderBottomRightRadius: 16, alignItems: "center", justifyContent: "center", backgroundColor: activo ? cor.azulMarca : cor.fundoForte }]}>
+                <Texto cor={activo ? cor.sobreMarca : cor.azulMarca} style={{ fontFamily: fonte.titulo, fontSize: 18, lineHeight: 22 }}>
+                  {n.nivel}
+                </Texto>
+              </View>
+              <View style={{ flex: 1, gap: 2 }}>
+                <Texto forte style={{ lineHeight: 22 }}>
+                  {n.nome}
+                </Texto>
+                <Texto v="legenda" suave>
+                  {n.descricao}
+                </Texto>
+                <View style={{ flexDirection: "row", alignItems: "center", gap: 6, marginTop: 4 }}>
+                  {aberto ? <Check size={16} color={cor.certo} /> : <Lock size={16} color={cor.azulMarca} />}
+                  <Texto v="legenda" forte cor={aberto ? cor.certo : cor.azulMarca}>
+                    {estado}
+                  </Texto>
+                </View>
+              </View>
             </Pressable>
           );
         })}
       </View>
-      {erro ? <Aviso tom="erro">{erro}</Aviso> : null}
-      <View style={{ gap: 4 }}>
-        <Botao larguraTotal disabled={escolha === null} carregando={aGuardar} onPress={() => escolha !== null && seguinte(escolha === p.certa)}>
-          {ultima ? "Ver o meu nível" : "Seguinte"}
-        </Botao>
-        <Botao tipo="ligacao" tamanho="pequeno" style={{ alignSelf: "center" }} disabled={aGuardar} onPress={() => seguinte(false)}>
-          Não sei
-        </Botao>
-      </View>
-      <View style={{ flexDirection: "row", flexWrap: "wrap", columnGap: 24 }}>
-        <Botao tipo="ligacao" tamanho="pequeno" onPress={() => setEscolherAMao(true)}>
-          Já sei o meu nível
-        </Botao>
-        <Botao tipo="ligacao" tamanho="pequeno" onPress={aoPreferirConversa}>
-          Fazer o teste a falar
-        </Botao>
-      </View>
-    </>
+    </Ecra>
   );
 }
 
-/**
- * Passo 3: o nível e o curso por onde começar.
- * Os cursos de sector pedem o nível básico: a quem ainda não o tem sugerimos o curso geral e
- * mostramos o teste, em vez de um curso da área que a API não deixaria começar.
- */
-function Pronto({ area, nivel }: { area: string | null; nivel: NivelCefr }) {
-  const faltaBasico = useFaltaNivelBasico();
-  // Com o nível básico: os cursos da área. Sem ele: todos, para escolher um curso geral.
-  const { data: videos, isLoading: aCarregarVideo } = usePeCursosVideoDaAreaQuery(faltaBasico ? null : area);
-  const { data: praticas, isLoading: aCarregarPratica, isError: erroPratica, refetch } = usePeCursosPraticaQuery();
-  const [escolher, { isLoading: aEscolher }] = usePeEscolherCursoPraticaMutation();
+/** O teste de colocação, aqui mesmo: as regras e depois as perguntas. */
+function TesteDeColocacao({ n, aMeio, aoVoltar, aoEntregar }: { n: NivelDisponivel; aMeio: TentativaTeste | null; aoVoltar: () => void; aoEntregar: (t: TentativaTeste) => void }) {
+  const [iniciar, { isLoading: aIniciar }] = useIniciarTesteColocacaoMutation();
+  const [tentativa, setTentativa] = useState<TentativaTeste | null>(null);
   const [erro, setErro] = useState<string | null>(null);
-  const abertas = (praticas ?? []).filter((c) => !c.requisito_basico);
-  const daArea = abertas.filter((c) => c.category === area);
-  const pratica = sugerirPorNivel(daArea, nivel) ?? sugerirPorNivel(abertas, nivel);
-  const video = sugerirPorNivel(faltaBasico ? (videos ?? []).filter((c) => !c.de_sector) : (videos ?? []), nivel);
-  const nomeArea = AREAS.find((a) => a.valor === area)?.nome;
-  const areaDeSector = !!area && area !== "General English";
+  const cabecalho = <Progresso passo={2} />;
+  const aDecorrer = tentativa ?? aMeio;
+
+  if (aDecorrer?.perguntas) return <PerguntasTeste key={aDecorrer.id} t={aDecorrer} aoEntregar={aoEntregar} aoSair={aoVoltar} />;
+
   return (
-    <>
-      <View style={{ gap: 8 }}>
-        <Titulo>{`O seu nível: ${nomeCompletoNivel(nivel)}`}</Titulo>
-        <Texto suave>{faltaBasico && areaDeSector ? "Comece pelo curso geral: é ele que o leva ao nível básico que os cursos de sector pedem." : "Escolhemos o curso por onde começar. Pode mudar de nível e de área nas definições."}</Texto>
-      </View>
-      {aCarregarPratica ? (
-        <Osso altura={170} />
-      ) : erroPratica ? (
-        <Aviso tom="erro" accao={<Botao tipo="ligacao" tamanho="pequeno" onPress={() => void refetch()}>Tentar outra vez</Botao>}>
-          Não conseguimos carregar os cursos de prática.
-        </Aviso>
-      ) : pratica ? (
-        <Cartao style={{ gap: 10, padding: 20 }}>
-          <Texto v="legenda" forte suave>
-            Laboratório de prática
-          </Texto>
-          <Titulo v="tituloS">{pratica.title}</Titulo>
-          <Texto v="legenda" suave style={{ fontSize: 15, lineHeight: 22 }}>
-            Lições de 5 minutos com exercícios de ouvir, falar e escrever.
-          </Texto>
+    <Ecra
+      cabecalho={cabecalho}
+      style={{ gap: 20, paddingTop: 8 }}
+      rodape={
+        <>
           {erro ? <Aviso tom="erro">{erro}</Aviso> : null}
           <Botao
-            tipo="realce"
             larguraTotal
-            carregando={aEscolher}
+            carregando={aIniciar}
             onPress={async () => {
               setErro(null);
               try {
-                await escolher(pratica.id).unwrap();
-                router.dismissTo("/praticar");
-              } catch {
-                setErro("Não foi possível abrir o curso. Tente outra vez.");
+                setTentativa(await iniciar(n.nivel).unwrap());
+              } catch (e) {
+                setErro(mensagemErro(e, "Não foi possível abrir o teste. Tente outra vez."));
               }
             }}
           >
-            {aEscolher ? "A preparar…" : "Começar a primeira lição"}
+            {aIniciar ? "A abrir o teste…" : "Começar o teste"}
           </Botao>
-        </Cartao>
+          <Botao tipo="ligacao" tamanho="medio" style={{ alignSelf: "center" }} onPress={aoVoltar}>
+            Escolher outro nível
+          </Botao>
+        </>
+      }
+    >
+      <View style={{ gap: 8 }}>
+        <Titulo>{`Teste para começar no ${n.nivel}`}</Titulo>
+        <Texto suave>
+          {`O teste tem perguntas de ${n.niveis_teste.join(", ")}. Cada nível conta em separado: começa no nível a seguir ao último em que acertar 70%, a contar do A1. Se acertar em todos, começa no ${n.nivel}.`}
+        </Texto>
+      </View>
+      <View style={{ flexDirection: "row", gap: 8 }}>
+        <Numero rotulo="Perguntas" valor={n.perguntas} />
+        <Numero rotulo="Minutos" valor={n.minutos} />
+        <Numero rotulo="Certas em cada nível" valor="70%" />
+      </View>
+      <View style={{ gap: 10 }}>
+        {[
+          "São perguntas de escolha, uma de cada vez. Pode voltar atrás e mudar a resposta.",
+          "O tempo começa a contar quando abrir o teste e não pára se sair da app.",
+          "Só pode repetir o teste 24 horas depois.",
+        ].map((t) => (
+          <View key={t} style={{ flexDirection: "row", gap: 10 }}>
+            <Check size={18} color={cor.azulMarca} style={{ marginTop: 4 }} />
+            <Texto style={{ flex: 1 }}>{t}</Texto>
+          </View>
+        ))}
+      </View>
+      <Aviso tom="realce" titulo="Fique na app até entregar">
+        <Texto>{REGRA_SAIR_DA_APP}</Texto>
+      </Aviso>
+    </Ecra>
+  );
+}
+
+/** Passo 3: o nível e o curso onde ficou inscrito. */
+function Pronto({ r, tentativa, area }: { r: ResultadoColocacao; tentativa: TentativaTeste | null; area: string | null }) {
+  const sector = !!area && area !== AREA_GERAL;
+  const nomeArea = AREAS.find((a) => a.valor === area)?.nome;
+  const temBasico = ["B1", "B2", "C1"].includes(r.nivel);
+  const resultado = tentativa?.resultado ? Object.entries(tentativa.resultado) : [];
+
+  let texto: string | null = null;
+  if (r.no_nivel_escolhido) texto = tentativa ? "Passou em todos os níveis do teste." : null;
+  else texto = `Escolheu o ${r.escolhido}, mas o teste mostrou que o melhor é começar no ${r.nivel}. Pode repetir o teste daqui a 24 horas para subir.`;
+
+  return (
+    <Ecra
+      cabecalho={<Progresso passo={3} />}
+      style={{ gap: 24, paddingTop: 8 }}
+      rodape={
+        <Botao tipo="ligacao" larguraTotal onPress={() => router.dismissTo("/inicio")}>
+          Ir para o início
+        </Botao>
+      }
+    >
+      <View style={{ gap: 8 }}>
+        <Titulo>{`Começa no ${r.nivel}`}</Titulo>
+        {texto ? <Texto suave>{texto}</Texto> : null}
+      </View>
+
+      {resultado.length ? (
+        <View accessibilityLabel="Resultado por nível" style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}>
+          {resultado.map(([nivel, x]) => (
+            <View key={nivel} style={{ flexBasis: "47%", flexGrow: 1, gap: 2, paddingHorizontal: 14, paddingVertical: 10, borderRadius: raio.md, backgroundColor: x?.aprovado ? cor.certoSuave : cor.fundoSuave }}>
+              <Texto style={{ fontFamily: fonte.titulo, fontSize: 18, lineHeight: 22 }}>{nivel}</Texto>
+              <Texto v="legenda" numeros>{`${x?.certas} de ${x?.total} certas`}</Texto>
+              <Texto v="legenda" forte>{x?.aprovado ? "Passou" : "Não passou"}</Texto>
+            </View>
+          ))}
+        </View>
       ) : null}
 
-      {aCarregarVideo ? null : video ? (
-        <Cartao suave style={{ padding: 20 }}>
+      {r.curso ? (
+        <Cartao style={{ gap: 10, padding: 20 }}>
           <Texto v="legenda" forte suave>
-            {video.de_sector ? "Curso em vídeo da sua área" : "Curso geral em vídeo"}
+            O seu curso
           </Texto>
-          <Texto forte style={{ fontSize: 18, lineHeight: 24 }}>
-            {video.title}
-          </Texto>
-          <Botao tipo="ligacao" href={`/curso/${video.courseId}`}>
-            Ver o curso
-          </Botao>
+          <Titulo v="tituloS">{r.curso.titulo}</Titulo>
+          {r.inscrito ? (
+            <>
+              <Texto v="legenda" suave style={{ fontSize: 15, lineHeight: 22 }}>
+                Já está inscrito. Comece pela primeira vídeo-aula com a professora Luena.
+              </Texto>
+              <Botao tipo="realce" larguraTotal onPress={() => router.replace(`/curso/${r.curso!.id}`)}>
+                Começar o curso
+              </Botao>
+              {r.curso_pratica ? (
+                <Botao tipo="secundario" larguraTotal onPress={() => router.dismissTo("/praticar")}>
+                  Abrir o laboratório
+                </Botao>
+              ) : null}
+            </>
+          ) : r.motivo === "plano" ? (
+            <>
+              <Texto v="legenda" suave style={{ fontSize: 15, lineHeight: 22 }}>
+                Este curso faz parte dos planos pagos. Escolha um plano para se inscrever.
+              </Texto>
+              <Botao larguraTotal onPress={() => router.replace("/planos")}>
+                Ver os planos
+              </Botao>
+            </>
+          ) : (
+            <Texto v="legenda" suave style={{ fontSize: 15, lineHeight: 22 }}>
+              Não foi possível fazer a inscrição agora. Pode inscrever-se a partir da página do curso.
+            </Texto>
+          )}
         </Cartao>
-      ) : null}
+      ) : (
+        <Aviso>{`O curso do nível ${r.nivel} está a ser preparado. O seu nível ficou guardado: quando o curso abrir, aparece no início.`}</Aviso>
+      )}
 
-      {faltaBasico && areaDeSector ? (
-        <AvisoNivelBasico texto={`Já tem o nível básico? Prove-o num teste de 20 minutos e entre logo nos cursos de ${nomeArea ?? "sector"}.`} />
+      {sector && nomeArea ? (
+        <Texto v="legenda" suave style={{ fontSize: 15, lineHeight: 22 }}>
+          {temBasico
+            ? `Já tem o nível básico: pode também inscrever-se nos cursos de ${nomeArea}.`
+            : `Os cursos de ${nomeArea} abrem-se quando chegar ao nível básico (A2 concluído ou o teste do A2).`}
+        </Texto>
       ) : null}
-      <Botao tipo="ligacao" style={{ marginTop: "auto" }} onPress={() => router.dismissTo("/inicio")}>
-        Ir para o início
-      </Botao>
-    </>
+    </Ecra>
   );
 }
