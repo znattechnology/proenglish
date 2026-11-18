@@ -10,7 +10,7 @@ import { Pressable, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { SinoNotificacoes } from "@/componentes/SinoNotificacoes";
 import { useIrParaPrimeiraEntrada } from "@/dominios/conta/primeiraEntrada";
-import { contextoCurso, useMeusCursosQuery, useProgressoCursoQuery, type CursoVideo } from "@/dominios/cursos/api";
+import { accaoDoPasso, contextoCurso, nomeDoPasso, rotaDoPasso, useMeusCursosQuery, useProgressoCursoQuery, useProximoPassoQuery, type CursoVideo, type ProximoPasso } from "@/dominios/cursos/api";
 import { minutosDe, minSeg, useFalaResumoQuery } from "@/dominios/fala/api";
 import { saudacao, useInicioLigaQuery, useInicioRevisaoQuery, useInicioSequenciaQuery, useInicioVidasQuery, VIDAS_ILIMITADAS } from "@/dominios/inicio/api";
 import { useSessao } from "@/sessao/ContextoSessao";
@@ -25,6 +25,9 @@ export default function Inicio() {
   const liga = useInicioLigaQuery(undefined, { skip: !utilizador });
   const revisao = useInicioRevisaoQuery(undefined, { skip: !utilizador });
   const cursos = useMeusCursosQuery(userId, { skip: !userId });
+  // O passo seguinte em toda a plataforma (aula, questionário, laboratório ou conversa): o servidor decide.
+  const passo = useProximoPassoQuery(undefined, { skip: !utilizador });
+  const { refetch: rPasso } = passo;
   const [aActualizar, setAActualizar] = useState(false);
 
   // Quem ainda não fez o acolhimento vai primeiro para a primeira entrada (agente CONTA).
@@ -40,19 +43,24 @@ export default function Inicio() {
       rSeq();
       rVidas();
       rRev();
-    }, [utilizador, rSeq, rVidas, rRev])
+      rPasso();
+    }, [utilizador, rSeq, rVidas, rRev, rPasso])
   );
 
   const actualizar = async () => {
     setAActualizar(true);
-    await Promise.allSettled([seq.refetch(), vidasQ.refetch(), liga.refetch(), revisao.refetch(), userId ? cursos.refetch() : null]);
+    await Promise.allSettled([seq.refetch(), vidasQ.refetch(), liga.refetch(), revisao.refetch(), userId ? cursos.refetch() : null, passo.refetch()]);
     setAActualizar(false);
   };
 
   const vidas = vidasQ.data ? (vidasQ.data.unlimited ? VIDAS_ILIMITADAS : vidasQ.data.current) : undefined;
   const ilimitadas = vidas !== undefined && vidas >= VIDAS_ILIMITADAS;
-  const [primeiro, ...outros] = cursos.data ?? [];
-  const aCarregar = cursos.isLoading || (!userId && !cursos.data);
+  // O curso em destaque é o do passo seguinte; os outros ficam na lista.
+  const proximo = passo.data ?? null;
+  const todos = cursos.data ?? [];
+  const primeiro = (proximo && todos.find((c) => c.courseId === proximo.curso.id)) || todos[0];
+  const outros = todos.filter((c) => c !== primeiro);
+  const aCarregar = cursos.isLoading || passo.isLoading || (!userId && !cursos.data);
 
   return (
     <Ecra cabecalho={<Topo sequencia={seq.data?.current_streak} vidas={vidas} ilimitadas={ilimitadas} />} aoActualizar={actualizar} aActualizar={aActualizar} semTopo>
@@ -77,6 +85,8 @@ export default function Inicio() {
             Tentar outra vez
           </Botao>
         </View>
+      ) : proximo && primeiro?.courseId === proximo.curso.id ? (
+        <ASeguirNoInicio proximo={proximo} />
       ) : primeiro ? (
         <Continuar curso={primeiro} userId={userId} />
       ) : (
@@ -267,6 +277,40 @@ function Continuar({ curso, userId }: { curso: CursoVideo; userId: string }) {
       )}
       <Botao tipo="realce" tamanho="medio" larguraTotal href={`/curso/${curso.courseId}`}>
         {comecou ? "Continuar curso" : "Começar o curso"}
+      </Botao>
+    </BalaoFala>
+  );
+}
+
+/** O destaque do ecrã quando há percurso: o passo seguinte, com o que é e quanto tempo leva. */
+function ASeguirNoInicio({ proximo }: { proximo: ProximoPasso }) {
+  const p = proximo.passo;
+  const pct = proximo.total ? Math.round((100 * proximo.feitos) / proximo.total) : 0;
+  return (
+    <BalaoFala style={{ gap: 16 }}>
+      <View style={{ gap: 4 }}>
+        <Texto v="legenda" forte cor={cor.sobreMarca}>
+          A seguir em {proximo.curso.titulo}, {p.unidade}
+        </Texto>
+        <Texto v="tituloM" accessibilityRole="header" cor={cor.sobreMarca}>
+          {p.tipo === "questionario" ? "Questionário" : p.titulo}
+        </Texto>
+        <Texto v="legenda" cor={cor.sobreMarca} numeros style={{ fontSize: 15, lineHeight: 22 }}>
+          {nomeDoPasso(p)}
+          {p.minutos ? `, cerca de ${p.minutos} min` : ""}
+        </Texto>
+      </View>
+      <View style={{ gap: 8 }}>
+        <BarraProgresso valor={pct} rotulo={`Passos feitos em ${proximo.curso.titulo}`} sobreMarca />
+        <Texto v="legenda" cor={cor.sobreMarca} numeros>
+          {proximo.feitos} de {proximo.total} passos
+        </Texto>
+      </View>
+      <Botao tipo="realce" tamanho="medio" larguraTotal href={rotaDoPasso(proximo.curso.id, p)}>
+        {accaoDoPasso(p)}
+      </Botao>
+      <Botao tipo="sobreMarca" tamanho="pequeno" href={`/curso/${proximo.curso.id}`} style={{ alignSelf: "center" }}>
+        Ver o percurso todo
       </Botao>
     </BalaoFala>
   );

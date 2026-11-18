@@ -4,6 +4,7 @@
  * Igual a apps/web/src/domains/student/{inicio,curso}/api.ts, curso/fala.ts e progresso/api.ts (certificados).
  * O acesso a cada curso vem do plano (não há compras de cursos).
  */
+import type { Href } from "expo-router";
 import type { OfertaPlano } from "@/dominios/subscricao/api";
 import { api } from "@/api/base";
 
@@ -226,6 +227,53 @@ export type AnaliseFrase = { analise: AnaliseGravacao; estado: EstadoBanco | nul
 export type PlanoActual = { plan: { name: string; plan_type: string }; status?: string };
 
 type Envelope<T> = { message?: string; data: T };
+/* Percurso do curso: a ordem aula, questionário, laboratório e conversas (apps/api/apps/courses/percurso.py). */
+export type TipoPasso = "aula" | "questionario" | "pratica" | "conversa";
+export type Passo = {
+  chave: string;
+  tipo: TipoPasso;
+  titulo: string;
+  estado: "feito" | "actual" | "por_fazer";
+  minutos: number | null;
+  aula_id: string;
+  unidade: string;
+  licao_id?: string;
+  curso_pratica_id?: string;
+  situacao?: string;
+  tipo_conversa?: string;
+};
+export type Percurso = {
+  curso: { id: string; titulo: string };
+  unidades: { id: string; titulo: string; aulas: { id: string; titulo: string; passos: Passo[] }[] }[];
+  proximo: Passo | null;
+  feitos: number;
+  total: number;
+};
+export type ProximoPasso = { curso: { id: string; titulo: string }; passo: Passo; feitos: number; total: number };
+
+/** O ecrã da app onde se faz o passo. */
+export function rotaDoPasso(courseId: string, p: Passo): Href {
+  if (p.tipo === "pratica" && p.licao_id) return `/licao/${p.licao_id}` as Href;
+  if (p.tipo === "conversa" && p.situacao) return `/conversa?situacao=${encodeURIComponent(p.situacao)}` as Href;
+  if (p.tipo === "questionario") return `/curso/${courseId}/questionario/${p.aula_id}` as Href;
+  return `/curso/${courseId}/aula/${p.aula_id}` as Href;
+}
+
+export function nomeDoPasso(p: Pick<Passo, "tipo" | "tipo_conversa">) {
+  if (p.tipo === "aula") return "Aula";
+  if (p.tipo === "questionario") return "Questionário";
+  if (p.tipo === "pratica") return "Laboratório";
+  return p.tipo_conversa === "guiada" ? "Conversa guiada" : p.tipo_conversa === "livre" ? "Conversa livre" : "Conversa com o tutor";
+}
+
+/** O texto do botão diz o que acontece a seguir. */
+export function accaoDoPasso(p: Pick<Passo, "tipo">) {
+  if (p.tipo === "aula") return "Ver a aula";
+  if (p.tipo === "questionario") return "Fazer o questionário";
+  if (p.tipo === "pratica") return "Praticar no laboratório";
+  return "Falar com o tutor";
+}
+
 const dados = <T,>(r: Envelope<T> | T) => (r && typeof r === "object" && "data" in (r as object) ? (r as Envelope<T>).data : (r as T));
 
 /** Depois de mudar o progresso: estatísticas, liga, conquistas e certificados (de outros domínios) mudam. */
@@ -343,6 +391,16 @@ export const cursosApi = api
       cursosPlanoActual: build.query<PlanoActual, void>({
         query: () => "/subscriptions/my-subscription/",
       }),
+      percursoCurso: build.query<Percurso, string>({
+        query: (courseId) => `${BASE}/${courseId}/percurso/`,
+        providesTags: (_r, _e, id) => [{ type: "ProgressoCurso", id }],
+      }),
+      proximoPasso: build.query<ProximoPasso | null, { licao?: string; situacao?: string } | void>({
+        // licao / situacao: o que o aluno acabou de fazer, para o "a seguir" ficar no mesmo curso.
+        query: (depois) => ({ url: `${BASE}/percurso/proximo/`, params: depois ?? undefined }),
+        transformResponse: (r: { proximo: ProximoPasso | null }) => r.proximo,
+        providesTags: [{ type: "ProgressoCurso", id: "PROXIMO" }],
+      }),
     }),
   });
 
@@ -366,6 +424,8 @@ export const {
   useEmitirCertificadoCursoMutation,
   useFalaDaAulaQuery,
   useCursosPlanoActualQuery,
+  usePercursoCursoQuery,
+  useProximoPassoQuery,
 } = cursosApi;
 
 /* ------------------------------------------------------------------ */

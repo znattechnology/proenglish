@@ -12,6 +12,7 @@ import { Linking, Pressable, View } from "react-native";
 import { urlAbsoluto } from "@/api/config";
 import { mensagemErro } from "@/api/erros";
 import { RepetirEmVozAlta, UsarNumaConversa } from "@/componentes/cursos/FalaDaAula";
+import { ASeguir } from "@/componentes/cursos/Percurso";
 import { SeparadoresCursos } from "@/componentes/cursos/Pecas";
 import { TextoRico } from "@/componentes/cursos/TextoRico";
 import { tocarDesde } from "@/componentes/cursos/leitor";
@@ -22,6 +23,7 @@ import {
   useCapituloCursoQuery,
   useCursoDetalheQuery,
   useFalaDaAulaQuery,
+  usePercursoCursoQuery,
   useInscricaoCursoQuery,
   useMarcarCapituloMutation,
   useProgressoCursoQuery,
@@ -110,6 +112,11 @@ function Conteudo({
   seguinte: CapituloNoCurso | null;
 }) {
   const [marcar, { isLoading }] = useMarcarCapituloMutation();
+  // O passo seguinte do percurso (o servidor decide); o vídeo e o questionário desta aula já têm
+  // o seu botão no rodapé, por isso só se mostra quando o passo é outro (laboratório, conversa, outra aula).
+  const percurso = usePercursoCursoQuery(courseId, { refetchOnMountOrArgChange: true });
+  const passo = percurso.data?.proximo ?? null;
+  const mostrarSeguinte = !!passo && !(passo.aula_id === cap.chapterId && (passo.tipo === "aula" || passo.tipo === "questionario"));
   const [erro, setErro] = useState<string | null>(null);
   // O progresso pode chegar depois de a aula abrir: conta o que vem do servidor e o que se marcou agora.
   const [vistoAgora, setVisto] = useState(false);
@@ -219,6 +226,10 @@ function Conteudo({
       ) : (
         <>
           {cap.content ? soQuiz ? <Texto v="corpoL">{cap.content}</Texto> : <TextoRico texto={cap.content} /> : null}
+
+          {mostrarSeguinte && percurso.data && passo ? (
+            <ASeguir proximo={{ curso: percurso.data.curso, passo, feitos: percurso.data.feitos, total: percurso.data.total }} />
+          ) : null}
 
           {temFrases ? (
             <Pressable

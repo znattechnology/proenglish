@@ -3,6 +3,8 @@
  * Web: apps/web/app/(estudante)/user/laboratory/speaking/summary/[sessionId]/page.tsx.
  * Enquanto a conversa é avaliada no servidor, volta a perguntar de 4 em 4 segundos.
  */
+import { ASeguir } from "@/componentes/cursos/Percurso";
+import { useProximoPassoQuery } from "@/dominios/cursos/api";
 import { router, useLocalSearchParams } from "expo-router";
 import { CheckCircle2, Circle, Mic } from "lucide-react-native";
 import { useEffect, useState } from "react";
@@ -66,6 +68,8 @@ function Conteudo({ r }: { r: Resumo }) {
   const notas = r.notas ? (["fluencia", "gramatica", "pronuncia", "vocabulario"] as const).filter((k) => r.notas![k] !== null).map((k) => ({ k, nome: COMPETENCIAS[k], valor: Math.round(r.notas![k] as number) })) : [];
   const geral = r.notas?.geral ?? null;
   const repetir = r.situacao.id ? `/conversa?situacao=${encodeURIComponent(r.situacao.id)}` : "/conversa";
+  // O passo seguinte do percurso do curso a que esta conversa pertence (se pertencer a algum).
+  const { data: seguinte } = useProximoPassoQuery(r.situacao.id ? { situacao: r.situacao.id } : undefined, { refetchOnMountOrArgChange: true });
 
   return (
     <>
@@ -180,8 +184,10 @@ function Conteudo({ r }: { r: Resumo }) {
         </Seccao>
       ) : null}
 
+      {seguinte ? <ASeguir proximo={seguinte} /> : null}
+
       <View style={{ gap: 10, paddingTop: 4 }}>
-        <Botao larguraTotal onPress={() => router.navigate(repetir)}>
+        <Botao tipo={seguinte ? "secundario" : "principal"} larguraTotal onPress={() => router.navigate(repetir)}>
           {r.situacao.id ? "Repetir esta conversa" : "Nova conversa"}
         </Botao>
         <Botao tipo="secundario" larguraTotal tamanho="medio" onPress={() => setVerTudo((v) => !v)} accessibilityState={{ expanded: verTudo }}>

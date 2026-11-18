@@ -25,6 +25,8 @@ import {
 import { analisarPronuncia, responderEmVoz, type ErroGravacao } from "@/dominios/laboratorio/gravacao";
 import { ofertaDe, type OfertaPlano as Oferta } from "@/dominios/subscricao/api";
 import { FolhaOferta, OfertaPlano } from "@/componentes/subscricao/Oferta";
+import { ASeguir } from "@/componentes/cursos/Percurso";
+import { useProximoPassoQuery } from "@/dominios/cursos/api";
 import { balao, cor, fonte, raio } from "@/tema";
 import { Aviso, Botao, Dialogo, Ecra, Etiqueta, Numero, Osso, Texto, Titulo } from "@/ui";
 import { ExercicioUI, seSalta, type RespostaExercicio, type ResultadoFala } from "./Exercicios";
@@ -529,6 +531,8 @@ function SemVidas({ aberto, info, aoFechar, aoSair, aoRecarregar }: { aberto: bo
 function LicaoConcluida({ licao, conclusao, certas, total, segundos, pontosInicio }: { licao: LicaoParaJogar; conclusao: ConclusaoLicao; certas: number; total: number; segundos: number; pontosInicio: number | null }) {
   const { data: trilho } = useLabTrilhoQuery(licao.curso.id);
   const proxima = trilho?.unidades.flatMap((u) => u.licoes).find((l) => l.estado === "actual" && l.id !== licao.id);
+  // O passo seguinte do percurso do curso em vídeo a que esta lição pertence (se pertencer a algum).
+  const { data: seguinte } = useProximoPassoQuery({ licao: licao.id }, { refetchOnMountOrArgChange: true });
   const pontos = pontosInicio !== null ? Math.max(0, conclusao.total_points - pontosInicio) : conclusao.points_awarded;
   const minutos = Math.max(1, Math.round(segundos / 60));
   const metaFalta = Math.max(0, conclusao.daily_goal_minutes - conclusao.minutes_today);
@@ -563,9 +567,11 @@ function LicaoConcluida({ licao, conclusao, certas, total, segundos, pontosInici
         </Texto>
       </View>
 
+      {seguinte ? <ASeguir proximo={seguinte} substituir /> : null}
+
       <View style={{ marginTop: "auto", gap: 12 }}>
         {proxima ? (
-          <Botao tipo="realce" larguraTotal onPress={() => router.replace(`/licao/${proxima.id}`)}>
+          <Botao tipo={seguinte ? "secundario" : "realce"} larguraTotal onPress={() => router.replace(`/licao/${proxima.id}`)}>
             Próxima lição
           </Botao>
         ) : null}

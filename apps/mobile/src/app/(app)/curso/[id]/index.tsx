@@ -4,9 +4,9 @@
  * Por começar: canvas CursoInscrever (programa, professor, plano e "Começar o curso").
  */
 import { Image } from "expo-image";
-import { router, useLocalSearchParams } from "expo-router";
+import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { Check, Lock } from "lucide-react-native";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Pressable, View } from "react-native";
 import { urlAbsoluto } from "@/api/config";
 import { mensagemErro } from "@/api/erros";
@@ -18,6 +18,8 @@ import {
   nivelEmFrase,
   nomeCompletoNivel,
   PLANO_DO_CURSO,
+  accaoDoPasso,
+  rotaDoPasso,
   TIPO_PT,
   useCursoDetalheQuery,
   useCursoExameEstadoQuery,
@@ -25,6 +27,7 @@ import {
   useInscreverCursoMutation,
   useInscricaoCursoQuery,
   useNotasCursoQuery,
+  usePercursoCursoQuery,
   useProfessorPublicoQuery,
   useProgressoCursoQuery,
   type Curso,
@@ -35,6 +38,7 @@ import { Aviso, BarraProgresso, Botao, Cabecalho, Ecra, EstadoErro, Osso, Texto,
 import { balao, cor, fonte, raio } from "@/tema";
 import { AvisoNivelBasico } from "@/componentes/cursos/NivelBasico";
 import { SeparadoresCursos } from "@/componentes/cursos/Pecas";
+import { duracaoDoPasso, PassosDaAula } from "@/componentes/cursos/Percurso";
 import { CODIGO_REQUISITO_BASICO, faltaNivelBasico } from "@/dominios/cursos/testeBasico";
 
 export default function PaginaCurso() {
@@ -94,6 +98,17 @@ function CursoInscrito({ curso, aoActualizar }: { curso: Curso; aoActualizar: ()
   const { utilizador } = useSessao();
   const progresso = useProgressoCursoQuery({ userId: utilizador?.id ?? "", courseId: curso.courseId }, { skip: !utilizador });
   const notas = useNotasCursoQuery(curso.courseId);
+  // O percurso (aula, questionário, laboratório e conversas) e o passo seguinte: o servidor decide.
+  const percurso = usePercursoCursoQuery(curso.courseId);
+  const { refetch: lerPercurso } = percurso;
+  // Ao voltar de uma lição ou de uma conversa, os passos mudam.
+  useFocusEffect(
+    useCallback(() => {
+      lerPercurso();
+    }, [lerPercurso])
+  );
+  const passosPorAula = new Map((percurso.data?.unidades ?? []).flatMap((u) => u.aulas).map((a) => [a.id, a.passos]));
+  const proximo = percurso.data?.proximo ?? null;
   const [aActualizar, setAActualizar] = useState(false);
   const lista = capitulosPorOrdem(curso);
   const feitos = concluidos(progresso.data);
@@ -111,7 +126,7 @@ function CursoInscrito({ curso, aoActualizar }: { curso: Curso; aoActualizar: ()
       aoActualizar={async () => {
         setAActualizar(true);
         aoActualizar();
-        await Promise.allSettled([progresso.refetch(), notas.refetch()]);
+        await Promise.allSettled([progresso.refetch(), notas.refetch(), percurso.refetch()]);
         setAActualizar(false);
       }}
       aActualizar={aActualizar}
@@ -138,7 +153,17 @@ function CursoInscrito({ curso, aoActualizar }: { curso: Curso; aoActualizar: ()
             {nFeitos} de {lista.length} aulas, {pct}%
           </Texto>
         </View>
-        {seguinte ? (
+        {proximo ? (
+          <View style={{ gap: 8 }}>
+            <Texto v="legenda" cor={cor.sobreMarca} numeros style={{ fontSize: 15, lineHeight: 22 }}>
+              A seguir: {proximo.tipo === "questionario" ? "questionário" : proximo.titulo}
+              {duracaoDoPasso(proximo) ? `, ${duracaoDoPasso(proximo)}` : ""}
+            </Texto>
+            <Botao tipo="realce" tamanho="medio" larguraTotal href={rotaDoPasso(curso.courseId, proximo)}>
+              {accaoDoPasso(proximo)}
+            </Botao>
+          </View>
+        ) : seguinte ? (
           <Botao tipo="realce" tamanho="medio" larguraTotal href={`/curso/${curso.courseId}/aula/${seguinte.chapterId}`}>
             {nFeitos ? `Continuar: aula ${seguinte.numero}` : "Começar a primeira aula"}
           </Botao>
@@ -179,10 +204,10 @@ function CursoInscrito({ curso, aoActualizar }: { curso: Curso; aoActualizar: ()
               </View>
               {caps.map((c) => {
                 const feita = feitos.has(c.chapterId);
-                const actual = seguinte?.chapterId === c.chapterId;
+                const actual = proximo ? proximo.aula_id === c.chapterId && proximo.tipo === "aula" : seguinte?.chapterId === c.chapterId;
                 return (
+                  <View key={c.chapterId}>
                   <Pressable
-                    key={c.chapterId}
                     accessibilityRole="link"
                     accessibilityLabel={`Aula ${c.numero}: ${c.title}${feita ? ", vista" : actual ? ", a seguir" : ""}`}
                     onPress={() => router.push(`/curso/${curso.courseId}/aula/${c.chapterId}`)}
@@ -213,6 +238,8 @@ function CursoInscrito({ curso, aoActualizar }: { curso: Curso; aoActualizar: ()
                       {duracaoAula(c.duracao_s) ?? TIPO_PT[c.type] ?? c.type}
                     </Texto>
                   </Pressable>
+                  <PassosDaAula courseId={curso.courseId} passos={passosPorAula.get(c.chapterId) ?? []} />
+                  </View>
                 );
               })}
             </View>
