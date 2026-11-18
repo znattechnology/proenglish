@@ -12,7 +12,7 @@ O que se gera vem de um manifesto JSON (docs/conteudo/imagens/*.json):
       ]
     }
 
-- modelo: "pro" (Nano Banana Pro), "2.1" (Nano Banana 2.1) ou "flash" (Nano Banana 2);
+- modelo: "pro" (Nano Banana Pro), "2.1" (Nano Banana 2.1), "flash" (Nano Banana 2) ou "lite" (Nano Banana 2 Lite, só 1K);
 - referencias: ids de imagens já aprovadas (o ficheiro aprovado vai como imagem de referência)
   ou caminhos de ficheiros;
 - cada geração fica em <saída>/<id>/<id>-<n>.png; aprovar copia uma variante para
@@ -48,6 +48,9 @@ MODELOS = {
                   ('1:1', '2:3', '3:2', '3:4', '4:3', '4:5', '5:4', '9:16', '16:9', '21:9'), 14),
     '2.1': Modelo('gemini-nano-banana-2.1', {'1K': 0.0336, '2K': 0.0504, '4K': 0.113}, 0.0009,
                   ('1:1', '1:4', '1:8', '2:3', '3:2', '3:4', '4:1', '4:3', '4:5', '5:4', '8:1', '9:16', '16:9', '21:9'), 14),
+    # Nano Banana 2 Lite: só 1K; o mais barato (como o 2.1 a 1K), para imagens genéricas sem pessoas.
+    'lite': Modelo('gemini-3.1-flash-lite-image', {'1K': 0.0336}, 0.0011,
+                   ('1:1', '2:3', '3:2', '3:4', '4:3', '4:5', '5:4', '9:16', '16:9', '21:9'), 14),
     'flash': Modelo('gemini-3.1-flash-image', {'1K': 0.067, '2K': 0.101, '4K': 0.151}, 0.0003,
                     ('1:1', '1:4', '1:8', '2:3', '3:2', '3:4', '4:1', '4:3', '4:5', '5:4', '8:1', '9:16', '16:9', '21:9'), 14),
 }

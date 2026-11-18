@@ -6,7 +6,9 @@ Cada pasta tem quatro ficheiros que se carregam:
   guioes.md          as aulas da unidade ("## 1A — título", com "Objectivo da aula" e "Duração");
   questionario.json  o questionário da unidade, no formato quiz_data;
   laboratorio.json   as lições de laboratório (formato de apps/courses/api/teacher/pratica_formato.py),
-                     cada uma com o código da aula a que pertence;
+                     cada uma com o código da aula a que pertence. Uma opção pode ter "imagem": o
+                     nome de uma imagem do banco ("receipt" -> conteudo/imagens/receipt.webp no
+                     armazenamento, publicada com gerar_imagens --publicar) ou um endereço https;
   tutor.json         as conversas com o tutor (ver o comando carregar_conversas_curso).
 
 O que fica no curso em vídeo: uma secção por pasta, uma aula por guião (sem vídeo: o vídeo é
@@ -34,6 +36,8 @@ AULA = re.compile(r'^## (\S+) — (.+?)\s*$', re.MULTILINE)
 OBJECTIVO = re.compile(r'^Objectivo da aula:\s*(.+?)(?=^\S[^\n:]*:|\Z)', re.MULTILINE | re.DOTALL)
 DURACAO = re.compile(r'^Duração:\s*(\d+)\s*min', re.MULTILINE)
 MAX_EXERCICIOS = 30
+NOME_IMAGEM = re.compile(r'^[a-z0-9][a-z0-9_-]{0,80}$')
+PASTA_IMAGENS = 'conteudo/imagens'
 
 
 class ErroDeConteudo(Exception):
@@ -50,6 +54,26 @@ def _json(pasta, nome):
         return None
     with open(caminho, encoding='utf-8') as f:
         return json.load(f)
+
+
+def _endereco_das_imagens(exercicio, onde):
+    """Troca o nome de uma imagem do banco pelo endereço público (as opções com endereço ficam)."""
+    from apps.core import armazenamento
+    opcoes = exercicio.get('opcoes') if isinstance(exercicio, dict) else None
+    if not isinstance(opcoes, list):
+        return exercicio
+    novas = []
+    for o in opcoes:
+        imagem = o.get('imagem') if isinstance(o, dict) else None
+        if isinstance(imagem, str) and imagem and not imagem.startswith('https://'):
+            if not NOME_IMAGEM.match(imagem):
+                raise ErroDeConteudo(f'{onde}: nome de imagem inválido ({imagem!r}).')
+            if not armazenamento.dominio_publico():
+                raise ErroDeConteudo(f'{onde}: há imagens, mas o armazenamento não tem domínio público '
+                                     '(AWS_S3_CUSTOM_DOMAIN).')
+            o = {**o, 'imagem': armazenamento.url_publico(f'{PASTA_IMAGENS}/{imagem}.webp')}
+        novas.append(o)
+    return {**exercicio, 'opcoes': novas}
 
 
 def titulo_da_seccao(primeira_linha):
@@ -103,6 +127,7 @@ def ler_pasta(pasta):
             raise ErroDeConteudo(f'{pasta}: a lição {codigo} tem {len(exercicios)} exercícios (1 a {MAX_EXERCICIOS}).')
         limpos = []
         for n, exercicio in enumerate(exercicios, start=1):
+            exercicio = _endereco_das_imagens(exercicio, f'{pasta}: lição {codigo}, exercício {n}')
             limpo, erros = formato.validar(exercicio)
             if erros:
                 raise ErroDeConteudo(f'{pasta}: lição {codigo}, exercício {n}: {next(iter(erros.values()))[0]}')

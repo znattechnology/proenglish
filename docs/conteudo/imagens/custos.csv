@@ -13,3 +13,13 @@ data,id,variante,modelo,tamanho,proporcao,referencias,custo_usd,ficheiro,uso
 2026-11-18T15:39:14,landing-tablet,1,gemini-3-pro-image,2K,1:1,2,0.1362,landing-tablet/landing-tablet-1.png,"landing page: bloco ""Conheça a sua professora"" / acolhimento da app"
 2026-11-18T15:42:02,professora-enquadramento,2,gemini-3-pro-image,2K,16:9,2,0.1362,professora-enquadramento/professora-enquadramento-2.png,imagem base das vídeo-aulas (ferramenta de vídeo)
 2026-11-18T15:42:46,landing-tablet,2,gemini-3-pro-image,2K,1:1,2,0.1362,landing-tablet/landing-tablet-2.png,"landing page: bloco ""Conheça a sua professora"" / acolhimento da app"
+2026-11-18T17:24:07,lite-recibo,1,gemini-3.1-flash-lite-image,1K,1:1,0,0.0336,lite-recibo/lite-recibo-1.png,teste: a receipt
+2026-11-18T17:24:12,lite-portatil,1,gemini-3.1-flash-lite-image,1K,1:1,0,0.0336,lite-portatil/lite-portatil-1.png,teste: a laptop
+2026-11-18T17:24:19,lite-sanduiche,1,gemini-3.1-flash-lite-image,1K,1:1,0,0.0336,lite-sanduiche/lite-sanduiche-1.png,teste: a sandwich
+2026-11-18T17:24:25,lite-chave,1,gemini-3.1-flash-lite-image,1K,1:1,0,0.0336,lite-chave/lite-chave-1.png,teste: a key
+2026-11-18T17:24:30,lite-chavena,1,gemini-3.1-flash-lite-image,1K,1:1,0,0.0336,lite-chavena/lite-chavena-1.png,teste: a cup of coffee
+2026-11-18T17:24:48,21-recibo,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,21-recibo/21-recibo-1.png,teste: a receipt
+2026-11-18T17:25:04,21-portatil,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,21-portatil/21-portatil-1.png,teste: a laptop
+2026-11-18T17:25:22,21-sanduiche,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,21-sanduiche/21-sanduiche-1.png,teste: a sandwich
+2026-11-18T17:25:37,21-chave,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,21-chave/21-chave-1.png,teste: a key
+2026-11-18T17:25:53,21-chavena,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,21-chavena/21-chavena-1.png,teste: a cup of coffee

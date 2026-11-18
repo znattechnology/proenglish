@@ -110,7 +110,7 @@ function Escolha({ ex, bloqueado, visual, aoMudar }: Props) {
               {comImagens ? (
                 o.imagem ? (
                   // eslint-disable-next-line @next/next/no-img-element -- imagens do professor (URL externo)
-                  <img src={o.imagem} alt="" className="h-28 w-full rounded-pe-sm bg-pe-fundo-forte object-cover md:h-32" />
+                  <img src={o.imagem} alt="" className="h-28 w-full rounded-pe-sm bg-white object-contain p-1 md:h-32" />
                 ) : (
                   <span aria-hidden className="h-28 w-full rounded-pe-sm bg-pe-fundo-forte md:h-32" />
                 )

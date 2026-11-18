@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Plus, X } from "lucide-react";
 import { AreaTexto, Botao, Campo } from "@/components/pe";
 import { cnPe } from "@/lib/pe";
@@ -194,33 +195,66 @@ function baralhar<T>(v: T[]) {
 
 function Opcoes({ e, muda, erro }: { e: Exercicio; muda: (p: Partial<Exercicio>) => void; erro?: string }) {
   const ops = e.opcoes;
+  // Imagens nas respostas ("Escolha a imagem: a receipt"): o texto continua a ser obrigatório.
+  const [comImagens, setComImagens] = useState(() => ops.some((o) => o.imagem));
+  const mudaOpcao = (k: number, p: Partial<Exercicio["opcoes"][number]>) => muda({ opcoes: ops.map((y, j) => (j === k ? { ...y, ...p } : y)) });
   return (
     <fieldset className="m-0 flex flex-col gap-2 border-0 p-0">
       <legend className={legenda}>Respostas: marque a certa</legend>
+      <label className="flex items-center gap-2 text-[15px]">
+        <input
+          type="checkbox"
+          checked={comImagens}
+          onChange={(x) => {
+            setComImagens(x.target.checked);
+            if (!x.target.checked) muda({ opcoes: ops.map((o) => ({ ...o, imagem: null })) });
+          }}
+          className="size-4 accent-pe-azul-marca"
+        />
+        Respostas com imagem
+      </label>
       {ops.map((o, k) => (
-        <div key={k} className={cnPe("flex items-center gap-2 rounded-pe-sm px-2", o.certa && "bg-pe-certo-suave")}>
-          <input
-            type="radio"
-            name="certa"
-            checked={o.certa}
-            onChange={() => muda({ opcoes: ops.map((x, j) => ({ ...x, certa: j === k })) })}
-            aria-label={`Resposta ${k + 1} é a certa`}
-            className="size-5 shrink-0 accent-pe-certo"
-          />
-          <input value={o.texto} aria-label={`Resposta ${k + 1}`} onChange={(x) => muda({ opcoes: ops.map((y, j) => (j === k ? { ...y, texto: x.target.value } : y)) })} className={entrada} />
-          {ops.length > 2 ? (
-            <button
-              type="button"
-              aria-label={`Tirar a resposta ${k + 1}`}
-              onClick={() => {
-                const resto = ops.filter((_, j) => j !== k);
-                if (o.certa && resto.length) resto[0] = { ...resto[0], certa: true };
-                muda({ opcoes: resto });
-              }}
-              className="flex size-10 shrink-0 items-center justify-center rounded-pe-sm text-pe-tinta-suave hover:text-pe-tinta"
-            >
-              <X aria-hidden className="size-4" />
-            </button>
+        <div key={k} className={cnPe("flex flex-col gap-2 rounded-pe-sm px-2 py-1", o.certa && "bg-pe-certo-suave")}>
+          <div className="flex items-center gap-2">
+            <input
+              type="radio"
+              name="certa"
+              checked={o.certa}
+              onChange={() => muda({ opcoes: ops.map((x, j) => ({ ...x, certa: j === k })) })}
+              aria-label={`Resposta ${k + 1} é a certa`}
+              className="size-5 shrink-0 accent-pe-certo"
+            />
+            <input value={o.texto} aria-label={`Resposta ${k + 1}`} onChange={(x) => mudaOpcao(k, { texto: x.target.value })} className={entrada} />
+            {ops.length > 2 ? (
+              <button
+                type="button"
+                aria-label={`Tirar a resposta ${k + 1}`}
+                onClick={() => {
+                  const resto = ops.filter((_, j) => j !== k);
+                  if (o.certa && resto.length) resto[0] = { ...resto[0], certa: true };
+                  muda({ opcoes: resto });
+                }}
+                className="flex size-10 shrink-0 items-center justify-center rounded-pe-sm text-pe-tinta-suave hover:text-pe-tinta"
+              >
+                <X aria-hidden className="size-4" />
+              </button>
+            ) : null}
+          </div>
+          {comImagens ? (
+            <div className="flex items-center gap-2 pl-7">
+              {o.imagem ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={o.imagem} alt="" className="size-12 shrink-0 rounded-pe-sm border border-pe-linha bg-white object-contain" />
+              ) : null}
+              <input
+                value={o.imagem ?? ""}
+                inputMode="url"
+                placeholder="https://… (endereço da imagem)"
+                aria-label={`Imagem da resposta ${k + 1}`}
+                onChange={(x) => mudaOpcao(k, { imagem: x.target.value.trim() || null })}
+                className={entrada}
+              />
+            </div>
           ) : null}
         </div>
       ))}

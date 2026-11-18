@@ -9,7 +9,8 @@ export type Exercicio = {
   ordem?: number;
   enunciado: string;
   frase: string;
-  opcoes: { id?: string; texto: string; certa: boolean }[];
+  /** `imagem`: endereço https (só nos tipos escolher, assistir e escuta). */
+  opcoes: { id?: string; texto: string; certa: boolean; imagem?: string | null }[];
   pares: { a: string; b: string }[];
   resposta: string;
   explicacao: string;

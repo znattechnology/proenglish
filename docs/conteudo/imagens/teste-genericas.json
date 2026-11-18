@@ -1,0 +1,17 @@
+{
+  "nota": "Teste de 18/11/2026: os mesmos 5 objectos do vocabulário do A1 no Nano Banana 2 Lite e no 2.1 (1K), para escolher o modelo das imagens genéricas (laboratório e vocabulário das aulas).",
+  "estilo": "Clean, friendly flat illustration for an English-learning app: a single object centred on a plain white background, soft shadows, rounded shapes, limited palette with deep navy #000066 and golden yellow #FFC72C accents plus natural colours, consistent line weight, no outlines clutter.",
+  "regras": "Do not include any text, letters, numbers, logos, brand names or watermarks anywhere in the image. One object only, fully visible, centred, generous white margin.",
+  "imagens": [
+    {"id": "lite-recibo", "modelo": "lite", "proporcao": "1:1", "tamanho": "1K", "descricao": "A paper shop receipt, slightly curled, with blank grey lines instead of any writing.", "uso": "teste: a receipt"},
+    {"id": "lite-portatil", "modelo": "lite", "proporcao": "1:1", "tamanho": "1K", "descricao": "An open laptop computer seen from a three-quarter angle, blank blue screen.", "uso": "teste: a laptop"},
+    {"id": "lite-sanduiche", "modelo": "lite", "proporcao": "1:1", "tamanho": "1K", "descricao": "A sandwich with lettuce, tomato and cheese, cut in half.", "uso": "teste: a sandwich"},
+    {"id": "lite-chave", "modelo": "lite", "proporcao": "1:1", "tamanho": "1K", "descricao": "A single brass door key.", "uso": "teste: a key"},
+    {"id": "lite-chavena", "modelo": "lite", "proporcao": "1:1", "tamanho": "1K", "descricao": "A white coffee cup on a saucer with steam rising.", "uso": "teste: a cup of coffee"},
+    {"id": "21-recibo", "modelo": "2.1", "proporcao": "1:1", "tamanho": "1K", "descricao": "A paper shop receipt, slightly curled, with blank grey lines instead of any writing.", "uso": "teste: a receipt"},
+    {"id": "21-portatil", "modelo": "2.1", "proporcao": "1:1", "tamanho": "1K", "descricao": "An open laptop computer seen from a three-quarter angle, blank blue screen.", "uso": "teste: a laptop"},
+    {"id": "21-sanduiche", "modelo": "2.1", "proporcao": "1:1", "tamanho": "1K", "descricao": "A sandwich with lettuce, tomato and cheese, cut in half.", "uso": "teste: a sandwich"},
+    {"id": "21-chave", "modelo": "2.1", "proporcao": "1:1", "tamanho": "1K", "descricao": "A single brass door key.", "uso": "teste: a key"},
+    {"id": "21-chavena", "modelo": "2.1", "proporcao": "1:1", "tamanho": "1K", "descricao": "A white coffee cup on a saucer with steam rising.", "uso": "teste: a cup of coffee"}
+  ]
+}

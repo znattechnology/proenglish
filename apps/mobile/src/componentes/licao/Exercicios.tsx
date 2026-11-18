@@ -118,7 +118,7 @@ function Escolha({ ex, bloqueado, visual, aoMudar }: Props) {
             >
               {comImagens ? (
                 o.imagem ? (
-                  <Image source={{ uri: urlAbsoluto(o.imagem) ?? undefined }} contentFit="cover" accessibilityIgnoresInvertColors style={{ height: 120, width: "100%", borderRadius: raio.sm, backgroundColor: cor.fundoForte }} />
+                  <Image source={{ uri: urlAbsoluto(o.imagem) ?? undefined }} contentFit="contain" accessibilityIgnoresInvertColors style={{ height: 120, width: "100%", borderRadius: raio.sm, backgroundColor: "#ffffff" }} />
                 ) : (
                   <View style={{ height: 120, borderRadius: raio.sm, backgroundColor: cor.fundoForte }} />
                 )

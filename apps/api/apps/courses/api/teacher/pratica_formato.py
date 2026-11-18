@@ -3,7 +3,7 @@ Formato único dos exercícios na área do professor (cursos de prática) e a tr
 PracticeChallenge + ChallengeOption, tal como o ecrã da lição do aluno os lê
 (apps/courses/api/student/practice_courses/jogar.py e a validação em challenge-progress/).
 
-  exercicio = {id, tipo, ordem, enunciado, frase, opcoes:[{id?, texto, certa}], pares:[{a, b}],
+  exercicio = {id, tipo, ordem, enunciado, frase, opcoes:[{id?, texto, certa, imagem?}], pares:[{a, b}],
                resposta, explicacao, audio_url, contexto, frases_alvo:[str], acerto, tentativas}
 
 Tipos (normalizado -> modelo) e onde fica cada campo:
@@ -41,6 +41,10 @@ Tipos (normalizado -> modelo) e onde fica cada campo:
       frases: frases_alvo (2 a 3), goal: as frases juntas (exercícios antigos tinham só goal)}.
 
 O texto de explicação vai para `explanation`. Campos que um tipo não usa saem "" / [] / null.
+
+Imagens nas opções (`imagem`, endereço https, opcional): nos tipos escolher, assistir e escuta com
+opções ("Escolha a imagem: a receipt"); vai para ChallengeOption.image_url. O texto da opção
+continua obrigatório (é o que o leitor de ecrã lê e o que se compara). Nos outros tipos, ignora-se.
 """
 import re
 
@@ -118,8 +122,30 @@ def _vazio(tipo='', ordem=None):
 # Validação (entrada da API e saída do Claude)
 # ---------------------------------------------------------------------------
 
+TIPOS_COM_IMAGEM = ('escolher', 'assistir', 'escuta')
+MAX_URL = 200  # URLField
+
+
+def _imagem(valor, erros, campo='opcoes'):
+    """Endereço https da imagem de uma opção, ou None."""
+    url = _texto(valor)
+    if not url:
+        return None
+    from django.core.exceptions import ValidationError
+    from django.core.validators import URLValidator
+    try:
+        URLValidator(schemes=['https'])(url)
+    except ValidationError:
+        erros.setdefault(campo, []).append('A imagem de uma opção tem de ser um endereço https válido.')
+        return None
+    if len(url) > MAX_URL:
+        erros.setdefault(campo, []).append('O endereço de uma imagem é demasiado longo.')
+        return None
+    return url
+
+
 def _opcoes_entrada(valor, erros, campo='opcoes'):
-    """[{texto, certa}] -> lista limpa; regista erros de forma."""
+    """[{texto, certa, imagem?}] -> lista limpa; regista erros de forma."""
     if valor in (None, ''):
         return []
     if not isinstance(valor, list):
@@ -140,7 +166,8 @@ def _opcoes_entrada(valor, erros, campo='opcoes'):
             erros.setdefault(campo, []).append(f'Cada opção pode ter no máximo {MAX_OPCAO} caracteres.')
             return []
         certa = o.get('certa')
-        limpas.append({'texto': texto, 'certa': bool(certa) if isinstance(certa, bool) else certa in ('true', 1, '1')})
+        limpas.append({'texto': texto, 'certa': bool(certa) if isinstance(certa, bool) else certa in ('true', 1, '1'),
+                       'imagem': _imagem(o.get('imagem'), erros, campo)})
     return limpas
 
 
@@ -381,6 +408,9 @@ def validar(dados):
             erros.setdefault('frases_alvo', []).append('Há frases repetidas.')
         limpo.update(enunciado=enunciado, frases_alvo=frases)
 
+    # Todas as opções levam a chave `imagem` (só os tipos com imagem a guardam).
+    com_imagem = tipo in TIPOS_COM_IMAGEM
+    limpo['opcoes'] = [{**o, 'imagem': o.get('imagem') if com_imagem else None} for o in limpo.get('opcoes') or []]
     return limpo, erros
 
 
@@ -407,11 +437,11 @@ def guardar(challenge, limpo):
     contexto = challenge.conversation_context if isinstance(challenge.conversation_context, dict) else {}
     contexto = {k: v for k, v in contexto.items()
                 if k not in ('frase', 'scenario', 'goal', 'frases', 'frase_alvo', 'exemplo')}
-    opcoes = []  # (texto, certa)
+    opcoes = []  # (texto, certa) ou (texto, certa, imagem)
 
     if tipo in ('escolher', 'assistir', 'verdadeiro_falso'):
         challenge.question = limpo['enunciado']
-        opcoes = [(o['texto'], o['certa']) for o in limpo['opcoes']]
+        opcoes = [(o['texto'], o['certa'], o.get('imagem')) for o in limpo['opcoes']]
     elif tipo == 'completar':
         challenge.question = PARENTESES.sub('___', limpo['frase'])
         challenge.instruction = limpo['enunciado'] or None
@@ -430,7 +460,7 @@ def guardar(challenge, limpo):
         challenge.reference_audio_url = limpo['audio_url']
         if limpo['opcoes']:
             challenge.question = limpo['enunciado']
-            opcoes = [(o['texto'], o['certa']) for o in limpo['opcoes']]
+            opcoes = [(o['texto'], o['certa'], o.get('imagem')) for o in limpo['opcoes']]
         else:
             challenge.question = limpo['enunciado'] or DITADO_PERGUNTA
             opcoes = [(limpo['frase'], True)]
@@ -453,8 +483,9 @@ def guardar(challenge, limpo):
     challenge.save()
     challenge.options.all().delete()
     ChallengeOption.objects.bulk_create([
-        ChallengeOption(challenge=challenge, text=texto[:MAX_OPCAO], is_correct=certa, order=i)
-        for i, (texto, certa) in enumerate(opcoes, start=1)
+        ChallengeOption(challenge=challenge, text=o[0][:MAX_OPCAO], is_correct=o[1],
+                        image_url=(o[2] if len(o) > 2 else None) or None, order=i)
+        for i, o in enumerate(opcoes, start=1)
     ])
     return challenge
 
@@ -464,7 +495,7 @@ def guardar(challenge, limpo):
 # ---------------------------------------------------------------------------
 
 def _opcao_dict(o):
-    return {'id': str(o.id), 'texto': o.text, 'certa': bool(o.is_correct)}
+    return {'id': str(o.id), 'texto': o.text, 'certa': bool(o.is_correct), 'imagem': o.image_url or None}
 
 
 def para_normalizado(ch, opcoes=None):
