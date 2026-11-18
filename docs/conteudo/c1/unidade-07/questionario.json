@@ -1,0 +1,301 @@
+{
+ "title": "C1.2 Unit 7 quiz — Science and change",
+ "description": "O futuro no passado, o futuro próximo com nuance, explicar ideias complexas, vocabulário de energia e ciência, experience e physician.",
+ "questions": [
+  {
+   "id": "c1u7q1",
+   "question": "\"The facility was to have opened in June.\" Quer dizer que…",
+   "options": [
+    {
+     "id": "c1u7q1o0",
+     "text": "estava previsto para Junho, mas não abriu nessa altura",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u7q1o1",
+     "text": "abriu em Junho",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u7q1o2",
+     "text": "vai abrir no próximo Junho",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u7q1o0",
+   "explanation": "was to have + particípio: o plano não se cumpriu.",
+   "points": 10
+  },
+  {
+   "id": "c1u7q2",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u7q2o0",
+     "text": "I knew it would be difficult.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u7q2o1",
+     "text": "I knew it will be difficult.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u7q2o2",
+     "text": "I knew it would to be difficult.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u7q2o0",
+   "explanation": "would = o futuro visto do passado.",
+   "points": 10
+  },
+  {
+   "id": "c1u7q3",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u7q3o0",
+     "text": "We are on the verge of finishing.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u7q3o1",
+     "text": "We are on the verge to finish.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u7q3o2",
+     "text": "We are on verge finishing.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u7q3o0",
+   "explanation": "on the verge of + -ing.",
+   "points": 10
+  },
+  {
+   "id": "c1u7q4",
+   "question": "O horário diz que o avião aterra às seis. A melhor frase:",
+   "options": [
+    {
+     "id": "c1u7q4o0",
+     "text": "The plane is due to land at six.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u7q4o1",
+     "text": "The plane is on the verge of landing at six.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u7q4o2",
+     "text": "The plane is bound to landing at six.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u7q4o0",
+   "explanation": "be due to = marcado num calendário.",
+   "points": 10
+  },
+  {
+   "id": "c1u7q5",
+   "question": "Qual é o melhor começo para explicar baterias a um morador?",
+   "options": [
+    {
+     "id": "c1u7q5o0",
+     "text": "Think of it as a water tank on your roof.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u7q5o1",
+     "text": "It is a sixteen-container lithium iron phosphate system.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u7q5o2",
+     "text": "It is too technical to explain.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u7q5o0",
+   "explanation": "Começar por algo conhecido.",
+   "points": 10
+  },
+  {
+   "id": "c1u7q6",
+   "question": "Complete: \"It works a bit ___ a smoke alarm.\"",
+   "options": [
+    {
+     "id": "c1u7q6o0",
+     "text": "like",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u7q6o1",
+     "text": "alike",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u7q6o2",
+     "text": "like as",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u7q6o0",
+   "explanation": "works a bit like + nome.",
+   "points": 10
+  },
+  {
+   "id": "c1u7q7",
+   "question": "\"Fizemos uma experiência no laboratório.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1u7q7o0",
+     "text": "We did an experiment in the lab.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u7q7o1",
+     "text": "We did an experience in the lab.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u7q7o2",
+     "text": "We made an experienced in the lab.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u7q7o0",
+   "explanation": "Falso amigo: experience = experiência de vida.",
+   "points": 10
+  },
+  {
+   "id": "c1u7q8",
+   "question": "\"Ela é física\" (cientista). Em inglês:",
+   "options": [
+    {
+     "id": "c1u7q8o0",
+     "text": "She's a physicist.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u7q8o1",
+     "text": "She's a physician.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u7q8o2",
+     "text": "She's a physical.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u7q8o0",
+   "explanation": "Falso amigo: physician = médico.",
+   "points": 10
+  },
+  {
+   "id": "c1u7q9",
+   "question": "Complete: \"The team ___ out research for five years.\"",
+   "options": [
+    {
+     "id": "c1u7q9o0",
+     "text": "carried",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u7q9o1",
+     "text": "made",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u7q9o2",
+     "text": "did out",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u7q9o0",
+   "explanation": "carry out research.",
+   "points": 10
+  },
+  {
+   "id": "c1u7q10",
+   "question": "Reciclagem (C1, unidade 6). \"I can't come on Friday.\" Também não pode. Diz:",
+   "options": [
+    {
+     "id": "c1u7q10o0",
+     "text": "Neither can I.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u7q10o1",
+     "text": "So can I.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u7q10o2",
+     "text": "Neither I can't.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u7q10o0",
+   "explanation": "Neither + auxiliar + sujeito.",
+   "points": 10
+  },
+  {
+   "id": "c1u7q11",
+   "question": "Reciclagem (C1, unidade 5). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u7q11o0",
+     "text": "The batteries are said to catch fire easily.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u7q11o1",
+     "text": "The batteries are said that they catch fire easily.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u7q11o2",
+     "text": "The batteries are saying to catch fire easily.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u7q11o0",
+   "explanation": "Passiva de relato.",
+   "points": 10
+  },
+  {
+   "id": "c1u7q12",
+   "question": "Reciclagem (C1, unidade 1). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u7q12o0",
+     "text": "What the facility does is keep solar energy for the evening.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u7q12o1",
+     "text": "What the facility does it's keep solar energy for the evening.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u7q12o2",
+     "text": "What does the facility is keep solar energy for the evening.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u7q12o0",
+   "explanation": "Clivada com what + do.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}
