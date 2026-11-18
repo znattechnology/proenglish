@@ -10,11 +10,12 @@ export const kz = (n: number) => `${String(Math.round(n)).replace(/\B(?=(\d{3})+
 const h2 = "m-0 font-pe-titulo text-[30px] font-bold leading-[1.15] tracking-[-0.015em] md:text-[2.5rem]";
 const caixa = "mx-auto flex max-w-[1200px] flex-col gap-8 px-4 py-14 md:gap-10 md:px-6 md:py-20";
 
+/** O percurso de cada aula, pela ordem em que a plataforma o propõe (apps/courses/percurso.py). */
 const PASSOS = [
-  { titulo: "Ouve a frase", texto: "Cada lição começa por uma situação do seu trabalho: uma reunião, uma chamada, um pedido a um colega." },
-  { titulo: "Repete em voz alta", texto: "Diz a frase ao microfone. O sistema avalia a pronúncia e mostra-lhe as palavras a melhorar." },
-  { titulo: "Conversa com o tutor", texto: "Fala por voz com o tutor de inteligência artificial sobre a mesma situação. Ele responde, corrige e explica em português." },
-  { titulo: "Faz o exame oral", texto: "No fim do curso, o exame é falado e vale 40% da nota. É ele que dá acesso ao certificado." },
+  { titulo: "Veja a aula com a professora Luena", texto: "Uma vídeo-aula de 8 a 12 minutos sobre uma situação real: apresentar-se, marcar uma reunião, explicar um problema. Com legendas em português e pausas para repetir em voz alta." },
+  { titulo: "Pratique no laboratório", texto: "Exercícios curtos de ouvir, falar e completar. Diz as frases ao microfone e vê logo as palavras que precisa de melhorar." },
+  { titulo: "Converse com o tutor", texto: "Fala por voz sobre a mesma situação da aula: primeiro numa conversa guiada, depois livre. O tutor responde, corrige e explica em português." },
+  { titulo: "Mostre o que já sabe", texto: "Um questionário no fim de cada unidade e, no fim do curso, um exame oral que dá acesso ao certificado." },
 ];
 
 const SITUACOES = [
@@ -25,9 +26,9 @@ const SITUACOES = [
 
 /** Percurso do English Communication Skills: o que o aluno já consegue dizer em cada etapa. */
 const NIVEIS = [
-  { nome: "Básico", frase: "Hello, my name is Ana. I work at a bank.", texto: "Apresentar-se, fazer perguntas simples, dizer números, datas e horas." },
-  { nome: "Intermédio", frase: "Could we move the meeting to Thursday?", texto: "Participar em reuniões, atender o telefone, combinar e explicar." },
-  { nome: "Avançado", frase: "I'd argue the second option carries less risk.", texto: "Apresentar, negociar e defender uma ideia com à-vontade." },
+  { nome: "Básico", quadro: "A1 e A2", frase: "Hello, my name is Ana. I work at a bank.", texto: "Apresentar-se, fazer perguntas simples, dizer números, datas e horas." },
+  { nome: "Intermédio", quadro: "B1 e B2", frase: "Could we move the meeting to Thursday?", texto: "Participar em reuniões, atender o telefone, combinar e explicar." },
+  { nome: "Avançado", quadro: "C1", frase: "I'd argue the second option carries less risk.", texto: "Apresentar, negociar e defender uma ideia com à-vontade." },
 ];
 
 const EMPRESAS = [
@@ -58,6 +59,22 @@ function Foto({ nome, alt, className, prioridade, sizes = "(min-width: 1024px) 5
     <img
       src={`/site/${nome}-1400.webp`}
       srcSet={`/site/${nome}-720.webp 720w, /site/${nome}-1400.webp 1400w`}
+      sizes={sizes}
+      alt={alt}
+      loading={prioridade ? "eager" : "lazy"}
+      fetchPriority={prioridade ? "high" : undefined}
+      decoding="async"
+      className={cnPe("block size-full object-cover", className)}
+    />
+  );
+}
+
+/** Imagem da professora Luena (public/professora). É uma professora virtual: o site di-lo no bloco "Conheça a professora Luena". */
+function Luena({ nome, alt, className, prioridade, sizes = "(min-width: 1024px) 560px, 100vw" }: { nome: string; alt: string; className?: string; prioridade?: boolean; sizes?: string }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={`/professora/${nome}.webp`}
       sizes={sizes}
       alt={alt}
       loading={prioridade ? "eager" : "lazy"}
@@ -134,23 +151,23 @@ export function Landing({ site }: { site: Site }) {
           </div>
 
           {/* A fotografia tem a forma do balão da marca; a conversa com o tutor assenta sobre ela. */}
-          <figure aria-label="Exemplo de uma conversa com o tutor" className="relative m-0 min-w-0 pb-28 sm:pb-24 lg:pb-20">
-            <div className="aspect-[4/3] overflow-hidden rounded-[56px_56px_56px_0] bg-pe-fundo-forte md:rounded-[88px_88px_88px_0]">
-              <Foto nome="conversa" alt="Duas profissionais a conversar à mesa, a sorrir" prioridade />
+          <figure aria-label="A professora Luena e um exemplo de conversa numa aula" className="relative m-0 min-w-0 pb-28 sm:pb-24 lg:pb-20">
+            <div className="mx-auto aspect-[4/5] max-h-[620px] overflow-hidden rounded-[56px_56px_56px_0] bg-pe-fundo-forte md:rounded-[88px_88px_88px_0]">
+              <Luena nome="luena-hero" alt="A professora Luena, de fato azul-marinho, a sorrir" className="object-top" prioridade />
             </div>
             <span aria-hidden className="absolute -right-3 -top-3 hidden size-24 rounded-[28px_28px_0_28px] bg-pe-realce md:block" />
             <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 sm:left-6 sm:right-auto sm:w-[400px] lg:-left-10">
               <div className="self-start rounded-pe-fala bg-pe-azul-marca px-5 py-3.5 text-pe-sobre-marca shadow-pe-2">
-                <span className="block text-[13px] font-semibold leading-5 opacity-80">Tutor</span>
+                <span className="block text-[13px] font-semibold leading-5 opacity-80">Professora Luena</span>
                 <p lang="en" className="m-0 text-[17px] leading-[25px]">
-                  Could you send me the <mark className="rounded-[2px] bg-pe-realce px-1 text-pe-tinta">drilling report</mark> by Friday?
+                  Your turn: how do you <mark className="rounded-[2px] bg-pe-realce px-1 text-pe-tinta">start a meeting</mark>?
                 </p>
               </div>
               <div className="flex items-center gap-3 self-end rounded-pe-fala-aluno bg-pe-fundo px-5 py-3 shadow-pe-2">
                 <Onda className="text-pe-azul-vivo" />
                 <div className="flex flex-col">
                   <span className="text-[13px] font-semibold leading-5 text-pe-tinta-suave">Você, a falar</span>
-                  <p lang="en" className="m-0 text-[16px] leading-6">Sure. I will send it on Thursday.</p>
+                  <p lang="en" className="m-0 text-[16px] leading-6">Good morning, everyone. Shall we start?</p>
                 </div>
               </div>
             </div>
@@ -183,18 +200,18 @@ export function Landing({ site }: { site: Site }) {
         <div className="mx-auto grid max-w-[1200px] items-center gap-x-16 gap-y-10 px-4 py-14 md:px-6 md:py-24 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)]">
           <figure className="relative m-0 min-w-0">
             <div className="aspect-[4/5] max-h-[560px] w-full overflow-hidden rounded-[56px_56px_0_56px] bg-pe-fundo-forte md:rounded-[88px_88px_0_88px]">
-              <Foto nome="chamada" alt="Jovem profissional ao telefone, a acenar a alguém com um sorriso" className="object-[70%_center]" />
+              <Luena nome="luena-quadro" alt="A professora Luena junto ao quadro, a explicar a aula" className="object-[22%_center]" />
             </div>
             <figcaption className="absolute bottom-6 left-0 max-w-[300px] rounded-pe-fala bg-pe-realce px-5 py-4 shadow-pe-2 md:-left-6">
-              <span className="block text-[13px] font-semibold leading-5">O que ela diz</span>
-              <span lang="en" className="font-pe-titulo text-[19px] font-light italic leading-[27px]">Good morning, this is Ana from the finance team.</span>
+              <span className="block text-[13px] font-semibold leading-5">Na aula de hoje</span>
+              <span lang="en" className="font-pe-titulo text-[19px] font-light italic leading-[27px]">Today you&apos;ll learn to introduce yourself in a meeting.</span>
             </figcaption>
           </figure>
           <div className="flex min-w-0 flex-col gap-8">
             <div className="flex flex-col gap-3">
               <h2 className={h2}>Aqui, o inglês aprende-se a falar</h2>
               <p className="m-0 max-w-[560px] text-pe-corpo-l text-pe-tinta-suave">
-                Saber a gramática não chega quando o telefone toca. No ProEnglish fala em voz alta desde a primeira lição, 15 minutos por dia, no telemóvel ou no computador.
+                Saber a gramática não chega quando o telefone toca. No ProEnglish fala em voz alta desde a primeira aula, 15 minutos por dia, no telemóvel ou no computador. Não precisa de decidir o que estudar: a plataforma mostra-lhe sempre o passo seguinte.
               </p>
             </div>
             <ol className="m-0 flex list-none flex-col p-0">
@@ -210,6 +227,37 @@ export function Landing({ site }: { site: Site }) {
                 </li>
               ))}
             </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* A professora: a cara das aulas. É virtual, e diz-se. */}
+      <section id="professora" className="scroll-mt-4">
+        <div className="mx-auto grid max-w-[1200px] items-center gap-x-16 gap-y-10 px-4 py-14 md:px-6 md:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+          <div className="flex min-w-0 flex-col gap-6">
+            <div className="flex flex-col gap-3">
+              <h2 className={h2}>Conheça a professora Luena</h2>
+              <p className="m-0 max-w-[560px] text-pe-corpo-l text-pe-tinta-suave">
+                É ela quem dá todas as vídeo-aulas, do primeiro <span lang="en">hello</span> ao nível avançado. Fala como uma colega angolana que aprendeu inglês já adulta, a trabalhar: sabe onde quem fala português costuma tropeçar e explica em português sempre que é preciso.
+              </p>
+            </div>
+            <dl className="m-0 grid gap-x-10 gap-y-5 sm:grid-cols-2">
+              {[
+                { t: "A mesma professora do A1 ao C1", d: "Habitua-se à voz e ao ritmo dela. No início fala devagar; com o nível, vai mais depressa." },
+                { t: "Aulas curtas e práticas", d: "De 8 a 12 minutos, com pausas para repetir em voz alta e legendas em português." },
+              ].map((x) => (
+                <div key={x.t} className="flex min-w-0 flex-col gap-1.5 border-t-2 border-pe-realce pt-4">
+                  <dt className="font-pe-titulo text-[18px] font-semibold leading-6">{x.t}</dt>
+                  <dd className="m-0 text-[15px] leading-[22px] text-pe-tinta-suave">{x.d}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="m-0 max-w-[560px] rounded-pe-sm bg-pe-fundo-suave px-4 py-3 text-[15px] leading-[22px] text-pe-tinta-suave">
+              A Luena é a professora virtual do ProEnglish: foi criada com inteligência artificial e dá as aulas a partir de guiões escritos pela nossa equipa.
+            </p>
+          </div>
+          <div className="aspect-[16/10] overflow-hidden rounded-[56px_56px_0_56px] bg-pe-fundo-forte md:rounded-[88px_88px_0_88px]">
+            <Luena nome="luena-estudio" alt="A professora Luena sentada à secretária no estúdio das aulas, com a baía de Luanda pela janela" className="object-[30%_center]" sizes="(min-width: 1024px) 620px, 100vw" />
           </div>
         </div>
       </section>
@@ -247,7 +295,7 @@ export function Landing({ site }: { site: Site }) {
                 <span lang="en">English Communication Skills</span>
               </h2>
               <p className="m-0 max-w-[560px] text-pe-corpo-l text-pe-tinta-suave">
-                É o nosso curso de inglês geral, todo virado para a fala. Começa do zero e leva-o do básico ao avançado, seja qual for a sua profissão. Estudante, profissional ou empresa: é por aqui que se começa.
+                É o nosso curso de inglês geral, todo virado para a fala. Começa do zero e leva-o até ao avançado, seja qual for a sua profissão, nos níveis do Quadro Europeu Comum de Referência (A1 a C1). Cada unidade tem vídeo-aulas com a professora Luena, exercícios no laboratório, conversas com o tutor e um questionário.
               </p>
               <Link href="/signup" className="inline-flex min-h-[52px] items-center self-start rounded-pe-sm bg-pe-realce px-7 text-[17px] font-semibold text-pe-tinta no-underline hover:text-pe-tinta hover:shadow-pe-2">
                 Começar pelo nível básico
@@ -264,7 +312,10 @@ export function Landing({ site }: { site: Site }) {
               <li key={n.nome} className={cnPe("flex min-w-0 flex-col gap-3 rounded-pe-fala bg-pe-fundo p-6 md:p-7", i === 1 && "md:pb-14", i === 2 && "md:pb-24")}>
                 <span className="flex items-center gap-3">
                   <span aria-hidden className="flex size-10 shrink-0 items-center justify-center rounded-pe-fala-s bg-pe-azul-marca font-pe-titulo text-[17px] font-bold text-pe-sobre-marca">{i + 1}</span>
-                  <h3 className="m-0 font-pe-titulo text-[22px] font-semibold leading-7">{n.nome}</h3>
+                  <h3 className="m-0 flex flex-col font-pe-titulo text-[22px] font-semibold leading-7">
+                    {n.nome}
+                    <span className="font-pe-texto text-[14px] font-normal leading-5 text-pe-tinta-suave">Níveis {n.quadro}</span>
+                  </h3>
                 </span>
                 <p lang="en" className="m-0 font-pe-titulo text-[19px] font-light italic leading-[28px] text-pe-azul-marca">{n.frase}</p>
                 <p className="m-0 text-[15px] leading-[22px] text-pe-tinta-suave">{n.texto}</p>
@@ -396,7 +447,7 @@ export function Landing({ site }: { site: Site }) {
         <div className={caixa}>
           <div className="flex max-w-[640px] flex-col gap-3">
             <h2 className={h2}>Planos em kwanzas</h2>
-            <p className="m-0 text-pe-corpo-l text-pe-tinta-suave">Comece grátis e mude de plano quando quiser. Paga com Multicaixa Express.</p>
+            <p className="m-0 text-pe-corpo-l text-pe-tinta-suave">Comece grátis e mude de plano quando quiser. Paga com Multicaixa Express, sem cartão e sem renovações automáticas.</p>
           </div>
           {site.precos.planos.length ? (
             <div className="grid items-start gap-6 md:grid-cols-2 lg:grid-cols-3">
