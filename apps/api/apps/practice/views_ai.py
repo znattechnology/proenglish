@@ -21,6 +21,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from .permissions import IsTeacher
+from apps.core import armazenamento
 from rest_framework import status as status_module
 from rest_framework.throttling import UserRateThrottle
 from django.core.exceptions import ValidationError as DjangoValidationError
@@ -366,12 +367,7 @@ class GenerateReferenceAudioView(APIView):
             # If save_to_s3 is requested, upload to S3 and return URL
             if save_to_s3:
                 try:
-                    s3_client = boto3.client(
-                        's3',
-                        aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-                        aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-                        region_name=settings.AWS_S3_REGION_NAME
-                    )
+                    s3_client = armazenamento.cliente()
 
                     # Generate unique filename
                     unique_id = uuid.uuid4().hex[:8]
@@ -385,15 +381,9 @@ class GenerateReferenceAudioView(APIView):
                         ContentType='audio/mpeg'
                     )
 
-                    # Generate a presigned URL for reading (valid for 1 year)
-                    audio_url = s3_client.generate_presigned_url(
-                        'get_object',
-                        Params={
-                            'Bucket': settings.AWS_STORAGE_BUCKET_NAME,
-                            'Key': filename
-                        },
-                        ExpiresIn=31536000  # 1 year in seconds
-                    )
+                    # Endereço público (o bucket é público). Um URL pré-assinado não serve: a
+                    # assinatura v4 expira ao fim de 7 dias, no S3 e no R2.
+                    audio_url = armazenamento.url_publico(filename)
 
                     return Response({
                         'success': True,

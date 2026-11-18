@@ -17,6 +17,7 @@ from rest_framework import generics, status as status_module
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from apps.core.permissions import EAdministrador
+from apps.core import armazenamento
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
@@ -1397,12 +1398,7 @@ class GetAudioUploadUrlView(APIView):
             unique_filename = f"audio/{lesson_id}/{challenge_id}/{uuid.uuid4().hex}.{file_extension}"
 
             # Initialize S3 client
-            s3_client = boto3.client(
-                's3',
-                aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-                aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-                region_name=settings.AWS_S3_REGION_NAME or 'us-east-1'
-            )
+            s3_client = armazenamento.cliente()
 
             # Generate presigned URL for upload
             presigned_url = s3_client.generate_presigned_url(
@@ -1416,7 +1412,7 @@ class GetAudioUploadUrlView(APIView):
             )
 
             # Construct the final audio URL
-            audio_url = f"https://{settings.AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/{unique_filename}"
+            audio_url = armazenamento.url_publico(unique_filename)
 
             return Response({
                 'message': 'URL de upload de áudio gerada com sucesso',
@@ -1531,12 +1527,7 @@ class GetImageUploadUrlView(APIView):
             unique_filename = f"images/{lesson_id}/{challenge_id}/{uuid.uuid4().hex}.{file_extension}"
 
             # Initialize S3 client
-            s3_client = boto3.client(
-                's3',
-                aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-                aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-                region_name=settings.AWS_S3_REGION_NAME or 'us-east-1'
-            )
+            s3_client = armazenamento.cliente()
 
             # Generate presigned URL for upload
             presigned_url = s3_client.generate_presigned_url(
@@ -1550,7 +1541,7 @@ class GetImageUploadUrlView(APIView):
             )
 
             # Construct the final image URL
-            image_url = f"https://{settings.AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/{unique_filename}"
+            image_url = armazenamento.url_publico(unique_filename)
 
             return Response({
                 'message': 'URL de upload de imagem gerada com sucesso',

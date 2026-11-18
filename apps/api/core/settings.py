@@ -318,17 +318,24 @@ MEDIA_ROOT = BASE_DIR / 'media'
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default='')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', default='')
 AWS_STORAGE_BUCKET_NAME = config('AWS_S3_BUCKET_NAME', default='')
-AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME', default='us-east-1')
+# Cloudflare R2 (compatível com S3): o endpoint da conta, https://<id da conta>.r2.cloudflarestorage.com.
+# Vazio = S3 da Amazon. Ver apps/core/armazenamento.py.
+AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL', default='')
+AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME', default='auto' if AWS_S3_ENDPOINT_URL else 'us-east-1')
+AWS_S3_SIGNATURE_VERSION = 's3v4'
 
 # CloudFront Distribution (for CDN)
 AWS_CLOUDFRONT_DOMAIN = config('AWS_CLOUDFRONT_DOMAIN', default='')
 
 # S3 Settings
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+# Domínio público dos ficheiros: no R2, o domínio ligado ao bucket (media.<domínio>) ou o pub-….r2.dev.
+AWS_S3_CUSTOM_DOMAIN = (config('AWS_S3_CUSTOM_DOMAIN', default='')
+                        or f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com')
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
-AWS_DEFAULT_ACL = 'public-read'
+# O R2 não usa ACL por objecto: o bucket inteiro é público (ou não) no painel da Cloudflare.
+AWS_DEFAULT_ACL = None if AWS_S3_ENDPOINT_URL else 'public-read'
 AWS_QUERYSTRING_AUTH = False
 
 # Static and Media files configuration

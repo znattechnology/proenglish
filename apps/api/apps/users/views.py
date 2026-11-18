@@ -41,6 +41,7 @@ logger = logging.getLogger(__name__)
 # ============================================================
 
 from apps.core.permissions import EAdministrador
+from apps.core import armazenamento
 
 # Nome antigo: as vistas de administração usam a regra única EAdministrador
 # (papel admin ou superutilizador, conta activa; is_staff sozinho não chega).
@@ -276,12 +277,7 @@ def get_avatar_upload_url(request):
             }, status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
         # Create S3 client
-        s3_client = boto3.client(
-            's3',
-            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-            region_name=settings.AWS_S3_REGION_NAME
-        )
+        s3_client = armazenamento.cliente()
 
         # Generate unique filename and S3 key
         file_extension = fileName.split('.')[-1].lower()
@@ -301,10 +297,7 @@ def get_avatar_upload_url(request):
         )
 
         # Generate final avatar URL (using CloudFront if available)
-        if getattr(settings, 'AWS_CLOUDFRONT_DOMAIN', ''):
-            avatar_url = f"{settings.AWS_CLOUDFRONT_DOMAIN}/avatars/{request.user.id}/{unique_filename}"
-        else:
-            avatar_url = f"https://{settings.AWS_S3_CUSTOM_DOMAIN}/avatars/{request.user.id}/{unique_filename}"
+        avatar_url = armazenamento.url_publico(s3_key)
 
         return Response({
             'message': 'Pode enviar a fotografia.',

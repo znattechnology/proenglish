@@ -46,13 +46,8 @@ class VideoURLService:
     def _get_s3_client(self):
         """Lazy initialization of S3 client."""
         if self.s3_client is None:
-            import boto3
-            self.s3_client = boto3.client(
-                's3',
-                aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-                aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-                region_name=getattr(settings, 'AWS_S3_REGION_NAME', 'us-east-1')
-            )
+            from apps.core import armazenamento
+            self.s3_client = armazenamento.cliente()
         return self.s3_client
 
     def generate_signed_url(
