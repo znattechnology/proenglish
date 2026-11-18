@@ -5,3 +5,4 @@ data,id,variante,modelo,tamanho,proporcao,referencias,custo_usd,ficheiro,uso
 2026-11-18T15:24:19,professora-visual-a,2,gemini-3-pro-image,2K,4:5,0,0.1340,professora-visual-a/professora-visual-a-2.png,professora: visual A
 2026-11-18T15:24:49,professora-visual-b,2,gemini-3-pro-image,2K,4:5,0,0.1340,professora-visual-b/professora-visual-b-2.png,professora: visual B
 2026-11-18T15:25:18,professora-visual-c,2,gemini-3-pro-image,2K,4:5,0,0.1340,professora-visual-c/professora-visual-c-2.png,professora: visual C
+2026-11-18T15:32:55,ficha-professora,1,gemini-3-pro-image,2K,16:9,1,0.1351,ficha-professora/ficha-professora-1.png,"bíblia de personagens (referência: professora-visual-c, aprovada a 18/11/2026)"

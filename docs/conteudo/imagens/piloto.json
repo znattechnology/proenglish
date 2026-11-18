@@ -42,10 +42,12 @@
       "modelo": "pro",
       "proporcao": "16:9",
       "tamanho": "2K",
-      "referencias": [],
+      "referencias": [
+        "professora-visual-c"
+      ],
       "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
       "descricao": "Character reference sheet on a plain light-grey background: the same woman from the reference image shown four times side by side — front view, three-quarter view, full body standing (showing her curvy figure in the same professional outfit and heels), and a row of three facial expressions (smiling, explaining, gently correcting). Same face, same hair, same outfit as the reference. Luena, a strikingly beautiful Angolan woman aged 34 from Luanda, English teacher. Flawless, perfectly smooth and even-toned warm deep-brown skin with a soft healthy glow, clear complexion with no blemishes, spots, marks or oily shine, soft oval face with full cheeks and high rounded cheekbones, large expressive dark-brown almond eyes with long lashes, well-groomed defined eyebrows, full lips with a glossy nude-rose lipstick, perfect even white teeth with no gaps, soft dimples when she smiles. Polished, glamorous but natural make-up and manicured nails, like a well-dressed Luanda professional who takes great care of her appearance. Full, curvy hourglass figure typical of many Angolan women: generous bust and hips, defined waist, medium height. Wears a perfectly tailored deep navy blazer cinched at the waist over a fitted ivory silk blouse with a modest neckline, slim navy trousers, delicate gold earrings and a thin gold bracelet, and a small accent in Angolan samakaka print fabric (pocket square or scarf). Elegant, confident and very friendly, with a warm, inviting smile. Classy and modest, never sensual.",
-      "uso": "bíblia de personagens (pôr em referencias o visual aprovado)"
+      "uso": "bíblia de personagens (referência: professora-visual-c, aprovada a 18/11/2026)"
     },
     {
       "id": "professora-enquadramento",
