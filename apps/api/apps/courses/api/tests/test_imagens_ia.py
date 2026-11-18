@@ -95,7 +95,7 @@ class ImagensTests(SimpleTestCase):
         self.assertEqual(pedido['url'], ia.URL_INTERACOES)
         self.assertEqual(pedido['headers']['x-goog-api-key'], 'chave-x')
         self.assertEqual(pedido['json']['model'], 'gemini-3-pro-image')
-        self.assertEqual(pedido['json']['response_format'], {'type': 'image', 'mime_type': 'image/png',
+        self.assertEqual(pedido['json']['response_format'], {'type': 'image', 'mime_type': 'image/jpeg',
                                                              'aspect_ratio': '16:9', 'image_size': '2K'})
         texto = pedido['json']['input'][0]['text']
         self.assertIn('A man.', texto)

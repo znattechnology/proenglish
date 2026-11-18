@@ -123,7 +123,8 @@ def corpo_interacoes(modelo, texto, referencias, proporcao, tamanho):
     entrada = [{'type': 'text', 'text': texto}]
     entrada += [{'type': 'image', 'mime_type': _mime(r), 'data': _b64(r)} for r in referencias]
     return {'model': modelo.codigo, 'input': entrada,
-            'response_format': {'type': 'image', 'mime_type': 'image/png',
+            # A API de interacções só devolve JPEG; guarda-se em PNG (para_png), sem perda adicional.
+            'response_format': {'type': 'image', 'mime_type': 'image/jpeg',
                                 'aspect_ratio': proporcao, 'image_size': tamanho}}
 
 
@@ -204,6 +205,19 @@ def proxima_variante(saida, ident):
     return max(numeros, default=0) + 1
 
 
+def para_png(imagem):
+    """Converte os bytes devolvidos (JPEG ou PNG) para PNG: as variantes e as aprovadas são .png."""
+    import io
+
+    from PIL import Image
+
+    if imagem[:8] == b'\x89PNG\r\n\x1a\n':
+        return imagem
+    saida = io.BytesIO()
+    Image.open(io.BytesIO(imagem)).save(saida, format='PNG')
+    return saida.getvalue()
+
+
 def gerar(manifesto, itens, saida, csv_custos, chave, variantes=1, limite_usd=2.0, api='interacoes',
           sessao=None, escrever=print):
     """Gera as variantes pedidas, parando antes de passar o limite de gasto. Devolve o gasto."""
@@ -222,7 +236,7 @@ def gerar(manifesto, itens, saida, csv_custos, chave, variantes=1, limite_usd=2.
             os.makedirs(os.path.join(saida, item['id']), exist_ok=True)
             ficheiro = os.path.join(saida, item['id'], f'{item["id"]}-{n}.png')
             with open(ficheiro, 'wb') as f:
-                f.write(imagem)
+                f.write(para_png(imagem))
             gasto += previsto
             registar_custo(csv_custos, {
                 'data': datetime.datetime.now().isoformat(timespec='seconds'), 'id': item['id'], 'variante': n,
