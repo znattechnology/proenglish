@@ -3,23 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
 <title>{% block titulo %}ProEnglish{% endblock %}</title>
+{% comment %}
+Identidade ProEnglish (apps/web/styles/pe.css): azul-marca #000066, realce #ffc72c, tinta #14143f,
+tinta suave #54577a, fundo suave #f2f3fa, linha #cfd2e6. Os clientes de email não carregam as
+fontes da marca: fica Atkinson Hyperlegible se existir, senão Arial. Estilos sempre em linha.
+{% endcomment %}
 </head>
-<body style="margin:0;padding:0;background:#f4f6f8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:#1f2937;line-height:1.6;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6f8;padding:24px 12px;">
+<body style="margin:0;padding:0;background:#f2f3fa;font-family:'Atkinson Hyperlegible',Arial,Helvetica,sans-serif;color:#14143f;font-size:16px;line-height:1.55;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f2f3fa;padding:28px 12px;">
 <tr><td align="center">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e5e7eb;">
-<tr><td style="background:#1d4ed8;padding:24px 28px;color:#ffffff;">
-<div style="font-size:22px;font-weight:700;letter-spacing:0.5px;">ProEnglish</div>
-<div style="font-size:14px;opacity:0.9;">Inglês para profissionais</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #cfd2e6;">
+<tr><td style="background:#000066;padding:22px 28px 20px;">
+{% if frontend_url %}<img src="{{ frontend_url }}/email/logo-branco.png" width="150" height="70" alt="ProEnglish" style="display:block;border:0;outline:none;width:150px;height:auto;color:#ffffff;font-size:22px;font-weight:700;">{% else %}<div style="font-size:22px;font-weight:700;color:#ffffff;">ProEnglish</div>{% endif %}
 </td></tr>
-<tr><td style="padding:28px;">
-{% if user_name %}<p style="margin:0 0 16px;font-size:16px;">Olá, {{ user_name }}.</p>{% else %}<p style="margin:0 0 16px;font-size:16px;">Olá.</p>{% endif %}
+<tr><td style="background:#ffc72c;height:6px;line-height:6px;font-size:0;">&nbsp;</td></tr>
+<tr><td style="padding:32px 28px 28px;">
+{% if user_name %}<p style="margin:0 0 16px;font-size:18px;font-weight:700;color:#000066;">Olá, {{ user_name }}.</p>{% else %}<p style="margin:0 0 16px;font-size:18px;font-weight:700;color:#000066;">Olá.</p>{% endif %}
 {% block conteudo %}{% endblock %}
 </td></tr>
-<tr><td style="padding:20px 28px;background:#f9fafb;border-top:1px solid #e5e7eb;font-size:12px;color:#6b7280;">
-<p style="margin:0 0 6px;">Precisa de ajuda? Escreva-nos para <a href="mailto:{{ support_email }}" style="color:#1d4ed8;">{{ support_email }}</a>.</p>
-<p style="margin:0;">© {{ current_year }} ProEnglish. Este email foi enviado para {{ user_email }}.</p>
+<tr><td style="padding:20px 28px 24px;background:#f2f3fa;border-top:1px solid #cfd2e6;font-size:13px;line-height:1.5;color:#54577a;">
+<p style="margin:0 0 6px;">Precisa de ajuda? Escreva-nos para <a href="mailto:{{ support_email }}" style="color:#000066;font-weight:700;">{{ support_email }}</a>.</p>
+<p style="margin:0;">© {{ current_year }} ProEnglish · Inglês para profissionais. Este email foi enviado para {{ user_email }}.</p>
 </td></tr>
 </table>
 </td></tr>
