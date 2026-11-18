@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Check, Clock, X } from "lucide-react";
+import { Check, Clock, Maximize, X } from "lucide-react";
 import { Aviso, BarraProgresso, Botao, Logo, Osso } from "@/components/pe";
 import { cnPe } from "@/lib/pe";
 import { mensagemErro } from "@/src/domains/student/subscricao/api";
+import { entrarEcraInteiro, sairEcraInteiro, useVigiaEcraInteiro } from "./ecraInteiro";
 import {
+  useAnularPerguntaTesteMutation,
   useEntregarTesteBasicoMutation,
   useEstadoTesteBasicoQuery,
   useIniciarTesteBasicoMutation,
@@ -36,6 +38,7 @@ export function TesteBasico() {
 
   const comecar = async () => {
     setErro(null);
+    await entrarEcraInteiro(); // no clique: o browser só deixa entrar em ecrã inteiro com um gesto
     const r = await iniciar();
     if ("error" in r && r.error) setErro(mensagemErro(r.error, "Não foi possível abrir o teste. Tente outra vez."));
   };
@@ -107,7 +110,7 @@ function Entrada({ estado, aIniciar, erro, aoComecar }: { estado: EstadoTesteBas
       {estado.pode_iniciar ? (
         <>
           <p className="m-0 max-w-[60ch] text-[15px] leading-[22px] text-pe-tinta-suave">
-            O tempo começa a contar quando abrir o teste e não pára se sair. Se não aprovar, pode repetir {r.espera_horas} horas depois.
+            O teste abre em ecrã inteiro. Se sair do ecrã (outro separador, outra janela ou outra app), a pergunta em que está é anulada e conta como errada. O tempo começa a contar quando abrir o teste e não pára se sair. Se não aprovar, pode repetir {r.espera_horas} horas depois.
           </p>
           {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
           <Botao disabled={aIniciar} onClick={aoComecar}>
@@ -131,23 +134,45 @@ function Entrada({ estado, aIniciar, erro, aoComecar }: { estado: EstadoTesteBas
   );
 }
 
-function Perguntas({ t, aoEntregar }: { t: TentativaTeste; aoEntregar: (r: TentativaTeste) => void }) {
+/**
+ * As perguntas de um teste de nível, em ecrã inteiro. Sair do ecrã anula a pergunta em que está
+ * (no servidor: conta como errada) e mostra o aviso. Usado no teste do nível básico e na colocação.
+ */
+export function Perguntas({ t, aoEntregar }: { t: TentativaTeste; aoEntregar: (r: TentativaTeste) => void }) {
   const perguntas = useMemo(() => t.perguntas ?? [], [t.perguntas]);
   const [indice, setIndice] = useState(0);
   const [respostas, setRespostas] = useState<Record<string, number>>({});
   // As respostas mais recentes, para a entrega automática quando o tempo acaba.
   const ultimas = useRef<Record<string, number>>({});
   const [entregar, { isLoading }] = useEntregarTesteBasicoMutation();
+  const [anularNoServidor] = useAnularPerguntaTesteMutation();
+  const [anuladas, setAnuladas] = useState<string[]>(t.anuladas ?? []);
+  const [aviso, setAviso] = useState<number | null>(null);
+  const [aVigiar, setAVigiar] = useState(true);
   const [erro, setErro] = useState<string | null>(null);
   const falta = useFalta(t.expira_em);
   const p = perguntas[indice];
   const ultima = indice === perguntas.length - 1;
   const respondidas = Object.keys(respostas).length;
+  const anulada = !!p && anuladas.includes(p.id);
+
+  const ecra = useVigiaEcraInteiro(aVigiar, () => {
+    if (!p) return;
+    setAviso(indice + 1);
+    if (anuladas.includes(p.id)) return;
+    setAnuladas((a) => [...a, p.id]);
+    void anularNoServidor({ id: t.id, pergunta: p.id });
+  });
 
   const enviar = async () => {
     setErro(null);
+    setAVigiar(false); // sair do ecrã inteiro ao entregar não anula nada
     const r = await entregar({ id: t.id, respostas: ultimas.current });
-    if ("data" in r && r.data) return aoEntregar(r.data);
+    if ("data" in r && r.data) {
+      void sairEcraInteiro();
+      return aoEntregar(r.data);
+    }
+    setAVigiar(true);
     setErro(mensagemErro("error" in r ? r.error : null, "Não foi possível entregar o teste. Verifique a ligação e tente outra vez."));
   };
 
@@ -162,6 +187,27 @@ function Perguntas({ t, aoEntregar }: { t: TentativaTeste; aoEntregar: (r: Tenta
   const minutos = Math.floor(falta / 60);
   const segundos = String(falta % 60).padStart(2, "0");
 
+  // Fora do ecrã inteiro as perguntas não se mostram: primeiro volta-se ao ecrã do teste.
+  if (ecra.suporta && !ecra.dentro)
+    return (
+      <main className="flex flex-1 flex-col items-start gap-5">
+        <h1 className="m-0 text-balance font-pe-titulo text-[28px] font-bold leading-9">O teste corre em ecrã inteiro</h1>
+        {aviso ? (
+          <Aviso tipo="errado">Saiu do ecrã do teste: a pergunta {aviso} foi anulada e conta como errada.</Aviso>
+        ) : (
+          <p className="m-0 max-w-[60ch] text-pe-tinta-suave">Volte ao ecrã inteiro para ver as perguntas. Se sair outra vez, a pergunta em que estiver é anulada.</p>
+        )}
+        <p className="m-0 flex items-center gap-1.5 font-semibold tabular-nums text-pe-tinta-suave">
+          <Clock aria-hidden className="size-4" />
+          {minutos}:{segundos} até ao fim do teste
+        </p>
+        <Botao onClick={() => void ecra.voltar().then(() => setAviso(null))}>
+          <Maximize aria-hidden className="size-4" />
+          Voltar ao teste
+        </Botao>
+      </main>
+    );
+
   return (
     <main className="flex flex-1 flex-col gap-6">
       <div className="flex items-center gap-4">
@@ -171,6 +217,14 @@ function Perguntas({ t, aoEntregar }: { t: TentativaTeste; aoEntregar: (r: Tenta
           {minutos}:{segundos}
         </span>
       </div>
+      {aviso && !ecra.suporta ? (
+        <Aviso tipo="errado">
+          Saiu do ecrã do teste: a pergunta {aviso} foi anulada e conta como errada.{" "}
+          <button type="button" onClick={() => setAviso(null)} className="bg-transparent px-0 font-semibold underline underline-offset-[3px]">
+            Entendi
+          </button>
+        </Aviso>
+      ) : null}
       <div className="flex flex-col gap-2">
         <p className="m-0 text-[15px] font-semibold text-pe-tinta-suave">
           Pergunta {indice + 1} de {perguntas.length}
@@ -179,7 +233,8 @@ function Perguntas({ t, aoEntregar }: { t: TentativaTeste; aoEntregar: (r: Tenta
           {p.enunciado}
         </h1>
       </div>
-      <div role="radiogroup" aria-label="Opções de resposta" className="flex flex-col gap-3">
+      {anulada ? <Aviso tipo="info">Esta pergunta foi anulada porque saiu do ecrã do teste. Conta como errada.</Aviso> : null}
+      <div role="radiogroup" aria-label="Opções de resposta" aria-disabled={anulada} className={cnPe("flex flex-col gap-3", anulada && "opacity-50")}>
         {p.opcoes.map((o, i) => {
           const escolhida = respostas[p.id] === i;
           return (
@@ -188,6 +243,7 @@ function Perguntas({ t, aoEntregar }: { t: TentativaTeste; aoEntregar: (r: Tenta
               type="button"
               role="radio"
               aria-checked={escolhida}
+              disabled={anulada}
               lang="en"
               onClick={() => {
                 ultimas.current = { ...ultimas.current, [p.id]: i };

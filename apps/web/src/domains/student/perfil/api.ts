@@ -91,13 +91,13 @@ export function iniciais(nome?: string) {
 
 /** As mesmas categorias dos cursos (ver categoriaPt), para recomendar cursos da área. */
 export const AREAS: { valor: string; nome: string }[] = [
+  { valor: "General English", nome: "Inglês geral" },
   { valor: "Industry English", nome: "Petróleo e Gás" },
   { valor: "Financial English", nome: "Banca" },
   { valor: "Business English", nome: "Negócios" },
   { valor: "Medical English", nome: "Saúde" },
   { valor: "Legal English", nome: "Direito" },
   { valor: "Technical English", nome: "Tecnologia" },
-  { valor: "General English", nome: "Outra área" },
 ];
 
 /** Níveis para escolher (A1 a C2, com nome e descrição): ver src/domains/shared/niveis.ts. */

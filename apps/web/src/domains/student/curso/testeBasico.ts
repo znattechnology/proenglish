@@ -1,6 +1,8 @@
 /**
- * Teste do nível básico: o requisito para entrar num curso de sector sem ter feito o curso geral.
+ * Testes de nível (A1, A2, B1, B2). O do A2 é o teste do nível básico, o requisito para entrar num
+ * curso de sector; os outros servem a colocação no curso geral (apps/courses/colocacao.py).
  * API Django: /api/v1/student/teste-basico/ (as perguntas vêm sem as respostas; a nota é do servidor).
+ * Se o aluno sai do ecrã do teste, a pergunta em que estava é anulada no servidor (/anular/).
  */
 import { cursoApi } from "./api";
 
@@ -11,8 +13,12 @@ export const ROTA_TESTE_BASICO = "/user/teste-basico";
 
 export type PerguntaTeste = { id: string; enunciado: string; opcoes: string[] };
 
+export type NivelTeste = "A1" | "A2" | "B1" | "B2";
+
 export type TentativaTeste = {
   id: string;
+  nivel: NivelTeste;
+  anuladas: string[];
   iniciado_em: string;
   expira_em: string;
   submetido_em: string | null;
@@ -23,6 +29,8 @@ export type TentativaTeste = {
 };
 
 export type EstadoTesteBasico = {
+  nivel: NivelTeste;
+  aprovado_no_nivel: boolean;
   tem_nivel_basico: boolean;
   pode_iniciar: boolean;
   proxima_tentativa_em: string | null;
@@ -33,13 +41,16 @@ export type EstadoTesteBasico = {
 
 export const testeBasicoApi = cursoApi.enhanceEndpoints({ addTagTypes: ["TesteBasico"] }).injectEndpoints({
   endpoints: (build) => ({
-    estadoTesteBasico: build.query<EstadoTesteBasico, void>({
-      query: () => `${BASE}/`,
+    estadoTesteBasico: build.query<EstadoTesteBasico, NivelTeste | void>({
+      query: (nivel) => (nivel ? `${BASE}/?nivel=${nivel}` : `${BASE}/`),
       providesTags: ["TesteBasico"],
     }),
-    iniciarTesteBasico: build.mutation<TentativaTeste, void>({
-      query: () => ({ url: `${BASE}/iniciar/`, method: "POST" }),
+    iniciarTesteBasico: build.mutation<TentativaTeste, NivelTeste | void>({
+      query: (nivel) => ({ url: `${BASE}/iniciar/`, method: "POST", body: nivel ? { nivel } : {} }),
       invalidatesTags: ["TesteBasico"],
+    }),
+    anularPerguntaTeste: build.mutation<{ anuladas: string[] }, { id: string; pergunta: string }>({
+      query: ({ id, pergunta }) => ({ url: `${BASE}/${id}/anular/`, method: "POST", body: { pergunta } }),
     }),
     entregarTesteBasico: build.mutation<TentativaTeste & { estado: EstadoTesteBasico }, { id: string; respostas: Record<string, number> }>({
       query: ({ id, respostas }) => ({ url: `${BASE}/${id}/entregar/`, method: "POST", body: { respostas } }),
@@ -49,7 +60,7 @@ export const testeBasicoApi = cursoApi.enhanceEndpoints({ addTagTypes: ["TesteBa
   }),
 });
 
-export const { useEstadoTesteBasicoQuery, useIniciarTesteBasicoMutation, useEntregarTesteBasicoMutation } = testeBasicoApi;
+export const { useEstadoTesteBasicoQuery, useIniciarTesteBasicoMutation, useEntregarTesteBasicoMutation, useAnularPerguntaTesteMutation } = testeBasicoApi;
 
 /** O erro de uma inscrição ou de uma lição é a falta do nível básico? */
 export function faltaNivelBasico(e: unknown) {
