@@ -6,3 +6,8 @@ data,id,variante,modelo,tamanho,proporcao,referencias,custo_usd,ficheiro,uso
 2026-11-18T15:24:49,professora-visual-b,2,gemini-3-pro-image,2K,4:5,0,0.1340,professora-visual-b/professora-visual-b-2.png,professora: visual B
 2026-11-18T15:25:18,professora-visual-c,2,gemini-3-pro-image,2K,4:5,0,0.1340,professora-visual-c/professora-visual-c-2.png,professora: visual C
 2026-11-18T15:32:55,ficha-professora,1,gemini-3-pro-image,2K,16:9,1,0.1351,ficha-professora/ficha-professora-1.png,"bíblia de personagens (referência: professora-visual-c, aprovada a 18/11/2026)"
+2026-11-18T15:36:09,ficha-professora,2,gemini-3-pro-image,2K,16:9,1,0.1351,ficha-professora/ficha-professora-2.png,"bíblia de personagens (referência: professora-visual-c, aprovada a 18/11/2026)"
+2026-11-18T15:37:06,professora-enquadramento,1,gemini-3-pro-image,2K,16:9,2,0.1362,professora-enquadramento/professora-enquadramento-1.png,imagem base das vídeo-aulas (ferramenta de vídeo)
+2026-11-18T15:37:47,landing-hero,1,gemini-3-pro-image,2K,4:5,2,0.1362,landing-hero/landing-hero-1.png,"landing page: imagem principal (hero), à direita do título"
+2026-11-18T15:38:31,landing-quadro,1,gemini-3-pro-image,2K,3:2,2,0.1362,landing-quadro/landing-quadro-1.png,"landing page: secção ""Como funciona"" (as aulas)"
+2026-11-18T15:39:14,landing-tablet,1,gemini-3-pro-image,2K,1:1,2,0.1362,landing-tablet/landing-tablet-1.png,"landing page: bloco ""Conheça a sua professora"" / acolhimento da app"

@@ -46,7 +46,7 @@
         "professora-visual-c"
       ],
       "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
-      "descricao": "Character reference sheet on a plain light-grey background: the same woman from the reference image shown four times side by side — front view, three-quarter view, full body standing (showing her curvy figure in the same professional outfit and heels), and a row of three facial expressions (smiling, explaining, gently correcting). Same face, same hair, same outfit as the reference. Luena, a strikingly beautiful Angolan woman aged 34 from Luanda, English teacher. Flawless, perfectly smooth and even-toned warm deep-brown skin with a soft healthy glow, clear complexion with no blemishes, spots, marks or oily shine, soft oval face with full cheeks and high rounded cheekbones, large expressive dark-brown almond eyes with long lashes, well-groomed defined eyebrows, full lips with a glossy nude-rose lipstick, perfect even white teeth with no gaps, soft dimples when she smiles. Polished, glamorous but natural make-up and manicured nails, like a well-dressed Luanda professional who takes great care of her appearance. Full, curvy hourglass figure typical of many Angolan women: generous bust and hips, defined waist, medium height. Wears a perfectly tailored deep navy blazer cinched at the waist over a fitted ivory silk blouse with a modest neckline, slim navy trousers, delicate gold earrings and a thin gold bracelet, and a small accent in Angolan samakaka print fabric (pocket square or scarf). Elegant, confident and very friendly, with a warm, inviting smile. Classy and modest, never sensual.",
+      "descricao": "Character reference sheet on a plain light-grey background: the same woman from the reference image shown four times side by side — front view, three-quarter view, full body standing (showing her curvy figure in the same professional outfit and heels), and a row of three head-and-shoulders facial expressions, all positive, warm and encouraging: (1) explaining enthusiastically with a bright open face and one hand raised in a gentle open gesture, (2) listening attentively with a kind, patient half-smile and slightly tilted head, (3) congratulating proudly with a big joyful smile. Never worried, sad, confused or stern. Same face, same hair, same outfit as the reference. Luena, a strikingly beautiful Angolan woman aged 34 from Luanda, English teacher. Flawless, perfectly smooth and even-toned warm deep-brown skin with a soft healthy glow, clear complexion with no blemishes, spots, marks or oily shine, soft oval face with full cheeks and high rounded cheekbones, large expressive dark-brown almond eyes with long lashes, well-groomed defined eyebrows, full lips with a glossy nude-rose lipstick, perfect even white teeth with no gaps, soft dimples when she smiles. Polished, glamorous but natural make-up and manicured nails, like a well-dressed Luanda professional who takes great care of her appearance. Full, curvy hourglass figure typical of many Angolan women: generous bust and hips, defined waist, medium height. Wears a perfectly tailored deep navy blazer cinched at the waist over a fitted ivory silk blouse with a modest neckline, slim navy trousers, delicate gold earrings and a thin gold bracelet, and a small accent in Angolan samakaka print fabric (pocket square or scarf). Elegant, confident and very friendly, with a warm, inviting smile. Classy and modest, never sensual.",
       "uso": "bíblia de personagens (referência: professora-visual-c, aprovada a 18/11/2026)"
     },
     {
@@ -56,11 +56,54 @@
       "proporcao": "16:9",
       "tamanho": "2K",
       "referencias": [
+        "professora-visual-c",
         "ficha-professora"
       ],
       "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
-      "descricao": "Luena, the same woman from the reference sheet, seated at a light wooden desk in a bright teaching studio, framed from the waist up slightly left of centre, looking straight into the camera and smiling as if starting a lesson. Behind her: a large window with a soft-focus view of the Bay of Luanda, green plants, a low bookshelf, and a golden-yellow mug on the desk. Calm, uncluttered background suitable for on-screen text on the right side.",
+      "descricao": "Luena, the same woman as in the reference images: same face, same sleek jet-black shoulder-length bob with deep side part, same deep navy tailored blazer cinched at the waist, ivory silk top, slim navy trousers, gold hoop earrings, thin gold bracelet and samakaka-print pocket square. Flawless smooth even-toned deep-brown skin, perfect even white teeth, polished natural make-up, curvy figure. Classy and modest. She is seated at a light wooden desk in a bright teaching studio, framed from the waist up slightly left of centre, looking straight into the camera and smiling as if starting a lesson. Behind her: a large window with a soft-focus view of the Bay of Luanda, green plants, a low bookshelf, and a golden-yellow mug on the desk. Calm, uncluttered background suitable for on-screen text on the right side.",
       "uso": "imagem base das vídeo-aulas (ferramenta de vídeo)"
+    },
+    {
+      "id": "landing-hero",
+      "fase": 0,
+      "modelo": "pro",
+      "proporcao": "4:5",
+      "tamanho": "2K",
+      "referencias": [
+        "professora-visual-c",
+        "ficha-professora"
+      ],
+      "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
+      "descricao": "Luena, the same woman as in the reference images: same face, same sleek jet-black shoulder-length bob with deep side part, same deep navy tailored blazer cinched at the waist, ivory silk top, slim navy trousers, gold hoop earrings, thin gold bracelet and samakaka-print pocket square. Flawless smooth even-toned deep-brown skin, perfect even white teeth, polished natural make-up, curvy figure. Classy and modest. Three-quarter length, standing slightly turned to the left side of the frame, looking straight at the camera with a warm, welcoming smile, one hand relaxed at her waist. Plain soft off-white seamless studio background with gentle light, plenty of clean space around her, suitable for a website hero image.",
+      "uso": "landing page: imagem principal (hero), à direita do título"
+    },
+    {
+      "id": "landing-quadro",
+      "fase": 0,
+      "modelo": "pro",
+      "proporcao": "3:2",
+      "tamanho": "2K",
+      "referencias": [
+        "professora-visual-c",
+        "ficha-professora"
+      ],
+      "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
+      "descricao": "Luena, the same woman as in the reference images: same face, same sleek jet-black shoulder-length bob with deep side part, same deep navy tailored blazer cinched at the waist, ivory silk top, slim navy trousers, gold hoop earrings, thin gold bracelet and samakaka-print pocket square. Flawless smooth even-toned deep-brown skin, perfect even white teeth, polished natural make-up, curvy figure. Classy and modest. She stands next to a large clean white glass board in a bright modern classroom-studio, turning towards the camera and pointing at the board with an open hand while explaining, smiling, engaging. The board is completely blank: no writing, no letters, no symbols. A window with soft daylight, a plant.",
+      "uso": "landing page: secção \"Como funciona\" (as aulas)"
+    },
+    {
+      "id": "landing-tablet",
+      "fase": 0,
+      "modelo": "pro",
+      "proporcao": "1:1",
+      "tamanho": "2K",
+      "referencias": [
+        "professora-visual-c",
+        "ficha-professora"
+      ],
+      "estilo": "Photorealistic portrait photograph, soft natural window light, 85mm lens, shallow depth of field, true-to-life dark skin tones with natural texture, warm but neutral colour grading, like a premium corporate brand campaign. Not illustrated, not airbrushed.",
+      "descricao": "Luena, the same woman as in the reference images: same face, same sleek jet-black shoulder-length bob with deep side part, same deep navy tailored blazer cinched at the waist, ivory silk top, slim navy trousers, gold hoop earrings, thin gold bracelet and samakaka-print pocket square. Flawless smooth even-toned deep-brown skin, perfect even white teeth, polished natural make-up, curvy figure. Classy and modest. Waist-up, seated at a light wooden desk, holding a tablet whose screen faces away from the camera, looking up at the camera with a bright encouraging smile, as if congratulating a student. Warm bright office-studio background, softly blurred, a golden-yellow mug on the desk.",
+      "uso": "landing page: bloco \"Conheça a sua professora\" / acolhimento da app"
     },
     {
       "id": "estilo-foto",
