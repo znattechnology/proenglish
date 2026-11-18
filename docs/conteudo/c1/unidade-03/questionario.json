@@ -1,0 +1,301 @@
+{
+ "title": "C1.1 Unit 3 quiz — Strategy",
+ "description": "Condicionais mistos, condicionais com inversão, conectores, cenários, policy / politics e intend.",
+ "questions": [
+  {
+   "id": "c1u3q1",
+   "question": "Escolha a frase correcta (condição no passado, resultado agora).",
+   "options": [
+    {
+     "id": "c1u3q1o0",
+     "text": "If I had learned English as a child, I wouldn't need this course now.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u3q1o1",
+     "text": "If I learned English as a child, I wouldn't have needed this course now.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u3q1o2",
+     "text": "If I would have learned English, I wouldn't need it now.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u3q1o0",
+   "explanation": "If + past perfect, would + infinitivo.",
+   "points": 10
+  },
+  {
+   "id": "c1u3q2",
+   "question": "Complete: \"If we had an office there, we'd have ___ the tender.\"",
+   "options": [
+    {
+     "id": "c1u3q2o0",
+     "text": "won",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u3q2o1",
+     "text": "win",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u3q2o2",
+     "text": "wins",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u3q2o0",
+   "explanation": "Condição permanente, resultado no passado: would have + particípio.",
+   "points": 10
+  },
+  {
+   "id": "c1u3q3",
+   "question": "Escolha a frase formal correcta.",
+   "options": [
+    {
+     "id": "c1u3q3o0",
+     "text": "Had we not signed the contract, we would have lost the client.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u3q3o1",
+     "text": "Hadn't we signed the contract, we would have lost the client.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u3q3o2",
+     "text": "Had not we signed the contract, we would have lost the client.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u3q3o0",
+   "explanation": "Inversão na negativa: Had we not…",
+   "points": 10
+  },
+  {
+   "id": "c1u3q4",
+   "question": "Complete: \"___ you need more information, please call me.\"",
+   "options": [
+    {
+     "id": "c1u3q4o0",
+     "text": "Should",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u3q4o1",
+     "text": "Would",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u3q4o2",
+     "text": "Shall",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u3q4o0",
+   "explanation": "Should + sujeito + infinitivo.",
+   "points": 10
+  },
+  {
+   "id": "c1u3q5",
+   "question": "Que conector introduz um FACTO?",
+   "options": [
+    {
+     "id": "c1u3q5o0",
+     "text": "given that",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u3q5o1",
+     "text": "assuming that",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u3q5o2",
+     "text": "supposing",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u3q5o0",
+   "explanation": "given that = uma vez que.",
+   "points": 10
+  },
+  {
+   "id": "c1u3q6",
+   "question": "Complete: \"Clients may refuse dollars, in ___ case we review the price.\"",
+   "options": [
+    {
+     "id": "c1u3q6o0",
+     "text": "which",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u3q6o1",
+     "text": "what",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u3q6o2",
+     "text": "that",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u3q6o0",
+   "explanation": "in which case = e nesse caso.",
+   "points": 10
+  },
+  {
+   "id": "c1u3q7",
+   "question": "Escolha a expressão correcta.",
+   "options": [
+    {
+     "id": "c1u3q7o0",
+     "text": "the worst-case scenario",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u3q7o1",
+     "text": "the worst scenario case",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u3q7o2",
+     "text": "the most worst case",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u3q7o0",
+   "explanation": "the best-case / worst-case scenario.",
+   "points": 10
+  },
+  {
+   "id": "c1u3q8",
+   "question": "\"It's a calculated risk.\" Isto soa…",
+   "options": [
+    {
+     "id": "c1u3q8o0",
+     "text": "responsável: o risco foi medido",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u3q8o1",
+     "text": "louco: ninguém pensou nisso",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u3q8o2",
+     "text": "seguro: não há risco",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u3q8o0",
+   "explanation": "a calculated risk.",
+   "points": 10
+  },
+  {
+   "id": "c1u3q9",
+   "question": "\"A política de privacidade\" em inglês:",
+   "options": [
+    {
+     "id": "c1u3q9o0",
+     "text": "the privacy policy",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u3q9o1",
+     "text": "the privacy politics",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u3q9o2",
+     "text": "the privacy politic",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u3q9o0",
+   "explanation": "policy = regras; politics = a actividade política.",
+   "points": 10
+  },
+  {
+   "id": "c1u3q10",
+   "question": "\"Não entendi a pergunta.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1u3q10o0",
+     "text": "I didn't understand the question.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u3q10o1",
+     "text": "I didn't intend the question.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u3q10o2",
+     "text": "I didn't entend the question.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u3q10o0",
+   "explanation": "Falso amigo: intend = tencionar.",
+   "points": 10
+  },
+  {
+   "id": "c1u3q11",
+   "question": "Reciclagem (C1, unidade 2). Escolha a recusa mais diplomática.",
+   "options": [
+    {
+     "id": "c1u3q11o0",
+     "text": "I'm afraid we're not in a position to offer that. What we can do is…",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u3q11o1",
+     "text": "No. We don't do that.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u3q11o2",
+     "text": "We're not in position of offering that.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u3q11o0",
+   "explanation": "Suavizar, recusar, dar uma alternativa.",
+   "points": 10
+  },
+  {
+   "id": "c1u3q12",
+   "question": "Reciclagem (C1, unidade 2). \"Foi muito gentil da sua parte.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1u3q12o0",
+     "text": "That was very kind of you.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u3q12o1",
+     "text": "That was very gentle of you.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u3q12o2",
+     "text": "That was very gentil of you.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u3q12o0",
+   "explanation": "Falso amigo: gentle = suave.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

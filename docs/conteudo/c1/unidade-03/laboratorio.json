@@ -1,0 +1,1696 @@
+{
+ "unidade": "C1.1 · Unit 3 — Strategy",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "3A",
+   "titulo": "If we hadn't…, we wouldn't be…",
+   "aula": "3A",
+   "objectivo": "Condicionais mistos em todos os tempos e If… were to…",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If Mopane hadn't worked on Lobito, we wouldn't [know] the market now.",
+     "opcoes": [
+      {
+       "texto": "known",
+       "certa": false
+      },
+      {
+       "texto": "have know",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If we had an office there, we'd have [won] the tender.",
+     "opcoes": [
+      {
+       "texto": "win",
+       "certa": false
+      },
+      {
+       "texto": "wins",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If you hadn't saved the contract, we wouldn't be [talking] about Nampula.",
+     "opcoes": [
+      {
+       "texto": "talk",
+       "certa": false
+      },
+      {
+       "texto": "talked",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If we were to [open] in Windhoek, we'd need the whole budget.",
+     "opcoes": [
+      {
+       "texto": "opened",
+       "certa": false
+      },
+      {
+       "texto": "opening",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence (condition in the past, result now).",
+     "opcoes": [
+      {
+       "texto": "If I had learned English as a child, I wouldn't need this course now.",
+       "certa": true
+      },
+      {
+       "texto": "If I learned English as a child, I wouldn't have needed this course now.",
+       "certa": false
+      },
+      {
+       "texto": "If I would have learned English, I wouldn't need it now.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence (a permanent situation, result in the past).",
+     "opcoes": [
+      {
+       "texto": "If I were more organised, I wouldn't have missed the deadline.",
+       "certa": true
+      },
+      {
+       "texto": "If I had been more organised, I wouldn't miss the deadline yesterday.",
+       "certa": false
+      },
+      {
+       "texto": "If I were more organised, I wouldn't miss the deadline yesterday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"If we were to open in Windhoek…\" This sounds…",
+     "opcoes": [
+      {
+       "texto": "more formal and more hypothetical than \"If we open\"",
+       "certa": true
+      },
+      {
+       "texto": "informal and certain",
+       "certa": false
+      },
+      {
+       "texto": "like a past event",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If we were bigger, we would have had a better price.",
+       "certa": true
+      },
+      {
+       "texto": "If we would be bigger, we would have had a better price.",
+       "certa": false
+      },
+      {
+       "texto": "If we were bigger, we would had a better price.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Se tivéssemos um escritório lá, teríamos ganho o concurso.",
+     "resposta": "If we had an office there, we'd have won the tender.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thandi. The board has five hundred thousand dollars to grow in one place in 2031. They want our proposal on the twenty-eighth.",
+     "enunciado": "How much does the board have to grow in 2031?",
+     "opcoes": [
+      {
+       "texto": "five hundred thousand dollars",
+       "certa": true
+      },
+      {
+       "texto": "two million dollars",
+       "certa": false
+      },
+      {
+       "texto": "two hundred and fifty thousand dollars",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. We lost a big tender in Windhoek last year. The client chose a company with people on the ground.",
+     "enunciado": "Why did Mopane lose the tender in Windhoek?",
+     "opcoes": [
+      {
+       "texto": "The client chose a company with people on the ground.",
+       "certa": true
+      },
+      {
+       "texto": "Mopane was too expensive.",
+       "certa": false
+      },
+      {
+       "texto": "Mopane arrived late.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "If we had an office there, we'd have won it.",
+     "enunciado": "Ouça e repita, com as formas reduzidas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of a decision your company, school, town or family made five years ago. How would things be different now if it had decided otherwise?",
+     "frase": "If they hadn't",
+     "resposta": "Five years ago, my town built a market near the bus station. If they hadn't done that, the sellers would still be on the main road. But there's no parking. If the town had more money, they'd have built a car park too.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it useful to think about \"what would have happened if…\", or is it a waste of time? Why?",
+     "frase": "would",
+     "resposta": "It's useful if you learn something. If I hadn't thought about my mistakes, I'd make the same ones today. But if you think about it too much, you'd never decide anything new.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "3B",
+   "titulo": "Had we known…",
+   "aula": "3B",
+   "objectivo": "Condicionais com inversão no registo formal.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Had] we known about the delay, we would have warned you.",
+     "opcoes": [
+      {
+       "texto": "Have",
+       "certa": false
+      },
+      {
+       "texto": "If",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Should] you need more information, please call me.",
+     "opcoes": [
+      {
+       "texto": "Would",
+       "certa": false
+      },
+      {
+       "texto": "Shall",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Were] we to open in Windhoek, we would need the full budget.",
+     "opcoes": [
+      {
+       "texto": "Was",
+       "certa": false
+      },
+      {
+       "texto": "Would",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Had it [not] been for Kalandula, Tômbwa would never have happened.",
+     "opcoes": [
+      {
+       "texto": "n't",
+       "certa": false
+      },
+      {
+       "texto": "no",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct formal sentence.",
+     "opcoes": [
+      {
+       "texto": "Had we not signed the contract, we would have lost the client.",
+       "certa": true
+      },
+      {
+       "texto": "Hadn't we signed the contract, we would have lost the client.",
+       "certa": false
+      },
+      {
+       "texto": "Had not we signed the contract, we would have lost the client.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Were it not for the currency risk, Luanda would be the obvious choice.\" This means…",
+     "opcoes": [
+      {
+       "texto": "If there were no currency risk, Luanda would be the obvious choice.",
+       "certa": true
+      },
+      {
+       "texto": "The currency risk was in the past.",
+       "certa": false
+      },
+      {
+       "texto": "Luanda is not a choice.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Where does an inversion like \"Should you have any questions…\" sound natural?",
+     "opcoes": [
+      {
+       "texto": "at the end of a formal letter or e-mail",
+       "certa": true
+      },
+      {
+       "texto": "when offering a friend a coffee",
+       "certa": false
+      },
+      {
+       "texto": "in a text message to your family",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Should the board approve the plan, we could start in January.",
+       "certa": true
+      },
+      {
+       "texto": "Should the board approves the plan, we could start in January.",
+       "certa": false
+      },
+      {
+       "texto": "Should approve the board the plan, we could start in January.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Se não fosse a Kalandula, o Tômbwa nunca teria acontecido.",
+     "resposta": "Had it not been for Kalandula, Tômbwa would never have happened.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thandi. Your memo is clear. But it sounds like an e-mail to a friend. It's for the board.",
+     "enunciado": "What is the problem with Nuno's memo?",
+     "opcoes": [
+      {
+       "texto": "The register is too informal for the board.",
+       "certa": true
+      },
+      {
+       "texto": "The numbers are wrong.",
+       "certa": false
+      },
+      {
+       "texto": "It's too long.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. If you say 'Should you want a coffee' to David at the coffee machine, he'll laugh at you.",
+     "enunciado": "What is Thandi's warning?",
+     "opcoes": [
+      {
+       "texto": "Inversions sound silly in casual conversation.",
+       "certa": true
+      },
+      {
+       "texto": "David doesn't drink coffee.",
+       "certa": false
+      },
+      {
+       "texto": "Nuno should never use inversions.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Had it not been for Kalandula, Tômbwa would never have happened.",
+     "enunciado": "Ouça e repita, com o acento em \"Had\" no início."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You are presenting to a board. Explain one past decision and one possible future decision, using at least three inversions (Had we…, Should…, Were we to…, Had it not been for…).",
+     "frase": "Had",
+     "resposta": "Two years ago we moved our servers to the cloud. Had we not done so, last year's flood would have stopped us for weeks. Were we to open on Saturdays, we would need two more staff. Should the committee approve, we could start in June.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Does formal language make a proposal more convincing, or does it put people off? Why?",
+     "frase": "because",
+     "resposta": "A little formality helps, because it shows you've prepared. But too much puts people off. One elegant sentence at the key moment is more convincing than a whole speech in legal English.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "3C",
+   "titulo": "Otherwise…",
+   "aula": "3C",
+   "objectivo": "Ligar causas, condições e consequências.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Given] that Kalandula pays half, it's the cheapest option for us.",
+     "opcoes": [
+      {
+       "texto": "Giving",
+       "certa": false
+      },
+      {
+       "texto": "Gave",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The contracts should be in dollars. [Otherwise], the currency eats the profit.",
+     "opcoes": [
+      {
+       "texto": "Other",
+       "certa": false
+      },
+      {
+       "texto": "Unless",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Clients may refuse dollars, in [which] case we review the price every six months.",
+     "opcoes": [
+      {
+       "texto": "what",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Assuming] the kwanza stays where it is, we'll make two point four million.",
+     "opcoes": [
+      {
+       "texto": "Assumed",
+       "certa": false
+      },
+      {
+       "texto": "Assume",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which connector introduces a FACT?",
+     "opcoes": [
+      {
+       "texto": "given that",
+       "certa": true
+      },
+      {
+       "texto": "assuming that",
+       "certa": false
+      },
+      {
+       "texto": "supposing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "We must book the hall this week; otherwise we'll lose it.",
+       "certa": true
+      },
+      {
+       "texto": "We must book the hall this week, otherwise of that we'll lose it.",
+       "certa": false
+      },
+      {
+       "texto": "We must book the hall this week, in otherwise we'll lose it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"…as a result of which the office loses money.\" This connector is…",
+     "opcoes": [
+      {
+       "texto": "formal, and refers to the sentence before",
+       "certa": true
+      },
+      {
+       "texto": "informal, and starts a question",
+       "certa": false
+      },
+      {
+       "texto": "a condition, like \"if\"",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Supposing Mussiro left — what happens?\" The speaker is…",
+     "opcoes": [
+      {
+       "texto": "examining a hypothesis",
+       "certa": true
+      },
+      {
+       "texto": "stating a fact",
+       "certa": false
+      },
+      {
+       "texto": "giving an order",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Nesse caso, revemos o preço de seis em seis meses.",
+     "resposta": "In which case, we review the price every six months.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Rajesh. Windhoek costs five hundred thousand, the whole budget. One point two million, provided we win one tender in five.",
+     "enunciado": "What does Windhoek's most likely result depend on?",
+     "opcoes": [
+      {
+       "texto": "winning one tender in five",
+       "certa": true
+      },
+      {
+       "texto": "the kwanza",
+       "certa": false
+      },
+      {
+       "texto": "Kalandula paying half",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Rajesh. In Nampula, Mussiro would be seventy percent of the revenue.",
+     "enunciado": "What percentage of the Nampula revenue would come from Mussiro?",
+     "opcoes": [
+      {
+       "texto": "seventy percent",
+       "certa": true
+      },
+      {
+       "texto": "thirty percent",
+       "certa": false
+      },
+      {
+       "texto": "fifty percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The contracts should be in dollars. Otherwise, the currency eats the profit.",
+     "enunciado": "Ouça e repita, com uma pausa antes de \"otherwise\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain a plan as a chain: one fact (given that), one assumption (assuming), one condition (provided that), and what you'll do if things go wrong (in which case, otherwise).",
+     "frase": "in which case",
+     "resposta": "Given that I already cook for three offices, I have clients. Assuming they stay, I'll start with two days a week, provided the rent stays low. Prices may go up, in which case I'll cook at home. I need a licence by June; otherwise I can't sell to companies.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "When you make an important decision, do you think more about the best case or about the worst case? Why?",
+     "frase": "worst case",
+     "resposta": "I think more about the worst case, because if I can survive the worst case, the decision is safe enough. The best case is nice to imagine, but it rarely happens.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "3D",
+   "titulo": "Three scenarios",
+   "aula": "3D",
+   "objectivo": "Comparar cenários com graus de certeza e de risco.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In the [best]-case scenario, we win two tenders out of five.",
+     "opcoes": [
+      {
+       "texto": "better",
+       "certa": false
+      },
+      {
+       "texto": "good",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The most likely [outcome] is one and a half million.",
+     "opcoes": [
+      {
+       "texto": "outcoming",
+       "certa": false
+      },
+      {
+       "texto": "income case",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd call Luanda a [calculated] risk, not a safe bet.",
+     "opcoes": [
+      {
+       "texto": "calculating",
+       "certa": false
+      },
+      {
+       "texto": "calculate",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "One point two million is nowhere [near] as good as Luanda.",
+     "opcoes": [
+      {
+       "texto": "next",
+       "certa": false
+      },
+      {
+       "texto": "nearby",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct expression.",
+     "opcoes": [
+      {
+       "texto": "the worst-case scenario",
+       "certa": true
+      },
+      {
+       "texto": "the worst scenario case",
+       "certa": false
+      },
+      {
+       "texto": "the most worst case",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It's a calculated risk.\" This sounds…",
+     "opcoes": [
+      {
+       "texto": "responsible: the risk was measured",
+       "certa": true
+      },
+      {
+       "texto": "crazy: nobody thought about it",
+       "certa": false
+      },
+      {
+       "texto": "safe: there is no risk",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"On balance, Luanda.\" The speaker means…",
+     "opcoes": [
+      {
+       "texto": "after weighing everything, Luanda",
+       "certa": true
+      },
+      {
+       "texto": "Luanda and Windhoek are equal",
+       "certa": false
+      },
+      {
+       "texto": "Luanda is perfect",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The upside is a stable currency.\" The upside is…",
+     "opcoes": [
+      {
+       "texto": "an advantage",
+       "certa": true
+      },
+      {
+       "texto": "a disadvantage",
+       "certa": false
+      },
+      {
+       "texto": "a direction",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ponderando tudo, Luanda é a melhor opção.",
+     "resposta": "On balance, Luanda is the best option.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lindiwe. In the best-case scenario, we win two tenders out of five. Two million in year three.",
+     "enunciado": "What is the best case for Windhoek?",
+     "opcoes": [
+      {
+       "texto": "two million in year three",
+       "certa": true
+      },
+      {
+       "texto": "four hundred thousand",
+       "certa": false
+      },
+      {
+       "texto": "three million",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Rajesh. Even the worst case in Luanda is better than the most likely outcome in Windhoek.",
+     "enunciado": "What is Rajesh's point?",
+     "opcoes": [
+      {
+       "texto": "Luanda's worst case beats Windhoek's most likely case.",
+       "certa": true
+      },
+      {
+       "texto": "Windhoek is always better.",
+       "certa": false
+      },
+      {
+       "texto": "All options are equal.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Inês. If Mussiro left us, we'd drop to six hundred thousand.",
+     "enunciado": "What would happen in Nampula if Mussiro left?",
+     "opcoes": [
+      {
+       "texto": "Revenue would drop to six hundred thousand.",
+       "certa": true
+      },
+      {
+       "texto": "Revenue would double.",
+       "certa": false
+      },
+      {
+       "texto": "Nothing would change.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Luanda is cheaper, but Windhoek is safer.",
+     "enunciado": "Ouça e repita, com o acento em \"cheaper\" e \"safer\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Compare two or three options for a real decision. For each, give the best case, the worst case and the most likely outcome. Then say which calculated risk you'd take, on balance.",
+     "frase": "On balance",
+     "resposta": "I'm choosing between a job in Benguela and staying in Luanda. In the best case, I'd be a manager in two years; in the worst, the new office closes. Staying is nowhere near as exciting. On balance, Benguela is a calculated risk I'd take.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should a company always present more than one option to its board, even when the team already knows what it wants? Why?",
+     "frase": "because",
+     "resposta": "Yes, because the board needs to see that the team looked at everything. If you show only one option, it looks like you're hiding the others.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "3E",
+   "titulo": "Strategy and investment",
+   "aula": "3E",
+   "objectivo": "Vocabulário de estratégia e investimento, acento em palavras longas; policy / politics e intend.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "market share",
+       "b": "quota de mercado"
+      },
+      {
+       "a": "foothold",
+       "b": "posição inicial num mercado"
+      },
+      {
+       "a": "break even",
+       "b": "atingir o ponto de equilíbrio"
+      },
+      {
+       "a": "scale up",
+       "b": "aumentar a escala"
+      },
+      {
+       "a": "exposure",
+       "b": "exposição (ao risco)"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "An office in Luanda would give us a [foothold] in Angola.",
+     "opcoes": [
+      {
+       "texto": "footstep",
+       "certa": false
+      },
+      {
+       "texto": "football",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We want to reduce our [exposure] to currency risk.",
+     "opcoes": [
+      {
+       "texto": "exhibition",
+       "certa": false
+      },
+      {
+       "texto": "exposition",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The office would break [even] in its second year.",
+     "opcoes": [
+      {
+       "texto": "equal",
+       "certa": false
+      },
+      {
+       "texto": "evenly",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We'll start small and scale [up] in 2032.",
+     "opcoes": [
+      {
+       "texto": "on",
+       "certa": false
+      },
+      {
+       "texto": "over",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A política de privacidade\" em inglês:",
+     "opcoes": [
+      {
+       "texto": "the privacy policy",
+       "certa": true
+      },
+      {
+       "texto": "the privacy politics",
+       "certa": false
+      },
+      {
+       "texto": "the privacy politic",
+       "certa": false
+      }
+     ],
+     "explicacao": "policy = regras, plano; politics = a actividade política."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Não me interesso por política\" (partidos, eleições):",
+     "opcoes": [
+      {
+       "texto": "I'm not interested in politics.",
+       "certa": true
+      },
+      {
+       "texto": "I'm not interested in policy.",
+       "certa": false
+      },
+      {
+       "texto": "I'm not interested in politic.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"We intend to open the office in January.\" \"Intend\" means…",
+     "opcoes": [
+      {
+       "texto": "tencionar",
+       "certa": true
+      },
+      {
+       "texto": "entender",
+       "certa": false
+      },
+      {
+       "texto": "atender",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Não entendi a pergunta.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I didn't understand the question.",
+       "certa": true
+      },
+      {
+       "texto": "I didn't intend the question.",
+       "certa": false
+      },
+      {
+       "texto": "I didn't entend the question.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: intend = tencionar."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. We intend to open in January, provided the board agrees.",
+     "enunciado": "When does Nuno intend to open the office?",
+     "opcoes": [
+      {
+       "texto": "in January",
+       "certa": true
+      },
+      {
+       "texto": "in June",
+       "certa": false
+      },
+      {
+       "texto": "next week",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "strategy, strategic; economy, economic; diversify, diversification.",
+     "enunciado": "Ouça e repita: o acento muda de sílaba."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Advise a company that wants to grow: where to gain a foothold, whether to diversify, how to reduce exposure to risk, and when it would break even.",
+     "frase": "foothold",
+     "resposta": "My recommendation is a long-term strategy in two steps. First, gain a foothold in Huambo with one small shop, and break even in the first year. Then scale up. I wouldn't diversify yet: it would increase our exposure to risk.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should a company stay out of politics, or does it need to understand politics to make good strategy? Why?",
+     "frase": "politics",
+     "resposta": "A company should stay out of party politics, but it must understand politics and government policy. If you don't know what the government intends to do, your strategy is just a guess.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "3F",
+   "titulo": "Real English: The board game",
+   "aula": "3F",
+   "objectivo": "Seguir uma discussão de estratégia a quatro vozes e identificar posições e interesses.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Zodwa Ngcobo. Twelve million rand for growth. Option one, four new shops. Option two, online delivery. My recommendation is online.",
+     "enunciado": "How much money does Seringa Fresh have for growth?",
+     "opcoes": [
+      {
+       "texto": "twelve million rand",
+       "certa": true
+      },
+      {
+       "texto": "four million rand",
+       "certa": false
+      },
+      {
+       "texto": "forty million rand",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Zodwa. Forty percent of our customers already order online, from our competitors.",
+     "enunciado": "What percentage of customers already order online from competitors?",
+     "opcoes": [
+      {
+       "texto": "forty percent",
+       "certa": true
+      },
+      {
+       "texto": "fourteen percent",
+       "certa": false
+      },
+      {
+       "texto": "thirty percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Ravi Pillay. Online needs no new buildings, so it would break even in about two years. Four shops, five or six years.",
+     "enunciado": "How long would online take to break even?",
+     "opcoes": [
+      {
+       "texto": "about two years",
+       "certa": true
+      },
+      {
+       "texto": "five or six years",
+       "certa": false
+      },
+      {
+       "texto": "six months",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Karen Holt. I represent the fund that owns thirty percent of this company.",
+     "enunciado": "What does Karen's fund own?",
+     "opcoes": [
+      {
+       "texto": "thirty percent of the company",
+       "certa": true
+      },
+      {
+       "texto": "four shops",
+       "certa": false
+      },
+      {
+       "texto": "the online service",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Karen Holt. Simon, with the greatest respect, you're seventy-two. Who leads this company in five years?",
+     "enunciado": "What is Karen's real question?",
+     "opcoes": [
+      {
+       "texto": "who will lead the company in five years",
+       "certa": true
+      },
+      {
+       "texto": "the price of tomatoes",
+       "certa": false
+      },
+      {
+       "texto": "where to open the shops",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Simon Ngcobo. Fine. A test. Six months. Durban only.",
+     "enunciado": "What does Simon finally accept?",
+     "opcoes": [
+      {
+       "texto": "a six-month test in Durban",
+       "certa": true
+      },
+      {
+       "texto": "four new shops",
+       "certa": false
+      },
+      {
+       "texto": "selling the company",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "What is really behind Simon's position?",
+     "opcoes": [
+      {
+       "texto": "the fear of losing control of the company he built",
+       "certa": true
+      },
+      {
+       "texto": "a love of online shopping",
+       "certa": false
+      },
+      {
+       "texto": "a problem with Ravi's numbers",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Zodwa answers: \"Had we never listened to a new idea, we'd still have one shop.\" She is…",
+     "opcoes": [
+      {
+       "texto": "using her father's own structure against him",
+       "certa": true
+      },
+      {
+       "texto": "agreeing with her father",
+       "certa": false
+      },
+      {
+       "texto": "changing the subject",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Had we never listened to a new idea, we'd still have one shop.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Should you choose online, we'd want to see a test first.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You are a consultant who watched the meeting. Tell Zodwa privately what each person really wants, and give her one piece of strategic advice.",
+     "frase": "really",
+     "resposta": "Your father isn't really against online; he's afraid of losing what he built. Ravi wants profit, and Karen wants to know who leads after your father. My advice: make the Durban test work, and give your father a role in it.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it a good idea for family businesses to bring in outside investors? Why?",
+     "frase": "because",
+     "resposta": "Often yes, because an outsider asks the questions the family avoids, like who leads next. The downside is that the family loses some control.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "3G",
+   "titulo": "Work & Life: Where next?",
+   "aula": "3G",
+   "objectivo": "Apresentar três cenários a uma direcção, responder a \"e se…?\" e explicar um estudo de mercado em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "The study says \"Risco cambial: elevado.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "The currency risk is high.",
+       "certa": true
+      },
+      {
+       "texto": "The cambial risk is elevated.",
+       "certa": false
+      },
+      {
+       "texto": "The change risk is tall.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Contratos indexados ao dólar\" in English:",
+     "opcoes": [
+      {
+       "texto": "contracts linked to the dollar",
+       "certa": true
+      },
+      {
+       "texto": "contracts indexed of dollar",
+       "certa": false
+      },
+      {
+       "texto": "dollar index contracts of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "David asks: \"Would you recommend Luanda if you weren't Angolan?\" The best first reaction:",
+     "opcoes": [
+      {
+       "texto": "I'm glad you asked — I'd have asked the same.",
+       "certa": true
+      },
+      {
+       "texto": "That's a very personal question. Next.",
+       "certa": false
+      },
+      {
+       "texto": "Of course, Luanda is the best city.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Had] we had an office there last year, we would have won the tender.",
+     "opcoes": [
+      {
+       "texto": "If",
+       "certa": false
+      },
+      {
+       "texto": "Have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Were] it not for the currency, Luanda would be the obvious choice.",
+     "opcoes": [
+      {
+       "texto": "Was",
+       "certa": false
+      },
+      {
+       "texto": "If",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Should either company change owners, the other [can] buy its half.",
+     "opcoes": [
+      {
+       "texto": "cans",
+       "certa": false
+      },
+      {
+       "texto": "to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I [weren't] Angolan, I'd probably know less about the risks.",
+     "opcoes": [
+      {
+       "texto": "wasn't been",
+       "certa": false
+      },
+      {
+       "texto": "won't be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Sixty percent of operators say their biggest problem is the lack of local maintenance.",
+     "enunciado": "What do sixty percent of operators say?",
+     "opcoes": [
+      {
+       "texto": "Their biggest problem is the lack of local maintenance.",
+       "certa": true
+      },
+      {
+       "texto": "They pay in dollars.",
+       "certa": false
+      },
+      {
+       "texto": "They want new antennas.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Supposing the kwanza fell forty percent? Then we'd be close to one point three million.",
+     "enunciado": "What would revenue be if the kwanza fell forty percent?",
+     "opcoes": [
+      {
+       "texto": "close to one point three million",
+       "certa": true
+      },
+      {
+       "texto": "two point four million",
+       "certa": false
+      },
+      {
+       "texto": "zero",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm David Nkosi. I'll support Luanda on two conditions. Contracts in dollars above a million, and a review after twelve months.",
+     "enunciado": "What are David's conditions?",
+     "opcoes": [
+      {
+       "texto": "dollar contracts above a million and a review after twelve months",
+       "certa": true
+      },
+      {
+       "texto": "no contracts in dollars",
+       "certa": false
+      },
+      {
+       "texto": "a new office in Windhoek",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Were it not for the currency, Luanda would be the obvious choice.",
+     "enunciado": "Ouça e repita, com uma pausa depois da condição."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Present three options for a decision you know: the upside, the risk and a number for each; recommend one; and answer \"What if your main assumption is wrong?\". Use one mixed conditional and one inversion.",
+     "frase": "Were it not",
+     "resposta": "Our school can buy a library, computers or solar panels. Had we had solar panels last year, we wouldn't have lost thirty days to power cuts. I recommend solar. What if the cuts stop? We'd still save on diesel. Were it not for the batteries' cost, it would be obvious.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Present these data in English, in three sentences, including one risk: \"Restauração em Benguela, 2030: 35% dos restaurantes abriram nos últimos três anos; 58% dos clientes querem entregas ao domicílio; renda média no centro: 450 000 Kz por mês; principal risco: falta de pessoal qualificado.\"",
+     "frase": "risk",
+     "resposta": "The market in Benguela is growing: about a third of restaurants opened in the last three years, and more than half of customers want home delivery. Rent in the centre is about four hundred and fifty thousand kwanzas a month. The main risk is finding qualified staff.",
+     "contexto": "Mediação: o essencial, com um risco."
+    }
+   ]
+  },
+  {
+   "codigo": "3R",
+   "titulo": "Unit 3 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 3 do C1 e reciclar as unidades 1 e 2 do C1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I'd taken that job, I [would] be living in Lisbon now.",
+     "opcoes": [
+      {
+       "texto": "will",
+       "certa": false
+      },
+      {
+       "texto": "had",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Had] I known, I would have called you.",
+     "opcoes": [
+      {
+       "texto": "Did",
+       "certa": false
+      },
+      {
+       "texto": "Have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Leave now; [otherwise] you'll miss the bus.",
+     "opcoes": [
+      {
+       "texto": "other",
+       "certa": false
+      },
+      {
+       "texto": "unless",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In the worst-case [scenario], we lose the client.",
+     "opcoes": [
+      {
+       "texto": "scene",
+       "certa": false
+      },
+      {
+       "texto": "scenery",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Should you need help, call me.",
+       "certa": true
+      },
+      {
+       "texto": "Should you needed help, call me.",
+       "certa": false
+      },
+      {
+       "texto": "Should need you help, call me.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The government's energy ___ changed in 2030.\"",
+     "opcoes": [
+      {
+       "texto": "policy",
+       "certa": true
+      },
+      {
+       "texto": "politics",
+       "certa": false
+      },
+      {
+       "texto": "polite",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 2). Choose the most diplomatic sentence.",
+     "opcoes": [
+      {
+       "texto": "It would appear that there was a mistake in the figures.",
+       "certa": true
+      },
+      {
+       "texto": "You made a mistake in the figures.",
+       "certa": false
+      },
+      {
+       "texto": "Your figures are wrong, obviously.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 2). Which shows the LOWEST probability?",
+     "opcoes": [
+      {
+       "texto": "It's highly unlikely.",
+       "certa": true
+      },
+      {
+       "texto": "In all likelihood.",
+       "certa": false
+      },
+      {
+       "texto": "I'm fairly confident.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 1). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "All I'm asking for is a one-year pilot.",
+       "certa": true
+      },
+      {
+       "texto": "All I'm asking for it's a one-year pilot.",
+       "certa": false
+      },
+      {
+       "texto": "All what I'm asking is a one-year pilot.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Se não fosse o custo, começaríamos amanhã.",
+     "resposta": "Were it not for the cost, we would start tomorrow.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Dr Mthembu. Assuming. I like a man who says assuming.",
+     "enunciado": "What does Dr Mthembu like about Nuno?",
+     "opcoes": [
+      {
+       "texto": "He is careful about his assumptions.",
+       "certa": true
+      },
+      {
+       "texto": "He always says yes.",
+       "certa": false
+      },
+      {
+       "texto": "He is from Luanda.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of a decision your company, school or town made five years ago. How would things be different now if it had decided otherwise?",
+     "frase": "would",
+     "resposta": "Five years ago, my company chose a cheaper supplier. If it hadn't, we wouldn't have so many complaints today. Had we spent a little more then, we'd be saving money now. Should it happen again, I'd ask for a test first.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A director asks: \"What if your main assumption is wrong?\" Answer about a plan of yours, with in which case or otherwise.",
+     "frase": "in which case",
+     "resposta": "My main assumption is that our clients will stay. They might not, in which case we'd still have the new website to find others. And we'll review it after six months; otherwise we could lose a whole year.",
+     "contexto": "Responder a \"e se…?\"."
+    }
+   ]
+  }
+ ]
+}
