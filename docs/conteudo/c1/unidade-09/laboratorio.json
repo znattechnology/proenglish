@@ -1,0 +1,1679 @@
+{
+ "unidade": "C1.2 · Unit 9 — Register",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "9A",
+   "titulo": "Three ways to say it",
+   "aula": "9A",
+   "objectivo": "Dizer a mesma coisa em três registos.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra formal à neutra ou coloquial.",
+     "pares": [
+      {
+       "a": "inform",
+       "b": "tell (neutro)"
+      },
+      {
+       "a": "require",
+       "b": "need (neutro)"
+      },
+      {
+       "a": "postpone",
+       "b": "push back (coloquial)"
+      },
+      {
+       "a": "purchase",
+       "b": "buy (neutro)"
+      },
+      {
+       "a": "assist",
+       "b": "help (neutro)"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is formal?",
+     "opcoes": [
+      {
+       "texto": "I regret to inform you that the opening has been postponed.",
+       "certa": true
+      },
+      {
+       "texto": "Bad news, the opening's slipped a bit.",
+       "certa": false
+      },
+      {
+       "texto": "The opening is two weeks late.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is colloquial?",
+     "opcoes": [
+      {
+       "texto": "We've pushed the opening back a couple of weeks.",
+       "certa": true
+      },
+      {
+       "texto": "The opening has been postponed until 29 October.",
+       "certa": false
+      },
+      {
+       "texto": "Please be advised of a change of date.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is neutral?",
+     "opcoes": [
+      {
+       "texto": "The opening is now on 29 October, two weeks later than planned.",
+       "certa": true
+      },
+      {
+       "texto": "We regret to inform you of a postponement.",
+       "certa": false
+      },
+      {
+       "texto": "Ugh, it's slipped again.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You send \"We regret to inform you…\" to a close colleague. She will probably think…",
+     "opcoes": [
+      {
+       "texto": "you're angry or cold",
+       "certa": true
+      },
+      {
+       "texto": "you're being friendly",
+       "certa": false
+      },
+      {
+       "texto": "you're joking",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Should you [require] further details, I would be happy to arrange a call.",
+     "opcoes": [
+      {
+       "texto": "requiring",
+       "certa": false
+      },
+      {
+       "texto": "requires",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We've pushed the opening [back] a couple of weeks.",
+     "opcoes": [
+      {
+       "texto": "behind",
+       "certa": false
+      },
+      {
+       "texto": "off of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Coffee later? I'll fill you [in].",
+     "opcoes": [
+      {
+       "texto": "on",
+       "certa": false
+      },
+      {
+       "texto": "out",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "A abertura foi adiada até 29 de Outubro.",
+     "resposta": "The opening has been postponed until 29 October.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. Register isn't decoration. Get it wrong one way, you sound rude. Get it wrong the other way, you sound cold.",
+     "enunciado": "What does Thandi say about register?",
+     "opcoes": [
+      {
+       "texto": "The wrong register can sound rude or cold.",
+       "certa": true
+      },
+      {
+       "texto": "Register is not important.",
+       "certa": false
+      },
+      {
+       "texto": "Always be formal.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The opening has been postponed until the twenty-ninth of October. We've pushed it back a couple of weeks.",
+     "enunciado": "Ouça e repita: primeiro formal, depois coloquial."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your office will be closed next Monday because of a water problem. Tell the news to an important client (formal), to your team (neutral) and to a close colleague (colloquial).",
+     "frase": "Should you",
+     "resposta": "To the client: our office will be closed on Monday due to repairs. Should you require assistance, please call our emergency number. To the team: the office is closed on Monday, please work from home. To my colleague: no water on Monday, so no office!",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is English more formal or less formal at work than your first language? Give an example.",
+     "frase": "example",
+     "resposta": "Less formal, I think. In Portuguese, I write \"Exmo. Senhor\" to a director. In English, \"Dear Mr Sithole\" is enough, and colleagues use first names. For example, my English-speaking boss signs e-mails with just his first name.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9B",
+   "titulo": "The ball is in their court",
+   "aula": "9B",
+   "objectivo": "Usar expressões idiomáticas do trabalho com o sentido e o registo certos.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão ao sentido.",
+     "pares": [
+      {
+       "a": "the ball is in their court",
+       "b": "agora é com eles"
+      },
+      {
+       "a": "call it a day",
+       "b": "dar o dia por terminado"
+      },
+      {
+       "a": "back to square one",
+       "b": "de volta ao início"
+      },
+      {
+       "a": "a ballpark figure",
+       "b": "um número aproximado"
+      },
+      {
+       "a": "cut corners",
+       "b": "fazer mal para poupar"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We've done everything. The ball's in their [court].",
+     "opcoes": [
+      {
+       "texto": "field",
+       "certa": false
+      },
+      {
+       "texto": "hands of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let's call it a [day].",
+     "opcoes": [
+      {
+       "texto": "night of",
+       "certa": false
+      },
+      {
+       "texto": "time",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If we lose, it's back to square [one].",
+     "opcoes": [
+      {
+       "texto": "first",
+       "certa": false
+      },
+      {
+       "texto": "zero",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Then bite the [bullet] and ask him tomorrow.",
+     "opcoes": [
+      {
+       "texto": "bread",
+       "certa": false
+      },
+      {
+       "texto": "ball",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"There's an elephant in the room.\" This means…",
+     "opcoes": [
+      {
+       "texto": "There is a problem nobody wants to talk about.",
+       "certa": true
+      },
+      {
+       "texto": "The room is too small.",
+       "certa": false
+      },
+      {
+       "texto": "Someone is very angry.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Are we on the same page?\" This means…",
+     "opcoes": [
+      {
+       "texto": "Do we agree and have the same information?",
+       "certa": true
+      },
+      {
+       "texto": "Are we reading the same book?",
+       "certa": false
+      },
+      {
+       "texto": "Are we in the same office?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "When is it better NOT to use idioms?",
+     "opcoes": [
+      {
+       "texto": "with listeners who may not know them, and in formal letters",
+       "certa": true
+      },
+      {
+       "texto": "with close colleagues",
+       "certa": false
+      },
+      {
+       "texto": "in a relaxed meeting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It's a win-win.\" This is…",
+     "opcoes": [
+      {
+       "texto": "good for both sides",
+       "certa": true
+      },
+      {
+       "texto": "good for nobody",
+       "certa": false
+      },
+      {
+       "texto": "a competition",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Rajesh. The price was fair, the references are strong, and we reported the consultant. If they're honest, it's a win-win.",
+     "enunciado": "Why does Rajesh think it is a win-win?",
+     "opcoes": [
+      {
+       "texto": "Mussiro gets a good team and Mopane gets the contract.",
+       "certa": true
+      },
+      {
+       "texto": "Mopane will certainly win.",
+       "certa": false
+      },
+      {
+       "texto": "The price is the lowest.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Last week I told Inês a delay was not my cup of tea. She translated it word for word.",
+     "enunciado": "What happened when Nuno used an idiom with Inês?",
+     "opcoes": [
+      {
+       "texto": "She translated it word for word and misunderstood.",
+       "certa": true
+      },
+      {
+       "texto": "She laughed.",
+       "certa": false
+      },
+      {
+       "texto": "She used it too.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The ball's in their court. Let's call it a day.",
+     "enunciado": "Ouça e repita, com o acento em \"court\" e \"day\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell a colleague about a decision you are waiting for, using at least four idioms naturally. Then say the most important sentence again in plain English.",
+     "frase": "square one",
+     "resposta": "I've applied for a transfer to Benguela. The ball's in their court now. If they say no, it's back to square one. It could be a win-win. The elephant in the room is my manager, so I'll bite the bullet and tell her. In plain English: I'm waiting for their decision.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should people in international teams avoid idioms? Why, or why not?",
+     "frase": "plain English",
+     "resposta": "Mostly yes. Idioms are for people who share them. In an international team, plain English is clearer and more respectful. With native speakers, a few idioms are fine.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9C",
+   "titulo": "Fifty or so",
+   "aula": "9C",
+   "objectivo": "Usar linguagem vaga e aproximativa de forma natural, no registo certo.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We ran the test about fifty times, give or [take].",
+     "opcoes": [
+      {
+       "texto": "give",
+       "certa": false
+      },
+      {
+       "texto": "leave",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It crashed at seven[ish].",
+     "opcoes": [
+      {
+       "texto": "ly",
+       "certa": false
+      },
+      {
+       "texto": "ness",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "A hundred or [so] people are coming.",
+     "opcoes": [
+      {
+       "texto": "such",
+       "certa": false
+      },
+      {
+       "texto": "some",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "There were a [bunch] of journalists.",
+     "opcoes": [
+      {
+       "texto": "bundle",
+       "certa": false
+      },
+      {
+       "texto": "branch",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It sort of works.\" This means it…",
+     "opcoes": [
+      {
+       "texto": "works, but not completely",
+       "certa": true
+      },
+      {
+       "texto": "works perfectly",
+       "certa": false
+      },
+      {
+       "texto": "does not work at all",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Where is \"four million-ish\" NOT appropriate?",
+     "opcoes": [
+      {
+       "texto": "in a report to the board",
+       "certa": true
+      },
+      {
+       "texto": "in a chat with friends",
+       "certa": false
+      },
+      {
+       "texto": "over drinks with colleagues",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Thirty or so people came.",
+       "certa": true
+      },
+      {
+       "texto": "Thirty or so of people came.",
+       "certa": false
+      },
+      {
+       "texto": "Thirty so or people came.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The formal version of \"fifty or so\" is…",
+     "opcoes": [
+      {
+       "texto": "approximately fifty",
+       "certa": true
+      },
+      {
+       "texto": "fiftyish or so",
+       "certa": false
+      },
+      {
+       "texto": "a bunch of fifty",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ele tem trinta e tal anos e vive em Luanda.",
+     "resposta": "He's thirty-ish and he lives in Luanda.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lindiwe. It sort of works. It crashed twice, at sevenish and again after lunch.",
+     "enunciado": "How many times did the software crash?",
+     "opcoes": [
+      {
+       "texto": "twice",
+       "certa": true
+      },
+      {
+       "texto": "fifty times",
+       "certa": false
+      },
+      {
+       "texto": "never",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Bongani. As it happens, Durban offered me a job last week. I turned it down.",
+     "enunciado": "What did Bongani do with the job offer from Durban?",
+     "opcoes": [
+      {
+       "texto": "He turned it down.",
+       "certa": true
+      },
+      {
+       "texto": "He accepted it.",
+       "certa": false
+      },
+      {
+       "texto": "He is still thinking.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "A hundred or so. At sevenish. It sort of works.",
+     "enunciado": "Ouça e repita, de forma descontraída."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A friend asks about your last weekend or a recent trip. Tell them, relaxed and natural, with at least five vague expressions (or so, -ish, give or take, sort of, a bunch of, loads of, and so on).",
+     "frase": "or so",
+     "resposta": "It was great! We drove to Cabo Ledo on Saturday, left at sixish, three hours give or take. There were loads of people, a bunch of surfers and so on. The fish was kind of expensive but amazing. We got home around nine or so.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Does vague language sound lazy, or does it sound natural? When?",
+     "frase": "natural",
+     "resposta": "It sounds natural with friends, because nobody needs exact numbers over drinks. It sounds lazy in a report or with a client, where people need to trust your numbers.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9D",
+   "titulo": "Turn it down",
+   "aula": "9D",
+   "objectivo": "Usar phrasal verbs separáveis e de três partes com o objecto na posição certa.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He got a job offer from Durban, but he turned [it down].",
+     "opcoes": [
+      {
+       "texto": "down it",
+       "certa": false
+      },
+      {
+       "texto": "it off",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The Luanda office opens in January. Lerato will set [it up].",
+     "opcoes": [
+      {
+       "texto": "up it",
+       "certa": false
+      },
+      {
+       "texto": "it on",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He says he can put up [with] the heat.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm looking forward to [working] with you.",
+     "opcoes": [
+      {
+       "texto": "work",
+       "certa": false
+      },
+      {
+       "texto": "worked",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "She turned it down.",
+       "certa": true
+      },
+      {
+       "texto": "She turned down it.",
+       "certa": false
+      },
+      {
+       "texto": "She down turned it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I can't put up with it.",
+       "certa": true
+      },
+      {
+       "texto": "I can't put it up with.",
+       "certa": false
+      },
+      {
+       "texto": "I can't put up it with.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Rajesh will look after the money.",
+       "certa": true
+      },
+      {
+       "texto": "Rajesh will look the money after.",
+       "certa": false
+      },
+      {
+       "texto": "Rajesh will look it after.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The formal equivalent of \"turn down an offer\" is…",
+     "opcoes": [
+      {
+       "texto": "decline an offer",
+       "certa": true
+      },
+      {
+       "texto": "reduce an offer",
+       "certa": false
+      },
+      {
+       "texto": "refuse down an offer",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ela teve a ideia de metade do plano.",
+     "resposta": "She came up with half of the plan.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Inês takes over Mozambique. I'm handing the Mussiro relationship over to her completely.",
+     "enunciado": "What is Nuno handing over to Inês?",
+     "opcoes": [
+      {
+       "texto": "the Mussiro relationship",
+       "certa": true
+      },
+      {
+       "texto": "the Luanda office",
+       "certa": false
+      },
+      {
+       "texto": "the budget",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. I don't want to put it off. Rumours are already going round.",
+     "enunciado": "Why does Nuno want to tell the team soon?",
+     "opcoes": [
+      {
+       "texto": "Rumours are already going round.",
+       "certa": true
+      },
+      {
+       "texto": "He is going on holiday.",
+       "certa": false
+      },
+      {
+       "texto": "Dr Mthembu asked him to wait.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Turn it down. Set it up. Hand it over.",
+     "enunciado": "Ouça e repita, com o acento na partícula."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe a change at work, at school or at home with at least five phrasal verbs, including two with a pronoun in the middle and one three-part verb.",
+     "frase": "put up with",
+     "resposta": "Our school set up a computer room. The old director turned the idea down twice. When the new director took over, she came up with a plan: parents donated laptops. We fixed them up and handed them over. The internet is slow, but we put up with it.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should a manager ask the team before a reorganisation, or decide and then explain? Why?",
+     "frase": "because",
+     "resposta": "Ask first, at least the people most affected, because they often come up with better ideas. Then the manager decides and explains. Nuno talked to Lerato and Bongani before he set it up.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9E",
+   "titulo": "Idioms and false friends",
+   "aula": "9E",
+   "objectivo": "Expressões que não se traduzem à letra, reduções informais; push e lunch.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão ao sentido.",
+     "pares": [
+      {
+       "a": "a piece of cake",
+       "b": "muito fácil"
+      },
+      {
+       "a": "under the weather",
+       "b": "adoentado"
+      },
+      {
+       "a": "out of the blue",
+       "b": "do nada"
+      },
+      {
+       "a": "on the fence",
+       "b": "indeciso"
+      },
+      {
+       "a": "once in a blue moon",
+       "b": "muito raramente"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The exam was a piece of [cake].",
+     "opcoes": [
+      {
+       "texto": "bread",
+       "certa": false
+      },
+      {
+       "texto": "pie of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He called me out of the [blue], after ten years.",
+     "opcoes": [
+      {
+       "texto": "sky",
+       "certa": false
+      },
+      {
+       "texto": "air",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's not rocket [science].",
+     "opcoes": [
+      {
+       "texto": "scientist",
+       "certa": false
+      },
+      {
+       "texto": "technic",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Puxe\" (na porta) em inglês:",
+     "opcoes": [
+      {
+       "texto": "Pull",
+       "certa": true
+      },
+      {
+       "texto": "Push",
+       "certa": false
+      },
+      {
+       "texto": "Puck",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: push = empurrar."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Vamos lanchar às cinco.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Let's have a snack at five.",
+       "certa": true
+      },
+      {
+       "texto": "Let's have lunch at five.",
+       "certa": false
+      },
+      {
+       "texto": "Let's lunch at five in the afternoon.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: lunch = almoço."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Swimming is not my cup of tea.\" This means…",
+     "opcoes": [
+      {
+       "texto": "I don't really like swimming.",
+       "certa": true
+      },
+      {
+       "texto": "I drink tea after swimming.",
+       "certa": false
+      },
+      {
+       "texto": "Swimming is expensive.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I gotta go.\" In full, this is…",
+     "opcoes": [
+      {
+       "texto": "I have got to go.",
+       "certa": true
+      },
+      {
+       "texto": "I got to go yesterday.",
+       "certa": false
+      },
+      {
+       "texto": "I want to go.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lindiwe. I'm kinda tired, y'know? I'm gonna go home early.",
+     "enunciado": "What is Lindiwe going to do?",
+     "opcoes": [
+      {
+       "texto": "go home early",
+       "certa": true
+      },
+      {
+       "texto": "work late",
+       "certa": false
+      },
+      {
+       "texto": "go to lunch",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm going to call her. I kind of like it. I have got to go. You know what I mean? Let me see.",
+     "enunciado": "Ouça e repita as formas completas."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ele está um pouco adoentado hoje.",
+     "resposta": "He's a bit under the weather today.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell a friend about a surprising event in your life, something that happened out of the blue, using at least four idioms from this lesson.",
+     "frase": "out of the blue",
+     "resposta": "Last month, out of the blue, an old school friend called me. I was a bit under the weather, but we met for lunch. Breaking the ice was a piece of cake. She asked me to join her business. I'm still on the fence. It's a long shot.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should English courses teach idioms, or focus on plain international English? Why?",
+     "frase": "plain",
+     "resposta": "Both. Learners must understand common idioms, because they hear them every day. But for speaking, plain international English is safer.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9F",
+   "titulo": "Real English: The networking evening",
+   "aula": "9F",
+   "objectivo": "Seguir conversas de networking com mudanças de registo.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Oliver Thornton. A colleague sent me your radio interview from Windhoek. Local skills, local jobs. Very good.",
+     "enunciado": "How did Mr Thornton know about Mopane?",
+     "opcoes": [
+      {
+       "texto": "A colleague sent him Nuno's radio interview.",
+       "certa": true
+      },
+      {
+       "texto": "He read a newspaper.",
+       "certa": false
+      },
+      {
+       "texto": "He met Thandi.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Oliver Thornton. Do give me a call in November. I'd be very interested to hear how it goes.",
+     "enunciado": "When does Mr Thornton want Nuno to call him?",
+     "opcoes": [
+      {
+       "texto": "in November",
+       "certa": true
+      },
+      {
+       "texto": "tomorrow",
+       "certa": false
+      },
+      {
+       "texto": "next year",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Chanda Mulenga. Trucks. Forty or so, between Lusaka and the ports.",
+     "enunciado": "What does Chanda Mulenga do?",
+     "opcoes": [
+      {
+       "texto": "She has about forty trucks.",
+       "certa": true
+      },
+      {
+       "texto": "She's a banker.",
+       "certa": false
+      },
+      {
+       "texto": "She runs a training centre.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Chanda. Send me something. Not a forty-page brochure. One page.",
+     "enunciado": "What does Chanda ask Nuno to send?",
+     "opcoes": [
+      {
+       "texto": "one page",
+       "certa": true
+      },
+      {
+       "texto": "a forty-page brochure",
+       "certa": false
+      },
+      {
+       "texto": "a contract",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kwabena. Five thousand shops now, give or take. We're gonna launch in Luanda next year.",
+     "enunciado": "How many shops use ShopPay now?",
+     "opcoes": [
+      {
+       "texto": "about five thousand",
+       "certa": true
+      },
+      {
+       "texto": "three thousand",
+       "certa": false
+      },
+      {
+       "texto": "forty",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Kwabena. Coffee in Luanda, first week of February? Done.",
+     "enunciado": "What do Nuno and Kwabena agree?",
+     "opcoes": [
+      {
+       "texto": "to have coffee in Luanda in February",
+       "certa": true
+      },
+      {
+       "texto": "to meet in Lusaka",
+       "certa": false
+      },
+      {
+       "texto": "to start a business",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I don't believe we've met.\" This opening is…",
+     "opcoes": [
+      {
+       "texto": "very formal",
+       "certa": true
+      },
+      {
+       "texto": "very informal",
+       "certa": false
+      },
+      {
+       "texto": "rude",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which conversation changes register the most?",
+     "opcoes": [
+      {
+       "texto": "the conversation with Chanda",
+       "certa": true
+      },
+      {
+       "texto": "the conversation with Mr Thornton",
+       "certa": false
+      },
+      {
+       "texto": "none of them",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I don't believe we've met.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "You look like someone who doesn't know anyone. Me neither.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "At a networking event, someone says: \"You look like you need rescuing from that corner.\" Answer, introduce yourself, make small talk, find something in common, and end politely.",
+     "frase": "gotta",
+     "resposta": "Ha! Is it that obvious? I'm Ana, I work in logistics at a cement company. Oh, you're in transport too? Small world. Listen, it's been great to meet you. I've gotta go and say hello to my boss, but here's my card. Let's grab a coffee sometime.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you enjoy networking events, or do you find them difficult? Why?",
+     "frase": "because",
+     "resposta": "I find them difficult at first, because I don't like talking to strangers. But once I find one thing in common, it gets easier. Kind of like breaking the ice at a party.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9G",
+   "titulo": "Work & Life: One news, three audiences",
+   "aula": "9G",
+   "objectivo": "Dar a mesma notícia a três públicos e passar um comunicado em português à equipa.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Cada empresa mantém a sua equipa, os seus clientes e a sua direcção.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "Each company keeps its own team, clients and management.",
+       "certa": true
+      },
+      {
+       "texto": "Each company maintains her team, clients and direction.",
+       "certa": false
+      },
+      {
+       "texto": "Each company keeps the team of it, the clients of it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Não haverá alterações aos contratos de trabalho.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "Nobody's employment contract changes.",
+       "certa": true
+      },
+      {
+       "texto": "There won't be alterations to the work contracts of.",
+       "certa": false
+      },
+      {
+       "texto": "The contracts of work will not alter.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which opening is right for the director-general?",
+     "opcoes": [
+      {
+       "texto": "I'd like to brief you on the proposed structure for the region.",
+       "certa": true
+      },
+      {
+       "texto": "Guess what? Big news!",
+       "certa": false
+      },
+      {
+       "texto": "Hi, so, we're kind of changing stuff.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which opening is right for a close friend?",
+     "opcoes": [
+      {
+       "texto": "Guess who's gonna be sharing an office with you?",
+       "certa": true
+      },
+      {
+       "texto": "I would like to inform you of a structural change.",
+       "certa": false
+      },
+      {
+       "texto": "Please be advised of the following reorganisation.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Mozambique will be taken [over] by Inês.",
+     "opcoes": [
+      {
+       "texto": "at",
+       "certa": false
+      },
+      {
+       "texto": "up",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Should] we be awarded the Niassa contract, Bongani will be site manager.",
+     "opcoes": [
+      {
+       "texto": "Would",
+       "certa": false
+      },
+      {
+       "texto": "If should",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Rajesh, you'll look [after] the money in both offices.",
+     "opcoes": [
+      {
+       "texto": "down",
+       "certa": false
+      },
+      {
+       "texto": "out",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Dr Mthembu. Clear and well thought through. Approved. Tell them today, before the rumours do.",
+     "enunciado": "What does Dr Mthembu tell Nuno to do?",
+     "opcoes": [
+      {
+       "texto": "tell the team today",
+       "certa": true
+      },
+      {
+       "texto": "wait for the Niassa result",
+       "certa": false
+      },
+      {
+       "texto": "write a longer report",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Nobody's leaving, nobody's losing their job, and nobody's moving who didn't want to.",
+     "enunciado": "What does Nuno promise the team?",
+     "opcoes": [
+      {
+       "texto": "Nobody loses their job or moves against their will.",
+       "certa": true
+      },
+      {
+       "texto": "Everyone moves to Luanda.",
+       "certa": false
+      },
+      {
+       "texto": "Everyone gets a promotion.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. First week of January, lunch is on me. Proper lunch, not a sandwich.",
+     "enunciado": "What does Paulo offer?",
+     "opcoes": [
+      {
+       "texto": "to pay for lunch in January",
+       "certa": true
+      },
+      {
+       "texto": "a job",
+       "certa": false
+      },
+      {
+       "texto": "a sandwich today",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'd like to brief you on the proposed structure. Let me give you the facts. Guess who's gonna be sharing an office with you?",
+     "enunciado": "Ouça e repita, mudando a voz para cada registo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your department will move to a new building in two months. Tell it to your director (formal), to your team (neutral), and to a close friend (colloquial, with a vague expression and an idiom).",
+     "frase": "win-win",
+     "resposta": "To the director: the relocation has been scheduled for 1 December, over a weekend, with no additional budget. To the team: we're moving on the first of December, over a weekend. To my friend: we're finally moving, December-ish. Air conditioning that works, total win-win.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell your team in English what this note says: \"A partir de 1 de Novembro, o horário de atendimento passa a ser das 8h às 16h, de segunda a sexta. Aos sábados, só por marcação. Os colaboradores afectados serão contactados pelos recursos humanos.\"",
+     "frase": "appointment",
+     "resposta": "From the first of November, we're open from eight to four, Monday to Friday. On Saturdays, it's by appointment only. If this affects your hours, HR will contact you.",
+     "contexto": "Mediação: registo neutro."
+    }
+   ]
+  },
+  {
+   "codigo": "9R",
+   "titulo": "Unit 9 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 9 do C1 e reciclar as unidades 6 a 8.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We had to put the meeting [off].",
+     "opcoes": [
+      {
+       "texto": "out",
+       "certa": false
+      },
+      {
+       "texto": "away",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She came up [with] a brilliant idea.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "See you at eight[ish].",
+     "opcoes": [
+      {
+       "texto": "ly",
+       "certa": false
+      },
+      {
+       "texto": "some",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We've sent the offer. The ball's in their [court].",
+     "opcoes": [
+      {
+       "texto": "field",
+       "certa": false
+      },
+      {
+       "texto": "hands",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "They offered him the job, but he turned it down.",
+       "certa": true
+      },
+      {
+       "texto": "They offered him the job, but he turned down it.",
+       "certa": false
+      },
+      {
+       "texto": "They offered him the job, but he down it turned.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the most formal?",
+     "opcoes": [
+      {
+       "texto": "We regret that we must decline your offer.",
+       "certa": true
+      },
+      {
+       "texto": "Sorry, we're gonna say no.",
+       "certa": false
+      },
+      {
+       "texto": "We're turning it down, I'm afraid.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 8). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Difficult as it was, we finished on time.",
+       "certa": true
+      },
+      {
+       "texto": "As difficult it was, we finished on time.",
+       "certa": false
+      },
+      {
+       "texto": "Difficult as was it, we finished on time.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 7). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I was going to call you, but I forgot.",
+       "certa": true
+      },
+      {
+       "texto": "I was going call you, but I forgot.",
+       "certa": false
+      },
+      {
+       "texto": "I was go to call you, but I forgot.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 6). \"Will the office open on time?\" (you hope so)",
+     "opcoes": [
+      {
+       "texto": "I hope so.",
+       "certa": true
+      },
+      {
+       "texto": "I hope it.",
+       "certa": false
+      },
+      {
+       "texto": "I hope yes.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Vamos dar o dia por terminado.",
+     "resposta": "Let's call it a day.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lerato. Paulo! That'll be fun.",
+     "enunciado": "Who will Lerato work with in Luanda?",
+     "opcoes": [
+      {
+       "texto": "Paulo",
+       "certa": true
+      },
+      {
+       "texto": "Kwabena",
+       "certa": false
+      },
+      {
+       "texto": "Thandi",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell the same piece of news (a new manager arrives next month) to your manager and then to a close friend.",
+     "frase": "Guess what",
+     "resposta": "To my manager: I understand the new manager will start on the first of next month; I'd be happy to help with the handover. To my friend: Guess what? We're getting a new boss next month. Fingers crossed she's nice!",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Use a phrasal verb with a pronoun, an idiom and a vague expression to describe your week.",
+     "frase": "or so",
+     "resposta": "Busy! A client asked for a new report, so I had to put my holiday off. I finally handed it in on Thursday. Twenty pages or so. Now the ball's in their court.",
+     "contexto": "Registo informal."
+    }
+   ]
+  }
+ ]
+}

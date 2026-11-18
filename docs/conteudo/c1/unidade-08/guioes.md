@@ -8,7 +8,7 @@ Guiões para o professor de IA. Conteúdo original da ProEnglish. Convenções: 
 
 **Nomes, empresas e factos:** a Radio Kalahari, o programa "Business Hour", o "Windhoek Clean Power Forum" (fictício desde o B2 2F) e o programa da 8E são fictícios. Windhoek existe. O fórum realizou-se em Junho em 2028 (B2 2F); desde 2030 passou para Setembro. A ministra da 8E é fictícia e o país não é nomeado.
 
-**Personagens:** **Nuno**, **Thandi**, **Lerato** (Kalandula Tech; falou no fórum de 2028, B2 2F). Do fórum de 2028 (B2 2F) voltam **Tobias Shikongo** (namibiano, engenheiro de manutenção) e **Aïcha Diallo** (senegalesa, directora de uma cooperativa de energia); e **Celeste Kiala** (presidente do conselho de administração da Morro Azul, jurista, B2). Novos e fictícios: **Refilwe Nkuna** (sul-africana, comunicação da Mopane; faz o treino de media); **Hilma Nangolo** (namibiana, jornalista da Radio Kalahari); na 8E, **Chipo** (apresentador) e a **ministra Ruth Kalumba** (fictícia).
+**Personagens:** **Nuno**, **Thandi**, **Lerato** (sul-africana, da Mopane, em Luanda desde 2027, na equipa conjunta com a Kalandula — A2 7; falou no fórum de 2028, B2 2F). Do fórum de 2028 (B2 2F) voltam **Tobias Shikongo** (namibiano, engenheiro de manutenção) e **Aïcha Diallo** (senegalesa, directora de uma cooperativa de energia); e **Celeste Kiala** (presidente do conselho de administração da Morro Azul, jurista, B2). Novos e fictícios: **Refilwe Nkuna** (sul-africana, comunicação da Mopane; faz o treino de media); **Hilma Nangolo** (namibiana, jornalista da Radio Kalahari); na 8E, **Chipo** (apresentador) e a **ministra Ruth Kalumba** (fictícia).
 
 **A história:** Setembro de 2030. A Mopane foi convidada para o "Windhoek Clean Power Forum", de 16 a 18 de Setembro: o Nuno vai moderar um painel sobre competências locais, e a Radio Kalahari quer entrevistá-lo sobre os primeiros nove meses da central do Tômbwa (que abriu no fim de 2029, no sul de Angola, perto da fronteira com a Namíbia). Na segunda, 2, a Thandi ajuda-o a preparar as mensagens (8A); na quarta, 4, a Lerato dá-lhe conselhos por vídeo (8B); na sexta, 6, a Refilwe faz-lhe uma entrevista de treino, dura (8C); na quarta, 11, o Nuno ouve uma entrevista difícil a uma ministra (8E); na terça, 17, em Windhoek, dá a entrevista de manhã e modera o painel à tarde (8F). O resultado do concurso do Niassa (unidade 6) só sai em Outubro.
 
@@ -156,7 +156,7 @@ Verificação: Lab 8B; perguntas 3 e 4 do questionário
 
 ### 2. Situação (3 min 30 s)
 
-[ECRÃ: quarta-feira, 4 de Setembro, 17:00; videochamada; a Lerato no escritório da Kalandula, em Luanda; o Nuno em Joanesburgo]
+[ECRÃ: quarta-feira, 4 de Setembro, 17:00; videochamada; a Lerato no escritório da equipa conjunta Mopane–Kalandula, em Luanda; o Nuno em Joanesburgo]
 
 **LERATO:** So, the radio. You'll be great. That said, live radio is different. You can't stop and start again.
 **NUNO:** Did you ever make a mistake on air?

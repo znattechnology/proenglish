@@ -11,6 +11,12 @@ Leitura completa dos 6 guiões, das 7 lições do laboratório, dos 2 cenários 
 
 Já corrigido ao escrever: quatro opções erradas que eram inglês correcto (*Come to think about it*, *What's important there is*, *In the interests of time*, *Let me take in*) foram trocadas; três nomes dos exercícios já usados noutros níveis (Marta, Lemos, Tavares; e Kiluange) passaram a Joaquina, Fortunato e Bumba; a lista de personagens da ficha foi limpa; uma frase-alvo e um enunciado com mais de 300 caracteres foram corrigidos no laboratório.
 
+## Correcção posterior (durante a escrita da unidade 9)
+
+| # | Ficheiro | Problema | Correcção |
+|---|---|---|---|
+| 3 | Ficha de personagens e 8B | A Lerato aparecia como "Kalandula Tech" e "no escritório da Kalandula". Desde o A2 7, a Lerato é sul-africana, **da Mopane**, em Luanda desde Fevereiro de 2027, na equipa conjunta com a Kalandula (B2 10). | "da Mopane, em Luanda desde 2027, na equipa conjunta com a Kalandula"; "no escritório da equipa conjunta Mopane–Kalandula". |
+
 ## Confirmado sem alterações
 
 - **Coerência com o B2:** o "Windhoek Clean Power Forum" é o do B2 2F (fictício), onde a Lerato falou em Junho de 2028 ("two years ago"); a ficha diz que desde 2030 se faz em Setembro. O Tobias Shikongo (namibiano, engenheiro de manutenção) e a Aïcha Diallo (senegalesa, directora de uma cooperativa de energia) são os oradores do B2 2F, com os mesmos papéis. A Celeste Kiala é a presidente do conselho de administração da Morro Azul (B2), jurista ("Celeste is a lawyer, not an engineer", B2 2F).
