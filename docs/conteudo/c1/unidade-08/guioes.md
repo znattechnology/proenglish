@@ -33,9 +33,9 @@ Gramática-alvo: objecto ou complemento à frente (This I can promise you. What 
   expected. Much of this we owe to Kalandula.); concessão com adjectivo + as / though + sujeito + verbo
   (Difficult as it was, the team… · Small though it is, …); adjectivo + it may be, but… (Expensive it may be,
   but…); quando usar: discursos, entrevistas, escrita cuidada, para contraste
-Palavras-alvo: interview, message, key message, audience, emphasis, contrast, local, availability,
+Palavras-alvo: interview, message, key message, politician, emphasis, contrast, local, cost,
   sandstorm, promise
-Reciclagem: clivadas (C1, 1); inversão negativa (C1, 4); concessão (B2, 7)
+Reciclagem: clivadas (C1, 1); inversão negativa (C1, 4)
 Pronúncia: o acento forte no elemento à frente e a pausa depois dele (This [pausa] I can promise you.)
 Contexto: segunda-feira, 2 de Setembro de 2030, 9:00; o gabinete da Thandi; o Nuno com o convite da Radio
   Kalahari e o programa do fórum
@@ -141,8 +141,8 @@ Gramática-alvo: that said / having said that — reconhecer (= no entanto, depo
   you (= mas atenção, informal); as it happens (= por acaso; na verdade); to be fair (= para ser justo);
   if anything (= se alguma coisa, até pelo contrário); come to think of it (= agora que penso nisso);
   posição: normalmente no início ou no fim da frase, com pausa
-Palavras-alvo: tip, nerves, live, radio, presenter, listener, honest, mistake, advice, forum
-Reciclagem: concessão (B2, 7); atenuação (C1, 2A); fronting (8A)
+Palavras-alvo: tip, time limit, live, radio, presenter, listener, chairwoman, mistake, advice, panel
+Reciclagem: concessão (B2, 7)
 Pronúncia: a pausa e o tom descendente depois de "that said", "mind you", "to be fair"
 Contexto: quarta-feira, 4 de Setembro, 17:00; videochamada entre o Nuno, em Joanesburgo, e a Lerato, em
   Luanda
@@ -242,7 +242,7 @@ Gramática-alvo: mensagem-chave (What's important here is… The key point is…
   tell you is…); recusar a premissa (I don't accept that premise. · That's not quite right. · I'd question
   the idea that…); retomar a palavra (If I could just finish… · Let me answer the first part first.); não
   responder sem fugir (I'm not in a position to… but what I can say is…)
-Palavras-alvo: premise, bridge, interrupt, trap, soundbite, profit, foreign, accuse, answer, dodge
+Palavras-alvo: premise, bridge, interrupt, money, soundbite, profit, finances, training, answer, softly
 Reciclagem: clivadas (C1, 1); recusas (C1, 2C); fronting e marcadores (8A, 8B)
 Pronúncia: calma sob pressão: voz baixa, ritmo regular, sem subir o tom quando é interrompido
 Contexto: sexta-feira, 6 de Setembro, 14:00; uma sala pequena com um microfone; a Refilwe Nkuna faz de
@@ -335,7 +335,7 @@ Objectivo da unidade a que serve: 3, 4
 Gramática-alvo: colocações (go on air, a live broadcast, give an interview, speak off the record, make
   the headlines, chair / moderate a panel, take questions, open the floor, a keynote speech, a press
   release); verbos de comunicação pública (announce, address, quote, misquote, clarify)
-Palavras-alvo: on air, live, soundbite, headline, off the record, panel, moderator, keynote, Q&A,
+Palavras-alvo: on air, live, soundbite, headline, off the record, panel, moderating, keynote, Q&A,
   press release, quote, misquote
 Reciclagem: 8A a 8C
 Pronúncia: ritmo, pausas de efeito e ênfase no discurso público
@@ -510,9 +510,9 @@ Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: fronting, marcadores, técnicas de entrevista; moderar (Let me
   introduce… · I'll ask each of you… · In the interest of time… · Let me bring in… · I'm going to have to
   stop you there… · Let's open the floor. · To sum up, what I've heard is…)
-Palavras-alvo: live, on air, panel, moderator, speaker, time limit, open the floor, sum up, introduce,
+Palavras-alvo: live, on air, panel, moderator, speaker, rule, open the floor, sum up, introduce,
   biography
-Reciclagem: mediação e reformulação (C1, 4C); números aproximados (C1, 5C); explicar (C1, 7C)
+Reciclagem: reformular (C1, 4C: What I've heard is…); recusas (C1, 2C: I'm not in a position to…)
 Pronúncia: o ritmo do moderador: claro, cordial e firme
 Mediação: o Nuno apresenta a Celeste Kiala a partir de uma biografia em português
 Contexto: terça-feira, 17 de Setembro, 7:40 (estúdio da Radio Kalahari) e 14:00 (sala principal do fórum,

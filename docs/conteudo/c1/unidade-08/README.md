@@ -1,6 +1,6 @@
 # C1.2 · Unidade 8 — On air (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 8
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 8
 
 ## Objectivos da unidade
 
@@ -52,6 +52,6 @@ Setembro de 2030. A Mopane vai ao "Windhoek Clean Power Forum" (que desde 2030 s
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 8E e a 8F com som de estúdio e de sala); imagens (a luz "ON AIR", o palco do fórum, a biografia da Celeste Kiala); carregamento na plataforma.
+Leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 8E e a 8F com som de estúdio e de sala); imagens (a luz "ON AIR", o palco do fórum, a biografia da Celeste Kiala); carregamento na plataforma.
 
 A seguir vem a **unidade 9, "Register"**.
