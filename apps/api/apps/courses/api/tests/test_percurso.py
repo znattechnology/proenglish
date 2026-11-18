@@ -241,6 +241,21 @@ class ApiTests(Base):
             self.assertEqual(r.status_code, 200, parametros)
             self.assertEqual(r.data['proximo']['curso']['titulo'], 'PC- Segundo', parametros)
 
+    def test_opcoes_do_professor_trazem_as_aulas_de_cada_curso(self):
+        # As aulas vêm pela ordem do curso, sem os questionários e só dos cursos do professor.
+        Chapter.objects.create(section=self.u1, title='Quiz U1', type='Quiz', order=9)
+        alheio = self.criar_curso('PC- De outro professor')
+        outro_prof = User.objects.create_user(email='pc-prof2@example.com', name='P2', password='x', role='teacher')
+        Course.objects.filter(pk=alheio.pk).update(teacher=outro_prof)
+        self.criar_aula(CourseSection.objects.create(course=alheio, sectionTitle='U', order=1), 'Alheia', 1)
+        self.entrar(self.prof)
+        r = self.client.get(f'{PROF}opcoes/')
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(set(r.data['aulas']), {str(self.curso.id)})
+        self.assertEqual([(a['titulo'], a['unidade']) for a in r.data['aulas'][str(self.curso.id)]],
+                         [('1A — What we need is…', 'Unit 1'), ('1C — I take your point', 'Unit 1'),
+                          ('2A — It would appear that…', 'Unit 2')])
+
     def test_proximo_passo_sem_cursos_e_null(self):
         self.entrar(self.outro)
         r = self.client.get(f'{V}/percurso/proximo/')

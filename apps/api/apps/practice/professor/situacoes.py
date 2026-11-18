@@ -254,9 +254,21 @@ def detalhe(request, situacao_id):
 @api_view(['GET'])
 @permission_classes(PERMISSOES)
 def opcoes(request):
+    from apps.courses.models import Chapter
     from apps.practice.conversa.situacoes import AREAS
+
+    cursos = cursos_do_professor(request.user)
+    # As aulas de cada curso em vídeo, pela ordem do curso: para ligar a conversa a uma aula
+    # (o aluno faz a conversa depois dessa aula, no percurso do curso).
+    aulas = {}
+    for a in (Chapter.objects.filter(section__course__in=cursos, section__course__course_type='video')
+              .exclude(type='Quiz').select_related('section')
+              .order_by('section__order', 'section__created_at', 'order', 'created_at')):
+        aulas.setdefault(str(a.section.course_id), []).append(
+            {'id': str(a.id), 'titulo': a.title, 'unidade': a.section.sectionTitle})
     return Response({
-        'cursos': [curso_api(c) for c in cursos_do_professor(request.user)],
+        'cursos': [curso_api(c) for c in cursos],
+        'aulas': aulas,
         'niveis': [{'valor': n, 'nome': NOMES_NIVEIS[n]} for n in Situacao.NIVEIS],
         'duracoes': list(Situacao.DURACOES),
         'correccoes': [{'valor': 'suave', 'nome': 'Suave'}, {'valor': 'directa', 'nome': 'Directa'}],
