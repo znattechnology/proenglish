@@ -34,7 +34,7 @@ Gramática-alvo: was / were going to (plano do passado, muitas vezes não cumpri
   no passado); was to have + particípio (formal: o que estava previsto e não aconteceu: The facility was to
   have opened in June.); would (o futuro visto do passado: We knew it would take time.); was supposed to
   (revisto do B2 6); contraste com o simple past
-Palavras-alvo: facility, battery storage, delay, postpone, rumour, community, village, schedule, supplier,
+Palavras-alvo: facility, battery storage, behind, postpone, rumour, community, village, containers, supplier,
   plan
 Reciclagem: was supposed to (B2, 6); passivas de relato (C1, 5B); elipse (C1, 6A)
 Pronúncia: as formas reduzidas "was going to" ("wuz gonna", para reconhecer) e o acento em "was" quando o
@@ -142,7 +142,7 @@ Gramática-alvo: be due to + infinitivo (marcado num calendário: The facility i
   be set to + infinitivo (muito provável, já decidido ou em curso: Prices are set to fall.); be about to
   (iminente); be on the verge of + nome / -ing (muito perto de algo importante: on the verge of a
   breakthrough); be bound to (quase certo, revisto do B2 5); be likely / unlikely to
-Palavras-alvo: breakthrough, research, prototype, cost, lithium, sodium, grid, capacity, cheaper,
+Palavras-alvo: breakthrough, research, salt, price, lithium, sodium, trainees, regulator, cheaper,
   on the market
 Reciclagem: graus de certeza (C1, 2B); 7A
 Pronúncia: o acento em "verge", "set" e "due"
@@ -241,7 +241,7 @@ Gramática-alvo: analogias (Think of it as… · It works a bit like… · It's 
   simplificar (Put simply, … · In other words, … · Basically, …); definir (A battery facility is a place
   where… · What it does is…); verificar (Does that make sense? · Let me put it another way. · What would
   you like me to explain again?); evitar o jargão e explicá-lo quando é preciso (what engineers call…)
-Palavras-alvo: analogy, jargon, explain, store, release, peak, charge, discharge, sensor, expert
+Palavras-alvo: analogy, jargon, explain, tank, evening, peak, smoke alarm, sensor, container, expert
 Reciclagem: clivadas (C1, 1: What it does is…); 7A e 7B
 Pronúncia: o ritmo de quem explica: frases curtas, pausas, acento na palavra nova
 Contexto: sexta-feira, 9 de Agosto, 16:00; a sala de reuniões; a Lindiwe treina o Nuno; o Rajesh faz de
@@ -335,7 +335,7 @@ Gramática-alvo: colocações (store / release energy, connect to the grid, redu
   research, a peer-reviewed study, a major breakthrough, a pilot project, renewable energy, fossil fuels,
   the energy transition); verbos de ciência (test, prove, measure, find, confirm)
 Palavras-alvo: storage, grid, capacity, emissions, renewable, fossil fuels, breakthrough, peer-reviewed,
-  experiment, findings, data, the energy transition
+  experiment, findings, measure, the energy transition
 Reciclagem: 7A a 7C
 Pronúncia: a fala ligada rápida — want to → wanna, going to → gonna, did you → didja, don't know → dunno
   (reconhecer; produzir só no registo informal)
@@ -513,9 +513,9 @@ Objectivo da aula: No fim, o aluno consegue explicar uma tecnologia a uma reuni�
 Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: futuro no passado, futuro próximo com nuance, explicar com analogias;
   validar receios (That's a very reasonable question. I understand why people are worried.)
-Palavras-alvo: community meeting, resident, concern, fire, noise, jobs, recycling, power cuts, trainee,
-  article
-Reciclagem: atenuação e recusas (C1, 2); passivas de relato (C1, 5B); elipse (C1, 6A)
+Palavras-alvo: meeting, resident, worried, fire, noise, jobs, recycling, power cuts, training, article
+Reciclagem: recusas diplomáticas (C1, 2C: I'm afraid I can't promise…); clivadas (C1, 1: What I can
+  promise is…)
 Pronúncia: o ritmo de quem explica a uma sala: lento, claro, com pausas
 Mediação: o Nuno resume em inglês um artigo técnico em português (revista "Energia & Rede", fictícia) sobre
   uma central com baterias no sul de Angola
