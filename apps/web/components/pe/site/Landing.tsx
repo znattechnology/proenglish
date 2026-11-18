@@ -69,7 +69,7 @@ function Foto({ nome, alt, className, prioridade, sizes = "(min-width: 1024px) 5
   );
 }
 
-/** Imagem da professora Luena (public/professora). É uma professora virtual: o site di-lo no bloco "Conheça a professora Luena". */
+/** Imagem da professora Luena (public/professora). */
 function Luena({ nome, alt, className, prioridade, sizes = "(min-width: 1024px) 560px, 100vw" }: { nome: string; alt: string; className?: string; prioridade?: boolean; sizes?: string }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
@@ -231,14 +231,14 @@ export function Landing({ site }: { site: Site }) {
         </div>
       </section>
 
-      {/* A professora: a cara das aulas. É virtual, e diz-se. */}
+      {/* A professora: a cara das aulas. */}
       <section id="professora" className="scroll-mt-4">
         <div className="mx-auto grid max-w-[1200px] items-center gap-x-16 gap-y-10 px-4 py-14 md:px-6 md:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
           <div className="flex min-w-0 flex-col gap-6">
             <div className="flex flex-col gap-3">
               <h2 className={h2}>Conheça a professora Luena</h2>
               <p className="m-0 max-w-[560px] text-pe-corpo-l text-pe-tinta-suave">
-                É ela quem dá todas as vídeo-aulas, do primeiro <span lang="en">hello</span> ao nível avançado. Fala como uma colega angolana que aprendeu inglês já adulta, a trabalhar: sabe onde quem fala português costuma tropeçar e explica em português sempre que é preciso.
+                É ela quem dá todas as vídeo-aulas, do primeiro <span lang="en">hello</span> ao nível avançado. Conhece bem as dificuldades de quem fala português, vai directa ao que se usa no trabalho e explica em português sempre que é preciso.
               </p>
             </div>
             <dl className="m-0 grid gap-x-10 gap-y-5 sm:grid-cols-2">
@@ -252,9 +252,6 @@ export function Landing({ site }: { site: Site }) {
                 </div>
               ))}
             </dl>
-            <p className="m-0 max-w-[560px] rounded-pe-sm bg-pe-fundo-suave px-4 py-3 text-[15px] leading-[22px] text-pe-tinta-suave">
-              A Luena é a professora virtual do ProEnglish: foi criada com inteligência artificial e dá as aulas a partir de guiões escritos pela nossa equipa.
-            </p>
           </div>
           <div className="aspect-[16/10] overflow-hidden rounded-[56px_56px_0_56px] bg-pe-fundo-forte md:rounded-[88px_88px_0_88px]">
             <Luena nome="luena-estudio" alt="A professora Luena sentada à secretária no estúdio das aulas, com a baía de Luanda pela janela" className="object-[30%_center]" sizes="(min-width: 1024px) 620px, 100vw" />
