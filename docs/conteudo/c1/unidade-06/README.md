@@ -1,6 +1,6 @@
 # C1.2 · Unidade 6 — Compliance and ethics (6 aulas)
 
-**Estado:** primeira versão escrita; falta a revisão aula a aula e a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 6 · É a primeira unidade do C1.2.
+**Estado:** primeira versão escrita, com uma revisão aula a aula ([n.º 1](revisao-1.md)); falta a leitura dos professores · **Plano:** [06-plano-C1.md](../../06-plano-C1.md), unidade 6 · É a primeira unidade do C1.2.
 
 ## Objectivos da unidade
 
@@ -51,6 +51,6 @@ Julho de 2030. A Mussiro abriu o concurso para a segunda fase, no Niassa (20 sub
 
 ## O que falta para publicar
 
-Revisão aula a aula; leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 6E com três vozes); imagens (o caderno de encargos, a política da Mopane, a cláusula 21.ª); criar o curso C1.2 e carregar o conteúdo.
+Leitura pelos professores; vídeos com o professor de IA; áudio (17 escutas, 7 pronúncias, a 6E com três vozes); imagens (o caderno de encargos, a política da Mopane, a cláusula 21.ª); criar o curso C1.2 e carregar o conteúdo.
 
 A seguir vem a **unidade 7, "Science and change"**.

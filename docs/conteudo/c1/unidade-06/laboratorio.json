@@ -488,7 +488,7 @@
     },
     {
      "tipo": "escolher",
-     "enunciado": "Mopane paid the flights of two Mussiro technicians, as written in the contract. This is…",
+     "enunciado": "Mopane paid the flights of two Mussiro technicians, as written in an agreement with Mussiro. This is…",
      "opcoes": [
       {
        "texto": "not a grey area: it is documented and transparent",
@@ -610,7 +610,7 @@
     },
     {
      "tipo": "pronuncia",
-     "frase": "Technically, yes, but it's in the contract.",
+     "frase": "Technically, yes, but it's in the agreement.",
      "enunciado": "Ouça e repita, com uma pausa antes de \"but\"."
     },
     {

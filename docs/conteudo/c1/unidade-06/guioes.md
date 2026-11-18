@@ -33,8 +33,8 @@ Gramática-alvo: so / not depois de think, hope, expect, suppose, be afraid (I t
   He has. / He hasn't, but he will.); so / neither / nor + auxiliar + sujeito (So can we. Neither did they.);
   elipse depois do auxiliar ou de to (We'd like to bid alone, but we can't. We didn't want to, but we had to.);
   do so (formal: If you wish to do so…); one / ones (the one we signed, the new ones)
-Palavras-alvo: tender, tender documents, deadline, bid, local partner, requirement, safety form,
-  experience, signed, submit
+Palavras-alvo: tender, deadline, bid, local partner, consortium, references, safety form, site visit,
+  signed, in writing
 Reciclagem: respostas curtas (A2 e B1); clivadas (C1, 1)
 Pronúncia: o acento no auxiliar das respostas curtas (He HAS. So CAN we. — marcado por indicação)
 Contexto: segunda-feira, 1 de Julho de 2030, 9:00; a sala de reuniões; o Nuno, o Rajesh e a Lindiwe com o
@@ -144,7 +144,7 @@ Gramática-alvo: shall (= must, num contrato: The bidder shall submit…); shall
   short, is… · Basically, …
 Palavras-alvo: clause, contract, bidder, liable, breach, terminate, confidential, plain English,
   obligation, right
-Reciclagem: elipse (6A); modais de obrigação (B1 e B2); passivas (B2, 4)
+Reciclagem: elipse (6A); modais de obrigação (B1 e B2)
 Pronúncia: o acento em palavras jurídicas longas (confidentiality, liability, jurisdiction, obligation)
 Contexto: quarta-feira, 3 de Julho, 11:00; o gabinete do Tumelo; o Nuno com três cláusulas sublinhadas
 Duração: 13 min
@@ -239,9 +239,9 @@ Gramática-alvo: It's a grey area. · Strictly speaking, … · Technically, …
   Where do we draw the line? · On the face of it, … · It depends on whether… · There's a difference between…
   and… · I'd feel uncomfortable + -ing · It would set a bad precedent · in principle / in practice ·
   elipse nas respostas (I think not. Neither should we.)
-Palavras-alvo: dilemma, grey area, gift, hospitality, declare, facilitation payment, precedent, policy,
+Palavras-alvo: dilemma, grey area, gift, courtesy, declare, facilitation payment, precedent, policy,
   compliance, transparent
-Reciclagem: atenuação (C1, 2A); condicionais (C1, 3); elipse (6A)
+Reciclagem: condicionais mistos (C1, 3A); elipse (6A)
 Pronúncia: o tom ponderado: pausas antes de "but" e de "whether"
 Contexto: sexta-feira, 5 de Julho, 15:00; a sala de reuniões; a Thandi, o Nuno, o Bongani (de visita a
   Joanesburgo) e a Lindiwe discutem três situações
@@ -259,8 +259,8 @@ Verificação: Lab 6C; perguntas 5 e 6 do questionário
 
 **THANDI:** Three real situations. You decide. First: the two Mussiro technicians in our training course. We paid their flights and their hotel in Joburg. Is that a problem?
 **LINDIWE:** On the face of it, it looks like a gift to a client.
-**NUNO:** Technically, yes, but it's in the Nampula contract. Two places in the training programme, flights and hotel included — in writing.
-**THANDI:** Exactly. In the contract, transparent, documented. Not a grey area. Second: Dr Cumbe's assistant asked Inês, informally, if Mopane could "help" with the procurement team's end-of-year party.
+**NUNO:** Technically, yes, but it's in our written agreement with Mussiro from February. Two places in the training programme, flights and hotel included.
+**THANDI:** Exactly. In a written agreement, transparent, documented. Not a grey area. Second: Dr Cumbe's assistant asked Inês, informally, if Mopane could "help" with the procurement team's end-of-year party.
 **BONGANI:** During a tender? I'd feel very uncomfortable saying yes to that.
 **LINDIWE:** Strictly speaking, it's not a payment to anyone.
 **NUNO:** The question is whether it could influence the award. And the answer is: it could. The procurement team decides the tender.
@@ -294,7 +294,7 @@ Verificação: Lab 6C; perguntas 5 e 6 do questionário
 
 ### 4. Pronúncia (1 min)
 
-**PROF:** Ethical discussions need a thoughtful rhythm: a pause before "but" and before "whether". Listen: Technically, yes, [pausa] but it's in the contract. — The question is [pausa] whether it could influence the award.
+**PROF:** Ethical discussions need a thoughtful rhythm: a pause before "but" and before "whether". Listen: Technically, yes, [pausa] but it's in the agreement. — The question is [pausa] whether it could influence the award.
 [PAUSA 3 s]
 **PROF:** Repeat both.
 [PAUSA 9 s]
@@ -511,7 +511,7 @@ Objectivo da unidade a que serve: 1, 2, 3, 4
 Gramática-alvo: toda a da unidade: elipse e substituição, explicar linguagem jurídica, discutir dilemas;
   recusar com firmeza (I'm afraid that's not something we can do. That's not how we work. I'd rather not
   continue this conversation.)
-Palavras-alvo: consultant, commission, success fee, intermediary, influence, award, refuse, report,
+Palavras-alvo: consultant, commission, success fee, policy, influence, award, refuse, report,
   compliance, clause
 Reciclagem: recusas diplomáticas (C1, 2C); passivas de relato (C1, 5B); elipse (6A)
 Pronúncia: firmeza calma: frases curtas, tom descendente, sem pressa
