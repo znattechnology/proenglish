@@ -67,7 +67,8 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "telefone:ios": "PROENGLISH_IOS_GRATIS=1 EXPO_PUBLIC_API_URL=https://api.proenglish.ao/api/v1 EXPO_PUBLIC_SITE_URL=https://proenglish.ao expo prebuild -p ios --no-install && PROENGLISH_IOS_GRATIS=1 EXPO_PUBLIC_API_URL=https://api.proenglish.ao/api/v1 EXPO_PUBLIC_SITE_URL=https://proenglish.ao expo run:ios --configuration Release --device",
-    "build:android:teste": "npx eas-cli@latest build -p android --profile teste"
+    "build:android:teste": "npx eas-cli@latest build -p android --profile teste",
+    "test": "node --experimental-strip-types --test 'src/**/*.test.ts'"
   },
   "private": true
 }

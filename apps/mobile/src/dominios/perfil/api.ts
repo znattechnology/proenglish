@@ -20,7 +20,16 @@ export type Perfil = {
   has_password?: boolean;
   provincia?: string | null;
   deve_mudar_senha?: boolean;
-  preferences: { cidade?: string; area?: string; nivel?: string; acolhimento?: "concluido" };
+  preferences: {
+    cidade?: string;
+    area?: string;
+    nivel?: string;
+    acolhimento?: "concluido";
+    /** Toques de certo/errado nas lições (ligados se ausente). */
+    sons?: boolean;
+    /** Frases faladas da Professora Luena nas lições (ligadas se ausente). */
+    voz_professora?: boolean;
+  };
 };
 
 export type MudancaPerfil = { name?: string; phone?: string | null; provincia?: string | null; preferences?: Perfil["preferences"] };

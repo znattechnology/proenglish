@@ -30,7 +30,10 @@ import { useProximoPassoQuery } from "@/dominios/cursos/api";
 import { balao, cor, fonte, raio } from "@/tema";
 import { Aviso, Botao, Dialogo, Ecra, Etiqueta, Numero, Osso, Texto, Titulo } from "@/ui";
 import { ExercicioUI, seSalta, type RespostaExercicio, type ResultadoFala } from "./Exercicios";
-import { CabecalhoLicao, RodapeLicao, type EstadoRodape } from "./Partes";
+import { CabecalhoLicao, LegendaLuena, RodapeLicao, type EstadoRodape } from "./Partes";
+import { usePerfilDadosQuery } from "@/dominios/perfil/api";
+import { FRASES_LUENA, somDoMomento, type FalaLuena, type Momento } from "@/dominios/laboratorio/sons";
+import { libertar, pararFala, precarregar, tocar } from "./sons";
 
 type Fase =
   | { tipo: "responder" }
@@ -96,6 +99,55 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   const scroll = useRef<ScrollViewInstance>(null);
   const ins = useSafeAreaInsets();
 
+  // Sons, vibração e voz da Luena (ligados por omissão; o aluno desliga-os nas definições).
+  const { data: perfil } = usePerfilDadosQuery();
+  const comSons = perfil?.preferences?.sons !== false;
+  const comVoz = perfil?.preferences?.voz_professora !== false;
+  const [falaLuena, setFalaLuena] = useState<FalaLuena | null>(null);
+  const legenda = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // A legenda fica mais um pouco depois de a frase acabar (as curtas duram menos de 1 s).
+  const aoFalar = (f: FalaLuena | null) => {
+    if (legenda.current) clearTimeout(legenda.current);
+    legenda.current = null;
+    if (f) setFalaLuena(f);
+    else legenda.current = setTimeout(() => setFalaLuena(null), 2500);
+  };
+  const contagem = useRef({ certos: 0, seguidos: 0, errados: 0 });
+  const soar = (m: Momento) => {
+    const c = contagem.current;
+    if (m.tipo === "certo") {
+      c.certos += 1;
+      c.seguidos += 1;
+    } else if (m.tipo === "errado") {
+      c.errados += 1;
+      c.seguidos = 0;
+    }
+    tocar(somDoMomento(m, c), { sons: comSons, voz: comVoz, aoFalar });
+  };
+  const calar = () => {
+    pararFala();
+    if (legenda.current) clearTimeout(legenda.current);
+    setFalaLuena(null);
+  };
+  useEffect(
+    () => () => {
+      libertar();
+      if (legenda.current) clearTimeout(legenda.current);
+    },
+    []
+  );
+  // Ao abrir a lição: prepara os sons e a Luena dá as boas-vindas (uma vez).
+  const saudou = useRef(false);
+  const licaoId = licao?.id;
+  const temPerfil = !!perfil;
+  useEffect(() => {
+    if (!licaoId || !temPerfil || saudou.current) return;
+    saudou.current = true;
+    precarregar(comVoz);
+    tocar({ toque: null, fala: licaoId.charCodeAt(0) % 2 ? "inicio-1" : "inicio-2" }, { sons: comSons, voz: comVoz, aoFalar });
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- só ao abrir a lição
+  }, [licaoId, temPerfil]);
+
   if (licao && fila === null) setFila(filaInicial(licao));
   if (vidasEstado && pontosInicio === null) setPontosInicio(vidasEstado.points);
   const vidas = vidasLocal ?? (vidasEstado ? (vidasEstado.unlimited ? ILIMITADAS : vidasEstado.current) : null);
@@ -119,17 +171,20 @@ export function Jogador({ lessonId }: { lessonId: string }) {
     if (perdeu && heartsRestantes !== undefined && heartsRestantes <= 0) {
       setInfoVidas({});
       setSemVidas(true);
-    }
+      soar({ tipo: "sem-vidas" });
+    } else soar({ tipo: "errado", falado: !!extra.falado });
   };
   // 400 {error: "hearts", mensagem, oferta}: sem vidas, com o plano que as torna ilimitadas.
   const ficouSemVidas = (corpo: { mensagem?: string; message?: string } | undefined, oferta: Oferta | null | undefined) => {
     setVidas(0);
     setInfoVidas({ mensagem: corpo?.mensagem ?? corpo?.message ?? null, oferta });
     setSemVidas(true);
+    soar({ tipo: "sem-vidas" });
   };
-  const acertou = (explicacao?: string | null) => {
+  const acertou = (explicacao?: string | null, falado = false) => {
     setFase({ tipo: "certo", explicacao: explicacao ?? null });
     if (ex) setAcertados((a) => new Set(a).add(ex.id));
+    soar({ tipo: "certo", falado });
   };
 
   // Falha técnica numa gravação: salta com o token (sem pontos nem vidas) ou grava outra vez.
@@ -171,7 +226,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         const d = r.data;
         if (d.user_progress) setVidas(d.user_progress.hearts);
         setAvaliacao(d);
-        if (d.aceite) acertou(d.explicacao);
+        if (d.aceite) acertou(d.explicacao, true);
         // Uma resposta falada não aceite nunca tira vidas (o servidor decide; heartsUsed é sempre 0).
         else errou(false, d.user_progress?.hearts, { dica: d.dica ?? null, falado: true });
         return;
@@ -183,7 +238,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         const d = r.data;
         if (d.user_progress) setVidas(d.user_progress.hearts);
         setFala({ nota: d.ai_analysis.overall_score, palavras: d.feedback?.problematic_words ?? [], mensagem: d.feedback?.message ?? null, detalhe: d.detalhe ?? null, fonte: d.ai_analysis.fonte ?? null });
-        if (d.ai_analysis.is_acceptable) acertou(d.explicacao);
+        if (d.ai_analysis.is_acceptable) acertou(d.explicacao, true);
         // Uma gravação não aceite nunca tira vidas (o reconhecimento de fala pode errar com o sotaque).
         else errou(false, d.user_progress?.hearts, { dica: d.dica ?? null, falado: true });
         return;
@@ -219,11 +274,13 @@ export function Jogador({ lessonId }: { lessonId: string }) {
       return;
     }
     setConclusao(r.data!);
+    soar({ tipo: "concluida", meta: !!r.data!.goal_just_completed });
   };
 
   // Passa ao exercício seguinte; voltar=true põe o actual no fim (errou).
   const avancar = (voltar: boolean) => {
     if (!fila || !ex) return;
+    calar();
     const nova = voltar ? [...fila, ex.id] : fila;
     setResposta(null);
     setFala(null);
@@ -269,6 +326,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   }, [exId, semAudio, fase.tipo]);
 
   const tentarOutraVez = () => {
+    calar();
     setResposta(null);
     setFala(null);
     setAvaliacao(null);
@@ -352,7 +410,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   if (conclusao) {
     // "À primeira": acertados sem nenhum erro antes (os saltados não contam).
     const certas = [...acertados].filter((id) => !errados.has(id)).length;
-    return <LicaoConcluida licao={licao} conclusao={conclusao} certas={certas} total={acertados.size} segundos={duracao} pontosInicio={pontosInicio} />;
+    return <LicaoConcluida licao={licao} conclusao={conclusao} certas={certas} total={acertados.size} segundos={duracao} pontosInicio={pontosInicio} luena={falaLuena ? FRASES_LUENA[falaLuena] : null} />;
   }
 
   const feitos = Math.min(total, acertados.size + saltados.size);
@@ -412,6 +470,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
           aoContinuar={continuar}
           aoTentarOutraVez={tentarOutraVez}
           textoContinuar={textoContinuar}
+          luena={falaLuena ? FRASES_LUENA[falaLuena] : null}
         />
       </KeyboardAvoidingView>
 
@@ -528,7 +587,7 @@ function SemVidas({ aberto, info, aoFechar, aoSair, aoRecarregar }: { aberto: bo
 /* ------------------------------------------------------------------ */
 /* Lição concluída (tela Concluida)                                     */
 /* ------------------------------------------------------------------ */
-function LicaoConcluida({ licao, conclusao, certas, total, segundos, pontosInicio }: { licao: LicaoParaJogar; conclusao: ConclusaoLicao; certas: number; total: number; segundos: number; pontosInicio: number | null }) {
+function LicaoConcluida({ licao, conclusao, certas, total, segundos, pontosInicio, luena }: { licao: LicaoParaJogar; conclusao: ConclusaoLicao; certas: number; total: number; segundos: number; pontosInicio: number | null; luena?: string | null }) {
   const { data: trilho } = useLabTrilhoQuery(licao.curso.id);
   const proxima = trilho?.unidades.flatMap((u) => u.licoes).find((l) => l.estado === "actual" && l.id !== licao.id);
   // O passo seguinte do percurso do curso em vídeo a que esta lição pertence (se pertencer a algum).
@@ -546,6 +605,7 @@ function LicaoConcluida({ licao, conclusao, certas, total, segundos, pontosInici
         </Etiqueta>
         <Titulo v="tituloXL">{licao.titulo}</Titulo>
       </View>
+      <LegendaLuena texto={luena} />
 
       <View style={{ flexDirection: "row", gap: 12 }}>
         <Numero rotulo="À primeira" valor={`${certas} de ${total}`} />

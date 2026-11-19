@@ -175,6 +175,8 @@ function Definicoes({ p, pago, lembretes, plano }: { p: Perfil; pago: boolean; l
 
       <EstudoERenovacao pago={pago} lembretes={lembretes} />
 
+      <SonsDasLicoes p={p} />
+
       <Bloco titulo="Avisos">
         <SeccaoAvisos />
       </Bloco>
@@ -274,6 +276,38 @@ function EstudoERenovacao({ pago, lembretes }: { pago: boolean; lembretes: boole
           aoMudar={(v) => void tentar(mudarLembretes(v), "Não foi possível guardar.")}
         />
       ) : null}
+      {erro ? <Aviso tom="erro">{erro}</Aviso> : null}
+    </Bloco>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Sons das lições: toques e vibração, e a voz da Professora Luena      */
+/* ------------------------------------------------------------------ */
+function SonsDasLicoes({ p }: { p: Perfil }) {
+  const [guardar, { isLoading }] = usePerfilGuardarMutation();
+  const [erro, setErro] = useState<string | null>(null);
+  const mudar = async (chave: "sons" | "voz_professora", v: boolean) => {
+    setErro(null);
+    const r = await guardar({ preferences: { [chave]: v } });
+    if ("error" in r && r.error) setErro(mensagemErro(r.error, "Não foi possível guardar."));
+  };
+  return (
+    <Bloco titulo="Sons das lições">
+      <Interruptor
+        rotulo="Sons de certo e errado"
+        descricao="Um toque curto quando acerta, quando erra e no fim da lição."
+        valor={p.preferences?.sons !== false}
+        inactivo={isLoading}
+        aoMudar={(v) => void mudar("sons", v)}
+      />
+      <Interruptor
+        rotulo="Voz da Professora Luena"
+        descricao="De vez em quando, a professora fala consigo em inglês durante a lição."
+        valor={p.preferences?.voz_professora !== false}
+        inactivo={isLoading}
+        aoMudar={(v) => void mudar("voz_professora", v)}
+      />
       {erro ? <Aviso tom="erro">{erro}</Aviso> : null}
     </Bloco>
   );

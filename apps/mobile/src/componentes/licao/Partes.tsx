@@ -4,7 +4,7 @@
  */
 import { CheckCircle2, X, XCircle } from "lucide-react-native";
 import type { ReactNode } from "react";
-import { View, type ViewStyle } from "react-native";
+import { Image, View, type ViewStyle } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import type { DetalhePronuncia } from "@/dominios/laboratorio/api";
 import { balao, cor, fonte, raio } from "@/tema";
@@ -161,6 +161,7 @@ export function RodapeLicao({
   textoContinuar = "Continuar",
   textoVerificar = "Verificar",
   textoPorResponder,
+  luena,
 }: {
   estado: EstadoRodape;
   aoVerificar: () => void;
@@ -170,11 +171,14 @@ export function RodapeLicao({
   textoVerificar?: string;
   /** Texto do botão desactivado antes de haver resposta (ex.: "Ligue todos os pares"). */
   textoPorResponder?: string;
+  /** Frase que a Professora Luena está a dizer (aparece por cima do resultado). */
+  luena?: string | null;
 }) {
   const certo = estado.tipo === "certo";
   const errado = estado.tipo === "errado";
   return (
     <Rodape tom={certo ? "certo" : errado ? "errado" : null}>
+      <LegendaLuena texto={luena} />
       {estado.tipo === "certo" || estado.tipo === "errado" ? (
         <Resultado
           certo={certo}
@@ -213,6 +217,22 @@ export function RodapeLicao({
         </Botao>
       )}
     </Rodape>
+  );
+}
+
+/** A Professora Luena a falar: a frase em inglês enquanto se ouve. */
+export function LegendaLuena({ texto }: { texto?: string | null }) {
+  if (!texto) return null;
+  return (
+    <View accessibilityLiveRegion="polite" style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+      <Image source={require("@/assets/images/luena-rosto.png")} accessibilityIgnoresInvertColors style={{ width: 32, height: 32, borderRadius: 16 }} />
+      <Texto style={{ flex: 1, fontSize: 15, lineHeight: 22 }}>
+        <Texto forte style={{ fontSize: 15, lineHeight: 22 }}>
+          Professora Luena:{" "}
+        </Texto>
+        {texto}
+      </Texto>
+    </View>
   );
 }
 
