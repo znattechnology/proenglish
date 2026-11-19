@@ -93,6 +93,7 @@ ProEnglish.
 - O inglês do refrão é todo de nível A1, para quem ouve conseguir cantar logo.
 - O nome aparece 14 vezes: na abertura («This is ProEnglish!»), no fim de cada pré-refrão (em português, «Com a ProEnglish», e gritado pelo coro), duas vezes em cada refrão, no fecho da ponte (todas as personagens juntas), no fim do último refrão e no final.
 - Maquetes favoritas da 1.ª ronda: pop 2 e kizomba 1 (escolha do utilizador, 19/11/2026).
+- **Maquete escolhida: `hino-pop-r2c`** (19/11/2026), 2:50, cerca de 103 BPM. Ficheiro em `apps/api/media/hino/hino-oficial-maquete.mp3` (fora do git); mapa das secções e vozes em `apps/api/media/hino/ronda-2/hino-pop-r2c.mapa.txt`.
 - A Professora Luena aparece no videoclipe (a dar a aula, «Repete comigo!»), mas não canta como solista; a sua origem não se menciona.
 
 ## Indicação de estilo para a Lyria (maquetes)
