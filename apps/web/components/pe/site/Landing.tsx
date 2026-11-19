@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Award, BookOpen, Bot, FlaskConical, MessageCircle, Mic, Plane } from "lucide-react";
 import { cnPe } from "@/lib/pe";
+import { Personagens } from "./Personagens";
 import type { Site } from "@/src/domains/site/conteudo";
 import { Convite, Moldura } from "./Moldura";
 import { LigacaoPlano } from "./Entrada";
@@ -19,9 +20,9 @@ const PASSOS = [
 ];
 
 const SITUACOES = [
-  { foto: "reuniao", alt: "Colegas a conversar numa reunião à volta de uma mesa", onde: "Na reunião", frase: "Let me share the figures for this quarter." },
-  { foto: "chamada-escritorio", alt: "Profissional ao telefone no escritório, com o computador à frente", onde: "Ao telefone", frase: "Could you repeat that, please?" },
-  { foto: "escuta", alt: "Profissional com auscultadores ao pescoço, atento ao ecrã", onde: "Na videochamada", frase: "Sorry, the line is bad. Can you hear me now?" },
+  { foto: "cena-reuniao", alt: "A Thandi a falar numa reunião com o Sr. Baptista e o Paulo, à volta de uma mesa", onde: "Na reunião", frase: "Let me share the figures for this quarter." },
+  { foto: "cena-chamada-escritorio", alt: "A Sílvia ao telefone no escritório, com o computador à frente, a tomar nota", onde: "Ao telefone", frase: "Could you repeat that, please?" },
+  { foto: "cena-escuta", alt: "O Paulo com auscultadores ao pescoço, atento ao portátil numa videochamada", onde: "Na videochamada", frase: "Sorry, the line is bad. Can you hear me now?" },
 ];
 
 /** Percurso do English Communication Skills: o que o aluno já consegue dizer em cada etapa. */
@@ -40,14 +41,14 @@ const EMPRESAS = [
 
 /** Sectores da página inicial, pela ordem em que aparecem. `areas` são os nomes que a API usa para contar os cursos. */
 const SECTORES = [
-  { nome: "Petróleo e Gás", areas: ["Petróleo e Gás"], foto: "petroleo", alt: "Plataforma petrolífera no mar ao pôr do sol", frase: "Could you send me the drilling report by Friday?", texto: "Reuniões de segurança, relatórios de turno e instruções em plataforma." },
-  { nome: "Banca", areas: ["Banca"], foto: "banca", alt: "Cliente a marcar o código numa caixa multibanco", frase: "Your transfer will arrive within two business days.", texto: "Atendimento, contas, taxas e reclamações explicadas com clareza." },
-  { nome: "Tecnologia", areas: ["Tecnologia"], foto: "tecnologia", alt: "Dois programadores a rever código no mesmo ecrã", frase: "The deploy failed, so we rolled back.", texto: "Reuniões diárias, documentação e conversas com equipas remotas." },
-  { nome: "Minas", areas: ["Minas"], foto: "minas", alt: "Camião de minério a subir a rampa de uma mina a céu aberto", frase: "The haul road is closed until the blast is cleared.", texto: "Segurança na mina, passagem de turno e relatórios de produção." },
-  { nome: "Aviação", areas: ["Aviação"], foto: "cockpit", alt: "Piloto na cabine de um avião comercial, a preparar o voo", frase: "Luanda Tower, ready for departure, runway 23.", texto: "Fraseologia de rádio, tripulação de cabine, manutenção e assistência em terra.", novo: true },
-  { nome: "Saúde", areas: ["Saúde"], foto: "saude", alt: "Dois profissionais de saúde a consultar um tablet", frase: "Where exactly does it hurt?", texto: "Consulta, triagem e passagem de turno com doentes e colegas estrangeiros." },
-  { nome: "Direito", areas: ["Direito"], foto: "direito", alt: "Mão a assinar um contrato sobre a mesa", frase: "The contract takes effect on the first of March.", texto: "Contratos, prazos e correspondência formal." },
-  { nome: "Negócios e Gestão", areas: ["Negócios", "Gestão"], foto: "negocios", alt: "Dois profissionais a conversar, sentados frente a frente", frase: "Please find the revised proposal attached.", texto: "Propostas, negociação e reuniões com clientes e parceiros." },
+  { nome: "Petróleo e Gás", areas: ["Petróleo e Gás"], foto: "sector-petroleo", alt: "Trabalhador numa plataforma petrolífera no mar, ao pôr do sol", frase: "Could you send me the drilling report by Friday?", texto: "Reuniões de segurança, relatórios de turno e instruções em plataforma." },
+  { nome: "Banca", areas: ["Banca"], foto: "sector-banca", alt: "Funcionária de um banco a atender um cliente ao balcão", frase: "Your transfer will arrive within two business days.", texto: "Atendimento, contas, taxas e reclamações explicadas com clareza." },
+  { nome: "Tecnologia", areas: ["Tecnologia"], foto: "sector-tecnologia", alt: "Dois programadores a rever código no mesmo ecrã", frase: "The deploy failed, so we rolled back.", texto: "Reuniões diárias, documentação e conversas com equipas remotas." },
+  { nome: "Minas", areas: ["Minas"], foto: "sector-minas", alt: "Camião de minério a subir a rampa de uma mina a céu aberto, com um mineiro em primeiro plano", frase: "The haul road is closed until the blast is cleared.", texto: "Segurança na mina, passagem de turno e relatórios de produção." },
+  { nome: "Aviação", areas: ["Aviação"], foto: "sector-aviacao", alt: "Piloto na cabine de um avião comercial, a preparar o voo", frase: "Luanda Tower, ready for departure, runway 23.", texto: "Fraseologia de rádio, tripulação de cabine, manutenção e assistência em terra.", novo: true },
+  { nome: "Saúde", areas: ["Saúde"], foto: "sector-saude", alt: "Dois profissionais de saúde a consultar um tablet no corredor do hospital", frase: "Where exactly does it hurt?", texto: "Consulta, triagem e passagem de turno com doentes e colegas estrangeiros." },
+  { nome: "Direito", areas: ["Direito"], foto: "sector-direito", alt: "Advogado a assinar um contrato à secretária", frase: "The contract takes effect on the first of March.", texto: "Contratos, prazos e correspondência formal." },
+  { nome: "Negócios e Gestão", areas: ["Negócios", "Gestão"], foto: "sector-negocios", alt: "Dois profissionais a conversar, sentados frente a frente", frase: "Please find the revised proposal attached.", texto: "Propostas, negociação e reuniões com clientes e parceiros." },
 ];
 
 const ICONES = { livro: BookOpen, laboratorio: FlaskConical, bot: Bot, microfone: Mic, balao: MessageCircle, certificado: Award } as const;
@@ -259,6 +260,8 @@ export function Landing({ site }: { site: Site }) {
         </div>
       </section>
 
+      <Personagens />
+
       {/* Situações: cada fotografia diz a sua frase */}
       <section>
         <div className={caixa}>
@@ -299,7 +302,7 @@ export function Landing({ site }: { site: Site }) {
               </Link>
             </div>
             <div className="aspect-[4/3] overflow-hidden rounded-[56px_56px_0_56px] bg-pe-fundo-forte md:rounded-[88px_88px_0_88px]">
-              <Foto nome="falar" alt="Profissional a falar para um grupo de colegas, de pé, no escritório" sizes="(min-width: 1024px) 500px, 100vw" />
+              <Foto nome="cena-falar" alt="O Mateus, de pé, a falar para um grupo de colegas no escritório" sizes="(min-width: 1024px) 500px, 100vw" />
             </div>
           </div>
 
@@ -373,7 +376,7 @@ export function Landing({ site }: { site: Site }) {
         <div className="mx-auto grid max-w-[1200px] items-center gap-x-16 gap-y-10 px-4 py-14 md:px-6 md:py-24 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)]">
           <figure className="relative m-0 min-w-0">
             <div className="aspect-[4/5] max-h-[560px] w-full overflow-hidden rounded-[56px_56px_56px_0] bg-pe-fundo-forte md:rounded-[88px_88px_88px_0]">
-              <Foto nome="empresa" alt="Gestora de pé no escritório, com uma pasta aberta, a sorrir para a equipa" className="object-[30%_center]" />
+              <Foto nome="cena-empresa" alt="O Sr. Baptista de pé no escritório, com uma pasta aberta, a sorrir para a equipa" className="object-[22%_center]" />
             </div>
             <figcaption className="absolute bottom-6 right-0 max-w-[290px] rounded-pe-fala-aluno bg-pe-azul-marca px-5 py-4 text-pe-sobre-marca shadow-pe-2 md:-right-6">
               <span lang="en" className="font-pe-titulo text-[19px] font-light italic leading-[27px]">Our whole team can now handle a client call in English.</span>
