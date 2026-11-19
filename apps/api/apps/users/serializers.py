@@ -194,6 +194,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
         'nivel': niveis.CEFR,
         # Marca o fim da primeira entrada (área, meta e nível escolhidos).
         'acolhimento': ('concluido',),
+        # Lições do laboratório: toques de certo/errado e frases faladas da professora (ligados se ausentes).
+        'sons': bool,
+        'voz_professora': bool,
     }
 
     def validate_name(self, value):
@@ -228,6 +231,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
             v = value[chave]
             if v in (None, ''):
                 limpas[chave] = None
+            elif regra is bool:
+                if not isinstance(v, bool):
+                    raise serializers.ValidationError(f'Valor inválido para {chave}.')
+                limpas[chave] = v
             elif isinstance(regra, tuple):
                 if v not in regra:
                     raise serializers.ValidationError(f'Valor inválido para {chave}.')

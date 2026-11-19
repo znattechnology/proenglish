@@ -35,6 +35,21 @@ class PerfilEstudanteTests(APITestCase):
         r = self.client.patch('/api/v1/users/profile/', {'preferences': {'nivel': 'Expert'}}, format='json')
         self.assertEqual(r.status_code, 400)
 
+    def test_sons_e_voz_da_professora(self):
+        r = self.client.patch('/api/v1/users/profile/', {'preferences': {'sons': False, 'voz_professora': True}}, format='json')
+        self.assertEqual(r.status_code, 200, r.content)
+        self.user.refresh_from_db()
+        # False guarda-se (não é o mesmo que apagar a chave).
+        self.assertEqual(self.user.preferences, {'sons': False, 'voz_professora': True})
+        self.assertEqual(r.data['preferences'], {'sons': False, 'voz_professora': True})
+        for invalido in ('sim', 1, 'false'):
+            r = self.client.patch('/api/v1/users/profile/', {'preferences': {'sons': invalido}}, format='json')
+            self.assertEqual(r.status_code, 400, invalido)
+        # null apaga: volta ao valor por omissão (ligado).
+        self.client.patch('/api/v1/users/profile/', {'preferences': {'sons': None}}, format='json')
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.preferences, {'voz_professora': True})
+
     def test_nivel_na_escala_cefr(self):
         for codigo in ('A1', 'A2', 'B1', 'B2', 'C1', 'C2'):
             r = self.client.patch('/api/v1/users/profile/', {'preferences': {'nivel': codigo}}, format='json')
