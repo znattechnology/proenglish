@@ -24,7 +24,16 @@ export type Perfil = {
   provincia?: string | null;
   /** A administração pediu para mudar a palavra-passe: até lá, a API recusa o resto. */
   deve_mudar_senha?: boolean;
-  preferences: { cidade?: string; area?: string; nivel?: Nivel; acolhimento?: "concluido" };
+  preferences: {
+    cidade?: string;
+    area?: string;
+    nivel?: Nivel;
+    acolhimento?: "concluido";
+    /** Toques de certo/errado nas lições (ligados se ausente). */
+    sons?: boolean;
+    /** Frases faladas da Professora Luena nas lições (ligadas se ausente). */
+    voz_professora?: boolean;
+  };
 };
 
 export type MudancaPerfil = { name?: string; phone?: string | null; provincia?: string | null; preferences?: Perfil["preferences"] };

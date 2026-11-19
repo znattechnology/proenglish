@@ -26,7 +26,9 @@ import {
   type ResultadoResponder,
 } from "@/src/domains/student/laboratorio/api";
 import { tempoAte } from "@/components/pe/laboratorio/Trilho";
-import { CabecalhoLicao, RodapeLicao, type EstadoRodape } from "./Partes";
+import { usePerfilQuery } from "@/src/domains/student/perfil/api";
+import { FRASES_LUENA, pararFala, precarregar, somDoMomento, tocar, type FalaLuena, type Momento } from "./sons";
+import { CabecalhoLicao, LegendaLuena, RodapeLicao, type EstadoRodape } from "./Partes";
 import { dicaTeclado, ExercicioUI, type RespostaExercicio, type ResultadoFala } from "./Exercicios";
 
 const ILIMITADAS = 999;
@@ -88,6 +90,46 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   const [inicio] = useState(() => Date.now());
   const [duracao, setDuracao] = useState(0);
   const [pontosInicio, setPontosInicio] = useState<number | null>(null);
+  // Sons e voz da Luena (ligados por omissão; o aluno desliga-os nas definições).
+  const { data: perfil } = usePerfilQuery();
+  const comSons = perfil?.preferences?.sons !== false;
+  const comVoz = perfil?.preferences?.voz_professora !== false;
+  const [falaLuena, setFalaLuena] = useState<FalaLuena | null>(null);
+  // A legenda fica mais um pouco depois de a frase acabar (as curtas duram menos de 1 s).
+  const legenda = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const aoFalar = useCallback((f: FalaLuena | null) => {
+    if (legenda.current) clearTimeout(legenda.current);
+    legenda.current = null;
+    if (f) setFalaLuena(f);
+    else legenda.current = setTimeout(() => setFalaLuena(null), 2500);
+  }, []);
+  const contagem = useRef({ certos: 0, seguidos: 0, errados: 0 });
+  const soar = useCallback(
+    (m: Momento) => {
+      const c = contagem.current;
+      if (m.tipo === "certo") {
+        c.certos += 1;
+        c.seguidos += 1;
+      } else if (m.tipo === "errado") {
+        c.errados += 1;
+        c.seguidos = 0;
+      }
+      tocar(somDoMomento(m, c), { sons: comSons, voz: comVoz, aoFalar });
+    },
+    [comSons, comVoz, aoFalar]
+  );
+  const calar = useCallback(() => {
+    pararFala();
+    if (legenda.current) clearTimeout(legenda.current);
+    setFalaLuena(null);
+  }, []);
+  useEffect(
+    () => () => {
+      pararFala();
+      if (legenda.current) clearTimeout(legenda.current);
+    },
+    []
+  );
 
   if (licao && fila === null) setFila(filaInicial(licao));
   // Os pontos de partida servem para mostrar quantos ganhou no fim.
@@ -102,6 +144,15 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   const repeticao = !!licao?.repeticao;
 
   const indisponivel = ex?.modo === "indisponivel";
+
+  // Ao abrir a lição: descarrega os sons e a Luena dá as boas-vindas (uma vez).
+  const saudou = useRef(false);
+  useEffect(() => {
+    if (!licao || !perfil || saudou.current) return;
+    saudou.current = true;
+    precarregar(comVoz);
+    tocar({ toque: null, fala: licao.id.charCodeAt(0) % 2 ? "inicio-1" : "inicio-2" }, { sons: comSons, voz: comVoz, aoFalar });
+  }, [licao, perfil, comSons, comVoz, aoFalar]);
 
   const marcarErrado = useCallback((id: string) => setErrados((s) => new Set(s).add(id)), []);
 
@@ -148,10 +199,12 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         if (d.aceite) {
           setFase({ tipo: "certo", explicacao: d.explicacao ?? null });
           setAcertados((a) => new Set(a).add(ex.id));
+          soar({ tipo: "certo", falado: true });
         } else {
           // Uma resposta falada não aceite nunca tira vidas (o servidor decide; heartsUsed é sempre 0).
           setFase({ tipo: "errado", dica: d.dica ?? null, perdeuVida: false, falado: true });
           marcarErrado(ex.id);
+          soar({ tipo: "errado", falado: true });
         }
         return;
       }
@@ -166,10 +219,12 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         if (d.ai_analysis.is_acceptable) {
           setFase({ tipo: "certo", explicacao: d.explicacao ?? null });
           setAcertados((a) => new Set(a).add(ex.id));
+          soar({ tipo: "certo", falado: true });
         } else {
           // Uma gravação não aceite nunca tira vidas (o reconhecimento de fala pode errar com o sotaque).
           setFase({ tipo: "errado", dica: d.dica ?? null, perdeuVida: false, falado: true });
           marcarErrado(ex.id);
+          soar({ tipo: "errado", falado: true });
         }
         return;
       }
@@ -181,6 +236,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
           setVidas(0);
           setOfertaVidas(corpo.oferta);
           setSemVidas(true);
+          soar({ tipo: "sem-vidas" });
           return;
         }
         if (corpo?.codigo === "limite_licoes") return void setLimiteAoConcluir(corpo);
@@ -193,16 +249,20 @@ export function Jogador({ lessonId }: { lessonId: string }) {
       if (d.correct) {
         setFase({ tipo: "certo", explicacao: d.explicacao });
         setAcertados((a) => new Set(a).add(ex.id));
+        soar({ tipo: "certo", falado: false });
       } else {
         const perdeu = (d.heartsUsed ?? 0) > 0;
         setFase({ tipo: "errado", dica: d.dica ?? null, solucao: d.solucao ?? null, explicacao: d.explicacao ?? null, perdeuVida: perdeu });
         marcarErrado(ex.id);
-        if (perdeu && d.user_progress && d.user_progress.hearts <= 0) setSemVidas(true);
+        if (perdeu && d.user_progress && d.user_progress.hearts <= 0) {
+          setSemVidas(true);
+          soar({ tipo: "sem-vidas" });
+        } else soar({ tipo: "errado", falado: false });
       }
     } finally {
       setAVerificar(false);
     }
-  }, [ex, resposta, aVerificar, analisar, responderEmVoz, saltar, responder, marcarErrado]);
+  }, [ex, resposta, aVerificar, analisar, responderEmVoz, saltar, responder, marcarErrado, soar]);
 
   const terminar = useCallback(async () => {
     setErroConcluir(false);
@@ -216,15 +276,17 @@ export function Jogador({ lessonId }: { lessonId: string }) {
       return;
     }
     setConclusao(r.data!);
+    soar({ tipo: "concluida", meta: !!r.data!.goal_just_completed });
     try {
       localStorage.setItem("pe_licao_concluida", "1"); // o convite para instalar a app só aparece depois da primeira lição
     } catch {}
-  }, [concluir, lessonId, inicio]);
+  }, [concluir, lessonId, inicio, soar]);
 
   // Passa ao exercício seguinte da fila; voltar=true põe o actual no fim (errou).
   const avancar = useCallback(
     (voltar: boolean) => {
       if (!fila || !ex) return;
+      calar();
       const nova = voltar ? [...fila, ex.id] : fila;
       setResposta(null);
       setFala(null);
@@ -238,7 +300,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
       setPos(pos + 1);
       setTentativa((t) => t + 1);
     },
-    [fila, ex, pos, terminar]
+    [fila, ex, pos, terminar, calar]
   );
   const continuar = useCallback(() => avancar(fase.tipo === "errado" && !fase.repetir), [avancar, fase]);
 
@@ -271,12 +333,13 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   }, [ex, fase.tipo, saltarExercicio]);
 
   const tentarOutraVez = useCallback(() => {
+    calar();
     setResposta(null);
     setFala(null);
     setAvaliacao(null);
     setFase({ tipo: "responder" });
     setTentativa((t) => t + 1);
-  }, []);
+  }, [calar]);
 
   // Enter avança: verificar, continuar ou tentar outra vez.
   useEffect(() => {
@@ -358,7 +421,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   if (conclusao) {
     // "À primeira": acertados sem nenhum erro antes (os saltados não contam).
     const certas = [...acertados].filter((id) => !errados.has(id)).length;
-    return <LicaoConcluida licao={licao} conclusao={conclusao} certas={certas} total={acertados.size} segundos={duracao} pontosInicio={pontosInicio} />;
+    return <LicaoConcluida licao={licao} conclusao={conclusao} certas={certas} total={acertados.size} segundos={duracao} pontosInicio={pontosInicio} luena={falaLuena ? FRASES_LUENA[falaLuena] : null} />;
   }
 
   // A barra só avança com os exercícios acertados (ou saltados): os errados voltam no fim.
@@ -408,6 +471,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         textoVerificar={indisponivel ? "Continuar" : undefined}
         aoContinuar={continuar}
         aoTentarOutraVez={tentarOutraVez}
+        luena={falaLuena ? FRASES_LUENA[falaLuena] : null}
         textoContinuar={ultimo && !(fase.tipo === "errado" && !fase.repetir) ? (aConcluir ? "A guardar…" : "Terminar lição") : "Continuar"}
       />
 
@@ -521,6 +585,7 @@ function LicaoConcluida({
   total,
   segundos,
   pontosInicio,
+  luena,
 }: {
   licao: { id: string; titulo: string; curso: { id: string } };
   conclusao: ConclusaoLicao;
@@ -528,6 +593,8 @@ function LicaoConcluida({
   total: number;
   segundos: number;
   pontosInicio: number | null;
+  /** Frase que a Luena está a dizer (legenda). */
+  luena?: string | null;
 }) {
   const { data: trilho } = useTrilhoQuery(licao.curso.id);
   const proxima = trilho?.unidades.flatMap((u) => u.licoes).find((l) => l.estado === "actual" && l.id !== licao.id);
@@ -545,6 +612,7 @@ function LicaoConcluida({
         </Etiqueta>
         <h1 className="m-0 font-pe-titulo text-[30px] font-bold leading-9 tracking-[-0.015em] md:text-pe-titulo-l">{licao.titulo}</h1>
       </div>
+      <LegendaLuena texto={luena} />
 
       <dl className="m-0 grid grid-cols-3 gap-3">
         {[

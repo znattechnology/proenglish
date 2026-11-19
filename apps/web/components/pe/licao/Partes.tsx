@@ -108,6 +108,23 @@ export function BalaoEnunciado({ autor, children, audio }: { autor?: string | nu
 }
 
 /* ------------------------------------------------------------------ */
+/* A Professora Luena a falar: legenda da frase enquanto se ouve.       */
+/* ------------------------------------------------------------------ */
+export function LegendaLuena({ texto, className }: { texto?: string | null; className?: string }) {
+  if (!texto) return null;
+  return (
+    <p className={cnPe("m-0 flex items-center gap-2.5 text-[15px] leading-[22px] motion-safe:animate-[pe-aparecer_200ms_ease-out]", className)}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/professora/luena-rosto.webp" alt="" width={32} height={32} className="size-8 shrink-0 rounded-full object-cover" />
+      <span>
+        <span className="font-semibold">Professora Luena: </span>
+        <span lang="en">{texto}</span>
+      </span>
+    </p>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /* Rodapé: verificar, ou o resultado (certo/errado) e continuar.       */
 /* ------------------------------------------------------------------ */
 export type EstadoRodape =
@@ -128,6 +145,7 @@ export function RodapeLicao({
   aoTentarOutraVez,
   textoContinuar = "Continuar",
   textoVerificar = "Verificar",
+  luena,
 }: {
   estado: EstadoRodape;
   dicaTeclado?: string;
@@ -137,6 +155,8 @@ export function RodapeLicao({
   textoContinuar?: string;
   /** Texto do botão antes de verificar (p.ex. "Continuar" num exercício que só se salta). */
   textoVerificar?: string;
+  /** Frase que a Professora Luena está a dizer (aparece por cima do resultado). */
+  luena?: string | null;
 }) {
   const certo = estado.tipo === "certo";
   const errado = estado.tipo === "errado";
@@ -147,6 +167,7 @@ export function RodapeLicao({
         certo ? "border-transparent bg-pe-certo-suave" : errado ? "border-transparent bg-pe-errado-suave" : "border-pe-linha bg-pe-fundo"
       )}
     >
+      <LegendaLuena texto={luena} className="mx-auto max-w-[960px] px-5 pt-3 md:px-6" />
       <div className="mx-auto flex max-w-[960px] flex-col gap-3 px-5 pb-5 pt-4 md:flex-row md:items-center md:justify-between md:gap-8 md:px-6 md:py-5">
         {certo || errado ? (
           <div role="status" aria-live="assertive" className="flex min-w-0 gap-3">

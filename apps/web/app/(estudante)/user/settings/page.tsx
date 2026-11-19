@@ -70,6 +70,7 @@ export default function PaginaDefinicoes() {
 
           <OsSeusDados perfil={perfil} />
           <EstudoEAvisos pago={!!sub && sub.plan.plan_type !== "FREE"} lembretes={!!sub?.lembretes_renovacao} />
+          <SonsDasLicoes perfil={perfil} />
           <SeccaoAvisos />
           <Seguranca temSenha={perfil.has_password !== false} />
 
@@ -262,6 +263,41 @@ function EstudoEAvisos({ pago, lembretes }: { pago: boolean; lembretes: boolean 
           }}
         />
       ) : null}
+      {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Sons das lições: toques de certo/errado e a voz da Professora Luena  */
+/* ------------------------------------------------------------------ */
+function SonsDasLicoes({ perfil }: { perfil: Perfil }) {
+  const [guardar, { isLoading }] = useGuardarPerfilMutation();
+  const [erro, setErro] = useState<string | null>(null);
+  const mudar = async (chave: "sons" | "voz_professora", v: boolean) => {
+    setErro(null);
+    const r = await guardar({ preferences: { [chave]: v } });
+    if ("error" in r && r.error) setErro(mensagemErro(r.error, "Não foi possível guardar."));
+  };
+  return (
+    <section aria-labelledby="titulo-sons" className="flex flex-col gap-4 rounded-pe-md border border-pe-linha p-5 md:p-6">
+      <h2 id="titulo-sons" className="m-0 font-pe-titulo text-pe-titulo-s">
+        Sons das lições
+      </h2>
+      <Interruptor
+        rotulo="Sons de certo e errado"
+        descricao="Um toque curto quando acerta, quando erra e no fim da lição."
+        ligado={perfil.preferences?.sons !== false}
+        disabled={isLoading}
+        aoMudar={(v) => void mudar("sons", v)}
+      />
+      <Interruptor
+        rotulo="Voz da Professora Luena"
+        descricao="De vez em quando, a professora fala consigo em inglês durante a lição."
+        ligado={perfil.preferences?.voz_professora !== false}
+        disabled={isLoading}
+        aoMudar={(v) => void mudar("voz_professora", v)}
+      />
       {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
     </section>
   );
