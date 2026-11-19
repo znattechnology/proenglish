@@ -27,9 +27,9 @@ const SITUACOES = [
 
 /** Percurso do English Communication Skills: o que o aluno já consegue dizer em cada etapa. */
 const NIVEIS = [
-  { nome: "Básico", quadro: "A1 e A2", frase: "Hello, my name is Ana. I work at a bank.", texto: "Apresentar-se, fazer perguntas simples, dizer números, datas e horas." },
-  { nome: "Intermédio", quadro: "B1 e B2", frase: "Could we move the meeting to Thursday?", texto: "Participar em reuniões, atender o telefone, combinar e explicar." },
-  { nome: "Avançado", quadro: "C1", frase: "I'd argue the second option carries less risk.", texto: "Apresentar, negociar e defender uma ideia com à-vontade." },
+  { nome: "Básico", foto: "nivel-basico", alt: "Um homem e uma mulher apresentam-se com um aperto de mão, num escritório luminoso", quadro: "A1 e A2", frase: "Hello, my name is Ana. I work at a bank.", texto: "Apresentar-se, fazer perguntas simples, dizer números, datas e horas." },
+  { nome: "Intermédio", foto: "nivel-intermedio", alt: "Uma mulher de pé apresenta um tema aos colegas sentados à mesa de reuniões", quadro: "B1 e B2", frase: "Could we move the meeting to Thursday?", texto: "Participar em reuniões, atender o telefone, combinar e explicar." },
+  { nome: "Avançado", foto: "nivel-avancado", alt: "Uma directora conduz uma reunião, numa sala com vista para a cidade", quadro: "C1", frase: "I'd argue the second option carries less risk.", texto: "Apresentar, negociar e defender uma ideia com à-vontade." },
 ];
 
 const EMPRESAS = [
@@ -309,7 +309,10 @@ export function Landing({ site }: { site: Site }) {
           {/* O percurso é uma sequência: cada degrau sobe um nível; o básico abre os cursos de sector. */}
           <ol className="m-0 grid list-none gap-4 p-0 md:grid-cols-3 md:items-end md:gap-6">
             {NIVEIS.map((n, i) => (
-              <li key={n.nome} className={cnPe("flex min-w-0 flex-col gap-3 rounded-pe-fala bg-pe-fundo p-6 md:p-7", i === 1 && "md:pb-14", i === 2 && "md:pb-24")}>
+              <li key={n.nome} className={cnPe("flex min-w-0 flex-col gap-3 overflow-hidden rounded-pe-fala bg-pe-fundo p-6 md:p-7", i === 1 && "md:pb-14", i === 2 && "md:pb-24")}>
+                <div className="-mx-6 -mt-6 mb-2 aspect-[16/9] overflow-hidden bg-pe-fundo-forte md:-mx-7 md:-mt-7">
+                  <Foto nome={n.foto} alt={n.alt} sizes="(min-width: 768px) 380px, 100vw" />
+                </div>
                 <span className="flex items-center gap-3">
                   <span aria-hidden className="flex size-10 shrink-0 items-center justify-center rounded-pe-fala-s bg-pe-azul-marca font-pe-titulo text-[17px] font-bold text-pe-sobre-marca">{i + 1}</span>
                   <h3 className="m-0 flex flex-col font-pe-titulo text-[22px] font-semibold leading-7">

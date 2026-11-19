@@ -1,14 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { cnPe } from "@/lib/pe";
 
 /**
  * As personagens da história das aulas (Kalandula Tech, A1), com a primeira frase que dizem nos guiões.
  * Retratos em public/site/personagens, feitos a partir das fichas aprovadas (docs/conteudo/imagens/site-personagens.json).
- * Uma fila que se desliza (dedo ou setas), sem passagem automática: quem lê decide o ritmo.
+ * Uma fila que anda sozinha (um cartão a cada 4,5 s, e volta ao início no fim). Pára enquanto o rato,
+ * o foco ou o dedo estão nela, tem botão de pausa e não anda para quem pede menos movimento.
  */
+const INTERVALO = 4500;
+const MENOS_MOVIMENTO = "(prefers-reduced-motion: reduce)";
+const seguirMovimento = (avisar: () => void) => {
+  const m = window.matchMedia(MENOS_MOVIMENTO);
+  m.addEventListener("change", avisar);
+  return () => m.removeEventListener("change", avisar);
+};
+
 const PERSONAGENS = [
   { id: "ana", nome: "Ana Domingos", papel: "Recepcionista da Kalandula Tech", frase: "I'm Ana. Ana Domingos. What's your name?" },
   { id: "paulo", nome: "Paulo Mendes", papel: "Técnico de informática, no primeiro dia", frase: "Good morning. I'm Paulo Mendes. It's my first day." },
@@ -23,6 +32,13 @@ export function Personagens() {
   const fila = useRef<HTMLUListElement>(null);
   const [inicio, setInicio] = useState(true);
   const [fim, setFim] = useState(false);
+  // `parado`: escolha de quem lê (botão ou menos movimento). `ocupado`: rato, foco ou dedo na fila.
+  const calmo = useSyncExternalStore(seguirMovimento, () => window.matchMedia(MENOS_MOVIMENTO).matches, () => false);
+  // `null`: ainda ninguém escolheu; para quem pede menos movimento, começa parada.
+  const [escolha, setEscolha] = useState<boolean | null>(null);
+  const parado = escolha ?? calmo;
+  const [ocupado, setOcupado] = useState(false);
+  const retomar = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
     const el = fila.current;
@@ -40,13 +56,33 @@ export function Personagens() {
     };
   }, []);
 
+  useEffect(() => () => clearTimeout(retomar.current), []);
+
   const andar = (sentido: 1 | -1) => {
     const el = fila.current;
     if (!el) return;
     const cartao = el.querySelector("li");
     const passo = cartao ? cartao.getBoundingClientRect().width + 24 : el.clientWidth * 0.8;
-    const calmo = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     el.scrollBy({ left: sentido * passo, behavior: calmo ? "auto" : "smooth" });
+  };
+
+  useEffect(() => {
+    if (parado || ocupado) return;
+    const id = setInterval(() => {
+      const el = fila.current;
+      if (!el || document.hidden) return;
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) el.scrollTo({ left: 0, behavior: calmo ? "auto" : "smooth" });
+      else andar(1);
+    }, INTERVALO);
+    return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [parado, ocupado]);
+
+  // Depois de um toque, a fila espera um pouco antes de voltar a andar.
+  const tocou = () => {
+    setOcupado(true);
+    clearTimeout(retomar.current);
+    retomar.current = setTimeout(() => setOcupado(false), 8000);
   };
 
   const seta = "flex size-12 items-center justify-center rounded-full border-2 border-pe-azul-marca bg-pe-fundo text-pe-azul-marca hover:bg-pe-fundo-suave disabled:cursor-default disabled:opacity-35 disabled:hover:bg-pe-fundo";
@@ -63,11 +99,14 @@ export function Personagens() {
               As aulas contam uma história: a de uma pequena empresa de tecnologia em Luanda, a Kalandula Tech. Acompanha estas personagens no dia-a-dia de trabalho e aprende com elas o inglês de cada situação.
             </p>
           </div>
-          <div className="hidden gap-3 md:flex">
-            <button type="button" className={seta} onClick={() => andar(-1)} disabled={inicio} aria-label="Personagens anteriores">
+          <div className="flex gap-3">
+            <button type="button" className={seta} onClick={() => setEscolha(!parado)} aria-label={parado ? "Pôr as personagens a passar" : "Parar a passagem das personagens"}>
+              {parado ? <Play aria-hidden className="size-5" /> : <Pause aria-hidden className="size-5" />}
+            </button>
+            <button type="button" className={cnPe(seta, "hidden md:flex")} onClick={() => andar(-1)} disabled={inicio} aria-label="Personagens anteriores">
               <ChevronLeft aria-hidden className="size-6" />
             </button>
-            <button type="button" className={seta} onClick={() => andar(1)} disabled={fim} aria-label="Personagens seguintes">
+            <button type="button" className={cnPe(seta, "hidden md:flex")} onClick={() => andar(1)} disabled={fim} aria-label="Personagens seguintes">
               <ChevronRight aria-hidden className="size-6" />
             </button>
           </div>
@@ -77,6 +116,11 @@ export function Personagens() {
       {/* A fila corre até à borda do ecrã; à esquerda alinha com o texto da secção. */}
       <ul
         ref={fila}
+        onMouseEnter={() => setOcupado(true)}
+        onMouseLeave={() => setOcupado(false)}
+        onFocus={() => setOcupado(true)}
+        onBlur={() => setOcupado(false)}
+        onTouchStart={tocou}
         className="m-0 mt-8 flex px-4 [scroll-padding-inline:1rem] md:px-[max(1.5rem,calc((100vw-1200px)/2+1.5rem))] md:[scroll-padding-inline:max(1.5rem,calc((100vw-1200px)/2+1.5rem))] list-none snap-x snap-mandatory gap-6 overflow-x-auto pb-2 [scrollbar-width:none] md:mt-10 [&::-webkit-scrollbar]:hidden"
       >
           {PERSONAGENS.map((p, i) => (
