@@ -1,0 +1,79 @@
+{
+ "nota": "Imagens iniciais do videoclipe do hino (docs/conteudo/marca/clip-hino.md), 19/11/2026. Cada uma é o primeiro fotograma de um plano no Gemini Omni Flash, por isso a composição deixa espaço para o movimento descrito no guião.",
+ "estilo": "Cinematic film still from a joyful, high-budget African afro-pop music video, shot on a cinema camera with anamorphic lens, natural light, rich warm colour grading with deep navy blue and golden yellow accents, true-to-life skin tones, shallow depth of field, energetic but natural.",
+ "regras": "Do not include any text, letters, numbers, logos, watermarks or captions anywhere in the image; screens are blurred or seen from the side. Contemporary Angola, 2026. Respectful, natural, non-stereotyped depiction of African professionals. No real people, no real brands. Every character from a reference sheet keeps exactly the same face, hair, body and clothes as in the sheet.",
+ "imagens": [
+  {
+   "id": "clip-luanda-amanhecer",
+   "modelo": "pro",
+   "proporcao": "16:9",
+   "tamanho": "2K",
+   "referencias": ["estilo-foto"],
+   "descricao": "Aerial drone view of Luanda at sunrise: the curved bay and the palm-lined seafront promenade in the foreground, modern towers of the city and, further away, the new business district, soft golden mist over the sea, the sun just rising on the horizon. No people visible in close-up. Calm, hopeful, majestic."
+  },
+  {
+   "id": "clip-equipa-entrada",
+   "modelo": "pro",
+   "proporcao": "16:9",
+   "tamanho": "2K",
+   "referencias": ["ficha-ana", "ficha-paulo", "ficha-baptista", "ficha-silvia", "ficha-mateus", "ficha-nuno", "ficha-thandi"],
+   "descricao": "Seen through an open glass door, the bright modern lobby of a small tech company in Luanda. The seven people from the reference sheets stand side by side in a loose line facing the camera, each in the clothes of their sheet, smiling with anticipation, about to raise their arms: from left to right Mateus (tall, shaved head, khaki shirt, white helmet under his arm), Silvia (mustard blouse, navy pencil skirt), Mr Baptista (grey suit, grey moustache, reading glasses on a cord), Ana (braids, navy blazer) in the centre next to Paulo (round glasses, white shirt with rolled sleeves), Thandi (very short natural hair, charcoal suit, teal blouse), Nuno (slim, light blue short-sleeved shirt, lanyard without text). Full bodies visible, plants and a reception desk behind them."
+  },
+  {
+   "id": "clip-paulo-casa",
+   "modelo": "pro",
+   "proporcao": "16:9",
+   "tamanho": "2K",
+   "referencias": ["ficha-paulo"],
+   "descricao": "Early morning in a modest, tidy family home in Viana, Luanda. Paulo from the reference sheet stands in front of a mirror on the wall of his bedroom, buttoning his freshly ironed white shirt, a slightly nervous expression, the ironing board still behind him, soft golden sunrise light through a window with a curtain. Medium shot, his reflection visible in the mirror."
+  },
+  {
+   "id": "clip-ana-recepcao",
+   "modelo": "pro",
+   "proporcao": "16:9",
+   "tamanho": "2K",
+   "referencias": ["ficha-ana", "ficha-paulo"],
+   "descricao": "The reception of the same tech company: Ana from the reference sheet behind the light wooden reception desk, earpiece around her neck, and Paulo from the reference sheet leaning on the desk beside her. Both look at the camera with big excited smiles, mouths about to open to shout, Ana's hands on the desk. Plants, navy blue wall with a golden yellow stripe behind them. Medium close shot of both."
+  },
+  {
+   "id": "clip-terraco-equipa",
+   "modelo": "pro",
+   "proporcao": "16:9",
+   "tamanho": "2K",
+   "referencias": ["ficha-ana", "ficha-paulo", "ficha-baptista", "ficha-silvia", "ficha-mateus", "ficha-nuno", "ficha-thandi"],
+   "descricao": "Rooftop terrace of an office building in Talatona, Luanda, late afternoon golden hour, the city skyline behind. The seven people from the reference sheets, each in the clothes of their sheet, dance together joyfully in a loose group, mid-movement, laughing: Ana and Paulo in front in the centre, Silvia and Thandi on the left, Mateus and Mr Baptista on the right, Nuno slightly behind clapping. Potted plants, string lights not yet lit, wooden deck. Wide shot, full bodies."
+  },
+  {
+   "id": "clip-mateus-plataforma",
+   "modelo": "pro",
+   "proporcao": "16:9",
+   "tamanho": "2K",
+   "referencias": ["ficha-mateus"],
+   "descricao": "On the deck of an offshore oil platform off Cabinda, open sea and blue sky behind, steel railings and yellow safety equipment. Mateus from the reference sheet, in his khaki shirt, white helmet and orange safety vest over the shirt, holds a handheld radio near his mouth and speaks with a confident smile, wind in the scene. Medium shot."
+  },
+  {
+   "id": "clip-silvia-cliente",
+   "modelo": "pro",
+   "proporcao": "16:9",
+   "tamanho": "2K",
+   "referencias": ["ficha-silvia"],
+   "descricao": "A bright office in Benguela with a view of palm trees and the sea through the window. Silvia from the reference sheet, standing, reaches out to shake hands with a foreign client who has just arrived (a middle-aged European man in a light suit, seen three-quarters from behind), welcoming him with a warm, confident smile. Medium shot."
+  },
+  {
+   "id": "clip-paulo-apresenta",
+   "modelo": "pro",
+   "proporcao": "16:9",
+   "tamanho": "2K",
+   "referencias": ["ficha-paulo", "ficha-thandi", "ficha-baptista"],
+   "descricao": "A meeting room with a long light wooden table and big windows over the city. Paulo from the reference sheet stands at the head of the table presenting with confidence, one hand gesturing, a large screen beside him seen from the side and blurred. Seated at the table, Thandi from her sheet smiles and nods, and Mr Baptista from his sheet leans back with a proud smile. Medium wide shot."
+  },
+  {
+   "id": "clip-marginal",
+   "modelo": "pro",
+   "proporcao": "16:9",
+   "tamanho": "2K",
+   "referencias": ["ficha-ana", "ficha-paulo", "ficha-baptista", "ficha-silvia", "ficha-mateus", "ficha-nuno", "ficha-thandi"],
+   "descricao": "The palm-lined seafront promenade of Luanda at sunset, the bay and city lights behind. Ana and Paulo from the reference sheets walk towards the camera in front, singing happily, and the other five people from the reference sheets (Silvia, Thandi, Mr Baptista, Mateus, Nuno), each in the clothes of their sheet, walk a few steps behind them, joining in, smiling. Wide tracking shot at eye level, full bodies."
+  }
+ ]
+}
