@@ -250,3 +250,47 @@ data,id,variante,modelo,tamanho,proporcao,referencias,custo_usd,ficheiro,uso
 2026-11-18T18:54:42,throat,2,gemini-nano-banana-2.1,1K,1:1,0,0.0336,throat/throat-2.png,banco A1: saude
 2026-11-18T18:55:10,back,2,gemini-nano-banana-2.1,1K,1:1,0,0.0336,back/back-2.png,banco A1: saude
 2026-11-18T18:55:26,stomach,2,gemini-nano-banana-2.1,1K,1:1,0,0.0336,stomach/stomach-2.png,banco A1: saude
+2026-11-18T21:49:42,stomach,3,gemini-nano-banana-2.1,1K,1:1,0,0.0336,stomach/stomach-3.png,banco A1: saude
+2026-11-18T21:50:00,stomach,4,gemini-nano-banana-2.1,1K,1:1,0,0.0336,stomach/stomach-4.png,banco A1: saude
+2026-11-19T05:31:22,estilo-foto,1,gemini-3-pro-image,1K,3:2,0,0.1340,estilo-foto/estilo-foto-1.png,escolha do estilo
+2026-11-19T05:31:42,estilo-ilustracao,1,gemini-3-pro-image,1K,3:2,0,0.1340,estilo-ilustracao/estilo-ilustracao-1.png,escolha do estilo
+2026-11-19T05:32:01,estilo-vectorial,1,gemini-3-pro-image,1K,3:2,0,0.1340,estilo-vectorial/estilo-vectorial-1.png,escolha do estilo
+2026-11-19T05:37:18,ficha-nuno,1,gemini-3-pro-image,2K,16:9,1,0.1351,ficha-nuno/ficha-nuno-1.png,bíblia de personagens
+2026-11-19T05:37:50,ficha-paulo,1,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-paulo/ficha-paulo-1.png,bíblia de personagens
+2026-11-19T05:38:19,ficha-silvia,1,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-silvia/ficha-silvia-1.png,bíblia de personagens
+2026-11-19T05:38:53,ficha-ana,1,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-ana/ficha-ana-1.png,bíblia de personagens
+2026-11-19T05:39:21,ficha-mateus,1,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-mateus/ficha-mateus-1.png,bíblia de personagens
+2026-11-19T05:39:51,ficha-baptista,1,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-baptista/ficha-baptista-1.png,bíblia de personagens
+2026-11-19T05:40:22,ficha-thandi,1,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-thandi/ficha-thandi-1.png,
+2026-11-19T05:40:53,capa-a1-1,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-a1-1/capa-a1-1-1.png,
+2026-11-19T05:41:28,capa-a1-2,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-a1-2/capa-a1-2-1.png,
+2026-11-19T05:41:58,capa-a2-1,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-a2-1/capa-a2-1-1.png,
+2026-11-19T05:42:30,capa-a2-2,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-a2-2/capa-a2-2-1.png,
+2026-11-19T05:43:01,capa-b1-1,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-b1-1/capa-b1-1-1.png,
+2026-11-19T05:43:34,capa-b1-2,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-b1-2/capa-b1-2-1.png,
+2026-11-19T05:44:04,capa-b2-1,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-b2-1/capa-b2-1-1.png,
+2026-11-19T05:44:36,capa-b2-2,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-b2-2/capa-b2-2-1.png,
+2026-11-19T05:45:05,capa-c1-1,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-c1-1/capa-c1-1-1.png,
+2026-11-19T05:45:34,capa-c1-2,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-c1-2/capa-c1-2-1.png,
+2026-11-19T05:46:13,capa-sector-petroleo,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-petroleo/capa-sector-petroleo-1.png,
+2026-11-19T05:46:45,capa-sector-banca,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-banca/capa-sector-banca-1.png,
+2026-11-19T05:47:14,capa-sector-tecnologia,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-tecnologia/capa-sector-tecnologia-1.png,
+2026-11-19T05:47:48,capa-sector-minas,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-minas/capa-sector-minas-1.png,
+2026-11-19T05:48:21,capa-sector-aviacao,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-aviacao/capa-sector-aviacao-1.png,
+2026-11-19T05:48:52,capa-sector-saude,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-saude/capa-sector-saude-1.png,
+2026-11-19T05:49:26,capa-sector-direito,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-direito/capa-sector-direito-1.png,
+2026-11-19T05:49:55,capa-sector-negocios,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-negocios/capa-sector-negocios-1.png,
+2026-11-19T05:54:05,ficha-ana,2,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-ana/ficha-ana-2.png,bíblia de personagens
+2026-11-19T05:54:34,capa-c1-1,2,gemini-3-pro-image,2K,4:3,0,0.1340,capa-c1-1/capa-c1-1-2.png,
+2026-11-19T05:55:58,site-paulo,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-paulo/site-paulo-1.png,
+2026-11-19T05:56:38,site-silvia,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-silvia/site-silvia-1.png,
+2026-11-19T05:57:27,site-ana,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-ana/site-ana-1.png,
+2026-11-19T05:59:30,site-mateus,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-mateus/site-mateus-1.png,
+2026-11-19T06:00:09,site-baptista,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-baptista/site-baptista-1.png,
+2026-11-19T06:00:47,site-nuno,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-nuno/site-nuno-1.png,
+2026-11-19T06:01:28,site-thandi,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-thandi/site-thandi-1.png,
+2026-11-19T06:04:57,site-cena-reuniao,1,gemini-3-pro-image,2K,3:2,3,0.1373,site-cena-reuniao/site-cena-reuniao-1.png,
+2026-11-19T06:05:35,site-cena-chamada,1,gemini-3-pro-image,2K,16:9,1,0.1351,site-cena-chamada/site-cena-chamada-1.png,
+2026-11-19T06:06:28,site-cena-escuta,1,gemini-3-pro-image,2K,16:9,1,0.1351,site-cena-escuta/site-cena-escuta-1.png,
+2026-11-19T06:07:25,site-cena-falar,1,gemini-3-pro-image,2K,3:2,3,0.1373,site-cena-falar/site-cena-falar-1.png,
+2026-11-19T06:08:11,site-cena-empresa,1,gemini-3-pro-image,2K,3:2,1,0.1351,site-cena-empresa/site-cena-empresa-1.png,

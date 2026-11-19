@@ -1,0 +1,143 @@
+{
+  "nota": "Retratos das personagens do A1 para a secção do site (19/11/2026), a partir das fichas aprovadas.",
+  "estilo": "Realistic editorial portrait photograph, natural window light, 50mm lens, shallow depth of field, true-to-life skin tones, warm but neutral colour grading, like a corporate magazine portrait. Half-body, the person looks at the camera with a natural friendly expression, face in the upper-centre of the frame.",
+  "regras": "Do not include any text, letters, numbers, logos, watermarks or captions anywhere in the image. Contemporary Angola, 2026. Respectful, natural, non-stereotyped depiction of African professionals. No real people, no real brands.",
+  "imagens": [
+    {
+      "id": "site-paulo",
+      "modelo": "pro",
+      "proporcao": "4:5",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-paulo"
+      ],
+      "estilo": "Realistic editorial portrait photograph, natural window light, 50mm lens, shallow depth of field, true-to-life skin tones, warm but neutral colour grading, like a corporate magazine portrait. Half-body, the person looks at the camera with a natural friendly expression, face in the upper-centre of the frame.",
+      "descricao": "Paulo Mendes from the reference sheet, same face, glasses and clothes, at his desk in a bright small technology office in Talatona, Luanda, two monitors softly blurred behind him."
+    },
+    {
+      "id": "site-silvia",
+      "modelo": "pro",
+      "proporcao": "4:5",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-silvia"
+      ],
+      "estilo": "Realistic editorial portrait photograph, natural window light, 50mm lens, shallow depth of field, true-to-life skin tones, warm but neutral colour grading, like a corporate magazine portrait. Half-body, the person looks at the camera with a natural friendly expression, face in the upper-centre of the frame.",
+      "descricao": "Sílvia Neto from the reference sheet, same face, hair and clothes, holding her folder in the accounts office of the same small technology company, shelves with binders blurred behind (no readable text)."
+    },
+    {
+      "id": "site-ana",
+      "modelo": "pro",
+      "proporcao": "4:5",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-ana"
+      ],
+      "estilo": "Realistic editorial portrait photograph, natural window light, 50mm lens, shallow depth of field, true-to-life skin tones, warm but neutral colour grading, like a corporate magazine portrait. Half-body, the person looks at the camera with a natural friendly expression, face in the upper-centre of the frame.",
+      "descricao": "Ana Domingos from the reference sheet, same face, braids, navy blazer and neckband headset, standing behind the light wooden reception desk of the company, warm smile."
+    },
+    {
+      "id": "site-mateus",
+      "modelo": "pro",
+      "proporcao": "4:5",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-mateus"
+      ],
+      "estilo": "Realistic editorial portrait photograph, natural window light, 50mm lens, shallow depth of field, true-to-life skin tones, warm but neutral colour grading, like a corporate magazine portrait. Half-body, the person looks at the camera with a natural friendly expression, face in the upper-centre of the frame.",
+      "descricao": "Mateus from the reference sheet, same face and moustache, khaki work shirt, white hard hat under his arm, outdoors at an industrial site near the coast of Cabinda, soft late-afternoon light."
+    },
+    {
+      "id": "site-baptista",
+      "modelo": "pro",
+      "proporcao": "4:5",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-baptista"
+      ],
+      "estilo": "Realistic editorial portrait photograph, natural window light, 50mm lens, shallow depth of field, true-to-life skin tones, warm but neutral colour grading, like a corporate magazine portrait. Half-body, the person looks at the camera with a natural friendly expression, face in the upper-centre of the frame.",
+      "descricao": "Sr. João Baptista from the reference sheet, same face, grey hair and moustache, dark-grey suit, reading glasses on a cord, in his manager's office with a window over Talatona, calm and kind authority."
+    },
+    {
+      "id": "site-nuno",
+      "modelo": "pro",
+      "proporcao": "4:5",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-nuno"
+      ],
+      "estilo": "Realistic editorial portrait photograph, natural window light, 50mm lens, shallow depth of field, true-to-life skin tones, warm but neutral colour grading, like a corporate magazine portrait. Half-body, the person looks at the camera with a natural friendly expression, face in the upper-centre of the frame.",
+      "descricao": "Nuno from the reference sheet, same face, light-blue short-sleeved shirt and lanyard, in the office kitchenette of the company, holding a coffee mug, slightly shy smile."
+    },
+    {
+      "id": "site-thandi",
+      "modelo": "pro",
+      "proporcao": "4:5",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-thandi"
+      ],
+      "estilo": "Realistic editorial portrait photograph, natural window light, 50mm lens, shallow depth of field, true-to-life skin tones, warm but neutral colour grading, like a corporate magazine portrait. Half-body, the person looks at the camera with a natural friendly expression, face in the upper-centre of the frame.",
+      "descricao": "Thandi Mokoena from the reference sheet, same face and short hair, charcoal suit with teal blouse, laptop bag on her shoulder, arriving in the bright lobby of the company, confident smile."
+    },
+    {
+      "id": "site-cena-reuniao",
+      "modelo": "pro",
+      "proporcao": "3:2",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-baptista",
+        "ficha-thandi",
+        "ficha-paulo"
+      ],
+      "estilo": "Realistic editorial photograph, natural window light, 35mm lens, shallow depth of field, true-to-life skin tones, warm but neutral colour grading, like a corporate magazine photo. Candid, not posed for the camera.",
+      "descricao": "Mr Baptista, Thandi and Paulo from the reference sheets (same faces and clothes) in a meeting around a table in a bright small technology office in Talatona, Luanda. Thandi is speaking and gesturing, the two men listen with interest; laptops and coffee cups on the table, screens show nothing readable."
+    },
+    {
+      "id": "site-cena-chamada",
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-silvia"
+      ],
+      "estilo": "Realistic editorial photograph, natural window light, 35mm lens, shallow depth of field, true-to-life skin tones, warm but neutral colour grading, like a corporate magazine photo. Candid, not posed for the camera.",
+      "descricao": "Sílvia from the reference sheet (same face, hair and mustard blouse) on the phone at her office desk, a computer in front of her, listening attentively and taking a note, bright office in Luanda."
+    },
+    {
+      "id": "site-cena-escuta",
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-paulo"
+      ],
+      "estilo": "Realistic editorial photograph, natural window light, 35mm lens, shallow depth of field, true-to-life skin tones, warm but neutral colour grading, like a corporate magazine photo. Candid, not posed for the camera.",
+      "descricao": "Paulo from the reference sheet (same face, glasses and white shirt) on a video call at his desk, wireless headphones around his neck, leaning towards the laptop and listening carefully; the laptop screen faces away from the camera."
+    },
+    {
+      "id": "site-cena-falar",
+      "modelo": "pro",
+      "proporcao": "3:2",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-mateus",
+        "ficha-ana",
+        "ficha-nuno"
+      ],
+      "estilo": "Realistic editorial photograph, natural window light, 35mm lens, shallow depth of field, true-to-life skin tones, warm but neutral colour grading, like a corporate magazine photo. Candid, not posed for the camera.",
+      "descricao": "Mateus from the reference sheet (same face, khaki shirt) standing and speaking confidently to a small group of seated colleagues in an office, among them Ana and Nuno from their reference sheets listening and smiling."
+    },
+    {
+      "id": "site-cena-empresa",
+      "modelo": "pro",
+      "proporcao": "3:2",
+      "tamanho": "2K",
+      "referencias": [
+        "ficha-baptista"
+      ],
+      "estilo": "Realistic editorial photograph, natural window light, 35mm lens, shallow depth of field, true-to-life skin tones, warm but neutral colour grading, like a corporate magazine photo. Candid, not posed for the camera.",
+      "descricao": "Mr Baptista from the reference sheet (same face, grey suit) standing in an open-plan office with an open folder in his hands, smiling at his team, colleagues at desks softly blurred around him."
+    }
+  ]
+}
