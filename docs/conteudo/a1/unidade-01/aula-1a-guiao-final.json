@@ -105,7 +105,7 @@
     },
     {
       "id": "11-o-nome", "etapa": "Descobrir: o nome", "tipo": "V",
-      "ecra": {"modelo": "regra", "linhas": ["I am → I'm", "I'm Ana.", "My name is Ana."]},
+      "ecra": {"modelo": "regra", "linhas": ["I'm = I am", "I'm Ana.", "My name is Ana."]},
       "passos": [
         {"fala": "How does Ana say her name?", "por": "luena", "lingua": "en", "pt": "Como é que a Ana diz o nome dela?"},
         {"pausa": 3, "mostra": "I'm Ana."},
