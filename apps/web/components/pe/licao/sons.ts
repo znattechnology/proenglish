@@ -7,7 +7,7 @@
  */
 
 /** Sobe quando os ficheiros mudam (p.ex. a voz clonada da Luena), para não ficar a versão em cache. */
-const VERSAO = "1";
+const VERSAO = "2";
 
 export type Toque = "certo" | "errado" | "sequencia" | "sem-vidas" | "concluida" | "meta";
 
