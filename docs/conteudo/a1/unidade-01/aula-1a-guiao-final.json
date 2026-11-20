@@ -1,0 +1,246 @@
+{
+  "aula": "A1.1 · Unidade 1 · Aula 1A — Hello, I'm…",
+  "versao": "1, 20/11/2026 — para revisão do inglês pelo professor da equipa",
+  "plano": "aula-1a-producao.md",
+  "regras": {
+    "tipos": "C = Luena em câmara (Omni + Speech-to-Speech); V = voz da Luena sobre ecrã (clone oficial, eleven_multilingual_v2, velocidade 0.9); D = diálogo (vozes fixas da Ana e do Paulo); M = só montagem",
+    "passos": "fala = alguém fala (por: luena | ana | paulo; lingua: en | pt; pt = legenda em português); pausa = segundos de silêncio com barra de tempo, 'mostra' aparece no fim da pausa; ecra = muda o que está no ecrã",
+    "pausas": "repetir = frase × 2 + 1 s (mínimo 3 s); responder = 4–5 s; falar livremente = 6 s",
+    "ortografia": "inglês britânico; legendas em português de Angola/Portugal, grafia pré-1990"
+  },
+  "segmentos": [
+    {
+      "id": "01-abertura", "etapa": "Abertura", "tipo": "C", "enquadramento": "plano médio", "gesto": "aceno e sorriso largo",
+      "passos": [
+        {"fala": "Hello again! Welcome to your first lesson. Today: hello, your name, and goodbye.", "por": "luena", "lingua": "en",
+         "pt": "Olá outra vez! Bem-vindo à sua primeira aula. Hoje: cumprimentar, dizer o seu nome e despedir-se."}
+      ]
+    },
+    {
+      "id": "02-objectivos", "etapa": "O que vai conseguir", "tipo": "V",
+      "ecra": {"modelo": "objectivos", "titulo": "Hello, I'm…", "itens": ["Say hello", "Say your name", "Say goodbye"], "marcados": false},
+      "passos": [
+        {"fala": "At the end of this lesson, you can say hello, say your name, and say goodbye.", "por": "luena", "lingua": "en",
+         "pt": "No fim desta aula, vai conseguir cumprimentar, dizer o seu nome e despedir-se."}
+      ]
+    },
+    {
+      "id": "03-ja-sabe", "etapa": "Já sabe algum inglês", "tipo": "V",
+      "ecra": {"modelo": "palavras", "itens": ["hello", "hi", "bye"]},
+      "passos": [
+        {"fala": "You know some English! Look: hello, hi, bye.", "por": "luena", "lingua": "en",
+         "pt": "Já sabe algum inglês! Veja: hello, hi, bye."}
+      ]
+    },
+    {
+      "id": "04-proposito", "etapa": "Ouvir com um propósito", "tipo": "V",
+      "ecra": {"modelo": "pergunta", "rotulo": "8:00 — Kalandula Tech", "itens": ["What's her name?", "What's his name?"]},
+      "passos": [
+        {"fala": "It's eight o'clock in the morning, at Kalandula Tech. Listen. What's her name? What's his name?", "por": "luena", "lingua": "en",
+         "pt": "São oito da manhã, na Kalandula Tech. Ouça. Como se chama ela? Como se chama ele?"}
+      ]
+    },
+    {
+      "id": "05-dialogo", "etapa": "Diálogo", "tipo": "D",
+      "ecra": {"modelo": "cena", "imagem": "recepcao-ana-paulo"},
+      "passos": [
+        {"fala": "Good morning!", "por": "ana", "lingua": "en", "pt": "Bom dia!"},
+        {"fala": "Good morning!", "por": "paulo", "lingua": "en", "pt": "Bom dia!"},
+        {"fala": "I'm Ana. Ana Domingos. What's your name?", "por": "ana", "lingua": "en", "pt": "Sou a Ana. Ana Domingos. Como se chama?"},
+        {"fala": "Hello, Ana. I'm Paulo. Paulo Mendes.", "por": "paulo", "lingua": "en", "pt": "Olá, Ana. Sou o Paulo. Paulo Mendes."},
+        {"fala": "Nice to meet you, Paulo.", "por": "ana", "lingua": "en", "pt": "Muito prazer, Paulo."},
+        {"fala": "Nice to meet you, too.", "por": "paulo", "lingua": "en", "pt": "Muito prazer também."},
+        {"fala": "Are you the new IT technician?", "por": "ana", "lingua": "en", "pt": "É o novo técnico de informática?"},
+        {"fala": "Yes, I am.", "por": "paulo", "lingua": "en", "pt": "Sim, sou."},
+        {"fala": "Welcome to Kalandula Tech!", "por": "ana", "lingua": "en", "pt": "Bem-vindo à Kalandula Tech!"},
+        {"fala": "Thank you.", "por": "paulo", "lingua": "en", "pt": "Obrigado."}
+      ]
+    },
+    {
+      "id": "06-resposta", "etapa": "Resposta", "tipo": "V",
+      "ecra": {"modelo": "nomes", "itens": [{"imagem": "ana", "nome": "Ana"}, {"imagem": "paulo", "nome": "Paulo"}]},
+      "passos": [
+        {"fala": "Her name is Ana. His name is Paulo. Good!", "por": "luena", "lingua": "en",
+         "pt": "Ela chama-se Ana. Ele chama-se Paulo. Muito bem!"}
+      ]
+    },
+    {
+      "id": "07-outra-vez", "etapa": "Ouvir outra vez, a ler", "tipo": "V+D",
+      "ecra": {"modelo": "dialogo-texto", "repete": "05-dialogo", "acender_palavras": true, "traducao": true},
+      "passos": [
+        {"fala": "Listen again. Look at the words.", "por": "luena", "lingua": "en", "pt": "Ouça outra vez. Olhe para as palavras."},
+        {"repete": "05-dialogo"}
+      ]
+    },
+    {
+      "id": "08-cumprimentos", "etapa": "Descobrir: cumprimentos", "tipo": "V",
+      "ecra": {"modelo": "linha-do-dia", "partes": [{"hora": "até às 12h", "texto": "Good morning"}, {"hora": "12h–18h", "texto": "Good afternoon"}, {"hora": "depois das 18h", "texto": "Good evening"}]},
+      "passos": [
+        {"fala": "What does Ana say at eight in the morning?", "por": "luena", "lingua": "en", "pt": "O que diz a Ana às oito da manhã?"},
+        {"pausa": 3, "mostra": "Good morning!"},
+        {"fala": "Good morning! In the morning, we say: Good morning. Repeat.", "por": "luena", "lingua": "en", "pt": "Good morning! De manhã, dizemos: Good morning. Repita."},
+        {"pausa": 3},
+        {"fala": "In the afternoon: Good afternoon.", "por": "luena", "lingua": "en", "pt": "À tarde: Good afternoon."},
+        {"pausa": 3},
+        {"fala": "In the evening: Good evening.", "por": "luena", "lingua": "en", "pt": "À noite: Good evening."},
+        {"pausa": 3}
+      ]
+    },
+    {
+      "id": "09-verificar", "etapa": "Verificar", "tipo": "V",
+      "ecra": {"modelo": "escolha", "itens": ["Good evening", "Good night"], "certa": 0},
+      "passos": [
+        {"fala": "It's eight p.m. You arrive at a meeting. Good evening, or good night?", "por": "luena", "lingua": "en",
+         "pt": "São oito da noite. Chega a uma reunião. Good evening ou good night?"},
+        {"pausa": 3, "mostra": "Good evening!"},
+        {"fala": "Good evening!", "por": "luena", "lingua": "en", "pt": "Good evening!"}
+      ]
+    },
+    {
+      "id": "10-aviso-good-night", "etapa": "Aviso 1", "tipo": "V",
+      "ecra": {"modelo": "aviso", "linhas": [{"pt": "«Boa noite!» ao chegar", "en": "Good evening!"}, {"pt": "«Boa noite!» ao sair", "en": "Good night!"}]},
+      "passos": [
+        {"fala": "Atenção: em português dizemos «boa noite» ao chegar. Em inglês, ao chegar à noite, diz-se «Good evening». «Good night» é só para se despedir.", "por": "luena", "lingua": "pt"}
+      ]
+    },
+    {
+      "id": "11-o-nome", "etapa": "Descobrir: o nome", "tipo": "V",
+      "ecra": {"modelo": "regra", "linhas": ["I am → I'm", "I'm Ana.", "My name is Ana."]},
+      "passos": [
+        {"fala": "How does Ana say her name?", "por": "luena", "lingua": "en", "pt": "Como é que a Ana diz o nome dela?"},
+        {"pausa": 3, "mostra": "I'm Ana."},
+        {"fala": "I'm Ana. I'm is I am. We usually say I'm. You can also say: My name is Ana.", "por": "luena", "lingua": "en",
+         "pt": "I'm Ana. «I'm» é «I am». A falar, dizemos quase sempre «I'm». Também pode dizer: My name is Ana."}
+      ]
+    },
+    {
+      "id": "12-perguntar-nome", "etapa": "Perguntar o nome", "tipo": "V",
+      "ecra": {"modelo": "troca", "linhas": [{"quem": "Ana", "en": "What's your name?", "pt": "Como se chama?"}, {"quem": "Paulo", "en": "I'm Paulo. And you?", "pt": "Sou o Paulo. E você?"}]},
+      "passos": [
+        {"fala": "Ana asks: What's your name? Paulo answers: I'm Paulo. And you?", "por": "luena", "lingua": "en",
+         "pt": "A Ana pergunta: What's your name? O Paulo responde: I'm Paulo. And you?"},
+        {"fala": "Repeat: What's your name?", "por": "luena", "lingua": "en", "pt": "Repita: What's your name?"},
+        {"pausa": 4}
+      ]
+    },
+    {
+      "id": "13-are-you", "etapa": "Are you…?", "tipo": "V",
+      "ecra": {"modelo": "tabela", "linhas": [["Are you Paulo?", "Yes, I am."], ["Are you Ana?", "No, I'm not."]]},
+      "passos": [
+        {"fala": "Are you Paulo? Yes, I am. Are you Ana? No, I'm not.", "por": "luena", "lingua": "en",
+         "pt": "É o Paulo? Sim, sou. É a Ana? Não, não sou."}
+      ]
+    },
+    {
+      "id": "14-aviso-yes-i-am", "etapa": "Aviso 2", "tipo": "V",
+      "ecra": {"modelo": "certo-errado", "certo": "Yes, I am.", "errado": "Yes, I'm."},
+      "passos": [
+        {"fala": "Atenção: na resposta curta diz-se «Yes, I am», e nunca «Yes, I'm».", "por": "luena", "lingua": "pt"}
+      ]
+    },
+    {
+      "id": "15-como-esta", "etapa": "Como está e muito prazer", "tipo": "V",
+      "ecra": {"modelo": "troca", "linhas": [{"en": "How are you?", "pt": "Como está?"}, {"en": "I'm fine, thanks. And you?", "pt": "Estou bem, obrigado. E você?"}, {"en": "Nice to meet you.", "pt": "Muito prazer."}, {"en": "Nice to meet you, too.", "pt": "Muito prazer também."}]},
+      "passos": [
+        {"fala": "How are you? I'm fine, thanks. And you?", "por": "luena", "lingua": "en", "pt": "Como está? Estou bem, obrigado. E você?"},
+        {"fala": "Nice to meet you. Nice to meet you, too.", "por": "luena", "lingua": "en", "pt": "Muito prazer. Muito prazer também."}
+      ]
+    },
+    {
+      "id": "16-despedir", "etapa": "Despedir-se", "tipo": "V",
+      "ecra": {"modelo": "lista", "itens": ["Goodbye.", "Bye.", "See you tomorrow."]},
+      "passos": [
+        {"fala": "At the end of the day: Goodbye. Bye. See you tomorrow.", "por": "luena", "lingua": "en",
+         "pt": "No fim do dia: Goodbye. Bye. See you tomorrow (até amanhã)."}
+      ]
+    },
+    {
+      "id": "17-pronuncia-h", "etapa": "Pronúncia: o «h»", "tipo": "C", "enquadramento": "grande plano", "gesto": "mão à frente da boca no «h»",
+      "passos": [
+        {"fala": "Listen: hello. How are you? The first sound is h. Air out: h… h… hello.", "por": "luena", "lingua": "en",
+         "pt": "Ouça: hello. How are you? O primeiro som é «h». Deita-se ar para fora: h… h… hello."}
+      ]
+    },
+    {
+      "id": "18-aviso-h", "etapa": "Aviso 3", "tipo": "V",
+      "ecra": {"modelo": "aviso-simples", "texto": "h → ar para fora: hello, how"},
+      "passos": [
+        {"fala": "Em português, o «h» não se ouve. Em inglês, sim: deita-se ar para fora.", "por": "luena", "lingua": "pt"}
+      ]
+    },
+    {
+      "id": "19-repetir-h", "etapa": "Repetir", "tipo": "M",
+      "passos": [
+        {"fala": "Repeat: Hello.", "por": "luena", "lingua": "en", "pt": "Repita: Hello."},
+        {"pausa": 3, "cartao": "Hello."},
+        {"fala": "How are you?", "por": "luena", "lingua": "en", "pt": "How are you?"},
+        {"pausa": 3, "cartao": "How are you?"}
+      ]
+    },
+    {
+      "id": "20-pronuncia-im", "etapa": "Pronúncia: I'm", "tipo": "C", "enquadramento": "grande plano", "gesto": "um dedo no «one sound»",
+      "passos": [
+        {"fala": "Now: I'm. One sound: I'm. Not I am. Fast: I'm.", "por": "luena", "lingua": "en",
+         "pt": "Agora: I'm. Um só som: I'm. Não «I am». Rápido: I'm."}
+      ]
+    },
+    {
+      "id": "21-repetir-fim-inicio", "etapa": "Repetir do fim para o início", "tipo": "M",
+      "passos": [
+        {"fala": "Repeat: meet you.", "por": "luena", "lingua": "en", "pt": "Repita: meet you."},
+        {"pausa": 3, "cartao": "meet you"},
+        {"fala": "to meet you.", "por": "luena", "lingua": "en", "pt": "to meet you."},
+        {"pausa": 3, "cartao": "to meet you"},
+        {"fala": "Nice to meet you.", "por": "luena", "lingua": "en", "pt": "Nice to meet you."},
+        {"pausa": 4, "cartao": "Nice to meet you."},
+        {"fala": "I'm Paulo.", "por": "luena", "lingua": "en", "pt": "I'm Paulo."},
+        {"pausa": 3, "cartao": "I'm Paulo."}
+      ]
+    },
+    {
+      "id": "22-pratica", "etapa": "Prática guiada", "tipo": "V",
+      "ecra": {"modelo": "chamada"},
+      "passos": [
+        {"fala": "Now you speak. I say something. You answer.", "por": "luena", "lingua": "en", "pt": "Agora fala o aluno. Eu digo uma frase e o aluno responde."},
+        {"fala": "Good morning!", "por": "luena", "lingua": "en", "pt": "Bom dia!"},
+        {"pausa": 4, "mostra": "Good morning!"},
+        {"fala": "What's your name?", "por": "luena", "lingua": "en", "pt": "Como se chama?"},
+        {"pausa": 5, "mostra": "I'm … (o seu nome)"},
+        {"fala": "Nice to meet you!", "por": "luena", "lingua": "en", "pt": "Muito prazer!"},
+        {"pausa": 4, "mostra": "Nice to meet you, too."},
+        {"fala": "How are you?", "por": "luena", "lingua": "en", "pt": "Como está?"},
+        {"pausa": 5, "mostra": "I'm fine, thanks. And you?"},
+        {"fala": "Are you Paulo?", "por": "luena", "lingua": "en", "pt": "É o Paulo?"},
+        {"pausa": 4, "mostra": "No, I'm not. I'm …  /  Yes, I am."},
+        {"fala": "It's the end of the day. Say goodbye.", "por": "luena", "lingua": "en", "pt": "É o fim do dia. Despeça-se."},
+        {"pausa": 4, "mostra": "Goodbye! See you tomorrow."}
+      ]
+    },
+    {
+      "id": "23-a-sua-vez", "etapa": "A sua vez, de verdade", "tipo": "D+V",
+      "ecra": {"modelo": "cena", "imagem": "ana-para-a-camara"},
+      "passos": [
+        {"fala": "Now Ana says hello to you.", "por": "luena", "lingua": "en", "pt": "Agora é a Ana que lhe diz olá."},
+        {"fala": "Good morning! I'm Ana. What's your name?", "por": "ana", "lingua": "en", "pt": "Bom dia! Sou a Ana. Como se chama?"},
+        {"pausa": 6},
+        {"fala": "Good! For example: Good morning, Ana. I'm… and your name. Nice to meet you.", "por": "luena", "lingua": "en",
+         "pt": "Muito bem! Por exemplo: Good morning, Ana. I'm… e o seu nome. Nice to meet you."}
+      ]
+    },
+    {
+      "id": "24-ja-consegue", "etapa": "Já consegue?", "tipo": "V",
+      "ecra": {"modelo": "objectivos", "titulo": "Hello, I'm…", "itens": ["Say hello", "Say your name", "Say goodbye"], "marcados": true},
+      "passos": [
+        {"fala": "Can you say hello? Can you say your name? Can you say goodbye?", "por": "luena", "lingua": "en",
+         "pt": "Consegue cumprimentar? Consegue dizer o seu nome? Consegue despedir-se?"}
+      ]
+    },
+    {
+      "id": "25-fecho", "etapa": "Fecho", "tipo": "C", "enquadramento": "plano médio", "gesto": "sorriso orgulhoso e aceno de despedida",
+      "passos": [
+        {"fala": "Very good! Now go to the Lab and practise. See you in the next lesson!", "por": "luena", "lingua": "en",
+         "pt": "Muito bem! Agora vá ao laboratório praticar. Até à próxima aula!"}
+      ]
+    }
+  ]
+}
