@@ -82,10 +82,10 @@
       },
       "passos": [
         {
-          "fala": "It's eight o'clock in the morning, at Kalandula Tech. Listen. What's her name? What's his name?",
+          "fala": "It's eight in the morning, at the office. Listen. What's her name? What's his name?",
           "por": "luena",
           "lingua": "en",
-          "pt": "São oito da manhã, na Kalandula Tech. Ouça. Como se chama ela? Como se chama ele?"
+          "pt": "São oito da manhã, no escritório. Ouça. Como se chama ela? Como se chama ele?"
         }
       ]
     },
@@ -283,7 +283,7 @@
       },
       "passos": [
         {
-          "fala": "It's eight p.m. You arrive at a meeting. Good evening, or good night?",
+          "fala": "It's eight in the evening. You arrive at a meeting. Good evening, or good night?",
           "por": "luena",
           "lingua": "en",
           "pt": "São oito da noite. Chega a uma reunião. Good evening ou good night?"
@@ -718,10 +718,10 @@
           "pausa": 6
         },
         {
-          "fala": "Good! For example: Good morning, Ana. I'm… and your name. Nice to meet you.",
+          "fala": "Good! For example: Good morning, Ana. I'm Luena. Nice to meet you.",
           "por": "luena",
           "lingua": "en",
-          "pt": "Muito bem! Por exemplo: Good morning, Ana. I'm… e o seu nome. Nice to meet you."
+          "pt": "Muito bem! Por exemplo: Good morning, Ana. I'm Luena (e o seu nome). Nice to meet you."
         }
       ]
     },
