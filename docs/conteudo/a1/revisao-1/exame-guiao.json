@@ -1,0 +1,97 @@
+{
+ "formato": "CourseGradingConfig.exam_script (apps/practice/conversa/exame.py, validar_guiao); carregar com manage.py carregar_exame_curso",
+ "nivel": "A1",
+ "duracao": "4 to 6 minutes",
+ "max_minutos": 7,
+ "situacoes": 1,
+ "partes": [
+  {
+   "titulo": "Interview",
+   "minutos": "about 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Hello, {nome}. Welcome to your speaking exam. What's your surname, and how do you spell it?",
+     "simples": "What's your surname? Spell it, please."
+    },
+    {
+     "pergunta": "Where are you from?",
+     "simples": "Your city? Your country?"
+    },
+    {
+     "pergunta": "What do you do?",
+     "simples": "What's your job?"
+    },
+    {
+     "pergunta": "Where do you work?",
+     "simples": "Your company? Your office?"
+    },
+    {
+     "pergunta": "Tell me about your family.",
+     "simples": "Do you have brothers and sisters? Do you have children?"
+    }
+   ]
+  },
+  {
+   "titulo": "My day",
+   "minutos": "about 1 to 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Now tell me about your day. What time do you get up?",
+     "simples": "What time do you get up? Six? Seven?"
+    },
+    {
+     "pergunta": "How do you go to work?",
+     "simples": "By bus? By car?"
+    },
+    {
+     "pergunta": "What do you usually do at the weekend?",
+     "simples": "On Saturday, what do you do?"
+    },
+    {
+     "pergunta": "Think of a person in your family or a friend. What does he or she do every day?",
+     "simples": "Your mother, your brother, your friend: what time does he or she get up?"
+    }
+   ]
+  }
+ ],
+ "notas": [
+  "After the family question, ask one follow-up: What's his or her name? How old is he or she?",
+  "After the question about another person, ask: Does he or she work on Saturdays?",
+  "If the student does not work (student, unemployed, retired), accept it and ask what they do every day.",
+  "If the student prefers not to talk about their family, accept it and ask about a friend.",
+  "Use only language from units 1 to 5 (be, present simple, have/has, questions with do/does): no past, no can."
+ ],
+ "escala": {
+  "tarefa": {
+   "80-100": "Answers every question and solves the situation without help.",
+   "60-79": "Answers most questions and solves the situation, with some repetition.",
+   "40-59": "Answers about half of the questions; the situation is left half done.",
+   "0-39": "Answers few questions, or answers in Portuguese."
+  },
+  "gramatica": {
+   "80-100": "be, present simple (with he/she), have/has and questions almost always correct.",
+   "60-79": "Frequent mistakes with the third person or articles, but the sentences are understood.",
+   "40-59": "Many mistakes; some sentences are not understood.",
+   "0-39": "Single words, almost no sentences."
+  },
+  "vocabulario": {
+   "80-100": "Uses the words of units 1-5 with ease and explains what they cannot say.",
+   "60-79": "Enough words for the tasks; some pauses to find words.",
+   "40-59": "Basic words are missing (times, family, jobs).",
+   "0-39": "Very few words, or Portuguese words."
+  },
+  "fluencia": {
+   "80-100": "Short sentences one after another, with few long pauses.",
+   "60-79": "Frequent pauses, but keeps talking; uses Let me think.",
+   "40-59": "Long pauses and very short sentences.",
+   "0-39": "Can hardly continue without help."
+  }
+ },
+ "nao_baixa": [
+  "a Portuguese accent",
+  "asking the examiner to repeat",
+  "saying Let me think",
+  "one Portuguese word followed by an explanation in English",
+  "short answers to yes/no questions"
+ ]
+}

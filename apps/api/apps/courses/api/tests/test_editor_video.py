@@ -14,6 +14,7 @@ from django.utils import timezone
 from rest_framework.test import APIClient, APITestCase
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from apps.courses.api.student.video_courses.conteudo import codigo_opcao
 from apps.courses.matriculas import matricular_em_curso
 from apps.courses.models import (
     Chapter, ChapterProgress, ChapterQuiz, ChapterResource, Course, CourseSection,
@@ -46,7 +47,7 @@ class Base(APITestCase):
 
     def criar(self, **extra):
         corpo = {'tipo': 'video', 'titulo': 'Inglês na Plataforma', 'descricao': 'Segurança a bordo',
-                 'area': 'Petróleo e Gás', 'nivel': 'Intermédio (B1)', 'acesso': 'premium',
+                 'area': 'Petróleo e Gás', 'nivel': 'B1', 'acesso': 'premium',
                  'seccoes': ['Chegada', 'Turno']}
         corpo.update(extra)
         return self.client.post(f'{PROF}cursos/', corpo, format='json')
@@ -66,7 +67,9 @@ class CriarCursoTests(Base):
         r = self.client.get(f'{PROF}cursos/opcoes/')
         self.assertEqual(r.status_code, 200)
         self.assertIn({'valor': 'Industry English', 'nome': 'Petróleo e Gás'}, r.data['areas'])
-        self.assertIn({'valor': 'Intermediate', 'nome': 'Intermédio (B1)'}, r.data['niveis'])
+        self.assertEqual([n['valor'] for n in r.data['niveis']], ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'])
+        self.assertIn({'valor': 'B1', 'nome': 'B1 (Intermédio)',
+                       'descricao': 'Consigo conversar sobre o trabalho com algum apoio'}, r.data['niveis'])
         # Os valores antigos com o mesmo rótulo vêm marcados como legado (para mostrar o valor actual).
         nomes = [a['nome'] for a in r.data['areas'] if not a.get('legado')]
         self.assertEqual(len(nomes), len(set(nomes)))
@@ -80,12 +83,13 @@ class CriarCursoTests(Base):
         self.assertEqual(r.data['estado'], 'rascunho')
         self.assertEqual(r.data['tipo'], 'video')
         self.assertEqual(r.data['area'], 'Petróleo e Gás')
-        self.assertEqual(r.data['nivel'], 'Intermédio (B1)')
+        self.assertEqual(r.data['nivel'], 'Nível B1')
+        self.assertEqual(r.data['nivel_codigo'], 'B1')
         self.assertEqual(r.data['acesso'], 'premium')
         self.assertEqual(r.data['seccoes'], 2)
         curso = Course.objects.get(id=r.data['id'])
         self.assertEqual((curso.status, curso.access_level, curso.category, curso.level, curso.teacher_id),
-                         ('Draft', 'premium', 'Industry English', 'Intermediate', self.prof.id))
+                         ('Draft', 'premium', 'Industry English', 'B1', self.prof.id))
         self.assertEqual(list(curso.sections.order_by('order').values_list('sectionTitle', flat=True)),
                          ['Chegada', 'Turno'])
         # Mesmo formato que o GET do detalhe.
@@ -93,14 +97,25 @@ class CriarCursoTests(Base):
         self.assertTrue(set(detalhe) <= set(r.data))
 
     def test_criar_pratica_com_unidades_e_acesso_todos(self):
-        r = self.criar(tipo='pratica', area='Banca', nivel='Beginner', acesso='todos', seccoes=None,
+        r = self.criar(tipo='pratica', area='Banca', nivel='a2', acesso='todos', seccoes=None,
                        unidades=['Saudações', 'Números'])
         self.assertEqual(r.status_code, 201, r.content)
         curso = Course.objects.get(id=r.data['id'])
         self.assertEqual((curso.course_type, curso.category, curso.access_level, curso.status),
                          ('practice', 'Banking', 'free', 'Draft'))
+        self.assertEqual(curso.level, 'A2')
         self.assertEqual(list(PracticeUnit.objects.filter(course=curso).order_by('order')
                               .values_list('title', flat=True)), ['Saudações', 'Números'])
+
+    def test_nivel_so_aceita_cefr(self):
+        for antigo in ('Beginner', 'Intermediate', 'Advanced', 'iniciante', 'Intermédio (B1)', 'D1'):
+            r = self.criar(nivel=antigo)
+            self.assertEqual(r.status_code, 400, antigo)
+            self.assertIn('nivel', r.data['details'])
+        for codigo in ('A1', 'A2', 'B1', 'B2', 'C1', 'C2'):
+            r = self.criar(nivel=codigo)
+            self.assertEqual(r.status_code, 201, r.content)
+            self.assertEqual(Course.objects.get(id=r.data['id']).level, codigo)
 
     def test_validacao(self):
         r = self.criar(titulo='x' * 61, area='Astronomia', nivel='Expert', acesso='vip', tipo='outro')
@@ -317,7 +332,7 @@ class QuestionarioTests(Base):
         self.assertEqual([x['question'] for x in qs], ['Mudada?', 'Pergunta 1?'])
         self.assertNotIn('correctOptionId', qs[0])
         self.assertNotIn('isCorrect', qs[0]['options'][0])
-        respostas = {ids[0]: 'a', ids[1]: 'b'}
+        respostas = {ids[0]: codigo_opcao(a1['id'], ids[0], 'a'), ids[1]: codigo_opcao(a1['id'], ids[1], 'b')}
         t = self.client.post(f'{ALUNO}chapters/{a1["id"]}/quiz/attempts/', {'respostas': respostas}, format='json')
         self.assertEqual(t.status_code, 201, t.content)
         self.assertEqual(t.data['data']['score_percentage'], 100)
@@ -474,6 +489,10 @@ class PercentagemVistaTests(Base):
                                               completed=True).exists()
 
     def test_conta_como_vista_ao_chegar_a_percentagem(self):
+        # O aluno abriu a aula há 10 minutos (o crédito não passa do tempo real desde a abertura).
+        from apps.courses.tempo_video import _chave_aberta
+        from django.core.cache import cache
+        cache.set(_chave_aberta(self.aluno.pk, self.aula.pk), (timezone.now() - timedelta(minutes=10)).timestamp(), 3600)
         r = self.enviar(40)
         self.assertEqual(r.status_code, 200, r.content)
         self.assertFalse(r.data['aula_concluida'])

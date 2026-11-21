@@ -1,0 +1,411 @@
+{
+ "unidade": "A2.1 · Review 1",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "A2R1-1",
+   "titulo": "Review 1: work, life stories and plans",
+   "aula": "R1A",
+   "objectivo": "Rever as unidades 1 a 3 do A2: os dois presentes, os dois passados e os três futuros, com os erros mais comuns.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I usually [support] the staff, but this month [I'm working] on a big project.",
+     "opcoes": [
+      {
+       "texto": "supporting",
+       "certa": false
+      },
+      {
+       "texto": "I work",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I need a new laptop.",
+       "certa": true
+      },
+      {
+       "texto": "I'm needing a new laptop.",
+       "certa": false
+      },
+      {
+       "texto": "I needing a new laptop.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You want to know about her personality. Choose the question.",
+     "opcoes": [
+      {
+       "texto": "What's she like?",
+       "certa": true
+      },
+      {
+       "texto": "What does she like?",
+       "certa": false
+      },
+      {
+       "texto": "How does she look like?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I was born in Huambo.",
+       "certa": true
+      },
+      {
+       "texto": "I born in Huambo.",
+       "certa": false
+      },
+      {
+       "texto": "I am born in Huambo.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "What happened?",
+       "certa": true
+      },
+      {
+       "texto": "What did happen?",
+       "certa": false
+      },
+      {
+       "texto": "What did happened?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [was checking] the cables when the power went off.",
+     "opcoes": [
+      {
+       "texto": "am checking",
+       "certa": false
+      },
+      {
+       "texto": "were checking",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Would you like to come?",
+       "certa": true
+      },
+      {
+       "texto": "Would you like coming?",
+       "certa": false
+      },
+      {
+       "texto": "Would you like come?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The phone's ringing!\" — Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "I'll answer it.",
+       "certa": true
+      },
+      {
+       "texto": "I'll to answer it.",
+       "certa": false
+      },
+      {
+       "texto": "I answering it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "It's in your diary: Saturday, lunch with your aunt. Choose the sentence.",
+     "opcoes": [
+      {
+       "texto": "On Saturday I'm having lunch with my aunt.",
+       "certa": true
+      },
+      {
+       "texto": "On Saturday I have lunch with my aunt yesterday.",
+       "certa": false
+      },
+      {
+       "texto": "On Saturday I had lunch with my aunt next week.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I was checking the cables on the third floor when the power went off. The UPS didn't arrive on time, so we had to stop for two hours.",
+     "enunciado": "Why did they have to stop?",
+     "opcoes": [
+      {
+       "texto": "The power went off, and the UPS wasn't there.",
+       "certa": true
+      },
+      {
+       "texto": "Nuno was sick.",
+       "certa": false
+      },
+      {
+       "texto": "The cables were broken.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I usually support the staff, but this month I'm working on a big project.",
+     "enunciado": "Ouça e repita: present simple e present continuous lado a lado."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you usually do at work, and what are you working on these days?",
+     "frase": "these days",
+     "resposta": "I usually answer clients' emails and check orders. These days I'm preparing the end-of-year report, so I'm very busy.",
+     "contexto": "O habitual e o deste período."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a difficult moment this year. What were you doing when it happened?",
+     "frase": "when",
+     "resposta": "I was driving to a meeting when my car stopped. So I called a taxi. In the end, I arrived only ten minutes late.",
+     "contexto": "Past continuous, when e in the end."
+    }
+   ]
+  },
+  {
+   "codigo": "A2R1-2",
+   "titulo": "Review 1: choosing, health and the exam",
+   "aula": "R1B",
+   "objectivo": "Rever as unidades 4 e 5 do A2 e as estratégias do exame.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Projector B is [much] cheaper, but it isn't as bright [as] Projector A.",
+     "opcoes": [
+      {
+       "texto": "very",
+       "certa": false
+      },
+      {
+       "texto": "than",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I need some information about the price.",
+       "certa": true
+      },
+      {
+       "texto": "I need some informations about the price.",
+       "certa": false
+      },
+      {
+       "texto": "I need an information about the price.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's the best restaurant [in] Luanda.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "You should rest.",
+       "certa": true
+      },
+      {
+       "texto": "You should to rest.",
+       "certa": false
+      },
+      {
+       "texto": "You should resting.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Não é preciso usar gravata. Choose the sentence.",
+     "opcoes": [
+      {
+       "texto": "You don't have to wear a tie.",
+       "certa": true
+      },
+      {
+       "texto": "You mustn't wear a tie.",
+       "certa": false
+      },
+      {
+       "texto": "You haven't to wear a tie.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "É proibido fumar aqui. Choose the sentence.",
+     "opcoes": [
+      {
+       "texto": "You mustn't smoke here.",
+       "certa": true
+      },
+      {
+       "texto": "You don't have to smoke here.",
+       "certa": false
+      },
+      {
+       "texto": "You mustn't to smoke here.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You need time to think in the exam. What do you say?",
+     "opcoes": [
+      {
+       "texto": "That's a good question. Well…",
+       "certa": true
+      },
+      {
+       "texto": "I don't know. Next question.",
+       "certa": false
+      },
+      {
+       "texto": "Wait. Wait. Wait.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You're not sure what the examiner means by \"background\". What do you say?",
+     "opcoes": [
+      {
+       "texto": "Do you mean my studies?",
+       "certa": true
+      },
+      {
+       "texto": "What?",
+       "certa": false
+      },
+      {
+       "texto": "I don't understand English.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I recommend Projector B. It isn't as bright as Projector A, but it's much cheaper, and the warranty is longer — three years.",
+     "enunciado": "Why does Lurdes recommend Projector B?",
+     "opcoes": [
+      {
+       "texto": "It's cheaper, and the warranty is longer.",
+       "certa": true
+      },
+      {
+       "texto": "It's brighter.",
+       "certa": false
+      },
+      {
+       "texto": "The delivery is quicker.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "That's a good question. Well… Do you mean my studies?",
+     "enunciado": "Ouça e repita as duas estratégias novas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "I'm your manager. Laptop A: 600 000 Kz, light, battery for ten hours. Laptop B: 450 000 Kz, heavier, battery for five hours. Which one do you recommend for the sales team?",
+     "frase": "I recommend",
+     "resposta": "I recommend Laptop A. It's more expensive, but it's much lighter, and the battery lasts ten hours, not five. The sales team travels a lot. The only disadvantage is the price.",
+     "contexto": "Recomendação, razões e uma desvantagem."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "I'm your colleague. I have back pain, and tomorrow I have to drive to Benguela for work. What should I do?",
+     "frase": "should",
+     "resposta": "You should see a doctor today. You don't have to drive — why don't you take the bus? I'll tell the manager.",
+     "contexto": "should, don't have to e uma oferta com will."
+    }
+   ]
+  }
+ ]
+}

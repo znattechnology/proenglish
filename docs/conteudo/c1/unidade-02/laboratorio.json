@@ -1,0 +1,1486 @@
+{
+ "unidade": "C1.1 · Unit 2 — Diplomacy",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "2A",
+   "titulo": "It would appear that…",
+   "aula": "2A",
+   "objectivo": "Atenuar com estruturas de distância, arguably, to a certain extent e I'm inclined to think.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It would [appear] that there was a problem with the paperwork.",
+     "opcoes": [
+      {
+       "texto": "appearing",
+       "certa": false
+      },
+      {
+       "texto": "appears",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "There [seems] to have been a delay on the supplier's side.",
+     "opcoes": [
+      {
+       "texto": "seem",
+       "certa": false
+      },
+      {
+       "texto": "seeming",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The forms seem to [have] been incomplete.",
+     "opcoes": [
+      {
+       "texto": "had",
+       "certa": false
+      },
+      {
+       "texto": "having",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [inclined] to think the end of April is realistic.",
+     "opcoes": [
+      {
+       "texto": "inclining",
+       "certa": false
+      },
+      {
+       "texto": "incline",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the most diplomatic sentence.",
+     "opcoes": [
+      {
+       "texto": "It would appear that there was a problem with the paperwork.",
+       "certa": true
+      },
+      {
+       "texto": "Customs made a stupid mistake.",
+       "certa": false
+      },
+      {
+       "texto": "It is not our fault, it is the customs.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "There seems to be a delay.",
+       "certa": true
+      },
+      {
+       "texto": "There seem to be a delay.",
+       "certa": false
+      },
+      {
+       "texto": "There seems be a delay.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"To a certain extent, the delay was outside our control.\" The speaker means…",
+     "opcoes": [
+      {
+       "texto": "partly, but not completely",
+       "certa": true
+      },
+      {
+       "texto": "completely",
+       "certa": false
+      },
+      {
+       "texto": "not at all",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which statement should NOT be hedged, if you know it is true?",
+     "opcoes": [
+      {
+       "texto": "The project is late.",
+       "certa": true
+      },
+      {
+       "texto": "The main cause was probably the paperwork.",
+       "certa": false
+      },
+      {
+       "texto": "The end of April is realistic.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Em certa medida, o atraso esteve fora do nosso controlo.",
+     "resposta": "To a certain extent, the delay was outside our control.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thandi. Clients tend to forgive delays. They don't forgive surprises.",
+     "enunciado": "What do clients not forgive, according to Thandi?",
+     "opcoes": [
+      {
+       "texto": "surprises",
+       "certa": true
+      },
+      {
+       "texto": "delays",
+       "certa": false
+      },
+      {
+       "texto": "long e-mails",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. Arguably, it is partly our fault. Nobody told them in writing.",
+     "enunciado": "Why is it partly Mopane's fault, according to Thandi?",
+     "opcoes": [
+      {
+       "texto": "Nobody told the client in writing.",
+       "certa": true
+      },
+      {
+       "texto": "The engineers were slow.",
+       "certa": false
+      },
+      {
+       "texto": "The price was too high.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It would appear that there was a problem with the paperwork.",
+     "enunciado": "Ouça e repita, com ritmo calmo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A project went wrong. Explain to the people affected what happened and why, without blaming anyone and without hiding the facts. Use at least four hedging expressions.",
+     "frase": "It would appear",
+     "resposta": "The new system opened two weeks late, and I'm sorry. It would appear that the main problem was the old data: some of it seems to have been incomplete. To a certain extent, that was outside our control, but arguably we should have tested earlier.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "In your culture, is it more polite to be direct or to soften what you say? Does it depend on the situation?",
+     "frase": "tend to",
+     "resposta": "In Angola, people tend to soften things with older people and with clients. With friends, we're much more direct. I'm inclined to think it depends more on the relationship than on the culture.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "2B",
+   "titulo": "I'd be surprised if…",
+   "aula": "2B",
+   "objectivo": "Exprimir graus finos de certeza e de probabilidade.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [fairly] confident it'll be this week.",
+     "opcoes": [
+      {
+       "texto": "fair",
+       "certa": false
+      },
+      {
+       "texto": "fairy",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's [highly] unlikely that we'll finish before mid-April.",
+     "opcoes": [
+      {
+       "texto": "high",
+       "certa": false
+      },
+      {
+       "texto": "height",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd be surprised if it [took] more than ten days.",
+     "opcoes": [
+      {
+       "texto": "will take",
+       "certa": false
+      },
+      {
+       "texto": "takes it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I wouldn't rule it [out].",
+     "opcoes": [
+      {
+       "texto": "off",
+       "certa": false
+      },
+      {
+       "texto": "away",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which expression shows the HIGHEST certainty?",
+     "opcoes": [
+      {
+       "texto": "I'm fairly confident that…",
+       "certa": true
+      },
+      {
+       "texto": "There's a slim chance that…",
+       "certa": false
+      },
+      {
+       "texto": "I wouldn't rule it out.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which expression shows the LOWEST probability?",
+     "opcoes": [
+      {
+       "texto": "It's highly unlikely that…",
+       "certa": true
+      },
+      {
+       "texto": "In all likelihood…",
+       "certa": false
+      },
+      {
+       "texto": "There's a good chance that…",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I'd be surprised if it cost more than five thousand.\" The speaker thinks it will probably cost…",
+     "opcoes": [
+      {
+       "texto": "less than five thousand",
+       "certa": true
+      },
+      {
+       "texto": "more than five thousand",
+       "certa": false
+      },
+      {
+       "texto": "nothing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I wouldn't rule out a week or two more.\" This means a delay is…",
+     "opcoes": [
+      {
+       "texto": "possible, and we should be ready for it",
+       "certa": true
+      },
+      {
+       "texto": "impossible",
+       "certa": false
+      },
+      {
+       "texto": "certain",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Muito provavelmente, seis semanas.",
+     "resposta": "In all likelihood, six weeks.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Inês. I'm fairly confident it'll be this week. Let's say eighty percent.",
+     "enunciado": "How sure is Inês that the containers will be released this week?",
+     "opcoes": [
+      {
+       "texto": "about eighty percent",
+       "certa": true
+      },
+      {
+       "texto": "completely sure",
+       "certa": false
+      },
+      {
+       "texto": "about ten percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Bongani. It's highly unlikely we'll finish before mid-April. There's a slim chance, ten percent maybe.",
+     "enunciado": "What does Bongani think about finishing before mid-April?",
+     "opcoes": [
+      {
+       "texto": "It's highly unlikely.",
+       "certa": true
+      },
+      {
+       "texto": "It's certain.",
+       "certa": false
+      },
+      {
+       "texto": "It's very likely.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Inês. It's the rainy season in Nampula until April. If the roads flood, we lose a week or two.",
+     "enunciado": "Why might the project be delayed in Nampula?",
+     "opcoes": [
+      {
+       "texto": "the rainy season",
+       "certa": true
+      },
+      {
+       "texto": "a strike",
+       "certa": false
+      },
+      {
+       "texto": "a holiday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm fairly confident. It's highly unlikely. There's a slim chance.",
+     "enunciado": "Ouça e repita, com o acento em \"fairly\", \"highly\" e \"slim\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Talk about three things over the next year: one you're fairly confident about, one you wouldn't rule out, and one that's highly unlikely, with a reason for each.",
+     "frase": "highly unlikely",
+     "resposta": "I'm fairly confident I'll finish this course by December: I study every evening. I wouldn't rule out a move to another department. And it's highly unlikely that I'll buy a car this year. I'd be surprised if prices came down.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it better for a manager to give an optimistic estimate or a careful one? Why?",
+     "frase": "surprised",
+     "resposta": "A careful one. If you say April and deliver in March, people are happy. If you say March and deliver in April, they're angry. I'd be surprised if any client preferred a promise that wasn't kept.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "2C",
+   "titulo": "We're not in a position to…",
+   "aula": "2C",
+   "objectivo": "Recusar e dar más notícias com diplomacia, propondo uma alternativa.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm afraid we're not in a [position] to pay for that.",
+     "opcoes": [
+      {
+       "texto": "post",
+       "certa": false
+      },
+      {
+       "texto": "place of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm afraid that [falls] outside what we agreed.",
+     "opcoes": [
+      {
+       "texto": "fall",
+       "certa": false
+      },
+      {
+       "texto": "falling",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What we [can] do is accept the new date.",
+     "opcoes": [
+      {
+       "texto": "are",
+       "certa": false
+      },
+      {
+       "texto": "could to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd [rather] not argue about the contract.",
+     "opcoes": [
+      {
+       "texto": "prefer",
+       "certa": false
+      },
+      {
+       "texto": "better",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the most diplomatic refusal.",
+     "opcoes": [
+      {
+       "texto": "I'm afraid we're not in a position to pay for that. What we can do is…",
+       "certa": true
+      },
+      {
+       "texto": "No. We don't pay.",
+       "certa": false
+      },
+      {
+       "texto": "We're not in position of paying.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A diplomatic refusal usually has…",
+     "opcoes": [
+      {
+       "texto": "a softener, the refusal, a reason and an alternative",
+       "certa": true
+      },
+      {
+       "texto": "only the word \"no\"",
+       "certa": false
+      },
+      {
+       "texto": "a long silence and then \"maybe\"",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"That's not ideal.\" In diplomatic English, this often means…",
+     "opcoes": [
+      {
+       "texto": "That's a serious problem.",
+       "certa": true
+      },
+      {
+       "texto": "That's perfect.",
+       "certa": false
+      },
+      {
+       "texto": "That's a small detail.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Let me come back to you on that.\" The speaker…",
+     "opcoes": [
+      {
+       "texto": "needs time before answering",
+       "certa": true
+      },
+      {
+       "texto": "agrees immediately",
+       "certa": false
+      },
+      {
+       "texto": "refuses completely",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Lamento, mas isso está fora do que acordámos.",
+     "resposta": "I'm afraid that falls outside what we agreed.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Clare, from Halvorsen Radio. The last six radios will be two more weeks. We'd ask Mopane to cover the air freight.",
+     "enunciado": "What does Clare ask Mopane to do?",
+     "opcoes": [
+      {
+       "texto": "pay for the air freight",
+       "certa": true
+      },
+      {
+       "texto": "cancel the order",
+       "certa": false
+      },
+      {
+       "texto": "wait three months",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. I'm afraid that falls outside what we agreed. The contract says the warranty starts on installation.",
+     "enunciado": "When does the warranty start, according to the contract?",
+     "opcoes": [
+      {
+       "texto": "on installation",
+       "certa": true
+      },
+      {
+       "texto": "on the shipment date",
+       "certa": false
+      },
+      {
+       "texto": "in March",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm afraid we're not in a position to pay for that.",
+     "enunciado": "Ouça e repita, com \"I'm afraid\" suave e descendente."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Someone important (a client, a manager or a relative) asks for something you can't give. Refuse with diplomacy, give the reason, and offer an alternative.",
+     "frase": "What I can do",
+     "resposta": "I really appreciate that you thought of me. But I'm afraid I'm not in a position to work this weekend: my daughter has an exam on Monday. What I can do is come in early on Monday and Tuesday.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it harder to say no to a client, to a manager or to a family member? Why?",
+     "frase": "because",
+     "resposta": "To a family member, because there's no contract to hide behind. With a client, I can say it falls outside what we agreed. With family, it's personal, so I try to offer something else.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "2D",
+   "titulo": "Corporate communication",
+   "aula": "2D",
+   "objectivo": "Linguagem institucional e eufemismos, entoação descendente-ascendente; gentle e ingenuous.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão ao sentido real.",
+     "pares": [
+      {
+       "a": "challenging",
+       "b": "difícil, mau"
+      },
+      {
+       "a": "an issue",
+       "b": "um problema"
+      },
+      {
+       "a": "going forward",
+       "b": "a partir de agora"
+      },
+      {
+       "a": "let someone go",
+       "b": "despedir"
+      },
+      {
+       "a": "I'll bear it in mind",
+       "b": "provavelmente não"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's been a [challenging] quarter.",
+     "opcoes": [
+      {
+       "texto": "challenged",
+       "certa": false
+      },
+      {
+       "texto": "challenge",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm not [entirely] convinced.",
+     "opcoes": [
+      {
+       "texto": "entire",
+       "certa": false
+      },
+      {
+       "texto": "whole",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The price is [slightly] high.",
+     "opcoes": [
+      {
+       "texto": "slight",
+       "certa": false
+      },
+      {
+       "texto": "slim",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"We had to let ten people go.\" This means the company…",
+     "opcoes": [
+      {
+       "texto": "dismissed ten people",
+       "certa": true
+      },
+      {
+       "texto": "sent ten people on holiday",
+       "certa": false
+      },
+      {
+       "texto": "hired ten people",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Foi muito gentil da sua parte.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "That was very kind of you.",
+       "certa": true
+      },
+      {
+       "texto": "That was very gentle of you.",
+       "certa": false
+      },
+      {
+       "texto": "That was very gentil of you.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: gentle = suave, delicado."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Uma solução engenhosa\" em inglês:",
+     "opcoes": [
+      {
+       "texto": "an ingenious solution",
+       "certa": true
+      },
+      {
+       "texto": "an ingenuous solution",
+       "certa": false
+      },
+      {
+       "texto": "an engineous solution",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: ingenuous = ingénuo."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"a gentle reminder\" is…",
+     "opcoes": [
+      {
+       "texto": "a polite, soft reminder",
+       "certa": true
+      },
+      {
+       "texto": "a kind person",
+       "certa": false
+      },
+      {
+       "texto": "an angry message",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"In theory, yes…\" said with a fall-rise tone suggests…",
+     "opcoes": [
+      {
+       "texto": "\"but in practice, no\"",
+       "certa": true
+      },
+      {
+       "texto": "complete agreement",
+       "certa": false
+      },
+      {
+       "texto": "a question",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Ms Mahlangu, the director. It's been a challenging year, and I'm afraid the budget has been reduced. Going forward, we'll focus on the website.",
+     "enunciado": "What will the team focus on from now on?",
+     "opcoes": [
+      {
+       "texto": "the website",
+       "certa": true
+      },
+      {
+       "texto": "the mobile app",
+       "certa": false
+      },
+      {
+       "texto": "a new office",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "In theory, yes…",
+     "enunciado": "Ouça e repita, com a voz a descer e a subir no fim."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Announce bad news to a team: the budget has been cut and a project will stop. Be honest but gentle. Then say what it really means, in plain words.",
+     "frase": "not ideal",
+     "resposta": "It's been a challenging year, and I'm afraid the budget has been reduced, so the app project will stop. I know this isn't ideal. Going forward, we'll focus on the website. In plain words: less money, no app.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Does corporate language help people, or does it hide the truth? Give an example.",
+     "frase": "example",
+     "resposta": "Both. For example, \"we're reviewing your proposal\" protects feelings, but it can hide a no. I'm inclined to think it helps when the facts are also clear.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "2E",
+   "titulo": "Real English: Between the lines",
+   "aula": "2E",
+   "objectivo": "Perceber o que três pessoas querem realmente dizer em chamadas diplomáticas.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Graham Ashworth. I'm not sure the committee would be entirely comfortable with the risk. Perhaps we could revisit it in a year or two.",
+     "enunciado": "What does Mr Ashworth suggest?",
+     "opcoes": [
+      {
+       "texto": "to look at the proposal again in a year or two",
+       "certa": true
+      },
+      {
+       "texto": "to invest after the meeting",
+       "certa": false
+      },
+      {
+       "texto": "to visit Johannesburg",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Graham Ashworth. It's a very brave proposal.",
+     "enunciado": "What does \"a very brave proposal\" probably mean here?",
+     "opcoes": [
+      {
+       "texto": "It is risky, perhaps too risky.",
+       "certa": true
+      },
+      {
+       "texto": "It is excellent and safe.",
+       "certa": false
+      },
+      {
+       "texto": "It is about the army.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Achieng. The technical side is excellent, really. Your price, though, is quite ambitious.",
+     "enunciado": "What does Achieng like about the offer?",
+     "opcoes": [
+      {
+       "texto": "the technical side",
+       "certa": true
+      },
+      {
+       "texto": "the price",
+       "certa": false
+      },
+      {
+       "texto": "the delivery date",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Achieng. If you'd like to look at the numbers again before the twenty-eighth, I'd be very happy to see a new version.",
+     "enunciado": "When does Achieng want the new version?",
+     "opcoes": [
+      {
+       "texto": "before the twenty-eighth",
+       "certa": true
+      },
+      {
+       "texto": "today",
+       "certa": false
+      },
+      {
+       "texto": "in a year",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Tumelo, from legal. With the greatest respect, I'd question whether paragraph three is a good idea. You say Mopane accepts full responsibility for the delay.",
+     "enunciado": "Which phrase in Nuno's letter worries Tumelo?",
+     "opcoes": [
+      {
+       "texto": "full responsibility",
+       "certa": true
+      },
+      {
+       "texto": "we apologise",
+       "certa": false
+      },
+      {
+       "texto": "the end of April",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Tumelo. Full responsibility is a legal phrase. If they go to court, it's also an expensive phrase, and it isn't even true.",
+     "enunciado": "Why is \"full responsibility\" a problem, according to Tumelo?",
+     "opcoes": [
+      {
+       "texto": "It could be expensive in court, and it isn't fully true.",
+       "certa": true
+      },
+      {
+       "texto": "It's rude.",
+       "certa": false
+      },
+      {
+       "texto": "It's too informal.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Your price is quite ambitious.\" Achieng means…",
+     "opcoes": [
+      {
+       "texto": "The price is too high.",
+       "certa": true
+      },
+      {
+       "texto": "The price is very low.",
+       "certa": false
+      },
+      {
+       "texto": "She loves the price.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"With the greatest respect, I'd question…\" usually comes before…",
+     "opcoes": [
+      {
+       "texto": "a strong disagreement",
+       "certa": true
+      },
+      {
+       "texto": "a compliment",
+       "certa": false
+      },
+      {
+       "texto": "a joke",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It's possible… I'm not sure the committee would be entirely comfortable.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "With the greatest respect, I'd question whether that's a good idea.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Choose one of the three calls. Tell a colleague what the caller really meant, what they didn't say, and what Nuno should do next.",
+     "frase": "really meant",
+     "resposta": "Achieng really meant that our price is too high, but the quality is good. What she didn't say is how much lower. She invited a new version before the twenty-eighth, so I'd lower the price a little and add something extra.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Would you prefer people to say \"no\" directly, or diplomatically? Why?",
+     "frase": "because",
+     "resposta": "At work, diplomatically, because relationships last longer than one deal. But I'd like the no to be clear. A polite no is fine; a polite maybe that means no wastes everyone's time.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "2F",
+   "titulo": "Work & Life: The unhappy utility",
+   "aula": "2F",
+   "objectivo": "Conduzir uma conversa delicada com um cliente insatisfeito e resumir em inglês uma carta formal em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "The letter says: \"reservamo-nos o direito de rescindir o contrato\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "They reserve the right to terminate the contract.",
+       "certa": true
+      },
+      {
+       "texto": "They reserve the right to rescind of the contract.",
+       "certa": false
+      },
+      {
+       "texto": "They have rescinded the contract already.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Nos termos da cláusula 14.ª\" in a spoken summary:",
+     "opcoes": [
+      {
+       "texto": "under clause fourteen",
+       "certa": true
+      },
+      {
+       "texto": "in the terms of the fourteenth clause of",
+       "certa": false
+      },
+      {
+       "texto": "by the clause number fourteen terms",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "What is the best first thing to say to an angry client who is right?",
+     "opcoes": [
+      {
+       "texto": "You're right that you should have heard from us. I apologise.",
+       "certa": true
+      },
+      {
+       "texto": "It would appear that you may perhaps be a little right.",
+       "certa": false
+      },
+      {
+       "texto": "It wasn't our fault.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd be surprised if it [went] beyond the fifteenth of May.",
+     "opcoes": [
+      {
+       "texto": "goes",
+       "certa": false
+      },
+      {
+       "texto": "will go",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm afraid we're not in a position to [offer] twenty percent.",
+     "opcoes": [
+      {
+       "texto": "offering",
+       "certa": false
+      },
+      {
+       "texto": "offered",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What I can [guarantee] is a written report every Friday.",
+     "opcoes": [
+      {
+       "texto": "guaranteed",
+       "certa": false
+      },
+      {
+       "texto": "guaranteeing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "A full year [falls] outside what I can approve, I'm afraid.",
+     "opcoes": [
+      {
+       "texto": "fall",
+       "certa": false
+      },
+      {
+       "texto": "is falling of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. The contract has a penalty clause: half a percent a week, up to five percent. We'll apply it in full: sixty thousand dollars.",
+     "enunciado": "How much is the penalty Nuno offers?",
+     "opcoes": [
+      {
+       "texto": "sixty thousand dollars",
+       "certa": true
+      },
+      {
+       "texto": "two hundred and forty thousand dollars",
+       "certa": false
+      },
+      {
+       "texto": "half a percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. One: a Mopane engineer on site in Nampula, at our cost, until the handover. Two: two places for your technicians in our training programme.",
+     "enunciado": "What does Nuno offer besides the penalty?",
+     "opcoes": [
+      {
+       "texto": "an engineer on site and two training places",
+       "certa": true
+      },
+      {
+       "texto": "a twenty percent discount",
+       "certa": false
+      },
+      {
+       "texto": "a new contract",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Dr Cumbe. We'll accept, on condition that we receive the reports every Friday.",
+     "enunciado": "What is Dr Cumbe's condition?",
+     "opcoes": [
+      {
+       "texto": "a report every Friday",
+       "certa": true
+      },
+      {
+       "texto": "a discount of twenty percent",
+       "certa": false
+      },
+      {
+       "texto": "a new engineer every month",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm afraid we're not in a position to offer twenty percent.",
+     "enunciado": "Ouça e repita, com tom calmo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A client is angry: you delivered late, and they ask for a big discount and a guaranteed date. Acknowledge, explain with hedging, give an honest degree of certainty, refuse the discount with a reason, and offer something else.",
+     "frase": "I'm afraid",
+     "resposta": "You're right that we should have called you sooner, and I apologise. It would appear that the problem was our transport company. I'm fairly confident it'll arrive on Thursday. I'm afraid we can't offer fifty percent, but what we can do is free delivery on your next three orders.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise this letter in English, in three or four sentences: \"Manifesto o meu descontentamento com o serviço de limpeza do nosso escritório em Janeiro. Várias vezes, as salas não foram limpas. Caso não melhore até ao fim de Fevereiro, procuraremos outro fornecedor. Solicito uma reunião.\"",
+     "frase": "unhappy",
+     "resposta": "The client is unhappy with our cleaning service in January: several times, the rooms weren't cleaned. If things don't improve by the end of February, they'll look for another company. They're asking for a meeting as soon as possible.",
+     "contexto": "Mediação: o essencial, em inglês simples."
+    }
+   ]
+  },
+  {
+   "codigo": "2R",
+   "titulo": "Unit 2 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 2 do C1 e reciclar a unidade 1 do C1 e o B2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It would [seem] that the figures were wrong.",
+     "opcoes": [
+      {
+       "texto": "seems",
+       "certa": false
+      },
+      {
+       "texto": "seeming",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In all [likelihood], we'll finish in May.",
+     "opcoes": [
+      {
+       "texto": "likely",
+       "certa": false
+      },
+      {
+       "texto": "likeliness of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd be surprised if they [said] no.",
+     "opcoes": [
+      {
+       "texto": "will say",
+       "certa": false
+      },
+      {
+       "texto": "say them",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm afraid we're not [in] a position to help.",
+     "opcoes": [
+      {
+       "texto": "on",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the most diplomatic way to disagree with a senior client.",
+     "opcoes": [
+      {
+       "texto": "I'm not entirely convinced that's the best option.",
+       "certa": true
+      },
+      {
+       "texto": "You're completely wrong.",
+       "certa": false
+      },
+      {
+       "texto": "That's a stupid idea.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Your question is a little ingenuous.\" The speaker thinks the question is…",
+     "opcoes": [
+      {
+       "texto": "naive",
+       "certa": true
+      },
+      {
+       "texto": "very clever",
+       "certa": false
+      },
+      {
+       "texto": "very long",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 1). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "What we need is more time.",
+       "certa": true
+      },
+      {
+       "texto": "What we need it's more time.",
+       "certa": false
+      },
+      {
+       "texto": "What we need are more time it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 1). \"Um argumento consistente\" (sólido):",
+     "opcoes": [
+      {
+       "texto": "a solid argument",
+       "certa": true
+      },
+      {
+       "texto": "a consistent argument",
+       "certa": false
+      },
+      {
+       "texto": "a consistence argument",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 6). \"Tenho quase a certeza de que se esqueceram.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "They must have forgotten.",
+       "certa": true
+      },
+      {
+       "texto": "They must forgot.",
+       "certa": false
+      },
+      {
+       "texto": "They should had forgotten.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Inclino-me a pensar que é realista.",
+     "resposta": "I'm inclined to think it's realistic.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lúcia Tembe. An engineer on site is arguably worth more than the discount.",
+     "enunciado": "What does Lúcia Tembe think?",
+     "opcoes": [
+      {
+       "texto": "An engineer on site may be worth more than the discount.",
+       "certa": true
+      },
+      {
+       "texto": "The discount is the most important thing.",
+       "certa": false
+      },
+      {
+       "texto": "They should cancel the contract.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Give a client some bad news: a project will be three months late. Be honest, but keep the client.",
+     "frase": "apologise",
+     "resposta": "I'm afraid I have some difficult news: the project will be about three months late, and I apologise. It would appear that the main cause was our supplier. I'm reasonably confident about June. What I can offer is a weekly report and a free month of support.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague asks: \"Will the new system be ready on Monday?\" You are about 30% sure. Answer honestly.",
+     "frase": "wouldn't",
+     "resposta": "Honestly, I wouldn't count on Monday. There's a fair chance, but I'd say it's somewhat unlikely. I'm fairly confident about Wednesday, and I'll confirm on Friday afternoon.",
+     "contexto": "Grau de certeza honesto."
+    }
+   ]
+  }
+ ]
+}

@@ -114,21 +114,21 @@ class GoogleOAuthService:
             raise GoogleOAuthErro(ERRO_GOOGLE)
     
     def verify_id_token(self, id_token_str: str) -> Dict[str, Any]:
-        """Verifica um ID token do Google emitido para o nosso client id (aud)."""
-        if not self.client_id:
+        """
+        Verifica um ID token do Google emitido para um dos nossos client ids (aud): o do site e,
+        na app móvel, os de Android e iOS (GOOGLE_OAUTH2_CLIENT_IDS_APP).
+        """
+        aceites = [c for c in [self.client_id, *getattr(settings, 'GOOGLE_OAUTH2_CLIENT_IDS_APP', [])] if c]
+        if not aceites:
             raise GoogleOAuthErro('A entrada com o Google não está configurada.')
         try:
-            id_info = id_token.verify_oauth2_token(
-                id_token_str,
-                google_requests.Request(),
-                self.client_id
-            )
+            id_info = id_token.verify_oauth2_token(id_token_str, google_requests.Request(), None)
         except Exception as e:
             logger.error(f"Error verifying ID token: {str(e)}")
             raise GoogleOAuthErro(ERRO_GOOGLE)
-        if id_info.get('iss') not in ['accounts.google.com', 'https://accounts.google.com']:
+        if id_info.get('aud') not in aceites:
             raise GoogleOAuthErro(ERRO_GOOGLE)
-        if id_info.get('aud') != self.client_id:
+        if id_info.get('iss') not in ['accounts.google.com', 'https://accounts.google.com']:
             raise GoogleOAuthErro(ERRO_GOOGLE)
         return id_info
     

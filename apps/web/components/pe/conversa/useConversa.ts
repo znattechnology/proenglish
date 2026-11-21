@@ -1,14 +1,20 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { URL_TERMINAR, useAjusteMutation, useLigadaMutation, useResponderMutation, useTerminarMutation, type Ajuste, type Fala, type NovaSessao, type Resumo } from "@/src/domains/student/conversa/api";
+import { URL_TERMINAR, useAjudaMutation, useAjusteMutation, useLigadaMutation, useResponderMutation, useTerminarMutation, type Ajuste, type Fala, type NovaSessao, type Resumo } from "@/src/domains/student/conversa/api";
 
 /**
  * Uma conversa com o tutor, do "a ligar" ao resumo.
  * Modo "vapi": voz em tempo real pelo Vapi (o tutor ouve enquanto o microfone estiver ligado).
  * Modo "simulado": sem chamadas pagas; o browser reconhece a fala (quando sabe) e lê a resposta do tutor.
- * Em ambos os modos dá para escrever em vez de falar.
+ * Em ambos os modos dá para escrever em vez de falar (menos no exame e no teste de nível: `semTexto`).
+ *
+ * O servidor não confia no que o browser lhe diz: na voz, a nota, os minutos e o perfil de fala vêm
+ * da chamada confirmada pelo serviço de voz. O browser manda o id da chamada (para o servidor a ir
+ * buscar), a transcrição (só para mostrar) e o que só pode BAIXAR o resultado: as falas escritas e as
+ * frases-alvo que o aluno viu em inglês (`revelar`).
  */
+export type OpcoesConversa = { semAjustes?: boolean; semTexto?: boolean };
 
 export type Estado = "a_ligar" | "em_curso" | "a_terminar" | "terminada" | "erro";
 export type FalaViva = Fala & { id: string; ajuste?: Ajuste | null };
@@ -106,7 +112,7 @@ export function reconhecimentoDisponivel() {
   return Boolean(w.SpeechRecognition ?? w.webkitSpeechRecognition);
 }
 
-export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chavePublica: string | null) {
+export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chavePublica: string | null, opcoes: OpcoesConversa = {}) {
   const simulado = modo === "simulado";
   // No modo simulado o tutor abre a conversa logo, sem esperar por uma ligação.
   const [estado, setEstado] = useState<Estado>(simulado ? "em_curso" : "a_ligar");
@@ -117,29 +123,34 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
   const [microfone, setMicrofone] = useState(modo === "vapi");
   const [segundos, setSegundos] = useState(0);
   const [resumo, setResumo] = useState<Resumo | null>(null);
+  const [reveladas, setReveladas] = useState<string[]>([]);
 
   const [pedirAjuste] = useAjusteMutation();
   const [responder] = useResponderMutation();
   const [terminarApi] = useTerminarMutation();
   const [avisarLigada] = useLigadaMutation();
+  const [avisarAjuda] = useAjudaMutation();
 
   const vapi = useRef<VapiCliente | null>(null);
+  const idChamada = useRef<string | null>(null);
   const reconhecedor = useRef<Reconhecedor | null>(null);
   const falasRef = useRef<FalaViva[]>([]);
   const terminada = useRef(false);
   const decorridos = useRef(0);
   const terminouNoLimite = useRef(false);
-  const semAjustes = useRef(false);
+  const semAjustes = useRef(Boolean(opcoes.semAjustes));
+  const reveladasRef = useRef<string[]>([]);
   const terminarRef = useRef<() => Promise<void>>(async () => {});
   const saidaPendente = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
     falasRef.current = falas;
   }, [falas]);
 
-  const transcricao = useCallback((): Fala[] => falasRef.current.map(({ quem, texto }) => ({ quem, texto })), []);
+  const transcricao = useCallback((): Fala[] => falasRef.current.map(({ quem, texto, escrito }) => ({ quem, texto, ...(escrito ? { escrito: true } : {}) })), []);
+  const corpoTerminar = useCallback(() => ({ transcricao: transcricao(), call_id: idChamada.current, reveladas: reveladasRef.current }), [transcricao]);
 
   const juntar = useCallback(
-    (quem: "tutor" | "aluno", texto: string) => {
+    (quem: "tutor" | "aluno", texto: string, escrito = false) => {
       const t = texto.trim();
       if (!t) return null;
       const id = novoId();
@@ -147,7 +158,7 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
         // O Vapi parte uma resposta em vários "finais"; juntamo-los se forem da mesma pessoa seguidos.
         const ultima = f[f.length - 1];
         if (ultima && ultima.quem === quem && quem === "tutor") return [...f.slice(0, -1), { ...ultima, texto: `${ultima.texto} ${t}` }];
-        return [...f, { id, quem, texto: t }];
+        return [...f, { id, quem, texto: t, ...(escrito ? { escrito: true } : {}) }];
       });
       if (quem === "aluno" && t.split(/\s+/).length >= 3 && !semAjustes.current) {
         pedirAjuste({ id: sessao.id, frase: t })
@@ -165,10 +176,10 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
 
   // Resposta do tutor no modo simulado (e quando se escreve no modo simulado).
   const respostaSimulada = useCallback(
-    async (texto: string) => {
+    async (texto: string, escrito = false) => {
       setTutorAFalar(true);
       try {
-        const r = await responder({ id: sessao.id, texto }).unwrap();
+        const r = await responder({ id: sessao.id, texto, escrito }).unwrap();
         if (terminada.current) return;
         juntar("tutor", r.tutor);
         falarNoBrowser(r.tutor, () => setTutorAFalar(false));
@@ -192,7 +203,7 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
     setTutorAFalar(false);
     setMicrofone(false);
     try {
-      const r = await terminarApi({ id: sessao.id, transcricao: transcricao() }).unwrap();
+      const r = await terminarApi({ id: sessao.id, ...corpoTerminar() }).unwrap();
       setResumo(r);
       setEstado("terminada");
     } catch {
@@ -200,7 +211,7 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
       setErro("Não conseguimos guardar a conversa. Tente terminar outra vez.");
       setEstado("em_curso");
     }
-  }, [sessao.id, terminarApi, transcricao]);
+  }, [sessao.id, terminarApi, corpoTerminar]);
   useEffect(() => {
     terminarRef.current = terminar;
   }, [terminar]);
@@ -229,7 +240,8 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
         vapi.current = v;
         v.on("call-start", () => {
           setEstado("em_curso");
-          void avisarLigada(sessao.id); // o tempo cobrado começa agora
+          // O id da chamada: o servidor pede-a ao serviço de voz (duração, transcrição, gravação).
+          void avisarLigada({ id: sessao.id, call_id: idChamada.current ?? undefined });
         });
         v.on("speech-start", () => setTutorAFalar(true));
         v.on("speech-end", () => setTutorAFalar(false));
@@ -246,11 +258,17 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
         });
         v.on("error", (() => {
           if (terminada.current) return;
-          setErro("A ligação ao tutor falhou. Verifique a internet e tente outra vez.");
+          setErro("A ligação ao tutor falhou. Verifique a Internet e tente outra vez.");
           setEstado((e) => (e === "a_ligar" ? "erro" : e));
         }) as never);
         const chamada = await v.start(sessao.vapi.assistant_id, sessao.vapi.assistant_overrides);
         if (!chamada && !cancelado) throw new Error("vapi_recusou");
+        const id = (chamada as { id?: unknown } | null)?.id;
+        if (typeof id === "string" && id !== idChamada.current) {
+          idChamada.current = id;
+          // call-start pode ter chegado antes de start() acabar: avisa outra vez (é idempotente).
+          void avisarLigada({ id: sessao.id, call_id: id });
+        }
       } catch (e) {
         if (cancelado) return;
         const negado = e instanceof DOMException && e.name === "NotAllowedError";
@@ -274,7 +292,7 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
       try {
         vapi.current?.stop();
       } catch {}
-      setErro("O tutor não atendeu. Verifique a internet e tente outra vez.");
+      setErro("O tutor não atendeu. Verifique a Internet e tente outra vez.");
       setEstado("erro");
     }, 25_000);
     return () => clearTimeout(t);
@@ -304,7 +322,7 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
         keepalive: true,
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ transcricao: transcricao() }),
+        body: JSON.stringify(corpoTerminar()),
       }).catch(() => {});
     };
     if (saidaPendente.current) clearTimeout(saidaPendente.current); // voltou a montar (modo estrito): não era uma saída
@@ -313,7 +331,7 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
       window.removeEventListener("pagehide", aoSair);
       saidaPendente.current = setTimeout(aoSair, 0); // sair da página pela navegação da app também conta
     };
-  }, [sessao.id, transcricao]);
+  }, [sessao.id, corpoTerminar]);
 
   const alternarMicrofone = useCallback(() => {
     if (estado !== "em_curso") return;
@@ -366,17 +384,29 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
   const escrever = useCallback(
     (texto: string) => {
       const t = texto.trim();
-      if (!t || estado !== "em_curso") return;
+      if (!t || estado !== "em_curso" || opcoes.semTexto) return;
       setErro(null);
+      juntar("aluno", t, true);
       if (modo === "vapi" && vapi.current) {
-        juntar("aluno", t);
+        // Avisa já (antes do fim): as frases-alvo escritas contam só "com ajuda".
+        void avisarAjuda({ id: sessao.id, escrito: t });
         vapi.current.send({ type: "add-message", message: { role: "user", content: t } });
       } else {
-        juntar("aluno", t);
-        void respostaSimulada(t);
+        void respostaSimulada(t, true);
       }
     },
-    [estado, juntar, modo, respostaSimulada]
+    [avisarAjuda, estado, juntar, modo, opcoes.semTexto, respostaSimulada, sessao.id]
+  );
+
+  /** O aluno pediu para ver uma frase-alvo em inglês: nesta conversa conta no máximo "com ajuda". */
+  const revelar = useCallback(
+    (en: string) => {
+      if (reveladasRef.current.includes(en)) return;
+      reveladasRef.current = [...reveladasRef.current, en];
+      setReveladas(reveladasRef.current);
+      void avisarAjuda({ id: sessao.id, revelada: en });
+    },
+    [avisarAjuda, sessao.id]
   );
 
   const ouvirOutraVez = useCallback(() => {
@@ -392,7 +422,7 @@ export function useConversa(sessao: NovaSessao, modo: "vapi" | "simulado", chave
     });
   }, [microfone, modo]);
 
-  return { estado, erro, limparErro: () => setErro(null), falas, parcial, tutorAFalar, microfone, segundos, resumo, terminar, alternarMicrofone, escrever, ouvirOutraVez };
+  return { estado, erro, limparErro: () => setErro(null), falas, parcial, tutorAFalar, microfone, segundos, resumo, terminar, alternarMicrofone, escrever, ouvirOutraVez, reveladas, revelar };
 }
 
 export { falarNoBrowser };

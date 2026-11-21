@@ -5,8 +5,10 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { aposMeta, quandoCorrerBem } from "@/src/domains/student/sincronizar";
 import { sharedBaseQuery } from "@/src/domains/shared/api/baseQuery";
+import type { NivelCefr } from "@/src/domains/shared/niveis";
 
-export type Nivel = "Beginner" | "Intermediate" | "Advanced";
+/** Nível CEFR (A1 a C2); a API traduz os valores antigos na leitura. */
+export type Nivel = NivelCefr;
 
 export type Perfil = {
   id: string;
@@ -22,7 +24,16 @@ export type Perfil = {
   provincia?: string | null;
   /** A administração pediu para mudar a palavra-passe: até lá, a API recusa o resto. */
   deve_mudar_senha?: boolean;
-  preferences: { cidade?: string; area?: string; nivel?: Nivel; acolhimento?: "concluido" };
+  preferences: {
+    cidade?: string;
+    area?: string;
+    nivel?: Nivel;
+    acolhimento?: "concluido";
+    /** Toques de certo/errado nas lições (ligados se ausente). */
+    sons?: boolean;
+    /** Frases faladas da Professora Luena nas lições (ligadas se ausente). */
+    voz_professora?: boolean;
+  };
 };
 
 export type MudancaPerfil = { name?: string; phone?: string | null; provincia?: string | null; preferences?: Perfil["preferences"] };
@@ -89,17 +100,14 @@ export function iniciais(nome?: string) {
 
 /** As mesmas categorias dos cursos (ver categoriaPt), para recomendar cursos da área. */
 export const AREAS: { valor: string; nome: string }[] = [
+  { valor: "General English", nome: "Inglês geral" },
   { valor: "Industry English", nome: "Petróleo e Gás" },
   { valor: "Financial English", nome: "Banca" },
   { valor: "Business English", nome: "Negócios" },
   { valor: "Medical English", nome: "Saúde" },
   { valor: "Legal English", nome: "Direito" },
   { valor: "Technical English", nome: "Tecnologia" },
-  { valor: "General English", nome: "Outra área" },
 ];
 
-export const NIVEIS: { valor: Nivel; nome: string }[] = [
-  { valor: "Beginner", nome: "Iniciante" },
-  { valor: "Intermediate", nome: "Intermédio" },
-  { valor: "Advanced", nome: "Avançado" },
-];
+/** Níveis para escolher (A1 a C2, com nome e descrição): ver src/domains/shared/niveis.ts. */
+export { OPCOES_NIVEL as NIVEIS } from "@/src/domains/shared/niveis";

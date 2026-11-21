@@ -1,0 +1,1300 @@
+{
+ "unidade": "A2.2 · Unit 8 — Technology and problems",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "8A",
+   "titulo": "If you press this…",
+   "aula": "8A",
+   "objectivo": "Explicar como funciona uma aplicação com o condicional zero e instruções por ordem.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If you click \"Cancel\", nothing [happens].",
+     "opcoes": [
+      {
+       "texto": "happen",
+       "certa": false
+      },
+      {
+       "texto": "happening",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If the client pays by card, the card machine [turns] on.",
+     "opcoes": [
+      {
+       "texto": "will turns",
+       "certa": false
+      },
+      {
+       "texto": "turning",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[First], type the client number. Then check the amount.",
+     "opcoes": [
+      {
+       "texto": "Finally",
+       "certa": false
+      },
+      {
+       "texto": "In the end",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If you press this button, the screen turns off.",
+       "certa": true
+      },
+      {
+       "texto": "If you will press this button, the screen turns off.",
+       "certa": false
+      },
+      {
+       "texto": "If you press this button, the screen turn off.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the best word: \"… the system prints the receipt, give it to the client.\" (O recibo sai sempre.)",
+     "opcoes": [
+      {
+       "texto": "When",
+       "certa": true
+      },
+      {
+       "texto": "Because",
+       "certa": false
+      },
+      {
+       "texto": "So",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct order.",
+     "opcoes": [
+      {
+       "texto": "First, type the number. Next, click \"Confirm\". Finally, give the receipt.",
+       "certa": true
+      },
+      {
+       "texto": "Finally, type the number. First, give the receipt. Next, click \"Confirm\".",
+       "certa": false
+      },
+      {
+       "texto": "Next, give the receipt. First, click \"Confirm\". Then type the number.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Se carregar em Cancelar, não acontece nada.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "If you click \"Cancel\", nothing happens.",
+       "certa": true
+      },
+      {
+       "texto": "If you will click \"Cancel\", nothing happens.",
+       "certa": false
+      },
+      {
+       "texto": "If you clicked \"Cancel\", nothing happen.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Se o valor estiver correcto, carregue em Confirmar.",
+     "resposta": "If the amount is correct, click \"Confirm\".",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "If you click \"Cancel\", nothing happens. The system goes back to the first screen.",
+     "enunciado": "What happens if you click \"Cancel\"?",
+     "opcoes": [
+      {
+       "texto": "The system goes back to the first screen.",
+       "certa": true
+      },
+      {
+       "texto": "The system prints a receipt.",
+       "certa": false
+      },
+      {
+       "texto": "The client pays.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "First, type the client number. Then, if the amount is correct, click \"Confirm\".",
+     "enunciado": "Ouça e repita, com pausas depois de First e Then."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain how to send a message on your phone, in three steps.",
+     "frase": "First",
+     "resposta": "First, open the app and choose the person. Then type your message. Finally, press \"Send\".",
+     "contexto": "Use first, then e finally."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What happens if you type the wrong PIN three times?",
+     "frase": "If",
+     "resposta": "If you type the wrong PIN three times, the card stops working. Then you have to go to the bank.",
+     "contexto": "Condicional zero."
+    }
+   ]
+  },
+  {
+   "codigo": "8B",
+   "titulo": "If the power goes off…",
+   "aula": "8B",
+   "objectivo": "Falar de consequências prováveis e planos B com o 1.º condicional.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If the power goes off, [we'll use] the generator.",
+     "opcoes": [
+      {
+       "texto": "we used",
+       "certa": false
+      },
+      {
+       "texto": "we using",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If the system [stops], João will call Arjun.",
+     "opcoes": [
+      {
+       "texto": "will stop",
+       "certa": false
+      },
+      {
+       "texto": "stopped",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If it rains on Saturday, we [won't go] to the beach.",
+     "opcoes": [
+      {
+       "texto": "aren't go",
+       "certa": false
+      },
+      {
+       "texto": "not go",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If the internet goes down, the system will work offline.",
+       "certa": true
+      },
+      {
+       "texto": "If the internet will go down, the system will work offline.",
+       "certa": false
+      },
+      {
+       "texto": "If the internet goes down, the system works offline will.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "What will we do if the system stops?",
+       "certa": true
+      },
+      {
+       "texto": "What we will do if the system stops?",
+       "certa": false
+      },
+      {
+       "texto": "What will we do if the system will stop?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Zero or first conditional? \"If you click Cancel, nothing happens.\"",
+     "opcoes": [
+      {
+       "texto": "Zero — it's always true.",
+       "certa": true
+      },
+      {
+       "texto": "First — a possible situation in the future.",
+       "certa": false
+      },
+      {
+       "texto": "It isn't a conditional.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Se a luz for abaixo, usamos o gerador\" (amanhã). Em inglês:",
+     "opcoes": [
+      {
+       "texto": "If the power goes off, we'll use the generator.",
+       "certa": true
+      },
+      {
+       "texto": "If the power will go off, we use the generator.",
+       "certa": false
+      },
+      {
+       "texto": "If the power went off, we'll use the generator.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Se o sistema parar, eu ligo ao Arjun.",
+     "resposta": "If the system stops, I'll call Arjun.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "If the internet goes down, the system will work offline for four hours.",
+     "enunciado": "How long will the system work offline?",
+     "opcoes": [
+      {
+       "texto": "four hours",
+       "certa": true
+      },
+      {
+       "texto": "forty minutes",
+       "certa": false
+      },
+      {
+       "texto": "four days",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "If the power goes off, we'll use the generator.",
+     "enunciado": "Ouça e repita: \"we'll\" curto."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You have an important presentation tomorrow. What will you do if your laptop doesn't work?",
+     "frase": "If",
+     "resposta": "If my laptop doesn't work, I'll use my colleague's laptop. I'll also print the slides tonight.",
+     "contexto": "1.º condicional."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What will you do if it rains this weekend?",
+     "frase": "will",
+     "resposta": "If it rains this weekend, I'll stay at home and watch a film. If it doesn't rain, I'll go to the beach.",
+     "contexto": "Duas frases com if."
+    }
+   ]
+  },
+  {
+   "codigo": "8C",
+   "titulo": "I think it'll be fine",
+   "aula": "8C",
+   "objectivo": "Fazer previsões com will / won't, I think / I don't think e probably.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I think the system [will] work.",
+     "opcoes": [
+      {
+       "texto": "is work",
+       "certa": false
+      },
+      {
+       "texto": "working",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It [probably won't] rain tomorrow.",
+     "opcoes": [
+      {
+       "texto": "won't probably",
+       "certa": false
+      },
+      {
+       "texto": "probably not will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "There [will probably] be a long queue.",
+     "opcoes": [
+      {
+       "texto": "will probable",
+       "certa": false
+      },
+      {
+       "texto": "probable will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the most natural?",
+     "opcoes": [
+      {
+       "texto": "I don't think it'll rain.",
+       "certa": true
+      },
+      {
+       "texto": "I think it doesn't rain tomorrow.",
+       "certa": false
+      },
+      {
+       "texto": "I don't think it rains tomorrow will.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Do you think the clients will like it?\" — Choose a short answer.",
+     "opcoes": [
+      {
+       "texto": "I think so.",
+       "certa": true
+      },
+      {
+       "texto": "I think yes it.",
+       "certa": false
+      },
+      {
+       "texto": "I think will.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Will it rain?\" — You want it to be sunny. What do you say?",
+     "opcoes": [
+      {
+       "texto": "I hope not!",
+       "certa": true
+      },
+      {
+       "texto": "I hope so!",
+       "certa": false
+      },
+      {
+       "texto": "I think so!",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is a prediction?",
+     "opcoes": [
+      {
+       "texto": "I think it'll be sunny on Monday.",
+       "certa": true
+      },
+      {
+       "texto": "I'm meeting the client on Monday.",
+       "certa": false
+      },
+      {
+       "texto": "I'll carry your bag.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Acho que vai correr bem.",
+     "resposta": "I think it'll be fine.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I don't think it'll rain. The forecast says it'll be sunny.",
+     "enunciado": "What does the forecast say about the weather?",
+     "opcoes": [
+      {
+       "texto": "sunny",
+       "certa": true
+      },
+      {
+       "texto": "rainy",
+       "certa": false
+      },
+      {
+       "texto": "cold",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I don't think it'll rain. It probably won't rain.",
+     "enunciado": "Ouça e repita: won't ≠ want."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you think you'll have a lot of work next week?",
+     "frase": "I think",
+     "resposta": "I think I'll be very busy. We have two big meetings, and the report probably won't be ready on Monday.",
+     "contexto": "Previsões com I think e probably."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Make two predictions about your city next year.",
+     "frase": "will",
+     "resposta": "I think there will be more traffic. I don't think the prices will go down.",
+     "contexto": "Uma com I think e uma com I don't think."
+    }
+   ]
+  },
+  {
+   "codigo": "8D",
+   "titulo": "Log in, set up, turn off",
+   "aula": "8D",
+   "objectivo": "Usar os phrasal verbs da tecnologia; pronome no meio; sem vogal antes de s; library e push.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "log in",
+       "b": "entrar (no sistema)"
+      },
+      {
+       "a": "back up",
+       "b": "fazer cópia de segurança"
+      },
+      {
+       "a": "plug in",
+       "b": "ligar à corrente"
+      },
+      {
+       "a": "set up",
+       "b": "configurar"
+      },
+      {
+       "a": "fill in",
+       "b": "preencher"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Turn it off, please.",
+       "certa": true
+      },
+      {
+       "texto": "Turn off it, please.",
+       "certa": false
+      },
+      {
+       "texto": "Turn it of, please.",
+       "certa": false
+      }
+     ],
+     "explicacao": "O pronome vai no meio."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The laptop has no battery. Plug it in!",
+       "certa": true
+      },
+      {
+       "texto": "The laptop has no battery. Plug in it!",
+       "certa": false
+      },
+      {
+       "texto": "The laptop has no battery. Plug on it!",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "When you finish work, log [out] and turn off your laptop.",
+     "opcoes": [
+      {
+       "texto": "up",
+       "certa": false
+      },
+      {
+       "texto": "down",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If your computer [freezes], call the IT team.",
+     "opcoes": [
+      {
+       "texto": "freeze",
+       "certa": false
+      },
+      {
+       "texto": "frozen",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Biblioteca\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "library",
+       "certa": true
+      },
+      {
+       "texto": "bookshop",
+       "certa": false
+      },
+      {
+       "texto": "livrary",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Livraria\" = bookshop."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A door says \"PUSH\". What do you do?",
+     "opcoes": [
+      {
+       "texto": "Empurro a porta.",
+       "certa": true
+      },
+      {
+       "texto": "Puxo a porta.",
+       "certa": false
+      },
+      {
+       "texto": "Não abro a porta.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "How do you say \"screen\"?",
+     "opcoes": [
+      {
+       "texto": "\"screen\", starting with s",
+       "certa": true
+      },
+      {
+       "texto": "\"e-screen\", with a vowel before s",
+       "certa": false
+      },
+      {
+       "texto": "\"se-screen\"",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "If your computer freezes, don't turn it off and on many times. Call the IT team.",
+     "enunciado": "What should you do if your computer freezes?",
+     "opcoes": [
+      {
+       "texto": "call the IT team",
+       "certa": true
+      },
+      {
+       "texto": "turn it off and on many times",
+       "certa": false
+      },
+      {
+       "texto": "buy a new one",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Start the system and open the spreadsheet on the screen.",
+     "enunciado": "Ouça e repita, sem vogal antes do s."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your manager asks you to turn off the projector. Answer.",
+     "frase": "turn it off",
+     "resposta": "OK, I'll turn it off now.",
+     "contexto": "Use o pronome no meio."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me two IT rules at your workplace.",
+     "frase": "log",
+     "resposta": "We have to log out when we finish work, and we back up our files every Friday.",
+     "contexto": "Use dois phrasal verbs."
+    }
+   ]
+  },
+  {
+   "codigo": "8E",
+   "titulo": "Real English: It doesn't work!",
+   "aula": "8E",
+   "objectivo": "Identificar o problema e a solução em quatro chamadas para o apoio técnico.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "Paulo, the printer at reception isn't working. It says \"paper jam\".",
+     "enunciado": "What does the printer say?",
+     "opcoes": [
+      {
+       "texto": "paper jam",
+       "certa": true
+      },
+      {
+       "texto": "no paper",
+       "certa": false
+      },
+      {
+       "texto": "no ink",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I can't log in to the payment system. It says \"wrong password\", but I'm sure it's correct.",
+     "enunciado": "What does Rita's screen say?",
+     "opcoes": [
+      {
+       "texto": "wrong password",
+       "certa": true
+      },
+      {
+       "texto": "paper jam",
+       "certa": false
+      },
+      {
+       "texto": "no network",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The name is \"KT-Guest\", and the password is on the wall.",
+     "enunciado": "Where is the Wi-Fi password?",
+     "opcoes": [
+      {
+       "texto": "on the wall",
+       "certa": true
+      },
+      {
+       "texto": "in an email",
+       "certa": false
+      },
+      {
+       "texto": "on the laptop",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Then the charger is probably broken. I'll send a technician this afternoon with a new one.",
+     "enunciado": "What will Paulo do for Fátima?",
+     "opcoes": [
+      {
+       "texto": "send a technician with a new charger",
+       "certa": true
+      },
+      {
+       "texto": "call her tomorrow",
+       "certa": false
+      },
+      {
+       "texto": "sell her a new machine",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Great. Close the door. If the light is green, it's ready.",
+     "enunciado": "When is the printer ready?",
+     "opcoes": [
+      {
+       "texto": "when the light is green",
+       "certa": true
+      },
+      {
+       "texto": "when the door is open",
+       "certa": false
+      },
+      {
+       "texto": "when the light is red",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It says 'paper jam'\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Aparece \"papel encravado\".",
+       "certa": true
+      },
+      {
+       "texto": "Diz que há papel.",
+       "certa": false
+      },
+      {
+       "texto": "Pede mais papel.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Caps Lock is on\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "As maiúsculas estão activadas.",
+       "certa": true
+      },
+      {
+       "texto": "O teclado está desligado.",
+       "certa": false
+      },
+      {
+       "texto": "A palavra-passe está bloqueada.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The printer isn't working. It says \"paper jam\". I can't log in.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Call me: your phone doesn't charge. Explain the problem.",
+     "frase": "It says",
+     "resposta": "Hello. My phone doesn't charge. When I plug it in, nothing happens. It says \"battery 2%\". What should I do?",
+     "contexto": "O que acontece e o que diz o ecrã."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague says: \"My laptop doesn't turn on.\" Give two instructions.",
+     "frase": "If",
+     "resposta": "First, plug it in and wait five minutes. If the light is on, press the button for ten seconds.",
+     "contexto": "Instruções com if."
+    }
+   ]
+  },
+  {
+   "codigo": "8F",
+   "titulo": "Work & Life: Help desk call",
+   "aula": "8F",
+   "objectivo": "Ligar ao apoio técnico, descrever um problema, seguir e confirmar instruções; explicar um pagamento com o Multicaixa Express.",
+   "exercicios": [
+    {
+     "tipo": "ordenar",
+     "enunciado": "Estou a ligar porque o meu portátil não liga à rede.",
+     "resposta": "I'm calling because my laptop doesn't connect to the network.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "When I try to connect, it [says] \"No network\".",
+     "opcoes": [
+      {
+       "texto": "tells",
+       "certa": false
+      },
+      {
+       "texto": "speaks",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The technician says: \"Turn the switch off.\" You do it. What do you say?",
+     "opcoes": [
+      {
+       "texto": "OK… done.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, I will do it yesterday.",
+       "certa": false
+      },
+      {
+       "texto": "Why?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "After a step, nothing changes. What do you say?",
+     "opcoes": [
+      {
+       "texto": "Nothing happens.",
+       "certa": true
+      },
+      {
+       "texto": "It happens nothing.",
+       "certa": false
+      },
+      {
+       "texto": "Nothing is happen.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Why do you say the colour of the light or the message on the screen?",
+     "opcoes": [
+      {
+       "texto": "The technician can't see your screen.",
+       "certa": true
+      },
+      {
+       "texto": "It's polite.",
+       "certa": false
+      },
+      {
+       "texto": "The call is cheaper.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Now unplug the blue cable from port one, and plug it in again.",
+     "enunciado": "Which cable does Nuno unplug?",
+     "opcoes": [
+      {
+       "texto": "the blue cable from port one",
+       "certa": true
+      },
+      {
+       "texto": "the red cable",
+       "certa": false
+      },
+      {
+       "texto": "the power cable",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "OK, it's on… The light is orange… now it's green!",
+     "enunciado": "What colour is the light at the end?",
+     "opcoes": [
+      {
+       "texto": "green",
+       "certa": true
+      },
+      {
+       "texto": "orange",
+       "certa": false
+      },
+      {
+       "texto": "red",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Your reference number is four, five, seven, two.",
+     "enunciado": "What is the reference number?",
+     "opcoes": [
+      {
+       "texto": "4572",
+       "certa": true
+      },
+      {
+       "texto": "4527",
+       "certa": false
+      },
+      {
+       "texto": "5472",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Escolha 'Pagar'. Leia o código QR.\" Nuno tells Lerato:",
+     "opcoes": [
+      {
+       "texto": "First, choose \"Pagar\" — that means \"pay\". Then point your phone at the QR code.",
+       "certa": true
+      },
+      {
+       "texto": "Choose \"Pagar\" and read the code in Portuguese.",
+       "certa": false
+      },
+      {
+       "texto": "Pagar the QR code first.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "OK… done. The light is orange… now it's green! It's working now.",
+     "enunciado": "Ouça e repita, com clareza."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "\"Help desk, how can I help you?\" Your printer doesn't print. The screen says \"Printer offline\".",
+     "frase": "I'm calling because",
+     "resposta": "Hello. I'm calling because my printer doesn't print. When I click \"Print\", it says \"Printer offline\".",
+     "contexto": "O problema e o que diz o ecrã."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A foreign colleague asks how to pay with an app on your phone. Explain in three steps.",
+     "frase": "First",
+     "resposta": "First, open the app and choose \"Pay\". Then point your phone at the QR code. Finally, check the amount and enter your PIN.",
+     "contexto": "Os passos por ordem."
+    }
+   ]
+  },
+  {
+   "codigo": "8R",
+   "titulo": "Unit 8 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 8 e reciclar as unidades 6 e 7 e o A2.1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If you press this button, the screen [turns] off.",
+     "opcoes": [
+      {
+       "texto": "will turns",
+       "certa": false
+      },
+      {
+       "texto": "turning",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If the system stops, [I'll call] you.",
+     "opcoes": [
+      {
+       "texto": "I called",
+       "certa": false
+      },
+      {
+       "texto": "I calling",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I don't think the meeting will be long.",
+       "certa": true
+      },
+      {
+       "texto": "I think the meeting won't to be long.",
+       "certa": false
+      },
+      {
+       "texto": "I don't think the meeting long will be.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Can you turn it off?",
+       "certa": true
+      },
+      {
+       "texto": "Can you turn off it?",
+       "certa": false
+      },
+      {
+       "texto": "Can you turn it of?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If it rains, we'll stay at home.",
+       "certa": true
+      },
+      {
+       "texto": "If it will rain, we'll stay at home.",
+       "certa": false
+      },
+      {
+       "texto": "If it rains, we stay at home tomorrow will.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 7). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "We haven't tested the system yet.",
+       "certa": true
+      },
+      {
+       "texto": "We didn't test the system yet already.",
+       "certa": false
+      },
+      {
+       "texto": "We haven't tested yet the system.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 7). \"Trabalho aqui desde 2020.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I've worked here since 2020.",
+       "certa": true
+      },
+      {
+       "texto": "I work here since 2020.",
+       "certa": false
+      },
+      {
+       "texto": "I've worked here for 2020.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 6). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Have you ever lost your phone?",
+       "certa": true
+      },
+      {
+       "texto": "Did you ever lost your phone?",
+       "certa": false
+      },
+      {
+       "texto": "Have you ever lose your phone?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 5). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "You shouldn't write your password on paper.",
+       "certa": true
+      },
+      {
+       "texto": "You shouldn't to write your password on paper.",
+       "certa": false
+      },
+      {
+       "texto": "You don't should write your password on paper.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Se te esqueceres da palavra-passe, liga para a informática.",
+     "resposta": "If you forget your password, call the IT team.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "If it stops, João will call me. I'll be online all day on Monday.",
+     "enunciado": "Who will João call if the system stops?",
+     "opcoes": [
+      {
+       "texto": "Arjun",
+       "certa": true
+      },
+      {
+       "texto": "Rita",
+       "certa": false
+      },
+      {
+       "texto": "Mateus",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What will you do if the internet doesn't work tomorrow morning?",
+     "frase": "If",
+     "resposta": "If the internet doesn't work, I'll use my phone. If that doesn't work, I'll go to the office early.",
+     "contexto": "1.º condicional."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you think you'll travel next year? Where?",
+     "frase": "think",
+     "resposta": "I think I'll go to Namibia with my family. I probably won't go to Europe — it's very expensive.",
+     "contexto": "Previsões com I think e probably."
+    }
+   ]
+  }
+ ]
+}

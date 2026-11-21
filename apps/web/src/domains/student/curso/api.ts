@@ -4,8 +4,12 @@
  * O acesso a cada curso vem do plano (não há compras de cursos).
  */
 import { createApi } from "@reduxjs/toolkit/query/react";
+import type { ExameOral } from "@/src/domains/shared/exameOral";
+import type { ConversaLicao } from "@/src/domains/student/laboratorio/api";
+import type { Oferta } from "@/src/domains/student/subscricao/api";
 import { aposCurso, quandoCorrerBem } from "@/src/domains/student/sincronizar";
 import { sharedBaseQuery } from "@/src/domains/shared/api/baseQuery";
+import type { PraticaAnterior } from "@/components/pe/curso/praticaAnterior";
 
 const BASE = "/student/video-courses";
 
@@ -28,9 +32,14 @@ export type Capitulo = {
   quiz_enabled?: boolean;
   quiz_data?: QuizData | null;
   practice_lesson?: string | null;
+  /** Fora das unidades de amostra, para quem não tem o plano do curso: só a estrutura. */
+  bloqueada?: boolean;
 };
 
-export type Seccao = { sectionId: string; sectionTitle: string; sectionDescription?: string; order: number; chapters: Capitulo[] };
+export type Seccao = { sectionId: string; sectionTitle: string; sectionDescription?: string; order: number; chapters: Capitulo[]; bloqueada?: boolean };
+
+/** O que o aluno pode abrir de um curso: tudo, só as unidades de amostra, ou nada (o servidor decide). */
+export type Acesso = "total" | "amostra" | null;
 
 export type Curso = {
   courseId: string;
@@ -46,6 +55,9 @@ export type Curso = {
   access_level: NivelAcesso;
   access_level_display: string;
   user_has_access: boolean;
+  acesso?: Acesso;
+  /** Quantas unidades abertas a todos (0 = nenhuma). */
+  unidades_amostra?: number;
 };
 
 export type ProfessorPublico = {
@@ -62,13 +74,14 @@ export type ProfessorPublico = {
   alunos: number;
 };
 
-export type DetalheCurso = { curso: Curso; temAcesso: boolean; conteudoLimitado: boolean };
+export type DetalheCurso = { curso: Curso; temAcesso: boolean; conteudoLimitado: boolean; acesso: Acesso; unidadesAmostra: number };
 
-export type EstadoInscricao = { is_enrolled: boolean; has_access: boolean; can_enroll: boolean; access_level: NivelAcesso };
+export type EstadoInscricao = { is_enrolled: boolean; has_access: boolean; can_enroll: boolean; access_level: NivelAcesso; acesso?: Acesso; unidades_amostra?: number };
 
 export type Progresso = {
   overallProgress: number;
-  sections: { sectionId: string; chapters: { chapterId: string; completed: boolean }[] }[];
+  /** video_visto: numa aula com questionário, o vídeo já foi visto (a aula só conclui ao passar). */
+  sections: { sectionId: string; chapters: { chapterId: string; completed: boolean; video_visto?: boolean }[] }[];
   lastAccessedTimestamp?: string;
 };
 
@@ -97,7 +110,19 @@ export type Notas = {
     conversation: { score: number; sessions: number; minutes: number; required: boolean };
   };
   final_grade: { percentage: number; letter: string };
-  weight_info: { quiz_weight: number; practice_weight: number; conversation_weight: number; active_components: string[] };
+  weight_info: {
+    quiz_weight: number;
+    practice_weight: number;
+    conversation_weight: number;
+    /** Fase 6: exame oral, frases do curso ditas sozinho e estudo (questionários + prática). */
+    exam_weight?: number;
+    phrases_weight?: number;
+    study_weight?: number;
+    study_score?: number | null;
+    active_components: string[];
+  };
+  exame_oral?: { score: number | null; passed: boolean; attempts: number; min_score: number | null };
+  frases_curso?: { score: number; total: number; mastered: number };
   certificate_eligibility: {
     is_eligible: boolean;
     /** Elegível e o plano inclui certificados. */
@@ -110,6 +135,29 @@ export type Notas = {
   nota_minima?: number;
   plano_inclui_certificados?: boolean;
 };
+
+export type EstadoExame = {
+  disponivel: boolean;
+  motivo: null | "progresso" | "aprovado" | "aguardar" | "tentativas" | "curso_pratica" | "desligado" | "plano";
+  /** Plano que inclui o exame (só com motivo "plano"); null se nenhum resolve. */
+  oferta?: Oferta | null;
+  mensagem: string | null;
+  progresso: number;
+  limiar_progresso: number;
+  duracao_minutos: number;
+  nota_minima: number;
+  nivel_alvo: string | null;
+  area: string | null;
+  temas: { titulo: string; descricao: string }[];
+  frases: { en: string; pt: string }[];
+  frases_total: number;
+  aprovado: boolean;
+  pode_repetir_em: string | null;
+  em_curso: string | null;
+  tentativas: ExameOral[];
+};
+
+export type ExameComecado = ConversaLicao & { exame_id: string; gravacao: boolean };
 
 export type NotasDeTodos = {
   courses: {
@@ -126,20 +174,71 @@ export type NotasDeTodos = {
   summary: { total_courses: number; courses_with_grades: number; average_grade: { percentage: number; letter: string } | number; certificates_earned: number; eligible_for_certificate: number };
 };
 
+/* Percurso do curso (apps/api/apps/courses/percurso.py): o servidor decide a ordem e o que está feito. */
+/** Laboratório da aula anterior por fazer (aviso «pratique primeiro»). */
+export type { PraticaAnterior } from "@/components/pe/curso/praticaAnterior";
+export type TipoPasso = "aula" | "questionario" | "pratica" | "conversa";
+export type Passo = {
+  chave: string;
+  tipo: TipoPasso;
+  titulo: string;
+  estado: "feito" | "actual" | "por_fazer";
+  minutos: number | null;
+  aula_id: string;
+  unidade: string;
+  licao_id?: string;
+  curso_pratica_id?: string;
+  situacao?: string;
+  tipo_conversa?: "guiada" | "livre" | "";
+  /** Fora das unidades de amostra: disponível nos planos pagos (nunca é o passo seguinte). */
+  bloqueado?: boolean;
+};
+export type Percurso = {
+  curso: { id: string; titulo: string };
+  acesso?: Acesso;
+  unidades_amostra?: number;
+  unidades: { id: string; titulo: string; bloqueada?: boolean; aulas: { id: string; titulo: string; bloqueada?: boolean; passos: Passo[]; pratica_anterior?: PraticaAnterior | null }[] }[];
+  proximo: Passo | null;
+  /** Só faltam passos fechados pelo plano. */
+  plano_necessario?: boolean;
+  feitos: number;
+  total: number;
+};
+export type ProximoPasso = { curso: { id: string; titulo: string }; passo: Passo; feitos: number; total: number };
+
+/** Para onde leva um passo do percurso. */
+export function hrefDoPasso(courseId: string, passo: Passo) {
+  if (passo.tipo === "pratica" && passo.licao_id) return `/user/laboratory/learn/lesson/${passo.licao_id}`;
+  if (passo.tipo === "conversa" && passo.situacao) return `/user/laboratory/speaking/real-time?situacao=${encodeURIComponent(passo.situacao)}`;
+  return `/user/courses/${courseId}/chapters/${passo.aula_id}`;
+}
+
+/** O nome do tipo de passo, como o aluno o lê. */
+export function nomeDoPasso(passo: Pick<Passo, "tipo" | "tipo_conversa">) {
+  if (passo.tipo === "aula") return "Aula";
+  if (passo.tipo === "questionario") return "Questionário";
+  if (passo.tipo === "pratica") return "Laboratório";
+  if (passo.tipo_conversa === "guiada") return "Conversa guiada";
+  if (passo.tipo_conversa === "livre") return "Conversa livre";
+  return "Conversa com o tutor";
+}
+
 type Envelope<T> = { message?: string; data: T };
 const dados = <T,>(r: Envelope<T> | T) => (r && typeof r === "object" && "data" in (r as object) ? (r as Envelope<T>).data : (r as T));
 
 export const cursoApi = createApi({
   reducerPath: "cursoApi",
   baseQuery: sharedBaseQuery,
-  tagTypes: ["Curso", "Progresso", "Inscricao", "Quiz", "Notas"],
+  tagTypes: ["Curso", "Progresso", "Inscricao", "Quiz", "Notas", "Exame"],
   endpoints: (build) => ({
     curso: build.query<DetalheCurso, string>({
       query: (id) => `${BASE}/${id}/`,
-      transformResponse: (r: Envelope<Curso> & { access_info?: { has_access: boolean; content_limited: boolean } }) => ({
+      transformResponse: (r: Envelope<Curso> & { access_info?: { has_access: boolean; content_limited: boolean; acesso?: Acesso; unidades_amostra?: number } }) => ({
         curso: { ...r.data, sections: (r.data.sections ?? []).slice().sort((a, b) => a.order - b.order).map((s) => ({ ...s, chapters: (s.chapters ?? []).slice().sort((a, b) => a.order - b.order) })) },
         temAcesso: r.access_info?.has_access ?? r.data.user_has_access,
         conteudoLimitado: !!r.access_info?.content_limited,
+        acesso: r.access_info?.acesso ?? r.data.acesso ?? null,
+        unidadesAmostra: r.access_info?.unidades_amostra ?? r.data.unidades_amostra ?? 0,
       }),
       providesTags: (_r, _e, id) => [{ type: "Curso", id }],
     }),
@@ -187,8 +286,21 @@ export const cursoApi = createApi({
     responderQuiz: build.mutation<ResultadoQuiz, { chapterId: string; courseId: string; respostas: Record<string, string>; segundos: number }>({
       query: ({ chapterId, respostas, segundos }) => ({ url: `${BASE}/chapters/${chapterId}/quiz/attempts/`, method: "POST", body: { respostas, time_taken: Math.round(segundos) } }),
       transformResponse: dados<ResultadoQuiz>,
-      invalidatesTags: (_r, _e, a) => [{ type: "Quiz", id: a.chapterId }, { type: "Notas", id: a.courseId }, { type: "Notas", id: "TODAS" }],
+      // Passar o questionário pode concluir a aula: o progresso volta a ser lido.
+      invalidatesTags: (_r, _e, a) => [{ type: "Quiz", id: a.chapterId }, { type: "Progresso", id: a.courseId }, { type: "Notas", id: a.courseId }, { type: "Notas", id: "TODAS" }],
       onQueryStarted: quandoCorrerBem(aposCurso),
+    }),
+    /** O percurso do curso: os passos de cada aula (aula, questionário, laboratório, conversa) e o seguinte. */
+    percurso: build.query<Percurso, string>({
+      query: (courseId) => `${BASE}/${courseId}/percurso/`,
+      providesTags: (_r, _e, id) => [{ type: "Progresso", id }],
+    }),
+    /** O passo seguinte do aluno em toda a plataforma (null se não há nada por fazer). */
+    proximoPasso: build.query<ProximoPasso | null, { licao?: string; situacao?: string } | void>({
+      // licao / situacao: o que o aluno acabou de fazer, para o "a seguir" ficar no mesmo curso.
+      query: (depois) => ({ url: `${BASE}/percurso/proximo/`, params: depois ?? undefined }),
+      transformResponse: (r: { proximo: ProximoPasso | null }) => r?.proximo ?? null,
+      providesTags: [{ type: "Progresso", id: "PROXIMO" }],
     }),
     notasDeTodos: build.query<NotasDeTodos, void>({
       query: () => `${BASE}/grades/all/`,
@@ -199,6 +311,22 @@ export const cursoApi = createApi({
       query: (courseId) => `${BASE}/${courseId}/grade/`,
       transformResponse: dados<Notas>,
       providesTags: (_r, _e, id) => [{ type: "Notas", id }],
+    }),
+    exame: build.query<EstadoExame, string>({
+      query: (courseId) => `${BASE}/${courseId}/exame/`,
+      providesTags: (_r, _e, id) => [{ type: "Exame", id }],
+      keepUnusedDataFor: 0,
+    }),
+    comecarExame: build.mutation<ExameComecado, { courseId: string; consentimento: boolean }>({
+      query: ({ courseId, consentimento }) => ({ url: `${BASE}/${courseId}/exame/`, method: "POST", body: { consentimento } }),
+    }),
+    resultadoExame: build.query<ExameOral, string>({
+      query: (id) => `${BASE}/exames/${id}/`,
+      keepUnusedDataFor: 0,
+    }),
+    apagarGravacaoExame: build.mutation<ExameOral, { id: string; courseId: string }>({
+      query: ({ id }) => ({ url: `${BASE}/exames/${id}/gravacao/`, method: "DELETE" }),
+      invalidatesTags: (_r, _e, a) => [{ type: "Exame", id: a.courseId }],
     }),
   }),
 });
@@ -211,11 +339,18 @@ export const {
   useCapituloQuery,
   useRecursosQuery,
   useProgressoQuery,
+  usePercursoQuery,
+  useProximoPassoQuery,
   useMarcarCapituloMutation,
   useResumoQuizQuery,
   useResponderQuizMutation,
   useNotasQuery,
   useNotasDeTodosQuery,
+  useExameQuery,
+  useComecarExameMutation,
+  useResultadoExameQuery,
+  useLazyResultadoExameQuery,
+  useApagarGravacaoExameMutation,
 } = cursoApi;
 
 /* ------------------------------------------------------------------ */
@@ -236,6 +371,16 @@ export function capitulosPorOrdem(curso: Curso): CapituloNoCurso[] {
 
 export function concluidos(p: Progresso | null | undefined) {
   return new Set((p?.sections ?? []).flatMap((s) => s.chapters.filter((c) => c.completed).map((c) => c.chapterId)));
+}
+
+/** Aulas com o vídeo visto (concluídas ou à espera de passar o questionário). */
+export function videosVistos(p: Progresso | null | undefined) {
+  return new Set((p?.sections ?? []).flatMap((s) => s.chapters.filter((c) => c.completed || c.video_visto).map((c) => c.chapterId)));
+}
+
+/** A aula tem um questionário para fazer (aulas do tipo Questionário ou outras com questionário ligado). */
+export function temQuestionario(c: Pick<Capitulo, "type" | "quiz_enabled" | "quiz_data">) {
+  return c.type === "Quiz" || (!!c.quiz_enabled && !!c.quiz_data?.questions?.length);
 }
 
 export const TIPO_PT: Record<TipoCapitulo, string> = { Video: "Vídeo", Text: "Leitura", Quiz: "Questionário", Exercise: "Prática" };

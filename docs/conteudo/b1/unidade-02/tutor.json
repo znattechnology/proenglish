@@ -1,0 +1,145 @@
+{
+ "unidade": "B1.1 · Unit 2 — Then and now",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "b1-u2-guiada",
+   "nome": "B1 Unit 2 · How long have you been…?",
+   "tipo": "guiada",
+   "depois_da_aula": "2C",
+   "descricao": "O tutor é Chris, colega de outro departamento, num intervalo para café. Pergunta o que o aluno tem andado a fazer, há quanto tempo e o que já fez, o que fazia antes, e pede uma opinião.",
+   "papel_tutor": "Chris, colega simpático(a) de outro departamento, num intervalo para café.",
+   "nivel": "B1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I've been… since / for…",
+    "I've … (número)",
+    "I used to…",
+    "I usually…",
+    "At first it was…, but now I…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an intermediate learner (B1, unit 2). You are Chris, a friendly colleague from another department, on a coffee break. Ask, one at a time: what the student has been doing at work recently; how long; what the student has finished so far (ask for a number); a new activity or hobby; what the student used to do five years ago; one opinion question. Ask \"How long…?\" and \"How many…?\" to make the student choose between \"I've been doing\" and \"I've done\". If the student says \"I work here since…\" or \"I'm working here for…\", recast once: \"Oh, you've been working here since…\". If the student says \"I use to…\" for a present habit, recast with \"usually\". If the student says \"I've been knowing…\", recast with \"I've known…\". If the student answers \"no\" or \"nothing\", ask a simpler question and continue. Use only A1 and A2 language plus the language of B1 units 1 and 2: question tags, indirect questions, follow-up questions, So do I / Neither do I, \"used to\" for past habits and states, the present perfect continuous (I've been working… How long have you been…?), and -ed / -ing adjectives. Do NOT use: \"be used to\" or \"get used to\", \"would\" for past habits, \"too\" or \"enough\" (as in \"too expensive\"), \"so\" or \"such\" with an adjective or with \"many / much\", the second conditional or hypothetical \"would\" (not even \"That would be great\"), \"might\" or \"may\" for probability, the passive, relative clauses (no \"who\", \"which\" or \"that\" after a noun, and no clauses like \"the job you do\"), the past perfect, reported speech, the future continuous, \"must\" or \"can't\" for deduction. Short turns, one question at a time.",
+    "primeira_fala": "Hi, {nome}! I haven't seen you for weeks. What have you been doing at work recently?",
+    "primeira_fala_simples": "Hi, {nome}! What have you been doing at work?",
+    "guiao": [
+     "Really? How long have you been doing that?",
+     "And what have you finished so far? Give me a number, if you can.",
+     "What about outside work? Have you been learning anything new — a language, a sport?",
+     "And five years ago? What did you use to do in your free time?",
+     "Interesting! Do you think your life is busier now than five years ago? Why?",
+     "Great talking to you, {nome}. See you later!"
+    ],
+    "frases": [
+     {
+      "en": "I've been working on the budget for three weeks.",
+      "pt": "Ando a trabalhar no orçamento há três semanas."
+     },
+     {
+      "en": "I've finished two reports.",
+      "pt": "Já acabei dois relatórios."
+     },
+     {
+      "en": "I used to play football every weekend.",
+      "pt": "Jogava futebol todos os fins-de-semana."
+     },
+     {
+      "en": "I usually go to the gym on Mondays.",
+      "pt": "Costumo ir ao ginásio às segundas."
+     },
+     {
+      "en": "At first it was confusing, but now I enjoy it.",
+      "pt": "Ao princípio era confuso, mas agora gosto."
+     }
+    ],
+    "palavras": [
+     "recently",
+     "so far",
+     "since",
+     "for",
+     "used to",
+     "usually"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": null
+  },
+  {
+   "slug": "b1-u2-livre",
+   "nome": "B1 Unit 2 · Catching up",
+   "tipo": "livre",
+   "depois_da_aula": "2F",
+   "descricao": "O tutor é Robin, antigo colega de uma formação, há cinco anos. Encontram-se por acaso no aeroporto de Luanda e contam o que mudou. O Robin interrompe uma vez com uma novidade, e o aluno tem de reagir e retomar a sua história.",
+   "papel_tutor": "Robin, antigo colega de formação da Cidade do Cabo, que o aluno não vê há cinco anos.",
+   "nivel": "B1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I used to…, but now I…",
+    "I've been … since…",
+    "I've … (número)",
+    "At first it was…, but now I feel…",
+    "Let's keep in touch."
+   ],
+   "extras": {
+    "brief": "Role-play for an intermediate learner (B1, unit 2). You are Robin (a neutral name; never mention a husband or wife), from Cape Town. Five years ago, you and the student were on the same training course. You meet by chance at Luanda airport. Ask about the student's life and work now, how long, and what the student used to do five years ago; ask follow-up questions. Once, after a student answer, interrupt with your own news: you moved to Luanda in June and you have been working for a hotel group here since then; then say \"Anyway — sorry, I interrupted you. Go on.\" and let the student return to the story. Ask how the student feels about the changes, and one opinion question. When you say your taxi is here, wait for the student to close the conversation and suggest how to keep in touch; agree. Encourage at least one long turn: if the student gives short answers, say \"Tell me more!\". Use only A1 and A2 language plus the language of B1 units 1 and 2: question tags, indirect questions, follow-up questions, So do I / Neither do I, \"used to\" for past habits and states, the present perfect continuous (I've been working… How long have you been…?), and -ed / -ing adjectives. Do NOT use: \"be used to\" or \"get used to\", \"would\" for past habits, \"too\" or \"enough\" (as in \"too expensive\"), \"so\" or \"such\" with an adjective or with \"many / much\", the second conditional or hypothetical \"would\" (not even \"That would be great\"), \"might\" or \"may\" for probability, the passive, relative clauses (no \"who\", \"which\" or \"that\" after a noun, and no clauses like \"the job you do\"), the past perfect, reported speech, the future continuous, \"must\" or \"can't\" for deduction. Short turns; never more than three sentences at a time.",
+    "primeira_fala": "{nome}? Is that you? It's Robin — from the training course, five years ago! How are you?",
+    "primeira_fala_simples": "{nome}? It's Robin, from the course! How are you?",
+    "guiao": [
+     "You look great! So, tell me everything. What are you doing these days?",
+     "Really? How long have you been doing that?",
+     "And five years ago? What did you use to do? I can't remember!",
+     "Oh, sorry — I have big news! I've moved to Luanda. I've been working for a hotel group here since June.",
+     "Anyway — sorry, I interrupted you. Go on.",
+     "How do you feel about all these changes?",
+     "In your opinion, is it good to change jobs often, or is it better to stay in one company? Why?",
+     "Oh no, my taxi is here!",
+     "Perfect. It was really good to see you, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "I used to work in a bank, but now I work for an oil company.",
+      "pt": "Trabalhava num banco, mas agora trabalho numa petrolífera."
+     },
+     {
+      "en": "I've been living in Luanda since 2024.",
+      "pt": "Vivo em Luanda desde 2024."
+     },
+     {
+      "en": "Really? That's great news! How do you like Luanda?",
+      "pt": "A sério? Que boa notícia! Está a gostar de Luanda?"
+     },
+     {
+      "en": "Anyway, as I was saying…",
+      "pt": "Bem, como eu estava a dizer…"
+     },
+     {
+      "en": "Let's keep in touch. Here's my number.",
+      "pt": "Vamos manter o contacto. Aqui está o meu número."
+     }
+    ],
+    "palavras": [
+     "these days",
+     "used to",
+     "since",
+     "changed",
+     "excited",
+     "keep in touch"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Conta o que mudou na sua vida ou no trabalho, com used to e o presente, e fala pelo menos uma vez 45 segundos ou mais sem ajuda.",
+    "Diz há quanto tempo faz uma actividade, com o present perfect continuous e for / since.",
+    "Distingue pelo menos uma vez a actividade e o resultado (I've been… / I've … + número).",
+    "Reage à novidade do Robin com uma pergunta de seguimento e retoma a sua história.",
+    "Descreve o que sente com adjectivos em -ed / -ing e dá uma opinião com uma razão.",
+    "Fecha a conversa e combina manter o contacto.",
+    "É compreendido sem o tutor ter de pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

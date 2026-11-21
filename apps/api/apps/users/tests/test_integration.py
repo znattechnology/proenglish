@@ -87,7 +87,7 @@ class EndToEndAuthenticationFlowTest(APITestCase):
             'title': 'My First Course',
             'description': 'A great course for learning',
             'category': 'Technology',
-            'level': 'Beginner'
+            'level': 'A2'
         }
         
         create_response = self.client.post(self.teacher_courses_url, course_data)
@@ -268,7 +268,7 @@ class SecurityValidationTest(APITestCase):
             'title': 'Teacher 1 Course',
             'description': 'A course by teacher 1',
             'category': 'Technology',
-            'level': 'Beginner'
+            'level': 'A2'
         }
         
         create_response = self.client.post('/api/v1/teacher/video-courses/', course_data)

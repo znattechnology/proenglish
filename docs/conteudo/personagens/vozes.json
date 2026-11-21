@@ -1,0 +1,55 @@
+{
+ "nota": "Registo das vozes fixas da ProEnglish (ElevenLabs, conta da ProEnglish, plano Creator). REGRA: a voz de uma personagem nunca se troca; se um dia for preciso, refazem-se todas as aulas e exercícios onde ela fala. Amostras aprovadas nesta pasta (vozes/).",
+ "modelo_tts": "eleven_multilingual_v2",
+ "modelo_sts": "eleven_multilingual_sts_v2",
+ "vozes": [
+  {
+   "personagem": "Professora Luena",
+   "voice_id": "ifwDnT8c01WcGVCznB4B",
+   "origem": "clone instantâneo da voz dela nos planos 02–13 da aula de introdução do A1 (96 s)",
+   "sotaque": "limpo, neutro",
+   "definicoes": {
+    "velocidade_aulas_A1": 0.9,
+    "velocidade_laboratorio": 1.0
+   },
+   "amostras": [
+    "vozes/luena-en.mp3",
+    "vozes/luena-pt.mp3"
+   ],
+   "aprovada": "20/11/2026"
+  },
+  {
+   "personagem": "Ana Domingos",
+   "voice_id": "JXa7f943qLaIt3b22att",
+   "origem": "Voice Design",
+   "descricao": "A warm, friendly young woman in her late twenties, a receptionist. Clear, bright, welcoming mid-range voice, natural and professional. She speaks clean, neutral standard British English with no regional or foreign accent, like an English teacher. Calm, moderate pace. Studio-quality recording.",
+   "sotaque": "inglês britânico neutro",
+   "amostras": [
+    "vozes/ana.mp3"
+   ],
+   "aprovada": "20/11/2026"
+  },
+  {
+   "personagem": "Paulo Mendes",
+   "voice_id": "m6rDdqigud4NWWTti3tq",
+   "origem": "Voice Design",
+   "descricao": "A friendly young man around thirty, an IT technician on his first day at work. Medium-low, calm, slightly shy but pleasant voice. He speaks clean, neutral standard British English with no regional or foreign accent. Calm, moderate pace. Studio-quality recording.",
+   "sotaque": "inglês britânico neutro",
+   "amostras": [
+    "vozes/paulo.mp3"
+   ],
+   "aprovada": "20/11/2026"
+  }
+ ],
+ "por_criar": [
+  "Sílvia Neto",
+  "Mateus",
+  "Sr. João Baptista",
+  "Nuno",
+  "Thandi Mokoena (sul-africana: decidir se mantém sotaque leve)"
+ ],
+ "regras": [
+  "Sotaque limpo e neutro como o da Luena (decisão do utilizador, 20/11/2026: as vozes com sotaque africano marcado foram rejeitadas).",
+  "Cada fala gerada é verificada com o whisper antes de entrar numa aula ou exercício."
+ ]
+}

@@ -34,3 +34,16 @@ PATH=/usr/local/bin:/usr/bin:/bin
 # relógio do VPS estiver em UTC). Idempotente (nunca altera meses já pagos); o pagamento
 # aos professores é feito à mão no dia 5 e marcado em /api/v1/admin/ganhos/<id>/pago/.
 0 2 1 * * cd __PROJECT_DIR__ && flock -n /tmp/proenglish-ganhos.lock __VENV__/bin/python manage.py fechar_ganhos >> __LOG_DIR__/cron-ganhos.log 2>&1
+
+# Transcrição automática dos vídeos das aulas (de hora a hora, ao minuto 11): apanha as aulas
+# pendentes e as que ficaram a meio por um reinício do servidor (máx. 20 por execução).
+11 * * * * cd __PROJECT_DIR__ && flock -n /tmp/proenglish-transcricao.lock __VENV__/bin/python manage.py transcrever_aulas --limite 20 >> __LOG_DIR__/cron-transcricao.log 2>&1
+
+# Gravações dos exames orais: apaga as que passaram os 12 meses e repete os pedidos de apagar que o
+# Vapi ainda não confirmou (todos os dias às 03:30 UTC).
+30 3 * * * cd __PROJECT_DIR__ && flock -n /tmp/proenglish-gravacoes.lock __VENV__/bin/python manage.py apagar_gravacoes_exames >> __LOG_DIR__/cron-gravacoes.log 2>&1
+
+# Conversas por voz à espera da chamada verificada do Vapi (de 5 em 5 minutos): pede a chamada ao
+# Vapi, cobra os minutos e avalia; fecha sem nota as que passaram 30 min sem confirmação; retoma as
+# avaliações que se perderam num reinício do worker do Gunicorn (paradas há mais de 2 min).
+*/5 * * * * cd __PROJECT_DIR__ && flock -n /tmp/proenglish-conversas-vapi.lock __VENV__/bin/python manage.py verificar_conversas_vapi >> __LOG_DIR__/cron-conversas-vapi.log 2>&1

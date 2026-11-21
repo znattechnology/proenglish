@@ -1,0 +1,80 @@
+{
+ "unidade": "B1.2 · Review 2",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "b1-r2-ensaio",
+   "nome": "B1 Review 2 · Exam rehearsal: a visiting auditor",
+   "tipo": "livre",
+   "depois_da_aula": "R2B",
+   "descricao": "Ensaio do exame oral do B1.2: o tutor é Skyler, auditor(a) de Nairobi de visita à empresa do aluno. Pergunta pelos projectos e por uma chamada recente; ouve a história de um problema; pede ao aluno que explique porque um evento da empresa custou mais do que o previsto; no fim, uma pergunta de opinião com um argumento contrário.",
+   "papel_tutor": "Skyler, auditor(a) de Nairobi de visita à empresa do aluno.",
+   "nivel": "B1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I'm working on… I've been… since…",
+    "She said… He asked me if…",
+    "At first… While… By the time… had…",
+    "It went up by… due to…",
+    "That's an interesting question. On the one hand… On the other hand…"
+   ],
+   "extras": {
+    "brief": "Exam rehearsal for an intermediate learner (B1.2, units 6-10). You are Skyler (a neutral name; never mention a husband or wife), an auditor from Nairobi visiting the student's company in Luanda. Have a friendly conversation in four parts, one question at a time. 1) Projects and calls: what the student is working on; a call or meeting they had recently, and what the other person said or asked; what they will be doing next month. 2) Long turn: ask the student to tell you about a problem or an incident they lived — what happened, why, what they did — for about one minute; then ask whether it could have been avoided, and what they should have done. 3) A budget question: the company's end-of-year party was budgeted at three million kwanzas, and it cost three and a half million. Ask the student to explain why (the student can invent the causes) and to propose one change; object to the change once. 4) Discussion: ask \"Should people change jobs often, or stay in one company?\"; whatever the student says, give the opposite view once, and ask the student to answer it. If the student answers with one word, ask \"Can you tell me more?\" once. Do not correct during the conversation, except by repeating once, correctly, these mistakes: \"She said me\", \"If I would have\", \"I should checked\", \"it mustn't be\". Use any A1, A2 and B1 language (units 1 to 10). Do NOT use: mixed conditionals (\"If we had…, we would be…\"), \"wish\" or \"if only\", passives with modals in the past (\"should have been done\"), reporting verbs like suggest, claim or deny.",
+    "primeira_fala": "Hi, {nome}! I'm Skyler, from Nairobi. Thanks for your time. To start, what are you working on at the moment?",
+    "primeira_fala_simples": "Hi, {nome}! I'm Skyler. What are you working on?",
+    "guiao": [
+     "Interesting. Tell me about a call or a meeting you had recently. What did the other person say or ask?",
+     "And what will you be doing this time next month?",
+     "Now, can you tell me about a problem or an incident you lived? What happened, and why?",
+     "Could it have been avoided? What should you have done?",
+     "One more thing: your end-of-year party was budgeted at three million kwanzas, and it cost three and a half. Can you explain why, and propose one change?",
+     "Hmm. That might not work for us. Any other idea?",
+     "Last question: should people change jobs often, or stay in one company for many years?",
+     "Hmm, I see it differently. What do you say to people who think the opposite?",
+     "Thank you, {nome}. A very good conversation."
+    ],
+    "frases": [
+     {
+      "en": "I've been working on the new budget since May.",
+      "pt": "Ando a trabalhar no novo orçamento desde Maio."
+     },
+     {
+      "en": "She asked me if I could finish it by Friday.",
+      "pt": "Perguntou-me se eu conseguia acabá-lo até sexta."
+     },
+     {
+      "en": "By the time we arrived, the water had damaged the files.",
+      "pt": "Quando chegámos, a água já tinha estragado os arquivos."
+     },
+     {
+      "en": "If we had checked the pipes, it wouldn't have happened.",
+      "pt": "Se tivéssemos verificado os canos, não teria acontecido."
+     },
+     {
+      "en": "That's an interesting question. On the one hand… On the other hand…",
+      "pt": "É uma pergunta interessante. Por um lado… Por outro lado…"
+     }
+    ],
+    "palavras": [
+     "said",
+     "asked",
+     "had",
+     "due to",
+     "should have",
+     "on the one hand"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Relata uma chamada ou reunião com o discurso indirecto (said, told me, asked if) e fala dos planos com o future continuous ou com going to.",
+    "Conta um problema que viveu, com os tempos narrativos e o past perfect, falando pelo menos 45 segundos sem ajuda.",
+    "Explica as causas e o que devia ter sido feito (because of, due to, should have, 3.º condicional).",
+    "Explica o desvio do orçamento com números e propõe uma mudança; quando o Skyler recusa, propõe outra.",
+    "Organiza a opinião (On the one hand… On the other hand… So, overall…) e responde ao argumento contrário.",
+    "É compreendido sem o tutor ter de pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

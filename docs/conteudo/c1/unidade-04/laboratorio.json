@@ -1,0 +1,1462 @@
+{
+ "unidade": "C1.1 · Unit 4 — Conflict",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "4A",
+   "titulo": "Never have I…",
+   "aula": "4A",
+   "objectivo": "Dar ênfase formal com inversão depois de advérbios negativos.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Never [have] I been so embarrassed in front of a client.",
+     "opcoes": [
+      {
+       "texto": "did",
+       "certa": false
+      },
+      {
+       "texto": "am",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Not once [has] Bongani told me about a change in the schedule.",
+     "opcoes": [
+      {
+       "texto": "have",
+       "certa": false
+      },
+      {
+       "texto": "is",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "At no time [did] I agree to be called \"our translator\".",
+     "opcoes": [
+      {
+       "texto": "have",
+       "certa": false
+      },
+      {
+       "texto": "was",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Under no circumstances [will] I keep giving the client dates I can't trust.",
+     "opcoes": [
+      {
+       "texto": "I will",
+       "certa": false
+      },
+      {
+       "texto": "won't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Rarely do we get complaints about the service.",
+       "certa": true
+      },
+      {
+       "texto": "Rarely we get complaints about the service.",
+       "certa": false
+      },
+      {
+       "texto": "Rarely we do get complaints about the service.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Never have I seen such a well-organised event.",
+       "certa": true
+      },
+      {
+       "texto": "Never I have seen such a well-organised event.",
+       "certa": false
+      },
+      {
+       "texto": "Never have seen I such a well-organised event.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Seldom do people say what they really want.\" \"Seldom\" means…",
+     "opcoes": [
+      {
+       "texto": "not often",
+       "certa": true
+      },
+      {
+       "texto": "always",
+       "certa": false
+      },
+      {
+       "texto": "never before",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Where does negative inversion sound most natural?",
+     "opcoes": [
+      {
+       "texto": "in a formal complaint or a moment of strong emphasis",
+       "certa": true
+      },
+      {
+       "texto": "when ordering a coffee",
+       "certa": false
+      },
+      {
+       "texto": "in a quick message to a friend",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Em caso algum vou dar ao cliente datas em que não confio.",
+     "resposta": "Under no circumstances will I give the client dates I can't trust.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. When Inês writes 'under no circumstances', she's furious.",
+     "enunciado": "What does Thandi think about Inês?",
+     "opcoes": [
+      {
+       "texto": "She is furious.",
+       "certa": true
+      },
+      {
+       "texto": "She is joking.",
+       "certa": false
+      },
+      {
+       "texto": "She is happy.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thandi. Call him. Then call her. Separately. Seldom do people say what they really want in front of the person they're angry with.",
+     "enunciado": "What does Thandi advise Nuno to do first?",
+     "opcoes": [
+      {
+       "texto": "Talk to each of them separately.",
+       "certa": true
+      },
+      {
+       "texto": "Put them in the same room.",
+       "certa": false
+      },
+      {
+       "texto": "Decide who is right.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Never have I been so embarrassed.",
+     "enunciado": "Ouça e repita, com o acento forte em \"Never\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Make a formal complaint to an organisation that treated you badly. Use at least three negative inversions, and keep the rest calm and precise.",
+     "frase": "Never have I",
+     "resposta": "I'm writing about my flight on the third of March. Never have I waited so long for information: six hours at the gate. Not once did staff explain the delay. At no time were we offered water. I'm asking for a full refund.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "When you are angry with a colleague, is it better to write or to talk? Why?",
+     "frase": "because",
+     "resposta": "To talk, because in writing every word sounds harder than you mean it. Rarely does an angry e-mail solve anything. I'd write only to confirm what we agreed.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "4B",
+   "titulo": "Not only… but also…",
+   "aula": "4B",
+   "objectivo": "Narrar com ênfase com not only, no sooner, hardly, little e only when.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Not only [did] she write to Dr Cumbe, but she also promised him a date.",
+     "opcoes": [
+      {
+       "texto": "she",
+       "certa": false
+      },
+      {
+       "texto": "has",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "No sooner had we fixed the road [than] it rained again.",
+     "opcoes": [
+      {
+       "texto": "when",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Hardly had I said it [when] I saw her face.",
+     "opcoes": [
+      {
+       "texto": "than",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Only when Dr Cumbe called me [did] I find out.",
+     "opcoes": [
+      {
+       "texto": "I",
+       "certa": false
+      },
+      {
+       "texto": "had",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Little did I know she was telling the client a different plan.",
+       "certa": true
+      },
+      {
+       "texto": "Little I knew she was telling the client a different plan.",
+       "certa": false
+      },
+      {
+       "texto": "Little did I knew she was telling the client a different plan.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Not only was he late, but he also forgot the documents.",
+       "certa": true
+      },
+      {
+       "texto": "Not only he was late, but he also forgot the documents.",
+       "certa": false
+      },
+      {
+       "texto": "Not only was late he, but he also forgot the documents.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"No sooner had we sat down than the lights went out.\" This means…",
+     "opcoes": [
+      {
+       "texto": "The lights went out immediately after we sat down.",
+       "certa": true
+      },
+      {
+       "texto": "We sat down after the lights went out.",
+       "certa": false
+      },
+      {
+       "texto": "The lights never went out.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "With \"only when\", the inversion goes…",
+     "opcoes": [
+      {
+       "texto": "in the main clause: Only when he called did I understand.",
+       "certa": true
+      },
+      {
+       "texto": "after \"only\": Only did when he called I understand.",
+       "certa": false
+      },
+      {
+       "texto": "nowhere: Only when he called I understood.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Só quando li o contrato é que percebi o problema.",
+     "resposta": "Only when I read the contract did I understand the problem.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Bongani. The road to seven was flooded! No sooner had we fixed the access road than it rained again.",
+     "enunciado": "Why did Bongani move the team?",
+     "opcoes": [
+      {
+       "texto": "The road to substation seven was flooded.",
+       "certa": true
+      },
+      {
+       "texto": "The client asked him to.",
+       "certa": false
+      },
+      {
+       "texto": "Inês told him to.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Bongani. I sent a message to the team group. She's in the Maputo group.",
+     "enunciado": "Why didn't Inês know about the change?",
+     "opcoes": [
+      {
+       "texto": "She isn't in the group where Bongani posted it.",
+       "certa": true
+      },
+      {
+       "texto": "She was on holiday.",
+       "certa": false
+      },
+      {
+       "texto": "Bongani told her the wrong date.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Only when Dr Cumbe called me did I find out.",
+     "enunciado": "Ouça e repita, com o acento em \"Only\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell the story of a day when everything went wrong. Use at least three: Not only…, No sooner… than…, Hardly… when…, Little did I know…, Only when… did I…",
+     "frase": "Little did I know",
+     "resposta": "No sooner had I left Luanda than the car started making a noise. Not only did I stop in Sumbe, but I also lost my phone. Little did I know the meeting had been cancelled. Only when I arrived, eleven hours later, did I find out.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "In a conflict, is it fair to listen to one side first? What are the risks?",
+     "frase": "risk",
+     "resposta": "It's fair if you listen to the other side next. The risk is that the first story sounds like the truth. Only when you hear both can you see the whole picture.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "4C",
+   "titulo": "So what you're saying is…",
+   "aula": "4C",
+   "objectivo": "Reformular, validar e descobrir o interesse por trás de uma posição.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "So what you're [saying] is that you didn't know about the change.",
+     "opcoes": [
+      {
+       "texto": "telling",
+       "certa": false
+      },
+      {
+       "texto": "speaking",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Correct] me if I'm wrong, but the real problem is the plan.",
+     "opcoes": [
+      {
+       "texto": "Corrects",
+       "certa": false
+      },
+      {
+       "texto": "Correcting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "That must [have] been very frustrating.",
+     "opcoes": [
+      {
+       "texto": "had",
+       "certa": false
+      },
+      {
+       "texto": "be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It sounds as [though] what really matters to you is respect.",
+     "opcoes": [
+      {
+       "texto": "like if",
+       "certa": false
+      },
+      {
+       "texto": "whether",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is a POSITION, not an interest?",
+     "opcoes": [
+      {
+       "texto": "\"I won't speak to him.\"",
+       "certa": true
+      },
+      {
+       "texto": "\"I want to know the plan before the client.\"",
+       "certa": false
+      },
+      {
+       "texto": "\"I want my work to be recognised.\"",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"That must have been frustrating.\" The speaker is…",
+     "opcoes": [
+      {
+       "texto": "recognising the feeling, without saying who is right",
+       "certa": true
+      },
+      {
+       "texto": "agreeing that the other person is right",
+       "certa": false
+      },
+      {
+       "texto": "criticising the other person",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which reformulation is fair and neutral?",
+     "opcoes": [
+      {
+       "texto": "So what you're saying is that you didn't know about the change.",
+       "certa": true
+      },
+      {
+       "texto": "So you're saying Bongani is terrible.",
+       "certa": false
+      },
+      {
+       "texto": "So it's all your fault.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"What would need to change for you to work well with him?\" This question looks for…",
+     "opcoes": [
+      {
+       "texto": "the interest behind the position",
+       "certa": true
+      },
+      {
+       "texto": "someone to blame",
+       "certa": false
+      },
+      {
+       "texto": "a quick yes or no",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Corrija-me se estiver enganado, mas o problema é o plano.",
+     "resposta": "Correct me if I'm wrong, but the problem is the plan.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Inês. Dr Cumbe called me! Bongani wasn't answering his phone. What was I supposed to do?",
+     "enunciado": "Why did Inês write to Dr Cumbe?",
+     "opcoes": [
+      {
+       "texto": "Dr Cumbe called her, and Bongani wasn't answering.",
+       "certa": true
+      },
+      {
+       "texto": "She wanted to complain about Bongani.",
+       "certa": false
+      },
+      {
+       "texto": "Nuno told her to.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Inês. Two things. I want to know the plan before the client does. And I want my name on what I do.",
+     "enunciado": "What does Inês want?",
+     "opcoes": [
+      {
+       "texto": "to know the plan before the client, and her name on her work",
+       "certa": true
+      },
+      {
+       "texto": "a new job",
+       "certa": false
+      },
+      {
+       "texto": "Bongani to leave the project",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Correct me if I'm wrong, but it sounds as though the real problem is the plan.",
+     "enunciado": "Ouça e repita, devagar e com calma."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A friend complains to you about someone. Reformulate, validate the feeling, find the interest, and suggest one point of common ground, without taking sides.",
+     "frase": "what you're saying",
+     "resposta": "So what you're saying is that you do almost all the care for your mother, and you're exhausted. That must be very hard. Correct me if I'm wrong, but what matters is not doing it alone. Would it surprise you if your sister felt guilty too?",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Can a manager be a good mediator for his or her own team, or is it better to bring in someone from outside? Why?",
+     "frase": "because",
+     "resposta": "A manager can do it, because they know the people and the work. But it's harder, because people may think the manager has a favourite. If the manager is part of the conflict, someone from outside is better.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "4D",
+   "titulo": "Conflict and resolution",
+   "aula": "4D",
+   "objectivo": "Vocabulário do conflito e da mediação, o tom calmo; disgust e expert.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "a grievance",
+       "b": "uma queixa, um agravo"
+      },
+      {
+       "a": "common ground",
+       "b": "terreno comum"
+      },
+      {
+       "a": "take sides",
+       "b": "tomar partido"
+      },
+      {
+       "a": "clear the air",
+       "b": "falar abertamente para desanuviar"
+      },
+      {
+       "a": "hold a grudge",
+       "b": "guardar rancor"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "A good mediator never takes [sides].",
+     "opcoes": [
+      {
+       "texto": "parts",
+       "certa": false
+      },
+      {
+       "texto": "side of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "They need one honest meeting to clear the [air].",
+     "opcoes": [
+      {
+       "texto": "sky",
+       "certa": false
+      },
+      {
+       "texto": "wind",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Each of them deserves a fair [hearing].",
+     "opcoes": [
+      {
+       "texto": "listening",
+       "certa": false
+      },
+      {
+       "texto": "audience of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Nuno's job is to [de-escalate] the situation.",
+     "opcoes": [
+      {
+       "texto": "de-climb",
+       "certa": false
+      },
+      {
+       "texto": "unescalate of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Ela teve um grande desgosto.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "She was heartbroken.",
+       "certa": true
+      },
+      {
+       "texto": "She had a big disgust.",
+       "certa": false
+      },
+      {
+       "texto": "She was very disgusting.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: disgust = nojo, repugnância."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Ela é muito esperta.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "She's very clever.",
+       "certa": true
+      },
+      {
+       "texto": "She's very expert.",
+       "certa": false
+      },
+      {
+       "texto": "She's an esperta.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: expert = especialista."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"She looked at the food with disgust.\" She thought the food was…",
+     "opcoes": [
+      {
+       "texto": "horrible",
+       "certa": true
+      },
+      {
+       "texto": "delicious",
+       "certa": false
+      },
+      {
+       "texto": "expensive",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Bongani became defensive. This means he…",
+     "opcoes": [
+      {
+       "texto": "protected himself against criticism",
+       "certa": true
+      },
+      {
+       "texto": "attacked everyone",
+       "certa": false
+      },
+      {
+       "texto": "agreed with everything",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. After weeks like this, they're both fed up. Neither of them holds grudges, though.",
+     "enunciado": "How does Thandi describe Inês and Bongani?",
+     "opcoes": [
+      {
+       "texto": "They're fed up, but they don't hold grudges.",
+       "certa": true
+      },
+      {
+       "texto": "They're happy.",
+       "certa": false
+      },
+      {
+       "texto": "They both want to leave.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Why didn't you tell her?",
+     "enunciado": "Ouça e repita a versão calma: tom baixo, sem subida irritada."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe a conflict you have seen, using precise words: the grievances, how the tension grew, whether anyone took sides, and how the air was cleared, or not.",
+     "frase": "tension",
+     "resposta": "At my last job, two supervisors had the same grievance: nobody told them about changes. The tension grew for months, and some of us took sides. In the end, the director organised a meeting to clear the air. They found some common ground.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it possible to work well with someone you don't like? How?",
+     "frase": "common ground",
+     "resposta": "Yes, if you focus on the work and find some common ground, like a deadline you both care about. You don't need to be friends; you need to be fair and clear.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "4E",
+   "titulo": "Real English: Two sides of the story",
+   "aula": "4E",
+   "objectivo": "Ouvir duas versões do mesmo conflito e perceber o que cada lado quer.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Precious. Today, Ayanda and Marco, who started Fynbos Design together six years ago.",
+     "enunciado": "How long ago did Ayanda and Marco start Fynbos Design?",
+     "opcoes": [
+      {
+       "texto": "six years ago",
+       "certa": true
+      },
+      {
+       "texto": "three months ago",
+       "certa": false
+      },
+      {
+       "texto": "two years ago",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Ayanda. Never have we had so many clients. I want to hire two designers. Marco says no.",
+     "enunciado": "How many designers does Ayanda want to hire?",
+     "opcoes": [
+      {
+       "texto": "two",
+       "certa": true
+      },
+      {
+       "texto": "three",
+       "certa": false
+      },
+      {
+       "texto": "six",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Ayanda. Honestly? He doesn't want to share control.",
+     "enunciado": "Why does Ayanda think Marco says no?",
+     "opcoes": [
+      {
+       "texto": "He doesn't want to share control.",
+       "certa": true
+      },
+      {
+       "texto": "He has no money.",
+       "certa": false
+      },
+      {
+       "texto": "He wants to retire.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Marco. Two years ago we hired three people, and six months later we had to let two go.",
+     "enunciado": "What happened two years ago?",
+     "opcoes": [
+      {
+       "texto": "They hired three people and had to let two go.",
+       "certa": true
+      },
+      {
+       "texto": "They lost all their clients.",
+       "certa": false
+      },
+      {
+       "texto": "Marco left the company.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Marco. Only when my daughter drew a picture of me with a computer for a head did I realise how bad it was.",
+     "enunciado": "When did Marco realise how bad his working hours were?",
+     "opcoes": [
+      {
+       "texto": "when his daughter drew him with a computer for a head",
+       "certa": true
+      },
+      {
+       "texto": "when Ayanda complained",
+       "certa": false
+      },
+      {
+       "texto": "when a client left",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Marco. Free weekends. And no one losing their job.",
+     "enunciado": "What does Marco want for next year?",
+     "opcoes": [
+      {
+       "texto": "free weekends, and no one losing their job",
+       "certa": true
+      },
+      {
+       "texto": "more clients",
+       "certa": false
+      },
+      {
+       "texto": "a bigger office",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "What is really behind Marco's \"no\"?",
+     "opcoes": [
+      {
+       "texto": "the fear of letting people go again",
+       "certa": true
+      },
+      {
+       "texto": "a wish to control everything",
+       "certa": false
+      },
+      {
+       "texto": "a lack of clients",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "What do Ayanda and Marco agree on, without knowing it?",
+     "opcoes": [
+      {
+       "texto": "They both want free weekends.",
+       "certa": true
+      },
+      {
+       "texto": "They both want to hire.",
+       "certa": false
+      },
+      {
+       "texto": "They both want to sell the studio.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Not only does he say no, but he also refuses to discuss it.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Under no circumstances will I do that again.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You are Precious, and next week Ayanda and Marco will be in the same room. Open the conversation: reformulate each side fairly, name their common ground, and suggest one option for both.",
+     "frase": "common ground",
+     "resposta": "Ayanda, I heard that you're exhausted and want a voice in decisions. Marco, I heard you never want to let people go again. Your common ground: you both want free weekends. One option: hire one designer on a twelve-month contract.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Why do people in a conflict so often guess the other person's reason wrongly?",
+     "frase": "because",
+     "resposta": "Because they don't ask. They fill the silence with their worst fears. Ayanda thought it was control; it was fear of firing people again.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "4F",
+   "titulo": "Work & Life: Clearing the air",
+   "aula": "4F",
+   "objectivo": "Mediar um conflito até um acordo e transmitir em inglês o que foi dito em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Inês says: \"Eu não sou tradutora.\" Nuno tells Bongani:",
+     "opcoes": [
+      {
+       "texto": "She says she isn't a translator.",
+       "certa": true
+      },
+      {
+       "texto": "She's a bit upset about the translator thing.",
+       "certa": false
+      },
+      {
+       "texto": "She says she no is translator.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Estudei engenharia electrotécnica cinco anos.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "She studied electrical engineering for five years.",
+       "certa": true
+      },
+      {
+       "texto": "She studied electrotechnic engineer five years ago.",
+       "certa": false
+      },
+      {
+       "texto": "She has study electrical engineering since five years.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the best way for a mediator to start?",
+     "opcoes": [
+      {
+       "texto": "Before we start, three ground rules…",
+       "certa": true
+      },
+      {
+       "texto": "Bongani, why did you do it?",
+       "certa": false
+      },
+      {
+       "texto": "Inês, you were wrong to write to the client.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which apology is the most sincere?",
+     "opcoes": [
+      {
+       "texto": "It was wrong. I apologise.",
+       "certa": true
+      },
+      {
+       "texto": "I'm sorry, but you started it.",
+       "certa": false
+      },
+      {
+       "texto": "Sorry if you were offended.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "So what I'm [hearing] from both of you is the same thing.",
+     "opcoes": [
+      {
+       "texto": "listening",
+       "certa": false
+      },
+      {
+       "texto": "sounding",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What [if] the two of you had a fifteen-minute call every Monday?",
+     "opcoes": [
+      {
+       "texto": "about",
+       "certa": false
+      },
+      {
+       "texto": "when",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How would you [feel] about that?",
+     "opcoes": [
+      {
+       "texto": "think of",
+       "certa": false
+      },
+      {
+       "texto": "sense",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "So, to sum [up], we've agreed on five things.",
+     "opcoes": [
+      {
+       "texto": "on",
+       "certa": false
+      },
+      {
+       "texto": "all",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Bongani. Inês, the translator thing was a stupid joke. I'm sorry. It was wrong. I apologise.",
+     "enunciado": "What does Bongani do?",
+     "opcoes": [
+      {
+       "texto": "He apologises for the \"translator\" comment.",
+       "certa": true
+      },
+      {
+       "texto": "He says it was Inês's fault.",
+       "certa": false
+      },
+      {
+       "texto": "He leaves the call.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Bongani. She should be the one who talks to Mussiro in Portuguese. She's better with them than I am.",
+     "enunciado": "What does Bongani suggest?",
+     "opcoes": [
+      {
+       "texto": "Inês should talk to Mussiro in Portuguese.",
+       "certa": true
+      },
+      {
+       "texto": "He should talk to Mussiro.",
+       "certa": false
+      },
+      {
+       "texto": "Nuno should talk to Mussiro.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It was wrong. I apologise.",
+     "enunciado": "Ouça e repita: um pedido de desculpas sincero, sem \"but\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Two colleagues, Chris and Leonor, argue: Chris wants the windows open; Leonor is cold. Mediate: ground rules, reformulate each side, find the common interest, and propose an option with \"What if…?\".",
+     "frase": "What if",
+     "resposta": "One person at a time, and we finish with an agreement. Chris, you need fresh air to concentrate. Leonor, you're cold most of the day. You both want to work comfortably. What if Leonor sat near the inside wall, and the windows opened only in the morning?",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell Chris, in English, what Leonor said, faithfully and in the third person: \"Eu não estou a fazer isto para te irritar. Tenho problemas nas costas e o frio piora a dor. Só quero trabalhar sem dores.\"",
+     "frase": "Leonor says",
+     "resposta": "Leonor says she isn't doing this to annoy you. She has back problems, and the cold makes the pain worse. She just wants to work without pain.",
+     "contexto": "Mediação: fiel, neutra, na terceira pessoa."
+    }
+   ]
+  },
+  {
+   "codigo": "4R",
+   "titulo": "Unit 4 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 4 do C1 e reciclar as unidades 1 a 3 do C1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Never [have] I seen such a mess.",
+     "opcoes": [
+      {
+       "texto": "I have",
+       "certa": false
+      },
+      {
+       "texto": "had I been",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "No sooner had she arrived [than] the phone rang.",
+     "opcoes": [
+      {
+       "texto": "when",
+       "certa": false
+      },
+      {
+       "texto": "then",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Little [did] they know what was coming.",
+     "opcoes": [
+      {
+       "texto": "they",
+       "certa": false
+      },
+      {
+       "texto": "had",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "A good mediator doesn't take [sides].",
+     "opcoes": [
+      {
+       "texto": "parts",
+       "certa": false
+      },
+      {
+       "texto": "place",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Only then did I understand the problem.",
+       "certa": true
+      },
+      {
+       "texto": "Only then I understood the problem did.",
+       "certa": false
+      },
+      {
+       "texto": "Only then I did understand the problem.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"He's an expert in solar panels.\" He is…",
+     "opcoes": [
+      {
+       "texto": "a specialist",
+       "certa": true
+      },
+      {
+       "texto": "a clever student",
+       "certa": false
+      },
+      {
+       "texto": "a salesman",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 3). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Had we known, we would have warned you.",
+       "certa": true
+      },
+      {
+       "texto": "Hadn't we known, we would have warned you.",
+       "certa": false
+      },
+      {
+       "texto": "Had known we, we would have warned you.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 2). Which is the most diplomatic?",
+     "opcoes": [
+      {
+       "texto": "I'm not entirely convinced that's the best option.",
+       "certa": true
+      },
+      {
+       "texto": "That's a terrible idea.",
+       "certa": false
+      },
+      {
+       "texto": "You're completely wrong.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 1). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "It wasn't the joke that hurt her — it was the place.",
+       "certa": true
+      },
+      {
+       "texto": "It wasn't the joke what hurt her — it was the place.",
+       "certa": false
+      },
+      {
+       "texto": "Wasn't the joke that hurt her — was the place.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Não só chegou tarde, como também se esqueceu dos documentos.",
+     "resposta": "Not only did he arrive late, but he also forgot the documents.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. So, to sum up: a fifteen-minute call on Mondays and Thursdays, and no date to the client without both of you.",
+     "enunciado": "How often will Inês and Bongani have a call?",
+     "opcoes": [
+      {
+       "texto": "on Mondays and Thursdays",
+       "certa": true
+      },
+      {
+       "texto": "every day",
+       "certa": false
+      },
+      {
+       "texto": "once a month",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a conflict you saw or were part of. How was it solved, or how should it have been solved?",
+     "frase": "should have",
+     "resposta": "Two colleagues argued about holidays: both wanted December. Not once did the manager talk to them together. He should have heard both sides and found common ground, like splitting the month. Only when one of them resigned did he understand.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Someone in your team says: \"I'm never working with him again!\" Answer as a mediator: reformulate and look for the interest.",
+     "frase": "what you're saying",
+     "resposta": "So what you're saying is that working with him has become very hard. That must be frustrating. What would need to change for you to work with him again?",
+     "contexto": "Reformular e procurar o interesse."
+    }
+   ]
+  }
+ ]
+}

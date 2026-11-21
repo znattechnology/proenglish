@@ -4,6 +4,7 @@
  */
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { sharedBaseQuery } from "@/src/domains/shared/api/baseQuery";
+import type { Oferta } from "@/src/domains/student/subscricao/api";
 
 export type Periodo = "7" | "30" | "tudo";
 
@@ -34,6 +35,8 @@ export type Requisito = { requisito: string; mensagem: string; necessario: numbe
 
 export type Certificados = {
   plano_inclui_certificados: boolean;
+  /** Plano que inclui certificados (null se o plano já inclui, ou se nenhum resolve). */
+  oferta?: Oferta | null;
   certificados: {
     id: string;
     numero: string;
@@ -41,6 +44,10 @@ export type Certificados = {
     emitido_em: string;
     nota_final: number;
     nota_letra?: string;
+    /** Fase 6: nível de fala atingido no exame oral e notas por competência (vazios nos antigos). */
+    nivel_fala?: string | null;
+    nivel_fala_texto?: string | null;
+    notas_fala?: NotaFala[];
     estado: "valido" | "revogado";
     ligacao_verificacao: string;
     pdf_url: string;
@@ -48,7 +55,21 @@ export type Certificados = {
   em_curso: { curso: { id: string; titulo: string }; progresso: number; nota_final: number; nota_minima: number; pode_emitir: boolean; em_falta: Requisito[] }[];
 };
 
-export type Verificacao = { valido: boolean; estado: "valido" | "revogado"; numero: string; nome_aluno: string; curso: string; emitido_em: string; nota_final: number | null; revogado_em: string | null };
+export type NotaFala = { chave: string; nome: string; nota: number };
+export type Verificacao = {
+  valido: boolean;
+  estado: "valido" | "revogado";
+  numero: string;
+  nome_aluno: string;
+  curso: string;
+  emitido_em: string;
+  nota_final: number | null;
+  revogado_em: string | null;
+  nivel_fala?: string | null;
+  nivel_fala_texto?: string | null;
+  nota_exame_oral?: number | null;
+  notas_fala?: NotaFala[];
+};
 
 export type Conquista = {
   id: string;

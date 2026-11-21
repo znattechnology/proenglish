@@ -10,7 +10,14 @@ export type Nivel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 export type Correcao = "suave" | "directa";
 export type Frase = { en: string; pt: string };
 export type Ajuste = { disse: string; certo: string; porque: string };
-export type Fala = { quem: "tutor" | "aluno"; texto: string };
+/** escrito: o aluno escreveu em vez de falar (as frases-alvo dessa fala contam só "com ajuda"). */
+export type Fala = { quem: "tutor" | "aluno"; texto: string; escrito?: boolean };
+/** Frase-alvo da conversa (perfil de fala). pt pode vir vazio. */
+export type Objectivo = { en: string; pt: string };
+export type ObjectivoResultado = Objectivo & { usado: boolean; com_ajuda: boolean };
+/** Padrão de erro nesta conversa: novo, recorrente ou já superado (estado de agora). */
+export type PadraoConversa = { chave: string; descricao: string; errado: string; certo: string; estado: "novo" | "recorrente" | "superado" };
+export type PadraoPerfil = { chave: string; descricao: string; errado: string; certo: string; ocorrencias: number; ultima_ocorrencia: string | null; superado: boolean };
 
 export type Preparar = {
   situacoes: {
@@ -24,7 +31,14 @@ export type Preparar = {
     nivel: Nivel | null;
     correcao: Correcao | null;
     curso: { id: string; titulo: string } | null;
+    /** Lugar no percurso do curso: a aula depois da qual se faz e o tipo (null nas conversas soltas). */
+    aula: { id: string; titulo: string; unidade: string } | null;
+    tipo_conversa: "guiada" | "livre" | null;
   }[];
+  /** Frases-alvo por situação (id da situação -> 2 a 4 frases). */
+  objectivos: Record<string, Objectivo[]>;
+  /** Nível de fala do perfil do aluno (null enquanto não há). */
+  perfil: { nivel: Nivel | null };
   niveis: Nivel[];
   areas: { id: string; nome: string }[];
   preferencias: { nivel: Nivel; correcao: Correcao; area: string };
@@ -47,6 +61,7 @@ export type NovaSessao = {
   max_segundos: number;
   primeira_fala: string;
   frases: Frase[];
+  objectivos: Objectivo[];
   vapi: { assistant_id: string; assistant_overrides: Record<string, unknown> } | null;
 };
 
@@ -63,9 +78,15 @@ export type Resumo = {
   estado: "avaliada" | "sem_avaliacao" | "em_curso" | "a_avaliar" | "nao_ligou";
   notas: Notas | null;
   transcricao: Fala[];
+  /** Voz: o que o browser mostrou, enquanto a chamada não é confirmada pelo serviço de voz (sem valor de nota). */
+  transcricao_provisoria?: boolean;
   correccoes: Ajuste[];
   palavras_bem_usadas: string[];
   resumo: string | null;
+  objectivos: ObjectivoResultado[];
+  padroes: PadraoConversa[];
+  /** Fase 3: quanto falou o aluno (medido com os tempos do Vapi, ou estimado pelas palavras). */
+  fala?: { segundos: number; ppm: number | null; palavras_por_turno: number | null; quota: number | null; fonte: "medido" | "estimado"; frase: string } | null;
 };
 
 export type Progresso = {
@@ -75,7 +96,60 @@ export type Progresso = {
   minutos: number;
   por_competencia: { chave: string; nome: string; valor: number | null; nota: string }[];
   ultimas: { id: string; titulo: string; iniciada_em: string; minutos: number; geral: number | null }[];
+  padroes: PadraoPerfil[];
+  frases_sozinho: { total: number; a_recuperar?: number; recentes: { texto: string; traducao: string; vezes: number; dias: number; ultima_vez: string | null }[] };
 };
+
+/** Teste de nível falado da primeira entrada (fase 6). */
+export type ResultadoDiagnostico = {
+  id: string;
+  estado: Resumo["estado"];
+  avaliado: boolean;
+  nivel: Nivel | null;
+  niveis: { falar: Nivel | null; ouvir: Nivel | null; gramatica: Nivel | null; vocabulario: Nivel | null } | null;
+  explicacoes: Partial<Record<"falar" | "ouvir" | "gramatica" | "vocabulario", string>>;
+  resumo: string | null;
+  feito_em: string;
+};
+export type EstadoDiagnostico = {
+  disponivel: boolean;
+  feitos_30_dias: number;
+  limite: number;
+  proximo_em: string | null;
+  max_segundos: number;
+  ultimo: ResultadoDiagnostico | null;
+  modo: "vapi" | "simulado";
+};
+
+/** A fala contém a frase? (aproximado, só para o painel ao vivo: quem decide é o servidor no fim). */
+export function disseFrase(frase: string, fala: string) {
+  const norm = (t: string) =>
+    t
+      .toLowerCase()
+      .replace(/[\u2018\u2019`]/g, "'")
+      .replace(/\bcan't\b/g, "can not")
+      .replace(/\bwon't\b/g, "will not")
+      .replace(/n't\b/g, " not")
+      .replace(/'ll\b/g, " will")
+      .replace(/'re\b/g, " are")
+      .replace(/'m\b/g, " am")
+      .replace(/'ve\b/g, " have")
+      .replace(/'d\b/g, " would")
+      .replace(/[^a-z0-9\s]/g, " ")
+      .split(/\s+/)
+      .filter(Boolean);
+  const a = norm(frase);
+  const b = norm(fala);
+  if (!a.length || !b.length) return false;
+  // Maior subsequência comum (as palavras da frase, pela ordem): 80% chega.
+  let ant = new Array(b.length + 1).fill(0);
+  for (const x of a) {
+    const act = [0];
+    for (let j = 1; j <= b.length; j++) act.push(x === b[j - 1] ? ant[j - 1] + 1 : Math.max(ant[j], act[j - 1]));
+    ant = act;
+  }
+  return ant[b.length] / a.length >= 0.8;
+}
 
 const BASE = "/practice/conversa";
 
@@ -93,17 +167,35 @@ export const conversaApi = createApi({
       query: (body) => ({ url: `${BASE}/sessoes/`, method: "POST", body }),
     }),
     /** A chamada ligou de facto: o tempo cobrado começa aqui (não ao criar a sessão). */
-    ligada: build.mutation<unknown, string>({
-      query: (id) => ({ url: `${BASE}/sessoes/${id}/ligada/`, method: "POST", body: {} }),
+    ligada: build.mutation<unknown, string | { id: string; call_id?: string }>({
+      query: (a) => {
+        const { id, call_id } = typeof a === "string" ? { id: a, call_id: undefined } : a;
+        return { url: `${BASE}/sessoes/${id}/ligada/`, method: "POST", body: call_id ? { call_id } : {} };
+      },
     }),
-    responder: build.mutation<{ tutor: string }, { id: string; texto: string }>({
-      query: ({ id, texto }) => ({ url: `${BASE}/sessoes/${id}/responder/`, method: "POST", body: { texto } }),
+    diagnostico: build.query<EstadoDiagnostico, void>({
+      query: () => `${BASE}/diagnostico/`,
+      keepUnusedDataFor: 0,
+    }),
+    comecarDiagnostico: build.mutation<{ sessao: NovaSessao; modo: "vapi" | "simulado"; chave_publica: string | null }, void>({
+      query: () => ({ url: `${BASE}/diagnostico/comecar/`, method: "POST", body: {} }),
+    }),
+    resultadoDiagnostico: build.query<ResultadoDiagnostico, string>({
+      query: (id) => `${BASE}/diagnostico/${id}/`,
+      keepUnusedDataFor: 0,
+    }),
+    responder: build.mutation<{ tutor: string }, { id: string; texto: string; escrito?: boolean }>({
+      query: ({ id, texto, escrito }) => ({ url: `${BASE}/sessoes/${id}/responder/`, method: "POST", body: { texto, escrito: Boolean(escrito) } }),
+    }),
+    /** Só baixa o resultado: o aluno escreveu em vez de falar, ou viu a frase-alvo em inglês. */
+    ajuda: build.mutation<{ ok: boolean }, { id: string; escrito?: string; revelada?: string }>({
+      query: ({ id, ...body }) => ({ url: `${BASE}/sessoes/${id}/ajuda/`, method: "POST", body }),
     }),
     ajuste: build.mutation<{ ajuste: Ajuste | null }, { id: string; frase: string }>({
       query: ({ id, frase }) => ({ url: `${BASE}/sessoes/${id}/ajuste/`, method: "POST", body: { frase } }),
     }),
-    terminar: build.mutation<Resumo, { id: string; transcricao: Fala[] }>({
-      query: ({ id, transcricao }) => ({ url: `${BASE}/sessoes/${id}/terminar/`, method: "POST", body: { transcricao } }),
+    terminar: build.mutation<Resumo, { id: string; transcricao: Fala[]; call_id?: string | null; reveladas?: string[] }>({
+      query: ({ id, ...body }) => ({ url: `${BASE}/sessoes/${id}/terminar/`, method: "POST", body }),
       invalidatesTags: ["Preparar", "Progresso"],
       onQueryStarted: quandoCorrerBem(aposEstudo),
     }),
@@ -118,7 +210,7 @@ export const conversaApi = createApi({
   }),
 });
 
-export const { usePrepararQuery, useComecarMutation, useLigadaMutation, useResponderMutation, useAjusteMutation, useTerminarMutation, useResumoQuery, useProgressoQuery } = conversaApi;
+export const { useDiagnosticoQuery, useComecarDiagnosticoMutation, useLazyResultadoDiagnosticoQuery, usePrepararQuery, useComecarMutation, useLigadaMutation, useResponderMutation, useAjusteMutation, useAjudaMutation, useTerminarMutation, useResumoQuery, useProgressoQuery } = conversaApi;
 
 export const URL_TERMINAR = (id: string) => `${process.env.NEXT_PUBLIC_DJANGO_API_URL || "http://localhost:8000/api/v1"}${BASE}/sessoes/${id}/terminar/`;
 

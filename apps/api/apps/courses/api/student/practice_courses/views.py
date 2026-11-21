@@ -17,6 +17,7 @@ from rest_framework import generics, status as status_module
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from apps.core.permissions import EAdministrador
+from apps.core import armazenamento
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
@@ -37,6 +38,7 @@ from apps.subscriptions.decorators import (
     premium_plus_required
 )
 from apps.subscriptions.models import UserSubscription
+from apps.practice.study_services import corpo_sem_vidas
 
 from apps.courses.models import Course
 from apps.practice.models import (
@@ -147,6 +149,9 @@ class CoursesListView(generics.ListAPIView):
         # Check if user is authenticated for progress calculation
         user = request.user if request.user.is_authenticated else None
 
+        from apps.courses import amostra, teste_basico
+        from apps.courses.ciclo import bloqueio_requisito_pratica
+
         for course in courses:
             course_data = {
                 'id': str(course.id),
@@ -158,6 +163,13 @@ class CoursesListView(generics.ListAPIView):
                 'template': course.template,
                 'created_at': course.created_at.isoformat() if course.created_at else None,
                 'updated_at': course.updated_at.isoformat() if course.updated_at else None,
+                # Curso de sector; e se esta pessoa ainda precisa do nível básico para o começar.
+                'de_sector': teste_basico.curso_de_sector(course),
+                'requisito_basico': bool(user) and bloqueio_requisito_pratica(user, course) is not None,
+                # Unidades de amostra (apps/courses/amostra.py): 'total' | 'amostra' | None.
+                'access_level': course.access_level,
+                'acesso': amostra.acesso(user, course),
+                'unidades_amostra': amostra.unidades_amostra(course),
             }
 
             # Add statistics if requested for student course selection
@@ -257,9 +269,12 @@ class CourseUnitsView(generics.ListAPIView):
     def get_serializer_context(self):
         # Só a estrutura (sem enunciados nem opções) e sem as lições ainda incompletas.
         from apps.practice.acesso_licoes import ids_escondidas
+        from apps.courses import amostra
         context = super().get_serializer_context()
         curso = getattr(self, '_curso', None)
         context['licoes_escondidas'] = ids_escondidas(curso) if curso is not None else set()
+        context['unidades_bloqueadas'] = (
+            (amostra.unidades_pratica_bloqueadas(self.request.user, curso) or set()) if curso is not None else set())
         return context
 
 
@@ -390,6 +405,25 @@ class UserProgressView(APIView):
             return Response(full_serializer.data)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+def solucao(challenge):
+    """A resposta certa em texto, para mostrar depois de um erro (o exercício volta no fim da lição)."""
+    opcoes = list(challenge.options.order_by('order'))
+    certas = [o.text for o in opcoes if o.is_correct]
+    tipo = challenge.type
+    if tipo == 'SENTENCE_ORDER':
+        return ' '.join(o.text for o in opcoes) or None
+    if tipo == 'MATCH_PAIRS':
+        return '; '.join(o.text for o in opcoes) or None
+    if tipo == 'FILL_BLANK':
+        import re
+        fila = list(certas)
+        frase = re.sub(r'_{2,}|\[\s*\]', lambda _m: fila.pop(0) if fila else '___', challenge.question or '')
+        return frase if certas else None
+    if tipo in ('SELECT', 'ASSIST', 'TRUE_FALSE', 'TRANSLATION', 'LISTENING'):
+        return certas[0] if certas else None
+    return None
 
 
 class ChallengeProgressView(APIView):
@@ -542,11 +576,13 @@ class ChallengeProgressView(APIView):
                     }
                 }, status=status_module.HTTP_200_OK)
 
-        # Check hearts for new challenges (skip for users with unlimited hearts subscription)
-        if user_progress.hearts == 0 and not is_practice and not has_unlimited_hearts(request.user):
+        # Check hearts for new challenges (skip for users with unlimited hearts subscription).
+        # A conversa curta do fim da lição nunca custa vidas: não precisa delas.
+        if (user_progress.hearts == 0 and not is_practice and challenge.type != 'VAPI_CONVERSATION'
+                and not has_unlimited_hearts(request.user)):
             logger.info("User has no hearts and this is not practice mode")
             return Response(
-                {'error': 'hearts', 'message': 'Ficou sem vidas. Espere pela recarga ou recarregue com pontos.'},
+                corpo_sem_vidas(request.user),
                 status=status_module.HTTP_400_BAD_REQUEST
             )
 
@@ -911,13 +947,25 @@ class ChallengeProgressView(APIView):
             logger.info(f"Match pairs validation: paired_options={paired_options}, is_correct: {is_correct}")
 
         elif challenge_type == 'VAPI_CONVERSATION':
-            # A conversa dentro da lição está desligada: o exercício só pode ser saltado
-            # ({saltar: true}), sem pontos e sem perder vidas.
+            # Conversa curta no fim da lição: conta quando a conversa {sessao_id} deste exercício
+            # terminou com pelo menos 2 falas do aluno. Senão não é um erro (sem perder vidas):
+            # pode fazer outra conversa ou saltar ({saltar: true}).
+            from apps.practice.conversa.licao import conversa_concluida, MIN_FALAS_ALUNO
+            ok, motivo = conversa_concluida(request.user, challenge, request.data.get('sessao_id'))
+            if not ok:
+                mensagem = (f'A conversa precisa de pelo menos {MIN_FALAS_ALUNO} respostas suas. '
+                            'Pode tentar outra vez ou saltar, sem perder vidas.'
+                            if motivo == 'poucas_falas' else 'Termine primeiro a conversa com o tutor.')
+                return Response({'codigo': 'conversa_incompleta', 'motivo': motivo, 'mensagem': mensagem,
+                                 'pode_saltar': True}, status=status_module.HTTP_400_BAD_REQUEST)
+            is_correct = True
+
+        elif challenge_type == 'RESPONDER':
+            # Avaliado no servidor a partir da gravação (Whisper + Claude).
             return Response(
-                {'error': 'conversa_indisponivel', 'codigo': 'conversa_indisponivel',
-                 'message': 'A conversa dentro da lição não está disponível. Salte este exercício.',
-                 'mensagem': 'A conversa dentro da lição não está disponível. Salte este exercício.',
-                 'pode_saltar': True},
+                {'error': 'RESPONDER challenges must use the answer evaluation endpoint',
+                 'codigo': 'usar_gravacao',
+                 'endpoint': f'/api/v1/student/practice-courses/challenges/{challenge.id}/responder/'},
                 status=status_module.HTTP_400_BAD_REQUEST
             )
 
@@ -1006,8 +1054,10 @@ class ChallengeProgressView(APIView):
             response_data = {
                 'success': True,
                 'correct': False,
-                # Dica para tentar outra vez, sem dar a resposta.
                 'dica': challenge.hint or None,
+                # O exercício volta no fim da lição: mostra-se já a resposta certa e a explicação.
+                'solucao': solucao(challenge),
+                'explicacao': challenge.explanation or None,
                 'user_progress': {
                     'hearts': user_progress.hearts if not user_has_unlimited else 999,
                     'points': user_progress.points
@@ -1032,16 +1082,21 @@ class ChallengeProgressView(APIView):
         """
         Exercício saltado: conta como feito, sem pontos e sem perder vidas.
         - pronúncia (SPEAKING) com a análise indisponível (apps.practice.saltar_pronuncia, com token);
-        - conversa (VAPI_CONVERSATION), que está desligada, e escuta (LISTENING) sem áudio:
-          sempre (o ecrã de jogar/ marca-os com modo "indisponivel").
+        - responder em voz alta (RESPONDER) com a avaliação indisponível (o mesmo token);
+        - conversa curta (VAPI_CONVERSATION): é opcional, pode ser sempre saltada (sem minutos,
+          Vapi em baixo, ou o aluno não quer);
+        - escuta (LISTENING) sem áudio e exercícios incompletos: sempre (o ecrã de jogar/ marca-os
+          com modo "indisponivel").
         """
         from apps.practice.saltar_pronuncia import pode_saltar
         from .jogar import motivo_saltar
-        if challenge.type != 'SPEAKING' and not motivo_saltar(challenge):
+        # Um responder incompleto (sem pergunta ou frase-alvo) não pode ser gravado: salta sem token.
+        com_token = challenge.type in ('SPEAKING', 'RESPONDER') and not motivo_saltar(challenge)
+        if not com_token and challenge.type != 'VAPI_CONVERSATION' and not motivo_saltar(challenge):
             return Response({'codigo': 'saltar_invalido',
                              'mensagem': 'Este exercício não pode ser saltado.'},
                             status=status_module.HTTP_400_BAD_REQUEST)
-        if challenge.type == 'SPEAKING' and not pode_saltar(request.data.get('token_saltar'), request.user, challenge):
+        if com_token and not pode_saltar(request.data.get('token_saltar'), request.user, challenge):
             return Response({'codigo': 'analise_disponivel',
                              'mensagem': 'A análise de pronúncia está disponível: grave a frase.'},
                             status=status_module.HTTP_409_CONFLICT)
@@ -1172,7 +1227,7 @@ class ValidateTextAnswerView(APIView):
         # Check hearts for new challenges (skip for users with unlimited hearts subscription)
         if user_progress.hearts == 0 and not is_practice and not has_unlimited_hearts(request.user):
             return Response(
-                {'error': 'hearts', 'message': 'No hearts remaining'},
+                corpo_sem_vidas(request.user),
                 status=status_module.HTTP_400_BAD_REQUEST
             )
         
@@ -1300,7 +1355,7 @@ class GetAudioUploadUrlView(APIView):
 
             if not all([lesson_id, file_name, file_type]):
                 return Response(
-                    {'error': 'lessonId, fileName, and fileType são obrigatórios'},
+                    {'error': 'lessonId, fileName e fileType são obrigatórios'},
                     status=status_module.HTTP_400_BAD_REQUEST
                 )
 
@@ -1342,7 +1397,7 @@ class GetAudioUploadUrlView(APIView):
             if file_size and int(file_size) > self.MAX_FILE_SIZE:
                 max_mb = self.MAX_FILE_SIZE // (1024 * 1024)
                 return Response(
-                    {'error': f'Arquivo muito grande. Tamanho máximo: {max_mb}MB'},
+                    {'error': f'Ficheiro demasiado grande. Tamanho máximo: {max_mb}MB'},
                     status=status_module.HTTP_400_BAD_REQUEST
                 )
 
@@ -1350,12 +1405,7 @@ class GetAudioUploadUrlView(APIView):
             unique_filename = f"audio/{lesson_id}/{challenge_id}/{uuid.uuid4().hex}.{file_extension}"
 
             # Initialize S3 client
-            s3_client = boto3.client(
-                's3',
-                aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-                aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-                region_name=settings.AWS_S3_REGION_NAME or 'us-east-1'
-            )
+            s3_client = armazenamento.cliente()
 
             # Generate presigned URL for upload
             presigned_url = s3_client.generate_presigned_url(
@@ -1369,7 +1419,7 @@ class GetAudioUploadUrlView(APIView):
             )
 
             # Construct the final audio URL
-            audio_url = f"https://{settings.AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/{unique_filename}"
+            audio_url = armazenamento.url_publico(unique_filename)
 
             return Response({
                 'message': 'URL de upload de áudio gerada com sucesso',
@@ -1434,7 +1484,7 @@ class GetImageUploadUrlView(APIView):
 
             if not all([lesson_id, file_name, file_type]):
                 return Response(
-                    {'error': 'lessonId, fileName, and fileType são obrigatórios'},
+                    {'error': 'lessonId, fileName e fileType são obrigatórios'},
                     status=status_module.HTTP_400_BAD_REQUEST
                 )
 
@@ -1476,7 +1526,7 @@ class GetImageUploadUrlView(APIView):
             if file_size and int(file_size) > self.MAX_FILE_SIZE:
                 max_mb = self.MAX_FILE_SIZE // (1024 * 1024)
                 return Response(
-                    {'error': f'Arquivo muito grande. Tamanho máximo: {max_mb}MB'},
+                    {'error': f'Ficheiro demasiado grande. Tamanho máximo: {max_mb}MB'},
                     status=status_module.HTTP_400_BAD_REQUEST
                 )
 
@@ -1484,12 +1534,7 @@ class GetImageUploadUrlView(APIView):
             unique_filename = f"images/{lesson_id}/{challenge_id}/{uuid.uuid4().hex}.{file_extension}"
 
             # Initialize S3 client
-            s3_client = boto3.client(
-                's3',
-                aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-                aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-                region_name=settings.AWS_S3_REGION_NAME or 'us-east-1'
-            )
+            s3_client = armazenamento.cliente()
 
             # Generate presigned URL for upload
             presigned_url = s3_client.generate_presigned_url(
@@ -1503,7 +1548,7 @@ class GetImageUploadUrlView(APIView):
             )
 
             # Construct the final image URL
-            image_url = f"https://{settings.AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/{unique_filename}"
+            image_url = armazenamento.url_publico(unique_filename)
 
             return Response({
                 'message': 'URL de upload de imagem gerada com sucesso',
@@ -1715,14 +1760,19 @@ def get_units_with_progress(request, course_id):
 
     # O aluno recebe só a estrutura e o progresso (sem enunciados, opções nem respostas) e não vê
     # as lições ainda incompletas; o ecrã da lição usa lessons/<id>/jogar/.
+    from apps.courses import amostra
     from apps.practice.acesso_licoes import ids_escondidas
     serializer_class = PracticeUnitProfessorSerializer if dono else PracticeUnitSerializer
+    total = dono or amostra.acesso_total(request.user, course)
     units_serializer = serializer_class(
         units,
         many=True,
         context={'request': request, 'mostrar_respostas': dono,
-                 'licoes_escondidas': set() if dono else ids_escondidas(course)}
+                 'licoes_escondidas': set() if dono else ids_escondidas(course),
+                 'unidades_bloqueadas': amostra.unidades_pratica_bloqueadas(request.user, course, total=total) or set()}
     )
+    course_data['acesso'] = amostra.acesso(request.user, course, total=total)
+    course_data['unidades_amostra'] = amostra.unidades_amostra(course)
 
     return Response({
         'course': course_data,
@@ -2698,11 +2748,11 @@ def test_achievements_data(request):
             if diff.days == 0:
                 unlocked_at_formatted = "hoje"
             elif diff.days == 1:
-                unlocked_at_formatted = "1 dia atrás"
+                unlocked_at_formatted = "há 1 dia"
             elif diff.days < 7:
-                unlocked_at_formatted = f"{diff.days} dias atrás"
+                unlocked_at_formatted = f"há {diff.days} dias"
             else:
-                unlocked_at_formatted = f"{diff.days // 7} semana{'s' if diff.days // 7 > 1 else ''} atrás"
+                unlocked_at_formatted = f"há {diff.days // 7} semana{'s' if diff.days // 7 > 1 else ''}"
         
         achievement_data = {
             'id': str(achievement.id),
@@ -2835,12 +2885,3 @@ class AITranslationValidationView(APIView):
             'status': 'placeholder'
         })
 
-class AIPronunciationAnalysisView(APIView):
-    """Placeholder for AI pronunciation analysis - moved to Vapi"""
-    permission_classes = [IsAuthenticated]
-    
-    def post(self, request):
-        return Response({
-            'message': 'AI pronunciation analysis moved to Vapi integration',
-            'status': 'placeholder'
-        })

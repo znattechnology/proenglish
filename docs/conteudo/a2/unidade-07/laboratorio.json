@@ -1,0 +1,1502 @@
+{
+ "unidade": "A2.2 · Unit 7 — News and updates",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "7A",
+   "titulo": "I've just heard the news",
+   "aula": "7A",
+   "objectivo": "Dar novidades com just e reagir com a expressão certa.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've [just] heard the news.",
+     "opcoes": [
+      {
+       "texto": "yet",
+       "certa": false
+      },
+      {
+       "texto": "since",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Thandi has just [called].",
+     "opcoes": [
+      {
+       "texto": "call",
+       "certa": false
+      },
+      {
+       "texto": "calling",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I've just got a promotion!",
+       "certa": true
+      },
+      {
+       "texto": "I just have got a promotion!",
+       "certa": false
+      },
+      {
+       "texto": "I've got just a promotion!",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Just\" entre \"have\" e o particípio."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I've just got a new job!\" — Choose the best reaction.",
+     "opcoes": [
+      {
+       "texto": "Congratulations! That's great news!",
+       "certa": true
+      },
+      {
+       "texto": "Oh no, I'm sorry to hear that.",
+       "certa": false
+      },
+      {
+       "texto": "That's a pity.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"My car has broken down again.\" — Choose the best reaction.",
+     "opcoes": [
+      {
+       "texto": "Oh no, I'm sorry to hear that.",
+       "certa": true
+      },
+      {
+       "texto": "Congratulations!",
+       "certa": false
+      },
+      {
+       "texto": "Well done!",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The director has resigned!\" — Choose the best reaction.",
+     "opcoes": [
+      {
+       "texto": "Really? What happened?",
+       "certa": true
+      },
+      {
+       "texto": "Well done!",
+       "certa": false
+      },
+      {
+       "texto": "That sounds great.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I have some news.",
+       "certa": true
+      },
+      {
+       "texto": "I have a news.",
+       "certa": false
+      },
+      {
+       "texto": "I have some newses.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"News\" é incontável."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Acabei de enviar o e-mail.",
+     "resposta": "I've just sent the email.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Good morning, everyone! I've just heard the news — I've got the promotion! I'm the new finance manager.",
+     "enunciado": "What is Sílvia's news?",
+     "opcoes": [
+      {
+       "texto": "She's the new finance manager.",
+       "certa": true
+      },
+      {
+       "texto": "She's leaving the company.",
+       "certa": false
+      },
+      {
+       "texto": "Her car has broken down.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I've just heard the news! — Really? Congratulations!",
+     "enunciado": "Ouça e repita: \"just\" forte; \"Really?\" a subir."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Give me some good news with \"I've just…\".",
+     "frase": "I've just",
+     "resposta": "I've just finished my driving lessons, and I passed the test this morning!",
+     "contexto": "Uma novidade recente."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "I've just lost my phone in a taxi! What do you say?",
+     "frase": "sorry to hear",
+     "resposta": "Oh no, I'm sorry to hear that. What happened? Did you call the taxi company?",
+     "contexto": "Reaja e faça uma pergunta."
+    }
+   ]
+  },
+  {
+   "codigo": "7B",
+   "titulo": "Have you finished yet?",
+   "aula": "7B",
+   "objectivo": "Dizer o que já está feito e o que não está com already / yet.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We've [already] installed the network.",
+     "opcoes": [
+      {
+       "texto": "yet",
+       "certa": false
+      },
+      {
+       "texto": "since",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We haven't trained the staff [yet].",
+     "opcoes": [
+      {
+       "texto": "just",
+       "certa": false
+      },
+      {
+       "texto": "since",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Have you sent the update to Rita [yet]?",
+     "opcoes": [
+      {
+       "texto": "just",
+       "certa": false
+      },
+      {
+       "texto": "since",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Have you tested the system yet?\" — Choose the answer.",
+     "opcoes": [
+      {
+       "texto": "No, not yet.",
+       "certa": true
+      },
+      {
+       "texto": "No, not already.",
+       "certa": false
+      },
+      {
+       "texto": "No, I haven't yet tested.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Ainda não começámos\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "We haven't started yet.",
+       "certa": true
+      },
+      {
+       "texto": "We haven't started already.",
+       "certa": false
+      },
+      {
+       "texto": "We didn't start yet already.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"We're behind schedule\" means...",
+     "opcoes": [
+      {
+       "texto": "The project is late.",
+       "certa": true
+      },
+      {
+       "texto": "The project is on time.",
+       "certa": false
+      },
+      {
+       "texto": "The project is finished.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"We're on track\" means...",
+     "opcoes": [
+      {
+       "texto": "The project is on time.",
+       "certa": true
+      },
+      {
+       "texto": "The project is late.",
+       "certa": false
+      },
+      {
+       "texto": "The project is cancelled.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Já fizemos a parte mais difícil.",
+     "resposta": "We've already done the most difficult part.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "We haven't started the training yet. The training room isn't ready.",
+     "enunciado": "Why haven't they started the training?",
+     "opcoes": [
+      {
+       "texto": "The training room isn't ready.",
+       "certa": true
+      },
+      {
+       "texto": "The staff are on holiday.",
+       "certa": false
+      },
+      {
+       "texto": "Arjun is sick.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "We've already installed it, but we haven't trained the staff yet.",
+     "enunciado": "Ouça e repita: alREADy; yet (não \"jet\")."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What have you already done today, and what haven't you done yet?",
+     "frase": "yet",
+     "resposta": "I've already answered my emails and I've called two clients. I haven't written the report yet.",
+     "contexto": "already e yet."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your manager asks: \"Have you booked the meeting room yet?\"",
+     "frase": "already",
+     "resposta": "Yes, I've already booked it. It's room 3, on Friday at ten.",
+     "contexto": "Ou: No, not yet. I'm doing it now."
+    }
+   ]
+  },
+  {
+   "codigo": "7C",
+   "titulo": "How long have you worked here?",
+   "aula": "7C",
+   "objectivo": "Dizer há quanto tempo com for / since e distinguir de ago.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've worked here [since] 2005.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "ago",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Ana has been the receptionist [for] twelve years.",
+     "opcoes": [
+      {
+       "texto": "since",
+       "certa": false
+      },
+      {
+       "texto": "ago",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I started four months [ago].",
+     "opcoes": [
+      {
+       "texto": "since",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "How long have you worked here?",
+       "certa": true
+      },
+      {
+       "texto": "How long do you work here?",
+       "certa": false
+      },
+      {
+       "texto": "How long are you working here?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Trabalho aqui desde 2018.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I've worked here since 2018.",
+       "certa": true
+      },
+      {
+       "texto": "I work here since 2018.",
+       "certa": false
+      },
+      {
+       "texto": "I'm working here since 2018.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which goes with \"for\"?",
+     "opcoes": [
+      {
+       "texto": "three months",
+       "certa": true
+      },
+      {
+       "texto": "October",
+       "certa": false
+      },
+      {
+       "texto": "Monday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which goes with \"since\"?",
+     "opcoes": [
+      {
+       "texto": "last Monday",
+       "certa": true
+      },
+      {
+       "texto": "two weeks",
+       "certa": false
+      },
+      {
+       "texto": "a long time",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Há quanto tempo está em Luanda?",
+     "resposta": "How long have you been in Luanda?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Since the beginning of November. More than three months. And I've loved every day.",
+     "enunciado": "How long has Thandi been in Luanda?",
+     "opcoes": [
+      {
+       "texto": "more than three months",
+       "certa": true
+      },
+      {
+       "texto": "since December",
+       "certa": false
+      },
+      {
+       "texto": "two weeks",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I've worked here for twelve years. I've lived in Luanda since 2010.",
+     "enunciado": "Ouça e repita: \"for\" fraco."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How long have you worked or studied in your job or school?",
+     "frase": "for",
+     "resposta": "I've worked at the bank for six years. I started in 2021.",
+     "contexto": "for ou since, e quando começou."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How long have you lived in your house or flat?",
+     "frase": "since",
+     "resposta": "I've lived in my flat in Talatona since 2022. Before that, I lived with my parents.",
+     "contexto": "since ou for."
+    }
+   ]
+  },
+  {
+   "codigo": "7D",
+   "titulo": "Small talk",
+   "aula": "7D",
+   "objectivo": "Manter uma conversa de circunstância de 2 minutos, com perguntas de seguimento.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is a good opening question for a visitor?",
+     "opcoes": [
+      {
+       "texto": "How was your flight?",
+       "certa": true
+      },
+      {
+       "texto": "How much money do you earn?",
+       "certa": false
+      },
+      {
+       "texto": "What's your religion?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Is this your first time in Angola?\" — Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "Yes, it is. I've worked on this project for six months, but I've never been here.",
+       "certa": true
+      },
+      {
+       "texto": "Yes.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, it is first time.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose a good follow-up question.",
+     "opcoes": [
+      {
+       "texto": "Really? How was it?",
+       "certa": true
+      },
+      {
+       "texto": "OK.",
+       "certa": false
+      },
+      {
+       "texto": "Next question, please.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You want to ask the same question back. What do you say?",
+     "opcoes": [
+      {
+       "texto": "How about you?",
+       "certa": true
+      },
+      {
+       "texto": "What about?",
+       "certa": false
+      },
+      {
+       "texto": "You also?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How long [have you been] here? — Only since Saturday.",
+     "opcoes": [
+      {
+       "texto": "you have been",
+       "certa": false
+      },
+      {
+       "texto": "did you be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which topic is safe for small talk with a new person?",
+     "opcoes": [
+      {
+       "texto": "the weather",
+       "certa": true
+      },
+      {
+       "texto": "their salary",
+       "certa": false
+      },
+      {
+       "texto": "politics",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"For a start\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Para começar",
+       "certa": true
+      },
+      {
+       "texto": "Para sempre",
+       "certa": false
+      },
+      {
+       "texto": "Ao princípio do dia",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Only since Saturday. On Sunday I walked on the Marginal. It was beautiful.",
+     "enunciado": "When did Arjun arrive in Luanda?",
+     "opcoes": [
+      {
+       "texto": "on Saturday",
+       "certa": true
+      },
+      {
+       "texto": "on Sunday",
+       "certa": false
+      },
+      {
+       "texto": "on Monday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I had grilled fish at a restaurant on the Ilha. Delicious.",
+     "enunciado": "What did Arjun eat?",
+     "opcoes": [
+      {
+       "texto": "grilled fish",
+       "certa": true
+      },
+      {
+       "texto": "muamba",
+       "certa": false
+      },
+      {
+       "texto": "bunny chow",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Really? How was it? — How about you?",
+     "enunciado": "Ouça e repita, com interesse na voz."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "I'm a visitor. Start the small talk with me.",
+     "frase": "first time",
+     "resposta": "Welcome to Luanda! Is this your first time in Angola? How was your flight?",
+     "contexto": "Uma ou duas perguntas de abertura."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "\"I went to the beach yesterday, but it rained!\" — Answer and keep the conversation going.",
+     "frase": "What",
+     "resposta": "Oh no! What did you do? Did you go to a restaurant?",
+     "contexto": "Reaja e faça uma pergunta de seguimento."
+    }
+   ]
+  },
+  {
+   "codigo": "7E",
+   "titulo": "Good news, bad news",
+   "aula": "7E",
+   "objectivo": "Dizer como se sente, distinguir -ed / -ing, reagir com a entoação certa; eventually e notice.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada adjectivo à tradução.",
+     "pares": [
+      {
+       "a": "relieved",
+       "b": "aliviado"
+      },
+      {
+       "a": "disappointed",
+       "b": "desiludido"
+      },
+      {
+       "a": "proud",
+       "b": "orgulhoso"
+      },
+      {
+       "a": "worried",
+       "b": "preocupado"
+      },
+      {
+       "a": "excited",
+       "b": "entusiasmado"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The meeting was very [boring].",
+     "opcoes": [
+      {
+       "texto": "bored",
+       "certa": false
+      },
+      {
+       "texto": "bore",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "After the meeting, I was very [bored].",
+     "opcoes": [
+      {
+       "texto": "boring",
+       "certa": false
+      },
+      {
+       "texto": "bore",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The trip was [tiring], so we went to bed early.",
+     "opcoes": [
+      {
+       "texto": "tired",
+       "certa": false
+      },
+      {
+       "texto": "tire",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Your problem is gone. You were worried, and now you feel...",
+     "opcoes": [
+      {
+       "texto": "relieved",
+       "certa": true
+      },
+      {
+       "texto": "disappointed",
+       "certa": false
+      },
+      {
+       "texto": "nervous",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I'm boring\" means...",
+     "opcoes": [
+      {
+       "texto": "People find me boring.",
+       "certa": true
+      },
+      {
+       "texto": "I feel bored.",
+       "certa": false
+      },
+      {
+       "texto": "I'm tired.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Eventualmente vou a Joanesburgo\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "Maybe I'm going to Johannesburg.",
+       "certa": true
+      },
+      {
+       "texto": "Eventually I'm going to Johannesburg.",
+       "certa": false
+      },
+      {
+       "texto": "Eventual I go to Johannesburg.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Eventually\" = finalmente, no fim."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Notícia\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "news",
+       "certa": true
+      },
+      {
+       "texto": "notice",
+       "certa": false
+      },
+      {
+       "texto": "notion",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Notice\" = aviso; to notice = reparar."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Paulo's car has broken down. He was worried about the cost, but the mechanic says it's cheap. Now he's relieved.",
+     "enunciado": "How does Paulo feel now?",
+     "opcoes": [
+      {
+       "texto": "relieved",
+       "certa": true
+      },
+      {
+       "texto": "worried",
+       "certa": false
+      },
+      {
+       "texto": "disappointed",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Really? — That's great! — Oh no…",
+     "enunciado": "Ouça e repita: a subir, a descer com energia, a descer devagar."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a time you were very nervous or very relieved.",
+     "frase": "relieved",
+     "resposta": "Last year I had a job interview. I was very nervous before it. Two days later, they called me — I got the job! I was so relieved.",
+     "contexto": "Use dois adjectivos de sentimentos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe your last week at work. Was it interesting or boring?",
+     "frase": "interesting",
+     "resposta": "It was quite interesting. We started a new project, and I met two new clients. But Friday was tiring — I finished at eight!",
+     "contexto": "Use adjectivos em -ing."
+    }
+   ]
+  },
+  {
+   "codigo": "7F",
+   "titulo": "Real English: What's new?",
+   "aula": "7F",
+   "objectivo": "Identificar a novidade de cada pessoa e a reacção de quem ouve.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "Last night, at dinner. We've been together for four years, so… it was time!",
+     "enunciado": "How long have Joana and Mário been together?",
+     "opcoes": [
+      {
+       "texto": "for four years",
+       "certa": true
+      },
+      {
+       "texto": "since last night",
+       "certa": false
+      },
+      {
+       "texto": "for four months",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Paulo! I have some news. Mário and I are getting married!",
+     "enunciado": "What is Joana's news?",
+     "opcoes": [
+      {
+       "texto": "She's getting married.",
+       "certa": true
+      },
+      {
+       "texto": "She has a new job.",
+       "certa": false
+      },
+      {
+       "texto": "She's moving to Benguela.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "We've just signed a contract with a big company in Benguela. So we're opening a new office there in June.",
+     "enunciado": "What is Mussulo Energy opening in June?",
+     "opcoes": [
+      {
+       "texto": "a new office in Benguela",
+       "certa": true
+      },
+      {
+       "texto": "a new office in Luanda",
+       "certa": false
+      },
+      {
+       "texto": "a bakery",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "She's started nursery school this week! She was nervous on the first day, but now she loves it.",
+     "enunciado": "How did Tunde's daughter feel on the first day?",
+     "opcoes": [
+      {
+       "texto": "nervous",
+       "certa": true
+      },
+      {
+       "texto": "bored",
+       "certa": false
+      },
+      {
+       "texto": "excited",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I've just arrived in Luanda — but my suitcase hasn't. It's still in Johannesburg!",
+     "enunciado": "Where is Lerato's suitcase?",
+     "opcoes": [
+      {
+       "texto": "in Johannesburg",
+       "certa": true
+      },
+      {
+       "texto": "at the hotel",
+       "certa": false
+      },
+      {
+       "texto": "in Luanda",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Oh no, I'm sorry to hear that! The same thing happened to Thandi once.",
+     "enunciado": "How does Nuno react to Lerato's news?",
+     "opcoes": [
+      {
+       "texto": "He's sorry to hear it.",
+       "certa": true
+      },
+      {
+       "texto": "He congratulates her.",
+       "certa": false
+      },
+      {
+       "texto": "He laughs.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Time goes fast!\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "O tempo passa depressa!",
+       "certa": true
+      },
+      {
+       "texto": "Vai mais depressa!",
+       "certa": false
+      },
+      {
+       "texto": "Está na hora!",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I have some news. We've just signed a contract.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me some news from your work, your family or your city.",
+     "frase": "just",
+     "resposta": "I have some news: my brother has just finished university! He studied engineering in Huambo. We're having a party on Saturday.",
+     "contexto": "Uma novidade e um pormenor."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your colleague says: \"My daughter has just started school!\" React and ask a question.",
+     "frase": "How",
+     "resposta": "Ah, that's lovely! How old is she? Does she like it?",
+     "contexto": "Reacção e pergunta de seguimento."
+    }
+   ]
+  },
+  {
+   "codigo": "7G",
+   "titulo": "Work & Life: Project update",
+   "aula": "7G",
+   "objectivo": "Dar o ponto de situação de um projecto: feito, por fazer e porquê, problemas e próximos passos.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the best order for a project update?",
+     "opcoes": [
+      {
+       "texto": "general situation → done → not done and why → next steps",
+       "certa": true
+      },
+      {
+       "texto": "next steps → general situation → goodbye",
+       "certa": false
+      },
+      {
+       "texto": "problems → problems → problems",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We've [already] installed the network on all four floors.",
+     "opcoes": [
+      {
+       "texto": "yet",
+       "certa": false
+      },
+      {
+       "texto": "ago",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We haven't trained the staff yet, [because] the training room wasn't ready.",
+     "opcoes": [
+      {
+       "texto": "so",
+       "certa": false
+      },
+      {
+       "texto": "then",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Next week [we're training] the staff.",
+     "opcoes": [
+      {
+       "texto": "we trained",
+       "certa": false
+      },
+      {
+       "texto": "we've trained",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which tense for the next steps?",
+     "opcoes": [
+      {
+       "texto": "present continuous or going to",
+       "certa": true
+      },
+      {
+       "texto": "present perfect",
+       "certa": false
+      },
+      {
+       "texto": "past simple",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Diz ao Arjun que hoje à tarde não posso fazer os testes.\" Nuno tells Arjun:",
+     "opcoes": [
+      {
+       "texto": "He says he can't do the tests this afternoon.",
+       "certa": true
+      },
+      {
+       "texto": "He says: \"Hoje à tarde não posso.\"",
+       "certa": false
+      },
+      {
+       "texto": "He can't tests afternoon today.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Since Monday, Arjun and João have tested the payment system with fifty clients.",
+     "enunciado": "How many clients have tested the system?",
+     "opcoes": [
+      {
+       "texto": "fifty",
+       "certa": true
+      },
+      {
+       "texto": "fifteen",
+       "certa": false
+      },
+      {
+       "texto": "five",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The system is slow in the afternoons, when a lot of clients pay.",
+     "enunciado": "What is the problem?",
+     "opcoes": [
+      {
+       "texto": "The system is slow in the afternoons.",
+       "certa": true
+      },
+      {
+       "texto": "The network doesn't work.",
+       "certa": false
+      },
+      {
+       "texto": "The clients can't pay.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "On Friday the twenty-sixth we're doing a final test.",
+     "enunciado": "When is the final test?",
+     "opcoes": [
+      {
+       "texto": "Friday the 26th",
+       "certa": true
+      },
+      {
+       "texto": "Monday the 1st",
+       "certa": false
+      },
+      {
+       "texto": "Friday the 16th",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "We're on track. We've already installed the network. We haven't trained the staff yet.",
+     "enunciado": "Ouça e repita, com pausas entre as partes."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "I'm your manager. Give me an update on your work this week.",
+     "frase": "already",
+     "resposta": "We're on track. I've already finished the monthly report, and I've called the new clients. I haven't sent the invoices yet, because the system was down on Tuesday. Tomorrow I'm sending them.",
+     "contexto": "As quatro partes."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Any problems?",
+     "frase": "so",
+     "resposta": "Just one: the printer on the second floor isn't working, so we can't print the contracts. The technician is coming on Friday.",
+     "contexto": "Um problema e o próximo passo."
+    }
+   ]
+  },
+  {
+   "codigo": "7R",
+   "titulo": "Unit 7 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 7 e reciclar a unidade 6 e o A2.1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The client has [just] called. He wants a meeting.",
+     "opcoes": [
+      {
+       "texto": "yet",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Have you finished the report [yet]?",
+     "opcoes": [
+      {
+       "texto": "since",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've lived in Luanda [for] ten years.",
+     "opcoes": [
+      {
+       "texto": "since",
+       "certa": false
+      },
+      {
+       "texto": "ago",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "She's worked here since March.",
+       "certa": true
+      },
+      {
+       "texto": "She works here since March.",
+       "certa": false
+      },
+      {
+       "texto": "She's worked here for March.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Oh no, I'm sorry to hear that.\" It's a reaction to...",
+     "opcoes": [
+      {
+       "texto": "bad news",
+       "certa": true
+      },
+      {
+       "texto": "good news",
+       "certa": false
+      },
+      {
+       "texto": "a question",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The film was interesting, but I was tired.",
+       "certa": true
+      },
+      {
+       "texto": "The film was interested, but I was tiring.",
+       "certa": false
+      },
+      {
+       "texto": "The film was interesting, but I was tiring.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 6). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I've been to Lisbon twice. I went there in 2023.",
+       "certa": true
+      },
+      {
+       "texto": "I've been to Lisbon in 2023.",
+       "certa": false
+      },
+      {
+       "texto": "I went to Lisbon twice ever.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 6). \"Mateus has gone to Cabinda\" means...",
+     "opcoes": [
+      {
+       "texto": "He's in Cabinda now.",
+       "certa": true
+      },
+      {
+       "texto": "He went to Cabinda and came back.",
+       "certa": false
+      },
+      {
+       "texto": "He's going to Cabinda next week.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 5). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "You don't have to come in early tomorrow.",
+       "certa": true
+      },
+      {
+       "texto": "You don't must come in early tomorrow.",
+       "certa": false
+      },
+      {
+       "texto": "You haven't to come in early tomorrow.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ainda não enviei a factura.",
+     "resposta": "I haven't sent the invoice yet.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "We haven't trained the staff yet, because the training room wasn't ready. But it's ready now.",
+     "enunciado": "Is the training room ready now?",
+     "opcoes": [
+      {
+       "texto": "Yes, it is.",
+       "certa": true
+      },
+      {
+       "texto": "No, it isn't.",
+       "certa": false
+      },
+      {
+       "texto": "It's ready next week.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How long have you known your best friend? How did you meet?",
+     "frase": "since",
+     "resposta": "I've known my best friend since 2012. We met at secondary school in Benguela.",
+     "contexto": "Present perfect e depois o past simple."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Give me one piece of news and react to mine: \"I've just got a promotion!\"",
+     "frase": "Congratulations",
+     "resposta": "Congratulations! That's great news! And I have some news too: I've just booked a holiday in Namibia.",
+     "contexto": "Reaja e dê uma novidade."
+    }
+   ]
+  }
+ ]
+}

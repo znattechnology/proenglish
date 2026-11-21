@@ -1,0 +1,139 @@
+{
+ "unidade": "A2.2 · Unit 9 — Customer service",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a2-u9-guiada",
+   "nome": "A2 Unit 9 · At the bank",
+   "tipo": "guiada",
+   "depois_da_aula": "9C",
+   "descricao": "O tutor é um(a) funcionário(a) do banco. O aluno tem três tarefas no ecrã: pedir um extracto do mês passado, pedir um cartão novo (o antigo está partido) e pedir para falar com o gerente. O funcionário aceita uns pedidos e recusa um com uma alternativa.",
+   "papel_tutor": "Um(a) funcionário(a) de banco simpático(a).",
+   "nivel": "A2",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Could you…, please?",
+    "Could I…?",
+    "Would you…, please?",
+    "Thank you very much for your help."
+   ],
+   "extras": {
+    "brief": "Guided practice for an elementary learner (A2, unit 9). You are a friendly bank clerk. The student has three tasks: ask for a bank statement for last month, ask for a new card (the old one is broken), and ask to speak to the manager. Wait for the student's requests. Accept the first two with \"Certainly.\" or \"Of course.\" and one question (ask for the student's ID, ask how the card broke). Refuse the request to see the manager politely with an alternative: \"I'm afraid the manager isn't here today, but you can make an appointment for tomorrow.\" If the student makes a request without \"please\" or with \"Give me…\", model the polite form: \"Ah — could you give me…, please? Of course!\". If the student says \"Could you to…\", model \"Could you…\". Use only A1 and A2.1 language plus A2 units 6-9: the present perfect (ever / never, just, already / yet, for / since), the zero and first conditional, will for predictions, offers and promises, could / would in polite requests (Could you…? Would you…? Could I…?), I'm afraid…, still, verbs + to (need, want, try, decide, forget, hope, plan) and + -ing (enjoy, finish, stop, don't mind), refund, replacement, receipt, invoice, delay, damaged. Do NOT use the second conditional or \"would\" for hypothetical situations, \"Would you mind + -ing\", the passive, relative clauses, \"too\" or \"enough\". One question at a time.",
+    "primeira_fala": "Good morning, {nome}. Welcome to the bank. How can I help you?",
+    "primeira_fala_simples": "Good morning. How can I help you?",
+    "guiao": [
+     "Certainly. Could I see your ID card, please?",
+     "Thank you. Anything else?",
+     "Of course. I'll do that now. Is there anything else?",
+     "I'm afraid I can't do that today, but I can make an appointment for you tomorrow. Is that OK?",
+     "You're welcome, {nome}. Have a nice day!"
+    ],
+    "frases": [
+     {
+      "en": "Could you print a bank statement for last month, please?",
+      "pt": "Podia imprimir um extracto do mês passado, por favor?"
+     },
+     {
+      "en": "Could I have a new card, please? My card is broken.",
+      "pt": "Podia dar-me um cartão novo? O meu está partido."
+     },
+     {
+      "en": "Could I speak to the manager?",
+      "pt": "Podia falar com o gerente?"
+     },
+     {
+      "en": "Thank you very much for your help.",
+      "pt": "Muito obrigado pela sua ajuda."
+     }
+    ],
+    "palavras": [
+     "could",
+     "please",
+     "would",
+     "statement",
+     "card",
+     "manager",
+     "thank"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a2-u9-livre",
+   "nome": "A2 Unit 9 · Angry customer",
+   "tipo": "livre",
+   "depois_da_aula": "9F",
+   "descricao": "O tutor é Sasha, director(a) de operações de um hotel, zangado(a): encomendou cinco impressoras à empresa do aluno, a entrega era na sexta passada e não chegou nada. O aluno tem de ouvir, pedir desculpa, pedir o número da encomenda, repetir os pormenores, propor uma solução com prazo e confirmar.",
+   "papel_tutor": "Sasha, director(a) de operações de um hotel em Luanda, cliente estrangeiro(a) zangado(a).",
+   "nivel": "A2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I'm very sorry to hear that.",
+    "Could I have your order number, please?",
+    "So, … Is that right?",
+    "We'll deliver them by…",
+    "Thank you for your patience."
+   ],
+   "extras": {
+    "brief": "Role-play for an elementary learner (A2, unit 9). You are Sasha, the operations manager of a hotel in Luanda (Sasha can be a man or a woman, to match your voice). You are angry but not rude. You ordered five printers from the student's company; the delivery was for last Friday, and nothing has arrived. Your reception can't print invoices for the guests. Start with the complaint. When the student asks, give the order number: \"S-B, two, two, oh, one\". Say you have called twice this week. Let the student propose a solution; ask \"When exactly?\" and accept a day if it is this week. Then ask once for something for the delay: \"Can you give us something for the delay?\" and accept any reasonable offer (a discount, free delivery, a free cartridge). Calm down slowly as the student apologises and offers solutions. At the end, ask the student to confirm by email. The student can invent the reason for the delay. Use only A1 and A2.1 language plus A2 units 6-9: the present perfect (ever / never, just, already / yet, for / since), the zero and first conditional, will for predictions, offers and promises, could / would in polite requests (Could you…? Would you…? Could I…?), I'm afraid…, still, verbs + to (need, want, try, decide, forget, hope, plan) and + -ing (enjoy, finish, stop, don't mind), refund, replacement, receipt, invoice, delay, damaged. Do NOT use the second conditional or \"would\" for hypothetical situations, \"Would you mind + -ing\", the passive, relative clauses, \"too\" or \"enough\". Short turns, one question at a time.",
+    "primeira_fala": "Hello. This is Sasha, from the Hotel Kianda Mar. I'm calling about our printers. I'm not happy at all.",
+    "primeira_fala_simples": "Hello. This is Sasha, from the Hotel Kianda Mar. Our printers haven't arrived. I'm not happy.",
+    "guiao": [
+     "We ordered five printers, and the delivery was for last Friday. Nothing has arrived, and I've called twice this week!",
+     "S-B, two, two, oh, one.",
+     "Yes. And our reception can't print invoices for the guests.",
+     "When exactly?",
+     "OK. And can you give us something for the delay?",
+     "Fine. Could you send me an email to confirm?",
+     "Thank you, {nome}. That's much better."
+    ],
+    "frases": [
+     {
+      "en": "I'm very sorry to hear that.",
+      "pt": "Lamento muito."
+     },
+     {
+      "en": "Could I have your order number, please?",
+      "pt": "Podia dar-me o número da encomenda, por favor?"
+     },
+     {
+      "en": "So, five printers haven't arrived. Is that right?",
+      "pt": "Então, as cinco impressoras não chegaram. Está certo?"
+     },
+     {
+      "en": "We'll deliver them by Wednesday morning.",
+      "pt": "Entregamos até quarta-feira de manhã."
+     },
+     {
+      "en": "Thank you for your patience.",
+      "pt": "Obrigado pela sua paciência."
+     }
+    ],
+    "palavras": [
+     "sorry",
+     "order",
+     "number",
+     "right",
+     "deliver",
+     "by",
+     "patience",
+     "email"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": [
+    "Pede desculpa e mostra que percebe o problema (I'm very sorry to hear that).",
+    "Pede o número da encomenda com could e repete-o correctamente.",
+    "Repete os pormenores para confirmar (So, … Is that right?).",
+    "Propõe uma solução com um prazo (We'll… by…) e responde ao pedido de compensação.",
+    "Fecha a chamada com cortesia e confirma por escrito (I'll send you an email).",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1331 @@
+{
+ "unidade": "B1.1 · Unit 2 — Then and now",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "2A",
+   "titulo": "I used to be the quiet one",
+   "aula": "2A",
+   "objectivo": "Contrastar hábitos e estados do passado com o presente, com used to e usually.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [used to] live in Lubango, but now I live in Luanda.",
+     "opcoes": [
+      {
+       "texto": "use to",
+       "certa": false
+      },
+      {
+       "texto": "was used to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I didn't [use] to speak English.",
+     "opcoes": [
+      {
+       "texto": "used",
+       "certa": false
+      },
+      {
+       "texto": "using",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Did you [use] to work on Saturdays?",
+     "opcoes": [
+      {
+       "texto": "used",
+       "certa": false
+      },
+      {
+       "texto": "using",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [lived] in Lubango for twenty years.",
+     "opcoes": [
+      {
+       "texto": "used to live",
+       "certa": false
+      },
+      {
+       "texto": "use to live",
+       "certa": false
+      }
+     ],
+     "explicacao": "Para \"quanto tempo\", o past simple, não used to."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Costumo beber café de manhã.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I usually drink coffee in the morning.",
+       "certa": true
+      },
+      {
+       "texto": "I use to drink coffee in the morning.",
+       "certa": false
+      },
+      {
+       "texto": "I used to drink coffee in the morning.",
+       "certa": false
+      }
+     ],
+     "explicacao": "used to é só para o passado; um hábito de agora é usually."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I went to Benguela in 2019.",
+       "certa": true
+      },
+      {
+       "texto": "I used to go to Benguela in 2019.",
+       "certa": false
+      },
+      {
+       "texto": "I use to go to Benguela in 2019.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Uma vez → past simple."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Do you still dance kizomba?\" Sílvia stopped. She says:",
+     "opcoes": [
+      {
+       "texto": "Not any more. I used to dance every Saturday.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, I used to dance every Saturday.",
+       "certa": false
+      },
+      {
+       "texto": "No, I use to dance every Saturday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Eu era muito nervoso ao telefone.",
+     "resposta": "I used to be very nervous on the phone.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thandi. When I lived in Luanda, I used to come to this café every Friday.",
+     "enunciado": "How often did Thandi use to come to the café?",
+     "opcoes": [
+      {
+       "texto": "every Friday",
+       "certa": true
+      },
+      {
+       "texto": "every day",
+       "certa": false
+      },
+      {
+       "texto": "once a month",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I used to be really nervous on the phone.",
+     "enunciado": "Ouça e repita: \"used to\" sem som de \"d\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about your life ten years ago: three habits with \"used to\", and what is different now.",
+     "frase": "used to",
+     "resposta": "Ten years ago, I used to live with my parents in Huambo. I used to walk to school, and I used to play basketball every afternoon. Now I live in Luanda, and I drive to work.",
+     "contexto": "used to e o presente."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Did you use to speak English at school? What about now?",
+     "frase": "use to",
+     "resposta": "No, I didn't use to speak English at school. I used to read it, but I never spoke it. Now I usually speak English at work every week.",
+     "contexto": "didn't use to e usually."
+    }
+   ]
+  },
+  {
+   "codigo": "2B",
+   "titulo": "I've been working on it since August",
+   "aula": "2B",
+   "objectivo": "Falar de actividades que começaram no passado e continuam, com o present perfect continuous e How long…?",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've been [reading] the logs since seven o'clock.",
+     "opcoes": [
+      {
+       "texto": "read",
+       "certa": false
+      },
+      {
+       "texto": "reads",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How long have you [been] working on it?",
+     "opcoes": [
+      {
+       "texto": "being",
+       "certa": false
+      },
+      {
+       "texto": "be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Hannah's team [has] been sending us data every day.",
+     "opcoes": [
+      {
+       "texto": "have",
+       "certa": false
+      },
+      {
+       "texto": "is",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've known you [since] January.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "from",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Trabalho nisto há dois meses.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I've been working on this for two months.",
+       "certa": true
+      },
+      {
+       "texto": "I work on this for two months.",
+       "certa": false
+      },
+      {
+       "texto": "I'm working on this for two months.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I've known Thandi since 2026.",
+       "certa": true
+      },
+      {
+       "texto": "I've been knowing Thandi since 2026.",
+       "certa": false
+      },
+      {
+       "texto": "I know Thandi since 2026.",
+       "certa": false
+      }
+     ],
+     "explicacao": "know não tem forma contínua."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"You look tired.\" Choose the best question.",
+     "opcoes": [
+      {
+       "texto": "Have you been working late?",
+       "certa": true
+      },
+      {
+       "texto": "Did you work late since Monday?",
+       "certa": false
+      },
+      {
+       "texto": "Are you working late since Monday?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Estou à espera há uma hora.",
+     "resposta": "I've been waiting for an hour.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. I've been working on the Morro Azul problem since August — almost two months.",
+     "enunciado": "How long has Nuno been working on the problem?",
+     "opcoes": [
+      {
+       "texto": "almost two months",
+       "certa": true
+      },
+      {
+       "texto": "almost two weeks",
+       "certa": false
+      },
+      {
+       "texto": "since July",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I've been reading the logs since seven o'clock.",
+     "enunciado": "Ouça e repita: \"been\" curto e fraco."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What have you been doing at work or in your studies recently? Talk about two activities, and say how long.",
+     "frase": "been",
+     "resposta": "Recently I've been preparing the budget for next year. I've been working on it for three weeks. I've also been training two new colleagues since September.",
+     "contexto": "Duas actividades e há quanto tempo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How long have you been learning English? And how long have you been in your job?",
+     "frase": "I've been",
+     "resposta": "I've been learning English since 2025, and I've been working at the bank for four years.",
+     "contexto": "for / since."
+    }
+   ]
+  },
+  {
+   "codigo": "2C",
+   "titulo": "Been doing or done?",
+   "aula": "2C",
+   "objectivo": "Escolher entre o present perfect continuous (actividade) e o simple (resultado, quantos).",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've [written] two pages so far.",
+     "opcoes": [
+      {
+       "texto": "been writing",
+       "certa": false
+      },
+      {
+       "texto": "wrote",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've been [working] on it since lunch.",
+     "opcoes": [
+      {
+       "texto": "worked",
+       "certa": false
+      },
+      {
+       "texto": "work",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've [visited] the plant twice.",
+     "opcoes": [
+      {
+       "texto": "been visiting",
+       "certa": false
+      },
+      {
+       "texto": "visit",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I've called the client three times today.",
+       "certa": true
+      },
+      {
+       "texto": "I've been calling the client three times today.",
+       "certa": false
+      },
+      {
+       "texto": "I'm calling the client three times today.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the best question.",
+     "opcoes": [
+      {
+       "texto": "How many emails have you sent?",
+       "certa": true
+      },
+      {
+       "texto": "How many emails have you been sending?",
+       "certa": false
+      },
+      {
+       "texto": "How many emails are you sending since Monday?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I've been painting the office.\" The work is…",
+     "opcoes": [
+      {
+       "texto": "maybe not finished",
+       "certa": true
+      },
+      {
+       "texto": "finished",
+       "certa": false
+      },
+      {
+       "texto": "not started",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I've painted the office.\" The work is…",
+     "opcoes": [
+      {
+       "texto": "finished",
+       "certa": true
+      },
+      {
+       "texto": "not finished",
+       "certa": false
+      },
+      {
+       "texto": "not started",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which two sentences mean almost the same?",
+     "opcoes": [
+      {
+       "texto": "I've worked here since 2026. / I've been working here since 2026.",
+       "certa": true
+      },
+      {
+       "texto": "I've written a report. / I've been writing a report.",
+       "certa": false
+      },
+      {
+       "texto": "I've visited Namibe. / I've been visiting Namibe.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. I've worked on two big projects this year: Mussulo Energy and now Morro Azul.",
+     "enunciado": "How many big projects has Nuno worked on this year?",
+     "opcoes": [
+      {
+       "texto": "two",
+       "certa": true
+      },
+      {
+       "texto": "four",
+       "certa": false
+      },
+      {
+       "texto": "one",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I've written two pages. I've been working on it since lunch.",
+     "enunciado": "Ouça e repita, com o acento em \"two\" e em \"lunch\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Talk about your year: one long activity, and two results with numbers.",
+     "frase": "I've",
+     "resposta": "This year I've been working on a new accounting system since February. I've trained twelve colleagues, and I've written three manuals.",
+     "contexto": "Continuous para a actividade; simple para os resultados."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague asks: \"How's your report going?\" Answer with the activity and the result.",
+     "frase": "I've been",
+     "resposta": "I've been writing it all morning, and I've finished the first part. I've written about four pages.",
+     "contexto": "As duas formas."
+    }
+   ]
+  },
+  {
+   "codigo": "2D",
+   "titulo": "Changes and feelings",
+   "aula": "2D",
+   "objectivo": "Verbos de mudança, adjectivos em -ed / -ing; retire e deception.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada verbo à tradução.",
+     "pares": [
+      {
+       "a": "move",
+       "b": "mudar de casa ou de cidade"
+      },
+      {
+       "a": "improve",
+       "b": "melhorar"
+      },
+      {
+       "a": "become",
+       "b": "tornar-se"
+      },
+      {
+       "a": "give up",
+       "b": "deixar (um hábito)"
+      },
+      {
+       "a": "take up",
+       "b": "começar (uma actividade)"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The instructions were very [confusing].",
+     "opcoes": [
+      {
+       "texto": "confused",
+       "certa": false
+      },
+      {
+       "texto": "confuse",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I was [surprised] by the results.",
+     "opcoes": [
+      {
+       "texto": "surprising",
+       "certa": false
+      },
+      {
+       "texto": "surprise",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The first month was [frustrating].",
+     "opcoes": [
+      {
+       "texto": "frustrated",
+       "certa": false
+      },
+      {
+       "texto": "frustrate",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I'm boring in meetings\" means…",
+     "opcoes": [
+      {
+       "texto": "Other people find me boring.",
+       "certa": true
+      },
+      {
+       "texto": "I feel bored in meetings.",
+       "certa": false
+      },
+      {
+       "texto": "Meetings are boring.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I'm really interested in the project.",
+       "certa": true
+      },
+      {
+       "texto": "I'm really interesting in the project.",
+       "certa": false
+      },
+      {
+       "texto": "I'm really interest in the project.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"O meu pai reformou-se no ano passado.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "My father retired last year.",
+       "certa": true
+      },
+      {
+       "texto": "My father reformed last year.",
+       "certa": false
+      },
+      {
+       "texto": "My father withdrew last year.",
+       "certa": false
+      }
+     ],
+     "explicacao": "retire = reformar-se; retirar dinheiro = take out / withdraw money."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Foi uma grande decepção.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "It was a big disappointment.",
+       "certa": true
+      },
+      {
+       "texto": "It was a big deception.",
+       "certa": false
+      },
+      {
+       "texto": "It was a big deceive.",
+       "certa": false
+      }
+     ],
+     "explicacao": "deception = engano."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Kevin says: \"I'm getting used to it.\" He means…",
+     "opcoes": [
+      {
+       "texto": "It's starting to feel normal for him.",
+       "certa": true
+      },
+      {
+       "texto": "He did it in the past.",
+       "certa": false
+      },
+      {
+       "texto": "He doesn't like it at all.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "How long have you been waiting?",
+     "enunciado": "Ouça e repita, com \"have\" e \"been\" fracos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe a big change in your life or work. How did you feel at the start, and how do you feel now?",
+     "frase": "feel",
+     "resposta": "Two years ago, I moved from Benguela to Luanda for a new job. At the start I was worried, and the traffic was frustrating. But I've adapted, and now I feel happy here.",
+     "contexto": "Mudança e sentimentos -ed / -ing."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Did you give up a habit or take up a new activity recently? Tell me about it.",
+     "frase": "up",
+     "resposta": "Last year I gave up sugar in my coffee. And in March I took up running. I've been running three times a week, and I feel great.",
+     "contexto": "give up / take up."
+    }
+   ]
+  },
+  {
+   "codigo": "2E",
+   "titulo": "Real English: How my life has changed",
+   "aula": "2E",
+   "objectivo": "Identificar a mudança, a razão e o sentimento em quatro testemunhos.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Esperança. I taught teenagers at a secondary school in Malanje for twelve years.",
+     "enunciado": "How long did Esperança teach in Malanje?",
+     "opcoes": [
+      {
+       "texto": "for twelve years",
+       "certa": true
+      },
+      {
+       "texto": "for two years",
+       "certa": false
+      },
+      {
+       "texto": "for twenty years",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Esperança. In August I started a new job here in Luanda: I teach English to bank staff.",
+     "enunciado": "Who does Esperança teach now?",
+     "opcoes": [
+      {
+       "texto": "bank staff",
+       "certa": true
+      },
+      {
+       "texto": "teenagers",
+       "certa": false
+      },
+      {
+       "texto": "engineers",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kevin. We had a baby, and I wanted to be at home every night. So now I work in an office in Luanda.",
+     "enunciado": "Why did Kevin change jobs?",
+     "opcoes": [
+      {
+       "texto": "He wanted to be at home every night.",
+       "certa": true
+      },
+      {
+       "texto": "He didn't like the platform.",
+       "certa": false
+      },
+      {
+       "texto": "The money was bad.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Kevin. Honestly, the first month in the office was frustrating. I didn't use to sit at a desk all day!",
+     "enunciado": "How did Kevin feel in his first month in the office?",
+     "opcoes": [
+      {
+       "texto": "frustrated",
+       "certa": true
+      },
+      {
+       "texto": "bored",
+       "certa": false
+      },
+      {
+       "texto": "excited",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Patrick. In June I became a team manager. I used to do everything myself; now I give the jobs to other people.",
+     "enunciado": "What changed for Patrick in June?",
+     "opcoes": [
+      {
+       "texto": "He became a team manager.",
+       "certa": true
+      },
+      {
+       "texto": "He moved to Luanda.",
+       "certa": false
+      },
+      {
+       "texto": "He started learning French.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Mei. Four years ago, I moved to Lusaka, and now I work for a small company: we're only thirty.",
+     "enunciado": "How many people work at Mei's company?",
+     "opcoes": [
+      {
+       "texto": "thirty",
+       "certa": true
+      },
+      {
+       "texto": "five thousand",
+       "certa": false
+      },
+      {
+       "texto": "four",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In the four stories, each person talks about…",
+     "opcoes": [
+      {
+       "texto": "before, now and a feeling",
+       "certa": true
+      },
+      {
+       "texto": "only the salary",
+       "certa": false
+      },
+      {
+       "texto": "only the future",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Kevin says: \"I didn't use to sit at a desk all day.\" It means:",
+     "opcoes": [
+      {
+       "texto": "Before, he didn't sit at a desk all day.",
+       "certa": true
+      },
+      {
+       "texto": "He sat at a desk all day before, and he still does.",
+       "certa": false
+      },
+      {
+       "texto": "He never sits at a desk.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I've been doing it for two months now.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Some days it's confusing, but I'm improving.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a change in your work: before, now, and how you feel.",
+     "frase": "used to",
+     "resposta": "I used to work in a small office in Lobito. Now I work at the head office in Luanda. I've been here since January. At first it was confusing, but now I'm really happy.",
+     "contexto": "Antes, agora e um sentimento."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Which of the four changes is the most difficult, in your opinion? Why?",
+     "frase": "difficult",
+     "resposta": "I think Patrick's change is the most difficult, because he has to trust other people, and he's learning Portuguese at the same time.",
+     "contexto": "Uma opinião com uma razão."
+    }
+   ]
+  },
+  {
+   "codigo": "2F",
+   "titulo": "Work & Life: One year later",
+   "aula": "2F",
+   "objectivo": "Falar do ano de trabalho com a chefia e resumir em inglês uma avaliação escrita em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Lerato asks: \"How has your job changed this year?\" Choose the best start.",
+     "opcoes": [
+      {
+       "texto": "When I started, I used to support the staff in our office. Now I'm in the joint team.",
+       "certa": true
+      },
+      {
+       "texto": "When I started, I use to support the staff. Now I am in the joint team.",
+       "certa": false
+      },
+      {
+       "texto": "When I started, I've supported the staff. Now I'm in the joint team.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Since August, I've been [working] on the Morro Azul project.",
+     "opcoes": [
+      {
+       "texto": "worked",
+       "certa": false
+      },
+      {
+       "texto": "work",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've [visited] the plant in Namibe twice.",
+     "opcoes": [
+      {
+       "texto": "been visiting",
+       "certa": false
+      },
+      {
+       "texto": "visit",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The first months in the joint team were [tiring].",
+     "opcoes": [
+      {
+       "texto": "tired",
+       "certa": false
+      },
+      {
+       "texto": "tire",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The evaluation says: \"evoluiu muito\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "He says I've improved a lot.",
+       "certa": true
+      },
+      {
+       "texto": "He says I've evolutioned a lot.",
+       "certa": false
+      },
+      {
+       "texto": "He says I improve a lot since.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The evaluation says: \"A melhorar: os relatórios escritos\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "And one thing to improve: my written reports.",
+       "certa": true
+      },
+      {
+       "texto": "To better: the written reports.",
+       "certa": false
+      },
+      {
+       "texto": "Improving: the reports are written.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A good answer about your year has…",
+     "opcoes": [
+      {
+       "texto": "before, now and the next step",
+       "certa": true
+      },
+      {
+       "texto": "only your problems",
+       "certa": false
+      },
+      {
+       "texto": "only your salary",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. Mr Baptista sent me your evaluation, but it's in Portuguese. Could you tell me what it says?",
+     "enunciado": "What does Lerato ask Nuno to do?",
+     "opcoes": [
+      {
+       "texto": "explain the evaluation in English",
+       "certa": true
+      },
+      {
+       "texto": "write a new report",
+       "certa": false
+      },
+      {
+       "texto": "call Mr Baptista",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Next year, I'd like to lead a small project, and I'd like to take the B1 exam in December.",
+     "enunciado": "When does Nuno want to take the B1 exam?",
+     "opcoes": [
+      {
+       "texto": "in December",
+       "certa": true
+      },
+      {
+       "texto": "in January",
+       "certa": false
+      },
+      {
+       "texto": "next week",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "When I started, I used to support the staff in our office. Now I'm in the joint team.",
+     "enunciado": "Ouça e repita, com uma pausa entre as duas partes."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "It's your annual review. How has your job or your studies changed this year?",
+     "frase": "used to",
+     "resposta": "When I started, I used to answer the phone and organise meetings. Now I manage the office budget. I've been doing it since March, and I've saved about ten percent. At first it was worrying, but now I'm confident.",
+     "contexto": "Antes, agora e um sentimento."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise this evaluation in English: \"A Rosa é organizada e cumpre sempre os prazos. Este ano, preparou o orçamento da empresa pela primeira vez. A melhorar: falar nas reuniões.\"",
+     "frase": "It says",
+     "resposta": "It says Rosa is organised, and she always meets her deadlines. This year she prepared the company budget for the first time. One thing to improve: speaking in meetings.",
+     "contexto": "Mediação: os pontos principais."
+    }
+   ]
+  },
+  {
+   "codigo": "2R",
+   "titulo": "Unit 2 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 2 e reciclar a unidade 1 do B1 e o A2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [used to] work on Saturdays, but now I don't.",
+     "opcoes": [
+      {
+       "texto": "use to",
+       "certa": false
+      },
+      {
+       "texto": "am used to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've been [learning] English since March.",
+     "opcoes": [
+      {
+       "texto": "learn",
+       "certa": false
+      },
+      {
+       "texto": "learned",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've [sent] five emails this morning.",
+     "opcoes": [
+      {
+       "texto": "been sending",
+       "certa": false
+      },
+      {
+       "texto": "send",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I've known Lerato since January.",
+       "certa": true
+      },
+      {
+       "texto": "I've been knowing Lerato since January.",
+       "certa": false
+      },
+      {
+       "texto": "I know Lerato since January.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The news was surprising.",
+       "certa": true
+      },
+      {
+       "texto": "The news was surprised.",
+       "certa": false
+      },
+      {
+       "texto": "The news surprising.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 1). Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Could you tell me what time the meeting starts?",
+       "certa": true
+      },
+      {
+       "texto": "Could you tell me what time does the meeting start?",
+       "certa": false
+      },
+      {
+       "texto": "Could you tell me what time starts the meeting?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 1). Complete: \"You used to live in Lubango, ___?\"",
+     "opcoes": [
+      {
+       "texto": "didn't you",
+       "certa": true
+      },
+      {
+       "texto": "don't you",
+       "certa": false
+      },
+      {
+       "texto": "weren't you",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 6). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I started this job two years ago.",
+       "certa": true
+      },
+      {
+       "texto": "I've started this job two years ago.",
+       "certa": false
+      },
+      {
+       "texto": "I start this job two years ago.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 9). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I enjoy working with clients.",
+       "certa": true
+      },
+      {
+       "texto": "I enjoy to work with clients.",
+       "certa": false
+      },
+      {
+       "texto": "I enjoy work with clients.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Já não danço kizomba.",
+     "resposta": "I don't dance kizomba any more.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Patrick. I've been learning Portuguese for a year, because my team speaks Portuguese.",
+     "enunciado": "Why is Patrick learning Portuguese?",
+     "opcoes": [
+      {
+       "texto": "His team speaks Portuguese.",
+       "certa": true
+      },
+      {
+       "texto": "He lives in Brazil.",
+       "certa": false
+      },
+      {
+       "texto": "He wants to teach it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Compare your life now with five years ago.",
+     "frase": "used to",
+     "resposta": "Five years ago, I used to live in Lobito, and I used to take the bus to work. Now I live in Luanda, and I've been driving to work since last year.",
+     "contexto": "used to e present perfect continuous."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about your week: one activity and one result.",
+     "frase": "I've",
+     "resposta": "This week I've been preparing a presentation for a client. I've finished the slides, and I've sent them to my manager.",
+     "contexto": "As duas formas do present perfect."
+    }
+   ]
+  }
+ ]
+}

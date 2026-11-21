@@ -33,6 +33,7 @@ ROTULOS_TIPO = {
     'TRANSLATION': 'Tradução',
     'LISTENING': 'Compreensão oral',
     'SPEAKING': 'Pronúncia',
+    'RESPONDER': 'Responder em voz alta',
     'VAPI_CONVERSATION': 'Conversação',
 }
 GRUPO_TIPO = {
@@ -41,6 +42,7 @@ GRUPO_TIPO = {
     'TRANSLATION': 'traducao',
     'LISTENING': 'audicao',
     'SPEAKING': 'pronuncia',
+    'RESPONDER': 'conversacao',
     'VAPI_CONVERSATION': 'conversacao',
 }
 

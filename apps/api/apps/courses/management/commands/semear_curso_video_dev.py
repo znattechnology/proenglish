@@ -259,7 +259,7 @@ class Command(BaseCommand):
             title=titulo, course_type="video",
             defaults=dict(
                 teacher=professor, teacherName=professor.name, description=descricao,
-                category="Industry English", level="Intermediate", status="Published",
+                category="Industry English", level="B1", status="Published",
                 template="technology", access_level=acesso,
             ),
         )

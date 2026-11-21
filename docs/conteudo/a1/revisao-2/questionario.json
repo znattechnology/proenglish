@@ -1,0 +1,373 @@
+{
+ "title": "A1.2 Review 2 quiz — Units 6 to 10",
+ "description": "Questionário de revisão das unidades 6 a 10.",
+ "questions": [
+  {
+   "id": "r2q1",
+   "question": "U6. Complete: \"How ___ sugar do you want?\"",
+   "options": [
+    {
+     "id": "r2q1o0",
+     "text": "much",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q1o1",
+     "text": "many",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q1o2",
+     "text": "any",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q1o0",
+   "explanation": "\"Sugar\" é incontável: \"How much\".",
+   "points": 10
+  },
+  {
+   "id": "r2q2",
+   "question": "U6. O empregado pergunta \"Would you like a dessert?\" Não quer. O que diz?",
+   "options": [
+    {
+     "id": "r2q2o0",
+     "text": "No, thank you. That's all.",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q2o1",
+     "text": "No, I don't like.",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q2o2",
+     "text": "No, I wouldn't.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q2o0",
+   "explanation": "Resposta educada.",
+   "points": 10
+  },
+  {
+   "id": "r2q3",
+   "question": "U6. Como se diz 2 500 kwanzas?",
+   "options": [
+    {
+     "id": "r2q3o0",
+     "text": "two thousand five hundred kwanzas",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q3o1",
+     "text": "two thousands five hundreds kwanzas",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q3o2",
+     "text": "two thousand and five kwanzas",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q3o0",
+   "explanation": "\"Thousand\" e \"hundred\" sem \"s\".",
+   "points": 10
+  },
+  {
+   "id": "r2q4",
+   "question": "U7. Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "r2q4o0",
+     "text": "There are two banks in my street.",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q4o1",
+     "text": "It has two banks in my street.",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q4o2",
+     "text": "There is two banks in my street.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q4o0",
+   "explanation": "\"There are\" + plural.",
+   "points": 10
+  },
+  {
+   "id": "r2q5",
+   "question": "U7. Is there a café near here? — Sim. O que responde?",
+   "options": [
+    {
+     "id": "r2q5o0",
+     "text": "Yes, there is.",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q5o1",
+     "text": "Yes, there's.",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q5o2",
+     "text": "Yes, it is.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q5o0",
+   "explanation": "Resposta curta sem contracção.",
+   "points": 10
+  },
+  {
+   "id": "r2q6",
+   "question": "U7. \"Go straight on\" quer dizer:",
+   "options": [
+    {
+     "id": "r2q6o0",
+     "text": "Siga em frente.",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q6o1",
+     "text": "Vire à direita.",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q6o2",
+     "text": "Atravesse a rua.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q6o0",
+   "explanation": "Seguir em frente.",
+   "points": 10
+  },
+  {
+   "id": "r2q7",
+   "question": "U8. Complete: \"I like the blue shirt. Can I try ___ on?\"",
+   "options": [
+    {
+     "id": "r2q7o0",
+     "text": "it",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q7o1",
+     "text": "one",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q7o2",
+     "text": "them",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q7o0",
+   "explanation": "\"Try it on\" — a camisa.",
+   "points": 10
+  },
+  {
+   "id": "r2q8",
+   "question": "U8. Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "r2q8o0",
+     "text": "This laptop is more expensive than that one.",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q8o1",
+     "text": "This laptop is expensiver than that one.",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q8o2",
+     "text": "This laptop is more expensive that that one.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q8o0",
+   "explanation": "Adjectivo longo: \"more … than\".",
+   "points": 10
+  },
+  {
+   "id": "r2q9",
+   "question": "U8. A farmacêutica diz \"Take one tablet twice a day\". Quantas vezes?",
+   "options": [
+    {
+     "id": "r2q9o0",
+     "text": "duas vezes por dia",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q9o1",
+     "text": "uma vez por dia",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q9o2",
+     "text": "de duas em duas horas",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q9o0",
+   "explanation": "\"Twice\" = duas vezes.",
+   "points": 10
+  },
+  {
+   "id": "r2q10",
+   "question": "U9. Qual é a pergunta correcta?",
+   "options": [
+    {
+     "id": "r2q10o0",
+     "text": "Can you swim?",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q10o1",
+     "text": "Do you can swim?",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q10o2",
+     "text": "Can you to swim?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q10o0",
+   "explanation": "Pergunta com \"can\": inverte-se.",
+   "points": 10
+  },
+  {
+   "id": "r2q11",
+   "question": "U9. Ao telefone, a colega não está. Como pergunta quem fala?",
+   "options": [
+    {
+     "id": "r2q11o0",
+     "text": "Who's calling, please?",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q11o1",
+     "text": "Who are you?",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q11o2",
+     "text": "Who is speak?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q11o0",
+   "explanation": "Frase fixa do telefone.",
+   "points": 10
+  },
+  {
+   "id": "r2q12",
+   "question": "U9. Complete: \"Look! It ___.\"",
+   "options": [
+    {
+     "id": "r2q12o0",
+     "text": "'s raining",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q12o1",
+     "text": "rains",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q12o2",
+     "text": "rain",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q12o0",
+   "explanation": "Agora: present continuous.",
+   "points": 10
+  },
+  {
+   "id": "r2q13",
+   "question": "U10. Complete: \"Where ___ you yesterday?\"",
+   "options": [
+    {
+     "id": "r2q13o0",
+     "text": "were",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q13o1",
+     "text": "was",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q13o2",
+     "text": "did",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q13o0",
+   "explanation": "you → were.",
+   "points": 10
+  },
+  {
+   "id": "r2q14",
+   "question": "U10. Qual é o passado de \"take\"?",
+   "options": [
+    {
+     "id": "r2q14o0",
+     "text": "took",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q14o1",
+     "text": "taked",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q14o2",
+     "text": "taken",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q14o0",
+   "explanation": "take → took.",
+   "points": 10
+  },
+  {
+   "id": "r2q15",
+   "question": "U10. Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "r2q15o0",
+     "text": "We're going to have a party on the 20th.",
+     "isCorrect": true
+    },
+    {
+     "id": "r2q15o1",
+     "text": "We going to have a party on the 20th.",
+     "isCorrect": false
+    },
+    {
+     "id": "r2q15o2",
+     "text": "We're going to having a party in the 20th.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r2q15o0",
+   "explanation": "be + going to + verbo; \"on\" + data.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

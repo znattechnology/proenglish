@@ -14,6 +14,7 @@ from django.utils import timezone
 from rest_framework.test import APIClient, APITestCase
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from apps.courses.api.student.video_courses.conteudo import codigo_opcao
 from apps.courses.matriculas import matricular_em_curso
 from apps.courses.models import (
     Chapter, ChapterProgress, ChapterQuiz, Course, CourseGradingConfig, CourseSection, GradeHistory,
@@ -52,7 +53,9 @@ class Base(APITestCase):
         self.curso = Course.objects.create(teacher=self.prof, teacherName='Prof', title='Reuniões em inglês',
                                            description='Reuniões de segurança', category='Petróleo',
                                            course_type='video', status='Published', access_level='premium')
-        CourseGradingConfig.objects.create(course=self.curso, practice_enabled=False, conversation_enabled=False)
+        # Só os questionários contam (sem exame oral da fase 6: tem testes próprios em test_fase6_fala).
+        CourseGradingConfig.objects.create(course=self.curso, practice_enabled=False, conversation_enabled=False,
+                                           exam_enabled=False)
         self.sec = CourseSection.objects.create(course=self.curso, sectionTitle='S1', order=1)
         self.video = Chapter.objects.create(section=self.sec, title='Vídeo', content='x', type='Video',
                                             video='https://example.com/v.mp4', order=1)
@@ -74,7 +77,8 @@ class Base(APITestCase):
         if vazias:
             respostas = {}
         else:
-            respostas = {f'q{i}': ('a' if certas and i <= certas else 'b') for i in range(1, 5)}
+            respostas = {f'q{i}': codigo_opcao(self.cap_quiz.id, f'q{i}', 'a' if certas and i <= certas else 'b')
+                         for i in range(1, 5)}
         return self.client.post(f'{V}/chapters/{self.cap_quiz.id}/quiz/attempts/', {'respostas': respostas},
                                 format='json')
 
@@ -104,7 +108,7 @@ class QuizNaoRevelaRespostasTests(Base):
     def test_revela_quando_passa(self):
         d = self.responder(certas=3).json()  # 75% >= 70%
         self.assertTrue(d['revela_respostas'])
-        self.assertEqual(d['data']['correccao'][3]['opcoes_certas'], ['a'])
+        self.assertEqual(d['data']['correccao'][3]['opcoes_certas'], [codigo_opcao(self.cap_quiz.id, 'q4', 'a')])
         self.assertEqual(d['data']['correccao'][3]['explicacao'], 'Porque 4.')
 
     def test_revela_quando_esgota_tentativas_e_no_resumo(self):
@@ -118,7 +122,8 @@ class QuizNaoRevelaRespostasTests(Base):
         self.assertIn('opcoes_certas', d['data']['correccao'][0])
         resumo = self.client.get(f'{V}/chapters/{self.cap_quiz.id}/quiz/summary/').json()
         self.assertTrue(resumo['data']['revela_respostas'])
-        self.assertEqual(resumo['data']['last_attempt']['correccao'][0]['opcoes_certas'], ['a'])
+        self.assertEqual(resumo['data']['last_attempt']['correccao'][0]['opcoes_certas'],
+                         [codigo_opcao(self.cap_quiz.id, 'q1', 'a')])
         lista = self.client.get(f'{V}/chapters/{self.cap_quiz.id}/quiz/attempts/').json()
         self.assertTrue(lista['revela_respostas'])
         self.assertEqual(len(lista['data']), 2)
@@ -301,6 +306,13 @@ class ProgressoTests(Base):
 # 8 ---------------------------------------------------------------------------
 class MinutosDeVideoTests(Base):
 
+    def setUp(self):
+        super().setUp()
+        # O crédito nunca passa do tempo real desde que o aluno abriu a aula (tempo_video).
+        from apps.courses.tempo_video import _chave_aberta
+        from django.core.cache import cache
+        cache.set(_chave_aberta(self.aluno.pk, self.video.pk), (timezone.now() - timedelta(hours=1)).timestamp(), 3600)
+
     def put(self, segundos, **extra):
         corpo = {'sections': [{'sectionId': str(self.sec.id), 'chapters': [
             {'chapterId': str(self.video.id), 'completed': False}]}], 'watched_seconds': segundos, **extra}
@@ -347,12 +359,16 @@ class MinutosConversaNaNotaTests(Base):
         cfg.conversation_enabled = True
         cfg.require_conversation_if_available = True
         cfg.save()
-        self.curso.level = 'Intermediate'
+        self.curso.level = 'B1'
         self.curso.save()
+        # Só contam as conversas deste curso (config.curso_id ou situação do curso).
+        do_curso = {'config': {'curso_id': str(self.curso.id)}}
         VapiSession.objects.create(session_id='f3-a', user=self.aluno, level='B1', domain='general',
-                                   duration_minutes=8, duration_seconds=330, overall_score=70)
+                                   duration_minutes=8, duration_seconds=330, overall_score=70,
+                                   full_session_data=do_curso)
         VapiSession.objects.create(session_id='f3-b', user=self.aluno, level='B1', domain='general',
-                                   duration_minutes=2, overall_score=80)  # antiga, sem segundos
+                                   duration_minutes=2, overall_score=80,  # antiga, sem segundos
+                                   full_session_data=do_curso)
         conv = self.client.get(f'{V}/{self.curso.id}/grade/').json()['data']['grades']['conversation']
         self.assertEqual((conv['sessions'], conv['minutes']), (2, round((330 + 120) / 60)))
 

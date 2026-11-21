@@ -1,0 +1,1366 @@
+{
+ "unidade": "A1.2 · Unit 10 — Last week, next week",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "10A",
+   "titulo": "Where were you?",
+   "aula": "10A",
+   "objectivo": "Dizer onde esteve e como foi com was/were e perguntar.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [was] in Benguela last weekend.",
+     "opcoes": [
+      {
+       "texto": "were",
+       "certa": false
+      },
+      {
+       "texto": "am",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"sunny\"",
+     "opcoes": [
+      {
+       "texto": "birthday",
+       "certa": false,
+       "imagem": "birthday"
+      },
+      {
+       "texto": "sunny",
+       "certa": true,
+       "imagem": "sunny"
+      },
+      {
+       "texto": "cat",
+       "certa": false,
+       "imagem": "cat"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The roads [were] very bad.",
+     "opcoes": [
+      {
+       "texto": "was",
+       "certa": false
+      },
+      {
+       "texto": "are",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My parents [weren't] there.",
+     "opcoes": [
+      {
+       "texto": "wasn't",
+       "certa": false
+      },
+      {
+       "texto": "didn't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Was the wedding good? — Yes, ...",
+     "opcoes": [
+      {
+       "texto": "it was.",
+       "certa": true
+      },
+      {
+       "texto": "it were.",
+       "certa": false
+      },
+      {
+       "texto": "it did.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a expressão correcta?",
+     "opcoes": [
+      {
+       "texto": "last Friday",
+       "certa": true
+      },
+      {
+       "texto": "the last Friday",
+       "certa": false
+      },
+      {
+       "texto": "on last Friday",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Last Friday\", sem \"the\" nem \"on\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se diz \"há dois dias\"?",
+     "opcoes": [
+      {
+       "texto": "two days ago",
+       "certa": true
+      },
+      {
+       "texto": "ago two days",
+       "certa": false
+      },
+      {
+       "texto": "has two days",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Onde estava ontem?",
+     "resposta": "Where were you yesterday?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "There were three hundred people. The food was delicious.",
+     "enunciado": "Quantas pessoas havia no casamento?",
+     "opcoes": [
+      {
+       "texto": "300",
+       "certa": true
+      },
+      {
+       "texto": "30",
+       "certa": false
+      },
+      {
+       "texto": "3 000",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I was in Benguela. It was great, but the trip was terrible.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How was your weekend? Where were you?",
+     "frase": "was",
+     "resposta": "It was great. I was at home on Saturday and I was at the beach on Sunday.",
+     "contexto": "Diga como foi e onde esteve."
+    }
+   ]
+  },
+  {
+   "codigo": "10B",
+   "titulo": "What did you do?",
+   "aula": "10B",
+   "objectivo": "Contar o que fez com verbos regulares e fazer negativas e perguntas com did.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "On Saturday I [cleaned] the house.",
+     "opcoes": [
+      {
+       "texto": "clean",
+       "certa": false
+      },
+      {
+       "texto": "cleaning",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"rain\"",
+     "opcoes": [
+      {
+       "texto": "rain",
+       "certa": true,
+       "imagem": "rain"
+      },
+      {
+       "texto": "sunny",
+       "certa": false,
+       "imagem": "sunny"
+      },
+      {
+       "texto": "birthday",
+       "certa": false,
+       "imagem": "birthday"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We [watched] a film last night.",
+     "opcoes": [
+      {
+       "texto": "watch",
+       "certa": false
+      },
+      {
+       "texto": "watches",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual está escrito correctamente?",
+     "opcoes": [
+      {
+       "texto": "studied",
+       "certa": true
+      },
+      {
+       "texto": "studyed",
+       "certa": false
+      },
+      {
+       "texto": "studed",
+       "certa": false
+      }
+     ],
+     "explicacao": "Consoante + y → -ied."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual está escrito correctamente?",
+     "opcoes": [
+      {
+       "texto": "played",
+       "certa": true
+      },
+      {
+       "texto": "plaied",
+       "certa": false
+      },
+      {
+       "texto": "playd",
+       "certa": false
+      }
+     ],
+     "explicacao": "Vogal + y: só \"-ed\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I didn't work on Sunday.",
+       "certa": true
+      },
+      {
+       "texto": "I didn't worked on Sunday.",
+       "certa": false
+      },
+      {
+       "texto": "I not worked on Sunday.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Didn't\" + verbo simples."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Did you call the client? — Yes, ...",
+     "opcoes": [
+      {
+       "texto": "I did.",
+       "certa": true
+      },
+      {
+       "texto": "I called.",
+       "certa": false
+      },
+      {
+       "texto": "I do.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "O que fez no fim-de-semana?",
+     "resposta": "What did you do at the weekend?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "It rained a lot on Saturday night. We stayed at home.",
+     "enunciado": "Porque ficou a Sílvia em casa?",
+     "opcoes": [
+      {
+       "texto": "choveu muito",
+       "certa": true
+      },
+      {
+       "texto": "estava cansada",
+       "certa": false
+      },
+      {
+       "texto": "trabalhou",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I visited my family and I watched a football match. I didn't work.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What did you do last weekend?",
+     "frase": "I",
+     "resposta": "I cleaned the house on Saturday and I visited my parents on Sunday. I didn't work.",
+     "contexto": "Diga duas coisas com verbos regulares."
+    }
+   ]
+  },
+  {
+   "codigo": "10C",
+   "titulo": "I went to Benguela",
+   "aula": "10C",
+   "objectivo": "Contar uma pequena história no passado com os verbos irregulares mais comuns.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada verbo ao passado.",
+     "pares": [
+      {
+       "a": "go",
+       "b": "went"
+      },
+      {
+       "a": "have",
+       "b": "had"
+      },
+      {
+       "a": "see",
+       "b": "saw"
+      },
+      {
+       "a": "buy",
+       "b": "bought"
+      },
+      {
+       "a": "eat",
+       "b": "ate"
+      },
+      {
+       "a": "take",
+       "b": "took"
+      }
+     ]
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada verbo ao passado.",
+     "pares": [
+      {
+       "a": "come",
+       "b": "came"
+      },
+      {
+       "a": "meet",
+       "b": "met"
+      },
+      {
+       "a": "give",
+       "b": "gave"
+      },
+      {
+       "a": "write",
+       "b": "wrote"
+      },
+      {
+       "a": "get",
+       "b": "got"
+      },
+      {
+       "a": "say",
+       "b": "said"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [went] to Benguela by bus.",
+     "opcoes": [
+      {
+       "texto": "goed",
+       "certa": false
+      },
+      {
+       "texto": "go",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We [ate] fish on the beach.",
+     "opcoes": [
+      {
+       "texto": "eated",
+       "certa": false
+      },
+      {
+       "texto": "eat",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a pergunta correcta?",
+     "opcoes": [
+      {
+       "texto": "Did you see the client?",
+       "certa": true
+      },
+      {
+       "texto": "Did you saw the client?",
+       "certa": false
+      },
+      {
+       "texto": "Do you saw the client?",
+       "certa": false
+      }
+     ],
+     "explicacao": "Com \"did\", o verbo fica simples, também nos irregulares."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I didn't buy anything.",
+       "certa": true
+      },
+      {
+       "texto": "I didn't bought anything.",
+       "certa": false
+      },
+      {
+       "texto": "I not buy anything.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[First], I took the bus. Then I met my friends.",
+     "opcoes": [
+      {
+       "texto": "Finally",
+       "certa": false
+      },
+      {
+       "texto": "After",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Finally, on Sunday I came back to Luanda. I got home at ten p.m.",
+     "enunciado": "A que horas chegou o Paulo a casa?",
+     "opcoes": [
+      {
+       "texto": "às 22h",
+       "certa": true
+      },
+      {
+       "texto": "às 10h",
+       "certa": false
+      },
+      {
+       "texto": "às 20h",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I bought a present. I saw my friends. He said hello.",
+     "enunciado": "Ouça e repita: \"bought\" sem \"g\"; \"said\" diz-se \"séd\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about your last trip or a special day.",
+     "frase": "went",
+     "resposta": "First, I went to Lubango by car. Then I saw my family. We had lunch together. Finally, I came back on Sunday.",
+     "contexto": "Use first, then, finally e verbos irregulares."
+    }
+   ]
+  },
+  {
+   "codigo": "10D",
+   "titulo": "Next week",
+   "aula": "10D",
+   "objectivo": "Dizer o que vai fazer com going to e perguntar.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[I'm going to] visit a client next Tuesday.",
+     "opcoes": [
+      {
+       "texto": "I going to",
+       "certa": false
+      },
+      {
+       "texto": "I go to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She [is going to] travel to Cabinda.",
+     "opcoes": [
+      {
+       "texto": "going to",
+       "certa": false
+      },
+      {
+       "texto": "goes to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "We're going to have a meeting.",
+       "certa": true
+      },
+      {
+       "texto": "We going to have a meeting.",
+       "certa": false
+      },
+      {
+       "texto": "We're going to having a meeting.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Não esqueça o \"be\", e o verbo fica simples."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Are you going to work tomorrow? — No, ...",
+     "opcoes": [
+      {
+       "texto": "I'm not.",
+       "certa": true
+      },
+      {
+       "texto": "I don't.",
+       "certa": false
+      },
+      {
+       "texto": "I'm not going.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a forma mais natural?",
+     "opcoes": [
+      {
+       "texto": "I'm going to the beach on Saturday.",
+       "certa": true
+      },
+      {
+       "texto": "I'm going to go to the beach on Saturday.",
+       "certa": false
+      },
+      {
+       "texto": "I go to going to the beach.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Com \"go\", é mais natural \"I'm going to the beach\"."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "O que vai fazer este fim-de-semana?",
+     "resposta": "What are you going to do this weekend?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm going to take my children to the beach on Saturday.",
+     "enunciado": "O que vai a Sílvia fazer no sábado?",
+     "opcoes": [
+      {
+       "texto": "levar os filhos à praia",
+       "certa": true
+      },
+      {
+       "texto": "visitar a mãe",
+       "certa": false
+      },
+      {
+       "texto": "trabalhar",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm gonna visit my mother on Sunday.",
+     "enunciado": "\"Gonna\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "going to",
+       "certa": true
+      },
+      {
+       "texto": "gone",
+       "certa": false
+      },
+      {
+       "texto": "go now",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm going to visit a client next week. I'm not going to work on Sunday.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What are you going to do this weekend?",
+     "frase": "going to",
+     "resposta": "I'm going to visit my family on Saturday and I'm going to rest on Sunday.",
+     "contexto": "Diga dois planos."
+    }
+   ]
+  },
+  {
+   "codigo": "10E",
+   "titulo": "Dates and weekends",
+   "aula": "10E",
+   "objectivo": "Dizer meses, ordinais e datas e pronunciar o -ed.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada número ao ordinal.",
+     "pares": [
+      {
+       "a": "1st",
+       "b": "first"
+      },
+      {
+       "a": "2nd",
+       "b": "second"
+      },
+      {
+       "a": "3rd",
+       "b": "third"
+      },
+      {
+       "a": "5th",
+       "b": "fifth"
+      },
+      {
+       "a": "12th",
+       "b": "twelfth"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"birthday\"",
+     "opcoes": [
+      {
+       "texto": "rain",
+       "certa": false,
+       "imagem": "rain"
+      },
+      {
+       "texto": "wedding",
+       "certa": false,
+       "imagem": "wedding"
+      },
+      {
+       "texto": "birthday",
+       "certa": true,
+       "imagem": "birthday"
+      }
+     ]
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The eleventh of November.",
+     "enunciado": "Que data ouve?",
+     "opcoes": [
+      {
+       "texto": "11 November",
+       "certa": true
+      },
+      {
+       "texto": "7 November",
+       "certa": false
+      },
+      {
+       "texto": "11 September",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Twenty twenty-six.",
+     "enunciado": "Que ano ouve?",
+     "opcoes": [
+      {
+       "texto": "2026",
+       "certa": true
+      },
+      {
+       "texto": "2006",
+       "certa": false
+      },
+      {
+       "texto": "1926",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se diz 4/4?",
+     "opcoes": [
+      {
+       "texto": "the fourth of April",
+       "certa": true
+      },
+      {
+       "texto": "the four of April",
+       "certa": false
+      },
+      {
+       "texto": "April four",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Independence Day is [on] the 11th of November.",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My birthday is [in] March.",
+     "opcoes": [
+      {
+       "texto": "on",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Em que verbo o \"-ed\" é uma sílaba a mais?",
+     "opcoes": [
+      {
+       "texto": "visited",
+       "certa": true
+      },
+      {
+       "texto": "worked",
+       "certa": false
+      },
+      {
+       "texto": "played",
+       "certa": false
+      }
+     ],
+     "explicacao": "Só depois de \"t\" ou \"d\": visit-ed."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Worked.",
+     "enunciado": "Quantas sílabas ouve?",
+     "opcoes": [
+      {
+       "texto": "1",
+       "certa": true
+      },
+      {
+       "texto": "2",
+       "certa": false
+      },
+      {
+       "texto": "3",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Worked\" diz-se numa sílaba: /wɜːkt/."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "worked, played, visited",
+     "enunciado": "Ouça e repita os três sons do \"-ed\": /t/, /d/, /ɪd/."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "When's your birthday?",
+     "frase": "It's on",
+     "resposta": "It's on the fifteenth of March.",
+     "contexto": "Diga a data (pode inventar)."
+    }
+   ]
+  },
+  {
+   "codigo": "10F",
+   "titulo": "Real English: What did you do at the weekend?",
+   "aula": "10F",
+   "objectivo": "Identificar onde cada pessoa foi, o que fez e o que vai fazer.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "We drove — it took ten hours! We saw the Tundavala gap.",
+     "enunciado": "How did Isabel go to Lubango?",
+     "opcoes": [
+      {
+       "texto": "She drove.",
+       "certa": true
+      },
+      {
+       "texto": "She flew.",
+       "certa": false
+      },
+      {
+       "texto": "She took the bus.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "It was beautiful, but very cold at night. Next year we're going to fly!",
+     "enunciado": "What's Isabel going to do next year?",
+     "opcoes": [
+      {
+       "texto": "fly",
+       "certa": true
+      },
+      {
+       "texto": "drive",
+       "certa": false
+      },
+      {
+       "texto": "stay at home",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I watched the celebrations on the Marginal. There were a lot of people and a lot of music.",
+     "enunciado": "Where did Tom watch the celebrations?",
+     "opcoes": [
+      {
+       "texto": "on the Marginal",
+       "certa": true
+      },
+      {
+       "texto": "in Mussulo",
+       "certa": false
+      },
+      {
+       "texto": "at home",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The next day I slept until eleven.",
+     "enunciado": "When did Tom get up the next day?",
+     "opcoes": [
+      {
+       "texto": "at eleven",
+       "certa": true
+      },
+      {
+       "texto": "at seven",
+       "certa": false
+      },
+      {
+       "texto": "at two",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Paulo didn't help in the kitchen… but he washed the dishes.",
+     "enunciado": "What did Paulo do?",
+     "opcoes": [
+      {
+       "texto": "He washed the dishes.",
+       "certa": true
+      },
+      {
+       "texto": "He cooked.",
+       "certa": false
+      },
+      {
+       "texto": "He slept.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I didn't go anywhere\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Não fui a lado nenhum.",
+       "certa": true
+      },
+      {
+       "texto": "Fui a todo o lado.",
+       "certa": false
+      },
+      {
+       "texto": "Não fui a casa.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It was a public holiday. I didn't go anywhere.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about your last holiday. Where did you go? What did you do?",
+     "frase": "went",
+     "resposta": "I went to Benguela with my family. We went to the beach and we ate fish. Next time I'm going to stay for a week.",
+     "contexto": "Onde foi, o que fez e o que vai fazer da próxima vez."
+    }
+   ]
+  },
+  {
+   "codigo": "10G",
+   "titulo": "Weekly check-in",
+   "aula": "10G",
+   "objectivo": "Dar à chefia um ponto da semana: o que fez, o que não fez e porquê, e o que vai fazer.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Last week I [installed] the new laptops.",
+     "opcoes": [
+      {
+       "texto": "install",
+       "certa": false
+      },
+      {
+       "texto": "am going to install",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"report\"",
+     "opcoes": [
+      {
+       "texto": "report",
+       "certa": true,
+       "imagem": "report"
+      },
+      {
+       "texto": "watch",
+       "certa": false,
+       "imagem": "watch"
+      },
+      {
+       "texto": "ID card",
+       "certa": false,
+       "imagem": "id-card"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This week [I'm going to] call Mr Okafor.",
+     "opcoes": [
+      {
+       "texto": "I called",
+       "certa": false
+      },
+      {
+       "texto": "I calling",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I didn't finish the report [because] the manager was sick.",
+     "opcoes": [
+      {
+       "texto": "so",
+       "certa": false
+      },
+      {
+       "texto": "but",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "report",
+       "b": "relatório"
+      },
+      {
+       "a": "task",
+       "b": "tarefa"
+      },
+      {
+       "a": "deadline",
+       "b": "prazo"
+      },
+      {
+       "a": "on time",
+       "b": "a horas"
+      },
+      {
+       "a": "update",
+       "b": "actualizar"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A chefia diz \"Good job!\". Quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Bom trabalho!",
+       "certa": true
+      },
+      {
+       "texto": "Bom emprego!",
+       "certa": false
+      },
+      {
+       "texto": "Boa tarefa!",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm going to finish it on Wednesday and send it to you on Thursday morning.",
+     "enunciado": "Quando vai o Paulo enviar o relatório?",
+     "opcoes": [
+      {
+       "texto": "quinta de manhã",
+       "certa": true
+      },
+      {
+       "texto": "quarta à tarde",
+       "certa": false
+      },
+      {
+       "texto": "sexta de manhã",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "On Wednesday I visited Mussulo Energy and I updated their system.",
+     "enunciado": "O que fez o Paulo na quarta?",
+     "opcoes": [
+      {
+       "texto": "visitou a Mussulo Energy",
+       "certa": true
+      },
+      {
+       "texto": "formou o Nuno",
+       "certa": false
+      },
+      {
+       "texto": "ligou ao Sr. Okafor",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Last week I called three clients. This week I'm going to visit the bank on Tuesday.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Good morning. What did you do last week, and what are you going to do this week?",
+     "frase": "going to",
+     "resposta": "Last week I wrote the monthly report and I called three clients. This week I'm going to visit the bank on Tuesday.",
+     "contexto": "O que fez e o que vai fazer."
+    }
+   ]
+  },
+  {
+   "codigo": "10R",
+   "titulo": "Unit 10 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 10 e reciclar o A1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Where [were] you yesterday? — I [was] at home.",
+     "opcoes": [
+      {
+       "texto": "are",
+       "certa": false
+      },
+      {
+       "texto": "am",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "She went to Lubango last week.",
+       "certa": true
+      },
+      {
+       "texto": "She goed to Lubango last week.",
+       "certa": false
+      },
+      {
+       "texto": "She go to Lubango last week.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a pergunta correcta?",
+     "opcoes": [
+      {
+       "texto": "What did you buy?",
+       "certa": true
+      },
+      {
+       "texto": "What did you bought?",
+       "certa": false
+      },
+      {
+       "texto": "What you bought?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I'm going to call him tomorrow.",
+       "certa": true
+      },
+      {
+       "texto": "I going to call him tomorrow.",
+       "certa": false
+      },
+      {
+       "texto": "I'm going to called him tomorrow.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Two days ago I had a meeting with the bank.",
+     "enunciado": "Quando foi a reunião?",
+     "opcoes": [
+      {
+       "texto": "há dois dias",
+       "certa": true
+      },
+      {
+       "texto": "daqui a dois dias",
+       "certa": false
+      },
+      {
+       "texto": "ontem",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (unidade 9). Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I usually take the bus, but today I'm driving.",
+       "certa": true
+      },
+      {
+       "texto": "I usually taking the bus, but today I drive.",
+       "certa": false
+      },
+      {
+       "texto": "I'm usually take the bus.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (unidade 5). Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "He doesn't work on Sundays.",
+       "certa": true
+      },
+      {
+       "texto": "He don't works on Sundays.",
+       "certa": false
+      },
+      {
+       "texto": "He doesn't works on Sundays.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ontem não fui trabalhar.",
+     "resposta": "I didn't go to work yesterday.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Last weekend I went to the beach. Next weekend I'm going to visit my family.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hi! How was your week? What are you going to do this weekend?",
+     "frase": "was",
+     "resposta": "It was busy. I finished a big report on Thursday. This weekend I'm going to rest and watch football.",
+     "contexto": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The eleventh of November, twenty twenty-six.",
+     "enunciado": "Ouça e repita em voz alta."
+    }
+   ]
+  }
+ ]
+}

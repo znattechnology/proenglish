@@ -1,0 +1,1311 @@
+{
+ "unidade": "A2.2 · Unit 9 — Customer service",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "9A",
+   "titulo": "Could you help me?",
+   "aula": "9A",
+   "objectivo": "Fazer pedidos formais com could / would e responder com cortesia, incluindo recusar com uma alternativa.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Could you] help me, please?",
+     "opcoes": [
+      {
+       "texto": "Could you to",
+       "certa": false
+      },
+      {
+       "texto": "You could",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Could I [have] the account number, please?",
+     "opcoes": [
+      {
+       "texto": "to have",
+       "certa": false
+      },
+      {
+       "texto": "having",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Would you [check] the date of the transfer, please?",
+     "opcoes": [
+      {
+       "texto": "to check",
+       "certa": false
+      },
+      {
+       "texto": "checking",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the most polite request at a bank?",
+     "opcoes": [
+      {
+       "texto": "Could you print a bank statement, please?",
+       "certa": true
+      },
+      {
+       "texto": "Print a bank statement.",
+       "certa": false
+      },
+      {
+       "texto": "I want a bank statement now.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Could you help me?\" — Choose a polite \"yes\".",
+     "opcoes": [
+      {
+       "texto": "Certainly.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, I could.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, help.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the best polite \"no\".",
+     "opcoes": [
+      {
+       "texto": "I'm afraid the manager isn't here today, but I can help you.",
+       "certa": true
+      },
+      {
+       "texto": "No. The manager isn't here.",
+       "certa": false
+      },
+      {
+       "texto": "I can't. Goodbye.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Podia ajudar-me, por favor?\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Could you help me, please?",
+       "certa": true
+      },
+      {
+       "texto": "Could you to help me, please?",
+       "certa": false
+      },
+      {
+       "texto": "Can you helping me, please?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Podia falar com o gerente?",
+     "resposta": "Could I speak to the manager?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm afraid the manager isn't here today, but I can call the transfer department now.",
+     "enunciado": "What does the bank clerk offer?",
+     "opcoes": [
+      {
+       "texto": "to call the transfer department",
+       "certa": true
+      },
+      {
+       "texto": "to call the manager at home",
+       "certa": false
+      },
+      {
+       "texto": "to give Sílvia the money",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Could you help me, please? Would you check the date, please?",
+     "enunciado": "Ouça e repita: \"could you\" e \"would you\" ligados; a voz sobe no fim."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You're at a hotel reception. Ask for two things politely.",
+     "frase": "Could",
+     "resposta": "Could you call a taxi for me, please? And could I have a late check-out?",
+     "contexto": "Dois pedidos com could."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Could you work on Saturday? (Say no politely and offer something else.)",
+     "frase": "I'm afraid",
+     "resposta": "I'm afraid I can't, but I can stay late on Friday.",
+     "contexto": "Recusa com alternativa."
+    }
+   ]
+  },
+  {
+   "codigo": "9B",
+   "titulo": "I'd like to make a complaint",
+   "aula": "9B",
+   "objectivo": "Fazer uma reclamação educada: o problema, desde quando, o que já fez e o que quer.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm calling [about] our internet.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's [still] slow.",
+     "opcoes": [
+      {
+       "texto": "yet",
+       "certa": false
+      },
+      {
+       "texto": "since",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've called you [twice] this week.",
+     "opcoes": [
+      {
+       "texto": "two",
+       "certa": false
+      },
+      {
+       "texto": "second",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "It still doesn't work.",
+       "certa": true
+      },
+      {
+       "texto": "It doesn't work still.",
+       "certa": false
+      },
+      {
+       "texto": "It doesn't still work yet.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the best way to say what you want.",
+     "opcoes": [
+      {
+       "texto": "I'd like a discount for this month.",
+       "certa": true
+      },
+      {
+       "texto": "Give me a discount.",
+       "certa": false
+      },
+      {
+       "texto": "I want discount now.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is firm but polite?",
+     "opcoes": [
+      {
+       "texto": "I'm not happy with the service. I'd like a solution today.",
+       "certa": true
+      },
+      {
+       "texto": "This is terrible! You're useless!",
+       "certa": false
+      },
+      {
+       "texto": "OK, no problem, it doesn't matter.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Our internet has been slow since last Thursday.",
+       "certa": true
+      },
+      {
+       "texto": "Our internet is slow since last Thursday.",
+       "certa": false
+      },
+      {
+       "texto": "Our internet was slow since last Thursday.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Desde quando: present perfect + since."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Gostaria de fazer uma reclamação.",
+     "resposta": "I'd like to make a complaint.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Yes, I've restarted it three times. And I've called you twice this week, but it's still slow.",
+     "enunciado": "How many times has Paulo called this week?",
+     "opcoes": [
+      {
+       "texto": "twice",
+       "certa": true
+      },
+      {
+       "texto": "three times",
+       "certa": false
+      },
+      {
+       "texto": "once",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I've called you twice, but it's still slow.",
+     "enunciado": "Ouça e repita, com voz calma e firme."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your new phone doesn't charge. You bought it ten days ago. Call the shop.",
+     "frase": "still",
+     "resposta": "Hello, I'm calling about a phone. I'd like to make a complaint. I bought it ten days ago, and it doesn't charge. I've tried two chargers, but it still doesn't work. I'd like a replacement, please.",
+     "contexto": "As cinco partes."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "The shop says: \"I'm afraid we don't have any phones today.\" What do you say?",
+     "frase": "Could you",
+     "resposta": "Could you call me when you have one? If not, I'd like a refund.",
+     "contexto": "Peça uma alternativa."
+    }
+   ]
+  },
+  {
+   "codigo": "9C",
+   "titulo": "I need to talk to someone",
+   "aula": "9C",
+   "objectivo": "Usar verbos seguidos de to e de -ing.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've decided [to do] the English course.",
+     "opcoes": [
+      {
+       "texto": "doing",
+       "certa": false
+      },
+      {
+       "texto": "do",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I enjoy [speaking] English.",
+     "opcoes": [
+      {
+       "texto": "to speak",
+       "certa": false
+      },
+      {
+       "texto": "speak",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I need [to practise] writing.",
+     "opcoes": [
+      {
+       "texto": "practising",
+       "certa": false
+      },
+      {
+       "texto": "practise",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I don't mind [working] at the weekend.",
+     "opcoes": [
+      {
+       "texto": "to work",
+       "certa": false
+      },
+      {
+       "texto": "work",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Oh no! I forgot [to send] it.",
+     "opcoes": [
+      {
+       "texto": "send",
+       "certa": false
+      },
+      {
+       "texto": "sended",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Stop worrying!",
+       "certa": true
+      },
+      {
+       "texto": "Stop worry!",
+       "certa": false
+      },
+      {
+       "texto": "Stop worried!",
+       "certa": false
+      }
+     ],
+     "explicacao": "Aqui: stop + -ing = parar de."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which verb takes \"-ing\"?",
+     "opcoes": [
+      {
+       "texto": "finish",
+       "certa": true
+      },
+      {
+       "texto": "hope",
+       "certa": false
+      },
+      {
+       "texto": "decide",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which verb takes \"to\"?",
+     "opcoes": [
+      {
+       "texto": "decide",
+       "certa": true
+      },
+      {
+       "texto": "enjoy",
+       "certa": false
+      },
+      {
+       "texto": "finish",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I enjoy speaking English, but I need to practise writing. My reports take hours!",
+     "enunciado": "What does Nuno need to practise?",
+     "opcoes": [
+      {
+       "texto": "writing",
+       "certa": true
+      },
+      {
+       "texto": "speaking",
+       "certa": false
+      },
+      {
+       "texto": "reading",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I need to go. I want to learn. I enjoy speaking English.",
+     "enunciado": "Ouça e repita: \"to\" fraco."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you enjoy doing at work, and what do you need to improve?",
+     "frase": "need to",
+     "resposta": "I enjoy talking to clients, but I need to improve my writing. I'm trying to write one email in English every day.",
+     "contexto": "enjoy + -ing e need to."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What are you planning to do this year?",
+     "frase": "planning to",
+     "resposta": "I'm planning to do a course in project management, and I hope to visit my family in Huambo in August.",
+     "contexto": "plan to e hope to."
+    }
+   ]
+  },
+  {
+   "codigo": "9D",
+   "titulo": "Refunds and replacements",
+   "aula": "9D",
+   "objectivo": "Usar as palavras do serviço ao cliente; entoação de cortesia; attend e exit.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "refund",
+       "b": "reembolso"
+      },
+      {
+       "a": "replacement",
+       "b": "troca por um novo"
+      },
+      {
+       "a": "receipt",
+       "b": "talão"
+      },
+      {
+       "a": "damaged",
+       "b": "danificado"
+      },
+      {
+       "a": "delay",
+       "b": "atraso"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You get your money back. That's...",
+     "opcoes": [
+      {
+       "texto": "a refund",
+       "certa": true
+      },
+      {
+       "texto": "a replacement",
+       "certa": false
+      },
+      {
+       "texto": "a receipt",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You get a new one. That's...",
+     "opcoes": [
+      {
+       "texto": "a replacement",
+       "certa": true
+      },
+      {
+       "texto": "a refund",
+       "certa": false
+      },
+      {
+       "texto": "an invoice",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You charged me [twice] for one order.",
+     "opcoes": [
+      {
+       "texto": "two",
+       "certa": false
+      },
+      {
+       "texto": "double time",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My order arrived [damaged].",
+     "opcoes": [
+      {
+       "texto": "damage",
+       "certa": false
+      },
+      {
+       "texto": "damaging",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Atender o telefone\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "answer the phone",
+       "certa": true
+      },
+      {
+       "texto": "attend the phone",
+       "certa": false
+      },
+      {
+       "texto": "atend the phone",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Attend\" = assistir a (uma reunião)."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"O projecto foi um êxito.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The project was a success.",
+       "certa": true
+      },
+      {
+       "texto": "The project was an exit.",
+       "certa": false
+      },
+      {
+       "texto": "The project was a exito.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Exit\" = saída."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In \"receipt\", which letter is silent?",
+     "opcoes": [
+      {
+       "texto": "p",
+       "certa": true
+      },
+      {
+       "texto": "r",
+       "certa": false
+      },
+      {
+       "texto": "t",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "There's a delay with the delivery. It'll arrive on Friday.",
+     "enunciado": "When will the order arrive?",
+     "opcoes": [
+      {
+       "texto": "on Friday",
+       "certa": true
+      },
+      {
+       "texto": "today",
+       "certa": false
+      },
+      {
+       "texto": "next month",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Could you send me a replacement, please?",
+     "enunciado": "Ouça e repita: um pedido educado, com a voz a subir."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your new laptop doesn't turn on. What do you want? Say it politely.",
+     "frase": "replacement",
+     "resposta": "Could you send me a replacement, please? I bought it last week, and I have the receipt.",
+     "contexto": "Use replacement ou refund."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "The bank charged you twice for one payment. What do you say?",
+     "frase": "charged",
+     "resposta": "Excuse me. You charged me twice for one payment. Could you give me my money back, please?",
+     "contexto": "Explique e peça a solução."
+    }
+   ]
+  },
+  {
+   "codigo": "9E",
+   "titulo": "Real English: I'm not happy with…",
+   "aula": "9E",
+   "objectivo": "Identificar o problema, o que o cliente quer e a solução em quatro reclamações.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "My card doesn't work. I tried to pay at the supermarket this morning, and it said \"card blocked\".",
+     "enunciado": "What did the card machine say?",
+     "opcoes": [
+      {
+       "texto": "card blocked",
+       "certa": true
+      },
+      {
+       "texto": "card broken",
+       "certa": false
+      },
+      {
+       "texto": "no money",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "That was me! I forgot my new PIN.",
+     "enunciado": "What did Tunde forget?",
+     "opcoes": [
+      {
+       "texto": "his new PIN",
+       "certa": true
+      },
+      {
+       "texto": "his passport",
+       "certa": false
+      },
+      {
+       "texto": "his card",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "You've charged me for international calls, but I haven't made any international calls this month.",
+     "enunciado": "What's the problem with Rita's bill?",
+     "opcoes": [
+      {
+       "texto": "international calls she didn't make",
+       "certa": true
+      },
+      {
+       "texto": "a very high internet bill",
+       "certa": false
+      },
+      {
+       "texto": "two bills in one month",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I ordered fifty bags of flour last week, and you delivered thirty.",
+     "enunciado": "How many bags of flour did Fátima get?",
+     "opcoes": [
+      {
+       "texto": "thirty",
+       "certa": true
+      },
+      {
+       "texto": "fifty",
+       "certa": false
+      },
+      {
+       "texto": "twenty",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "OK. I can give you ten per cent.",
+     "enunciado": "What does the supplier offer Fátima?",
+     "opcoes": [
+      {
+       "texto": "a ten per cent discount",
+       "certa": true
+      },
+      {
+       "texto": "the flour today",
+       "certa": false
+      },
+      {
+       "texto": "a free truck",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Oh, I'm so sorry. I'll bring you the fish right now. And the dessert is free today — our apologies.",
+     "enunciado": "What does the restaurant give Emma?",
+     "opcoes": [
+      {
+       "texto": "the right dish and a free dessert",
+       "certa": true
+      },
+      {
+       "texto": "a refund",
+       "certa": false
+      },
+      {
+       "texto": "a free bottle of wine",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A good answer to a complaint has...",
+     "opcoes": [
+      {
+       "texto": "sorry, the reason and a solution",
+       "certa": true
+      },
+      {
+       "texto": "only \"sorry\"",
+       "certa": false
+      },
+      {
+       "texto": "a long explanation and no solution",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Excuse me. I ordered the grilled fish, but this is chicken.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a time you made a complaint, or imagine one.",
+     "frase": "I",
+     "resposta": "Last year I bought a fridge, and it arrived damaged. I called the shop and I said: \"I'd like a replacement.\" In the end, they brought a new one two days later.",
+     "contexto": "O problema, o que quis e o que aconteceu."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "At a restaurant, your coffee is cold. Complain politely.",
+     "frase": "Could you",
+     "resposta": "Excuse me. My coffee is cold. Could you bring me a hot one, please?",
+     "contexto": "Educado e claro."
+    }
+   ]
+  },
+  {
+   "codigo": "9F",
+   "titulo": "Work & Life: A customer calls",
+   "aula": "9F",
+   "objectivo": "Atender a reclamação de um cliente e passar a um colega estrangeiro uma reclamação feita em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "A customer says: \"Only eight laptops have arrived!\" What do you say first?",
+     "opcoes": [
+      {
+       "texto": "I'm very sorry to hear that.",
+       "certa": true
+      },
+      {
+       "texto": "That's not my problem.",
+       "certa": false
+      },
+      {
+       "texto": "Are you sure?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Could I have your order [number], please?",
+     "opcoes": [
+      {
+       "texto": "numbers",
+       "certa": false
+      },
+      {
+       "texto": "numeral",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Why do you repeat the details to the customer?",
+     "opcoes": [
+      {
+       "texto": "to check that you understood",
+       "certa": true
+      },
+      {
+       "texto": "to make the call longer",
+       "certa": false
+      },
+      {
+       "texto": "because it's a rule of the bank",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We'll bring the new one [by] Wednesday morning.",
+     "opcoes": [
+      {
+       "texto": "until",
+       "certa": false
+      },
+      {
+       "texto": "in",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"By Wednesday\" means...",
+     "opcoes": [
+      {
+       "texto": "on Wednesday or before",
+       "certa": true
+      },
+      {
+       "texto": "only on Wednesday",
+       "certa": false
+      },
+      {
+       "texto": "after Wednesday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the best way to end the call.",
+     "opcoes": [
+      {
+       "texto": "Thank you for your patience. I'll send you an email with the details.",
+       "certa": true
+      },
+      {
+       "texto": "OK, bye.",
+       "certa": false
+      },
+      {
+       "texto": "Don't call again, please.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The last two laptops are in our warehouse. I'll send them to your office today.",
+     "enunciado": "When will Nuno send the two laptops?",
+     "opcoes": [
+      {
+       "texto": "today",
+       "certa": true
+      },
+      {
+       "texto": "on Wednesday",
+       "certa": false
+      },
+      {
+       "texto": "next week",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "He paid his electricity bill with the app, and the system charged him twice — twenty-five thousand kwanzas, two times.",
+     "enunciado": "How much did the client pay in total?",
+     "opcoes": [
+      {
+       "texto": "50 000 Kz",
+       "certa": true
+      },
+      {
+       "texto": "25 000 Kz",
+       "certa": false
+      },
+      {
+       "texto": "2 500 Kz",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Quer o dinheiro de volta.\" Nuno tells Arjun:",
+     "opcoes": [
+      {
+       "texto": "He wants his money back.",
+       "certa": true
+      },
+      {
+       "texto": "He wants the money of the back.",
+       "certa": false
+      },
+      {
+       "texto": "He wants to back the money.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm very sorry to hear that. Could I have your order number, please?",
+     "enunciado": "Ouça e repita, com voz calma e simpática."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A client says: \"I ordered twenty chairs, but only fifteen arrived!\" Answer.",
+     "frase": "sorry",
+     "resposta": "I'm very sorry to hear that. Could I have your order number, please? So, five chairs haven't arrived. I'll send them by Thursday.",
+     "contexto": "Desculpa, pormenores e uma solução com prazo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Close the call with the client.",
+     "frase": "patience",
+     "resposta": "Thank you for your patience. I'll send you an email with the details today.",
+     "contexto": "Agradeça e confirme por escrito."
+    }
+   ]
+  },
+  {
+   "codigo": "9R",
+   "titulo": "Unit 9 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 9 e reciclar as unidades 6 a 8 e o A2.1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Could I] speak to the manager, please?",
+     "opcoes": [
+      {
+       "texto": "Could I to",
+       "certa": false
+      },
+      {
+       "texto": "I could",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It [still] doesn't work.",
+     "opcoes": [
+      {
+       "texto": "yet",
+       "certa": false
+      },
+      {
+       "texto": "since",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've decided [to change] my internet provider.",
+     "opcoes": [
+      {
+       "texto": "changing",
+       "certa": false
+      },
+      {
+       "texto": "change",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I enjoy [helping] customers.",
+     "opcoes": [
+      {
+       "texto": "to help",
+       "certa": false
+      },
+      {
+       "texto": "help",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You get your money back. What do you get?",
+     "opcoes": [
+      {
+       "texto": "a refund",
+       "certa": true
+      },
+      {
+       "texto": "a receipt",
+       "certa": false
+      },
+      {
+       "texto": "a replacement",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 8). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If the order doesn't arrive today, I'll call the supplier.",
+       "certa": true
+      },
+      {
+       "texto": "If the order won't arrive today, I'll call the supplier.",
+       "certa": false
+      },
+      {
+       "texto": "If the order doesn't arrive today, I call the supplier tomorrow will.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 7). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I've called them three times since Monday.",
+       "certa": true
+      },
+      {
+       "texto": "I call them three times since Monday.",
+       "certa": false
+      },
+      {
+       "texto": "I've called them three times for Monday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 6). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Have you ever made a complaint?",
+       "certa": true
+      },
+      {
+       "texto": "Did you ever made a complaint?",
+       "certa": false
+      },
+      {
+       "texto": "Have you ever make a complaint?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 4). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "This provider is much cheaper than the old one.",
+       "certa": true
+      },
+      {
+       "texto": "This provider is very cheaper than the old one.",
+       "certa": false
+      },
+      {
+       "texto": "This provider is more cheaper than the old one.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Lamento, mas hoje não posso.",
+     "resposta": "I'm afraid I can't today.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm afraid there's no technician free today. But one can come tomorrow at nine.",
+     "enunciado": "When can the technician come?",
+     "opcoes": [
+      {
+       "texto": "tomorrow at nine",
+       "certa": true
+      },
+      {
+       "texto": "today at nine",
+       "certa": false
+      },
+      {
+       "texto": "tomorrow at five",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Make a complaint: your internet has been slow for a week.",
+     "frase": "since",
+     "resposta": "Hello, I'm calling about my internet. It's been very slow since last Monday. I've restarted the router, but it's still slow. Could you send a technician, please?",
+     "contexto": "Use since, still e could."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A customer is angry: the delivery is late. Answer and give a solution.",
+     "frase": "I'll",
+     "resposta": "I'm very sorry about the delay. Could I have your order number? I'll check it now, and we'll deliver it by Friday.",
+     "contexto": "Desculpa, pormenores e solução."
+    }
+   ]
+  }
+ ]
+}

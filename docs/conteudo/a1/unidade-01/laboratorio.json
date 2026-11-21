@@ -1,0 +1,1081 @@
+{
+ "unidade": "A1.1 · Unit 1 — Hello!",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "1A",
+   "titulo": "Hello, I'm…",
+   "aula": "1A",
+   "objectivo": "Cumprimentar, apresentar-se e despedir-se.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "São 9 horas da manhã. Chega ao escritório. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Good morning!",
+       "certa": true
+      },
+      {
+       "texto": "Good evening!",
+       "certa": false
+      },
+      {
+       "texto": "Good night!",
+       "certa": false
+      }
+     ],
+     "explicacao": "De manhã (até ao meio-dia) diz-se \"Good morning\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "São 20 horas. Chega a um jantar de trabalho. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Good evening!",
+       "certa": true
+      },
+      {
+       "texto": "Good night!",
+       "certa": false
+      },
+      {
+       "texto": "Good afternoon!",
+       "certa": false
+      }
+     ],
+     "explicacao": "Em inglês, \"Good night\" não é um cumprimento: usa-se ao sair ou antes de dormir. Ao chegar à noite, diga \"Good evening\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[I'm] Paulo Mendes.",
+     "opcoes": [
+      {
+       "texto": "Am",
+       "certa": false
+      },
+      {
+       "texto": "Is",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"I'm\" é a forma curta de \"I am\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Are you Ana? — Yes, I [am].",
+     "opcoes": [
+      {
+       "texto": "is",
+       "certa": false
+      },
+      {
+       "texto": "are",
+       "certa": false
+      }
+     ],
+     "explicacao": "Na resposta curta diz-se \"Yes, I am.\" e nunca \"Yes, I'm.\""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Muito prazer.",
+     "resposta": "Nice to meet you.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "Good morning",
+       "b": "Bom dia"
+      },
+      {
+       "a": "Good afternoon",
+       "b": "Boa tarde"
+      },
+      {
+       "a": "Good evening",
+       "b": "Boa noite (ao chegar)"
+      },
+      {
+       "a": "Goodbye",
+       "b": "Adeus"
+      },
+      {
+       "a": "See you tomorrow",
+       "b": "Até amanhã"
+      },
+      {
+       "a": "Thank you",
+       "b": "Obrigado"
+      }
+     ]
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Hello, I'm Sílvia. Nice to meet you.",
+     "enunciado": "Como se chama a pessoa que fala?",
+     "opcoes": [
+      {
+       "texto": "Sílvia",
+       "certa": true
+      },
+      {
+       "texto": "Ana",
+       "certa": false
+      },
+      {
+       "texto": "Paulo",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Como se chama?",
+     "resposta": "What's your name?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Hello, I'm Paulo. Nice to meet you.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "How are you? I'm fine, thanks. And you?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Good morning! I'm Ana. What's your name?",
+     "frase": "I'm",
+     "resposta": "Good morning, Ana. I'm Paulo. Nice to meet you.",
+     "contexto": "Cumprimente a Ana e diga o seu nome."
+    }
+   ]
+  },
+  {
+   "codigo": "1B",
+   "titulo": "Spell it, please",
+   "aula": "1B",
+   "objectivo": "Soletrar o nome e ditar um endereço de e-mail.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "My surname is Neto. N, E, T, O.",
+     "enunciado": "Como se escreve o apelido?",
+     "opcoes": [
+      {
+       "texto": "NETO",
+       "certa": true
+      },
+      {
+       "texto": "NITO",
+       "certa": false
+      },
+      {
+       "texto": "NEDO",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"email\"",
+     "opcoes": [
+      {
+       "texto": "desk",
+       "certa": false,
+       "imagem": "desk"
+      },
+      {
+       "texto": "email",
+       "certa": true,
+       "imagem": "email"
+      },
+      {
+       "texto": "mobile phone",
+       "certa": false,
+       "imagem": "mobile-phone"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Num e-mail, como se diz o símbolo @?",
+     "opcoes": [
+      {
+       "texto": "at",
+       "certa": true
+      },
+      {
+       "texto": "dot",
+       "certa": false
+      },
+      {
+       "texto": "arroba",
+       "certa": false
+      }
+     ],
+     "explicacao": "O símbolo @ diz-se \"at\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Num e-mail, como se diz o ponto (.)?",
+     "opcoes": [
+      {
+       "texto": "dot",
+       "certa": true
+      },
+      {
+       "texto": "point",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": "O ponto de um e-mail diz-se \"dot\"."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Como se escreve?",
+     "resposta": "How do you spell that?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Pode repetir, por favor?",
+     "resposta": "Can you repeat that, please?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Anna: A, [double] N, A.",
+     "opcoes": [
+      {
+       "texto": "two",
+       "certa": false
+      },
+      {
+       "texto": "second",
+       "certa": false
+      }
+     ],
+     "explicacao": "Duas letras iguais seguidas: diz-se \"double\"."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My email is ana dot domingos at kalandula dot co dot A, O.",
+     "enunciado": "Qual é o e-mail?",
+     "opcoes": [
+      {
+       "texto": "ana.domingos@kalandula.co.ao",
+       "certa": true
+      },
+      {
+       "texto": "ana-domingos@kalandula.co.ao",
+       "certa": false
+      },
+      {
+       "texto": "anadomingos@kalandula.ao",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Sorry, can you repeat that, please?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's your surname? How do you spell that?",
+     "frase": "My surname is",
+     "resposta": "My surname is Mendes. M-E-N-D-E-S.",
+     "contexto": "Diga o seu apelido e soletre-o."
+    }
+   ]
+  },
+  {
+   "codigo": "1C",
+   "titulo": "My number is…",
+   "aula": "1C",
+   "objectivo": "Dizer números de 0 a 20 e um número de telemóvel.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada número à palavra.",
+     "pares": [
+      {
+       "a": "3",
+       "b": "three"
+      },
+      {
+       "a": "13",
+       "b": "thirteen"
+      },
+      {
+       "a": "12",
+       "b": "twelve"
+      },
+      {
+       "a": "20",
+       "b": "twenty"
+      },
+      {
+       "a": "8",
+       "b": "eight"
+      },
+      {
+       "a": "15",
+       "b": "fifteen"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"mobile phone\"",
+     "opcoes": [
+      {
+       "texto": "mobile phone",
+       "certa": true,
+       "imagem": "mobile-phone"
+      },
+      {
+       "texto": "screen",
+       "certa": false,
+       "imagem": "screen"
+      },
+      {
+       "texto": "computer",
+       "certa": false,
+       "imagem": "computer"
+      }
+     ]
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My phone number is nine two three, four five one, eight zero six.",
+     "enunciado": "Qual é o número?",
+     "opcoes": [
+      {
+       "texto": "923 451 806",
+       "certa": true
+      },
+      {
+       "texto": "923 415 806",
+       "certa": false
+      },
+      {
+       "texto": "932 451 860",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Thirteen.",
+     "enunciado": "Que número ouve?",
+     "opcoes": [
+      {
+       "texto": "13",
+       "certa": true
+      },
+      {
+       "texto": "3",
+       "certa": false
+      },
+      {
+       "texto": "12",
+       "certa": false
+      }
+     ],
+     "explicacao": "Em \"thirteen\" a parte forte é o fim: thir-TEEN."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Num número de telefone, como se diz 77?",
+     "opcoes": [
+      {
+       "texto": "double seven",
+       "certa": true
+      },
+      {
+       "texto": "seventy-seven",
+       "certa": false
+      },
+      {
+       "texto": "two seven",
+       "certa": false
+      }
+     ],
+     "explicacao": "Dois algarismos iguais seguidos: \"double\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What's your phone [number]?",
+     "opcoes": [
+      {
+       "texto": "name",
+       "certa": false
+      },
+      {
+       "texto": "email",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "verdadeiro_falso",
+     "enunciado": "Num número de telefone, o 0 pode dizer-se \"oh\".",
+     "resposta": "verdadeiro",
+     "explicacao": "O zero diz-se \"zero\" ou \"oh\"."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Fifteen.",
+     "enunciado": "Que número ouve?",
+     "opcoes": [
+      {
+       "texto": "15",
+       "certa": true
+      },
+      {
+       "texto": "5",
+       "certa": false
+      },
+      {
+       "texto": "50",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Thirteen, fourteen, fifteen.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's your phone number?",
+     "frase": "My number is",
+     "resposta": "My number is nine two four, three double oh, five one eight.",
+     "contexto": "Pode inventar um número."
+    }
+   ]
+  },
+  {
+   "codigo": "1D",
+   "titulo": "Sounds and letters",
+   "aula": "1D",
+   "objectivo": "Dizer as letras do alfabeto e distinguir as que se confundem.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "G.",
+     "enunciado": "Que letra ouve?",
+     "opcoes": [
+      {
+       "texto": "G",
+       "certa": true
+      },
+      {
+       "texto": "J",
+       "certa": false
+      },
+      {
+       "texto": "E",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"mobile phone\"",
+     "opcoes": [
+      {
+       "texto": "car keys",
+       "certa": false,
+       "imagem": "car-keys"
+      },
+      {
+       "texto": "mobile phone",
+       "certa": true,
+       "imagem": "mobile-phone"
+      },
+      {
+       "texto": "calendar",
+       "certa": false,
+       "imagem": "calendar"
+      }
+     ]
+    },
+    {
+     "tipo": "escuta",
+     "frase": "E.",
+     "enunciado": "Que letra ouve?",
+     "opcoes": [
+      {
+       "texto": "E",
+       "certa": true
+      },
+      {
+       "texto": "I",
+       "certa": false
+      },
+      {
+       "texto": "A",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Que letra tem o mesmo som que A?",
+     "opcoes": [
+      {
+       "texto": "H",
+       "certa": true
+      },
+      {
+       "texto": "E",
+       "certa": false
+      },
+      {
+       "texto": "I",
+       "certa": false
+      }
+     ],
+     "explicacao": "A, H, J e K têm o som /eɪ/, como em \"day\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Que letra tem o mesmo som que B?",
+     "opcoes": [
+      {
+       "texto": "E",
+       "certa": true
+      },
+      {
+       "texto": "A",
+       "certa": false
+      },
+      {
+       "texto": "I",
+       "certa": false
+      }
+     ],
+     "explicacao": "B, C, D, E, G, P, T e V têm o som /iː/, como em \"see\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se diz a letra W?",
+     "opcoes": [
+      {
+       "texto": "double U",
+       "certa": true
+      },
+      {
+       "texto": "double V",
+       "certa": false
+      },
+      {
+       "texto": "vê duplo",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Em inglês britânico, como se diz a letra Z?",
+     "opcoes": [
+      {
+       "texto": "zed",
+       "certa": true
+      },
+      {
+       "texto": "zee",
+       "certa": false
+      },
+      {
+       "texto": "zeta",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Zed\" no inglês britânico e \"zee\" no americano."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "A, H, J, K.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "B, C, D, E, G, P, T, V.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "E, I. G, J. A, E.",
+     "enunciado": "Ouça e repita: são as letras que mais se confundem."
+    }
+   ]
+  },
+  {
+   "codigo": "1E",
+   "titulo": "Real English: Hello at work",
+   "aula": "1E",
+   "objectivo": "Entender cumprimentos, nomes e números ditos por pessoas diferentes.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "Morning, Teresa. I'm David. Nice to meet you.",
+     "enunciado": "Como se chama o homem?",
+     "opcoes": [
+      {
+       "texto": "David",
+       "certa": true
+      },
+      {
+       "texto": "Teresa",
+       "certa": false
+      },
+      {
+       "texto": "Daniel",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Hello. I'm Richard Green. I have a meeting with you at three.",
+     "enunciado": "A que horas é a reunião?",
+     "opcoes": [
+      {
+       "texto": "3:00",
+       "certa": true
+      },
+      {
+       "texto": "2:00",
+       "certa": false
+      },
+      {
+       "texto": "10:00",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "It's nine two six, double one eight, four zero two.",
+     "enunciado": "Qual é o número?",
+     "opcoes": [
+      {
+       "texto": "926 118 402",
+       "certa": true
+      },
+      {
+       "texto": "926 180 402",
+       "certa": false
+      },
+      {
+       "texto": "962 118 402",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My name is Okafor. O, K, A, F, O, R.",
+     "enunciado": "Como se escreve o nome?",
+     "opcoes": [
+      {
+       "texto": "OKAFOR",
+       "certa": true
+      },
+      {
+       "texto": "OCAFOR",
+       "certa": false
+      },
+      {
+       "texto": "OKAPHOR",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Morning!\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Bom dia (forma curta)",
+       "certa": true
+      },
+      {
+       "texto": "Manhã de trabalho",
+       "certa": false
+      },
+      {
+       "texto": "Boa noite",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "verdadeiro_falso",
+     "enunciado": "\"Hi\" só se usa de manhã.",
+     "resposta": "falso",
+     "explicacao": "\"Hi\" é informal e serve a qualquer hora do dia."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Tenha uma boa noite.",
+     "resposta": "Have a good evening.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm Teresa, from Finance.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Good afternoon. Are you Mr Lopes?",
+     "frase": "No, I'm not",
+     "resposta": "No, I'm not. I'm Paulo Mendes.",
+     "contexto": "Não é o Sr. Lopes: diga quem é."
+    }
+   ]
+  },
+  {
+   "codigo": "1F",
+   "titulo": "First day at the office",
+   "aula": "1F",
+   "objectivo": "Apresentar-se na recepção e a um colega no primeiro dia.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "O chefe diz: \"This is Sílvia.\" O que responde à Sílvia?",
+     "opcoes": [
+      {
+       "texto": "Nice to meet you.",
+       "certa": true
+      },
+      {
+       "texto": "This is Sílvia.",
+       "certa": false
+      },
+      {
+       "texto": "Good night.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"desk\"",
+     "opcoes": [
+      {
+       "texto": "laptop",
+       "certa": false,
+       "imagem": "laptop"
+      },
+      {
+       "texto": "calendar",
+       "certa": false,
+       "imagem": "calendar"
+      },
+      {
+       "texto": "desk",
+       "certa": true,
+       "imagem": "desk"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [an] accountant.",
+     "opcoes": [
+      {
+       "texto": "a",
+       "certa": false
+      },
+      {
+       "texto": "the",
+       "certa": false
+      }
+     ],
+     "explicacao": "Antes de som de vogal usa-se \"an\": an accountant, an engineer."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [a] technician.",
+     "opcoes": [
+      {
+       "texto": "an",
+       "certa": false
+      },
+      {
+       "texto": "the",
+       "certa": false
+      }
+     ],
+     "explicacao": "Em inglês a profissão leva sempre \"a\" ou \"an\": I'm a technician."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's my first [day].",
+     "opcoes": [
+      {
+       "texto": "time",
+       "certa": false
+      },
+      {
+       "texto": "work",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Bem-vindo à equipa.",
+     "resposta": "Welcome to the team.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "traduzir",
+     "enunciado": "Sou técnico.",
+     "resposta": "I'm a technician.",
+     "opcoes": [
+      {
+       "texto": "I am a technician.",
+       "certa": true
+      }
+     ],
+     "explicacao": "Em português não há artigo; em inglês é obrigatório."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Hi, Paulo. Nice to meet you. I'm Sílvia. I'm an accountant.",
+     "enunciado": "Qual é a profissão da Sílvia?",
+     "opcoes": [
+      {
+       "texto": "accountant",
+       "certa": true
+      },
+      {
+       "texto": "receptionist",
+       "certa": false
+      },
+      {
+       "texto": "technician",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Good morning. I'm Paulo Mendes. It's my first day.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Welcome! Are you the new IT technician?",
+     "frase": "Yes, I am",
+     "resposta": "Yes, I am. I'm Paulo. Nice to meet you.",
+     "contexto": "É o novo técnico de informática."
+    }
+   ]
+  },
+  {
+   "codigo": "1R",
+   "titulo": "Unit 1 review",
+   "aula": null,
+   "objectivo": "Rever toda a unidade 1 (lição de reciclagem).",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "São 15 horas. Encontra um cliente. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Good afternoon!",
+       "certa": true
+      },
+      {
+       "texto": "Good morning!",
+       "certa": false
+      },
+      {
+       "texto": "Good night!",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Nice to [meet] you.",
+     "opcoes": [
+      {
+       "texto": "see",
+       "certa": false
+      },
+      {
+       "texto": "know",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My number is nine one two, double seven three, one four oh.",
+     "enunciado": "Qual é o número?",
+     "opcoes": [
+      {
+       "texto": "912 773 140",
+       "certa": true
+      },
+      {
+       "texto": "912 737 140",
+       "certa": false
+      },
+      {
+       "texto": "921 773 104",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Não percebeu o que lhe disseram. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Sorry, can you repeat that, please?",
+       "certa": true
+      },
+      {
+       "texto": "Can you speak that?",
+       "certa": false
+      },
+      {
+       "texto": "Repeat me, please.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada símbolo à forma como se diz.",
+     "pares": [
+      {
+       "a": "@",
+       "b": "at"
+      },
+      {
+       "a": ".",
+       "b": "dot"
+      },
+      {
+       "a": "0",
+       "b": "oh"
+      },
+      {
+       "a": "77",
+       "b": "double seven"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Are you Sílvia? — No, I'm [not].",
+     "opcoes": [
+      {
+       "texto": "no",
+       "certa": false
+      },
+      {
+       "texto": "isn't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Como se escreve o seu apelido?",
+     "resposta": "How do you spell your surname?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "São 19 horas. Chega a uma reunião. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Good evening!",
+       "certa": true
+      },
+      {
+       "texto": "Good night!",
+       "certa": false
+      },
+      {
+       "texto": "Good afternoon!",
+       "certa": false
+      }
+     ],
+     "explicacao": "Em inglês, \"Good night\" não é um cumprimento: usa-se ao sair ou antes de dormir. Ao chegar à noite, diga \"Good evening\"."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Hi, I'm Sílvia. I'm an accountant.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hello! I'm your new colleague, Sam. What's your name? How do you spell it?",
+     "frase": "I'm",
+     "resposta": "Nice to meet you, Sam. I'm Ana. A-N-A.",
+     "contexto": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Goodbye. See you tomorrow!",
+     "enunciado": "Ouça e repita em voz alta."
+    }
+   ]
+  }
+ ]
+}

@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Aviso, Botao, Campo } from "@/components/pe";
 import { useRegisterMutation } from "@/src/domains/auth/services/authApi";
+import { usePlanosQuery } from "@/src/domains/student/subscricao/api";
 import { manterParametros, useEntrarComGoogle } from "./Entrar";
 import { BotaoGoogle, CampoSenha, Ou, Titulo, erroDjango, errosPorCampo } from "./Partes";
 
@@ -32,10 +33,13 @@ export function CriarConta() {
   const [registar, { isLoading }] = useRegisterMutation();
   const google = useEntrarComGoogle();
   const plano = sp.get("plan");
+  // O limite do Gratuito vem da API de planos (muda na administração).
+  const { data: planos } = usePlanosQuery(undefined, { skip: !!plano });
+  const licoesGratis = planos?.find((p) => p.plan_type === "FREE")?.daily_lessons_limit;
 
   return (
     <>
-      <Titulo titulo="Criar conta" texto={plano ? "Primeiro a conta, depois escolhe como paga o plano." : "Grátis, com 3 lições por dia. Sem cartão."} />
+      <Titulo titulo="Criar conta" texto={plano ? "Primeiro a conta, depois escolhe como paga o plano." : licoesGratis ? `Grátis, com ${licoesGratis} ${licoesGratis === 1 ? "lição nova" : "lições novas"} por dia. Sem cartão.` : "Grátis e sem cartão."} />
       <form
         noValidate
         className="flex flex-col gap-5"

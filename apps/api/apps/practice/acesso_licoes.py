@@ -4,10 +4,12 @@ Pode esta pessoa abrir/jogar esta lição de prática agora?
 A mesma regra que o trilho (GET .../courses/<id>/trilho/) mostra:
 - uma lição "feita" (todos os exercícios concluídos) pode sempre ser repetida;
 - a primeira lição por fazer, pela ordem unidade -> lição, é a "actual" e pode ser jogada;
-- as outras estão bloqueadas.
+- as outras estão bloqueadas, salvo se forem a lição de prática ligada a uma aula de um curso
+  em vídeo em que o aluno está inscrito (ligada_a_aula_do_aluno).
 O curso tem de estar publicado (ou arquivado a manter, para quem já o fazia; ver
 apps/courses/ciclo.py), e o professor pode desligar a repetição (definição pode_repetir).
-E o plano tem de dar acesso ao curso (Course.access_level: free / premium / premium_plus).
+E o plano tem de dar acesso ao curso (Course.access_level: free / premium / premium_plus), salvo
+nas unidades de amostra de um curso pago (apps/courses/amostra.py).
 
 O professor do curso e os administradores não têm restrições.
 
@@ -15,8 +17,8 @@ Lições escondidas (licoes_visiveis): as alterações a um curso publicado fica
 uma lição só aparece aos alunos quando está completa. Uma lição sem exercícios nunca aparece; uma
 lição criada depois da última aprovação do curso (Course.aprovado_em) só aparece quando tem pelo
 menos 3 exercícios e todos passam a lista de verificação (apps.courses.ciclo.exercicio_valido:
-resposta certa, escuta com áudio, sem conversa). As lições que já estavam no curso quando foi
-aprovado continuam visíveis (os exercícios de conversa e de escuta sem áudio são saltados); a
+resposta certa, escuta com áudio, conversa curta com pelo menos 2 frases-alvo). As lições que já
+estavam no curso quando foi aprovado continuam visíveis (os exercícios incompletos são saltados); a
 guarda do editor (apps/courses/api/teacher/pratica.py) não deixa partir as que os alunos vêem.
 """
 from django.db.models import Count, Prefetch, Q
@@ -119,6 +121,16 @@ def licoes_visiveis(curso, licoes):
 CODIGO_INDISPONIVEL = 'licao_indisponivel'
 
 
+def ligada_a_aula_do_aluno(user, licao):
+    """
+    A lição é a "lição de prática a seguir" (Chapter.practice_lesson) de uma aula de um curso em
+    vídeo em que a pessoa está inscrita: abre-se a partir da aula sem ter de seguir a ordem do trilho.
+    """
+    from apps.courses.models import Chapter, CourseEnrollment
+    cursos = Chapter.objects.filter(practice_lesson=licao).values('section__course_id')
+    return CourseEnrollment.objects.filter(user=user, is_active=True, course_id__in=cursos).exists()
+
+
 def erro_acesso_licao(user, licao):
     """None se a pessoa pode jogar a lição; senão o corpo do 403."""
     curso = licao.unit.course
@@ -129,14 +141,23 @@ def erro_acesso_licao(user, licao):
     bloqueio = bloqueio_pratica(user, curso)
     if bloqueio:
         return {'codigo': bloqueio[0], 'mensagem': bloqueio[1]}
+    from apps.courses.ciclo import bloqueio_requisito_pratica
+    requisito = None if ligada_a_aula_do_aluno(user, licao) else bloqueio_requisito_pratica(user, curso)
+    if requisito:
+        return {'codigo': requisito[0], 'mensagem': requisito[1], 'teste': '/user/teste-basico'}
     if not curso.user_has_access(user):
-        return {
-            'codigo': CODIGO_PLANO,
-            'mensagem': MENSAGENS_PLANO.get(curso.access_level, 'O seu plano não dá acesso a este curso.'),
-        }
+        # Unidades de amostra (apps/courses/amostra.py): sem o plano, só as lições dessas unidades.
+        from apps.courses import amostra
+        if amostra.unidades_amostra(curso) <= 0:
+            return {
+                'codigo': CODIGO_PLANO,
+                'mensagem': MENSAGENS_PLANO.get(curso.access_level, 'O seu plano não dá acesso a este curso.'),
+            }
+        if licao.unit_id not in amostra.ids_unidades_pratica_amostra(curso):
+            return {'codigo': CODIGO_PLANO, 'mensagem': amostra.MENSAGEM_PLANO}
     for outra, estado in estados_das_licoes(user, curso):
         if outra.id == licao.id:
-            if estado == 'bloqueada':
+            if estado == 'bloqueada' and not ligada_a_aula_do_aluno(user, licao):
                 return {'codigo': CODIGO_BLOQUEADA, 'mensagem': MENSAGEM_BLOQUEADA}
             if estado == 'feita' and not definicao(curso, 'pode_repetir'):
                 return {'codigo': CODIGO_REPETIR, 'mensagem': MENSAGEM_REPETIR}

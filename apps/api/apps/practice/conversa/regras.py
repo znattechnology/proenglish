@@ -32,49 +32,67 @@ def _r_passado(m):
     return f"{m.group(1)} {PASSADO_PARA_BASE[m.group(2).lower()]}"
 
 
-# (padrão, substituição, porquê). A substituição pode ser texto ou função.
+# (padrão, substituição, porquê, chave do padrão de erro). A substituição pode ser texto ou função.
+# A chave é a do perfil de fala (apps/perfil, PadraoErro).
 REGRAS = [
     (re.compile(r'\b(in|at)\s+' + DIAS + r'\b', re.I), _r_dia,
-     'Com dias da semana usa-se «on».'),
+     'Com dias da semana usa-se «on».', 'on_with_weekdays'),
     (re.compile(r'\b(it|he|she|this|that)\s+(' + '|'.join(TERCEIRA_PESSOA) + r')\b', re.I), _r_terceira,
-     'Com he/she/it, o verbo no presente leva -s.'),
+     'Com he/she/it, o verbo no presente leva -s.', 'third_person_s'),
     (re.compile(r"\b(didn't|did not|doesn't|does not|don't|do not)\s+(" + '|'.join(PASSADO_PARA_BASE) + r')\b',
                 re.I), _r_passado,
-     'Depois de do/does/did usa-se o verbo na forma base.'),
+     'Depois de do/does/did usa-se o verbo na forma base.', 'base_verb_after_do'),
     (re.compile(r'\b(I|we|they|you)\s+(am|are)\s+agree\b', re.I), lambda m: f'{m.group(1)} agree',
-     '«Agree» é um verbo: não leva «am/are».'),
+     '«Agree» é um verbo: não leva «am/are».', 'agree_not_be'),
     (re.compile(r'\bI\s+have\s+(\d+)\s+years\b(?!\s+(?:of|experience))', re.I), lambda m: f'I am {m.group(1)} years old',
-     'Para a idade usa-se «to be»: I am ... years old.'),
+     'Para a idade usa-se «to be»: I am ... years old.', 'age_with_be'),
     (re.compile(r'\bdepends?\s+of\b', re.I), lambda m: m.group(0).rsplit(' ', 1)[0] + ' on',
-     'Diz-se «depend on», não «depend of».'),
+     'Diz-se «depend on», não «depend of».', 'depend_on'),
     (re.compile(r'\bexplain\s+me\b', re.I), lambda m: _preservar(m.group(0), 'explain to me'),
-     '«Explain» pede «to» antes da pessoa.'),
+     '«Explain» pede «to» antes da pessoa.', 'explain_to'),
     (re.compile(r'\binformations\b', re.I), lambda m: _preservar(m.group(0), 'information'),
-     '«Information» não tem plural em inglês.'),
+     '«Information» não tem plural em inglês.', 'information_uncountable'),
     (re.compile(r'\bpeoples\b', re.I), lambda m: _preservar(m.group(0), 'people'),
-     '«People» já é plural.'),
+     '«People» já é plural.', 'people_plural'),
     (re.compile(r'\bmore\s+(better|worse|easier|faster)\b', re.I), lambda m: m.group(1),
-     'O comparativo já está em «better/worse...»: não leva «more».'),
+     'O comparativo já está em «better/worse...»: não leva «more».', 'double_comparative'),
     (re.compile(r'\bdiscuss\s+about\b', re.I), lambda m: _preservar(m.group(0), 'discuss'),
-     '«Discuss» não leva «about».'),
+     '«Discuss» não leva «about».', 'discuss_without_about'),
     (re.compile(r'\bsince\s+(\d+|two|three|four|five|six|ten)\s+(years?|months?|weeks?|days?|hours?)\b', re.I),
      lambda m: f'{_preservar(m.group(0), "for")} {m.group(1)} {m.group(2)}',
-     'Para duração usa-se «for»; «since» é para o ponto de início.'),
+     'Para duração usa-se «for»; «since» é para o ponto de início.', 'for_with_duration'),
     (re.compile(r'\b(I|we|they)\s+was\b', re.I), lambda m: f'{m.group(1)} were' if m.group(1).lower() != 'i' else None,
-     'Com we/they usa-se «were».'),
+     'Com we/they usa-se «were».', 'were_with_plural'),
 ]
 
 
 def ajustes_frase(frase):
     """Lista de ajustes {disse, certo, porque} encontrados numa frase."""
+    return [{k: a[k] for k in ('disse', 'certo', 'porque')} for a in _ajustes_com_chave(frase)]
+
+
+def _ajustes_com_chave(frase):
     resultado = []
-    for padrao, subst, porque in REGRAS:
+    for padrao, subst, porque, chave in REGRAS:
         for m in padrao.finditer(frase or ''):
             certo = subst(m) if callable(subst) else m.expand(subst)
             if not certo or certo == m.group(0):
                 continue
-            resultado.append({'disse': m.group(0), 'certo': certo, 'porque': porque})
+            resultado.append({'disse': m.group(0), 'certo': certo, 'porque': porque, 'chave': chave})
     return resultado
+
+
+CHAVES_REGRAS = [r[3] for r in REGRAS]
+
+
+def padroes_frases(falas):
+    """Padrões de erro (perfil de fala) encontrados nas falas: [{chave, descricao_pt, errado, certo}]."""
+    vistos = {}
+    for fala in falas:
+        for a in _ajustes_com_chave(fala):
+            vistos.setdefault(a['chave'], {'chave': a['chave'], 'descricao_pt': a['porque'],
+                                           'errado': a['disse'], 'certo': a['certo']})
+    return list(vistos.values())
 
 
 def primeiro_ajuste(frase):

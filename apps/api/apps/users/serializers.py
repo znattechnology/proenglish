@@ -11,6 +11,7 @@ from django.utils import timezone
 from django.conf import settings
 from .models import User, UserAddress, NotificationSettings, UserFeedback, FeedbackPromptLog, UserEngagementMetrics
 from apps.core.models import Address
+from apps.courses import niveis
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -171,6 +172,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         dados = super().to_representation(instance)
         dados['provincia'] = dados.get('provincia') or None
+        # Contas com o nível na escala antiga (Beginner/...) lêem-no já em CEFR.
+        prefs = dados.get('preferences')
+        if isinstance(prefs, dict) and prefs.get('nivel'):
+            dados['preferences'] = {**prefs, 'nivel': niveis.normalizar(prefs['nivel']) or prefs['nivel']}
         return dados
 
     # false nas contas criadas com o Google que ainda não definiram palavra-passe: nesse caso
@@ -185,9 +190,13 @@ class UserProfileSerializer(serializers.ModelSerializer):
     PREFERENCIAS = {
         'cidade': 80,
         'area': 60,
-        'nivel': ('Beginner', 'Intermediate', 'Advanced'),
+        # Escala CEFR (apps/courses/niveis.py).
+        'nivel': niveis.CEFR,
         # Marca o fim da primeira entrada (área, meta e nível escolhidos).
         'acolhimento': ('concluido',),
+        # Lições do laboratório: toques de certo/errado e frases faladas da professora (ligados se ausentes).
+        'sons': bool,
+        'voz_professora': bool,
     }
 
     def validate_name(self, value):
@@ -222,6 +231,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
             v = value[chave]
             if v in (None, ''):
                 limpas[chave] = None
+            elif regra is bool:
+                if not isinstance(v, bool):
+                    raise serializers.ValidationError(f'Valor inválido para {chave}.')
+                limpas[chave] = v
             elif isinstance(regra, tuple):
                 if v not in regra:
                     raise serializers.ValidationError(f'Valor inválido para {chave}.')

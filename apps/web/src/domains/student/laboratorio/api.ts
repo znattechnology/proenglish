@@ -4,6 +4,10 @@
  */
 import { aposEstudo, quandoCorrerBem } from "@/src/domains/student/sincronizar";
 import { studentPracticeApiSlice } from "../practice-courses/api/studentPracticeApiSlice";
+import { enviarGravacao } from "./enviarGravacao";
+import type { NovaSessao } from "@/src/domains/student/conversa/api";
+import type { DetalhePronuncia, MetricasGravacao } from "@/src/domains/student/fala/api";
+import type { Oferta } from "@/src/domains/student/subscricao/api";
 
 const API = process.env.NEXT_PUBLIC_DJANGO_API_URL || "http://localhost:8000/api/v1";
 
@@ -13,7 +17,7 @@ const API = process.env.NEXT_PUBLIC_DJANGO_API_URL || "http://localhost:8000/api
 export type EstadoLicao = "feita" | "actual" | "bloqueada";
 
 export type Trilho = {
-  curso: { id: string; titulo: string; categoria?: string; nivel?: string };
+  curso: { id: string; titulo: string; categoria?: string; nivel?: string; acesso?: "total" | "amostra" | null; unidades_amostra?: number };
   licoes_feitas: number;
   licoes_total: number;
   percentagem: number;
@@ -22,7 +26,9 @@ export type Trilho = {
     titulo: string;
     descricao?: string;
     ordem: number;
-    licoes: { id: string; titulo: string; ordem: number; estado: EstadoLicao; exercicios: number; exercicios_feitos: number }[];
+    /** Fora das unidades de amostra, para quem não tem o plano do curso. */
+    bloqueada?: boolean;
+    licoes: { id: string; titulo: string; ordem: number; estado: EstadoLicao; bloqueada_plano?: boolean; exercicios: number; exercicios_feitos: number }[];
   }[];
 };
 
@@ -30,11 +36,19 @@ export type Opcao = { id: string; texto: string; imagem: string | null; audio: s
 
 export type Exercicio = {
   id: string;
-  tipo: "SELECT" | "ASSIST" | "TRUE_FALSE" | "FILL_BLANK" | "TRANSLATION" | "LISTENING" | "SENTENCE_ORDER" | "MATCH_PAIRS" | "SPEAKING" | "VAPI_CONVERSATION";
-  /** "indisponivel": o aluno não pode fazer este exercício e salta-o (saltarExercicio, sem pontos nem vidas). */
-  modo: "escolha" | "banco" | "escrever" | "ordenar" | "pares" | "falar" | "indisponivel";
-  /** Só com modo "indisponivel": conversa desligada ou escuta sem áudio. */
-  motivo?: "conversa" | "sem_audio";
+  tipo: "SELECT" | "ASSIST" | "TRUE_FALSE" | "FILL_BLANK" | "TRANSLATION" | "LISTENING" | "SENTENCE_ORDER" | "MATCH_PAIRS" | "SPEAKING" | "RESPONDER" | "VAPI_CONVERSATION";
+  /**
+   * "responder": ouvir a pergunta e responder em voz alta (frase = frase-alvo).
+   * "conversa": conversa curta com o tutor no fim da lição (frases = frases-alvo).
+   * "indisponivel": o aluno não pode fazer este exercício e salta-o (saltarExercicio, sem pontos nem vidas).
+   */
+  modo: "escolha" | "banco" | "escrever" | "ordenar" | "pares" | "falar" | "responder" | "conversa" | "indisponivel";
+  /** Só com modo "indisponivel": conversa incompleta, responder incompleto ou escuta sem áudio. */
+  motivo?: "conversa" | "incompleto" | "sem_audio";
+  /** Responder: o contexto curto da cena (pt). */
+  contexto?: string | null;
+  /** Conversa curta: as frases da lição para usar. */
+  frases?: string[];
   pergunta: string;
   instrucao: string | null;
   audio: string | null;
@@ -62,24 +76,59 @@ export type Resposta =
   | { text_answer: string }
   | { text_answers: string[] }
   | { ordered_options: string[] }
-  | { paired_options: Record<string, string> };
+  | { paired_options: Record<string, string> }
+  /** Conversa curta: a sessão terminada (o servidor confere que teve pelo menos 2 falas do aluno). */
+  | { sessao_id: string };
 
 export type ResultadoResposta = {
   correct: boolean;
   explicacao?: string | null;
   dica?: string | null;
+  /** Depois de errar: a resposta certa (o exercício volta no fim da lição). */
+  solucao?: string | null;
   user_progress?: { hearts: number; points: number };
   heartsUsed?: number;
   feedback?: { similarity?: number; hint?: string };
 };
 
 export type ResultadoPronuncia = {
-  ai_analysis: { overall_score: number; is_acceptable: boolean; transcribed_text?: string };
+  ai_analysis: {
+    overall_score: number;
+    is_acceptable: boolean;
+    transcribed_text?: string;
+    /** null quando a análise é só pelo texto (não se mede fluência nem clareza). */
+    fluency_score?: number | null;
+    clarity_score?: number | null;
+    /** 'texto': aproximada (palavras ouvidas); 'azure': detalhada. */
+    fonte?: "texto" | "azure" | "simulada";
+  };
   feedback?: { message?: string; problematic_words?: string[] };
+  /** Fase 3: notas por palavra (avaliação detalhada) e métricas de fluência da gravação. */
+  detalhe?: DetalhePronuncia | null;
+  fala?: MetricasGravacao | null;
   explicacao?: string | null;
   dica?: string | null;
+  /** Sempre 0: os exercícios falados não tiram vidas (campo mantido por compatibilidade). */
+  heartsUsed?: number;
   user_progress?: { hearts: number; points: number };
 };
+
+export type ResultadoResponder = {
+  aceite: boolean;
+  transcricao: string;
+  responde: "sim" | "parcial" | "nao";
+  usou_frase: boolean;
+  correccao: { disse: string; certo: string; porque: string } | null;
+  comentario: string | null;
+  frase_alvo: string;
+  exemplo: string | null;
+  explicacao?: string | null;
+  dica?: string | null;
+  heartsUsed: number;
+  user_progress?: { hearts: number; points: number };
+};
+
+export type ConversaLicao = { sessao: NovaSessao; modo: "vapi" | "simulado"; chave_publica: string | null };
 
 export type ConclusaoLicao = {
   first_completion: boolean;
@@ -104,6 +153,8 @@ export type EstadoVidas = {
   refill_cost_points: number;
   can_refill_with_points: boolean;
   points: number;
+  /** Plano que torna as vidas ilimitadas, quando current <= 0 e não são ilimitadas; senão null. */
+  oferta?: Oferta | null;
   /** Lições novas feitas hoje (hora de Angola); limite null = sem limite. */
   licoes_hoje?: { feitas: number; limite: number | null; renova_em: string };
 };
@@ -147,20 +198,27 @@ export const laboratorioApi = studentPracticeApiSlice.injectEndpoints({
     }),
     analisarPronuncia: build.mutation<ResultadoPronuncia, { challengeId: string; frase: string; audio: Blob }>({
       // fetch próprio: a base desta fatia força JSON e a gravação tem de ir em multipart.
-      queryFn: async ({ challengeId, frase, audio }) => {
-        const corpo = new FormData();
-        corpo.append("audio", audio, "gravacao.webm");
-        corpo.append("challenge_id", challengeId);
-        corpo.append("expected_text", frase);
-        try {
-          const r = await fetch(`${API}/practice/analyze-ai-pronunciation/`, { method: "POST", body: corpo, credentials: "include" });
-          const dados = await r.json().catch(() => ({}));
-          if (!r.ok) return { error: { status: r.status, data: dados } };
-          return { data: dados as ResultadoPronuncia };
-        } catch (e) {
-          return { error: { status: "FETCH_ERROR", error: String(e) } };
-        }
-      },
+      queryFn: ({ challengeId, frase, audio }) =>
+        enviarGravacao<ResultadoPronuncia>(`${API}/practice/analyze-ai-pronunciation/`, () => {
+          const corpo = new FormData();
+          corpo.append("audio", audio, "gravacao.webm");
+          corpo.append("challenge_id", challengeId);
+          corpo.append("expected_text", frase);
+          return corpo;
+        }),
+    }),
+    /** Responder em voz alta: a gravação é transcrita e avaliada no servidor (Whisper + Claude). */
+    responderEmVoz: build.mutation<ResultadoResponder, { challengeId: string; audio: Blob }>({
+      queryFn: ({ challengeId, audio }) =>
+        enviarGravacao<ResultadoResponder>(`${API}/student/practice-courses/challenges/${challengeId}/responder/`, () => {
+          const corpo = new FormData();
+          corpo.append("audio", audio, "resposta.webm");
+          return corpo;
+        }),
+    }),
+    /** Começa a conversa curta do fim da lição (gasta minutos de conversa do dia). */
+    comecarConversaLicao: build.mutation<ConversaLicao, string>({
+      query: (challengeId) => ({ url: `/challenges/${challengeId}/conversa/`, method: "POST", body: {} }),
     }),
     concluirLicao: build.mutation<ConclusaoLicao, { lessonId: string; segundos: number }>({
       query: ({ lessonId, segundos }) => ({
@@ -206,6 +264,8 @@ export const {
   useLicaoParaJogarQuery,
   useResponderMutation,
   useAnalisarPronunciaMutation,
+  useResponderEmVozMutation,
+  useComecarConversaLicaoMutation,
   useSaltarExercicioMutation,
   useConcluirLicaoMutation,
   useEstadoVidasQuery,

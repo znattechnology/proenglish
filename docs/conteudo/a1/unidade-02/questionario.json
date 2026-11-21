@@ -1,0 +1,301 @@
+{
+ "title": "Unit 2 quiz — Where are you from?",
+ "description": "Países, nacionalidades, be em todas as pessoas, números até 100, idade e receber um visitante.",
+ "questions": [
+  {
+   "id": "u2q1",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "u2q1o0",
+     "text": "I'm from Angola.",
+     "isCorrect": true
+    },
+    {
+     "id": "u2q1o1",
+     "text": "I'm from Angolan.",
+     "isCorrect": false
+    },
+    {
+     "id": "u2q1o2",
+     "text": "I'm Angola.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u2q1o0",
+   "explanation": "País com \"from\"; nacionalidade sem \"from\".",
+   "points": 10
+  },
+  {
+   "id": "u2q2",
+   "question": "Qual é a nacionalidade de alguém de Moçambique?",
+   "options": [
+    {
+     "id": "u2q2o0",
+     "text": "Mozambican",
+     "isCorrect": true
+    },
+    {
+     "id": "u2q2o1",
+     "text": "Mozambiquese",
+     "isCorrect": false
+    },
+    {
+     "id": "u2q2o2",
+     "text": "Mozambique",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u2q2o0",
+   "explanation": "Mozambique → Mozambican.",
+   "points": 10
+  },
+  {
+   "id": "u2q3",
+   "question": "Complete: \"Thandi ___ South African.\"",
+   "options": [
+    {
+     "id": "u2q3o0",
+     "text": "is",
+     "isCorrect": true
+    },
+    {
+     "id": "u2q3o1",
+     "text": "are",
+     "isCorrect": false
+    },
+    {
+     "id": "u2q3o2",
+     "text": "am",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u2q3o0",
+   "explanation": "Ela: \"she is\" → \"Thandi is\".",
+   "points": 10
+  },
+  {
+   "id": "u2q4",
+   "question": "Escolha a resposta certa: \"Are they from Lagos?\"",
+   "options": [
+    {
+     "id": "u2q4o0",
+     "text": "Yes, they are.",
+     "isCorrect": true
+    },
+    {
+     "id": "u2q4o1",
+     "text": "Yes, they're.",
+     "isCorrect": false
+    },
+    {
+     "id": "u2q4o2",
+     "text": "Yes, they is.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u2q4o0",
+   "explanation": "Resposta curta: \"Yes, they are.\"",
+   "points": 10
+  },
+  {
+   "id": "u2q5",
+   "question": "Complete: \"Mr Okafor ___ Angolan. He's Nigerian.\"",
+   "options": [
+    {
+     "id": "u2q5o0",
+     "text": "isn't",
+     "isCorrect": true
+    },
+    {
+     "id": "u2q5o1",
+     "text": "aren't",
+     "isCorrect": false
+    },
+    {
+     "id": "u2q5o2",
+     "text": "not",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u2q5o0",
+   "explanation": "Negativa com \"he\": \"isn't\".",
+   "points": 10
+  },
+  {
+   "id": "u2q6",
+   "question": "Como se diz 40?",
+   "options": [
+    {
+     "id": "u2q6o0",
+     "text": "forty",
+     "isCorrect": true
+    },
+    {
+     "id": "u2q6o1",
+     "text": "fourty",
+     "isCorrect": false
+    },
+    {
+     "id": "u2q6o2",
+     "text": "fourteen",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u2q6o0",
+   "explanation": "\"Forty\", sem \"u\".",
+   "points": 10
+  },
+  {
+   "id": "u2q7",
+   "question": "Como se diz \"Tenho 25 anos\"?",
+   "options": [
+    {
+     "id": "u2q7o0",
+     "text": "I'm twenty-five.",
+     "isCorrect": true
+    },
+    {
+     "id": "u2q7o1",
+     "text": "I have twenty-five years.",
+     "isCorrect": false
+    },
+    {
+     "id": "u2q7o2",
+     "text": "I'm twenty-five years.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u2q7o0",
+   "explanation": "A idade diz-se com \"be\": \"I'm 25\" ou \"I'm 25 years old\".",
+   "points": 10
+  },
+  {
+   "id": "u2q8",
+   "question": "Em que palavra a sílaba forte é a última?",
+   "options": [
+    {
+     "id": "u2q8o0",
+     "text": "Portuguese",
+     "isCorrect": true
+    },
+    {
+     "id": "u2q8o1",
+     "text": "Portugal",
+     "isCorrect": false
+    },
+    {
+     "id": "u2q8o2",
+     "text": "Angola",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u2q8o0",
+   "explanation": "PortuGUESE.",
+   "points": 10
+  },
+  {
+   "id": "u2q9",
+   "question": "\"I'm in Luanda this year\" quer dizer:",
+   "options": [
+    {
+     "id": "u2q9o0",
+     "text": "Este ano estou em Luanda.",
+     "isCorrect": true
+    },
+    {
+     "id": "u2q9o1",
+     "text": "Sou de Luanda.",
+     "isCorrect": false
+    },
+    {
+     "id": "u2q9o2",
+     "text": "Vivo em Luanda há um ano.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u2q9o0",
+   "explanation": "\"This year\" = este ano.",
+   "points": 10
+  },
+  {
+   "id": "u2q10",
+   "question": "Chega uma visita estrangeira. Qual é a melhor frase?",
+   "options": [
+    {
+     "id": "u2q10o0",
+     "text": "Welcome to Angola! Where are you from?",
+     "isCorrect": true
+    },
+    {
+     "id": "u2q10o1",
+     "text": "Welcome in Angola! From where you are?",
+     "isCorrect": false
+    },
+    {
+     "id": "u2q10o2",
+     "text": "Good welcome! Where you from?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u2q10o0",
+   "explanation": "Welcome to… / Where are you from?",
+   "points": 10
+  },
+  {
+   "id": "u2q11",
+   "question": "Reciclagem (unidade 1). Como se diz 77 num número de telefone?",
+   "options": [
+    {
+     "id": "u2q11o0",
+     "text": "double seven",
+     "isCorrect": true
+    },
+    {
+     "id": "u2q11o1",
+     "text": "seventy-seven",
+     "isCorrect": false
+    },
+    {
+     "id": "u2q11o2",
+     "text": "two seven",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u2q11o0",
+   "explanation": "Algarismos iguais seguidos: \"double\".",
+   "points": 10
+  },
+  {
+   "id": "u2q12",
+   "question": "Reciclagem (unidade 1). Não percebeu um nome. O que diz?",
+   "options": [
+    {
+     "id": "u2q12o0",
+     "text": "Sorry, how do you spell that?",
+     "isCorrect": true
+    },
+    {
+     "id": "u2q12o1",
+     "text": "Sorry, how do you speak that?",
+     "isCorrect": false
+    },
+    {
+     "id": "u2q12o2",
+     "text": "Sorry, what do you spell?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u2q12o0",
+   "explanation": "\"How do you spell that?\" — como se escreve?",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

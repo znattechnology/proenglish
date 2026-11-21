@@ -60,13 +60,15 @@ class StudentPracticeCoursesAPITest(APITestCase):
         token = self.get_jwt_token(self.student)
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {token}')
     
-    def test_practice_courses_list_requires_authentication(self):
-        """Test that practice courses listing requires authentication."""
+    def test_practice_courses_list_is_public_catalog_only(self):
+        """O catálogo de prática é público (site), mas só mostra cursos publicados."""
         url = '/api/v1/student/practice-courses/courses/'
         response = self.client.get(url)
-        
-        # Should require authentication
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        course_ids = [c.get('id') or c.get('courseId') for c in response.json()]
+        self.assertIn(str(self.published_practice_course.id), course_ids)
+        self.assertNotIn(str(self.draft_practice_course.id), course_ids)
     
     def test_authenticated_student_can_list_practice_courses(self):
         """Test authenticated student can list published practice courses."""
@@ -171,7 +173,6 @@ class StudentPracticeCoursesAPITest(APITestCase):
         vapi_endpoints = [
             '/api/v1/student/practice-courses/conversations/start/',
             '/api/v1/student/practice-courses/validate-ai-translation/',
-            '/api/v1/student/practice-courses/analyze-ai-pronunciation/',
             '/api/v1/student/practice-courses/achievements/'
         ]
         
@@ -197,9 +198,9 @@ class TestPracticeCoursesPermissions(APITestCase):
         return str(refresh.access_token)
     
     def test_unauthenticated_access_denied(self):
-        """Test that unauthenticated users cannot access practice courses."""
+        """Sem sessão não se chega ao progresso, às conversas nem às conquistas.
+        (A lista de cursos é o catálogo público: ver test_practice_courses_list_is_public_catalog_only.)"""
         protected_endpoints = [
-            '/api/v1/student/practice-courses/courses/',
             '/api/v1/student/practice-courses/user-progress/',
             '/api/v1/student/practice-courses/challenge-progress/',
             '/api/v1/student/practice-courses/conversations/start/',

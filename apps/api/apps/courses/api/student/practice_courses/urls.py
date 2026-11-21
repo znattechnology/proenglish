@@ -8,6 +8,8 @@ maintaining the same structure and response format as the Express API.
 from django.urls import path
 from . import views
 from .jogar import jogar_licao, trilho_curso
+from .conversa_licao import comecar_conversa_licao
+from apps.practice.responder import ResponderEmVozView
 from . import study_views
 
 app_name = 'student_practice_courses'
@@ -78,6 +80,10 @@ urlpatterns = [
     # Lesson completion percentage
     # Lição para o ecrã novo, sem revelar respostas
     path('lessons/<uuid:lesson_id>/jogar/', jogar_licao, name='lesson-jogar'),
+    # Exercício "Responder": gravação da resposta, avaliada com Whisper + Claude
+    path('challenges/<uuid:challenge_id>/responder/', ResponderEmVozView.as_view(), name='challenge-responder'),
+    # Conversa curta no fim da lição (exercício VAPI_CONVERSATION)
+    path('challenges/<uuid:challenge_id>/conversa/', comecar_conversa_licao, name='challenge-conversa'),
     path('courses/<uuid:course_id>/trilho/', trilho_curso, name='course-trilho'),
     path(
         'lessons/<uuid:lesson_id>/percentage/', 
@@ -279,11 +285,5 @@ urlpatterns = [
         views.AITranslationValidationView.as_view(),
         name='validate-ai-translation'
     ),
-    
-    # AI Pronunciation analysis with detailed feedback
-    path(
-        'analyze-ai-pronunciation/',
-        views.AIPronunciationAnalysisView.as_view(),
-        name='analyze-ai-pronunciation'
-    ),
+
 ]

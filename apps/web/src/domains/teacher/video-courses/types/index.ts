@@ -1,3 +1,5 @@
+import type { NivelCefr } from '@/src/domains/shared/niveis';
+
 /**
  * Teacher Video Courses Types
  * 
@@ -22,7 +24,7 @@ export interface TeacherVideoCourse extends BaseCourse {
   teacherName: string;
   teacherId?: string; // For backward compatibility
   price: number;
-  level: 'Beginner' | 'Intermediate' | 'Advanced';
+  level: NivelCefr;
   status: 'Draft' | 'Published';
   template: 'general' | 'business' | 'technology' | 'medical' | 'legal';
   course_type?: string;
@@ -79,7 +81,7 @@ export interface CreateVideoCourseData {
   title: string;
   description?: string;
   category?: string;
-  level?: 'Beginner' | 'Intermediate' | 'Advanced';
+  level?: NivelCefr;
   template?: 'general' | 'business' | 'technology' | 'medical' | 'legal';
   price?: number;
   course_type?: string;

@@ -1,0 +1,82 @@
+{
+ "unidade": "C1.2 · Review 2 — Units 6 to 10",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "c1-r2-ensaio",
+   "nome": "C1 Review 2 · Exam rehearsal: the office lease",
+   "tipo": "livre",
+   "depois_da_aula": "R2B",
+   "descricao": "Ensaio do exame oral do C1.2: o tutor é Rory, consultor de uma empresa. Pergunta ao aluno como fala com pessoas diferentes e o que mudou no seu campo; pede-lhe que escolha duas de três formas de reduzir a pegada de carbono de uma empresa; faz de senhorio formal na renovação do arrendamento de um escritório, com uma exigência de última hora; no fim, faz uma pergunta abstracta e discorda duas vezes.",
+   "papel_tutor": "Rory, consultor; na parte 3, faz de senhorio formal de um escritório.",
+   "nivel": "C1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Of the three, the two I'd like to talk about are…",
+    "I understand the deadline, but…",
+    "…subject to… Is that your understanding too?",
+    "There are two ways of looking at this.",
+    "That's true up to a point, but… Where I come down is…"
+   ],
+   "extras": {
+    "brief": "Exam rehearsal for an advanced learner (C1.2, units 6-10). You are Rory (a neutral name; never mention a husband or wife), a consultant. Have a conversation in four parts, one question at a time. 1) Interview: whether the student speaks differently to different people at work or in their studies; something in their field that was supposed to change but didn't. 2) Long turn: three ways for a company to reduce its carbon footprint — working from home two days a week, solar panels on the roof, or electric delivery vehicles. Ask the student to choose two, compare them, speculate and choose, in about one and a half minutes; then ask how they would explain their choice to staff who don't care about the environment. 3) Decision: you become the landlord of the student's office, speaking formally (\"Good afternoon. I trust you have received our proposal.\"). The lease ends in March; you want a 15 percent rent increase for three years. Hold your position once, create an impasse, then accept a creative option. Near the end, make a last-minute demand (\"We will also need six months in advance, by Friday.\"). Accept a calm refusal with an alternative. Ask the student to sum up. Notice whether the student matches your formal register. 4) Discussion: ask \"Should negotiation be taught at school?\"; whatever the student says, give two different opposite views, one at a time, and ask for an answer to each. If the student answers with one word, ask \"Could you say a bit more about that?\" once. Do not correct during the conversation, except by repeating once, correctly: \"I don't hope so\", \"turned down it\", \"on the verge to\", \"This can I\", \"subject to the board approves\". Use any language up to C1 unit 10.",
+    "primeira_fala": "Hi, {nome}! I'm Rory. I advise companies on communication. To start: do you speak in the same way to everyone at work or in your studies?",
+    "primeira_fala_simples": "Hi, {nome}! I'm Rory. Do you speak the same way to everyone at work?",
+    "guiao": [
+     "Interesting. What's something in your field that was supposed to change, but didn't?",
+     "Now, three ways for a company to cut its carbon footprint: working from home two days a week, solar panels on the roof, or electric delivery vehicles. Choose two, compare them, and tell me which you would choose.",
+     "How would you explain your choice to staff who don't care about the environment?",
+     "Now I am the landlord of your office. Good afternoon. I trust you have received our proposal: a fifteen percent increase, for three years.",
+     "We seem to be going round in circles.",
+     "One more thing: we will also need six months in advance, by Friday.",
+     "Very well. Would you sum up what we have agreed?",
+     "Last question: should negotiation be taught at school?",
+     "I see it differently. Some people say schools already have too many subjects. What do you think?",
+     "And others say children learn to negotiate at home anyway. How would you answer that?",
+     "Thank you, {nome}. That was a very good conversation."
+    ],
+    "frases": [
+     {
+      "en": "Of the three, the two I'd like to talk about are the solar panels and working from home.",
+      "pt": "Das três, as duas de que gostaria de falar são os painéis solares e o teletrabalho."
+     },
+     {
+      "en": "Good afternoon. Thank you for your proposal. I'd like to suggest an alternative.",
+      "pt": "Boa tarde. Obrigado pela sua proposta. Gostaria de sugerir uma alternativa."
+     },
+     {
+      "en": "I understand the deadline. That said, six months in advance is not something we can agree to. What we can do is three months.",
+      "pt": "Compreendo o prazo. Dito isto, seis meses adiantados não é algo que possamos aceitar. O que podemos fazer é três meses."
+     },
+     {
+      "en": "Just to confirm: a ten percent increase, with effect from April, for three years, subject to our board. Is that your understanding too?",
+      "pt": "Só para confirmar: um aumento de dez por cento, com efeito a partir de Abril, durante três anos, sujeito à nossa administração. É também o seu entendimento?"
+     },
+     {
+      "en": "There are two ways of looking at this. Much depends on… Where I come down is…",
+      "pt": "Há duas maneiras de ver isto. Muito depende de… A minha posição final é…"
+     }
+    ],
+    "palavras": [
+     "of the three",
+     "understand the deadline",
+     "subject to",
+     "understanding",
+     "two ways",
+     "come down"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Fala de pessoas e de mudanças com o registo e o futuro no passado (was going to, was supposed to).",
+    "Escolhe duas das três opções, compara, especula e escolhe com razões, falando pelo menos 1 minuto e meio sem ajuda, e explica a escolha em termos simples.",
+    "Na negociação, acompanha o registo formal do senhorio, desbloqueia o impasse, resiste à exigência de última hora com uma alternativa e resume o acordo com as condições.",
+    "Na discussão, responde com estrutura (There are two ways of looking at this… Where I come down is…) e com nuance aos dois contra-argumentos.",
+    "Usa uma variedade de estruturas do C1 (elipse, fronting, marcadores, phrasal verbs, linguagem de acordos) com naturalidade e erros raros.",
+    "É compreendido sem esforço; a entoação e o ritmo acompanham o registo."
+   ]
+  }
+ ]
+}

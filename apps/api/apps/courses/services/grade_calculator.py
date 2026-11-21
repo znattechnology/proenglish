@@ -3,12 +3,11 @@ Grade Calculator Service
 
 This service handles all grade calculations for video courses:
 - Quiz score aggregation from StudentQuizAttempt
-- Practice score calculation from ChallengeProgress (via ChapterQuiz -> PracticeLesson)
-- Conversation score aggregation from VapiSession
+- Practice score calculation from ChallengeProgress (via Chapter/ChapterQuiz -> PracticeLesson)
+- Conversation score aggregation from VapiSession (only conversations tied to the course)
 - Final grade calculation with configurable weights
 - Certificate eligibility determination
 - Dynamic weight adjustment when components don't exist
-- CEFR level mapping for conversation sessions
 """
 
 from typing import Optional, Dict, List, Tuple
@@ -26,45 +25,92 @@ from apps.practice.models import ChallengeProgress, VapiSession, PracticeLesson
 from apps.users.models import User
 
 
-# Mapping from course levels to CEFR levels used in VapiSession
-COURSE_LEVEL_TO_CEFR = {
-    'Beginner': ['A1', 'A2'],
-    'beginner': ['A1', 'A2'],
-    'Elementary': ['A1', 'A2'],
-    'elementary': ['A1', 'A2'],
-    'Pre-Intermediate': ['A2', 'B1'],
-    'pre-intermediate': ['A2', 'B1'],
-    'Intermediate': ['B1', 'B2'],
-    'intermediate': ['B1', 'B2'],
-    'Upper-Intermediate': ['B2', 'C1'],
-    'upper-intermediate': ['B2', 'C1'],
-    'Advanced': ['C1', 'C2'],
-    'advanced': ['C1', 'C2'],
-    'Proficient': ['C1', 'C2'],
-    'proficient': ['C1', 'C2'],
-    'All Levels': ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
-    'all levels': ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
-    # Direct CEFR level mappings (in case course already uses CEFR)
-    'A1': ['A1'],
-    'A2': ['A2'],
-    'B1': ['B1'],
-    'B2': ['B2'],
-    'C1': ['C1'],
-    'C2': ['C2'],
-}
+# Course.level já está em CEFR (A1..C2): o nível do curso é o nível das sessões do tutor.
+COURSE_LEVEL_TO_CEFR = {c: [c] for c in ('A1', 'A2', 'B1', 'B2', 'C1', 'C2')}
+
+
+def curso_tem_conversa(course) -> bool:
+    """O curso tem pelo menos uma situação de conversa activa (practice.Situacao.curso); as do exame
+    oral (extras.exame) não contam."""
+    from apps.practice.conversa.exame import q_situacao_de_exame
+    from apps.practice.models import Situacao
+    return (Situacao.objects.filter(curso=course, estado=Situacao.ACTIVO)
+            .exclude(q_situacao_de_exame()).exists())
+
+
+def sessoes_de_conversa_do_curso(user, course):
+    """Conversas avaliadas do aluno que contam para este curso (o exame oral conta à parte)."""
+    from apps.practice.models import Situacao
+    slugs = Situacao.objects.filter(curso=course).values('slug')
+    return VapiSession.objects.filter(user=user, status=VapiSession.STATUS_AVALIADA).filter(
+        Q(situation__in=slugs) | Q(full_session_data__config__curso_id=str(course.id))).exclude(
+        situation__startswith='exame-')
+
+
+def frases_do_curso(course):
+    """As frases aprovadas (FraseAula, tipo frase) das aulas visíveis do curso, sem repetidas: [(texto, traducao)].
+    As palavras soltas ficam de fora: nunca chegam a 'sozinho' (apps/perfil, MIN_PALAVRAS_BANCO)."""
+    from apps.courses.models import FraseAula
+    from apps.perfil.servico import normalizar
+    vistas, out = set(), []
+    for texto, traducao in (FraseAula.objects.filter(q_aula_visivel('chapter__'), chapter__section__course=course,
+                                                     estado=FraseAula.APROVADA, tipo=FraseAula.TIPO_FRASE)
+                            .order_by('chapter__section__order', 'chapter__order', 'ordem', 'id')
+                            .values_list('texto', 'traducao')):
+        chave = normalizar(texto)
+        if chave and chave not in vistas:
+            vistas.add(chave)
+            out.append((texto, traducao))
+    return out
+
+
+def curso_da_sessao(vapi_session):
+    """O curso a que uma conversa conta (ou None): o curso_id da configuração ou o da situação."""
+    from apps.practice.models import Situacao
+    dados = vapi_session.full_session_data if isinstance(vapi_session.full_session_data, dict) else {}
+    config = dados.get('config') if isinstance(dados.get('config'), dict) else {}
+    curso_id = config.get('curso_id')
+    if curso_id:
+        curso = Course.objects.filter(pk=curso_id).first() if _uuid_valido(curso_id) else None
+        if curso is not None:
+            return curso
+    if vapi_session.situation:
+        situacao = Situacao.objects.select_related('curso').filter(slug=vapi_session.situation).first()
+        if situacao is not None and situacao.curso_id:
+            return situacao.curso
+    return None
+
+
+def _uuid_valido(valor) -> bool:
+    import uuid
+    try:
+        uuid.UUID(str(valor))
+        return True
+    except (TypeError, ValueError):
+        return False
+
+
+def cursos_da_licao_pratica(lesson_id):
+    """Cursos em vídeo com aulas (ou questionários) ligados a esta lição de prática."""
+    return Course.objects.filter(
+        Q(sections__chapters__practice_lesson_id=lesson_id)
+        | Q(sections__chapters__quiz__practice_lesson_id=lesson_id)
+    ).distinct()
 
 
 class GradeCalculatorService:
     """
     Service for calculating student grades in video courses.
 
-    The grading system combines three components:
-    1. Quiz scores (default 50%) - From chapter quizzes
-    2. Practice scores (default 30%) - From practice exercises linked to quizzes
-    3. Conversation scores (default 20%) - From Vapi conversation sessions
+    Componentes (fase 6, pesos por omissão em CourseGradingConfig):
+    1. Exame oral (40%) - ExameOral avaliado; a nota revista pelo professor ganha à da IA
+    2. Frases do curso ditas sozinho (25%) - FraseAula aprovadas no estado 'sozinho' do perfil
+    3. Conversas do curso (20%) - VapiSession do curso (regras da fase 1, sem o exame)
+    4. Estudo (15%) - questionários e prática, na proporção interna quiz_weight:practice_weight
+    Passar no exame oral é requisito do certificado (exam_enabled).
     """
 
-    CALCULATION_VERSION = 1
+    CALCULATION_VERSION = 2  # fase 6: exame oral, frases do curso, conversas, estudo
 
     def __init__(self, user: User, course: Course):
         self.user = user
@@ -73,15 +119,73 @@ class GradeCalculatorService:
 
     def _get_or_create_config(self) -> CourseGradingConfig:
         """Get or create grading configuration for the course."""
-        config, _ = CourseGradingConfig.objects.get_or_create(
-            course=self.course,
-            defaults={
-                'quiz_weight': 50,
-                'practice_weight': 30,
-                'conversation_weight': 20,
-            }
-        )
+        config, _ = CourseGradingConfig.objects.get_or_create(course=self.course)
         return config
+
+    # ------------------------------------------------------------------
+    # Fase 6: exame oral e frases do curso
+    # ------------------------------------------------------------------
+
+    def calculate_exam_scores(self) -> Dict:
+        """
+        Exame oral: a melhor nota efectiva (a revista pelo professor ganha à da IA) das tentativas
+        avaliadas; passou = alguma tentativa com nota efectiva >= nota mínima ACTUAL do curso
+        (config.min_exam_score de agora, não a guardada no momento do exame).
+        """
+        from apps.courses.models import ExameOral
+        if not self.config.exam_enabled:
+            return {'score': None, 'passed': False, 'attempts': 0, 'details': {}, 'component_disabled': True}
+        exames = list(ExameOral.objects.filter(user=self.user, course=self.course, estado=ExameOral.AVALIADO)
+                      .order_by('-created_at'))
+        if not exames:
+            return {'score': None, 'passed': False, 'attempts': 0, 'details': {},
+                    'min_score': self.config.min_exam_score}
+        melhor = max(exames, key=lambda e: (e.nota_efectiva or 0, e.created_at))
+        minima = self.config.min_exam_score
+        aprovados = [e for e in exames if e.nota_efectiva is not None and e.nota_efectiva >= minima]
+        passou = bool(aprovados)
+        aprovado = aprovados[0] if aprovados else None
+        ref = aprovado if aprovado is not None and (aprovado.nota_efectiva or 0) >= (melhor.nota_efectiva or 0) else melhor
+        return {
+            'score': round(melhor.nota_efectiva or 0, 2),
+            'passed': passou,
+            'attempts': len(exames),
+            'min_score': self.config.min_exam_score,
+            'details': {
+                'exame_id': str(ref.id),
+                'nota': ref.nota_efectiva,
+                'nota_ia': ref.nota_final,
+                'nota_revista': ref.nota_revista,
+                'nivel_cefr': ref.nivel_cefr,
+                'notas': ref.notas(),
+                'data': ref.created_at.isoformat(),
+            },
+        }
+
+    def calculate_phrase_scores(self) -> Dict:
+        """% das frases aprovadas do curso que o aluno já disse sozinho numa conversa (apps/perfil)."""
+        from apps.perfil.models import ItemBanco
+        from apps.perfil.servico import normalizar
+        frases = frases_do_curso(self.course)
+        if not frases:
+            return {'score': 0.0, 'total': 0, 'mastered': 0}
+        chaves = [normalizar(t) for t, _ in frases]
+        sozinho = ItemBanco.objects.filter(user=self.user, chave__in=chaves, estado=ItemBanco.SOZINHO).count()
+        return {'score': round(sozinho * 100.0 / len(frases), 2), 'total': len(frases), 'mastered': sozinho}
+
+    def study_score(self, quiz_data: Dict, practice_data: Dict):
+        """Estudo = questionários e prática na proporção quiz_weight:practice_weight (só os que existem)."""
+        partes = []
+        if quiz_data.get('count', 0) > 0 and self.config.quiz_enabled:
+            partes.append((quiz_data['score'], self.config.quiz_weight))
+        if practice_data.get('count', 0) > 0 and self.config.practice_enabled:
+            partes.append((practice_data['score'], self.config.practice_weight))
+        total = sum(p for _, p in partes)
+        if not partes:
+            return None
+        if total <= 0:
+            return sum(v for v, _ in partes) / len(partes)
+        return sum(v * p for v, p in partes) / total
 
     def calculate_quiz_scores(self) -> Dict:
         """
@@ -210,47 +314,55 @@ class GradeCalculatorService:
                 'component_disabled': True
             }
 
-        # Get all practice lessons linked to this course's chapter quizzes
-        chapter_quizzes = ChapterQuiz.objects.filter(
-            chapter__section__course=self.course,
-            is_active=True
-        ).filter(q_aula_visivel('chapter__')).select_related('practice_lesson', 'chapter', 'chapter__section')
+        # Lições de prática ligadas às aulas visíveis do curso: a "lição a seguir" da aula
+        # (Chapter.practice_lesson) e a do questionário (ChapterQuiz.practice_lesson). Cada lição
+        # conta uma vez, mesmo que esteja ligada a várias aulas.
+        from apps.practice.models import PracticeChallenge
+
+        ligacoes = []
+        for chapter in (Chapter.objects.filter(q_aula_visivel(), section__course=self.course,
+                                               practice_lesson__isnull=False)
+                        .select_related('practice_lesson', 'section')
+                        .order_by('section__order', 'order', 'created_at')):
+            ligacoes.append((chapter, chapter.practice_lesson))
+        for quiz in (ChapterQuiz.objects.filter(chapter__section__course=self.course, is_active=True,
+                                                practice_lesson__isnull=False)
+                     .filter(q_aula_visivel('chapter__'))
+                     .select_related('practice_lesson', 'chapter', 'chapter__section')):
+            ligacoes.append((quiz.chapter, quiz.practice_lesson))
 
         practice_details = []
         total_challenges = 0
         completed_challenges = 0
+        vistas = set()
 
-        for quiz in chapter_quizzes:
-            if not quiz.practice_lesson:
+        for chapter, licao in ligacoes:
+            if licao.id in vistas:
                 continue
+            vistas.add(licao.id)
 
-            # Get all challenges in the practice lesson's units
-            from apps.practice.models import PracticeChallenge
-
-            challenges = PracticeChallenge.objects.filter(
-                lesson=quiz.practice_lesson,
-            )
-
+            challenges = PracticeChallenge.objects.filter(lesson=licao)
             chapter_total = challenges.count()
-
             if chapter_total == 0:
                 continue
 
             # Count completed challenges for this user
+            # Exercícios saltados (análise indisponível, sem microfone) não contam como prática feita.
             chapter_completed = ChallengeProgress.objects.filter(
                 user=self.user,
                 challenge__in=challenges,
-                completed=True
+                completed=True,
+                skipped=False
             ).count()
 
             total_challenges += chapter_total
             completed_challenges += chapter_completed
 
             practice_details.append({
-                'chapter_id': str(quiz.chapter.id),
-                'chapter_title': quiz.chapter.title,
-                'section_title': quiz.chapter.section.sectionTitle,
-                'practice_lesson_id': str(quiz.practice_lesson.id),
+                'chapter_id': str(chapter.id),
+                'chapter_title': chapter.title,
+                'section_title': chapter.section.sectionTitle,
+                'practice_lesson_id': str(licao.id),
                 'total_challenges': chapter_total,
                 'completed_challenges': chapter_completed,
                 'completion_percentage': round(
@@ -275,9 +387,7 @@ class GradeCalculatorService:
         """
         Calculate conversation practice scores from Vapi sessions.
 
-        For video courses, we look at Vapi sessions that match the course level.
-        Uses CEFR level mapping to correctly match course levels (Beginner, Intermediate, etc.)
-        to VapiSession CEFR levels (A1, A2, B1, B2, C1, C2).
+        Only conversations tied to this course count (sessoes_de_conversa_do_curso).
 
         Returns dict with:
         - score: Average conversation score (0-100)
@@ -297,25 +407,14 @@ class GradeCalculatorService:
                 'component_disabled': True
             }
 
-        # Check if course has conversation requirement
-        has_requirement = self.config.require_conversation_if_available
+        # A conversa só é requisito se o curso tiver pelo menos uma situação de conversa activa;
+        # sem situações o componente não existe e os pesos dos outros são renormalizados.
+        has_requirement = bool(self.config.require_conversation_if_available
+                               and curso_tem_conversa(self.course))
 
-        # Get Vapi sessions for this user
-        sessions = VapiSession.objects.filter(
-            user=self.user, status=VapiSession.STATUS_AVALIADA  # sem sessões em curso / sem avaliação
-        ).order_by('-created_at')
-
-        # If the course has a specific level, filter sessions by matching CEFR levels
-        if hasattr(self.course, 'level') and self.course.level:
-            course_level = self.course.level
-            cefr_levels = COURSE_LEVEL_TO_CEFR.get(course_level, None)
-
-            if cefr_levels:
-                # Filter sessions by any matching CEFR level
-                sessions = sessions.filter(level__in=cefr_levels)
-            # If no mapping found and it's not empty, try direct match as fallback
-            elif course_level:
-                sessions = sessions.filter(level=course_level)
+        # Só as conversas deste curso (avaliadas): numa situação do curso, ou iniciadas a partir
+        # dele (full_session_data.config.curso_id). As de outros cursos ou gerais não contam.
+        sessions = sessoes_de_conversa_do_curso(self.user, self.course).order_by('-created_at')
 
         session_count = sessions.count()
 
@@ -377,22 +476,28 @@ class GradeCalculatorService:
         self,
         quiz_data: Dict,
         practice_data: Dict,
-        conversation_data: Dict
+        conversation_data: Dict,
+        exam_data: Optional[Dict] = None,
+        phrase_data: Optional[Dict] = None,
     ) -> Tuple[float, str, Dict]:
         """
-        Calculate final weighted grade with dynamic weight adjustment.
+        Nota final (fase 6): exame oral 40 %, frases do curso ditas sozinho 25 %, conversas do
+        curso 20 % e estudo (questionários + prática) 15 %, com os pesos de CourseGradingConfig.
 
-        This method automatically adjusts weights when components don't exist:
-        - If quiz_count = 0, quiz weight is redistributed to other components
-        - If practice_count = 0, practice weight is redistributed
-        - If no conversation sessions, conversation weight is redistributed
+        Componentes que não existem saem e os pesos dos outros são renormalizados:
+        - exame: desligado no curso (exam_enabled=False). Ligado conta sempre (0 até haver nota);
+        - frases: o curso não tem frases aprovadas;
+        - conversas: as regras da fase 1 (situação de conversa do curso e pelo menos uma conversa);
+        - estudo: sem questionários nem prática.
 
         Returns:
         - final_percentage: Weighted average (0-100)
         - final_letter: Letter grade (A+, A, B+, etc.)
         - weight_info: Dict with actual weights used (for transparency)
         """
-        # Determine which components are active (have content)
+        exam_data = exam_data if exam_data is not None else self.calculate_exam_scores()
+        phrase_data = phrase_data if phrase_data is not None else self.calculate_phrase_scores()
+
         quiz_active = quiz_data.get('count', 0) > 0 and self.config.quiz_enabled
         practice_active = practice_data.get('count', 0) > 0 and self.config.practice_enabled
         conversation_active = (
@@ -401,60 +506,72 @@ class GradeCalculatorService:
             self.config.conversation_enabled and
             not conversation_data.get('component_disabled', False)
         )
+        exam_active = self.config.exam_enabled and not exam_data.get('component_disabled', False)
+        phrases_active = phrase_data.get('total', 0) > 0
+        estudo = self.study_score(quiz_data, practice_data)
+        study_active = estudo is not None
 
-        # Get configured weights
-        quiz_weight = self.config.quiz_weight if quiz_active else 0
-        practice_weight = self.config.practice_weight if practice_active else 0
-        conversation_weight = self.config.conversation_weight if conversation_active else 0
+        pesos = {
+            'exam': self.config.exam_weight if exam_active else 0,
+            'phrases': self.config.phrases_weight if phrases_active else 0,
+            'conversation': self.config.conversation_weight if conversation_active else 0,
+            'study': self.config.study_weight if study_active else 0,
+        }
+        total = sum(pesos.values())
 
-        total_active_weight = quiz_weight + practice_weight + conversation_weight
-
-        # If no components are active, return 0
-        if total_active_weight == 0:
+        if total == 0:
             return 0.0, 'N/A', {
-                'quiz_weight': 0,
-                'practice_weight': 0,
-                'conversation_weight': 0,
+                'quiz_weight': 0, 'practice_weight': 0, 'conversation_weight': 0,
+                'exam_weight': 0, 'phrases_weight': 0, 'study_weight': 0,
                 'mode': 'no_content',
+                'active_components': [],
                 'message': 'Nenhum componente de avaliação disponível no curso'
             }
 
-        # Normalize weights to sum to 100
-        normalized_quiz = (quiz_weight / total_active_weight) * 100 if quiz_active else 0
-        normalized_practice = (practice_weight / total_active_weight) * 100 if practice_active else 0
-        normalized_conversation = (conversation_weight / total_active_weight) * 100 if conversation_active else 0
-
-        # Calculate weighted components
-        quiz_component = quiz_data['score'] * (normalized_quiz / 100)
-        practice_component = practice_data['score'] * (normalized_practice / 100)
-        conversation_component = conversation_data['score'] * (normalized_conversation / 100) if conversation_active else 0
-
-        final_percentage = round(quiz_component + practice_component + conversation_component, 2)
-
-        # Get letter grade
+        norm = {k: (v / total) * 100 for k, v in pesos.items()}
+        valores = {
+            'exam': exam_data.get('score') or 0.0,
+            'phrases': phrase_data.get('score') or 0.0,
+            'conversation': conversation_data.get('score') or 0.0,
+            'study': estudo or 0.0,
+        }
+        final_percentage = round(sum(valores[k] * norm[k] / 100 for k in norm), 2)
         final_letter = self.config.get_grade_with_plus_minus(final_percentage)
 
-        # Build weight info for transparency
-        active_components = []
+        # Dentro do estudo: a parte de cada um (para os ecrãs antigos que mostram quiz/practice).
+        qw = self.config.quiz_weight if quiz_active else 0
+        pw = self.config.practice_weight if practice_active else 0
+        if qw + pw == 0 and study_active:
+            qw, pw = (1 if quiz_active else 0), (1 if practice_active else 0)
+        quiz_share = norm['study'] * qw / (qw + pw) if (qw + pw) else 0
+        practice_share = norm['study'] * pw / (qw + pw) if (qw + pw) else 0
+
+        active_components = [k for k in ('exam', 'phrases', 'conversation') if pesos[k]]
         if quiz_active:
             active_components.append('quizzes')
         if practice_active:
             active_components.append('practice')
-        if conversation_active:
-            active_components.append('conversation')
+        if study_active:
+            active_components.append('study')
 
         weight_info = {
-            'quiz_weight': round(normalized_quiz, 1),
-            'practice_weight': round(normalized_practice, 1),
-            'conversation_weight': round(normalized_conversation, 1),
+            'exam_weight': round(norm['exam'], 1),
+            'phrases_weight': round(norm['phrases'], 1),
+            'conversation_weight': round(norm['conversation'], 1),
+            'study_weight': round(norm['study'], 1),
+            'quiz_weight': round(quiz_share, 1),
+            'practice_weight': round(practice_share, 1),
+            'study_score': round(estudo, 2) if estudo is not None else None,
+            'original_exam_weight': self.config.exam_weight,
+            'original_phrases_weight': self.config.phrases_weight,
+            'original_conversation_weight': self.config.conversation_weight,
+            'original_study_weight': self.config.study_weight,
             'original_quiz_weight': self.config.quiz_weight,
             'original_practice_weight': self.config.practice_weight,
-            'original_conversation_weight': self.config.conversation_weight,
-            'mode': 'full' if len(active_components) == 3 else 'simplified',
+            'mode': 'full' if all(pesos.values()) else 'simplified',
             'active_components': active_components,
-            'weights_adjusted': total_active_weight != 100
+            'weights_adjusted': total != 100,
         }
-
         return final_percentage, final_letter, weight_info
 
     def check_certificate_eligibility(
@@ -463,7 +580,8 @@ class GradeCalculatorService:
         practice_data: Dict,
         conversation_data: Dict,
         final_percentage: float,
-        weight_info: Dict = None
+        weight_info: Dict = None,
+        exam_data: Optional[Dict] = None,
     ) -> Tuple[bool, Dict]:
         """
         Check if student meets all requirements for certificate.
@@ -560,7 +678,7 @@ class GradeCalculatorService:
                     'met': False,
                     'required': self.config.min_conversation_score,
                     'actual': 0,
-                    'message': "Nenhuma sessão de conversação completada no nível do curso"
+                    'message': "Ainda não fez nenhuma conversa deste curso"
                 }
                 all_met = False
         else:
@@ -568,11 +686,32 @@ class GradeCalculatorService:
                 'met': True,
                 'required': None,
                 'actual': conversation_data.get('score', 0),
-                'message': "Conversação não é requisito para este curso" if not self.config.require_conversation_if_available else "Componente de conversação desativado",
+                'message': "Conversação não é requisito para este curso" if not self.config.require_conversation_if_available else "Componente de conversação desactivado",
                 'skipped': True
             }
 
-        # 5. Check minimum final grade
+        # 5. Exame oral (fase 6): passar no exame é obrigatório para o certificado.
+        if exam_data is None:
+            exam_data = self.calculate_exam_scores()
+        if self.config.exam_enabled and not exam_data.get('component_disabled'):
+            passou = bool(exam_data.get('passed'))
+            if passou:
+                msg = f"Exame oral: aprovado com {round(exam_data.get('score') or 0)}% (mínimo: {self.config.min_exam_score:.0f}%)"
+            elif exam_data.get('attempts'):
+                msg = (f"Exame oral: {round(exam_data.get('score') or 0)}% "
+                       f"(mínimo para passar: {self.config.min_exam_score:.0f}%)")
+            else:
+                msg = "Exame oral: ainda não fez o exame deste curso"
+            eligibility_details['oral_exam'] = {
+                'met': passou,
+                'required': self.config.min_exam_score,
+                'actual': exam_data.get('score') or 0,
+                'message': msg,
+            }
+            if not passou:
+                all_met = False
+
+        # 6. Check minimum final grade
         final_grade_met = final_percentage >= self.config.min_final_grade
         eligibility_details['final_grade'] = {
             'met': final_grade_met,
@@ -600,12 +739,16 @@ class GradeCalculatorService:
         quiz_data = self.calculate_quiz_scores()
         practice_data = self.calculate_practice_scores()
         conversation_data = self.calculate_conversation_scores()
+        exam_data = self.calculate_exam_scores()
+        phrase_data = self.calculate_phrase_scores()
         final_percentage, final_letter, weight_info = self.calculate_final_grade(
-            quiz_data, practice_data, conversation_data
+            quiz_data, practice_data, conversation_data, exam_data, phrase_data
         )
         is_eligible, eligibility_details = self.check_certificate_eligibility(
-            quiz_data, practice_data, conversation_data, final_percentage, weight_info
+            quiz_data, practice_data, conversation_data, final_percentage, weight_info, exam_data
         )
+        # O exame e as frases seguem em weight_info (o _preencher guarda-os nos campos próprios).
+        weight_info = dict(weight_info, _exam=exam_data, _phrases=phrase_data)
         return (quiz_data, practice_data, conversation_data, final_percentage, final_letter,
                 weight_info, is_eligible, eligibility_details)
 
@@ -628,6 +771,16 @@ class GradeCalculatorService:
         grade.conversation_minutes = conversation_data['minutes']
         grade.conversation_details = conversation_data['details']
         grade.has_conversation_requirement = conversation_data['has_requirement']
+
+        weight_info = dict(weight_info)
+        exam_data = weight_info.pop('_exam', None) or {}
+        phrase_data = weight_info.pop('_phrases', None) or {}
+        grade.exam_score = exam_data.get('score')
+        grade.exam_passed = bool(exam_data.get('passed'))
+        grade.exam_details = {k: v for k, v in exam_data.items() if k != 'score'}
+        grade.phrases_score = phrase_data.get('score') or 0.0
+        grade.phrases_total = phrase_data.get('total') or 0
+        grade.phrases_mastered = phrase_data.get('mastered') or 0
 
         grade.final_grade_percentage = final_percentage
         grade.final_grade_letter = final_letter
@@ -710,8 +863,13 @@ class GradeCalculatorService:
                         'quiz_weight': self.config.quiz_weight,
                         'practice_weight': self.config.practice_weight,
                         'conversation_weight': self.config.conversation_weight,
+                        'exam_weight': self.config.exam_weight,
+                        'phrases_weight': self.config.phrases_weight,
+                        'study_weight': self.config.study_weight,
                     },
-                    'weight_info': weight_info
+                    'exam_score': grade.exam_score,
+                    'phrases_score': grade.phrases_score,
+                    'weight_info': grade.weight_info
                 }
             )
 
@@ -753,25 +911,16 @@ class GradeCalculatorService:
         """
         Trigger grade recalculation when a practice challenge is completed.
 
-        This is more complex because we need to find which course(s) the
-        challenge belongs to via ChapterQuiz -> PracticeLesson relationship.
+        Courses whose chapters (Chapter.practice_lesson) or chapter quizzes
+        (ChapterQuiz.practice_lesson) link to the challenge's lesson, where the user is enrolled.
         """
-        # Find courses that have this challenge's lesson linked
-        chapter_quizzes = ChapterQuiz.objects.filter(
-            practice_lesson__units__challenges=challenge_progress.challenge
-        ).select_related('chapter__section__course')
+        from apps.courses.models import CourseEnrollment
 
+        lesson_id = challenge_progress.challenge.lesson_id
         grades = []
-        courses_updated = set()
-
-        for quiz in chapter_quizzes:
-            course = quiz.chapter.section.course
-            if course.id not in courses_updated:
-                calculator = cls(user, course)
-                grade = calculator.calculate_and_save(change_reason='practice_completed')
-                grades.append(grade)
-                courses_updated.add(course.id)
-
+        for course in cursos_da_licao_pratica(lesson_id):
+            if CourseEnrollment.objects.filter(user=user, course=course).exists():
+                grades.append(cls(user, course).calculate_and_save(change_reason='practice_completed'))
         return grades
 
     @classmethod
@@ -779,24 +928,11 @@ class GradeCalculatorService:
         """
         Trigger grade recalculation when a conversation session is completed.
 
-        Updates grades for all courses the user is enrolled in that have
-        conversation requirements enabled.
+        Only the course the conversation belongs to (curso_da_sessao), if the user is enrolled.
         """
         from apps.courses.models import CourseEnrollment
 
-        enrollments = CourseEnrollment.objects.filter(
-            user=user
-        ).select_related('course')
-
-        grades = []
-        for enrollment in enrollments:
-            try:
-                config = enrollment.course.grading_config
-                if config.require_conversation_if_available:
-                    calculator = cls(user, enrollment.course)
-                    grade = calculator.calculate_and_save(change_reason='conversation_session')
-                    grades.append(grade)
-            except CourseGradingConfig.DoesNotExist:
-                pass
-
-        return grades
+        course = curso_da_sessao(vapi_session)
+        if course is None or not CourseEnrollment.objects.filter(user=user, course=course).exists():
+            return []
+        return [cls(user, course).calculate_and_save(change_reason='conversation_session')]

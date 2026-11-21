@@ -2,6 +2,31 @@
 
 # Trigger deploy Thu Mar  5 10:30:44 WAT 2026
 
+## Ambiente
+
+Python 3.12 (o mesmo do Docker e do CI; ver `.python-version`) e Django 5.2 LTS:
+
+```bash
+python3.12 -m venv venv && ./venv/bin/pip install -r requirements.txt
+```
+
+## Testes
+
+Correm com o test runner do Django e `core.test_settings` (a partir de `apps/api`):
+
+```bash
+# tudo (o mesmo que `npm run api:test` na raiz)
+python manage.py test --settings=core.test_settings
+
+# uma app, um módulo ou um teste
+python manage.py test apps.users --settings=core.test_settings
+python manage.py test apps.users.tests.test_fase3 --settings=core.test_settings
+```
+
+Use uma base local no `DATABASE_URL` (o test runner cria e apaga a `test_<nome>`).
+O `pytest` (pytest-django, configurado em `pytest.ini`, usado pelo `Makefile`) corre o
+mesmo conjunto: `pytest` ou `pytest apps/users`.
+
 ## Pagamentos Multicaixa Express (AOA) — `apps/pagamentos`
 
 Pagamentos em kwanzas (inteiros) por Multicaixa Express. Enquanto não há acordo

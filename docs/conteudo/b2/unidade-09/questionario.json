@@ -1,0 +1,301 @@
+{
+ "title": "B2.2 Unit 9 quiz — Mediation at work",
+ "description": "Verbos de relato e padrões, sintetizar, avaliar, actas, advise e reunion.",
+ "questions": [
+  {
+   "id": "b2u9q1",
+   "question": "\"Ela sugeriu-nos que esperássemos.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u9q1o0",
+     "text": "She suggested that we wait.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u9q1o1",
+     "text": "She suggested us to wait.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u9q1o2",
+     "text": "She suggested to us waiting to.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u9q1o0",
+   "explanation": "suggest + that / + -ing; nunca + pessoa + to.",
+   "points": 10
+  },
+  {
+   "id": "b2u9q2",
+   "question": "Complete: \"He denied ___ the delay.\"",
+   "options": [
+    {
+     "id": "b2u9q2o0",
+     "text": "causing",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u9q2o1",
+     "text": "to cause",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u9q2o2",
+     "text": "cause",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u9q2o0",
+   "explanation": "deny + -ing.",
+   "points": 10
+  },
+  {
+   "id": "b2u9q3",
+   "question": "Complete: \"Thandi insisted ___ keeping June.\"",
+   "options": [
+    {
+     "id": "b2u9q3o0",
+     "text": "on",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u9q3o1",
+     "text": "to",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u9q3o2",
+     "text": "for",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u9q3o0",
+   "explanation": "insist on + -ing.",
+   "points": 10
+  },
+  {
+   "id": "b2u9q4",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u9q4o0",
+     "text": "She advised us to take a break.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u9q4o1",
+     "text": "She suggested us to take a break.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u9q4o2",
+     "text": "She advised to us to take a break.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u9q4o0",
+   "explanation": "advise + pessoa + to.",
+   "points": 10
+  },
+  {
+   "id": "b2u9q5",
+   "question": "Complete: \"She warned us ___ get relaxed.\"",
+   "options": [
+    {
+     "id": "b2u9q5o0",
+     "text": "not to",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u9q5o1",
+     "text": "to not",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u9q5o2",
+     "text": "not",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u9q5o0",
+   "explanation": "warn + pessoa + not to.",
+   "points": 10
+  },
+  {
+   "id": "b2u9q6",
+   "question": "\"Packet loss below one percent\", em palavras simples:",
+   "options": [
+    {
+     "id": "b2u9q6o0",
+     "text": "The signal is almost always perfect.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u9q6o1",
+     "text": "One percent of the packets are lost forever.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u9q6o2",
+     "text": "The packets are very small.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u9q6o0",
+   "explanation": "Reformular: o sentido, não as palavras.",
+   "points": 10
+  },
+  {
+   "id": "b2u9q7",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u9q7o0",
+     "text": "What worries me is the testing.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u9q7o1",
+     "text": "What worries me it's the testing.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u9q7o2",
+     "text": "What worries me are the testing.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u9q7o0",
+   "explanation": "What worries me is…",
+   "points": 10
+  },
+  {
+   "id": "b2u9q8",
+   "question": "Complete: \"The good ___ is that the tests start on time.\"",
+   "options": [
+    {
+     "id": "b2u9q8o0",
+     "text": "news",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u9q8o1",
+     "text": "new",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u9q8o2",
+     "text": "notice",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u9q8o0",
+   "explanation": "news é sempre singular.",
+   "points": 10
+  },
+  {
+   "id": "b2u9q9",
+   "question": "\"Avisei-o do risco.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u9q9o0",
+     "text": "I warned him about the risk.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u9q9o1",
+     "text": "I advised him of the risk.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u9q9o2",
+     "text": "I advised him the risk.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u9q9o0",
+   "explanation": "Falso amigo: advise = aconselhar.",
+   "points": 10
+  },
+  {
+   "id": "b2u9q10",
+   "question": "\"A reunião de obra é às oito.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u9q10o0",
+     "text": "The site meeting is at eight.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u9q10o1",
+     "text": "The site reunion is at eight.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u9q10o2",
+     "text": "The reunion of work is at eight.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u9q10o0",
+   "explanation": "Falso amigo: reunion = reencontro.",
+   "points": 10
+  },
+  {
+   "id": "b2u9q11",
+   "question": "Reciclagem (B2, unidade 8). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u9q11o0",
+     "text": "The meeting was absolutely exhausting.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u9q11o1",
+     "text": "The meeting was very exhausting completely.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u9q11o2",
+     "text": "The meeting was a bit exhausted.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u9q11o0",
+   "explanation": "Não graduável: absolutely.",
+   "points": 10
+  },
+  {
+   "id": "b2u9q12",
+   "question": "Reciclagem (B2, unidade 6). \"A sala devia estar pronta em Julho\" (e não está). Em inglês:",
+   "options": [
+    {
+     "id": "b2u9q12o0",
+     "text": "The room was supposed to be ready in July.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u9q12o1",
+     "text": "The room supposed to be ready in July.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u9q12o2",
+     "text": "The room was suppose to be ready in July.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u9q12o0",
+   "explanation": "was supposed to.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

@@ -1,0 +1,301 @@
+{
+ "title": "C1.2 Unit 9 quiz — Register",
+ "description": "Registos formal, neutro e coloquial, expressões idiomáticas, linguagem vaga, phrasal verbs, push e lunch.",
+ "questions": [
+  {
+   "id": "c1u9q1",
+   "question": "Qual destas frases é formal?",
+   "options": [
+    {
+     "id": "c1u9q1o0",
+     "text": "I regret to inform you that the opening has been postponed.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u9q1o1",
+     "text": "Bad news, the opening's slipped a bit.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u9q1o2",
+     "text": "The opening is two weeks late.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u9q1o0",
+   "explanation": "Passiva, \"regret to inform\", sem contracções.",
+   "points": 10
+  },
+  {
+   "id": "c1u9q2",
+   "question": "O equivalente formal de \"push back\" (uma data) é…",
+   "options": [
+    {
+     "id": "c1u9q2o0",
+     "text": "postpone",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u9q2o1",
+     "text": "push behind",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u9q2o2",
+     "text": "back up",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u9q2o0",
+   "explanation": "push back / put off = postpone.",
+   "points": 10
+  },
+  {
+   "id": "c1u9q3",
+   "question": "\"The ball's in their court.\" Quer dizer…",
+   "options": [
+    {
+     "id": "c1u9q3o0",
+     "text": "agora é com eles",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u9q3o1",
+     "text": "estão a jogar ténis",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u9q3o2",
+     "text": "perdemos",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u9q3o0",
+   "explanation": "A decisão é deles.",
+   "points": 10
+  },
+  {
+   "id": "c1u9q4",
+   "question": "\"There's an elephant in the room.\" Quer dizer…",
+   "options": [
+    {
+     "id": "c1u9q4o0",
+     "text": "há um problema de que ninguém quer falar",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u9q4o1",
+     "text": "a sala é pequena",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u9q4o2",
+     "text": "alguém está zangado",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u9q4o0",
+   "explanation": "Expressão idiomática.",
+   "points": 10
+  },
+  {
+   "id": "c1u9q5",
+   "question": "Onde é que \"four million-ish\" NÃO é adequado?",
+   "options": [
+    {
+     "id": "c1u9q5o0",
+     "text": "num relatório à administração",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u9q5o1",
+     "text": "numa conversa entre amigos",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u9q5o2",
+     "text": "num café com colegas",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u9q5o0",
+   "explanation": "Linguagem vaga só no registo informal.",
+   "points": 10
+  },
+  {
+   "id": "c1u9q6",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u9q6o0",
+     "text": "Thirty or so people came.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u9q6o1",
+     "text": "Thirty or so of people came.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u9q6o2",
+     "text": "Thirty so or people came.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u9q6o0",
+   "explanation": "X or so + nome.",
+   "points": 10
+  },
+  {
+   "id": "c1u9q7",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u9q7o0",
+     "text": "She turned it down.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u9q7o1",
+     "text": "She turned down it.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u9q7o2",
+     "text": "She down turned it.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u9q7o0",
+   "explanation": "O pronome fica no meio.",
+   "points": 10
+  },
+  {
+   "id": "c1u9q8",
+   "question": "Reciclagem (C1, unidade 6). \"Will the meeting be cancelled?\" (espera que não)",
+   "options": [
+    {
+     "id": "c1u9q8o0",
+     "text": "I hope not.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u9q8o1",
+     "text": "I don't hope so.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u9q8o2",
+     "text": "I hope no.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u9q8o0",
+   "explanation": "hope + not.",
+   "points": 10
+  },
+  {
+   "id": "c1u9q9",
+   "question": "\"Puxe\" (na porta) em inglês:",
+   "options": [
+    {
+     "id": "c1u9q9o0",
+     "text": "Pull",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u9q9o1",
+     "text": "Push",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u9q9o2",
+     "text": "Puck",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u9q9o0",
+   "explanation": "Falso amigo: push = empurrar.",
+   "points": 10
+  },
+  {
+   "id": "c1u9q10",
+   "question": "\"Vamos lanchar às cinco.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1u9q10o0",
+     "text": "Let's have a snack at five.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u9q10o1",
+     "text": "Let's have lunch at five.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u9q10o2",
+     "text": "Let's lunch at five in the afternoon.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u9q10o0",
+   "explanation": "Falso amigo: lunch = almoço.",
+   "points": 10
+  },
+  {
+   "id": "c1u9q11",
+   "question": "Reciclagem (C1, unidade 8). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u9q11o0",
+     "text": "This I can promise you.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u9q11o1",
+     "text": "This can I promise you.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u9q11o2",
+     "text": "This I can to promise you.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u9q11o0",
+   "explanation": "Fronting sem inversão.",
+   "points": 10
+  },
+  {
+   "id": "c1u9q12",
+   "question": "Reciclagem (C1, unidade 7). Complete: \"The facility was to ___ opened in June.\"",
+   "options": [
+    {
+     "id": "c1u9q12o0",
+     "text": "have",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u9q12o1",
+     "text": "had",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u9q12o2",
+     "text": "has",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u9q12o0",
+   "explanation": "was to have + particípio.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

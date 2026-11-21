@@ -1,0 +1,1351 @@
+{
+ "unidade": "B1.1 · Unit 5 — How it works",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "5A",
+   "titulo": "It's made in…",
+   "aula": "5A",
+   "objectivo": "Descrever um processo com a voz passiva no presente, com by só quando importa.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The panels [are] cleaned every two weeks.",
+     "opcoes": [
+      {
+       "texto": "is",
+       "certa": false
+      },
+      {
+       "texto": "be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The data is [collected] every minute.",
+     "opcoes": [
+      {
+       "texto": "collect",
+       "certa": false
+      },
+      {
+       "texto": "collecting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "These panels are [made] in China.",
+     "opcoes": [
+      {
+       "texto": "make",
+       "certa": false
+      },
+      {
+       "texto": "making",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Are] the panels cleaned by hand?",
+     "opcoes": [
+      {
+       "texto": "Do",
+       "certa": false
+      },
+      {
+       "texto": "Does",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Fala-se inglês aqui.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "English is spoken here.",
+       "certa": true
+      },
+      {
+       "texto": "English speaks here.",
+       "certa": false
+      },
+      {
+       "texto": "Speaks English here.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Fala-se\", \"limpa-se\" → passiva."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In which sentence is \"by\" useful information?",
+     "opcoes": [
+      {
+       "texto": "Sunlight is changed into electricity by the panels.",
+       "certa": true
+      },
+      {
+       "texto": "The panels are cleaned every two weeks by people.",
+       "certa": false
+      },
+      {
+       "texto": "The data is collected every minute by someone.",
+       "certa": false
+      }
+     ],
+     "explicacao": "by só quando acrescenta informação."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The data is sent to the control room.",
+       "certa": true
+      },
+      {
+       "texto": "The data is send to the control room.",
+       "certa": false
+      },
+      {
+       "texto": "The data sends to the control room.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Os painéis limpam-se de duas em duas semanas.",
+     "resposta": "The panels are cleaned every two weeks.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Hannah. The panels are cleaned every two weeks — and every week in the windy months.",
+     "enunciado": "How often are the panels cleaned in the windy months?",
+     "opcoes": [
+      {
+       "texto": "every week",
+       "certa": true
+      },
+      {
+       "texto": "every two weeks",
+       "certa": false
+      },
+      {
+       "texto": "every month",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Sunlight is changed into electricity.",
+     "enunciado": "Ouça e repita, com \"is\" fraco."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe how something is made or done: coffee, bread, a passport, or something at your work. Use at least three passive sentences.",
+     "frase": "checked",
+     "resposta": "In my bank, a new account is opened in three steps. First, the documents are checked at the front desk. Then the client's information is entered in the system. After that, the card is sent to the branch, and the client is called. It usually takes a week.",
+     "contexto": "Passiva no presente."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you think solar energy is a good idea for Angola? Why?",
+     "frase": "think",
+     "resposta": "Yes, I think it's a very good idea. We have sun almost every day, and in many villages there's no electricity. In some villages, small solar panels are used in the schools, and the children can study at night.",
+     "contexto": "Uma opinião com a passiva."
+    }
+   ]
+  },
+  {
+   "codigo": "5B",
+   "titulo": "It was built in 2025",
+   "aula": "5B",
+   "objectivo": "Contar a história de um lugar ou de um projecto com a voz passiva no passado.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The plant [was] built in 2025.",
+     "opcoes": [
+      {
+       "texto": "were",
+       "certa": false
+      },
+      {
+       "texto": "did",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The panels [were] made in China.",
+     "opcoes": [
+      {
+       "texto": "was",
+       "certa": false
+      },
+      {
+       "texto": "did",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "When was the plant [built]?",
+     "opcoes": [
+      {
+       "texto": "build",
+       "certa": false
+      },
+      {
+       "texto": "building",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [was born] in Lubango.",
+     "opcoes": [
+      {
+       "texto": "born",
+       "certa": false
+      },
+      {
+       "texto": "am born",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Nasci\" → I was born."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "When was the plant built?",
+       "certa": true
+      },
+      {
+       "texto": "When the plant was built?",
+       "certa": false
+      },
+      {
+       "texto": "When was built the plant?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Where were the panels made?",
+       "certa": true
+      },
+      {
+       "texto": "Where was the panels made?",
+       "certa": false
+      },
+      {
+       "texto": "Where did the panels made?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The plant was designed by a team in Lisbon.",
+       "certa": true
+      },
+      {
+       "texto": "A team in Lisbon was designed the plant.",
+       "certa": false
+      },
+      {
+       "texto": "The plant designed a team in Lisbon.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Hannah. The plant was built in 2025, and it was opened in October that year.",
+     "enunciado": "When was the plant opened?",
+     "opcoes": [
+      {
+       "texto": "in October 2025",
+       "certa": true
+      },
+      {
+       "texto": "in October 2022",
+       "certa": false
+      },
+      {
+       "texto": "in 2027",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. The panels were made in China, and the inverters were made in Germany.",
+     "enunciado": "Where were the inverters made?",
+     "opcoes": [
+      {
+       "texto": "in Germany",
+       "certa": true
+      },
+      {
+       "texto": "in China",
+       "certa": false
+      },
+      {
+       "texto": "in Angola",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It was built in 2025. They were made in China.",
+     "enunciado": "Ouça e repita, com \"was\" e \"were\" fracos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me the history of a building, a company or a project. Say when it was started, built or opened, and give two more facts. Use the passive.",
+     "frase": "opened",
+     "resposta": "My company was started in 2010 by two engineers from Benguela. The first office was opened in Lobito, and our head office was built in Luanda in 2019. Last year, a new branch was opened in Huambo, and twenty people were hired.",
+     "contexto": "Passiva no passado."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it better to hire local people for a big project, or experienced people from other places? Why?",
+     "frase": "hired",
+     "resposta": "In my view, it's better to hire local people, and train them. For example, at the plant in Namibe, most of the workers were hired in the region. The money stays there, and the people stay after the project.",
+     "contexto": "Uma opinião com a passiva."
+    }
+   ]
+  },
+  {
+   "codigo": "5C",
+   "titulo": "The engineer who designed it",
+   "aula": "5C",
+   "objectivo": "Definir pessoas, coisas e lugares com orações relativas, com e sem pronome.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Lourenço is the technician [who] works at night.",
+     "opcoes": [
+      {
+       "texto": "which",
+       "certa": false
+      },
+      {
+       "texto": "where",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This is the room [where] the old equipment is.",
+     "opcoes": [
+      {
+       "texto": "who",
+       "certa": false
+      },
+      {
+       "texto": "which",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Can you pass me the cable [that] goes to the router?",
+     "opcoes": [
+      {
+       "texto": "who",
+       "certa": false
+      },
+      {
+       "texto": "where",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Did you get the report I [sent] you?",
+     "opcoes": [
+      {
+       "texto": "sent it",
+       "certa": false
+      },
+      {
+       "texto": "was sent",
+       "certa": false
+      }
+     ],
+     "explicacao": "Não se repete o pronome: the report I sent you."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "This is the report I sent you.",
+       "certa": true
+      },
+      {
+       "texto": "This is the report that I sent it to you.",
+       "certa": false
+      },
+      {
+       "texto": "This is the report who I sent you.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "He is the engineer who designed the plant.",
+       "certa": true
+      },
+      {
+       "texto": "He is the engineer who he designed the plant.",
+       "certa": false
+      },
+      {
+       "texto": "He is the engineer which designed the plant.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In which phrase can you leave out \"that\"?",
+     "opcoes": [
+      {
+       "texto": "the cable that Paulo needs",
+       "certa": true
+      },
+      {
+       "texto": "the cable that goes to the router",
+       "certa": false
+      },
+      {
+       "texto": "the box that controls the dish",
+       "certa": false
+      }
+     ],
+     "explicacao": "Sai quando há outro sujeito depois (Paulo)."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Complete: \"Not this cable — ___ with the blue label.\"",
+     "opcoes": [
+      {
+       "texto": "the one",
+       "certa": true
+      },
+      {
+       "texto": "the it",
+       "certa": false
+      },
+      {
+       "texto": "the this",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Este é o técnico que trabalha de noite.",
+     "resposta": "This is the technician who works at night.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. Nuno, can you pass me the cable that goes to the router? The one with the blue label.",
+     "enunciado": "Which cable does Paulo want?",
+     "opcoes": [
+      {
+       "texto": "the one with the blue label",
+       "certa": true
+      },
+      {
+       "texto": "the one with the red label",
+       "certa": false
+      },
+      {
+       "texto": "the one from the old radio",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "the cable that goes to the router",
+     "enunciado": "Ouça e repita, com \"that\" fraco e ligado a \"cable\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe your workplace or your school to a new colleague: two people, one thing and one place. Use \"who\", \"that\" or \"which\", and \"where\".",
+     "frase": "where",
+     "resposta": "Ana is the person who answers the phone, and João is the manager who signs the contracts. The printer that works best is on the second floor. And the kitchen is the place where everyone meets at eleven for coffee.",
+     "contexto": "Orações relativas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's the most important thing a new colleague needs to know on the first day? Why?",
+     "frase": "who",
+     "resposta": "In my opinion, a new colleague needs to know the people who can help. For example, the person who fixes the computers, and the colleague who knows all the procedures. Then the first week is much easier.",
+     "contexto": "Uma opinião com relativas."
+    }
+   ]
+  },
+  {
+   "codigo": "5D",
+   "titulo": "Energy and safety",
+   "aula": "5D",
+   "objectivo": "Palavras de energia e segurança, must / mustn't / don't have to, acento de palavras técnicas; petrol e fabric.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "hazard",
+       "b": "perigo"
+      },
+      {
+       "a": "assembly point",
+       "b": "ponto de encontro"
+      },
+      {
+       "a": "helmet",
+       "b": "capacete"
+      },
+      {
+       "a": "fuel",
+       "b": "combustível"
+      },
+      {
+       "a": "grid",
+       "b": "rede eléctrica"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You [mustn't] touch the inverters. It's dangerous.",
+     "opcoes": [
+      {
+       "texto": "don't have to",
+       "certa": false
+      },
+      {
+       "texto": "must",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In the office, you [don't have to] wear a helmet. It isn't necessary.",
+     "opcoes": [
+      {
+       "texto": "mustn't",
+       "certa": false
+      },
+      {
+       "texto": "must",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You [have to] wear safety boots on the site.",
+     "opcoes": [
+      {
+       "texto": "has to",
+       "certa": false
+      },
+      {
+       "texto": "having to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Angola produz petróleo.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Angola produces oil.",
+       "certa": true
+      },
+      {
+       "texto": "Angola produces petrol.",
+       "certa": false
+      },
+      {
+       "texto": "Angola produces fabric.",
+       "certa": false
+      }
+     ],
+     "explicacao": "petrol = gasolina; petróleo = oil."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A fábrica de cimento.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "the cement factory",
+       "certa": true
+      },
+      {
+       "texto": "the cement fabric",
+       "certa": false
+      },
+      {
+       "texto": "the cement fabrication",
+       "certa": false
+      }
+     ],
+     "explicacao": "fabric = tecido."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Where is the stress in \"engineer\"?",
+     "opcoes": [
+      {
+       "texto": "at the end: engi-NEER",
+       "certa": true
+      },
+      {
+       "texto": "at the start: EN-gineer",
+       "certa": false
+      },
+      {
+       "texto": "in the middle: en-GI-neer",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"You don't have to wear gloves.\" It means:",
+     "opcoes": [
+      {
+       "texto": "Gloves aren't necessary.",
+       "certa": true
+      },
+      {
+       "texto": "Gloves are prohibited.",
+       "certa": false
+      },
+      {
+       "texto": "Gloves are necessary.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. You have to wear a helmet everywhere outside the offices, but you don't have to wear gloves.",
+     "enunciado": "What don't visitors have to wear?",
+     "opcoes": [
+      {
+       "texto": "gloves",
+       "certa": true
+      },
+      {
+       "texto": "a helmet",
+       "certa": false
+      },
+      {
+       "texto": "a vest",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The electrical engineer checks the equipment.",
+     "enunciado": "Ouça e repita, com o acento certo em \"electrical\", \"engineer\" e \"equipment\"."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Renewable energy. Electricity. Emergency.",
+     "enunciado": "Ouça e repita, com o acento certo em cada palavra."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What are the safety rules at your work, or in a place you know? Say two things people must do, one thing they mustn't do, and one thing they don't have to do.",
+     "frase": "mustn't",
+     "resposta": "In the hospital where I work, you must wash your hands before you see a patient, and you have to wear your ID card all the time. You mustn't use your phone in the operating rooms. But visitors don't have to wear a uniform.",
+     "contexto": "Regras."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "In your opinion, which energy is best for Angola in the future: oil, gas, or renewable energy? Why?",
+     "frase": "renewable",
+     "resposta": "In my view, renewable energy is the best, because the sun and the rivers don't run out. A lot of our electricity is already produced by dams. But oil is still important for the economy, so we need both for some years.",
+     "contexto": "Uma opinião com a passiva."
+    }
+   ]
+  },
+  {
+   "codigo": "5E",
+   "titulo": "Real English: A tour of the plant",
+   "aula": "5E",
+   "objectivo": "Seguir uma visita guiada e identificar os passos de um processo e as regras de segurança.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. You have to wear a helmet and a vest everywhere outside the offices.",
+     "enunciado": "Where do visitors have to wear a helmet and a vest?",
+     "opcoes": [
+      {
+       "texto": "everywhere outside the offices",
+       "certa": true
+      },
+      {
+       "texto": "only near the crane",
+       "certa": false
+      },
+      {
+       "texto": "only in the control room",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Hannah. You mustn't walk between the panels. Some of the electrical cables are near the surface.",
+     "enunciado": "Why mustn't visitors walk between the panels?",
+     "opcoes": [
+      {
+       "texto": "Some electrical cables are near the surface.",
+       "certa": true
+      },
+      {
+       "texto": "The panels are very hot.",
+       "certa": false
+      },
+      {
+       "texto": "The cleaning machine is working.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Kofi. Our panels are cleaned with water, and it's so expensive.",
+     "enunciado": "How are Kofi's panels cleaned?",
+     "opcoes": [
+      {
+       "texto": "with water",
+       "certa": true
+      },
+      {
+       "texto": "with a machine without water",
+       "certa": false
+      },
+      {
+       "texto": "by hand, without water",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Hannah. When the radio link goes down, the satellite starts working automatically.",
+     "enunciado": "What happens when the radio link goes down?",
+     "opcoes": [
+      {
+       "texto": "The satellite starts working automatically.",
+       "certa": true
+      },
+      {
+       "texto": "Somebody switches to the satellite.",
+       "certa": false
+      },
+      {
+       "texto": "The data stops.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. The satellite was tested yesterday, and it worked perfectly.",
+     "enunciado": "When was the satellite tested?",
+     "opcoes": [
+      {
+       "texto": "yesterday",
+       "certa": true
+      },
+      {
+       "texto": "this morning",
+       "certa": false
+      },
+      {
+       "texto": "last week",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Hannah. If you hear the alarm, go to the assembly point. That's the green sign near the gate.",
+     "enunciado": "Where is the assembly point?",
+     "opcoes": [
+      {
+       "texto": "near the gate, at the green sign",
+       "certa": true
+      },
+      {
+       "texto": "in the control room",
+       "certa": false
+      },
+      {
+       "texto": "next to the substation",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Hannah starts the tour with…",
+     "opcoes": [
+      {
+       "texto": "the safety rules",
+       "certa": true
+      },
+      {
+       "texto": "the price of the satellite",
+       "certa": false
+      },
+      {
+       "texto": "the history of the plant",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The data is collected every minute.\" Who collects it?",
+     "opcoes": [
+      {
+       "texto": "It isn't important: the sentence is about the data.",
+       "certa": true
+      },
+      {
+       "texto": "Hannah.",
+       "certa": false
+      },
+      {
+       "texto": "Kofi.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "You mustn't walk between the panels.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It was tested yesterday, and it worked perfectly.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague missed the tour. Explain how the satellite backup works, and two safety rules.",
+     "frase": "sent",
+     "resposta": "The data from the sensors is collected every minute and sent to the control room by the radio link. When the link goes down, the satellite starts working automatically. And two rules: you have to wear a helmet and a vest outside the offices, and you mustn't walk between the panels.",
+     "contexto": "Processo e regras."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Kofi's company uses water to clean the panels. In your opinion, is that a problem? Why?",
+     "frase": "because",
+     "resposta": "Yes, I think it's a problem, because water is expensive in dry places, and people need it for drinking. A machine without water is a better solution, even if it costs more at the start.",
+     "contexto": "Uma opinião com uma razão."
+    }
+   ]
+  },
+  {
+   "codigo": "5F",
+   "titulo": "Work & Life: Safety briefing",
+   "aula": "5F",
+   "objectivo": "Dar um briefing de segurança por passos, reformular e explicar em inglês um aviso em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Nuno starts the briefing. Choose the best start.",
+     "opcoes": [
+      {
+       "texto": "I'm going to do the safety briefing. It takes five minutes.",
+       "certa": true
+      },
+      {
+       "texto": "Safety. Five minutes. Listen.",
+       "certa": false
+      },
+      {
+       "texto": "I will doing the safety briefing in five minutes.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "First, you sign in at the gate. [Then], put on your helmet.",
+     "opcoes": [
+      {
+       "texto": "Before",
+       "certa": false
+      },
+      {
+       "texto": "Once",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It says this is the zone [where] the crane lifts heavy things.",
+     "opcoes": [
+      {
+       "texto": "who",
+       "certa": false
+      },
+      {
+       "texto": "which",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You [mustn't] touch the equipment.",
+     "opcoes": [
+      {
+       "texto": "don't have to",
+       "certa": false
+      },
+      {
+       "texto": "must to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The sign says: \"Proibida a entrada a pessoas não autorizadas.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "Only people with permission can go in.",
+       "certa": true
+      },
+      {
+       "texto": "Prohibited the entrance of not authorised persons.",
+       "certa": false
+      },
+      {
+       "texto": "Everybody can go in.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Femi doesn't understand \"assembly point\". What does Nuno do?",
+     "opcoes": [
+      {
+       "texto": "He explains it with simpler words and an example.",
+       "certa": true
+      },
+      {
+       "texto": "He says it again, louder.",
+       "certa": false
+      },
+      {
+       "texto": "He changes the subject.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the expression to say something again in a different way.",
+     "opcoes": [
+      {
+       "texto": "In other words, …",
+       "certa": true
+      },
+      {
+       "texto": "By the way, …",
+       "certa": false
+      },
+      {
+       "texto": "Anyway, as I was saying, …",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. When the crane is working, you have to stay twenty metres away — at least.",
+     "enunciado": "How far away do visitors have to stay?",
+     "opcoes": [
+      {
+       "texto": "at least twenty metres",
+       "certa": true
+      },
+      {
+       "texto": "at least two metres",
+       "certa": false
+      },
+      {
+       "texto": "at least twelve metres",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. The red light on the crane goes off, and Mr Domingos blows a whistle twice.",
+     "enunciado": "How do visitors know the crane has stopped?",
+     "opcoes": [
+      {
+       "texto": "The red light goes off, and there are two whistles.",
+       "certa": true
+      },
+      {
+       "texto": "The alarm sounds.",
+       "certa": false
+      },
+      {
+       "texto": "Hannah sends a message.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "First, you sign in at the gate. Then, put on your helmet.",
+     "enunciado": "Ouça e repita, com uma pausa entre os passos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Visitors are coming to your workplace or your school. Give them a short safety briefing: at least four steps or rules, with sequence words.",
+     "frase": "First",
+     "resposta": "Welcome! First, you sign in at reception and get a visitor card. You have to wear it all the time. Then I'll show you the emergency exits. You mustn't use the lift in a fire. If you hear the alarm, go to the assembly point in the car park. Finally, you don't have to wear special clothes.",
+     "contexto": "Passos e regras."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A foreign visitor asks about this sign. Explain it in English: \"Laboratório — É obrigatório o uso de óculos de protecção. Proibido comer e beber. Em caso de derrame de produtos químicos, avise imediatamente o técnico responsável.\"",
+     "frase": "It says",
+     "resposta": "It says this is a lab. You have to wear safety glasses. You mustn't eat or drink here. And if you spill a chemical, you have to tell the technician who's responsible — immediately.",
+     "contexto": "Mediação: todos os factos, em inglês simples."
+    }
+   ]
+  },
+  {
+   "codigo": "5R",
+   "titulo": "Unit 5 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 5 e reciclar as unidades 3 e 4 do B1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The panels [are] cleaned every two weeks.",
+     "opcoes": [
+      {
+       "texto": "is",
+       "certa": false
+      },
+      {
+       "texto": "be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The plant [was] opened in October 2025.",
+     "opcoes": [
+      {
+       "texto": "were",
+       "certa": false
+      },
+      {
+       "texto": "did",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He is the engineer [who] designed the plant.",
+     "opcoes": [
+      {
+       "texto": "which",
+       "certa": false
+      },
+      {
+       "texto": "where",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You [don't have to] wear gloves in the office. It isn't necessary.",
+     "opcoes": [
+      {
+       "texto": "mustn't",
+       "certa": false
+      },
+      {
+       "texto": "must",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "This is the room where the old equipment is.",
+       "certa": true
+      },
+      {
+       "texto": "This is the room which the old equipment is.",
+       "certa": false
+      },
+      {
+       "texto": "This is the room where the old equipment is there.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "English is spoken here.",
+       "certa": true
+      },
+      {
+       "texto": "English speaks here.",
+       "certa": false
+      },
+      {
+       "texto": "Here speaks English.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 4). Complete: \"If I ___ you, I'd wear a helmet.\"",
+     "opcoes": [
+      {
+       "texto": "were",
+       "certa": true
+      },
+      {
+       "texto": "am",
+       "certa": false
+      },
+      {
+       "texto": "will be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 4). Complete (20%): \"The crane ___ work tomorrow — it's too windy.\"",
+     "opcoes": [
+      {
+       "texto": "probably won't",
+       "certa": true
+      },
+      {
+       "texto": "won't probably",
+       "certa": false
+      },
+      {
+       "texto": "probably not",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 3). Choose the polite way to interrupt.",
+     "opcoes": [
+      {
+       "texto": "Sorry to interrupt, but…",
+       "certa": true
+      },
+      {
+       "texto": "Sorry for interrupt, but…",
+       "certa": false
+      },
+      {
+       "texto": "Stop, please, but…",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Os painéis foram feitos na China.",
+     "resposta": "The panels were made in China.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. Normally the data is sent by the radio link, but now we have the satellite too.",
+     "enunciado": "How is the data normally sent?",
+     "opcoes": [
+      {
+       "texto": "by the radio link",
+       "certa": true
+      },
+      {
+       "texto": "by the satellite",
+       "certa": false
+      },
+      {
+       "texto": "by email",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain a process or a procedure at your work, or in your studies. Use sequence words and at least two passive sentences.",
+     "frase": "First",
+     "resposta": "In our warehouse, an order is prepared in five steps. First, it's received by email. Then it's checked by the manager. After that, the products are taken from the shelves and put in boxes. Once the boxes are ready, they're sent by lorry. Finally, the client gets a message.",
+     "contexto": "Processo com passiva (45 segundos)."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe a place you know well: who works there, what is done there, and one rule.",
+     "frase": "where",
+     "resposta": "The library where I study is in the centre of the city. The librarians who work there are very helpful. Books are lent for two weeks, and you mustn't eat inside.",
+     "contexto": "Relativas, passiva e regras."
+    }
+   ]
+  }
+ ]
+}

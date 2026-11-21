@@ -1,0 +1,1299 @@
+{
+ "unidade": "A2.2 · Unit 10 — The next step",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "10A",
+   "titulo": "I'm good at solving problems",
+   "aula": "10A",
+   "objectivo": "Falar dos pontos fortes e dos gostos com good at + -ing, enjoy + -ing e want / would like + to, com um exemplo.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm good at [solving] problems.",
+     "opcoes": [
+      {
+       "texto": "solve",
+       "certa": false
+      },
+      {
+       "texto": "to solve",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm good [at] explaining things.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I enjoy [working] with clients.",
+     "opcoes": [
+      {
+       "texto": "to work",
+       "certa": false
+      },
+      {
+       "texto": "work",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd love [to apply] for this job.",
+     "opcoes": [
+      {
+       "texto": "apply",
+       "certa": false
+      },
+      {
+       "texto": "applied",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I'm good at organising things.",
+       "certa": true
+      },
+      {
+       "texto": "I'm good in organise things.",
+       "certa": false
+      },
+      {
+       "texto": "I'm good at organise things.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the best answer about a weakness.",
+     "opcoes": [
+      {
+       "texto": "I'm not very good at writing reports, but I'm doing a course.",
+       "certa": true
+      },
+      {
+       "texto": "I don't have any weaknesses.",
+       "certa": false
+      },
+      {
+       "texto": "I'm bad at everything.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Why do you give an example after a strength?",
+     "opcoes": [
+      {
+       "texto": "to show that it's true",
+       "certa": true
+      },
+      {
+       "texto": "to make the answer longer",
+       "certa": false
+      },
+      {
+       "texto": "because it's a rule",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Sou bom a resolver problemas.",
+     "resposta": "I'm good at solving problems.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm not very good at writing reports. But I'm doing a course on Saturdays, and I want to improve.",
+     "enunciado": "What is Nuno not very good at?",
+     "opcoes": [
+      {
+       "texto": "writing reports",
+       "certa": true
+      },
+      {
+       "texto": "speaking English",
+       "certa": false
+      },
+      {
+       "texto": "solving problems",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm good at solving problems.",
+     "enunciado": "Ouça e repita: \"good at\" ligado."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What are you good at? Give one example.",
+     "frase": "good at",
+     "resposta": "I'm good at organising things. For example, last year I organised a conference for two hundred people.",
+     "contexto": "Um ponto forte e um exemplo no passado."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What are you not very good at? What are you doing about it?",
+     "frase": "not very good at",
+     "resposta": "I'm not very good at speaking in meetings, but I'm practising with my English tutor every week.",
+     "contexto": "Honestidade e o que está a fazer."
+    }
+   ]
+  },
+  {
+   "codigo": "10B",
+   "titulo": "She speaks English well",
+   "aula": "10B",
+   "objectivo": "Dizer como se faz uma coisa com advérbios de modo e distinguir good / well.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He checks everything [carefully].",
+     "opcoes": [
+      {
+       "texto": "careful",
+       "certa": false
+      },
+      {
+       "texto": "carefuly",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She speaks English [well].",
+     "opcoes": [
+      {
+       "texto": "good",
+       "certa": false
+      },
+      {
+       "texto": "goodly",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "They work [fast].",
+     "opcoes": [
+      {
+       "texto": "fastly",
+       "certa": false
+      },
+      {
+       "texto": "fasting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He's a [good] speaker.",
+     "opcoes": [
+      {
+       "texto": "well",
+       "certa": false
+      },
+      {
+       "texto": "goodly",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "She speaks English well.",
+       "certa": true
+      },
+      {
+       "texto": "She speaks well English.",
+       "certa": false
+      },
+      {
+       "texto": "She speaks English good.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "careful → ?",
+     "opcoes": [
+      {
+       "texto": "carefully",
+       "certa": true
+      },
+      {
+       "texto": "carefuly",
+       "certa": false
+      },
+      {
+       "texto": "carefull",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence has an adjective?",
+     "opcoes": [
+      {
+       "texto": "He's a quick learner.",
+       "certa": true
+      },
+      {
+       "texto": "He learns quickly.",
+       "certa": false
+      },
+      {
+       "texto": "He speaks clearly.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ela fala bem inglês.",
+     "resposta": "She speaks English well.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Well, he works hard, and he learns very quickly.",
+     "enunciado": "Paulo is talking about Nuno. How does Nuno learn?",
+     "opcoes": [
+      {
+       "texto": "very quickly",
+       "certa": true
+      },
+      {
+       "texto": "slowly",
+       "certa": false
+      },
+      {
+       "texto": "carefully",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "He checks everything carefully. He speaks English well.",
+     "enunciado": "Ouça e repita: o -ly fraco."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe how a colleague works. Use two adverbs.",
+     "frase": "works",
+     "resposta": "My colleague Joana works hard. She speaks to clients politely, and she explains things clearly.",
+     "contexto": "Dois advérbios de modo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How do you speak English now? Compare with last year.",
+     "frase": "better",
+     "resposta": "I speak English much better now. I still speak slowly, but I understand people well.",
+     "contexto": "Use better, well e um advérbio em -ly."
+    }
+   ]
+  },
+  {
+   "codigo": "10C",
+   "titulo": "What have you done? What will you do?",
+   "aula": "10C",
+   "objectivo": "Responder às perguntas de uma entrevista, escolhendo o tempo certo.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've worked here [since] October.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "in",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Before that, I [did] an internship.",
+     "opcoes": [
+      {
+       "texto": "have done",
+       "certa": false
+      },
+      {
+       "texto": "do",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In five years, I want [to be] a network engineer.",
+     "opcoes": [
+      {
+       "texto": "being",
+       "certa": false
+      },
+      {
+       "texto": "be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"How long have you worked there?\" Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "I've worked there for two years.",
+       "certa": true
+      },
+      {
+       "texto": "I work there for two years.",
+       "certa": false
+      },
+      {
+       "texto": "I worked there since two years.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Tell me about a difficult situation.\" Choose the correct start.",
+     "opcoes": [
+      {
+       "texto": "Last year I had a big problem with a client.",
+       "certa": true
+      },
+      {
+       "texto": "Last year I have a big problem with a client.",
+       "certa": false
+      },
+      {
+       "texto": "Last year I've had a big problem with a client.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Where do you see yourself in five years?\" Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "I want to be a manager.",
+       "certa": true
+      },
+      {
+       "texto": "I was a manager.",
+       "certa": false
+      },
+      {
+       "texto": "I've been a manager.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"What have you learned in this job?\" Choose the correct answer.",
+     "opcoes": [
+      {
+       "texto": "I've learned to work with clients.",
+       "certa": true
+      },
+      {
+       "texto": "I learn to work with clients yesterday.",
+       "certa": false
+      },
+      {
+       "texto": "I've learned to work with clients last year.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I want to be a network engineer. I'm going to finish my English course this year.",
+     "enunciado": "What does Nuno want to be?",
+     "opcoes": [
+      {
+       "texto": "a network engineer",
+       "certa": true
+      },
+      {
+       "texto": "an English teacher",
+       "certa": false
+      },
+      {
+       "texto": "a manager",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I've worked at Kalandula Tech since October. Before that, I did an internship there for three months.",
+     "enunciado": "How long was Nuno's internship?",
+     "opcoes": [
+      {
+       "texto": "three months",
+       "certa": true
+      },
+      {
+       "texto": "seven months",
+       "certa": false
+      },
+      {
+       "texto": "one year",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I've worked there since October. Before that, I did an internship.",
+     "enunciado": "Ouça e repita, com uma pausa curta antes de \"Before that\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you do at the moment, and how long have you done it?",
+     "frase": "I've",
+     "resposta": "I'm an accountant at a bank. I've worked there since 2022. These days I'm working on the end-of-year reports.",
+     "contexto": "Presente e present perfect com since / for."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Where do you see yourself in five years?",
+     "frase": "want to",
+     "resposta": "I want to be a finance manager. I'm going to do a course next year, and I think I'll speak English very well.",
+     "contexto": "want to, going to e will."
+    }
+   ]
+  },
+  {
+   "codigo": "10D",
+   "titulo": "Skills and qualities",
+   "aula": "10D",
+   "objectivo": "Usar as palavras de competências e candidaturas, com o acento certo em -tion e -ity; realise e sensible.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "skill",
+       "b": "competência"
+      },
+      {
+       "a": "teamwork",
+       "b": "trabalho de equipa"
+      },
+      {
+       "a": "salary",
+       "b": "salário"
+      },
+      {
+       "a": "training",
+       "b": "formação"
+      },
+      {
+       "a": "position",
+       "b": "lugar, cargo"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "An application is…",
+     "opcoes": [
+      {
+       "texto": "a letter or a form to ask for a job",
+       "certa": true
+      },
+      {
+       "texto": "the money you get for a job",
+       "certa": false
+      },
+      {
+       "texto": "a person in an interview",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which syllable is stressed in \"communication\"?",
+     "opcoes": [
+      {
+       "texto": "-ca-",
+       "certa": true
+      },
+      {
+       "texto": "com-",
+       "certa": false
+      },
+      {
+       "texto": "-tion",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which syllable is stressed in \"responsibility\"?",
+     "opcoes": [
+      {
+       "texto": "-bi-",
+       "certa": true
+      },
+      {
+       "texto": "re-",
+       "certa": false
+      },
+      {
+       "texto": "-ty",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Realizámos o projecto em seis meses.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "We did the project in six months.",
+       "certa": true
+      },
+      {
+       "texto": "We realised the project in six months.",
+       "certa": false
+      },
+      {
+       "texto": "We realized the project in six months.",
+       "certa": false
+      }
+     ],
+     "explicacao": "realise = perceber, dar-se conta."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Ela é muito sensível.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "She's very sensitive.",
+       "certa": true
+      },
+      {
+       "texto": "She's very sensible.",
+       "certa": false
+      },
+      {
+       "texto": "She's very sensibel.",
+       "certa": false
+      }
+     ],
+     "explicacao": "sensible = sensato."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I have [experience] in IT support.",
+     "opcoes": [
+      {
+       "texto": "experiment",
+       "certa": false
+      },
+      {
+       "texto": "expert",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd like to apply [for] the position.",
+     "opcoes": [
+      {
+       "texto": "at",
+       "certa": false
+      },
+      {
+       "texto": "on",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "There's training in Johannesburg, and they'll talk about the salary at the interview.",
+     "enunciado": "Where is the training?",
+     "opcoes": [
+      {
+       "texto": "in Johannesburg",
+       "certa": true
+      },
+      {
+       "texto": "in Luanda",
+       "certa": false
+      },
+      {
+       "texto": "online",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I have good communication skills and a lot of responsibility.",
+     "enunciado": "Ouça e repita: communiCAtion, responsiBIlity."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What are your three best skills?",
+     "frase": "skills",
+     "resposta": "My best skills are communication, teamwork and problem-solving.",
+     "contexto": "Três competências."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you have experience with clients? Tell me.",
+     "frase": "experience",
+     "resposta": "Yes, I have experience with clients. I've worked with them for three years, first in a shop and then in a bank.",
+     "contexto": "experience + present perfect."
+    }
+   ]
+  },
+  {
+   "codigo": "10E",
+   "titulo": "Real English: Why do you want this job?",
+   "aula": "10E",
+   "objectivo": "Identificar a experiência, as qualidades e o objectivo de três candidatos.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I've taught English at a secondary school in Malanje for twelve years, and I love teaching.",
+     "enunciado": "How long has Esperança taught in Malanje?",
+     "opcoes": [
+      {
+       "texto": "twelve years",
+       "certa": true
+      },
+      {
+       "texto": "two years",
+       "certa": false
+      },
+      {
+       "texto": "twenty years",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I've already given some evening classes to bank staff, and I enjoyed it very much.",
+     "enunciado": "Who has Esperança taught in the evenings?",
+     "opcoes": [
+      {
+       "texto": "bank staff",
+       "certa": true
+      },
+      {
+       "texto": "children",
+       "certa": false
+      },
+      {
+       "texto": "engineers",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "It's a good job, but last year my wife and I had a baby, and I want to be at home every night.",
+     "enunciado": "Why does Kevin want a new job?",
+     "opcoes": [
+      {
+       "texto": "He wants to be at home every night.",
+       "certa": true
+      },
+      {
+       "texto": "The money is bad.",
+       "certa": false
+      },
+      {
+       "texto": "He doesn't like his job.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I want to stay in Angola — my wife is Angolan, and we're going to live in Luanda.",
+     "enunciado": "Where is Kevin going to live?",
+     "opcoes": [
+      {
+       "texto": "in Luanda",
+       "certa": true
+      },
+      {
+       "texto": "in Scotland",
+       "certa": false
+      },
+      {
+       "texto": "in Soyo",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I speak French, Lingala and English, and I'm learning Portuguese.",
+     "enunciado": "Which languages does Patrick speak?",
+     "opcoes": [
+      {
+       "texto": "French, Lingala and English",
+       "certa": true
+      },
+      {
+       "texto": "French, Spanish and English",
+       "certa": false
+      },
+      {
+       "texto": "only English",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "In the future, I'd like to manage a team.",
+     "enunciado": "What's Patrick's goal?",
+     "opcoes": [
+      {
+       "texto": "to manage a team",
+       "certa": true
+      },
+      {
+       "texto": "to move to the Congo",
+       "certa": false
+      },
+      {
+       "texto": "to learn Lingala",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The three good answers have…",
+     "opcoes": [
+      {
+       "texto": "experience, a quality and a goal",
+       "certa": true
+      },
+      {
+       "texto": "only the salary",
+       "certa": false
+      },
+      {
+       "texto": "a long story about the family",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm good at explaining grammar in a simple way.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Imagine an interview for your dream job. Why do you want this job?",
+     "frase": "I'm good at",
+     "resposta": "I've worked in sales for five years. I'm good at talking to people, and I'm reliable. My goal is to manage a sales team.",
+     "contexto": "Experiência, uma qualidade e um objectivo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's your goal for the future?",
+     "frase": "I'd like to",
+     "resposta": "I'd like to work for an international company and travel for work.",
+     "contexto": "I'd like to / I want to."
+    }
+   ]
+  },
+  {
+   "codigo": "10F",
+   "titulo": "Work & Life: Job interview",
+   "aula": "10F",
+   "objectivo": "Fazer uma entrevista simples e explicar em inglês uma carta escrita em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Tell me about yourself.\" Choose the best start.",
+     "opcoes": [
+      {
+       "texto": "I was born in Benguela, and I studied economics there. I've worked at a bank since 2021.",
+       "certa": true
+      },
+      {
+       "texto": "I'm fine, thank you.",
+       "certa": false
+      },
+      {
+       "texto": "It's all on my CV.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Why do you want this position?\" Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "I enjoy working with clients, and I'd like to learn more.",
+       "certa": true
+      },
+      {
+       "texto": "Because I need money.",
+       "certa": false
+      },
+      {
+       "texto": "I don't know.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Could you tell me [more] about the training?",
+     "opcoes": [
+      {
+       "texto": "many",
+       "certa": false
+      },
+      {
+       "texto": "most",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "When [will] I know your decision?",
+     "opcoes": [
+      {
+       "texto": "am",
+       "certa": false
+      },
+      {
+       "texto": "have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Do you have any questions for us?\" Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "Yes. Could you tell me more about the training?",
+       "certa": true
+      },
+      {
+       "texto": "No.",
+       "certa": false
+      },
+      {
+       "texto": "Yes. When can I stop working?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The letter says: \"aprende depressa\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "He says I learn quickly.",
+       "certa": true
+      },
+      {
+       "texto": "He says I learn fastly.",
+       "certa": false
+      },
+      {
+       "texto": "He says I learn quickness.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The training is two weeks in July. And we'll call all the candidates next Friday.",
+     "enunciado": "When will Lerato call the candidates?",
+     "opcoes": [
+      {
+       "texto": "next Friday",
+       "certa": true
+      },
+      {
+       "texto": "in July",
+       "certa": false
+      },
+      {
+       "texto": "tomorrow",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My writing in English is slower than my speaking. But I've started a course, and I already write my reports faster.",
+     "enunciado": "What's Nuno's weakness?",
+     "opcoes": [
+      {
+       "texto": "his writing in English",
+       "certa": true
+      },
+      {
+       "texto": "his speaking",
+       "certa": false
+      },
+      {
+       "texto": "his technical skills",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Pode falar-me mais sobre a formação?",
+     "resposta": "Could you tell me more about the training?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Thank you very much. It was a pleasure.",
+     "enunciado": "Ouça e repita, com voz calma e clara."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about yourself.",
+     "frase": "I've",
+     "resposta": "I was born in Huambo, and I studied engineering in Luanda. I've worked at an oil company since 2020. These days I'm working on a new project.",
+     "contexto": "Origem, estudos, experiência e agora."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you have any questions for us? Ask two.",
+     "frase": "Could you",
+     "resposta": "Yes, two. Could you tell me more about the team? And when will I know your decision?",
+     "contexto": "Duas perguntas educadas."
+    }
+   ]
+  },
+  {
+   "codigo": "10R",
+   "titulo": "Unit 10 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 10 e reciclar as unidades 2, 6, 8 e 9.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm good at [organising] things.",
+     "opcoes": [
+      {
+       "texto": "organise",
+       "certa": false
+      },
+      {
+       "texto": "to organise",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She explains everything [clearly].",
+     "opcoes": [
+      {
+       "texto": "clear",
+       "certa": false
+      },
+      {
+       "texto": "clearful",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've worked here [for] three years.",
+     "opcoes": [
+      {
+       "texto": "since",
+       "certa": false
+      },
+      {
+       "texto": "during",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Last year, I [did] a course in management.",
+     "opcoes": [
+      {
+       "texto": "have done",
+       "certa": false
+      },
+      {
+       "texto": "do",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "He's a good manager.",
+       "certa": true
+      },
+      {
+       "texto": "He's a well manager.",
+       "certa": false
+      },
+      {
+       "texto": "He's a goodly manager.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 9). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Could you send me the report, please?",
+       "certa": true
+      },
+      {
+       "texto": "Could you to send me the report, please?",
+       "certa": false
+      },
+      {
+       "texto": "Could you sending me the report, please?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 8). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If I get the job, I'll move to Luanda.",
+       "certa": true
+      },
+      {
+       "texto": "If I'll get the job, I move to Luanda.",
+       "certa": false
+      },
+      {
+       "texto": "If I get the job, I moved to Luanda.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 6). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Have you ever worked in a team?",
+       "certa": true
+      },
+      {
+       "texto": "Did you ever worked in a team?",
+       "certa": false
+      },
+      {
+       "texto": "Have you ever work in a team?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 2). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I was working when the power went off.",
+       "certa": true
+      },
+      {
+       "texto": "I was work when the power went off.",
+       "certa": false
+      },
+      {
+       "texto": "I working when the power went off.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Trabalho bem em equipa.",
+     "resposta": "I work well in a team.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm a reliable engineer, and I work well in a team.",
+     "enunciado": "What does Kevin say about himself?",
+     "opcoes": [
+      {
+       "texto": "He works well in a team.",
+       "certa": true
+      },
+      {
+       "texto": "He works alone.",
+       "certa": false
+      },
+      {
+       "texto": "He's a new engineer.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about one of your strengths, with an example.",
+     "frase": "For example",
+     "resposta": "I'm good at solving problems. For example, last month our system stopped, and I found the problem in one hour.",
+     "contexto": "Ponto forte + exemplo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe a colleague: how does he or she work?",
+     "frase": "works",
+     "resposta": "My colleague Paulo works hard. He speaks to clients politely, and he checks everything carefully.",
+     "contexto": "Advérbios de modo."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,378 @@
+{
+ "unidade": "A1.1 · Review 1",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "R1-1",
+   "titulo": "Review 1: me and my work",
+   "aula": "R1A",
+   "objectivo": "Rever as unidades 1 a 3 pelos erros mais comuns.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "São 20h. Chega a um jantar. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Good evening!",
+       "certa": true
+      },
+      {
+       "texto": "Good night!",
+       "certa": false
+      },
+      {
+       "texto": "Good afternoon!",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Good night\" só para a despedida."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Are you Nuno? — Yes, ...",
+     "opcoes": [
+      {
+       "texto": "I am.",
+       "certa": true
+      },
+      {
+       "texto": "I'm.",
+       "certa": false
+      },
+      {
+       "texto": "I is.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My surname is Kapinga. K, A, P, I, N, G, A.",
+     "enunciado": "Como se escreve o apelido?",
+     "opcoes": [
+      {
+       "texto": "KAPINGA",
+       "certa": true
+      },
+      {
+       "texto": "CAPINGA",
+       "certa": false
+      },
+      {
+       "texto": "KAPIMGA",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I'm twenty-two.",
+       "certa": true
+      },
+      {
+       "texto": "I have twenty-two years.",
+       "certa": false
+      },
+      {
+       "texto": "I'm twenty-two years.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I'm from Angola. I'm Angolan.",
+       "certa": true
+      },
+      {
+       "texto": "I'm from Angolan. I'm Angola.",
+       "certa": false
+      },
+      {
+       "texto": "I'm Angola. I'm from Angolan.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [an] IT intern.",
+     "opcoes": [
+      {
+       "texto": "a",
+       "certa": false
+      },
+      {
+       "texto": "the",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"IT\" começa por som de vogal (\"ai-ti\")."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Do you work on Saturdays? — No, ...",
+     "opcoes": [
+      {
+       "texto": "I don't.",
+       "certa": true
+      },
+      {
+       "texto": "I not.",
+       "certa": false
+      },
+      {
+       "texto": "I'm not work.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My phone number is nine one two, double seven three, one four oh.",
+     "enunciado": "Qual é o número?",
+     "opcoes": [
+      {
+       "texto": "912 773 140",
+       "certa": true
+      },
+      {
+       "texto": "912 737 140",
+       "certa": false
+      },
+      {
+       "texto": "921 773 140",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "De onde é e o que faz?",
+     "resposta": "Where are you from and what do you do?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Hello. My name is Nuno Kapinga. I'm from Lubango. I'm an IT intern.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hello! What's your name, where are you from and what do you do?",
+     "frase": "I'm",
+     "resposta": "Hello. I'm Ana Domingos. I'm from Luanda. I'm a receptionist. I work for Kalandula Tech.",
+     "contexto": "Apresente-se em três ou quatro frases."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Sorry, can you repeat that, please? Let me think.",
+     "enunciado": "Ouça e repita as estratégias do exame."
+    }
+   ]
+  },
+  {
+   "codigo": "R1-2",
+   "titulo": "Review 1: my family and my day",
+   "aula": "R1B",
+   "objectivo": "Rever as unidades 4 e 5 pelos erros mais comuns.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se diz \"o telemóvel do Paulo\"?",
+     "opcoes": [
+      {
+       "texto": "Paulo's phone",
+       "certa": true
+      },
+      {
+       "texto": "the phone of Paulo",
+       "certa": false
+      },
+      {
+       "texto": "Paulo phone's",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Parents\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "pai e mãe",
+       "certa": true
+      },
+      {
+       "texto": "parentes",
+       "certa": false
+      },
+      {
+       "texto": "primos",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My sister [has] a baby. [Her] name is Rita.",
+     "opcoes": [
+      {
+       "texto": "have",
+       "certa": false
+      },
+      {
+       "texto": "His",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Nuno [gets] up at six. He [takes] a candongueiro.",
+     "opcoes": [
+      {
+       "texto": "get",
+       "certa": false
+      },
+      {
+       "texto": "take",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "He doesn't work on Sundays.",
+       "certa": true
+      },
+      {
+       "texto": "He doesn't works on Sundays.",
+       "certa": false
+      },
+      {
+       "texto": "He don't work on Sundays.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I'm never late.",
+       "certa": true
+      },
+      {
+       "texto": "I never am late.",
+       "certa": false
+      },
+      {
+       "texto": "I'm late never.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Can we meet [on] Thursday [at] two?",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "by",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I usually play basketball on Saturdays. On Sundays I go to church with my family.",
+     "enunciado": "O que faz o Nuno aos sábados?",
+     "opcoes": [
+      {
+       "texto": "joga basquetebol",
+       "certa": true
+      },
+      {
+       "texto": "vai à igreja",
+       "certa": false
+      },
+      {
+       "texto": "trabalha",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "It's quarter to eight.",
+     "enunciado": "Que horas são?",
+     "opcoes": [
+      {
+       "texto": "7:45",
+       "certa": true
+      },
+      {
+       "texto": "8:15",
+       "certa": false
+      },
+      {
+       "texto": "8:45",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "A que horas começa ela a trabalhar?",
+     "resposta": "What time does she start work?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "He gets up at six. He takes a candongueiro. He's never late.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of a person in your family or a friend. What does he or she do every day?",
+     "frase": "gets up",
+     "resposta": "My brother is a driver. He gets up at five. He works for a bank and he doesn't work on Sundays.",
+     "contexto": "Use a 3.ª pessoa: gets, works, doesn't…"
+    }
+   ]
+  }
+ ]
+}

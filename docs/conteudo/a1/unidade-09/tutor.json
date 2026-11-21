@@ -1,0 +1,131 @@
+{
+ "unidade": "A1.2 · Unit 9 — Free time and right now",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a1-u9-guiada",
+   "nome": "Unit 9 · Free time",
+   "tipo": "guiada",
+   "depois_da_aula": "9C",
+   "descricao": "O tutor pergunta ao aluno o que gosta de fazer, o que sabe fazer e o que está a fazer agora.",
+   "papel_tutor": "Um professor simpático.",
+   "nivel": "A1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I love / like / hate + -ing",
+    "I can / can't…",
+    "I'm … -ing now."
+   ],
+   "extras": {
+    "brief": "Guided practice for a beginner (A1, unit 9). You are a friendly teacher. Ask what the student likes and doesn't like doing in their free time (love/like/don't mind/hate + -ing), what they can and can't do (swim, drive, cook, dance, play an instrument, languages), and what they are doing right now. Share a little about yourself: you love reading and you can play the guitar a little, but you can't swim. If the student says \"I like dance\", model \"I like dancing\" kindly; if they say \"I working\", model \"I'm working\". Use only units 1-9 language; no past tense, no \"will\", no \"going to\". One question at a time.",
+    "primeira_fala": "Hello, {nome}! What do you like doing in your free time?",
+    "primeira_fala_simples": "Hello! What do you like doing at the weekend?",
+    "guiao": [
+     "Nice! Is there anything you hate doing?",
+     "Can you swim? Can you drive?",
+     "What languages can you speak?",
+     "I love reading, and I can play the guitar a little. What are you doing right now?",
+     "Great job, {nome}! Goodbye!"
+    ],
+    "frases": [
+     {
+      "en": "I love dancing.",
+      "pt": "Adoro dançar."
+     },
+     {
+      "en": "I can drive, but I can't swim.",
+      "pt": "Sei conduzir, mas não sei nadar."
+     },
+     {
+      "en": "I'm studying English right now.",
+      "pt": "Estou a estudar inglês neste momento."
+     }
+    ],
+    "palavras": [
+     "love",
+     "like",
+     "hate",
+     "can",
+     "swim",
+     "drive",
+     "dancing",
+     "playing",
+     "now",
+     "doing"
+    ],
+    "minutos_sugeridos": 4
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a1-u9-livre",
+   "nome": "Unit 9 · A busy afternoon",
+   "tipo": "livre",
+   "depois_da_aula": "9G",
+   "descricao": "O tutor é um colega (Morgan) que liga duas vezes: primeiro quando o aluno está ocupado (o aluno explica o que está a fazer e propõe ligar mais tarde); depois para falar com um colega ausente (o aluno recebe um recado e confirma o número).",
+   "papel_tutor": "Morgan, colega de outra empresa, ao telefone.",
+   "nivel": "A1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Sorry, I'm … right now. Can I call you back later?",
+    "Who's calling, please?",
+    "Can I take a message?"
+   ],
+   "extras": {
+    "brief": "Role-play for a beginner (A1, unit 9). You are Morgan, a contact from another company (Morgan can be a man or a woman, to match your voice). Part 1: you call the student and ask \"Can we talk now?\". The student is busy: let them say what they are doing (present continuous) and propose to call you back; agree on a time (\"in twenty minutes\", \"at three\"). Part 2: say \"OK, one more thing: can I speak to your colleague, Sílvia?\" — the student says she isn't available (she is in a meeting or having lunch), asks who is calling and offers to take a message. Your message: please call Morgan back this afternoon; your number is 923 456 789; spell your name if asked (M, O, R, G, A, N). Check that the student repeats the number. Use only units 1-9 language. Short turns.",
+    "primeira_fala": "Hi, it's Morgan, from Kwanza Logistics. Can we talk now?",
+    "primeira_fala_simples": "Hi, it's Morgan. Can we talk now?",
+    "guiao": [
+     "Oh, sorry! What are you doing?",
+     "No problem. When can you call me back?",
+     "Perfect. One more thing: can I speak to Sílvia, please?",
+     "Oh, OK. Can I leave a message?",
+     "Please ask her to call Morgan this afternoon. My number is nine two three, four five six, seven eight nine.",
+     "Yes, that's right. Thank you, {nome}. Talk later!"
+    ],
+    "frases": [
+     {
+      "en": "Sorry, I'm in a meeting right now.",
+      "pt": "Desculpe, estou numa reunião neste momento."
+     },
+     {
+      "en": "Can I call you back in twenty minutes?",
+      "pt": "Posso ligar-lhe daqui a vinte minutos?"
+     },
+     {
+      "en": "She's having lunch. Can I take a message?",
+      "pt": "Está a almoçar. Quer deixar recado?"
+     },
+     {
+      "en": "Who's calling, please?",
+      "pt": "Quem fala, por favor?"
+     }
+    ],
+    "palavras": [
+     "sorry",
+     "meeting",
+     "driving",
+     "call",
+     "back",
+     "later",
+     "message",
+     "calling",
+     "number",
+     "correct"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": [
+    "Diz o que está a fazer com o present continuous (\"I'm in a meeting / I'm driving…\").",
+    "Propõe ligar mais tarde (\"Can I call you back…?\") e combina quando.",
+    "Diz que a colega não está e pergunta quem fala (\"Who's calling, please?\").",
+    "Oferece-se para receber o recado (\"Can I take a message?\") e repete o número para confirmar.",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

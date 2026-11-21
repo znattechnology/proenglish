@@ -132,7 +132,7 @@ class TransactionListPagination(LargePaginatedList):
         data_dict.update(extra_data)
         
         return Response(OrderedDict([
-            ('message', 'Transações recuperadas com sucesso'),
+            ('message', 'Transacções recuperadas com sucesso'),
             ('data', data_dict)
         ]))
 

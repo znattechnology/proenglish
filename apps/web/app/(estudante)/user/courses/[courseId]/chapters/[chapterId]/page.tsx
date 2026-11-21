@@ -7,21 +7,30 @@ import { ArrowLeft, ArrowRight, Check, Dumbbell, ExternalLink, FileText } from "
 import { Aviso, Botao, Etiqueta, Osso } from "@/components/pe";
 import { Questionario } from "@/components/pe/curso/Questionario";
 import { TextoRico } from "@/components/pe/curso/TextoRico";
+import { ConversaDaAula, RepetirEmVozAlta } from "@/components/pe/curso/FalaDaAula";
+import { ASeguir } from "@/components/pe/curso/Percurso";
+import { AvisoPraticaAnterior } from "@/components/pe/curso/AvisoPraticaAnterior";
+import { praticaAnterior } from "@/components/pe/curso/praticaAnterior";
 import { cnPe } from "@/lib/pe";
 import { useDjangoAuth } from "@/hooks/useDjangoAuth";
 import { mensagemErro } from "@/src/domains/student/subscricao/api";
+import { useFalaDaAulaQuery } from "@/src/domains/student/curso/fala";
 import {
   capitulosPorOrdem,
   concluidos,
+  temQuestionario,
   TIPO_PT,
   useCapituloQuery,
+  usePercursoQuery,
   useCursoQuery,
   useInscricaoQuery,
   useMarcarCapituloMutation,
   useProgressoQuery,
   useRecursosQuery,
+  videosVistos,
   type CapituloNoCurso,
 } from "@/src/domains/student/curso/api";
+import { ROTA_PLANOS, TEXTO_PLANOS_PAGOS } from "@/components/pe/curso/Amostra";
 
 type Linha = { start: number; end: number; text: string };
 
@@ -30,19 +39,40 @@ export default function PaginaAula() {
   const { user } = useDjangoAuth();
   const { data: dados, isError: erroCurso } = useCursoQuery(courseId);
   const { data: inscricao } = useInscricaoQuery(courseId);
-  const podeVer = !!inscricao?.is_enrolled && !!dados?.temAcesso;
-  const { data: cap, isError: erroCap, refetch } = useCapituloQuery(chapterId, { skip: !podeVer });
-  const { data: progresso } = useProgressoQuery({ userId: user?.id ?? "", courseId }, { skip: !user || !podeVer });
-
   const lista = useMemo(() => (dados ? capitulosPorOrdem(dados.curso) : []), [dados]);
   const i = lista.findIndex((c) => c.chapterId === chapterId);
   const aqui = lista[i];
+  // Unidades de amostra: sem o plano, só as aulas que a API não marca como bloqueadas.
+  const amostra = !dados?.temAcesso && dados?.acesso === "amostra";
+  const podeVer = !!inscricao?.is_enrolled && (!!dados?.temAcesso || (amostra && !!aqui && !aqui.bloqueada));
+  const { data: cap, isError: erroCap, refetch } = useCapituloQuery(chapterId, { skip: !podeVer });
+  const { data: progresso } = useProgressoQuery({ userId: user?.id ?? "", courseId }, { skip: !user || !podeVer });
+
   const anterior = i > 0 ? lista[i - 1] : null;
-  const seguinte = i >= 0 && i < lista.length - 1 ? lista[i + 1] : null;
+  const seguinte = i >= 0 && i < lista.length - 1 && !lista[i + 1].bloqueada ? lista[i + 1] : null;
   const feitos = concluidos(progresso);
+  const vistos = videosVistos(progresso);
 
   if (erroCurso) return <Problema titulo="Não encontrámos este curso" courseId={courseId} />;
   if (!dados || !inscricao) return <EsqueletoAula />;
+  if (!podeVer && inscricao.is_enrolled && amostra && aqui?.bloqueada) {
+    return (
+      <main className="mx-auto flex w-full max-w-[720px] flex-col items-start gap-4 px-5 py-10">
+        <h1 className="m-0 text-pe-titulo-m">{TEXTO_PLANOS_PAGOS}</h1>
+        <p className="m-0 text-pe-tinta-suave">
+          {aqui.title}, {aqui.seccao}. As primeiras unidades de {dados.curso.title} são gratuitas; esta faz parte dos planos pagos.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Botao asChild tipo="realce">
+            <Link href={ROTA_PLANOS}>Ver os planos</Link>
+          </Botao>
+          <Botao asChild tipo="secundario">
+            <Link href={`/user/courses/${courseId}`}>Voltar ao curso</Link>
+          </Botao>
+        </div>
+      </main>
+    );
+  }
   if (!podeVer) {
     return (
       <main className="mx-auto flex w-full max-w-[720px] flex-col items-start gap-4 px-5 py-10">
@@ -84,6 +114,7 @@ export default function PaginaAula() {
               courseId={courseId}
               userId={user?.id ?? ""}
               feito={feitos.has(chapterId)}
+              videoVisto={vistos.has(chapterId)}
               seguinte={seguinte}
             />
           ) : (
@@ -152,22 +183,39 @@ function Conteudo({
   courseId,
   userId,
   feito,
+  videoVisto,
   seguinte,
 }: {
   cap: CapituloNoCurso & { resources_data?: unknown[] };
   courseId: string;
   userId: string;
   feito: boolean;
+  videoVisto: boolean;
   seguinte: CapituloNoCurso | null;
 }) {
   const [marcar, { isLoading }] = useMarcarCapituloMutation();
+  // O passo seguinte do percurso (o servidor decide); volta a ser lido quando a aula fica vista.
+  const { data: percurso } = usePercursoQuery(courseId, { refetchOnMountOrArgChange: true });
+  const passo = percurso?.proximo ?? null;
+  // O laboratório da aula anterior por fazer: recomenda-se praticar primeiro (não bloqueia).
+  const pratica = praticaAnterior(percurso, cap.chapterId);
+  // O vídeo desta aula e a lição de laboratório dela já têm o seu lugar nesta página.
+  const mostrarSeguinte = !!passo && !(passo.aula_id === cap.chapterId && (passo.tipo === "aula" || passo.tipo === "pratica" || passo.tipo === "questionario"));
   const [erro, setErro] = useState<string | null>(null);
   // O progresso pode chegar depois de a aula abrir: conta o que vem do servidor e o que se marcou agora.
   const [vistoAgora, setVisto] = useState(false);
-  const visto = feito || vistoAgora;
+  // Numa aula com questionário, ver o vídeo não chega: a aula só fica concluída ao passar.
+  const comQuiz = temQuestionario(cap);
+  const soQuiz = cap.type === "Quiz";
+  const visto = comQuiz ? feito : feito || vistoAgora;
+  const videoFeito = videoVisto || vistoAgora;
   const segundos = useRef(0);
   const { data: recursos } = useRecursosQuery(cap.chapterId);
   const linhas = useMemo(() => lerTranscricao(cap.transcript), [cap.transcript]);
+  const video = useRef<HTMLVideoElement>(null);
+  const comVideo = cap.type === "Video" && !!cap.video;
+  // Frases aprovadas pelo professor: repetir em voz alta e conversa no fim da aula.
+  const { data: fala } = useFalaDaAulaQuery(cap.chapterId, { skip: !comVideo });
 
   const concluir = async () => {
     setErro(null);
@@ -181,16 +229,23 @@ function Conteudo({
   };
 
   const accao =
-    cap.type === "Quiz" ? null : visto ? (
+    soQuiz ? null : visto ? (
       <div className="flex flex-wrap items-center gap-3">
         <Etiqueta tipo="certo">
-          <Check aria-hidden className="size-4" strokeWidth={3} /> {cap.type === "Text" ? "Lida" : "Vista"}
+          <Check aria-hidden className="size-4" strokeWidth={3} /> {comQuiz ? "Concluída" : cap.type === "Text" ? "Lida" : "Vista"}
         </Etiqueta>
         {seguinte ? (
           <Botao asChild tamanho="medio">
             <Link href={`/user/courses/${courseId}/chapters/${seguinte.chapterId}`}>Aula seguinte</Link>
           </Botao>
         ) : null}
+      </div>
+    ) : comQuiz && videoFeito ? (
+      <div className="flex flex-col items-start gap-1 md:items-end">
+        <Etiqueta tipo="neutra">
+          <Check aria-hidden className="size-4" strokeWidth={3} /> {cap.type === "Text" ? "Lida" : "Vídeo visto"}
+        </Etiqueta>
+        <span className="text-[14px] leading-5 text-pe-tinta-suave">Passe o questionário para concluir a aula.</span>
       </div>
     ) : (
       <Botao tamanho="medio" disabled={isLoading} onClick={() => void concluir()}>
@@ -200,8 +255,9 @@ function Conteudo({
 
   return (
     <>
+      {pratica ? <AvisoPraticaAnterior aulaId={cap.chapterId} pratica={pratica} /> : null}
       {cap.type === "Video" && cap.video ? (
-        <Video src={cap.video} titulo={cap.title} linhas={linhas} aoAvancar={(s) => (segundos.current += s)} aoTerminar={() => !visto && void concluir()} />
+        <Video videoRef={video} src={cap.video} titulo={cap.title} linhas={linhas} aoAvancar={(s) => (segundos.current += s)} aoTerminar={() => !visto && !(comQuiz && videoFeito) && void concluir()} />
       ) : null}
 
       <div className="flex flex-col gap-4 md:flex-row md:flex-wrap md:items-start md:justify-between">
@@ -215,28 +271,51 @@ function Conteudo({
       </div>
       {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
 
-      {cap.type === "Quiz" && cap.content ? <p className="m-0 text-pe-corpo-l">{cap.content}</p> : null}
+      {soQuiz && cap.content ? <p className="m-0 text-pe-corpo-l">{cap.content}</p> : null}
+      {cap.content && !soQuiz ? <TextoRico texto={cap.content} /> : null}
 
-      {cap.type === "Quiz" ? (
-        cap.quiz_data ? (
-          <Questionario chapterId={cap.chapterId} courseId={courseId} quiz={cap.quiz_data} aoPassar={() => !visto && void concluir()} />
+      {comVideo && fala?.frases.length ? <RepetirEmVozAlta chapterId={cap.chapterId} video={video} dados={fala} /> : null}
+
+      {soQuiz ? (
+        cap.quiz_data?.questions?.length ? (
+          <Questionario chapterId={cap.chapterId} courseId={courseId} quiz={cap.quiz_data} />
         ) : (
           <Aviso tipo="neutro">O professor ainda não pôs perguntas neste questionário.</Aviso>
         )
+      ) : comQuiz && cap.quiz_data ? (
+        <section aria-labelledby="titulo-questionario" className="flex flex-col gap-3 border-t border-pe-linha pt-6">
+          <div className="flex flex-col gap-1">
+            <h2 id="titulo-questionario" className="m-0 font-pe-titulo text-[22px] font-bold leading-[28px]">
+              Questionário da aula
+            </h2>
+            <p className="m-0 text-pe-tinta-suave">
+              {videoFeito || visto ? "Responda para concluir a aula." : "Veja o vídeo e responda ao questionário para concluir a aula."}
+            </p>
+          </div>
+          <Questionario chapterId={cap.chapterId} courseId={courseId} quiz={cap.quiz_data} />
+        </section>
       ) : null}
 
-      {cap.content && cap.type !== "Quiz" ? <TextoRico texto={cap.content} /> : null}
-
-      {cap.type === "Exercise" && cap.practice_lesson ? (
+      {cap.practice_lesson ? (
         <div className="flex flex-col items-start gap-3 rounded-pe-fala bg-pe-azul-marca p-6 text-pe-sobre-marca pe-sobre-marca">
           <span className="font-pe-titulo text-[20px] font-bold leading-[26px]">Praticar no laboratório</span>
-          <span className="text-[15px] leading-[22px]">Esta aula é uma lição de prática: responde, ganha pontos e volta aqui quando terminar.</span>
+          <span className="text-[15px] leading-[22px]">
+            {cap.type === "Exercise"
+              ? "Esta aula é uma lição de prática: responde, ganha pontos e volta aqui quando terminar."
+              : "Pratique o que viu nesta aula. Os exercícios contam para a nota do curso."}
+          </span>
           <Botao asChild tipo="realce" tamanho="medio">
             <Link href={`/user/laboratory/learn/lesson/${cap.practice_lesson}`}>
               <Dumbbell aria-hidden /> Começar a prática
             </Link>
           </Botao>
         </div>
+      ) : null}
+
+      {comVideo && fala?.frases.length ? <ConversaDaAula chapterId={cap.chapterId} dados={fala} /> : null}
+
+      {mostrarSeguinte && percurso && passo ? (
+        <ASeguir proximo={{ curso: percurso.curso, passo, feitos: percurso.feitos, total: percurso.total }} />
       ) : null}
 
       {recursos?.length ? (
@@ -274,8 +353,21 @@ function Conteudo({
 /* ------------------------------------------------------------------ */
 /* Vídeo com transcrição sincronizada                                   */
 /* ------------------------------------------------------------------ */
-function Video({ src, titulo, linhas, aoAvancar, aoTerminar }: { src: string; titulo: string; linhas: Linha[]; aoAvancar: (s: number) => void; aoTerminar: () => void }) {
-  const video = useRef<HTMLVideoElement>(null);
+function Video({
+  videoRef: video,
+  src,
+  titulo,
+  linhas,
+  aoAvancar,
+  aoTerminar,
+}: {
+  videoRef: React.RefObject<HTMLVideoElement | null>;
+  src: string;
+  titulo: string;
+  linhas: Linha[];
+  aoAvancar: (s: number) => void;
+  aoTerminar: () => void;
+}) {
   const ultimo = useRef(0);
   const [tempo, setTempo] = useState(0);
   const actual = linhas.findIndex((l) => tempo >= l.start && tempo < l.end);
@@ -297,7 +389,7 @@ function Video({ src, titulo, linhas, aoAvancar, aoTerminar }: { src: string; ti
       v.removeEventListener("timeupdate", aoTempo);
       v.removeEventListener("ended", aoTerminar);
     };
-  }, [aoAvancar, aoTerminar]);
+  }, [video, aoAvancar, aoTerminar]);
 
   return (
     <div className="flex flex-col gap-3">

@@ -266,18 +266,18 @@ class EnrollmentValidator:
         # This would check if user has completed prerequisite courses
         # For now, we'll implement a basic level check
         
-        if course.level == 'Advanced':
-            # Check if user has completed at least one Intermediate course
+        if course.level in ('B2', 'C1', 'C2'):
+            # Check if user has completed at least one B1 course
             from apps.courses.models.enrollment import UserCourseProgress
             intermediate_completed = UserCourseProgress.objects.filter(
                 user=user,
-                course__level='Intermediate',
+                course__level='B1',
                 overallProgress__gte=80.0
             ).exists()
             
             if not intermediate_completed:
                 raise ValidationError(
-                    _('Advanced courses require completion of at least one Intermediate course.')
+                    _('B2 and above courses require completion of at least one B1 course.')
                 )
 
 

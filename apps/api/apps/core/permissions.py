@@ -22,7 +22,7 @@ class IsAdmin(BasePermission):
     Or combined:
         permission_classes = [IsAdmin]  # IsAdmin already checks authentication
     """
-    message = "Apenas administradores podem acessar este recurso."
+    message = "Apenas administradores podem aceder a este recurso."
 
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:
@@ -73,7 +73,7 @@ class IsPlatformAdmin(BasePermission):
     Usage:
         permission_classes = [IsPlatformAdmin]
     """
-    message = "Apenas administradores da plataforma podem acessar este recurso."
+    message = "Apenas administradores da plataforma podem aceder a este recurso."
 
     def has_permission(self, request, view):
         if not request.user or not request.user.is_authenticated:

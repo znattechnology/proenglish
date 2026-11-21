@@ -1,0 +1,135 @@
+{
+ "unidade": "A1.1 · Unit 5 — A day in Luanda",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a1-u5-guiada",
+   "nome": "Unit 5 · Your day",
+   "tipo": "guiada",
+   "depois_da_aula": "5C",
+   "descricao": "O tutor pergunta ao aluno pela sua rotina e pela de outra pessoa (família ou colega), para praticar a 3.ª pessoa.",
+   "papel_tutor": "Um professor simpático.",
+   "nivel": "A1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I get up at…",
+    "He / She gets up at…",
+    "Does he / she…?"
+   ],
+   "extras": {
+    "brief": "Guided practice for a beginner (A1, unit 5). You are a friendly teacher. First ask about the student's day: What time do you get up? How do you go to work? What time do you start and finish? Then ask the student to choose a person (family member, friend or colleague) and ask about that person: What does he/she do? What time does he/she get up? Does he/she work on Saturdays? Focus on the third person -s and does/doesn't. If the student says \"she work\" or \"she don't\", repeat the sentence correctly in a natural way (\"Ah, she works at a bank!\") and continue. Use only units 1-5 language. One question at a time.",
+    "primeira_fala": "Hello, {nome}! Tell me about your day. What time do you get up?",
+    "primeira_fala_simples": "Hello! What time do you get up?",
+    "guiao": [
+     "And how do you go to work?",
+     "What time do you start work?",
+     "Now think of a person in your family or a friend. Who is it?",
+     "What does he or she do?",
+     "What time does he or she get up?",
+     "Does he or she work on Saturdays?",
+     "Great job, {nome}! Goodbye!"
+    ],
+    "frases": [
+     {
+      "en": "I get up at six.",
+      "pt": "Levanto-me às seis."
+     },
+     {
+      "en": "My sister works at a hospital.",
+      "pt": "A minha irmã trabalha num hospital."
+     },
+     {
+      "en": "He doesn't work on Saturdays.",
+      "pt": "Ele não trabalha aos sábados."
+     }
+    ],
+    "palavras": [
+     "get",
+     "gets",
+     "work",
+     "works",
+     "does",
+     "doesn",
+     "time",
+     "bus",
+     "car",
+     "saturdays"
+    ],
+    "minutos_sugeridos": 4
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a1-u5-livre",
+   "nome": "Unit 5 · Let's meet",
+   "tipo": "livre",
+   "depois_da_aula": "5G",
+   "descricao": "O tutor é um colega muito ocupado (Kim). O aluno tem de combinar uma reunião: propor dias e horas, ouvir as recusas e chegar a um acordo, e confirmar.",
+   "papel_tutor": "Kim, colega muito ocupado(a), com a agenda cheia.",
+   "nivel": "A1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Can we meet on … at …?",
+    "How about…?",
+    "See you on … at …"
+   ],
+   "extras": {
+    "brief": "Role-play for a beginner (A1, unit 5). You are Kim, a very busy colleague (Kim can be a man or a woman, to match your voice). The student needs a 30-minute meeting with you this week about a project. Your week: Monday busy all day (meetings with clients); Tuesday free only at 4 p.m.; Wednesday busy in the morning, free at 2 p.m.; Thursday you travel to Benguela; Friday free in the morning. Refuse politely with a short reason (\"Sorry, I'm busy on Monday. I have meetings with clients.\"), and let the student propose. Accept a free slot. Then ask the student to confirm the day and time, and ask \"Where?\" (your office or the meeting room). Also ask one routine question: \"What time do you usually start work?\" Use only units 1-5 language; in/on/at for time. One question at a time.",
+    "primeira_fala": "Hi! You need a meeting with me? OK, but I'm very busy this week. When?",
+    "primeira_fala_simples": "Hi! A meeting? OK. When?",
+    "guiao": [
+     "Sorry, I'm busy then. I have meetings all day.",
+     "Hmm, what time?",
+     "Yes, that's fine. Can you confirm the day and the time?",
+     "Great. Where? In my office or in the meeting room?",
+     "By the way, what time do you usually start work?",
+     "Perfect. See you then, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "Can we meet on Tuesday at four?",
+      "pt": "Podemos reunir na terça às quatro?"
+     },
+     {
+      "en": "How about Wednesday at two?",
+      "pt": "E quarta-feira às duas?"
+     },
+     {
+      "en": "Sorry, I'm busy on Monday.",
+      "pt": "Desculpe, estou ocupado na segunda."
+     },
+     {
+      "en": "See you on Wednesday at two.",
+      "pt": "Até quarta-feira às duas."
+     }
+    ],
+    "palavras": [
+     "meet",
+     "on",
+     "at",
+     "how",
+     "about",
+     "free",
+     "busy",
+     "monday",
+     "tuesday",
+     "wednesday",
+     "friday",
+     "see"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": [
+    "Propõe pelo menos dois dias ou horas (por exemplo, \"Can we meet on…?\" e \"How about…?\").",
+    "Usa \"on\" com os dias e \"at\" com as horas.",
+    "Chega a um acordo e confirma repetindo o dia e a hora (\"See you on … at …\").",
+    "Responde à pergunta sobre a sua rotina com o present simple.",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

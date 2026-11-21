@@ -9,6 +9,7 @@ import {
   professorApi,
   useApagarAulaMutation,
   useApagarMaterialMutation,
+  useLicoesPraticaQuery,
   useMudarAulaMutation,
   useOrdenarAulasMutation,
   type Aula,
@@ -16,13 +17,28 @@ import {
 } from "@/src/domains/teacher/professor/api";
 import { erroProfessor } from "@/src/domains/teacher/professor/api";
 import { useDispatch } from "react-redux";
+import { FalaDaAulaProfessor } from "./FalaDaAula";
 import { EditorQuestionario } from "./Questionario";
 
 const TIPOS_VIDEO = "video/mp4,video/webm,video/quicktime";
 const TIPOS_MATERIAL = ".pdf,.mp3,.m4a,.wav,.png,.jpg,.jpeg,.webp,.xlsx,.csv,.docx";
 
-/** Editor de uma aula: vídeo, título, quando conta como vista, resumo, materiais e questionário. */
-export function PainelAula({ aula, seccao, seccoes, aoGuardar, aoApagada }: { aula: Aula; seccao: Seccao; seccoes: Seccao[]; aoGuardar: () => void; aoApagada: () => void }) {
+/** Editor de uma aula: vídeo, título, quando conta como vista, resumo, materiais, questionário e prática a seguir. */
+export function PainelAula({
+  cursoId,
+  aula,
+  seccao,
+  seccoes,
+  aoGuardar,
+  aoApagada,
+}: {
+  cursoId: string;
+  aula: Aula;
+  seccao: Seccao;
+  seccoes: Seccao[];
+  aoGuardar: () => void;
+  aoApagada: () => void;
+}) {
   const dispatch = useDispatch();
   const [titulo, setTitulo] = useState(aula.titulo);
   const [resumo, setResumo] = useState(aula.resumo ?? "");
@@ -251,6 +267,10 @@ export function PainelAula({ aula, seccao, seccoes, aoGuardar, aoApagada }: { au
         </button>
       </div>
 
+      {aula.video && !envio ? <FalaDaAulaProfessor key={aula.id} cursoId={cursoId} aula={aula} /> : null}
+
+      <EscolhaPratica cursoId={cursoId} aula={aula} aoEscolher={(licao) => void guardar({ id: aula.id, licao_pratica: licao })} />
+
       {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
 
       <div className="flex flex-wrap items-end gap-3 border-t border-pe-linha pt-4">
@@ -308,5 +328,42 @@ export function PainelAula({ aula, seccao, seccoes, aoGuardar, aoApagada }: { au
 
       {perguntas ? <EditorQuestionario aula={aula.id} titulo={aula.titulo} aoFechar={() => setPerguntas(false)} aoGuardar={aoGuardar} /> : null}
     </section>
+  );
+}
+
+/** "Lição de prática a seguir a esta aula": uma lição dos cursos de prática do professor, ou nenhuma. */
+function EscolhaPratica({ cursoId, aula, aoEscolher }: { cursoId: string; aula: Aula; aoEscolher: (licao: string | null) => void }) {
+  const { data: cursos, isLoading, isError } = useLicoesPraticaQuery(cursoId);
+  const ligada = aula.licao_pratica ?? null;
+  const comLicoes = (cursos ?? []).filter((c) => c.unidades.some((u) => u.licoes.length));
+
+  let ajuda = "Os alunos vêem um botão para fazer esta lição depois do vídeo e do questionário. Os exercícios contam para a nota do curso.";
+  if (isError) ajuda = "Não foi possível carregar os seus cursos de prática.";
+  else if (!isLoading && !comLicoes.length) ajuda = "Ainda não tem lições de prática. Crie um curso de prática para poder ligar uma lição a esta aula.";
+  else if (ligada && ligada.curso.estado !== "publicado") ajuda = `"${ligada.curso.titulo}" ainda não está publicado: os alunos só vêem o botão depois de o publicar.`;
+
+  return (
+    <Escolha
+      rotulo="Lição de prática a seguir a esta aula"
+      ajuda={ajuda}
+      value={ligada?.id ?? ""}
+      disabled={isLoading || (!comLicoes.length && !ligada)}
+      onChange={(e) => aoEscolher(e.target.value || null)}
+    >
+      <option value="">Nenhuma</option>
+      {comLicoes.flatMap((c) =>
+        c.unidades
+          .filter((u) => u.licoes.length)
+          .map((u) => (
+            <optgroup key={u.id} label={`${c.titulo}: ${u.titulo}`}>
+              {u.licoes.map((l) => (
+                <option key={l.id} value={l.id}>
+                  {l.titulo}
+                </option>
+              ))}
+            </optgroup>
+          ))
+      )}
+    </Escolha>
   );
 }

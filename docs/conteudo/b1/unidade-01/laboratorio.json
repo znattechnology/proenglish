@@ -1,0 +1,1337 @@
+{
+ "unidade": "B1.1 · Unit 1 — Making connections",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "1A",
+   "titulo": "You're Nuno, aren't you?",
+   "aula": "1A",
+   "objectivo": "Confirmar informação com question tags e usar a entoação que confirma ou que pergunta.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You're from Lubango, [aren't you]?",
+     "opcoes": [
+      {
+       "texto": "isn't it",
+       "certa": false
+      },
+      {
+       "texto": "don't you",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You arrived yesterday, [didn't you]?",
+     "opcoes": [
+      {
+       "texto": "don't you",
+       "certa": false
+      },
+      {
+       "texto": "isn't it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You don't take sugar, [do you]?",
+     "opcoes": [
+      {
+       "texto": "don't you",
+       "certa": false
+      },
+      {
+       "texto": "aren't you",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm late, [aren't I]?",
+     "opcoes": [
+      {
+       "texto": "isn't I",
+       "certa": false
+      },
+      {
+       "texto": "don't I",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let's get a coffee, [shall we]?",
+     "opcoes": [
+      {
+       "texto": "don't we",
+       "certa": false
+      },
+      {
+       "texto": "do we",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "It's cold this morning, isn't it?",
+       "certa": true
+      },
+      {
+       "texto": "It's cold this morning, no?",
+       "certa": false
+      },
+      {
+       "texto": "It's cold this morning, aren't it?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You're sure, and you only want the other person to agree. On the tag, your voice goes…",
+     "opcoes": [
+      {
+       "texto": "down",
+       "certa": true
+      },
+      {
+       "texto": "up",
+       "certa": false
+      },
+      {
+       "texto": "very loud",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"You're from Luanda, aren't you?\" But you're from Lubango. What do you say?",
+     "opcoes": [
+      {
+       "texto": "No, I'm not. Actually, I'm from Lubango.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, I'm not. I'm from Lubango.",
+       "certa": false
+      },
+      {
+       "texto": "No, I am. I'm from Lubango.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Sipho, from the help desk. You're Nuno, aren't you? We spoke on the phone in March, didn't we?",
+     "enunciado": "When did Sipho and Nuno speak on the phone?",
+     "opcoes": [
+      {
+       "texto": "in March",
+       "certa": true
+      },
+      {
+       "texto": "in July",
+       "certa": false
+      },
+      {
+       "texto": "yesterday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It's cold this morning, isn't it?",
+     "enunciado": "Ouça e repita, com a voz a descer na tag."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Think of a colleague. Check three things about him or her with question tags.",
+     "frase": "n't",
+     "resposta": "You live in Talatona, don't you? You started in January, didn't you? You can drive, can't you?",
+     "contexto": "Três tags: present simple, past simple e can."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You meet a new colleague at a training course. Check two things, then suggest a coffee.",
+     "frase": "shall we",
+     "resposta": "You're in the IT team, aren't you? You arrived on Monday, didn't you? Let's get a coffee, shall we?",
+     "contexto": "Duas tags e uma sugestão com shall we."
+    }
+   ]
+  },
+  {
+   "codigo": "1B",
+   "titulo": "Could you tell me where room four is?",
+   "aula": "1B",
+   "objectivo": "Fazer perguntas educadas com perguntas indirectas, com a ordem de afirmação e com if / whether.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Do you know [if] there's a printer on this floor?",
+     "opcoes": [
+      {
+       "texto": "is",
+       "certa": false
+      },
+      {
+       "texto": "what",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Do you know what time the bus [leaves]?",
+     "opcoes": [
+      {
+       "texto": "does leave",
+       "certa": false
+      },
+      {
+       "texto": "leave",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Could you tell me where the meeting room is?",
+       "certa": true
+      },
+      {
+       "texto": "Could you tell me where is the meeting room?",
+       "certa": false
+      },
+      {
+       "texto": "Could you tell me where does the meeting room is?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Do you know when the shop opens?",
+       "certa": true
+      },
+      {
+       "texto": "Do you know when does the shop open?",
+       "certa": false
+      },
+      {
+       "texto": "Do you know when opens the shop?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Is the canteen open?\" Make it polite.",
+     "opcoes": [
+      {
+       "texto": "Do you know if the canteen is open?",
+       "certa": true
+      },
+      {
+       "texto": "Do you know is the canteen open?",
+       "certa": false
+      },
+      {
+       "texto": "Do you know if is the canteen open?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Where can I buy a SIM card?\" Make it polite.",
+     "opcoes": [
+      {
+       "texto": "Do you know where I can buy a SIM card?",
+       "certa": true
+      },
+      {
+       "texto": "Do you know where can I buy a SIM card?",
+       "certa": false
+      },
+      {
+       "texto": "Do you know where do I can buy a SIM card?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Pode dizer-me onde fica a sala quatro?",
+     "resposta": "Could you tell me where room four is?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Sabe a que horas sai o autocarro?",
+     "resposta": "Do you know what time the bus leaves?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Zanele, from reception. The bus to the data centre leaves at ten, from the main entrance.",
+     "enunciado": "What time does the bus leave?",
+     "opcoes": [
+      {
+       "texto": "at ten",
+       "certa": true
+      },
+      {
+       "texto": "at nine",
+       "certa": false
+      },
+      {
+       "texto": "at half past eight",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Could you tell me where room four is?",
+     "enunciado": "Ouça e repita: \"Could you\" ligado e a voz a subir um pouco no fim."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You're at a hotel reception. Ask three polite questions.",
+     "frase": "Could you tell me",
+     "resposta": "Could you tell me what time breakfast starts? Do you know if the Wi-Fi is free? And could you tell me where I can get a taxi?",
+     "contexto": "Perguntas indirectas, com a ordem de afirmação."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You call a new supplier. Ask two polite questions about prices and delivery.",
+     "frase": "Do you know",
+     "resposta": "Good morning. Could you tell me how much the installation costs? And do you know if you deliver to Benguela?",
+     "contexto": "Duas perguntas indirectas."
+    }
+   ]
+  },
+  {
+   "codigo": "1C",
+   "titulo": "Who invited you?",
+   "aula": "1C",
+   "objectivo": "Fazer perguntas de sujeito e de objecto e manter a conversa com perguntas de seguimento.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Who [invited] you to the training? — Lerato did.",
+     "opcoes": [
+      {
+       "texto": "did invite",
+       "certa": false
+      },
+      {
+       "texto": "did you invite",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Who [did you meet] at lunch? — I met Kofi.",
+     "opcoes": [
+      {
+       "texto": "met you",
+       "certa": false
+      },
+      {
+       "texto": "you met",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What [happened] next?",
+     "opcoes": [
+      {
+       "texto": "did happen",
+       "certa": false
+      },
+      {
+       "texto": "did it happen",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What [did you do] after the training?",
+     "opcoes": [
+      {
+       "texto": "you did",
+       "certa": false
+      },
+      {
+       "texto": "did you",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Lerato invited Nuno.\" Ask about Lerato.",
+     "opcoes": [
+      {
+       "texto": "Who invited Nuno?",
+       "certa": true
+      },
+      {
+       "texto": "Who did invite Nuno?",
+       "certa": false
+      },
+      {
+       "texto": "Who did Nuno invite?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Nuno called Thandi.\" Ask about Thandi.",
+     "opcoes": [
+      {
+       "texto": "Who did Nuno call?",
+       "certa": true
+      },
+      {
+       "texto": "Who called Nuno?",
+       "certa": false
+      },
+      {
+       "texto": "Who Nuno called?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Kofi: \"I worked for a bank for five years.\" Choose the best follow-up question.",
+     "opcoes": [
+      {
+       "texto": "Really? Why did you leave?",
+       "certa": true
+      },
+      {
+       "texto": "OK. Do you like football?",
+       "certa": false
+      },
+      {
+       "texto": "I worked for a shop.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Kofi: \"The control centre is my second home.\" You don't understand. You say:",
+     "opcoes": [
+      {
+       "texto": "What do you mean?",
+       "certa": true
+      },
+      {
+       "texto": "What do you say?",
+       "certa": false
+      },
+      {
+       "texto": "What is mean?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kofi, from Accra. I worked for a bank for five years. Then one day a friend offered me a job at a solar company.",
+     "enunciado": "Who offered Kofi a job?",
+     "opcoes": [
+      {
+       "texto": "a friend",
+       "certa": true
+      },
+      {
+       "texto": "his bank",
+       "certa": false
+      },
+      {
+       "texto": "Lerato",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Who invited you? Who did you meet?",
+     "enunciado": "Ouça e repita, com o acento em \"who\" e no verbo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How did you start in your job or your studies? Give some extra information.",
+     "frase": "started",
+     "resposta": "I started at the bank in 2019. Actually, I studied engineering, but I couldn't find a job. Then a friend told me about a job in the IT department, and I said yes.",
+     "contexto": "Uma história curta no past simple, com pormenores."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague says: \"I changed jobs last year.\" Ask three follow-up questions.",
+     "frase": "Why",
+     "resposta": "Really? Why did you change? What do you do now? And what's your new job like?",
+     "contexto": "Perguntas de seguimento."
+    }
+   ]
+  },
+  {
+   "codigo": "1D",
+   "titulo": "Small talk and networking",
+   "aula": "1D",
+   "objectivo": "Abrir, manter e fechar uma conversa num evento; So do I / Neither do I; compromise e comprehensive.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "delegate",
+       "b": "participante"
+      },
+      {
+       "a": "venue",
+       "b": "local do evento"
+      },
+      {
+       "a": "speaker",
+       "b": "orador"
+      },
+      {
+       "a": "business card",
+       "b": "cartão de visita"
+      },
+      {
+       "a": "workshop",
+       "b": "sessão prática"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"What brings you here?\" means…",
+     "opcoes": [
+      {
+       "texto": "Why are you at this event?",
+       "certa": true
+      },
+      {
+       "texto": "What did you bring?",
+       "certa": false
+      },
+      {
+       "texto": "How did you travel here?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is a good way to close a conversation?",
+     "opcoes": [
+      {
+       "texto": "Well, it was great talking to you. Let's keep in touch.",
+       "certa": true
+      },
+      {
+       "texto": "OK, bye. I go now.",
+       "certa": false
+      },
+      {
+       "texto": "Finished. Thank you.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'll [follow] up by email next week.",
+     "opcoes": [
+      {
+       "texto": "keep",
+       "certa": false
+      },
+      {
+       "texto": "get",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let's keep in [touch].",
+     "opcoes": [
+      {
+       "texto": "touching",
+       "certa": false
+      },
+      {
+       "texto": "connect",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I love coffee.\" You love coffee too. You say:",
+     "opcoes": [
+      {
+       "texto": "So do I.",
+       "certa": true
+      },
+      {
+       "texto": "Neither do I.",
+       "certa": false
+      },
+      {
+       "texto": "So am I.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I don't like the cold.\" You don't like it either. You say:",
+     "opcoes": [
+      {
+       "texto": "Neither do I.",
+       "certa": true
+      },
+      {
+       "texto": "So do I.",
+       "certa": false
+      },
+      {
+       "texto": "Neither am I.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Tenho um compromisso às três.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I have an appointment at three.",
+       "certa": true
+      },
+      {
+       "texto": "I have a compromise at three.",
+       "certa": false
+      },
+      {
+       "texto": "I have a compromising at three.",
+       "certa": false
+      }
+     ],
+     "explicacao": "compromise = cedência, um acordo em que os dois lados cedem."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"O meu chefe é muito compreensivo.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "My boss is very understanding.",
+       "certa": true
+      },
+      {
+       "texto": "My boss is very comprehensive.",
+       "certa": false
+      },
+      {
+       "texto": "My boss is very comprehending.",
+       "certa": false
+      }
+     ],
+     "explicacao": "comprehensive = completo."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "So do I. Neither do I. So did I.",
+     "enunciado": "Ouça e repita, com o acento em \"I\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Open a conversation with a stranger at a conference, and ask two questions.",
+     "frase": "What brings you here",
+     "resposta": "Hi, I don't think we've met. I'm Ana, from Benguela. What brings you here? And what line of work are you in?",
+     "contexto": "Abrir e manter a conversa."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Close the conversation, with a plan to keep in touch.",
+     "frase": "keep in touch",
+     "resposta": "Well, it was great talking to you. Let's keep in touch — here's my card. I'll send you an email next week.",
+     "contexto": "Fechar com o próximo contacto."
+    }
+   ]
+  },
+  {
+   "codigo": "1E",
+   "titulo": "Real English: At the welcome event",
+   "aula": "1E",
+   "objectivo": "Identificar quem é cada pessoa, de onde vem, o que faz e como a conversa continua.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Mei. I'm a software developer, and I work for a mobile payments company in Lusaka.",
+     "enunciado": "Where does Mei work?",
+     "opcoes": [
+      {
+       "texto": "in Lusaka",
+       "certa": true
+      },
+      {
+       "texto": "in Chengdu",
+       "certa": false
+      },
+      {
+       "texto": "in Johannesburg",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Mei. I'm from Chengdu, in China. I moved to Zambia four years ago.",
+     "enunciado": "When did Mei move to Zambia?",
+     "opcoes": [
+      {
+       "texto": "four years ago",
+       "certa": true
+      },
+      {
+       "texto": "fourteen years ago",
+       "certa": false
+      },
+      {
+       "texto": "last year",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Carlos Mondlane, from Maputo, in Mozambique. So Nuno and I can speak Portuguese!",
+     "enunciado": "Why can Carlos speak Portuguese with Nuno?",
+     "opcoes": [
+      {
+       "texto": "He's from Mozambique.",
+       "certa": true
+      },
+      {
+       "texto": "He studied in Luanda.",
+       "certa": false
+      },
+      {
+       "texto": "He works for Kalandula Tech.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Carlos. We use a mobile payment system at the port, and it's always slow.",
+     "enunciado": "What's the problem at Carlos's port?",
+     "opcoes": [
+      {
+       "texto": "The payment system is slow.",
+       "certa": true
+      },
+      {
+       "texto": "There's no internet.",
+       "certa": false
+      },
+      {
+       "texto": "The port is closed.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kofi. A group of us are going to a restaurant in Melville on Thursday night, around nine.",
+     "enunciado": "When is the dinner?",
+     "opcoes": [
+      {
+       "texto": "on Thursday, around nine",
+       "certa": true
+      },
+      {
+       "texto": "on Tuesday, at seven",
+       "certa": false
+      },
+      {
+       "texto": "on Friday, around nine",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. Tonight there are people from five countries in this room. So please, go and meet someone new.",
+     "enunciado": "What does Lerato ask people to do?",
+     "opcoes": [
+      {
+       "texto": "meet someone new",
+       "certa": true
+      },
+      {
+       "texto": "talk to their colleagues",
+       "certa": false
+      },
+      {
+       "texto": "sit down",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Kofi asks: \"Do you want to come?\" Which answer is correct?",
+     "opcoes": [
+      {
+       "texto": "Yes! Count me in.",
+       "certa": true
+      },
+      {
+       "texto": "So do I.",
+       "certa": false
+      },
+      {
+       "texto": "Neither do I.",
+       "certa": false
+      }
+     ],
+     "explicacao": "So do I responde a uma afirmação, não a uma pergunta."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "How does Nuno bring Kofi into the group?",
+     "opcoes": [
+      {
+       "texto": "He introduces Mei and Carlos to him.",
+       "certa": true
+      },
+      {
+       "texto": "He gives him a drink.",
+       "certa": false
+      },
+      {
+       "texto": "He speaks Portuguese to him.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Come and join us. This is Mei, from Lusaka.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "But you're not from Zambia, are you?",
+     "enunciado": "Ouça e repita, com a voz a subir na tag."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Introduce a colleague to two people at an event: name, city and job.",
+     "frase": "This is",
+     "resposta": "Come and join us! This is Rosa, from Huambo — she's an accountant. And this is David, from Lagos. He works in logistics.",
+     "contexto": "Apresentar pessoas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "At events, do you prefer to meet new people or to talk to your colleagues? Why?",
+     "frase": "prefer",
+     "resposta": "I prefer to meet new people, because I always learn something. But at the beginning I talk to my colleagues — it's easier.",
+     "contexto": "Uma opinião com uma razão."
+    }
+   ]
+  },
+  {
+   "codigo": "1F",
+   "titulo": "Work & Life: A networking evening",
+   "aula": "1F",
+   "objectivo": "Apresentar-se em 30 segundos, manter e fechar a conversa, e explicar em inglês um folheto em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the best 30-second introduction?",
+     "opcoes": [
+      {
+       "texto": "I'm Nuno Kapinga. I'm a technician at Kalandula Tech. We install networks and give technical support. At the moment I'm in a joint team in Johannesburg. And you?",
+       "certa": true
+      },
+      {
+       "texto": "Hello. Nuno. IT. Luanda.",
+       "certa": false
+      },
+      {
+       "texto": "I'm Nuno, and I was born in Lubango, and I studied there, and then I moved to Luanda, and I have a sister, and…",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You want to change the topic. You say:",
+     "opcoes": [
+      {
+       "texto": "By the way, …",
+       "certa": true
+      },
+      {
+       "texto": "In the end, …",
+       "certa": false
+      },
+      {
+       "texto": "Excuse me, goodbye.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Hannah: \"Our network goes down every time there's a sandstorm.\" Choose the best follow-up.",
+     "opcoes": [
+      {
+       "texto": "Really? What happens exactly?",
+       "certa": true
+      },
+      {
+       "texto": "Me too. I like sand.",
+       "certa": false
+      },
+      {
+       "texto": "OK. Where are you from?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You're only here for the training, [aren't you]?",
+     "opcoes": [
+      {
+       "texto": "isn't it",
+       "certa": false
+      },
+      {
+       "texto": "don't you",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Do you know [if] the cables are underground?",
+     "opcoes": [
+      {
+       "texto": "is",
+       "certa": false
+      },
+      {
+       "texto": "what",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The leaflet says: \"Apoio técnico 24 horas por dia.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "We give technical support twenty-four hours a day.",
+       "certa": true
+      },
+      {
+       "texto": "We support techniques twenty-four hours per day.",
+       "certa": false
+      },
+      {
+       "texto": "The technical is twenty-four hours.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In the mediation, Nuno…",
+     "opcoes": [
+      {
+       "texto": "gives the main points in English",
+       "certa": true
+      },
+      {
+       "texto": "translates every word",
+       "certa": false
+      },
+      {
+       "texto": "reads the leaflet in Portuguese",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Hannah Becker. I'm a project engineer at Morro Azul Energia. We have a solar plant in Namibe.",
+     "enunciado": "Where is Hannah's solar plant?",
+     "opcoes": [
+      {
+       "texto": "in Namibe",
+       "certa": true
+      },
+      {
+       "texto": "in Hamburg",
+       "certa": false
+      },
+      {
+       "texto": "in Luanda",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Hannah, I fly back to Luanda on Saturday, and I'll send you an email on Monday the nineteenth.",
+     "enunciado": "When will the speaker send Hannah an email?",
+     "opcoes": [
+      {
+       "texto": "on Monday the nineteenth",
+       "certa": true
+      },
+      {
+       "texto": "on Saturday",
+       "certa": false
+      },
+      {
+       "texto": "tomorrow",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Well, it was great talking to you. Let's keep in touch.",
+     "enunciado": "Ouça e repita, com voz simpática."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Introduce yourself and your company in thirty seconds. End with a question.",
+     "frase": "And you",
+     "resposta": "I'm Rosa Silva. I'm an accountant at a construction company in Benguela. We build schools and hospitals. At the moment, I'm working on the budget for a new hospital. And you?",
+     "contexto": "Nome, empresa, o que faz a empresa, o agora e uma pergunta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain this leaflet in English: \"Centro Médico Mulemba — consultas de segunda a sábado, das 8h às 20h. Médicos de família e análises clínicas. Marcações por telefone.\"",
+     "frase": "It says",
+     "resposta": "It says it's a clinic. It's open from Monday to Saturday, from eight a.m. to eight p.m. There are family doctors, and you can do blood tests. You can book by phone.",
+     "contexto": "Mediação: só os pontos principais, com It says…"
+    }
+   ]
+  },
+  {
+   "codigo": "1R",
+   "titulo": "Unit 1 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 1 e reciclar os erros mais persistentes do A2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You work in the finance team, [don't you]?",
+     "opcoes": [
+      {
+       "texto": "isn't it",
+       "certa": false
+      },
+      {
+       "texto": "aren't you",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Could you tell me where the lift [is]?",
+     "opcoes": [
+      {
+       "texto": "is it",
+       "certa": false
+      },
+      {
+       "texto": "does",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Who [told] you about the course? — Thandi did.",
+     "opcoes": [
+      {
+       "texto": "did tell",
+       "certa": false
+      },
+      {
+       "texto": "did you tell",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I arrived on Monday.\" You arrived on Monday too. You say:",
+     "opcoes": [
+      {
+       "texto": "So did I.",
+       "certa": true
+      },
+      {
+       "texto": "So do I.",
+       "certa": false
+      },
+      {
+       "texto": "Neither did I.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Do you know if the meeting is at ten?",
+       "certa": true
+      },
+      {
+       "texto": "Do you know is the meeting at ten?",
+       "certa": false
+      },
+      {
+       "texto": "Do you know if is the meeting at ten?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 6). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I went there last year.",
+       "certa": true
+      },
+      {
+       "texto": "I've been there last year.",
+       "certa": false
+      },
+      {
+       "texto": "I have gone there last year.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 6). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I've worked here since 2024.",
+       "certa": true
+      },
+      {
+       "texto": "I work here since 2024.",
+       "certa": false
+      },
+      {
+       "texto": "I am working here since 2024.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 8). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If it rains, we'll stay inside.",
+       "certa": true
+      },
+      {
+       "texto": "If it will rain, we'll stay inside.",
+       "certa": false
+      },
+      {
+       "texto": "If it rains, we stayed inside.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidades 9 e 10). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I enjoy meeting new people, and she speaks English well.",
+       "certa": true
+      },
+      {
+       "texto": "I enjoy to meet new people, and she speaks well English.",
+       "certa": false
+      },
+      {
+       "texto": "I enjoy meet new people, and she speaks English good.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Vamos manter o contacto.",
+     "resposta": "Let's keep in touch.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Neo, from Gaborone. We're opening an office in Luanda next year, probably near the port.",
+     "enunciado": "Where is Neo's company opening an office?",
+     "opcoes": [
+      {
+       "texto": "in Luanda",
+       "certa": true
+      },
+      {
+       "texto": "in Gaborone",
+       "certa": false
+      },
+      {
+       "texto": "in Johannesburg",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You meet someone at a conference. Check one thing with a tag, ask one indirect question, and close the conversation.",
+     "frase": "keep in touch",
+     "resposta": "You're from Kalandula Tech, aren't you? Could you tell me what your company does in Benguela? … Well, it was great talking to you. Let's keep in touch.",
+     "contexto": "Tag, pergunta indirecta e fecho."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about the last time you met someone new at work. Who was it, and what did you talk about?",
+     "frase": "met",
+     "resposta": "Last month I met a new client from Lisbon at a meeting. We talked about the project, and then about football. We exchanged contacts, and now we email every week.",
+     "contexto": "Uma história curta no past simple."
+    }
+   ]
+  }
+ ]
+}

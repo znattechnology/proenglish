@@ -1,14 +1,17 @@
 "use client";
 
+import { ROTA_TESTE_BASICO, faltaNivelBasico } from "@/src/domains/student/curso/testeBasico";
 import Link from "next/link";
 import { SobreProfessor } from "@/components/pe/curso/SobreProfessor";
+import { CartaoExame } from "@/components/pe/curso/Exame";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { ArrowLeft, Check, Lock } from "lucide-react";
 import { Aviso, Botao, Osso } from "@/components/pe";
 import { cnPe } from "@/lib/pe";
 import { useDjangoAuth } from "@/hooks/useDjangoAuth";
-import { categoriaPt, nivelPt } from "@/src/domains/student/inicio/api";
+import { nivelEmFrase, nomeCompletoNivel } from "@/src/domains/shared/niveis";
+import { categoriaPt } from "@/src/domains/student/inicio/api";
 import { mensagemErro, useMinhaSubscricaoQuery } from "@/src/domains/student/subscricao/api";
 import {
   capitulosPorOrdem,
@@ -19,9 +22,14 @@ import {
   useInscreverMutation,
   useInscricaoQuery,
   useNotasQuery,
+  usePercursoQuery,
   useProgressoQuery,
+  hrefDoPasso,
+  nomeDoPasso,
   type Curso,
 } from "@/src/domains/student/curso/api";
+import { PassosDaAula, duracaoDoPasso } from "@/components/pe/curso/Percurso";
+import { DisponivelNosPlanos, ROTA_PLANOS, TEXTO_PLANOS_PAGOS } from "@/components/pe/curso/Amostra";
 
 export default function PaginaCurso() {
   const { courseId } = useParams<{ courseId: string }>();
@@ -44,7 +52,13 @@ export default function PaginaCurso() {
   }
   if (isLoading || !data || !inscricao) return <EsqueletoCurso />;
 
-  return inscricao.is_enrolled && data.temAcesso ? <CursoInscrito curso={data.curso} /> : <CursoPorComecar curso={data.curso} temAcesso={data.temAcesso} />;
+  // Num curso com unidades de amostra, quem não tem o plano também se inscreve e abre essas unidades.
+  const amostra = !data.temAcesso && data.acesso === "amostra";
+  return inscricao.is_enrolled && (data.temAcesso || amostra) ? (
+    <CursoInscrito curso={data.curso} />
+  ) : (
+    <CursoPorComecar curso={data.curso} temAcesso={data.temAcesso} amostra={amostra ? data.unidadesAmostra : 0} />
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -54,12 +68,19 @@ function CursoInscrito({ curso }: { curso: Curso }) {
   const { user } = useDjangoAuth();
   const { data: progresso } = useProgressoQuery({ userId: user?.id ?? "", courseId: curso.courseId }, { skip: !user });
   const { data: notas } = useNotasQuery(curso.courseId);
+  // O percurso (aula, laboratório, conversas) vem do servidor; volta a ser lido sempre que se entra na página,
+  // porque o laboratório e as conversas terminam noutros ecrãs.
+  const { data: percurso } = usePercursoQuery(curso.courseId, { refetchOnMountOrArgChange: true });
+  const passosPorAula = new Map((percurso?.unidades ?? []).flatMap((u) => u.aulas).map((a) => [a.id, a.passos] as const));
+  const proximo = percurso?.proximo ?? null;
   const lista = capitulosPorOrdem(curso);
   const feitos = concluidos(progresso);
-  const seguinte = lista.find((c) => !feitos.has(c.chapterId));
+  // As aulas fora das unidades de amostra (bloqueada) nunca são a seguinte.
+  const seguinte = lista.find((c) => !feitos.has(c.chapterId) && !c.bloqueada);
+  const faltaPlano = !!percurso?.plano_necessario || (!seguinte && lista.some((c) => c.bloqueada && !feitos.has(c.chapterId)));
   const nFeitos = lista.filter((c) => feitos.has(c.chapterId)).length;
   const pct = lista.length ? (100 * nFeitos) / lista.length : 0;
-  const contexto = [categoriaPt(curso.category), nivelPt(curso.level), curso.teacherName || null, `${lista.length} aulas`].filter(Boolean).join(", ");
+  const contexto = [categoriaPt(curso.category), nivelEmFrase(curso.level), curso.teacherName || null, `${lista.length} aulas`].filter(Boolean).join(", ");
 
   return (
     <div className="flex flex-col">
@@ -80,7 +101,24 @@ function CursoInscrito({ curso }: { curso: Curso }) {
               </span>
             </div>
           </div>
-          {seguinte ? (
+          {proximo ? (
+            <div className="flex flex-col gap-2 md:shrink-0 md:items-end">
+              <span className="text-[15px] leading-[22px]">
+                A seguir: {nomeDoPasso(proximo).toLowerCase()}
+                {duracaoDoPasso(proximo) ? `, ${duracaoDoPasso(proximo)}` : ""}
+              </span>
+              <Botao asChild tipo="realce">
+                <Link href={hrefDoPasso(curso.courseId, proximo)}>{proximo.tipo === "questionario" ? "Fazer o questionário" : proximo.titulo}</Link>
+              </Botao>
+            </div>
+          ) : faltaPlano ? (
+            <div className="flex flex-col gap-2 md:shrink-0 md:items-end">
+              <span className="text-[15px] leading-[22px]">As unidades seguintes estão disponíveis nos planos pagos.</span>
+              <Botao asChild tipo="realce">
+                <Link href={ROTA_PLANOS}>Ver os planos</Link>
+              </Botao>
+            </div>
+          ) : seguinte ? (
             <Botao asChild tipo="realce" className="md:shrink-0">
               <Link href={`/user/courses/${curso.courseId}/chapters/${seguinte.chapterId}`}>
                 {nFeitos ? `Continuar: aula ${seguinte.numero}` : "Começar a primeira aula"}
@@ -105,14 +143,33 @@ function CursoInscrito({ curso }: { curso: Curso }) {
                   <h2 id={`sec-${s.sectionId}`} className="m-0 font-pe-titulo text-[20px] font-semibold leading-[26px]">
                     {s.sectionTitle}
                   </h2>
-                  <span className="shrink-0 text-[15px] text-pe-tinta-suave tabular-nums">
-                    {feitosS} de {caps.length}
-                  </span>
+                  {s.bloqueada ? (
+                    <DisponivelNosPlanos className="shrink-0" />
+                  ) : (
+                    <span className="shrink-0 text-[15px] text-pe-tinta-suave tabular-nums">
+                      {feitosS} de {caps.length}
+                    </span>
+                  )}
                 </div>
                 <ol className="m-0 flex list-none flex-col p-0">
                   {caps.map((c) => {
                     const feita = feitos.has(c.chapterId);
                     const actual = seguinte?.chapterId === c.chapterId;
+                    if (c.bloqueada) {
+                      // Fora das unidades de amostra: só o título, sem ligação para a aula.
+                      return (
+                        <li key={c.chapterId} className="flex min-h-14 items-center gap-3.5 border-b border-pe-fundo-forte py-1 text-pe-tinta-suave">
+                          <span aria-hidden className="flex size-[30px] shrink-0 items-center justify-center rounded-full bg-pe-fundo-forte">
+                            <Lock className="size-4" />
+                          </span>
+                          <span className="min-w-0 flex-1">
+                            {c.title}
+                            <span className="sr-only"> ({TEXTO_PLANOS_PAGOS.toLowerCase()})</span>
+                          </span>
+                          <span className="shrink-0 text-[14px]">{TIPO_PT[c.type] ?? c.type}</span>
+                        </li>
+                      );
+                    }
                     return (
                       <li key={c.chapterId}>
                         <Link
@@ -138,6 +195,7 @@ function CursoInscrito({ curso }: { curso: Curso }) {
                           </span>
                           <span className="shrink-0 text-[14px] font-normal text-pe-tinta-suave">{TIPO_PT[c.type] ?? c.type}</span>
                         </Link>
+                        <PassosDaAula courseId={curso.courseId} passos={passosPorAula.get(c.chapterId) ?? []} />
                       </li>
                     );
                   })}
@@ -166,6 +224,7 @@ function CursoInscrito({ curso }: { curso: Curso }) {
             </span>
             <span className="font-semibold text-pe-azul-vivo underline underline-offset-[3px]">Ver as notas</span>
           </Link>
+          <CartaoExame courseId={curso.courseId} />
           {curso.description ? (
             <section className="flex flex-col gap-2 rounded-pe-md border border-pe-linha p-[22px]">
               <h2 className="m-0 font-pe-titulo text-[18px] font-semibold leading-6">Sobre o curso</h2>
@@ -181,10 +240,11 @@ function CursoInscrito({ curso }: { curso: Curso }) {
 /* ------------------------------------------------------------------ */
 /* Ainda não inscrito: programa e começar (ou plano necessário)        */
 /* ------------------------------------------------------------------ */
-function CursoPorComecar({ curso, temAcesso }: { curso: Curso; temAcesso: boolean }) {
+function CursoPorComecar({ curso, temAcesso, amostra }: { curso: Curso; temAcesso: boolean; amostra: number }) {
   const { data: sub } = useMinhaSubscricaoQuery();
   const [inscrever, { isLoading }] = useInscreverMutation();
   const [erro, setErro] = useState<string | null>(null);
+  const [faltaBasico, setFaltaBasico] = useState(false);
   const plano = PLANO_DO_CURSO[curso.access_level] ?? PLANO_DO_CURSO.free;
   const lista = capitulosPorOrdem(curso);
   const total = curso.total_chapters || lista.length;
@@ -193,6 +253,7 @@ function CursoPorComecar({ curso, temAcesso }: { curso: Curso; temAcesso: boolea
     setErro(null);
     const r = await inscrever(curso.courseId);
     if ("error" in r && r.error) {
+      setFaltaBasico(faltaNivelBasico(r.error));
       setErro(mensagemErro(r.error, "Não foi possível começar o curso. Tente outra vez."));
       return;
     }
@@ -207,7 +268,7 @@ function CursoPorComecar({ curso, temAcesso }: { curso: Curso; temAcesso: boolea
             <ArrowLeft aria-hidden className="size-5" /> Explorar cursos
           </Link>
           <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-[34px] tracking-[-0.01em] md:text-pe-titulo-l">{curso.title}</h1>
-          <p className="m-0 text-pe-tinta-suave">{[categoriaPt(curso.category), nivelPt(curso.level)].filter(Boolean).join(", ")}</p>
+          <p className="m-0 text-pe-tinta-suave">{[categoriaPt(curso.category), nivelEmFrase(curso.level)].filter(Boolean).join(", ")}</p>
           {curso.description ? <p className="m-0 max-w-[68ch] text-pe-corpo-l">{curso.description}</p> : null}
         </div>
         <section aria-labelledby="titulo-programa" className="flex flex-col gap-3">
@@ -223,13 +284,14 @@ function CursoPorComecar({ curso, temAcesso }: { curso: Curso; temAcesso: boolea
                   <span aria-hidden className="pe-sobre-marca flex size-8 shrink-0 items-center justify-center rounded-[11px_11px_11px_0] bg-pe-azul-marca font-pe-titulo text-[14px] font-bold text-pe-sobre-marca">
                     {i + 1}
                   </span>
-                  <span className="flex flex-col">
+                  <span className="flex min-w-0 flex-1 flex-col">
                     <span className="font-semibold leading-[22px]">{s.sectionTitle}</span>
                     <span className="text-pe-legenda text-pe-tinta-suave">
                       {caps.length
                         ? `${caps.length - questionarios} ${caps.length - questionarios === 1 ? "aula" : "aulas"}${questionarios ? `, ${questionarios} ${questionarios === 1 ? "questionário" : "questionários"}` : ""}`
                         : s.sectionDescription || "Conteúdo disponível com o plano certo"}
                     </span>
+                    {s.bloqueada ? <DisponivelNosPlanos className="self-start" /> : null}
                   </span>
                 </li>
               );
@@ -244,7 +306,7 @@ function CursoPorComecar({ curso, temAcesso }: { curso: Curso; temAcesso: boolea
           {(
             [
               ["Professor", curso.teacherName],
-              ["Nível", nivelPt(curso.level)],
+              ["Nível", nomeCompletoNivel(curso.level) ?? "—"],
               ["Aulas", total ? `${total}` : "—"],
               ["Incluído no plano", plano.nome],
             ] as [string, string][]
@@ -255,15 +317,25 @@ function CursoPorComecar({ curso, temAcesso }: { curso: Curso; temAcesso: boolea
             </div>
           ))}
         </dl>
-        {temAcesso ? (
+        {temAcesso || amostra > 0 ? (
           <>
             <p className="m-0 text-[15px] leading-[22px]">
-              {curso.access_level === "free" ? "Este curso é gratuito para todos." : `Incluído no seu plano ${sub?.plan.name ?? plano.nome}.`}
+              {temAcesso
+                ? curso.access_level === "free"
+                  ? "Este curso é gratuito para todos."
+                  : `Incluído no seu plano ${sub?.plan.name ?? plano.nome}.`
+                : `${amostra === 1 ? "A primeira unidade é gratuita" : `As primeiras ${amostra} unidades são gratuitas`}. As outras estão disponíveis nos planos pagos.`}
             </p>
-            {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
-            <Botao larguraTotal disabled={isLoading} onClick={() => void comecar()}>
-              {isLoading ? "A preparar o curso…" : "Começar o curso"}
-            </Botao>
+            {erro ? <Aviso tipo={faltaBasico ? "info" : "errado"}>{erro}</Aviso> : null}
+            {faltaBasico ? (
+              <Botao asChild larguraTotal tipo="realce">
+                <Link href={ROTA_TESTE_BASICO}>Fazer o teste do nível básico</Link>
+              </Botao>
+            ) : (
+              <Botao larguraTotal disabled={isLoading} onClick={() => void comecar()}>
+                {isLoading ? "A preparar o curso…" : "Começar o curso"}
+              </Botao>
+            )}
           </>
         ) : (
           <>

@@ -30,7 +30,7 @@ class TestCourseModel(TestCase):
             'title': 'Advanced English Grammar',
             'description': 'Comprehensive grammar course for intermediate learners',
             'category': 'Gramática',
-            'level': 'Intermediate',
+            'level': 'B1',
             'status': 'Published',
             'template': 'general',
             'teacher': self.teacher,
@@ -64,7 +64,7 @@ class TestCourseModel(TestCase):
     
     def test_course_levels_validation(self):
         """Test that only valid levels are accepted."""
-        valid_levels = ['Beginner', 'Intermediate', 'Advanced']
+        valid_levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
         
         for level in valid_levels:
             course = CourseFactory(level=level)
@@ -329,16 +329,16 @@ class TestCourseBusinessLogic(TestCase):
         # Medical courses should be Advanced
         medical_course = CourseFactory(
             category='Inglês Médico',
-            level='Advanced'
+            level='B2'
         )
-        self.assertEqual(medical_course.level, 'Advanced')
+        self.assertEqual(medical_course.level, 'B2')
         
         # Business courses can be Intermediate or Advanced
         business_course = CourseFactory(
             category='Inglês para Negócios',
-            level='Intermediate'
+            level='B1'
         )
-        self.assertEqual(business_course.level, 'Intermediate')
+        self.assertEqual(business_course.level, 'B1')
 
 
 @pytest.mark.performance

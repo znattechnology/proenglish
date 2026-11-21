@@ -30,12 +30,17 @@ from .transactions import (
 
 from .quizzes import (
     ChapterQuiz,
-    StudentQuizAttempt
+    StudentQuizAttempt,
+    TentativasExtraQuestionario,
 )
 
 from .resources import (
     ChapterResource
 )
+
+from .frases import FraseAula
+from .exame import ExameOral
+from .teste_basico import TesteNivelBasico
 
 from .student_engagement import (
     CourseWishlist,
@@ -54,6 +59,7 @@ from .grading import (
 
 # Make all models available at package level
 __all__ = [
+    'TesteNivelBasico',
     # Core models
     'Course',
     'CourseSection',
@@ -65,6 +71,7 @@ __all__ = [
     'UserCourseProgress',
     'ChapterProgress',
     'VideoWatchLog',
+    'TentativasExtraQuestionario',
     
     # Transaction models
     'Transaction',
@@ -75,6 +82,8 @@ __all__ = [
     
     # Resource models
     'ChapterResource',
+    'FraseAula',
+    'ExameOral',
 
     # Student engagement models
     'CourseWishlist',

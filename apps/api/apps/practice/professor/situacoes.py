@@ -17,6 +17,7 @@ pelos alunos de qualquer curso dele (ver conversa/situacoes.situacoes_visiveis).
 import uuid
 from datetime import timedelta
 
+from django.core.exceptions import ValidationError as DjangoValidationError
 from django.db.models import Avg, Count, Q, Sum
 from django.utils import timezone
 from rest_framework.decorators import api_view, permission_classes
@@ -93,6 +94,8 @@ def _detalhe(request, s):
         'area': s.area,
         'duracao_min': s.duracao_min,
         'correccao': s.correccao,
+        'aula': ({'id': str(s.aula_id), 'titulo': s.aula.title} if s.aula_id else None),
+        'tipo_conversa': s.tipo_conversa or None,
         'criada_em': s.created_at.isoformat(),
         'actualizada_em': s.updated_at.isoformat(),
     })
@@ -151,12 +154,40 @@ def _validar(request, dados, parcial, erros):
             erros['estado'] = 'O estado tem de ser «rascunho» ou «activo».'
         else:
             limpos['estado'] = valor
+    if 'tipo_conversa' in dados:
+        valor = dados.get('tipo_conversa') or ''
+        if valor not in ('', *Situacao.TIPOS_CONVERSA):
+            erros['tipo_conversa'] = 'O tipo de conversa tem de ser «guiada» ou «livre».'
+        else:
+            limpos['tipo_conversa'] = valor
+    if 'aula' in dados:
+        # A aula depois da qual o aluno faz a conversa: tem de ser de um curso do professor
+        # (e do curso da situação: verificado em _aula_do_curso, depois de se saber o curso).
+        valor = dados.get('aula')
+        if valor in (None, ''):
+            limpos['aula'] = None
+        else:
+            from apps.courses.models import Chapter
+            try:
+                limpos['aula'] = Chapter.objects.select_related('section').get(
+                    pk=valor, section__course__in=cursos_do_professor(request.user))
+            except (Chapter.DoesNotExist, ValueError, TypeError, DjangoValidationError):
+                erros['aula'] = 'Aula não encontrada nos seus cursos.'
     if 'area' in dados:
         if dados.get('area') not in AREA_IDS:
             erros['area'] = 'Área inválida.'
         else:
             limpos['area'] = dados['area']
     return {k: v for k, v in limpos.items() if k not in erros}
+
+
+def _aula_do_curso(aula, curso):
+    """Mensagem de erro se a aula não é do curso da situação (None se está bem)."""
+    if aula is None:
+        return None
+    if curso is None or aula.section.course_id != curso.id:
+        return 'A aula tem de ser do curso desta situação.'
+    return None
 
 
 @api_view(['GET', 'POST'])
@@ -182,6 +213,9 @@ def _criar(request):
     if erros:
         return erro_validacao(erros)
     curso = limpos.get('curso')
+    erro_aula = _aula_do_curso(limpos.get('aula'), curso)
+    if erro_aula:
+        return erro_validacao({'aula': erro_aula})
     if 'area' not in limpos:
         limpos['area'] = AREA_POR_CATEGORIA.get(getattr(curso, 'category', ''), 'general')
     s = Situacao.objects.create(slug=f'p-{uuid.uuid4().hex[:16]}', criado_por=request.user, **limpos)
@@ -208,6 +242,9 @@ def detalhe(request, situacao_id):
     limpos = _validar(request, dados, True, erros)
     if erros:
         return erro_validacao(erros)
+    erro_aula = _aula_do_curso(limpos.get('aula', s.aula), limpos.get('curso', s.curso))
+    if erro_aula:
+        return erro_validacao({'aula': erro_aula})
     for campo, valor in limpos.items():
         setattr(s, campo, valor)
     s.save()
@@ -217,9 +254,21 @@ def detalhe(request, situacao_id):
 @api_view(['GET'])
 @permission_classes(PERMISSOES)
 def opcoes(request):
+    from apps.courses.models import Chapter
     from apps.practice.conversa.situacoes import AREAS
+
+    cursos = cursos_do_professor(request.user)
+    # As aulas de cada curso em vídeo, pela ordem do curso: para ligar a conversa a uma aula
+    # (o aluno faz a conversa depois dessa aula, no percurso do curso).
+    aulas = {}
+    for a in (Chapter.objects.filter(section__course__in=cursos, section__course__course_type='video')
+              .exclude(type='Quiz').select_related('section')
+              .order_by('section__order', 'section__created_at', 'order', 'created_at')):
+        aulas.setdefault(str(a.section.course_id), []).append(
+            {'id': str(a.id), 'titulo': a.title, 'unidade': a.section.sectionTitle})
     return Response({
-        'cursos': [curso_api(c) for c in cursos_do_professor(request.user)],
+        'cursos': [curso_api(c) for c in cursos],
+        'aulas': aulas,
         'niveis': [{'valor': n, 'nome': NOMES_NIVEIS[n]} for n in Situacao.NIVEIS],
         'duracoes': list(Situacao.DURACOES),
         'correccoes': [{'valor': 'suave', 'nome': 'Suave'}, {'valor': 'directa', 'nome': 'Directa'}],

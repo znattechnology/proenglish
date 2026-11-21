@@ -1,0 +1,301 @@
+{
+ "title": "B2.2 Unit 8 quiz — Reviews and reactions",
+ "description": "Graduáveis e não graduáveis, advérbios de comentário, ordem dos adjectivos, reacções, cultura, romance e spectacle.",
+ "questions": [
+  {
+   "id": "b2u8q1",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u8q1o0",
+     "text": "The hotel was absolutely huge.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u8q1o1",
+     "text": "The hotel was very huge.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u8q1o2",
+     "text": "The hotel was a bit huge.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u8q1o0",
+   "explanation": "Não graduável: absolutely / completely.",
+   "points": 10
+  },
+  {
+   "id": "b2u8q2",
+   "question": "Complete: \"The food was ___ good.\"",
+   "options": [
+    {
+     "id": "b2u8q2o0",
+     "text": "extremely",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u8q2o1",
+     "text": "absolutely",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u8q2o2",
+     "text": "completely",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u8q2o0",
+   "explanation": "Graduável: very / extremely.",
+   "points": 10
+  },
+  {
+   "id": "b2u8q3",
+   "question": "\"Apparently, the chef left last month.\" O falante…",
+   "options": [
+    {
+     "id": "b2u8q3o0",
+     "text": "ouviu dizer",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u8q3o1",
+     "text": "viu o chef sair",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u8q3o2",
+     "text": "tem a certeza porque é o chef",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u8q3o0",
+   "explanation": "apparently = ouvi dizer.",
+   "points": 10
+  },
+  {
+   "id": "b2u8q4",
+   "question": "Escolha a ordem certa.",
+   "options": [
+    {
+     "id": "b2u8q4o0",
+     "text": "a beautiful old wooden table",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u8q4o1",
+     "text": "a wooden old beautiful table",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u8q4o2",
+     "text": "an old beautiful wooden table",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u8q4o0",
+   "explanation": "opinião → idade → material.",
+   "points": 10
+  },
+  {
+   "id": "b2u8q5",
+   "question": "Um amigo diz: \"My car broke down on the way here.\" Responde:",
+   "options": [
+    {
+     "id": "b2u8q5o0",
+     "text": "Oh no, poor you!",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u8q5o1",
+     "text": "Lucky you!",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u8q5o2",
+     "text": "Fair enough.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u8q5o0",
+   "explanation": "Simpatia.",
+   "points": 10
+  },
+  {
+   "id": "b2u8q6",
+   "question": "Qual reacção pode soar mal-educada?",
+   "options": [
+    {
+     "id": "b2u8q6o0",
+     "text": "Whatever.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u8q6o1",
+     "text": "Whatever you prefer.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u8q6o2",
+     "text": "I don't mind either way.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u8q6o0",
+   "explanation": "\"Whatever\" sozinho, com voz plana.",
+   "points": 10
+  },
+  {
+   "id": "b2u8q7",
+   "question": "\"Li um romance de Pepetela.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u8q7o0",
+     "text": "I read a novel by Pepetela.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u8q7o1",
+     "text": "I read a romance by Pepetela.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u8q7o2",
+     "text": "I read a romance of Pepetela.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u8q7o0",
+   "explanation": "Falso amigo: romance = história de amor.",
+   "points": 10
+  },
+  {
+   "id": "b2u8q8",
+   "question": "\"O espectáculo começa às nove.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u8q8o0",
+     "text": "The show starts at nine.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u8q8o1",
+     "text": "The spectacle starts at nine.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u8q8o2",
+     "text": "The spectacles start at nine.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u8q8o0",
+   "explanation": "Falso amigo: spectacle; spectacles = óculos.",
+   "points": 10
+  },
+  {
+   "id": "b2u8q9",
+   "question": "\"Everyone says it's great, but it isn't.\" O filme é…",
+   "options": [
+    {
+     "id": "b2u8q9o0",
+     "text": "overrated",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u8q9o1",
+     "text": "underrated",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u8q9o2",
+     "text": "a must-see",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u8q9o0",
+   "explanation": "overrated = sobrevalorizado.",
+   "points": 10
+  },
+  {
+   "id": "b2u8q10",
+   "question": "Reciclagem (B2, unidade 7). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u8q10o0",
+     "text": "Even though it was expensive, we enjoyed it.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u8q10o1",
+     "text": "Despite it was expensive, we enjoyed it.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u8q10o2",
+     "text": "Even it was expensive, we enjoyed it.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u8q10o0",
+   "explanation": "even though + facto.",
+   "points": 10
+  },
+  {
+   "id": "b2u8q11",
+   "question": "Reciclagem (B2, unidade 6). \"Não precisávamos de ter comprado tantos bilhetes.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u8q11o0",
+     "text": "We needn't have bought so many tickets.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u8q11o1",
+     "text": "We didn't need buying so many tickets.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u8q11o2",
+     "text": "We needn't to buy so many tickets yesterday.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u8q11o0",
+   "explanation": "needn't have + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b2u8q12",
+   "question": "Reciclagem (B2, unidade 5). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u8q12o0",
+     "text": "The festival is bound to be crowded.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u8q12o1",
+     "text": "The festival will bound to be crowded.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u8q12o2",
+     "text": "The festival bound to be crowded.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u8q12o0",
+   "explanation": "be bound to.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

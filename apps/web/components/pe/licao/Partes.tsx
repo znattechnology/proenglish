@@ -108,12 +108,34 @@ export function BalaoEnunciado({ autor, children, audio }: { autor?: string | nu
 }
 
 /* ------------------------------------------------------------------ */
+/* A Professora Luena a falar: legenda da frase enquanto se ouve.       */
+/* ------------------------------------------------------------------ */
+export function LegendaLuena({ texto, className }: { texto?: string | null; className?: string }) {
+  if (!texto) return null;
+  return (
+    <p className={cnPe("m-0 flex items-center gap-2.5 text-[15px] leading-[22px] motion-safe:animate-[pe-aparecer_200ms_ease-out]", className)}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/professora/luena-rosto.webp" alt="" width={32} height={32} className="size-8 shrink-0 rounded-full object-cover" />
+      <span>
+        <span className="font-semibold">Professora Luena: </span>
+        <span lang="en">{texto}</span>
+      </span>
+    </p>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /* Rodapé: verificar, ou o resultado (certo/errado) e continuar.       */
 /* ------------------------------------------------------------------ */
 export type EstadoRodape =
   | { tipo: "verificar"; pronto: boolean; aVerificar: boolean }
   | { tipo: "certo"; explicacao?: string | null }
-  | { tipo: "errado"; dica?: string | null; perdeuVida: boolean };
+  /**
+   * errado: `solucao` é a resposta certa; `repetir` = falha técnica (gravar outra vez já).
+   * Sem `repetir`, "Continuar" passa à frente e o exercício volta no fim da lição.
+   * `falado`: gravação não aceite (pronúncia, Responder): nunca tira vidas, e o rodapé diz isso.
+   */
+  | { tipo: "errado"; dica?: string | null; perdeuVida: boolean; solucao?: string | null; explicacao?: string | null; repetir?: boolean; falado?: boolean };
 
 export function RodapeLicao({
   estado,
@@ -123,6 +145,7 @@ export function RodapeLicao({
   aoTentarOutraVez,
   textoContinuar = "Continuar",
   textoVerificar = "Verificar",
+  luena,
 }: {
   estado: EstadoRodape;
   dicaTeclado?: string;
@@ -132,6 +155,8 @@ export function RodapeLicao({
   textoContinuar?: string;
   /** Texto do botão antes de verificar (p.ex. "Continuar" num exercício que só se salta). */
   textoVerificar?: string;
+  /** Frase que a Professora Luena está a dizer (aparece por cima do resultado). */
+  luena?: string | null;
 }) {
   const certo = estado.tipo === "certo";
   const errado = estado.tipo === "errado";
@@ -142,6 +167,7 @@ export function RodapeLicao({
         certo ? "border-transparent bg-pe-certo-suave" : errado ? "border-transparent bg-pe-errado-suave" : "border-pe-linha bg-pe-fundo"
       )}
     >
+      <LegendaLuena texto={luena} className="mx-auto max-w-[960px] px-5 pt-3 md:px-6" />
       <div className="mx-auto flex max-w-[960px] flex-col gap-3 px-5 pb-5 pt-4 md:flex-row md:items-center md:justify-between md:gap-8 md:px-6 md:py-5">
         {certo || errado ? (
           <div role="status" aria-live="assertive" className="flex min-w-0 gap-3">
@@ -155,7 +181,18 @@ export function RodapeLicao({
                 {certo ? "Certo" : estado.tipo === "errado" && estado.perdeuVida ? "Ainda não. Perdeu uma vida" : "Ainda não"}
               </span>
               {certo && estado.explicacao ? <span className="text-[15px] leading-[22px] md:text-pe-corpo">{estado.explicacao}</span> : null}
-              {errado && estado.tipo === "errado" && estado.dica ? <span className="text-[15px] leading-[22px] md:text-pe-corpo">{estado.dica}</span> : null}
+              {estado.tipo === "errado" && estado.solucao ? (
+                <span className="text-[15px] leading-[22px] md:text-pe-corpo">
+                  Resposta certa: <span className="font-semibold">{estado.solucao}</span>
+                </span>
+              ) : null}
+              {estado.tipo === "errado" && estado.explicacao ? <span className="text-[15px] leading-[22px] md:text-pe-corpo">{estado.explicacao}</span> : null}
+              {estado.tipo === "errado" && estado.dica && !estado.solucao ? <span className="text-[15px] leading-[22px] md:text-pe-corpo">{estado.dica}</span> : null}
+              {estado.tipo === "errado" && !estado.repetir ? (
+                <span className="text-pe-legenda text-pe-tinta-suave">
+                  {estado.falado ? "A falar não perde vidas. Este exercício volta no fim da lição e entra na sua revisão." : "Este exercício volta no fim da lição."}
+                </span>
+              ) : null}
             </div>
           </div>
         ) : (
@@ -166,7 +203,7 @@ export function RodapeLicao({
             <Botao larguraTotal className="md:w-auto md:min-w-[200px]" disabled={!estado.pronto || estado.aVerificar} onClick={aoVerificar}>
               {estado.aVerificar ? "A verificar…" : textoVerificar}
             </Botao>
-          ) : certo ? (
+          ) : certo || (estado.tipo === "errado" && !estado.repetir) ? (
             <Botao larguraTotal className="md:w-auto md:min-w-[200px]" onClick={aoContinuar} autoFocus>
               {textoContinuar}
             </Botao>

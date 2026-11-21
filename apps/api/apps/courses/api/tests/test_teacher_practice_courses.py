@@ -18,6 +18,12 @@ from apps.courses.models import Course
 from apps.practice.models import PracticeUnit, PracticeLesson, PracticeChallenge
 from tests.factories import TeacherFactory, StudentFactory, PracticeCourseFactory
 
+# A gestão de cursos de prática do professor é a da app practice, montada em dois prefixos.
+# As raízes (/api/v1/practice/ e /api/v1/teacher/practice-courses/) não têm vista: a lista
+# está em courses/, a criação em courses/create/ e publicar/apagar em courses/<id>/.
+PRATICA_PROF = '/api/v1/teacher/practice-courses/courses/'
+PRATICA_APP = '/api/v1/practice/courses/'
+
 
 class TeacherPracticeCoursesAPITest(APITestCase):
     """Test teacher practice course API endpoints."""
@@ -50,47 +56,54 @@ class TeacherPracticeCoursesAPITest(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {token}')
     
     def test_teacher_practice_endpoints_redirect_to_practice_app(self):
-        """Test that teacher practice course endpoints redirect to practice app."""
+        """teacher/practice-courses/ é a mesma app practice: as duas listas dão os mesmos cursos."""
         self.authenticate_as_teacher()
-        
-        # The teacher practice courses URL redirects to practice app
-        # Let's test the practice app endpoints directly
-        practice_endpoints = [
-            '/api/v1/practice/',  # Main practice app endpoint
-            '/api/v1/teacher/practice-courses/',  # Redirected endpoint
-        ]
-        
-        for url in practice_endpoints:
+
+        listas = {}
+        for url in (PRATICA_PROF, PRATICA_APP):
             with self.subTest(url=url):
                 response = self.client.get(url)
-                # Should not be 404 (endpoint exists)
-                self.assertNotEqual(response.status_code, status.HTTP_404_NOT_FOUND,
-                                  f"Practice endpoint {url} should exist")
-    
+                self.assertEqual(response.status_code, status.HTTP_200_OK)
+                listas[url] = {c['courseId'] for c in response.json()}
+        self.assertEqual(listas[PRATICA_PROF], listas[PRATICA_APP])
+        self.assertEqual(listas[PRATICA_PROF], {
+            str(self.teacher_practice_course.id), str(self.teacher_draft_practice_course.id)
+        })
+
     def test_teacher_authentication_required_for_practice_management(self):
         """Test that practice course management requires authentication."""
         # Test without authentication
-        response = self.client.get('/api/v1/teacher/practice-courses/')
+        response = self.client.get(PRATICA_PROF)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
-    
+        response = self.client.post(f'{PRATICA_PROF}create/', {'title': 'Sem sessão'}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        response = self.client.delete(f'{PRATICA_PROF}{self.teacher_draft_practice_course.id}/')
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertTrue(Course.objects.filter(id=self.teacher_draft_practice_course.id).exists())
+
     def test_student_cannot_access_teacher_practice_endpoints(self):
-        """Test that students cannot access teacher practice endpoints."""
+        """O aluno só vê o catálogo (nada de rascunhos) e não cria, publica nem apaga cursos."""
         self.authenticate_as_student()
-        
-        teacher_practice_endpoints = [
-            '/api/v1/teacher/practice-courses/',
-        ]
-        
-        for url in teacher_practice_endpoints:
-            with self.subTest(url=url):
-                response = self.client.get(url)
-                # Student should be denied access
-                self.assertIn(response.status_code, [
-                    status.HTTP_403_FORBIDDEN,
-                    status.HTTP_401_UNAUTHORIZED,
-                    status.HTTP_404_NOT_FOUND  # Some might return 404 for security
-                ])
-    
+
+        response = self.client.get(PRATICA_PROF)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        ids = {c['courseId'] for c in response.json()}
+        self.assertNotIn(str(self.teacher_draft_practice_course.id), ids)
+        self.assertEqual(
+            set(Course.objects.filter(id__in=ids).values_list('status', flat=True)) - {'Published'}, set()
+        )
+
+        dados = {'title': 'Curso do aluno', 'description': 'Não devia ser criado', 'category': 'General'}
+        response = self.client.post(f'{PRATICA_PROF}create/', dados, format='json')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertFalse(Course.objects.filter(title='Curso do aluno').exists())
+
+        url = f'{PRATICA_PROF}{self.teacher_draft_practice_course.id}/'
+        self.assertEqual(self.client.put(url, {'action': 'publish'}, format='json').status_code,
+                         status.HTTP_403_FORBIDDEN)
+        self.assertEqual(self.client.delete(url).status_code, status.HTTP_403_FORBIDDEN)
+        self.assertTrue(Course.objects.filter(id=self.teacher_draft_practice_course.id).exists())
+
     def test_practice_course_type_separation(self):
         """Test that practice courses are properly separated from video courses."""
         self.authenticate_as_teacher()
@@ -136,29 +149,23 @@ class TeacherPracticeCoursesPermissionsTest(APITestCase):
     
     def test_role_based_access_to_practice_management(self):
         """Test that only teachers can access practice course management."""
-        # Test with teacher credentials
-        teacher_token = self.get_jwt_token(self.teacher)
-        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {teacher_token}')
-        
-        response = self.client.get('/api/v1/teacher/practice-courses/')
-        # Teacher should have access (not 401/403)
-        self.assertNotIn(response.status_code, [
-            status.HTTP_401_UNAUTHORIZED,
-            status.HTTP_403_FORBIDDEN
-        ])
-        
+        dados = {'title': 'Curso novo', 'description': 'Um curso de prática novo', 'category': 'General'}
+
         # Test with student credentials
         student_token = self.get_jwt_token(self.student)
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {student_token}')
-        
-        response = self.client.get('/api/v1/teacher/practice-courses/')
-        # Student should be denied
-        self.assertIn(response.status_code, [
-            status.HTTP_401_UNAUTHORIZED,
-            status.HTTP_403_FORBIDDEN,
-            status.HTTP_404_NOT_FOUND
-        ])
+        response = self.client.post(f'{PRATICA_PROF}create/', dados, format='json')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertFalse(Course.objects.filter(title='Curso novo').exists())
 
+        # Test with teacher credentials
+        teacher_token = self.get_jwt_token(self.teacher)
+        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {teacher_token}')
+        self.assertEqual(self.client.get(PRATICA_PROF).status_code, status.HTTP_200_OK)
+        response = self.client.post(f'{PRATICA_PROF}create/', dados, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED, response.content)
+        curso = Course.objects.get(title='Curso novo')
+        self.assertEqual((curso.teacher, curso.course_type), (self.teacher, 'practice'))
 
 @pytest.mark.django_db
 class PracticeAppIntegrationTest(APITestCase):
@@ -289,48 +296,38 @@ class PracticeCoursesEndpointsTest(APITestCase):
         """Test that practice app endpoints exist."""
         token = self.get_jwt_token(self.teacher)
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {token}')
-        
-        # Test main practice endpoints
-        practice_endpoints = [
-            '/api/v1/practice/',
-            '/api/v1/teacher/practice-courses/',
-        ]
-        
-        for url in practice_endpoints:
+
+        for url in (PRATICA_APP, PRATICA_PROF):
             with self.subTest(url=url):
                 response = self.client.get(url)
-                # Should exist (not 404)
-                self.assertNotEqual(response.status_code, status.HTTP_404_NOT_FOUND,
-                                  f"Practice endpoint {url} should exist")
-                
-                # Should be accessible to authenticated teachers
-                self.assertNotIn(response.status_code, [
-                    status.HTTP_401_UNAUTHORIZED,
-                    status.HTTP_403_FORBIDDEN
-                ])
-    
+                self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     def test_practice_course_management_flow(self):
-        """Test basic practice course management flow."""
+        """Criar, ver na lista, tentar publicar (vai para revisão só se estiver pronto) e apagar."""
         token = self.get_jwt_token(self.teacher)
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {token}')
-        
-        # Create a practice course
-        practice_course = Course.objects.create(
-            teacher=self.teacher,
-            teacherName=self.teacher.name,
-            title="Test Practice Course",
-            description="A test practice course",
-            course_type='practice',
-            status='Draft'
-        )
-        
-        # Verify course was created
-        self.assertTrue(Course.objects.filter(
-            id=practice_course.id,
-            course_type='practice',
-            teacher=self.teacher
-        ).exists())
-        
-        # Test that we can access practice endpoints
-        response = self.client.get('/api/v1/practice/')
-        self.assertNotEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        response = self.client.post(f'{PRATICA_PROF}create/', {
+            'title': 'Test Practice Course', 'description': 'A test practice course',
+            'category': 'General', 'level': 'B1', 'status': 'Published',
+        }, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED, response.content)
+        practice_course = Course.objects.get(id=response.json()['courseId'])
+        self.assertEqual((practice_course.course_type, practice_course.teacher), ('practice', self.teacher))
+        # O pedido não publica: um curso novo é rascunho.
+        self.assertEqual(practice_course.status, 'Draft')
+
+        ids = {c['courseId'] for c in self.client.get(PRATICA_PROF).json()}
+        self.assertIn(str(practice_course.id), ids)
+
+        # Publicar um curso vazio não passa da lista de verificação.
+        url = f'{PRATICA_PROF}{practice_course.id}/'
+        response = self.client.put(url, {'action': 'publish'}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        practice_course.refresh_from_db()
+        self.assertEqual(practice_course.status, 'Draft')
+
+        # Um rascunho apaga-se.
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertFalse(Course.objects.filter(id=practice_course.id).exists())

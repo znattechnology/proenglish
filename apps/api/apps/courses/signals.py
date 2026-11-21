@@ -103,10 +103,10 @@ def on_quiz_attempt_saved(sender, instance, created, **kwargs):
 @receiver(post_save, sender=StudentCourseGrade)
 def on_grade_saved_check_certificate(sender, instance, created, **kwargs):
     """
-    Emite o certificado automaticamente quando a nota guardada fica elegível
-    (o resto das regras, incluindo progresso a 100% e plano, está em
-    apps.courses.certificados). Passa a própria nota para não recalcular:
-    recalcular aqui voltava a guardar a nota e a disparar este signal.
+    Emite o certificado automaticamente quando a nota guardada fica elegível (o resto das regras,
+    incluindo progresso a 100% e plano, está em apps.courses.certificados). A elegibilidade
+    guardada só serve de filtro barato: emitir_certificado recalcula a nota com as regras actuais
+    (sem gravar, para não disparar este signal outra vez) antes de emitir.
     """
     if not instance.is_eligible_for_certificate or kwargs.get('raw', False):
         return
@@ -123,18 +123,23 @@ def on_grade_saved_check_certificate(sender, instance, created, **kwargs):
 @receiver(post_save, sender=UserCourseProgress)
 def on_progress_complete_check_certificate(sender, instance, **kwargs):
     """
-    Quando o progresso chega a 100% e a nota já guardada é elegível, emite o certificado.
+    Quando o progresso chega a 100%, recalcula a nota com as regras actuais e emite o certificado
+    se o aluno cumprir tudo. Não se confia na elegibilidade guardada (podia vir de uma versão
+    antiga do cálculo, sem o exame oral): só se salta o recálculo quando a nota guardada é da
+    versão actual e não é elegível.
     """
     if instance.overallProgress < 100.0 or kwargs.get('raw', False):
         return
     try:
         if CourseCertificate.objects.filter(user=instance.user, course=instance.course).exists():
             return
+        from .services.grade_calculator import GradeCalculatorService
         grade = StudentCourseGrade.objects.filter(user=instance.user, course=instance.course).first()
-        if grade is None or not grade.is_eligible_for_certificate:
+        if (grade is not None and not grade.is_eligible_for_certificate
+                and (grade.calculation_version or 0) >= GradeCalculatorService.CALCULATION_VERSION):
             return
         from .certificados import emitir_se_elegivel
-        emitir_se_elegivel(instance.user, instance.course, grade=grade)
+        emitir_se_elegivel(instance.user, instance.course)
     except Exception as e:
         logger.error(f"Error checking certificate on progress completion: {e}", exc_info=True)
 

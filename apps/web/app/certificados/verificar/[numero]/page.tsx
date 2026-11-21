@@ -57,6 +57,9 @@ export default function VerificarCertificado() {
                   ["Estudante", data.nome_aluno],
                   ["Curso", data.curso],
                   ["Nota final", data.nota_final === null || data.nota_final === undefined ? "Sem nota registada" : `${Math.round(data.nota_final)}%`],
+                  ...(data.nivel_fala ? [["Nível de fala", data.nivel_fala]] : []),
+                  ...(data.nota_exame_oral != null ? [["Exame oral", `${data.nota_exame_oral}%`]] : []),
+                  ...(data.notas_fala ?? []).map((n) => [`${n.nome} (exame oral)`, `${n.nota}`]),
                   ["Emitido em", dataPt(data.emitido_em)],
                   ["Número", data.numero],
                   ...(data.revogado_em ? [["Revogado em", dataPt(data.revogado_em)]] : []),
@@ -68,6 +71,7 @@ export default function VerificarCertificado() {
                 </div>
               ))}
             </dl>
+            {data.nivel_fala_texto ? <p className="m-0 font-semibold">{data.nivel_fala_texto}, avaliado num exame oral com tarefas de trabalho.</p> : null}
             <p className="m-0 text-pe-legenda text-pe-tinta-suave">Emitido pela ProEnglish, Luanda, Angola, a quem concluiu o curso com a nota indicada.</p>
           </article>
         )}

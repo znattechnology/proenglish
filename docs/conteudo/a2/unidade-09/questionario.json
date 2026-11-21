@@ -1,0 +1,301 @@
+{
+ "title": "A2.2 Unit 9 quiz — Customer service",
+ "description": "Pedidos com could / would, reclamações, verbos com to e -ing, serviço ao cliente.",
+ "questions": [
+  {
+   "id": "a2u9q1",
+   "question": "Qual é o pedido mais educado?",
+   "options": [
+    {
+     "id": "a2u9q1o0",
+     "text": "Could you print the invoice, please?",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u9q1o1",
+     "text": "Print the invoice.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u9q1o2",
+     "text": "I want the invoice now.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u9q1o0",
+   "explanation": "Could you…, please?",
+   "points": 10
+  },
+  {
+   "id": "a2u9q2",
+   "question": "Qual é a melhor recusa?",
+   "options": [
+    {
+     "id": "a2u9q2o0",
+     "text": "I'm afraid I can't, but I can do it tomorrow.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u9q2o1",
+     "text": "No.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u9q2o2",
+     "text": "I can't. Bye.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u9q2o0",
+   "explanation": "I'm afraid + uma alternativa.",
+   "points": 10
+  },
+  {
+   "id": "a2u9q3",
+   "question": "Complete: \"I've called you three times, but it ___ doesn't work.\"",
+   "options": [
+    {
+     "id": "a2u9q3o0",
+     "text": "still",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u9q3o1",
+     "text": "yet",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u9q3o2",
+     "text": "since",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u9q3o0",
+   "explanation": "still = ainda (o problema continua).",
+   "points": 10
+  },
+  {
+   "id": "a2u9q4",
+   "question": "\"A internet está lenta desde quinta-feira.\" Em inglês:",
+   "options": [
+    {
+     "id": "a2u9q4o0",
+     "text": "The internet has been slow since Thursday.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u9q4o1",
+     "text": "The internet is slow since Thursday.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u9q4o2",
+     "text": "The internet was slow since Thursday.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u9q4o0",
+   "explanation": "Desde quando: present perfect + since.",
+   "points": 10
+  },
+  {
+   "id": "a2u9q5",
+   "question": "Complete: \"I enjoy ___ with clients.\"",
+   "options": [
+    {
+     "id": "a2u9q5o0",
+     "text": "working",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u9q5o1",
+     "text": "to work",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u9q5o2",
+     "text": "work",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u9q5o0",
+   "explanation": "enjoy + -ing.",
+   "points": 10
+  },
+  {
+   "id": "a2u9q6",
+   "question": "Complete: \"I forgot ___ the email.\"",
+   "options": [
+    {
+     "id": "a2u9q6o0",
+     "text": "to send",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u9q6o1",
+     "text": "send",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u9q6o2",
+     "text": "sended",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u9q6o0",
+   "explanation": "forget + to (esquecer-se de fazer).",
+   "points": 10
+  },
+  {
+   "id": "a2u9q7",
+   "question": "\"Atender um cliente\" em inglês é:",
+   "options": [
+    {
+     "id": "a2u9q7o0",
+     "text": "serve a customer",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u9q7o1",
+     "text": "attend a customer",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u9q7o2",
+     "text": "atend a customer",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u9q7o0",
+   "explanation": "Falso amigo: attend = assistir a.",
+   "points": 10
+  },
+  {
+   "id": "a2u9q8",
+   "question": "Numa boa resposta a uma reclamação, o que deve haver?",
+   "options": [
+    {
+     "id": "a2u9q8o0",
+     "text": "desculpa, a razão e uma solução",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u9q8o1",
+     "text": "só \"desculpe\"",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u9q8o2",
+     "text": "uma explicação longa sem solução",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u9q8o0",
+   "explanation": "Desculpa + razão + solução.",
+   "points": 10
+  },
+  {
+   "id": "a2u9q9",
+   "question": "Um cliente diz que a encomenda não chegou. Qual é a melhor primeira frase?",
+   "options": [
+    {
+     "id": "a2u9q9o0",
+     "text": "I'm very sorry to hear that. Could I have your order number, please?",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u9q9o1",
+     "text": "It isn't my problem.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u9q9o2",
+     "text": "Are you sure?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u9q9o0",
+   "explanation": "Desculpa e os pormenores.",
+   "points": 10
+  },
+  {
+   "id": "a2u9q10",
+   "question": "Reciclagem (A2, unidade 8). Complete: \"If the technician doesn't come today, I ___ call the manager.\"",
+   "options": [
+    {
+     "id": "a2u9q10o0",
+     "text": "'ll",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u9q10o1",
+     "text": "'m",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u9q10o2",
+     "text": "did",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u9q10o0",
+   "explanation": "1.º condicional: will.",
+   "points": 10
+  },
+  {
+   "id": "a2u9q11",
+   "question": "Reciclagem (A2, unidade 7). Complete: \"We haven't received the order ___.\"",
+   "options": [
+    {
+     "id": "a2u9q11o0",
+     "text": "yet",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u9q11o1",
+     "text": "since",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u9q11o2",
+     "text": "ago",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u9q11o0",
+   "explanation": "Negativa: yet.",
+   "points": 10
+  },
+  {
+   "id": "a2u9q12",
+   "question": "Reciclagem (A2, unidade 5). \"You mustn't open the box before the technician comes\" quer dizer:",
+   "options": [
+    {
+     "id": "a2u9q12o0",
+     "text": "É proibido abrir a caixa antes de o técnico chegar.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u9q12o1",
+     "text": "Não é preciso abrir a caixa.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u9q12o2",
+     "text": "Tem de abrir a caixa.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u9q12o0",
+   "explanation": "mustn't = proibido.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

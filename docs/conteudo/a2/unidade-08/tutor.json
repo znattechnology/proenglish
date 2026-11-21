@@ -1,0 +1,138 @@
+{
+ "unidade": "A2.2 · Unit 8 — Technology and problems",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a2-u8-guiada",
+   "nome": "A2 Unit 8 · What will happen if…?",
+   "tipo": "guiada",
+   "depois_da_aula": "8C",
+   "descricao": "O tutor propõe situações (corte de energia, chuva forte, internet em baixo, esquecer a palavra-passe) e o aluno diz o que vai fazer com o 1.º condicional; depois fazem previsões sobre a semana.",
+   "papel_tutor": "Um professor simpático.",
+   "nivel": "A2",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "If the power goes off, I'll…",
+    "I think it'll… / I don't think…",
+    "It probably won't…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an elementary learner (A2, unit 8). You are a friendly teacher. Give the student situations and ask \"What will you do if…?\": the power goes off at work; it rains a lot tomorrow morning; the internet goes down before an important email; you forget your password. After each answer, react and ask one follow-up question. Then ask for predictions: \"Do you think it'll rain this weekend?\", \"Will you be busy next week?\". If the student says \"If the power will go off\", model \"If the power goes off\". If they say \"I think it won't…\", accept it, and also model \"I don't think it'll…\". Use only A1 and A2.1 language plus A2 units 6-8: the present perfect (ever / never, just, already / yet, for / since), the zero conditional (If you press this, it turns off), the first conditional (If the power goes off, we'll use the generator), will / won't for predictions with I think / I don't think and probably, technology phrasal verbs (log in, turn it off, plug it in, back up), instructions with first / then / finally. Do NOT use the second conditional or \"would\" + verb (except \"would like\"), \"could\", \"unless\", the passive, relative clauses, \"too\" or \"enough\". One question at a time.",
+    "primeira_fala": "Hello, {nome}! Today: plan B. What will you do if the power goes off at work?",
+    "primeira_fala_simples": "Hello! The power goes off at work. What will you do?",
+    "guiao": [
+     "OK! And what will you do if it rains a lot tomorrow morning?",
+     "What will you do if the internet goes down before an important email?",
+     "And if you forget your password?",
+     "Now some predictions. Do you think it'll rain this weekend?",
+     "Will you be busy next week?",
+     "Great answers, {nome}! Well done."
+    ],
+    "frases": [
+     {
+      "en": "If the power goes off, I'll use my laptop battery.",
+      "pt": "Se a luz for abaixo, uso a bateria do portátil."
+     },
+     {
+      "en": "If it rains, I'll take a taxi.",
+      "pt": "Se chover, apanho um táxi."
+     },
+     {
+      "en": "I don't think it'll rain.",
+      "pt": "Acho que não vai chover."
+     },
+     {
+      "en": "I'll probably be very busy.",
+      "pt": "Provavelmente vou estar muito ocupado."
+     }
+    ],
+    "palavras": [
+     "if",
+     "will",
+     "think",
+     "probably",
+     "won't",
+     "power",
+     "rain"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a2-u8-livre",
+   "nome": "A2 Unit 8 · Help desk",
+   "tipo": "livre",
+   "depois_da_aula": "8F",
+   "descricao": "O tutor é Drew, do apoio técnico. O portátil do aluno não liga à rede Wi-Fi: o ícone do Wi-Fi tem uma cruz vermelha e o ecrã diz \"No internet connection\". O aluno explica o problema, segue as instruções e confirma cada passo; no fim, anota o número de referência.",
+   "papel_tutor": "Drew, técnico(a) do apoio técnico.",
+   "nivel": "A2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I'm calling because…",
+    "When I…, it says \"…\"",
+    "OK… done. / Nothing happens.",
+    "It's working now."
+   ],
+   "extras": {
+    "brief": "Role-play for an elementary learner (A2, unit 8). You are Drew, from the IT help desk (Drew can be a man or a woman, to match your voice). The student's laptop doesn't connect to the Wi-Fi: the Wi-Fi icon has a red cross and the screen says \"No internet connection\". Let the student explain. Ask: \"What happened exactly?\", \"What does the screen say?\". Then give instructions one at a time, and wait for the student to confirm each step: 1) check that the Wi-Fi is on (click the icon); 2) turn the laptop off and on again; 3) choose the network \"Office-WiFi\" and type the password (it's on a card at reception). Before step 3, ask \"What happens?\" and accept any answer. After step 3, ask \"Is it working now?\"; if the student says no, ask them to check the password and try again, and then it works. Give a reference number (three, nine, one, six) and ask the student to repeat it. If the student only says \"yes\" after a step, ask \"Is it done? What do you see now?\". Use only A1 and A2.1 language plus A2 units 6-8: the present perfect (ever / never, just, already / yet, for / since), the zero conditional (If you press this, it turns off), the first conditional (If the power goes off, we'll use the generator), will / won't for predictions with I think / I don't think and probably, technology phrasal verbs (log in, turn it off, plug it in, back up), instructions with first / then / finally. Do NOT use the second conditional or \"would\" + verb (except \"would like\"), \"could\", \"unless\", the passive, relative clauses, \"too\" or \"enough\". Short turns, one question at a time.",
+    "primeira_fala": "Help desk, Drew speaking. How can I help you?",
+    "primeira_fala_simples": "Hello, help desk. What's the problem?",
+    "guiao": [
+     "I see. What happened exactly? What does the screen say?",
+     "OK. First, click the Wi-Fi icon. Is the Wi-Fi on? If it's off, turn it on.",
+     "Now turn the laptop off and on again. Tell me when it's on. What happens?",
+     "Now choose the network \"Office-WiFi\" and type the password. It's on a card at reception.",
+     "Is it working now?",
+     "Your reference number is three, nine, one, six. Can you repeat it?",
+     "Perfect. If it happens again, call us. Have a good day, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "I'm calling because my laptop doesn't connect to the Wi-Fi.",
+      "pt": "Estou a ligar porque o meu portátil não liga ao Wi-Fi."
+     },
+     {
+      "en": "It says \"No internet connection\".",
+      "pt": "Aparece \"Sem ligação à internet\"."
+     },
+     {
+      "en": "OK… done.",
+      "pt": "Pronto… já está."
+     },
+     {
+      "en": "Nothing happens.",
+      "pt": "Não acontece nada."
+     },
+     {
+      "en": "It's working now. Thank you!",
+      "pt": "Já funciona. Obrigado!"
+     }
+    ],
+    "palavras": [
+     "calling",
+     "says",
+     "done",
+     "happens",
+     "working",
+     "turn",
+     "off",
+     "network"
+    ],
+    "minutos_sugeridos": 6
+   },
+   "criterios": [
+    "Explica o problema: o que fez, o que aconteceu e o que diz o ecrã (It says \"…\").",
+    "Confirma cada passo (OK… done. / Nothing happens. / It's on now.).",
+    "Diz o que vê depois de cada instrução, sem responder só \"yes\".",
+    "Repete o número de referência correctamente.",
+    "Usa pelo menos um phrasal verb da tecnologia (turn it off, log in…).",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

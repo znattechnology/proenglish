@@ -19,88 +19,42 @@ logger = logging.getLogger(__name__)
 
 def _get_courses_for_challenge(challenge_progress):
     """
-    Determine which video course(s) a practice challenge is linked to.
+    Video course(s) a practice challenge counts towards: courses whose chapters
+    (Chapter.practice_lesson) or chapter quizzes (ChapterQuiz.practice_lesson) link to the
+    challenge's lesson, where the user is enrolled.
 
-    A practice lesson can be linked to multiple video course chapters.
-    Returns list of (user, course) tuples for courses where user is enrolled.
-
-    Args:
-        challenge_progress: ChallengeProgress instance
-
-    Returns:
-        List of (User, Course) tuples
+    Returns list of (User, Course) tuples.
     """
-    from apps.courses.models import Chapter, CourseEnrollment
+    from apps.courses.models import CourseEnrollment
+    from apps.courses.services.grade_calculator import cursos_da_licao_pratica
 
     challenge = challenge_progress.challenge
-    if not challenge:
+    if not challenge or not challenge.lesson_id:
         return []
 
-    # Get the lesson that contains this challenge
-    # Challenge -> Unit -> Lesson
-    unit = challenge.unit if hasattr(challenge, 'unit') else None
-    if not unit:
-        return []
-
-    lesson = unit.lesson if hasattr(unit, 'lesson') else None
-    if not lesson:
-        return []
-
-    practice_lesson_id = str(lesson.id)
     user = challenge_progress.user
-
-    # Find chapters that reference this practice lesson
-    chapters = Chapter.objects.filter(
-        practice_lesson=practice_lesson_id
-    ).select_related('section__course')
-
-    courses = []
-    for chapter in chapters:
-        course = chapter.section.course
-        # Only include if user is enrolled in this course
-        if CourseEnrollment.objects.filter(user=user, course=course).exists():
-            courses.append((user, course))
-
-    return courses
+    return [(user, course) for course in cursos_da_licao_pratica(challenge.lesson_id)
+            if CourseEnrollment.objects.filter(user=user, course=course).exists()]
 
 
 def _get_courses_for_vapi_session(vapi_session):
     """
-    Determine which video course(s) a Vapi session contributes to.
+    The video course a conversation counts towards (only one): the course of its situation
+    (practice.Situacao.curso) or full_session_data['config']['curso_id'], if the user is enrolled.
+    General conversations (no course) don't change any course grade.
 
-    Uses CEFR level mapping to match session level with course level.
-    Returns list of (user, course) tuples for matching courses.
-
-    Args:
-        vapi_session: VapiSession instance
-
-    Returns:
-        List of (User, Course) tuples
+    Returns list of (User, Course) tuples.
     """
     from apps.courses.models import CourseEnrollment
-    from apps.courses.services.grade_calculator import COURSE_LEVEL_TO_CEFR
+    from apps.courses.services.grade_calculator import curso_da_sessao
 
+    course = curso_da_sessao(vapi_session)
+    if course is None:
+        return []
     user = vapi_session.user
-    session_level = vapi_session.level  # CEFR level (A1, A2, B1, etc.)
-
-    # Get all courses where user is enrolled
-    enrollments = CourseEnrollment.objects.filter(
-        user=user
-    ).select_related('course')
-
-    courses = []
-    for enrollment in enrollments:
-        course = enrollment.course
-
-        # Check if session CEFR level matches course level
-        allowed_cefr = COURSE_LEVEL_TO_CEFR.get(course.level, [])
-
-        # If no mapping exists, accept any session
-        # If mapping exists, check if session level is in allowed levels
-        if not allowed_cefr or session_level in allowed_cefr:
-            courses.append((user, course))
-
-    return courses
+    if not CourseEnrollment.objects.filter(user=user, course=course).exists():
+        return []
+    return [(user, course)]
 
 
 @receiver(post_save, sender=ChallengeProgress)
@@ -169,7 +123,7 @@ def on_vapi_session_saved(sender, instance, created, **kwargs):
     Only triggers if:
     - This is a new session (created=True) - avoids duplicate recalcs on updates
     - Session has an overall_score > 0 (is complete, not empty)
-    - User is enrolled in a course with matching CEFR level
+    - The conversation belongs to a course the user is enrolled in
 
     The signal handler catches all exceptions to ensure Vapi session
     saving is never blocked by grade calculation failures.
@@ -208,8 +162,7 @@ def recalcular_notas_conversa(instance):
 
         if not courses:
             logger.debug(
-                f"Vapi session {instance.session_id} (level {instance.level}) "
-                f"not matched to any enrolled courses"
+                f"Vapi session {instance.session_id} not tied to an enrolled course"
             )
             return
 

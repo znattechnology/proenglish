@@ -124,11 +124,11 @@ class Pagamento(models.Model):
         constraints = [
             models.CheckConstraint(
                 name='pagamento_desconto_ate_valor',
-                check=Q(desconto_kz__lte=models.F('valor_kz')),
+                condition=Q(desconto_kz__lte=models.F('valor_kz')),
             ),
             models.CheckConstraint(
                 name='pagamento_total_nao_negativo',
-                check=Q(valor_kz__gte=models.F('desconto_kz') + models.F('credito_abatido_kz')),
+                condition=Q(valor_kz__gte=models.F('desconto_kz') + models.F('credito_abatido_kz')),
             ),
             # Um único pagamento pendente por utilizador (qualquer plano)
             models.UniqueConstraint(

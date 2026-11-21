@@ -8,6 +8,9 @@ maintaining the same structure and response format as the Express API.
 from django.urls import path
 from . import views
 from . import certificados_views
+from . import fala_aula
+from . import exame_views
+from . import percurso_views
 
 app_name = 'student_video_courses'
 
@@ -28,6 +31,12 @@ urlpatterns = [
     path('chapters/<uuid:chapterId>/', views.ChapterDetailView.as_view(), name='chapter_detail'),
     
     # Chapter comments
+    # Falar depois do vídeo (frases da aula, repetir em voz alta, conversa de 3 minutos)
+    path('chapters/<uuid:chapterId>/fala/', fala_aula.FalaDaAula.as_view(), name='chapter_fala'),
+    path('chapters/<uuid:chapterId>/frases/<int:fraseId>/falar/', fala_aula.FalarFrase.as_view(),
+         name='chapter_frase_falar'),
+    path('chapters/<uuid:chapterId>/conversa/', fala_aula.ConversaDaAula.as_view(), name='chapter_conversa'),
+
     path('chapters/<uuid:chapterId>/comments/', views.ChapterCommentListCreateView.as_view(), name='chapter_comments'),
     
     # Transactions
@@ -67,4 +76,11 @@ urlpatterns = [
     path('certificados/', certificados_views.listar_certificados, name='certificados'),
     path('certificados/<uuid:certificadoId>/pdf/', certificados_views.descarregar_pdf, name='certificado_pdf'),
     path('<uuid:courseId>/certificado/', certificados_views.emitir_certificado, name='emitir_certificado'),
+
+    # Exame oral do curso (fase 6)
+    path('percurso/proximo/', percurso_views.ProximoPasso.as_view(), name='proximo_passo'),
+    path('<uuid:courseId>/percurso/', percurso_views.PercursoDoCurso.as_view(), name='percurso'),
+    path('<uuid:courseId>/exame/', exame_views.ExameDoCurso.as_view(), name='exame_oral'),
+    path('exames/<uuid:exameId>/', exame_views.ExameDetalhe.as_view(), name='exame_oral_detalhe'),
+    path('exames/<uuid:exameId>/gravacao/', exame_views.ApagarGravacao.as_view(), name='exame_oral_gravacao'),
 ]

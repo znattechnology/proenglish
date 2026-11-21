@@ -1,0 +1,301 @@
+{
+ "title": "C1.1 Unit 1 quiz — Making the case",
+ "description": "Orações clivadas, do enfático, responder a contra-argumentos, persuasão, consistent e terrific.",
+ "questions": [
+  {
+   "id": "c1u1q1",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u1q1o0",
+     "text": "What we need is a regional training hub.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u1q1o1",
+     "text": "What we need it's a regional training hub.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u1q1o2",
+     "text": "What we need are a regional training hub.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u1q1o0",
+   "explanation": "Clivada com what: ... is + ideia em destaque.",
+   "points": 10
+  },
+  {
+   "id": "c1u1q2",
+   "question": "Complete: \"All I'm asking ___ is half an hour.\"",
+   "options": [
+    {
+     "id": "c1u1q2o0",
+     "text": "for",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u1q2o1",
+     "text": "of",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u1q2o2",
+     "text": "to",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u1q2o0",
+   "explanation": "ask for; all = a única coisa.",
+   "points": 10
+  },
+  {
+   "id": "c1u1q3",
+   "question": "Corrija com delicadeza: \"Paulo installed the satellite.\" (Foi a equipa do Sipho.)",
+   "options": [
+    {
+     "id": "c1u1q3o0",
+     "text": "It wasn't Paulo who installed the satellite — it was Sipho's team.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u1q3o1",
+     "text": "Paulo didn't installed the satellite, Sipho's team yes.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u1q3o2",
+     "text": "It was Sipho's team what installed it, not Paulo.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u1q3o0",
+   "explanation": "It wasn't… it was…",
+   "points": 10
+  },
+  {
+   "id": "c1u1q4",
+   "question": "Complete: \"Mopane did ___ with the satellite part.\"",
+   "options": [
+    {
+     "id": "c1u1q4o0",
+     "text": "help",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u1q4o1",
+     "text": "helped",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u1q4o2",
+     "text": "helping",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u1q4o0",
+   "explanation": "do / did enfático + infinitivo.",
+   "points": 10
+  },
+  {
+   "id": "c1u1q5",
+   "question": "Qual é a resposta mais profissional a uma objecção justa?",
+   "options": [
+    {
+     "id": "c1u1q5o0",
+     "text": "That's a fair point. But consider this: …",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u1q5o1",
+     "text": "No, you're wrong, because…",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u1q5o2",
+     "text": "That's not true. Look at the numbers.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u1q5o0",
+   "explanation": "Conceder primeiro, depois voltar ao argumento.",
+   "points": 10
+  },
+  {
+   "id": "c1u1q6",
+   "question": "\"Let me turn that around.\" O falante vai…",
+   "options": [
+    {
+     "id": "c1u1q6o0",
+     "text": "olhar para a objecção do lado contrário",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u1q6o1",
+     "text": "mudar de assunto",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u1q6o2",
+     "text": "terminar a reunião",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u1q6o0",
+   "explanation": "Devolver a pergunta.",
+   "points": 10
+  },
+  {
+   "id": "c1u1q7",
+   "question": "\"Um argumento consistente\" (sólido) em inglês:",
+   "options": [
+    {
+     "id": "c1u1q7o0",
+     "text": "a solid argument",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u1q7o1",
+     "text": "a consistent argument",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u1q7o2",
+     "text": "a consistence argument",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u1q7o0",
+   "explanation": "Falso amigo: consistent = coerente, constante.",
+   "points": 10
+  },
+  {
+   "id": "c1u1q8",
+   "question": "\"Your presentation was terrific!\" Isto é…",
+   "options": [
+    {
+     "id": "c1u1q8o0",
+     "text": "um elogio",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u1q8o1",
+     "text": "um insulto",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u1q8o2",
+     "text": "um aviso",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u1q8o0",
+   "explanation": "Falso amigo: terrific = excelente.",
+   "points": 10
+  },
+  {
+   "id": "c1u1q9",
+   "question": "Complete: \"She ___ the sceptics over with a simple story.\"",
+   "options": [
+    {
+     "id": "c1u1q9o0",
+     "text": "won",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u1q9o1",
+     "text": "gained",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u1q9o2",
+     "text": "earned",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u1q9o0",
+   "explanation": "win someone over.",
+   "points": 10
+  },
+  {
+   "id": "c1u1q10",
+   "question": "Reciclagem (B2, unidade 10). \"Quem me dera ter começado mais cedo.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1u1q10o0",
+     "text": "I wish I had started earlier.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u1q10o1",
+     "text": "I wish I started earlier yesterday.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u1q10o2",
+     "text": "I wish I would have started earlier.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u1q10o0",
+   "explanation": "wish + past perfect.",
+   "points": 10
+  },
+  {
+   "id": "c1u1q11",
+   "question": "Reciclagem (B2, unidade 9). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u1q11o0",
+     "text": "She suggested starting with a pilot.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u1q11o1",
+     "text": "She suggested us to start with a pilot.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u1q11o2",
+     "text": "She suggested to start us with a pilot.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u1q11o0",
+   "explanation": "suggest + -ing.",
+   "points": 10
+  },
+  {
+   "id": "c1u1q12",
+   "question": "Reciclagem (B2, unidade 8). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u1q12o0",
+     "text": "The presentation was absolutely brilliant.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u1q12o1",
+     "text": "The presentation was very brilliant completely.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u1q12o2",
+     "text": "The presentation was a bit brilliant.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u1q12o0",
+   "explanation": "Não graduável: absolutely.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

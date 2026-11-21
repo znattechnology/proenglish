@@ -4,11 +4,16 @@ import Link from "next/link";
 import { PedirLembrete } from "@/components/pe/avisos/Avisos";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { CheckCircle2, Heart, Infinity as InfinitoIcone } from "lucide-react";
+import { CheckCircle2, Heart } from "lucide-react";
 import { Botao, Etiqueta, Osso } from "@/components/pe";
+import { ASeguir } from "@/components/pe/curso/Percurso";
+import { useProximoPassoQuery } from "@/src/domains/student/curso/api";
 import { Dialogo } from "@/components/pe/Dialogo";
+import { FolhaOferta, OfertaPlano } from "@/components/pe/subscricao/Oferta";
+import type { Oferta } from "@/src/domains/student/subscricao/api";
 import {
   useAnalisarPronunciaMutation,
+  useResponderEmVozMutation,
   useSaltarExercicioMutation,
   useConcluirLicaoMutation,
   useEstadoVidasQuery,
@@ -17,14 +22,40 @@ import {
   useResponderMutation,
   useTrilhoQuery,
   type ConclusaoLicao,
+  type LicaoParaJogar,
+  type ResultadoResponder,
 } from "@/src/domains/student/laboratorio/api";
 import { tempoAte } from "@/components/pe/laboratorio/Trilho";
-import { CabecalhoLicao, RodapeLicao, type EstadoRodape } from "./Partes";
-import { dicaTeclado, ExercicioUI, type RespostaExercicio } from "./Exercicios";
+import { usePerfilQuery } from "@/src/domains/student/perfil/api";
+import { FRASES_LUENA, pararFala, precarregar, somDoMomento, tocar, type FalaLuena, type Momento } from "./sons";
+import { CabecalhoLicao, LegendaLuena, RodapeLicao, type EstadoRodape } from "./Partes";
+import { dicaTeclado, ExercicioUI, type RespostaExercicio, type ResultadoFala } from "./Exercicios";
 
 const ILIMITADAS = 999;
 
-type Fase = { tipo: "responder" } | { tipo: "certo"; explicacao?: string | null } | { tipo: "errado"; dica?: string | null; perdeuVida: boolean };
+type Fase =
+  | { tipo: "responder" }
+  | { tipo: "certo"; explicacao?: string | null }
+  /** repetir: falha técnica (tenta-se já outra vez); senão o exercício volta no fim da lição. */
+  | { tipo: "errado"; dica?: string | null; perdeuVida: boolean; solucao?: string | null; explicacao?: string | null; repetir?: boolean; falado?: boolean };
+
+/** Respostas da gravação que pedem para gravar outra vez (silêncio, ficheiro recusado ou grande demais). */
+const GRAVAR_OUTRA_VEZ = new Set(["sem_fala", "gravacao_invalida", "gravacao_grande"]);
+
+type CorpoErro = { status?: number; data?: { codigo?: string; error?: string; mensagem?: string; pode_saltar?: boolean; token_saltar?: string; oferta?: Oferta | null } & DadosLimite };
+
+/**
+ * A ordem da lição: começa no primeiro exercício por fazer (retoma uma lição deixada a meio, sem
+ * repetir os que já foram feitos depois dele) e a conversa curta fica sempre no fim. Os exercícios errados voltam ao fim da fila (como no Duolingo);
+ * a lição acaba quando todos foram acertados uma vez.
+ */
+function filaInicial(licao: LicaoParaJogar) {
+  const inicio = licao.repeticao ? 0 : Math.max(0, licao.exercicios.findIndex((e) => !e.feito));
+  const porFazer = licao.exercicios.slice(inicio).filter((e) => licao.repeticao || !e.feito);
+  // Tudo feito mas a lição por fechar (p.ex. o fim falhou): mostra-se tudo outra vez.
+  const resto = porFazer.length ? porFazer : licao.exercicios;
+  return [...resto.filter((e) => e.modo !== "conversa"), ...resto.filter((e) => e.modo === "conversa")].map((e) => e.id);
+}
 
 export function Jogador({ lessonId }: { lessonId: string }) {
   const router = useRouter();
@@ -32,105 +63,206 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   const { data: vidasEstado } = useEstadoVidasQuery();
   const [responder] = useResponderMutation();
   const [analisar] = useAnalisarPronunciaMutation();
+  const [responderEmVoz] = useResponderEmVozMutation();
   const [saltar] = useSaltarExercicioMutation();
   const [concluir, { isLoading: aConcluir }] = useConcluirLicaoMutation();
 
-  const [idx, setIdx] = useState<number | null>(null);
+  const [fila, setFila] = useState<string[] | null>(null);
+  const [pos, setPos] = useState(0);
   const [tentativa, setTentativa] = useState(0);
   const [resposta, setResposta] = useState<RespostaExercicio>(null);
   const [fase, setFase] = useState<Fase>({ tipo: "responder" });
+  const [fala, setFala] = useState<ResultadoFala | null>(null);
+  const [avaliacao, setAvaliacao] = useState<ResultadoResponder | null>(null);
   const [aVerificar, setAVerificar] = useState(false);
   const [vidasLocal, setVidas] = useState<number | null>(null);
-  const [errouEste, setErrouEste] = useState(false);
-  const [certasAPrimeira, setCertasAPrimeira] = useState(0);
-  const [respondidos, setRespondidos] = useState(0);
+  // Exercícios já errados nesta lição (não contam como "à primeira") e os já acertados.
+  const [errados, setErrados] = useState<ReadonlySet<string>>(() => new Set());
+  const [acertados, setAcertados] = useState<ReadonlySet<string>>(() => new Set());
+  const [saltados, setSaltados] = useState<ReadonlySet<string>>(() => new Set());
   const [sair, setSair] = useState(false);
   const [semVidas, setSemVidas] = useState(false);
+  // Plano que torna as vidas ilimitadas (vem no 400 «sem vidas»; undefined se ainda não chegou).
+  const [ofertaVidas, setOfertaVidas] = useState<Oferta | null | undefined>(undefined);
   const [conclusao, setConclusao] = useState<ConclusaoLicao | null>(null);
   const [erroConcluir, setErroConcluir] = useState(false);
   const [limiteAoConcluir, setLimiteAoConcluir] = useState<DadosLimite | null>(null);
   const [inicio] = useState(() => Date.now());
   const [duracao, setDuracao] = useState(0);
   const [pontosInicio, setPontosInicio] = useState<number | null>(null);
+  // Sons e voz da Luena (ligados por omissão; o aluno desliga-os nas definições).
+  const { data: perfil } = usePerfilQuery();
+  const comSons = perfil?.preferences?.sons !== false;
+  const comVoz = perfil?.preferences?.voz_professora !== false;
+  const [falaLuena, setFalaLuena] = useState<FalaLuena | null>(null);
+  // A legenda fica mais um pouco depois de a frase acabar (as curtas duram menos de 1 s).
+  const legenda = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const aoFalar = useCallback((f: FalaLuena | null) => {
+    if (legenda.current) clearTimeout(legenda.current);
+    legenda.current = null;
+    if (f) setFalaLuena(f);
+    else legenda.current = setTimeout(() => setFalaLuena(null), 2500);
+  }, []);
+  const contagem = useRef({ certos: 0, seguidos: 0, errados: 0 });
+  const soar = useCallback(
+    (m: Momento) => {
+      const c = contagem.current;
+      if (m.tipo === "certo") {
+        c.certos += 1;
+        c.seguidos += 1;
+      } else if (m.tipo === "errado") {
+        c.errados += 1;
+        c.seguidos = 0;
+      }
+      tocar(somDoMomento(m, c), { sons: comSons, voz: comVoz, aoFalar });
+    },
+    [comSons, comVoz, aoFalar]
+  );
+  const calar = useCallback(() => {
+    pararFala();
+    if (legenda.current) clearTimeout(legenda.current);
+    setFalaLuena(null);
+  }, []);
+  useEffect(
+    () => () => {
+      pararFala();
+      if (legenda.current) clearTimeout(legenda.current);
+    },
+    []
+  );
 
-  // Começa no primeiro exercício por fazer (retoma uma lição deixada a meio).
-  if (licao && idx === null) setIdx(licao.repeticao ? 0 : Math.max(0, licao.exercicios.findIndex((e) => !e.feito)));
+  if (licao && fila === null) setFila(filaInicial(licao));
   // Os pontos de partida servem para mostrar quantos ganhou no fim.
   if (vidasEstado && pontosInicio === null) setPontosInicio(vidasEstado.points);
   const vidas = vidasLocal ?? (vidasEstado ? (vidasEstado.unlimited ? ILIMITADAS : vidasEstado.current) : null);
 
-  const total = licao?.exercicios.length ?? 0;
-  const i = idx ?? 0;
-  const ex = licao?.exercicios[i];
+  // Total: exercícios diferentes desta passagem (os que voltam não contam duas vezes).
+  const total = useMemo(() => new Set(fila ?? []).size, [fila]);
+  const ex = licao?.exercicios.find((e) => e.id === fila?.[pos]);
+  const ultimo = !!fila && pos + 1 >= fila.length;
   const ilimitadas = (vidas ?? 0) >= ILIMITADAS;
   const repeticao = !!licao?.repeticao;
 
   const indisponivel = ex?.modo === "indisponivel";
 
+  // Ao abrir a lição: descarrega os sons e a Luena dá as boas-vindas (uma vez).
+  const saudou = useRef(false);
+  useEffect(() => {
+    if (!licao || !perfil || saudou.current) return;
+    saudou.current = true;
+    precarregar(comVoz);
+    tocar({ toque: null, fala: licao.id.charCodeAt(0) % 2 ? "inicio-1" : "inicio-2" }, { sons: comSons, voz: comVoz, aoFalar });
+  }, [licao, perfil, comSons, comVoz, aoFalar]);
+
+  const marcarErrado = useCallback((id: string) => setErrados((s) => new Set(s).add(id)), []);
+
   const verificar = useCallback(async () => {
     if (!ex || !resposta || aVerificar) return;
     setAVerificar(true);
     try {
-      if (resposta.tipo === "audio") {
-        const r = await analisar({ challengeId: ex.id, frase: ex.frase ?? ex.pergunta, audio: resposta.audio });
-        if ("error" in r && r.error) {
-          const e = r.error as { status?: number; data?: { codigo?: string; error?: string; pode_saltar?: boolean; token_saltar?: string } };
-          if (e.data?.error === "hearts") {
-            setVidas(0);
-            setSemVidas(true);
-            return;
-          }
-          // A análise de pronúncia não está disponível: o exercício é saltado (sem pontos, sem perder vidas)
-          // para a lição não ficar bloqueada.
-          if (e.data?.codigo === "analise_indisponivel" && e.data.pode_saltar) {
-            const s = await saltar({ challengeId: ex.id, token: e.data.token_saltar });
-            if (!("error" in s && s.error)) {
-              setFase({ tipo: "certo", explicacao: "A análise da pronúncia não está disponível agora. Saltámos este exercício: não conta pontos nem tira vidas." });
-              return;
-            }
-          }
-          setFase({
-            tipo: "errado",
-            dica: e.status === 429 ? "Já usou as análises de pronúncia de hoje. Amanhã há mais." : "Não conseguimos analisar a gravação agora. Grave outra vez.",
-            perdeuVida: false,
-          });
-          return;
-        }
-        const d = r.data!;
-        if (d.user_progress) setVidas(d.user_progress.hearts);
-        if (d.ai_analysis.is_acceptable) {
-          setFase({ tipo: "certo", explicacao: d.explicacao ?? d.feedback?.message ?? null });
-        } else {
-          setFase({ tipo: "errado", dica: d.dica ?? d.feedback?.message ?? null, perdeuVida: !repeticao && !ilimitadas });
-          setErrouEste(true);
-        }
-        return;
-      }
-      const r = await responder({ challengeId: ex.id, resposta: resposta.resposta });
-      if ("error" in r && r.error) {
-        const corpo = (r.error as { data?: { error?: string } }).data;
-        if (corpo?.error === "hearts") {
+      // Falha técnica numa gravação: salta com o token (sem pontos nem vidas) ou grava outra vez.
+      const falhaGravacao = async (e: CorpoErro, limite: string) => {
+        if (e.data?.error === "hearts") {
           setVidas(0);
+          setOfertaVidas(e.data.oferta);
           setSemVidas(true);
           return;
         }
-        setFase({ tipo: "errado", dica: "Não conseguimos verificar a resposta. Verifique a ligação e tente outra vez.", perdeuVida: false });
+        if (e.data?.codigo === "limite_licoes") return void setLimiteAoConcluir(e.data);
+        if (e.data?.codigo === "analise_indisponivel" && e.data.pode_saltar) {
+          const s = await saltar({ challengeId: ex.id, token: e.data.token_saltar });
+          if (!("error" in s && s.error)) {
+            setFase({ tipo: "certo", explicacao: "A análise da gravação não está disponível agora. Saltámos este exercício: não conta pontos nem tira vidas." });
+            setSaltados((a) => new Set(a).add(ex.id));
+            return;
+          }
+        }
+        setFase({
+          tipo: "errado",
+          dica:
+            e.status === 429
+              ? limite
+              : GRAVAR_OUTRA_VEZ.has(e.data?.codigo ?? "") && e.data?.mensagem
+                ? e.data.mensagem
+                : "Não conseguimos analisar a gravação agora. Grave outra vez.",
+          perdeuVida: false,
+          repetir: true,
+        });
+      };
+
+      if (resposta.tipo === "audio" && ex.modo === "responder") {
+        const r = await responderEmVoz({ challengeId: ex.id, audio: resposta.audio });
+        if ("error" in r && r.error) return void (await falhaGravacao(r.error as CorpoErro, "Já usou as análises com IA de hoje. Amanhã há mais."));
+        const d = r.data!;
+        if (d.user_progress) setVidas(d.user_progress.hearts);
+        setAvaliacao(d);
+        if (d.aceite) {
+          setFase({ tipo: "certo", explicacao: d.explicacao ?? null });
+          setAcertados((a) => new Set(a).add(ex.id));
+          soar({ tipo: "certo", falado: true });
+        } else {
+          // Uma resposta falada não aceite nunca tira vidas (o servidor decide; heartsUsed é sempre 0).
+          setFase({ tipo: "errado", dica: d.dica ?? null, perdeuVida: false, falado: true });
+          marcarErrado(ex.id);
+          soar({ tipo: "errado", falado: true });
+        }
+        return;
+      }
+
+      if (resposta.tipo === "audio") {
+        const r = await analisar({ challengeId: ex.id, frase: ex.frase ?? ex.pergunta, audio: resposta.audio });
+        if ("error" in r && r.error) return void (await falhaGravacao(r.error as CorpoErro, "Já usou as análises de pronúncia de hoje. Amanhã há mais."));
+        const d = r.data!;
+        if (d.user_progress) setVidas(d.user_progress.hearts);
+        // A nota, as palavras a treinar e o comentário aparecem no exercício; o rodapé fica com a explicação/dica.
+        setFala({ nota: d.ai_analysis.overall_score, palavras: d.feedback?.problematic_words ?? [], mensagem: d.feedback?.message ?? null, detalhe: d.detalhe ?? null, fonte: d.ai_analysis.fonte ?? null });
+        if (d.ai_analysis.is_acceptable) {
+          setFase({ tipo: "certo", explicacao: d.explicacao ?? null });
+          setAcertados((a) => new Set(a).add(ex.id));
+          soar({ tipo: "certo", falado: true });
+        } else {
+          // Uma gravação não aceite nunca tira vidas (o reconhecimento de fala pode errar com o sotaque).
+          setFase({ tipo: "errado", dica: d.dica ?? null, perdeuVida: false, falado: true });
+          marcarErrado(ex.id);
+          soar({ tipo: "errado", falado: true });
+        }
+        return;
+      }
+
+      const r = await responder({ challengeId: ex.id, resposta: resposta.resposta });
+      if ("error" in r && r.error) {
+        const corpo = (r.error as CorpoErro).data;
+        if (corpo?.error === "hearts") {
+          setVidas(0);
+          setOfertaVidas(corpo.oferta);
+          setSemVidas(true);
+          soar({ tipo: "sem-vidas" });
+          return;
+        }
+        if (corpo?.codigo === "limite_licoes") return void setLimiteAoConcluir(corpo);
+        const dica = corpo?.codigo === "conversa_incompleta" && corpo.mensagem ? corpo.mensagem : "Não conseguimos verificar a resposta. Verifique a ligação e tente outra vez.";
+        setFase({ tipo: "errado", dica, perdeuVida: false, repetir: true });
         return;
       }
       const d = r.data!;
       if (d.user_progress) setVidas(d.user_progress.hearts);
       if (d.correct) {
         setFase({ tipo: "certo", explicacao: d.explicacao });
+        setAcertados((a) => new Set(a).add(ex.id));
+        soar({ tipo: "certo", falado: false });
       } else {
         const perdeu = (d.heartsUsed ?? 0) > 0;
-        setFase({ tipo: "errado", dica: d.dica ?? (d.feedback?.hint ? `Começa por "${d.feedback.hint}"` : null), perdeuVida: perdeu });
-        setErrouEste(true);
-        if (perdeu && d.user_progress && d.user_progress.hearts <= 0) setSemVidas(true);
+        setFase({ tipo: "errado", dica: d.dica ?? null, solucao: d.solucao ?? null, explicacao: d.explicacao ?? null, perdeuVida: perdeu });
+        marcarErrado(ex.id);
+        if (perdeu && d.user_progress && d.user_progress.hearts <= 0) {
+          setSemVidas(true);
+          soar({ tipo: "sem-vidas" });
+        } else soar({ tipo: "errado", falado: false });
       }
     } finally {
       setAVerificar(false);
     }
-  }, [ex, resposta, aVerificar, analisar, saltar, responder, repeticao, ilimitadas]);
+  }, [ex, resposta, aVerificar, analisar, responderEmVoz, saltar, responder, marcarErrado, soar]);
 
   const terminar = useCallback(async () => {
     setErroConcluir(false);
@@ -144,46 +276,52 @@ export function Jogador({ lessonId }: { lessonId: string }) {
       return;
     }
     setConclusao(r.data!);
+    soar({ tipo: "concluida", meta: !!r.data!.goal_just_completed });
     try {
       localStorage.setItem("pe_licao_concluida", "1"); // o convite para instalar a app só aparece depois da primeira lição
     } catch {}
-  }, [concluir, lessonId, inicio]);
+  }, [concluir, lessonId, inicio, soar]);
 
-  // contar=false: exercício saltado (indisponível), não entra nas contas do fim da lição.
-  const avancar = useCallback((contar: boolean) => {
-    if (contar) {
-      if (!errouEste) setCertasAPrimeira((n) => n + 1);
-      setRespondidos((n) => n + 1);
-    }
-    setErrouEste(false);
-    setResposta(null);
-    setFase({ tipo: "responder" });
-    if (i + 1 >= total) {
-      void terminar();
-      return;
-    }
-    setIdx(i + 1);
-    setTentativa((t) => t + 1);
-  }, [errouEste, i, total, terminar]);
-  const continuar = useCallback(() => avancar(true), [avancar]);
+  // Passa ao exercício seguinte da fila; voltar=true põe o actual no fim (errou).
+  const avancar = useCallback(
+    (voltar: boolean) => {
+      if (!fila || !ex) return;
+      calar();
+      const nova = voltar ? [...fila, ex.id] : fila;
+      setResposta(null);
+      setFala(null);
+      setAvaliacao(null);
+      setFase({ tipo: "responder" });
+      if (pos + 1 >= nova.length) {
+        void terminar();
+        return;
+      }
+      if (voltar) setFila(nova);
+      setPos(pos + 1);
+      setTentativa((t) => t + 1);
+    },
+    [fila, ex, pos, terminar, calar]
+  );
+  const continuar = useCallback(() => avancar(fase.tipo === "errado" && !fase.repetir), [avancar, fase]);
 
-  // Conversa desligada ou escuta sem áudio: o servidor marca o exercício como saltado
-  // (sem pontos, sem perder vidas) e passa-se ao seguinte.
-  const saltarIndisponivel = useCallback(async () => {
+  // Conversa curta (sem minutos, sem ligação ou porque o aluno quis), escuta sem áudio e exercícios
+  // incompletos: o servidor marca o exercício como saltado (sem pontos, sem perder vidas).
+  const saltarExercicio = useCallback(async () => {
     if (!ex || aVerificar) return;
     setAVerificar(true);
     try {
       const s = await saltar({ challengeId: ex.id });
       if ("error" in s && s.error) {
-        setFase({ tipo: "errado", dica: "Não conseguimos continuar agora. Verifique a ligação e tente outra vez.", perdeuVida: false });
+        setFase({ tipo: "errado", dica: "Não conseguimos continuar agora. Verifique a ligação e tente outra vez.", perdeuVida: false, repetir: true });
         return;
       }
+      setSaltados((a) => new Set(a).add(ex.id));
       avancar(false);
     } finally {
       setAVerificar(false);
     }
   }, [ex, aVerificar, saltar, avancar]);
-  const accaoVerificar = indisponivel ? saltarIndisponivel : verificar;
+  const accaoVerificar = indisponivel ? saltarExercicio : verificar;
 
   // Escuta sem áudio: salta logo, sem a mostrar (só uma tentativa automática por exercício).
   const saltadoAuto = useRef<string | null>(null);
@@ -191,14 +329,17 @@ export function Jogador({ lessonId }: { lessonId: string }) {
     if (!ex || ex.modo !== "indisponivel" || ex.motivo !== "sem_audio" || fase.tipo !== "responder") return;
     if (saltadoAuto.current === ex.id) return;
     saltadoAuto.current = ex.id;
-    void saltarIndisponivel();
-  }, [ex, fase.tipo, saltarIndisponivel]);
+    void saltarExercicio();
+  }, [ex, fase.tipo, saltarExercicio]);
 
   const tentarOutraVez = useCallback(() => {
+    calar();
     setResposta(null);
+    setFala(null);
+    setAvaliacao(null);
     setFase({ tipo: "responder" });
     setTentativa((t) => t + 1);
-  }, []);
+  }, [calar]);
 
   // Enter avança: verificar, continuar ou tentar outra vez.
   useEffect(() => {
@@ -209,7 +350,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
       if (e.target instanceof HTMLButtonElement) return;
       e.preventDefault();
       if (fase.tipo === "responder") void accaoVerificar();
-      else if (fase.tipo === "certo") continuar();
+      else if (fase.tipo === "certo" || !fase.repetir) continuar();
       else tentarOutraVez();
     };
     window.addEventListener("keydown", tecla);
@@ -218,11 +359,11 @@ export function Jogador({ lessonId }: { lessonId: string }) {
 
   const estadoRodape: EstadoRodape = useMemo(() => {
     if (fase.tipo === "certo") return { tipo: "certo", explicacao: fase.explicacao };
-    if (fase.tipo === "errado") return { tipo: "errado", dica: fase.dica, perdeuVida: fase.perdeuVida };
+    if (fase.tipo === "errado") return fase;
     return { tipo: "verificar", pronto: !!resposta || indisponivel, aVerificar };
   }, [fase, resposta, aVerificar, indisponivel]);
 
-  if (isLoading || (licao && idx === null)) return <EsqueletoLicao />;
+  if (isLoading || (licao && fila === null)) return <EsqueletoLicao />;
   const limite = (erroLicao as { data?: DadosLimite } | undefined)?.data;
   if (isError && limite?.codigo === "limite_licoes") return <LimiteLicoes d={limite} />;
   const bloqueio = (erroLicao as { data?: { codigo?: string; mensagem?: string } } | undefined)?.data;
@@ -239,6 +380,22 @@ export function Jogador({ lessonId }: { lessonId: string }) {
             </Botao>
           ) : null}
           <Botao asChild tipo={plano ? "secundario" : "principal"}>
+            <Link href="/user/laboratory/learn">Voltar ao trilho</Link>
+          </Botao>
+        </div>
+      </main>
+    );
+  }
+  if (isError && bloqueio?.codigo === "requisito_basico") {
+    return (
+      <main className="mx-auto flex max-w-[560px] flex-col items-start gap-4 px-5 py-16">
+        <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9">Este curso pede o nível básico</h1>
+        <p className="m-0 text-pe-tinta-suave">{bloqueio.mensagem ?? "Faça o teste do nível básico ou comece pelo curso geral."}</p>
+        <div className="flex flex-wrap gap-3">
+          <Botao asChild tipo="realce">
+            <Link href="/user/teste-basico">Fazer o teste do nível básico</Link>
+          </Botao>
+          <Botao asChild tipo="secundario">
             <Link href="/user/laboratory/learn">Voltar ao trilho</Link>
           </Botao>
         </div>
@@ -262,10 +419,14 @@ export function Jogador({ lessonId }: { lessonId: string }) {
   }
 
   if (conclusao) {
-    return <LicaoConcluida licao={licao} conclusao={conclusao} certas={certasAPrimeira} total={respondidos} segundos={duracao} pontosInicio={pontosInicio} />;
+    // "À primeira": acertados sem nenhum erro antes (os saltados não contam).
+    const certas = [...acertados].filter((id) => !errados.has(id)).length;
+    return <LicaoConcluida licao={licao} conclusao={conclusao} certas={certas} total={acertados.size} segundos={duracao} pontosInicio={pontosInicio} luena={falaLuena ? FRASES_LUENA[falaLuena] : null} />;
   }
 
-  const feitos = i + (fase.tipo === "certo" ? 1 : 0);
+  // A barra só avança com os exercícios acertados (ou saltados): os errados voltam no fim.
+  const feitos = Math.min(total, acertados.size + saltados.size);
+  const aRever = !!ex && errados.has(ex.id) && fase.tipo === "responder";
   return (
     <div className="flex min-h-dvh flex-col">
       <CabecalhoLicao
@@ -273,15 +434,25 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         total={total}
         vidas={repeticao ? null : vidas}
         ilimitadas={ilimitadas}
-        aoSair={() => (i > 0 || resposta ? setSair(true) : router.push("/user/laboratory/learn"))}
+        aoSair={() => (pos > 0 || resposta ? setSair(true) : router.push("/user/laboratory/learn"))}
       />
       {repeticao ? (
         <p className="m-0 bg-pe-fundo-suave px-5 py-2 text-center text-pe-legenda">Prática: esta lição já foi feita, por isso não perde vidas.</p>
       ) : null}
       <main className="flex-1">
         <div className="mx-auto flex max-w-[720px] flex-col gap-6 px-5 py-6 md:px-6 md:py-12">
+          {aRever ? <p className="m-0 -mb-2 self-start rounded-pe-sm bg-pe-realce-suave px-3 py-1 text-pe-legenda font-semibold">Para rever: errou este exercício antes</p> : null}
           {ex ? (
-            <ExercicioUI key={`${ex.id}-${tentativa}`} ex={ex} bloqueado={fase.tipo !== "responder"} visual={fase.tipo === "responder" ? "livre" : fase.tipo} aoMudar={setResposta} />
+            <ExercicioUI
+              key={`${ex.id}-${tentativa}`}
+              ex={ex}
+              bloqueado={fase.tipo !== "responder"}
+              visual={fase.tipo === "responder" ? "livre" : fase.tipo}
+              aoMudar={setResposta}
+              fala={fala}
+              avaliacao={avaliacao}
+              aoSaltar={ex.modo === "conversa" ? () => void saltarExercicio() : undefined}
+            />
           ) : null}
           {erroConcluir ? (
             <div role="alert" className="flex flex-col gap-3 rounded-pe-md bg-pe-errado-suave px-4 py-3">
@@ -300,14 +471,15 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         textoVerificar={indisponivel ? "Continuar" : undefined}
         aoContinuar={continuar}
         aoTentarOutraVez={tentarOutraVez}
-        textoContinuar={i + 1 >= total ? (aConcluir ? "A guardar…" : "Terminar lição") : "Continuar"}
+        luena={falaLuena ? FRASES_LUENA[falaLuena] : null}
+        textoContinuar={ultimo && !(fase.tipo === "errado" && !fase.repetir) ? (aConcluir ? "A guardar…" : "Terminar lição") : "Continuar"}
       />
 
       <Dialogo
         aberto={sair}
         aoMudar={setSair}
         titulo="Sair a meio da lição?"
-        descricao={`Já fez ${i} de ${total} exercícios. O que acertou fica guardado e pode continuar depois.`}
+        descricao={`Já acertou ${acertados.size} de ${total} exercícios. O que acertou fica guardado e pode continuar depois.`}
       >
         <div className="flex flex-col gap-3">
           <Botao larguraTotal onClick={() => setSair(false)}>
@@ -319,7 +491,7 @@ export function Jogador({ lessonId }: { lessonId: string }) {
         </div>
       </Dialogo>
 
-      <SemVidas aberto={semVidas} aoMudar={setSemVidas} aoRecarregar={(n) => { setVidas(n); setSemVidas(false); }} />
+      <SemVidas aberto={semVidas} aoMudar={setSemVidas} oferta={ofertaVidas} aoRecarregar={(n) => { setVidas(n); setSemVidas(false); }} />
     </div>
   );
 }
@@ -327,8 +499,18 @@ export function Jogador({ lessonId }: { lessonId: string }) {
 /* ------------------------------------------------------------------ */
 /* Sem vidas                                                            */
 /* ------------------------------------------------------------------ */
-function SemVidas({ aberto, aoMudar, aoRecarregar }: { aberto: boolean; aoMudar: (v: boolean) => void; aoRecarregar: (vidas: number) => void }) {
-  const { data: estado, refetch } = useEstadoVidasQuery(undefined, { skip: !aberto });
+function SemVidas({
+  aberto,
+  aoMudar,
+  oferta,
+  aoRecarregar,
+}: {
+  aberto: boolean;
+  aoMudar: (v: boolean) => void;
+  oferta: Oferta | null | undefined;
+  aoRecarregar: (vidas: number) => void;
+}) {
+  const { data: estado, isFetching, refetch } = useEstadoVidasQuery(undefined, { skip: !aberto });
   const [recarregar, { isLoading }] = useRecarregarVidasMutation();
   const [erro, setErro] = useState<string | null>(null);
   useEffect(() => {
@@ -336,12 +518,48 @@ function SemVidas({ aberto, aoMudar, aoRecarregar }: { aberto: boolean; aoMudar:
   }, [aberto, refetch]);
 
   const tempo = tempoAte(estado?.next_heart_at);
+  // Sem oferta no erro (ficou sem vidas ao errar, resposta 200): usa a do estado das vidas, já
+  // relido ao abrir. undefined enquanto não chega a leitura nova.
+  const ofertaFinal = oferta !== undefined ? oferta : isFetching ? undefined : estado?.oferta;
+  const custo = estado?.refill_cost_points ?? 50;
+
+  const saidas = (
+    <>
+      <Botao
+        tipo="secundario"
+        larguraTotal
+        disabled={isLoading || (estado ? !estado.can_refill_with_points : false)}
+        onClick={async () => {
+          setErro(null);
+          const r = await recarregar();
+          if ("error" in r && r.error) {
+            const c = (r.error as { data?: { error?: string; message?: string } }).data;
+            setErro(c?.error === "insufficient_points" ? `Ainda não tem ${custo} pontos. Pode praticar uma lição já feita para ganhar pontos.` : c?.message ?? "Não foi possível recarregar agora.");
+            return;
+          }
+          aoRecarregar(r.data!.hearts);
+        }}
+      >
+        {estado && !estado.can_refill_with_points && estado.points < custo ? `Recarregar por ${custo} pontos (tem ${estado.points})` : `Recarregar por ${custo} pontos`}
+      </Botao>
+      {/* Nem o erro nem o estado das vidas trazem oferta: a página de planos mostra o que há. */}
+      {ofertaFinal === undefined ? (
+        <Botao asChild tipo="ligacao" larguraTotal>
+          <Link href="/user/upgrade">Ver os planos</Link>
+        </Botao>
+      ) : null}
+      <Botao asChild tipo="ligacao" larguraTotal>
+        <Link href="/user/laboratory/learn">Esperar e voltar ao trilho</Link>
+      </Botao>
+    </>
+  );
 
   return (
-    <Dialogo
+    <FolhaOferta
       aberto={aberto}
       aoMudar={aoMudar}
       titulo="Ficou sem vidas"
+      oferta={ofertaFinal}
       topo={
         <div role="img" aria-label="0 vidas" className="flex gap-2">
           {[0, 1, 2].map((i) => (
@@ -349,39 +567,11 @@ function SemVidas({ aberto, aoMudar, aoRecarregar }: { aberto: boolean; aoMudar:
           ))}
         </div>
       }
-      descricao={`${tempo ? `A próxima vida volta daqui a ${tempo}. ` : ""}O que já fez nesta lição fica guardado.`}
+      mensagem={`${tempo ? `A próxima vida volta daqui a ${tempo}. ` : ""}O que já fez nesta lição fica guardado.`}
+      aviso={erro ? <p role="alert" className="m-0 rounded-pe-md bg-pe-errado-suave px-3 py-2 text-[15px]">{erro}</p> : null}
     >
-      {erro ? <p role="alert" className="m-0 rounded-pe-md bg-pe-errado-suave px-3 py-2 text-[15px]">{erro}</p> : null}
-      <div className="flex flex-col gap-3">
-        <Botao asChild tipo="realce" larguraTotal>
-          <Link href="/user/subscription">
-            <InfinitoIcone aria-hidden /> Vidas ilimitadas com o Premium
-          </Link>
-        </Botao>
-        <Botao
-          tipo="secundario"
-          larguraTotal
-          disabled={isLoading || (estado ? !estado.can_refill_with_points : false)}
-          onClick={async () => {
-            setErro(null);
-            const r = await recarregar();
-            if ("error" in r && r.error) {
-              const c = (r.error as { data?: { error?: string; message?: string } }).data;
-              setErro(c?.error === "insufficient_points" ? "Ainda não tem 50 pontos. Pode praticar uma lição já feita para ganhar pontos." : c?.message ?? "Não foi possível recarregar agora.");
-              return;
-            }
-            aoRecarregar(r.data!.hearts);
-          }}
-        >
-          {estado && !estado.can_refill_with_points && estado.points < estado.refill_cost_points
-            ? `Recarregar por 50 pontos (tem ${estado.points})`
-            : "Recarregar por 50 pontos"}
-        </Botao>
-        <Botao asChild tipo="ligacao" larguraTotal>
-          <Link href="/user/laboratory/learn">Voltar ao trilho</Link>
-        </Botao>
-      </div>
-    </Dialogo>
+      {saidas}
+    </FolhaOferta>
   );
 }
 
@@ -395,6 +585,7 @@ function LicaoConcluida({
   total,
   segundos,
   pontosInicio,
+  luena,
 }: {
   licao: { id: string; titulo: string; curso: { id: string } };
   conclusao: ConclusaoLicao;
@@ -402,9 +593,13 @@ function LicaoConcluida({
   total: number;
   segundos: number;
   pontosInicio: number | null;
+  /** Frase que a Luena está a dizer (legenda). */
+  luena?: string | null;
 }) {
   const { data: trilho } = useTrilhoQuery(licao.curso.id);
   const proxima = trilho?.unidades.flatMap((u) => u.licoes).find((l) => l.estado === "actual" && l.id !== licao.id);
+  // O passo seguinte do percurso do curso em vídeo a que esta lição pertence (se pertencer a algum).
+  const { data: seguinte } = useProximoPassoQuery({ licao: licao.id }, { refetchOnMountOrArgChange: true });
   const pontos = pontosInicio !== null ? Math.max(0, conclusao.total_points - pontosInicio) : conclusao.points_awarded;
   const minutos = Math.max(1, Math.round(segundos / 60));
   const metaFalta = Math.max(0, conclusao.daily_goal_minutes - conclusao.minutes_today);
@@ -417,10 +612,11 @@ function LicaoConcluida({
         </Etiqueta>
         <h1 className="m-0 font-pe-titulo text-[30px] font-bold leading-9 tracking-[-0.015em] md:text-pe-titulo-l">{licao.titulo}</h1>
       </div>
+      <LegendaLuena texto={luena} />
 
       <dl className="m-0 grid grid-cols-3 gap-3">
         {[
-          ["Certas à primeira", `${certas} de ${total}`],
+          ["Acertou à primeira", `${certas} de ${total}`],
           ["Tempo", `${minutos} min`],
           ["Seguidos", `${conclusao.streak} ${conclusao.streak === 1 ? "dia" : "dias"}`],
         ].map(([dt, dd]) => (
@@ -445,9 +641,11 @@ function LicaoConcluida({
 
       <PedirLembrete sequencia={conclusao.streak} />
 
+      {seguinte ? <ASeguir proximo={seguinte} /> : null}
+
       <div className="mt-auto flex flex-col gap-3 md:mt-2 md:flex-row-reverse md:justify-start">
         {proxima ? (
-          <Botao asChild tipo="realce" className="md:min-w-[220px]">
+          <Botao asChild tipo={seguinte ? "secundario" : "realce"} className="md:min-w-[220px]">
             <Link href={`/user/laboratory/learn/lesson/${proxima.id}`}>Próxima lição</Link>
           </Botao>
         ) : null}
@@ -459,30 +657,32 @@ function LicaoConcluida({
   );
 }
 
-type DadosLimite = { codigo?: string; limite?: number; feitas?: number; renova_em?: string };
+type DadosLimite = { codigo?: string; mensagem?: string; limite?: number; feitas?: number; renova_em?: string; oferta?: Oferta | null };
 
-/** Plano Gratuito: o limite de lições novas do dia foi atingido. Repetir lições continua livre. */
+/** Limite de lições novas do dia atingido. Repetir lições continua livre. */
 function LimiteLicoes({ d }: { d: DadosLimite }) {
-  const n = d.limite ?? 3;
   const renova = d.renova_em ? new Date(d.renova_em) : null;
+  const titulo = d.limite ? `Já fez as ${d.limite} lições novas de hoje` : "Já fez as lições novas de hoje";
+  const voltar = (
+    <Botao asChild tipo={d.oferta ? "ligacao" : "secundario"} larguraTotal={!!d.oferta}>
+      <Link href="/user/laboratory/learn">Voltar ao trilho e repetir lições</Link>
+    </Botao>
+  );
   return (
-    <main className="mx-auto flex max-w-[560px] flex-col items-start gap-5 px-5 py-16">
-      <span aria-hidden className="pe-sobre-marca flex size-16 items-center justify-center rounded-[22px_22px_22px_0] bg-pe-azul-marca font-pe-titulo text-[26px] font-bold text-pe-realce">
-        {n}
-      </span>
-      <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9">Já fez as {n} lições de hoje</h1>
-      <p className="m-0 text-pe-tinta-suave">
-        No plano Gratuito há {n} lições novas por dia
-        {renova ? `. Amanhã, a partir das ${renova.toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" })}, há mais` : ""}. Pode repetir as lições que já fez, sem limite. O que fez nesta lição fica guardado.
-      </p>
-      <div className="flex flex-wrap gap-3">
-        <Botao asChild tipo="realce">
-          <Link href="/user/upgrade?plan=PREMIUM">Passar para o Premium</Link>
-        </Botao>
-        <Botao asChild tipo="secundario">
-          <Link href="/user/laboratory/learn">Voltar ao trilho</Link>
-        </Botao>
+    <main className="mx-auto flex max-w-[480px] flex-col items-start gap-5 px-5 py-12 md:py-16">
+      {d.limite ? (
+        <span aria-hidden className="pe-sobre-marca flex size-16 items-center justify-center rounded-[22px_22px_22px_0] bg-pe-azul-marca font-pe-titulo text-[26px] font-bold text-pe-realce">
+          {d.limite}
+        </span>
+      ) : null}
+      <div className="flex flex-col gap-2">
+        <h1 className="m-0 font-pe-titulo text-[28px] font-bold leading-9">{titulo}</h1>
+        <p className="m-0 text-pe-tinta-suave">
+          {renova ? `Amanhã, a partir das ${renova.toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" })}, há mais. ` : ""}
+          Pode repetir as lições que já fez, sem limite. O que fez nesta lição fica guardado.
+        </p>
       </div>
+      {d.oferta ? <OfertaPlano oferta={d.oferta} saidas={voltar} /> : <div className="flex flex-wrap gap-3">{voltar}</div>}
     </main>
   );
 }

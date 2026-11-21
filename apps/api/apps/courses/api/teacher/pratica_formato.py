@@ -3,8 +3,8 @@ Formato único dos exercícios na área do professor (cursos de prática) e a tr
 PracticeChallenge + ChallengeOption, tal como o ecrã da lição do aluno os lê
 (apps/courses/api/student/practice_courses/jogar.py e a validação em challenge-progress/).
 
-  exercicio = {id, tipo, ordem, enunciado, frase, opcoes:[{id?, texto, certa}], pares:[{a, b}],
-               resposta, explicacao, audio_url, acerto, tentativas}
+  exercicio = {id, tipo, ordem, enunciado, frase, opcoes:[{id?, texto, certa, imagem?}], pares:[{a, b}],
+               resposta, explicacao, audio_url, contexto, frases_alvo:[str], acerto, tentativas}
 
 Tipos (normalizado -> modelo) e onde fica cada campo:
 
@@ -31,10 +31,20 @@ Tipos (normalizado -> modelo) e onde fica cada campo:
       audio_url = reference_audio_url.
   pronuncia (SPEAKING)
       question = frase (o que o aluno diz); instruction = enunciado; audio_url = reference_audio_url.
+  responder (RESPONDER)
+      o aluno ouve/lê uma pergunta de trabalho e responde em voz alta, livremente.
+      question = enunciado (a pergunta, em inglês); instruction = contexto (curto, opcional);
+      conversation_context = {frase_alvo: frase, exemplo: resposta}. Sem opções.
   conversa (VAPI_CONVERSATION)
-      question = enunciado (a situação); conversation_context = {scenario: enunciado, goal: frase}.
+      conversa curta (1-2 min) com o tutor no fim da lição.
+      question = enunciado (a situação); conversation_context = {scenario: enunciado,
+      frases: frases_alvo (2 a 3), goal: as frases juntas (exercícios antigos tinham só goal)}.
 
 O texto de explicação vai para `explanation`. Campos que um tipo não usa saem "" / [] / null.
+
+Imagens nas opções (`imagem`, endereço https, opcional): nos tipos escolher, assistir e escuta com
+opções ("Escolha a imagem: a receipt"); vai para ChallengeOption.image_url. O texto da opção
+continua obrigatório (é o que o leitor de ecrã lê e o que se compara). Nos outros tipos, ignora-se.
 """
 import re
 
@@ -48,14 +58,13 @@ TIPOS = {
     'verdadeiro_falso': 'TRUE_FALSE',
     'escuta': 'LISTENING',
     'pronuncia': 'SPEAKING',
+    'responder': 'RESPONDER',
     'conversa': 'VAPI_CONVERSATION',
 }
 TIPO_API = {v: k for k, v in TIPOS.items()}
-# A conversa dentro da lição está desligada por agora: não se cria nem se altera (os exercícios
-# antigos continuam a ser lidos, o aluno salta-os e a lista de verificação recusa-os).
-TIPOS_CRIAVEIS = [t for t in TIPOS if t != 'conversa']
-MENSAGEM_CONVERSA = ('O exercício de conversa não está disponível por agora. '
-                     'Escolha outro tipo de exercício.')
+TIPOS_CRIAVEIS = list(TIPOS)
+# Exercícios em que o aluno fala (a regra "pelo menos metade da lição falada" do gerador).
+TIPOS_FALADOS = ('pronuncia', 'responder')
 
 NOMES = {
     'escolher': 'Escolher',
@@ -67,7 +76,8 @@ NOMES = {
     'verdadeiro_falso': 'Verdadeiro ou falso',
     'escuta': 'Escuta',
     'pronuncia': 'Pronúncia',
-    'conversa': 'Conversa',
+    'responder': 'Responder',
+    'conversa': 'Conversa curta',
 }
 
 ESPACO = re.compile(r'_{2,}|\[\s*\]')  # o mesmo que o ecrã da lição usa para os espaços
@@ -85,6 +95,10 @@ MAX_OPCOES = 6
 MAX_PARES = 8
 MAX_ESPACOS = 3
 MIN_PALAVRAS_ORDENAR, MAX_PALAVRAS_ORDENAR = 3, 15
+MAX_CONTEXTO = 300
+MAX_FRASE_ALVO = 160
+MAX_SITUACAO = 600
+MIN_FRASES_CONVERSA, MAX_FRASES_CONVERSA = 2, 3
 
 
 def _texto(v):
@@ -101,15 +115,37 @@ def _normal(v):
 
 def _vazio(tipo='', ordem=None):
     return {'tipo': tipo, 'ordem': ordem, 'enunciado': '', 'frase': '', 'opcoes': [], 'pares': [],
-            'resposta': '', 'explicacao': '', 'audio_url': None}
+            'resposta': '', 'explicacao': '', 'audio_url': None, 'contexto': '', 'frases_alvo': []}
 
 
 # ---------------------------------------------------------------------------
 # Validação (entrada da API e saída do Claude)
 # ---------------------------------------------------------------------------
 
+TIPOS_COM_IMAGEM = ('escolher', 'assistir', 'escuta')
+MAX_URL = 200  # URLField
+
+
+def _imagem(valor, erros, campo='opcoes'):
+    """Endereço https da imagem de uma opção, ou None."""
+    url = _texto(valor)
+    if not url:
+        return None
+    from django.core.exceptions import ValidationError
+    from django.core.validators import URLValidator
+    try:
+        URLValidator(schemes=['https'])(url)
+    except ValidationError:
+        erros.setdefault(campo, []).append('A imagem de uma opção tem de ser um endereço https válido.')
+        return None
+    if len(url) > MAX_URL:
+        erros.setdefault(campo, []).append('O endereço de uma imagem é demasiado longo.')
+        return None
+    return url
+
+
 def _opcoes_entrada(valor, erros, campo='opcoes'):
-    """[{texto, certa}] -> lista limpa; regista erros de forma."""
+    """[{texto, certa, imagem?}] -> lista limpa; regista erros de forma."""
     if valor in (None, ''):
         return []
     if not isinstance(valor, list):
@@ -130,7 +166,8 @@ def _opcoes_entrada(valor, erros, campo='opcoes'):
             erros.setdefault(campo, []).append(f'Cada opção pode ter no máximo {MAX_OPCAO} caracteres.')
             return []
         certa = o.get('certa')
-        limpas.append({'texto': texto, 'certa': bool(certa) if isinstance(certa, bool) else certa in ('true', 1, '1')})
+        limpas.append({'texto': texto, 'certa': bool(certa) if isinstance(certa, bool) else certa in ('true', 1, '1'),
+                       'imagem': _imagem(o.get('imagem'), erros, campo)})
     return limpas
 
 
@@ -176,6 +213,12 @@ def palavras_de(frase):
     return frase.split()
 
 
+def usa_frase(frase, texto, limiar=0.8):
+    """O texto usa a frase-alvo? (palavras da frase, pela ordem; "..." numa estrutura não conta)."""
+    from apps.perfil.servico import cobertura
+    return cobertura(frase, texto) >= limiar
+
+
 def validar(dados):
     """
     dados (dict vindo do cliente ou do Claude) -> (limpo, erros).
@@ -185,8 +228,6 @@ def validar(dados):
     if not isinstance(dados, dict):
         return None, {'tipo': ['Envie o exercício como um objecto.']}
     tipo = dados.get('tipo')
-    if tipo == 'conversa':
-        return None, {'tipo': [MENSAGEM_CONVERSA]}
     if tipo not in TIPOS_CRIAVEIS:
         return None, {'tipo': ['Tipo inválido. Use: ' + ', '.join(TIPOS_CRIAVEIS) + '.']}
 
@@ -325,13 +366,51 @@ def validar(dados):
             erros.setdefault('frase', []).append(f'A frase pode ter no máximo {MAX_OPCAO} caracteres.')
         limpo.update(enunciado=enunciado, frase=frase, audio_url=_url(dados.get('audio_url'), erros))
 
+    elif tipo == 'responder':
+        contexto = _texto(dados.get('contexto'))
+        if not enunciado:
+            erros.setdefault('enunciado', []).append('Escreva a pergunta, em inglês, a que o aluno responde.')
+        elif len(enunciado) > MAX_OPCAO:
+            erros.setdefault('enunciado', []).append(f'A pergunta pode ter no máximo {MAX_OPCAO} caracteres.')
+        if not frase:
+            erros.setdefault('frase', []).append('Indique a frase ou estrutura que a resposta deve usar.')
+        elif len(frase) > MAX_FRASE_ALVO:
+            erros.setdefault('frase', []).append(f'A frase-alvo pode ter no máximo {MAX_FRASE_ALVO} caracteres.')
+        if not resposta:
+            erros.setdefault('resposta', []).append('Escreva um exemplo de resposta, em inglês.')
+        elif len(resposta) > MAX_OPCAO:
+            erros.setdefault('resposta', []).append(f'O exemplo pode ter no máximo {MAX_OPCAO} caracteres.')
+        elif frase and not usa_frase(frase, resposta):
+            erros.setdefault('resposta', []).append('O exemplo de resposta tem de usar a frase-alvo.')
+        if len(contexto) > MAX_CONTEXTO:
+            erros.setdefault('contexto', []).append(f'O contexto pode ter no máximo {MAX_CONTEXTO} caracteres.')
+        limpo.update(enunciado=enunciado, frase=frase, resposta=resposta, contexto=contexto)
+
     elif tipo == 'conversa':
         if not enunciado:
             erros.setdefault('enunciado', []).append('Descreva a situação da conversa.')
-        if not frase:
-            erros.setdefault('frase', []).append('Indique o objectivo da conversa.')
-        limpo.update(enunciado=enunciado, frase=frase)
+        elif len(enunciado) > MAX_SITUACAO:
+            erros.setdefault('enunciado', []).append(f'A situação pode ter no máximo {MAX_SITUACAO} caracteres.')
+        bruto = dados.get('frases_alvo')
+        if bruto in (None, '') and frase:
+            bruto = [frase]  # cliente antigo: um só objectivo
+        frases = [_texto(f) for f in bruto] if isinstance(bruto, list) else []
+        if not isinstance(bruto, list) or any(not isinstance(f, str) for f in bruto):
+            erros.setdefault('frases_alvo', []).append('Envie as frases como uma lista de texto.')
+        elif any(not f for f in frases):
+            erros.setdefault('frases_alvo', []).append('Há frases vazias.')
+        elif not MIN_FRASES_CONVERSA <= len(frases) <= MAX_FRASES_CONVERSA:
+            erros.setdefault('frases_alvo', []).append(
+                f'Indique entre {MIN_FRASES_CONVERSA} e {MAX_FRASES_CONVERSA} frases da lição para o aluno usar.')
+        elif any(len(f) > MAX_FRASE_ALVO for f in frases):
+            erros.setdefault('frases_alvo', []).append(f'Cada frase pode ter no máximo {MAX_FRASE_ALVO} caracteres.')
+        elif _repetidas(frases):
+            erros.setdefault('frases_alvo', []).append('Há frases repetidas.')
+        limpo.update(enunciado=enunciado, frases_alvo=frases)
 
+    # Todas as opções levam a chave `imagem` (só os tipos com imagem a guardam).
+    com_imagem = tipo in TIPOS_COM_IMAGEM
+    limpo['opcoes'] = [{**o, 'imagem': o.get('imagem') if com_imagem else None} for o in limpo.get('opcoes') or []]
     return limpo, erros
 
 
@@ -356,12 +435,13 @@ def guardar(challenge, limpo):
     challenge.instruction = None
     challenge.reference_audio_url = None
     contexto = challenge.conversation_context if isinstance(challenge.conversation_context, dict) else {}
-    contexto = {k: v for k, v in contexto.items() if k not in ('frase', 'scenario', 'goal')}
-    opcoes = []  # (texto, certa)
+    contexto = {k: v for k, v in contexto.items()
+                if k not in ('frase', 'scenario', 'goal', 'frases', 'frase_alvo', 'exemplo')}
+    opcoes = []  # (texto, certa) ou (texto, certa, imagem)
 
     if tipo in ('escolher', 'assistir', 'verdadeiro_falso'):
         challenge.question = limpo['enunciado']
-        opcoes = [(o['texto'], o['certa']) for o in limpo['opcoes']]
+        opcoes = [(o['texto'], o['certa'], o.get('imagem')) for o in limpo['opcoes']]
     elif tipo == 'completar':
         challenge.question = PARENTESES.sub('___', limpo['frase'])
         challenge.instruction = limpo['enunciado'] or None
@@ -380,7 +460,7 @@ def guardar(challenge, limpo):
         challenge.reference_audio_url = limpo['audio_url']
         if limpo['opcoes']:
             challenge.question = limpo['enunciado']
-            opcoes = [(o['texto'], o['certa']) for o in limpo['opcoes']]
+            opcoes = [(o['texto'], o['certa'], o.get('imagem')) for o in limpo['opcoes']]
         else:
             challenge.question = limpo['enunciado'] or DITADO_PERGUNTA
             opcoes = [(limpo['frase'], True)]
@@ -388,17 +468,24 @@ def guardar(challenge, limpo):
         challenge.question = limpo['frase']
         challenge.instruction = limpo['enunciado'] or None
         challenge.reference_audio_url = limpo['audio_url']
+    elif tipo == 'responder':
+        challenge.question = limpo['enunciado']
+        challenge.instruction = limpo['contexto'] or None
+        contexto['frase_alvo'] = limpo['frase']
+        contexto['exemplo'] = limpo['resposta']
     elif tipo == 'conversa':
         challenge.question = limpo['enunciado']
         contexto['scenario'] = limpo['enunciado']
-        contexto['goal'] = limpo['frase']
+        contexto['frases'] = list(limpo['frases_alvo'])
+        contexto['goal'] = '; '.join(limpo['frases_alvo'])
 
     challenge.conversation_context = contexto
     challenge.save()
     challenge.options.all().delete()
     ChallengeOption.objects.bulk_create([
-        ChallengeOption(challenge=challenge, text=texto[:MAX_OPCAO], is_correct=certa, order=i)
-        for i, (texto, certa) in enumerate(opcoes, start=1)
+        ChallengeOption(challenge=challenge, text=o[0][:MAX_OPCAO], is_correct=o[1],
+                        image_url=(o[2] if len(o) > 2 else None) or None, order=i)
+        for i, o in enumerate(opcoes, start=1)
     ])
     return challenge
 
@@ -408,7 +495,7 @@ def guardar(challenge, limpo):
 # ---------------------------------------------------------------------------
 
 def _opcao_dict(o):
-    return {'id': str(o.id), 'texto': o.text, 'certa': bool(o.is_correct)}
+    return {'id': str(o.id), 'texto': o.text, 'certa': bool(o.is_correct), 'imagem': o.image_url or None}
 
 
 def para_normalizado(ch, opcoes=None):
@@ -468,7 +555,22 @@ def para_normalizado(ch, opcoes=None):
         ex['frase'] = pergunta.strip() or (opcoes[0].text if opcoes else '')
         ex['enunciado'] = ch.instruction or ''
         ex['audio_url'] = ch.reference_audio_url or None
+    elif tipo == 'responder':
+        ex['enunciado'] = pergunta
+        ex['contexto'] = ch.instruction or ''
+        ex['frase'] = contexto.get('frase_alvo') or ''
+        ex['resposta'] = contexto.get('exemplo') or ''
     elif tipo == 'conversa':
         ex['enunciado'] = pergunta or contexto.get('scenario') or ''
-        ex['frase'] = contexto.get('goal') or contexto.get('objectivo') or ''
+        ex['frases_alvo'] = frases_da_conversa(contexto)
     return ex
+
+
+def frases_da_conversa(contexto):
+    """As frases-alvo de uma conversa curta (as antigas só tinham um objectivo em goal)."""
+    contexto = contexto if isinstance(contexto, dict) else {}
+    frases = contexto.get('frases')
+    if isinstance(frases, list):
+        return [_texto(f) for f in frases if isinstance(f, str) and _texto(f)][:MAX_FRASES_CONVERSA]
+    goal = _texto(contexto.get('goal') or contexto.get('objectivo'))
+    return [goal] if goal else []

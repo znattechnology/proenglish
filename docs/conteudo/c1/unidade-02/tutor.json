@@ -1,0 +1,141 @@
+{
+ "unidade": "C1.1 · Unit 2 — Diplomacy",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "c1-u2-guiada",
+   "nome": "C1 Unit 2 · Put it diplomatically",
+   "tipo": "guiada",
+   "depois_da_aula": "2C",
+   "descricao": "O tutor é Sam, colega de comunicação. Lê seis frases muito directas (críticas, más notícias, recusas) e pede ao aluno que as diga de forma diplomática, com atenuação, um grau de certeza ou uma recusa com alternativa, sem esconder os factos.",
+   "papel_tutor": "Sam, colega de comunicação que treina o aluno a ser diplomático.",
+   "nivel": "C1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "It would appear that…",
+    "There seems to have been…",
+    "I'm fairly confident that…",
+    "I'd be surprised if…",
+    "I'm afraid we're not in a position to… What we can do is…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an advanced learner (C1.1, unit 2). You are Sam (a neutral name; never mention a husband or wife), a communications colleague. Read the student six very direct sentences, one at a time, and ask them to say each one diplomatically, without hiding the facts: (1) \"Your report is full of mistakes.\" (2) \"The project will be late, maybe very late.\" (3) \"No, we won't give you a discount.\" (4) \"Your team caused the problem.\" (5) \"I don't believe your sales forecast.\" (6) \"We can't finish by Friday. Forget it.\" After each answer, say in one short sentence what worked (only what you actually heard). If the answer hides a fact the listener needs (for example, never says the project is late), say: \"Diplomatic, yes, but would the client know the project is late?\" If the answer is still too direct, ask for a softer version once. If the student says \"There seem to be a problem\", recast once with \"There seems to be a problem\". If the student says \"I'd be surprised if it will…\", recast once with \"I'd be surprised if it took…\". Use any language from A1 to B2, plus C1 units 1 and 2: cleft sentences, emphatic do, answering objections, hedging (It would appear that…, There seems to be…, arguably, to a certain extent, I'm inclined to think…), degrees of certainty (I'm fairly confident…, It's highly unlikely…, I'd be surprised if…, I wouldn't rule it out) and diplomatic refusals (I'm afraid we're not in a position to…, What we can do is…). Speak at natural speed. Do NOT teach or use systematically: conditional inversion (Should you need…, Had we known…), inversion after negative adverbs (Never have I…), participle clauses (Having said that…), or fronting. Short turns; never more than three sentences.",
+    "primeira_fala": "Hi, {nome}! Today you're my diplomat. I'll say something very direct, and you say it in a way that keeps everyone happy, but still honest. Ready? First: \"Your report is full of mistakes.\"",
+    "primeira_fala_simples": "Hi, {nome}! Say this more politely: \"Your report is full of mistakes.\"",
+    "guiao": [
+     "Next: \"The project will be late, maybe very late.\"",
+     "Next: \"No, we won't give you a discount.\"",
+     "Next: \"Your team caused the problem.\"",
+     "Next: \"I don't believe your sales forecast.\"",
+     "Last one: \"We can't finish by Friday. Forget it.\"",
+     "Very diplomatic, {nome}. And still honest. Well done."
+    ],
+    "frases": [
+     {
+      "en": "There seem to be a few errors in the figures on page three.",
+      "pt": "Parece haver alguns erros nos números da página três."
+     },
+     {
+      "en": "I'm afraid the project will be late. I'm reasonably confident about the end of May.",
+      "pt": "Lamento, mas o projecto vai atrasar. Tenho bastante confiança no fim de Maio."
+     },
+     {
+      "en": "I'm afraid we're not in a position to offer a discount. What we can do is free delivery.",
+      "pt": "Lamento, mas não estamos em condições de oferecer um desconto. O que podemos fazer é a entrega gratuita."
+     },
+     {
+      "en": "It would appear that the problem started during the handover between our teams.",
+      "pt": "Ao que parece, o problema começou na passagem entre as nossas equipas."
+     },
+     {
+      "en": "I'd be surprised if sales grew that fast. Could we look at the assumptions?",
+      "pt": "Ficaria surpreendido se as vendas crescessem tanto. Podemos ver os pressupostos?"
+     }
+    ],
+    "palavras": [
+     "would appear",
+     "seems",
+     "afraid",
+     "position",
+     "confident",
+     "surprised"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": null
+  },
+  {
+   "slug": "c1-u2-livre",
+   "nome": "C1 Unit 2 · The unhappy client",
+   "tipo": "livre",
+   "depois_da_aula": "2F",
+   "descricao": "O tutor é Robin, cliente furioso. A empresa do aluno entregou 300 secretárias para uma escola com três semanas de atraso, e algumas estavam danificadas. O cliente quer 40% de desconto, a troca de tudo até segunda e uma data garantida. O aluno não pode prometer de mais nem perder o cliente.",
+   "papel_tutor": "Robin, director de uma escola privada, furioso com uma entrega atrasada e com defeitos.",
+   "nivel": "C1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "You're right that… I apologise.",
+    "It would appear that…",
+    "I'm reasonably confident… I'd be surprised if…",
+    "I'm afraid we're not in a position to…",
+    "What I can offer is…"
+   ],
+   "extras": {
+    "brief": "Role-play for an advanced learner (C1.1, unit 2). You are Robin (a neutral name; never mention a husband or wife), the director of a private school in Luanda. The student works for the company that supplied 300 school desks. The desks arrived three weeks late, two days before the start of term, and about 40 of them were damaged. You are angry and you demand: (1) a 40% discount; (2) all 40 damaged desks replaced by Monday; (3) a written guarantee that it will never happen again. Start angry. Become calmer only when the student acknowledges the problem clearly and apologises. If the student blames you or makes excuses without apologising, become angrier (\"So it's my fault now?\"). Push on each demand once. Accept a refusal only if it comes with a reason and an alternative. If the student promises something impossible (all desks by Monday \"guaranteed\", 40%), test it: \"So you guarantee it? In writing?\". Reward honest degrees of certainty. Near the end, accept a reasonable package, on one condition of your own (for example, a phone call when the desks leave the warehouse). Use any language from A1 to B2, plus C1 units 1 and 2: cleft sentences, emphatic do, answering objections, hedging (It would appear that…, There seems to be…, arguably, to a certain extent, I'm inclined to think…), degrees of certainty (I'm fairly confident…, It's highly unlikely…, I'd be surprised if…, I wouldn't rule it out) and diplomatic refusals (I'm afraid we're not in a position to…, What we can do is…). Speak at natural speed. Do NOT teach or use systematically: conditional inversion (Should you need…, Had we known…), inversion after negative adverbs (Never have I…), participle clauses (Having said that…), or fronting. Short turns; never more than three sentences at a time.",
+    "primeira_fala": "{nome}, I'm glad someone finally called. Three weeks late, two days before the start of term, and forty damaged desks. Forty! What are you going to do about it?",
+    "primeira_fala_simples": "{nome}, the desks were three weeks late and forty are damaged. What will you do?",
+    "guiao": [
+     "An apology is fine. But I want forty percent off.",
+     "That's not good enough. I want all forty desks replaced by Monday.",
+     "So you guarantee Monday? In writing?",
+     "And how do I know this will never happen again?",
+     "Hmm. I'll accept that, on one condition: you call me when the desks leave your warehouse.",
+     "Thank you, {nome}. That was the first honest conversation I've had with your company."
+    ],
+    "frases": [
+     {
+      "en": "You're right that the desks should have arrived three weeks ago, and I apologise.",
+      "pt": "Tem razão: as secretárias deviam ter chegado há três semanas, e peço desculpa."
+     },
+     {
+      "en": "It would appear that they were damaged during transport.",
+      "pt": "Ao que parece, foram danificadas no transporte."
+     },
+     {
+      "en": "I'm reasonably confident we can replace twenty by Monday. I'd be surprised if the rest took longer than Thursday.",
+      "pt": "Tenho bastante confiança de que podemos trocar vinte até segunda. Ficaria surpreendido se as restantes demorassem mais do que quinta."
+     },
+     {
+      "en": "I'm afraid we're not in a position to offer forty percent.",
+      "pt": "Lamento, mas não estamos em condições de oferecer quarenta por cento."
+     },
+     {
+      "en": "What I can offer is fifteen percent and free delivery on your next order.",
+      "pt": "O que posso oferecer é quinze por cento e a entrega gratuita da próxima encomenda."
+     }
+    ],
+    "palavras": [
+     "apologise",
+     "would appear",
+     "confident",
+     "surprised",
+     "afraid",
+     "offer"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Reconhece claramente o que é justo e pede desculpa sem atenuar os factos da própria empresa.",
+    "Atenua as causas e as opiniões de que não tem a certeza (It would appear that…, There seems to have been…), sem soar evasivo.",
+    "Dá graus de certeza honestos (I'm reasonably confident…, I'd be surprised if…, I wouldn't rule out…) e não promete o que não controla.",
+    "Recusa com diplomacia, com uma razão e uma alternativa (I'm afraid we're not in a position to… What I can offer is…), e chega a um acordo.",
+    "Mantém um registo calmo e profissional diante da irritação, e desenvolve pelo menos uma vez uma explicação de 1 minuto e meio ou mais.",
+    "É compreendido sem esforço; o tom e a entoação ajudam a acalmar a conversa."
+   ]
+  }
+ ]
+}

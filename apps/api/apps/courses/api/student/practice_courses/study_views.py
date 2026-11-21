@@ -82,6 +82,11 @@ def get_hearts_status(request):
 # Course detail
 # ---------------------------------------------------------------------------
 
+def ciclo_requisito(user, course):
+    from apps.courses.ciclo import bloqueio_requisito_pratica
+    return bloqueio_requisito_pratica(user, course) is not None
+
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_practice_course_detail(request, course_id):
@@ -123,6 +128,8 @@ def get_practice_course_detail(request, course_id):
         'progress': progress,
         # Alias matching StudentPracticeCourse.user_progress in the web types
         'user_progress': {'completed_lessons': completed, 'percentage': percentage},
+        # Curso de sector sem o nível básico: vê o curso, mas tem de fazer o teste para começar.
+        'requisito_basico': ciclo_requisito(request.user, course),
     })
 
 
@@ -167,7 +174,7 @@ def complete_lesson(request):
     except study_services.LessonNotCompleted as exc:
         message = (
             'Esta lição ainda não tem exercícios.' if exc.total == 0
-            else f'Ainda não concluíste todos os exercícios desta lição ({exc.completed}/{exc.total}).'
+            else f'Ainda não concluiu todos os exercícios desta lição ({exc.completed}/{exc.total}).'
         )
         return Response(
             {'error': 'lesson_not_completed', 'message': message,

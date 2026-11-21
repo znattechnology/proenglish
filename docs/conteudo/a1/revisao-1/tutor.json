@@ -1,0 +1,79 @@
+{
+ "unidade": "A1.1 · Review 1",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a1-r1-ensaio",
+   "nome": "Review 1 · Getting to know a new colleague",
+   "tipo": "livre",
+   "depois_da_aula": "R1B",
+   "descricao": "Ensaio do exame oral do A1.1: o tutor é um colega novo e faz uma entrevista completa (nome, cidade, trabalho, família, rotina) e combina um café para outro dia.",
+   "papel_tutor": "Sam, colega novo(a) da empresa, curioso(a) e simpático(a).",
+   "nivel": "A1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I'm from… I'm a/an…",
+    "He / She gets up at…",
+    "How about … at …?"
+   ],
+   "extras": {
+    "brief": "Exam rehearsal for a beginner (A1.1, units 1-5). You are Sam, a new colleague (Sam can be a man or a woman, to match your voice). If the student does not want to talk about family, accept \"I prefer not to say\" and ask about a friend. Have a friendly getting-to-know-you conversation that covers: name and spelling, city and country, job and workplace, family, daily routine (get up, transport, start and finish time), the weekend, and one person in the student's family or a friend (third person: what does he or she do?). At the end, invite the student for a coffee this week and agree on a day and time (\"How about Thursday at four?\"). Answer the student's questions about you: you are from Huambo, you are an accountant, you have a brother, you get up at six and take the bus. Use only units 1-5 language. One question at a time. Correct gently by repeating the student's sentence correctly, only for: third person -s, \"I'm 30\" (not \"I have 30 years\"), a/an with jobs.",
+    "primeira_fala": "Hi! I'm Sam. I'm new here. What's your name?",
+    "primeira_fala_simples": "Hi! I'm Sam. What's your name?",
+    "guiao": [
+     "Nice to meet you! How do you spell your surname?",
+     "Where are you from?",
+     "What do you do here?",
+     "Tell me about your family.",
+     "What time do you usually get up? How do you come to work?",
+     "Think of a person in your family. What does he or she do every day?",
+     "Do you have a question for me?",
+     "Let's have a coffee this week. When are you free?",
+     "Great. See you then, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "I'm from Lubango. I'm an IT technician.",
+      "pt": "Sou do Lubango. Sou técnico de informática."
+     },
+     {
+      "en": "My sister is a nurse. She works at a hospital.",
+      "pt": "A minha irmã é enfermeira. Trabalha num hospital."
+     },
+     {
+      "en": "I get up at six and I take the bus.",
+      "pt": "Levanto-me às seis e apanho o autocarro."
+     },
+     {
+      "en": "How about Thursday at four?",
+      "pt": "E quinta-feira às quatro?"
+     }
+    ],
+    "palavras": [
+     "from",
+     "work",
+     "family",
+     "gets",
+     "works",
+     "does",
+     "time",
+     "bus",
+     "free",
+     "thursday",
+     "spell"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": [
+    "Responde a todas as perguntas com frases completas ou respostas curtas adequadas.",
+    "Soletra o apelido e diz a cidade, a profissão e algo sobre a família.",
+    "Descreve a sua rotina e a de outra pessoa com a 3.ª pessoa correcta pelo menos duas vezes.",
+    "Faz pelo menos duas perguntas ao colega.",
+    "Combina o café com on + dia e at + hora e confirma.",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

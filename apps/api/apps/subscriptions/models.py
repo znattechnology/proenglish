@@ -78,6 +78,12 @@ class SubscriptionPlan(models.Model):
         blank=True,
         help_text="Limite diário de análises AI de pronúncia (null = ilimitado)"
     )
+    # Avaliações de pronúncia detalhadas (fornecedor pago, p.ex. Azure: nota por palavra e por som).
+    # Acima do limite (ou com o fornecedor desligado) a avaliação é a normal, pelo texto.
+    daily_detailed_pronunciation_limit = models.PositiveIntegerField(
+        default=0,
+        help_text="Avaliações de pronúncia detalhadas por dia (0 = nenhuma)"
+    )
     hearts_limit = models.IntegerField(
         default=5,
         help_text="Número máximo de vidas (0 = ilimitado)"
@@ -95,6 +101,12 @@ class SubscriptionPlan(models.Model):
     trial_speaking_minutes = models.IntegerField(
         default=0,
         help_text="Minutos diários de speaking durante o trial"
+    )
+    # Limite mensal da conversa com o tutor (Vapi, o recurso mais caro). None = sem limite mensal.
+    # Soma-se ao diário: vale o que acabar primeiro. O mês é o de calendário, na hora de Angola.
+    monthly_speaking_minutes = models.IntegerField(
+        null=True, blank=True,
+        help_text="Minutos de conversa com o tutor por mês (vazio = sem limite mensal)"
     )
 
     # Recursos premium
@@ -209,6 +221,9 @@ class UserSubscription(models.Model):
     last_reset_date = models.DateField(default=get_current_date)
     daily_lessons_used = models.IntegerField(default=0)
     daily_speaking_minutes_used = models.IntegerField(default=0)
+    # Minutos de conversa gastos no mês `speaking_month` ("2026-11"); renova no dia 1.
+    monthly_speaking_minutes_used = models.IntegerField(default=0)
+    speaking_month = models.CharField(max_length=7, blank=True, default='')
     daily_listening_minutes_used = models.IntegerField(default=0)
     daily_ai_analyses_used = models.IntegerField(default=0)
 
@@ -289,6 +304,11 @@ class UserSubscription(models.Model):
             self.last_reset_date = today
             campos = ['daily_lessons_used', 'daily_speaking_minutes_used', 'daily_listening_minutes_used',
                       'daily_ai_analyses_used', 'last_reset_date']
+        mes = today.strftime('%Y-%m')
+        if self.speaking_month != mes:
+            self.monthly_speaking_minutes_used = 0
+            self.speaking_month = mes
+            campos += ['monthly_speaking_minutes_used', 'speaking_month']
         licoes = licoes_novas_hoje(self.user_id)
         if licoes != self.daily_lessons_used:
             self.daily_lessons_used = licoes
@@ -430,7 +450,7 @@ class UserSubscription(models.Model):
             campos = {'current_hearts': F('current_hearts') - 1}
             # Com as vidas no máximo o relógio da recarga estava parado (às vezes há dias):
             # ao perder a primeira vida começa a contar agora, senão ela voltava logo.
-            limite = locked_sub.plan.hearts_limit if locked_sub.plan else 0
+            limite = locked_sub.plano_das_vidas().hearts_limit if locked_sub.plan else 0
             if limite and locked_sub.current_hearts >= limite:
                 campos['last_heart_recharge'] = timezone.now()
             # Use F() expression for atomic decrement
@@ -440,18 +460,35 @@ class UserSubscription(models.Model):
             return True
         return False
     
+    def plano_das_vidas(self):
+        """
+        O plano cujas regras de vidas se aplicam agora: o da assinatura ou, numa assinatura paga
+        que já terminou (antes de o cron a passar ao Gratuito), o Gratuito. Sem isto, um plano
+        pago expirado ficava com 5 vidas e sem recarga nenhuma.
+        """
+        if self.plan.plan_type != 'FREE' and not self.is_active():
+            gratuito = SubscriptionPlan.objects.filter(plan_type='FREE').first()
+            if gratuito is not None:
+                return gratuito
+        return self.plan
+
     def recharge_hearts_if_needed(self):
-        """Recarrega vidas se necessário"""
-        if self.plan.hearts_limit == 0:  # Vidas ilimitadas
+        """Recarrega vidas se necessário (segundo o plano_das_vidas)."""
+        plano = self.plano_das_vidas()
+        if plano.hearts_limit == 0:  # Vidas ilimitadas
             self.current_hearts = 999
             self.save(update_fields=['current_hearts'])
             return
-            
-        if self.current_hearts >= self.plan.hearts_limit:
+
+        if self.current_hearts > plano.hearts_limit:
+            # Ex.: as 999 de um plano pago que terminou.
+            self.current_hearts = plano.hearts_limit
+            self.save(update_fields=['current_hearts'])
+        if self.current_hearts >= plano.hearts_limit:
             return  # Já está no máximo (use_heart reinicia o relógio ao perder a 1.ª vida)
 
         now = timezone.now()
-        horas = self.plan.hearts_recharge_hours or 0
+        horas = plano.hearts_recharge_hours or 0
         if horas <= 0:
             return
         hours_since_recharge = (now - self.last_heart_recharge).total_seconds() / 3600
@@ -460,9 +497,9 @@ class UserSubscription(models.Model):
         if hearts_to_add > 0:
             self.current_hearts = min(
                 self.current_hearts + hearts_to_add,
-                self.plan.hearts_limit
+                plano.hearts_limit
             )
-            if self.current_hearts >= self.plan.hearts_limit:
+            if self.current_hearts >= plano.hearts_limit:
                 self.last_heart_recharge = now
             else:
                 # Guarda o tempo já decorrido para a próxima vida (não o deita fora).

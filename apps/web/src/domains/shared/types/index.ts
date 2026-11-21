@@ -1,3 +1,5 @@
+import type { NivelCefr } from '@/src/domains/shared/niveis';
+
 /**
  * Shared Types
  * Common types and interfaces used across all domains
@@ -10,7 +12,7 @@ export interface BaseCourse {
   description?: string;
   image?: string;
   category?: string;
-  level?: 'Beginner' | 'Intermediate' | 'Advanced';
+  level?: NivelCefr;
   status?: 'Draft' | 'Published' | 'Archived';
   course_type?: 'practice' | 'video';
   created_at?: string;
@@ -107,7 +109,7 @@ export interface PaginationParams {
 export interface FilterParams {
   search?: string;
   category?: string;
-  level?: 'Beginner' | 'Intermediate' | 'Advanced';
+  level?: NivelCefr;
   status?: 'Draft' | 'Published' | 'Archived';
 }
 

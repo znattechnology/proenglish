@@ -9,7 +9,10 @@ import { Pagina } from "@/components/pe/estudante/Pagina";
 import { MudarPalavraPasse } from "@/components/pe/conta/MudarPalavraPasse";
 import { SeccaoAvisos } from "@/components/pe/avisos/Avisos";
 import { cnPe } from "@/lib/pe";
+import { EscolherMetaFala } from "@/components/pe/fala/Fala";
+import { useMetaFalaQuery } from "@/src/domains/student/fala/api";
 import { useDjangoAuth } from "@/hooks/useDjangoAuth";
+import { normalizarNivel } from "@/src/domains/shared/niveis";
 import { dataPt, mensagemErro, telefoneLegivel, useLembretesMutation, useMinhaSubscricaoQuery } from "@/src/domains/student/subscricao/api";
 import {
   AREAS,
@@ -67,6 +70,7 @@ export default function PaginaDefinicoes() {
 
           <OsSeusDados perfil={perfil} />
           <EstudoEAvisos pago={!!sub && sub.plan.plan_type !== "FREE"} lembretes={!!sub?.lembretes_renovacao} />
+          <SonsDasLicoes perfil={perfil} />
           <SeccaoAvisos />
           <Seguranca temSenha={perfil.has_password !== false} />
 
@@ -91,7 +95,7 @@ function OsSeusDados({ perfil }: { perfil: Perfil }) {
   const [provincia, setProvincia] = useState(perfil.provincia ?? "");
   const { data: provincias } = useProvinciasQuery();
   const [area, setArea] = useState(perfil.preferences?.area ?? "");
-  const [nivel, setNivel] = useState<Nivel | "">(perfil.preferences?.nivel ?? "");
+  const [nivel, setNivel] = useState<Nivel | "">(normalizarNivel(perfil.preferences?.nivel) ?? "");
   const [erros, setErros] = useState<Record<string, string>>({});
   const [estado, setEstado] = useState<{ tipo: "certo" | "errado"; texto: string } | null>(null);
 
@@ -181,7 +185,7 @@ function OsSeusDados({ perfil }: { perfil: Perfil }) {
           <option value="">Não sei</option>
           {NIVEIS.map((n) => (
             <option key={n.valor} value={n.valor}>
-              {n.nome}
+              {`${n.valor}: ${n.descricao}`}
             </option>
           ))}
         </Escolha>
@@ -219,7 +223,7 @@ function EstudoEAvisos({ pago, lembretes }: { pago: boolean; lembretes: boolean 
       </h2>
       <div className="flex flex-col gap-2">
         <span id="rotulo-meta" className="font-semibold leading-[22px]">
-          Meta diária
+          Meta de estudo
         </span>
         <span className="text-pe-legenda text-pe-tinta-suave">Minutos de prática por dia. Conta para os dias seguidos.</span>
         <div role="radiogroup" aria-labelledby="rotulo-meta" className="flex flex-wrap gap-2 pt-1">
@@ -245,6 +249,7 @@ function EstudoEAvisos({ pago, lembretes }: { pago: boolean; lembretes: boolean 
           ))}
         </div>
       </div>
+      <MetaFala />
       {pago ? (
         <Interruptor
           rotulo="Lembretes de renovação"
@@ -260,6 +265,52 @@ function EstudoEAvisos({ pago, lembretes }: { pago: boolean; lembretes: boolean 
       ) : null}
       {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
     </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Sons das lições: toques de certo/errado e a voz da Professora Luena  */
+/* ------------------------------------------------------------------ */
+function SonsDasLicoes({ perfil }: { perfil: Perfil }) {
+  const [guardar, { isLoading }] = useGuardarPerfilMutation();
+  const [erro, setErro] = useState<string | null>(null);
+  const mudar = async (chave: "sons" | "voz_professora", v: boolean) => {
+    setErro(null);
+    const r = await guardar({ preferences: { [chave]: v } });
+    if ("error" in r && r.error) setErro(mensagemErro(r.error, "Não foi possível guardar."));
+  };
+  return (
+    <section aria-labelledby="titulo-sons" className="flex flex-col gap-4 rounded-pe-md border border-pe-linha p-5 md:p-6">
+      <h2 id="titulo-sons" className="m-0 font-pe-titulo text-pe-titulo-s">
+        Sons das lições
+      </h2>
+      <Interruptor
+        rotulo="Sons de certo e errado"
+        descricao="Um toque curto quando acerta, quando erra e no fim da lição."
+        ligado={perfil.preferences?.sons !== false}
+        disabled={isLoading}
+        aoMudar={(v) => void mudar("sons", v)}
+      />
+      <Interruptor
+        rotulo="Voz da Professora Luena"
+        descricao="De vez em quando, a professora fala consigo em inglês durante a lição."
+        ligado={perfil.preferences?.voz_professora !== false}
+        disabled={isLoading}
+        aoMudar={(v) => void mudar("voz_professora", v)}
+      />
+      {erro ? <Aviso tipo="errado">{erro}</Aviso> : null}
+    </section>
+  );
+}
+
+/** Meta de minutos a falar por dia (fase 3): só se mostra, não conta para os dias seguidos. */
+function MetaFala() {
+  const { data } = useMetaFalaQuery();
+  return (
+    <div className="flex flex-col gap-1">
+      <EscolherMetaFala actual={data?.meta_fala_min} opcoes={data?.opcoes ?? [3, 5, 10, 15]} id="rotulo-meta-fala" rotulo="Meta de fala" />
+      <span className="text-pe-legenda text-pe-tinta-suave">Minutos a falar inglês por dia (conversas, lições, revisão e aulas). Aparece em destaque no painel.</span>
+    </div>
   );
 }
 

@@ -132,7 +132,8 @@ def validate_course_level(level: str) -> str:
     Raises:
         serializers.ValidationError: If validation fails
     """
-    valid_levels = ['Beginner', 'Intermediate', 'Advanced']
+    from apps.courses.niveis import CEFR
+    valid_levels = list(CEFR)
     
     if level not in valid_levels:
         raise serializers.ValidationError(
@@ -307,9 +308,9 @@ def validate_course_creation_data(attrs: Dict[str, Any]) -> Dict[str, Any]:
     # Validate level compatibility with category
     level = attrs.get('level', '')
     if level and category:
-        # Business rule: Medical and Legal courses should be Advanced
-        if category in ['Inglês Médico', 'Inglês Jurídico'] and level == 'Beginner':
-            errors['level'] = [_('Medical and Legal courses should not be at Beginner level.')]
+        # Business rule: Medical and Legal courses should not be at beginner levels (A1/A2)
+        if category in ['Inglês Médico', 'Inglês Jurídico'] and level in ('A1', 'A2'):
+            errors['level'] = [_('Medical and Legal courses should not be at A1 or A2 level.')]
     
     # Validate template compatibility
     template = attrs.get('template', 'general')

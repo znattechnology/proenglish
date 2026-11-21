@@ -57,12 +57,12 @@ LOCAL_APPS = [
     'apps.users',
     'apps.courses',
     'apps.practice',  # Temporarily enabled for testing - functionality moved to courses/api structure
+    'apps.perfil',  # perfil de fala do aluno (níveis, banco de frases, padrões de erro)
     'apps.subscriptions',
     'apps.pagamentos',  # Pagamentos Multicaixa Express (AOA)
     'apps.cms',  # antigo: as rotas /api/v1/cms/ respondem 410
     'apps.site',  # conteúdo do site público (rascunho + publicado)
     'apps.platform_admin',  # Platform admin dashboard and management
-    'apps.chatbot',  # Intelligent landing page chatbot
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -172,7 +172,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Security settings
-SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
 
@@ -265,6 +264,7 @@ CORS_ALLOW_HEADERS = [
     'user-agent',
     'x-csrftoken',
     'x-requested-with',
+    'x-cliente',
 ]
 
 # WebSocket CORS settings
@@ -318,29 +318,40 @@ MEDIA_ROOT = BASE_DIR / 'media'
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default='')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', default='')
 AWS_STORAGE_BUCKET_NAME = config('AWS_S3_BUCKET_NAME', default='')
-AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME', default='us-east-1')
+# Cloudflare R2 (compatível com S3): o endpoint da conta, https://<id da conta>.r2.cloudflarestorage.com.
+# Vazio = S3 da Amazon. Ver apps/core/armazenamento.py.
+AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL', default='')
+AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME', default='auto' if AWS_S3_ENDPOINT_URL else 'us-east-1')
+AWS_S3_SIGNATURE_VERSION = 's3v4'
 
 # CloudFront Distribution (for CDN)
 AWS_CLOUDFRONT_DOMAIN = config('AWS_CLOUDFRONT_DOMAIN', default='')
 
 # S3 Settings
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+# Domínio público dos ficheiros: no R2, o domínio ligado ao bucket (media.<domínio>) ou o pub-….r2.dev.
+AWS_S3_CUSTOM_DOMAIN = (config('AWS_S3_CUSTOM_DOMAIN', default='')
+                        or f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com')
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
-AWS_DEFAULT_ACL = 'public-read'
+# O R2 não usa ACL por objecto: o bucket inteiro é público (ou não) no painel da Cloudflare.
+AWS_DEFAULT_ACL = None if AWS_S3_ENDPOINT_URL else 'public-read'
 AWS_QUERYSTRING_AUTH = False
 
 # Static and Media files configuration
 USE_S3 = config('USE_S3', default=False, cast=bool)
 
+# Django 5.1 removeu DEFAULT_FILE_STORAGE e STATICFILES_STORAGE (eram ignorados sem erro): tudo em STORAGES.
+STORAGES = {
+    'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
+    'staticfiles': {'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage'},
+}
+
 if USE_S3:
-    # Static files
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    # Ficheiros estáticos e enviados pelos utilizadores no S3 (ou compatível)
+    STORAGES['staticfiles'] = {'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage'}
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
-    
-    # Media files  
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STORAGES['default'] = {'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage'}
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
 # =============================================================================
@@ -359,6 +370,8 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
 EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=False, cast=bool)
+# Segundos até desistir do servidor SMTP: sem isto, um SMTP que não responde prende o pedido.
+EMAIL_TIMEOUT = config('EMAIL_TIMEOUT', default=20, cast=int)
 
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='noreply@proenglish.com')
 CONTACT_EMAIL = config('CONTACT_EMAIL', default='contact@proenglish.com')
@@ -382,6 +395,8 @@ AVISOS_PUSH_SINCRONO = config('AVISOS_PUSH_SINCRONO', default=False, cast=bool)
 
 # Google OAuth2 configuration
 GOOGLE_OAUTH2_CLIENT_ID = config('GOOGLE_OAUTH2_CLIENT_ID', default='')
+# Client ids da app móvel (Android, iOS), separados por vírgulas: os id_tokens deles também são aceites.
+GOOGLE_OAUTH2_CLIENT_IDS_APP = [c.strip() for c in config('GOOGLE_OAUTH2_CLIENT_IDS_APP', default='').split(',') if c.strip()]
 GOOGLE_OAUTH2_CLIENT_SECRET = config('GOOGLE_OAUTH2_CLIENT_SECRET', default='')
 GOOGLE_OAUTH2_REDIRECT_URI = config('GOOGLE_OAUTH2_REDIRECT_URI', default='http://localhost:3000/auth/google/callback')
 
@@ -497,49 +512,9 @@ SPECTACULAR_SETTINGS = {
 # OPENAI API SETTINGS
 # =============================================================================
 
-# OpenAI API configuration for AI Speaking Practice
+# OpenAI (Whisper e GPT na análise de pronúncia e de traduções)
 OPENAI_API_KEY = config('OPENAI_API_KEY', default='')
 OPENAI_ORGANIZATION_ID = config('OPENAI_ORGANIZATION_ID', default='')
-
-# AI Speaking Practice Settings
-AI_SPEAKING_SETTINGS = {
-    # Models configuration
-    'MODELS': {
-        'CHAT': 'gpt-4-turbo-preview',
-        'WHISPER': 'whisper-1',
-        'TTS': 'tts-1',
-    },
-    
-    # Speech analysis weights
-    'SCORING_WEIGHTS': {
-        'PRONUNCIATION': 0.35,
-        'FLUENCY': 0.25,
-        'ACCURACY': 0.25,
-        'CONFIDENCE': 0.15,
-    },
-    
-    # Conversation settings
-    'CONVERSATION': {
-        'MAX_TOKENS': 200,
-        'TEMPERATURE': 0.7,
-        'MAX_CONTEXT_MESSAGES': 5,
-    },
-    
-    # TTS settings
-    'TTS': {
-        'VOICE': 'nova',
-        'MODEL': 'tts-1',
-        'RESPONSE_FORMAT': 'mp3',
-    },
-    
-    # Minimum scores for passing
-    'MINIMUM_SCORES': {
-        'OVERALL': 70.0,
-        'PRONUNCIATION': 60.0,
-        'FLUENCY': 65.0,
-        'ACCURACY': 70.0,
-    },
-}
 
 # =============================================================================
 # DEFAULT FIELD SETTINGS
@@ -617,24 +592,76 @@ CONVERSA_SIMULADA = config(
 )
 # Duração máxima de uma conversa (minutos), além do que resta da quota diária.
 CONVERSA_MAX_MINUTOS_SESSAO = config('CONVERSA_MAX_MINUTOS_SESSAO', default=15, cast=int)
-# Modelo barato (o mesmo do chatbot) para avaliação, respostas escritas e ajustes.
+# Avaliação das conversas (Claude, até 60 s) em segundo plano, fora do pedido HTTP; o cliente sonda.
+AVALIACAO_EM_FUNDO = config('AVALIACAO_EM_FUNDO', default=True, cast=bool)
+# No máximo estas avaliações em segundo plano ao mesmo tempo, por processo (conversa/webhook.py).
+AVALIACOES_EM_SIMULTANEO = config('AVALIACOES_EM_SIMULTANEO', default=2, cast=int)
+# Nota de pronúncia do exame oral (Azure Speech sobre a gravação consentida, em segundo plano):
+# só faz alguma coisa com AZURE_SPEECH_KEY/REGION definidas. Ver conversa/exame.avaliar_pronuncia.
+PRONUNCIA_EXAME = config('PRONUNCIA_EXAME', default=True, cast=bool)
 # Claude (Anthropic): ajustes, respostas escritas do tutor e avaliação das conversas.
 ANTHROPIC_API_KEY = config('ANTHROPIC_API_KEY', default='')
-CONVERSA_CLAUDE_MODELO = config('CONVERSA_CLAUDE_MODELO', default='claude-opus-5-5')  # avaliação e respostas escritas
+# Modelos Claude: o mais barato que chega para cada tarefa (Haiku 5.5 < Sonnet 5.5 < Opus 5.5).
+# Avaliação das conversas normais (role-play, conversa da aula/lição) e respostas escritas do tutor.
+CONVERSA_CLAUDE_MODELO = config('CONVERSA_CLAUDE_MODELO', default='claude-sonnet-5-5')
+# Avaliações que decidem nível ou certificado: exame oral do curso e teste de nível (diagnóstico).
+EXAME_CLAUDE_MODELO = config('EXAME_CLAUDE_MODELO', default='claude-opus-5-5')
+DIAGNOSTICO_CLAUDE_MODELO = config('DIAGNOSTICO_CLAUDE_MODELO', default='claude-opus-5-5')
 # Correcção em tempo real (ajuste/): um pedido por frase, por isso um modelo rápido e barato.
 CONVERSA_CLAUDE_MODELO_AJUSTE = config('CONVERSA_CLAUDE_MODELO_AJUSTE', default='claude-haiku-5-5')
 # Se o modelo recusar um pedido, a Anthropic repete-o noutro modelo no mesmo pedido.
 CONVERSA_CLAUDE_FALLBACKS = config('CONVERSA_CLAUDE_FALLBACKS', default=True, cast=bool)
 # Modelo que o Vapi usa durante a chamada de voz. Tem de estar na lista do Vapi
-# (docs.vapi.ai/providers/model/anthropic); o claude-opus-5-5 ainda não está.
+# (docs.vapi.ai/providers/model/anthropic); em 2026-11-14 a lista tinha o claude-sonnet-5 e o
+# claude-haiku-5-5, mas ainda não o claude-sonnet-5-5 nem o claude-opus-5-5.
 CONVERSA_VAPI_PROVEDOR = config('CONVERSA_VAPI_PROVEDOR', default='anthropic')
 CONVERSA_VAPI_MODELO = config('CONVERSA_VAPI_MODELO', default='claude-sonnet-5')
 CONVERSA_LIMITE_AJUSTE = config('CONVERSA_LIMITE_AJUSTE', default='30/min')
 CONVERSA_LIMITE_RESPONDER = config('CONVERSA_LIMITE_RESPONDER', default='30/min')
 CONVERSA_LIMITE_SESSOES = config('CONVERSA_LIMITE_SESSOES', default='10/hour')
 # Geração de lições de prática com o Claude (área do professor) e limite diário por professor.
-PRATICA_CLAUDE_MODELO = config('PRATICA_CLAUDE_MODELO', default='claude-opus-5-5')
+# Sonnet: o professor revê a lição antes de gravar e a API valida cada exercício.
+PRATICA_CLAUDE_MODELO = config('PRATICA_CLAUDE_MODELO', default='claude-sonnet-5-5')
 PRATICA_GERAR_LIMITE_DIA = config('PRATICA_GERAR_LIMITE_DIA', default=30, cast=int)
+# Revisão de hoje: exercícios curtos para os padrões de erro (gerados uma vez por padrão e reutilizados).
+REVISAO_CLAUDE_MODELO = config('REVISAO_CLAUDE_MODELO', default='claude-haiku-5-5')
+# Avaliação e sugestões de tradução (antes gpt-4 da OpenAI).
+TRADUCAO_CLAUDE_MODELO = config('TRADUCAO_CLAUDE_MODELO', default='claude-haiku-5-5')
+# Exercício "Responder" (resposta livre em voz alta): um pedido curto por gravação, modelo rápido.
+RESPONDER_CLAUDE_MODELO = config('RESPONDER_CLAUDE_MODELO', default='claude-haiku-5-5')
+# Conversa curta no fim de uma lição (exercício VAPI_CONVERSATION): duração máxima em segundos.
+CONVERSA_LICAO_MAX_SEGUNDOS = config('CONVERSA_LICAO_MAX_SEGUNDOS', default=120, cast=int)
+# Conversa de 3 minutos no fim de uma aula em vídeo ("Usar isto numa conversa").
+CONVERSA_AULA_MAX_SEGUNDOS = config('CONVERSA_AULA_MAX_SEGUNDOS', default=180, cast=int)
+# Fase 6: teste de nível falado (primeira entrada) e exame oral do curso. Fora da quota diária.
+CONVERSA_DIAGNOSTICO_MAX_SEGUNDOS = config('CONVERSA_DIAGNOSTICO_MAX_SEGUNDOS', default=240, cast=int)
+CONVERSA_EXAME_MAX_SEGUNDOS = config('CONVERSA_EXAME_MAX_SEGUNDOS', default=600, cast=int)
+# Aulas em vídeo: transcrição automática (ffmpeg + Whisper) quando o professor carrega o vídeo,
+# e frases da aula propostas pelo Claude. TRANSCRICAO_AUTOMATICA=False: só o comando
+# transcrever_aulas (cron) ou o botão do professor transcrevem.
+TRANSCRICAO_AUTOMATICA = config('TRANSCRICAO_AUTOMATICA', default=True, cast=bool)
+TRANSCRICAO_MODELO = config('TRANSCRICAO_MODELO', default='whisper-1')
+TRANSCRICAO_MAX_BYTES = config('TRANSCRICAO_MAX_BYTES', default=2200 * 1024 * 1024, cast=int)  # vídeo descarregado
+TRANSCRICAO_PEDACO_SEGUNDOS = config('TRANSCRICAO_PEDACO_SEGUNDOS', default=600, cast=int)  # 10 min (~2.4 MB a 32 kb/s)
+FFMPEG_BIN = config('FFMPEG_BIN', default='ffmpeg')
+FFPROBE_BIN = config('FFPROBE_BIN', default='ffprobe')
+
+# Fase 3 (medir a fala).
+# Fala -> texto dos alunos (apps/practice/services/transcricao_fala.py): fornecedor e modelo.
+TRANSCRICAO_FALA_PROVEDOR = config('TRANSCRICAO_FALA_PROVEDOR', default='openai')
+TRANSCRICAO_FALA_MODELO = config('TRANSCRICAO_FALA_MODELO', default='whisper-1')
+# Análise de pronúncia pelo texto e geração de exercícios de pronúncia (Claude, esforço baixo).
+PRONUNCIA_CLAUDE_MODELO = config('PRONUNCIA_CLAUDE_MODELO', default='claude-haiku-5-5')
+# Avaliação de pronúncia detalhada (apps/practice/services/pronuncia/): 'auto' usa o Azure Speech
+# quando AZURE_SPEECH_KEY e AZURE_SPEECH_REGION estão definidas (dentro do limite diário do plano);
+# 'texto' desliga-a. Sem chave, ou em falha, a avaliação é a normal, pelo texto.
+PRONUNCIA_PROVEDOR = config('PRONUNCIA_PROVEDOR', default='auto')
+AZURE_SPEECH_KEY = config('AZURE_SPEECH_KEY', default='')
+AZURE_SPEECH_REGION = config('AZURE_SPEECH_REGION', default='')
+# Opcional: o endpoint do recurso (https://<nome>.cognitiveservices.azure.com); vazio usa a região.
+AZURE_SPEECH_ENDPOINT = config('AZURE_SPEECH_ENDPOINT', default='')
+# Frases-chave propostas a partir da transcrição: uma vez por aula, revistas pelo professor.
+FRASES_AULA_CLAUDE_MODELO = config('FRASES_AULA_CLAUDE_MODELO', default='claude-sonnet-5-5')
 # Nota: os limites acima (e os throttles/ratelimits) usam a cache 'default' (ver CACHES).
 
 # =============================================================================
@@ -703,6 +730,11 @@ else:
 # Só ligar quando há mesmo um proxy à frente: sem ele, o cliente podia inventar o IP.
 TRUSTED_PROXY = config('TRUSTED_PROXY', default=False, cast=bool)
 TRUSTED_PROXY_COUNT = config('TRUSTED_PROXY_COUNT', default=1, cast=int)
+if TRUSTED_PROXY:
+    # O proxy (Caddy no servidor) termina o HTTPS e diz-nos o esquema original em
+    # X-Forwarded-Proto. Sem isto, request.is_secure() era False e as ligações absolutas
+    # (PDF do certificado, verificação) saíam em http://.
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 RATELIMIT_IP_META_KEY = 'apps.core.ip.ip_do_cliente'
 # django_ratelimit com block=True devolve 429 (e não 403) através de apps.core.exceptions.
 RATELIMIT_VIEW = 'apps.core.exceptions.ratelimit_view'

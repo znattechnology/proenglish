@@ -1,0 +1,141 @@
+{
+ "unidade": "B2.2 · Unit 9 — Mediation at work",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "b2-u9-guiada",
+   "nome": "B2 Unit 9 · What did they say?",
+   "tipo": "guiada",
+   "depois_da_aula": "9B",
+   "descricao": "O tutor é Casey, colega que esteve fora uma semana. Pede ao aluno que lhe conte uma discussão ou uma reunião recente (do trabalho, dos estudos ou da família) e faz perguntas que obrigam a usar verbos de relato variados: quem sugeriu, quem insistiu, quem admitiu ou negou, quem avisou ou aconselhou.",
+   "papel_tutor": "Casey, colega que esteve fora uma semana e quer saber o que aconteceu.",
+   "nivel": "B2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "… suggested + -ing / that…",
+    "… insisted on…",
+    "… admitted / denied + -ing…",
+    "… warned / advised / reminded me to…",
+    "… agreed / refused to…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an upper-intermediate learner (B2.2, unit 9). You are Casey (a neutral name; never mention a husband or wife), a colleague who has been away for a week. Ask the student to tell you about a recent discussion or meeting (at work, in their studies or in their family). If the student has none, give one: a family discussion about where to spend the holidays, or a meeting about a new work schedule. Ask follow-up questions that need different reporting verbs, one at a time: Who suggested what? Did anyone insist on something? Did anyone admit or deny anything? Did anyone give a warning or advice? Who agreed, and who refused? How did it end? If the student only uses \"said\", ask: \"Did they just say it, or did they insist?\" or \"Was that a suggestion or a warning?\". If the student says \"suggested me to\" or \"recommended us to\", recast once with \"suggested that I…\" or \"suggested + -ing\". If the student says \"denied to\", recast once with \"denied + -ing\". Use any A1, A2, B1 and B2.1 language, plus B2 units 6 to 9: needn't have, was supposed to, past speculation, concession and contrast, intensifiers and comment adverbs, reporting verbs with their patterns (suggest / recommend + -ing or that; insist on; admit / deny + -ing; warn / advise / remind / urge / persuade + person + to), summarising and evaluating (What worries me is… The good news is… On balance…). Speak at natural speed. Do NOT use: \"wish / if only\", \"would\" for past habits, the past perfect continuous, or mixed conditionals. Short turns, one question at a time; never more than three sentences.",
+    "primeira_fala": "Hi, {nome}! I've been away all week. Did I miss anything? Tell me about a meeting or a discussion you had.",
+    "primeira_fala_simples": "Hi, {nome}! I was away. Tell me about a meeting or a discussion this week.",
+    "guiao": [
+     "Interesting! Who suggested what?",
+     "Did anyone insist on something?",
+     "And did anyone admit a mistake, or deny something?",
+     "Did anyone give a warning or some advice?",
+     "So how did it end? Who agreed, and who refused?",
+     "Thanks, {nome}. Now I feel I was there!"
+    ],
+    "frases": [
+     {
+      "en": "My manager suggested starting earlier on Mondays.",
+      "pt": "A minha chefe sugeriu começarmos mais cedo às segundas."
+     },
+     {
+      "en": "Rui insisted on keeping Friday afternoons free.",
+      "pt": "O Rui insistiu em manter as tardes de sexta livres."
+     },
+     {
+      "en": "Ana admitted forgetting to send the schedule.",
+      "pt": "A Ana admitiu ter-se esquecido de enviar o horário."
+     },
+     {
+      "en": "HR warned us not to work more than ten hours a day.",
+      "pt": "Os recursos humanos avisaram-nos para não trabalharmos mais de dez horas por dia."
+     },
+     {
+      "en": "In the end, everybody agreed to try it for a month.",
+      "pt": "No fim, toda a gente concordou em experimentar durante um mês."
+     }
+    ],
+    "palavras": [
+     "suggested",
+     "insisted",
+     "admitted",
+     "denied",
+     "warned",
+     "agreed"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": null
+  },
+  {
+   "slug": "b2-u9-livre",
+   "nome": "B2 Unit 9 · Briefing the board",
+   "tipo": "livre",
+   "depois_da_aula": "9G",
+   "descricao": "O tutor é Taylor, administrador com pouco tempo. O aluno sintetiza uma reunião (a sua, ou uma proposta: uma reunião em que se decidiu adiar o lançamento de um produto, com quem propôs, quem insistiu e quem admitiu o quê). O tutor pede-lhe que corte para um minuto e que dê a sua avaliação, e faz uma pergunta a que o aluno pode não saber responder.",
+   "papel_tutor": "Taylor, administrador com muito pouco tempo e pouca paciência para pormenores.",
+   "nivel": "B2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I'll give you the facts, then my assessment.",
+    "… suggested / insisted / admitted / agreed to…",
+    "In short, …",
+    "What worries me is… The good news is…",
+    "I don't have the details. I'll get back to you by…"
+   ],
+   "extras": {
+    "brief": "Role-play for an upper-intermediate learner (B2.2, unit 9). You are Taylor (a neutral name; never mention a husband or wife), a board member with very little time. Ask the student to brief you on a meeting you missed. If the student has none, give one: yesterday's meeting decided to delay the launch of a new mobile app by one month; the IT manager admitted that tests had found serious bugs; marketing insisted on keeping the launch date; finance suggested a smaller launch in one city first; in the end, everyone agreed to a one-month delay and a pilot in Benguela. Let the student speak for about one minute. Then interrupt: \"Too long. Give me the essentials in one minute — and your assessment.\" Then ask: \"What worries you most?\" and one detailed question the student probably cannot answer (for example, \"How much will the delay cost us?\"). Praise an honest \"I'll get back to you\". If the student only uses \"said\", ask: \"Did they suggest it or insist on it?\". If the student mixes facts and opinion, ask: \"Is that a fact or your view?\". Use any A1, A2, B1 and B2.1 language, plus B2 units 6 to 9: needn't have, was supposed to, past speculation, concession and contrast, intensifiers and comment adverbs, reporting verbs with their patterns (suggest / recommend + -ing or that; insist on; admit / deny + -ing; warn / advise / remind / urge / persuade + person + to), summarising and evaluating (What worries me is… The good news is… On balance…). Speak at natural speed. Do NOT use: \"wish / if only\", \"would\" for past habits, the past perfect continuous, or mixed conditionals. Short turns; never more than three sentences at a time.",
+    "primeira_fala": "{nome}, I've got five minutes. I missed yesterday's meeting. What happened?",
+    "primeira_fala_simples": "{nome}, I missed the meeting. What happened? Quickly, please.",
+    "guiao": [
+     "Too long. Give me the essentials in one minute — and your assessment.",
+     "Is that a fact, or your view?",
+     "What worries you most?",
+     "How much will the delay cost us?",
+     "OK. What do you recommend?",
+     "Thank you, {nome}. That's what I needed."
+    ],
+    "frases": [
+     {
+      "en": "I'll give you the facts, then my assessment.",
+      "pt": "Dou-lhe primeiro os factos, depois a minha avaliação."
+     },
+     {
+      "en": "The IT manager admitted that the tests had found serious bugs.",
+      "pt": "O director de informática admitiu que os testes tinham encontrado erros graves."
+     },
+     {
+      "en": "Marketing insisted on keeping the date, but finance suggested a pilot in Benguela.",
+      "pt": "O marketing insistiu em manter a data, mas as finanças sugeriram um piloto em Benguela."
+     },
+     {
+      "en": "In short, the launch moves one month, starting with Benguela.",
+      "pt": "Em resumo, o lançamento passa um mês, começando por Benguela."
+     },
+     {
+      "en": "I don't have the exact figure. I'll get back to you on that by Friday.",
+      "pt": "Não tenho o número exacto. Volto a falar consigo sobre isso até sexta."
+     }
+    ],
+    "palavras": [
+     "facts",
+     "admitted",
+     "insisted",
+     "in short",
+     "worries me",
+     "get back to you"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Relata a reunião com verbos de relato variados e os padrões certos (suggested + -ing / that, insisted on, admitted, agreed to).",
+    "Sintetiza: escolhe o essencial e agrupa as ideias; corta para um minuto quando o tutor pede.",
+    "Separa os factos da sua avaliação e marca a opinião (In my view… What worries me is… The good news is… On balance…).",
+    "Responde com honestidade quando não sabe um número (I'll get back to you by…), sem inventar.",
+    "Dá uma recomendação clara, e fala pelo menos uma vez 1 minuto ou mais sem ajuda.",
+    "É compreendido sem o tutor ter de pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

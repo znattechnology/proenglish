@@ -240,6 +240,11 @@ class CourseCertificate(BaseModel):
         blank=True,
         help_text="Motivo da revogação (não é mostrado publicamente)"
     )
+    # Exame oral (fase 6): o nível de fala atingido e as notas por competência no certificado.
+    nivel_fala = models.CharField(max_length=2, blank=True, default='')
+    area_fala = models.CharField(max_length=80, blank=True, default='', help_text='Área de trabalho do curso (pt-PT)')
+    notas_fala = models.JSONField(default=dict, blank=True,
+                                  help_text='{fluencia, gramatica, vocabulario, tarefa, pronuncia, exame}')
 
     class Meta:
         db_table = 'course_certificates'

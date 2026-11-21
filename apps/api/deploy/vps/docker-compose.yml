@@ -2,9 +2,14 @@
 # Base de dados própria (sem Neon) e API isoladas numa rede interna; só a API entra
 # na rede do Caddy (publica), com o nome proenglish-api. Nada publica portas no servidor.
 #
-#   docker compose up -d                 arrancar
-#   docker compose build api             reconstruir a API
-#   docker compose run --rm api python manage.py migrate
+# Os deploys são automáticos (GitHub Actions -> deploy.sh): a imagem vem pronta do GitHub
+# Container Registry (ghcr.io), já testada; o servidor não compila nada.
+#
+#   ./deploy.sh ghcr.io/znattechnology/proenglish-api:<sha>   o que o workflow corre
+#   docker compose ps / logs -f api                            ver o estado
+#   docker compose exec api python manage.py <comando>         comando na API em execução
+#   docker compose build api && API_IMAGE=proenglish/api:local docker compose up -d api
+#                                                              recurso: compilar no servidor
 #
 # Os limites de memória contam: o servidor (4 GB) é partilhado com o LabTIC e O Mambo.
 name: proenglish
@@ -47,7 +52,8 @@ services:
   api:
     build:
       context: ../..
-    image: proenglish/api:latest
+    # A imagem em uso fica em ./imagem-actual (deploy.sh escreve-a e exporta API_IMAGE).
+    image: ${API_IMAGE:-ghcr.io/znattechnology/proenglish-api:latest}
     restart: always
     logging: *logging
     depends_on:
@@ -74,12 +80,35 @@ services:
       - --error-logfile=-
     volumes:
       - media:/app/media
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "-o", "/dev/null", "http://localhost:8000/api/health/"]
+      interval: 15s
+      timeout: 10s
+      start_period: 40s
+      retries: 3
     networks:
       interna:
       publica:
         aliases: [proenglish-api]
     mem_limit: 512m
     memswap_limit: 768m
+
+  # Web (Next.js). Imagem construída no GitHub com os endereços públicos já dentro
+  # (ver .github/workflows/web-deploy.yml); a imagem em uso fica em WEB_IMAGE no .env.
+  web:
+    image: ${WEB_IMAGE:-ghcr.io/znattechnology/proenglish-web:latest}
+    restart: always
+    logging: *logging
+    environment:
+      NODE_ENV: production
+      # Pedidos do servidor da web à API pela rede do Caddy, sem sair para a Internet.
+      DJANGO_API_URL_INTERNA: http://proenglish-api:8000/api/v1
+      DJANGO_API_URL: http://proenglish-api:8000/api/v1
+    networks:
+      publica:
+        aliases: [proenglish-web]
+    mem_limit: 384m
+    memswap_limit: 512m
 
 volumes:
   pgdata:

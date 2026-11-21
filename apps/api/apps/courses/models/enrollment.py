@@ -386,7 +386,14 @@ class ChapterProgress(BaseModel, ProgressTrackingMixin, TimestampedModelMixin):
         null=True, blank=True,
         help_text="Best score achieved on this chapter (if applicable)"
     )
-    
+
+    # Numa aula com questionário, ver o vídeo não basta para a concluir (apps/courses/conclusao.py):
+    # fica aqui registado que o vídeo foi visto, à espera de o questionário ser passado.
+    video_visto = models.BooleanField(
+        default=False,
+        help_text="O aluno viu o vídeo (ou marcou a aula como vista)"
+    )
+
     notes = models.TextField(
         blank=True,
         help_text="User's personal notes for this chapter"

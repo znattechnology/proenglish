@@ -1,0 +1,301 @@
+{
+ "title": "A2.2 Unit 6 quiz — Travelling for work",
+ "description": "Present perfect para experiências, present perfect / past simple, been / gone, direcções num edifício, aeroporto e hotel.",
+ "questions": [
+  {
+   "id": "a2u6q1",
+   "question": "Complete: \"Have you ever ___ to Lagos?\"",
+   "options": [
+    {
+     "id": "a2u6q1o0",
+     "text": "been",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u6q1o1",
+     "text": "went",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u6q1o2",
+     "text": "go",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u6q1o0",
+   "explanation": "Experiência de visita: been to.",
+   "points": 10
+  },
+  {
+   "id": "a2u6q2",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "a2u6q2o0",
+     "text": "I've never flown.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u6q2o1",
+     "text": "I haven't never flown.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u6q2o2",
+     "text": "I've never flew.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u6q2o0",
+   "explanation": "never + particípio; só uma negativa.",
+   "points": 10
+  },
+  {
+   "id": "a2u6q3",
+   "question": "Complete: \"I ___ to Lisbon in 2023.\"",
+   "options": [
+    {
+     "id": "a2u6q3o0",
+     "text": "went",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u6q3o1",
+     "text": "'ve been",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u6q3o2",
+     "text": "'ve gone",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u6q3o0",
+   "explanation": "Com uma data, past simple.",
+   "points": 10
+  },
+  {
+   "id": "a2u6q4",
+   "question": "\"Have you ever missed a flight?\" — \"Yes, I have.\" Qual é a melhor pergunta a seguir?",
+   "options": [
+    {
+     "id": "a2u6q4o0",
+     "text": "When did it happen?",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u6q4o1",
+     "text": "When has it happened?",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u6q4o2",
+     "text": "When it happened?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u6q4o0",
+   "explanation": "Pormenores: past simple com did.",
+   "points": 10
+  },
+  {
+   "id": "a2u6q5",
+   "question": "\"She's gone to Lobito\" quer dizer:",
+   "options": [
+    {
+     "id": "a2u6q5o0",
+     "text": "Foi para o Lobito e está lá agora.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u6q5o1",
+     "text": "Já esteve no Lobito.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u6q5o2",
+     "text": "Vai para o Lobito na próxima semana.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u6q5o0",
+   "explanation": "gone = ainda lá está.",
+   "points": 10
+  },
+  {
+   "id": "a2u6q6",
+   "question": "Complete: \"Go ___ the doors and up the stairs.\"",
+   "options": [
+    {
+     "id": "a2u6q6o0",
+     "text": "through",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u6q6o1",
+     "text": "along",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u6q6o2",
+     "text": "across",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u6q6o0",
+   "explanation": "through = atravessar (entrar por um lado e sair pelo outro).",
+   "points": 10
+  },
+  {
+   "id": "a2u6q7",
+   "question": "\"Large\" quer dizer:",
+   "options": [
+    {
+     "id": "a2u6q7o0",
+     "text": "grande",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u6q7o1",
+     "text": "largo",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u6q7o2",
+     "text": "comprido",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u6q7o0",
+   "explanation": "Falso amigo: largo = wide.",
+   "points": 10
+  },
+  {
+   "id": "a2u6q8",
+   "question": "Ouviu: \"My car broke down near Huambo.\" Quer dizer:",
+   "options": [
+    {
+     "id": "a2u6q8o0",
+     "text": "O carro avariou perto do Huambo.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u6q8o1",
+     "text": "O carro partiu-se no Huambo.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u6q8o2",
+     "text": "Vendeu o carro no Huambo.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u6q8o0",
+   "explanation": "break down = avariar.",
+   "points": 10
+  },
+  {
+   "id": "a2u6q9",
+   "question": "No hotel, a reserva está errada. Qual é a melhor frase?",
+   "options": [
+    {
+     "id": "a2u6q9o0",
+     "text": "I'm sorry, there's a problem. The reservation is for four nights.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u6q9o1",
+     "text": "You are wrong. Four nights!",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u6q9o2",
+     "text": "I no have four nights?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u6q9o0",
+   "explanation": "Com calma: há um problema + o que devia ser.",
+   "points": 10
+  },
+  {
+   "id": "a2u6q10",
+   "question": "Reciclagem (A2, unidade 5). \"You don't have to bring a tie\" quer dizer:",
+   "options": [
+    {
+     "id": "a2u6q10o0",
+     "text": "Não é preciso trazer gravata.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u6q10o1",
+     "text": "É proibido trazer gravata.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u6q10o2",
+     "text": "Tem de trazer gravata.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u6q10o0",
+   "explanation": "don't have to = não é necessário.",
+   "points": 10
+  },
+  {
+   "id": "a2u6q11",
+   "question": "Reciclagem (A2, unidade 4). Complete: \"It's the best hotel ___ Johannesburg.\"",
+   "options": [
+    {
+     "id": "a2u6q11o0",
+     "text": "in",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u6q11o1",
+     "text": "of",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u6q11o2",
+     "text": "at",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u6q11o0",
+   "explanation": "Superlativo + in + lugar.",
+   "points": 10
+  },
+  {
+   "id": "a2u6q12",
+   "question": "Reciclagem (A2, unidade 3). Está marcado. Qual é a frase mais natural?",
+   "options": [
+    {
+     "id": "a2u6q12o0",
+     "text": "We're flying to Johannesburg on Monday.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u6q12o1",
+     "text": "We're fly to Johannesburg on Monday.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u6q12o2",
+     "text": "We flew to Johannesburg next Monday.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u6q12o0",
+   "explanation": "Combinação: present continuous.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

@@ -6,6 +6,7 @@ import { Aviso, Osso } from "@/components/pe";
 import { Pagina } from "@/components/pe/estudante/Pagina";
 import { CabecaSeccao, SEPARADORES_CURSOS } from "@/components/pe/admin/Comum";
 import { quandoEntrou, useFilaRevisaoQuery } from "@/src/domains/admin/administracao/api";
+import { nivelEmFrase } from "@/src/domains/shared/niveis";
 
 export default function FilaRevisao() {
   const { data, isError, refetch } = useFilaRevisaoQuery();
@@ -33,7 +34,7 @@ export default function FilaRevisao() {
                   <span className="flex min-w-0 flex-[1_1_320px] flex-col">
                     <span className="font-pe-titulo text-[18px] font-semibold leading-6">{c.titulo}</span>
                     <span className="text-pe-legenda text-pe-tinta-suave">
-                      {c.tipo === "video" ? "Vídeo" : "Prática"}, {[c.area, c.nivel].filter(Boolean).join(", ")}. Por {c.professor.nome}
+                      {c.tipo === "video" ? "Vídeo" : "Prática"}, {[c.area, nivelEmFrase(c.nivel)].filter(Boolean).join(", ")}. Por {c.professor.nome}
                       {c.estado_antes_revisao === "arquivado" ? ". Volta de arquivado" : ""}.
                     </span>
                   </span>

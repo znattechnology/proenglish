@@ -57,6 +57,15 @@ class VideoCoursesAPITest(APITestCase):
         token = self.get_jwt_token(self.student)
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {token}')
     
+    def results(self, response):
+        """Lista de uma resposta {message, data: {count, results}} (ou só paginada)."""
+        body = response.json()
+        if isinstance(body, dict) and 'data' in body:
+            body = body['data']
+        if isinstance(body, dict) and 'results' in body:
+            return body['results']
+        return body
+
     def test_student_list_published_video_courses(self):
         """Test student can list published video courses."""
         url = '/api/v1/student/video-courses/'
@@ -65,10 +74,10 @@ class VideoCoursesAPITest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         response_data = response.json()
         
-        # API returns {message: ..., data: [...]}
+        # A API devolve {message, data: {count, results: [...]}}
         self.assertIn('data', response_data)
-        courses = response_data['data']
-        
+        courses = self.results(response)
+
         # Should see published video course but not draft
         course_ids = [course['courseId'] for course in courses]
         self.assertIn(str(self.published_video_course.id), course_ids)
@@ -87,7 +96,6 @@ class VideoCoursesAPITest(APITestCase):
         data = response_data['data']
         
         self.assertEqual(data['courseId'], str(self.published_video_course.id))
-        self.assertEqual(data['course_type'], 'video')
         self.assertEqual(data['status'], 'Published')
     
     def test_student_cannot_access_draft_video_course(self):
@@ -105,12 +113,8 @@ class VideoCoursesAPITest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         response_data = response.json()
         
-        # Check if it's wrapped in {data: ...} format
-        if 'data' in response_data:
-            data = response_data['data']
-        else:
-            data = response_data
-        
+        data = self.results(response)
+
         # Find our specific section in the data
         video_section_found = False
         for section in data:
@@ -141,12 +145,12 @@ class VideoCoursesAPITest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         response_data = response.json()
         
-        if 'data' in response_data:
-            courses = response_data['data']
-            # All returned courses should be video type
-            for course in courses:
-                if 'course_type' in course:
-                    self.assertEqual(course['course_type'], 'video')
+        # A resposta não traz course_type: confirma-se na base de dados.
+        ids = [c['courseId'] for c in self.results(response)]
+        self.assertTrue(ids)
+        self.assertEqual(
+            set(Course.objects.filter(id__in=ids).values_list('course_type', flat=True)), {'video'}
+        )
     
     def test_video_course_response_structure(self):
         """Test video course API response has correct structure."""
@@ -162,10 +166,8 @@ class VideoCoursesAPITest(APITestCase):
         
         data = response_data['data']
         
-        # Check required fields
-        required_fields = ['courseId', 'title', 'description', 'teacher', 'status', 'course_type']
+        # Check required fields (course_type já não vem na resposta)
+        required_fields = ['courseId', 'title', 'description', 'teacher', 'status', 'sections']
         for field in required_fields:
             self.assertIn(field, data, f"Field '{field}' not found in response data")
-        
-        # Check course type is video
-        self.assertEqual(data['course_type'], 'video')
+        self.assertEqual(data['teacher'], str(self.teacher.id))

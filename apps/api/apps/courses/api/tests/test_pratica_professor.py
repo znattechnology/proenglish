@@ -49,9 +49,13 @@ EXEMPLOS = {
                'audio_url': 'https://exemplo.ao/a.mp3'},
     'pronuncia': {'tipo': 'pronuncia', 'frase': 'Please wear your safety glasses.'},
 }
-# A conversa dentro da lição está desligada: não se cria (400) e o aluno salta as antigas.
+# Conversa curta no fim da lição: a situação e 2 a 3 frases da lição para o aluno usar.
 CONVERSA = {'tipo': 'conversa', 'enunciado': 'Passagem de turno com o supervisor.',
-            'frase': 'Explicar o estado da bomba 3.'}
+            'frases_alvo': ['Let me brief you.', 'Pump 3 is still pending inspection.']}
+# Responder em voz alta: pergunta, frase-alvo e exemplo de resposta (que usa a frase-alvo).
+RESPONDER = {'tipo': 'responder', 'enunciado': 'When can you send me the shift report?',
+             'contexto': 'O supervisor pergunta pelo relatório.', 'frase': "I'll have it ready by",
+             'resposta': "I'll have it ready by five o'clock."}
 MODOS = {
     'escolher': 'escolha', 'assistir': 'escolha', 'completar': 'banco', 'traduzir': 'escrever', 'ordenar': 'ordenar',
     'pares': 'pares', 'verdadeiro_falso': 'escolha', 'escuta': 'escolha', 'pronuncia': 'falar',
@@ -71,8 +75,14 @@ class Base(APITestCase):
         self.admin = User.objects.create_user(email='admin-pratica@example.com', name='Admin', password='x12345678',
                                               role='admin')
         self.curso = Course.objects.create(teacher=self.prof, teacherName='Prof', title='Inglês no Terminal',
-                                           description='Curso de prática', category='Oil & Gas', level='Intermediate',
+                                           description='Curso de prática', category='Oil & Gas', level='B1',
                                            course_type='practice', status='Draft')
+        # O curso é de sector: o aluno destes testes já tem o nível básico (regra testada em
+        # apps/courses/test_teste_basico.py).
+        from django.utils import timezone
+        from apps.courses.models import TesteNivelBasico
+        TesteNivelBasico.objects.create(user=self.aluno, perguntas=[], expira_em=timezone.now(),
+                                        submetido_em=timezone.now(), certas=20, total=20, aprovado=True)
         self.entrar(self.prof)
 
     def entrar(self, user):
@@ -254,8 +264,14 @@ class ExerciciosTests(Base):
             ({'tipo': 'traduzir', 'enunciado': 'Olá'}, 'resposta', None),
             ({'tipo': 'verdadeiro_falso', 'enunciado': 'X'}, 'resposta', None),
             ({'tipo': 'pronuncia'}, 'frase', None),
-            ({'tipo': 'conversa', 'enunciado': 'X', 'frase': 'Y'}, 'tipo',
-             'O exercício de conversa não está disponível por agora. Escolha outro tipo de exercício.'),
+            ({'tipo': 'conversa', 'enunciado': 'X', 'frase': 'Y'}, 'frases_alvo',
+             'Indique entre 2 e 3 frases da lição para o aluno usar.'),
+            ({**CONVERSA, 'frases_alvo': ['Check it.', 'check  it.', 'C']}, 'frases_alvo', 'Há frases repetidas.'),
+            ({**CONVERSA, 'enunciado': ''}, 'enunciado', 'Descreva a situação da conversa.'),
+            ({**RESPONDER, 'frase': ''}, 'frase', 'Indique a frase ou estrutura que a resposta deve usar.'),
+            ({**RESPONDER, 'resposta': 'Tomorrow morning.'}, 'resposta',
+             'O exemplo de resposta tem de usar a frase-alvo.'),
+            ({**RESPONDER, 'enunciado': ''}, 'enunciado', None),
             ({'tipo': 'escuta', 'frase': 'Hi', 'audio_url': 'nao-e-url'}, 'audio_url', None),
             ({'tipo': 'xpto'}, 'tipo', None),
         ]
@@ -416,7 +432,13 @@ GERADO = {
     'exercicios': [
         {**{'enunciado': '', 'frase': '', 'opcoes': [], 'pares': [], 'resposta': '', 'explicacao': 'Porque sim.'},
          **{k: v for k, v in EXEMPLOS[t].items() if k != 'audio_url'}}
-        for t in ('pares', 'escolher', 'verdadeiro_falso', 'completar', 'ordenar', 'traduzir', 'escuta', 'pronuncia')
+        for t in ('pares', 'escolher', 'completar', 'traduzir', 'pronuncia')
+    ] + [
+        {'tipo': 'pronuncia', 'enunciado': '', 'frase': 'The pump is off.', 'opcoes': [], 'pares': [],
+         'resposta': '', 'explicacao': ''},
+        {**{'opcoes': [], 'pares': [], 'explicacao': ''}, **RESPONDER},
+        {**{'opcoes': [], 'pares': [], 'explicacao': ''}, **RESPONDER,
+         'enunciado': 'Is pump 3 ready?', 'frase': 'still pending', 'resposta': 'No, it is still pending inspection.'},
     ] + [
         {'tipo': 'completar', 'enunciado': '', 'frase': 'Sem parênteses aqui.', 'opcoes': [], 'pares': [],
          'resposta': '', 'explicacao': ''},

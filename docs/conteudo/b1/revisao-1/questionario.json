@@ -1,0 +1,373 @@
+{
+ "title": "B1.1 Review 1 quiz — Units 1 to 5",
+ "description": "Três perguntas por unidade, das unidades 1 a 5 do B1.1.",
+ "questions": [
+  {
+   "id": "b1r1q1",
+   "question": "Unidade 1. Complete: \"Do you know where ___?\"",
+   "options": [
+    {
+     "id": "b1r1q1o0",
+     "text": "the station is",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q1o1",
+     "text": "is the station",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q1o2",
+     "text": "the station is it",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q1o0",
+   "explanation": "Pergunta indirecta: a ordem da afirmação.",
+   "points": 10
+  },
+  {
+   "id": "b1r1q2",
+   "question": "Unidade 1. Complete: \"You live in Luanda, ___?\"",
+   "options": [
+    {
+     "id": "b1r1q2o0",
+     "text": "don't you",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q2o1",
+     "text": "doesn't it",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q2o2",
+     "text": "isn't it",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q2o0",
+   "explanation": "live → do: don't you?",
+   "points": 10
+  },
+  {
+   "id": "b1r1q3",
+   "question": "Unidade 1. \"Gosto de café.\" — \"Eu também.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1r1q3o0",
+     "text": "So do I.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q3o1",
+     "text": "So am I.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q3o2",
+     "text": "Me also do.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q3o0",
+   "explanation": "like → do: So do I.",
+   "points": 10
+  },
+  {
+   "id": "b1r1q4",
+   "question": "Unidade 2. \"Trabalho aqui desde 2020.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1r1q4o0",
+     "text": "I've been working here since 2020.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q4o1",
+     "text": "I'm working here since 2020.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q4o2",
+     "text": "I work here since 2020.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q4o0",
+   "explanation": "Do passado até agora: present perfect (continuous).",
+   "points": 10
+  },
+  {
+   "id": "b1r1q5",
+   "question": "Unidade 2. Complete: \"I didn't ___ to speak English at school.\"",
+   "options": [
+    {
+     "id": "b1r1q5o0",
+     "text": "use",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q5o1",
+     "text": "used",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q5o2",
+     "text": "using",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q5o0",
+   "explanation": "Com did: use to.",
+   "points": 10
+  },
+  {
+   "id": "b1r1q6",
+   "question": "Unidade 2. Complete: \"The instructions were ___.\"",
+   "options": [
+    {
+     "id": "b1r1q6o0",
+     "text": "confusing",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q6o1",
+     "text": "confused",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q6o2",
+     "text": "confuse",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q6o0",
+   "explanation": "-ing: o que causa o sentimento.",
+   "points": 10
+  },
+  {
+   "id": "b1r1q7",
+   "question": "Unidade 3. \"Concordo contigo.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1r1q7o0",
+     "text": "I agree with you.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q7o1",
+     "text": "I'm agree with you.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q7o2",
+     "text": "I agree you.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q7o0",
+   "explanation": "agree é um verbo, com with.",
+   "points": 10
+  },
+  {
+   "id": "b1r1q8",
+   "question": "Unidade 3. Complete: \"There are too ___ meetings this week.\"",
+   "options": [
+    {
+     "id": "b1r1q8o0",
+     "text": "many",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q8o1",
+     "text": "much",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q8o2",
+     "text": "enough",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q8o0",
+   "explanation": "meetings conta-se → too many.",
+   "points": 10
+  },
+  {
+   "id": "b1r1q9",
+   "question": "Unidade 3. \"Pode resumir as decisões?\" Em inglês:",
+   "options": [
+    {
+     "id": "b1r1q9o0",
+     "text": "Could you summarise the decisions?",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q9o1",
+     "text": "Could you resume the decisions?",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q9o2",
+     "text": "Could you resumen the decisions?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q9o0",
+   "explanation": "resume = retomar.",
+   "points": 10
+  },
+  {
+   "id": "b1r1q10",
+   "question": "Unidade 4. Complete: \"If I ___ you, I'd call the supplier.\"",
+   "options": [
+    {
+     "id": "b1r1q10o0",
+     "text": "were",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q10o1",
+     "text": "am",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q10o2",
+     "text": "will be",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q10o0",
+   "explanation": "If I were you: conselho.",
+   "points": 10
+  },
+  {
+   "id": "b1r1q11",
+   "question": "Unidade 4. Complete (20%): \"The crane ___ work tomorrow.\"",
+   "options": [
+    {
+     "id": "b1r1q11o0",
+     "text": "probably won't",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q11o1",
+     "text": "won't probably",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q11o2",
+     "text": "will not probably",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q11o0",
+   "explanation": "probably antes de won't.",
+   "points": 10
+  },
+  {
+   "id": "b1r1q12",
+   "question": "Unidade 4. Complete: \"Don't worry — I'll sort ___.\"",
+   "options": [
+    {
+     "id": "b1r1q12o0",
+     "text": "it out",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q12o1",
+     "text": "out it",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q12o2",
+     "text": "it of",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q12o0",
+   "explanation": "Com pronome, no meio.",
+   "points": 10
+  },
+  {
+   "id": "b1r1q13",
+   "question": "Unidade 5. Complete: \"The plant ___ built in 2025.\"",
+   "options": [
+    {
+     "id": "b1r1q13o0",
+     "text": "was",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q13o1",
+     "text": "were",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q13o2",
+     "text": "did",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q13o0",
+   "explanation": "Passiva no passado: was + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b1r1q14",
+   "question": "Unidade 5. \"O relatório que te enviei.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1r1q14o0",
+     "text": "the report I sent you",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q14o1",
+     "text": "the report that I sent it to you",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q14o2",
+     "text": "the report who I sent you",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q14o0",
+   "explanation": "Sem repetir o pronome.",
+   "points": 10
+  },
+  {
+   "id": "b1r1q15",
+   "question": "Unidade 5. Complete: \"You ___ touch the inverters. It's dangerous.\"",
+   "options": [
+    {
+     "id": "b1r1q15o0",
+     "text": "mustn't",
+     "isCorrect": true
+    },
+    {
+     "id": "b1r1q15o1",
+     "text": "don't have to",
+     "isCorrect": false
+    },
+    {
+     "id": "b1r1q15o2",
+     "text": "must to",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1r1q15o0",
+   "explanation": "Proibido → mustn't.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

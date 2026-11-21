@@ -1,7 +1,7 @@
 """
 Editor de cursos em vídeo da área do professor (base nova).
 
-  GET    /api/v1/teacher/cursos/opcoes/[?tipo=video|pratica]   {areas:[{valor,nome}], niveis:[{valor,nome}]}
+  GET    /api/v1/teacher/cursos/opcoes/[?tipo=video|pratica]   {areas:[{valor,nome}], niveis:[{valor,nome,descricao}]}
   POST   /api/v1/teacher/cursos/                               cria um curso (sempre rascunho)
   GET    /api/v1/teacher/cursos/<id>/estrutura/                {curso, seccoes:[{..., aulas:[...]}]}
   POST   /api/v1/teacher/cursos/<id>/seccoes/                  {titulo}
@@ -10,11 +10,15 @@ Editor de cursos em vídeo da área do professor (base nova).
   DELETE /api/v1/teacher/seccoes/<id>/
   POST   /api/v1/teacher/seccoes/<id>/aulas/                   {titulo}
   POST   /api/v1/teacher/seccoes/<id>/aulas/ordem/             {ids:[...]}
-  PATCH  /api/v1/teacher/aulas/<id>/                           {titulo, resumo, percentagem_vista, duracao_s, seccao}
+  PATCH  /api/v1/teacher/aulas/<id>/                           {titulo, resumo, percentagem_vista, duracao_s, seccao,
+                                                                licao_pratica: <id de lição> | null}
+  GET    /api/v1/teacher/cursos/<id>/licoes-pratica/           lições dos cursos de prática do professor do curso
+                                                               {cursos:[{id, titulo, estado, unidades:[{id, titulo, licoes:[{id, titulo}]}]}]}
   DELETE /api/v1/teacher/aulas/<id>/
   GET    /api/v1/teacher/aulas/<id>/questionario/
   PUT    /api/v1/teacher/aulas/<id>/questionario/              substitui o questionário inteiro
   DELETE /api/v1/teacher/materiais/<id>/
+A transcrição e as frases da aula estão em aula_video.py.
 
 Só o professor dono do curso (ou um administrador); para os outros o recurso não existe (404).
 
@@ -39,9 +43,10 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.exceptions import NotFound
 from rest_framework.response import Response
 
-from apps.courses import ciclo
+from apps.courses import ciclo, niveis
 from apps.courses.models import Chapter, ChapterResource, Course, CourseSection
 from apps.courses.tempo_video import duracao_do_video
+from apps.courses.transcricao import estado_para_ecra
 
 from .cursos import ACESSO_API, PERMISSOES, _curso_do_professor, _erro, detalhe_curso, guardar_publicado
 
@@ -227,7 +232,27 @@ def aula_dict(chapter, materiais=None):
         'resumo': chapter.content or '',
         'materiais': [material_dict(m) for m in materiais],
         'questionario': resumo_questionario(chapter),
+        'licao_pratica': licao_pratica_dict(chapter.practice_lesson) if chapter.practice_lesson_id else None,
+        'transcricao': estado_para_ecra(chapter) if chapter.video else None,
     }
+
+
+def licao_pratica_dict(licao):
+    """A "lição de prática a seguir a esta aula" (Chapter.practice_lesson)."""
+    unidade = licao.unit
+    curso = unidade.course
+    return {
+        'id': str(licao.id),
+        'titulo': licao.title,
+        'unidade': {'id': str(unidade.id), 'titulo': unidade.title},
+        'curso': {'id': str(curso.id), 'titulo': curso.title, 'estado': ciclo.estado(curso)},
+    }
+
+
+def _licoes_pratica_do_professor(professor_id):
+    from apps.practice.models import PracticeLesson
+    return PracticeLesson.objects.filter(unit__course__course_type='practice',
+                                         unit__course__teacher_id=professor_id)
 
 
 def seccao_dict(seccao, aulas=None):
@@ -242,7 +267,8 @@ def seccao_dict(seccao, aulas=None):
 
 
 def _aulas_com_materiais(qs):
-    return list(qs.order_by('order', 'created_at').prefetch_related(
+    return list(qs.order_by('order', 'created_at').select_related(
+        'practice_lesson__unit__course').prefetch_related(
         Prefetch('resources', queryset=ChapterResource.objects.filter(is_active=True).order_by('order', 'created_at'))))
 
 
@@ -281,7 +307,7 @@ def opcoes(request):
         return _erro('Tipo inválido. Use "video" ou "pratica".', 'tipo_invalido', details={'tipo': tipo})
     return Response({
         'areas': opcoes_areas(tipo),
-        'niveis': [{'valor': v, 'nome': n} for v, n in ciclo.NIVEIS.items()],
+        'niveis': niveis.opcoes(),
     })
 
 
@@ -312,7 +338,7 @@ def criar_curso(request):
         erros['area'] = ['Escolha a área do curso.']
     nivel = ciclo.nivel_de_entrada(_texto(dados.get('nivel')))
     if not nivel:
-        erros['nivel'] = ['Nível inválido. Use iniciante, intermédio ou avançado.']
+        erros['nivel'] = ['Nível inválido. Escolha um nível de A1 a C2.']
     acesso = dados.get('acesso', 'todos')
     if acesso not in ACESSO:
         erros['acesso'] = ['Escolha o acesso: "todos" ou "premium".']
@@ -550,6 +576,24 @@ def aula(request, aula_id):
         destino = CourseSection.objects.filter(id=destino_id, course_id=curso_id).first() if destino_id else None
         if destino is None:
             erros['seccao'] = ['Escolha uma secção deste curso.']
+    if 'licao_pratica' in dados:
+        valor = dados['licao_pratica']
+        if valor in (None, ''):
+            aula.practice_lesson = None
+            campos.append('practice_lesson')
+        else:
+            try:
+                licao_id = uuid.UUID(str(valor))
+            except ValueError:
+                licao_id = None
+            # Só lições de cursos de prática do mesmo professor (o dono do curso em vídeo).
+            licao = (_licoes_pratica_do_professor(aula.section.course.teacher_id)
+                     .select_related('unit__course').filter(id=licao_id).first() if licao_id else None)
+            if licao is None:
+                erros['licao_pratica'] = ['Escolha uma lição de um dos seus cursos de prática.']
+            else:
+                aula.practice_lesson = licao
+                campos.append('practice_lesson')
     if erros:
         return _validacao(erros)
 
@@ -566,6 +610,31 @@ def aula(request, aula_id):
             _tocar(curso_id)
         return Response(aula_dict(aula))
     return guardar_publicado(curso, _gravar)
+
+
+@api_view(['GET'])
+@permission_classes(PERMISSOES)
+def licoes_pratica(request, curso_id):
+    """Lições que se podem ligar às aulas deste curso: as dos cursos de prática do mesmo professor."""
+    from apps.practice.models import PracticeLesson, PracticeUnit
+    try:
+        curso = _curso_video(request, curso_id)
+    except _TipoErrado:
+        return _resposta_tipo_errado()
+    cursos = (Course.objects.filter(course_type='practice', teacher_id=curso.teacher_id)
+              .order_by('title').prefetch_related(
+                  Prefetch('practice_units', queryset=PracticeUnit.objects.order_by('order').prefetch_related(
+                      Prefetch('lessons', queryset=PracticeLesson.objects.order_by('order'))))))
+    return Response({'cursos': [{
+        'id': str(c.id),
+        'titulo': c.title,
+        'estado': ciclo.estado(c),
+        'unidades': [{
+            'id': str(u.id),
+            'titulo': u.title,
+            'licoes': [{'id': str(l.id), 'titulo': l.title} for l in u.lessons.all()],
+        } for u in c.practice_units.all()],
+    } for c in cursos]})
 
 
 @api_view(['POST'])

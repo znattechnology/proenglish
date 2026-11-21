@@ -1,0 +1,301 @@
+{
+ "title": "Unit 9 quiz — Free time and right now",
+ "description": "Like + -ing, can para capacidade, present continuous, simple vs continuous e o telefone.",
+ "questions": [
+  {
+   "id": "u9q1",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "u9q1o0",
+     "text": "I love dancing.",
+     "isCorrect": true
+    },
+    {
+     "id": "u9q1o1",
+     "text": "I love dance.",
+     "isCorrect": false
+    },
+    {
+     "id": "u9q1o2",
+     "text": "I love to dancing.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u9q1o0",
+   "explanation": "love + -ing.",
+   "points": 10
+  },
+  {
+   "id": "u9q2",
+   "question": "Como se escreve \"run\" + -ing?",
+   "options": [
+    {
+     "id": "u9q2o0",
+     "text": "running",
+     "isCorrect": true
+    },
+    {
+     "id": "u9q2o1",
+     "text": "runing",
+     "isCorrect": false
+    },
+    {
+     "id": "u9q2o2",
+     "text": "runningg",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u9q2o0",
+   "explanation": "Consoante dobrada.",
+   "points": 10
+  },
+  {
+   "id": "u9q3",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "u9q3o0",
+     "text": "He can drive.",
+     "isCorrect": true
+    },
+    {
+     "id": "u9q3o1",
+     "text": "He cans drive.",
+     "isCorrect": false
+    },
+    {
+     "id": "u9q3o2",
+     "text": "He can drives.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u9q3o0",
+   "explanation": "can + verbo simples, sem \"s\".",
+   "points": 10
+  },
+  {
+   "id": "u9q4",
+   "question": "Como se diz \"Não sei nadar nada\"?",
+   "options": [
+    {
+     "id": "u9q4o0",
+     "text": "I can't swim at all.",
+     "isCorrect": true
+    },
+    {
+     "id": "u9q4o1",
+     "text": "I can't swim nothing.",
+     "isCorrect": false
+    },
+    {
+     "id": "u9q4o2",
+     "text": "I don't can swim.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u9q4o0",
+   "explanation": "\"Not at all\" = nada.",
+   "points": 10
+  },
+  {
+   "id": "u9q5",
+   "question": "Complete: \"Sílvia ___ having lunch now.\"",
+   "options": [
+    {
+     "id": "u9q5o0",
+     "text": "is",
+     "isCorrect": true
+    },
+    {
+     "id": "u9q5o1",
+     "text": "are",
+     "isCorrect": false
+    },
+    {
+     "id": "u9q5o2",
+     "text": "has",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u9q5o0",
+   "explanation": "She + is + -ing.",
+   "points": 10
+  },
+  {
+   "id": "u9q6",
+   "question": "Escolha a resposta certa: \"Are they working?\"",
+   "options": [
+    {
+     "id": "u9q6o0",
+     "text": "Yes, they are.",
+     "isCorrect": true
+    },
+    {
+     "id": "u9q6o1",
+     "text": "Yes, they do.",
+     "isCorrect": false
+    },
+    {
+     "id": "u9q6o2",
+     "text": "Yes, they working.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u9q6o0",
+   "explanation": "Resposta curta com \"be\".",
+   "points": 10
+  },
+  {
+   "id": "u9q7",
+   "question": "Complete: \"I usually ___ the bus, but today I'm driving.\"",
+   "options": [
+    {
+     "id": "u9q7o0",
+     "text": "take",
+     "isCorrect": true
+    },
+    {
+     "id": "u9q7o1",
+     "text": "am taking",
+     "isCorrect": false
+    },
+    {
+     "id": "u9q7o2",
+     "text": "taking",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u9q7o0",
+   "explanation": "Habitual: present simple.",
+   "points": 10
+  },
+  {
+   "id": "u9q8",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "u9q8o0",
+     "text": "I want a coffee now.",
+     "isCorrect": true
+    },
+    {
+     "id": "u9q8o1",
+     "text": "I'm wanting a coffee now.",
+     "isCorrect": false
+    },
+    {
+     "id": "u9q8o2",
+     "text": "I wanting a coffee now.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u9q8o0",
+   "explanation": "\"Want\" não leva -ing.",
+   "points": 10
+  },
+  {
+   "id": "u9q9",
+   "question": "Qual é o verbo certo? \"I ___ yoga every morning.\"",
+   "options": [
+    {
+     "id": "u9q9o0",
+     "text": "do",
+     "isCorrect": true
+    },
+    {
+     "id": "u9q9o1",
+     "text": "play",
+     "isCorrect": false
+    },
+    {
+     "id": "u9q9o2",
+     "text": "go",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u9q9o0",
+   "explanation": "\"Do yoga\".",
+   "points": 10
+  },
+  {
+   "id": "u9q10",
+   "question": "Ouviu: \"We're playing a match right now!\" O que estão a fazer?",
+   "options": [
+    {
+     "id": "u9q10o0",
+     "text": "a jogar um jogo",
+     "isCorrect": true
+    },
+    {
+     "id": "u9q10o1",
+     "text": "a ver um jogo",
+     "isCorrect": false
+    },
+    {
+     "id": "u9q10o2",
+     "text": "a marcar um jogo",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u9q10o0",
+   "explanation": "Playing a match = a jogar.",
+   "points": 10
+  },
+  {
+   "id": "u9q11",
+   "question": "Está a conduzir e o telefone toca. O que diz?",
+   "options": [
+    {
+     "id": "u9q11o0",
+     "text": "Sorry, I'm driving. Can I call you back later?",
+     "isCorrect": true
+    },
+    {
+     "id": "u9q11o1",
+     "text": "Sorry, I drive. I call you later.",
+     "isCorrect": false
+    },
+    {
+     "id": "u9q11o2",
+     "text": "I'm drive now.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u9q11o0",
+   "explanation": "Present continuous + \"Can I call you back?\"",
+   "points": 10
+  },
+  {
+   "id": "u9q12",
+   "question": "Uma pessoa liga para um colega que não está. O que oferece?",
+   "options": [
+    {
+     "id": "u9q12o0",
+     "text": "Can I take a message?",
+     "isCorrect": true
+    },
+    {
+     "id": "u9q12o1",
+     "text": "Can I give a message?",
+     "isCorrect": false
+    },
+    {
+     "id": "u9q12o2",
+     "text": "Can I do a message?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u9q12o0",
+   "explanation": "\"Take a message\" = receber um recado.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

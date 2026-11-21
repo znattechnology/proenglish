@@ -11,6 +11,7 @@ from .models import (
     CourseEnrollment, Transaction, UserCourseProgress, ChapterProgress,
     ChapterResource, ChapterQuiz, StudentQuizAttempt
 )
+from apps.courses import niveis
 from apps.users.serializers import UserProfileSerializer
 
 
@@ -324,7 +325,8 @@ class CourseCreateSerializer(serializers.ModelSerializer):
     title = serializers.CharField(required=False, default="Novo Curso")
     description = serializers.CharField(required=False, default="")
     category = serializers.CharField(required=False, default="Inglês Geral")
-    level = serializers.CharField(required=False, default="Beginner")
+    level = serializers.ChoiceField(choices=niveis.CEFR, required=False, default="A2",
+                                    error_messages={"invalid_choice": "Nível inválido. Escolha um nível de A1 a C2."})
     status = serializers.CharField(required=False, default="Draft")
     template = serializers.CharField(required=False, default="general")
     
@@ -594,48 +596,6 @@ class UserCourseProgressSerializer(serializers.ModelSerializer):
             sections_data.append(section_data)
         
         return sections_data
-
-
-class UserCourseProgressUpdateSerializer(serializers.Serializer):
-    """
-    Serializer for updating user course progress.
-    Accepts the same nested structure as Express.
-    """
-    sections = serializers.ListField(child=serializers.DictField())
-    
-    def update(self, instance, validated_data):
-        sections_data = validated_data.get('sections', [])
-        
-        # Update progress for each chapter
-        for section_data in sections_data:
-            section_id = section_data.get('sectionId')
-            chapters_data = section_data.get('chapters', [])
-            
-            for chapter_data in chapters_data:
-                chapter_id = chapter_data.get('chapterId')
-                completed = chapter_data.get('completed', False)
-                
-                try:
-                    chapter = Chapter.objects.get(id=chapter_id)
-                    progress, created = ChapterProgress.objects.get_or_create(
-                        user_progress=instance,
-                        chapter=chapter,
-                        defaults={'completed': completed}
-                    )
-                    if not created:
-                        progress.completed = completed
-                        progress.save()
-                        
-                except Chapter.DoesNotExist:
-                    continue
-        
-        # Recalculate overall progress
-        # Só contam as aulas visíveis aos alunos (ver apps.courses.certificados.progresso_actual).
-        from apps.courses.certificados import progresso_actual
-        instance.overallProgress = progresso_actual(instance.user, instance.course)
-        
-        instance.save()
-        return instance
 
 
 class CourseEnrollmentSerializer(serializers.ModelSerializer):

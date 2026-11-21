@@ -1,0 +1,1197 @@
+{
+ "unidade": "A1.1 · Unit 3 — My job",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "3A",
+   "titulo": "Jobs",
+   "aula": "3A",
+   "objectivo": "Dizer a sua profissão e a de outra pessoa com a/an e perguntar a profissão.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada profissão à tradução.",
+     "pares": [
+      {
+       "a": "nurse",
+       "b": "enfermeiro"
+      },
+      {
+       "a": "lawyer",
+       "b": "advogado"
+      },
+      {
+       "a": "bank teller",
+       "b": "caixa de banco"
+      },
+      {
+       "a": "driver",
+       "b": "motorista"
+      },
+      {
+       "a": "teacher",
+       "b": "professor"
+      },
+      {
+       "a": "accountant",
+       "b": "contabilista"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"doctor\"",
+     "opcoes": [
+      {
+       "texto": "doctor",
+       "certa": true,
+       "imagem": "doctor"
+      },
+      {
+       "texto": "salesperson",
+       "certa": false,
+       "imagem": "salesperson"
+      },
+      {
+       "texto": "driver",
+       "certa": false,
+       "imagem": "driver"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"IT technician\"",
+     "opcoes": [
+      {
+       "texto": "IT technician",
+       "certa": true,
+       "imagem": "it-technician"
+      },
+      {
+       "texto": "student",
+       "certa": false,
+       "imagem": "student"
+      },
+      {
+       "texto": "bank teller",
+       "certa": false,
+       "imagem": "bank-teller"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [a] nurse.",
+     "opcoes": [
+      {
+       "texto": "an",
+       "certa": false
+      },
+      {
+       "texto": "the",
+       "certa": false
+      }
+     ],
+     "explicacao": "Em inglês a profissão leva sempre \"a\" ou \"an\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She's [an] engineer.",
+     "opcoes": [
+      {
+       "texto": "a",
+       "certa": false
+      },
+      {
+       "texto": "the",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"An\" antes de som de vogal."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [an] IT technician.",
+     "opcoes": [
+      {
+       "texto": "a",
+       "certa": false
+      },
+      {
+       "texto": "the",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"IT\" lê-se \"ai-ti\": começa por som de vogal, por isso \"an\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Está desempregado. O que diz?",
+     "opcoes": [
+      {
+       "texto": "I'm unemployed.",
+       "certa": true
+      },
+      {
+       "texto": "I'm an unemployed.",
+       "certa": false
+      },
+      {
+       "texto": "I'm unemploy.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Unemployed\" e \"retired\" não levam \"a\"."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Qual é a sua profissão?",
+     "resposta": "What's your job?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Mr Baptista. He's a manager.",
+     "enunciado": "Qual é a profissão do Sr. Baptista?",
+     "opcoes": [
+      {
+       "texto": "manager",
+       "certa": true
+      },
+      {
+       "texto": "teacher",
+       "certa": false
+      },
+      {
+       "texto": "driver",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "engineer, accountant, receptionist, manager",
+     "enunciado": "Ouça e repita com a sílaba forte certa: engiNEER, acCOUNtant, reCEPtionist, MANager."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's your job?",
+     "frase": "I'm",
+     "resposta": "I'm an accountant.",
+     "contexto": "Diga a sua profissão (ou: I'm a student / I'm unemployed)."
+    }
+   ]
+  },
+  {
+   "codigo": "3B",
+   "titulo": "What do you do?",
+   "aula": "3B",
+   "objectivo": "Dizer onde trabalha e o que faz com o present simple e fazer e responder a perguntas.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "\"What do you do?\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Qual é a sua profissão?",
+       "certa": true
+      },
+      {
+       "texto": "O que está a fazer agora?",
+       "certa": false
+      },
+      {
+       "texto": "O que quer fazer?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"drive\"",
+     "opcoes": [
+      {
+       "texto": "drive",
+       "certa": true,
+       "imagem": "drive"
+      },
+      {
+       "texto": "get up",
+       "certa": false,
+       "imagem": "get-up"
+      },
+      {
+       "texto": "sing",
+       "certa": false,
+       "imagem": "sing"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"mobile phone\"",
+     "opcoes": [
+      {
+       "texto": "mobile phone",
+       "certa": true,
+       "imagem": "mobile-phone"
+      },
+      {
+       "texto": "charger",
+       "certa": false,
+       "imagem": "charger"
+      },
+      {
+       "texto": "umbrella",
+       "certa": false,
+       "imagem": "umbrella"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [don't] work on Saturdays.",
+     "opcoes": [
+      {
+       "texto": "not",
+       "certa": false
+      },
+      {
+       "texto": "doesn't",
+       "certa": false
+      }
+     ],
+     "explicacao": "Negativa com I/you/we/they: \"don't\" + verbo."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Do] you speak English at work?",
+     "opcoes": [
+      {
+       "texto": "Are",
+       "certa": false
+      },
+      {
+       "texto": "Does",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Do you work in Luanda? — Yes, ...",
+     "opcoes": [
+      {
+       "texto": "I do.",
+       "certa": true
+      },
+      {
+       "texto": "I work.",
+       "certa": false
+      },
+      {
+       "texto": "I am.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Resposta curta: \"Yes, I do.\" / \"No, I don't.\""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Do you travel a lot? — No, ...",
+     "opcoes": [
+      {
+       "texto": "I don't.",
+       "certa": true
+      },
+      {
+       "texto": "I not.",
+       "certa": false
+      },
+      {
+       "texto": "I'm not.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I work [for] Kalandula Tech.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "to",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Work for\" + empresa. (\"Work at\" + empresa também se ouve.)"
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Onde trabalha?",
+     "resposta": "Where do you work?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm an engineer. I work on projects for oil companies. I work in Cabinda.",
+     "enunciado": "Onde trabalha o Mateus?",
+     "opcoes": [
+      {
+       "texto": "in Cabinda",
+       "certa": true
+      },
+      {
+       "texto": "in Luanda",
+       "certa": false
+      },
+      {
+       "texto": "in Huambo",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "What do you do? Where do you work?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you do? Where do you work?",
+     "frase": "I work",
+     "resposta": "I'm a bank teller. I work at a bank in Luanda. I help clients.",
+     "contexto": "Diga a profissão, onde trabalha e uma coisa que faz."
+    }
+   ]
+  },
+  {
+   "codigo": "3C",
+   "titulo": "Personal information",
+   "aula": "3C",
+   "objectivo": "Dar os dados para um registo e confirmar o que ouve.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada campo da ficha à tradução.",
+     "pares": [
+      {
+       "a": "first name",
+       "b": "nome próprio"
+      },
+      {
+       "a": "surname",
+       "b": "apelido"
+      },
+      {
+       "a": "address",
+       "b": "morada"
+      },
+      {
+       "a": "company",
+       "b": "empresa"
+      },
+      {
+       "a": "department",
+       "b": "departamento"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"form\"",
+     "opcoes": [
+      {
+       "texto": "form",
+       "certa": true,
+       "imagem": "form"
+      },
+      {
+       "texto": "photo",
+       "certa": false,
+       "imagem": "photo"
+      },
+      {
+       "texto": "keys",
+       "certa": false,
+       "imagem": "keys"
+      }
+     ]
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Onde vive?",
+     "resposta": "Where do you live?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [live] in Viana.",
+     "opcoes": [
+      {
+       "texto": "leave",
+       "certa": false
+      },
+      {
+       "texto": "lives",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Live\" (viver) tem um \"i\" curto; \"leave\" (sair) é outra palavra."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Quer confirmar um número. O que pergunta?",
+     "opcoes": [
+      {
+       "texto": "Is that correct?",
+       "certa": true
+      },
+      {
+       "texto": "Is correct that?",
+       "certa": false
+      },
+      {
+       "texto": "That is correct you?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "O número que repetiram está certo. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Yes, that's right.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, I'm right.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, it right.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Nine two three, four five one, eight zero six. Is that correct?",
+     "enunciado": "Qual é o número?",
+     "opcoes": [
+      {
+       "texto": "923 451 806",
+       "certa": true
+      },
+      {
+       "texto": "923 415 806",
+       "certa": false
+      },
+      {
+       "texto": "932 451 806",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I live in Talatona, in Luanda.",
+     "enunciado": "Onde vive esta pessoa?",
+     "opcoes": [
+      {
+       "texto": "Talatona",
+       "certa": true
+      },
+      {
+       "texto": "Viana",
+       "certa": false
+      },
+      {
+       "texto": "Maianga",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Is that correct? Yes, that's right.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Where do you live? And what's your phone number?",
+     "frase": "I live in",
+     "resposta": "I live in Viana. My number is nine two four, three double oh, five one eight.",
+     "contexto": "Pode inventar o número."
+    }
+   ]
+  },
+  {
+   "codigo": "3D",
+   "titulo": "Workplaces",
+   "aula": "3D",
+   "objectivo": "Nomear locais de trabalho e tarefas e pronunciar profissões e locais com o acento certo.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada profissão a um local de trabalho.",
+     "pares": [
+      {
+       "a": "nurse",
+       "b": "hospital"
+      },
+      {
+       "a": "teacher",
+       "b": "school"
+      },
+      {
+       "a": "bank teller",
+       "b": "bank"
+      },
+      {
+       "a": "engineer",
+       "b": "oil company"
+      },
+      {
+       "a": "receptionist",
+       "b": "hotel"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"hospital\"",
+     "opcoes": [
+      {
+       "texto": "restaurant",
+       "certa": false,
+       "imagem": "restaurant"
+      },
+      {
+       "texto": "oil company",
+       "certa": false,
+       "imagem": "oil-company"
+      },
+      {
+       "texto": "hospital",
+       "certa": true,
+       "imagem": "hospital"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"shop\"",
+     "opcoes": [
+      {
+       "texto": "oil company",
+       "certa": false,
+       "imagem": "oil-company"
+      },
+      {
+       "texto": "shop",
+       "certa": true,
+       "imagem": "shop"
+      },
+      {
+       "texto": "bank",
+       "certa": false,
+       "imagem": "bank"
+      }
+     ]
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada tarefa à tradução.",
+     "pares": [
+      {
+       "a": "answer the phone",
+       "b": "atender o telefone"
+      },
+      {
+       "a": "write emails",
+       "b": "escrever e-mails"
+      },
+      {
+       "a": "help clients",
+       "b": "ajudar clientes"
+      },
+      {
+       "a": "meet clients",
+       "b": "reunir com clientes"
+      },
+      {
+       "a": "sell things",
+       "b": "vender coisas"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Em \"hospital\", qual é a sílaba forte?",
+     "opcoes": [
+      {
+       "texto": "HOS",
+       "certa": true
+      },
+      {
+       "texto": "PI",
+       "certa": false
+      },
+      {
+       "texto": "TAL",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Que palavra tem o \"i\" longo /iː/?",
+     "opcoes": [
+      {
+       "texto": "meet",
+       "certa": true
+      },
+      {
+       "texto": "live",
+       "certa": false
+      },
+      {
+       "texto": "sit",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Meet\" tem o \"i\" longo; \"live\" e \"sit\" têm o \"i\" curto."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Live.",
+     "enunciado": "Que palavra ouve?",
+     "opcoes": [
+      {
+       "texto": "live",
+       "certa": true
+      },
+      {
+       "texto": "leave",
+       "certa": false
+      },
+      {
+       "texto": "life",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I work from home.",
+     "enunciado": "Onde trabalha esta pessoa?",
+     "opcoes": [
+      {
+       "texto": "em casa",
+       "certa": true
+      },
+      {
+       "texto": "num escritório",
+       "certa": false
+      },
+      {
+       "texto": "numa fábrica",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I live in Viana. I leave work at five.",
+     "enunciado": "Ouça e repita: \"live\" com \"i\" curto, \"leave\" com \"i\" longo."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "office, hospital, restaurant, factory, airport",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What do you do at work? Say two things.",
+     "frase": "I",
+     "resposta": "I answer the phone and I write emails.",
+     "contexto": "Diga duas tarefas do seu trabalho."
+    }
+   ]
+  },
+  {
+   "codigo": "3E",
+   "titulo": "Real English: What do you do?",
+   "aula": "3E",
+   "objectivo": "Identificar a profissão, o local e uma tarefa em testemunhos a velocidade quase natural.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "Hi, I'm Helena. I'm a bank teller. I work at a bank in the centre of Luanda.",
+     "enunciado": "Onde trabalha a Helena?",
+     "opcoes": [
+      {
+       "texto": "at a bank in Luanda",
+       "certa": true
+      },
+      {
+       "texto": "at a shop in Luanda",
+       "certa": false
+      },
+      {
+       "texto": "at a bank in Benguela",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My name's Jorge. I'm a nurse. I work at night, three days a week.",
+     "enunciado": "Quando trabalha o Jorge?",
+     "opcoes": [
+      {
+       "texto": "at night",
+       "certa": true
+      },
+      {
+       "texto": "at the weekend",
+       "certa": false
+      },
+      {
+       "texto": "every morning",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I work for four weeks and then I go home to Scotland for four weeks.",
+     "enunciado": "Quantas semanas trabalha o Kevin?",
+     "opcoes": [
+      {
+       "texto": "4",
+       "certa": true
+      },
+      {
+       "texto": "14",
+       "certa": false
+      },
+      {
+       "texto": "40",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm a teacher. I teach English at a school in Malanje.",
+     "enunciado": "Que disciplina ensina a Esperança?",
+     "opcoes": [
+      {
+       "texto": "English",
+       "certa": true
+      },
+      {
+       "texto": "Portuguese",
+       "certa": false
+      },
+      {
+       "texto": "French",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My students are fifteen and sixteen years old.",
+     "enunciado": "Que idade têm os alunos?",
+     "opcoes": [
+      {
+       "texto": "15 and 16",
+       "certa": true
+      },
+      {
+       "texto": "50 and 60",
+       "certa": false
+      },
+      {
+       "texto": "5 and 6",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I love my job\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Adoro o meu trabalho.",
+       "certa": true
+      },
+      {
+       "texto": "Preciso do meu trabalho.",
+       "certa": false
+      },
+      {
+       "texto": "Procuro trabalho.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I help clients every day. I love my job.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about your work.",
+     "frase": "I work",
+     "resposta": "I'm a nurse. I work at a hospital in Lubango. I help people every day.",
+     "contexto": "Profissão, onde trabalha e uma coisa que faz."
+    }
+   ]
+  },
+  {
+   "codigo": "3F",
+   "titulo": "At the reception",
+   "aula": "3F",
+   "objectivo": "Registar-se como visitante numa recepção.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "A recepcionista diz \"Can I help you?\". O que responde?",
+     "opcoes": [
+      {
+       "texto": "Good morning. I have a meeting with Ms Kiala.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, you can help.",
+       "certa": false
+      },
+      {
+       "texto": "Good morning. I help you.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"visitor card\"",
+     "opcoes": [
+      {
+       "texto": "charger",
+       "certa": false,
+       "imagem": "charger"
+      },
+      {
+       "texto": "visitor card",
+       "certa": true,
+       "imagem": "visitor-card"
+      },
+      {
+       "texto": "desk",
+       "certa": false,
+       "imagem": "desk"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I have a meeting [with] Ms Kiala at ten.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Dá o bilhete de identidade à recepcionista. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Here you are.",
+       "certa": true
+      },
+      {
+       "texto": "Here are you.",
+       "certa": false
+      },
+      {
+       "texto": "You are here.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Sou o Paulo Mendes, da Kalandula Tech.",
+     "resposta": "I'm Paulo Mendes, from Kalandula Tech.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Thank you. Here's your visitor card. Please sit down.",
+     "enunciado": "O que pede a recepcionista?",
+     "opcoes": [
+      {
+       "texto": "Que se sente.",
+       "certa": true
+      },
+      {
+       "texto": "Que soletre o nome.",
+       "certa": false
+      },
+      {
+       "texto": "Que espere lá fora.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Good morning. I'm Paulo Mendes. I work for Kalandula Tech. I have a meeting at ten.",
+     "enunciado": "A que horas é a reunião?",
+     "opcoes": [
+      {
+       "texto": "10:00",
+       "certa": true
+      },
+      {
+       "texto": "2:00",
+       "certa": false
+      },
+      {
+       "texto": "12:00",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "traduzir",
+     "enunciado": "Tenho uma reunião com o Sr. Baptista.",
+     "resposta": "I have a meeting with Mr Baptista.",
+     "opcoes": [],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Good morning. I work for Kalandula Tech. I have a meeting with Ms Kiala at ten.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Good morning. Can I help you?",
+     "frase": "I have a meeting with",
+     "resposta": "Good morning. I'm Ana Domingos, from Kalandula Tech. I have a meeting with Mr Lopes at eleven.",
+     "contexto": "Diga quem é, a sua empresa e com quem tem reunião."
+    }
+   ]
+  },
+  {
+   "codigo": "3R",
+   "titulo": "Unit 3 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 3 e reciclar as unidades 1 e 2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We [don't] work at the weekend.",
+     "opcoes": [
+      {
+       "texto": "aren't",
+       "certa": false
+      },
+      {
+       "texto": "not",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Do you speak French? — No, ...",
+     "opcoes": [
+      {
+       "texto": "I don't.",
+       "certa": true
+      },
+      {
+       "texto": "I'm not.",
+       "certa": false
+      },
+      {
+       "texto": "I not speak.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She's [a] lawyer. She's from Huambo.",
+     "opcoes": [
+      {
+       "texto": "an",
+       "certa": false
+      },
+      {
+       "texto": "the",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "I'm thirty. I'm an engineer.",
+       "certa": true
+      },
+      {
+       "texto": "I have thirty years. I'm engineer.",
+       "certa": false
+      },
+      {
+       "texto": "I'm thirty years. I'm a engineer.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Idade com \"be\" e profissão com \"a/an\"."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "My surname is Kiala. K, I, A, L, A.",
+     "enunciado": "Como se escreve o apelido?",
+     "opcoes": [
+      {
+       "texto": "KIALA",
+       "certa": true
+      },
+      {
+       "texto": "QUIALA",
+       "certa": false
+      },
+      {
+       "texto": "KYALA",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Que línguas fala no trabalho?",
+     "resposta": "What languages do you speak at work?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "São 19 horas. Chega a uma recepção. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Good evening. Can you help me?",
+       "certa": true
+      },
+      {
+       "texto": "Good night. Can you help me?",
+       "certa": false
+      },
+      {
+       "texto": "Good afternoon. Help me.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada profissão a um local.",
+     "pares": [
+      {
+       "a": "a nurse",
+       "b": "a hospital"
+      },
+      {
+       "a": "a teacher",
+       "b": "a school"
+      },
+      {
+       "a": "a bank teller",
+       "b": "a bank"
+      },
+      {
+       "a": "an engineer",
+       "b": "an oil company"
+      }
+     ]
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "What do you do? Where do you work? Where do you live?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hello! Nice to meet you. What do you do?",
+     "frase": "I'm",
+     "resposta": "Nice to meet you too. I'm a teacher. I work at a school in Luanda. And you?",
+     "contexto": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Is that correct? Yes, that's right. Thank you very much.",
+     "enunciado": "Ouça e repita em voz alta."
+    }
+   ]
+  }
+ ]
+}

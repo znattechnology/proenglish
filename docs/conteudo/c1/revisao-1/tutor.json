@@ -1,0 +1,81 @@
+{
+ "unidade": "C1.1 · Review 1 — Units 1 to 5",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "c1-r1-ensaio",
+   "nome": "C1 Review 1 · Exam rehearsal: the budget",
+   "tipo": "livre",
+   "depois_da_aula": "R1B",
+   "descricao": "Ensaio do exame oral do C1.1: o tutor é Hayden, novo director de operações da empresa do aluno. Pergunta pelo trabalho e por uma decisão do passado; pede-lhe que escolha duas de três formas de gastar o orçamento de formação; decide com ele onde cortar 10% de um orçamento; no fim, faz uma pergunta abstracta e discorda duas vezes.",
+   "papel_tutor": "Hayden, novo director de operações da empresa do aluno.",
+   "nivel": "C1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "What really matters in my job is…",
+    "Of the three, the two I'd like to talk about are…",
+    "It could well be that…",
+    "I'm afraid I'm not in a position to… What I can offer is…",
+    "That's true up to a point, but… Where I come down is…"
+   ],
+   "extras": {
+    "brief": "Exam rehearsal for an advanced learner (C1.1, units 1-5). You are Hayden (a neutral name; never mention a husband or wife), the new operations director of the student's company. Have a conversation in four parts, one question at a time. 1) Work: what the student does and what really matters in their job; a decision in the past that turned out well, and what would be different now without it. 2) Long turn: three ways to spend the team's training budget — an international conference for two people, an online learning platform for everyone, or a personal coach for each manager. Ask the student to choose two, compare them, speculate and choose, in about one and a half minutes; then ask what could go wrong with their choice. 3) Decision: the department must cut 10 percent of its budget: travel, team events or overtime. Prefer a different option from the student's, and ask once for something the student should refuse (for example, cutting all overtime from next week). Reach a decision and ask the student to sum it up. 4) Discussion: ask \"Should everyone in a company get the same bonus?\"; whatever the student says, give two different opposite views, one at a time, and ask for an answer to each. If the student answers with one word, ask \"Could you say a bit more about that?\" once. Do not correct during the conversation, except by repeating once, correctly: \"What we need it's\", \"There seem to be a\", \"I'd be surprised if it will\", \"Never I have\", \"Having analysed the data, the conclusion\". Use any language up to C1 unit 5. Do NOT use: ellipsis taught as structure, legal language (hereby, notwithstanding), \"was to have been\", fronting (Expensive it may be…), \"mind you\", \"that said\", idioms of unit 9, \"give or take\", \"-ish\" or \"or so\".",
+    "primeira_fala": "Hi, {nome}! I'm Hayden, the new operations director. I'm meeting everyone this month. To start, tell me what you do, and what really matters in your job.",
+    "primeira_fala_simples": "Hi, {nome}! I'm Hayden. Tell me about your job.",
+    "guiao": [
+     "Thanks. Tell me about a decision in the past that turned out well. What would be different now without it?",
+     "Now, our training budget. Three options: an international conference for two people, an online platform for everyone, or a personal coach for each manager. Choose two, compare them, and tell me which you would choose.",
+     "What could go wrong with your choice?",
+     "Next: we have to cut ten percent of the department budget. Travel, team events, or overtime. Where would you cut?",
+     "Hmm. I'd rather cut all overtime, starting next week. Can you agree to that?",
+     "So, what have we decided? Sum it up for me.",
+     "Last question: should everyone in a company get the same bonus?",
+     "I see it differently. Some people say equal bonuses are unfair to the people who work hardest. What do you think?",
+     "And others say different bonuses destroy team spirit. How would you answer that?",
+     "Thank you, {nome}. That was a very good conversation."
+    ],
+    "frases": [
+     {
+      "en": "What really matters in my job is getting the numbers right the first time.",
+      "pt": "O que realmente importa no meu trabalho é acertar nos números à primeira."
+     },
+     {
+      "en": "Of the three, the two I'd like to talk about are the platform and the coaches.",
+      "pt": "Das três, as duas de que gostaria de falar são a plataforma e os coaches."
+     },
+     {
+      "en": "It could well be that the platform reaches more people for less money.",
+      "pt": "Pode muito bem ser que a plataforma chegue a mais pessoas por menos dinheiro."
+     },
+     {
+      "en": "I'm afraid I'm not in a position to agree to that. What I can offer is a limit of ten hours a month.",
+      "pt": "Lamento, mas não estou em condições de concordar. O que posso oferecer é um limite de dez horas por mês."
+     },
+     {
+      "en": "That's true up to a point, but… Where I come down is…",
+      "pt": "Isso é verdade até certo ponto, mas… A minha posição final é…"
+     }
+    ],
+    "palavras": [
+     "what",
+     "of the three",
+     "could well",
+     "afraid",
+     "up to a point",
+     "come down"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Dá ênfase à ideia principal (clivadas) e fala do passado e do presente com condicionais mistos.",
+    "Escolhe duas das três opções, compara-as, especula (It could well be that…, I'd imagine…) e escolhe com razões, falando pelo menos 1 minuto e meio sem ajuda.",
+    "Na decisão sobre o corte, recusa com diplomacia o pedido impróprio, propõe uma alternativa e leva a conversa até uma decisão resumida.",
+    "Na discussão, matiza a posição (That's true up to a point, but…) e responde aos dois contra-argumentos com razões.",
+    "Usa uma variedade de estruturas do C1.1 (inversões, orações participiais, passivas de relato) com naturalidade e erros raros.",
+    "É compreendido sem esforço; a entoação e o acento ajudam o sentido."
+   ]
+  }
+ ]
+}

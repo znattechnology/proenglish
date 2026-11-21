@@ -1,0 +1,130 @@
+{
+ "unidade": "A1.2 · Unit 6 — Food and drink",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a1-u6-guiada",
+   "nome": "Unit 6 · At the café",
+   "tipo": "guiada",
+   "depois_da_aula": "6C",
+   "descricao": "O tutor é o empregado de um café: o aluno pede uma bebida e uma coisa para comer, responde às perguntas e paga.",
+   "papel_tutor": "O empregado do café Kiandas.",
+   "nivel": "A1",
+   "duracao_min": 3,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I'd like…, please.",
+    "How much is it?",
+    "By card, please."
+   ],
+   "extras": {
+    "brief": "Guided practice for a beginner (A1, unit 6). You are a friendly waiter at the Kiandas café in Luanda. Menu and prices: coffee 600 kwanzas (small) or 800 (large), tea 500, orange or mango juice 1,500, small bottle of water 400, croissant 900, cheese sandwich 2,000, chicken sandwich 2,500, piece of cake 1,200. Take the student's order step by step: What would you like? Small or large? Would you like something to eat? Anything else? Then tell the total price clearly (say the number in words) and ask \"Cash or card?\". Use only units 1-6 language. If the student says \"I want…\", model \"I'd like…\" kindly. One question at a time.",
+    "primeira_fala": "Good morning! Welcome to Kiandas. What would you like?",
+    "primeira_fala_simples": "Good morning! What would you like?",
+    "guiao": [
+     "Small or large?",
+     "Would you like something to eat? We have croissants and sandwiches.",
+     "Anything else?",
+     "OK. That's … kwanzas. Cash or card?",
+     "Thank you! Here's your receipt. Have a nice day, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "I'd like a coffee with milk, please.",
+      "pt": "Queria um café com leite, por favor."
+     },
+     {
+      "en": "How much is it?",
+      "pt": "Quanto é?"
+     },
+     {
+      "en": "By card, please.",
+      "pt": "Com cartão, por favor."
+     }
+    ],
+    "palavras": [
+     "like",
+     "coffee",
+     "please",
+     "much",
+     "card",
+     "cash",
+     "sandwich",
+     "large",
+     "small"
+    ],
+    "minutos_sugeridos": 3
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a1-u6-livre",
+   "nome": "Unit 6 · Lunch with a client",
+   "tipo": "livre",
+   "depois_da_aula": "6F",
+   "descricao": "Almoço de trabalho num restaurante de Luanda: o tutor é um cliente estrangeiro (Jordan) que não conhece a comida angolana. O aluno explica e sugere pratos, pede, pergunta pelos gostos do cliente e pede a conta.",
+   "papel_tutor": "Jordan, cliente estrangeiro(a) de visita a Luanda.",
+   "nivel": "A1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "It's an Angolan dish. It's…",
+    "Do you like…?",
+    "Can we have the bill, please?"
+   ],
+   "extras": {
+    "brief": "Role-play for a beginner (A1, unit 6). You are Jordan, a foreign client from the UK (Jordan can be a man or a woman, to match your voice), at a business lunch with the student in a restaurant on the Ilha de Luanda. You don't know Angolan food. Ask the student to explain dishes on the menu (funge, muamba, calulu, mufete) and to recommend one. Tell the student what you like and don't like (you love fish, you don't like very spicy food). Ask the student what they would like. Near the end, offer to pay; let the student ask for the bill. Use only units 1-6 language: some/any, I'd like, Do you like…?, prices. One question at a time.",
+    "primeira_fala": "What a nice restaurant! I don't know Angolan food. What's good here?",
+    "primeira_fala_simples": "Nice restaurant! What's good here?",
+    "guiao": [
+     "What's funge? And what's calulu?",
+     "Is it spicy? I don't like very spicy food.",
+     "I love fish. What do you recommend?",
+     "OK, I'd like that. And you? What would you like?",
+     "This is delicious! Can I pay today?",
+     "Thank you very much, {nome}. Great lunch!"
+    ],
+    "frases": [
+     {
+      "en": "It's an Angolan dish. It's fish with vegetables.",
+      "pt": "É um prato angolano. É peixe com legumes."
+     },
+     {
+      "en": "The grilled fish is very good here.",
+      "pt": "O peixe grelhado é muito bom aqui."
+     },
+     {
+      "en": "Do you like spicy food?",
+      "pt": "Gosta de comida picante?"
+     },
+     {
+      "en": "Can we have the bill, please?",
+      "pt": "Pode trazer a conta, por favor?"
+     }
+    ],
+    "palavras": [
+     "dish",
+     "angolan",
+     "fish",
+     "chicken",
+     "like",
+     "spicy",
+     "good",
+     "bill",
+     "funge",
+     "calulu"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": [
+    "Explica pelo menos um prato angolano em frases simples (\"It's an Angolan dish. It's…\").",
+    "Sugere um prato e pergunta pelos gostos do cliente (\"Do you like…?\").",
+    "Pede a sua refeição com \"I'd like…\" ou \"Can I have…?\".",
+    "Pede a conta (\"Can we have the bill, please?\") ou recusa com educação que o cliente pague.",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

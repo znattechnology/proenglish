@@ -1,0 +1,373 @@
+{
+ "title": "A1.1 Review 1 quiz — Units 1 to 5",
+ "description": "Questionário de revisão das unidades 1 a 5.",
+ "questions": [
+  {
+   "id": "r1q1",
+   "question": "U1. São 21h. Chega a uma reunião. O que diz?",
+   "options": [
+    {
+     "id": "r1q1o0",
+     "text": "Good evening.",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q1o1",
+     "text": "Good night.",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q1o2",
+     "text": "Good afternoon.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q1o0",
+   "explanation": "\"Good night\" é para a despedida.",
+   "points": 10
+  },
+  {
+   "id": "r1q2",
+   "question": "U1. Num e-mail, como se diz \".\"?",
+   "options": [
+    {
+     "id": "r1q2o0",
+     "text": "dot",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q2o1",
+     "text": "point",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q2o2",
+     "text": "at",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q2o0",
+   "explanation": "O ponto diz-se \"dot\".",
+   "points": 10
+  },
+  {
+   "id": "r1q3",
+   "question": "U1. Como se diz 88 num número de telefone?",
+   "options": [
+    {
+     "id": "r1q3o0",
+     "text": "double eight",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q3o1",
+     "text": "eighty-eight",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q3o2",
+     "text": "two eight",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q3o0",
+   "explanation": "Algarismos iguais: \"double\".",
+   "points": 10
+  },
+  {
+   "id": "r1q4",
+   "question": "U2. Escolha a resposta certa: \"Is she Mozambican?\"",
+   "options": [
+    {
+     "id": "r1q4o0",
+     "text": "Yes, she is.",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q4o1",
+     "text": "Yes, she's.",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q4o2",
+     "text": "Yes, she are.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q4o0",
+   "explanation": "Resposta curta: \"Yes, she is.\"",
+   "points": 10
+  },
+  {
+   "id": "r1q5",
+   "question": "U2. Como se diz \"Ele tem 40 anos\"?",
+   "options": [
+    {
+     "id": "r1q5o0",
+     "text": "He's forty.",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q5o1",
+     "text": "He has forty years.",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q5o2",
+     "text": "He's forty years.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q5o0",
+   "explanation": "Idade com \"be\".",
+   "points": 10
+  },
+  {
+   "id": "r1q6",
+   "question": "U2. Em que palavra a sílaba forte é a última?",
+   "options": [
+    {
+     "id": "r1q6o0",
+     "text": "Portuguese",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q6o1",
+     "text": "Angola",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q6o2",
+     "text": "Portugal",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q6o0",
+   "explanation": "PortuGUESE.",
+   "points": 10
+  },
+  {
+   "id": "r1q7",
+   "question": "U3. Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "r1q7o0",
+     "text": "I'm an engineer.",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q7o1",
+     "text": "I'm engineer.",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q7o2",
+     "text": "I'm a engineer.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q7o0",
+   "explanation": "Profissão com \"a/an\".",
+   "points": 10
+  },
+  {
+   "id": "r1q8",
+   "question": "U3. \"What do you do?\" quer dizer:",
+   "options": [
+    {
+     "id": "r1q8o0",
+     "text": "Qual é a sua profissão?",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q8o1",
+     "text": "O que está a fazer?",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q8o2",
+     "text": "Como está?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q8o0",
+   "explanation": "Pergunta a profissão.",
+   "points": 10
+  },
+  {
+   "id": "r1q9",
+   "question": "U3. Quer confirmar um número. O que pergunta?",
+   "options": [
+    {
+     "id": "r1q9o0",
+     "text": "Is that correct?",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q9o1",
+     "text": "Is correct?",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q9o2",
+     "text": "That is correct you?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q9o0",
+   "explanation": "\"Is that correct?\"",
+   "points": 10
+  },
+  {
+   "id": "r1q10",
+   "question": "U4. Complete: \"Sílvia and Carlos have two children. ___ names are Kiesse and Tomé.\"",
+   "options": [
+    {
+     "id": "r1q10o0",
+     "text": "Their",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q10o1",
+     "text": "There",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q10o2",
+     "text": "They",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q10o0",
+   "explanation": "\"Their\" = deles.",
+   "points": 10
+  },
+  {
+   "id": "r1q11",
+   "question": "U4. Qual é o plural de \"person\"?",
+   "options": [
+    {
+     "id": "r1q11o0",
+     "text": "people",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q11o1",
+     "text": "persons",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q11o2",
+     "text": "peoples",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q11o0",
+   "explanation": "Irregular.",
+   "points": 10
+  },
+  {
+   "id": "r1q12",
+   "question": "U5. Complete: \"She ___ to work by bus.\"",
+   "options": [
+    {
+     "id": "r1q12o0",
+     "text": "goes",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q12o1",
+     "text": "go",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q12o2",
+     "text": "gos",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q12o0",
+   "explanation": "go → goes.",
+   "points": 10
+  },
+  {
+   "id": "r1q13",
+   "question": "U5. Qual é a pergunta correcta?",
+   "options": [
+    {
+     "id": "r1q13o0",
+     "text": "Does he drive to work?",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q13o1",
+     "text": "Does he drives to work?",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q13o2",
+     "text": "Do he drive to work?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q13o0",
+   "explanation": "\"Does\" + verbo sem \"s\".",
+   "points": 10
+  },
+  {
+   "id": "r1q14",
+   "question": "U5. \"Half past six\" é:",
+   "options": [
+    {
+     "id": "r1q14o0",
+     "text": "6:30",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q14o1",
+     "text": "5:30",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q14o2",
+     "text": "6:15",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q14o0",
+   "explanation": "Meia hora depois das seis.",
+   "points": 10
+  },
+  {
+   "id": "r1q15",
+   "question": "U5. Complete: \"See you ___ Friday ___ ten.\"",
+   "options": [
+    {
+     "id": "r1q15o0",
+     "text": "on … at",
+     "isCorrect": true
+    },
+    {
+     "id": "r1q15o1",
+     "text": "in … at",
+     "isCorrect": false
+    },
+    {
+     "id": "r1q15o2",
+     "text": "at … on",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "r1q15o0",
+   "explanation": "on + dia; at + hora.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

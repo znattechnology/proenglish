@@ -17,12 +17,13 @@ ENV PYTHONUNBUFFERED=1 \
 
 WORKDIR /app
 
-# Install system dependencies
+# Install system dependencies (ffmpeg: transcrição automática dos vídeos das aulas)
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     build-essential \
     libpq-dev \
     curl \
+    ffmpeg \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
@@ -37,8 +38,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
 
 # Create necessary directories and set permissions
-RUN mkdir -p /app/staticfiles /app/media /app/logs \
-    && chown -R appuser:appuser /app
+# /home/appuser: o gunicorn (>= 25) cria lá o seu canal de controlo; sem ela regista um erro.
+RUN mkdir -p /app/staticfiles /app/media /app/logs /home/appuser \
+    && chown -R appuser:appuser /app /home/appuser
 
 # Collect static files
 RUN python manage.py collectstatic --noinput --clear

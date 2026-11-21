@@ -17,7 +17,7 @@ class PerfilEstudanteTests(APITestCase):
     def test_guardar_dados_e_preferencias(self):
         r = self.client.patch('/api/v1/users/profile/', {
             'name': ' Maria Santos ', 'phone': '+244923456789',
-            'preferences': {'cidade': 'Luanda', 'area': 'Industry English', 'nivel': 'Intermediate'},
+            'preferences': {'cidade': 'Luanda', 'area': 'Industry English', 'nivel': 'B1'},
         }, format='json')
         self.assertEqual(r.status_code, 200, r.content)
         self.user.refresh_from_db()
@@ -27,13 +27,48 @@ class PerfilEstudanteTests(APITestCase):
         # Só muda as chaves enviadas; as outras ficam.
         self.client.patch('/api/v1/users/profile/', {'preferences': {'cidade': 'Benguela'}}, format='json')
         self.user.refresh_from_db()
-        self.assertEqual(self.user.preferences, {'cidade': 'Benguela', 'area': 'Industry English', 'nivel': 'Intermediate'})
+        self.assertEqual(self.user.preferences, {'cidade': 'Benguela', 'area': 'Industry English', 'nivel': 'B1'})
 
     def test_preferencias_desconhecidas_ou_invalidas(self):
         r = self.client.patch('/api/v1/users/profile/', {'preferences': {'qualquer': 'coisa'}}, format='json')
         self.assertEqual(r.status_code, 400)
         r = self.client.patch('/api/v1/users/profile/', {'preferences': {'nivel': 'Expert'}}, format='json')
         self.assertEqual(r.status_code, 400)
+
+    def test_sons_e_voz_da_professora(self):
+        r = self.client.patch('/api/v1/users/profile/', {'preferences': {'sons': False, 'voz_professora': True}}, format='json')
+        self.assertEqual(r.status_code, 200, r.content)
+        self.user.refresh_from_db()
+        # False guarda-se (não é o mesmo que apagar a chave).
+        self.assertEqual(self.user.preferences, {'sons': False, 'voz_professora': True})
+        self.assertEqual(r.data['preferences'], {'sons': False, 'voz_professora': True})
+        for invalido in ('sim', 1, 'false'):
+            r = self.client.patch('/api/v1/users/profile/', {'preferences': {'sons': invalido}}, format='json')
+            self.assertEqual(r.status_code, 400, invalido)
+        # null apaga: volta ao valor por omissão (ligado).
+        self.client.patch('/api/v1/users/profile/', {'preferences': {'sons': None}}, format='json')
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.preferences, {'voz_professora': True})
+
+    def test_nivel_na_escala_cefr(self):
+        for codigo in ('A1', 'A2', 'B1', 'B2', 'C1', 'C2'):
+            r = self.client.patch('/api/v1/users/profile/', {'preferences': {'nivel': codigo}}, format='json')
+            self.assertEqual(r.status_code, 200, r.content)
+            self.user.refresh_from_db()
+            self.assertEqual(self.user.preferences['nivel'], codigo)
+        # A escala antiga já não se escreve...
+        for antigo in ('Beginner', 'Intermediate', 'Advanced', 'b1'):
+            r = self.client.patch('/api/v1/users/profile/', {'preferences': {'nivel': antigo}}, format='json')
+            self.assertEqual(r.status_code, 400, antigo)
+
+    def test_nivel_antigo_le_se_em_cefr(self):
+        # ...mas uma conta que ainda o tenha guardado lê-o já traduzido.
+        for antigo, cefr in (('Beginner', 'A2'), ('Intermediate', 'B1'), ('Advanced', 'B2')):
+            self.user.preferences = {'nivel': antigo, 'cidade': 'Luanda'}
+            self.user.save(update_fields=['preferences'])
+            r = self.client.get('/api/v1/users/profile/')
+            self.assertEqual(r.status_code, 200)
+            self.assertEqual(r.data['preferences'], {'nivel': cefr, 'cidade': 'Luanda'})
 
     def test_email_nao_muda(self):
         self.client.patch('/api/v1/users/profile/', {'email': 'outro@example.com'}, format='json')
@@ -80,7 +115,7 @@ class AcolhimentoTests(APITestCase):
         user = User.objects.create_user(email='novo2@example.com', name='Paulo Lima', password='Segura!2026x', role='student')
         c = APIClient()
         c.credentials(HTTP_AUTHORIZATION=f'Bearer {RefreshToken.for_user(user).access_token}')
-        r = c.patch('/api/v1/users/profile/', {'preferences': {'area': 'Industry English', 'nivel': 'Beginner', 'acolhimento': 'concluido'}}, format='json')
+        r = c.patch('/api/v1/users/profile/', {'preferences': {'area': 'Industry English', 'nivel': 'A2', 'acolhimento': 'concluido'}}, format='json')
         self.assertEqual(r.status_code, 200, r.content)
         user.refresh_from_db()
         self.assertEqual(user.preferences['acolhimento'], 'concluido')

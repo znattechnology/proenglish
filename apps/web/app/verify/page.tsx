@@ -77,7 +77,7 @@ const VerifyCertificatePage = () => {
                   className="w-full bg-purple-600 hover:bg-purple-700 text-white"
                 >
                   {isLoading ? (
-                    <>Verificando...</>
+                    <>A verificar...</>
                   ) : (
                     <>
                       <Search className="w-4 h-4 mr-2" />
@@ -89,7 +89,7 @@ const VerifyCertificatePage = () => {
 
               <div className="mt-6 pt-6 border-t border-gray-700">
                 <p className="text-sm text-gray-400 text-center">
-                  Os certificados emitidos pela ProEnglish possuem um código único que garante sua autenticidade.
+                  Os certificados emitidos pela ProEnglish têm um código único que garante a sua autenticidade.
                 </p>
               </div>
             </CardContent>
@@ -98,7 +98,7 @@ const VerifyCertificatePage = () => {
           {/* Info Section */}
           <div className="mt-8 text-center space-y-2">
             <p className="text-sm text-gray-500">
-              Ao verificar um certificado, confirmas que o documento foi emitido pela plataforma ProEnglish.
+              Ao verificar um certificado, confirma que o documento foi emitido pela plataforma ProEnglish.
             </p>
           </div>
         </div>

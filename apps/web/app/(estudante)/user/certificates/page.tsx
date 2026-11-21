@@ -5,7 +5,8 @@ import { useState } from "react";
 import { Check, Copy, Download, Lock } from "lucide-react";
 import { Aviso, BarraProgresso, Botao, Etiqueta, Osso } from "@/components/pe";
 import { Pagina } from "@/components/pe/estudante/Pagina";
-import { dataPt, diaMesCurto, mensagemErro } from "@/src/domains/student/subscricao/api";
+import { dataPt, diaMesCurto, mensagemErro, ofertaDoErro, type Oferta } from "@/src/domains/student/subscricao/api";
+import { FolhaOferta, OfertaPlano } from "@/components/pe/subscricao/Oferta";
 import { useCertificadosQuery, useEmitirCertificadoMutation, type Certificados } from "@/src/domains/student/progresso/api";
 
 export default function PaginaCertificados() {
@@ -29,14 +30,24 @@ export default function PaginaCertificados() {
         <Osso className="h-[200px] max-w-[900px] rounded-pe-md" />
       ) : (
         <>
-          {!data.plano_inclui_certificados ? (
+          {!data.plano_inclui_certificados && data.oferta ? (
+            <section aria-labelledby="t-plano-cert" className="flex max-w-[480px] flex-col gap-4">
+              <div className="flex flex-col gap-1.5">
+                <h2 id="t-plano-cert" className="m-0 font-pe-titulo text-[20px] font-semibold leading-[26px]">
+                  Os certificados fazem parte dos planos pagos
+                </h2>
+                <p className="m-0 text-[15px] leading-[22px] text-pe-tinta-suave">O progresso dos seus cursos fica guardado. Quando assinar, recebe os certificados dos cursos que já cumprem os requisitos.</p>
+              </div>
+              <OfertaPlano oferta={data.oferta} />
+            </section>
+          ) : !data.plano_inclui_certificados ? (
             <div className="flex max-w-[900px] flex-col items-start gap-3 rounded-pe-md bg-pe-realce-suave p-5 md:flex-row md:items-center md:justify-between">
               <span className="flex items-start gap-2.5 text-[15px] leading-[22px]">
                 <Lock aria-hidden className="mt-0.5 size-5 shrink-0" />
-                Os certificados fazem parte do Premium e do Premium Plus. O progresso dos seus cursos fica guardado.
+                Os certificados fazem parte dos planos pagos. O progresso dos seus cursos fica guardado.
               </span>
               <Botao asChild tipo="realce" tamanho="pequeno">
-                <Link href="/user/upgrade?plan=PREMIUM">Passar para Premium</Link>
+                <Link href="/user/upgrade">Ver os planos</Link>
               </Botao>
             </div>
           ) : null}
@@ -91,6 +102,14 @@ function CartaoCertificado({ c }: { c: Certificados["certificados"][number] }) {
             </dd>
           </div>
         </dl>
+        {c.nivel_fala_texto ? (
+          <div className="flex flex-col gap-1">
+            <span className="font-semibold">{c.nivel_fala_texto}</span>
+            {c.notas_fala?.length ? (
+              <span className="text-pe-legenda text-pe-tinta-suave">{c.notas_fala.map((n) => `${n.nome} ${n.nota}`).join(", ")}</span>
+            ) : null}
+          </div>
+        ) : null}
         {revogado ? (
           <Aviso tipo="errado">Este certificado foi revogado e já não é válido. Fale com o apoio se tiver dúvidas.</Aviso>
         ) : (
@@ -133,6 +152,7 @@ function CartaoCertificado({ c }: { c: Certificados["certificados"][number] }) {
 function ACaminho({ emCurso, podeEmitir }: { emCurso: Certificados["em_curso"]; podeEmitir: boolean }) {
   const [emitir, { isLoading }] = useEmitirCertificadoMutation();
   const [erro, setErro] = useState<string | null>(null);
+  const [limite, setLimite] = useState<{ mensagem: string; oferta: Oferta } | null>(null);
   return (
     <section aria-labelledby="titulo-caminho" className="flex max-w-[900px] flex-col gap-3 pt-2">
       <h2 id="titulo-caminho" className="m-0 font-pe-titulo text-pe-titulo-s">
@@ -167,7 +187,12 @@ function ACaminho({ emCurso, podeEmitir }: { emCurso: Certificados["em_curso"]; 
                   onClick={async () => {
                     setErro(null);
                     const r = await emitir(c.curso.id);
-                    if ("error" in r && r.error) setErro(mensagemErro(r.error, "Não foi possível emitir o certificado."));
+                    if ("error" in r && r.error) {
+                      const mensagem = mensagemErro(r.error, "Não foi possível emitir o certificado.");
+                      const oferta = ofertaDoErro(r.error);
+                      if (oferta) setLimite({ mensagem, oferta });
+                      else setErro(mensagem);
+                    }
                   }}
                 >
                   Receber o certificado
@@ -181,6 +206,11 @@ function ACaminho({ emCurso, podeEmitir }: { emCurso: Certificados["em_curso"]; 
           );
         })}
       </ul>
+      <FolhaOferta aberto={!!limite} aoMudar={(v) => !v && setLimite(null)} titulo="O certificado faz parte dos planos pagos" mensagem={limite?.mensagem} oferta={limite?.oferta}>
+        <Botao tipo="ligacao" larguraTotal onClick={() => setLimite(null)}>
+          Agora não
+        </Botao>
+      </FolhaOferta>
     </section>
   );
 }

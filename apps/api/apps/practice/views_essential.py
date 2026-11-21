@@ -90,10 +90,13 @@ class CreateCourseView(APIView):
                 )
 
             # Validate level
-            level = request.data.get('level', 'Beginner').strip()
-            valid_levels = ['Beginner', 'Intermediate', 'Advanced']
-            if level not in valid_levels:
-                level = 'Beginner'
+            from apps.courses.niveis import cefr_de_entrada
+            level = cefr_de_entrada(request.data.get('level') or 'A2')
+            if not level:
+                return Response(
+                    {'error': 'Nível inválido. Escolha um nível de A1 a C2.'},
+                    status=status_module.HTTP_400_BAD_REQUEST
+                )
 
             # Um curso novo é sempre rascunho: publicar passa pela revisão do administrador
             # (POST /teacher/cursos/<id>/submeter/).

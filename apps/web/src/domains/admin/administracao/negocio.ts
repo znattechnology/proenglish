@@ -29,7 +29,7 @@ export type Plano = {
   dias_teste: number;
   destaque: boolean;
   activo: boolean;
-  limites: { licoes_dia: number | null; vidas: number | null; conversa_min_dia: number | null; sessoes_nativo_mes: number; protecoes_semana: number };
+  limites: { licoes_dia: number | null; vidas: number | null; conversa_min_dia: number | null; conversa_min_mes?: number | null; teste_conversa_min_dia?: number; teste_conversa_dias?: number; sessoes_nativo_mes: number; protecoes_semana: number; pronuncia_detalhada_dia?: number };
   certificados: boolean;
   utilizadores: number;
   assinantes: number;

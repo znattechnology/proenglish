@@ -1,0 +1,1293 @@
+{
+ "unidade": "A2.1 · Unit 3 — Plans and arrangements",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "3A",
+   "titulo": "I'm meeting the client on Thursday",
+   "aula": "3A",
+   "objectivo": "Dizer e perguntar o que está combinado com o present continuous e distinguir de going to.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "On Thursday at ten [we're meeting] Rita at Mussulo Energy.",
+     "opcoes": [
+      {
+       "texto": "we meet usually",
+       "certa": false
+      },
+      {
+       "texto": "we meeting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[I'm driving] — we're leaving the office at nine fifteen.",
+     "opcoes": [
+      {
+       "texto": "I driving",
+       "certa": false
+      },
+      {
+       "texto": "I'm drive",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is an arrangement (with a day and a time)?",
+     "opcoes": [
+      {
+       "texto": "I'm having a training session with Thandi on Tuesday afternoon.",
+       "certa": true
+      },
+      {
+       "texto": "I'm going to clean my flat one day.",
+       "certa": false
+      },
+      {
+       "texto": "I usually have a training session.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is an intention (no day, no time)?",
+     "opcoes": [
+      {
+       "texto": "I'm going to learn to swim one day.",
+       "certa": true
+      },
+      {
+       "texto": "I'm seeing the dentist on Monday at eight.",
+       "certa": false
+      },
+      {
+       "texto": "We're leaving at nine fifteen.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "What are you doing on Friday?",
+       "certa": true
+      },
+      {
+       "texto": "What do you doing on Friday?",
+       "certa": false
+      },
+      {
+       "texto": "What you are doing on Friday?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Are you doing anything on Saturday?\" — Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "Nothing special.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, I do.",
+       "certa": false
+      },
+      {
+       "texto": "No, I'm not doing.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Amanhã vou ter com o cliente às dez\" (está marcado). Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I'm meeting the client tomorrow at ten.",
+       "certa": true
+      },
+      {
+       "texto": "I'm meet the client tomorrow at ten.",
+       "certa": false
+      },
+      {
+       "texto": "I met the client tomorrow at ten.",
+       "certa": false
+      }
+     ],
+     "explicacao": "O que está marcado: present continuous + palavra de futuro."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "O que vai fazer no sábado?",
+     "resposta": "What are you doing on Saturday?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "On Tuesday morning I'm checking the cables with João. And in the afternoon I'm having a training session with Thandi.",
+     "enunciado": "What is Nuno doing on Tuesday afternoon?",
+     "opcoes": [
+      {
+       "texto": "a training session with Thandi",
+       "certa": true
+      },
+      {
+       "texto": "checking the cables with João",
+       "certa": false
+      },
+      {
+       "texto": "meeting Rita",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "What are you doing on Friday? Are you doing anything on Saturday?",
+     "enunciado": "Ouça e repita em fala ligada."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What are you doing this week? Tell me two arrangements.",
+     "frase": "I'm",
+     "resposta": "On Wednesday I'm meeting a supplier at ten, and on Friday evening I'm having dinner with my sister.",
+     "contexto": "Present continuous com dia e hora."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Are you doing anything this weekend?",
+     "frase": "I'm",
+     "resposta": "Yes, I'm visiting my parents on Saturday. On Sunday I'm going to rest.",
+     "contexto": "Uma combinação e, se quiser, uma intenção com going to."
+    }
+   ]
+  },
+  {
+   "codigo": "3B",
+   "titulo": "I'll do it",
+   "aula": "3B",
+   "objectivo": "Oferecer, decidir no momento e prometer com will / won't; Shall I…?; will ou going to.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "\"There's no paper in the printer!\" — Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "I'll get some.",
+       "certa": true
+      },
+      {
+       "texto": "I get some.",
+       "certa": false
+      },
+      {
+       "texto": "I'm getting some tomorrow.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Decisão no momento: will."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The phone's ringing!\" — Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "I'll answer it.",
+       "certa": true
+      },
+      {
+       "texto": "I answer it.",
+       "certa": false
+      },
+      {
+       "texto": "I'm going to answer it next week.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I'll help you.",
+       "certa": true
+      },
+      {
+       "texto": "I'll to help you.",
+       "certa": false
+      },
+      {
+       "texto": "I'll helping you.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'll send it today. I [won't] forget.",
+     "opcoes": [
+      {
+       "texto": "willn't",
+       "certa": false
+      },
+      {
+       "texto": "not will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Shall I] open the window?",
+     "opcoes": [
+      {
+       "texto": "Shall I to",
+       "certa": false
+      },
+      {
+       "texto": "Shall me",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Your colleague asks: \"Why are you taking your car?\" Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "I'm going to buy paper for the office.",
+       "certa": true
+      },
+      {
+       "texto": "I'll to buy paper for the office.",
+       "certa": false
+      },
+      {
+       "texto": "I bought paper for the office tomorrow.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Decidiu antes: going to."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Want\" e \"won't\" soam...",
+     "opcoes": [
+      {
+       "texto": "diferente: /wɒnt/ e /wəʊnt/",
+       "certa": true
+      },
+      {
+       "texto": "igual",
+       "certa": false
+      },
+      {
+       "texto": "igual, mas \"won't\" é mais curto",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Eu levo-os ao banco depois do almoço.",
+     "resposta": "I'll take them to the bank after lunch.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Six boxes? OK, I'll come down now. Paulo, can you help me?",
+     "enunciado": "What does Nuno decide to do?",
+     "opcoes": [
+      {
+       "texto": "go down to reception now",
+       "certa": true
+      },
+      {
+       "texto": "call Paulo later",
+       "certa": false
+      },
+      {
+       "texto": "wait for the boxes",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'll get some paper. I won't forget. I want to help.",
+     "enunciado": "Ouça e repita: won't ≠ want."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "I'm carrying six heavy boxes! Offer to help.",
+     "frase": "Shall I",
+     "resposta": "Shall I help you? I'll carry the big ones.",
+     "contexto": "Use Shall I…? ou I'll."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your manager needs a report today. Make a promise.",
+     "frase": "won't",
+     "resposta": "I'll send it to you before five. I won't forget.",
+     "contexto": "Use I'll e I won't."
+    }
+   ]
+  },
+  {
+   "codigo": "3C",
+   "titulo": "Would you like to come?",
+   "aula": "3C",
+   "objectivo": "Convidar, aceitar, recusar com cortesia e uma razão, e sugerir.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Would you like [to come] to a kizomba night?",
+     "opcoes": [
+      {
+       "texto": "coming",
+       "certa": false
+      },
+      {
+       "texto": "come",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Would you like to have lunch with us?\" — Choose a polite \"yes\".",
+     "opcoes": [
+      {
+       "texto": "I'd love to.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, I would like.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, I like.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the most polite \"no\".",
+     "opcoes": [
+      {
+       "texto": "I'm afraid I can't. I'm visiting my aunt. Maybe another time.",
+       "certa": true
+      },
+      {
+       "texto": "No. I don't want.",
+       "certa": false
+      },
+      {
+       "texto": "No, I can't come, sorry, bye.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I'm afraid I can't\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Lamento, mas não posso.",
+       "certa": true
+      },
+      {
+       "texto": "Tenho medo de não poder.",
+       "certa": false
+      },
+      {
+       "texto": "Não quero ir.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How about [having] dinner before the party?",
+     "opcoes": [
+      {
+       "texto": "have",
+       "certa": false
+      },
+      {
+       "texto": "to have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Why don't we [meet] at my house first?",
+     "opcoes": [
+      {
+       "texto": "meeting",
+       "certa": false
+      },
+      {
+       "texto": "to meet",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Let's] have dinner at seven.",
+     "opcoes": [
+      {
+       "texto": "Let's to",
+       "certa": false
+      },
+      {
+       "texto": "How about",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Do you want to come too?\" is...",
+     "opcoes": [
+      {
+       "texto": "informal, entre amigos",
+       "certa": true
+      },
+      {
+       "texto": "muito formal",
+       "certa": false
+      },
+      {
+       "texto": "uma ordem",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm afraid I can't. I'm visiting my aunt in Cacuaco on Saturday. It's her birthday.",
+     "enunciado": "Why can't Nuno go to the party?",
+     "opcoes": [
+      {
+       "texto": "He's visiting his aunt.",
+       "certa": true
+      },
+      {
+       "texto": "He can't dance.",
+       "certa": false
+      },
+      {
+       "texto": "He's working.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Would you like to come? — I'd love to! — I'm afraid I can't.",
+     "enunciado": "Ouça e repita: o convite sobe; a recusa desce."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Would you like to come to the cinema on Saturday? (Say no, politely.)",
+     "frase": "I'm afraid",
+     "resposta": "I'm afraid I can't. I'm having lunch with my family on Saturday. Maybe another time?",
+     "contexto": "Recuse com uma razão."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Invite a colleague to something, and suggest a time.",
+     "frase": "Would you like",
+     "resposta": "Would you like to have lunch with me on Friday? How about one o'clock?",
+     "contexto": "Convite e sugestão."
+    }
+   ]
+  },
+  {
+   "codigo": "3D",
+   "titulo": "My diary",
+   "aula": "3D",
+   "objectivo": "Usar as palavras da agenda; I'll, we'll, won't; agenda e assist.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "postpone",
+       "b": "adiar"
+      },
+      {
+       "a": "cancel",
+       "b": "cancelar"
+      },
+      {
+       "a": "confirm",
+       "b": "confirmar"
+      },
+      {
+       "a": "remind",
+       "b": "lembrar (alguém)"
+      },
+      {
+       "a": "available",
+       "b": "disponível"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We're going to move the meeting [to] Monday.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "in",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "With a doctor or a dentist, you have...",
+     "opcoes": [
+      {
+       "texto": "an appointment",
+       "certa": true
+      },
+      {
+       "texto": "a meeting",
+       "certa": false
+      },
+      {
+       "texto": "an agenda",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Vou ver na minha agenda\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "I'll check my diary.",
+       "certa": true
+      },
+      {
+       "texto": "I'll check my agenda.",
+       "certa": false
+      },
+      {
+       "texto": "I'll see my agend.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Agenda pessoal = diary (ou calendar)."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Vou assistir à reunião\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "I'm going to attend the meeting.",
+       "certa": true
+      },
+      {
+       "texto": "I'm going to assist the meeting.",
+       "certa": false
+      },
+      {
+       "texto": "I'm going to watch at the meeting.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Assist\" = ajudar."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The \"agenda\" of a meeting is...",
+     "opcoes": [
+      {
+       "texto": "the list of topics",
+       "certa": true
+      },
+      {
+       "texto": "the room",
+       "certa": false
+      },
+      {
+       "texto": "your personal diary",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Where is the stress in \"postpone\"?",
+     "opcoes": [
+      {
+       "texto": "na 2.ª sílaba: post-PONE",
+       "certa": true
+      },
+      {
+       "texto": "na 1.ª sílaba: POST-pone",
+       "certa": false
+      },
+      {
+       "texto": "nas duas sílabas igual",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Where is the stress in \"cancel\"?",
+     "opcoes": [
+      {
+       "texto": "na 1.ª sílaba: CAN-cel",
+       "certa": true
+      },
+      {
+       "texto": "na 2.ª sílaba: can-CEL",
+       "certa": false
+      },
+      {
+       "texto": "nas duas sílabas igual",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "On Wednesday there's a workshop. Mateus isn't available, so he's going to cancel his place.",
+     "enunciado": "What is Mateus going to do about the workshop?",
+     "opcoes": [
+      {
+       "texto": "cancel",
+       "certa": true
+      },
+      {
+       "texto": "attend",
+       "certa": false
+      },
+      {
+       "texto": "postpone it to Friday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'll confirm by email. We'll move it to Monday. I won't be there, I'm afraid.",
+     "enunciado": "Ouça e repita: I'll, we'll, won't."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Are you available on Thursday afternoon?",
+     "frase": "available",
+     "resposta": "I'm afraid I'm not available on Thursday afternoon. I'm attending a workshop. How about Friday morning?",
+     "contexto": "Responda e proponha outra hora."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your manager can't come to the Tuesday meeting. Tell the team.",
+     "frase": "move",
+     "resposta": "We're going to move the Tuesday meeting to Wednesday at ten. I'll send a reminder.",
+     "contexto": "Use move … to e I'll."
+    }
+   ]
+  },
+  {
+   "codigo": "3E",
+   "titulo": "Real English: Are you free on Friday?",
+   "aula": "3E",
+   "objectivo": "Identificar o dia, a hora, o lugar e o que mudou em quatro mensagens de voz.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "It's a reminder about your appointment with the dentist on Monday the twenty-third at eight a.m.",
+     "enunciado": "When is the appointment?",
+     "opcoes": [
+      {
+       "texto": "Monday the 23rd at 8 a.m.",
+       "certa": true
+      },
+      {
+       "texto": "Monday the 13th at 8 a.m.",
+       "certa": false
+      },
+      {
+       "texto": "Thursday the 23rd at 8 p.m.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "It's a reminder about your appointment. Please call us to confirm.",
+     "enunciado": "What does the clinic want?",
+     "opcoes": [
+      {
+       "texto": "a call to confirm",
+       "certa": true
+      },
+      {
+       "texto": "a new date",
+       "certa": false
+      },
+      {
+       "texto": "a payment",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Bad news about the delivery: the equipment isn't arriving today. It's arriving on Friday, at four.",
+     "enunciado": "What changed?",
+     "opcoes": [
+      {
+       "texto": "The equipment is arriving on Friday, not today.",
+       "certa": true
+      },
+      {
+       "texto": "The delivery is cancelled.",
+       "certa": false
+      },
+      {
+       "texto": "The boxes are at the office.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "So I'm going to the airport on Friday at three thirty.",
+     "enunciado": "What time is Thandi going to the airport?",
+     "opcoes": [
+      {
+       "texto": "3:30",
+       "certa": true
+      },
+      {
+       "texto": "4:00",
+       "certa": false
+      },
+      {
+       "texto": "2:00",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm going to the bank at nine, so I'm not in the office early. Let's meet at eleven, on the second floor. I'll wait for you at the lift.",
+     "enunciado": "When and where is João meeting Nuno?",
+     "opcoes": [
+      {
+       "texto": "at eleven, at the lift on the second floor",
+       "certa": true
+      },
+      {
+       "texto": "at nine, at the bank",
+       "certa": false
+      },
+      {
+       "texto": "at eleven, at reception",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm really sorry, but I can't come to the football match on Sunday. My daughter is sick, so I'm staying at home with her.",
+     "enunciado": "Why can't Tunde play football?",
+     "opcoes": [
+      {
+       "texto": "His daughter is sick.",
+       "certa": true
+      },
+      {
+       "texto": "He's working.",
+       "certa": false
+      },
+      {
+       "texto": "He's travelling.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Numa mensagem de voz, \"João here\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Fala o João.",
+       "certa": true
+      },
+      {
+       "texto": "O João está aqui.",
+       "certa": false
+      },
+      {
+       "texto": "O João vem cá.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Hi, it's Nuno. I'm really sorry, but I can't come to the meeting tomorrow.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Leave a voice message: you can't come to a meeting tomorrow. Suggest another day.",
+     "frase": "How about",
+     "resposta": "Hi, it's Carla. I'm really sorry, but I can't come to the meeting tomorrow. I'm visiting a client in Viana. How about Thursday at ten? I'll call you later.",
+     "contexto": "Nome, desculpa, razão e outra data."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Leave a voice message to confirm a meeting.",
+     "frase": "confirm",
+     "resposta": "Hello, it's Pedro from the finance team. I'm calling to confirm our meeting on Friday at two, in your office. See you then.",
+     "contexto": "Nome, o que confirma, dia, hora e lugar."
+    }
+   ]
+  },
+  {
+   "codigo": "3F",
+   "titulo": "Work & Life: Can we move the meeting?",
+   "aula": "3F",
+   "objectivo": "Ligar a um cliente para mudar uma reunião e confirmar por escrito.",
+   "exercicios": [
+    {
+     "tipo": "ordenar",
+     "enunciado": "Estou a ligar por causa da nossa reunião de amanhã.",
+     "resposta": "I'm calling about our meeting tomorrow.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm afraid we need to [move] it. The equipment is late.",
+     "opcoes": [
+      {
+       "texto": "moving",
+       "certa": false
+      },
+      {
+       "texto": "to move",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the best way to propose two alternatives.",
+     "opcoes": [
+      {
+       "texto": "Are you available on Monday morning? Or how about Tuesday afternoon?",
+       "certa": true
+      },
+      {
+       "texto": "You come Monday or Tuesday.",
+       "certa": false
+      },
+      {
+       "texto": "Monday? Tuesday? What?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Why do you repeat the day and time on the phone?",
+     "opcoes": [
+      {
+       "texto": "to avoid mistakes",
+       "certa": true
+      },
+      {
+       "texto": "because it's polite to talk a lot",
+       "certa": false
+      },
+      {
+       "texto": "because the phone is expensive",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'll [send] you an email to confirm.",
+     "opcoes": [
+      {
+       "texto": "sending",
+       "certa": false
+      },
+      {
+       "texto": "to send",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"As we agreed\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Como combinámos",
+       "certa": true
+      },
+      {
+       "texto": "Como concordamos sempre",
+       "certa": false
+      },
+      {
+       "texto": "Se concordar",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Mateus wrote: \"Diz à Thandi que a reunião passou para segunda às 15h.\" What does Nuno tell Thandi?",
+     "opcoes": [
+      {
+       "texto": "Mateus says the meeting is now on Monday at three.",
+       "certa": true
+      },
+      {
+       "texto": "Mateus says: \"Diz à Thandi…\"",
+       "certa": false
+      },
+      {
+       "texto": "The meeting is passing to Monday three hours.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Na mediação, diga só o que a pessoa precisa de saber."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Monday morning I'm afraid I'm busy — I'm visiting our office in Soyo. But Monday afternoon is fine. How about three o'clock?",
+     "enunciado": "Why is Rita busy on Monday morning?",
+     "opcoes": [
+      {
+       "texto": "She's visiting the office in Soyo.",
+       "certa": true
+      },
+      {
+       "texto": "She's at the dentist.",
+       "certa": false
+      },
+      {
+       "texto": "She's meeting Thandi.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Monday the twenty-third, at three p.m. Perfect. I'll send you an email to confirm.",
+     "enunciado": "Ouça e repita: datas devagar e claras."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Call your client to move tomorrow's meeting. Give a reason and two alternatives.",
+     "frase": "I'm calling about",
+     "resposta": "Good morning, it's Marta from Kalandula Tech. I'm calling about our meeting tomorrow. I'm afraid we need to move it — our manager is sick. Are you available on Thursday? Or how about Friday morning?",
+     "contexto": "Os cinco passos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "The client says: \"Friday at eleven is fine.\" Close the call.",
+     "frase": "confirm",
+     "resposta": "Friday at eleven. Perfect. I'll send you an email to confirm. Thank you, and sorry about the change.",
+     "contexto": "Repita a data e confirme."
+    }
+   ]
+  },
+  {
+   "codigo": "3R",
+   "titulo": "Unit 3 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 3 e reciclar as unidades 1 e 2 do A2.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the best sentence for an arrangement.",
+     "opcoes": [
+      {
+       "texto": "I'm meeting the bank manager on Friday at ten.",
+       "certa": true
+      },
+      {
+       "texto": "I'm meet the bank manager on Friday at ten.",
+       "certa": false
+      },
+      {
+       "texto": "I met the bank manager on Friday at ten next week.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I'm cold.\" — Choose the best offer.",
+     "opcoes": [
+      {
+       "texto": "I'll close the window.",
+       "certa": true
+      },
+      {
+       "texto": "I close the window.",
+       "certa": false
+      },
+      {
+       "texto": "I'm closing the window next week.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Would you like [to have] lunch with us?",
+     "opcoes": [
+      {
+       "texto": "having",
+       "certa": false
+      },
+      {
+       "texto": "have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "How about [meeting] on Tuesday?",
+     "opcoes": [
+      {
+       "texto": "meet",
+       "certa": false
+      },
+      {
+       "texto": "to meet",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the polite refusal.",
+     "opcoes": [
+      {
+       "texto": "I'm afraid I can't. I'm working late.",
+       "certa": true
+      },
+      {
+       "texto": "I can't. Bye.",
+       "certa": false
+      },
+      {
+       "texto": "No, I don't like.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Can we postpone the meeting [to] next week?",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "on",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 2). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I was driving to work when the client called.",
+       "certa": true
+      },
+      {
+       "texto": "I drove to work when the client was calling.",
+       "certa": false
+      },
+      {
+       "texto": "I was drive to work when the client called.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 2). Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Who sent the invitation?",
+       "certa": true
+      },
+      {
+       "texto": "Who did send the invitation?",
+       "certa": false
+      },
+      {
+       "texto": "Who did sent the invitation?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 1). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I don't remember the date.",
+       "certa": true
+      },
+      {
+       "texto": "I'm not remembering the date.",
+       "certa": false
+      },
+      {
+       "texto": "I not remember the date.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Vou confirmar por e-mail.",
+     "resposta": "I'll confirm by email.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Thanks for calling. Monday afternoon is fine.",
+     "enunciado": "When is the client free?",
+     "opcoes": [
+      {
+       "texto": "Monday afternoon",
+       "certa": true
+      },
+      {
+       "texto": "Monday morning",
+       "certa": false
+      },
+      {
+       "texto": "Tuesday afternoon",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What are you doing next week? And invite me to something.",
+     "frase": "Would you like",
+     "resposta": "Next week I'm visiting a client in Benguela on Tuesday. Would you like to have lunch with me on Friday?",
+     "contexto": "Uma combinação e um convite."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "I can't come to our meeting on Thursday. What do you say?",
+     "frase": "How about",
+     "resposta": "No problem. How about Friday morning? I'll send you a new invitation.",
+     "contexto": "Proponha outra hora e ofereça-se para tratar disso."
+    }
+   ]
+  }
+ ]
+}

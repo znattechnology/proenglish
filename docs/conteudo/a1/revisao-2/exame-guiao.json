@@ -1,0 +1,90 @@
+{
+ "formato": "CourseGradingConfig.exam_script (apps/practice/conversa/exame.py, validar_guiao); carregar com manage.py carregar_exame_curso",
+ "nivel": "A1",
+ "duracao": "5 to 6 minutes",
+ "max_minutos": 7,
+ "situacoes": 1,
+ "partes": [
+  {
+   "titulo": "Interview",
+   "minutos": "about 1 to 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Hello, {nome}. Welcome to your A1.2 speaking exam. Tell me about your job. What do you do every day?",
+     "simples": "What's your job? What do you do at work?"
+    },
+    {
+     "pergunta": "What are you working on this week?",
+     "simples": "This week, at work, what are you doing?"
+    },
+    {
+     "pergunta": "What do you like doing in your free time?",
+     "simples": "Do you like music? Sport? Cooking?"
+    },
+    {
+     "pergunta": "What can you do well? Can you cook? Can you drive?",
+     "simples": "Can you swim? Can you cook?"
+    }
+   ]
+  },
+  {
+   "titulo": "Past and plans",
+   "minutos": "about 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Now tell me about last weekend. What did you do?",
+     "simples": "Last Saturday, where were you? What did you do?"
+    },
+    {
+     "pergunta": "And next week? What are you going to do?",
+     "simples": "Next weekend, what are you going to do?"
+    },
+    {
+     "pergunta": "When's your next holiday, or a special day for you? What are you going to do?",
+     "simples": "Your birthday: when is it?"
+    }
+   ]
+  }
+ ],
+ "notas": [
+  "If the student answers a question with one word, ask Can you tell me more? once.",
+  "After the question about last weekend, ask one follow-up from the answer: Who were you with? Was it good? What did you eat?",
+  "If the student does not work, ask: What do you do every day? and This week, what are you doing?",
+  "If the student prefers not to talk about their personal life, accept it and ask: What did you do at work last week?",
+  "Use only language from units 1 to 10: no present perfect, no past continuous, no will."
+ ],
+ "escala": {
+  "tarefa": {
+   "80-100": "Answers everything, tells the past with details, says plans and solves the situation without help.",
+   "60-79": "Answers most questions; past and plans appear, even if short; solves the situation with some repetition.",
+   "40-59": "Answers about half; the past or the plans are missing; the situation is left half done.",
+   "0-39": "Answers few questions, or answers in Portuguese."
+  },
+  "gramatica": {
+   "80-100": "Uses the four A1 tenses almost always correctly (did/didn't with the base verb, be in going to and in -ing); there is/are and can correct.",
+   "60-79": "Uses the four tenses with frequent mistakes in irregular verbs or did, but it is clear whether it is past, present or future.",
+   "40-59": "Almost only present; past and future are clear only from time words (yesterday, next week).",
+   "0-39": "Single words, almost no sentences."
+  },
+  "vocabulario": {
+   "80-100": "Uses the words of units 6-10 with ease and explains what they do not know (It's a kind of...).",
+   "60-79": "Enough words; some pauses to find words.",
+   "40-59": "Basic words are missing (food, places, days and months).",
+   "0-39": "Very few words, or Portuguese words."
+  },
+  "fluencia": {
+   "80-100": "Linked sentences (and, but, because, so, then), with few long pauses.",
+   "60-79": "Some linked sentences; frequent pauses, but keeps going.",
+   "40-59": "Separate, short sentences and long pauses.",
+   "0-39": "Can hardly continue without help."
+  }
+ },
+ "nao_baixa": [
+  "a Portuguese accent",
+  "asking the examiner to repeat",
+  "saying Let me think",
+  "explaining a word with I don't know the word in English. It's a kind of...",
+  "one wrong irregular verb when the rest of the past is correct",
+  "-ed said as an extra syllable if the word is understood"
+ ]
+}

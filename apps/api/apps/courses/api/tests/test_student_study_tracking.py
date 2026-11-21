@@ -91,6 +91,11 @@ class StudyTrackingTestBase(APITestCase):
         self.assertEqual(resp.status_code, 200, resp.content)
         return resp
 
+    def respondido_ha(self, minutos):
+        """As respostas da lição foram dadas há `minutos`: o servidor só credita o tempo que viu passar."""
+        ChallengeProgress.objects.filter(user=self.student).update(
+            updated_at=timezone.now() - timedelta(minutes=minutos))
+
     def complete(self, lesson=None, duration=120):
         return self.client.post(
             f'{BASE}complete-lesson/',
@@ -299,6 +304,7 @@ class CompleteLessonTests(StudyTrackingTestBase):
         self.answer(self.ch1)
         self.answer(self.ch2)
         self.assertEqual(self.points(), 20)
+        self.respondido_ha(10)
 
         resp = self.complete(duration=180)
         self.assertEqual(resp.status_code, 200, resp.content)
@@ -324,6 +330,7 @@ class CompleteLessonTests(StudyTrackingTestBase):
     def test_time_spent_alias_and_duration_clamp(self):
         self.answer(self.ch1)
         self.answer(self.ch2)
+        self.respondido_ha(120)
         resp = self.client.post(
             f'{BASE}complete-lesson/', {'lesson_id': str(self.lesson.id), 'time_spent': 99999}, format='json'
         )
@@ -331,6 +338,40 @@ class CompleteLessonTests(StudyTrackingTestBase):
         self.assertEqual(data['minutes_today'], 60)
         self.assertTrue(data['goal_completed'])
         self.assertTrue(data['goal_just_completed'])
+
+    def test_cliente_nao_decide_se_acertou_nem_os_pontos(self):
+        """Campos de correcção e pontos enviados pelo cliente são ignorados: o servidor corrige pela opção."""
+        UserProgress.objects.get_or_create(user=self.student, defaults={'points': 0})
+        antes = self.points()
+        resp = self.client.post(f'{BASE}challenge-progress/', {
+            'challenge_id': str(self.ch1.id), 'selected_option': str(self.ch1.wrong.id),
+            'is_correct': True, 'correct': True, 'completed': True, 'points': 100, 'points_earned': 100,
+            'score': 100, 'heartsUsed': 0,
+        }, format='json')
+        self.assertEqual(resp.status_code, 200, resp.content)
+        self.assertEqual(self.points(), antes)
+        self.assertFalse(ChallengeProgress.objects.filter(user=self.student, challenge=self.ch1, completed=True).exists())
+        # E não se conclui a lição sem as respostas certas, diga o cliente o que disser.
+        self.assertEqual(self.complete(duration=60).status_code, 400)
+
+    def test_duracao_limitada_ao_tempo_que_o_servidor_viu(self):
+        """O cliente diz 60 min, mas as respostas foram dadas há 1 min: credita no máximo 1 min + a folga."""
+        self.answer(self.ch1)
+        self.answer(self.ch2)
+        self.respondido_ha(1)
+        data = self.complete(duration=3600).json()
+        self.assertLessEqual(data['minutes_today'], 2.1)
+        self.assertGreater(data['minutes_today'], 0)
+
+    def test_duracao_sem_respostas_desta_volta_nao_credita(self):
+        """Praticar de novo sem refazer os exercícios não regista nada, nem minutos."""
+        self.answer(self.ch1)
+        self.answer(self.ch2)
+        self.respondido_ha(10)
+        self.complete(duration=120)
+        data = self.complete(duration=3600).json()
+        self.assertTrue(data['already_recorded'])
+        self.assertEqual(data['minutes_today'], 2)
 
     def test_repeat_practice_awards_points_and_heart(self):
         self.answer(self.ch1)
@@ -492,6 +533,7 @@ class AnalyticsAndHooksTests(StudyTrackingTestBase):
         self.answer(self.ch1, correct=False)
         self.answer(self.ch1)
         self.answer(self.ch2)
+        self.respondido_ha(10)
         self.complete(duration=300)
         data = self.client.get(f'{BASE}student-analytics/').json()
         ov = data['overview']
@@ -520,6 +562,11 @@ class AnalyticsAndHooksTests(StudyTrackingTestBase):
         cap = Chapter.objects.create(section=CourseSection.objects.create(course=self.course, sectionTitle='S', order=1),
                                      title='Vídeo', content='x', type='Video', order=1,
                                      video='https://cdn.exemplo.ao/videos/v.mp4')  # sem vídeo ficava escondida
+        # O aluno abre a aula (o crédito não passa do tempo real desde a abertura).
+        from datetime import timedelta as _td
+        from apps.courses.tempo_video import _chave_aberta
+        from django.core.cache import cache
+        cache.set(_chave_aberta(self.student.pk, cap.pk), (timezone.now() - _td(minutes=10)).timestamp(), 3600)
         resp = self.client.put(url, {'sections': [], 'watched_seconds': 240, 'chapter_id': str(cap.id)}, format='json')
         self.assertEqual(resp.status_code, 200, resp.content)
         log = DailyStudyLog.objects.get(user=self.student)
@@ -530,15 +577,6 @@ class AnalyticsAndHooksTests(StudyTrackingTestBase):
         self.assertEqual(resp.status_code, 200)
         log.refresh_from_db()
         self.assertEqual(log.video_minutes, 4)
-
-    def test_vapi_session_logs_conversation_minutes_once(self):
-        from apps.practice.vapi_views import save_vapi_session_data
-        results = {'duration_minutes': 6, 'scores': {'overall': 80}}
-        save_vapi_session_data('sess-study-1', self.student, {'level': 'B1'}, results)
-        save_vapi_session_data('sess-study-1', self.student, {'level': 'B1'}, results)  # resave: no double count
-        log = DailyStudyLog.objects.get(user=self.student)
-        self.assertEqual(log.conversation_minutes, 6)
-        self.assertEqual(UserStreak.objects.get(user=self.student).current_streak, 1)
 
 
 class ChallengeHeartsRegressionTests(StudyTrackingTestBase):

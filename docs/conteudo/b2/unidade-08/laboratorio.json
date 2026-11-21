@@ -1,0 +1,1463 @@
+{
+ "unidade": "B2.2 · Unit 8 — Reviews and reactions",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "8A",
+   "titulo": "Absolutely brilliant",
+   "aula": "8A",
+   "objectivo": "Usar adjectivos graduáveis e não graduáveis com os intensificadores certos.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The concert was [absolutely] brilliant.",
+     "opcoes": [
+      {
+       "texto": "very",
+       "certa": false
+      },
+      {
+       "texto": "a bit",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The food was [extremely] good.",
+     "opcoes": [
+      {
+       "texto": "absolutely",
+       "certa": false
+      },
+      {
+       "texto": "completely",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [totally] exhausted after the trip.",
+     "opcoes": [
+      {
+       "texto": "very",
+       "certa": false
+      },
+      {
+       "texto": "fairly",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The film was [quite] funny at the start, but the ending was awful.",
+     "opcoes": [
+      {
+       "texto": "absolutely",
+       "certa": false
+      },
+      {
+       "texto": "completely",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The hotel was absolutely huge.",
+       "certa": true
+      },
+      {
+       "texto": "The hotel was very huge.",
+       "certa": false
+      },
+      {
+       "texto": "The hotel was a bit huge.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The show was really fantastic.",
+       "certa": true
+      },
+      {
+       "texto": "The show was very fantastic.",
+       "certa": false
+      },
+      {
+       "texto": "The show was fairly fantastic.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Hilarious\" means…",
+     "opcoes": [
+      {
+       "texto": "extremely funny",
+       "certa": true
+      },
+      {
+       "texto": "a bit funny",
+       "certa": false
+      },
+      {
+       "texto": "not funny",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The food was quite good.\" The speaker thinks the food was…",
+     "opcoes": [
+      {
+       "texto": "fairly good, not excellent",
+       "certa": true
+      },
+      {
+       "texto": "completely perfect",
+       "certa": false
+      },
+      {
+       "texto": "terrible",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "O concerto foi absolutamente fantástico.",
+     "resposta": "The concert was absolutely fantastic.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Elsa. It was completely full. Two thousand people, and the sound was perfect.",
+     "enunciado": "How many people were at the concert?",
+     "opcoes": [
+      {
+       "texto": "two thousand",
+       "certa": true
+      },
+      {
+       "texto": "two hundred",
+       "certa": false
+      },
+      {
+       "texto": "twelve thousand",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Elsa. The film was quite funny at the start, but the ending was awful. Really disappointing.",
+     "enunciado": "What did Elsa think of the ending?",
+     "opcoes": [
+      {
+       "texto": "It was awful.",
+       "certa": true
+      },
+      {
+       "texto": "It was hilarious.",
+       "certa": false
+      },
+      {
+       "texto": "It was fascinating.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It was absolutely brilliant.",
+     "enunciado": "Ouça e repita, com o acento em \"absolutely\" e a voz animada."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about the best and the worst event, film or concert of your last year. Use at least three graded adjectives and three extreme ones, with the right intensifiers.",
+     "frase": "absolutely",
+     "resposta": "The best was my cousin's wedding in Lubango: absolutely fantastic. The food was extremely good, and the band was brilliant. The worst was a film I saw in March: quite boring and really long. By the end, I was completely exhausted.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you trust what other people say about a film or a restaurant, or do you prefer to decide for yourself? Why?",
+     "frase": "because",
+     "resposta": "I listen to friends, because they know my taste. But I don't trust online ratings much: some reviews are fake, and some people complain about everything. In the end, I prefer to decide for myself.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "8B",
+   "titulo": "Surprisingly good",
+   "aula": "8B",
+   "objectivo": "Comentar com advérbios de frase e pôr os adjectivos pela ordem certa.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Surprisingly], the food was cheap. I expected it to be expensive.",
+     "opcoes": [
+      {
+       "texto": "Hopefully",
+       "certa": false
+      },
+      {
+       "texto": "Obviously",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Unfortunately], they only have six rooms free, and we need eight.",
+     "opcoes": [
+      {
+       "texto": "Luckily",
+       "certa": false
+      },
+      {
+       "texto": "Hopefully",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "a [lovely old colonial] building",
+     "opcoes": [
+      {
+       "texto": "colonial old lovely",
+       "certa": false
+      },
+      {
+       "texto": "old colonial lovely",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "a [small Portuguese fish] restaurant",
+     "opcoes": [
+      {
+       "texto": "Portuguese small fish",
+       "certa": false
+      },
+      {
+       "texto": "fish small Portuguese",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Apparently, the chef left last month.\" The speaker…",
+     "opcoes": [
+      {
+       "texto": "heard it from someone",
+       "certa": true
+      },
+      {
+       "texto": "saw the chef leave",
+       "certa": false
+      },
+      {
+       "texto": "is sure, because he is the chef",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct order.",
+     "opcoes": [
+      {
+       "texto": "a beautiful old wooden table",
+       "certa": true
+      },
+      {
+       "texto": "a wooden old beautiful table",
+       "certa": false
+      },
+      {
+       "texto": "an old beautiful wooden table",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Frankly, it's overpriced.\" The speaker is…",
+     "opcoes": [
+      {
+       "texto": "being honest and direct",
+       "certa": true
+      },
+      {
+       "texto": "joking",
+       "certa": false
+      },
+      {
+       "texto": "surprised",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Hopefully, you'll get a table on the terrace.\" This means…",
+     "opcoes": [
+      {
+       "texto": "I hope you will get a table.",
+       "certa": true
+      },
+      {
+       "texto": "You will certainly get a table.",
+       "certa": false
+      },
+      {
+       "texto": "You got a table yesterday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Felizmente, são amigos.",
+     "resposta": "Luckily, they're friends.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Listen to this review: surprisingly good value. The rooms are small, but clean, and the staff are absolutely lovely.",
+     "enunciado": "What does the review say about the rooms?",
+     "opcoes": [
+      {
+       "texto": "They are small but clean.",
+       "certa": true
+      },
+      {
+       "texto": "They are huge.",
+       "certa": false
+      },
+      {
+       "texto": "They are dirty.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Frankly, overpriced. Apparently, the chef left last month.",
+     "enunciado": "Why is the restaurant bad now, apparently?",
+     "opcoes": [
+      {
+       "texto": "The chef left last month.",
+       "certa": true
+      },
+      {
+       "texto": "It is too small.",
+       "certa": false
+      },
+      {
+       "texto": "It is closed.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Surprisingly, the food was cheap. Unfortunately, they only have six rooms.",
+     "enunciado": "Ouça e repita, com uma pausa e o tom certo depois de cada advérbio."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Review out loud a hotel, a restaurant or a shop you know: what kind of place it is (two or three adjectives in order), three comment adverbs, and a rating out of five.",
+     "frase": "Unfortunately",
+     "resposta": "Last month I tried a lovely little Cape Verdean restaurant in Maianga. Surprisingly, it's very cheap for the area. The cachupa was absolutely delicious. Unfortunately, it's tiny, so you have to book. Apparently, it's full every Friday. Four stars out of five.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you write online reviews? Should people only write when something goes wrong? Why?",
+     "frase": "because",
+     "resposta": "I write one sometimes, usually when a place surprises me. People should write good reviews too, because otherwise small businesses only get the angry ones. A short, honest review helps everyone.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "8C",
+   "titulo": "I'm not that bothered",
+   "aula": "8C",
+   "objectivo": "Reagir às opiniões e notícias dos outros no registo informal.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm not [that] bothered about football, to be honest.",
+     "opcoes": [
+      {
+       "texto": "too much",
+       "certa": false
+      },
+      {
+       "texto": "such",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I don't mind [either] way.",
+     "opcoes": [
+      {
+       "texto": "any",
+       "certa": false
+      },
+      {
+       "texto": "both",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Oh no, [poor] you!",
+     "opcoes": [
+      {
+       "texto": "sorry",
+       "certa": false
+      },
+      {
+       "texto": "sad",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My team are playing in the final. — [Are] they?",
+     "opcoes": [
+      {
+       "texto": "Do",
+       "certa": false
+      },
+      {
+       "texto": "Have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Your friend says: \"I've just got a new job in Lisbon!\" You say:",
+     "opcoes": [
+      {
+       "texto": "No way! Good for you!",
+       "certa": true
+      },
+      {
+       "texto": "Poor you!",
+       "certa": false
+      },
+      {
+       "texto": "I'm not that bothered.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Your colleague says: \"My car broke down on the way here.\" You say:",
+     "opcoes": [
+      {
+       "texto": "Oh no, poor you!",
+       "certa": true
+      },
+      {
+       "texto": "Lucky you!",
+       "certa": false
+      },
+      {
+       "texto": "Fair enough.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Your friend says: \"Traffic is getting worse every year.\" You agree:",
+     "opcoes": [
+      {
+       "texto": "Tell me about it!",
+       "certa": true
+      },
+      {
+       "texto": "Are you joking?",
+       "certa": false
+      },
+      {
+       "texto": "Good for you!",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which reaction can sound rude, especially with a flat voice?",
+     "opcoes": [
+      {
+       "texto": "Whatever.",
+       "certa": true
+      },
+      {
+       "texto": "Whatever you prefer.",
+       "certa": false
+      },
+      {
+       "texto": "I don't mind either way.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Para ser sincera, não me interessa muito.",
+     "resposta": "To be honest, I'm not that bothered.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Elsa. I'm not that bothered about football, to be honest. I'm going to the beach and having a lie-in.",
+     "enunciado": "What is Elsa doing this weekend?",
+     "opcoes": [
+      {
+       "texto": "going to the beach and sleeping late",
+       "certa": true
+      },
+      {
+       "texto": "watching the final",
+       "certa": false
+      },
+      {
+       "texto": "working on Saturday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. By the way, did you hear? Mariana Kambundo is singing at the festival on Saturday night.",
+     "enunciado": "What is Paulo's news?",
+     "opcoes": [
+      {
+       "texto": "Mariana Kambundo is singing at the festival.",
+       "certa": true
+      },
+      {
+       "texto": "The festival is cancelled.",
+       "certa": false
+      },
+      {
+       "texto": "Elsa is singing at the festival.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Great! Great? Great.",
+     "enunciado": "Ouça e repita: entusiasmo, surpresa e ironia."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "React to my four pieces of news, each with a short reaction and a follow-up question: I went to a fantastic concert last night. My phone was stolen at the end. Luckily, I'd backed it up. Next week I'm going to Cape Verde.",
+     "frase": "Really",
+     "resposta": "Really? Who was playing? — Oh no, poor you! Did you call the police? — That's lucky! At least you didn't lose your photos. — Lucky you! How long are you going for?",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "In your culture, is it rude to say \"I'm not interested\" about something a friend loves? How do you say it politely?",
+     "frase": "because",
+     "resposta": "A little, yes, because it can sound like you don't care about your friend. I'd say something like: \"It's not really my thing, but I'm glad you enjoy it.\" That way, it's about me, not about them.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "8D",
+   "titulo": "Culture and reviews",
+   "aula": "8D",
+   "objectivo": "Vocabulário de cultura e crítica, entoação de atitude; romance e spectacle.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "line-up",
+       "b": "os artistas do cartaz"
+      },
+      {
+       "a": "venue",
+       "b": "o local do evento"
+      },
+      {
+       "a": "sold out",
+       "b": "esgotado"
+      },
+      {
+       "a": "overrated",
+       "b": "sobrevalorizado"
+      },
+      {
+       "a": "a must-see",
+       "b": "imperdível"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The tickets went in one hour. The show was [sold] out.",
+     "opcoes": [
+      {
+       "texto": "sell",
+       "certa": false
+      },
+      {
+       "texto": "selling",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The film didn't live [up] to the expectations.",
+     "opcoes": [
+      {
+       "texto": "on",
+       "certa": false
+      },
+      {
+       "texto": "over",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She got a standing [ovation] at the end.",
+     "opcoes": [
+      {
+       "texto": "applause",
+       "certa": false
+      },
+      {
+       "texto": "clapping",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The festival [got] excellent reviews.",
+     "opcoes": [
+      {
+       "texto": "made",
+       "certa": false
+      },
+      {
+       "texto": "did",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Li um romance de Pepetela.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I read a novel by Pepetela.",
+       "certa": true
+      },
+      {
+       "texto": "I read a romance by Pepetela.",
+       "certa": false
+      },
+      {
+       "texto": "I read a romance of Pepetela.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: romance = caso amoroso, história de amor."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"O espectáculo começa às nove.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The show starts at nine.",
+       "certa": true
+      },
+      {
+       "texto": "The spectacle starts at nine.",
+       "certa": false
+      },
+      {
+       "texto": "The spectacles start at nine.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: spectacle = cena impressionante; spectacles = óculos."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Everyone says it's great, but it isn't.\" The film is…",
+     "opcoes": [
+      {
+       "texto": "overrated",
+       "certa": true
+      },
+      {
+       "texto": "underrated",
+       "certa": false
+      },
+      {
+       "texto": "a must-see",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It was… interesting,\" said slowly and flatly, often means…",
+     "opcoes": [
+      {
+       "texto": "I didn't really like it.",
+       "certa": true
+      },
+      {
+       "texto": "I loved it.",
+       "certa": false
+      },
+      {
+       "texto": "I was surprised and happy.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Bento. Absolutely incredible! Mariana Kambundo was the best thing I've ever seen. Ten out of ten!",
+     "enunciado": "How does Bento rate the concert?",
+     "opcoes": [
+      {
+       "texto": "ten out of ten",
+       "certa": true
+      },
+      {
+       "texto": "seven out of ten",
+       "certa": false
+      },
+      {
+       "texto": "four out of ten",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It was interesting!",
+     "enunciado": "Ouça e repita com entusiasmo: a voz alta e larga."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Review an event, a restaurant or a product you tried recently. Would you recommend it?",
+     "frase": "recommend",
+     "resposta": "Last month I went to a jazz gig at a small venue in Ilha. The last band was absolutely brilliant: they got a standing ovation. Unfortunately, the sound was rather bad at the back. It didn't completely live up to my expectations, but I'd still recommend it.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is there a famous film, book or band that you think is overrated? Why?",
+     "frase": "overrated",
+     "resposta": "I think some famous superhero films are overrated. They're entertaining, but the stories are predictable, and the endings are always the same. I prefer smaller films with real people.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "8E",
+   "titulo": "Real English: The festival",
+   "aula": "8E",
+   "objectivo": "Seguir quatro opiniões à saída de um festival e identificar a opinião e o tom de cada pessoa.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Bento. When she sang Mar de Areia, the whole crowd was singing. I had tears in my eyes.",
+     "enunciado": "What happened when she sang \"Mar de Areia\"?",
+     "opcoes": [
+      {
+       "texto": "The whole crowd was singing.",
+       "certa": true
+      },
+      {
+       "texto": "The sound stopped.",
+       "certa": false
+      },
+      {
+       "texto": "She cried.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Fatou. Unfortunately, the organisation was rather poor. We queued forty minutes for food.",
+     "enunciado": "How long did Fatou queue for food?",
+     "opcoes": [
+      {
+       "texto": "forty minutes",
+       "certa": true
+      },
+      {
+       "texto": "fourteen minutes",
+       "certa": false
+      },
+      {
+       "texto": "four hours",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Fatou. I'd come back next year, if they fix the queues. The music deserves a better festival.",
+     "enunciado": "What does Fatou want the festival to fix?",
+     "opcoes": [
+      {
+       "texto": "the queues",
+       "certa": true
+      },
+      {
+       "texto": "the music",
+       "certa": false
+      },
+      {
+       "texto": "the stage",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Mr Clarke. Oh, enormously. I particularly enjoyed standing behind a very tall man for three hours.",
+     "enunciado": "What is Mr Clarke being ironic about?",
+     "opcoes": [
+      {
+       "texto": "standing behind a very tall man",
+       "certa": true
+      },
+      {
+       "texto": "the sea breeze",
+       "certa": false
+      },
+      {
+       "texto": "the sunset",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Mr Clarke. The internet died just when everybody wanted to film the main concert. Typical!",
+     "enunciado": "What went wrong during the main concert?",
+     "opcoes": [
+      {
+       "texto": "The internet stopped working.",
+       "certa": true
+      },
+      {
+       "texto": "It rained.",
+       "certa": false
+      },
+      {
+       "texto": "The singer was late.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Kiala. The solar zone was cool, though: free charging, and you could sit in the shade.",
+     "enunciado": "What did Kiala like?",
+     "opcoes": [
+      {
+       "texto": "the solar zone: free charging and shade",
+       "certa": true
+      },
+      {
+       "texto": "the big stars",
+       "certa": false
+      },
+      {
+       "texto": "the food",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Mr Clarke's tone is…",
+     "opcoes": [
+      {
+       "texto": "ironic",
+       "certa": true
+      },
+      {
+       "texto": "enthusiastic",
+       "certa": false
+      },
+      {
+       "texto": "angry",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Whose opinion is the most useful for the organisers, because it is specific?",
+     "opcoes": [
+      {
+       "texto": "Fatou's",
+       "certa": true
+      },
+      {
+       "texto": "Kiala's",
+       "certa": false
+      },
+      {
+       "texto": "Bento's",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Absolutely incredible!",
+     "enunciado": "Ouça e repita, com entusiasmo."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It was OK. I'm not that bothered.",
+     "enunciado": "Ouça e repita, com indiferença."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell a colleague what each of the four people thought, and how they said it. Which opinion is most useful for the organisers?",
+     "frase": "ironic",
+     "resposta": "Bento was enthusiastic: Mariana Kambundo was absolutely incredible. Fatou loved the music but criticised the queues. Mr Clarke was ironic: the music was lovely, but the internet died during the concert. Kiala didn't care much, but liked the solar zone. Fatou's opinion is the most useful.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "When you give your opinion about something a friend organised, do you say what you really think? Why?",
+     "frase": "because",
+     "resposta": "Mostly yes, but kindly, because a friend wants to improve. I start with what was good, and then I say one thing to change. If it's too late to change anything, I just say I had a great time.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "8F",
+   "titulo": "Work & Life: Event feedback",
+   "aula": "8F",
+   "objectivo": "Fazer o balanço de um evento em dois registos e resumir em inglês um inquérito em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "To his team, Nuno says: \"The Wi-Fi died during Mariana's concert.\" To the sponsor, he says:",
+     "opcoes": [
+      {
+       "texto": "Unfortunately, the connection was interrupted during the main concert.",
+       "certa": true
+      },
+      {
+       "texto": "The Wi-Fi totally died, ha!",
+       "certa": false
+      },
+      {
+       "texto": "The internet was completely dead, guys.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is formal?",
+     "opcoes": [
+      {
+       "texto": "Overall, the zone was very well received.",
+       "certa": true
+      },
+      {
+       "texto": "Overall? A really good weekend!",
+       "certa": false
+      },
+      {
+       "texto": "It went absolutely brilliantly, guys.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The survey says: \"64% gostaram de carregar o telemóvel de graça\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "almost two thirds liked the free charging",
+       "certa": true
+      },
+      {
+       "texto": "about a quarter liked the free charging",
+       "certa": false
+      },
+      {
+       "texto": "sixty-four people liked the free charging",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "About three thousand two hundred people [visited] the zone.",
+     "opcoes": [
+      {
+       "texto": "were visited",
+       "certa": false
+      },
+      {
+       "texto": "visiting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "One thousand four hundred and fifty phones [were] charged.",
+     "opcoes": [
+      {
+       "texto": "did",
+       "certa": false
+      },
+      {
+       "texto": "was",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Frankly], he was right.",
+     "opcoes": [
+      {
+       "texto": "In frank",
+       "certa": false
+      },
+      {
+       "texto": "Frankness",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Nine [out] of ten want the zone again next year.",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "from",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. The connection was interrupted on Saturday from eight to eight forty-five, because of the very high number of users.",
+     "enunciado": "Why was the connection interrupted?",
+     "opcoes": [
+      {
+       "texto": "There were too many users.",
+       "certa": true
+      },
+      {
+       "texto": "It rained.",
+       "certa": false
+      },
+      {
+       "texto": "The panels were broken.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. The most common comment was simply: there should be more sockets.",
+     "enunciado": "What was the most common comment?",
+     "opcoes": [
+      {
+       "texto": "There should be more sockets.",
+       "certa": true
+      },
+      {
+       "texto": "The music was too loud.",
+       "certa": false
+      },
+      {
+       "texto": "The food was expensive.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Repeat it next year, with twice the internet capacity and twice the charging points.",
+     "enunciado": "What is Nuno's recommendation?",
+     "opcoes": [
+      {
+       "texto": "repeat the zone with twice the capacity",
+       "certa": true
+      },
+      {
+       "texto": "cancel the zone",
+       "certa": false
+      },
+      {
+       "texto": "move the zone to Luanda",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Unfortunately, the connection was interrupted during the main concert.",
+     "enunciado": "Ouça e repita, com um tom formal e calmo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Give feedback on an event you organised or attended twice: first to a friend (informal, with strong adjectives), then to your manager or a sponsor (formal, with one problem and a recommendation).",
+     "frase": "Overall",
+     "resposta": "To a friend: \"Absolutely brilliant! The speaker was hilarious, but the air conditioning died at eleven!\" To my manager: \"Overall, the training day was very well received. Unfortunately, the air conditioning stopped working. Next time, we need a room with a backup system.\"",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise these results in English, with words instead of percentages where you can: \"Jantar de fim de ano (86 respostas): 92% gostaram da comida; 54% acharam a música alta demais; 26% gostariam de mudar de restaurante.\"",
+     "frase": "Almost",
+     "resposta": "We had eighty-six responses. Almost everyone liked the food. Just over half thought the music was too loud, and about a quarter would like a different restaurant next year.",
+     "contexto": "Mediação: percentagens em palavras."
+    }
+   ]
+  },
+  {
+   "codigo": "8R",
+   "titulo": "Unit 8 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 8 do B2 e reciclar as unidades 5 a 7 do B2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The view from the hotel was [absolutely] amazing.",
+     "opcoes": [
+      {
+       "texto": "very",
+       "certa": false
+      },
+      {
+       "texto": "a bit",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "a [lovely little] restaurant",
+     "opcoes": [
+      {
+       "texto": "little lovely",
+       "certa": false
+      },
+      {
+       "texto": "little loveliest",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Apparently], the band is coming back next year.",
+     "opcoes": [
+      {
+       "texto": "Apparent",
+       "certa": false
+      },
+      {
+       "texto": "Apparence",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm not that [bothered] about the match.",
+     "opcoes": [
+      {
+       "texto": "bothering",
+       "certa": false
+      },
+      {
+       "texto": "bother",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The traffic was absolutely terrible.",
+       "certa": true
+      },
+      {
+       "texto": "The traffic was very terrible.",
+       "certa": false
+      },
+      {
+       "texto": "The traffic was a bit terrible.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"O espectáculo foi fantástico.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The show was fantastic.",
+       "certa": true
+      },
+      {
+       "texto": "The spectacle was very fantastic.",
+       "certa": false
+      },
+      {
+       "texto": "The spectacles were fantastic.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 7). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Even though it was expensive, we enjoyed it.",
+       "certa": true
+      },
+      {
+       "texto": "Even if it was expensive yesterday, we enjoyed it.",
+       "certa": false
+      },
+      {
+       "texto": "Despite it was expensive, we enjoyed it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 6). \"Não precisávamos de ter comprado tantos bilhetes.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "We needn't have bought so many tickets.",
+       "certa": true
+      },
+      {
+       "texto": "We didn't need buying so many tickets.",
+       "certa": false
+      },
+      {
+       "texto": "We needn't to buy so many tickets yesterday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 5). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The festival is bound to be crowded.",
+       "certa": true
+      },
+      {
+       "texto": "The festival will bound to be crowded.",
+       "certa": false
+      },
+      {
+       "texto": "The festival bound to be crowded.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Infelizmente, a internet falhou durante o concerto.",
+     "resposta": "Unfortunately, the internet failed during the concert.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Ingrid. I'll put that to the board. Well done, Nuno, and thank your team.",
+     "enunciado": "What will Ingrid do?",
+     "opcoes": [
+      {
+       "texto": "put the recommendation to the board",
+       "certa": true
+      },
+      {
+       "texto": "cancel the sponsorship",
+       "certa": false
+      },
+      {
+       "texto": "call the radio",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Review an event, a restaurant or a product you tried recently. Would you recommend it?",
+     "frase": "would",
+     "resposta": "Last week I bought a small solar lamp for my veranda. Surprisingly, it's very bright, and it charges in one afternoon. Unfortunately, the switch feels rather cheap. All in all, it's good value for money, and I would recommend it.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A friend loved a film that you thought was awful. React to their opinion politely, then give yours.",
+     "frase": "Really",
+     "resposta": "Really? I'm glad you enjoyed it. Honestly, it wasn't really my thing — I found the story completely predictable, and the ending was rather disappointing. But the music was absolutely beautiful, I agree.",
+     "contexto": "Reagir e dar a opinião."
+    }
+   ]
+  }
+ ]
+}

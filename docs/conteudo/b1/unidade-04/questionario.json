@@ -1,0 +1,301 @@
+{
+ "title": "B1.1 Unit 4 quiz — What if…?",
+ "description": "2.º condicional, 1.º e 2.º em contraste, probabilidade, sugestões, logística, assume e ordinary.",
+ "questions": [
+  {
+   "id": "b1u4q1",
+   "question": "\"Se eu tivesse mais tempo, estudava mais.\" Complete: \"If I ___ more time, I'd study more.\"",
+   "options": [
+    {
+     "id": "b1u4q1o0",
+     "text": "had",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u4q1o1",
+     "text": "would have",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u4q1o2",
+     "text": "will have",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u4q1o0",
+   "explanation": "Depois de if, o past simple.",
+   "points": 10
+  },
+  {
+   "id": "b1u4q2",
+   "question": "Complete: \"If I ___ you, I'd call the supplier.\"",
+   "options": [
+    {
+     "id": "b1u4q2o0",
+     "text": "were",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u4q2o1",
+     "text": "am",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u4q2o2",
+     "text": "will be",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u4q2o0",
+   "explanation": "If I were you: para dar conselhos.",
+   "points": 10
+  },
+  {
+   "id": "b1u4q3",
+   "question": "Um amigo seu tem uma entrevista de emprego amanhã. Ele diz…",
+   "options": [
+    {
+     "id": "b1u4q3o0",
+     "text": "If I get the job, I'll move to Luanda.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u4q3o1",
+     "text": "If I get the job, I'd move to Luanda.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u4q3o2",
+     "text": "If I would get the job, I'll move to Luanda.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u4q3o0",
+   "explanation": "Possível: present + will, sem misturar.",
+   "points": 10
+  },
+  {
+   "id": "b1u4q4",
+   "question": "\"If customs accepted documents by email, we'd have the antennas today.\" A alfândega aceita documentos por e-mail?",
+   "options": [
+    {
+     "id": "b1u4q4o0",
+     "text": "Não.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u4q4o1",
+     "text": "Sim.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u4q4o2",
+     "text": "Sim, desde hoje.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u4q4o0",
+   "explanation": "O 2.º condicional fala de uma situação que não é real.",
+   "points": 10
+  },
+  {
+   "id": "b1u4q5",
+   "question": "Complete (20%): \"The crane ___ work on the twenty-fifth.\"",
+   "options": [
+    {
+     "id": "b1u4q5o0",
+     "text": "probably won't",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u4q5o1",
+     "text": "won't probably",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u4q5o2",
+     "text": "will not probably",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u4q5o0",
+   "explanation": "probably vem antes de won't.",
+   "points": 10
+  },
+  {
+   "id": "b1u4q6",
+   "question": "\"Will it rain?\" Acha que não (20%). Responde:",
+   "options": [
+    {
+     "id": "b1u4q6o0",
+     "text": "I doubt it.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u4q6o1",
+     "text": "Definitely.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u4q6o2",
+     "text": "I doubt.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u4q6o0",
+   "explanation": "I doubt it = acho que não.",
+   "points": 10
+  },
+  {
+   "id": "b1u4q7",
+   "question": "Complete: \"Don't worry — I'll sort ___.\"",
+   "options": [
+    {
+     "id": "b1u4q7o0",
+     "text": "it out",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u4q7o1",
+     "text": "out it",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u4q7o2",
+     "text": "it of",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u4q7o0",
+   "explanation": "Com pronome, no meio: sort it out.",
+   "points": 10
+  },
+  {
+   "id": "b1u4q8",
+   "question": "\"Assumo o erro.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u4q8o0",
+     "text": "I admit my mistake.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u4q8o1",
+     "text": "I assume my mistake.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u4q8o2",
+     "text": "I suppose my mistake.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u4q8o0",
+   "explanation": "Falso amigo: assume = supor.",
+   "points": 10
+  },
+  {
+   "id": "b1u4q9",
+   "question": "Uma boa recomendação…",
+   "options": [
+    {
+     "id": "b1u4q9o0",
+     "text": "compara os custos e os riscos de cada opção",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u4q9o1",
+     "text": "dá só a opção mais barata",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u4q9o2",
+     "text": "esconde os problemas",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u4q9o0",
+   "explanation": "Como o Nuno na 4F.",
+   "points": 10
+  },
+  {
+   "id": "b1u4q10",
+   "question": "Reciclagem (B1, unidade 3). Complete: \"There are too ___ meetings this week.\"",
+   "options": [
+    {
+     "id": "b1u4q10o0",
+     "text": "many",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u4q10o1",
+     "text": "much",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u4q10o2",
+     "text": "enough",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u4q10o0",
+   "explanation": "meetings conta-se → too many.",
+   "points": 10
+  },
+  {
+   "id": "b1u4q11",
+   "question": "Reciclagem (B1, unidade 3). \"I see your point, but…\" quer dizer…",
+   "options": [
+    {
+     "id": "b1u4q11o0",
+     "text": "Percebo, mas tenho outra ideia.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u4q11o1",
+     "text": "Concordo totalmente.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u4q11o2",
+     "text": "Não percebo o que diz.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u4q11o0",
+   "explanation": "Concordar em parte.",
+   "points": 10
+  },
+  {
+   "id": "b1u4q12",
+   "question": "Reciclagem (A2, unidade 8). Complete: \"If the power goes off, we ___ the generator.\"",
+   "options": [
+    {
+     "id": "b1u4q12o0",
+     "text": "'ll use",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u4q12o1",
+     "text": "'d use",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u4q12o2",
+     "text": "used",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u4q12o0",
+   "explanation": "1.º condicional: possível → will.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

@@ -1,0 +1,1667 @@
+{
+ "unidade": "B2.1 · Unit 2 — Presentations",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "2A",
+   "titulo": "I'd like to start by…",
+   "aula": "2A",
+   "objectivo": "Abrir, sinalizar e fechar uma apresentação com marcadores de discurso formal.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd like to start by [looking] at last year's results.",
+     "opcoes": [
+      {
+       "texto": "look",
+       "certa": false
+      },
+      {
+       "texto": "to look",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Moving] on to the costs, option B is cheaper.",
+     "opcoes": [
+      {
+       "texto": "Moved",
+       "certa": false
+      },
+      {
+       "texto": "To moving",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This [brings] me to the most important part.",
+     "opcoes": [
+      {
+       "texto": "bring",
+       "certa": false
+      },
+      {
+       "texto": "is bringing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[To sum] up, option A is safer.",
+     "opcoes": [
+      {
+       "texto": "Resuming",
+       "certa": false
+      },
+      {
+       "texto": "To resume",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the best way to open a presentation?",
+     "opcoes": [
+      {
+       "texto": "The purpose of this presentation is to show you our new plan.",
+       "certa": true
+      },
+      {
+       "texto": "Sorry, I have a lot of slides.",
+       "certa": false
+      },
+      {
+       "texto": "OK, so, um, slide one.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Subsequently\" means…",
+     "opcoes": [
+      {
+       "texto": "after that",
+       "certa": true
+      },
+      {
+       "texto": "because of that",
+       "certa": false
+      },
+      {
+       "texto": "before that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which phrase introduces the most important point?",
+     "opcoes": [
+      {
+       "texto": "This brings me to the most important part.",
+       "certa": true
+      },
+      {
+       "texto": "To sum up, …",
+       "certa": false
+      },
+      {
+       "texto": "I'm happy to take questions.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Resumindo, …\" numa apresentação. Em inglês:",
+     "opcoes": [
+      {
+       "texto": "To sum up, …",
+       "certa": true
+      },
+      {
+       "texto": "Resuming, …",
+       "certa": false
+      },
+      {
+       "texto": "Resumed, …",
+       "certa": false
+      }
+     ],
+     "explicacao": "resume = recomeçar."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Gostaria de começar por olhar para os números.",
+     "resposta": "I'd like to start by looking at the figures.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. I'd like to start by looking at what happened in Namibe. Then I'll move on to our two options.",
+     "enunciado": "What will Nuno talk about first?",
+     "opcoes": [
+      {
+       "texto": "what happened in Namibe",
+       "certa": true
+      },
+      {
+       "texto": "the two options",
+       "certa": false
+      },
+      {
+       "texto": "the costs",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. Never apologise for your slides, and tell the board the parts of your talk first.",
+     "enunciado": "What does Lerato tell Nuno not to do?",
+     "opcoes": [
+      {
+       "texto": "apologise for his slides",
+       "certa": true
+      },
+      {
+       "texto": "give an outline",
+       "certa": false
+      },
+      {
+       "texto": "take questions",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Moving on to… the costs.",
+     "enunciado": "Ouça e repita, com uma pausa curta depois de \"Moving on to\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Open a presentation about your company, your department, your course or your town: who you are, the purpose, three parts in order, and then move to the first part.",
+     "frase": "The purpose of this presentation",
+     "resposta": "Good morning. My name is Teresa Gomes, from the training department. The purpose of this presentation is to show you our new training plan. I'd like to start by looking at last year's results. Then I'll move on to the new courses, and finally, the budget. So, to begin with, the results.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "In your opinion, what makes a presentation boring? And what makes it interesting?",
+     "frase": "because",
+     "resposta": "A presentation is boring when the speaker reads the slides, because the audience can read too. It's interesting when there's a story, a few clear numbers and a speaker who looks at people.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "2B",
+   "titulo": "A sharp rise",
+   "aula": "2B",
+   "objectivo": "Descrever gráficos e tendências com verbos, nomes, adjectivos e advérbios.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Sales [rose] sharply in March.",
+     "opcoes": [
+      {
+       "texto": "raised",
+       "certa": false
+      },
+      {
+       "texto": "rised",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "There was a [sharp] fall in December.",
+     "opcoes": [
+      {
+       "texto": "sharply",
+       "certa": false
+      },
+      {
+       "texto": "sharpness",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The downtime fell [sharply] in November.",
+     "opcoes": [
+      {
+       "texto": "sharp",
+       "certa": false
+      },
+      {
+       "texto": "sharpen",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It peaked in September, [at] thirty-eight hours.",
+     "opcoes": [
+      {
+       "texto": "on",
+       "certa": false
+      },
+      {
+       "texto": "in",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Prices rose [by] ten percent, from 200 to 220 kwanzas.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The number of customers rose from 1 000 [to] 1 600 in April.",
+     "opcoes": [
+      {
+       "texto": "by",
+       "certa": false
+      },
+      {
+       "texto": "of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It fell slightly\" means…",
+     "opcoes": [
+      {
+       "texto": "It went down a little.",
+       "certa": true
+      },
+      {
+       "texto": "It went down a lot.",
+       "certa": false
+      },
+      {
+       "texto": "It went up a little.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "After a big fall, the number stayed almost the same for months. It…",
+     "opcoes": [
+      {
+       "texto": "levelled off",
+       "certa": true
+      },
+      {
+       "texto": "peaked",
+       "certa": false
+      },
+      {
+       "texto": "rose sharply",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The company raised its prices.",
+       "certa": true
+      },
+      {
+       "texto": "The company rose its prices.",
+       "certa": false
+      },
+      {
+       "texto": "The prices raised in May.",
+       "certa": false
+      }
+     ],
+     "explicacao": "rise (sem objecto) / raise (com objecto)."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. In November, the satellite started working, and the downtime fell sharply, to twelve hours.",
+     "enunciado": "What happened in November?",
+     "opcoes": [
+      {
+       "texto": "The downtime fell sharply, to twelve hours.",
+       "certa": true
+      },
+      {
+       "texto": "The downtime rose to twelve hours.",
+       "certa": false
+      },
+      {
+       "texto": "The satellite stopped working.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Elsa. The downtime peaked in September, at thirty-eight hours. That was the month of the sandstorm.",
+     "enunciado": "When was the peak?",
+     "opcoes": [
+      {
+       "texto": "September",
+       "certa": true
+      },
+      {
+       "texto": "November",
+       "certa": false
+      },
+      {
+       "texto": "December",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "There was an increase. Prices increased.",
+     "enunciado": "Ouça e repita: o nome com o acento na primeira sílaba, o verbo na segunda."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe this chart in English: \"Alunos por mês, escola de línguas, Huambo, 2028: Jan 120; Fev 125; Mar 130; Abr 210 (anúncio na rádio); Mai 215; Jun 140 (férias); Jul 135; Ago 180.\"",
+     "frase": "rose",
+     "resposta": "The chart shows the number of students at a language school in Huambo in 2028. From January to March, it rose steadily, from 120 to 130. In April, there was a sharp rise, to 210, after a radio advert. It peaked in May, then fell sharply in June, because of the holidays, and rose again in August.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you prefer to read numbers in a table or in a chart? Why?",
+     "frase": "because",
+     "resposta": "I prefer a chart, because I can see the trend in a second. But for exact numbers, like a budget, a table is better. The best presentations have a chart on the slide and the table in the handout.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "2C",
+   "titulo": "By June, we will have…",
+   "aula": "2C",
+   "objectivo": "Usar o future perfect para metas e prazos.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "By the end of March, we [will have laid] all the cables.",
+     "opcoes": [
+      {
+       "texto": "will have lay",
+       "certa": false
+      },
+      {
+       "texto": "have laid",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We [won't have] finished the control room by May.",
+     "opcoes": [
+      {
+       "texto": "won't",
+       "certa": false
+      },
+      {
+       "texto": "haven't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "By the time the plant [opens], we'll have tested the network.",
+     "opcoes": [
+      {
+       "texto": "will open",
+       "certa": false
+      },
+      {
+       "texto": "opened",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[By] June, we'll have installed the antennas.",
+     "opcoes": [
+      {
+       "texto": "Until",
+       "certa": false
+      },
+      {
+       "texto": "Since",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Até Junho (o mais tardar), teremos instalado as antenas.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "By June, we will have installed the antennas.",
+       "certa": true
+      },
+      {
+       "texto": "Until June, we will have installed the antennas.",
+       "certa": false
+      },
+      {
+       "texto": "By June, we will installed the antennas.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence is about an action finished before a moment in the future?",
+     "opcoes": [
+      {
+       "texto": "By August, we'll have tested the network.",
+       "certa": true
+      },
+      {
+       "texto": "This time next year, we'll be finishing the control room.",
+       "certa": false
+      },
+      {
+       "texto": "We're testing the network now.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Will you have finished by Friday?\" — \"No, …\"",
+     "opcoes": [
+      {
+       "texto": "we won't.",
+       "certa": true
+      },
+      {
+       "texto": "we haven't.",
+       "certa": false
+      },
+      {
+       "texto": "we don't.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Até ao fim do ano, teremos aberto a nova loja.",
+     "resposta": "By the end of the year, we'll have opened the new shop.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. By the end of May, we'll have installed the antennas and the satellite, if they arrive on time.",
+     "enunciado": "What will they have done by the end of May?",
+     "opcoes": [
+      {
+       "texto": "installed the antennas and the satellite",
+       "certa": true
+      },
+      {
+       "texto": "laid the cables",
+       "certa": false
+      },
+      {
+       "texto": "finished the control room",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. We won't have finished the control room by May. The building won't be ready until July.",
+     "enunciado": "Why won't the control room be finished by May?",
+     "opcoes": [
+      {
+       "texto": "The building won't be ready until July.",
+       "certa": true
+      },
+      {
+       "texto": "The antennas will arrive late.",
+       "certa": false
+      },
+      {
+       "texto": "Paulo will be on holiday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "By May, we'll have installed everything.",
+     "enunciado": "Ouça e repita: \"we'll have\" curto."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Present one goal for your team or your studies, and say what will have happened by the end of the year — and one thing that won't have happened yet.",
+     "frase": "By the end of",
+     "resposta": "Our goal this year is to open a second shop in Lubango. By the end of October, we'll have found the place, and by November, we'll have hired three people. By the end of the year, we'll have sold our first products there. But we won't have paid back the loan.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it better to promise an early deadline and work hard, or a later deadline you are sure about? Why?",
+     "frase": "because",
+     "resposta": "A later deadline you're sure about, because a missed deadline destroys trust. If you finish early, the client is happy. If you promise early and finish late, they remember only the delay.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "2D",
+   "titulo": "That's a good question",
+   "aula": "2D",
+   "objectivo": "Responder a perguntas do público: ganhar tempo, reformular, admitir e prometer voltar.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'll get [back] to you on that by Friday.",
+     "opcoes": [
+      {
+       "texto": "return",
+       "certa": false
+      },
+      {
+       "texto": "again",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm [afraid] I don't have that figure with me.",
+     "opcoes": [
+      {
+       "texto": "scared",
+       "certa": false
+      },
+      {
+       "texto": "fear",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "So, if I [understand] correctly, you're asking about the costs.",
+     "opcoes": [
+      {
+       "texto": "understanding",
+       "certa": false
+      },
+      {
+       "texto": "to understand",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Does that [answer] your question?",
+     "opcoes": [
+      {
+       "texto": "respond",
+       "certa": false
+      },
+      {
+       "texto": "reply",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You don't know the exact figure. The best answer:",
+     "opcoes": [
+      {
+       "texto": "I'm afraid I don't have that figure with me. I'll get back to you on that by Friday.",
+       "certa": true
+      },
+      {
+       "texto": "Er… maybe two thousand? Or three?",
+       "certa": false
+      },
+      {
+       "texto": "That's not an important question.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Someone asks about the costs, but your costs slide comes later. You say:",
+     "opcoes": [
+      {
+       "texto": "Can I come back to that at the end? I'll cover it in the costs section.",
+       "certa": true
+      },
+      {
+       "texto": "I don't want to answer that.",
+       "certa": false
+      },
+      {
+       "texto": "The costs are a secret.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Vou dar-lhe uma resposta sobre isso até sexta.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I'll get back to you on that by Friday.",
+       "certa": true
+      },
+      {
+       "texto": "I'll return you the answer until Friday.",
+       "certa": false
+      },
+      {
+       "texto": "I'll give you a feedback until Friday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Why is \"So, if I understand correctly, you're asking…\" useful?",
+     "opcoes": [
+      {
+       "texto": "You check the question, and you get time to think.",
+       "certa": true
+      },
+      {
+       "texto": "You avoid answering.",
+       "certa": false
+      },
+      {
+       "texto": "You change the subject.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Deixe-me pensar nisso por um momento.",
+     "resposta": "Let me think about that for a moment.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Sílvia. Why should we pay nine hundred dollars a month for a satellite we hardly use?",
+     "enunciado": "What is Sílvia's question about?",
+     "opcoes": [
+      {
+       "texto": "the monthly cost of the satellite",
+       "certa": true
+      },
+      {
+       "texto": "the customs paperwork",
+       "certa": false
+      },
+      {
+       "texto": "the timeline",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. Don't guess. A wrong number is much worse than \"I'll get back to you\".",
+     "enunciado": "What is Lerato's advice?",
+     "opcoes": [
+      {
+       "texto": "Don't guess a number.",
+       "certa": true
+      },
+      {
+       "texto": "Always give a number.",
+       "certa": false
+      },
+      {
+       "texto": "Never answer questions.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "That's a good question. Let me think about that for a moment.",
+     "enunciado": "Ouça e repita, com a voz calma e a descer."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You presented a plan to move your office. A colleague asks: \"Why move now? The rent is going up, and nobody wants to travel further.\" Answer: gain time, check the question, give two reasons, and check your answer.",
+     "frase": "That's a good question",
+     "resposta": "That's a good question. So, you're asking why we're moving now, when it costs more. First, our building has no parking, which means clients arrive late. Second, the new one is next to the bus station, so most of us will travel less. Does that answer your question?",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "In a meeting, someone asks you what the training will cost next year. You don't know. Answer politely and promise to come back with the figure.",
+     "frase": "get back to you",
+     "resposta": "Thank you for asking. I'm afraid I don't have next year's figure with me, because the school is still preparing the prices. I'll check with them and get back to you on that by Thursday.",
+     "contexto": "Admitir e prometer voltar."
+    }
+   ]
+  },
+  {
+   "codigo": "2E",
+   "titulo": "Slides and data",
+   "aula": "2E",
+   "objectivo": "Palavras de diapositivos e dados, números aproximados, ênfase; graphic e adequate.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "slide",
+       "b": "diapositivo"
+      },
+      {
+       "a": "pie chart",
+       "b": "gráfico circular"
+      },
+      {
+       "a": "bar chart",
+       "b": "gráfico de barras"
+      },
+      {
+       "a": "findings",
+       "b": "resultados de um estudo"
+      },
+      {
+       "a": "handout",
+       "b": "documento entregue ao público"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd like to [draw] your attention to this figure.",
+     "opcoes": [
+      {
+       "texto": "pull",
+       "certa": false
+      },
+      {
+       "texto": "take",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[On] average, the plant loses less than an hour a month.",
+     "opcoes": [
+      {
+       "texto": "In",
+       "certa": false
+      },
+      {
+       "texto": "By",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Thirty-one hours is just [over] thirty.",
+     "opcoes": [
+      {
+       "texto": "under",
+       "certa": false
+      },
+      {
+       "texto": "up",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Nineteen percent is just [under] twenty percent.",
+     "opcoes": [
+      {
+       "texto": "over",
+       "certa": false
+      },
+      {
+       "texto": "down",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"O gráfico mostra as vendas.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The chart shows the sales.",
+       "certa": true
+      },
+      {
+       "texto": "The graphic shows the sales.",
+       "certa": false
+      },
+      {
+       "texto": "The graphical shows the sales.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: graphic = visual, de design, ou chocante."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"uma solução adequada para a central\" em inglês:",
+     "opcoes": [
+      {
+       "texto": "a suitable solution for the plant",
+       "certa": true
+      },
+      {
+       "texto": "an adequate solution for the plant",
+       "certa": false
+      },
+      {
+       "texto": "an adequated solution for the plant",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: adequate = suficiente, mas só à justa."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The budget is adequate.\" This means…",
+     "opcoes": [
+      {
+       "texto": "It's enough, but only just.",
+       "certa": true
+      },
+      {
+       "texto": "It's perfect.",
+       "certa": false
+      },
+      {
+       "texto": "It's far too big.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "About 26 people out of 100:",
+     "opcoes": [
+      {
+       "texto": "roughly a quarter",
+       "certa": true
+      },
+      {
+       "texto": "roughly a third",
+       "certa": false
+      },
+      {
+       "texto": "roughly half",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. On average, the plant now loses less than an hour a month.",
+     "enunciado": "How much downtime does the plant have now, on average?",
+     "opcoes": [
+      {
+       "texto": "less than an hour a month",
+       "certa": true
+      },
+      {
+       "texto": "about thirty hours a month",
+       "certa": false
+      },
+      {
+       "texto": "one day a month",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "In December, the downtime fell to… one hour.",
+     "enunciado": "Ouça e repita, com uma pausa antes de \"one hour\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Present one slide about your work, your studies or your town, with three numbers. Say what kind of chart it is, draw attention to one figure, and use approximate numbers.",
+     "frase": "draw your attention",
+     "resposta": "This pie chart shows how our students travel to school. Roughly half come by taxi, about a quarter walk, and just under twenty percent come by car. I'd like to draw your attention to this figure: only five percent come by bus. That's why we want a new bus line.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How many slides should a ten-minute presentation have? Why?",
+     "frase": "because",
+     "resposta": "About eight, I think, because each slide needs at least a minute. With forty slides, the speaker runs and nobody remembers anything. One idea per slide is enough.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "2F",
+   "titulo": "Real English: Three openings",
+   "aula": "2F",
+   "objectivo": "Avaliar três aberturas de apresentações, com sotaques diferentes.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Tobias. Sorry, I'm a bit nervous. I have forty-two slides, so I'll try to go fast.",
+     "enunciado": "How many slides does Tobias have?",
+     "opcoes": [
+      {
+       "texto": "forty-two",
+       "certa": true
+      },
+      {
+       "texto": "twelve",
+       "certa": false
+      },
+      {
+       "texto": "four",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Aïcha. This happened in my village, in Senegal, eleven years ago. That night, I decided to work in energy.",
+     "enunciado": "What did Aïcha decide that night?",
+     "opcoes": [
+      {
+       "texto": "to work in energy",
+       "certa": true
+      },
+      {
+       "texto": "to become a nurse",
+       "certa": false
+      },
+      {
+       "texto": "to leave her village",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Aïcha. Today, I'd like to show you how forty villages now have power all night.",
+     "enunciado": "How many villages have power all night now?",
+     "opcoes": [
+      {
+       "texto": "forty",
+       "certa": true
+      },
+      {
+       "texto": "fourteen",
+       "certa": false
+      },
+      {
+       "texto": "four",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Martin. Here's a number: thirty-seven percent. That's roughly how much power some plants lose before it reaches anyone's home.",
+     "enunciado": "What is Martin's first number?",
+     "opcoes": [
+      {
+       "texto": "thirty-seven percent",
+       "certa": true
+      },
+      {
+       "texto": "forty-seven percent",
+       "certa": false
+      },
+      {
+       "texto": "seventy-three percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Martin started well, but then I got lost. CAPEX, OPEX, LCOE… I didn't understand a word.",
+     "enunciado": "Why did Nuno get lost?",
+     "opcoes": [
+      {
+       "texto": "Martin used too much jargon.",
+       "certa": true
+      },
+      {
+       "texto": "Martin spoke too quietly.",
+       "certa": false
+      },
+      {
+       "texto": "The video stopped.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. Your board is the same: Celeste is a lawyer, not an engineer.",
+     "enunciado": "What does Lerato say about Celeste?",
+     "opcoes": [
+      {
+       "texto": "She's a lawyer, not an engineer.",
+       "certa": true
+      },
+      {
+       "texto": "She's an engineer.",
+       "certa": false
+      },
+      {
+       "texto": "She doesn't speak English.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which opening was the strongest?",
+     "opcoes": [
+      {
+       "texto": "Aïcha's: a story, a pause, the purpose and the parts",
+       "certa": true
+      },
+      {
+       "texto": "Tobias's: an apology and forty-two slides",
+       "certa": false
+      },
+      {
+       "texto": "Martin's: a number and a lot of jargon",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "What was good about Martin's opening?",
+     "opcoes": [
+      {
+       "texto": "the first number",
+       "certa": true
+      },
+      {
+       "texto": "the jargon",
+       "certa": false
+      },
+      {
+       "texto": "the number of slides",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Imagine you are a nurse in a small clinic.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'll start with the problem, move on to our solution, and finish with three lessons.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague is going to speak at a conference. Tell them which of the three openings was the best, which was the worst, and give three pieces of advice.",
+     "frase": "The best opening",
+     "resposta": "The best opening was Aïcha's. She started with a story about a clinic, which made everyone listen, and then she gave the purpose and the three parts. The worst was Tobias: he apologised and had forty-two slides. My advice: start with a picture, give an outline, and avoid jargon.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Would you start a work presentation with a personal story? Why, or why not?",
+     "frase": "because",
+     "resposta": "Sometimes, yes, because people remember stories more than numbers. But it must be short and connected to the topic. For a very formal board, I'd start with one strong number instead.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "2G",
+   "titulo": "Work & Life: The proposal",
+   "aula": "2G",
+   "objectivo": "Apresentar uma proposta, responder a três perguntas e explicar em inglês uma tabela em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Nuno opens with: \"Imagine it's a Sunday in September, and a sandstorm hits your plant.\" Why?",
+     "opcoes": [
+      {
+       "texto": "to give the board a picture they'll remember",
+       "certa": true
+      },
+      {
+       "texto": "to apologise for the problem",
+       "certa": false
+      },
+      {
+       "texto": "to talk about the weather forecast",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The table says: \"Opção A: total 412 000 dólares.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "Option A costs four hundred and twelve thousand dollars in total.",
+       "certa": true
+      },
+      {
+       "texto": "Option A costs four hundred twelve mil dollars in total.",
+       "certa": false
+      },
+      {
+       "texto": "Option A costs four hundreds and twelve thousands dollars.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The table says: \"Instalação e obra: 96 000.\" Nuno rounds it:",
+     "opcoes": [
+      {
+       "texto": "just under a hundred thousand",
+       "certa": true
+      },
+      {
+       "texto": "just over a hundred thousand",
+       "certa": false
+      },
+      {
+       "texto": "roughly ninety-six million",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The table says: \"Custo mensal: opção A 2 400; opção B 1 500.\" What is the difference, and why?",
+     "opcoes": [
+      {
+       "texto": "nine hundred dollars: the satellite",
+       "certa": true
+      },
+      {
+       "texto": "nine hundred dollars: the antennas",
+       "certa": false
+      },
+      {
+       "texto": "nine thousand dollars: the satellite",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Will you really [have installed] everything by May?",
+     "opcoes": [
+      {
+       "texto": "installed",
+       "certa": false
+      },
+      {
+       "texto": "had installed",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If the antennas were more than two weeks late, we['d] install the satellite first.",
+     "opcoes": [
+      {
+       "texto": "'ll",
+       "certa": false
+      },
+      {
+       "texto": "will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'll get back to you on that [by] Monday.",
+     "opcoes": [
+      {
+       "texto": "until",
+       "certa": false
+      },
+      {
+       "texto": "in",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Ingrid. In Namibe, the antennas were stuck in customs. Will you really have installed everything by May?",
+     "enunciado": "What is Ingrid's question about?",
+     "opcoes": [
+      {
+       "texto": "the deadline for the installation",
+       "certa": true
+      },
+      {
+       "texto": "the cost of option B",
+       "certa": false
+      },
+      {
+       "texto": "local jobs",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Celeste. How many people from Tômbwa will work on the installation?",
+     "enunciado": "What does Celeste want to know?",
+     "opcoes": [
+      {
+       "texto": "how many local people will work on the installation",
+       "certa": true
+      },
+      {
+       "texto": "how much the satellite costs",
+       "certa": false
+      },
+      {
+       "texto": "when the plant opens",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Celeste. Monday is fine. We'll make our decision by the end of the month.",
+     "enunciado": "When will the board decide?",
+     "opcoes": [
+      {
+       "texto": "by the end of the month",
+       "certa": true
+      },
+      {
+       "texto": "on Monday",
+       "certa": false
+      },
+      {
+       "texto": "next year",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "With option A, we expect less than one hour offline a month.",
+     "enunciado": "Ouça e repita, com uma pausa antes de \"less than one hour\" e o acento em \"one\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Present a proposal of your own (work, school or community): an opening with a picture or a number, the purpose, one figure, one deadline with the future perfect, and a recommendation.",
+     "frase": "recommend",
+     "resposta": "Imagine forty students waiting in the sun for a taxi. That's our school today. The purpose of this talk is to propose a school bus. Roughly half of our students spend over an hour going home. By March, we'll have bought the bus. To sum up, we recommend it, and we'd like your approval today.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain this table to an English-speaking colleague, without reading every line: \"Duas viaturas para a equipa. Modelo X: 32 000 000 Kz, 9 litros aos 100 km, garantia de 3 anos. Modelo Y: 26 500 000 Kz, 12 litros aos 100 km, garantia de 1 ano.\"",
+     "frase": "Model",
+     "resposta": "We have two cars for the team. Model X costs thirty-two million kwanzas, uses nine litres per hundred kilometres, and has a three-year guarantee. Model Y is about five and a half million cheaper, but it uses more fuel, and the guarantee is only one year.",
+     "contexto": "Mediação: o total, o que muda e o mais importante."
+    }
+   ]
+  },
+  {
+   "codigo": "2R",
+   "titulo": "Unit 2 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 2 do B2 e reciclar a unidade 1 do B2 e as unidades 8 e 10 do B1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd like to finish by [thanking] my team.",
+     "opcoes": [
+      {
+       "texto": "thank",
+       "certa": false
+      },
+      {
+       "texto": "to thank",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The price of bread rose [slightly], from 300 to 310 kwanzas.",
+     "opcoes": [
+      {
+       "texto": "slight",
+       "certa": false
+      },
+      {
+       "texto": "slightness",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "By next March, I [will have finished] my course.",
+     "opcoes": [
+      {
+       "texto": "will finish to",
+       "certa": false
+      },
+      {
+       "texto": "have finished",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[By] the time you arrive, we'll have eaten.",
+     "opcoes": [
+      {
+       "texto": "Until",
+       "certa": false
+      },
+      {
+       "texto": "When will",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Prices rose sharply last year.",
+       "certa": true
+      },
+      {
+       "texto": "Prices raised sharply last year.",
+       "certa": false
+      },
+      {
+       "texto": "Prices rose sharp last year.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You don't know the answer to a question. The best reply:",
+     "opcoes": [
+      {
+       "texto": "I'm afraid I don't have that information with me. I'll get back to you by Monday.",
+       "certa": true
+      },
+      {
+       "texto": "Maybe. I don't know. Next question.",
+       "certa": false
+      },
+      {
+       "texto": "Why are you asking that?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B2, unidade 1). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Celeste, who is a lawyer, chairs the board.",
+       "certa": true
+      },
+      {
+       "texto": "Celeste, that is a lawyer, chairs the board.",
+       "certa": false
+      },
+      {
+       "texto": "Celeste who is a lawyer, chairs the board.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 10). \"Ele devia ter dito que não sabia.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "He should have said he didn't know.",
+       "certa": true
+      },
+      {
+       "texto": "He should said he didn't know.",
+       "certa": false
+      },
+      {
+       "texto": "He must have say he didn't know.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 8). Complete: \"This time next year, we'll ___ the control room.\"",
+     "opcoes": [
+      {
+       "texto": "be finishing",
+       "certa": true
+      },
+      {
+       "texto": "finishing",
+       "certa": false
+      },
+      {
+       "texto": "be finish",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Isto leva-me à parte mais importante.",
+     "resposta": "This brings me to the most important part.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. By the time the plant opens, we'll have tested the network for three months.",
+     "enunciado": "For how long will they have tested the network?",
+     "opcoes": [
+      {
+       "texto": "three months",
+       "certa": true
+      },
+      {
+       "texto": "three weeks",
+       "certa": false
+      },
+      {
+       "texto": "three years",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Present a plan: open it, describe one figure with a trend, give one deadline with the future perfect, and close with a recommendation.",
+     "frase": "To sum up",
+     "resposta": "Good morning. The purpose of this talk is to propose a weekly English class. Last year, our client calls in English rose sharply, by forty percent. By June, we'll have trained twenty people. To sum up, we recommend one class a week, and we'd like your approval today.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "At the end of your presentation, someone asks: \"Isn't this too expensive?\" Gain time, check the question, answer, and check your answer.",
+     "frase": "Does that answer your question",
+     "resposta": "That's a fair question. So, you're asking if the cost is too high. It costs about two thousand dollars a year, which is less than one lost client. And we'll see the results by June. Does that answer your question?",
+     "contexto": "Responder a uma pergunta difícil."
+    }
+   ]
+  }
+ ]
+}

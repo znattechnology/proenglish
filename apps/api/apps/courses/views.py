@@ -27,7 +27,7 @@ from .serializers import (
     CourseSectionSerializer, CourseSectionCreateSerializer,
     ChapterSerializer, ChapterCreateSerializer, ChapterCommentSerializer,
     TransactionSerializer, TransactionCreateSerializer,
-    UserCourseProgressSerializer, UserCourseProgressUpdateSerializer,
+    UserCourseProgressSerializer,
     ChapterProgressSerializer, CourseEnrollmentSerializer,
     ChapterResourceSerializer, ChapterResourceCreateSerializer,
     ChapterQuizSerializer, ChapterQuizCreateSerializer,
@@ -111,7 +111,10 @@ class CourseListCreateView(generics.ListCreateAPIView):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        course = serializer.save()
+        # Passa pelo perform_create: é aí que se exige o papel de professor e se fixa
+        # course_type='video' (antes, um estudante conseguia criar cursos por aqui).
+        self.perform_create(serializer)
+        course = serializer.instance
         
         # Return course with full details
         response_serializer = CourseDetailSerializer(course, context={'request': request})
@@ -264,7 +267,9 @@ def create_transaction(request):
     bloqueio = ciclo.bloqueio_inscricao(request.user, course)
     if bloqueio:
         return Response(corpo_erro(bloqueio[1], bloqueio[0]), status=bloqueio[2])
-    if not course.user_has_access(request.user):
+    # Sem o plano só nos cursos com unidades de amostra (apps/courses/amostra.py).
+    from apps.courses import amostra
+    if not amostra.pode_inscrever(request.user, course):
         return Response(corpo_erro('Não tem a subscrição necessária para este curso.', 'SUBSCRIPTION_REQUIRED'),
                         status=status.HTTP_403_FORBIDDEN)
     
@@ -382,7 +387,7 @@ def get_user_enrolled_courses(request, userId):
         from apps.users.models import User
         user = User.objects.get(id=userId)
     except User.DoesNotExist:
-        return Response({'error': 'Usuário não encontrado'}, status=404)
+        return Response({'error': 'Utilizador não encontrado'}, status=404)
     
     # Get enrolled courses - only video courses
     enrollments = CourseEnrollment.objects.filter(user=user).select_related('course')
@@ -418,7 +423,7 @@ def get_user_course_progress(request, userId, courseId):
         course = Course.objects.get(id=courseId)
         progress = UserCourseProgress.objects.get(user=user, course=course)
     except (User.DoesNotExist, Course.DoesNotExist):
-        return Response({'error': 'Usuário ou curso não encontrado'}, status=404)
+        return Response({'error': 'Utilizador ou curso não encontrado'}, status=404)
     except UserCourseProgress.DoesNotExist:
         return Response({'error': 'Progresso do curso não encontrado para este utilizador'}, status=404)
     
@@ -427,55 +432,6 @@ def get_user_course_progress(request, userId, courseId):
     return Response({
         'message': 'Progresso do curso obtido com sucesso',
         'data': serializer.data
-    })
-
-
-@api_view(['PUT'])
-@permission_classes([permissions.IsAuthenticated])
-def update_user_course_progress(request, userId, courseId):
-    """
-    Update user progress in a specific course.
-    
-    PUT /api/v1/courses/users/{userId}/progress/{courseId}/
-    
-    Maps to Express: PUT /users/course-progress/:userId/:courseId
-    """
-    # userId and courseId are already UUID objects from Django URL converter
-    # Check if user can update this data
-    if request.user.id != userId:
-        from rest_framework.exceptions import PermissionDenied
-        raise PermissionDenied("Acesso negado")
-    
-    try:
-        from apps.users.models import User
-        user = User.objects.get(id=userId)
-        course = Course.objects.get(id=courseId)
-        progress = UserCourseProgress.objects.get(user=user, course=course)
-    except (User.DoesNotExist, Course.DoesNotExist):
-        return Response({'error': 'Usuário ou curso não encontrado'}, status=404)
-    except UserCourseProgress.DoesNotExist:
-        # Create progress if it doesn't exist
-        progress = UserCourseProgress.objects.create(
-            user=user,
-            course=course,
-            enrollmentDate=timezone.now(),
-            overallProgress=0.0
-        )
-    
-    serializer = UserCourseProgressUpdateSerializer(
-        progress, 
-        data=request.data, 
-        context={'request': request}
-    )
-    serializer.is_valid(raise_exception=True)
-    updated_progress = serializer.save()
-    
-    # Return updated progress
-    response_serializer = UserCourseProgressSerializer(updated_progress)
-    
-    return Response({
-        'message': 'Progresso actualizado com sucesso',
-        'data': response_serializer.data
     })
 
 
@@ -871,173 +827,6 @@ class ChapterQuizDetailView(SemEscritaMixin, generics.RetrieveUpdateDestroyAPIVi
         return Response({
             'message': f'Quiz "{quiz_title}" apagado'
         }, status=status.HTTP_200_OK)
-
-
-class StudentQuizAttemptListCreateView(generics.ListCreateAPIView):
-    """
-    List quiz attempts for a student or create new attempt.
-    
-    GET /api/v1/courses/chapters/{chapterId}/quiz/attempts/
-    POST /api/v1/courses/chapters/{chapterId}/quiz/attempts/
-    
-    Query Parameters for GET:
-    - page: Page number (default: 1)
-    - page_size: Items per page (default: 25, max: 50)
-    - ordering: Sort order (-created_at, score, attempt_number)
-    """
-    permission_classes = [permissions.IsAuthenticated]
-    pagination_class = QuizAttemptPagination
-    
-    def get_queryset(self):
-        chapter_id = self.kwargs['chapterId']
-        
-        # Get the chapter quiz
-        try:
-            chapter_quiz = ChapterQuiz.objects.get(chapter__id=chapter_id)
-        except ChapterQuiz.DoesNotExist:
-            return StudentQuizAttempt.objects.none()
-        
-        # Students see only their attempts, teachers see all attempts
-        if self.request.user.role == 'teacher' and chapter_quiz.chapter.section.course.teacher == self.request.user:
-            return StudentQuizAttempt.objects.filter(chapter_quiz=chapter_quiz).order_by('-created_at')
-        else:
-            return StudentQuizAttempt.objects.filter(
-                chapter_quiz=chapter_quiz, 
-                student=self.request.user
-            ).order_by('-created_at')
-    
-    def get_serializer_class(self):
-        if self.request.method == 'POST':
-            return StudentQuizAttemptCreateSerializer
-        return StudentQuizAttemptSerializer
-    
-    def perform_create(self, serializer):
-        chapter_id = self.kwargs['chapterId']
-        chapter_quiz = get_object_or_404(ChapterQuiz, chapter__id=chapter_id)
-        
-        # Check if quiz is active
-        if not chapter_quiz.is_active:
-            from rest_framework.exceptions import ValidationError
-            raise ValidationError("Este quiz não está ativo")
-        
-        # Check if student exceeded max attempts
-        student_attempts = StudentQuizAttempt.objects.filter(
-            student=self.request.user,
-            chapter_quiz=chapter_quiz
-        ).count()
-        
-        if student_attempts >= chapter_quiz.max_attempts:
-            from rest_framework.exceptions import ValidationError
-            raise ValidationError(f"Limite máximo de {chapter_quiz.max_attempts} tentativas excedido")
-        
-        attempt = serializer.save(chapter_quiz=chapter_quiz)
-        
-        # Update quiz statistics
-        with transaction.atomic():
-            chapter_quiz.total_attempts += 1
-            
-            if attempt.is_completed:
-                if attempt.is_passed:
-                    chapter_quiz.total_completions += 1
-                
-                # Update average score
-                all_attempts = StudentQuizAttempt.objects.filter(
-                    chapter_quiz=chapter_quiz,
-                    is_completed=True
-                )
-                
-                if all_attempts.exists():
-                    total_score = sum([attempt.score_percentage for attempt in all_attempts])
-                    chapter_quiz.average_score = total_score / all_attempts.count()
-            
-            chapter_quiz.save()
-    
-    def list(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset())
-        serializer = self.get_serializer(queryset, many=True)
-        
-        return Response({
-            'message': 'Tentativas de quiz recuperadas com sucesso',
-            'data': serializer.data
-        })
-    
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        attempt = serializer.save()
-        
-        response_serializer = StudentQuizAttemptSerializer(attempt, context={'request': request})
-        
-        return Response({
-            'message': 'Tentativa de quiz registrada com sucesso',
-            'data': response_serializer.data
-        }, status=status.HTTP_201_CREATED)
-
-
-@api_view(['GET'])
-@permission_classes([permissions.IsAuthenticated])
-def get_student_quiz_summary(request, chapterId):
-    """
-    Get summary of student's quiz performance for a specific chapter.
-    
-    GET /api/v1/courses/chapters/{chapterId}/quiz/summary/
-    """
-    try:
-        chapter_quiz = ChapterQuiz.objects.get(chapter__id=chapterId)
-    except ChapterQuiz.DoesNotExist:
-        return Response({
-            'message': 'Quiz não encontrado para este capítulo',
-            'data': None
-        })
-    
-    # Get student's attempts
-    attempts = StudentQuizAttempt.objects.filter(
-        chapter_quiz=chapter_quiz,
-        student=request.user
-    ).order_by('-created_at')
-    
-    if not attempts.exists():
-        return Response({
-            'message': 'Nenhuma tentativa encontrada',
-            'data': {
-                'quiz_info': ChapterQuizSerializer(chapter_quiz, context={'request': request}).data,
-                'attempts_count': 0,
-                'best_score': 0,
-                'is_passed': False,
-                'attempts_remaining': chapter_quiz.max_attempts,
-                'last_attempt': None
-            }
-        })
-    
-    best_attempt = attempts.filter(is_completed=True).order_by('-score').first()
-    last_attempt = attempts.first()
-    passed_attempt = attempts.filter(is_passed=True).first()
-    
-    summary_data = {
-        'quiz_info': ChapterQuizSerializer(chapter_quiz, context={'request': request}).data,
-        'attempts_count': attempts.count(),
-        'best_score': best_attempt.score_percentage if best_attempt else 0,
-        'is_passed': bool(passed_attempt),
-        'attempts_remaining': max(0, chapter_quiz.max_attempts - attempts.count()),
-        'last_attempt': StudentQuizAttemptSerializer(last_attempt, context={'request': request}).data if last_attempt else None,
-        'best_attempt': StudentQuizAttemptSerializer(best_attempt, context={'request': request}).data if best_attempt else None
-    }
-    
-    return Response({
-        'message': 'Resumo do quiz obtido com sucesso',
-        'data': summary_data
-    })
-
-
-# =============================================================================
-# 📊 ADMIN ANALYTICS ENDPOINTS - Course Analytics and Insights
-# =============================================================================
-
-from django.db.models import Count, Avg, Sum, Q, F
-from django.db.models.functions import TruncMonth
-from django.core.cache import cache
-from datetime import datetime, timedelta
-import calendar
 
 
 def is_admin_user(user):

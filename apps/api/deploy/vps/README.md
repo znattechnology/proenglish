@@ -1,8 +1,8 @@
-# ProEnglish API no servidor mambo-labtic
+# ProEnglish (API e web) no servidor mambo-labtic
 
 Servidor `2.31.122.170` (utilizador `deploy`), partilhado com o LabTIC e O Mambo.
 A API e a sua base de dados PostgreSQL correm em Docker, em `/opt/proenglish`.
-O Caddy de `/opt/proxy` trata do HTTPS e encaminha `api.proenglish.cloud` para a API.
+O Caddy de `/opt/proxy` trata do HTTPS e encaminha o endereço da API (por agora `proenglish-api.2.31.122.170.sslip.io`; o domínio novo junta-se depois).
 
 ```
 /opt/proenglish/
@@ -15,7 +15,7 @@ O Caddy de `/opt/proxy` trata do HTTPS e encaminha `api.proenglish.cloud` para a
 | Serviço    | Imagem               | Memória | Rede               |
 |------------|----------------------|---------|--------------------|
 | `postgres` | `postgres:18-alpine` | 256 MB  | interna            |
-| `api`      | `proenglish/api`     | 512 MB  | interna + publica  |
+| `api`      | `ghcr.io/znattechnology/proenglish-api` | 512 MB  | interna + publica  |
 
 Não há nginx, certbot nem Redis: o Caddy faz o HTTPS, o WhiteNoise serve os ficheiros
 estáticos e a aplicação não usa Redis em produção.
@@ -25,13 +25,18 @@ estáticos e a aplicação não usa Redis em produção.
 ```sh
 ssh deploy@2.31.122.170
 mkdir -p /opt/proenglish && cd /opt/proenglish
-git clone <URL do repositório> app
+git clone <URL do repositório> app      # repositório privado: usar um token só de leitura
 cd app/apps/api/deploy/vps
 cp .env.example .env && chmod 600 .env
-nano .env        # POSTGRES_PASSWORD, SECRET_KEY, R2_* e as chaves copiadas da produção actual
-docker compose build api
+nano .env        # obrigatórias marcadas com * (o deploy.sh recusa avançar sem elas)
 docker compose up -d postgres
+mkdir -p /opt/proenglish/logs
 ```
+
+A imagem da API não se compila aqui: vem do GitHub Container Registry no primeiro deploy
+automático (secção 5). Para arrancar antes disso, à mão:
+`echo <token com read:packages> | docker login ghcr.io -u <utilizador> --password-stdin`
+e `./deploy.sh ghcr.io/znattechnology/proenglish-api:latest`.
 
 Nesta altura a base existe mas está vazia. **Não correr `migrate`** se os dados vêm do
 Neon: o passo 2 traz o esquema e os dados juntos.
@@ -57,14 +62,18 @@ docker exec proenglish-postgres-1 psql -U proenglish -d proenglish -c \
   "select relname, n_live_tup from pg_stat_user_tables order by n_live_tup desc limit 15"
 
 # e) Aplicar migrações que faltem e arrancar.
-docker compose run --rm api python manage.py migrate --noinput
-docker compose up -d api
+./deploy.sh ghcr.io/znattechnology/proenglish-api:latest   # migrações, API, tarefas agendadas
 ```
 
 Guardar `neon.dump` fora do servidor e apagá-lo de lá. Manter o projecto no Neon uma ou
 duas semanas sem uso, como recurso, e só depois apagá-lo.
 
 ## 3. Caddy e DNS
+
+O Caddy é o que já existe em `/opt/proxy`, partilhado: o deploy automático nunca lhe toca.
+O bloco do ProEnglish acrescenta-se uma vez. Além de encaminhar, grava o `X-Real-IP` (o IP
+real do aluno, para os limites de pedidos) e acrescenta HSTS; a API precisa de
+`TRUSTED_PROXY=True` no `.env` para o ler e para reconhecer o HTTPS.
 
 1. Acrescentar o conteúdo de `Caddyfile.snippet` a `/opt/proxy/caddy/Caddyfile`
    (fazer antes uma cópia `Caddyfile.bak-<data>`), validar e recarregar:
@@ -87,9 +96,9 @@ Pôr as chaves no `.env` (`R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`).
 
 ```sh
 /opt/proenglish/app/apps/api/deploy/vps/copia-bd.sh      # testar à mão; tem de acabar em "ok"
-crontab -e
-# 55 3 * * * /opt/proenglish/app/apps/api/deploy/vps/copia-bd.sh >> /opt/proenglish/copias.log 2>&1 # proenglish
 ```
+
+A linha do cron é instalada pelo `deploy.sh` (ver secção 6).
 
 Ficam 7 dias no servidor e 30 dias no R2. Repor uma cópia:
 
@@ -98,22 +107,88 @@ docker exec -i proenglish-postgres-1 pg_restore -U proenglish -d proenglish \
   --clean --if-exists --no-owner < /opt/proenglish/copias/proenglish-AAAA-MM-DD-HHMM.dump
 ```
 
-## 5. Deploys seguintes
+## 5. Deploy automático (GitHub Actions)
 
-Automáticos pelo workflow `api-deploy.yml` (push para `main` com alterações em `apps/api`).
-Precisa dos secrets `VPS_HOST` e `VPS_SSH_KEY` no GitHub. À mão:
+Cada push para `main` com alterações em `apps/api` corre `.github/workflows/api-deploy.yml`:
 
-```sh
-cd /opt/proenglish/app && git pull
-cd apps/api/deploy/vps
-docker compose build api
-docker compose run --rm api python manage.py migrate --noinput
-docker compose up -d api
-```
+1. **Testes** (`api-tests.yml`): se falharem, nada é publicado.
+2. **Imagem**: construída no GitHub e publicada em
+   `ghcr.io/znattechnology/proenglish-api:<commit>` (e `:latest`). O servidor não compila.
+3. **Deploy**: por SSH, actualiza o código em `/opt/proenglish/app` (só para o
+   `docker-compose.yml` e os scripts) e corre `deploy.sh <imagem>`:
+   - confirma o `.env` (obrigatórias, `TRUSTED_PROXY`, segredo do Vapi; avisa se
+     `PAGAMENTOS_SIMULADOS=True`);
+   - descarrega a imagem, aplica as migrações com ela (a API antiga continua a servir);
+   - troca a API e espera até 3 minutos que fique saudável (`/api/health/`);
+   - **se não ficar, volta à imagem anterior** e o workflow falha (as migrações não são
+     desfeitas: têm de ser sempre compatíveis com a versão anterior);
+   - instala as tarefas agendadas e apaga imagens antigas (ficam a nova e a anterior);
+   - um deploy de cada vez (a API e a web partilham o `.env`).
+4. **Verificação de fora**: `<API_URL>/api/health/` pelo Caddy (variável `API_URL` do repositório; por omissão o endereço sslip.io).
+
+Também se corre à mão em Actions > API Deploy > Run workflow.
+
+**Configurar uma vez no GitHub** (Settings do repositório):
+
+- *Secrets and variables > Actions*: `VPS_HOST` (`2.31.122.170`) e `VPS_SSH_KEY`. A chave
+  cria-se só para isto e a pública vai para `~deploy/.ssh/authorized_keys` no servidor:
+  ```sh
+  ssh-keygen -t ed25519 -f proenglish-deploy -C "github-actions proenglish" -N ""
+  ssh-copy-id -i proenglish-deploy.pub deploy@2.31.122.170
+  # conteúdo de proenglish-deploy (a privada) -> secret VPS_SSH_KEY; depois apagar o ficheiro
+  ```
+- *Environments*: criar `producao`. Opcional: "Required reviewers" para aprovar cada
+  deploy antes de correr.
+
+A imagem fica privada no GitHub (o pacote herda a visibilidade do repositório); o servidor
+entra no registo só durante o deploy, com o token temporário do workflow.
+
+**Voltar a uma versão anterior**: Actions > API Deploy > Run workflow num commit antigo, ou
+no servidor `./deploy.sh ghcr.io/znattechnology/proenglish-api:<commit>` (a imagem anterior
+está sempre guardada no servidor).
+
+## 5b. Web (Next.js)
+
+A web corre no mesmo projecto compose (serviço `web`, imagem
+`ghcr.io/znattechnology/proenglish-web`), atrás do mesmo Caddy, em
+`https://proenglish.2.31.122.170.sslip.io` enquanto não houver domínio. Substitui a Vercel.
+
+- Deploy automático: `.github/workflows/web-deploy.yml` em cada push para `main` com
+  alterações em `apps/web` (lint, testes e build -> imagem -> `deploy.sh web <imagem>`).
+- Os endereços públicos ficam dentro da imagem (`NEXT_PUBLIC_*`): mudar de endereço pede um
+  deploy novo, com as variáveis `WEB_URL` e `API_URL` do repositório no GitHub.
+- Os pedidos do servidor da web à API vão pela rede interna (`http://proenglish-api:8000`),
+  por isso `proenglish-api` está em `ALLOWED_HOSTS`.
+- A API aceita a web por `CORS_ALLOWED_ORIGINS`, `CSRF_TRUSTED_ORIGINS` e `FRONTEND_URL`.
+- Memória: 384 MB no máximo.
+
+**Domínio novo** (web e API): juntar os nomes às duas linhas do Caddy, a `ALLOWED_HOSTS`,
+`CORS_ALLOWED_ORIGINS`, `CSRF_TRUSTED_ORIGINS`, `FRONTEND_URL` e `BACKEND_BASE_URL` no `.env`;
+definir `WEB_URL` e `API_URL` no GitHub e fazer deploy da web e da API.
+
+## 6. Tarefas agendadas
+
+Estão em `crontab.txt` e o `deploy.sh` instala-as no crontab do utilizador `deploy`, entre
+`# >>> proenglish` e `# <<< proenglish`, sem tocar nas dos outros projectos. Para mudar uma
+hora, editar `crontab.txt` e fazer deploy. Cada tarefa corre dentro da API em execução
+(`tarefa.sh`) e regista em `/opt/proenglish/logs/cron.log`.
+
+| Quando (UTC) | Comando | O que faz |
+|---|---|---|
+| de 5 em 5 min | `verificar_conversas_vapi` | cobra e avalia as conversas por voz; retoma avaliações paradas |
+| de 15 em 15 min | `enviar_lembretes_meta` | lembrete da meta diária |
+| de hora a hora | `terminar_testes` | avisos e fim dos testes grátis |
+| de hora a hora | `enviar_lembretes_renovacao` | renovações e subscrições terminadas |
+| de hora a hora | `fechar_competicoes` | início e fecho das competições |
+| de hora a hora | `transcrever_aulas` | transcrições que ficaram por fazer |
+| dia 1, 02:00 | `fechar_ganhos` | ganhos mensais dos professores |
+| 03:30 | `apagar_gravacoes_exames` | gravações dos exames com mais de 12 meses |
+| 03:55 | `copia-bd.sh` | cópia da base (servidor e R2) |
 
 ## Cuidados
 
 - **Nunca `docker compose down -v`**: o `-v` apaga o volume com a base de dados.
+- Nunca `docker image prune -a` nem `docker system prune`: o servidor é partilhado.
 - Os limites de memória estão dimensionados para o servidor de 4 GB partilhado. Subir
   workers ou `shared_buffers` só depois de subir a máquina.
 - Ficheiros enviados pelos utilizadores: com `USE_S3=True` vão para o S3; caso contrário

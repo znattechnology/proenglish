@@ -1,0 +1,1466 @@
+{
+ "unidade": "C1.2 · Unit 7 — Science and change",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "7A",
+   "titulo": "We were going to…",
+   "aula": "7A",
+   "objectivo": "Falar de planos do passado com o futuro no passado.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The facility was to [have] opened in June. It's now October.",
+     "opcoes": [
+      {
+       "texto": "had",
+       "certa": false
+      },
+      {
+       "texto": "has",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The supplier was [going] to ship the containers in March.",
+     "opcoes": [
+      {
+       "texto": "go",
+       "certa": false
+      },
+      {
+       "texto": "gone",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Our system was [about] to be installed when the client changed the software.",
+     "opcoes": [
+      {
+       "texto": "around",
+       "certa": false
+      },
+      {
+       "texto": "near",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "They thought it [would] be easier to explain later.",
+     "opcoes": [
+      {
+       "texto": "will",
+       "certa": false
+      },
+      {
+       "texto": "was being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I knew it would be difficult.",
+       "certa": true
+      },
+      {
+       "texto": "I knew it will be difficult.",
+       "certa": false
+      },
+      {
+       "texto": "I knew it would to be difficult.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The facility was to have opened in June.\" This means…",
+     "opcoes": [
+      {
+       "texto": "It was planned for June, but it did not open then.",
+       "certa": true
+      },
+      {
+       "texto": "It opened in June.",
+       "certa": false
+      },
+      {
+       "texto": "It will open next June.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I was about to leave when the phone rang.\" When did the phone ring?",
+     "opcoes": [
+      {
+       "texto": "just before I left",
+       "certa": true
+      },
+      {
+       "texto": "after I left",
+       "certa": false
+      },
+      {
+       "texto": "the next day",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which form is the most formal, typical of reports?",
+     "opcoes": [
+      {
+       "texto": "was to have opened",
+       "certa": true
+      },
+      {
+       "texto": "was gonna open",
+       "certa": false
+      },
+      {
+       "texto": "was going to open",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Íamos fazer uma reunião em Abril.",
+     "resposta": "We were going to hold a meeting in April.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. We were going to hold a meeting in Mokgalo in April. Marula postponed it.",
+     "enunciado": "What happened to the community meeting planned for April?",
+     "opcoes": [
+      {
+       "texto": "Marula postponed it.",
+       "certa": true
+      },
+      {
+       "texto": "It took place in April.",
+       "certa": false
+      },
+      {
+       "texto": "Nobody came.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. I knew this project would surprise us. I didn't think it would be the people, not the batteries.",
+     "enunciado": "What surprised Thandi?",
+     "opcoes": [
+      {
+       "texto": "the people, not the batteries",
+       "certa": true
+      },
+      {
+       "texto": "the price of batteries",
+       "certa": false
+      },
+      {
+       "texto": "the supplier",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "We were going to hold a meeting in April.",
+     "enunciado": "Ouça e repita: primeiro a forma rápida, depois a forma completa."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell the story of a plan that changed: what was going to happen, what was supposed to happen, what you thought would happen, and what actually happened.",
+     "frase": "was going to",
+     "resposta": "The new road to my village was to have opened in 2027. The company was going to finish it in two years, and we thought it would change our lives. Then the money ran out. It opened last year, four years late, and it did change our lives.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should a company talk to a community before a project starts, even when it has nothing definite to say? Why?",
+     "frase": "because",
+     "resposta": "Yes, because silence creates rumours. Even if the plan isn't ready, people want to know who to ask. If Marula had talked to Mokgalo in April, there would be fewer rumours now.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "7B",
+   "titulo": "On the verge of…",
+   "aula": "7B",
+   "objectivo": "Falar do futuro próximo e provável com nuance.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The facility is [due] to open on the fifteenth of October.",
+     "opcoes": [
+      {
+       "texto": "set of",
+       "certa": false
+      },
+      {
+       "texto": "verge",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Battery prices are [set] to fall another fifteen percent.",
+     "opcoes": [
+      {
+       "texto": "put",
+       "certa": false
+      },
+      {
+       "texto": "sat",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Some labs are on the verge [of] a breakthrough.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "They're [bound] to ask about fire.",
+     "opcoes": [
+      {
+       "texto": "bind",
+       "certa": false
+      },
+      {
+       "texto": "bond",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "We are on the verge of finishing.",
+       "certa": true
+      },
+      {
+       "texto": "We are on the verge to finish.",
+       "certa": false
+      },
+      {
+       "texto": "We are on verge finishing.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The timetable says the plane lands at six. Which is best?",
+     "opcoes": [
+      {
+       "texto": "The plane is due to land at six.",
+       "certa": true
+      },
+      {
+       "texto": "The plane is on the verge of landing at six.",
+       "certa": false
+      },
+      {
+       "texto": "The plane is set to land at six, probably.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Prices are set to fall.\" This means prices…",
+     "opcoes": [
+      {
+       "texto": "will very probably fall",
+       "certa": true
+      },
+      {
+       "texto": "fell last year",
+       "certa": false
+      },
+      {
+       "texto": "are fixed by law",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Sodium batteries are unlikely to be common for years.\" The speaker thinks…",
+     "opcoes": [
+      {
+       "texto": "they will probably not be common soon",
+       "certa": true
+      },
+      {
+       "texto": "they are common now",
+       "certa": false
+      },
+      {
+       "texto": "they will certainly be common next year",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Os técnicos estão prestes a terminar o curso.",
+     "resposta": "The trainees are about to finish the course.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lindiwe. Nothing on the verge of a breakthrough is on the market. Lithium iron phosphate is what works today.",
+     "enunciado": "What is Lindiwe's advice about sodium batteries?",
+     "opcoes": [
+      {
+       "texto": "Use what works today; sodium is not on the market yet.",
+       "certa": true
+      },
+      {
+       "texto": "Wait for sodium.",
+       "certa": false
+      },
+      {
+       "texto": "Buy sodium batteries now.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lindiwe. The facility won't make their bills cheaper. Prices are decided by the utility and the regulator.",
+     "enunciado": "Who decides electricity prices, according to Lindiwe?",
+     "opcoes": [
+      {
+       "texto": "the utility and the regulator",
+       "certa": true
+      },
+      {
+       "texto": "Mopane",
+       "certa": false
+      },
+      {
+       "texto": "Marula Power",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It's due to open in October. Prices are set to fall. They're on the verge of a breakthrough.",
+     "enunciado": "Ouça e repita, com o acento em \"due\", \"set\" e \"verge\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Talk about the near future of your field, town or a technology: one thing due to happen, one set to happen, one about to happen, and one breakthrough people are on the verge of.",
+     "frase": "on the verge of",
+     "resposta": "In my town, the new water plant is due to open in March. Water bills are set to rise a little. A new bus company is about to start. And researchers are said to be on the verge of a cheaper malaria vaccine, which is bound to change our province.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should we wait for better technology, or use the technology we have now? Why?",
+     "frase": "because",
+     "resposta": "Use what we have now, because the perfect technology is always five years away. If we wait, we lose those five years. Of course, it makes sense to choose systems we can upgrade later.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "7C",
+   "titulo": "Think of it as…",
+   "aula": "7C",
+   "objectivo": "Explicar uma ideia técnica com analogia, definição simples, exemplo e verificação.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Think [of] it as a water tank on your roof.",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "about it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It works a bit [like] a smoke alarm.",
+     "opcoes": [
+      {
+       "texto": "alike",
+       "certa": false
+      },
+      {
+       "texto": "like as",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Put [simply], the batteries keep some electricity for the evening.",
+     "opcoes": [
+      {
+       "texto": "simple",
+       "certa": false
+      },
+      {
+       "texto": "simplify",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "That's what engineers [call] \"the peak\".",
+     "opcoes": [
+      {
+       "texto": "name as",
+       "certa": false
+      },
+      {
+       "texto": "say",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the best start when you explain batteries to a resident?",
+     "opcoes": [
+      {
+       "texto": "Think of it as a water tank on your roof.",
+       "certa": true
+      },
+      {
+       "texto": "It is a sixteen-container lithium iron phosphate battery energy storage system.",
+       "certa": false
+      },
+      {
+       "texto": "It is too technical to explain.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"…a bit like a smoke alarm, except that it also puts out the fire.\" \"Except that\" is used to…",
+     "opcoes": [
+      {
+       "texto": "show where the analogy stops",
+       "certa": true
+      },
+      {
+       "texto": "change the subject",
+       "certa": false
+      },
+      {
+       "texto": "end the conversation",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is a good way to check that the listener understood?",
+     "opcoes": [
+      {
+       "texto": "Does that make sense?",
+       "certa": true
+      },
+      {
+       "texto": "Is that clear or are you slow?",
+       "certa": false
+      },
+      {
+       "texto": "Any stupid questions?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Nuno's first explanation failed because…",
+     "opcoes": [
+      {
+       "texto": "it had too much jargon before the main idea",
+       "certa": true
+      },
+      {
+       "texto": "it was too short",
+       "certa": false
+      },
+      {
+       "texto": "it used an analogy",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Deixe-me dizer isto de outra maneira.",
+     "resposta": "Let me put it another way.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. During the day, the sun fills the tank. In the evening, when everyone gets home, you use what's in the tank.",
+     "enunciado": "In Nuno's analogy, what fills the tank?",
+     "opcoes": [
+      {
+       "texto": "the sun",
+       "certa": true
+      },
+      {
+       "texto": "the rain",
+       "certa": false
+      },
+      {
+       "texto": "the batteries",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Each container is separate, with its own sensors. A problem in one doesn't spread to the others.",
+     "enunciado": "What does Nuno say about a problem in one container?",
+     "opcoes": [
+      {
+       "texto": "It doesn't spread to the others.",
+       "certa": true
+      },
+      {
+       "texto": "It stops the whole facility.",
+       "certa": false
+      },
+      {
+       "texto": "It is impossible.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Think of it as a water tank. During the day, the sun fills the tank. In the evening, you use what's in it.",
+     "enunciado": "Ouça e repita, com frases curtas e pausas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain something complex from your job, studies or daily life to a twelve-year-old: one analogy, one simple definition, one example, and a check.",
+     "frase": "Think of",
+     "resposta": "Think of a company's accounts as a family's notebook of money: everything that comes in and goes out. Put simply, my job is to make sure the notebook tells the truth. If the company buys a car, I write it down. Does that make sense?",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it the expert's job to explain, or the listener's job to learn? Why?",
+     "frase": "job",
+     "resposta": "Mostly the expert's job, because the expert knows where the difficult parts are. But the listener's job is to ask when something isn't clear. Good explanations need both.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "7D",
+   "titulo": "Energy and science",
+   "aula": "7D",
+   "objectivo": "Vocabulário de energia e ciência, fala ligada rápida; experience e physician.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "storage",
+       "b": "armazenagem"
+      },
+      {
+       "a": "the grid",
+       "b": "a rede eléctrica"
+      },
+      {
+       "a": "emissions",
+       "b": "emissões"
+      },
+      {
+       "a": "findings",
+       "b": "resultados"
+      },
+      {
+       "a": "a breakthrough",
+       "b": "um avanço decisivo"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The team [carried] out research for five years.",
+     "opcoes": [
+      {
+       "texto": "made",
+       "certa": false
+      },
+      {
+       "texto": "did out",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The facility stores energy in the day and [releases] it in the evening.",
+     "opcoes": [
+      {
+       "texto": "relieves",
+       "certa": false
+      },
+      {
+       "texto": "leases",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "A peer-[reviewed] study is checked by other scientists.",
+     "opcoes": [
+      {
+       "texto": "viewed",
+       "certa": false
+      },
+      {
+       "texto": "revised of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Renewables are replacing fossil [fuels].",
+     "opcoes": [
+      {
+       "texto": "fuel oils",
+       "certa": false
+      },
+      {
+       "texto": "fuelings",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Fizemos uma experiência no laboratório.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "We did an experiment in the lab.",
+       "certa": true
+      },
+      {
+       "texto": "We did an experience in the lab.",
+       "certa": false
+      },
+      {
+       "texto": "We made an experienced in the lab.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: experience = experiência de vida."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Ela é física\" (cientista). Em inglês:",
+     "opcoes": [
+      {
+       "texto": "She's a physicist.",
+       "certa": true
+      },
+      {
+       "texto": "She's a physician.",
+       "certa": false
+      },
+      {
+       "texto": "She's a physical.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: physician = médico."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A physician\" is…",
+     "opcoes": [
+      {
+       "texto": "a doctor of medicine",
+       "certa": true
+      },
+      {
+       "texto": "a scientist who studies physics",
+       "certa": false
+      },
+      {
+       "texto": "a sports teacher",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which verb is the most careful when you report a single study?",
+     "opcoes": [
+      {
+       "texto": "The study suggests that…",
+       "certa": true
+      },
+      {
+       "texto": "The study proves forever that…",
+       "certa": false
+      },
+      {
+       "texto": "The study is the truth that…",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lindiwe. I dunno if they're gonna finish by October. Didja ask the supplier?",
+     "enunciado": "What does Lindiwe want to know?",
+     "opcoes": [
+      {
+       "texto": "if Nuno asked the supplier",
+       "certa": true
+      },
+      {
+       "texto": "if Nuno wants a coffee",
+       "certa": false
+      },
+      {
+       "texto": "when the meeting is",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I want to see it. We're going to start. Did you call him? I don't know.",
+     "enunciado": "Ouça e repita as formas completas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe one change in energy, technology or science in your country in the last ten years, with at least five words from this lesson and one careful verb of science.",
+     "frase": "suggest",
+     "resposta": "Ten years ago, almost every shop in my street had a diesel generator. Now, many use solar panels with battery storage. Emissions are lower, and studies suggest solar is now cheaper than diesel for small shops. The grid is still weak, but storage helps.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Who should pay for the energy transition: governments, companies or consumers?",
+     "frase": "should",
+     "resposta": "All three, but not equally. Governments should pay for the grid, companies for their own emissions, and consumers only what they can afford. Poor families shouldn't pay the most.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "7E",
+   "titulo": "Real English: The science slot",
+   "aula": "7E",
+   "objectivo": "Seguir uma explicação científica na rádio e separar o que se sabe do que não se sabe.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Dr Nomvula Khoza. Lithium is expensive and found in only a few places. Sodium, which is half of ordinary salt, is everywhere.",
+     "enunciado": "Why is sodium interesting, according to Dr Khoza?",
+     "opcoes": [
+      {
+       "texto": "It's everywhere, unlike lithium.",
+       "certa": true
+      },
+      {
+       "texto": "It's lighter than lithium.",
+       "certa": false
+      },
+      {
+       "texto": "It's already in all batteries.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Dr Khoza. The problem was that sodium batteries wore out too quickly. Think of it as a sponge that tears a little every time you squeeze it.",
+     "enunciado": "What was the problem with old sodium batteries?",
+     "opcoes": [
+      {
+       "texto": "They wore out too quickly.",
+       "certa": true
+      },
+      {
+       "texto": "They were too heavy.",
+       "certa": false
+      },
+      {
+       "texto": "They caught fire.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Dr Khoza. In our experiments, our cells kept ninety percent of their capacity after four thousand cycles.",
+     "enunciado": "How much capacity did the cells keep after four thousand cycles?",
+     "opcoes": [
+      {
+       "texto": "ninety percent",
+       "certa": true
+      },
+      {
+       "texto": "forty percent",
+       "certa": false
+      },
+      {
+       "texto": "four percent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Dr Khoza. A cycle is one full charge and one full discharge, like filling the sponge and squeezing it out.",
+     "enunciado": "What is a \"cycle\"?",
+     "opcoes": [
+      {
+       "texto": "one full charge and one full discharge",
+       "certa": true
+      },
+      {
+       "texto": "one year",
+       "certa": false
+      },
+      {
+       "texto": "one experiment",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Dr Khoza. These are small cells in a laboratory. Our study is peer-reviewed, but it's one study.",
+     "enunciado": "Can people buy these batteries now?",
+     "opcoes": [
+      {
+       "texto": "No, they are small cells in a laboratory.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, in shops.",
+       "certa": false
+      },
+      {
+       "texto": "Yes, but only in Europe.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Dr Khoza. The batteries we have today work. Waiting for the perfect technology is a way of never starting.",
+     "enunciado": "What does Dr Khoza advise people who want batteries now?",
+     "opcoes": [
+      {
+       "texto": "Don't wait: today's batteries work.",
+       "certa": true
+      },
+      {
+       "texto": "Wait for sodium.",
+       "certa": false
+      },
+      {
+       "texto": "Use diesel.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Are you gonna tell me…\" is a fast, informal form of…",
+     "opcoes": [
+      {
+       "texto": "Are you going to tell me…",
+       "certa": true
+      },
+      {
+       "texto": "Are you gone to tell me…",
+       "certa": false
+      },
+      {
+       "texto": "Are you going tell me…",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"When I started, I thought we'd be there by now. I was wrong.\" Dr Khoza is…",
+     "opcoes": [
+      {
+       "texto": "admitting that her prediction was wrong",
+       "certa": true
+      },
+      {
+       "texto": "saying the research failed",
+       "certa": false
+      },
+      {
+       "texto": "promising a date",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Think of it as a sponge that tears a little every time you squeeze it.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "We're on the verge of something important, but we're not there yet.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain the discovery to a colleague who didn't hear the programme: what was discovered (with an analogy), what isn't known yet, and what it means for someone buying a battery today.",
+     "frase": "not known",
+     "resposta": "A researcher made sodium batteries that last much longer: ninety percent capacity after four thousand charges. Old ones were like a sponge that tears. What's not known yet is whether it works in big batteries. So if you need one now, buy what works today.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Why do you think scientists sometimes find it hard to say \"I don't know\"?",
+     "frase": "because",
+     "resposta": "Because people expect experts to have answers, and funding often depends on promises. But a scientist who says \"I don't know yet\" is usually more trustworthy.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "7F",
+   "titulo": "Work & Life: The battery",
+   "aula": "7F",
+   "objectivo": "Explicar uma tecnologia a uma comunidade e resumir em inglês um artigo técnico em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Completa 18 meses sem incidentes.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "It has been running for eighteen months with no incidents.",
+       "certa": true
+      },
+      {
+       "texto": "It completes eighteen months without incidents of.",
+       "certa": false
+      },
+      {
+       "texto": "It completed eighteen incidents in months.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Os moradores, inicialmente desconfiados…\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "The residents, who were suspicious at first…",
+       "certa": true
+      },
+      {
+       "texto": "The inhabitants, initially distrusted…",
+       "certa": false
+      },
+      {
+       "texto": "The moradors, first unconfident…",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A resident says the batteries will explode. The best first answer:",
+     "opcoes": [
+      {
+       "texto": "That's a very reasonable question.",
+       "certa": true
+      },
+      {
+       "texto": "There's nothing to worry about.",
+       "certa": false
+      },
+      {
+       "texto": "That's a silly rumour.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Ms Ledwaba asks if bills will go down. The honest answer:",
+     "opcoes": [
+      {
+       "texto": "I'm afraid I can't promise that. What I can promise is fewer power cuts in the evening.",
+       "certa": true
+      },
+      {
+       "texto": "Yes, they will go down a lot.",
+       "certa": false
+      },
+      {
+       "texto": "That's not my problem.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This meeting was [going] to happen in April. It should have.",
+     "opcoes": [
+      {
+       "texto": "go",
+       "certa": false
+      },
+      {
+       "texto": "gone",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Think of the new facility [as] this bucket.",
+     "opcoes": [
+      {
+       "texto": "than",
+       "certa": false
+      },
+      {
+       "texto": "such",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I was about to say no to the course. I thought it [would] be for engineers only.",
+     "opcoes": [
+      {
+       "texto": "will",
+       "certa": false
+      },
+      {
+       "texto": "is being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. At a hundred metres, it's about as loud as a fridge in your kitchen.",
+     "enunciado": "How loud are the cooling fans at a hundred metres?",
+     "opcoes": [
+      {
+       "texto": "about as loud as a fridge",
+       "certa": true
+      },
+      {
+       "texto": "as loud as a truck",
+       "certa": false
+      },
+      {
+       "texto": "completely silent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. There are six permanent jobs, and all six are from this area.",
+     "enunciado": "How many permanent jobs are there?",
+     "opcoes": [
+      {
+       "texto": "six, all from the area",
+       "certa": true
+      },
+      {
+       "texto": "sixteen",
+       "certa": false
+      },
+      {
+       "texto": "none",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. The supplier is obliged to collect and recycle the batteries. It's in the contract.",
+     "enunciado": "What happens to the batteries at the end of their life?",
+     "opcoes": [
+      {
+       "texto": "The supplier collects and recycles them.",
+       "certa": true
+      },
+      {
+       "texto": "They stay in Mokgalo.",
+       "certa": false
+      },
+      {
+       "texto": "Nobody knows.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm afraid I can't promise they'll go down. What I can promise is fewer power cuts in the evening.",
+     "enunciado": "Ouça e repita, devagar e com pausas."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain a technology or a change to a group of worried people (a phone mast, a water system, electronic voting): start with an analogy, answer two fears, say one thing you can't promise, and end with an invitation.",
+     "frase": "Think of",
+     "resposta": "Think of the new water system as a bank account for water: it saves rain in the wet months and pays it back in the dry ones. Water quality is a very reasonable question: it's tested every month. I can't promise the price will never change. You're all welcome to visit on Saturday.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise this in English for residents: \"Antena instalada em 2028 na escola: medições independentes mostram radiação cerca de 50 vezes abaixo do limite legal. A cobertura passou de 40% para 95%. Os pais pediram medições anuais, que a operadora aceitou.\"",
+     "frase": "fifty times",
+     "resposta": "A phone mast was put up at the school in 2028. Independent tests found radiation about fifty times below the legal limit, and coverage went from forty to ninety-five percent. The parents asked for tests every year, and the company agreed.",
+     "contexto": "Mediação: o essencial, para não especialistas."
+    }
+   ]
+  },
+  {
+   "codigo": "7R",
+   "titulo": "Unit 7 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 7 do C1 e reciclar a unidade 6 e o C1.1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I was [going] to call you, but I forgot.",
+     "opcoes": [
+      {
+       "texto": "go",
+       "certa": false
+      },
+      {
+       "texto": "gonna to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The new hospital is [due] to open next year.",
+     "opcoes": [
+      {
+       "texto": "owed",
+       "certa": false
+      },
+      {
+       "texto": "set of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We were about to leave [when] it started to rain.",
+     "opcoes": [
+      {
+       "texto": "than",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It works a bit [like] a bank account.",
+     "opcoes": [
+      {
+       "texto": "likely",
+       "certa": false
+      },
+      {
+       "texto": "alike",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The bridge was to have opened in 2029.",
+       "certa": true
+      },
+      {
+       "texto": "The bridge was to opened in 2029.",
+       "certa": false
+      },
+      {
+       "texto": "The bridge was to have open in 2029.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Tenho dez anos de experiência.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I have ten years of experience.",
+       "certa": true
+      },
+      {
+       "texto": "I have ten years of experiment.",
+       "certa": false
+      },
+      {
+       "texto": "I have ten experiences years.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 6). \"Will the meeting be cancelled?\" (you hope it won't)",
+     "opcoes": [
+      {
+       "texto": "I hope not.",
+       "certa": true
+      },
+      {
+       "texto": "I don't hope so.",
+       "certa": false
+      },
+      {
+       "texto": "I hope no.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 5). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Compared with diesel, solar is cheaper.",
+       "certa": true
+      },
+      {
+       "texto": "Comparing with diesel, it is cheaper solar.",
+       "certa": false
+      },
+      {
+       "texto": "Compared with diesel, it cheaper.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (C1, unidade 2). Which is the most honest about a promise you cannot make?",
+     "opcoes": [
+      {
+       "texto": "I'm afraid I can't promise that.",
+       "certa": true
+      },
+      {
+       "texto": "Of course, no problem.",
+       "certa": false
+      },
+      {
+       "texto": "Don't worry about it.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Pense nisto como um balde.",
+     "resposta": "Think of it as a bucket.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Mrs Seleka. Many people here are worried. Mr Kapinga, please speak plainly.",
+     "enunciado": "What does Mrs Seleka ask Nuno to do?",
+     "opcoes": [
+      {
+       "texto": "speak plainly",
+       "certa": true
+      },
+      {
+       "texto": "speak in Portuguese",
+       "certa": false
+      },
+      {
+       "texto": "speak later",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain something complex from your job or your studies to a twelve-year-old.",
+     "frase": "Think of",
+     "resposta": "Think of the internet as a huge post office. Every message is cut into small letters, each with an address. They travel by different roads and are put together again at the end. Does that make sense?",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Talk about one plan in your life that changed: what was going to happen, and what happened instead.",
+     "frase": "was going to",
+     "resposta": "I was going to study medicine. I thought I'd be a doctor by thirty. Then I did a summer job in a bank, and I found I loved numbers. Now I'm an accountant, and I don't regret it.",
+     "contexto": "O futuro no passado."
+    }
+   ]
+  }
+ ]
+}

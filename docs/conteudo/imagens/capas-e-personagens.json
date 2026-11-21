@@ -1,0 +1,265 @@
+{
+  "nota": "Capas dos cursos e fichas das personagens principais do A1 (19/11/2026). Estilo escolhido: fotografia (piloto, estilo-foto). Sem texto: o título vem da plataforma. As capas do laboratório usam a do curso em vídeo do mesmo nível.",
+  "estilo": "Realistic editorial photograph, natural window light, shallow depth of field, 35mm lens, warm but neutral colour grading, like a corporate magazine portrait.",
+  "regras": "Do not include any text, letters, numbers, logos, watermarks or captions anywhere in the image. Contemporary Angola, 2026. Respectful, natural, non-stereotyped depiction of African professionals. No real people, no real brands.",
+  "imagens": [
+    {
+      "id": "ficha-nuno",
+      "fase": "personagens",
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [
+        "estilo-foto"
+      ],
+      "descricao": "Character reference sheet on a plain light-grey background: the same man shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Nuno Kapinga, 22, Angolan, from Lubango, IT intern. Slim build, about 1.75 m, short black hair with a neat fade, clean-shaven, warm brown eyes. Light-blue short-sleeved shirt, dark trousers, black shoes, staff lanyard without text. Same face as the man in the reference image.",
+      "uso": "bíblia de personagens",
+      "estilo": "Photorealistic character reference sheet, studio photography, soft even light, true-to-life skin tones, plain light-grey seamless background, the same real-looking person in every panel."
+    },
+    {
+      "id": "ficha-paulo",
+      "fase": "personagens",
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
+      "descricao": "Character reference sheet on a plain light-grey background: the same man shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Paulo Mendes, 29, Angolan, IT technician from Viana (Luanda). Medium build, round face, short curly black hair, short neat beard, rectangular dark-framed glasses. White shirt with sleeves rolled up, grey trousers, a smartwatch.",
+      "uso": "bíblia de personagens",
+      "estilo": "Photorealistic character reference sheet, studio photography, soft even light, true-to-life skin tones, plain light-grey seamless background, the same real-looking person in every panel."
+    },
+    {
+      "id": "ficha-silvia",
+      "fase": "personagens",
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
+      "descricao": "Character reference sheet on a plain light-grey background: the same woman shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Sílvia Neto, 36, Angolan accountant, married with two young children. Medium height, natural black hair in a low bun, small gold earrings. Mustard-yellow blouse, navy pencil skirt, low heels, carries a folder.",
+      "uso": "bíblia de personagens",
+      "estilo": "Photorealistic character reference sheet, studio photography, soft even light, true-to-life skin tones, plain light-grey seamless background, the same real-looking person in every panel."
+    },
+    {
+      "id": "ficha-ana",
+      "fase": "personagens",
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
+      "descricao": "Character reference sheet with exactly six panels on a plain light-grey background: the same woman shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Ana Domingos, 27, Angolan receptionist. Slim, shoulder-length braids, bright smile. Navy blazer over a white top, black trousers, a small headset around her neck. The full-body view has a calm, friendly face. The three expression panels are head-and-shoulders close-ups of her face: one smiling, one thinking with a hand on her chin, one worried.",
+      "uso": "bíblia de personagens",
+      "estilo": "Photorealistic character reference sheet, studio photography, soft even light, true-to-life skin tones, plain light-grey seamless background, the same real-looking person in every panel."
+    },
+    {
+      "id": "ficha-mateus",
+      "fase": "personagens",
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
+      "descricao": "Character reference sheet on a plain light-grey background: the same man shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, worried). Mateus, 34, Angolan engineer from Huambo who works on oil-industry projects in Cabinda. Tall and broad-shouldered, shaved head, short moustache. Khaki work shirt with rolled sleeves, dark jeans, safety boots; a white hard hat in one hand in the full-body view.",
+      "uso": "bíblia de personagens",
+      "estilo": "Photorealistic character reference sheet, studio photography, soft even light, true-to-life skin tones, plain light-grey seamless background, the same real-looking person in every panel."
+    },
+    {
+      "id": "ficha-baptista",
+      "fase": "personagens",
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
+      "descricao": "Character reference sheet on a plain light-grey background: the same man shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, serious). Sr. João Baptista, 54, Angolan manager, Paulo's boss. Slightly heavy build, greying short hair and a grey moustache, reading glasses on a cord. Dark-grey suit, white shirt, no tie.",
+      "uso": "bíblia de personagens",
+      "estilo": "Photorealistic character reference sheet, studio photography, soft even light, true-to-life skin tones, plain light-grey seamless background, the same real-looking person in every panel."
+    },
+    {
+      "id": "ficha-thandi",
+      "fase": "personagens",
+      "modelo": "pro",
+      "proporcao": "16:9",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Photorealistic character reference sheet, studio photography, soft even light, true-to-life skin tones, plain light-grey seamless background, the same real-looking person in every panel.",
+      "descricao": "Character reference sheet on a plain light-grey background: the same woman shown four times side by side — front view, three-quarter view, full body standing, and a row of three facial expressions (smiling, thinking, serious). Thandi Mokoena, 38, South African engineer from Johannesburg, confident and warm. Tall, slim, short natural black hair cut close, small silver stud earrings. Charcoal tailored trouser suit with a teal blouse, flat black shoes, a laptop bag on her shoulder in the full-body view."
+    },
+    {
+      "id": "capa-a1-1",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "A young Angolan man and woman greeting each other with a handshake and a smile at the reception of a bright small technology office in Talatona, Luanda; first day at work."
+    },
+    {
+      "id": "capa-a1-2",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "A smiling Angolan woman ordering lunch from a waiter at an open-air restaurant on the Ilha de Luanda, the bay softly blurred behind."
+    },
+    {
+      "id": "capa-a2-1",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "An Angolan project team of three standing around a table with plans and a laptop, one person introducing herself, in a modern Luanda office."
+    },
+    {
+      "id": "capa-a2-2",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "An Angolan businessman with a small suitcase talking to a hotel receptionist at the front desk of a modern business hotel abroad."
+    },
+    {
+      "id": "capa-b1-1",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "Angolan and South African professionals talking with coffee in their hands at a networking event in a bright conference foyer in Johannesburg."
+    },
+    {
+      "id": "capa-b1-2",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "An Angolan engineer on a video call on a laptop at a construction site office, hard hat on the desk, explaining something with one hand."
+    },
+    {
+      "id": "capa-b2-1",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "A confident Angolan woman presenting a project to a small board around a meeting table, pointing to a chart on a large screen (the screen shows only abstract shapes)."
+    },
+    {
+      "id": "capa-b2-2",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "Two Angolan engineers in hard hats and safety vests discussing at a solar energy construction site at golden hour."
+    },
+    {
+      "id": "capa-c1-1",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "A senior Angolan executive leading a strategy discussion in a glass-walled boardroom with a view over a modern African city skyline; no screens, no papers with writing, only notebooks closed on the table."
+    },
+    {
+      "id": "capa-c1-2",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "Two senior African executives shaking hands across a negotiation table after closing a deal, documents and pens on the table, colleagues smiling in the background."
+    },
+    {
+      "id": "capa-sector-petroleo",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "An offshore oil platform at sea at sunset, with a worker in orange coveralls and a hard hat on the deck in the foreground."
+    },
+    {
+      "id": "capa-sector-banca",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "A friendly Angolan bank clerk helping a customer at a modern bank counter, card terminal and screen visible (no readable text)."
+    },
+    {
+      "id": "capa-sector-tecnologia",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "Two Angolan software developers reviewing code together on the same monitor (code shown as abstract blurred lines), in a modern office."
+    },
+    {
+      "id": "capa-sector-minas",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "A large haul truck climbing the ramp of an open-pit diamond mine in Lunda, a mine worker in a high-visibility vest watching in the foreground."
+    },
+    {
+      "id": "capa-sector-aviacao",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "An Angolan pilot in uniform in the cockpit of a commercial airliner preparing for departure, instrument panel softly lit (no readable text)."
+    },
+    {
+      "id": "capa-sector-saude",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "An Angolan doctor and nurse in a hospital corridor consulting a tablet together, both in scrubs and white coat."
+    },
+    {
+      "id": "capa-sector-direito",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "An Angolan lawyer in a dark suit signing a contract at a wooden desk, a second person across the desk, law books on a shelf behind."
+    },
+    {
+      "id": "capa-sector-negocios",
+      "fase": "capas",
+      "modelo": "pro",
+      "proporcao": "4:3",
+      "tamanho": "2K",
+      "referencias": [],
+      "estilo": "Course cover photograph. Realistic editorial photography, natural light, warm but neutral colour grading, subtle deep-navy and golden-yellow accents in the scene. The main subject sits in the centre of the frame with calm space around it, so the image still works when cropped to a square. Contemporary Angola and Southern Africa, 2026.",
+      "descricao": "Two Angolan business professionals talking seated face to face in a bright modern meeting room, notebook and coffee on the table."
+    }
+  ]
+}

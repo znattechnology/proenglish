@@ -1,0 +1,452 @@
+{
+ "unidade": "C1.2 · Review 2 — Units 6 to 10",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "C1R2-1",
+   "titulo": "Review 2: ethics, science and media",
+   "aula": "R2A",
+   "objectivo": "Rever as unidades 6 a 8 do C1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Over fifty dollars? — I'm afraid [so].",
+     "opcoes": [
+      {
+       "texto": "yes",
+       "certa": false
+      },
+      {
+       "texto": "it",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I was [going] to keep it for Christmas.",
+     "opcoes": [
+      {
+       "texto": "go",
+       "certa": false
+      },
+      {
+       "texto": "gone",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Difficult [as] it is, that's the honest answer.",
+     "opcoes": [
+      {
+       "texto": "like",
+       "certa": false
+      },
+      {
+       "texto": "so",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "That, I'll [take] as a compliment.",
+     "opcoes": [
+      {
+       "texto": "taking",
+       "certa": false
+      },
+      {
+       "texto": "took",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We're on the verge [of] finishing.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I hope not.",
+       "certa": true
+      },
+      {
+       "texto": "I don't hope so.",
+       "certa": false
+      },
+      {
+       "texto": "I hope no.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "This I can promise you.",
+       "certa": true
+      },
+      {
+       "texto": "This can I promise you.",
+       "certa": false
+      },
+      {
+       "texto": "This I can to promise you.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A supplier sends a 100-dollar bottle of whisky just before a negotiation. According to the policy, you…",
+     "opcoes": [
+      {
+       "texto": "declare it and send it back with a kind note",
+       "certa": true
+      },
+      {
+       "texto": "keep it quietly",
+       "certa": false
+      },
+      {
+       "texto": "open it with the team",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Strictly speaking, it's a gift. In practice, it's a grey area.\" The speaker…",
+     "opcoes": [
+      {
+       "texto": "separates the letter of the rule from the real situation",
+       "certa": true
+      },
+      {
+       "texto": "thinks it is a bribe",
+       "certa": false
+      },
+      {
+       "texto": "thinks it is fine",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lindiwe. In the morning, Marula wants to renegotiate. In the afternoon, a radio station wants to interview me.",
+     "enunciado": "What does Lindiwe have on Thursday?",
+     "opcoes": [
+      {
+       "texto": "a negotiation and a radio interview",
+       "certa": true
+      },
+      {
+       "texto": "two negotiations",
+       "certa": false
+      },
+      {
+       "texto": "a holiday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. Think of it as a bucket that fills with sun. And one number: in five weeks, not one incident.",
+     "enunciado": "What number should Lindiwe give on the radio?",
+     "opcoes": [
+      {
+       "texto": "no incidents in five weeks",
+       "certa": true
+      },
+      {
+       "texto": "twenty percent",
+       "certa": false
+      },
+      {
+       "texto": "four hours",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm afraid I can't promise lower bills. What I can promise is fewer power cuts in the evening.",
+     "enunciado": "Ouça e repita, com calma."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague has a negotiation and an interview on the same day. Give five pieces of advice, using one structure from each unit of C1.2 (ellipsis, an analogy or future in the past, fronting or a marker, register, negotiation).",
+     "frase": "Think of",
+     "resposta": "Send the gift back: strictly speaking, it's a grey area. On the radio, think of your project as a bridge. Expensive it may be, but say why it's worth it. Keep it simple, no jargon. And in the negotiation, find their interest and sum up every point.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is honesty always the best policy in business? Why, or why not?",
+     "frase": "There are two ways",
+     "resposta": "There are two ways of looking at this. Short term, a small lie can win a deal. Long term, it destroys trust, and trust is what brings clients back. Where I come down is: yes, honesty is the best policy.",
+     "contexto": "Uma opinião com estrutura."
+    }
+   ]
+  },
+  {
+   "codigo": "C1R2-2",
+   "titulo": "Review 2: register, the deal and the exam",
+   "aula": "R2B",
+   "objectivo": "Rever as unidades 9 e 10 do C1 e praticar as estratégias do exame.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "They offered a discount, but we turned [it down].",
+     "opcoes": [
+      {
+       "texto": "down it",
+       "certa": false
+      },
+      {
+       "texto": "it off",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Thirty or [so] people came.",
+     "opcoes": [
+      {
+       "texto": "some",
+       "certa": false
+      },
+      {
+       "texto": "such",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's subject to the [board's] approval.",
+     "opcoes": [
+      {
+       "texto": "board approves",
+       "certa": false
+      },
+      {
+       "texto": "board to approve",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "There are two ways of [looking] at this.",
+     "opcoes": [
+      {
+       "texto": "look",
+       "certa": false
+      },
+      {
+       "texto": "looked",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Much [depends] on the place.",
+     "opcoes": [
+      {
+       "texto": "depend",
+       "certa": false
+      },
+      {
+       "texto": "depending",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"As nossas pretensões são razoáveis.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "What we're asking for is reasonable.",
+       "certa": true
+      },
+      {
+       "texto": "Our pretensions are reasonable.",
+       "certa": false
+      },
+      {
+       "texto": "Our pretences are reasonable.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In Part 3, the examiner plays a worried older client. Which opening fits?",
+     "opcoes": [
+      {
+       "texto": "That's a very reasonable question.",
+       "certa": true
+      },
+      {
+       "texto": "Notwithstanding the technical parameters…",
+       "certa": false
+      },
+      {
+       "texto": "Let's get the ball rolling, mate.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In Part 4, the examiner asks a big abstract question. A good start is…",
+     "opcoes": [
+      {
+       "texto": "There are two ways of looking at this.",
+       "certa": true
+      },
+      {
+       "texto": "I don't know.",
+       "certa": false
+      },
+      {
+       "texto": "Yes.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which of these does NOT lower your mark?",
+     "opcoes": [
+      {
+       "texto": "explaining a technical word in simple terms",
+       "certa": true
+      },
+      {
+       "texto": "answering in Portuguese",
+       "certa": false
+      },
+      {
+       "texto": "one-word answers",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lurdes. Two years ago, the bank was going to close our branch. Everyone thought it would happen within a year.",
+     "enunciado": "What was going to happen at the bank?",
+     "opcoes": [
+      {
+       "texto": "The branch was going to close.",
+       "certa": true
+      },
+      {
+       "texto": "The bank was going to open a new branch.",
+       "certa": false
+      },
+      {
+       "texto": "Lurdes was going to leave.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lurdes. Where I come down is: close slowly, and keep one help desk in every town.",
+     "enunciado": "What is Lurdes's final position?",
+     "opcoes": [
+      {
+       "texto": "Close branches slowly and keep a help desk in every town.",
+       "certa": true
+      },
+      {
+       "texto": "Close all branches now.",
+       "certa": false
+      },
+      {
+       "texto": "Never close branches.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "There are two ways of looking at this. Much depends on the place. Where I come down is…",
+     "enunciado": "Ouça e repita."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A hospital has money for one thing: more nurses, a new scanner, or a mobile clinic for villages. Choose two, compare them, speculate, and choose.",
+     "frase": "Of the three",
+     "resposta": "Of the three, the two I'd like to talk about are the nurses and the mobile clinic. I'd leave aside the scanner: it helps a few patients. More nurses means shorter waits. A mobile clinic, on the other hand, reaches people who never come. I'd go for the clinic.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Answer with structure: \"Is technology making people more or less free?\"",
+     "frase": "Much depends",
+     "resposta": "There are two ways of looking at this. Technology gives us choice, but it also watches us. Much depends on who controls it. Where I come down is: more free, if we understand it.",
+     "contexto": "Uma pergunta abstracta, com estrutura."
+    }
+   ]
+  }
+ ]
+}

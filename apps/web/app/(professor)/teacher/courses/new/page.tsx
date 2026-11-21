@@ -9,6 +9,7 @@ import { Pagina } from "@/components/pe/estudante/Pagina";
 import { cnPe } from "@/lib/pe";
 import { mensagemErro } from "@/src/domains/student/subscricao/api";
 import { useCriarCursoMutation, useOpcoesQuery, type TipoCurso } from "@/src/domains/teacher/professor/api";
+import { DESCRICAO_NIVEL, OPCOES_NIVEL, nomeCompletoNivel, normalizarNivel } from "@/src/domains/shared/niveis";
 
 const PASSOS = ["Tipo e tema", "Público", "Estrutura", "Rever"] as const;
 
@@ -40,7 +41,8 @@ function Assistente() {
   const [nivelEscolhido, setNivel] = useState("");
   // Até a pessoa escolher, vale a primeira opção que a API devolve.
   const area = opcoes?.areas.some((a) => a.valor === areaEscolhida) ? areaEscolhida : (opcoes?.areas.find((a) => !a.legado)?.valor ?? "");
-  const nivel = opcoes?.niveis.some((n) => n.valor === nivelEscolhido) ? nivelEscolhido : (opcoes?.niveis[0]?.valor ?? "");
+  // Até a pessoa escolher, A2 (o nível por omissão dos cursos).
+  const nivel = normalizarNivel(nivelEscolhido) ?? "A2";
   const [descricao, setDescricao] = useState("");
   const [acesso, setAcesso] = useState<"todos" | "premium">("premium");
   const [partes, setPartes] = useState<string[]>(["", ""]);
@@ -57,7 +59,7 @@ function Assistente() {
   const voltarA = tipo === "pratica" ? "/teacher/practice" : "/teacher/courses";
   const nomeParte = tipo === "video" ? "secção" : "unidade";
   const nomeArea = opcoes?.areas.find((a) => a.valor === area)?.nome ?? area;
-  const nomeNivel = opcoes?.niveis.find((n) => n.valor === nivel)?.nome ?? nivel;
+  const nomeNivel = nomeCompletoNivel(nivel) ?? nivel;
   const partesFeitas = partes.map((p) => p.trim()).filter(Boolean);
 
   function validar(p: number) {
@@ -172,8 +174,8 @@ function Assistente() {
                   </option>
                 ))}
               </Escolha>
-              <Escolha rotulo="Nível" value={nivel} onChange={(e) => setNivel(e.target.value)} disabled={!opcoes}>
-                {opcoes?.niveis.map((n) => (
+              <Escolha rotulo="Nível" value={nivel} onChange={(e) => setNivel(e.target.value)} ajuda={DESCRICAO_NIVEL[nivel]}>
+                {OPCOES_NIVEL.map((n) => (
                   <option key={n.valor} value={n.valor}>
                     {n.nome}
                   </option>

@@ -1,0 +1,1580 @@
+{
+ "unidade": "B1.1 · Unit 3 — In the meeting",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "3A",
+   "titulo": "In my view…",
+   "aula": "3A",
+   "objectivo": "Dar uma opinião com uma razão e um exemplo, e pedir a opinião dos outros.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [don't think] it's the best option.",
+     "opcoes": [
+      {
+       "texto": "think not",
+       "certa": false
+      },
+      {
+       "texto": "not think",
+       "certa": false
+      }
+     ],
+     "explicacao": "O negativo vai com think: I don't think it's…"
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In my [view], option A is the cheapest.",
+     "opcoes": [
+      {
+       "texto": "look",
+       "certa": false
+      },
+      {
+       "texto": "vision",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "As far as I'm [concerned], we need a backup.",
+     "opcoes": [
+      {
+       "texto": "concerning",
+       "certa": false
+      },
+      {
+       "texto": "concern",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What's your opinion [on] the satellite?",
+     "opcoes": [
+      {
+       "texto": "at",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Nuno gives a strong opinion. What does it have?",
+     "opcoes": [
+      {
+       "texto": "an opinion, a reason and an example",
+       "certa": true
+      },
+      {
+       "texto": "only an opinion",
+       "certa": false
+      },
+      {
+       "texto": "an opinion and a question",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question to ask for an opinion.",
+     "opcoes": [
+      {
+       "texto": "Thandi, what's your view?",
+       "certa": true
+      },
+      {
+       "texto": "Thandi, how do you think?",
+       "certa": false
+      },
+      {
+       "texto": "Thandi, what do you think about?",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Como achas?\" → What do you think?"
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Complete: \"In my opinion, option C is important, ___ the satellite doesn't depend on the wind.\"",
+     "opcoes": [
+      {
+       "texto": "because",
+       "certa": true
+      },
+      {
+       "texto": "for example",
+       "certa": false
+      },
+      {
+       "texto": "but",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Pessoalmente, prefiro o cabo de fibra.",
+     "resposta": "Personally, I prefer the fibre cable.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. In my view, option A is the best, because it's the cheapest, and we can do it in two or three weeks.",
+     "enunciado": "Why does Paulo prefer option A?",
+     "opcoes": [
+      {
+       "texto": "It's the cheapest, and it's fast.",
+       "certa": true
+      },
+      {
+       "texto": "It's the best long-term.",
+       "certa": false
+      },
+      {
+       "texto": "It doesn't depend on the wind.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I don't think it's the long-term answer.",
+     "enunciado": "Ouça e repita, com \"don't\" bem claro e a voz a descer no fim."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should companies let their staff work from home two days a week? Give your opinion, a reason and an example.",
+     "frase": "because",
+     "resposta": "In my view, two days at home is a good idea, because people lose a lot of time in traffic. For example, I spend two hours in the car every day. At home, I can use that time for work. But I don't think five days at home is good: we need to see our colleagues.",
+     "contexto": "Opinião, razão e exemplo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's your view on meetings at eight in the morning?",
+     "frase": "think",
+     "resposta": "I don't think they're a good idea. In my opinion, people need time to read their emails first. For example, in my office, we have meetings at ten, and they're much better.",
+     "contexto": "I don't think + uma razão."
+    }
+   ]
+  },
+  {
+   "codigo": "3B",
+   "titulo": "I see your point, but…",
+   "aula": "3B",
+   "objectivo": "Concordar e discordar com cortesia, total ou parcialmente, dando uma razão.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [agree] with you.",
+     "opcoes": [
+      {
+       "texto": "am agree",
+       "certa": false
+      },
+      {
+       "texto": "agreeing",
+       "certa": false
+      }
+     ],
+     "explicacao": "agree é um verbo: I agree."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [don't] agree.",
+     "opcoes": [
+      {
+       "texto": "'m not",
+       "certa": false
+      },
+      {
+       "texto": "not",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Do] you agree?",
+     "opcoes": [
+      {
+       "texto": "Are",
+       "certa": false
+      },
+      {
+       "texto": "Is",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I agree [with] Sílvia about the price.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In a meeting with a client, which is the most polite way to disagree?",
+     "opcoes": [
+      {
+       "texto": "I'm not sure I agree.",
+       "certa": true
+      },
+      {
+       "texto": "That's wrong.",
+       "certa": false
+      },
+      {
+       "texto": "I totally disagree.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I see your point, but…\" means…",
+     "opcoes": [
+      {
+       "texto": "You are right in part, but I have a different idea.",
+       "certa": true
+      },
+      {
+       "texto": "I completely agree.",
+       "certa": false
+      },
+      {
+       "texto": "I don't understand you.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Your colleague says: \"I don't like long meetings.\" You agree. You say:",
+     "opcoes": [
+      {
+       "texto": "Neither do I.",
+       "certa": true
+      },
+      {
+       "texto": "So do I.",
+       "certa": false
+      },
+      {
+       "texto": "Neither I do.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Email is better than the phone.\" Choose the correct answer.",
+     "opcoes": [
+      {
+       "texto": "I see your point, but for urgent problems the phone is faster.",
+       "certa": true
+      },
+      {
+       "texto": "I am agree, but for urgent problems the phone is faster.",
+       "certa": false
+      },
+      {
+       "texto": "I'm not agree. For urgent problems the phone is faster.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Sílvia. I see your point, but nine hundred dollars every month is a lot of money.",
+     "enunciado": "What is Sílvia worried about?",
+     "opcoes": [
+      {
+       "texto": "the monthly cost",
+       "certa": true
+      },
+      {
+       "texto": "the sandstorms",
+       "certa": false
+      },
+      {
+       "texto": "the antennas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I see your point, but it's a lot of money.",
+     "enunciado": "Ouça e repita: a voz sobe em \"point\" e há uma pausa antes de \"but\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your colleague says: \"We should stop all paper documents in our company next month.\" Agree in part, disagree in part, and give your reasons.",
+     "frase": "point",
+     "resposta": "I see your point. Paper is expensive, and digital documents are easy to find. But I'm not sure about next month. That's very fast. For example, some of our clients still send paper contracts. In my view, we need six months.",
+     "contexto": "Concordar em parte e discordar com razões."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it difficult for you to disagree with your boss? Why?",
+     "frase": "disagree",
+     "resposta": "Yes, a bit. My boss has a lot of experience, so I'm not always sure about my ideas. But when I disagree, I always give a reason, and I start with: I see your point, but…",
+     "contexto": "Uma opinião com uma razão."
+    }
+   ]
+  },
+  {
+   "codigo": "3C",
+   "titulo": "Sorry to interrupt",
+   "aula": "3C",
+   "objectivo": "Interromper com cortesia, voltar ao assunto e verificar se percebeu.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Sorry [to interrupt], but did you say twelve?",
+     "opcoes": [
+      {
+       "texto": "for interrupt",
+       "certa": false
+      },
+      {
+       "texto": "interrupting to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Could you repeat [that]?",
+     "opcoes": [
+      {
+       "texto": "me",
+       "certa": false
+      },
+      {
+       "texto": "to me",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Going back [to] the antennas, can you send fourteen?",
+     "opcoes": [
+      {
+       "texto": "at",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Anyway, as I was [saying], the antennas leave on the first.",
+     "opcoes": [
+      {
+       "texto": "telling",
+       "certa": false
+      },
+      {
+       "texto": "say",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Someone interrupts you, and you want to continue. You say:",
+     "opcoes": [
+      {
+       "texto": "Can I just finish?",
+       "certa": true
+      },
+      {
+       "texto": "Go ahead.",
+       "certa": false
+      },
+      {
+       "texto": "Sorry to interrupt.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You and a colleague start to speak at the same time. You want your colleague to speak first. You say:",
+     "opcoes": [
+      {
+       "texto": "Sorry, go ahead.",
+       "certa": true
+      },
+      {
+       "texto": "Can I just finish?",
+       "certa": false
+      },
+      {
+       "texto": "Going back to…",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Sipho says: \"…on the thirteenth.\" You aren't sure. You say:",
+     "opcoes": [
+      {
+       "texto": "Sorry, did you say the thirteenth or the thirtieth?",
+       "certa": true
+      },
+      {
+       "texto": "Sorry, which day you said?",
+       "certa": false
+      },
+      {
+       "texto": "Sorry, what you said?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct way to check at the end of a call.",
+     "opcoes": [
+      {
+       "texto": "So, just to check: fourteen antennas, on the first. Is that right?",
+       "certa": true
+      },
+      {
+       "texto": "So, just to check: fourteen antennas, on the first. Is right?",
+       "certa": false
+      },
+      {
+       "texto": "So, just for check: fourteen antennas, on the first. Is that right?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Sipho. The satellite equipment comes from a different supplier, in Nairobi. It takes two weeks.",
+     "enunciado": "Where does the satellite equipment come from?",
+     "opcoes": [
+      {
+       "texto": "Nairobi",
+       "certa": true
+      },
+      {
+       "texto": "Cape Town",
+       "certa": false
+      },
+      {
+       "texto": "Johannesburg",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Sipho. We send the antennas by air on Monday the first, and they arrive in Luanda on Wednesday the third.",
+     "enunciado": "When do the antennas arrive in Luanda?",
+     "opcoes": [
+      {
+       "texto": "on Wednesday the third",
+       "certa": true
+      },
+      {
+       "texto": "on Monday the first",
+       "certa": false
+      },
+      {
+       "texto": "on Friday the fifth",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Sorry to interrupt, but did you say twelve antennas?",
+     "enunciado": "Ouça e repita, com voz suave e uma pausa curta depois de \"Sorry\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A colleague explains a plan: \"The training is on Tuesday the ninth, in room four, from nine to five, for twelve people.\" Your list says fourteen people. Interrupt to correct the number, then check all the information.",
+     "frase": "Is that right",
+     "resposta": "Sorry to interrupt, but did you say twelve people? We're fourteen. OK. So, just to check: the training is on Tuesday the ninth, in room four, from nine to five, for fourteen people. Is that right?",
+     "contexto": "Interromper e verificar."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "In your culture, is it rude to interrupt in a meeting? When is it OK?",
+     "frase": "interrupt",
+     "resposta": "In my opinion, it's a bit rude to interrupt the boss. But it's OK to interrupt for a mistake, for example a wrong number or a wrong date. Then I say: Sorry to interrupt, but did you say…?",
+     "contexto": "Uma opinião com um exemplo."
+    }
+   ]
+  },
+  {
+   "codigo": "3D",
+   "titulo": "Too expensive, not big enough",
+   "aula": "3D",
+   "objectivo": "Dizer que algo é demasiado ou insuficiente com too / enough, e graduar com intensificadores e so / such.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's [too] expensive for this year.",
+     "opcoes": [
+      {
+       "texto": "enough",
+       "certa": false
+      },
+      {
+       "texto": "too much",
+       "certa": false
+      }
+     ],
+     "explicacao": "too + adjectivo; too much só com nomes."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The masts aren't high [enough].",
+     "opcoes": [
+      {
+       "texto": "too",
+       "certa": false
+      },
+      {
+       "texto": "so",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We don't have [enough] engineers in November.",
+     "opcoes": [
+      {
+       "texto": "too much",
+       "certa": false
+      },
+      {
+       "texto": "so",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "There are too [many] tasks for one week.",
+     "opcoes": [
+      {
+       "texto": "much",
+       "certa": false
+      },
+      {
+       "texto": "enough",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "There's too [much] work for two people.",
+     "opcoes": [
+      {
+       "texto": "many",
+       "certa": false
+      },
+      {
+       "texto": "enough",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's [such] a big job!",
+     "opcoes": [
+      {
+       "texto": "so",
+       "certa": false
+      },
+      {
+       "texto": "too",
+       "certa": false
+      }
+     ],
+     "explicacao": "such a + adjectivo + nome."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"O hotel era muito bom.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "The hotel was very good.",
+       "certa": true
+      },
+      {
+       "texto": "The hotel was too good.",
+       "certa": false
+      },
+      {
+       "texto": "The hotel was enough good.",
+       "certa": false
+      }
+     ],
+     "explicacao": "muito = very; too é um problema."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The room isn't big enough.",
+       "certa": true
+      },
+      {
+       "texto": "The room isn't enough big.",
+       "certa": false
+      },
+      {
+       "texto": "The room isn't too enough.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"This coffee is too hot.\" It means:",
+     "opcoes": [
+      {
+       "texto": "I can't drink it now.",
+       "certa": true
+      },
+      {
+       "texto": "It's hot, and that's good.",
+       "certa": false
+      },
+      {
+       "texto": "It's a bit warm.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. The old masts are only eighteen metres. In a sandstorm the signal is too weak. We need thirty metres.",
+     "enunciado": "How high do the new masts need to be?",
+     "opcoes": [
+      {
+       "texto": "thirty metres",
+       "certa": true
+      },
+      {
+       "texto": "eighteen metres",
+       "certa": false
+      },
+      {
+       "texto": "thirteen metres",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "It's such a big job!",
+     "enunciado": "Ouça e repita, com o acento em \"such\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe your office or your home: two problems with \"too\", \"too much\" or \"too many\", one with \"not enough\", and one good thing with \"so\" or \"such\".",
+     "frase": "enough",
+     "resposta": "Our office is too small for twelve people, and there's too much noise. We don't have enough meeting rooms, so we have meetings in the kitchen! But my colleagues are such nice people, and the view is so beautiful.",
+     "contexto": "too, enough, so / such."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you think most companies have too many meetings? Why?",
+     "frase": "too",
+     "resposta": "Yes, I think so. In my company, we have too many meetings, and they're too long. For example, on Mondays we have three meetings, so I don't have enough time for my real work.",
+     "contexto": "Uma opinião com too / enough."
+    }
+   ]
+  },
+  {
+   "codigo": "3E",
+   "titulo": "Meetings",
+   "aula": "3E",
+   "objectivo": "Usar as palavras e colocações de uma reunião, o acento enfático e contrastivo; argument e resume.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "agenda",
+       "b": "ordem de trabalhos"
+      },
+      {
+       "a": "minutes",
+       "b": "acta"
+      },
+      {
+       "a": "action point",
+       "b": "tarefa decidida na reunião"
+      },
+      {
+       "a": "deadline",
+       "b": "prazo"
+      },
+      {
+       "a": "postpone",
+       "b": "adiar"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Lerato [chairs] the meeting.",
+     "opcoes": [
+      {
+       "texto": "presides",
+       "certa": false
+      },
+      {
+       "texto": "chair",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let's [make] a decision today.",
+     "opcoes": [
+      {
+       "texto": "do",
+       "certa": false
+      },
+      {
+       "texto": "give",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We [reached] an agreement after an hour.",
+     "opcoes": [
+      {
+       "texto": "arrived",
+       "certa": false
+      },
+      {
+       "texto": "did",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Five people are [attending] the meeting.",
+     "opcoes": [
+      {
+       "texto": "assisting",
+       "certa": false
+      },
+      {
+       "texto": "watching",
+       "certa": false
+      }
+     ],
+     "explicacao": "assistir a uma reunião = attend; assist = ajudar."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Eles tiveram uma discussão e agora não se falam.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "They had an argument, and now they don't talk.",
+       "certa": true
+      },
+      {
+       "texto": "They had a point, and now they don't talk.",
+       "certa": false
+      },
+      {
+       "texto": "They had a resume, and now they don't talk.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Pode resumir as decisões?\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Could you summarise the decisions?",
+       "certa": true
+      },
+      {
+       "texto": "Could you resume the decisions?",
+       "certa": false
+      },
+      {
+       "texto": "Could you resumen the decisions?",
+       "certa": false
+      }
+     ],
+     "explicacao": "resume = retomar; resumir = summarise."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The meeting resumes at two o'clock.\" It means:",
+     "opcoes": [
+      {
+       "texto": "The meeting starts again at two.",
+       "certa": true
+      },
+      {
+       "texto": "Someone summarises the meeting at two.",
+       "certa": false
+      },
+      {
+       "texto": "The meeting finishes at two.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lerato. No — I said Tuesday, not Thursday. The meeting is on Tuesday.",
+     "enunciado": "When is the meeting?",
+     "opcoes": [
+      {
+       "texto": "on Tuesday",
+       "certa": true
+      },
+      {
+       "texto": "on Thursday",
+       "certa": false
+      },
+      {
+       "texto": "on Monday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I said Tuesday, not Thursday.",
+     "enunciado": "Ouça e repita, com o acento em \"Tuesday\" e em \"Thursday\"."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I really don't think so.",
+     "enunciado": "Ouça e repita, com o acento forte em \"really\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe a typical meeting at your work or school: who chairs it, how long it is, who takes notes, and is it usually on schedule?",
+     "frase": "chairs",
+     "resposta": "Our team meeting is every Monday at nine. My manager chairs it, and we take turns to take notes. It's usually too long — about ninety minutes — and we don't often reach a decision. But we always finish with action points.",
+     "contexto": "Palavras de reunião."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "In your opinion, what makes a meeting good?",
+     "frase": "agenda",
+     "resposta": "In my view, a good meeting has a short agenda and a deadline for every action point. It starts on time, and somebody takes notes. At the end, everyone knows the decisions.",
+     "contexto": "Uma opinião com palavras de reunião."
+    }
+   ]
+  },
+  {
+   "codigo": "3F",
+   "titulo": "Real English: We need to decide today",
+   "aula": "3F",
+   "objectivo": "Identificar a posição de cada pessoa e a decisão final numa reunião a quatro vozes.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. Option A is the cheapest — about forty thousand dollars — and it's fast: two weeks.",
+     "enunciado": "How much does option A cost?",
+     "opcoes": [
+      {
+       "texto": "about forty thousand dollars",
+       "certa": true
+      },
+      {
+       "texto": "about fourteen thousand dollars",
+       "certa": false
+      },
+      {
+       "texto": "about two hundred thousand dollars",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Femi. Two hundred thousand is too much for this year. Our budget isn't big enough.",
+     "enunciado": "Why does Femi say no to the fibre this year?",
+     "opcoes": [
+      {
+       "texto": "The budget isn't big enough.",
+       "certa": true
+      },
+      {
+       "texto": "It's too slow.",
+       "certa": false
+      },
+      {
+       "texto": "He doesn't like fibre.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. We've had six sandstorms since August. Every time, we lose the cameras and the sensors.",
+     "enunciado": "How many sandstorms have there been since August?",
+     "opcoes": [
+      {
+       "texto": "six",
+       "certa": true
+      },
+      {
+       "texto": "sixteen",
+       "certa": false
+      },
+      {
+       "texto": "two",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Femi. Nine hundred dollars a month… That's about eleven thousand a year.",
+     "enunciado": "How much is the satellite in a year?",
+     "opcoes": [
+      {
+       "texto": "about eleven thousand dollars",
+       "certa": true
+      },
+      {
+       "texto": "about nine hundred dollars",
+       "certa": false
+      },
+      {
+       "texto": "about seven thousand dollars",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Hannah. Last month we sent two engineers to the plant three times, because we couldn't see the cameras or the sensors.",
+     "enunciado": "Why did Morro Azul send engineers to the plant?",
+     "opcoes": [
+      {
+       "texto": "They couldn't see the cameras or the sensors.",
+       "certa": true
+      },
+      {
+       "texto": "They wanted to install new antennas.",
+       "certa": false
+      },
+      {
+       "texto": "They needed to check the budget.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lerato. So: options A and C now, and a study of option B for next year. Do we all agree?",
+     "enunciado": "What do they decide?",
+     "opcoes": [
+      {
+       "texto": "A and C now, and a study of B for next year",
+       "certa": true
+      },
+      {
+       "texto": "only option A",
+       "certa": false
+      },
+      {
+       "texto": "A, B and C now",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Two people start to speak at the same time. What do they say?",
+     "opcoes": [
+      {
+       "texto": "\"Sorry, go ahead.\" — \"No, no, you first.\"",
+       "certa": true
+      },
+      {
+       "texto": "\"Can I just finish?\" — \"Going back to…\"",
+       "certa": false
+      },
+      {
+       "texto": "\"Sorry to interrupt.\" — \"Is that right?\"",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "How does Hannah win her point?",
+     "opcoes": [
+      {
+       "texto": "with a real example: three trips to the plant",
+       "certa": true
+      },
+      {
+       "texto": "she speaks louder than Femi",
+       "certa": false
+      },
+      {
+       "texto": "she interrupts Femi five times",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Femi says: \"I partly agree.\" He means:",
+     "opcoes": [
+      {
+       "texto": "He agrees with some of the idea.",
+       "certa": true
+      },
+      {
+       "texto": "He agrees with everything.",
+       "certa": false
+      },
+      {
+       "texto": "He doesn't agree at all.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I see your point about the budget.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I can accept that.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise the meeting for a colleague: who wanted what, and what did they decide?",
+     "frase": "agreed",
+     "resposta": "Paulo explained the three options. Femi said no to the fibre, because it's too expensive this year. Hannah wanted more than antennas, because of the sandstorms. In the end, they agreed on the antennas and the satellite now, and a study of the fibre for next year.",
+     "contexto": "Posições e decisão."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Who made the best point in the meeting: Femi or Hannah? Why?",
+     "frase": "because",
+     "resposta": "In my view, Hannah made the best point, because she gave a real example: three trips to the plant in one month. Those trips cost money too.",
+     "contexto": "Uma opinião com uma razão."
+    }
+   ]
+  },
+  {
+   "codigo": "3G",
+   "titulo": "Work & Life: Project meeting",
+   "aula": "3G",
+   "objectivo": "Participar numa reunião de calendário: discordar, interromper, propor, resumir e fazer mediação.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Hannah proposes one week. Nuno disagrees. Choose the best start.",
+     "opcoes": [
+      {
+       "texto": "I see your point, Hannah, but I'm not sure one week is enough.",
+       "certa": true
+      },
+      {
+       "texto": "That's wrong, Hannah. One week isn't enough.",
+       "certa": false
+      },
+      {
+       "texto": "I am not agree, Hannah. One week is too much short.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Fourteen antennas in one week is [too] much work for two people.",
+     "opcoes": [
+      {
+       "texto": "enough",
+       "certa": false
+      },
+      {
+       "texto": "many",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Sorry to interrupt, Lerato, but we haven't [agreed] on the dates yet.",
+     "opcoes": [
+      {
+       "texto": "agree",
+       "certa": false
+      },
+      {
+       "texto": "agreeing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In my opinion, two weeks is [safer].",
+     "opcoes": [
+      {
+       "texto": "more safe",
+       "certa": false
+      },
+      {
+       "texto": "safest",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Mr Domingos says: \"Dia 11 é feriado.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "The eleventh is a public holiday — Independence Day.",
+       "certa": true
+      },
+      {
+       "texto": "The eleventh is a free party day.",
+       "certa": false
+      },
+      {
+       "texto": "Day eleven is holiday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Mr Domingos says: \"No dia 12, metade do pessoal faz ponte.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "On the twelfth, half of the staff take a long weekend.",
+       "certa": true
+      },
+      {
+       "texto": "On the twelfth, half of the staff make a bridge.",
+       "certa": false
+      },
+      {
+       "texto": "On the twelfth, half of the staff cross the bridge.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Não traduza palavra a palavra: explique."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A good summary at the end of a meeting has…",
+     "opcoes": [
+      {
+       "texto": "the decisions and the action points: who does what, and when",
+       "certa": true
+      },
+      {
+       "texto": "only the problems",
+       "certa": false
+      },
+      {
+       "texto": "every word of the meeting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Two weeks, from Monday the fifteenth to Friday the twenty-sixth. First the satellite, then the masts and the antennas.",
+     "enunciado": "What comes first?",
+     "opcoes": [
+      {
+       "texto": "the satellite",
+       "certa": true
+      },
+      {
+       "texto": "the masts",
+       "certa": false
+      },
+      {
+       "texto": "the antennas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. Thank you, everyone. I'm sending the minutes this afternoon.",
+     "enunciado": "What is Lerato sending this afternoon?",
+     "opcoes": [
+      {
+       "texto": "the minutes",
+       "certa": true
+      },
+      {
+       "texto": "the schedule",
+       "certa": false
+      },
+      {
+       "texto": "the antennas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The installation is from the fifteenth to the twenty-sixth. The satellite comes first.",
+     "enunciado": "Ouça e repita, com uma pausa entre as duas decisões."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "I'm the chair. My proposal: we move our team to the new office in one weekend. Disagree politely, give two reasons and an example, and make a different proposal.",
+     "frase": "but",
+     "resposta": "I see your point, but I'm not sure one weekend is enough. We have forty computers and so many boxes. And the internet in the new office isn't ready. For example, when we moved last time, we lost two days of work. In my opinion, we need two weekends: the computers first, and then the rest.",
+     "contexto": "Discordar, razões, exemplo e proposta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your colleague Joana only spoke Portuguese in the meeting. Give her position in English: \"A formação não pode ser em Dezembro, porque metade da equipa está de férias. Proponho a segunda semana de Janeiro. E precisamos de uma sala maior, porque somos vinte.\"",
+     "frase": "says",
+     "resposta": "Joana says December isn't a good month for the training, because half of the team is on holiday. She suggests the second week of January. And we need a bigger room, because there are twenty of us.",
+     "contexto": "Mediação: a posição e as razões."
+    }
+   ]
+  },
+  {
+   "codigo": "3R",
+   "titulo": "Unit 3 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 3 e reciclar as unidades 1 e 2 do B1 e o A2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [don't think] the cable is cheap.",
+     "opcoes": [
+      {
+       "texto": "think not",
+       "certa": false
+      },
+      {
+       "texto": "not think",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [agree] with Hannah.",
+     "opcoes": [
+      {
+       "texto": "am agree",
+       "certa": false
+      },
+      {
+       "texto": "'m agree",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We don't have [enough] time.",
+     "opcoes": [
+      {
+       "texto": "so",
+       "certa": false
+      },
+      {
+       "texto": "enough of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It's [such] an interesting project.",
+     "opcoes": [
+      {
+       "texto": "so",
+       "certa": false
+      },
+      {
+       "texto": "too",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "There are too many emails.",
+       "certa": true
+      },
+      {
+       "texto": "There are too much emails.",
+       "certa": false
+      },
+      {
+       "texto": "There are too enough emails.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the polite way to interrupt.",
+     "opcoes": [
+      {
+       "texto": "Sorry to interrupt, but did you say Tuesday?",
+       "certa": true
+      },
+      {
+       "texto": "Stop. Did you say Tuesday?",
+       "certa": false
+      },
+      {
+       "texto": "Sorry for interrupt, but did you say Tuesday?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 2). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I've been working on this project since August.",
+       "certa": true
+      },
+      {
+       "texto": "I'm working on this project since August.",
+       "certa": false
+      },
+      {
+       "texto": "I work on this project since August.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 1). Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Could you tell me when the meeting starts?",
+       "certa": true
+      },
+      {
+       "texto": "Could you tell me when does the meeting start?",
+       "certa": false
+      },
+      {
+       "texto": "Could you tell me when starts the meeting?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 5). \"Devias falar com a Lerato.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "You should talk to Lerato.",
+       "certa": true
+      },
+      {
+       "texto": "You should to talk to Lerato.",
+       "certa": false
+      },
+      {
+       "texto": "You must to talk to Lerato.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Não acho que uma semana chegue.",
+     "resposta": "I don't think one week is enough.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. Personally, I prefer the fibre cable, but I think the satellite is a good idea for now.",
+     "enunciado": "What does Thandi think about the satellite?",
+     "opcoes": [
+      {
+       "texto": "It's a good idea for now.",
+       "certa": true
+      },
+      {
+       "texto": "It's too expensive.",
+       "certa": false
+      },
+      {
+       "texto": "It's the long-term answer.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you think meetings should be shorter? Why?",
+     "frase": "think",
+     "resposta": "Yes, I think so. In my view, most meetings are too long. People stop listening after thirty minutes. For example, our Monday meeting is ninety minutes, and we only make one or two decisions. A short agenda and a clear deadline help a lot.",
+     "contexto": "Uma opinião com razão e exemplo (45 segundos)."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Your colleague says: \"We have enough people for the project.\" You disagree. Answer politely, with a reason.",
+     "frase": "enough",
+     "resposta": "I'm not sure I agree. We have six people, but there are too many tasks. For example, the tests need three people for a month. In my view, we don't have enough people: we need two more.",
+     "contexto": "Discordar com too / enough."
+    }
+   ]
+  }
+ ]
+}

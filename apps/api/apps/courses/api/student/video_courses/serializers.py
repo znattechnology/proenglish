@@ -6,6 +6,7 @@ following the same structure and response format as the Express API.
 """
 
 from django.core.exceptions import ValidationError
+from django.db.models import Q
 from django.utils import timezone
 from rest_framework import serializers
 from ....models import (
@@ -14,6 +15,7 @@ from ....models import (
     ChapterResource, ChapterQuiz, StudentQuizAttempt,
     CourseWishlist, CourseReview, StudentNote, StudentBookmark, CourseCertificate
 )
+from apps.courses import niveis
 from apps.users.serializers import UserProfileSerializer
 
 
@@ -86,15 +88,24 @@ class ChapterSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         from .conteudo import CAMPOS_DE_CONTEUDO, quiz_sem_respostas
         dados = super().to_representation(instance)
-        # Quem não está inscrito vê só a estrutura do curso (títulos, tipos, ordem).
-        if self.context.get('so_estrutura'):
+        # Unidades de amostra (apps/courses/amostra.py): aula fora da amostra para quem não tem o plano.
+        dados['bloqueada'] = instance.section_id in self.context.get('seccoes_bloqueadas', ())
+        # Quem não está inscrito vê só a estrutura do curso (títulos, tipos, ordem); num curso com
+        # amostra, o conteúdo só vai nas aulas das secções da amostra.
+        if (self.context.get('so_estrutura')
+                and instance.section_id not in self.context.get('seccoes_com_conteudo', ())):
             for campo in CAMPOS_DE_CONTEUDO:
                 dados.pop(campo, None)
             dados.pop('comments', None)
             return dados
         # As respostas certas nunca vão para o browser: a correcção é feita no servidor.
         if 'quiz_data' in dados:
-            dados['quiz_data'] = quiz_sem_respostas(dados['quiz_data'])
+            dados['quiz_data'] = quiz_sem_respostas(dados['quiz_data'], instance.pk)
+        # A lição de prática ligada só vai quando os alunos a podem abrir.
+        if dados.get('practice_lesson'):
+            from .conteudo import licao_pratica_aberta
+            if licao_pratica_aberta(instance) is None:
+                dados['practice_lesson'] = None
         return dados
 
 
@@ -152,6 +163,12 @@ class CourseSectionSerializer(serializers.ModelSerializer):
             context=context
         ).data
 
+    def to_representation(self, instance):
+        dados = super().to_representation(instance)
+        # Secção fora das unidades de amostra, para quem não tem o plano do curso.
+        dados['bloqueada'] = instance.id in self.context.get('seccoes_bloqueadas', ())
+        return dados
+
 
 class CourseSectionCreateSerializer(serializers.ModelSerializer):
     """
@@ -176,6 +193,8 @@ class CourseListSerializer(serializers.ModelSerializer):
     is_free = serializers.ReadOnlyField()
     is_premium = serializers.ReadOnlyField()
     user_has_access = serializers.SerializerMethodField()
+    # Curso de um sector (pede o nível básico: apps/courses/teste_basico.py).
+    de_sector = serializers.SerializerMethodField()
 
     class Meta:
         model = Course
@@ -183,7 +202,7 @@ class CourseListSerializer(serializers.ModelSerializer):
             'courseId', 'title', 'description', 'category', 'image',
             'level', 'status', 'template', 'teacher', 'teacherId', 'teacherName',
             'total_enrollments', 'access_level', 'access_level_display',
-            'is_free', 'is_premium', 'is_featured', 'user_has_access',
+            'is_free', 'is_premium', 'is_featured', 'user_has_access', 'de_sector',
             'created_at', 'updated_at'
         ]
         read_only_fields = [
@@ -207,6 +226,10 @@ class CourseListSerializer(serializers.ModelSerializer):
         for field_name in fields_to_remove:
             self.fields.pop(field_name, None)
     
+    def get_de_sector(self, obj):
+        from apps.courses import teste_basico
+        return teste_basico.curso_de_sector(obj)
+
     def get_total_enrollments(self, obj):
         """Get enrollment count efficiently."""
         if hasattr(obj, '_enrollment_count'):
@@ -250,12 +273,16 @@ class CourseDetailSerializer(serializers.ModelSerializer):
     is_free = serializers.ReadOnlyField()
     is_premium = serializers.ReadOnlyField()
     user_has_access = serializers.SerializerMethodField()
+    # Unidades de amostra (apps/courses/amostra.py): 'total' | 'amostra' | None, e quantas.
+    acesso = serializers.SerializerMethodField()
+    unidades_amostra = serializers.SerializerMethodField()
 
     class Meta:
         model = Course
         fields = [
             'courseId', 'title', 'description', 'category', 'image',
             'level', 'status', 'template', 'teacher', 'teacherId', 'teacherName',
+            'acesso', 'unidades_amostra',
             'sections', 'enrollments', 'total_sections', 'total_chapters',
             'total_enrollments', 'access_level', 'access_level_display',
             'is_free', 'is_premium', 'is_featured', 'user_has_access',
@@ -339,6 +366,15 @@ class CourseDetailSerializer(serializers.ModelSerializer):
             return obj.access_level == 'free'
         return obj.user_has_access(request.user)
 
+    def get_acesso(self, obj):
+        from apps.courses import amostra
+        request = self.context.get('request')
+        return amostra.acesso(getattr(request, 'user', None), obj, total=self.get_user_has_access(obj))
+
+    def get_unidades_amostra(self, obj):
+        from apps.courses import amostra
+        return amostra.unidades_amostra(obj)
+
     @classmethod
     def optimize_queryset(cls, queryset, include_sections=True, include_enrollments=True):
         """Optimize queryset for detail view."""
@@ -385,7 +421,8 @@ class CourseCreateSerializer(serializers.ModelSerializer):
     title = serializers.CharField(required=False, default="Novo Curso")
     description = serializers.CharField(required=False, default="")
     category = serializers.CharField(required=False, default="Inglês Geral")
-    level = serializers.CharField(required=False, default="Beginner")
+    level = serializers.ChoiceField(choices=niveis.CEFR, required=False, default="A2",
+                                    error_messages={"invalid_choice": "Nível inválido. Escolha um nível de A1 a C2."})
     status = serializers.CharField(required=False, default="Draft")
     template = serializers.CharField(required=False, default="general")
     
@@ -621,7 +658,8 @@ class TransactionCreateSerializer(serializers.ModelSerializer):
                 user = self.context['request'].user
 
                 # Check if user has subscription access for premium courses
-                if course.access_level != 'free' and not course.user_has_access(user):
+                from apps.courses import amostra
+                if course.access_level != 'free' and not amostra.pode_inscrever(user, course):
                     access_messages = {
                         'premium': 'Este curso requer um plano Premium ou superior.',
                         'premium_plus': 'Este curso é exclusivo para assinantes Premium Plus.',
@@ -694,8 +732,16 @@ class UserCourseProgressSerializer(serializers.ModelSerializer):
             Prefetch('chapters', queryset=Chapter.objects.filter(q_aula_visivel()).order_by('order', 'created_at')
                      .only('id', 'section_id', 'order'))
         ))
-        feitos = set(ChapterProgress.objects.filter(user_progress=obj, completed=True)
-                     .values_list('chapter_id', flat=True))
+        registos = ChapterProgress.objects.filter(user_progress=obj).filter(
+            Q(completed=True) | Q(video_visto=True)).values_list('chapter_id', 'completed')
+        feitos, vistos = set(), set()
+        for chapter_id, completed in registos:
+            vistos.add(chapter_id)
+            if completed:
+                feitos.add(chapter_id)
+        if not hasattr(self, '_vistos'):
+            self._vistos = {}
+        self._vistos[obj.pk] = vistos
         cache[obj.pk] = (seccoes, feitos)
         return cache[obj.pk]
 
@@ -709,7 +755,9 @@ class UserCourseProgressSerializer(serializers.ModelSerializer):
             {
                 'sectionId': str(section.id),
                 'chapters': [
-                    {'chapterId': str(ch.id), 'completed': ch.id in feitos}
+                    # video_visto: numa aula com questionário, o vídeo já foi visto (falta passar).
+                    {'chapterId': str(ch.id), 'completed': ch.id in feitos,
+                     'video_visto': ch.id in getattr(self, '_vistos', {}).get(obj.pk, ())}
                     for ch in section.chapters.all()
                 ],
             }
@@ -733,6 +781,8 @@ class UserCourseProgressUpdateSerializer(serializers.Serializer):
     sections = serializers.ListField(child=serializers.DictField())
     
     def update(self, instance, validated_data):
+        from apps.courses.ciclo import q_aula_visivel
+        from apps.courses.conclusao import actualizar_progresso, registar
         sections_data = validated_data.get('sections', [])
         
         # Update progress for each chapter
@@ -745,30 +795,36 @@ class UserCourseProgressUpdateSerializer(serializers.Serializer):
                 completed = chapter_data.get('completed', False)
                 
                 try:
-                    # Só capítulos deste curso (senão o progresso podia passar de 100%).
-                    chapter = Chapter.objects.get(id=chapter_id, section__course=instance.course)
-                    progress, created = ChapterProgress.objects.get_or_create(
-                        user_progress=instance,
-                        chapter=chapter,
-                        defaults={'completed': completed}
-                    )
-                    if not created:
-                        progress.completed = completed
-                        progress.save()
-                        
+                    # Só capítulos visíveis deste curso (senão o progresso podia passar de 100%).
+                    chapter = Chapter.objects.get(q_aula_visivel(), id=chapter_id, section__course=instance.course)
                 except (Chapter.DoesNotExist, ValueError, TypeError, ValidationError):
                     continue
+                # Um vídeo com duração conhecida só conta como visto quando o servidor registou a
+                # percentagem que o professor escolheu: o browser já não basta (antes bastava
+                # mandar completed=true).
+                if completed and _video_por_ver(instance.user, chapter):
+                    pct = getattr(chapter, 'percentagem_vista', None) or 80
+                    raise serializers.ValidationError(
+                        {'completed': f'Veja pelo menos {pct}% do vídeo para o marcar como visto.'},
+                        code='video_por_ver')
+                # Numa aula com questionário, marcar como vista regista o vídeo; a aula só fica
+                # concluída com o questionário passado (apps/courses/conclusao.py).
+                registar(instance, chapter, vista=bool(completed), desmarcar=not completed)
         
         # Recalculate overall progress (só capítulos que ainda existem neste curso)
-        from apps.courses.certificados import progresso_actual
-        instance.overallProgress = progresso_actual(instance.user, instance.course)
-        if instance.overallProgress >= 100.0 and not instance.completion_date:
-            instance.completion_date = timezone.now()
-        elif instance.overallProgress < 100.0 and instance.completion_date:
-            instance.completion_date = None
-        
-        instance.save()
+        actualizar_progresso(instance)
         return instance
+
+
+def _video_por_ver(user, chapter):
+    """Aula de vídeo com duração conhecida que o aluno ainda não viu o suficiente."""
+    from apps.courses.tempo_video import aula_vista, duracao_do_video
+    if chapter.type == 'Quiz' or not chapter.video or not duracao_do_video(chapter):
+        return False
+    from apps.courses.models import ChapterProgress
+    if ChapterProgress.objects.filter(user_progress__user=user, chapter=chapter, video_visto=True).exists():
+        return False  # já contou antes (inclui o que estava concluído antes desta regra)
+    return not aula_vista(user, chapter)
 
 
 class CourseEnrollmentSerializer(serializers.ModelSerializer):

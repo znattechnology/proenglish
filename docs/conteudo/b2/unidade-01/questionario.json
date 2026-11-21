@@ -1,0 +1,301 @@
+{
+ "title": "B2.1 Unit 1 quiz — Leading a team",
+ "description": "Relativas explicativas, which sobre uma frase, relativas com preposição, conduzir uma reunião, liderança, support e eventual.",
+ "questions": [
+  {
+   "id": "b2u1q1",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u1q1o0",
+     "text": "Elsa, who joined in May, will lead the testing.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u1q1o1",
+     "text": "Elsa, that joined in May, will lead the testing.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u1q1o2",
+     "text": "Elsa who joined in May, will lead the testing.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u1q1o0",
+   "explanation": "Informação extra: entre vírgulas, com who, e nunca com that.",
+   "points": 10
+  },
+  {
+   "id": "b2u1q2",
+   "question": "Complete: \"Sipho, ___ team worked on the backup, will do the satellite part.\"",
+   "options": [
+    {
+     "id": "b2u1q2o0",
+     "text": "whose",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u1q2o1",
+     "text": "who",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u1q2o2",
+     "text": "who's",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u1q2o0",
+   "explanation": "whose = cujo (a equipa do Sipho).",
+   "points": 10
+  },
+  {
+   "id": "b2u1q3",
+   "question": "\"…, o que é óptimo.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u1q3o0",
+     "text": "…, which is great.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u1q3o1",
+     "text": "…, what is great.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u1q3o2",
+     "text": "…, that is great.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u1q3o0",
+   "explanation": "which a comentar uma frase inteira.",
+   "points": 10
+  },
+  {
+   "id": "b2u1q4",
+   "question": "Escolha a frase correcta numa conversa.",
+   "options": [
+    {
+     "id": "b2u1q4o0",
+     "text": "These are the people we work with.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u1q4o1",
+     "text": "These are the people with who we work.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u1q4o2",
+     "text": "These are the people we work with them.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u1q4o0",
+   "explanation": "A preposição vai para o fim; no registo formal: with whom.",
+   "points": 10
+  },
+  {
+   "id": "b2u1q5",
+   "question": "Numa reunião, uma colega ainda não falou. A frase mais adequada é…",
+   "options": [
+    {
+     "id": "b2u1q5o0",
+     "text": "Elsa, we haven't heard from you yet. What's your take?",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u1q5o1",
+     "text": "Elsa, why are you so quiet?",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u1q5o2",
+     "text": "Elsa, you must speak now.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u1q5o0",
+   "explanation": "O nome, e uma pergunta concreta.",
+   "points": 10
+  },
+  {
+   "id": "b2u1q6",
+   "question": "Um colega conta uma história longa fora do assunto. A melhor reacção é…",
+   "options": [
+    {
+     "id": "b2u1q6o0",
+     "text": "Great story, but let's park that for now.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u1q6o1",
+     "text": "Stop talking, please.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u1q6o2",
+     "text": "That's not important.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u1q6o0",
+   "explanation": "Algo positivo, e depois \"let's park that\".",
+   "points": 10
+  },
+  {
+   "id": "b2u1q7",
+   "question": "\"Não suporto o barulho.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u1q7o0",
+     "text": "I can't stand the noise.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u1q7o1",
+     "text": "I can't support the noise.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u1q7o2",
+     "text": "I don't support the noise.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u1q7o0",
+   "explanation": "Falso amigo: support = apoiar.",
+   "points": 10
+  },
+  {
+   "id": "b2u1q8",
+   "question": "\"um eventual atraso\" em inglês:",
+   "options": [
+    {
+     "id": "b2u1q8o0",
+     "text": "a possible delay",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u1q8o1",
+     "text": "an eventual delay",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u1q8o2",
+     "text": "an eventually delay",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u1q8o0",
+   "explanation": "Falso amigo: eventual = final.",
+   "points": 10
+  },
+  {
+   "id": "b2u1q9",
+   "question": "Complete: \"When the manager left, Elsa ___ the project.\"",
+   "options": [
+    {
+     "id": "b2u1q9o0",
+     "text": "took over",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u1q9o1",
+     "text": "took off",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u1q9o2",
+     "text": "took out",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u1q9o0",
+   "explanation": "take over = assumir (uma tarefa de outra pessoa).",
+   "points": 10
+  },
+  {
+   "id": "b2u1q10",
+   "question": "Reciclagem (B1, unidade 10). \"Devíamos ter avisado o cliente.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u1q10o0",
+     "text": "We should have warned the client.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u1q10o1",
+     "text": "We should warned the client.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u1q10o2",
+     "text": "We must warned the client.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u1q10o0",
+   "explanation": "should have + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b2u1q11",
+   "question": "Reciclagem (B1, unidade 9). Complete: \"___ it was late, the team kept working.\"",
+   "options": [
+    {
+     "id": "b2u1q11o0",
+     "text": "Although",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u1q11o1",
+     "text": "Despite",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u1q11o2",
+     "text": "However",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u1q11o0",
+   "explanation": "although + frase; despite + nome.",
+   "points": 10
+  },
+  {
+   "id": "b2u1q12",
+   "question": "Reciclagem (B1, unidade 8). Complete: \"This time next month, we'll ___ the new system.\"",
+   "options": [
+    {
+     "id": "b2u1q12o0",
+     "text": "be testing",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u1q12o1",
+     "text": "testing",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u1q12o2",
+     "text": "be test",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u1q12o0",
+   "explanation": "Future continuous: will be + -ing.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

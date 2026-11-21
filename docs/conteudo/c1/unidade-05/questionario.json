@@ -1,0 +1,301 @@
+{
+ "title": "C1.1 Unit 5 quiz — Data and reports",
+ "description": "Orações participiais, passivas de relato, números aproximados, vocabulário de relatórios, instance e actual.",
+ "questions": [
+  {
+   "id": "c1u5q1",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u5q1o0",
+     "text": "Having analysed the data, we reached a clear conclusion.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u5q1o1",
+     "text": "Having analysed the data, the conclusion is clear.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u5q1o2",
+     "text": "Having analysed the data, it is clear the conclusion.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u5q1o0",
+   "explanation": "O sujeito da oração principal faz a acção do particípio.",
+   "points": 10
+  },
+  {
+   "id": "c1u5q2",
+   "question": "Complete: \"___ with last year, revenue grew by twelve percent.\"",
+   "options": [
+    {
+     "id": "c1u5q2o0",
+     "text": "Compared",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u5q2o1",
+     "text": "Comparing of",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u5q2o2",
+     "text": "Compare",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u5q2o0",
+   "explanation": "Particípio passado: Compared with…",
+   "points": 10
+  },
+  {
+   "id": "c1u5q3",
+   "question": "Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u5q3o0",
+     "text": "Mussiro is said to be planning a second phase.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u5q3o1",
+     "text": "Mussiro is said that it is planning a second phase.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u5q3o2",
+     "text": "Mussiro is saying to be planning a second phase.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u5q3o0",
+   "explanation": "is said + to be + -ing.",
+   "points": 10
+  },
+  {
+   "id": "c1u5q4",
+   "question": "Complete: \"A competitor is believed to ___ offered a lower price.\"",
+   "options": [
+    {
+     "id": "c1u5q4o0",
+     "text": "have",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u5q4o1",
+     "text": "had",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u5q4o2",
+     "text": "has",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u5q4o0",
+   "explanation": "to have + particípio, para o passado.",
+   "points": 10
+  },
+  {
+   "id": "c1u5q5",
+   "question": "A satisfação foi 4,1 e a meta 4,0. A descrição honesta:",
+   "options": [
+    {
+     "id": "c1u5q5o0",
+     "text": "just over the target",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u5q5o1",
+     "text": "well over the target",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u5q5o2",
+     "text": "far beyond the target",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u5q5o0",
+   "explanation": "Aproximar com honestidade.",
+   "points": 10
+  },
+  {
+   "id": "c1u5q6",
+   "question": "Complete: \"Revenue was just shy ___ the target.\"",
+   "options": [
+    {
+     "id": "c1u5q6o0",
+     "text": "of",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u5q6o1",
+     "text": "from",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u5q6o2",
+     "text": "to",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u5q6o0",
+   "explanation": "just shy of.",
+   "points": 10
+  },
+  {
+   "id": "c1u5q7",
+   "question": "\"A situação actual\" em inglês:",
+   "options": [
+    {
+     "id": "c1u5q7o0",
+     "text": "the current situation",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u5q7o1",
+     "text": "the actual situation",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u5q7o2",
+     "text": "the actually situation",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u5q7o0",
+   "explanation": "Falso amigo: actual = real.",
+   "points": 10
+  },
+  {
+   "id": "c1u5q8",
+   "question": "\"For instance\" quer dizer…",
+   "options": [
+    {
+     "id": "c1u5q8o0",
+     "text": "por exemplo",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u5q8o1",
+     "text": "em tribunal",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u5q8o2",
+     "text": "imediatamente",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u5q8o0",
+   "explanation": "Falso amigo: instance = exemplo, caso.",
+   "points": 10
+  },
+  {
+   "id": "c1u5q9",
+   "question": "Complete: \"Revenue grew twelve percent year ___ year.\"",
+   "options": [
+    {
+     "id": "c1u5q9o0",
+     "text": "on",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u5q9o1",
+     "text": "at",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u5q9o2",
+     "text": "to",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u5q9o0",
+   "explanation": "year on year.",
+   "points": 10
+  },
+  {
+   "id": "c1u5q10",
+   "question": "Reciclagem (C1, unidade 4). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u5q10o0",
+     "text": "Only when I read the report did I understand.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u5q10o1",
+     "text": "Only when I read the report I understood.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u5q10o2",
+     "text": "Only when did I read the report I understood.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u5q10o0",
+   "explanation": "Only when… + inversão na oração principal.",
+   "points": 10
+  },
+  {
+   "id": "c1u5q11",
+   "question": "Reciclagem (C1, unidade 3). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u5q11o0",
+     "text": "Should you need more data, please call me.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u5q11o1",
+     "text": "Should you needed more data, please call me.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u5q11o2",
+     "text": "Should need you more data, please call me.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u5q11o0",
+   "explanation": "Should + sujeito + infinitivo.",
+   "points": 10
+  },
+  {
+   "id": "c1u5q12",
+   "question": "Reciclagem (C1, unidade 1). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1u5q12o0",
+     "text": "What the board needs is three clear messages.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1u5q12o1",
+     "text": "What the board needs it's three clear messages.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1u5q12o2",
+     "text": "What the board need are three clear messages.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1u5q12o0",
+   "explanation": "Clivada com what.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

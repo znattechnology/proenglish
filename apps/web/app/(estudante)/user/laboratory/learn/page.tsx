@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { BarraProgresso, Botao } from "@/components/pe";
 import { Pagina } from "@/components/pe/estudante/Pagina";
+import { CartaoRevisao } from "@/components/pe/revisao/CartaoRevisao";
 import { CartaoVidas, Contadores, EsqueletoTrilho, MetaDeHoje, TrilhoLicoes } from "@/components/pe/laboratorio/Trilho";
 import {
   idCursoActivo,
@@ -33,6 +34,7 @@ export default function PaginaTrilho() {
 
       <div className="mx-auto flex w-full min-w-0 max-w-[640px] flex-col gap-4 lg:mx-0 lg:flex-[1_1_560px]">
         <Contadores curso={trilho?.curso.titulo} sequencia={sequencia} vidas={vidas} className="-mx-1 border-b border-pe-linha pb-2 lg:hidden" />
+        <CartaoRevisao />
         {isError ? (
           <div role="alert" className="flex flex-col items-start gap-3 rounded-pe-md bg-pe-errado-suave p-5">
             <p className="m-0">Não conseguimos carregar o trilho deste curso.</p>

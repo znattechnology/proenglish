@@ -67,8 +67,9 @@ class PlanosTests(BaseAdmin):
         prem = por_tipo['PREMIUM']
         self.assertEqual(prem['preco_mensal_kz'], 14950)
         self.assertEqual(prem['preco_anual_kz'], 149500)
-        self.assertEqual(set(prem['limites']), {'licoes_dia', 'vidas', 'conversa_min_dia', 'sessoes_nativo_mes',
-                                                'protecoes_semana'})
+        self.assertEqual(set(prem['limites']), {'licoes_dia', 'vidas', 'conversa_min_dia', 'conversa_min_mes',
+                                                'teste_conversa_min_dia', 'teste_conversa_dias', 'sessoes_nativo_mes',
+                                                'protecoes_semana', 'pronuncia_detalhada_dia'})
         self.assertIsNone(prem['limites']['vidas'])  # 0 no modelo = ilimitadas
         self.assertEqual(prem['utilizadores'], 1)
         self.assertEqual(prem['assinantes'], 1)

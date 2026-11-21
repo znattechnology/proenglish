@@ -88,9 +88,15 @@ def erro_limite(user, lesson, sub=None):
     feitas = licoes_novas_hoje(user)
     return {
         'codigo': CODIGO,
-        'mensagem': (f'Já fez as {limite} lições de hoje. Amanhã há mais, ou passe para o Premium '
+        'mensagem': (f'Já fez as {limite} lições novas de hoje. Amanhã há mais, ou assine um plano '
                      'para lições sem limite.'),
         'limite': limite,
         'feitas': feitas,
         'renova_em': proxima_meia_noite().isoformat(),
+        'oferta': _oferta(user, sub),
     }
+
+
+def _oferta(user, sub):
+    from apps.subscriptions.oferta import LICOES, oferta_segura
+    return oferta_segura(user, LICOES, sub)

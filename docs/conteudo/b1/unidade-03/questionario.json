@@ -1,0 +1,301 @@
+{
+ "title": "B1.1 Unit 3 quiz — In the meeting",
+ "description": "Opiniões, concordar e discordar, interromper, too / enough, so / such, argument e resume.",
+ "questions": [
+  {
+   "id": "b1u3q1",
+   "question": "\"Acho que não é boa ideia.\" Complete: \"I ___ it's a good idea.\"",
+   "options": [
+    {
+     "id": "b1u3q1o0",
+     "text": "don't think",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u3q1o1",
+     "text": "think not",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u3q1o2",
+     "text": "not think",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u3q1o0",
+   "explanation": "Em inglês, o negativo vai com think.",
+   "points": 10
+  },
+  {
+   "id": "b1u3q2",
+   "question": "Uma opinião forte tem…",
+   "options": [
+    {
+     "id": "b1u3q2o0",
+     "text": "uma opinião, uma razão e um exemplo",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u3q2o1",
+     "text": "só uma opinião",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u3q2o2",
+     "text": "uma opinião e uma pergunta",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u3q2o0",
+   "explanation": "Opinião + because + For example (3A).",
+   "points": 10
+  },
+  {
+   "id": "b1u3q3",
+   "question": "\"Concordo contigo.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u3q3o0",
+     "text": "I agree with you.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u3q3o1",
+     "text": "I am agree with you.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u3q3o2",
+     "text": "I'm agree with you.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u3q3o0",
+   "explanation": "agree é um verbo.",
+   "points": 10
+  },
+  {
+   "id": "b1u3q4",
+   "question": "Numa reunião com um cliente, a forma mais cortês de discordar é…",
+   "options": [
+    {
+     "id": "b1u3q4o0",
+     "text": "I'm not sure I agree.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u3q4o1",
+     "text": "That's wrong.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u3q4o2",
+     "text": "I totally disagree.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u3q4o0",
+   "explanation": "Discordar com suavidade, e depois a razão.",
+   "points": 10
+  },
+  {
+   "id": "b1u3q5",
+   "question": "\"Desculpe interromper, mas…\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u3q5o0",
+     "text": "Sorry to interrupt, but…",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u3q5o1",
+     "text": "Sorry for interrupt, but…",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u3q5o2",
+     "text": "Sorry interrupting, but…",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u3q5o0",
+   "explanation": "Sorry to + verbo.",
+   "points": 10
+  },
+  {
+   "id": "b1u3q6",
+   "question": "Complete: \"The masts aren't high ___.\"",
+   "options": [
+    {
+     "id": "b1u3q6o0",
+     "text": "enough",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u3q6o1",
+     "text": "too",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u3q6o2",
+     "text": "so",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u3q6o0",
+   "explanation": "adjectivo + enough.",
+   "points": 10
+  },
+  {
+   "id": "b1u3q7",
+   "question": "Complete: \"There are too ___ tasks for one week.\"",
+   "options": [
+    {
+     "id": "b1u3q7o0",
+     "text": "many",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u3q7o1",
+     "text": "much",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u3q7o2",
+     "text": "enough",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u3q7o0",
+   "explanation": "tasks conta-se → too many.",
+   "points": 10
+  },
+  {
+   "id": "b1u3q8",
+   "question": "Complete: \"It's ___ a big job!\"",
+   "options": [
+    {
+     "id": "b1u3q8o0",
+     "text": "such",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u3q8o1",
+     "text": "so",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u3q8o2",
+     "text": "too",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u3q8o0",
+   "explanation": "such a + adjectivo + nome.",
+   "points": 10
+  },
+  {
+   "id": "b1u3q9",
+   "question": "\"Pode resumir as decisões?\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u3q9o0",
+     "text": "Could you summarise the decisions?",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u3q9o1",
+     "text": "Could you resume the decisions?",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u3q9o2",
+     "text": "Could you resumen the decisions?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u3q9o0",
+   "explanation": "Falso amigo: resume = retomar.",
+   "points": 10
+  },
+  {
+   "id": "b1u3q10",
+   "question": "Reciclagem (B1, unidade 2). Complete: \"How long have you ___ working on this?\"",
+   "options": [
+    {
+     "id": "b1u3q10o0",
+     "text": "been",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u3q10o1",
+     "text": "be",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u3q10o2",
+     "text": "being",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u3q10o0",
+   "explanation": "have + been + -ing.",
+   "points": 10
+  },
+  {
+   "id": "b1u3q11",
+   "question": "Reciclagem (B1, unidade 2). \"Dançava kizomba todos os sábados\" (agora já não). Em inglês:",
+   "options": [
+    {
+     "id": "b1u3q11o0",
+     "text": "I used to dance kizomba every Saturday.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u3q11o1",
+     "text": "I use to dance kizomba every Saturday.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u3q11o2",
+     "text": "I usually dance kizomba every Saturday.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u3q11o0",
+   "explanation": "used to: um hábito do passado.",
+   "points": 10
+  },
+  {
+   "id": "b1u3q12",
+   "question": "Reciclagem (A2, unidade 5). Complete: \"You ___ talk to Lerato about it.\" (um conselho)",
+   "options": [
+    {
+     "id": "b1u3q12o0",
+     "text": "should",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u3q12o1",
+     "text": "should to",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u3q12o2",
+     "text": "must to",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u3q12o0",
+   "explanation": "should + verbo, sem to.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

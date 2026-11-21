@@ -9,6 +9,7 @@ import { Dialogo } from "@/components/pe/Dialogo";
 import { cnPe } from "@/lib/pe";
 import { errosPorCampo } from "@/components/pe/conta/Partes";
 import { mensagemErro } from "@/src/domains/student/subscricao/api";
+import { OPCOES_NIVEL } from "@/src/domains/shared/niveis";
 import {
   useApagarSituacaoMutation,
   useCriarSituacaoMutation,
@@ -18,7 +19,12 @@ import {
   type Situacao,
 } from "@/src/domains/teacher/professor/fala";
 
-const vazia: NovaSituacao = { nome: "", descricao: "", papel_tutor: "", frases: [""], curso: null, nivel: "B1", duracao_min: 5, correccao: "suave", estado: "rascunho" };
+const vazia: NovaSituacao = { nome: "", descricao: "", papel_tutor: "", frases: [""], curso: null, aula: null, tipo_conversa: "", nivel: "B1", duracao_min: 5, correccao: "suave", estado: "rascunho" };
+
+const TIPOS_CONVERSA = [
+  { v: "guiada", nome: "Guiada", texto: "o tutor conduz e ajuda o aluno a usar as frases" },
+  { v: "livre", nome: "Livre", texto: "o aluno resolve a situação sozinho" },
+] as const;
 
 /** Criar ou editar uma situação de conversa com o tutor. */
 export function FormSituacao({ inicial }: { inicial?: Situacao }) {
@@ -28,13 +34,23 @@ export function FormSituacao({ inicial }: { inicial?: Situacao }) {
   const [mudar, { isLoading: aMudar }] = useMudarSituacaoMutation();
   const [remover, { isLoading: aRemover }] = useApagarSituacaoMutation();
   const [v, setV] = useState<NovaSituacao>(
-    inicial ? { ...inicial, curso: inicial.curso?.id ?? null, frases: inicial.frases.length ? inicial.frases : [""] } : vazia
+    inicial
+      ? { ...inicial, curso: inicial.curso?.id ?? null, aula: inicial.aula?.id ?? null, tipo_conversa: inicial.tipo_conversa ?? "", frases: inicial.frases.length ? inicial.frases : [""] }
+      : vazia
   );
   const [erros, setErros] = useState<Record<string, string>>({});
   const [geral, setGeral] = useState<string | null>(null);
   const [apagar, setApagar] = useState(false);
   const muda = (p: Partial<NovaSituacao>) => setV((x) => ({ ...x, ...p }));
   const aGuardar = aCriar || aMudar;
+  // As aulas do curso escolhido, agrupadas por unidade e pela ordem do curso.
+  const aulas = (v.curso && opcoes?.aulas?.[v.curso]) || [];
+  const unidades = aulas.reduce<{ nome: string; aulas: typeof aulas }[]>((grupos, a) => {
+    const ultimo = grupos[grupos.length - 1];
+    if (ultimo?.nome === a.unidade) ultimo.aulas.push(a);
+    else grupos.push({ nome: a.unidade, aulas: [a] });
+    return grupos;
+  }, []);
 
   async function guardar(estado: NovaSituacao["estado"]) {
     setGeral(null);
@@ -44,7 +60,8 @@ export function FormSituacao({ inicial }: { inicial?: Situacao }) {
     if (!v.papel_tutor.trim()) er.papel_tutor = "Diga que papel faz o tutor.";
     setErros(er);
     if (Object.keys(er).length) return;
-    const corpo = { ...v, estado, nome: v.nome.trim(), descricao: v.descricao.trim(), papel_tutor: v.papel_tutor.trim(), frases: v.frases.map((f) => f.trim()).filter(Boolean) };
+    // Sem aula, a conversa não entra no percurso: o tipo deixa de fazer sentido.
+    const corpo = { ...v, tipo_conversa: v.aula ? v.tipo_conversa : ("" as const), estado, nome: v.nome.trim(), descricao: v.descricao.trim(), papel_tutor: v.papel_tutor.trim(), frases: v.frases.map((f) => f.trim()).filter(Boolean) };
     try {
       if (inicial) await mudar({ id: inicial.id, ...corpo }).unwrap();
       else await criar(corpo).unwrap();
@@ -116,7 +133,7 @@ export function FormSituacao({ inicial }: { inicial?: Situacao }) {
         </fieldset>
 
         <div className="grid gap-4 sm:grid-cols-3">
-          <Escolha rotulo="Curso" value={v.curso ?? ""} onChange={(e) => muda({ curso: e.target.value || null })} erro={erros.curso}>
+          <Escolha rotulo="Curso" value={v.curso ?? ""} onChange={(e) => muda({ curso: e.target.value || null, aula: null })} erro={erros.curso}>
             <option value="">Geral (todos os seus alunos)</option>
             {opcoes?.cursos.map((c) => (
               <option key={c.id} value={c.id}>
@@ -125,7 +142,7 @@ export function FormSituacao({ inicial }: { inicial?: Situacao }) {
             ))}
           </Escolha>
           <Escolha rotulo="Nível" value={v.nivel} onChange={(e) => muda({ nivel: e.target.value })} erro={erros.nivel}>
-            {(opcoes?.niveis ?? ["A1", "A2", "B1", "B2", "C1", "C2"].map((n) => ({ valor: n, nome: n }))).map((n) => (
+            {(opcoes?.niveis ?? OPCOES_NIVEL).map((n) => (
               <option key={n.valor} value={n.valor}>
                 {n.nome}
               </option>
@@ -139,6 +156,45 @@ export function FormSituacao({ inicial }: { inicial?: Situacao }) {
             ))}
           </Escolha>
         </div>
+
+        {v.curso && aulas.length ? (
+          <div className="flex flex-col gap-4 rounded-pe-md bg-pe-fundo-suave p-4">
+            <Escolha
+              rotulo="Depois de que aula"
+              value={v.aula ?? ""}
+              onChange={(e) => muda({ aula: e.target.value || null, tipo_conversa: e.target.value ? v.tipo_conversa || "guiada" : "" })}
+              erro={erros.aula}
+              ajuda="No percurso do curso, o aluno faz esta conversa logo a seguir à aula que escolher."
+            >
+              <option value="">Nenhuma (fica só na lista de conversas)</option>
+              {unidades.map((u) => (
+                <optgroup key={u.nome} label={u.nome}>
+                  {u.aulas.map((a) => (
+                    <option key={a.id} value={a.id}>
+                      {a.titulo}
+                    </option>
+                  ))}
+                </optgroup>
+              ))}
+            </Escolha>
+            {v.aula ? (
+              <fieldset className="m-0 border-0 p-0">
+                <legend className="mb-1.5 p-0 text-pe-rotulo">Tipo de conversa</legend>
+                <div className="flex flex-wrap gap-2">
+                  {TIPOS_CONVERSA.map((o) => (
+                    <label key={o.v} className={cnPe("flex min-h-11 cursor-pointer items-center gap-1.5 rounded-pe-sm px-4", v.tipo_conversa === o.v ? "bg-pe-azul-marca text-pe-sobre-marca" : "border-[1.5px] border-pe-linha-forte bg-pe-fundo")}>
+                      <input type="radio" name="tipo_conversa" checked={v.tipo_conversa === o.v} onChange={() => muda({ tipo_conversa: o.v })} className="sr-only" />
+                      <span className="font-semibold">{o.nome}</span>
+                      <span className="text-[14px] opacity-80">{o.texto}</span>
+                    </label>
+                  ))}
+                </div>
+                <p className="m-0 mt-1.5 text-pe-legenda text-pe-tinta-suave">Na mesma aula, a conversa guiada aparece antes da livre.</p>
+                {erros.tipo_conversa ? <p className="m-0 mt-1 text-pe-legenda font-semibold text-pe-errado">{erros.tipo_conversa}</p> : null}
+              </fieldset>
+            ) : null}
+          </div>
+        ) : null}
 
         <fieldset className="m-0 border-0 p-0">
           <legend className="mb-1.5 p-0 text-pe-rotulo">Correcção por defeito</legend>

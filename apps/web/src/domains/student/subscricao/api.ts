@@ -214,6 +214,24 @@ export function mensagemErro(e: unknown, padrao = "Não foi possível concluir. 
   }
   return padrao;
 }
+/**
+ * Plano que resolve um limite (vidas, lições, análises, conversa, exame, certificado), decidido
+ * pela API. O primeiro dos `ganhos` é o que resolve este limite. null: já tem o melhor plano.
+ */
+export type RecursoOferta = "vidas" | "licoes" | "analises" | "conversa" | "exame" | "certificado";
+export type Oferta = {
+  recurso: RecursoOferta;
+  plano: { tipo: Exclude<TipoPlano, "FREE">; nome: string; preco_mensal_kz: number; preco_anual_kz: number | null; dias_teste: number; pode_experimentar: boolean };
+  ganhos: string[];
+  ligacao: string;
+};
+
+/** A oferta que vem no corpo de um erro (null: nenhum plano resolve; undefined: o erro não a traz). */
+export function ofertaDoErro(e: unknown): Oferta | null | undefined {
+  const d = (e as { data?: { oferta?: Oferta | null } } | undefined)?.data;
+  return d && typeof d === "object" && "oferta" in d ? (d.oferta ?? null) : undefined;
+}
+
 export function codigoErro(e: unknown) {
   const d = (e as { data?: { code?: string; codigo?: string } } | undefined)?.data;
   return d?.code ?? d?.codigo;

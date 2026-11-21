@@ -8,6 +8,7 @@ from django.utils import timezone
 from rest_framework.test import APIClient, APITestCase
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from apps.courses.api.student.video_courses.conteudo import codigo_opcao
 from apps.courses.matriculas import matricular_em_curso
 from apps.courses.models import (
     Chapter, ChapterProgress, ChapterQuiz, Course, CourseSection, StudentQuizAttempt, UserCourseProgress,
@@ -68,7 +69,7 @@ class StudentVideoPlayerTests(APITestCase):
 
     def attempt(self, certas=3, **extra):
         """Responde ao quiz de 4 perguntas acertando `certas` (cada uma vale 10 pontos)."""
-        respostas = {f'q{i}': ('a' if i <= certas else 'b') for i in range(1, 5)}
+        respostas = {f'q{i}': codigo_opcao(self.ch_quiz.id, f'q{i}', 'a' if i <= certas else 'b') for i in range(1, 5)}
         return self.client.post(f'{BASE}/chapters/{self.ch_quiz.id}/quiz/attempts/',
                                 {'respostas': respostas, **extra}, format='json')
 
@@ -129,6 +130,31 @@ class StudentVideoPlayerTests(APITestCase):
         self.assertEqual(len(resp.json()['quiz_data']['questions']), 4)
         detalhe = self.client.get(f'{BASE}/{self.course.id}/').content.decode()
         self.assertNotIn('isCorrect', detalhe)
+
+    def test_opcoes_baralhadas_e_com_ids_opacos(self):
+        qs = self.client.get(f'{BASE}/chapters/{self.ch_quiz.id}/').json()['quiz_data']['questions']
+        for q in qs:
+            ids = [o['id'] for o in q['options']]
+            self.assertTrue(all(i.startswith('op_') for i in ids), ids)
+            self.assertNotIn('a', ids)
+            self.assertEqual(sorted(o['text'] for o in q['options']), ['Certa', 'Errada'])
+        # A mesma aula dá sempre a mesma ordem e os mesmos códigos (o aluno pode recarregar a página).
+        de_novo = self.client.get(f'{BASE}/chapters/{self.ch_quiz.id}/').json()['quiz_data']['questions']
+        self.assertEqual(qs, de_novo)
+
+    def test_ids_originais_enviados_directamente_nao_contam(self):
+        resp = self.client.post(f'{BASE}/chapters/{self.ch_quiz.id}/quiz/attempts/',
+                                {'respostas': {f'q{i}': 'a' for i in range(1, 5)}}, format='json')
+        self.assertEqual(resp.status_code, 201, resp.content)
+        self.assertEqual(resp.json()['data']['score'], 0)
+
+    def test_a_certa_nao_fica_sempre_na_mesma_posicao(self):
+        from apps.courses.api.student.video_courses.conteudo import quiz_sem_respostas
+        quiz = {'questions': [{'id': f'u1q{i}', 'options': [{'id': f'u1q{i}o{j}', 'text': f'T{j}', 'isCorrect': j == 0}
+                                                         for j in range(3)]} for i in range(40)]}
+        posicoes = {[o['text'] for o in q['options']].index('T0')
+                    for q in quiz_sem_respostas(quiz, self.ch_quiz.id)['questions']}
+        self.assertEqual(posicoes, {0, 1, 2})
 
     def test_sem_inscricao_ve_so_a_estrutura(self):
         # Tem o plano mas não está inscrito: vê títulos e tipos, não o conteúdo.

@@ -1,0 +1,139 @@
+{
+ "unidade": "C1.2 · Unit 9 — Register",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "c1-u9-guiada",
+   "nome": "C1 Unit 9 · Formal or friendly?",
+   "tipo": "guiada",
+   "depois_da_aula": "9C",
+   "descricao": "O tutor é Emerson e muda de papel três vezes: directora de uma empresa, colega de equipa e amigo de longa data. O aluno dá a mesma pequena notícia a cada um (a sua, ou proposta: vai mudar de departamento) e adapta o registo; o tutor reage quando o registo não combina.",
+   "papel_tutor": "Emerson, que faz de directora, de colega e de amigo, um de cada vez.",
+   "nivel": "C1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I'd like to let you know that…",
+    "Just to let everyone know, …",
+    "Guess what? …",
+    "…or so / …-ish",
+    "…turn it down / …set it up"
+   ],
+   "extras": {
+    "brief": "Guided practice for an advanced learner (C1.2, unit 9). You are Emerson (a neutral name; never mention a husband or wife). You play three roles, one at a time, and always say which role you are playing first: (1) \"Now I'm the director of your company.\" (2) \"Now I'm your colleague in the team.\" (3) \"Now I'm your old friend from school.\" Ask the student to give you the same small piece of news in each role. If they have none, offer: they are moving to another department next month. React to the register: as the director, if the student is too informal (\"Guess what?\", \"-ish\", \"gonna\"), react with a cool, formal \"I see.\" and ask them to say it more formally; as the colleague, accept neutral English; as the friend, if the student is too formal (\"I would like to inform you…\"), laugh and say \"Why are you talking like a letter from the bank?\". After each version, say in one sentence what made the register right or wrong. At the end, ask which version was hardest. Use any language from A1 to C1 unit 9: all of C1.1, ellipsis, plain-English explanations, the future in the past, fronting, discourse markers, and unit 9: formal, neutral and colloquial register, common work idioms (the ball is in their court, a win-win, call it a day, back to square one, on the same page), vague language (or so, -ish, give or take, sort of, a bunch of) and separable and three-part phrasal verbs. Speak at natural speed, and change your own register to match the situation. Short turns; never more than three sentences.",
+    "primeira_fala": "Hi, {nome}! Let's play with register. I'll be three different people. First: now I'm the director of your company. You have some news for me. Go ahead.",
+    "primeira_fala_simples": "Hi, {nome}! I'm the director of your company. Tell me your news, formally.",
+    "guiao": [
+     "Thank you. Now I'm your colleague in the team. Tell me the same news.",
+     "Now I'm your old friend from school. Same news — go!",
+     "Which of the three versions was the hardest for you?",
+     "Very good, {nome}. Three people, three voices."
+    ],
+    "frases": [
+     {
+      "en": "I'd like to let you know that I'll be moving to the finance department from next month.",
+      "pt": "Gostaria de o informar de que vou passar para o departamento financeiro a partir do próximo mês."
+     },
+     {
+      "en": "Just to let everyone know: I'm moving to finance next month. I'll hand my projects over before I go.",
+      "pt": "Só para todos saberem: vou para as finanças no próximo mês. Passo os meus projectos antes de sair."
+     },
+     {
+      "en": "Guess what? I'm moving to finance! Next month-ish. Numbers all day, can you imagine?",
+      "pt": "Adivinha? Vou para as finanças! Lá para o próximo mês. Números o dia todo, imaginas?"
+     },
+     {
+      "en": "I was offered a job in Durban, but I turned it down.",
+      "pt": "Ofereceram-me um emprego em Durban, mas recusei."
+     },
+     {
+      "en": "It's a win-win: they need someone, and I want a change.",
+      "pt": "É bom para os dois lados: eles precisam de alguém, e eu quero mudar."
+     }
+    ],
+    "palavras": [
+     "let you know",
+     "guess what",
+     "ish",
+     "or so",
+     "hand",
+     "win-win"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": null
+  },
+  {
+   "slug": "c1-u9-livre",
+   "nome": "C1 Unit 9 · The networking evening",
+   "tipo": "livre",
+   "depois_da_aula": "9G",
+   "descricao": "O tutor é Morgan, um desconhecido numa recepção de networking, que começa formal e se torna descontraído se o aluno o acompanhar. O aluno inicia a conversa, faz conversa de circunstância, encontra um interesse comum, ajusta o registo e termina com elegância.",
+   "papel_tutor": "Morgan, um desconhecido numa recepção de networking.",
+   "nivel": "C1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "I don't believe we've met.",
+    "So, what brings you here?",
+    "Small world!",
+    "It's been great to meet you. I've gotta…",
+    "Here's my card. Let's grab a coffee sometime."
+   ],
+   "extras": {
+    "brief": "Role-play for an advanced learner (C1.2, unit 9). You are Morgan (a neutral name; never mention a husband or wife), a stranger at a business networking reception. You work in renewable energy finance (or, if the student prefers, in any field close to theirs). Wait for the student to start the conversation; if they don't within the first turn, say \"You look like you need rescuing from that corner.\" Begin politely formal. Become more relaxed — first names, a joke, a little vague language and one idiom — only if the student relaxes too. Make small talk (the event, the food, the traffic, the city), ask what they do, and leave room for the student to find one thing you have in common. If the student talks only about themselves, say \"And here I was hoping to talk about me!\" with a laugh. After a few minutes, see whether the student ends the conversation gracefully (an excuse, a card, a plan). If they don't, say \"I should probably mingle a bit…\" and see how they close. Use any language from A1 to C1 unit 9: all of C1.1, ellipsis, plain-English explanations, the future in the past, fronting, discourse markers, and unit 9: formal, neutral and colloquial register, common work idioms (the ball is in their court, a win-win, call it a day, back to square one, on the same page), vague language (or so, -ish, give or take, sort of, a bunch of) and separable and three-part phrasal verbs. Speak at natural speed, and change your own register to match the situation. Short turns; never more than three sentences at a time.",
+    "primeira_fala": "Good evening. Quite a crowd tonight, isn't it?",
+    "primeira_fala_simples": "Good evening. Many people here tonight, right?",
+    "guiao": [
+     "Morgan — I'm in renewable energy finance. And you?",
+     "Oh, really? That's interesting. How did you end up in that?",
+     "The traffic tonight was terrible, by the way. Took me an hour or so from Rosebank.",
+     "So, what brings you to an evening like this?",
+     "I should probably mingle a bit…",
+     "Great to meet you, {nome}. Let's stay in touch."
+    ],
+    "frases": [
+     {
+      "en": "I don't believe we've met. I'm…",
+      "pt": "Acho que não nos conhecemos. Sou…"
+     },
+     {
+      "en": "So, what brings you here tonight?",
+      "pt": "Então, o que o traz cá esta noite?"
+     },
+     {
+      "en": "Small world! My sister works in solar too.",
+      "pt": "O mundo é pequeno! A minha irmã também trabalha em energia solar."
+     },
+     {
+      "en": "It's been great to meet you. I've gotta go and say hello to a client before she leaves.",
+      "pt": "Foi um prazer conhecê-lo. Tenho de ir cumprimentar uma cliente antes que ela saia."
+     },
+     {
+      "en": "Here's my card. Let's grab a coffee sometime.",
+      "pt": "Aqui está o meu cartão. Vamos tomar um café um dia destes."
+     }
+    ],
+    "palavras": [
+     "believe we",
+     "brings you",
+     "small world",
+     "great to meet",
+     "card",
+     "coffee"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Inicia a conversa com naturalidade e faz conversa de circunstância (o evento, a cidade, o trabalho).",
+    "Ajusta o registo ao do interlocutor: começa cortês e descontrai quando o outro descontrai.",
+    "Faz perguntas e encontra pelo menos um interesse comum, sem falar só de si.",
+    "Usa com naturalidade linguagem vaga, phrasal verbs e, se couber, uma expressão idiomática.",
+    "Termina a conversa com elegância (uma desculpa, um cartão, um plano) e desenvolve pelo menos uma vez um turno de 1 minuto e meio ou mais.",
+    "É compreendido sem esforço; o tom e o ritmo acompanham o registo."
+   ]
+  }
+ ]
+}

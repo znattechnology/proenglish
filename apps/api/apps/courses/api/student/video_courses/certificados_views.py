@@ -35,10 +35,18 @@ def _certificado(cert, request):
         'emitido_em': timezone.localtime(cert.issued_at, svc.FUSO_ANGOLA).isoformat(),
         'nota_final': round(cert.final_grade, 1) if cert.final_grade is not None else None,
         'nota_letra': cert.final_grade_letter or None,
+        'nivel_fala': cert.nivel_fala or None,
+        'nivel_fala_texto': svc.frase_nivel_fala(cert),
+        'notas_fala': svc.notas_fala_lista(cert),
         'estado': 'revogado' if cert.is_revoked else 'valido',
         'ligacao_verificacao': svc.ligacao_verificacao(cert),
         'pdf_url': request.build_absolute_uri(f'/api/v1/student/video-courses/certificados/{cert.id}/pdf/'),
     }
+
+
+def _oferta_certificado(user):
+    from apps.subscriptions.oferta import CERTIFICADO, oferta_segura
+    return oferta_segura(user, CERTIFICADO)
 
 
 @api_view(['GET'])
@@ -74,6 +82,7 @@ def listar_certificados(request):
     certs = CourseCertificate.objects.filter(user=user).select_related('course').order_by('-issued_at')
     return Response({
         'plano_inclui_certificados': plano_ok,
+        'oferta': None if plano_ok else _oferta_certificado(user),
         'certificados': [_certificado(c, request) for c in certs],
         'em_curso': em_curso,
     })

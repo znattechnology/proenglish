@@ -234,7 +234,7 @@ test-cms: ## Executar apenas testes do CMS
 	$(MANAGE) test apps.cms.tests --keepdb --parallel --verbosity=1
 
 test-users: ## Executar apenas testes de usuários
-	$(MANAGE) test apps.users.tests --keepdb --parallel --verbosity=1
+	$(MANAGE) test apps.users --keepdb --parallel --verbosity=1
 
 test-subscriptions: ## Executar apenas testes de assinaturas
 	$(MANAGE) test apps.subscriptions.tests --keepdb --parallel --verbosity=1
@@ -250,7 +250,7 @@ test-practice: ## Executar apenas testes de practice
 
 test-critical: ## Executar testes críticos (CMS, Users, Subscriptions, Courses)
 	@echo "🧪 Executando testes críticos..."
-	$(MANAGE) test apps.cms.tests apps.users.tests apps.subscriptions.tests --keepdb --parallel --verbosity=1
+	$(MANAGE) test apps.cms.tests apps.users apps.subscriptions.tests --keepdb --parallel --verbosity=1
 	$(MANAGE) test apps.courses.api.tests.test_student_practice_courses_basic --keepdb --parallel --verbosity=1
 	$(MANAGE) test apps.practice.tests --keepdb --parallel --verbosity=1
 
@@ -258,7 +258,7 @@ test-ci: ## Executar testes como no CI/CD
 	@echo "🤖 Simulando ambiente CI/CD..."
 	$(MANAGE) check --deploy
 	$(MANAGE) migrate
-	$(MANAGE) test apps.cms.tests apps.users.tests apps.subscriptions.tests --keepdb --parallel --verbosity=1
+	$(MANAGE) test apps.cms.tests apps.users apps.subscriptions.tests --keepdb --parallel --verbosity=1
 	$(MANAGE) test apps.courses.api.tests.test_student_practice_courses_basic --keepdb --parallel --verbosity=1
 	$(MANAGE) test apps.practice.tests --keepdb --parallel --verbosity=1
 

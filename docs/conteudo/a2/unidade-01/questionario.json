@@ -1,0 +1,301 @@
+{
+ "title": "A2.1 Unit 1 quiz — People at work",
+ "description": "Present simple e continuous, verbos de estado, descrever pessoas, responsabilidades e falsos amigos.",
+ "questions": [
+  {
+   "id": "a2u1q1",
+   "question": "Complete: \"These days I ___ on a new project.\"",
+   "options": [
+    {
+     "id": "a2u1q1o0",
+     "text": "'m working",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u1q1o1",
+     "text": "work",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u1q1o2",
+     "text": "working",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u1q1o0",
+   "explanation": "Período temporário: present continuous.",
+   "points": 10
+  },
+  {
+   "id": "a2u1q2",
+   "question": "Complete: \"Kalandula Tech ___ networks for companies.\"",
+   "options": [
+    {
+     "id": "a2u1q2o0",
+     "text": "installs",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u1q2o1",
+     "text": "is installing",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u1q2o2",
+     "text": "install",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u1q2o0",
+   "explanation": "Facto permanente: present simple.",
+   "points": 10
+  },
+  {
+   "id": "a2u1q3",
+   "question": "Choose the correct sentence.",
+   "options": [
+    {
+     "id": "a2u1q3o0",
+     "text": "I need your help now.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u1q3o1",
+     "text": "I'm needing your help now.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u1q3o2",
+     "text": "I needing your help now.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u1q3o0",
+   "explanation": "\"Need\" é verbo de estado: sem -ing.",
+   "points": 10
+  },
+  {
+   "id": "a2u1q4",
+   "question": "Which question asks about personality?",
+   "options": [
+    {
+     "id": "a2u1q4o0",
+     "text": "What's he like?",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u1q4o1",
+     "text": "What does he look like?",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u1q4o2",
+     "text": "What does he like?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u1q4o0",
+   "explanation": "\"What's he like?\" = como é ele (pessoa).",
+   "points": 10
+  },
+  {
+   "id": "a2u1q5",
+   "question": "Complete: \"He ___ short hair and a beard.\"",
+   "options": [
+    {
+     "id": "a2u1q5o0",
+     "text": "has",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u1q5o1",
+     "text": "is",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u1q5o2",
+     "text": "have",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u1q5o0",
+   "explanation": "Aparência com \"have\": has short hair, has a beard.",
+   "points": 10
+  },
+  {
+   "id": "a2u1q6",
+   "question": "Reciclagem (A1, unidade 10). Choose the correct sentence.",
+   "options": [
+    {
+     "id": "a2u1q6o0",
+     "text": "Next month we're going to start a new project.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u1q6o1",
+     "text": "Next month we going to start a new project.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u1q6o2",
+     "text": "Next month we're going to starting a new project.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u1q6o0",
+   "explanation": "be + going to + verbo simples.",
+   "points": 10
+  },
+  {
+   "id": "a2u1q7",
+   "question": "Complete: \"I'm responsible ___ the new network.\"",
+   "options": [
+    {
+     "id": "a2u1q7o0",
+     "text": "for",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u1q7o1",
+     "text": "of",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u1q7o2",
+     "text": "to",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u1q7o0",
+   "explanation": "responsible for.",
+   "points": 10
+  },
+  {
+   "id": "a2u1q8",
+   "question": "\"Simpático\" em inglês é:",
+   "options": [
+    {
+     "id": "a2u1q8o0",
+     "text": "friendly / nice",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u1q8o1",
+     "text": "sympathetic",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u1q8o2",
+     "text": "sympathic",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u1q8o0",
+   "explanation": "Falso amigo: sympathetic = compreensivo.",
+   "points": 10
+  },
+  {
+   "id": "a2u1q9",
+   "question": "Reciclagem (A1, unidade 9). Choose the correct sentence.",
+   "options": [
+    {
+     "id": "a2u1q9o0",
+     "text": "She likes working with people, and she can speak French.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u1q9o1",
+     "text": "She likes work with people, and she can to speak French.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u1q9o2",
+     "text": "She liking working with people, and she cans speak French.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u1q9o0",
+   "explanation": "like + -ing; can + verbo simples.",
+   "points": 10
+  },
+  {
+   "id": "a2u1q10",
+   "question": "Ouviu: \"I report to Rita.\" Quer dizer:",
+   "options": [
+    {
+     "id": "a2u1q10o0",
+     "text": "A Rita é a minha chefe.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u1q10o1",
+     "text": "Eu escrevo relatórios para a Rita.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u1q10o2",
+     "text": "A Rita trabalha para mim.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u1q10o0",
+   "explanation": "report to = responder a uma chefia.",
+   "points": 10
+  },
+  {
+   "id": "a2u1q11",
+   "question": "Numa reunião de arranque, qual é a melhor apresentação?",
+   "options": [
+    {
+     "id": "a2u1q11o0",
+     "text": "I'm Nuno. I'm a junior technician. I report to Mateus, and this week I'm checking the cables.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u1q11o1",
+     "text": "I'm Nuno. I am checking usually the cables.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u1q11o2",
+     "text": "Nuno. Technician. Cables.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u1q11o0",
+   "explanation": "Nome e função, chefia, responsabilidade e o que está a fazer.",
+   "points": 10
+  },
+  {
+   "id": "a2u1q12",
+   "question": "Reciclagem (A1, unidade 10). Choose the correct question.",
+   "options": [
+    {
+     "id": "a2u1q12o0",
+     "text": "When did you start your job?",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u1q12o1",
+     "text": "When did you started your job?",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u1q12o2",
+     "text": "When you started your job?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u1q12o0",
+   "explanation": "did + verbo simples.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

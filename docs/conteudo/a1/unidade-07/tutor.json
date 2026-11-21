@@ -1,0 +1,133 @@
+{
+ "unidade": "A1.2 · Unit 7 — Around town",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "a1-u7-guiada",
+   "nome": "Unit 7 · Around your home",
+   "tipo": "guiada",
+   "depois_da_aula": "7C",
+   "descricao": "O tutor pergunta ao aluno o que há perto de casa e do trabalho, onde ficam esses lugares e como se chega lá.",
+   "papel_tutor": "Um professor simpático.",
+   "nivel": "A1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "There's a … near my home.",
+    "It's next to / opposite…",
+    "Go straight on and turn…"
+   ],
+   "extras": {
+    "brief": "Guided practice for a beginner (A1, unit 7). You are a friendly teacher. Ask the student what there is near their home or office (Is there a bank? Are there any shops?), where those places are (next to, opposite, between, near), and how to get from their home to the nearest pharmacy or bus stop (give two or three directions). Accept invented answers. If the student says \"It has a bank\" or \"Have a bank\", model \"There's a bank\" kindly. If the student uses \"in front of\" for something on the other side of the street, ask \"On the other side of the street? Then it's opposite.\" Use only units 1-7 language. One question at a time.",
+    "primeira_fala": "Hello, {nome}! Tell me about your neighbourhood. Is there a supermarket near your home?",
+    "primeira_fala_simples": "Hello! Is there a supermarket near your home?",
+    "guiao": [
+     "Where is it? Is it next to something?",
+     "Are there any restaurants or cafés?",
+     "Is there a pharmacy near your home?",
+     "How do I get from your home to the pharmacy?",
+     "Is it far? How many minutes on foot?",
+     "Very clear! Thank you, {nome}. Goodbye!"
+    ],
+    "frases": [
+     {
+      "en": "There's a pharmacy near my home.",
+      "pt": "Há uma farmácia perto da minha casa."
+     },
+     {
+      "en": "It's opposite the school.",
+      "pt": "Fica em frente da escola."
+     },
+     {
+      "en": "Go straight on and turn left.",
+      "pt": "Siga em frente e vire à esquerda."
+     }
+    ],
+    "palavras": [
+     "there",
+     "near",
+     "next",
+     "opposite",
+     "between",
+     "turn",
+     "left",
+     "right",
+     "straight",
+     "minutes"
+    ],
+    "minutos_sugeridos": 4
+   },
+   "criterios": null
+  },
+  {
+   "slug": "a1-u7-livre",
+   "nome": "Unit 7 · Where's your office?",
+   "tipo": "livre",
+   "depois_da_aula": "7F",
+   "descricao": "Um visitante (Taylor) telefona: tem reunião no escritório do aluno e não sabe o caminho. O aluno pergunta onde está, explica o caminho com pontos de referência, diz o prédio e o andar, e confirma.",
+   "papel_tutor": "Taylor, visitante perdido(a) ao telefone.",
+   "nivel": "A1",
+   "duracao_min": 5,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Where are you now?",
+    "Go straight on… / Take the first street on the…",
+    "We're opposite… on the … floor. Is that clear?"
+   ],
+   "extras": {
+    "brief": "Role-play for a beginner (A1, unit 7). You are Taylor, a visitor (Taylor can be a man or a woman, to match your voice). You call the student: you have a meeting at their office at three o'clock but you don't know the way. Wait for the student to ask where you are; then say you are at a petrol station near a big supermarket (or at a place the student mentions). Follow the student's directions step by step: repeat each part to check (\"First street on the left?\"), ask for a landmark (\"Is there a landmark?\"), ask which building and which floor, and where the reception is. If a direction is not clear, say \"Sorry, can you repeat that, please?\". The student can invent the directions. Use only units 1-7 language. Short turns.",
+    "primeira_fala": "Hello, this is Taylor. I have a meeting at your office at three, but I don't know the way.",
+    "primeira_fala_simples": "Hello, this is Taylor. I don't know the way to your office.",
+    "guiao": [
+     "I'm at a petrol station, near a big supermarket.",
+     "OK. And then?",
+     "Is there a landmark near your office?",
+     "Which building? And which floor?",
+     "Where's the reception?",
+     "Thank you, that's very clear. See you at three, {nome}!"
+    ],
+    "frases": [
+     {
+      "en": "Where are you now?",
+      "pt": "Onde está agora?"
+     },
+     {
+      "en": "Take the first street on the left.",
+      "pt": "Vire na primeira rua à esquerda."
+     },
+     {
+      "en": "We're opposite the bank, on the second floor.",
+      "pt": "Estamos em frente do banco, no segundo andar."
+     },
+     {
+      "en": "Is that clear?",
+      "pt": "Está claro?"
+     }
+    ],
+    "palavras": [
+     "where",
+     "now",
+     "straight",
+     "turn",
+     "left",
+     "right",
+     "street",
+     "opposite",
+     "floor",
+     "clear",
+     "next"
+    ],
+    "minutos_sugeridos": 5
+   },
+   "criterios": [
+    "Pergunta onde o visitante está (\"Where are you now?\").",
+    "Dá pelo menos três direcções com o imperativo (go straight on, turn, take the … street).",
+    "Usa pelo menos um ponto de referência com uma preposição (opposite, next to, near…).",
+    "Diz o prédio e o andar e confirma (\"Is that clear?\").",
+    "É compreendido sem o tutor pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

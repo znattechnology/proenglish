@@ -1,0 +1,301 @@
+{
+ "title": "A2.1 Unit 3 quiz — Plans and arrangements",
+ "description": "Present continuous para combinações, going to, will para ofertas e promessas, convites e sugestões, mudar reuniões.",
+ "questions": [
+  {
+   "id": "a2u3q1",
+   "question": "Está marcado na agenda. Qual é a frase mais natural?",
+   "options": [
+    {
+     "id": "a2u3q1o0",
+     "text": "I'm seeing the doctor on Monday at nine.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u3q1o1",
+     "text": "I'm see the doctor on Monday at nine.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u3q1o2",
+     "text": "I saw the doctor on Monday at nine next week.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u3q1o0",
+   "explanation": "Combinação com dia e hora: present continuous.",
+   "points": 10
+  },
+  {
+   "id": "a2u3q2",
+   "question": "Qual destas frases é uma intenção sem data?",
+   "options": [
+    {
+     "id": "a2u3q2o0",
+     "text": "I'm going to visit Namibia one day.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u3q2o1",
+     "text": "I'm flying to Windhoek on Friday at six.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u3q2o2",
+     "text": "I'm meeting the client tomorrow.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u3q2o0",
+   "explanation": "Intenção: going to.",
+   "points": 10
+  },
+  {
+   "id": "a2u3q3",
+   "question": "\"There's no coffee!\" — Qual é a melhor resposta?",
+   "options": [
+    {
+     "id": "a2u3q3o0",
+     "text": "I'll buy some.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u3q3o1",
+     "text": "I buy some.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u3q3o2",
+     "text": "I'm going to buy some next month.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u3q3o0",
+   "explanation": "Decisão no momento: will.",
+   "points": 10
+  },
+  {
+   "id": "a2u3q4",
+   "question": "Qual é a oferta correcta?",
+   "options": [
+    {
+     "id": "a2u3q4o0",
+     "text": "Shall I carry your bag?",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u3q4o1",
+     "text": "Will I carry your bag?",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u3q4o2",
+     "text": "Do I carry your bag?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u3q4o0",
+   "explanation": "Oferta como pergunta: Shall I…?",
+   "points": 10
+  },
+  {
+   "id": "a2u3q5",
+   "question": "Complete: \"Would you like ___ to the party?\"",
+   "options": [
+    {
+     "id": "a2u3q5o0",
+     "text": "to come",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u3q5o1",
+     "text": "coming",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u3q5o2",
+     "text": "come",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u3q5o0",
+   "explanation": "Would you like + to + verbo.",
+   "points": 10
+  },
+  {
+   "id": "a2u3q6",
+   "question": "Qual é a recusa mais educada?",
+   "options": [
+    {
+     "id": "a2u3q6o0",
+     "text": "I'm afraid I can't. I'm working late. Maybe another time.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u3q6o1",
+     "text": "No, I don't want.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u3q6o2",
+     "text": "No. I'm busy.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u3q6o0",
+   "explanation": "I'm afraid I can't + razão.",
+   "points": 10
+  },
+  {
+   "id": "a2u3q7",
+   "question": "\"Vou assistir à reunião\" em inglês é:",
+   "options": [
+    {
+     "id": "a2u3q7o0",
+     "text": "I'm going to attend the meeting.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u3q7o1",
+     "text": "I'm going to assist the meeting.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u3q7o2",
+     "text": "I'm going to see at the meeting.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u3q7o0",
+   "explanation": "Falso amigo: assist = ajudar.",
+   "points": 10
+  },
+  {
+   "id": "a2u3q8",
+   "question": "Ouviu: \"The equipment isn't arriving today. It's arriving on Friday, at four.\" O que mudou?",
+   "options": [
+    {
+     "id": "a2u3q8o0",
+     "text": "O equipamento chega na sexta, não hoje.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u3q8o1",
+     "text": "O equipamento foi cancelado.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u3q8o2",
+     "text": "O equipamento chega hoje às quatro.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u3q8o0",
+   "explanation": "isn't arriving today → arriving on Friday.",
+   "points": 10
+  },
+  {
+   "id": "a2u3q9",
+   "question": "Ao telefone, para mudar uma reunião, qual é a melhor frase para começar?",
+   "options": [
+    {
+     "id": "a2u3q9o0",
+     "text": "I'm calling about our meeting tomorrow.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u3q9o1",
+     "text": "I call because meeting.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u3q9o2",
+     "text": "Hello, meeting tomorrow no.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u3q9o0",
+   "explanation": "I'm calling about…",
+   "points": 10
+  },
+  {
+   "id": "a2u3q10",
+   "question": "Reciclagem (A2, unidade 2). Complete: \"I ___ a shower when you called.\"",
+   "options": [
+    {
+     "id": "a2u3q10o0",
+     "text": "was having",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u3q10o1",
+     "text": "am having",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u3q10o2",
+     "text": "have",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u3q10o0",
+   "explanation": "Acção longa no passado: was + -ing.",
+   "points": 10
+  },
+  {
+   "id": "a2u3q11",
+   "question": "Reciclagem (A2, unidade 2). Como se diz \"Nasci em Malanje\"?",
+   "options": [
+    {
+     "id": "a2u3q11o0",
+     "text": "I was born in Malanje.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u3q11o1",
+     "text": "I born in Malanje.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u3q11o2",
+     "text": "I am born in Malanje.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u3q11o0",
+   "explanation": "be born.",
+   "points": 10
+  },
+  {
+   "id": "a2u3q12",
+   "question": "Reciclagem (A2, unidade 1). \"What does she look like?\" — Qual é a resposta?",
+   "options": [
+    {
+     "id": "a2u3q12o0",
+     "text": "She's short, and she has curly hair.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u3q12o1",
+     "text": "She's very patient.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u3q12o2",
+     "text": "She likes cooking.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u3q12o0",
+   "explanation": "Aparência.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

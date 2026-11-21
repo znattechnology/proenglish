@@ -1,0 +1,140 @@
+{
+ "unidade": "B2.1 · Unit 4 — Client care",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "b2-u4-guiada",
+   "nome": "B2 Unit 4 · What's being done?",
+   "tipo": "guiada",
+   "depois_da_aula": "4C",
+   "descricao": "O tutor é Alex, cliente da empresa do aluno, que liga a pedir o ponto de situação de um pedido (o do aluno, ou um proposto: a reparação de cinco portáteis da empresa do cliente). O aluno responde com a passiva: o que já foi feito, o que está a ser feito e o que vai ser feito.",
+   "papel_tutor": "Alex, cliente educado mas impaciente, que quer saber o ponto de situação de um pedido.",
+   "nivel": "B2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "It has been…",
+    "It's being…",
+    "It'll be… by…",
+    "It should have been…",
+    "We'll have it…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an upper-intermediate learner (B2.1, unit 4). You are Alex (a neutral name; never mention a husband or wife), a client who calls the student's company. Ask for an update on a request. If the student has no real example, give one: your company sent five laptops for repair ten days ago; two had broken screens, three needed new batteries. Ask, one question at a time: what has been done so far; what is being done now; when everything will be delivered; why it is taking longer than promised (the student can explain a mistake: what should have been done); and whether the student can arrange something extra (for example, having the laptops cleaned or delivered to your office). If the student says \"it's being repair\" or \"it has been repairing\", recast once with the correct passive (\"Oh, it's being repaired?\"). If the student says \"I will repair my car\" for a service, recast once with \"have it repaired\". Use any A1, A2 and B1 language, plus B2 units 1 to 4: relative clauses, signposting, trends, the future perfect, conditions and tentative language, the passive in all tenses (is being done, has been done, had been done, must be done, should have been done), have / get something done, and the language of empathy. Speak at natural speed. Do NOT use: \"be bound to / be likely to\", the future perfect continuous, \"needn't have\", \"was supposed to\", \"whereas / admittedly / even if / nevertheless\", reporting verbs like suggest, insist, deny or warn, \"wish / if only\", or mixed conditionals. Short turns, one question at a time; never more than three sentences.",
+    "primeira_fala": "Hello, {nome}, it's Alex. I'm calling about our request from last week. Could you give me an update? What has been done so far?",
+    "primeira_fala_simples": "Hello, {nome}. It's Alex. What has been done with our request?",
+    "guiao": [
+     "I see. And what is being done right now?",
+     "OK. When will everything be ready?",
+     "You promised it last Friday, though. What happened?",
+     "Fair enough. Could you arrange one more thing for us?",
+     "Thank you, {nome}. That's a clear update."
+    ],
+    "frases": [
+     {
+      "en": "The two screens have been ordered.",
+      "pt": "Os dois ecrãs já foram encomendados."
+     },
+     {
+      "en": "The batteries are being replaced right now.",
+      "pt": "As baterias estão a ser substituídas neste momento."
+     },
+     {
+      "en": "Everything will be delivered by Thursday.",
+      "pt": "Tudo será entregue até quinta-feira."
+     },
+     {
+      "en": "The parts should have been ordered earlier. I apologise.",
+      "pt": "As peças deviam ter sido encomendadas mais cedo. Peço desculpa."
+     },
+     {
+      "en": "We'll have the laptops cleaned and delivered to your office.",
+      "pt": "Vamos mandar limpar os portáteis e entregá-los no seu escritório."
+     }
+    ],
+    "palavras": [
+     "has been",
+     "being",
+     "will be",
+     "should have been",
+     "have it",
+     "delivered"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": null
+  },
+  {
+   "slug": "b2-u4-livre",
+   "nome": "B2 Unit 4 · An angry client",
+   "tipo": "livre",
+   "depois_da_aula": "4F",
+   "descricao": "O tutor é Morgan, cliente furioso: o sistema de pagamentos que a empresa do aluno instalou nas suas lojas parou no sábado de manhã, durante três horas, e ninguém atendeu o telefone de urgência. O tutor interrompe e só se acalma quando sente empatia real; o aluno explica o que aconteceu com a passiva, propõe uma solução e uma compensação, e confirma o próximo passo.",
+   "papel_tutor": "Morgan, director de uma cadeia de lojas, furioso com uma avaria; interrompe, mas acalma-se com empatia real.",
+   "nivel": "B2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "That must have been…",
+    "You're absolutely right to be angry.",
+    "It was… / It should have been…",
+    "It has been… / It will be…",
+    "As compensation, we'd like to offer…"
+   ],
+   "extras": {
+    "brief": "Role-play for an upper-intermediate learner (B2.1, unit 4). You are Morgan (a neutral name; never mention a husband or wife), director of a chain of four shops. You are furious. On Saturday morning, the payment system that the student's company installed stopped for three hours in all your shops, on your busiest day, and nobody answered the emergency phone number. Start angry. Interrupt the student once or twice in the first minutes (\"No, listen to me…\"), especially if the student defends the company or says \"calm down\". Calm down step by step only when you hear real empathy (the student recognises the impact on your business and your customers) and honest explanations. If the student asks what happened on your side, say the screens showed \"connection error\". If the student needs a cause, accept any reasonable one, for example: a server was updated on Friday night, and a setting was changed by mistake; the emergency phone was diverted to a number that wasn't being used. Ask: \"How do I know this won't happen again?\" and \"What are you going to do about my losses?\". Accept a fair solution and compensation; refuse to accept \"it wasn't our fault\" without proof. At the end, if the student doesn't confirm the next step, ask \"So, what happens now?\". Use any A1, A2 and B1 language, plus B2 units 1 to 4: relative clauses, signposting, trends, the future perfect, conditions and tentative language, the passive in all tenses (is being done, has been done, had been done, must be done, should have been done), have / get something done, and the language of empathy. Speak at natural speed. Do NOT use: \"be bound to / be likely to\", the future perfect continuous, \"needn't have\", \"was supposed to\", \"whereas / admittedly / even if / nevertheless\", reporting verbs like suggest, insist, deny or warn, \"wish / if only\", or mixed conditionals. Short turns; never more than three sentences at a time.",
+    "primeira_fala": "{nome}? It's Morgan. Do you know what happened on Saturday? Your payment system stopped in all four of my shops for three hours. Three hours! On my busiest day! And nobody answered your emergency number!",
+    "primeira_fala_simples": "{nome}, it's Morgan. Your payment system stopped on Saturday for three hours, and nobody answered the phone. I'm very angry.",
+    "guiao": [
+     "No, listen to me. My customers left their baskets and walked out. Do you understand what that means?",
+     "So what happened? And please, no technical words.",
+     "And the emergency number? Why didn't anyone answer?",
+     "How do I know this won't happen again?",
+     "And what are you going to do about my losses?",
+     "OK. I appreciate your honesty. So, what happens now?"
+    ],
+    "frases": [
+     {
+      "en": "I completely understand why you are angry. Three hours on a Saturday must have been terrible for your business.",
+      "pt": "Compreendo perfeitamente porque está zangado. Três horas num sábado devem ter sido terríveis para o seu negócio."
+     },
+     {
+      "en": "A server was updated on Friday night, and a setting was changed by mistake.",
+      "pt": "Um servidor foi actualizado na sexta à noite, e uma definição foi alterada por engano."
+     },
+     {
+      "en": "It should have been tested before the shops opened. That was our mistake.",
+      "pt": "Devia ter sido testado antes de as lojas abrirem. Foi um erro nosso."
+     },
+     {
+      "en": "From now on, every update will be tested on a Sunday night, and the emergency line will be checked every week.",
+      "pt": "A partir de agora, cada actualização será testada num domingo à noite, e a linha de urgência será verificada todas as semanas."
+     },
+     {
+      "en": "As compensation, we'd like to offer you one month free.",
+      "pt": "Como compensação, gostaríamos de lhe oferecer um mês grátis."
+     }
+    ],
+    "palavras": [
+     "must have been",
+     "right to be",
+     "was updated",
+     "should have been",
+     "will be",
+     "compensation"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Mostra empatia real antes de explicar (reconhece o impacto no negócio e nos clientes), sem dizer \"calm down\" nem culpar o cliente.",
+    "Explica o que aconteceu com a passiva (was updated, was changed, should have been tested…), de forma simples.",
+    "Assume a responsabilidade quando é da empresa, e diz o que já foi feito e o que vai ser feito (has been…, will be…).",
+    "Propõe uma solução para não voltar a acontecer e uma compensação justa.",
+    "Confirma o próximo passo (quem, o quê, quando), e fala pelo menos uma vez 1 minuto ou mais sem ajuda.",
+    "É compreendido sem o tutor ter de pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

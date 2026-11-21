@@ -1,0 +1,1303 @@
+{
+ "unidade": "B1.2 · Unit 9 — Media and opinions",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "9A",
+   "titulo": "Although it was late…",
+   "aula": "9A",
+   "objectivo": "Contrastar com although / even though / however / despite / in spite of, e recomendar.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Although] it was late, I couldn't stop.",
+     "opcoes": [
+      {
+       "texto": "Despite",
+       "certa": false
+      },
+      {
+       "texto": "However",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Despite] the long episodes, I finished the season in a week.",
+     "opcoes": [
+      {
+       "texto": "Although",
+       "certa": false
+      },
+      {
+       "texto": "Even",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The first episode is slow. [However], after that it's gripping.",
+     "opcoes": [
+      {
+       "texto": "Although",
+       "certa": false
+      },
+      {
+       "texto": "Despite",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In spite [of] the rain, we went out.",
+     "opcoes": [
+      {
+       "texto": "to",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Despite the rain, we played football.",
+       "certa": true
+      },
+      {
+       "texto": "Despite it rained, we played football.",
+       "certa": false
+      },
+      {
+       "texto": "Despite of the rain, we played football.",
+       "certa": false
+      }
+     ],
+     "explicacao": "despite + nome, sem of."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Apesar de estar cansado, foi trabalhar.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Although he was tired, he went to work.",
+       "certa": true
+      },
+      {
+       "texto": "Despite he was tired, he went to work.",
+       "certa": false
+      },
+      {
+       "texto": "However he was tired, he went to work.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Paulo recommends the series. He says:",
+     "opcoes": [
+      {
+       "texto": "It's worth watching.",
+       "certa": true
+      },
+      {
+       "texto": "It's worth to watch.",
+       "certa": false
+      },
+      {
+       "texto": "It worths watching.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Embora seja longa, a série é muito boa.",
+     "resposta": "Although it is long, the series is really good.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. The first episode is a bit slow. However, after that it's gripping.",
+     "enunciado": "What does Paulo say about the first episode?",
+     "opcoes": [
+      {
+       "texto": "It's a bit slow.",
+       "certa": true
+      },
+      {
+       "texto": "It's gripping.",
+       "certa": false
+      },
+      {
+       "texto": "It's very funny.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Although it was late, I couldn't stop.",
+     "enunciado": "Ouça e repita: a voz sobe em \"late\" e desce no fim."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Recommend a series, a film or a book. What is it about? Give one weak point and one strong point, with \"although\" or \"despite\", and say why it's worth watching or reading.",
+     "frase": "worth",
+     "resposta": "I'd recommend a film called Kianda Road. It's about two brothers who drive a lorry from Luanda to Lubango. Although the story is simple, the characters are wonderful. Despite the sad ending, I loved it. It's really worth watching.",
+     "contexto": "Contraste e recomendação."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you prefer series or films? Why?",
+     "frase": "prefer",
+     "resposta": "I prefer films, because I don't have much time. Although series have more interesting characters, I can't watch ten hours of one story. A good film tells everything in two hours.",
+     "contexto": "Uma opinião com contraste."
+    }
+   ]
+  },
+  {
+   "codigo": "9B",
+   "titulo": "In order to save money",
+   "aula": "9B",
+   "objectivo": "Dizer a finalidade com to / in order to / so that, e a consequência com as a result / therefore.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We pay in dollars [to] avoid problems with the exchange rate.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "for to",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"para\" + verbo → to."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We book an apartment [so that] we spend less.",
+     "opcoes": [
+      {
+       "texto": "in order to",
+       "certa": false
+      },
+      {
+       "texto": "for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "In order [not to] lose clients, we keep our prices low.",
+     "opcoes": [
+      {
+       "texto": "to don't",
+       "certa": false
+      },
+      {
+       "texto": "no to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The project went over budget. [Therefore], we have new rules.",
+     "opcoes": [
+      {
+       "texto": "Although",
+       "certa": false
+      },
+      {
+       "texto": "Despite",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Estudo inglês para falar com clientes.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I study English to talk to clients.",
+       "certa": true
+      },
+      {
+       "texto": "I study English for talk to clients.",
+       "certa": false
+      },
+      {
+       "texto": "I study English for to talk to clients.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I'll send the slides today so that you can read them.",
+       "certa": true
+      },
+      {
+       "texto": "I'll send the slides today so that read them.",
+       "certa": false
+      },
+      {
+       "texto": "I'll send the slides today in order that you to read them.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"As a result\" introduces…",
+     "opcoes": [
+      {
+       "texto": "a consequence",
+       "certa": true
+      },
+      {
+       "texto": "a purpose",
+       "certa": false
+      },
+      {
+       "texto": "a contrast",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Saio às seis para não apanhar trânsito.",
+     "resposta": "I leave at six in order not to get stuck in traffic.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Sílvia. For any stay longer than ten days, we book an apartment, so that we spend about thirty percent less.",
+     "enunciado": "Why do they book an apartment?",
+     "opcoes": [
+      {
+       "texto": "to spend about thirty percent less",
+       "certa": true
+      },
+      {
+       "texto": "to be closer to the client",
+       "certa": false
+      },
+      {
+       "texto": "because hotels are full",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Send me your budgets early, so that we have time to check them.",
+     "enunciado": "Ouça e repita, com \"so that\" fraco."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain three things you do at work or at home, and why. Use \"to\", \"in order to\" and \"so that\".",
+     "frase": "so that",
+     "resposta": "I get up at five thirty in order to avoid the traffic. I keep a list of my tasks on my phone so that I don't forget anything. And every Sunday I cook for the whole week, to save time and money.",
+     "contexto": "Finalidade."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should companies have strict rules about money, or should they trust their teams? Why?",
+     "frase": "because",
+     "resposta": "I think they need both. Clear rules are important, because one mistake can cost a lot. However, if the rules are too strict, people lose time asking for permission. Simple rules and trust work best.",
+     "contexto": "Uma opinião com conectores."
+    }
+   ]
+  },
+  {
+   "codigo": "9C",
+   "titulo": "The article says…",
+   "aula": "9C",
+   "objectivo": "Resumir um artigo em 4 a 6 frases e citar a fonte.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[According] to the article, almost half of the companies had a problem.",
+     "opcoes": [
+      {
+       "texto": "Following",
+       "certa": false
+      },
+      {
+       "texto": "Accordingly",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The main [point] is that companies forget the room.",
+     "opcoes": [
+      {
+       "texto": "idea of",
+       "certa": false
+      },
+      {
+       "texto": "argument of",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The article [says] that spending on monitoring will grow.",
+     "opcoes": [
+      {
+       "texto": "tells",
+       "certa": false
+      },
+      {
+       "texto": "speaks",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "In my opinion, the writer is right.",
+       "certa": true
+      },
+      {
+       "texto": "According to me, the writer is right.",
+       "certa": false
+      },
+      {
+       "texto": "For my opinion, the writer is right.",
+       "certa": false
+      }
+     ],
+     "explicacao": "according to é para outros; para si: in my opinion."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The writer thinks companies forget the room.\" This is…",
+     "opcoes": [
+      {
+       "texto": "the writer's opinion",
+       "certa": true
+      },
+      {
+       "texto": "a fact from the survey",
+       "certa": false
+      },
+      {
+       "texto": "Nuno's opinion",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A good summary answers…",
+     "opcoes": [
+      {
+       "texto": "what, who, where, why and what next",
+       "certa": true
+      },
+      {
+       "texto": "only what",
+       "certa": false
+      },
+      {
+       "texto": "every detail in the article",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. According to the article, a university in Nairobi did a survey of two hundred companies in eight countries.",
+     "enunciado": "Who did the survey?",
+     "opcoes": [
+      {
+       "texto": "a university in Nairobi",
+       "certa": true
+      },
+      {
+       "texto": "a company in Luanda",
+       "certa": false
+      },
+      {
+       "texto": "the writer",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Nuno. The article says that the biggest problem is heat, then dust, and then water.",
+     "enunciado": "What is the biggest problem, according to the article?",
+     "opcoes": [
+      {
+       "texto": "heat",
+       "certa": true
+      },
+      {
+       "texto": "dust",
+       "certa": false
+      },
+      {
+       "texto": "water",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Segundo o artigo, o calor é o maior problema.",
+     "resposta": "According to the article, heat is the biggest problem.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "According to the article, almost half of the companies had a problem.",
+     "enunciado": "Ouça e repita: \"according to\" com o acento em \"cord\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise a piece of news you read or heard this week in four or five sentences — what, who, where, why, what next — and give your opinion.",
+     "frase": "According to",
+     "resposta": "I read an article about a new bus line in Luanda. According to the article, it will connect Viana and the city centre. The main point is that people will spend less time in traffic. The buses start in June. In my opinion, the city needs ten lines like that.",
+     "contexto": "Resumo com fonte e opinião."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Where do you usually get your news: newspapers, television, radio or social media? Why?",
+     "frase": "because",
+     "resposta": "Mostly from the radio in the car, because I spend an hour in traffic every day. I also read news on my phone. But I check the source, because there's a lot of fake news on social media.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9D",
+   "titulo": "News, films and books",
+   "aula": "9D",
+   "objectivo": "Palavras de notícias, redes sociais, filmes e livros; entoação de lista e de contraste; propaganda e novel.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "headline",
+       "b": "título da notícia"
+      },
+      {
+       "a": "source",
+       "b": "fonte"
+      },
+      {
+       "a": "plot",
+       "b": "enredo"
+      },
+      {
+       "a": "review",
+       "b": "crítica"
+      },
+      {
+       "a": "novel",
+       "b": "romance"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The video [went] viral in two days.",
+     "opcoes": [
+      {
+       "texto": "made",
+       "certa": false
+      },
+      {
+       "texto": "did",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You can't stop reading it. It's really [gripping].",
+     "opcoes": [
+      {
+       "texto": "gripped",
+       "certa": false
+      },
+      {
+       "texto": "boring",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Is this website [reliable]?",
+     "opcoes": [
+      {
+       "texto": "confident",
+       "certa": false
+      },
+      {
+       "texto": "trusting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Vi a propaganda na televisão\" (um anúncio). Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I saw the advert on TV.",
+       "certa": true
+      },
+      {
+       "texto": "I saw the propaganda on TV.",
+       "certa": false
+      },
+      {
+       "texto": "I saw the propagation on TV.",
+       "certa": false
+      }
+     ],
+     "explicacao": "propaganda em inglês é só política."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A minha mãe vê a novela todas as noites.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "My mother watches the soap opera every night.",
+       "certa": true
+      },
+      {
+       "texto": "My mother watches the novel every night.",
+       "certa": false
+      },
+      {
+       "texto": "My mother reads the novel every night.",
+       "certa": false
+      }
+     ],
+     "explicacao": "novel = romance (livro)."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"It's predictable.\" It means…",
+     "opcoes": [
+      {
+       "texto": "You know the ending before it happens.",
+       "certa": true
+      },
+      {
+       "texto": "It's very exciting.",
+       "certa": false
+      },
+      {
+       "texto": "It's very long.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. Nuno broke the news to the team: Morro Azul is building a second plant.",
+     "enunciado": "What did Nuno do?",
+     "opcoes": [
+      {
+       "texto": "He told the team the news.",
+       "certa": true
+      },
+      {
+       "texto": "He broke something.",
+       "certa": false
+      },
+      {
+       "texto": "He wrote a review.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The article mentions heat, dust and water.",
+     "enunciado": "Ouça e repita: a voz sobe em \"heat\" e \"dust\" e desce em \"water\"."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Although the plot is simple, the characters are great.",
+     "enunciado": "Ouça e repita a entoação de contraste."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a book, a series or a documentary you liked: what's it about, what's good about it, and who would enjoy it?",
+     "frase": "recommend",
+     "resposta": "Last year I read a novel about a family of fishermen in the south of Angola. The plot is simple, but the characters are very real, and the ending is really moving. I'd recommend it to anyone who likes stories about families.",
+     "contexto": "Vocabulário de livros e séries."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How can we know if a piece of news is fake?",
+     "frase": "source",
+     "resposta": "First, I check the source: is it a reliable newspaper or a random website? Then I look for the same news in two or three other places. And if the headline is too dramatic, it might be fake.",
+     "contexto": "Uma opinião com passos."
+    }
+   ]
+  },
+  {
+   "codigo": "9E",
+   "titulo": "Real English: What do you think about it?",
+   "aula": "9E",
+   "objectivo": "Identificar a opinião e os argumentos de cada pessoa num debate de rádio.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Daniel Okoro. Our staff checked their phones about eighty times a day.",
+     "enunciado": "How many times a day did the staff check their phones?",
+     "opcoes": [
+      {
+       "texto": "about eighty",
+       "certa": true
+      },
+      {
+       "texto": "about eighteen",
+       "certa": false
+      },
+      {
+       "texto": "about eight",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Daniel Okoro. After the ban, productivity went up by fifteen percent.",
+     "enunciado": "What happened after the ban?",
+     "opcoes": [
+      {
+       "texto": "Productivity went up by fifteen percent.",
+       "certa": true
+      },
+      {
+       "texto": "Many people left.",
+       "certa": false
+      },
+      {
+       "texto": "Nothing changed.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Inês. I use my phone to test our apps, to talk to clients, and so that my family can call me.",
+     "enunciado": "Why does Inês use her phone at work?",
+     "opcoes": [
+      {
+       "texto": "to test apps, talk to clients and be available for her family",
+       "certa": true
+      },
+      {
+       "texto": "only for social media",
+       "certa": false
+      },
+      {
+       "texto": "to watch series",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Inês. In my view, the problem isn't the phone — it's bad management.",
+     "enunciado": "What does Inês think the real problem is?",
+     "opcoes": [
+      {
+       "texto": "bad management",
+       "certa": true
+      },
+      {
+       "texto": "young people",
+       "certa": false
+      },
+      {
+       "texto": "the phones",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Dr Grace Phiri. Every interruption costs us about twenty minutes of concentration.",
+     "enunciado": "How much concentration does every interruption cost?",
+     "opcoes": [
+      {
+       "texto": "about twenty minutes",
+       "certa": true
+      },
+      {
+       "texto": "about two minutes",
+       "certa": false
+      },
+      {
+       "texto": "about two hours",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Dr Phiri. I'd recommend rules that the team makes together.",
+     "enunciado": "What does Dr Phiri recommend?",
+     "opcoes": [
+      {
+       "texto": "rules that the team makes together",
+       "certa": true
+      },
+      {
+       "texto": "a total ban",
+       "certa": false
+      },
+      {
+       "texto": "no rules",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Mr Okoro supports his opinion with…",
+     "opcoes": [
+      {
+       "texto": "numbers from a study",
+       "certa": true
+      },
+      {
+       "texto": "examples from his family",
+       "certa": false
+      },
+      {
+       "texto": "a film",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"On the one hand… On the other hand…\" is used to…",
+     "opcoes": [
+      {
+       "texto": "show both sides",
+       "certa": true
+      },
+      {
+       "texto": "give an example",
+       "certa": false
+      },
+      {
+       "texto": "finish a story",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Although I understand the problem, a ban treats adults like children.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Therefore, I'd recommend a middle way.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Who do you agree with most — Mr Okoro, Inês or Dr Phiri? Give two arguments, and answer one argument from the other side.",
+     "frase": "However",
+     "resposta": "I agree most with Dr Phiri. Firstly, phones really interrupt our work. Secondly, a total ban isn't fair for parents. Mr Okoro says productivity went up by fifteen percent. However, good people might leave, and that costs more.",
+     "contexto": "Opinião com argumentos e contra-argumento."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What are the rules about phones at your work or school? Are they good rules?",
+     "frase": "rule",
+     "resposta": "At my school, we can't use phones in class, but we can use them in the breaks. I think it's a good rule, because we concentrate better. However, teachers sometimes let us use them to look up words.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "9F",
+   "titulo": "Work & Life: Team briefing",
+   "aula": "9F",
+   "objectivo": "Resumir um artigo e uma notícia à equipa e dizer o que significam para a empresa.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Nuno starts the briefing. Choose the best start.",
+     "opcoes": [
+      {
+       "texto": "I have two things: an article and a piece of news. And then, what they mean for us.",
+       "certa": true
+      },
+      {
+       "texto": "OK. News. Listen.",
+       "certa": false
+      },
+      {
+       "texto": "I will to talk about two things.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The news says: \"Segundo a directora de operações…\". Nuno says:",
+     "opcoes": [
+      {
+       "texto": "According to the director of operations…",
+       "certa": true
+      },
+      {
+       "texto": "Second the director of operations…",
+       "certa": false
+      },
+      {
+       "texto": "Following the director of operations…",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Morro Azul [announced] yesterday that it's investing forty million dollars.",
+     "opcoes": [
+      {
+       "texto": "told",
+       "certa": false
+      },
+      {
+       "texto": "spoke",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I propose that we prepare an offer, in order [to] be the first company on the list.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Although] October is six months away, these offers take time.",
+     "opcoes": [
+      {
+       "texto": "Despite",
+       "certa": false
+      },
+      {
+       "texto": "However",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The most important question at the end of a briefing is…",
+     "opcoes": [
+      {
+       "texto": "What does this mean for us?",
+       "certa": true
+      },
+      {
+       "texto": "Who wrote the article?",
+       "certa": false
+      },
+      {
+       "texto": "How long is the article?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In the mediation, Nuno…",
+     "opcoes": [
+      {
+       "texto": "keeps the important facts and what matters for the team",
+       "certa": true
+      },
+      {
+       "texto": "translates every sentence",
+       "certa": false
+      },
+      {
+       "texto": "reads the news in Portuguese",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. The plant should be ready at the end of 2029, and it'll produce electricity for about thirty thousand homes.",
+     "enunciado": "How many homes will the new plant produce electricity for?",
+     "opcoes": [
+      {
+       "texto": "about thirty thousand",
+       "certa": true
+      },
+      {
+       "texto": "about three thousand",
+       "certa": false
+      },
+      {
+       "texto": "about forty thousand",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. And Mopane will be helping with the satellite part. Count us in.",
+     "enunciado": "What will Mopane be helping with?",
+     "opcoes": [
+      {
+       "texto": "the satellite part",
+       "certa": true
+      },
+      {
+       "texto": "the budget",
+       "certa": false
+      },
+      {
+       "texto": "the water sensors",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "First, the article. Second, the news. So, what does this mean for us?",
+     "enunciado": "Ouça e repita, com pausas entre as partes."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Give the Friday briefing: summarise an article or a piece of news about your sector in four or five sentences, and say what it means for your company.",
+     "frase": "mean for us",
+     "resposta": "I read an article about online banking in Angola. According to the article, the number of people who use banking apps went up by thirty percent last year. So, what does this mean for us? I propose that we train our staff to help clients with the app.",
+     "contexto": "Briefing."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise this news in English: \"A Sumos do Planalto vai abrir uma fábrica de sumos na Caála, no Huambo: 12 milhões de dólares e 300 empregos. Segundo o director, a produção começa em Setembro, e 20% dos sumos vão ser vendidos na Namíbia.\"",
+     "frase": "According to",
+     "resposta": "It's about a new juice factory in Caála, in Huambo province. Sumos do Planalto is investing twelve million dollars, and the factory will create three hundred jobs. According to the director, production starts in September, and twenty percent of the juice will be sold in Namibia.",
+     "contexto": "Mediação: os factos importantes."
+    }
+   ]
+  },
+  {
+   "codigo": "9R",
+   "titulo": "Unit 9 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 9 e reciclar as unidades 6 a 8 do B1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Although] it was raining, we went to the beach.",
+     "opcoes": [
+      {
+       "texto": "Despite",
+       "certa": false
+      },
+      {
+       "texto": "However",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Despite [the traffic], I arrived on time.",
+     "opcoes": [
+      {
+       "texto": "there was traffic",
+       "certa": false
+      },
+      {
+       "texto": "of the traffic",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm saving money [to] buy a car.",
+     "opcoes": [
+      {
+       "texto": "for",
+       "certa": false
+      },
+      {
+       "texto": "for to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The prices went up. [As a result], we sold less.",
+     "opcoes": [
+      {
+       "texto": "Although",
+       "certa": false
+      },
+      {
+       "texto": "In order to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "According to the report, sales went up.",
+       "certa": true
+      },
+      {
+       "texto": "According the report, sales went up.",
+       "certa": false
+      },
+      {
+       "texto": "According to me, sales went up.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I wrote it down so that I wouldn't forget.",
+       "certa": true
+      },
+      {
+       "texto": "I wrote it down for not forget.",
+       "certa": false
+      },
+      {
+       "texto": "I wrote it down so that not forget.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 8). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "That can't be right.",
+       "certa": true
+      },
+      {
+       "texto": "That mustn't be right.",
+       "certa": false
+      },
+      {
+       "texto": "That doesn't can be right.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 7). Complete: \"She asked me ___ the report.\"",
+     "opcoes": [
+      {
+       "texto": "to send",
+       "certa": true
+      },
+      {
+       "texto": "send",
+       "certa": false
+      },
+      {
+       "texto": "for send",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 6). Complete: \"When I arrived, the film ___ already started.\"",
+     "opcoes": [
+      {
+       "texto": "had",
+       "certa": true
+      },
+      {
+       "texto": "has",
+       "certa": false
+      },
+      {
+       "texto": "was",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Apesar da chuva, o jogo continuou.",
+     "resposta": "Despite the rain, the game continued.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. Although October is six months away, these offers take time.",
+     "enunciado": "Why does Lerato want to start now?",
+     "opcoes": [
+      {
+       "texto": "These offers take time.",
+       "certa": true
+      },
+      {
+       "texto": "The work starts in May.",
+       "certa": false
+      },
+      {
+       "texto": "Ingrid asked her.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Summarise a news story you read or heard this week, and give your opinion.",
+     "frase": "opinion",
+     "resposta": "I heard on the radio that a new hospital is opening in my city next month. According to the news, it will have two hundred beds. The main point is that people won't need to travel to Luanda. In my opinion, it's great news, although we also need more doctors.",
+     "contexto": "Resumo e opinião (45 segundos)."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Give your opinion about working from home, with two arguments and one argument from the other side.",
+     "frase": "However",
+     "resposta": "I'm for working from home two days a week. Firstly, we save time in traffic. Secondly, it's quieter. However, some people say teams work better in the office. That's true, so I'd keep three days in the office.",
+     "contexto": "Opinião desenvolvida."
+    }
+   ]
+  }
+ ]
+}

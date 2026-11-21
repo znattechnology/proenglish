@@ -1,0 +1,373 @@
+{
+ "title": "C1.2 Review 2 quiz — Units 6 to 10",
+ "description": "Revisão do C1.2: elipse e contratos, futuro no passado e explicar, fronting e entrevistas, registo e phrasal verbs, negociação, e os falsos amigos.",
+ "questions": [
+  {
+   "id": "c1r2q1",
+   "question": "Unidade 6. Escolha a frase correcta: \"Will it rain?\" (espera que não)",
+   "options": [
+    {
+     "id": "c1r2q1o0",
+     "text": "I hope not.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q1o1",
+     "text": "I don't hope so.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q1o2",
+     "text": "I hope no.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q1o0",
+   "explanation": "hope + not.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q2",
+   "question": "Unidade 6. \"Mussiro may terminate the contract.\" Em inglês simples:",
+   "options": [
+    {
+     "id": "c1r2q2o0",
+     "text": "Mussiro is allowed to cancel the contract.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q2o1",
+     "text": "Mussiro will cancel the contract.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q2o2",
+     "text": "Mussiro must cancel the contract.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q2o0",
+   "explanation": "may = permissão.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q3",
+   "question": "Unidade 6. \"O ministro foi exonerado.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1r2q3o0",
+     "text": "The minister was dismissed.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q3o1",
+     "text": "The minister was exonerated.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q3o2",
+     "text": "The minister was exonerating.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q3o0",
+   "explanation": "Falso amigo: exonerate = ilibar.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q4",
+   "question": "Unidade 7. Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1r2q4o0",
+     "text": "I knew it would be difficult.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q4o1",
+     "text": "I knew it will be difficult.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q4o2",
+     "text": "I knew it would to be difficult.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q4o0",
+   "explanation": "would = futuro visto do passado.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q5",
+   "question": "Unidade 7. Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1r2q5o0",
+     "text": "We are on the verge of finishing.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q5o1",
+     "text": "We are on the verge to finish.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q5o2",
+     "text": "We are on verge finishing.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q5o0",
+   "explanation": "on the verge of + -ing.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q6",
+   "question": "Unidade 7. \"Fizemos uma experiência no laboratório.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1r2q6o0",
+     "text": "We did an experiment in the lab.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q6o1",
+     "text": "We did an experience in the lab.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q6o2",
+     "text": "We made an experienced in the lab.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q6o0",
+   "explanation": "Falso amigo: experience = experiência de vida.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q7",
+   "question": "Unidade 8. Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1r2q7o0",
+     "text": "Difficult as it was, we finished.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q7o1",
+     "text": "As difficult it was, we finished.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q7o2",
+     "text": "Difficult as was it, we finished.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q7o0",
+   "explanation": "Adjectivo + as + sujeito + verbo.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q8",
+   "question": "Unidade 8. \"That said\" quer dizer…",
+   "options": [
+    {
+     "id": "c1r2q8o0",
+     "text": "no entanto",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q8o1",
+     "text": "porque",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q8o2",
+     "text": "por exemplo",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q8o0",
+   "explanation": "That said = however.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q9",
+   "question": "Unidade 8. \"Um filme com legendas\" em inglês:",
+   "options": [
+    {
+     "id": "c1r2q9o0",
+     "text": "a film with subtitles",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q9o1",
+     "text": "a film with legends",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q9o2",
+     "text": "a film with legendas",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q9o0",
+   "explanation": "Falso amigo: legend = lenda.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q10",
+   "question": "Unidade 9. Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1r2q10o0",
+     "text": "They offered a discount, but we turned it down.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q10o1",
+     "text": "They offered a discount, but we turned down it.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q10o2",
+     "text": "They offered a discount, but we down turned it.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q10o0",
+   "explanation": "O pronome no meio.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q11",
+   "question": "Unidade 9. Onde é que \"four million-ish\" NÃO é adequado?",
+   "options": [
+    {
+     "id": "c1r2q11o0",
+     "text": "num relatório à administração",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q11o1",
+     "text": "numa conversa entre amigos",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q11o2",
+     "text": "num café com colegas",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q11o0",
+   "explanation": "Linguagem vaga só no registo informal.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q12",
+   "question": "Unidade 9. \"Puxe\" (na porta) em inglês:",
+   "options": [
+    {
+     "id": "c1r2q12o0",
+     "text": "Pull",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q12o1",
+     "text": "Push",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q12o2",
+     "text": "Puck",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q12o0",
+   "explanation": "Falso amigo: push = empurrar.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q13",
+   "question": "Unidade 10. Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "c1r2q13o0",
+     "text": "It's all subject to the board's approval.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q13o1",
+     "text": "It's all subject to the board approves it.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q13o2",
+     "text": "It's all subject that the board approves.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q13o0",
+   "explanation": "subject to + nome.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q14",
+   "question": "Unidade 10. Alguém diz: \"We need your answer tonight.\" A melhor resposta:",
+   "options": [
+    {
+     "id": "c1r2q14o0",
+     "text": "I understand the deadline, but that's not something I can agree to under pressure.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q14o1",
+     "text": "OK, we accept everything.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q14o2",
+     "text": "You're lying about the deadline.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q14o0",
+   "explanation": "Nomear a pressão com calma.",
+   "points": 10
+  },
+  {
+   "id": "c1r2q15",
+   "question": "Unidade 10. \"As nossas pretensões são razoáveis.\" Em inglês:",
+   "options": [
+    {
+     "id": "c1r2q15o0",
+     "text": "What we're asking for is reasonable.",
+     "isCorrect": true
+    },
+    {
+     "id": "c1r2q15o1",
+     "text": "Our pretensions are reasonable.",
+     "isCorrect": false
+    },
+    {
+     "id": "c1r2q15o2",
+     "text": "Our pretences are reasonable.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "c1r2q15o0",
+   "explanation": "Falso amigo: pretension = vaidade.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

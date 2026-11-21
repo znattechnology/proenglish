@@ -1,0 +1,301 @@
+{
+ "title": "B2.2 Unit 6 quiz — Health, safety and environment",
+ "description": "needn't have / didn't need to, was supposed to, modais no passado, risco e ambiente, prevent e precise.",
+ "questions": [
+  {
+   "id": "b2u6q1",
+   "question": "\"Não precisávamos de ter reservado o hotel.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u6q1o0",
+     "text": "We needn't have booked the hotel.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u6q1o1",
+     "text": "We didn't need booking the hotel.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u6q1o2",
+     "text": "We needn't to have booked the hotel.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u6q1o0",
+   "explanation": "needn't have + particípio: fez-se, mas não era preciso.",
+   "points": 10
+  },
+  {
+   "id": "b2u6q2",
+   "question": "\"I didn't need to take a taxi.\" O falante apanhou um táxi?",
+   "options": [
+    {
+     "id": "b2u6q2o0",
+     "text": "Não.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u6q2o1",
+     "text": "Sim, e foi um desperdício.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u6q2o2",
+     "text": "Sim, duas vezes.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u6q2o0",
+   "explanation": "didn't need to: normalmente, não se fez.",
+   "points": 10
+  },
+  {
+   "id": "b2u6q3",
+   "question": "\"A estrada devia estar pronta em Fevereiro\" (e não está). Em inglês:",
+   "options": [
+    {
+     "id": "b2u6q3o0",
+     "text": "The road was supposed to be ready in February.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u6q3o1",
+     "text": "The road supposed to be ready in February.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u6q3o2",
+     "text": "The road was suppose to be ready in February.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u6q3o0",
+   "explanation": "was supposed to: o plano que falhou.",
+   "points": 10
+  },
+  {
+   "id": "b2u6q4",
+   "question": "\"You're supposed to wear a helmet.\" Isto é…",
+   "options": [
+    {
+     "id": "b2u6q4o0",
+     "text": "uma regra",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u6q4o1",
+     "text": "um plano que falhou",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u6q4o2",
+     "text": "uma previsão",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u6q4o0",
+   "explanation": "be supposed to no presente = regra.",
+   "points": 10
+  },
+  {
+   "id": "b2u6q5",
+   "question": "\"Ele não pode ter visto o vento.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u6q5o0",
+     "text": "He can't have seen the wind.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u6q5o1",
+     "text": "He mustn't have seen the wind.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u6q5o2",
+     "text": "He can't saw the wind.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u6q5o0",
+   "explanation": "O contrário de must have é can't have.",
+   "points": 10
+  },
+  {
+   "id": "b2u6q6",
+   "question": "Complete: \"The sling must have ___ damaged before yesterday.\"",
+   "options": [
+    {
+     "id": "b2u6q6o0",
+     "text": "been",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u6q6o1",
+     "text": "be",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u6q6o2",
+     "text": "being",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u6q6o0",
+   "explanation": "Passiva: must have been + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b2u6q7",
+   "question": "\"Previne o Paulo de que a grua vem amanhã.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u6q7o0",
+     "text": "Let Paulo know that the crane is coming tomorrow.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u6q7o1",
+     "text": "Prevent Paulo that the crane is coming tomorrow.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u6q7o2",
+     "text": "Precise Paulo that the crane is coming tomorrow.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u6q7o0",
+   "explanation": "Falso amigo: prevent = impedir.",
+   "points": 10
+  },
+  {
+   "id": "b2u6q8",
+   "question": "\"Precisamos de mais cintas.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u6q8o0",
+     "text": "We need more slings.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u6q8o1",
+     "text": "We precise more slings.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u6q8o2",
+     "text": "We are precise of more slings.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u6q8o0",
+   "explanation": "Falso amigo: precise = exacto.",
+   "points": 10
+  },
+  {
+   "id": "b2u6q9",
+   "question": "Complete: \"Ruth will ___ out an inspection on Monday.\"",
+   "options": [
+    {
+     "id": "b2u6q9o0",
+     "text": "carry",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u6q9o1",
+     "text": "make",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u6q9o2",
+     "text": "do",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u6q9o0",
+   "explanation": "carry out an inspection.",
+   "points": 10
+  },
+  {
+   "id": "b2u6q10",
+   "question": "Reciclagem (B2, unidade 5). Escolha a frase correcta.",
+   "options": [
+    {
+     "id": "b2u6q10o0",
+     "text": "The cement is bound to arrive late.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u6q10o1",
+     "text": "The cement will bound to arrive late.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u6q10o2",
+     "text": "The cement bound to arrive late.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u6q10o0",
+   "explanation": "be bound to.",
+   "points": 10
+  },
+  {
+   "id": "b2u6q11",
+   "question": "Reciclagem (B2, unidade 4). \"Devia ter sido verificado.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u6q11o0",
+     "text": "It should have been checked.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u6q11o1",
+     "text": "It should been checked.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u6q11o2",
+     "text": "It should have checked.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u6q11o0",
+   "explanation": "should have been + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b2u6q12",
+   "question": "Reciclagem (B2, unidade 3). Complete: \"We'll lift it, ___ the wind is under forty.\"",
+   "options": [
+    {
+     "id": "b2u6q12o0",
+     "text": "as long as",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u6q12o1",
+     "text": "unless",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u6q12o2",
+     "text": "in case",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u6q12o0",
+   "explanation": "as long as = só se.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

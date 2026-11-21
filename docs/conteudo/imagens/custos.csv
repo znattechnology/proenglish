@@ -1,0 +1,309 @@
+data,id,variante,modelo,tamanho,proporcao,referencias,custo_usd,ficheiro,uso
+2026-11-18T15:17:29,professora-visual-a,1,gemini-3-pro-image,2K,4:5,0,0.1340,professora-visual-a/professora-visual-a-1.png,professora: visual A
+2026-11-18T15:17:59,professora-visual-b,1,gemini-3-pro-image,2K,4:5,0,0.1340,professora-visual-b/professora-visual-b-1.png,professora: visual B
+2026-11-18T15:18:28,professora-visual-c,1,gemini-3-pro-image,2K,4:5,0,0.1340,professora-visual-c/professora-visual-c-1.png,professora: visual C
+2026-11-18T15:24:19,professora-visual-a,2,gemini-3-pro-image,2K,4:5,0,0.1340,professora-visual-a/professora-visual-a-2.png,professora: visual A
+2026-11-18T15:24:49,professora-visual-b,2,gemini-3-pro-image,2K,4:5,0,0.1340,professora-visual-b/professora-visual-b-2.png,professora: visual B
+2026-11-18T15:25:18,professora-visual-c,2,gemini-3-pro-image,2K,4:5,0,0.1340,professora-visual-c/professora-visual-c-2.png,professora: visual C
+2026-11-18T15:32:55,ficha-professora,1,gemini-3-pro-image,2K,16:9,1,0.1351,ficha-professora/ficha-professora-1.png,"bíblia de personagens (referência: professora-visual-c, aprovada a 18/11/2026)"
+2026-11-18T15:36:09,ficha-professora,2,gemini-3-pro-image,2K,16:9,1,0.1351,ficha-professora/ficha-professora-2.png,"bíblia de personagens (referência: professora-visual-c, aprovada a 18/11/2026)"
+2026-11-18T15:37:06,professora-enquadramento,1,gemini-3-pro-image,2K,16:9,2,0.1362,professora-enquadramento/professora-enquadramento-1.png,imagem base das vídeo-aulas (ferramenta de vídeo)
+2026-11-18T15:37:47,landing-hero,1,gemini-3-pro-image,2K,4:5,2,0.1362,landing-hero/landing-hero-1.png,"landing page: imagem principal (hero), à direita do título"
+2026-11-18T15:38:31,landing-quadro,1,gemini-3-pro-image,2K,3:2,2,0.1362,landing-quadro/landing-quadro-1.png,"landing page: secção ""Como funciona"" (as aulas)"
+2026-11-18T15:39:14,landing-tablet,1,gemini-3-pro-image,2K,1:1,2,0.1362,landing-tablet/landing-tablet-1.png,"landing page: bloco ""Conheça a sua professora"" / acolhimento da app"
+2026-11-18T15:42:02,professora-enquadramento,2,gemini-3-pro-image,2K,16:9,2,0.1362,professora-enquadramento/professora-enquadramento-2.png,imagem base das vídeo-aulas (ferramenta de vídeo)
+2026-11-18T15:42:46,landing-tablet,2,gemini-3-pro-image,2K,1:1,2,0.1362,landing-tablet/landing-tablet-2.png,"landing page: bloco ""Conheça a sua professora"" / acolhimento da app"
+2026-11-18T17:24:07,lite-recibo,1,gemini-3.1-flash-lite-image,1K,1:1,0,0.0336,lite-recibo/lite-recibo-1.png,teste: a receipt
+2026-11-18T17:24:12,lite-portatil,1,gemini-3.1-flash-lite-image,1K,1:1,0,0.0336,lite-portatil/lite-portatil-1.png,teste: a laptop
+2026-11-18T17:24:19,lite-sanduiche,1,gemini-3.1-flash-lite-image,1K,1:1,0,0.0336,lite-sanduiche/lite-sanduiche-1.png,teste: a sandwich
+2026-11-18T17:24:25,lite-chave,1,gemini-3.1-flash-lite-image,1K,1:1,0,0.0336,lite-chave/lite-chave-1.png,teste: a key
+2026-11-18T17:24:30,lite-chavena,1,gemini-3.1-flash-lite-image,1K,1:1,0,0.0336,lite-chavena/lite-chavena-1.png,teste: a cup of coffee
+2026-11-18T17:24:48,21-recibo,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,21-recibo/21-recibo-1.png,teste: a receipt
+2026-11-18T17:25:04,21-portatil,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,21-portatil/21-portatil-1.png,teste: a laptop
+2026-11-18T17:25:22,21-sanduiche,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,21-sanduiche/21-sanduiche-1.png,teste: a sandwich
+2026-11-18T17:25:37,21-chave,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,21-chave/21-chave-1.png,teste: a key
+2026-11-18T17:25:53,21-chavena,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,21-chavena/21-chavena-1.png,teste: a cup of coffee
+2026-11-18T17:39:28,desk,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,desk/desk-1.png,banco A1: objectos
+2026-11-18T17:39:46,computer,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,computer/computer-1.png,banco A1: objectos
+2026-11-18T17:40:04,laptop,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,laptop/laptop-1.png,banco A1: objectos
+2026-11-18T17:40:22,mobile-phone,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,mobile-phone/mobile-phone-1.png,banco A1: objectos
+2026-11-18T17:40:38,email,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,email/email-1.png,banco A1: objectos
+2026-11-18T17:40:50,calendar,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,calendar/calendar-1.png,banco A1: objectos
+2026-11-18T17:41:15,photo,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,photo/photo-1.png,banco A1: objectos
+2026-11-18T17:41:32,id-card,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,id-card/id-card-1.png,banco A1: objectos
+2026-11-18T17:41:48,visitor-card,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,visitor-card/visitor-card-1.png,banco A1: objectos
+2026-11-18T17:42:06,form,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,form/form-1.png,banco A1: objectos
+2026-11-18T17:42:32,report,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,report/report-1.png,banco A1: objectos
+2026-11-18T17:42:47,printer,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,printer/printer-1.png,banco A1: objectos
+2026-11-18T17:43:04,bag,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,bag/bag-1.png,banco A1: objectos
+2026-11-18T17:43:20,keys,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,keys/keys-1.png,banco A1: objectos
+2026-11-18T17:43:38,car-keys,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,car-keys/car-keys-1.png,banco A1: objectos
+2026-11-18T17:43:57,glasses,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,glasses/glasses-1.png,banco A1: objectos
+2026-11-18T17:44:13,wallet,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,wallet/wallet-1.png,banco A1: objectos
+2026-11-18T17:44:31,umbrella,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,umbrella/umbrella-1.png,banco A1: objectos
+2026-11-18T17:44:52,cup,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,cup/cup-1.png,banco A1: objectos
+2026-11-18T17:45:16,watch,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,watch/watch-1.png,banco A1: objectos
+2026-11-18T17:45:46,charger,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,charger/charger-1.png,banco A1: objectos
+2026-11-18T17:46:05,battery,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,battery/battery-1.png,banco A1: objectos
+2026-11-18T17:46:21,screen,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,screen/screen-1.png,banco A1: objectos
+2026-11-18T17:46:38,bread,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,bread/bread-1.png,banco A1: comida
+2026-11-18T17:46:56,rice,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,rice/rice-1.png,banco A1: comida
+2026-11-18T17:47:15,milk,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,milk/milk-1.png,banco A1: comida
+2026-11-18T17:47:33,sugar,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,sugar/sugar-1.png,banco A1: comida
+2026-11-18T17:47:50,butter,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,butter/butter-1.png,banco A1: comida
+2026-11-18T17:48:07,cheese,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,cheese/cheese-1.png,banco A1: comida
+2026-11-18T17:48:23,egg,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,egg/egg-1.png,banco A1: comida
+2026-11-18T17:48:38,banana,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,banana/banana-1.png,banco A1: comida
+2026-11-18T17:48:54,orange,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,orange/orange-1.png,banco A1: comida
+2026-11-18T17:49:09,apple,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,apple/apple-1.png,banco A1: comida
+2026-11-18T17:49:28,mango,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,mango/mango-1.png,banco A1: comida
+2026-11-18T17:49:42,pineapple,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,pineapple/pineapple-1.png,banco A1: comida
+2026-11-18T17:49:57,papaya,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,papaya/papaya-1.png,banco A1: comida
+2026-11-18T17:50:16,fruit,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,fruit/fruit-1.png,banco A1: comida
+2026-11-18T17:50:35,vegetables,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,vegetables/vegetables-1.png,banco A1: comida
+2026-11-18T17:50:50,salad,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,salad/salad-1.png,banco A1: comida
+2026-11-18T17:51:10,potatoes,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,potatoes/potatoes-1.png,banco A1: comida
+2026-11-18T17:51:28,beans,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,beans/beans-1.png,banco A1: comida
+2026-11-18T17:51:43,chicken,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,chicken/chicken-1.png,banco A1: comida
+2026-11-18T17:52:03,beef,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,beef/beef-1.png,banco A1: comida
+2026-11-18T17:52:19,fish,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,fish/fish-1.png,banco A1: comida
+2026-11-18T17:52:36,meat,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,meat/meat-1.png,banco A1: comida
+2026-11-18T17:52:54,sandwich,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,sandwich/sandwich-1.png,banco A1: comida
+2026-11-18T17:53:09,croissant,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,croissant/croissant-1.png,banco A1: comida
+2026-11-18T17:53:25,cake,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,cake/cake-1.png,banco A1: comida
+2026-11-18T17:53:40,juice,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,juice/juice-1.png,banco A1: comida
+2026-11-18T17:53:55,glass-of-juice,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,glass-of-juice/glass-of-juice-1.png,banco A1: comida
+2026-11-18T17:54:10,bottle-of-water,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,bottle-of-water/bottle-of-water-1.png,banco A1: comida
+2026-11-18T17:54:26,coffee,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,coffee/coffee-1.png,banco A1: comida
+2026-11-18T17:54:43,black-coffee,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,black-coffee/black-coffee-1.png,banco A1: comida
+2026-11-18T17:55:01,coffee-with-milk,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,coffee-with-milk/coffee-with-milk-1.png,banco A1: comida
+2026-11-18T17:55:18,tea,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,tea/tea-1.png,banco A1: comida
+2026-11-18T17:55:36,soft-drink,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,soft-drink/soft-drink-1.png,banco A1: comida
+2026-11-18T17:55:53,funge,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,funge/funge-1.png,banco A1: comida
+2026-11-18T17:56:09,muamba,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,muamba/muamba-1.png,banco A1: comida
+2026-11-18T17:56:26,calulu,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,calulu/calulu-1.png,banco A1: comida
+2026-11-18T17:56:44,mufete,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,mufete/mufete-1.png,banco A1: comida
+2026-11-18T17:57:00,breakfast,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,breakfast/breakfast-1.png,banco A1: comida
+2026-11-18T17:57:16,lunch,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,lunch/lunch-1.png,banco A1: comida
+2026-11-18T17:57:32,dinner,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,dinner/dinner-1.png,banco A1: comida
+2026-11-18T17:57:48,starter,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,starter/starter-1.png,banco A1: comida
+2026-11-18T17:58:08,main-course,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,main-course/main-course-1.png,banco A1: comida
+2026-11-18T17:58:24,dessert,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,dessert/dessert-1.png,banco A1: comida
+2026-11-18T17:58:42,the-bill,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,the-bill/the-bill-1.png,banco A1: comida
+2026-11-18T18:00:48,receipt,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,receipt/receipt-1.png,banco A1: comida
+2026-11-18T18:01:00,bank-card,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,bank-card/bank-card-1.png,banco A1: comida
+2026-11-18T18:01:18,cash,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,cash/cash-1.png,banco A1: comida
+2026-11-18T18:01:32,car,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,car/car-1.png,banco A1: transportes
+2026-11-18T18:01:52,bus,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,bus/bus-1.png,banco A1: transportes
+2026-11-18T18:02:10,taxi,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,taxi/taxi-1.png,banco A1: transportes
+2026-11-18T18:02:27,candongueiro,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,candongueiro/candongueiro-1.png,banco A1: transportes
+2026-11-18T18:02:41,motorbike,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,motorbike/motorbike-1.png,banco A1: transportes
+2026-11-18T18:03:00,plane,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,plane/plane-1.png,banco A1: transportes
+2026-11-18T18:03:17,boat,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,boat/boat-1.png,banco A1: transportes
+2026-11-18T18:04:02,dinner,2,gemini-nano-banana-2.1,1K,1:1,0,0.0336,dinner/dinner-2.png,banco A1: comida
+2026-11-18T18:04:17,candongueiro,2,gemini-nano-banana-2.1,1K,1:1,0,0.0336,candongueiro/candongueiro-2.png,banco A1: transportes
+2026-11-18T18:08:56,engineer,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,engineer/engineer-1.png,banco A1: profissoes
+2026-11-18T18:09:13,accountant,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,accountant/accountant-1.png,banco A1: profissoes
+2026-11-18T18:10:11,nurse,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,nurse/nurse-1.png,banco A1: profissoes
+2026-11-18T18:10:28,doctor,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,doctor/doctor-1.png,banco A1: profissoes
+2026-11-18T18:10:45,teacher,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,teacher/teacher-1.png,banco A1: profissoes
+2026-11-18T18:11:04,bank-teller,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,bank-teller/bank-teller-1.png,banco A1: profissoes
+2026-11-18T18:11:22,driver,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,driver/driver-1.png,banco A1: profissoes
+2026-11-18T18:11:37,it-technician,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,it-technician/it-technician-1.png,banco A1: profissoes
+2026-11-18T18:11:56,receptionist,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,receptionist/receptionist-1.png,banco A1: profissoes
+2026-11-18T18:12:12,manager,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,manager/manager-1.png,banco A1: profissoes
+2026-11-18T18:12:27,lawyer,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,lawyer/lawyer-1.png,banco A1: profissoes
+2026-11-18T18:12:45,salesperson,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,salesperson/salesperson-1.png,banco A1: profissoes
+2026-11-18T18:13:14,student,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,student/student-1.png,banco A1: profissoes
+2026-11-18T18:13:30,mechanic,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,mechanic/mechanic-1.png,banco A1: profissoes
+2026-11-18T18:13:48,secretary,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,secretary/secretary-1.png,banco A1: profissoes
+2026-11-18T18:14:05,family,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,family/family-1.png,banco A1: familia
+2026-11-18T18:14:23,mother,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,mother/mother-1.png,banco A1: familia
+2026-11-18T18:14:41,father,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,father/father-1.png,banco A1: familia
+2026-11-18T18:15:06,brother,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,brother/brother-1.png,banco A1: familia
+2026-11-18T18:15:31,sister,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,sister/sister-1.png,banco A1: familia
+2026-11-18T18:15:51,son,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,son/son-1.png,banco A1: familia
+2026-11-18T18:16:10,daughter,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,daughter/daughter-1.png,banco A1: familia
+2026-11-18T18:16:30,baby,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,baby/baby-1.png,banco A1: familia
+2026-11-18T18:16:48,grandmother,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,grandmother/grandmother-1.png,banco A1: familia
+2026-11-18T18:17:05,grandfather,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,grandfather/grandfather-1.png,banco A1: familia
+2026-11-18T18:17:22,husband-and-wife,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,husband-and-wife/husband-and-wife-1.png,banco A1: familia
+2026-11-18T18:17:39,get-up,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,get-up/get-up-1.png,banco A1: rotina
+2026-11-18T18:17:58,take-a-shower,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,take-a-shower/take-a-shower-1.png,banco A1: rotina
+2026-11-18T18:18:14,have-breakfast,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,have-breakfast/have-breakfast-1.png,banco A1: rotina
+2026-11-18T18:18:32,go-to-work,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,go-to-work/go-to-work-1.png,banco A1: rotina
+2026-11-18T18:19:02,take-the-bus,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,take-the-bus/take-the-bus-1.png,banco A1: rotina
+2026-11-18T18:19:20,walk,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,walk/walk-1.png,banco A1: rotina
+2026-11-18T18:19:47,drive,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,drive/drive-1.png,banco A1: rotina
+2026-11-18T18:20:03,write,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,write/write-1.png,banco A1: rotina
+2026-11-18T18:20:19,cook,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,cook/cook-1.png,banco A1: rotina
+2026-11-18T18:20:39,watch-tv,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,watch-tv/watch-tv-1.png,banco A1: rotina
+2026-11-18T18:20:57,read,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,read/read-1.png,banco A1: rotina
+2026-11-18T18:21:15,listen-to-music,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,listen-to-music/listen-to-music-1.png,banco A1: rotina
+2026-11-18T18:21:40,go-to-bed,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,go-to-bed/go-to-bed-1.png,banco A1: rotina
+2026-11-18T18:21:59,sleep,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,sleep/sleep-1.png,banco A1: rotina
+2026-11-18T18:22:18,swim,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,swim/swim-1.png,banco A1: rotina
+2026-11-18T18:22:38,run,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,run/run-1.png,banco A1: rotina
+2026-11-18T18:22:54,dance,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,dance/dance-1.png,banco A1: rotina
+2026-11-18T18:23:17,sing,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,sing/sing-1.png,banco A1: rotina
+2026-11-18T18:23:37,play-football,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,play-football/play-football-1.png,banco A1: rotina
+2026-11-18T18:24:02,play-basketball,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,play-basketball/play-basketball-1.png,banco A1: rotina
+2026-11-18T18:24:19,play-the-guitar,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,play-the-guitar/play-the-guitar-1.png,banco A1: rotina
+2026-11-18T18:24:35,play-the-piano,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,play-the-piano/play-the-piano-1.png,banco A1: rotina
+2026-11-18T18:24:53,ride-a-motorbike,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,ride-a-motorbike/ride-a-motorbike-1.png,banco A1: rotina
+2026-11-18T18:25:12,go-to-the-beach,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,go-to-the-beach/go-to-the-beach-1.png,banco A1: rotina
+2026-11-18T18:25:31,iron,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,iron/iron-1.png,banco A1: rotina
+2026-11-18T18:25:48,clean-the-house,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,clean-the-house/clean-the-house-1.png,banco A1: rotina
+2026-11-18T18:26:08,do-yoga,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,do-yoga/do-yoga-1.png,banco A1: rotina
+2026-11-18T18:26:24,head,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,head/head-1.png,banco A1: saude
+2026-11-18T18:26:40,eye,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,eye/eye-1.png,banco A1: saude
+2026-11-18T18:26:56,ear,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,ear/ear-1.png,banco A1: saude
+2026-11-18T18:27:14,tooth,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,tooth/tooth-1.png,banco A1: saude
+2026-11-18T18:27:30,throat,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,throat/throat-1.png,banco A1: saude
+2026-11-18T18:27:59,arm,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,arm/arm-1.png,banco A1: saude
+2026-11-18T18:28:18,hand,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,hand/hand-1.png,banco A1: saude
+2026-11-18T18:28:38,back,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,back/back-1.png,banco A1: saude
+2026-11-18T18:29:02,stomach,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,stomach/stomach-1.png,banco A1: saude
+2026-11-18T18:29:19,leg,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,leg/leg-1.png,banco A1: saude
+2026-11-18T18:29:38,foot,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,foot/foot-1.png,banco A1: saude
+2026-11-18T18:29:58,headache,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,headache/headache-1.png,banco A1: saude
+2026-11-18T18:30:12,stomach-ache,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,stomach-ache/stomach-ache-1.png,banco A1: saude
+2026-11-18T18:30:30,toothache,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,toothache/toothache-1.png,banco A1: saude
+2026-11-18T18:30:47,sore-throat,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,sore-throat/sore-throat-1.png,banco A1: saude
+2026-11-18T18:31:06,fever,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,fever/fever-1.png,banco A1: saude
+2026-11-18T18:31:34,cough,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,cough/cough-1.png,banco A1: saude
+2026-11-18T18:31:55,cold,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,cold/cold-1.png,banco A1: saude
+2026-11-18T18:32:11,tablet,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,tablet/tablet-1.png,banco A1: saude
+2026-11-18T18:32:29,medicine,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,medicine/medicine-1.png,banco A1: saude
+2026-11-18T18:32:45,syrup,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,syrup/syrup-1.png,banco A1: saude
+2026-11-18T18:33:03,cream,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,cream/cream-1.png,banco A1: saude
+2026-11-18T18:33:21,shirt,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,shirt/shirt-1.png,banco A1: roupa
+2026-11-18T18:33:36,t-shirt,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,t-shirt/t-shirt-1.png,banco A1: roupa
+2026-11-18T18:33:52,trousers,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,trousers/trousers-1.png,banco A1: roupa
+2026-11-18T18:34:17,jeans,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,jeans/jeans-1.png,banco A1: roupa
+2026-11-18T18:34:32,jacket,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,jacket/jacket-1.png,banco A1: roupa
+2026-11-18T18:34:47,suit,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,suit/suit-1.png,banco A1: roupa
+2026-11-18T18:35:05,tie,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,tie/tie-1.png,banco A1: roupa
+2026-11-18T18:35:21,dress,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,dress/dress-1.png,banco A1: roupa
+2026-11-18T18:35:39,skirt,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,skirt/skirt-1.png,banco A1: roupa
+2026-11-18T18:35:56,shoes,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,shoes/shoes-1.png,banco A1: roupa
+2026-11-18T18:36:12,trainers,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,trainers/trainers-1.png,banco A1: roupa
+2026-11-18T18:36:28,sandals,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,sandals/sandals-1.png,banco A1: roupa
+2026-11-18T18:36:44,cap,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,cap/cap-1.png,banco A1: roupa
+2026-11-18T18:37:00,hat,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,hat/hat-1.png,banco A1: roupa
+2026-11-18T18:37:18,bank,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,bank/bank-1.png,banco A1: lugares
+2026-11-18T18:37:33,hospital,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,hospital/hospital-1.png,banco A1: lugares
+2026-11-18T18:37:51,school,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,school/school-1.png,banco A1: lugares
+2026-11-18T18:38:08,shop,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,shop/shop-1.png,banco A1: lugares
+2026-11-18T18:38:25,factory,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,factory/factory-1.png,banco A1: lugares
+2026-11-18T18:38:53,restaurant,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,restaurant/restaurant-1.png,banco A1: lugares
+2026-11-18T18:39:11,hotel,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,hotel/hotel-1.png,banco A1: lugares
+2026-11-18T18:39:29,airport,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,airport/airport-1.png,banco A1: lugares
+2026-11-18T18:39:48,oil-company,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,oil-company/oil-company-1.png,banco A1: lugares
+2026-11-18T18:40:05,ministry,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,ministry/ministry-1.png,banco A1: lugares
+2026-11-18T18:40:20,house,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,house/house-1.png,banco A1: lugares
+2026-11-18T18:40:36,flat,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,flat/flat-1.png,banco A1: lugares
+2026-11-18T18:40:53,office-building,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,office-building/office-building-1.png,banco A1: lugares
+2026-11-18T18:41:10,meeting-room,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,meeting-room/meeting-room-1.png,banco A1: lugares
+2026-11-18T18:41:28,reception,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,reception/reception-1.png,banco A1: lugares
+2026-11-18T18:41:47,entrance,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,entrance/entrance-1.png,banco A1: lugares
+2026-11-18T18:42:07,lift,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,lift/lift-1.png,banco A1: lugares
+2026-11-18T18:42:26,stairs,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,stairs/stairs-1.png,banco A1: lugares
+2026-11-18T18:42:44,toilets,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,toilets/toilets-1.png,banco A1: lugares
+2026-11-18T18:43:00,car-park,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,car-park/car-park-1.png,banco A1: lugares
+2026-11-18T18:43:18,atm,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,atm/atm-1.png,banco A1: lugares
+2026-11-18T18:43:35,pharmacy,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,pharmacy/pharmacy-1.png,banco A1: lugares
+2026-11-18T18:43:51,supermarket,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,supermarket/supermarket-1.png,banco A1: lugares
+2026-11-18T18:44:09,market,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,market/market-1.png,banco A1: lugares
+2026-11-18T18:44:25,shopping-centre,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,shopping-centre/shopping-centre-1.png,banco A1: lugares
+2026-11-18T18:44:47,cafe,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,cafe/cafe-1.png,banco A1: lugares
+2026-11-18T18:45:03,clinic,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,clinic/clinic-1.png,banco A1: lugares
+2026-11-18T18:45:20,university,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,university/university-1.png,banco A1: lugares
+2026-11-18T18:45:35,church,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,church/church-1.png,banco A1: lugares
+2026-11-18T18:45:52,mosque,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,mosque/mosque-1.png,banco A1: lugares
+2026-11-18T18:46:11,cinema,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,cinema/cinema-1.png,banco A1: lugares
+2026-11-18T18:46:27,gym,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,gym/gym-1.png,banco A1: lugares
+2026-11-18T18:46:47,park,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,park/park-1.png,banco A1: lugares
+2026-11-18T18:47:06,beach,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,beach/beach-1.png,banco A1: lugares
+2026-11-18T18:47:23,bus-stop,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,bus-stop/bus-stop-1.png,banco A1: lugares
+2026-11-18T18:47:40,petrol-station,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,petrol-station/petrol-station-1.png,banco A1: lugares
+2026-11-18T18:47:59,police-station,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,police-station/police-station-1.png,banco A1: lugares
+2026-11-18T18:48:17,post-office,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,post-office/post-office-1.png,banco A1: lugares
+2026-11-18T18:48:40,street,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,street/street-1.png,banco A1: lugares
+2026-11-18T18:48:59,road,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,road/road-1.png,banco A1: lugares
+2026-11-18T18:49:18,corner,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,corner/corner-1.png,banco A1: lugares
+2026-11-18T18:49:36,building,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,building/building-1.png,banco A1: lugares
+2026-11-18T18:49:54,traffic-lights,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,traffic-lights/traffic-lights-1.png,banco A1: lugares
+2026-11-18T18:50:12,roundabout,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,roundabout/roundabout-1.png,banco A1: lugares
+2026-11-18T18:50:27,bookshop,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,bookshop/bookshop-1.png,banco A1: lugares
+2026-11-18T18:50:41,clothes-shop,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,clothes-shop/clothes-shop-1.png,banco A1: lugares
+2026-11-18T18:50:58,shoe-shop,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,shoe-shop/shoe-shop-1.png,banco A1: lugares
+2026-11-18T18:51:14,phone-shop,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,phone-shop/phone-shop-1.png,banco A1: lugares
+2026-11-18T18:51:32,fitting-room,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,fitting-room/fitting-room-1.png,banco A1: lugares
+2026-11-18T18:51:53,traffic-jam,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,traffic-jam/traffic-jam-1.png,banco A1: lugares
+2026-11-18T18:52:09,dog,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,dog/dog-1.png,banco A1: outros
+2026-11-18T18:52:22,cat,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,cat/cat-1.png,banco A1: outros
+2026-11-18T18:52:39,sunny,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,sunny/sunny-1.png,banco A1: outros
+2026-11-18T18:52:57,rain,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,rain/rain-1.png,banco A1: outros
+2026-11-18T18:53:13,wedding,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,wedding/wedding-1.png,banco A1: outros
+2026-11-18T18:53:29,birthday,1,gemini-nano-banana-2.1,1K,1:1,0,0.0336,birthday/birthday-1.png,banco A1: outros
+2026-11-18T18:54:42,throat,2,gemini-nano-banana-2.1,1K,1:1,0,0.0336,throat/throat-2.png,banco A1: saude
+2026-11-18T18:55:10,back,2,gemini-nano-banana-2.1,1K,1:1,0,0.0336,back/back-2.png,banco A1: saude
+2026-11-18T18:55:26,stomach,2,gemini-nano-banana-2.1,1K,1:1,0,0.0336,stomach/stomach-2.png,banco A1: saude
+2026-11-18T21:49:42,stomach,3,gemini-nano-banana-2.1,1K,1:1,0,0.0336,stomach/stomach-3.png,banco A1: saude
+2026-11-18T21:50:00,stomach,4,gemini-nano-banana-2.1,1K,1:1,0,0.0336,stomach/stomach-4.png,banco A1: saude
+2026-11-19T05:31:22,estilo-foto,1,gemini-3-pro-image,1K,3:2,0,0.1340,estilo-foto/estilo-foto-1.png,escolha do estilo
+2026-11-19T05:31:42,estilo-ilustracao,1,gemini-3-pro-image,1K,3:2,0,0.1340,estilo-ilustracao/estilo-ilustracao-1.png,escolha do estilo
+2026-11-19T05:32:01,estilo-vectorial,1,gemini-3-pro-image,1K,3:2,0,0.1340,estilo-vectorial/estilo-vectorial-1.png,escolha do estilo
+2026-11-19T05:37:18,ficha-nuno,1,gemini-3-pro-image,2K,16:9,1,0.1351,ficha-nuno/ficha-nuno-1.png,bíblia de personagens
+2026-11-19T05:37:50,ficha-paulo,1,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-paulo/ficha-paulo-1.png,bíblia de personagens
+2026-11-19T05:38:19,ficha-silvia,1,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-silvia/ficha-silvia-1.png,bíblia de personagens
+2026-11-19T05:38:53,ficha-ana,1,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-ana/ficha-ana-1.png,bíblia de personagens
+2026-11-19T05:39:21,ficha-mateus,1,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-mateus/ficha-mateus-1.png,bíblia de personagens
+2026-11-19T05:39:51,ficha-baptista,1,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-baptista/ficha-baptista-1.png,bíblia de personagens
+2026-11-19T05:40:22,ficha-thandi,1,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-thandi/ficha-thandi-1.png,
+2026-11-19T05:40:53,capa-a1-1,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-a1-1/capa-a1-1-1.png,
+2026-11-19T05:41:28,capa-a1-2,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-a1-2/capa-a1-2-1.png,
+2026-11-19T05:41:58,capa-a2-1,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-a2-1/capa-a2-1-1.png,
+2026-11-19T05:42:30,capa-a2-2,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-a2-2/capa-a2-2-1.png,
+2026-11-19T05:43:01,capa-b1-1,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-b1-1/capa-b1-1-1.png,
+2026-11-19T05:43:34,capa-b1-2,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-b1-2/capa-b1-2-1.png,
+2026-11-19T05:44:04,capa-b2-1,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-b2-1/capa-b2-1-1.png,
+2026-11-19T05:44:36,capa-b2-2,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-b2-2/capa-b2-2-1.png,
+2026-11-19T05:45:05,capa-c1-1,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-c1-1/capa-c1-1-1.png,
+2026-11-19T05:45:34,capa-c1-2,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-c1-2/capa-c1-2-1.png,
+2026-11-19T05:46:13,capa-sector-petroleo,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-petroleo/capa-sector-petroleo-1.png,
+2026-11-19T05:46:45,capa-sector-banca,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-banca/capa-sector-banca-1.png,
+2026-11-19T05:47:14,capa-sector-tecnologia,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-tecnologia/capa-sector-tecnologia-1.png,
+2026-11-19T05:47:48,capa-sector-minas,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-minas/capa-sector-minas-1.png,
+2026-11-19T05:48:21,capa-sector-aviacao,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-aviacao/capa-sector-aviacao-1.png,
+2026-11-19T05:48:52,capa-sector-saude,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-saude/capa-sector-saude-1.png,
+2026-11-19T05:49:26,capa-sector-direito,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-direito/capa-sector-direito-1.png,
+2026-11-19T05:49:55,capa-sector-negocios,1,gemini-3-pro-image,2K,4:3,0,0.1340,capa-sector-negocios/capa-sector-negocios-1.png,
+2026-11-19T05:54:05,ficha-ana,2,gemini-3-pro-image,2K,16:9,0,0.1340,ficha-ana/ficha-ana-2.png,bíblia de personagens
+2026-11-19T05:54:34,capa-c1-1,2,gemini-3-pro-image,2K,4:3,0,0.1340,capa-c1-1/capa-c1-1-2.png,
+2026-11-19T05:55:58,site-paulo,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-paulo/site-paulo-1.png,
+2026-11-19T05:56:38,site-silvia,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-silvia/site-silvia-1.png,
+2026-11-19T05:57:27,site-ana,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-ana/site-ana-1.png,
+2026-11-19T05:59:30,site-mateus,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-mateus/site-mateus-1.png,
+2026-11-19T06:00:09,site-baptista,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-baptista/site-baptista-1.png,
+2026-11-19T06:00:47,site-nuno,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-nuno/site-nuno-1.png,
+2026-11-19T06:01:28,site-thandi,1,gemini-3-pro-image,2K,4:5,1,0.1351,site-thandi/site-thandi-1.png,
+2026-11-19T06:04:57,site-cena-reuniao,1,gemini-3-pro-image,2K,3:2,3,0.1373,site-cena-reuniao/site-cena-reuniao-1.png,
+2026-11-19T06:05:35,site-cena-chamada,1,gemini-3-pro-image,2K,16:9,1,0.1351,site-cena-chamada/site-cena-chamada-1.png,
+2026-11-19T06:06:28,site-cena-escuta,1,gemini-3-pro-image,2K,16:9,1,0.1351,site-cena-escuta/site-cena-escuta-1.png,
+2026-11-19T06:07:25,site-cena-falar,1,gemini-3-pro-image,2K,3:2,3,0.1373,site-cena-falar/site-cena-falar-1.png,
+2026-11-19T06:08:11,site-cena-empresa,1,gemini-3-pro-image,2K,3:2,1,0.1351,site-cena-empresa/site-cena-empresa-1.png,
+2026-11-19T10:23:19,clip-luanda-amanhecer,1,gemini-3-pro-image,2K,16:9,1,0.1351,clip-luanda-amanhecer/clip-luanda-amanhecer-1.png,
+2026-11-19T10:25:32,clip-equipa-entrada,1,gemini-3-pro-image,2K,16:9,7,0.1417,clip-equipa-entrada/clip-equipa-entrada-1.png,
+2026-11-19T10:26:25,clip-paulo-casa,1,gemini-3-pro-image,2K,16:9,1,0.1351,clip-paulo-casa/clip-paulo-casa-1.png,
+2026-11-19T10:27:13,clip-ana-recepcao,1,gemini-3-pro-image,2K,16:9,2,0.1362,clip-ana-recepcao/clip-ana-recepcao-1.png,
+2026-11-19T10:28:04,clip-terraco-equipa,1,gemini-3-pro-image,2K,16:9,7,0.1417,clip-terraco-equipa/clip-terraco-equipa-1.png,
+2026-11-19T10:28:38,clip-mateus-plataforma,1,gemini-3-pro-image,2K,16:9,1,0.1351,clip-mateus-plataforma/clip-mateus-plataforma-1.png,
+2026-11-19T10:29:10,clip-silvia-cliente,1,gemini-3-pro-image,2K,16:9,1,0.1351,clip-silvia-cliente/clip-silvia-cliente-1.png,
+2026-11-19T10:29:52,clip-paulo-apresenta,1,gemini-3-pro-image,2K,16:9,3,0.1373,clip-paulo-apresenta/clip-paulo-apresenta-1.png,
+2026-11-19T10:30:48,clip-marginal,1,gemini-3-pro-image,2K,16:9,7,0.1417,clip-marginal/clip-marginal-1.png,
+2026-11-19T10:31:46,clip-equipa-entrada,2,gemini-3-pro-image,2K,16:9,7,0.1417,clip-equipa-entrada/clip-equipa-entrada-2.png,
+2026-11-19T13:17:53,vclip-recepcao,1,gemini-3-pro-image,2K,9:16,3,0.1373,vclip-recepcao/vclip-recepcao-1.png,
+2026-11-20T23:34:03,aula1a-recepcao,1,gemini-3-pro-image,2K,16:9,3,0.1373,aula1a-recepcao/aula1a-recepcao-1.png,
+2026-11-20T23:35:19,aula1a-recepcao,2,gemini-3-pro-image,2K,16:9,3,0.1373,aula1a-recepcao/aula1a-recepcao-2.png,

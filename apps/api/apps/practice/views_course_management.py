@@ -26,7 +26,7 @@ class PracticeCourseManagementView(APIView):
         # Check if user has teacher role
         if getattr(self.request.user, 'role', None) != 'teacher':
             from rest_framework.exceptions import PermissionDenied
-            raise PermissionDenied("Apenas professores podem gerenciar cursos")
+            raise PermissionDenied("Apenas professores podem gerir cursos")
         
         try:
             from apps.courses.models import Course
@@ -35,12 +35,12 @@ class PracticeCourseManagementView(APIView):
             # Verify if user is the teacher
             if course.teacher != self.request.user:
                 from rest_framework.exceptions import PermissionDenied
-                raise PermissionDenied("Apenas o professor proprietário pode gerenciar este curso")
+                raise PermissionDenied("Apenas o professor proprietário pode gerir este curso")
                 
             return course
         except Course.DoesNotExist:
             from rest_framework.exceptions import NotFound
-            raise NotFound("Practice course não encontrado")
+            raise NotFound("Curso de prática não encontrado")
     
     def delete(self, request, course_id):
         """Delete practice course"""
@@ -57,7 +57,7 @@ class PracticeCourseManagementView(APIView):
         logger.info(f"✅ Practice course deleted successfully: {course_title}")
         
         return Response({
-            'message': f'Curso "{course_title}" excluído com sucesso',
+            'message': f'Curso "{course_title}" eliminado com sucesso',
             'success': True
         }, status=status.HTTP_200_OK)
     
@@ -126,6 +126,6 @@ class PracticeCourseManagementView(APIView):
 
         else:
             return Response({
-                'message': 'Ação inválida. Use "publish" ou "unpublish"',
+                'message': 'Acção inválida. Use "publish" ou "unpublish"',
                 'success': False
             }, status=status.HTTP_400_BAD_REQUEST)

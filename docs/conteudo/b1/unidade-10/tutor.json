@@ -1,0 +1,140 @@
+{
+ "unidade": "B1.2 · Unit 10 — Lessons learned",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "b1-u10-guiada",
+   "nome": "B1 Unit 10 · If I had known…",
+   "tipo": "guiada",
+   "depois_da_aula": "10C",
+   "descricao": "O tutor é Robin, colega de equipa. Fala de decisões passadas, suas e do aluno, e pede ao aluno que imagine o contrário, diga o que devia ter feito e o que planeia agora.",
+   "papel_tutor": "Robin, colega que gosta de falar de decisões e de lições aprendidas.",
+   "nivel": "B1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "If I had…, I would have…",
+    "I should have…",
+    "I shouldn't have…",
+    "It might have been…",
+    "I'm hoping to… / I'm planning to…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an intermediate learner (B1.2, unit 10). You are Robin (a neutral name; never mention a husband or wife), a colleague who likes talking about decisions. Start with a short story of your own: last year you chose a cheaper flat far from the office, and you spent two hours a day in traffic. Then ask about the student, one question at a time: an important decision the student made (job, studies, city, a purchase); what would have happened with a different decision; one thing the student should have done differently; a small mystery from the past (for example, something lost or broken) and what must have or might have happened; and the student's plans for next year. If the student says \"If I would have…\", recast once with \"Oh, if you had…\". If the student says \"I should checked\", recast once with \"you should have checked\". If the student says \"it mustn't have been\", recast once with \"it can't have been\". If the student prefers not to talk about personal decisions, ask about a work decision. Use any A1, A2 and B1 language (B1 units 1 to 10): narrative tenses, reported speech, deduction about the present and the past (must / might / can't (have)), the future continuous, connectors, the third conditional (If we had…, we would have…), should have / shouldn't have / could have, I'm hoping to / I'd like to / I'm planning to. Do NOT use: mixed conditionals (\"If we had…, we would be…\"), \"wish\" or \"if only\", passives with modals in the past (\"should have been done\"), reporting verbs like suggest, claim, argue or deny. Short turns, one question at a time.",
+    "primeira_fala": "Hi, {nome}! I was just thinking about decisions. Last year I chose a cheap flat far from the office. If I had chosen one closer, I wouldn't have spent two hours a day in traffic! What about you — what's an important decision you made?",
+    "primeira_fala_simples": "Hi, {nome}! Tell me about an important decision you made.",
+    "guiao": [
+     "Interesting. And if you had decided differently, what would have happened?",
+     "Is there anything you should have done differently?",
+     "Here's a different question: have you ever lost something important? What do you think happened to it?",
+     "And now the future: what are you hoping to do next year?",
+     "Great plans, {nome}. Good luck!"
+    ],
+    "frases": [
+     {
+      "en": "If I had studied engineering, I would have worked in oil.",
+      "pt": "Se tivesse estudado engenharia, teria trabalhado no petróleo."
+     },
+     {
+      "en": "I should have asked for advice.",
+      "pt": "Devia ter pedido conselho."
+     },
+     {
+      "en": "I shouldn't have bought it so quickly.",
+      "pt": "Não o devia ter comprado tão depressa."
+     },
+     {
+      "en": "Someone must have taken it by mistake.",
+      "pt": "Alguém deve tê-lo levado por engano."
+     },
+     {
+      "en": "I'm planning to change departments next year.",
+      "pt": "Estou a planear mudar de departamento no próximo ano."
+     }
+    ],
+    "palavras": [
+     "if",
+     "had",
+     "would have",
+     "should have",
+     "must have",
+     "hoping"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": null
+  },
+  {
+   "slug": "b1-u10-livre",
+   "nome": "B1 Unit 10 · Project review",
+   "tipo": "livre",
+   "depois_da_aula": "10F",
+   "descricao": "O tutor é Morgan, o cliente. Na reunião de balanço de um projecto (o do aluno, ou um proposto: a instalação de um novo sistema de pagamentos numa loja), aponta um problema; o aluno reconhece, explica o que aconteceu, diz o que se devia ter feito e propõe melhorias.",
+   "papel_tutor": "Morgan, o cliente, satisfeito com o resultado mas com uma crítica séria.",
+   "nivel": "B1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "First, what went well…",
+    "You're right. We should have…",
+    "If we had…, … would have…",
+    "It might have been… / It must have been…",
+    "For the next project, I recommend…"
+   ],
+   "extras": {
+    "brief": "Role-play for an intermediate learner (B1.2, unit 10). You are Morgan (a neutral name; never mention a husband or wife), the client, in a project review meeting with the student's company. Ask the student to review the project: what went well, what they would do differently, and their recommendations. If the student has no project, give one: the student's team installed a new payment system in your three shops; it works well now, but on the first day the system stopped for three hours, and nobody told your shop managers in advance. After the student's first answer, raise this problem seriously: \"On the first day, the system stopped for three hours, and nobody warned us.\" Ask what happened and why. Do not accept a vague answer: ask once more (\"But why didn't anyone warn us?\"). Accept an answer that recognises the problem, explains a likely cause (must / might have), says what should have been done, and proposes improvements. End positively and ask about the student's plans for the next project. Use any A1, A2 and B1 language (B1 units 1 to 10): narrative tenses, reported speech, deduction about the present and the past (must / might / can't (have)), the future continuous, connectors, the third conditional (If we had…, we would have…), should have / shouldn't have / could have, I'm hoping to / I'd like to / I'm planning to. Do NOT use: mixed conditionals (\"If we had…, we would be…\"), \"wish\" or \"if only\", passives with modals in the past (\"should have been done\"), reporting verbs like suggest, claim, argue or deny. Short turns; never more than three sentences at a time.",
+    "primeira_fala": "Good morning, {nome}. Thank you for this review. Before I say anything, I'd like to hear from you: how do you think the project went?",
+    "primeira_fala_simples": "Good morning, {nome}. How do you think the project went?",
+    "guiao": [
+     "Thank you. I agree with some of that. But I have to raise a problem: on the first day, the system stopped for three hours, and nobody warned us. What happened?",
+     "But why didn't anyone warn us?",
+     "I see. And what would you do differently next time?",
+     "Good. I appreciate that you're honest about it. Overall, we're happy with the result.",
+     "So, if we work together again, what are you hoping to do on the next project?",
+     "Thank you, {nome}. Let's keep in touch."
+    ],
+    "frases": [
+     {
+      "en": "You're right, and I'm sorry. We should have warned your managers the day before.",
+      "pt": "Tem razão, e peço desculpa. Devíamos ter avisado os seus gerentes na véspera."
+     },
+     {
+      "en": "It must have been the internet connection in the first shop.",
+      "pt": "Deve ter sido a ligação à internet da primeira loja."
+     },
+     {
+      "en": "If we had tested it on a Sunday, your customers wouldn't have waited.",
+      "pt": "Se o tivéssemos testado num domingo, os seus clientes não teriam esperado."
+     },
+     {
+      "en": "For the next project, I recommend a test day and a phone call to every manager.",
+      "pt": "Para o próximo projecto, recomendo um dia de testes e uma chamada para cada gerente."
+     },
+     {
+      "en": "I'm hoping to work with you again.",
+      "pt": "Espero voltar a trabalhar convosco."
+     }
+    ],
+    "palavras": [
+     "review",
+     "should have",
+     "would have",
+     "might have",
+     "lesson",
+     "recommend"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Organiza o balanço: o que correu bem (com um número ou um exemplo), o que faria de outra forma e recomendações.",
+    "Reconhece o problema apontado pelo cliente sem culpar ninguém de forma injusta, e pede desculpa quando é adequado.",
+    "Usa should have / shouldn't have e o 3.º condicional para dizer o que devia ter sido feito e o que teria acontecido.",
+    "Especula sobre a causa com must have / might have / can't have.",
+    "Fala de planos com I'm hoping to / I'm planning to / I'd like to, e fala pelo menos uma vez 45 segundos ou mais sem ajuda.",
+    "É compreendido sem o tutor ter de pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

@@ -118,7 +118,7 @@ class TeacherVideoCoursesAPITest(APITestCase):
             'title': 'New Video Course',
             'description': 'A new video course description',
             'category': 'Conversação',
-            'level': 'Beginner',
+            'level': 'A2',
             'template': 'general'
         }
         
@@ -132,8 +132,12 @@ class TeacherVideoCoursesAPITest(APITestCase):
         # Verify course was created with correct data
         created_course = response_data['data']
         self.assertEqual(created_course['title'], course_data['title'])
-        self.assertEqual(created_course['course_type'], 'video')
         self.assertEqual(created_course['teacher'], str(self.teacher.id))
+        # course_type já não vem na resposta: confirma-se na base de dados.
+        course = Course.objects.get(id=created_course['courseId'])
+        self.assertEqual(course.course_type, 'video')
+        self.assertEqual(course.teacher, self.teacher)
+        self.assertEqual(course.status, 'Draft')
     
     def test_student_cannot_create_course(self):
         """Test that students cannot create courses."""
@@ -144,11 +148,12 @@ class TeacherVideoCoursesAPITest(APITestCase):
             'title': 'Unauthorized Course',
             'description': 'Should not be created',
             'category': 'Test',
-            'level': 'Beginner'
+            'level': 'A2'
         }
         
         response = self.client.post(url, course_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertFalse(Course.objects.filter(title='Unauthorized Course').exists())
     
     def test_teacher_can_view_own_course_details(self):
         """Test teacher can view details of their own course."""
@@ -168,7 +173,6 @@ class TeacherVideoCoursesAPITest(APITestCase):
         # Verify course details
         self.assertEqual(course_data['courseId'], str(self.teacher_course.id))
         self.assertEqual(course_data['teacher'], str(self.teacher.id))
-        self.assertEqual(course_data['course_type'], 'video')
     
     def test_teacher_cannot_view_other_teacher_course(self):
         """Test teacher cannot view another teacher's course."""
@@ -329,20 +333,19 @@ class TeacherVideoCoursesResponseFormatTest(APITestCase):
             'title': 'Test Course',
             'description': 'Test description',
             'category': 'Test',
-            'level': 'Beginner'
+            'level': 'A2'
         }
         
         response = self.client.post(url, course_data, format='json')
-        
-        if response.status_code == status.HTTP_201_CREATED:
-            response_data = response.json()
-            
-            # Should have message and data structure
-            self.assertIn('message', response_data)
-            self.assertIn('data', response_data)
-            
-            # Data should contain course information
-            course_info = response_data['data']
-            self.assertIn('courseId', course_info)
-            self.assertIn('title', course_info)
-            self.assertEqual(course_info['course_type'], 'video')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        response_data = response.json()
+
+        # Should have message and data structure
+        self.assertIn('message', response_data)
+        self.assertIn('data', response_data)
+
+        # Data should contain course information
+        course_info = response_data['data']
+        self.assertIn('courseId', course_info)
+        self.assertIn('title', course_info)
+        self.assertEqual(Course.objects.get(id=course_info['courseId']).course_type, 'video')

@@ -53,10 +53,10 @@ export type Site = {
 export const SITE_POR_DEFEITO: Site = {
   topo: {
     etiqueta: null,
-    titulo: "Fale inglês no seu trabalho",
-    texto: "Cursos por área profissional, 15 minutos de prática por dia e conversa com um tutor de inteligência artificial. Feito para quem trabalha e estuda em Angola.",
+    titulo: "Fale inglês com confiança",
+    texto: "Aqui o inglês aprende-se a falar, do básico ao avançado. Para quem quer aprender, para profissionais de cada sector e para as equipas das empresas.",
     botao_principal: { texto: "Experimentar grátis", href: "/signup" },
-    botao_secundario: { texto: "Ver planos", href: "#planos" },
+    botao_secundario: { texto: "Ver como funciona", href: "#como-funciona" },
     mostrar_nota: false,
     nota: null,
   },
@@ -69,7 +69,7 @@ export const SITE_POR_DEFEITO: Site = {
   perguntas: [],
   definicoes: {
     titulo: "ProEnglish: inglês para o seu trabalho",
-    descricao: "Cursos de inglês por área profissional, feitos para Angola. 15 minutos por dia e conversa com um tutor de IA.",
+    descricao: "Cursos de inglês por área profissional, feitos para Angola. 15 minutos por dia e conversa com um tutor de inteligência artificial.",
     palavras_chave: "",
     ga_id: null,
     pixel_id: null,

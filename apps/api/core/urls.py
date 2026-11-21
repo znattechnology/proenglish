@@ -7,6 +7,10 @@ from django.urls import path, include, re_path
 from django.views.static import serve as media_serve
 from django.conf import settings
 from django.conf.urls.static import static
+
+from apps.courses.api.student.colocacao import colocacao as colocacao_aluno
+from apps.courses.api.student.colocacao import teste as teste_colocacao
+from apps.practice.conversa.configuracao import tutor as configuracao_tutor
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -30,6 +34,7 @@ urlpatterns = [
     
     # Admin APIs
     path('api/v1/admin/site/', include('apps.site.urls_admin')),
+    path('api/v1/admin/tutor/', configuracao_tutor, name='admin_tutor'),
     path('api/v1/admin/cursos/', include('apps.courses.api.urls_admin_cursos')),
     path('api/v1/admin/ganhos/', include('apps.pagamentos.urls_ganhos_admin')),
     path('api/v1/admin/', include('apps.pagamentos.admin_api.urls')),
@@ -40,6 +45,11 @@ urlpatterns = [
     # Student APIs (organized)
     path('api/v1/student/video-courses/', include('apps.courses.api.student.video_courses.urls')),
     path('api/v1/student/practice-courses/', include('apps.courses.api.student.practice_courses.urls')),
+    path('api/v1/student/teste-basico/', include('apps.courses.api.student.urls_teste_basico')),
+    path('api/v1/student/colocacao/', colocacao_aluno, name='colocacao'),
+    path('api/v1/student/colocacao/teste/', teste_colocacao, name='colocacao_teste'),
+    path('api/v1/student/revisao/', include('apps.perfil.urls_revisao')),  # revisão de hoje
+    path('api/v1/student/fala/', include('apps.perfil.urls_fala')),  # minutos a falar, meta de fala (fase 3)
     
     # Teacher APIs (organized)
     path('api/v1/teacher/video-courses/', include('apps.courses.api.teacher.video_courses.urls')),
@@ -67,7 +77,6 @@ urlpatterns = [
     path('api/v1/cms/', include('apps.cms.urls')),
 
     # Chatbot (public, no auth required)
-    path('api/v1/chatbot/', include('apps.chatbot.urls')),
 ]
 
 # Serve media files in development

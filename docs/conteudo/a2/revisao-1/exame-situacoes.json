@@ -1,0 +1,86 @@
+{
+ "exame": "A2.1",
+ "formato": "apps/practice/models.py Situacao (situações próprias do exame; extras.exame = true; carregar com manage.py carregar_exame_curso)",
+ "situacoes": [
+  {
+   "slug": "a2-1-exame-mudar-reuniao",
+   "nome": "A2.1 exam · Move a meeting",
+   "papel_tutor": "A client, Sam Lopes, from a company in Luanda.",
+   "descricao": "The examiner is a client, Sam Lopes. The student has a meeting with Sam tomorrow at ten, at Sam's office, but the student needs to move it (the student chooses the reason, for example: the equipment is late, the manager is sick). The student calls Sam. The student must say why they are calling, apologise and give the reason, propose two other days or times (Are you available on…? How about…?), and confirm (I'll send you an email). The examiner refuses the first proposal once with a reason in the present continuous (I'm afraid I can't. I'm visiting a client in Viana.) and accepts the second proposal (if it is at the weekend or at night, the examiner asks once for a weekday between 9 and 5, then accepts). At the end, the examiner asks the student to repeat the new day and time.",
+   "nivel": "A2",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm your client, Sam Lopes. We have a meeting tomorrow at ten, but you need to move it. You call me. Hello, Sam Lopes speaking."
+   },
+   "frases": [
+    "I'm calling about our meeting tomorrow.",
+    "I'm afraid we need to move it.",
+    "Are you available on…? How about…?",
+    "I'll send you an email to confirm."
+   ]
+  },
+  {
+   "slug": "a2-1-exame-convidar",
+   "nome": "A2.1 exam · Invite and arrange",
+   "papel_tutor": "A colleague from another office, Alex, in Luanda this week.",
+   "descricao": "The examiner is Alex, a colleague from another office who is in Luanda this week. The student invites Alex to something after work or at the weekend (the student chooses: dinner, a football match, a kizomba night, a visit to the Miradouro da Lua). The student must invite (Would you like to…?), suggest a day and a time (How about…? Let's…), and agree on the details (where to meet, how to get there). The examiner accepts the invitation but says no to the first day or time once, with a reason in the present continuous (I'm afraid I can't on Friday. I'm having dinner with my manager.), and then accepts another. The examiner asks one question (Where do we meet? / How do I get there?). If the student offers help, the examiner says thank you.",
+   "nivel": "A2",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm Alex, a colleague from another office. I'm in Luanda this week, and I'm free in the evenings. Invite me to something."
+   },
+   "frases": [
+    "Would you like to…?",
+    "How about Saturday at seven?",
+    "Let's meet at…",
+    "I'll pick you up at your hotel."
+   ]
+  },
+  {
+   "slug": "a2-1-exame-recomendar",
+   "nome": "A2.1 exam · Compare and recommend",
+   "papel_tutor": "The student's manager.",
+   "descricao": "The examiner is the student's manager. The office needs a new printer, and there are two quotes. Printer A: 250 000 Kz, fast, one-year warranty, delivery in one week. Printer B: 180 000 Kz, slower, two-year warranty, delivery in three weeks. The budget is 300 000 Kz. The examiner says the facts in short sentences and asks: Which one do you recommend? The student must recommend one, compare them with at least two comparatives or (not) as … as, give two reasons and say one disadvantage. The examiner makes one objection against the student's choice (for A: But Printer B is much cheaper! For B: But we print a lot, and Printer B is slower!) and the student must answer with a reason. The examiner can repeat the facts if the student asks.",
+   "nivel": "A2",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm your manager. We need a new printer, and we have two quotes. Printer A costs 250 000 kwanzas. It's fast, with a one-year warranty. Printer B costs 180 000 kwanzas. It's slower, with a two-year warranty. Which one do you recommend?"
+   },
+   "frases": [
+    "I recommend Printer…",
+    "It's a bit more expensive, but…",
+    "It isn't as fast as…",
+    "The only disadvantage is…"
+   ]
+  },
+  {
+   "slug": "a2-1-exame-colega-doente",
+   "nome": "A2.1 exam · Advise a sick colleague",
+   "papel_tutor": "A colleague who doesn't feel well, Jamie.",
+   "descricao": "The examiner is Jamie, a colleague. Jamie doesn't feel well: a headache and a fever since this morning, and a lot of work (a report for the manager by tomorrow, and a meeting this afternoon). Jamie asks: What should I do? The student must give advice with should / shouldn't (for a fever: see a doctor, go home), say what Jamie has to do or doesn't have to do (You have to tell the manager. You don't have to finish the report today.), and offer help with will (I'll go to the meeting for you. I'll call the manager.). The examiner resists once (But the report is very important!) and the student must answer. This is a language role-play only: no real medical advice beyond seeing a doctor.",
+   "nivel": "A2",
+   "duracao_min": 3,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now a situation. I'm your colleague, Jamie. I don't feel well. I have a headache and a fever, and I have a lot of work today. What should I do?"
+   },
+   "frases": [
+    "You should go home and see a doctor.",
+    "You don't have to finish it today.",
+    "You have to tell the manager.",
+    "I'll go to the meeting for you."
+   ]
+  }
+ ]
+}

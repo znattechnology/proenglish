@@ -16,6 +16,7 @@ os outros recebem 404. Um professor marcado com PerfilProfessor.publica_sem_revi
 Os números são calculados com poucas consultas agregadas (sem N+1).
 """
 from collections import defaultdict
+import logging
 from datetime import timedelta
 
 from django.db import transaction
@@ -27,10 +28,12 @@ from rest_framework.exceptions import NotFound
 from rest_framework.response import Response
 
 from apps.core.exceptions import corpo_erro
-from apps.courses import ciclo
+from apps.courses import ciclo, niveis
 from apps.courses.models import (
     Chapter, Course, CourseEnrollment, CourseSection, UserCourseProgress,
 )
+
+logger = logging.getLogger(__name__)
 
 
 class EProfessorOuStaff(permissions.BasePermission):
@@ -63,7 +66,7 @@ class _QuebraCurso(Exception):
 
 def _lista_guarda(curso):
     # Num curso publicado as aulas escondidas (sem vídeo) não contam: os alunos não as vêem.
-    return ciclo.verificar(curso, so_visiveis=curso.status == ciclo.PUBLICADO)
+    return ciclo.verificar(curso, so_visiveis=curso.status == ciclo.PUBLICADO, com_avisos=False)
 
 
 def guardar_publicado(curso, alterar):
@@ -433,6 +436,22 @@ SINONIMOS = {
 ACESSO_API = {'free': 'todos', 'premium': 'premium', 'premium_plus': 'premium'}
 
 
+def _definicoes_exame(c):
+    """Exame oral do curso (fase 6): obrigatório para o certificado e nota mínima para passar."""
+    from apps.courses.models import CourseGradingConfig
+    config = CourseGradingConfig.objects.filter(course=c).first()
+    if config is None:
+        config = CourseGradingConfig(course=c)  # valores por omissão, não gravado
+    pesos = ((config.exam_weight or 0) + (config.phrases_weight or 0) + (config.conversation_weight or 0)
+             + (config.study_weight or 0))
+    return {
+        'exame_oral': config.exam_enabled,
+        'nota_minima_exame': int(round(config.min_exam_score)),
+        # Só leitura: quanto vale o exame na nota (peso configurado sobre o total dos pesos).
+        'peso_exame': round((config.exam_weight or 0) * 100 / pesos) if pesos else 0,
+    }
+
+
 def detalhe_curso(c, mc=None):
     from apps.courses.certificados import nota_minima
     mc = mc or metricas([c])[c.id]
@@ -440,7 +459,7 @@ def detalhe_curso(c, mc=None):
     dados.update({
         'descricao': c.description,
         'categoria': c.category,
-        'nivel_codigo': c.level,
+        'nivel_codigo': niveis.normalizar(c.level) or c.level,
         'submetido_em': c.submetido_em.isoformat() if c.submetido_em else None,
         'aprovado_em': c.aprovado_em.isoformat() if c.aprovado_em else None,
         'acesso': ACESSO_API.get(c.access_level, 'todos'),
@@ -452,6 +471,7 @@ def detalhe_curso(c, mc=None):
             'inscricao_livre': c.inscricao_livre,
             'maximo_alunos': c.maximo_alunos,
             'nota_minima': int(round(nota_minima(c))),
+            **_definicoes_exame(c),
             **ciclo.definicoes(c),
         },
     })
@@ -525,7 +545,7 @@ def curso_detalhe(request, curso_id):
     if 'nivel' in entrada:
         nivel = ciclo.nivel_de_entrada(entrada['nivel'] if isinstance(entrada['nivel'], str) else '')
         if not nivel:
-            erros['nivel'] = ['Nível inválido. Use iniciante, intermédio ou avançado.']
+            erros['nivel'] = ['Nível inválido. Escolha um nível de A1 a C2.']
         else:
             curso.level = nivel
             campos.append('level')
@@ -567,6 +587,19 @@ def curso_detalhe(request, curso_id):
         if nota is None and 'nota_minima' not in erros:
             erros['nota_minima'] = ['Indique um valor entre 50 e 100.']
 
+    exame = {}
+    if 'exame_oral' in entrada:
+        if isinstance(entrada['exame_oral'], bool):
+            exame['exam_enabled'] = entrada['exame_oral']
+        else:
+            erros['exame_oral'] = ['Use verdadeiro ou falso.']
+    if 'nota_minima_exame' in entrada:
+        n = _inteiro_ou_nulo(entrada['nota_minima_exame'], 40, 100, 'nota_minima_exame', erros)
+        if n is None and 'nota_minima_exame' not in erros:
+            erros['nota_minima_exame'] = ['Indique um valor entre 40 e 100.']
+        elif n is not None:
+            exame['min_exam_score'] = float(n)
+
     if erros:
         primeiro = next(iter(erros.values()))[0]
         return _erro(primeiro, 'validation_error', details=erros)
@@ -585,12 +618,30 @@ def curso_detalhe(request, curso_id):
             if config.min_final_grade != nota:
                 config.min_final_grade = nota
                 config.save(update_fields=['min_final_grade'])
+        if exame:
+            from apps.courses.models import CourseGradingConfig
+            config, _ = CourseGradingConfig.objects.get_or_create(course=curso)
+            mudou = [k for k, v in exame.items() if getattr(config, k) != v]
+            if mudou:
+                for k in mudou:
+                    setattr(config, k, exame[k])
+                config.save(update_fields=mudou)
+                # As notas dos alunos mudam com estas regras: recalcula depois de gravar.
+                transaction.on_commit(lambda: _recalcular_notas(curso.pk))
         if 'image' in campos and imagem_anterior and imagem_anterior != curso.image:
             from .envios import apagar_depois_do_commit
             apagar_depois_do_commit([imagem_anterior])
         return Response(detalhe_curso(curso))
 
     return guardar_publicado(curso, _gravar)
+
+
+def _recalcular_notas(curso_id):
+    """Recalcula as notas dos inscritos numa thread à parte (fora do pedido; ver apps.courses.recalculo)."""
+    from apps.courses.recalculo import recalcular_notas_em_fundo
+    from apps.practice.conversa.exame import sincronizar_aprovacao
+    sincronizar_aprovacao(Course.objects.get(pk=curso_id))  # passou/não passou segue a nota mínima de agora
+    recalcular_notas_em_fundo(curso_id)
 
 
 # ---------------------------------------------------------------------------

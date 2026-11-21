@@ -1,0 +1,301 @@
+{
+ "title": "A2.2 Unit 10 quiz — The next step",
+ "description": "Pontos fortes, advérbios de modo, os tempos do A2 numa entrevista, competências.",
+ "questions": [
+  {
+   "id": "a2u10q1",
+   "question": "Complete: \"I'm good ___ solving problems.\"",
+   "options": [
+    {
+     "id": "a2u10q1o0",
+     "text": "at",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u10q1o1",
+     "text": "to",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u10q1o2",
+     "text": "of",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u10q1o0",
+   "explanation": "be good at + -ing.",
+   "points": 10
+  },
+  {
+   "id": "a2u10q2",
+   "question": "Qual é a melhor resposta sobre um ponto fraco?",
+   "options": [
+    {
+     "id": "a2u10q2o0",
+     "text": "I'm not very good at writing reports, but I'm doing a course.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u10q2o1",
+     "text": "I don't have any weaknesses.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u10q2o2",
+     "text": "I'm bad at everything.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u10q2o0",
+   "explanation": "Honestidade + o que está a fazer.",
+   "points": 10
+  },
+  {
+   "id": "a2u10q3",
+   "question": "Complete: \"He checks everything ___.\"",
+   "options": [
+    {
+     "id": "a2u10q3o0",
+     "text": "carefully",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u10q3o1",
+     "text": "careful",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u10q3o2",
+     "text": "carefuly",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u10q3o0",
+   "explanation": "Como faz: advérbio em -ly.",
+   "points": 10
+  },
+  {
+   "id": "a2u10q4",
+   "question": "\"Ela fala bem inglês.\" Em inglês:",
+   "options": [
+    {
+     "id": "a2u10q4o0",
+     "text": "She speaks English well.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u10q4o1",
+     "text": "She speaks well English.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u10q4o2",
+     "text": "She speaks English good.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u10q4o0",
+   "explanation": "well depois do objecto.",
+   "points": 10
+  },
+  {
+   "id": "a2u10q5",
+   "question": "\"How long have you worked there?\" Qual é a resposta certa?",
+   "options": [
+    {
+     "id": "a2u10q5o0",
+     "text": "I've worked there since 2023.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u10q5o1",
+     "text": "I work there since 2023.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u10q5o2",
+     "text": "I worked there since 2023.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u10q5o0",
+   "explanation": "How long have you…? → present perfect.",
+   "points": 10
+  },
+  {
+   "id": "a2u10q6",
+   "question": "\"Where do you see yourself in five years?\" Qual é a melhor resposta?",
+   "options": [
+    {
+     "id": "a2u10q6o0",
+     "text": "I want to be a manager.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u10q6o1",
+     "text": "I was a manager.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u10q6o2",
+     "text": "I've been a manager.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u10q6o0",
+   "explanation": "O futuro: want to, going to, will.",
+   "points": 10
+  },
+  {
+   "id": "a2u10q7",
+   "question": "\"Realizámos o projecto em seis meses.\" Em inglês:",
+   "options": [
+    {
+     "id": "a2u10q7o0",
+     "text": "We did the project in six months.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u10q7o1",
+     "text": "We realised the project in six months.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u10q7o2",
+     "text": "We realized the project in six months.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u10q7o0",
+   "explanation": "Falso amigo: realise = perceber.",
+   "points": 10
+  },
+  {
+   "id": "a2u10q8",
+   "question": "Uma boa resposta a \"Why do you want this job?\" tem…",
+   "options": [
+    {
+     "id": "a2u10q8o0",
+     "text": "experiência, uma qualidade e um objectivo",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u10q8o1",
+     "text": "só o salário",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u10q8o2",
+     "text": "uma história longa sobre a família",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u10q8o0",
+   "explanation": "As três partes.",
+   "points": 10
+  },
+  {
+   "id": "a2u10q9",
+   "question": "No fim da entrevista, qual é a melhor pergunta?",
+   "options": [
+    {
+     "id": "a2u10q9o0",
+     "text": "Could you tell me more about the training?",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u10q9o1",
+     "text": "Can I go now?",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u10q9o2",
+     "text": "No questions.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u10q9o0",
+   "explanation": "Pergunta educada sobre o trabalho.",
+   "points": 10
+  },
+  {
+   "id": "a2u10q10",
+   "question": "Reciclagem (A2, unidade 9). Complete: \"Could you ___ me the form, please?\"",
+   "options": [
+    {
+     "id": "a2u10q10o0",
+     "text": "send",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u10q10o1",
+     "text": "to send",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u10q10o2",
+     "text": "sending",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u10q10o0",
+   "explanation": "could + verbo simples.",
+   "points": 10
+  },
+  {
+   "id": "a2u10q11",
+   "question": "Reciclagem (A2, unidade 8). Complete: \"If I ___ the job, I'll call you.\"",
+   "options": [
+    {
+     "id": "a2u10q11o0",
+     "text": "get",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u10q11o1",
+     "text": "'ll get",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u10q11o2",
+     "text": "got",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u10q11o0",
+   "explanation": "Depois de if, o presente.",
+   "points": 10
+  },
+  {
+   "id": "a2u10q12",
+   "question": "Reciclagem (A2, unidade 7). Complete: \"I've ___ finished my CV.\"",
+   "options": [
+    {
+     "id": "a2u10q12o0",
+     "text": "already",
+     "isCorrect": true
+    },
+    {
+     "id": "a2u10q12o1",
+     "text": "yet",
+     "isCorrect": false
+    },
+    {
+     "id": "a2u10q12o2",
+     "text": "since",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2u10q12o0",
+   "explanation": "already antes do particípio.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

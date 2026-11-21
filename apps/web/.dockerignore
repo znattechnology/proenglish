@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+.vercel
+# Os endereços chegam por --build-arg; nenhum .env entra na imagem.
+.env*
+*.md
+docs
+coverage
+tsconfig.tsbuildinfo

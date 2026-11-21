@@ -42,7 +42,7 @@ class Command(BaseCommand):
                     'title': f'Prática: {course.title}',
                     'description': f'Exercícios práticos para o curso "{course.title}". '
                                  f'Complete desafios baseados no conteúdo das aulas para '
-                                 f'fixar seu aprendizado.',
+                                 f'consolidar a sua aprendizagem.',
                     'order': 1
                 }
             )
@@ -155,7 +155,7 @@ class Command(BaseCommand):
                     'options': [
                         {'text': 'Vídeo explicativo', 'is_correct': True},
                         {'text': 'Apenas texto', 'is_correct': False},
-                        {'text': 'Quiz interativo', 'is_correct': False},
+                        {'text': 'Quiz interactivo', 'is_correct': False},
                         {'text': 'Exercício prático', 'is_correct': False}
                     ]
                 },
@@ -177,7 +177,7 @@ class Command(BaseCommand):
                     'type': 'SELECT',
                     'question': 'Este capítulo inclui qual funcionalidade especial?',
                     'options': [
-                        {'text': 'Quiz interativo gamificado', 'is_correct': True},
+                        {'text': 'Quiz interactivo gamificado', 'is_correct': True},
                         {'text': 'Apenas leitura', 'is_correct': False},
                         {'text': 'Vídeo básico', 'is_correct': False},
                         {'text': 'Lista de recursos', 'is_correct': False}
@@ -194,8 +194,8 @@ class Command(BaseCommand):
                     'question': f'Traduza o conceito principal: "{chapter.title}"',
                     'options': [
                         {'text': f'{chapter.title} (conceito-chave)', 'is_correct': True},
-                        {'text': 'Tradução incorreta 1', 'is_correct': False},
-                        {'text': 'Tradução incorreta 2', 'is_correct': False}
+                        {'text': 'Tradução incorrecta 1', 'is_correct': False},
+                        {'text': 'Tradução incorrecta 2', 'is_correct': False}
                     ]
                 }
             ])
@@ -221,9 +221,9 @@ class Command(BaseCommand):
         while len(templates) < 3:
             templates.append({
                 'type': 'SELECT',
-                'question': f'Sobre o capítulo "{chapter.title}", qual afirmação está correta?',
+                'question': f'Sobre o capítulo "{chapter.title}", qual das afirmações está correcta?',
                 'options': [
-                    {'text': 'É um conteúdo importante para o aprendizado', 'is_correct': True},
+                    {'text': 'É um conteúdo importante para a aprendizagem', 'is_correct': True},
                     {'text': 'Não tem relevância no curso', 'is_correct': False},
                     {'text': 'É apenas conteúdo opcional', 'is_correct': False},
                     {'text': 'Deve ser ignorado pelos estudantes', 'is_correct': False}

@@ -1,0 +1,1438 @@
+{
+ "unidade": "B2.1 · Unit 1 — Leading a team",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "1A",
+   "titulo": "Elsa, who joined in May",
+   "aula": "1A",
+   "objectivo": "Dar informação extra com relativas explicativas (who, which, whose, where), com as vírgulas e as pausas certas.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Elsa, [who] joined in May, will lead the testing.",
+     "opcoes": [
+      {
+       "texto": "that",
+       "certa": false
+      },
+      {
+       "texto": "which",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Sipho, [whose] team worked on the backup, will do the satellite part.",
+     "opcoes": [
+      {
+       "texto": "who",
+       "certa": false
+      },
+      {
+       "texto": "who's",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Tômbwa, [where] the work starts in October, is windier than Namibe.",
+     "opcoes": [
+      {
+       "texto": "which",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The proposal, [which] the board wants in October, needs clear costs.",
+     "opcoes": [
+      {
+       "texto": "that",
+       "certa": false
+      },
+      {
+       "texto": "what",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "My manager, who has worked here for twenty years, is very patient.",
+       "certa": true
+      },
+      {
+       "texto": "My manager, that has worked here for twenty years, is very patient.",
+       "certa": false
+      },
+      {
+       "texto": "My manager who has worked here for twenty years, is very patient.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Informação extra: entre duas vírgulas, e nunca com that."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence needs commas?",
+     "opcoes": [
+      {
+       "texto": "Luanda which is the capital of Angola has a new airport.",
+       "certa": true
+      },
+      {
+       "texto": "The man who called you is my boss.",
+       "certa": false
+      },
+      {
+       "texto": "The report that I sent you is ready.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Só há uma Luanda: a relativa dá informação extra. Nas outras, a relativa diz qual homem e qual relatório."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Kagiso, whose company makes our sensors, is very reliable.\" Whose company is it?",
+     "opcoes": [
+      {
+       "texto": "Kagiso's",
+       "certa": true
+      },
+      {
+       "texto": "ours",
+       "certa": false
+      },
+      {
+       "texto": "the sensors'",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The proposal, which the board wants in October, is almost ready.",
+       "certa": true
+      },
+      {
+       "texto": "The proposal, the board wants in October, is almost ready.",
+       "certa": false
+      },
+      {
+       "texto": "The proposal, that the board wants in October, is almost ready.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Na informação extra, o pronome nunca sai."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "A Elsa, que entrou em Maio, é de Benguela.",
+     "resposta": "Elsa, who joined in May, is from Benguela.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. Paulo, who you know from Namibe, will look after the installation plan.",
+     "enunciado": "What will Paulo do?",
+     "opcoes": [
+      {
+       "texto": "look after the installation plan",
+       "certa": true
+      },
+      {
+       "texto": "lead the testing",
+       "certa": false
+      },
+      {
+       "texto": "do the satellite part",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Elsa Chilombo, who joined us in May, will be in charge of testing.",
+     "enunciado": "Ouça e repita, com uma pausa antes e outra depois de \"who joined us in May\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Introduce three people from your work, your studies or your family to a new colleague. For each person, add extra information with who, whose or where.",
+     "frase": "whose",
+     "resposta": "Let me introduce my team. Ana, who's been with us for fifteen years, knows every client by name. Mário, whose father started the company, knows its whole history. And our office is in Talatona, where most of our clients are.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it harder to lead people who are older or more experienced than you? Why?",
+     "frase": "because",
+     "resposta": "Yes, a bit, because they know more than you about the work. But it can also be easier: you can ask them for advice. The important thing is to respect their experience and to be honest about what you don't know.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "1B",
+   "titulo": "Which is why we need you",
+   "aula": "1B",
+   "objectivo": "Comentar uma frase inteira com which e usar relativas com preposição.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The client signed the contract, [which] is great news.",
+     "opcoes": [
+      {
+       "texto": "what",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've started a master's degree, which [means] I can't travel every month.",
+     "opcoes": [
+      {
+       "texto": "mean",
+       "certa": false
+      },
+      {
+       "texto": "is meaning",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "These are the people we work [with].",
+     "opcoes": [
+      {
+       "texto": "with them",
+       "certa": false
+      },
+      {
+       "texto": "with who",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She's the person I report [to].",
+     "opcoes": [
+      {
+       "texto": "at",
+       "certa": false
+      },
+      {
+       "texto": "with",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"…, o que é óptimo.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "…, which is great.",
+       "certa": true
+      },
+      {
+       "texto": "…, what is great.",
+       "certa": false
+      },
+      {
+       "texto": "…, that is great.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"O que\", a comentar uma frase inteira, é which."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In a formal letter, which version is the most formal?",
+     "opcoes": [
+      {
+       "texto": "the client for whom we work",
+       "certa": true
+      },
+      {
+       "texto": "the client we work for",
+       "certa": false
+      },
+      {
+       "texto": "the client who we work for",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "These are the people we work with.",
+       "certa": true
+      },
+      {
+       "texto": "These are the people with who we work.",
+       "certa": false
+      },
+      {
+       "texto": "These are the people we work with them.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Lerato asked me to lead it, which you probably know.\" What does \"which\" refer to?",
+     "opcoes": [
+      {
+       "texto": "the fact that Lerato asked Nuno to lead the team",
+       "certa": true
+      },
+      {
+       "texto": "the team",
+       "certa": false
+      },
+      {
+       "texto": "Lerato",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "A estrada está fechada, o que quer dizer que temos de planear as viagens.",
+     "resposta": "The road is closed, which means we have to plan the trips.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Paulo. I didn't want to lead the team. I've just started a master's degree in the evenings, which means I can't travel to Tômbwa every month.",
+     "enunciado": "Why didn't Paulo want to lead the team?",
+     "opcoes": [
+      {
+       "texto": "He's studying in the evenings and can't travel every month.",
+       "certa": true
+      },
+      {
+       "texto": "He doesn't like Nuno.",
+       "certa": false
+      },
+      {
+       "texto": "He is leaving the company.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "You're the person I learned most from, which is why I wanted to talk to you.",
+     "enunciado": "Ouça e repita: \"which is why\" sem uma pausa longa antes."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a difficult conversation you had at work or with your family, or one you need to have. Use which for a whole idea at least twice.",
+     "frase": "which",
+     "resposta": "Last year I had to tell my team that we couldn't take holidays in December, which nobody wanted to hear. I explained the reason: our biggest client needed us, which meant overtime for everyone. I was honest, which helped. We agreed on two days off each in January.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should a new team leader talk to each person alone before the first meeting? Why?",
+     "frase": "because",
+     "resposta": "Yes, I think so, because people say more when they're alone. The leader can learn what each person is good at and what worries them. Then the first meeting is easier, which is good for everyone.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "1C",
+   "titulo": "What's your take on this?",
+   "aula": "1C",
+   "objectivo": "Dar a palavra, convidar quem não falou, cortar uma digressão com cortesia, retomar e resumir.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "What's your [take] on this, Elsa?",
+     "opcoes": [
+      {
+       "texto": "took",
+       "certa": false
+      },
+      {
+       "texto": "taking",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Let's [park] that for now and come back to it later.",
+     "opcoes": [
+      {
+       "texto": "parking",
+       "certa": false
+      },
+      {
+       "texto": "to park",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Coming] back to the timeline: is five weeks enough?",
+     "opcoes": [
+      {
+       "texto": "Came",
+       "certa": false
+      },
+      {
+       "texto": "To coming",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Elsa, we haven't [heard] from you yet.",
+     "opcoes": [
+      {
+       "texto": "listened",
+       "certa": false
+      },
+      {
+       "texto": "hear",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A colleague has not spoken yet. Which is the most polite?",
+     "opcoes": [
+      {
+       "texto": "Elsa, we haven't heard from you yet. What's your take?",
+       "certa": true
+      },
+      {
+       "texto": "Elsa, why are you so quiet?",
+       "certa": false
+      },
+      {
+       "texto": "Elsa, you must speak now.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A colleague is telling a long story that is off the topic. The best reaction:",
+     "opcoes": [
+      {
+       "texto": "Great story, but let's park that for now.",
+       "certa": true
+      },
+      {
+       "texto": "Stop talking, please.",
+       "certa": false
+      },
+      {
+       "texto": "That's not important.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence sums up a discussion?",
+     "opcoes": [
+      {
+       "texto": "So, where we are is this: draft by the twenty-second, costs by the twenty-ninth.",
+       "certa": true
+      },
+      {
+       "texto": "Would you like to add anything?",
+       "certa": false
+      },
+      {
+       "texto": "Let's hear from Elsa.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Let's park that\" means…",
+     "opcoes": [
+      {
+       "texto": "Let's leave it for later.",
+       "certa": true
+      },
+      {
+       "texto": "Let's stop the car.",
+       "certa": false
+      },
+      {
+       "texto": "Let's finish it now.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Gostaria de ouvir a sua opinião sobre isto, Elsa.",
+     "resposta": "I'd like to hear your view on this, Elsa.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lerato. Elsa, we haven't heard from you yet. What's your take on the testing?",
+     "enunciado": "What does Lerato want?",
+     "opcoes": [
+      {
+       "texto": "Elsa's opinion on the testing",
+       "certa": true
+      },
+      {
+       "texto": "Elsa to stop talking",
+       "certa": false
+      },
+      {
+       "texto": "the cost table",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Elsa. I think we need two weeks for testing, not one.",
+     "enunciado": "How long does Elsa want for testing?",
+     "opcoes": [
+      {
+       "texto": "two weeks",
+       "certa": true
+      },
+      {
+       "texto": "one week",
+       "certa": false
+      },
+      {
+       "texto": "two days",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Elsa, what's your take on the testing?",
+     "enunciado": "Ouça e repita, com a voz a subir no fim."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You're chairing a meeting about an office move. Open it, give the floor to two people by name, cut one digression politely, invite a quiet colleague, and sum up.",
+     "frase": "haven't heard from you",
+     "resposta": "Morning, everyone. One item: the office move. João, would you like to start with the dates? Ana, how do you see it from the IT side? Sorry, Ana, great story, but let's park that. Rui, we haven't heard from you yet. So, where we are is this: we move on the fifteenth.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Is it a good idea to ask quiet colleagues for their opinion in a meeting? Why?",
+     "frase": "because",
+     "resposta": "Yes, because quiet people often notice things that others miss. But it's better to ask an easy, specific question first, so they don't feel nervous. In our team, the quietest person usually has the best ideas.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "1D",
+   "titulo": "Teams and leadership",
+   "aula": "1D",
+   "objectivo": "Palavras e colocações de liderança, phrasal verbs de trabalho em equipa, pausas numa frase longa; support e eventual.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada palavra à tradução.",
+     "pares": [
+      {
+       "a": "delegate",
+       "b": "delegar"
+      },
+      {
+       "a": "workload",
+       "b": "volume de trabalho"
+      },
+      {
+       "a": "morale",
+       "b": "moral da equipa"
+      },
+      {
+       "a": "strengths",
+       "b": "pontos fortes"
+      },
+      {
+       "a": "accountable",
+       "b": "responsável, que responde por"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "When the manager left, Elsa [took over] the project.",
+     "opcoes": [
+      {
+       "texto": "took off",
+       "certa": false
+      },
+      {
+       "texto": "took out",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Remember to [back up] your files before the update.",
+     "opcoes": [
+      {
+       "texto": "back off",
+       "certa": false
+      },
+      {
+       "texto": "back down",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "A good leader [follows through] on every promise.",
+     "opcoes": [
+      {
+       "texto": "follows up to",
+       "certa": false
+      },
+      {
+       "texto": "goes through",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Team [morale] is high after the Namibe project.",
+     "opcoes": [
+      {
+       "texto": "moral",
+       "certa": false
+      },
+      {
+       "texto": "morality",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Elsa is ready to [take on] more responsibility.",
+     "opcoes": [
+      {
+       "texto": "take off",
+       "certa": false
+      },
+      {
+       "texto": "take after",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Não suporto o barulho.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I can't stand the noise.",
+       "certa": true
+      },
+      {
+       "texto": "I can't support the noise.",
+       "certa": false
+      },
+      {
+       "texto": "I don't support the noise.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: support = apoiar."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"um eventual atraso\" em inglês:",
+     "opcoes": [
+      {
+       "texto": "a possible delay",
+       "certa": true
+      },
+      {
+       "texto": "an eventual delay",
+       "certa": false
+      },
+      {
+       "texto": "an eventually delay",
+       "certa": false
+      }
+     ],
+     "explicacao": "Falso amigo: eventual = final, que acaba por acontecer."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"The team supports Nuno.\" This means…",
+     "opcoes": [
+      {
+       "texto": "The team helps and encourages Nuno.",
+       "certa": true
+      },
+      {
+       "texto": "The team can't stand Nuno.",
+       "certa": false
+      },
+      {
+       "texto": "The team pays Nuno.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Back up\" has two meanings. Which sentence is about files?",
+     "opcoes": [
+      {
+       "texto": "Back up everything on the laptop every day.",
+       "certa": true
+      },
+      {
+       "texto": "Paulo always backs me up in meetings.",
+       "certa": false
+      },
+      {
+       "texto": "Can you back me up on Monday?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Nuno. When Lerato was ill, I stepped up and chaired the meetings.",
+     "enunciado": "What did Nuno do when Lerato was ill?",
+     "opcoes": [
+      {
+       "texto": "He chaired the meetings.",
+       "certa": true
+      },
+      {
+       "texto": "He left the team.",
+       "certa": false
+      },
+      {
+       "texto": "He stayed at home.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Paulo, who was my mentor when I started, backs me up in every meeting, which helps a lot.",
+     "enunciado": "Ouça e repita, com uma pausa em cada vírgula."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe the best leader you have worked or studied with. What did this person do? Use at least one phrasal verb and one clause with who or which.",
+     "frase": "which",
+     "resposta": "The best leader I've had was my first manager, who's now retired. She delegated a lot, which scared me at first, but she always backed us up when something went wrong. She gave honest feedback every Friday and followed through on every promise.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Can people learn to be leaders, or are leaders born? Why?",
+     "frase": "because",
+     "resposta": "I think people can learn, because leadership is mostly listening, planning and being fair. Some people are more confident, of course. But my best manager told me she was very shy at the start.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "1E",
+   "titulo": "Real English: The stand-up",
+   "aula": "1E",
+   "objectivo": "Seguir uma reunião rápida a cinco vozes: quem fica com cada tarefa e como a líder conduz a reunião.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I'm Bongani. Yesterday I finished the network design for the mine in Limpopo.",
+     "enunciado": "What did Bongani finish yesterday?",
+     "opcoes": [
+      {
+       "texto": "the network design for a mine",
+       "certa": true
+      },
+      {
+       "texto": "the routers",
+       "certa": false
+      },
+      {
+       "texto": "the bank project",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lindiwe. The client keeps changing the plan, and I need someone to back me up on Monday.",
+     "enunciado": "What does Lindiwe need?",
+     "opcoes": [
+      {
+       "texto": "someone to back her up on Monday",
+       "certa": true
+      },
+      {
+       "texto": "a new client",
+       "certa": false
+      },
+      {
+       "texto": "a day off on Monday",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Thandi. Bongani, could you take that on? You know the bank's systems.",
+     "enunciado": "Why does Thandi choose Bongani?",
+     "opcoes": [
+      {
+       "texto": "He knows the bank's systems.",
+       "certa": true
+      },
+      {
+       "texto": "He has no work this week.",
+       "certa": false
+      },
+      {
+       "texto": "He asked for the task.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Rajesh. The Durban budget is done. Today I'm starting the costs for the Tômbwa proposal.",
+     "enunciado": "What is Rajesh starting today?",
+     "opcoes": [
+      {
+       "texto": "the costs for the Tômbwa proposal",
+       "certa": true
+      },
+      {
+       "texto": "the Durban budget",
+       "certa": false
+      },
+      {
+       "texto": "the satellite design",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Sipho. I'm happy to take on the satellite design, but I'll need the wind data from Morro Azul.",
+     "enunciado": "What does Sipho need?",
+     "opcoes": [
+      {
+       "texto": "the wind data from Morro Azul",
+       "certa": true
+      },
+      {
+       "texto": "a bigger team",
+       "certa": false
+      },
+      {
+       "texto": "more money",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. Sorry, Rajesh, let's park that, and you two can compare clients over lunch.",
+     "enunciado": "What is Thandi doing?",
+     "opcoes": [
+      {
+       "texto": "stopping a digression politely",
+       "certa": true
+      },
+      {
+       "texto": "asking Rajesh to continue",
+       "certa": false
+      },
+      {
+       "texto": "ending the meeting",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Why does everyone answer \"yesterday, today, any problems\"?",
+     "opcoes": [
+      {
+       "texto": "so that nobody talks too long",
+       "certa": true
+      },
+      {
+       "texto": "because Nuno asked for it",
+       "certa": false
+      },
+      {
+       "texto": "because the client wants a report",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Thandi says: \"Sipho, you did Namibe, which makes you the obvious person.\" She is…",
+     "opcoes": [
+      {
+       "texto": "delegating with a reason",
+       "certa": true
+      },
+      {
+       "texto": "cutting a digression",
+       "certa": false
+      },
+      {
+       "texto": "summing up",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Quick round: yesterday, today, any problems.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "You did Namibe, which makes you the obvious person.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You missed the stand-up. Tell a colleague who took each task, and how Thandi kept the meeting short.",
+     "frase": "who",
+     "resposta": "Bongani, who knows the bank's systems, is backing Lindiwe up on Monday. Rajesh is doing the Tômbwa costs, and Sipho, who worked on the Namibe backup, is taking on the satellite part. Nuno is sending the wind data. Thandi kept it short with a quick round.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Would a ten-minute stand-up meeting work in your team? Why, or why not?",
+     "frase": "because",
+     "resposta": "I think it would work, because our meetings are usually too long. Ten minutes is enough to know who is doing what. But for big problems, we would still need a longer meeting.",
+     "contexto": "Uma opinião."
+    }
+   ]
+  },
+  {
+   "codigo": "1F",
+   "titulo": "Work & Life: The kick-off meeting",
+   "aula": "1F",
+   "objectivo": "Conduzir a primeira reunião de uma equipa e passar à equipa, em inglês, instruções escritas em português.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Nuno opens the kick-off. The best first sentences:",
+     "opcoes": [
+      {
+       "texto": "Four items, and we'll finish by eleven. Our objective is to win the contract.",
+       "certa": true
+      },
+      {
+       "texto": "OK, so, I don't know. Let's just talk.",
+       "certa": false
+      },
+      {
+       "texto": "First, whose fault was the problem in Namibe?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The note says: \"Nada de promessas de prazos sem confirmar com o Paulo.\" Nuno says:",
+     "opcoes": [
+      {
+       "texto": "No promises about deadlines without checking with Paulo.",
+       "certa": true
+      },
+      {
+       "texto": "Nothing of promises of deadlines without confirm with Paulo.",
+       "certa": false
+      },
+      {
+       "texto": "No promises of deadlines without to confirm with Paulo.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The note says: \"o Femi, o director financeiro da Morro Azul, vai perguntar por ela\" (a opção mais barata). Nuno says:",
+     "opcoes": [
+      {
+       "texto": "Femi, Morro Azul's finance director, will ask for one.",
+       "certa": true
+      },
+      {
+       "texto": "Femi, Morro Azul's finance director, will ask by her.",
+       "certa": false
+      },
+      {
+       "texto": "Femi, the director financial of Morro Azul, will ask for her.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Elsa, [who] did such good work on the Lobito sensors, will be in charge of testing.",
+     "opcoes": [
+      {
+       "texto": "that",
+       "certa": false
+      },
+      {
+       "texto": "whose",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'd like you [to take] that on with Paulo.",
+     "opcoes": [
+      {
+       "texto": "take",
+       "certa": false
+      },
+      {
+       "texto": "taking",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Who'd like [to write] the summary for the board?",
+     "opcoes": [
+      {
+       "texto": "write",
+       "certa": false
+      },
+      {
+       "texto": "writing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Anything I've [missed]?",
+     "opcoes": [
+      {
+       "texto": "miss",
+       "certa": false
+      },
+      {
+       "texto": "missing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Paulo starts a long story. Nuno says: \"Sorry, Paulo, it's a good one, but let's keep it for the proposal itself.\" Why does this work?",
+     "opcoes": [
+      {
+       "texto": "He is kind, and he finds a use for the story.",
+       "certa": true
+      },
+      {
+       "texto": "He ignores Paulo.",
+       "certa": false
+      },
+      {
+       "texto": "He lets Paulo finish the story.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Rajesh. If we took out the satellite, the price would drop by about fifteen percent, but the risk would go up.",
+     "enunciado": "What would happen without the satellite?",
+     "opcoes": [
+      {
+       "texto": "The price would drop by about 15%, but the risk would go up.",
+       "certa": true
+      },
+      {
+       "texto": "The price would go up by about 15%.",
+       "certa": false
+      },
+      {
+       "texto": "The price and the risk would stay the same.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Sipho. I started on Friday, when the wind data came in, so I can send the design by the twentieth.",
+     "enunciado": "When will Sipho send the satellite design?",
+     "opcoes": [
+      {
+       "texto": "by the twentieth",
+       "certa": true
+      },
+      {
+       "texto": "by Friday",
+       "certa": false
+      },
+      {
+       "texto": "by the twenty-ninth",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Sipho: the satellite design by the twentieth. Rajesh: the costs by the twenty-ninth.",
+     "enunciado": "Ouça e repita, com uma pausa depois de cada nome."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Chair the kick-off of a new project at work, at school or in your community: the objective and the time, three people with extra information and their roles, and the next steps.",
+     "frase": "who",
+     "resposta": "Welcome. Three items; we'll finish by ten. Our objective is to open the Huambo branch by March. Ana, who managed the Benguela opening, will lead. Rui, whose team does our IT, will set up the systems. Next steps: Ana, the timeline by Friday; Rui, the IT plan by the twentieth.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Pass on this note to your team, in English: \"Para a equipa: 1) A partir de segunda, a reunião de equipa passa para as 8:30. 2) Quem precisar de sair mais cedo avisa o chefe de equipa na véspera. Obrigada a todos. — A directora\"",
+     "frase": "First",
+     "resposta": "Our director says two things. First, from Monday, the team meeting moves to eight thirty. Second, if you need to leave early, tell your team leader the day before. She also thanks everyone.",
+     "contexto": "Mediação: a ordem, as razões e o tom da nota."
+    }
+   ]
+  },
+  {
+   "codigo": "1R",
+   "titulo": "Unit 1 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 1 do B2 e reciclar as unidades 8 a 10 do B1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "My sister, [who] lives in Huambo, is a nurse.",
+     "opcoes": [
+      {
+       "texto": "that",
+       "certa": false
+      },
+      {
+       "texto": "which",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Luanda, [where] I was born, has changed a lot.",
+     "opcoes": [
+      {
+       "texto": "which",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He missed the bus, [which] meant he was late for the meeting.",
+     "opcoes": [
+      {
+       "texto": "what",
+       "certa": false
+      },
+      {
+       "texto": "that",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Paulo always [backs] me up in meetings.",
+     "opcoes": [
+      {
+       "texto": "supports",
+       "certa": false
+      },
+      {
+       "texto": "stands",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Sipho, whose team worked on the backup, lives in Johannesburg.",
+       "certa": true
+      },
+      {
+       "texto": "Sipho, who his team worked on the backup, lives in Johannesburg.",
+       "certa": false
+      },
+      {
+       "texto": "Sipho, who's team worked on the backup, lives in Johannesburg.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A quiet colleague in a meeting. Which is the most polite?",
+     "opcoes": [
+      {
+       "texto": "Rui, we haven't heard from you yet. How do you see it?",
+       "certa": true
+      },
+      {
+       "texto": "Rui, are you sleeping?",
+       "certa": false
+      },
+      {
+       "texto": "Rui, you never say anything.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 10). \"Devíamos ter verificado.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "We should have checked.",
+       "certa": true
+      },
+      {
+       "texto": "We should checked.",
+       "certa": false
+      },
+      {
+       "texto": "We should to have checked.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 9). Complete: \"___ it was late, the team kept working.\"",
+     "opcoes": [
+      {
+       "texto": "Although",
+       "certa": true
+      },
+      {
+       "texto": "Despite",
+       "certa": false
+      },
+      {
+       "texto": "However",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (B1, unidade 8). Complete: \"This time next month, we'll ___ the new system.\"",
+     "opcoes": [
+      {
+       "texto": "be testing",
+       "certa": true
+      },
+      {
+       "texto": "testing",
+       "certa": false
+      },
+      {
+       "texto": "be test",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "A Hannah, cuja central fica no Namibe, conhece bem o vento.",
+     "resposta": "Hannah, whose plant is in Namibe, knows the wind well.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Thandi. So, to sum up: Bongani backs Lindiwe up on Monday, and Sipho takes on the satellite design.",
+     "enunciado": "Who takes on the satellite design?",
+     "opcoes": [
+      {
+       "texto": "Sipho",
+       "certa": true
+      },
+      {
+       "texto": "Bongani",
+       "certa": false
+      },
+      {
+       "texto": "Lindiwe",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Describe the best team you've worked or studied in. What made it work?",
+     "frase": "who",
+     "resposta": "The best team I've worked in was at my first job, in a bank in Benguela. Our manager, who was very calm, gave everyone a clear role, which helped a lot. We had a short meeting every Monday, and we always backed each other up when someone was ill.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You're the new team leader. Delegate three tasks to three colleagues, with a reason for each.",
+     "frase": "I'd like you to",
+     "resposta": "Ana, I'd like you to prepare the budget, because you know the numbers better than anyone. Rui, could you take on the website? You did the last one. And who'd like to organise the client visit? Marta? Great — you know the client well.",
+     "contexto": "Delegar com razões."
+    }
+   ]
+  }
+ ]
+}

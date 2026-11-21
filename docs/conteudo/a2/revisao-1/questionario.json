@@ -1,0 +1,373 @@
+{
+ "title": "A2.1 Review 1 quiz — Units 1 to 5",
+ "description": "Questionário de revisão das unidades 1 a 5 do A2.",
+ "questions": [
+  {
+   "id": "a2r1q1",
+   "question": "U1. Complete: \"These days I ___ on a big project.\"",
+   "options": [
+    {
+     "id": "a2r1q1o0",
+     "text": "'m working",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q1o1",
+     "text": "work",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q1o2",
+     "text": "working",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q1o0",
+   "explanation": "Período temporário: present continuous.",
+   "points": 10
+  },
+  {
+   "id": "a2r1q2",
+   "question": "U1. Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "a2r1q2o0",
+     "text": "I understand the plan.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q2o1",
+     "text": "I'm understanding the plan.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q2o2",
+     "text": "I understanding the plan.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q2o0",
+   "explanation": "Verbo de estado: sem -ing.",
+   "points": 10
+  },
+  {
+   "id": "a2r1q3",
+   "question": "U1. \"What does he look like?\" — Qual é a resposta?",
+   "options": [
+    {
+     "id": "a2r1q3o0",
+     "text": "He's tall, and he has a beard.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q3o1",
+     "text": "He's very friendly.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q3o2",
+     "text": "He likes football.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q3o0",
+   "explanation": "Aparência.",
+   "points": 10
+  },
+  {
+   "id": "a2r1q4",
+   "question": "U2. Qual é o passado de \"choose\"?",
+   "options": [
+    {
+     "id": "a2r1q4o0",
+     "text": "chose",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q4o1",
+     "text": "choosed",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q4o2",
+     "text": "choosen",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q4o0",
+   "explanation": "choose → chose.",
+   "points": 10
+  },
+  {
+   "id": "a2r1q5",
+   "question": "U2. Qual é a pergunta correcta?",
+   "options": [
+    {
+     "id": "a2r1q5o0",
+     "text": "Who sent the email?",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q5o1",
+     "text": "Who did send the email?",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q5o2",
+     "text": "Who did sent the email?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q5o0",
+   "explanation": "Pergunta de sujeito: sem \"did\".",
+   "points": 10
+  },
+  {
+   "id": "a2r1q6",
+   "question": "U2. Complete: \"I ___ dinner when the phone rang.\"",
+   "options": [
+    {
+     "id": "a2r1q6o0",
+     "text": "was having",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q6o1",
+     "text": "am having",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q6o2",
+     "text": "have",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q6o0",
+   "explanation": "Acção longa no passado.",
+   "points": 10
+  },
+  {
+   "id": "a2r1q7",
+   "question": "U3. Está marcado na agenda. Qual é a frase mais natural?",
+   "options": [
+    {
+     "id": "a2r1q7o0",
+     "text": "I'm meeting the client on Friday at ten.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q7o1",
+     "text": "I'm meet the client on Friday at ten.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q7o2",
+     "text": "I met the client on Friday at ten next week.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q7o0",
+   "explanation": "Combinação: present continuous.",
+   "points": 10
+  },
+  {
+   "id": "a2r1q8",
+   "question": "U3. \"There's no paper!\" — Qual é a melhor resposta?",
+   "options": [
+    {
+     "id": "a2r1q8o0",
+     "text": "I'll get some.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q8o1",
+     "text": "I get some.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q8o2",
+     "text": "I'm going to get some next month.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q8o0",
+   "explanation": "Decisão no momento: will.",
+   "points": 10
+  },
+  {
+   "id": "a2r1q9",
+   "question": "U3. Qual é a recusa mais educada?",
+   "options": [
+    {
+     "id": "a2r1q9o0",
+     "text": "I'm afraid I can't. I'm working late. Maybe another time.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q9o1",
+     "text": "No, I don't want.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q9o2",
+     "text": "No. Bye.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q9o0",
+   "explanation": "I'm afraid I can't + razão.",
+   "points": 10
+  },
+  {
+   "id": "a2r1q10",
+   "question": "U4. Complete: \"Model B is ___ cheaper than Model A.\"",
+   "options": [
+    {
+     "id": "a2r1q10o0",
+     "text": "much",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q10o1",
+     "text": "very",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q10o2",
+     "text": "more",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q10o0",
+   "explanation": "much + comparativo.",
+   "points": 10
+  },
+  {
+   "id": "a2r1q11",
+   "question": "U4. Complete: \"We only have ___ plugs.\"",
+   "options": [
+    {
+     "id": "a2r1q11o0",
+     "text": "a few",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q11o1",
+     "text": "a little",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q11o2",
+     "text": "much",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q11o0",
+   "explanation": "Contável: a few.",
+   "points": 10
+  },
+  {
+   "id": "a2r1q12",
+   "question": "U4. \"This quote is exquisite\" quer dizer:",
+   "options": [
+    {
+     "id": "a2r1q12o0",
+     "text": "Este orçamento é belíssimo.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q12o1",
+     "text": "Este orçamento é esquisito.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q12o2",
+     "text": "Este orçamento é caro.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q12o0",
+   "explanation": "Falso amigo: esquisito = strange.",
+   "points": 10
+  },
+  {
+   "id": "a2r1q13",
+   "question": "U5. Complete: \"You look tired. You ___ go home.\"",
+   "options": [
+    {
+     "id": "a2r1q13o0",
+     "text": "should",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q13o1",
+     "text": "should to",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q13o2",
+     "text": "must to",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q13o0",
+   "explanation": "Conselho: should + verbo simples.",
+   "points": 10
+  },
+  {
+   "id": "a2r1q14",
+   "question": "U5. \"You don't have to sign out\" quer dizer:",
+   "options": [
+    {
+     "id": "a2r1q14o0",
+     "text": "Não é preciso registar a saída.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q14o1",
+     "text": "É proibido registar a saída.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q14o2",
+     "text": "Tem de registar a saída.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q14o0",
+   "explanation": "don't have to = não é necessário.",
+   "points": 10
+  },
+  {
+   "id": "a2r1q15",
+   "question": "U5. \"Estou constipado\" em inglês é:",
+   "options": [
+    {
+     "id": "a2r1q15o0",
+     "text": "I have a cold.",
+     "isCorrect": true
+    },
+    {
+     "id": "a2r1q15o1",
+     "text": "I'm constipated.",
+     "isCorrect": false
+    },
+    {
+     "id": "a2r1q15o2",
+     "text": "I'm constipate.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "a2r1q15o0",
+   "explanation": "Falso amigo: constipated = com prisão de ventre.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

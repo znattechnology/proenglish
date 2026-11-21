@@ -41,6 +41,7 @@ logger = logging.getLogger(__name__)
 # ============================================================
 
 from apps.core.permissions import EAdministrador
+from apps.core import armazenamento
 
 # Nome antigo: as vistas de administração usam a regra única EAdministrador
 # (papel admin ou superutilizador, conta activa; is_staff sozinho não chega).
@@ -99,8 +100,20 @@ class UserRegistrationView(generics.CreateAPIView):
         }, status=status.HTTP_201_CREATED)
 
 
-def definir_cookies_sessao(response, access_token, refresh_token):
-    """Grava a sessão (JWT) em cookies HttpOnly. Em produção, Secure + SameSite=None."""
+def pedido_da_app(request):
+    """A app móvel (Expo) identifica-se com `X-Cliente: app` e guarda a sessão no cofre do telemóvel."""
+    return bool(request) and request.headers.get('X-Cliente', '').lower() == 'app'
+
+
+def definir_cookies_sessao(response, access_token, refresh_token, request=None):
+    """
+    Grava a sessão (JWT) em cookies HttpOnly. Em produção, Secure + SameSite=None.
+    Para a app móvel (`X-Cliente: app`) não há cookies: os tokens vão no corpo, em `tokens`.
+    """
+    if pedido_da_app(request):
+        if isinstance(response.data, dict):
+            response.data['tokens'] = {'access': access_token, 'refresh': refresh_token}
+        return response
     is_secure = not settings.DEBUG
     samesite = 'None' if is_secure else 'Lax'
     if access_token:
@@ -165,7 +178,7 @@ class CustomTokenObtainPairView(TokenObtainPairView):
             # Os tokens vão só nos cookies HttpOnly; o corpo leva apenas o utilizador.
             access_token = response.data.pop('access', None)
             refresh_token = response.data.pop('refresh', None)
-            definir_cookies_sessao(response, access_token, refresh_token)
+            definir_cookies_sessao(response, access_token, refresh_token, request)
 
         return response
 
@@ -192,7 +205,7 @@ class CustomTokenRefreshView(TokenRefreshView):
             # ficar no cookie, senão a sessão morre no refresh seguinte. Nada vai no corpo.
             access_token = response.data.pop('access', None)
             refresh_token = response.data.pop('refresh', None)
-            definir_cookies_sessao(response, access_token, refresh_token)
+            definir_cookies_sessao(response, access_token, refresh_token, request)
             response.data['message'] = 'Sessão renovada.'
 
         return response
@@ -264,12 +277,7 @@ def get_avatar_upload_url(request):
             }, status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
         # Create S3 client
-        s3_client = boto3.client(
-            's3',
-            aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-            aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-            region_name=settings.AWS_S3_REGION_NAME
-        )
+        s3_client = armazenamento.cliente()
 
         # Generate unique filename and S3 key
         file_extension = fileName.split('.')[-1].lower()
@@ -289,10 +297,7 @@ def get_avatar_upload_url(request):
         )
 
         # Generate final avatar URL (using CloudFront if available)
-        if getattr(settings, 'AWS_CLOUDFRONT_DOMAIN', ''):
-            avatar_url = f"{settings.AWS_CLOUDFRONT_DOMAIN}/avatars/{request.user.id}/{unique_filename}"
-        else:
-            avatar_url = f"https://{settings.AWS_S3_CUSTOM_DOMAIN}/avatars/{request.user.id}/{unique_filename}"
+        avatar_url = armazenamento.url_publico(s3_key)
 
         return Response({
             'message': 'Pode enviar a fotografia.',
@@ -343,7 +348,7 @@ class PasswordChangeView(generics.GenericAPIView):
         else:
             mensagem = 'Palavra-passe mudada. As sessões nos outros dispositivos foram terminadas.'
         resposta = Response({'message': mensagem, 'has_password': True, 'deve_mudar_senha': False})
-        return definir_cookies_sessao(resposta, access, refresh)
+        return definir_cookies_sessao(resposta, access, refresh, request)
 
 
 def _acesso_da_sessao_actual(user, refresh_actual):
@@ -455,6 +460,14 @@ class ApagarContaView(generics.GenericAPIView):
             user.is_active = False
             user.set_unusable_password()
             user.save()
+
+        # Gravações dos exames orais (fase 6): apagadas com a conta (no Vapi e o URL aqui).
+        try:
+            from apps.practice.conversa.exame import apagar_gravacoes_do_aluno
+            apagar_gravacoes_do_aluno(user)
+        except Exception:
+            import logging
+            logging.getLogger(__name__).exception('Falha ao apagar as gravações dos exames da conta %s', user.pk)
 
         response = Response({'message': 'A sua conta foi apagada.'})
         return apagar_cookies_sessao(response)
@@ -640,7 +653,7 @@ class EmailVerificationView(generics.GenericAPIView):
             })
             # A sessão vai nos cookies HttpOnly, como no login (antes só ia no corpo e a pessoa
             # ficava sem sessão logo a seguir a confirmar o email).
-            definir_cookies_sessao(response, access, refresh)
+            definir_cookies_sessao(response, access, refresh, request)
             return response
         else:
             return Response({
@@ -758,7 +771,7 @@ class GoogleOAuthLoginView(generics.GenericAPIView):
             'message': 'Entrou com o Google.',
             'user': {**dados_utilizador(user), 'google_id': user.google_id},
         })
-        definir_cookies_sessao(response, access, refresh)
+        definir_cookies_sessao(response, access, refresh, request)
         return response
 
 

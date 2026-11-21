@@ -40,6 +40,7 @@ from django.db import transaction
 from rest_framework.decorators import api_view, parser_classes, permission_classes
 from rest_framework.response import Response
 
+from apps.core import armazenamento
 from apps.courses.models import ChapterResource
 
 from .cursos import PERMISSOES, _curso_do_professor, _erro
@@ -136,12 +137,7 @@ def nome_seguro(nome, extensao):
 
 
 def url_publico(chave_s3):
-    dominio = getattr(settings, 'AWS_CLOUDFRONT_DOMAIN', '')
-    if dominio:
-        if not dominio.startswith('http'):
-            dominio = f'https://{dominio}'
-        return f'{dominio.rstrip("/")}/{chave_s3}'
-    return f'https://{settings.AWS_S3_CUSTOM_DOMAIN}/{chave_s3}'
+    return armazenamento.url_publico(chave_s3)
 
 
 def _caminho_local(chave_ficheiro):
@@ -248,13 +244,7 @@ def ficheiros_da_aula(aula):
 
 
 def _s3():
-    import boto3
-    return boto3.client(
-        's3',
-        aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-        aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
-        region_name=settings.AWS_S3_REGION_NAME,
-    )
+    return armazenamento.cliente()
 
 
 def _validar_pedido(dados, destino):
@@ -519,6 +509,9 @@ def confirmar(request):
                 campos.append('type')
             alvo.save(update_fields=campos + ['updated_at'])
             _tocar(alvo.section.course_id)
+            # Vídeo novo: transcrição automática em segundo plano (nunca por cima de uma manual).
+            from apps.courses import transcricao
+            transcricao.agendar(alvo)
             resposta = aula_dict(alvo)
         elif destino == 'material':
             existente = ChapterResource.objects.filter(chapter=alvo, external_url=url).first()

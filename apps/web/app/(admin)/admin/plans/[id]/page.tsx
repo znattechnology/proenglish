@@ -46,8 +46,12 @@ function Formulario({ p }: { p: Plano }) {
     licoes: p.limites.licoes_dia == null ? "" : String(p.limites.licoes_dia),
     vidas: p.limites.vidas == null ? "" : String(p.limites.vidas),
     conversa: p.limites.conversa_min_dia == null ? "" : String(p.limites.conversa_min_dia),
+    conversaMes: p.limites.conversa_min_mes == null ? "" : String(p.limites.conversa_min_mes),
+    conversaTeste: String(p.limites.teste_conversa_min_dia ?? 0),
+    conversaTesteDias: String(p.limites.teste_conversa_dias ?? 0),
     nativo: String(p.limites.sessoes_nativo_mes),
     protecoes: String(p.limites.protecoes_semana),
+    detalhada: String(p.limites.pronuncia_detalhada_dia ?? 0),
     certificados: p.certificados,
   });
   const [erros, setErros] = useState<Record<string, string>>({});
@@ -83,8 +87,12 @@ function Formulario({ p }: { p: Plano }) {
               licoes_dia: numero(v.licoes),
               vidas: numero(v.vidas),
               conversa_min_dia: numero(v.conversa),
+              conversa_min_mes: numero(v.conversaMes),
+              teste_conversa_min_dia: numero(v.conversaTeste) ?? 0,
+              teste_conversa_dias: numero(v.conversaTesteDias) ?? 0,
               sessoes_nativo_mes: numero(v.nativo) ?? 0,
               protecoes_semana: numero(v.protecoes) ?? 0,
+              pronuncia_detalhada_dia: numero(v.detalhada) ?? 0,
             },
           }).unwrap();
           router.push("/admin/plans");
@@ -130,7 +138,41 @@ function Formulario({ p }: { p: Plano }) {
         <div className="grid gap-4 sm:grid-cols-2">
           <Campo rotulo="Lições por dia" inputMode="numeric" value={v.licoes} onChange={(e) => muda("licoes", e.target.value)} erro={erros.licoes_dia} ajuda="Vazio para ilimitado." />
           <Campo rotulo="Vidas" inputMode="numeric" value={v.vidas} onChange={(e) => muda("vidas", e.target.value)} erro={erros.vidas} ajuda="Vazio para ilimitado." />
-          <Campo rotulo="Minutos de conversa por dia" inputMode="numeric" value={v.conversa} onChange={(e) => muda("conversa", e.target.value)} erro={erros.conversa_min_dia} ajuda="Vazio para sem limite." />
+          <Campo rotulo="Minutos de conversa por dia" inputMode="numeric" value={v.conversa} onChange={(e) => muda("conversa", e.target.value)} erro={erros.conversa_min_dia} ajuda="Vazio para sem limite diário." />
+          <Campo
+            rotulo="Minutos de conversa por mês"
+            inputMode="numeric"
+            value={v.conversaMes}
+            onChange={(e) => muda("conversaMes", e.target.value)}
+            erro={erros.conversa_min_mes}
+            ajuda="Vazio para sem limite mensal. Vale o que acabar primeiro: o do dia ou o do mês. Renova no dia 1."
+          />
+          <Campo
+            rotulo="Minutos de conversa por dia durante o teste"
+            inputMode="numeric"
+            value={v.conversaTeste}
+            onChange={(e) => muda("conversaTeste", e.target.value)}
+            erro={erros.teste_conversa_min_dia}
+            ajuda="Só no plano gratuito, nos dias de teste depois do registo. Depois do teste, o gratuito fica sem tutor."
+          />
+          {gratuito ? (
+            <Campo
+              rotulo="Dias de teste do tutor"
+              inputMode="numeric"
+              value={v.conversaTesteDias}
+              onChange={(e) => muda("conversaTesteDias", e.target.value)}
+              erro={erros.teste_conversa_dias}
+              ajuda="Dias depois do registo em que o gratuito pode conversar com o tutor. 0 para nenhum."
+            />
+          ) : null}
+          <Campo
+            rotulo="Avaliações de pronúncia detalhadas por dia"
+            inputMode="numeric"
+            value={v.detalhada}
+            onChange={(e) => muda("detalhada", e.target.value)}
+            erro={erros.pronuncia_detalhada_dia}
+            ajuda="Nota por palavra e por som (Azure Speech, quando ligado no servidor). Acima do limite, a avaliação é a normal. 0 para nenhuma."
+          />
           <Campo rotulo="Sessões com professor nativo por mês" inputMode="numeric" value={v.nativo} onChange={(e) => muda("nativo", e.target.value)} erro={erros.sessoes_nativo_mes} ajuda="Só aparece na descrição do plano: as sessões ainda não existem na plataforma." />
           <Campo
             rotulo="Protecções de dias seguidos por semana"

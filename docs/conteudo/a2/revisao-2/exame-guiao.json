@@ -1,0 +1,89 @@
+{
+ "formato": "CourseGradingConfig.exam_script (apps/practice/conversa/exame.py, validar_guiao); carregar com manage.py carregar_exame_curso",
+ "nivel": "A2",
+ "duracao": "7 to 8 minutes",
+ "max_minutos": 9,
+ "situacoes": 1,
+ "partes": [
+  {
+   "titulo": "Interview",
+   "minutos": "about 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Hello, {nome}. Welcome to your A2.2 speaking exam. Have you ever travelled for work, or for your studies? Tell me about it.",
+     "simples": "Have you ever travelled for work? Where did you go?"
+    },
+    {
+     "pergunta": "What's new at work, or in your studies? What have you done recently?",
+     "simples": "What's new at work? Tell me one thing."
+    },
+    {
+     "pergunta": "How long have you worked or studied there? And what are you good at in your job?",
+     "simples": "How long have you worked there?"
+    }
+   ]
+  },
+  {
+   "titulo": "Explain",
+   "minutos": "about 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Now please explain something. Tell me about a program or a machine at your work or school. What is it for, and how does it work?",
+     "simples": "Tell me about a program or a machine at work. How do you use it?"
+    },
+    {
+     "pergunta": "What happens if it doesn't work? What do you do?",
+     "simples": "And if it stops, what do you do?"
+    },
+    {
+     "pergunta": "Tell me about a project or a job at the moment. What have you already done, and what haven't you done yet?",
+     "simples": "A project now: what is finished? What isn't finished?"
+    }
+   ]
+  }
+ ],
+ "notas": [
+  "Ask one question at a time and wait. Do not correct, teach or give hints during the exam.",
+  "If the student answers with one word or one short sentence, ask Can you tell me more? once per question.",
+  "If the student does not work, ask about their studies, their home or their phone: a program or an app they use, a project at school or at home.",
+  "If the student prefers not to talk about their personal life, accept it and ask about work.",
+  "In the situation, refuse or question the student's first solution once, so the student has to give a reason or a new solution.",
+  "If the student asks Do you mean...?, answer simply and repeat the question in other words. If the student says Sorry, I mean..., continue normally.",
+  "Use only A1 and A2 language: no second conditional or hypothetical would, no passive, no relative clauses, no used to, no past perfect."
+ ],
+ "escala": {
+  "tarefa": {
+   "80-100": "Answers every question with details (two or three sentences), explains how something works in clear steps, and completes the situation, including the examiner's difficulty.",
+   "60-79": "Answers most questions with some details; the explanation has the main steps; completes the situation with some help or repetition.",
+   "40-59": "Short answers; the explanation is incomplete or unclear; the situation is only half done.",
+   "0-39": "Answers few questions, or answers in Portuguese."
+  },
+  "gramatica": {
+   "80-100": "Chooses between the past simple and the present perfect (ever, just, already / yet, for / since) almost always correctly; uses will, going to, the first conditional and requests with could correctly.",
+   "60-79": "Uses the A2 tenses with some mistakes (for example the present perfect with a past date), but the time is always clear; conditionals and requests mostly correct.",
+   "40-59": "Mostly present simple and past simple; frequent mistakes that sometimes make the meaning unclear.",
+   "0-39": "Very few correct sentences."
+  },
+  "vocabulario": {
+   "80-100": "Uses the words of A2 units 6-10 (travel, news, technology and problems, customer service, skills) with ease, and explains words they do not know.",
+   "60-79": "Enough words for the tasks; some pauses to find words.",
+   "40-59": "Basic work, travel and technology words are missing; the student often stops.",
+   "0-39": "Very few words, or many Portuguese words."
+  },
+  "fluencia": {
+   "80-100": "Answers in linked sentences (first, then, if, so, because, but), with few long pauses.",
+   "60-79": "Some linked sentences; pauses, but keeps going.",
+   "40-59": "Short, separate sentences and long pauses.",
+   "0-39": "Can hardly continue without help."
+  }
+ },
+ "nao_baixa": [
+  "a Portuguese or Angolan accent",
+  "asking the examiner to repeat",
+  "saying Let me think or That's a good question. Well...",
+  "asking Do you mean...? to check a question",
+  "correcting yourself with Sorry, I mean...",
+  "explaining a word with It's a kind of...",
+  "one wrong past participle when the tense is correct"
+ ]
+}

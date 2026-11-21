@@ -308,7 +308,7 @@ class Command(BaseCommand):
             defaults=dict(
                 teacher=professor, teacherName=professor.name, category='Business English',
                 description='Curso curto [DEV]: escrever e responder a e-mails de trabalho em inglês.',
-                level='Intermediate', status='Published', template='technology', access_level='premium',
+                level='B1', status='Published', template='technology', access_level='premium',
             ),
         )
         seccao, _ = CourseSection.objects.update_or_create(

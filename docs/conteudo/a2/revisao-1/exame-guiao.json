@@ -1,0 +1,89 @@
+{
+ "formato": "CourseGradingConfig.exam_script (apps/practice/conversa/exame.py, validar_guiao); carregar com manage.py carregar_exame_curso",
+ "nivel": "A2",
+ "duracao": "6 to 7 minutes",
+ "max_minutos": 8,
+ "situacoes": 1,
+ "partes": [
+  {
+   "titulo": "Interview",
+   "minutos": "about 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Hello, {nome}. Welcome to your A2.1 speaking exam. Tell me about your job. What do you usually do, and what are you working on these days?",
+     "simples": "What's your job? And this month, what are you doing at work?"
+    },
+    {
+     "pergunta": "Tell me about a colleague or your manager. What's he or she like?",
+     "simples": "Your manager: is he or she friendly? Organised?"
+    },
+    {
+     "pergunta": "Tell me about your background. Where did you grow up, and what did you do after school?",
+     "simples": "Where were you born? What did you study?"
+    }
+   ]
+  },
+  {
+   "titulo": "A story",
+   "minutos": "about 1 to 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Now tell me about a difficult day at work, or at school. What happened?",
+     "simples": "Tell me about a bad day. What happened?"
+    },
+    {
+     "pergunta": "What were you doing when the problem started?",
+     "simples": "At that moment, what were you doing?"
+    },
+    {
+     "pergunta": "And what happened in the end?",
+     "simples": "How did it finish?"
+    }
+   ]
+  }
+ ],
+ "notas": [
+  "Ask one question at a time and wait. Do not correct, teach or give hints during the exam.",
+  "If the student answers with one word or one short sentence, ask Can you tell me more? once per question.",
+  "If the student does not work, ask about their studies or their week: What do you usually do? What are you doing these days?",
+  "If the student prefers not to talk about their personal life, accept it and ask about work.",
+  "In the situation, refuse or question the student's first proposal or recommendation once, so the student has to give a reason or a new proposal.",
+  "If the student asks Do you mean...?, answer simply and repeat the question in other words.",
+  "Use only language from A1 and A2 units 1 to 5: no present perfect, no will for predictions, no could, no if sentences."
+ ],
+ "escala": {
+  "tarefa": {
+   "80-100": "Answers every question with details (two or three sentences), tells a story with a beginning, a middle and an end, and completes the situation, including the examiner's objection.",
+   "60-79": "Answers most questions with some details; the story has the main events; completes the situation with some help or repetition.",
+   "40-59": "Short answers; the story is incomplete or very short; the situation is only half done.",
+   "0-39": "Answers few questions, or answers in Portuguese."
+  },
+  "gramatica": {
+   "80-100": "Chooses between present simple and continuous, past simple and continuous, and the three futures almost always correctly; uses should, have to or must, and comparatives correctly.",
+   "60-79": "Uses the A2.1 tenses with some mistakes (for example the past continuous or state verbs), but the time is always clear; modal verbs mostly correct.",
+   "40-59": "Mostly present simple and past simple; frequent mistakes that sometimes make the meaning unclear.",
+   "0-39": "Very few correct sentences."
+  },
+  "vocabulario": {
+   "80-100": "Uses the words of A2 units 1-5 (job and responsibilities, people, life events, plans, prices and quality, health and safety) with ease, and explains words they do not know.",
+   "60-79": "Enough words for the tasks; some pauses to find words.",
+   "40-59": "Basic work and life words are missing; the student often stops.",
+   "0-39": "Very few words, or many Portuguese words."
+  },
+  "fluencia": {
+   "80-100": "Answers in two or three linked sentences (and, but, because, so, when, then, in the end), with few long pauses.",
+   "60-79": "Some linked sentences; pauses, but keeps going.",
+   "40-59": "Short, separate sentences and long pauses.",
+   "0-39": "Can hardly continue without help."
+  }
+ },
+ "nao_baixa": [
+  "a Portuguese or Angolan accent",
+  "asking the examiner to repeat",
+  "saying Let me think or That's a good question. Well...",
+  "asking Do you mean...? to check a question",
+  "correcting yourself in the middle of a sentence",
+  "explaining a word with It's a kind of...",
+  "one wrong irregular past form when the tense is correct"
+ ]
+}

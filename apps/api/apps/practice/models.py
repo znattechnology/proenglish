@@ -92,6 +92,8 @@ class PracticeChallenge(models.Model):
         ('TRUE_FALSE', 'True/False Questions'),
         ('LISTENING', 'Listening Comprehension'),
         ('SPEAKING', 'Speaking Practice'),
+        # Responder em voz alta a uma pergunta de trabalho (avaliado com Whisper + Claude).
+        ('RESPONDER', 'Answer aloud'),
 
         # 🚀 VAPI AI CONVERSATION TYPES
         ('VAPI_CONVERSATION', 'AI Conversation Practice'),
@@ -254,17 +256,14 @@ class UserProgress(models.Model):
         Falls back to legacy field if no subscription exists.
         """
         try:
-            from apps.subscriptions.models import UserSubscription
-            subscription = UserSubscription.objects.select_related('plan').get(user=self.user)
-            plan = subscription.plan
-            if plan.hearts_limit == 0 and subscription.is_active():
-                # Vidas ilimitadas enquanto o plano estiver activo.
-                subscription.recharge_hearts_if_needed()
-                return subscription.current_hearts
-            # O máximo é o do plano (um plano "ilimitado" que já terminou vale o máximo normal).
-            maximo = plan.hearts_limit if plan.hearts_limit > 0 else 5
-            if plan.hearts_limit > 0:
-                subscription.recharge_hearts_if_needed()
+            from apps.subscriptions.services import obter_ou_criar_assinatura
+            # Sem assinatura (contas antigas): passa a ter a do Gratuito, com a recarga dele.
+            subscription = obter_ou_criar_assinatura(self.user)
+            plan = subscription.plano_das_vidas()
+            subscription.recharge_hearts_if_needed()
+            if plan.hearts_limit == 0:
+                return subscription.current_hearts  # ilimitadas enquanto o plano estiver activo
+            maximo = plan.hearts_limit
             if subscription.current_hearts > maximo:
                 # Ex.: 999 vidas que sobraram de um plano pago que terminou.
                 UserSubscription.objects.filter(pk=subscription.pk).update(current_hearts=maximo)
@@ -1056,10 +1055,7 @@ class AchievementNotification(models.Model):
 # Vapi-based conversation practice which handles both speaking and listening
 # in a single, superior AI conversation experience.
 #
-# All speaking/listening functionality is now handled through:
-# - apps/practice/services/vapi_client.py
-# - apps/practice/services/conversation_ai.py  
-# - apps/practice/views/vapi_views.py
+# A conversa com o tutor vive em apps/practice/conversa/ (servico.py, webhook.py).
 # =============================================================================
 
 
@@ -1120,6 +1116,14 @@ class VapiSession(models.Model):
     # Speaking Performance Metrics
     total_words = models.PositiveIntegerField(default=0)
     words_per_minute = models.PositiveIntegerField(default=0)
+    # Fase 3: tempo de fala do aluno (conversa/tempo_fala.py). 'medido' com os tempos de cada
+    # mensagem do Vapi; 'estimado' (palavras / 2,3 por segundo) quando não há tempos.
+    segundos_aluno = models.FloatField(null=True, blank=True)
+    segundos_tutor = models.FloatField(null=True, blank=True)
+    ppm_aluno = models.FloatField(null=True, blank=True, help_text='Só quando medido')
+    palavras_por_turno = models.FloatField(null=True, blank=True)
+    quota_fala_aluno = models.FloatField(null=True, blank=True, help_text='0-1: parte do tempo de fala que foi do aluno')
+    fonte_tempo = models.CharField(max_length=10, blank=True, default='', help_text="'medido' | 'estimado'")
     corrections_count = models.PositiveIntegerField(default=0)
     
     # Progress Indicators
@@ -1438,6 +1442,90 @@ class ChallengeAttempt(models.Model):
         return f"{self.user_id} - {self.challenge_id} ({'ok' if self.is_correct else 'wrong'})"
 
 
+class TentativaPronuncia(models.Model):
+    """
+    Cada gravação de um exercício de falar (SPEAKING) analisada em analyze-ai-pronunciation/.
+
+    Guarda o que o aluno disse (transcrição), as notas e as palavras a melhorar: é a base
+    do perfil de fala do aluno. A resposta (certa/errada) também fica em ChallengeAttempt,
+    para as estatísticas de acerto e a revisão incluírem a fala.
+    """
+    FONTE_IA = 'ia'
+    FONTE_SIMULADA = 'simulada'
+    FONTE_CHOICES = [(FONTE_IA, 'IA'), (FONTE_SIMULADA, 'Simulada (desenvolvimento)')]
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tentativas_pronuncia')
+    # SET_NULL: o histórico de fala do aluno fica mesmo que o professor apague o exercício.
+    challenge = models.ForeignKey(PracticeChallenge, on_delete=models.SET_NULL, null=True, blank=True,
+                                  related_name='tentativas_pronuncia')
+    resposta = models.OneToOneField(ChallengeAttempt, on_delete=models.SET_NULL, null=True, blank=True,
+                                    related_name='pronuncia')
+    texto_esperado = models.TextField()
+    transcricao = models.TextField(blank=True, default='')
+    nota_pronuncia = models.PositiveSmallIntegerField(default=0)
+    nota_fluencia = models.PositiveSmallIntegerField(default=0)
+    nota_clareza = models.PositiveSmallIntegerField(default=0)
+    nota_geral = models.PositiveSmallIntegerField(default=0)
+    palavras_problematicas = models.JSONField(default=list, blank=True)
+    sugestoes = models.JSONField(default=list, blank=True)
+    feedback = models.TextField(blank=True, default='')
+    aceite = models.BooleanField()
+    fonte = models.CharField(max_length=10, choices=FONTE_CHOICES, default=FONTE_IA)
+
+    # Onde foi gravada (para os minutos a falar por actividade). Vazio nas tentativas antigas.
+    ORIGEM_LICAO = 'licao'
+    ORIGEM_RESPONDER = 'responder'
+    ORIGEM_REVISAO = 'revisao'
+    ORIGEM_AULA = 'aula'
+    ORIGEM_CHOICES = [(ORIGEM_LICAO, 'Lição (ler em voz alta)'), (ORIGEM_RESPONDER, 'Responder'),
+                      (ORIGEM_REVISAO, 'Revisão'), (ORIGEM_AULA, 'Aula em vídeo (repetir)')]
+    origem = models.CharField(max_length=12, choices=ORIGEM_CHOICES, blank=True, default='')
+
+    # Fase 3: métricas de fluência a partir dos tempos das palavras (services/metricas_fala.py).
+    # Vazias quando não foi possível medir nem estimar (tentativas antigas).
+    segundos_fala = models.FloatField(null=True, blank=True,
+                                      help_text='Da 1.ª à última palavra, sem as pausas longas (> 1 s)')
+    palavras_ditas = models.PositiveSmallIntegerField(null=True, blank=True)
+    ppm = models.FloatField(null=True, blank=True, help_text='Palavras por minuto (inclui as pausas)')
+    pausas_longas = models.PositiveSmallIntegerField(null=True, blank=True)
+    pausas_longas_s = models.FloatField(null=True, blank=True)
+    maior_pausa_s = models.FloatField(null=True, blank=True)
+    fonte_tempo = models.CharField(max_length=10, blank=True, default='', help_text="'medido' | 'estimado'")
+    tempos_palavras = models.JSONField(null=True, blank=True, help_text='[[palavra, início, fim], ...] em segundos')
+
+    # Avaliação da pronúncia: 'texto' (transcrição comparada com o texto) ou 'azure' (detalhada).
+    AVALIACAO_TEXTO = 'texto'
+    AVALIACAO_AZURE = 'azure'
+    avaliacao = models.CharField(max_length=10, blank=True, default=AVALIACAO_TEXTO)
+    nota_completude = models.PositiveSmallIntegerField(null=True, blank=True)
+    nota_prosodia = models.PositiveSmallIntegerField(null=True, blank=True)
+    palavras_detalhe = models.JSONField(null=True, blank=True,
+                                        help_text='Avaliação detalhada: [{palavra, nota, erro_tipo, fonemas}]')
+    criada_em = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-criada_em']
+        indexes = [models.Index(fields=['user', '-criada_em'])]
+
+    def __str__(self):
+        return f"{self.user_id} - {self.challenge_id} ({self.nota_geral})"
+
+
+class AvaliacaoDetalhadaDia(models.Model):
+    """Avaliações de pronúncia detalhadas (fornecedor pago, p.ex. Azure) feitas por aluno e dia de Luanda.
+    O limite diário vem do plano (SubscriptionPlan.daily_detailed_pronunciation_limit)."""
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='avaliacoes_detalhadas')
+    dia = models.DateField()
+    usadas = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['user', 'dia'], name='avaliacao_detalhada_unica_dia')]
+
+    def __str__(self):
+        return f"{self.user_id} {self.dia}: {self.usadas}"
+
+
 class PointsEntry(models.Model):
     """
     Ledger of points earned (one row per UserProgress.add_points call).
@@ -1494,6 +1582,15 @@ class Situacao(models.Model):
                                    related_name='situacoes_criadas')
     ordem = models.PositiveIntegerField(default=100)
     extras = models.JSONField(default=dict, blank=True)
+    # Lugar da conversa no percurso do curso (apps/courses/percurso.py): a aula depois da qual o
+    # aluno a deve fazer, e se é a conversa guiada (a meio da unidade) ou a livre (no fim).
+    # Vazios = conversa solta do curso (aparece só na lista de conversas).
+    GUIADA = 'guiada'
+    LIVRE = 'livre'
+    TIPOS_CONVERSA = [GUIADA, LIVRE]
+    aula = models.ForeignKey('courses.Chapter', on_delete=models.SET_NULL, null=True, blank=True,
+                             related_name='situacoes_conversa')
+    tipo_conversa = models.CharField(max_length=10, blank=True, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -1502,3 +1599,25 @@ class Situacao(models.Model):
 
     def __str__(self):
         return f"{self.nome} ({self.slug})"
+
+
+class ConfiguracaoTutor(models.Model):
+    """
+    O modelo de IA do tutor de conversa (no Vapi) e o tempo máximo de cada conversa. Uma só linha,
+    editada pelo admin (/api/v1/admin/tutor/); sem linha, valem as definições do servidor
+    (CONVERSA_VAPI_PROVEDOR, CONVERSA_VAPI_MODELO, CONVERSA_MAX_MINUTOS_SESSAO). Os minutos por
+    plano (dia, mês, teste) ficam nos planos (SubscriptionPlan).
+    """
+    PROVEDORES = [('anthropic', 'Anthropic (Claude)'), ('openai', 'OpenAI (GPT)')]
+    provedor = models.CharField(max_length=20, choices=PROVEDORES, default='anthropic')
+    modelo = models.CharField(max_length=80)
+    max_minutos_sessao = models.PositiveSmallIntegerField(default=15)
+    alterado_em = models.DateTimeField(auto_now=True)
+    alterado_por = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='+')
+
+    class Meta:
+        db_table = 'configuracao_tutor'
+        verbose_name = 'Configuração do tutor de conversa'
+
+    def __str__(self):
+        return f'{self.provedor}/{self.modelo}'

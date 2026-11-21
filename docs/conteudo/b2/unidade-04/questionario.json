@@ -1,0 +1,301 @@
+{
+ "title": "B2.1 Unit 4 quiz — Client care",
+ "description": "A passiva em todos os tempos, have something done, empatia, reclamações, claim e requirement.",
+ "questions": [
+  {
+   "id": "b2u4q1",
+   "question": "\"Está a ser revisto pelos nossos advogados.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u4q1o0",
+     "text": "It's being reviewed by our lawyers.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u4q1o1",
+     "text": "It's been reviewing by our lawyers.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u4q1o2",
+     "text": "It is reviewing by our lawyers.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u4q1o0",
+   "explanation": "Passiva contínua: is being + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b2u4q2",
+   "question": "Complete: \"The invoice ___ paid.\" (já está paga)",
+   "options": [
+    {
+     "id": "b2u4q2o0",
+     "text": "has been",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u4q2o1",
+     "text": "has",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u4q2o2",
+     "text": "is being",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u4q2o0",
+   "explanation": "Passiva no present perfect.",
+   "points": 10
+  },
+  {
+   "id": "b2u4q3",
+   "question": "\"Devia ter sido verificado.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u4q3o0",
+     "text": "It should have been checked.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u4q3o1",
+     "text": "It should been checked.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u4q3o2",
+     "text": "It should have checked.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u4q3o0",
+   "explanation": "should have been + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b2u4q4",
+   "question": "Complete: \"Every contract must ___ by two people.\"",
+   "options": [
+    {
+     "id": "b2u4q4o0",
+     "text": "be checked",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u4q4o1",
+     "text": "checked",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u4q4o2",
+     "text": "been checked",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u4q4o0",
+   "explanation": "modal + be + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b2u4q5",
+   "question": "\"Vou cortar o cabelo amanhã\" (no barbeiro). Em inglês:",
+   "options": [
+    {
+     "id": "b2u4q5o0",
+     "text": "I'm going to get my hair cut tomorrow.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u4q5o1",
+     "text": "I'm going to cut my hair tomorrow.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u4q5o2",
+     "text": "I'm going to have cut my hair tomorrow.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u4q5o0",
+   "explanation": "get / have + objecto + particípio.",
+   "points": 10
+  },
+  {
+   "id": "b2u4q6",
+   "question": "\"I had the windscreen replaced.\" Quem substituiu o pára-brisas?",
+   "options": [
+    {
+     "id": "b2u4q6o0",
+     "text": "outra pessoa, a pedido do falante",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u4q6o1",
+     "text": "o próprio falante",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u4q6o2",
+     "text": "ninguém",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u4q6o0",
+   "explanation": "have something done = outra pessoa faz.",
+   "points": 10
+  },
+  {
+   "id": "b2u4q7",
+   "question": "\"O cliente reclamou do atraso.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u4q7o0",
+     "text": "The client complained about the delay.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u4q7o1",
+     "text": "The client claimed about the delay.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u4q7o2",
+     "text": "The client reclaimed the delay.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u4q7o0",
+   "explanation": "Falso amigo: claim = afirmar; pedir uma indemnização.",
+   "points": 10
+  },
+  {
+   "id": "b2u4q8",
+   "question": "\"Um capacete é um requisito na obra.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u4q8o0",
+     "text": "A helmet is a requirement on site.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u4q8o1",
+     "text": "A helmet is a requisition on site.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u4q8o2",
+     "text": "A helmet is a request on site.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u4q8o0",
+   "explanation": "requirement = requisito; \"requerimento\" = application.",
+   "points": 10
+  },
+  {
+   "id": "b2u4q9",
+   "question": "Um cliente está furioso. A melhor primeira frase é…",
+   "options": [
+    {
+     "id": "b2u4q9o0",
+     "text": "I'm very sorry. That must have been very stressful.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u4q9o1",
+     "text": "Calm down, please.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u4q9o2",
+     "text": "It's not my fault.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u4q9o0",
+   "explanation": "Empatia primeiro; nunca \"calm down\".",
+   "points": 10
+  },
+  {
+   "id": "b2u4q10",
+   "question": "Reciclagem (B2, unidade 3). Complete: \"We can lower the price, provided that you ___ today.\"",
+   "options": [
+    {
+     "id": "b2u4q10o0",
+     "text": "sign",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u4q10o1",
+     "text": "will sign",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u4q10o2",
+     "text": "would sign",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u4q10o0",
+   "explanation": "Depois de provided that: presente.",
+   "points": 10
+  },
+  {
+   "id": "b2u4q11",
+   "question": "Reciclagem (B2, unidade 3). \"Mil milhões\" em inglês:",
+   "options": [
+    {
+     "id": "b2u4q11o0",
+     "text": "a billion",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u4q11o1",
+     "text": "a trillion",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u4q11o2",
+     "text": "a million million",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u4q11o0",
+   "explanation": "billion = mil milhões.",
+   "points": 10
+  },
+  {
+   "id": "b2u4q12",
+   "question": "Reciclagem (B2, unidade 2). \"Até sexta, teremos reparado tudo.\" Em inglês:",
+   "options": [
+    {
+     "id": "b2u4q12o0",
+     "text": "By Friday, we'll have repaired everything.",
+     "isCorrect": true
+    },
+    {
+     "id": "b2u4q12o1",
+     "text": "Until Friday, we'll have repaired everything.",
+     "isCorrect": false
+    },
+    {
+     "id": "b2u4q12o2",
+     "text": "By Friday, we'll repaired everything.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b2u4q12o0",
+   "explanation": "Future perfect com by.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

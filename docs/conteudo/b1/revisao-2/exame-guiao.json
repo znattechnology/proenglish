@@ -1,0 +1,91 @@
+{
+ "formato": "CourseGradingConfig.exam_script (apps/practice/conversa/exame.py, validar_guiao); carregar com manage.py carregar_exame_curso",
+ "nivel": "B1",
+ "duracao": "9 to 10 minutes",
+ "max_minutos": 10,
+ "situacoes": 1,
+ "partes": [
+  {
+   "titulo": "Interview",
+   "minutos": "about 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Hello, {nome}. Welcome to your B1.2 speaking exam. What are you working on at the moment, at work or in your studies?",
+     "simples": "What are you doing at work these days?"
+    },
+    {
+     "pergunta": "Tell me about a phone call or a meeting you had recently. What did the other person say or ask?",
+     "simples": "Did you have an important call this week? What did they say?"
+    },
+    {
+     "pergunta": "What will you be doing this time next month? And what are you hoping to do next year?",
+     "simples": "What are your plans for next year?"
+    }
+   ]
+  },
+  {
+   "titulo": "Long turn",
+   "minutos": "about 2 minutes",
+   "perguntas": [
+    {
+     "pergunta": "Now I'd like you to talk for about one and a half minutes. Tell me about an incident or a problem you lived — at work, at school or at home. What happened, why did it happen, and what did you do? You can take a few seconds to think.",
+     "simples": "Tell me about a problem you had. What happened, and what did you do?"
+    },
+    {
+     "pergunta": "Thank you. Why do you think it happened? Could it have been avoided?",
+     "simples": "Why did it happen?"
+    },
+    {
+     "pergunta": "Looking back, what should you have done differently?",
+     "simples": "What should you have done?"
+    }
+   ]
+  }
+ ],
+ "notas": [
+  "Ask one question at a time and wait. Do not correct, teach or give hints during the exam.",
+  "If the student answers with one word or one short sentence, ask Can you tell me more? once per question.",
+  "In Part 2, let the student talk for about one and a half minutes without interrupting. If they stop after two or three sentences, ask And then what happened? once.",
+  "If the student does not work, ask about their studies, their home or a trip: a problem at school, a problem with a car, a lost bag.",
+  "In the situation, create the difficulty described in it once, so the student has to give a reason, a detail or a new solution.",
+  "After the situation, ask its discussion question, then give the opposite view once and ask the student to answer it. This is Part 4 (about 1 to 2 minutes).",
+  "If the student says That is an interesting question, What I mean is..., Sorry, I mean... or asks Do you mean...?, continue normally.",
+  "Use any B1 language, but no mixed conditionals, no wish or if only, and no passives with modals in the past."
+ ],
+ "escala": {
+  "tarefa": {
+   "80-100": "Answers every question with details; tells the story in a clear order, with causes and what was done; reports, summarises or explains with numbers in the situation, including the difficulty; answers the counter-argument with a reason.",
+   "60-79": "Answers most questions with some details; the story is clear, but the causes are short; completes the situation with some help; gives an opinion, but the answer to the counter-argument is short.",
+   "40-59": "Short answers; the story is hard to follow; the situation is only half done; no real answer to the counter-argument.",
+   "0-39": "Answers few questions, or answers in Portuguese."
+  },
+  "gramatica": {
+   "80-100": "Chooses well among many tenses (narrative tenses with the past perfect, the future continuous); reports with reported speech; uses deduction, the third conditional and should have mostly correctly.",
+   "60-79": "Uses the B1.2 structures with some mistakes (for example She said me…, or would after if), but the meaning is always clear.",
+   "40-59": "Mostly A2 and B1.1 structures; frequent mistakes that sometimes make the meaning unclear.",
+   "0-39": "Very few correct sentences."
+  },
+  "vocabulario": {
+   "80-100": "Uses the words and collocations of B1 units 6-10 (incidents, calls, money and budgets, news, reviews) with ease, and explains words they do not know.",
+   "60-79": "Enough words for the tasks; some pauses to find words; explains some missing words.",
+   "40-59": "Basic work words are missing; the student often stops.",
+   "0-39": "Very few words, or many Portuguese words."
+  },
+  "fluencia": {
+   "80-100": "Long, organised turns with connectors (although, however, therefore, as a result, on the one hand); manages the conversation; few long pauses.",
+   "60-79": "Some long turns with connectors; pauses to organise ideas, but keeps going.",
+   "40-59": "Short, separate sentences and long pauses; needs help to continue.",
+   "0-39": "Can hardly continue without help."
+  }
+ },
+ "nao_baixa": [
+  "a Portuguese or Angolan accent",
+  "asking the examiner to repeat or to explain a question",
+  "saying That is an interesting question or Let me think to get time",
+  "pauses to organise ideas in the long turn",
+  "saying What I mean is... or In other words... to explain a word",
+  "correcting yourself with Sorry, I mean...",
+  "disagreeing with the examiner, politely",
+  "one wrong past participle when the structure is correct"
+ ]
+}

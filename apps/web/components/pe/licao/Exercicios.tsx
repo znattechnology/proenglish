@@ -1,19 +1,31 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Mic, Square } from "lucide-react";
+import { Mic, Square, Volume2 } from "lucide-react";
 import { cnPe } from "@/lib/pe";
-import type { Exercicio, Resposta } from "@/src/domains/student/laboratorio/api";
+import { falarNoBrowser } from "@/components/pe/conversa/useConversa";
+import type { Exercicio, Resposta, ResultadoResponder } from "@/src/domains/student/laboratorio/api";
 import { BalaoEnunciado, BotaoOuvir, Enunciado } from "./Partes";
+import { ConversaCurta } from "./ConversaCurta";
+import { AvisoAnaliseAproximada, PalavrasComNota } from "@/components/pe/fala/Fala";
+import { MAX_SEGUNDOS_GRAVACAO, MENSAGEM_SEM_GRAVACAO, motivoSemGravacao, type EstadoMicrofone } from "@/components/pe/fala/gravacao";
+import type { DetalhePronuncia } from "@/src/domains/student/fala/api";
 
 export type RespostaExercicio = { tipo: "texto"; resposta: Resposta } | { tipo: "audio"; audio: Blob } | null;
 export type EstadoVisual = "livre" | "certo" | "errado";
+/** Resultado da análise de pronúncia, mostrado no exercício de falar depois de verificar. */
+export type ResultadoFala = { nota: number; palavras: string[]; mensagem?: string | null; detalhe?: DetalhePronuncia | null; fonte?: string | null };
 
 type Props = {
   ex: Exercicio;
   bloqueado: boolean;
   visual: EstadoVisual;
   aoMudar: (r: RespostaExercicio) => void;
+  fala?: ResultadoFala | null;
+  /** Responder: o veredicto depois de verificar. */
+  avaliacao?: ResultadoResponder | null;
+  /** Conversa curta: saltar o exercício (sem pontos nem vidas). */
+  aoSaltar?: () => void;
 };
 
 const ESPACO = /_{2,}|\[\s*\]/g;
@@ -41,6 +53,9 @@ function Escolha({ ex, bloqueado, visual, aoMudar }: Props) {
   const [id, setId] = useState<string | null>(null);
   const opcoes = ex.opcoes ?? [];
   const comImagens = opcoes.some((o) => o.imagem);
+  // Todas com imagem ("Escolha a imagem: a receipt"): o texto da opção não se vê (seria a resposta),
+  // mas o leitor de ecrã continua a lê-lo.
+  const soImagens = opcoes.length > 0 && opcoes.every((o) => o.imagem);
   const vf = ex.tipo === "TRUE_FALSE";
 
   const escolher = (oid: string) => {
@@ -98,14 +113,14 @@ function Escolha({ ex, bloqueado, visual, aoMudar }: Props) {
               {comImagens ? (
                 o.imagem ? (
                   // eslint-disable-next-line @next/next/no-img-element -- imagens do professor (URL externo)
-                  <img src={o.imagem} alt="" className="h-28 w-full rounded-pe-sm bg-pe-fundo-forte object-cover md:h-32" />
+                  <img src={o.imagem} alt="" className="h-28 w-full rounded-pe-sm bg-white object-contain p-1 md:h-32" />
                 ) : (
                   <span aria-hidden className="h-28 w-full rounded-pe-sm bg-pe-fundo-forte md:h-32" />
                 )
               ) : vf ? null : (
                 <Numero n={i + 1} />
               )}
-              <span className="min-w-0">{o.texto}</span>
+              <span className={cnPe("min-w-0", soImagens && "sr-only")}>{o.texto}</span>
             </button>
           );
         })}
@@ -413,15 +428,60 @@ function Pares({ ex, bloqueado, visual, aoMudar }: Props) {
 /* ------------------------------------------------------------------ */
 /* Falar: grava a frase e envia para análise de pronúncia               */
 /* ------------------------------------------------------------------ */
-function Falar({ ex, bloqueado, aoMudar }: Props) {
+const soLetras = (t: string) => t.toLowerCase().replace(/[^a-z0-9']/g, "");
+
+/** A frase com as palavras a treinar marcadas, a nota e o comentário da análise. */
+function ResultadoPronuncia({ frase, fala }: { frase: string; fala: ResultadoFala }) {
+  const marcar = new Set(fala.palavras.flatMap((p) => p.split(/\s+/)).map(soLetras).filter(Boolean));
+  const partes = frase.split(/(\s+)/);
+  const marcadas = partes.some((p) => marcar.has(soLetras(p)));
+  return (
+    <div role="status" className="flex w-full max-w-[560px] flex-col gap-2 rounded-pe-md bg-pe-fundo-suave px-4 py-3">
+      <p className="m-0 flex items-baseline gap-2">
+        <span className="font-pe-titulo text-[28px] font-bold leading-8">{Math.round(fala.nota)}</span>
+        <span className="text-pe-legenda text-pe-tinta-suave">de 100 na pronúncia</span>
+      </p>
+      <AvisoAnaliseAproximada fonte={fala.fonte} className="-mt-1" />
+      {fala.detalhe ? (
+        <PalavrasComNota detalhe={fala.detalhe} />
+      ) : frase ? (
+        <p className="m-0 text-[17px] leading-7">
+          {partes.map((p, i) =>
+            marcar.has(soLetras(p)) ? (
+              <mark key={i} className="rounded-[4px] bg-pe-errado-suave px-0.5 text-inherit underline decoration-pe-errado decoration-2 underline-offset-4">
+                {p}
+              </mark>
+            ) : (
+              <span key={i}>{p}</span>
+            )
+          )}
+        </p>
+      ) : null}
+      {marcadas && !fala.detalhe ? <p className="m-0 text-pe-legenda text-pe-tinta-suave">Sublinhadas: as palavras a treinar.</p> : null}
+      {fala.mensagem ? <p className="m-0 text-[15px] leading-[22px]">{fala.mensagem}</p> : null}
+    </div>
+  );
+}
+
+type EstadoGravacao = EstadoMicrofone;
+
+/** Grava com o MediaRecorder; cada gravação acabada vai para aoMudar como {tipo: "audio"}. Pára sozinha ao fim de MAX_SEGUNDOS_GRAVACAO (90 s). */
+function useGravador(aoMudar: Props["aoMudar"]) {
   // Só é montado no browser (a lição carrega depois dos dados), por isso pode ver-se já o suporte.
-  const [estado, setEstado] = useState<"parado" | "a-gravar" | "gravado" | "sem-permissao" | "sem-suporte">(() =>
-    typeof window !== "undefined" && !("MediaRecorder" in window) ? "sem-suporte" : "parado"
+  const [estado, setEstado] = useState<EstadoGravacao>(() =>
+    typeof window !== "undefined" && (!("MediaRecorder" in window) || !navigator.mediaDevices?.getUserMedia) ? "sem-suporte" : "parado"
   );
   const gravador = useRef<MediaRecorder | null>(null);
   const pedacos = useRef<Blob[]>([]);
+  const limite = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => () => gravador.current?.stream.getTracks().forEach((t) => t.stop()), []);
+  useEffect(
+    () => () => {
+      if (limite.current) clearTimeout(limite.current);
+      gravador.current?.stream.getTracks().forEach((t) => t.stop());
+    },
+    []
+  );
 
   const comecar = async () => {
     try {
@@ -430,6 +490,7 @@ function Falar({ ex, bloqueado, aoMudar }: Props) {
       pedacos.current = [];
       rec.ondataavailable = (e) => e.data.size && pedacos.current.push(e.data);
       rec.onstop = () => {
+        if (limite.current) clearTimeout(limite.current);
         stream.getTracks().forEach((t) => t.stop());
         const audio = new Blob(pedacos.current, { type: rec.mimeType || "audio/webm" });
         setEstado("gravado");
@@ -437,46 +498,157 @@ function Falar({ ex, bloqueado, aoMudar }: Props) {
       };
       gravador.current = rec;
       rec.start();
+      limite.current = setTimeout(() => rec.state === "recording" && rec.stop(), MAX_SEGUNDOS_GRAVACAO * 1000);
       setEstado("a-gravar");
       aoMudar(null);
-    } catch {
-      setEstado("sem-permissao");
+    } catch (e) {
+      setEstado(motivoSemGravacao(e));
     }
   };
   const parar = () => gravador.current?.state === "recording" && gravador.current.stop();
+  return { estado, comecar, parar };
+}
 
+function BotaoGravar({ estado, comecar, parar, bloqueado }: ReturnType<typeof useGravador> & { bloqueado: boolean }) {
+  return (
+    <>
+      {estado === "sem-permissao" || estado === "sem-microfone" ? (
+        <p role="alert" className="m-0 max-w-[420px] rounded-pe-md bg-pe-realce-suave px-4 py-3 text-center text-[15px]">
+          {MENSAGEM_SEM_GRAVACAO[estado]}
+        </p>
+      ) : null}
+      {estado === "sem-suporte" ? (
+        <p role="alert" className="m-0 rounded-pe-md bg-pe-realce-suave px-4 py-3 text-center text-[15px]">Este navegador não consegue gravar áudio. Experimente no Chrome ou no Safari actualizado.</p>
+      ) : (
+        <button
+          type="button"
+          disabled={bloqueado}
+          onClick={estado === "a-gravar" ? parar : comecar}
+          aria-label={estado === "a-gravar" ? "Parar a gravação" : "Gravar"}
+          className={cnPe(
+            "pe-sobre-marca flex size-20 items-center justify-center rounded-pe-fala text-pe-sobre-marca disabled:opacity-60",
+            estado === "a-gravar" ? "bg-pe-errado" : "bg-pe-azul-marca hover:bg-pe-azul-vivo"
+          )}
+        >
+          {estado === "a-gravar" ? <Square aria-hidden className="size-8 fill-current" /> : <Mic aria-hidden className="size-9" />}
+        </button>
+      )}
+    </>
+  );
+}
+
+function textoGravacao(estado: EstadoGravacao) {
+  return estado === "a-gravar" ? `A gravar… toque para parar (no máximo ${MAX_SEGUNDOS_GRAVACAO} segundos)` : estado === "gravado" ? "Gravado. Pode verificar ou gravar outra vez." : "Toque para gravar";
+}
+
+function Falar({ ex, bloqueado, aoMudar, fala }: Props) {
+  const g = useGravador(aoMudar);
   return (
     <Enunciado titulo={ex.instrucao || "Diga esta frase em voz alta"}>
       <BalaoEnunciado audio={ex.audio}>
         <span className="font-pe-titulo font-light italic">{ex.frase}</span>
       </BalaoEnunciado>
       <div className="flex flex-col items-center gap-3 pt-2">
-        {estado === "sem-permissao" ? (
-          <p role="alert" className="m-0 max-w-[420px] rounded-pe-md bg-pe-realce-suave px-4 py-3 text-center text-[15px]">
-            O navegador não deixou usar o microfone. Permita o microfone nas definições do navegador e volte a tocar em gravar.
-          </p>
-        ) : null}
-        {estado === "sem-suporte" ? (
-          <p role="alert" className="m-0 rounded-pe-md bg-pe-realce-suave px-4 py-3 text-center text-[15px]">Este navegador não consegue gravar áudio. Experimente no Chrome ou no Safari actualizado.</p>
+        <BotaoGravar {...g} bloqueado={bloqueado} />
+        {fala ? (
+          <ResultadoPronuncia frase={ex.frase ?? ex.pergunta ?? ""} fala={fala} />
         ) : (
-          <button
-            type="button"
-            disabled={bloqueado}
-            onClick={estado === "a-gravar" ? parar : comecar}
-            aria-label={estado === "a-gravar" ? "Parar a gravação" : "Gravar"}
-            className={cnPe(
-              "pe-sobre-marca flex size-20 items-center justify-center rounded-pe-fala text-pe-sobre-marca disabled:opacity-60",
-              estado === "a-gravar" ? "bg-pe-errado" : "bg-pe-azul-marca hover:bg-pe-azul-vivo"
-            )}
-          >
-            {estado === "a-gravar" ? <Square aria-hidden className="size-8 fill-current" /> : <Mic aria-hidden className="size-9" />}
-          </button>
+          <span aria-live="polite" className="text-pe-legenda text-pe-tinta-suave">
+            {textoGravacao(g.estado)}
+          </span>
         )}
-        <span aria-live="polite" className="text-pe-legenda text-pe-tinta-suave">
-          {estado === "a-gravar" ? "A gravar… toque para parar" : estado === "gravado" ? "Gravado. Pode verificar ou gravar outra vez." : "Toque para gravar"}
-        </span>
       </div>
     </Enunciado>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Responder: ouvir uma pergunta de trabalho e responder em voz alta    */
+/* ------------------------------------------------------------------ */
+const VEREDICTO_RESPONDE = { sim: "Respondeu à pergunta", parcial: "Respondeu em parte", nao: "Ainda não respondeu à pergunta" } as const;
+
+function Responder({ ex, bloqueado, aoMudar, avaliacao }: Props) {
+  const g = useGravador(aoMudar);
+  const [aOuvir, setAOuvir] = useState(false);
+  useEffect(() => () => window.speechSynthesis?.cancel(), []);
+  const ouvir = () => {
+    setAOuvir(true);
+    falarNoBrowser(ex.pergunta, () => setAOuvir(false));
+  };
+  return (
+    <Enunciado titulo="Responda em voz alta">
+      {ex.contexto ? <p className="m-0 -mt-2 text-pe-tinta-suave md:-mt-4">{ex.contexto}</p> : null}
+      <div className="pe-sobre-marca flex max-w-[560px] flex-col gap-1.5 self-start rounded-pe-fala bg-pe-azul-marca px-6 py-4 text-pe-sobre-marca md:px-7 md:py-5">
+        <p lang="en" className="m-0 text-[20px] leading-[30px] md:text-[24px] md:leading-9">
+          {ex.pergunta}
+        </p>
+        <button type="button" onClick={ouvir} className="inline-flex min-h-11 items-center gap-2 self-start bg-transparent p-0 text-[15px] font-semibold text-pe-sobre-marca underline underline-offset-[3px]">
+          <Volume2 aria-hidden className="size-5" />
+          {aOuvir ? "A ler a pergunta" : "Ouvir a pergunta"}
+        </button>
+      </div>
+      {ex.frase ? (
+        <div className="flex flex-col gap-0.5 border-l-4 border-pe-realce pl-4">
+          <span className="text-pe-legenda text-pe-tinta-suave">Use esta frase na resposta</span>
+          <span lang="en" className="font-pe-titulo text-[19px] font-semibold leading-7 md:text-[21px]">
+            {ex.frase}
+          </span>
+        </div>
+      ) : null}
+      <div className="flex flex-col items-center gap-3 pt-1">
+        <BotaoGravar {...g} bloqueado={bloqueado} />
+        {avaliacao ? (
+          <AvaliacaoResposta a={avaliacao} />
+        ) : (
+          <span aria-live="polite" className="text-pe-legenda text-pe-tinta-suave">
+            {textoGravacao(g.estado)}
+          </span>
+        )}
+      </div>
+    </Enunciado>
+  );
+}
+
+/** O que o aluno disse, o veredicto, a correcção (no máximo uma) e uma resposta possível. */
+function AvaliacaoResposta({ a }: { a: ResultadoResponder }) {
+  const linhas: [boolean, string][] = [
+    [a.responde !== "nao", VEREDICTO_RESPONDE[a.responde]],
+    [a.usou_frase, a.usou_frase ? "Usou a frase" : "Ainda não usou a frase"],
+  ];
+  return (
+    <div role="status" className="flex w-full max-w-[560px] flex-col gap-3 rounded-pe-md bg-pe-fundo-suave px-4 py-3.5">
+      <div className="flex flex-col gap-0.5">
+        <span className="text-pe-legenda text-pe-tinta-suave">Ouvimos</span>
+        <p lang="en" className="m-0 text-[17px] italic leading-7">
+          {a.transcricao}
+        </p>
+      </div>
+      <ul className="m-0 flex list-none flex-col gap-1 p-0">
+        {linhas.map(([ok, texto]) => (
+          <li key={texto} className="flex items-center gap-2 text-[15px] font-semibold">
+            <span aria-hidden className={cnPe("size-2.5 shrink-0 rounded-full", ok ? "bg-pe-certo" : "bg-pe-errado")} />
+            {texto}
+          </li>
+        ))}
+      </ul>
+      {a.correccao ? (
+        <div className="flex flex-col gap-0.5">
+          <p lang="en" className="m-0 text-[16px] leading-6">
+            <s className="text-pe-tinta-suave">{a.correccao.disse}</s> <span className="font-semibold">{a.correccao.certo}</span>
+          </p>
+          <p className="m-0 text-pe-legenda text-pe-tinta-suave">{a.correccao.porque}</p>
+        </div>
+      ) : null}
+      {a.comentario ? <p className="m-0 text-[15px] leading-[22px]">{a.comentario}</p> : null}
+      {a.exemplo ? (
+        <div className="flex flex-col gap-0.5 border-t border-pe-linha pt-2.5">
+          <span className="text-pe-legenda text-pe-tinta-suave">Uma resposta possível</span>
+          <p lang="en" className="m-0 text-[16px] leading-6">
+            {a.exemplo}
+          </p>
+        </div>
+      ) : null}
+    </div>
   );
 }
 
@@ -484,14 +656,15 @@ function Falar({ ex, bloqueado, aoMudar }: Props) {
 /* Indisponível: conversa (desligada) e escuta sem áudio. O aluno salta. */
 /* ------------------------------------------------------------------ */
 function Indisponivel({ ex }: Props) {
-  const conversa = ex.motivo === "conversa";
+  const textos = {
+    conversa: ["Conversa com o tutor", "Esta conversa ainda não está pronta. Pode continuar: este exercício não conta pontos nem tira vidas."],
+    incompleto: ["Responder em voz alta", "Este exercício ainda não está pronto. Pode continuar: não conta pontos nem tira vidas."],
+    sem_audio: ["Exercício de escuta", "Este exercício de escuta ainda não tem áudio. Pode continuar: não conta pontos nem tira vidas."],
+  } as const;
+  const [titulo, texto] = textos[ex.motivo ?? "sem_audio"];
   return (
-    <Enunciado titulo={conversa ? "Conversa com o tutor" : "Exercício de escuta"}>
-      <p className="m-0 rounded-pe-md bg-pe-fundo-suave px-4 py-3 text-pe-tinta-suave">
-        {conversa
-          ? "A conversa dentro da lição não está disponível por agora. Pode continuar: este exercício não conta pontos nem tira vidas."
-          : "Este exercício de escuta ainda não tem áudio. Pode continuar: não conta pontos nem tira vidas."}
-      </p>
+    <Enunciado titulo={titulo}>
+      <p className="m-0 rounded-pe-md bg-pe-fundo-suave px-4 py-3 text-pe-tinta-suave">{texto}</p>
     </Enunciado>
   );
 }
@@ -510,6 +683,10 @@ export function ExercicioUI(props: Props) {
       return <Pares {...props} />;
     case "falar":
       return <Falar {...props} />;
+    case "responder":
+      return <Responder {...props} />;
+    case "conversa":
+      return <ConversaCurta ex={props.ex} bloqueado={props.bloqueado} aoMudar={props.aoMudar} aoSaltar={props.aoSaltar} />;
     default:
       return <Indisponivel {...props} />;
   }
@@ -520,6 +697,8 @@ export function dicaTeclado(ex: Exercicio) {
   if (ex.modo === "escolha") return `No teclado: 1 a ${ex.opcoes?.length ?? 4} para escolher, Enter para verificar.`;
   if (ex.modo === "escrever") return "Escreva a resposta e carregue em Enter.";
   if (ex.modo === "falar") return "Grave, ouça o modelo se precisar, e depois verifique.";
+  if (ex.modo === "responder") return "Ouça a pergunta, grave a sua resposta e depois verifique.";
+  if (ex.modo === "conversa") return "Fale com o tutor; no fim carregue em Verificar.";
   if (ex.modo === "indisponivel") return "Carregue em Enter para continuar.";
   return "Tab para andar entre as palavras, Enter para escolher.";
 }

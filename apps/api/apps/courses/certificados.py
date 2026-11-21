@@ -4,7 +4,10 @@ Certificados de conclusão de curso: número, emissão, verificação pública e
 Regras:
 - Só planos com `certificates=True` (Premium, Premium Plus) e subscrição activa.
 - O aluno tem de estar inscrito, ter 100% do curso concluído e cumprir os requisitos
-  do GradeCalculatorService (inclui a nota final mínima, 70% por omissão).
+  do GradeCalculatorService (inclui a nota final mínima, 70% por omissão, e passar no exame
+  oral do curso: fase 6).
+- O certificado mostra o nível de fala atingido no exame oral ("Nível de fala B1 em situações de
+  trabalho de <área>") e as notas por competência (PDF e verificação pública).
 - Número PE-C-<YYYY>-<NNNNNN>, sequencial por ano na hora de Angola (como os recibos
   PE-R-... de apps.pagamentos).
 - A emissão é automática (signals: nota guardada elegível ou progresso a 100%) e também
@@ -141,8 +144,13 @@ def emitir_certificado(user, course, grade=None):
     Emite (ou devolve o existente) certificado. Devolve (certificado, criado).
     Levanta CertificadoIndisponivel se não for possível.
 
-    `grade`: StudentCourseGrade já calculada (os signals passam-na para não recalcular e
-    não entrar em recursão); sem ela a nota é recalculada aqui.
+    `grade` é ignorada para decidir: a elegibilidade guardada pode ser de uma versão antiga do
+    cálculo (antes do exame oral, por exemplo) e emitia certificados sem exame. Por isso a nota é
+    sempre recalculada aqui com as regras actuais:
+    - sem `grade` (pedido do aluno, progresso a 100%): calculate_and_save (a nota guardada fica
+      actualizada; o signal da nota pode emitir durante o cálculo);
+    - com `grade` (signal da nota guardada): calcular_sem_guardar, para não voltar a gravar a
+      nota e disparar o signal outra vez (recursão).
     """
     from apps.courses.models import CourseCertificate, CourseEnrollment
     from apps.courses.services.grade_calculator import GradeCalculatorService
@@ -152,10 +160,12 @@ def emitir_certificado(user, course, grade=None):
         return existente, False
 
     if not plano_inclui_certificados(user):
+        from apps.subscriptions.oferta import CERTIFICADO, oferta_segura
         raise CertificadoIndisponivel(
             'CERTIFICADOS_NAO_INCLUIDOS',
-            'Os certificados estão incluídos nos planos Premium e Premium Plus.',
+            'O certificado está incluído nos planos pagos. Assine para o receber.',
             status=403,
+            detalhes={'oferta': oferta_segura(user, CERTIFICADO)},
         )
     if not CourseEnrollment.objects.filter(user=user, course=course).exists():
         raise CertificadoIndisponivel('NAO_INSCRITO', 'Não está inscrito neste curso.', status=404)
@@ -167,6 +177,8 @@ def emitir_certificado(user, course, grade=None):
         existente = CourseCertificate.objects.filter(user=user, course=course).first()
         if existente:
             return existente, True
+    else:
+        grade = GradeCalculatorService(user, course).calcular_sem_guardar()
 
     em_falta = requisitos_em_falta(grade, progresso)
     if em_falta:
@@ -189,6 +201,7 @@ def emitir_certificado(user, course, grade=None):
                 final_grade=grade.final_grade_percentage,
                 final_grade_letter=grade.final_grade_letter,
                 verification_code=uuid.uuid4().hex[:12].upper(),
+                **dados_fala(user, course),
             )
     except IntegrityError:  # emitido em paralelo
         return CourseCertificate.objects.get(user=user, course=course), False
@@ -213,6 +226,45 @@ def emitir_se_elegivel(user, course, grade=None):
     except CertificadoIndisponivel as e:
         logger.debug('Certificado não emitido (user=%s, course=%s): %s', user.pk, course.pk, e.codigo)
         return None
+
+
+def exame_do_certificado(user, course):
+    """O exame oral aprovado com a melhor nota efectiva (a revista ganha), ou None."""
+    from apps.courses.models import ExameOral
+    exames = [e for e in ExameOral.objects.filter(user=user, course=course, estado=ExameOral.AVALIADO, aprovado=True)]
+    return max(exames, key=lambda e: (e.nota_efectiva or 0, e.created_at), default=None)
+
+
+def dados_fala(user, course):
+    """Campos do certificado sobre a fala (nivel_fala, area_fala, notas_fala); vazios sem exame."""
+    from apps.courses import ciclo
+    exame = exame_do_certificado(user, course)
+    if exame is None:
+        return {}
+    notas = {k: (round(v) if v is not None else None) for k, v in exame.notas().items()}
+    notas['exame'] = round(exame.nota_efectiva) if exame.nota_efectiva is not None else None
+    return {'nivel_fala': exame.nivel_cefr or '', 'area_fala': ciclo.area_pt(course.category) or '',
+            'notas_fala': notas}
+
+
+def frase_nivel_fala(certificado):
+    """'Nível de fala B1 em situações de trabalho de Petróleo e Gás' (ou None sem exame)."""
+    if not certificado.nivel_fala:
+        return None
+    area = (certificado.area_fala or '').strip()
+    if area and area != 'Geral':
+        return f'Nível de fala {certificado.nivel_fala} em situações de trabalho de {area}'
+    return f'Nível de fala {certificado.nivel_fala} em situações de trabalho'
+
+
+NOMES_NOTAS_FALA = (('fluencia', 'Fluência'), ('gramatica', 'Gramática'), ('vocabulario', 'Vocabulário'),
+                    ('tarefa', 'Tarefas'), ('pronuncia', 'Pronúncia'))
+
+
+def notas_fala_lista(certificado):
+    notas = certificado.notas_fala if isinstance(certificado.notas_fala, dict) else {}
+    return [{'chave': k, 'nome': nome, 'nota': notas.get(k)} for k, nome in NOMES_NOTAS_FALA
+            if notas.get(k) is not None]
 
 
 def _notificar(certificado):
@@ -242,6 +294,10 @@ def dados_verificacao_publica(certificado):
         'curso': certificado.course.title,
         'emitido_em': timezone.localtime(certificado.issued_at, FUSO_ANGOLA).date().isoformat(),
         'nota_final': round(certificado.final_grade, 1) if certificado.final_grade is not None else None,
+        'nivel_fala': certificado.nivel_fala or None,
+        'nivel_fala_texto': frase_nivel_fala(certificado),
+        'nota_exame_oral': (certificado.notas_fala or {}).get('exame') if isinstance(certificado.notas_fala, dict) else None,
+        'notas_fala': notas_fala_lista(certificado),
         'revogado_em': (
             timezone.localtime(certificado.revoked_at, FUSO_ANGOLA).date().isoformat() if revogado else None
         ),

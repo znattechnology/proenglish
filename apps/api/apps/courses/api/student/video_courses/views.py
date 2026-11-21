@@ -5,6 +5,8 @@ This module contains all API views for student video course-related operations,
 maintaining the same endpoints and response format as the Express API.
 """
 
+import uuid
+
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from rest_framework import generics, status, permissions
@@ -41,7 +43,7 @@ class EnrollmentRequiredMixin:
             ...
     """
 
-    def check_enrollment(self, course):
+    def check_enrollment(self, course, chapter=None, parcial=False):
         """
         Check if the current user is enrolled in the course and has proper subscription.
 
@@ -49,6 +51,9 @@ class EnrollmentRequiredMixin:
 
         Args:
             course: The Course model instance
+            chapter: a aula pedida; sem o plano do curso, só abre se estiver numa unidade de
+                amostra (apps/courses/amostra.py). Fora da amostra: 403 plano_insuficiente.
+            parcial: o pedido é do curso (p.ex. o percurso) e basta ter parte dele (a amostra).
 
         Raises:
             PermissionDenied: If user is not enrolled or doesn't have proper subscription
@@ -78,7 +83,7 @@ class EnrollmentRequiredMixin:
             # Check if enrollment has expired
             if enrollment.expires_at and timezone.now() > enrollment.expires_at:
                 raise PermissionDenied(
-                    "A sua matrícula neste curso expirou. Renove para continuar a aceder."
+                    "A sua inscrição neste curso expirou. Renove para continuar a aceder."
                 )
 
         except CourseEnrollment.DoesNotExist:
@@ -89,6 +94,15 @@ class EnrollmentRequiredMixin:
         # SECURITY: Check subscription access for non-free courses
         # This is checked AFTER enrollment to prevent information leakage
         if not course.user_has_access(user):
+            # Unidades de amostra: sem o plano, só as aulas das primeiras unidades.
+            from apps.courses import amostra
+            if amostra.unidades_amostra(course) > 0:
+                if chapter is not None:
+                    if chapter.section_id in amostra.ids_seccoes_amostra(course):
+                        return
+                    raise amostra.PlanoNecessario()
+                if parcial:
+                    return
             access_messages = {
                 'premium': 'Este curso requer um plano Premium ou superior. A sua subscrição pode ter expirado.',
                 'premium_plus': 'Este curso é exclusivo para assinantes Premium Plus.',
@@ -118,9 +132,14 @@ class EstadoCursoMixin:
         from apps.courses import ciclo as _ciclo
         if course.status == _ciclo.PUBLICADO:
             return
-        from .conteudo import pode_ver_conteudo
-        if not pode_ver_conteudo(self.request.user, course):
+        from .conteudo import pode_ver_parte
+        if not pode_ver_parte(self.request.user, course):
             raise NotFound('Curso não encontrado.')
+
+    def contexto_amostra(self, course):
+        """Secções com conteúdo / bloqueadas num curso com unidades de amostra (conteudo.contexto_seccoes)."""
+        from .conteudo import contexto_seccoes
+        return contexto_seccoes(self.request.user, course)
 
 
 class SubscriptionAccessMixin(EstadoCursoMixin):
@@ -163,6 +182,11 @@ class SubscriptionAccessMixin(EstadoCursoMixin):
 
         # Check subscription access
         if not course.user_has_access(user):
+            # Curso com unidades de amostra: a estrutura vê-se; o conteúdo só nas aulas da amostra
+            # (contexto_amostra nos serializers, check_enrollment com a aula).
+            from apps.courses import amostra
+            if amostra.unidades_amostra(course) > 0:
+                return True
             access_messages = {
                 'premium': 'Este curso requer um plano Premium ou superior.',
                 'premium_plus': 'Este curso é exclusivo para assinantes Premium Plus.',
@@ -176,7 +200,7 @@ class SubscriptionAccessMixin(EstadoCursoMixin):
         return True
 
 
-from apps.courses import ciclo
+from apps.courses import ciclo, niveis
 from ....models import (
     Course, CourseSection, Chapter, ChapterComment,
     CourseEnrollment, Transaction, UserCourseProgress, ChapterProgress,
@@ -217,7 +241,7 @@ class CourseListView(generics.ListAPIView):
     - category: Filter by category ('all' for no filter)
     - access_level: Filter by access level ('free', 'premium', 'premium_plus', 'all')
     - is_featured: Filter by featured status ('true', 'false')
-    - level: Filter by course difficulty level ('Beginner', 'Intermediate', 'Advanced')
+    - level: nível CEFR ('B1') ou lista ('A2,B1'); os nomes antigos valem a sua banda
     - search: texto a procurar no título, descrição ou categoria (todas as páginas)
     - status: ignorado (só cursos publicados)
     - ordering: created_at, title, level, category, is_featured, updated_at (com ou sem '-');
@@ -259,11 +283,9 @@ class CourseListView(generics.ListAPIView):
             queryset = queryset.filter(is_featured=False)
 
         # Apply level filter
-        level = self.request.query_params.get('level')
-        if level:
-            valid_levels = ['Beginner', 'Intermediate', 'Advanced']
-            if level in valid_levels:
-                queryset = queryset.filter(level=level)
+        codigos = niveis.filtro(self.request.query_params.get('level'))
+        if codigos:
+            queryset = queryset.filter(level__in=codigos)
 
         # Pesquisa no servidor (título, descrição, categoria), em todas as páginas.
         search = (self.request.query_params.get('search') or '').strip()[:100]
@@ -334,8 +356,8 @@ class CourseDetailView(generics.RetrieveAPIView):
         instance = self.get_object()
         user = request.user
         if instance.status != ciclo.PUBLICADO:
-            from .conteudo import pode_ver_conteudo
-            if not pode_ver_conteudo(user, instance):
+            from .conteudo import pode_ver_parte
+            if not pode_ver_parte(user, instance):
                 from rest_framework.exceptions import NotFound
                 raise NotFound("Curso não encontrado ou não está publicado")
 
@@ -355,7 +377,10 @@ class CourseDetailView(generics.RetrieveAPIView):
         include_comments = request.query_params.get('include_chapter_comments', 'false').lower() == 'true'
 
         # SECURITY: Limit content for users without subscription access
-        if not user_has_access and instance.access_level != 'free':
+        # (num curso com unidades de amostra a estrutura das aulas vê-se: o conteúdo só nas da amostra)
+        from apps.courses import amostra
+        n_amostra = amostra.unidades_amostra(instance)
+        if not user_has_access and instance.access_level != 'free' and n_amostra == 0:
             # Show only basic course info and section titles (no chapters)
             include_chapters = False
             include_comments = False
@@ -389,8 +414,9 @@ class CourseDetailView(generics.RetrieveAPIView):
         context['include_chapters'] = include_chapters
         context['include_chapter_comments'] = include_comments
         context['user_has_subscription_access'] = user_has_access
-        from .conteudo import pode_ver_conteudo
+        from .conteudo import contexto_seccoes, pode_ver_conteudo
         context['so_estrutura'] = not pode_ver_conteudo(user, instance)
+        context.update(contexto_seccoes(user, instance))
 
         serializer = self.get_serializer(instance, context=context)
 
@@ -402,7 +428,10 @@ class CourseDetailView(generics.RetrieveAPIView):
                 'has_access': user_has_access,
                 'access_level': instance.access_level,
                 'access_level_display': instance.access_level_display,
-                'content_limited': not user_has_access and instance.access_level != 'free'
+                'content_limited': not user_has_access and instance.access_level != 'free',
+                # Unidades de amostra: 'total' | 'amostra' | None (apps/courses/amostra.py).
+                'acesso': amostra.acesso(user, instance, total=user_has_access),
+                'unidades_amostra': n_amostra,
             }
         }
 
@@ -430,7 +459,9 @@ def create_transaction(request):
         try:
             course = Course.objects.get(id=course_id)
             # Check if user has subscription access for non-free courses
-            if not course.user_has_access(request.user):
+            # (ou o curso tem unidades de amostra: inscreve-se e abre só essas).
+            from apps.courses import amostra
+            if not amostra.pode_inscrever(request.user, course):
                 access_messages = {
                     'premium': 'Este curso requer um plano Premium ou superior.',
                     'premium_plus': 'Este curso é exclusivo para assinantes Premium Plus.',
@@ -623,22 +654,39 @@ def _pode_marcar_vista(dados, capitulo):
 
 
 def _marcar_vista(progresso, capitulo):
-    """Marca o capítulo como concluído e recalcula o progresso. Devolve True se mudou."""
-    from apps.courses.certificados import progresso_actual
-    registo, criado = ChapterProgress.objects.get_or_create(
-        user_progress=progresso, chapter=capitulo,
-        defaults={'completed': True, 'completed_at': timezone.now()})
-    if not criado:
-        if registo.completed:
-            return False
-        registo.completed = True
-        registo.completed_at = timezone.now()
-        registo.save()
-    progresso.overallProgress = progresso_actual(progresso.user, progresso.course)
-    if progresso.overallProgress >= 100.0 and not progresso.completion_date:
-        progresso.completion_date = timezone.now()
-    progresso.save()
+    """
+    Regista o vídeo como visto e recalcula o progresso. Devolve True se a aula ficou concluída
+    agora (numa aula com questionário, só quando o questionário também está passado).
+    """
+    from apps.courses.conclusao import actualizar_progresso, registar
+    if not registar(progresso, capitulo, vista=True):
+        return False
+    actualizar_progresso(progresso)
     return True
+
+
+def _exigir_aulas_da_amostra(dados, course):
+    """
+    Sem o plano do curso: todas as aulas do pedido (chapter_id e sections[].chapters[]) têm de
+    estar nas secções da amostra; senão 403 plano_insuficiente e nada é gravado.
+    """
+    from apps.courses import amostra
+    ids = [dados.get('chapter_id')] if dados.get('chapter_id') else []
+    seccoes = dados.get('sections') if isinstance(dados.get('sections'), list) else []
+    ids += [c.get('chapterId') for sec in seccoes if isinstance(sec, dict)
+            for c in (sec.get('chapters') or []) if isinstance(c, dict) and c.get('chapterId')]
+    if not ids:
+        return
+    abertas = amostra.ids_seccoes_amostra(course)
+    validos = []
+    for i in ids:
+        try:
+            validos.append(uuid.UUID(str(i)))
+        except (ValueError, TypeError, AttributeError):
+            continue  # ids inválidos são ignorados mais à frente, como antes
+    fora = Chapter.objects.filter(id__in=validos, section__course=course).exclude(section_id__in=abertas)
+    if fora.exists():
+        raise amostra.PlanoNecessario()
 
 
 @api_view(['PUT'])
@@ -666,12 +714,17 @@ def update_user_course_progress(request, userId, courseId):
     except UserCourseProgress.DoesNotExist:
         progress = None
 
-    # Só regista progresso quem está inscrito e tem o plano do curso (antes qualquer aluno podia).
-    if not course.user_has_access(user):
+    # Só regista progresso quem está inscrito e tem o plano do curso (antes qualquer aluno podia),
+    # ou, num curso com unidades de amostra, nas aulas da amostra (apps/courses/amostra.py).
+    from apps.courses import amostra
+    total = course.user_has_access(user)
+    if not total and amostra.unidades_amostra(course) <= 0:
         raise PermissionDenied('Não tem a subscrição necessária para este curso.')
-    from .conteudo import pode_ver_conteudo
-    if not pode_ver_conteudo(user, course):
+    from .conteudo import pode_ver_parte
+    if not pode_ver_parte(user, course):
         raise PermissionDenied('Precisa de estar inscrito neste curso para registar progresso.')
+    if not total:
+        _exigir_aulas_da_amostra(request.data, course)
 
     if progress is None:
         # Create progress if it doesn't exist
@@ -683,44 +736,56 @@ def update_user_course_progress(request, userId, courseId):
         )
     
     serializer = UserCourseProgressUpdateSerializer(
-        progress, 
-        data=request.data, 
+        progress,
+        data=request.data,
         context={'request': request}
     )
     serializer.is_valid(raise_exception=True)
-    updated_progress = serializer.save()
 
     # Opcional: segundos vistos desde o último envio -> registo diário + sequência.
     # O capítulo é `chapter_id` ou o único capítulo enviado em `sections`. Os segundos são
-    # limitados (ver apps.courses.tempo_video): só o que é novo conta.
+    # limitados (ver apps.courses.tempo_video): só o que é novo conta e nunca mais do que o tempo
+    # real desde que o aluno abriu a aula. Creditam-se ANTES de gravar, para "marcar como vista"
+    # já contar com o que o aluno acabou de ver.
     watched_seconds = request.data.get('watched_seconds')
     segundos_creditados = 0
-    aula_concluida = False
-    if watched_seconds not in (None, ''):
-        chapter_id = request.data.get('chapter_id')
-        if not chapter_id:
-            ids = [c.get('chapterId') for sec in (request.data.get('sections') or []) if isinstance(sec, dict)
-                   for c in (sec.get('chapters') or []) if isinstance(c, dict) and c.get('chapterId')]
-            chapter_id = ids[0] if len(ids) == 1 else None
-        capitulo = None
-        if chapter_id:
-            try:
-                capitulo = Chapter.objects.filter(ciclo.q_aula_visivel(), id=chapter_id, section__course=course).first()
-            except (ValueError, TypeError, DjangoValidationError):
-                capitulo = None
-        if capitulo is not None:
-            try:
-                from ....tempo_video import creditar_segundos
-                segundos_creditados = creditar_segundos(request.user, capitulo, watched_seconds)
-            except Exception:
-                import logging
-                logging.getLogger(__name__).exception("Failed to log video study minutes")
+    capitulo = None
+    chapter_id = request.data.get('chapter_id')
+    if not chapter_id:
+        ids = [c.get('chapterId') for sec in (request.data.get('sections') or []) if isinstance(sec, dict)
+               for c in (sec.get('chapters') or []) if isinstance(c, dict) and c.get('chapterId')]
+        chapter_id = ids[0] if len(ids) == 1 else None
+    if chapter_id:
+        try:
+            capitulo = Chapter.objects.filter(ciclo.q_aula_visivel(), id=chapter_id, section__course=course).first()
+        except (ValueError, TypeError, DjangoValidationError):
+            capitulo = None
+    if capitulo is not None and watched_seconds not in (None, ''):
+        try:
+            from ....tempo_video import creditar_segundos
+            segundos_creditados = creditar_segundos(request.user, capitulo, watched_seconds)
+        except Exception:
+            import logging
+            logging.getLogger(__name__).exception("Failed to log video study minutes")
+
+    def _concluida():
+        return capitulo is not None and ChapterProgress.objects.filter(
+            user_progress=progress, chapter=capitulo, completed=True).exists()
+
+    concluida_antes = _concluida()
+    # Várias aulas no mesmo pedido: ou ficam todas gravadas ou nenhuma (um erro a meio, como um
+    # vídeo por ver, não deixa metade do pedido gravado).
+    with transaction.atomic():
+        updated_progress = serializer.save()
+        if capitulo is not None and watched_seconds not in (None, ''):
             # A aula conta como vista quando o aluno viu a percentagem que o professor escolheu
             # (Chapter.percentagem_vista), salvo se este pedido a desmarcou explicitamente.
             if _pode_marcar_vista(request.data, capitulo):
                 from ....tempo_video import aula_vista
                 if aula_vista(request.user, capitulo):
-                    aula_concluida = _marcar_vista(updated_progress, capitulo)
+                    _marcar_vista(updated_progress, capitulo)
+    # aula_concluida: a aula passou a concluída com este pedido (estado antes vs. depois).
+    aula_concluida = not concluida_antes and _concluida()
 
     # Return updated progress
     response_serializer = UserCourseProgressSerializer(updated_progress)
@@ -778,8 +843,16 @@ class CourseSectionListView(SubscriptionAccessMixin, generics.ListAPIView):
         # SECURITY: Check subscription access
         self.check_subscription_access(course)
         self.check_estado_curso(course)
+        self._curso = course
 
         return super().list(request, *args, **kwargs)
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        curso = getattr(self, '_curso', None)
+        if curso is not None:
+            context.update(self.contexto_amostra(curso))
+        return context
 
 
 class CourseSectionDetailView(SubscriptionAccessMixin, generics.RetrieveAPIView):
@@ -808,7 +881,9 @@ class CourseSectionDetailView(SubscriptionAccessMixin, generics.RetrieveAPIView)
         self.check_subscription_access(course)
         self.check_estado_curso(course)
 
-        serializer = self.get_serializer(instance)
+        context = self.get_serializer_context()
+        context.update(self.contexto_amostra(course))
+        serializer = self.get_serializer_class()(instance, context=context)
         return Response(serializer.data)
 
 
@@ -859,6 +934,8 @@ class ChapterListView(SubscriptionAccessMixin, generics.ListAPIView):
         context = super().get_serializer_context()
         curso = getattr(self, '_curso', None)
         context['so_estrutura'] = curso is None or not pode_ver_conteudo(self.request.user, curso)
+        if curso is not None:
+            context.update(self.contexto_amostra(curso))
         return context
 
 
@@ -883,7 +960,12 @@ class ChapterDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIView):
         """Override to check enrollment before returning object."""
         obj = super().get_object()
         course = self.get_course_from_chapter(obj)
-        self.check_enrollment(course)
+        self.check_enrollment(course, chapter=obj)
+        # Hora a que o aluno abriu a aula: o tempo de vídeo creditado não passa do tempo real
+        # desde aqui (apps.courses.tempo_video).
+        if course.teacher_id != self.request.user.id:
+            from ....tempo_video import marcar_aberta
+            marcar_aberta(self.request.user, obj)
         return obj
 
 
@@ -909,7 +991,7 @@ class ChapterCommentListCreateView(EnrollmentRequiredMixin, generics.ListCreateA
                 Chapter.objects.filter(ciclo.q_aula_visivel()).select_related('section__course'),
                 id=self.kwargs['chapterId']
             )
-            self.check_enrollment(self.get_course_from_chapter(chapter))
+            self.check_enrollment(self.get_course_from_chapter(chapter), chapter=chapter)
             self._cached_chapter = chapter
         return self._cached_chapter
 
@@ -963,7 +1045,7 @@ class ChapterResourceListView(EnrollmentRequiredMixin, generics.ListAPIView):
         if queryset.exists():
             first_resource = queryset.first()
             course = self.get_course_from_resource(first_resource)
-            self.check_enrollment(course)
+            self.check_enrollment(course, chapter=first_resource.chapter)
 
         serializer = self.get_serializer(queryset, many=True)
 
@@ -998,7 +1080,7 @@ class ChapterResourceDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIVie
         """Override to check enrollment before returning object."""
         obj = super().get_object()
         course = self.get_course_from_resource(obj)
-        self.check_enrollment(course)
+        self.check_enrollment(course, chapter=obj.chapter)
         return obj
 
     def retrieve(self, request, *args, **kwargs):
@@ -1050,7 +1132,7 @@ class ChapterQuizListView(EnrollmentRequiredMixin, generics.ListAPIView):
 
         # Check enrollment
         course = self.get_course_from_quiz(quiz)
-        self.check_enrollment(course)
+        self.check_enrollment(course, chapter=quiz.chapter)
 
         serializer = self.get_serializer(quiz)
 
@@ -1086,7 +1168,7 @@ class ChapterQuizDetailView(EnrollmentRequiredMixin, generics.RetrieveAPIView):
         """Override to check enrollment before returning object."""
         obj = super().get_object()
         course = self.get_course_from_quiz(obj)
-        self.check_enrollment(course)
+        self.check_enrollment(course, chapter=obj.chapter)
         return obj
 
     def retrieve(self, request, *args, **kwargs):
@@ -1153,7 +1235,7 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
         if chapter_quiz is None:
             from rest_framework.exceptions import NotFound
             raise NotFound('Este capítulo não tem questionário.')
-        self.check_enrollment(self.get_course_from_quiz(chapter_quiz))
+        self.check_enrollment(self.get_course_from_quiz(chapter_quiz), chapter=chapter_quiz.chapter)
 
         # Check if quiz is active
         if not chapter_quiz.is_active:
@@ -1166,9 +1248,10 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
             chapter_quiz=chapter_quiz
         ).count()
         
-        if student_attempts >= chapter_quiz.max_attempts:
+        limite = chapter_quiz.limite_tentativas(self.request.user)
+        if student_attempts >= limite:
             from rest_framework.exceptions import ValidationError
-            raise ValidationError(f"Já usou as {chapter_quiz.max_attempts} tentativas deste questionário.")
+            raise ValidationError(f"Já usou as {limite} tentativas deste questionário.")
         
         # is_passed é decidido pelo servidor (StudentQuizAttempt.save compara com passing_score);
         # as estatísticas do quiz também são actualizadas no save() do modelo.
@@ -1181,7 +1264,7 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
         if chapter_quiz is not None:
             curso = self.get_course_from_quiz(chapter_quiz)
             if curso.teacher_id != request.user.id:
-                self.check_enrollment(curso)
+                self.check_enrollment(curso, chapter=chapter_quiz.chapter)
         queryset = list(self.filter_queryset(self.get_queryset()))
         serializer = self.get_serializer(queryset, many=True)
         dados = [dict(d) for d in serializer.data]
@@ -1190,10 +1273,10 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
             minhas = [a for a in queryset if a.student_id == request.user.id]
             revela = (chapter_quiz.chapter.section.course.teacher_id == request.user.id
                       or pode_revelar_respostas(chapter_quiz, any(a.is_passed for a in minhas),
-                                                chapter_quiz.max_attempts - len(minhas)))
+                                                chapter_quiz.limite_tentativas(request.user) - len(minhas)))
             for item, tentativa in zip(dados, queryset):
                 item['correccao'] = correccao_para_aluno(
-                    (tentativa.answers_data or {}).get('correccao'), revela)
+                    (tentativa.answers_data or {}).get('correccao'), revela, chapter_quiz.chapter_id)
 
         return Response({
             'message': 'Tentativas do questionário obtidas com sucesso',
@@ -1216,7 +1299,7 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
             return Response({'error': 'Envie as respostas: {"respostas": {"<pergunta>": "<opção>"}}.'},
                             status=status.HTTP_400_BAD_REQUEST)
         chapter = get_object_or_404(Chapter, id=self.kwargs['chapterId'])
-        pontos, maximo, correccao = corrigir_quiz(chapter.quiz_data, respostas)
+        pontos, maximo, correccao = corrigir_quiz(chapter.quiz_data, respostas, chapter.id)
         if maximo == 0:
             return Response({'error': 'Este questionário ainda não tem perguntas.'}, status=status.HTTP_400_BAD_REQUEST)
         if respondidas(correccao) == 0:
@@ -1236,16 +1319,23 @@ class StudentQuizAttemptListCreateView(EnrollmentRequiredMixin, generics.ListCre
         # Guarda as respostas e a correcção completa (para a revisão quando puder ser revelada).
         attempt.answers_data = {'respostas': respostas, 'correccao': correccao}
         StudentQuizAttempt.objects.filter(pk=attempt.pk).update(answers_data=attempt.answers_data)
-
         minhas = StudentQuizAttempt.objects.filter(student=request.user, chapter_quiz=attempt.chapter_quiz)
-        restantes = max(0, attempt.chapter_quiz.max_attempts - minhas.count())
+        restantes = max(0, attempt.chapter_quiz.limite_tentativas(request.user) - minhas.count())
+        aula_concluida = False
+        if attempt.is_passed or restantes <= 0:
+            # Passar o questionário conclui a aula (se o vídeo, quando o há, já foi visto). Gastar
+            # as tentativas todas sem passar também (rede de segurança: a aula não fica presa para
+            # sempre; a nota do questionário continua a contar na nota do curso).
+            from apps.courses.conclusao import apos_questionario_passado
+            aula_concluida = apos_questionario_passado(request.user, chapter)
         revela = pode_revelar_respostas(attempt.chapter_quiz, minhas.filter(is_passed=True).exists(), restantes)
 
         response_serializer = StudentQuizAttemptSerializer(attempt, context={'request': request})
         dados = dict(response_serializer.data)
         dados['revela_respostas'] = revela
-        dados['correccao'] = correccao_para_aluno(correccao, revela)
+        dados['correccao'] = correccao_para_aluno(correccao, revela, chapter.id)
         dados['tentativas_restantes'] = restantes
+        dados['aula_concluida'] = aula_concluida
 
         return Response({
             'message': 'Tentativa registada com sucesso',
@@ -1265,11 +1355,15 @@ def get_student_quiz_summary(request, chapterId):
     Só para quem pode ver o conteúdo do curso (inscrito com o plano certo, o professor do
     curso ou administrador). `revela_respostas` diz se a correcção traz as opções certas.
     """
-    from .conteudo import pode_ver_conteudo, correccao_para_aluno, pode_revelar_respostas
+    from .conteudo import pode_ver_aula, correccao_para_aluno, pode_revelar_respostas
 
     chapter = get_object_or_404(Chapter.objects.filter(ciclo.q_aula_visivel()).select_related('section__course'),
                                 id=chapterId)
-    if not pode_ver_conteudo(request.user, chapter.section.course):
+    if not pode_ver_aula(request.user, chapter):
+        from apps.courses import amostra
+        if (amostra.unidades_amostra(chapter.section.course) > 0
+                and not amostra.aula_aberta(request.user, chapter)):
+            raise amostra.PlanoNecessario()
         return Response({'error': 'Precisa de estar inscrito neste curso para ver o questionário.'},
                         status=status.HTTP_403_FORBIDDEN)
     try:
@@ -1295,7 +1389,7 @@ def get_student_quiz_summary(request, chapterId):
                 'attempts_count': 0,
                 'best_score': 0,
                 'is_passed': False,
-                'attempts_remaining': chapter_quiz.max_attempts,
+                'attempts_remaining': chapter_quiz.limite_tentativas(request.user),
                 'revela_respostas': False,
                 'last_attempt': None
             }
@@ -1304,14 +1398,14 @@ def get_student_quiz_summary(request, chapterId):
     best_attempt = attempts.filter(is_completed=True).order_by('-score').first()
     last_attempt = attempts.first()
     passed_attempt = attempts.filter(is_passed=True).first()
-    restantes = max(0, chapter_quiz.max_attempts - attempts.count())
+    restantes = max(0, chapter_quiz.limite_tentativas(request.user) - attempts.count())
     revela = pode_revelar_respostas(chapter_quiz, bool(passed_attempt), restantes)
 
     def _tentativa(t):
         if not t:
             return None
         dados = dict(StudentQuizAttemptSerializer(t, context={'request': request}).data)
-        dados['correccao'] = correccao_para_aluno((t.answers_data or {}).get('correccao'), revela)
+        dados['correccao'] = correccao_para_aluno((t.answers_data or {}).get('correccao'), revela, chapter.id)
         return dados
 
     summary_data = {
@@ -1363,6 +1457,8 @@ def check_course_enrollment_status(request, courseId):
 
     # Check subscription access
     has_access = course.user_has_access(request.user)
+    from apps.courses import amostra
+    n_amostra = amostra.unidades_amostra(course)
 
     # Get enrollment details if enrolled
     enrollment_data = None
@@ -1379,7 +1475,8 @@ def check_course_enrollment_status(request, courseId):
 
     # Determine if user can enroll (needs proper subscription for non-free courses)
     bloqueio_inscricao = ciclo.bloqueio_inscricao(request.user, course)
-    can_enroll = has_access and not is_enrolled and bloqueio_inscricao is None
+    # Num curso com unidades de amostra também se pode inscrever sem o plano (abre só essas).
+    can_enroll = (has_access or n_amostra > 0) and not is_enrolled and bloqueio_inscricao is None
 
     # Get subscription info for premium courses
     subscription_info = None
@@ -1391,7 +1488,7 @@ def check_course_enrollment_status(request, courseId):
         }
 
     return Response({
-        'message': 'Status de inscrição verificado com sucesso',
+        'message': 'Estado da inscrição verificado com sucesso',
         'data': {
             'course_id': str(courseId),
             'course_title': course.title,
@@ -1402,10 +1499,14 @@ def check_course_enrollment_status(request, courseId):
             'access_level_display': course.access_level_display,
             'is_free': course.is_free,
             'is_premium': course.is_premium,
+            # Unidades de amostra: 'total' | 'amostra' | None (apps/courses/amostra.py).
+            'acesso': amostra.acesso(request.user, course, total=has_access),
+            'unidades_amostra': n_amostra,
             'enrollment_details': enrollment_data,
             'subscription_info': subscription_info,
             'estado': ciclo.estado(course),
             'motivo_sem_inscricao': bloqueio_inscricao[1] if bloqueio_inscricao and not is_enrolled else None,
+            'codigo_sem_inscricao': bloqueio_inscricao[0] if bloqueio_inscricao and not is_enrolled else None,
         }
     })
 
@@ -1548,7 +1649,7 @@ def search_courses(request):
     Query params:
     - q: Search query (searches title and description)
     - category: Filter by category
-    - level: Filter by level
+    - level: nível CEFR ('B1') ou lista ('A2,B1')
     - access_level: Filter by access level ('free', 'premium', 'premium_plus')
     - is_featured: Filter by featured status ('true', 'false')
     - limit: Number of results (default: 20, max: 100)
@@ -1590,10 +1691,9 @@ def search_courses(request):
     if category and category != 'all':
         courses = courses.filter(category=category)
 
-    if level:
-        valid_levels = ['Beginner', 'Intermediate', 'Advanced']
-        if level in valid_levels:
-            courses = courses.filter(level=level)
+    codigos = niveis.filtro(level)
+    if codigos:
+        courses = courses.filter(level__in=codigos)
 
     # Apply access_level filter
     if access_level and access_level != 'all':
@@ -2027,6 +2127,10 @@ def get_course_grade(request, courseId):
                 'quiz_weight': weight_info.get('quiz_weight', 0),
                 'practice_weight': weight_info.get('practice_weight', 0),
                 'conversation_weight': weight_info.get('conversation_weight', 0),
+                'exam_weight': weight_info.get('exam_weight', 0),
+                'phrases_weight': weight_info.get('phrases_weight', 0),
+                'study_weight': weight_info.get('study_weight', 0),
+                'study_score': weight_info.get('study_score'),
                 'mode': grading_mode,
                 'mode_explanation': mode_explanation,
                 'active_components': active_components,
@@ -2041,6 +2145,17 @@ def get_course_grade(request, courseId):
                 'details': eligibility_details,
                 'missing_requirements': missing_requirements,
                 'em_falta': estado['em_falta'],
+            },
+            'exame_oral': {
+                'score': grade.exam_score,
+                'passed': grade.exam_passed,
+                'attempts': (grade.exam_details or {}).get('attempts', 0),
+                'min_score': (grade.exam_details or {}).get('min_score'),
+            },
+            'frases_curso': {
+                'score': grade.phrases_score,
+                'total': grade.phrases_total,
+                'mastered': grade.phrases_mastered,
             },
             'nota_minima': estado['nota_minima'],
             'plano_inclui_certificados': estado['plano_inclui_certificados'],
@@ -2171,6 +2286,10 @@ def get_grade_history(request, courseId):
             user=request.user,
             course_id=courseId
         )
+        from ....services import GradeCalculatorService
+        if (grade.calculation_version or 0) < GradeCalculatorService.CALCULATION_VERSION:
+            grade = GradeCalculatorService(request.user, enrollment.course).calculate_and_save(
+                change_reason='recalculation')
     except StudentCourseGrade.DoesNotExist:
         return Response({
             'message': 'Nenhum histórico de notas encontrado',
@@ -2283,8 +2402,9 @@ def get_all_student_grades(request):
 
         # Use prefetched grade if available, otherwise calculate
         grade = existing_grades.get(course.id)
-        if grade is None:
-            # Calculate if not exists
+        if grade is None or (grade.calculation_version or 0) < GradeCalculatorService.CALCULATION_VERSION:
+            # Sem nota, ou nota de uma versão antiga do cálculo (a elegibilidade guardada podia
+            # não contar com o exame oral): calcula agora com as regras actuais.
             calculator = GradeCalculatorService(request.user, course)
             grade = calculator.calculate_and_save(change_reason='recalculation')
         # Elegibilidade com as regras da emissão (inclui a conclusão do curso).

@@ -159,3 +159,15 @@ import sys
 if 'test' in sys.argv or 'pytest' in sys.modules:
     # Ensure all apps run their migrations in tests
     pass
+# Aulas em vídeo: nada de ffmpeg/Whisper em segundo plano nos testes (os testes da fase 5 ligam-no
+# com o executor substituído).
+TRANSCRICAO_AUTOMATICA = False
+
+# Notas dos alunos recalculadas no próprio pedido (sem thread) nos testes: ver apps.courses.recalculo.
+RECALCULO_NOTAS_EM_FUNDO = False
+
+# Avaliação das conversas no próprio pedido nos testes: ver conversa.servico.avaliar_sem_bloquear.
+AVALIACAO_EM_FUNDO = False
+# Nada de Azure nem de downloads da gravação do exame nos testes (o .env pode ter chaves reais); os
+# testes da pronúncia do exame ligam-no com o Azure e o ffmpeg simulados.
+PRONUNCIA_EXAME = False

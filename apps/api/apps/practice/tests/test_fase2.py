@@ -110,10 +110,13 @@ class LimiteLicoesTests(LicoesBase):
         r = self.jogar(self.licoes[3])
         self.assertEqual(r.status_code, 403)
         d = r.json()
-        self.assertEqual(set(d), {'codigo', 'mensagem', 'limite', 'feitas', 'renova_em'})
+        self.assertEqual(set(d), {'codigo', 'mensagem', 'limite', 'feitas', 'renova_em', 'oferta'})
         self.assertEqual((d['codigo'], d['limite'], d['feitas']), ('limite_licoes', 3, 3))
-        self.assertEqual(d['mensagem'], 'Já fez as 3 lições de hoje. Amanhã há mais, ou passe para o Premium '
+        self.assertEqual(d['mensagem'], 'Já fez as 3 lições novas de hoje. Amanhã há mais, ou assine um plano '
                                         'para lições sem limite.')
+        # O plano que tira o limite (se houver um plano pago activo nestes testes).
+        if d['oferta'] is not None:
+            self.assertEqual(d['oferta']['recurso'], 'licoes')
         renova = datetime.fromisoformat(d['renova_em'])
         self.assertEqual(renova, limite_licoes.proxima_meia_noite())
         self.assertEqual((renova.hour, renova.minute, renova.utcoffset()), (0, 0, timedelta(hours=1)))
@@ -427,20 +430,23 @@ class AvaliacaoForaDaTransaccaoTests(ConversaBase):
         # a_avaliar conta nas sessões, mas sem nota
         self.assertEqual(self.client.get(f'{C}progresso/').data['sessoes'], 1)
 
-    @override_settings(**VAPI)
+    @override_settings(**VAPI, VAPI_PRIVATE_KEY='sk_test_falsa')
     def test_sessao_abandonada_avaliada_por_regras_ao_criar_outra(self):
+        from apps.practice.tests.vapi_falso import VapiFalso
+        vapi = VapiFalso()
         sid = self.criar()
-        self.ligar(sid)
-        s = VapiSession.objects.get(pk=sid)
-        s.full_session_data['historico'] += [{'quem': 'aluno', 'texto': f} for f in FALAS]
-        s.save(update_fields=['full_session_data'])
+        falas = [x for f in FALAS for x in (('tutor', 'Tell me more.'), ('aluno', f))]
+        cid = vapi.chamada(sid, falas, duracao=180)
+        self.client.post(f'{C}sessoes/{sid}/ligada/', {'call_id': cid}, format='json')
         self.mover(sid, ligou_ha=180, actividade_ha=0)
-        with mock.patch('apps.practice.conversa.analise.avaliar_claude') as claude:
+        with mock.patch('apps.practice.conversa.analise.avaliar_claude') as claude, \
+                mock.patch('apps.practice.conversa.chamada.pedir', vapi):
             self.criar()
         claude.assert_not_called()
         s = VapiSession.objects.get(pk=sid)
         self.assertEqual(s.status, 'avaliada')
         self.assertEqual(s.full_session_data['fonte_avaliacao'], 'regras')
+        self.assertEqual(s.duration_seconds, 180)  # a duração do Vapi
 
     def test_zero_minutos_sem_pontos(self):
         sid = self.criar()

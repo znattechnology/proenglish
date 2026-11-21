@@ -1,0 +1,301 @@
+{
+ "title": "Unit 3 quiz — My job",
+ "description": "Profissões, present simple (I/you/we/they), dados pessoais e registo na recepção.",
+ "questions": [
+  {
+   "id": "u3q1",
+   "question": "Qual é a frase correcta?",
+   "options": [
+    {
+     "id": "u3q1o0",
+     "text": "I'm an accountant.",
+     "isCorrect": true
+    },
+    {
+     "id": "u3q1o1",
+     "text": "I'm accountant.",
+     "isCorrect": false
+    },
+    {
+     "id": "u3q1o2",
+     "text": "I'm a accountant.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u3q1o0",
+   "explanation": "Profissão com \"a/an\"; \"an\" antes de som de vogal.",
+   "points": 10
+  },
+  {
+   "id": "u3q2",
+   "question": "Está desempregado. O que diz?",
+   "options": [
+    {
+     "id": "u3q2o0",
+     "text": "I'm unemployed.",
+     "isCorrect": true
+    },
+    {
+     "id": "u3q2o1",
+     "text": "I'm an unemployed.",
+     "isCorrect": false
+    },
+    {
+     "id": "u3q2o2",
+     "text": "I don't job.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u3q2o0",
+   "explanation": "\"Unemployed\" não leva \"a\".",
+   "points": 10
+  },
+  {
+   "id": "u3q3",
+   "question": "\"What do you do?\" quer dizer:",
+   "options": [
+    {
+     "id": "u3q3o0",
+     "text": "Qual é a sua profissão?",
+     "isCorrect": true
+    },
+    {
+     "id": "u3q3o1",
+     "text": "O que está a fazer?",
+     "isCorrect": false
+    },
+    {
+     "id": "u3q3o2",
+     "text": "Como está?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u3q3o0",
+   "explanation": "Pergunta a profissão.",
+   "points": 10
+  },
+  {
+   "id": "u3q4",
+   "question": "Complete: \"I ___ work on Sundays.\"",
+   "options": [
+    {
+     "id": "u3q4o0",
+     "text": "don't",
+     "isCorrect": true
+    },
+    {
+     "id": "u3q4o1",
+     "text": "not",
+     "isCorrect": false
+    },
+    {
+     "id": "u3q4o2",
+     "text": "am not",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u3q4o0",
+   "explanation": "Negativa: \"don't\" + verbo.",
+   "points": 10
+  },
+  {
+   "id": "u3q5",
+   "question": "Escolha a resposta certa: \"Do you use a computer at work?\"",
+   "options": [
+    {
+     "id": "u3q5o0",
+     "text": "Yes, I do.",
+     "isCorrect": true
+    },
+    {
+     "id": "u3q5o1",
+     "text": "Yes, I use.",
+     "isCorrect": false
+    },
+    {
+     "id": "u3q5o2",
+     "text": "Yes, I am.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u3q5o0",
+   "explanation": "Resposta curta: \"Yes, I do.\"",
+   "points": 10
+  },
+  {
+   "id": "u3q6",
+   "question": "Complete: \"I work ___ an oil company.\"",
+   "options": [
+    {
+     "id": "u3q6o0",
+     "text": "for",
+     "isCorrect": true
+    },
+    {
+     "id": "u3q6o1",
+     "text": "to",
+     "isCorrect": false
+    },
+    {
+     "id": "u3q6o2",
+     "text": "of",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u3q6o0",
+   "explanation": "\"Work for\" + empresa.",
+   "points": 10
+  },
+  {
+   "id": "u3q7",
+   "question": "Como pergunta onde a pessoa vive?",
+   "options": [
+    {
+     "id": "u3q7o0",
+     "text": "Where do you live?",
+     "isCorrect": true
+    },
+    {
+     "id": "u3q7o1",
+     "text": "Where you live?",
+     "isCorrect": false
+    },
+    {
+     "id": "u3q7o2",
+     "text": "Where are you live?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u3q7o0",
+   "explanation": "Pergunta com \"do\".",
+   "points": 10
+  },
+  {
+   "id": "u3q8",
+   "question": "Quer confirmar os dados. O que pergunta?",
+   "options": [
+    {
+     "id": "u3q8o0",
+     "text": "Is that correct?",
+     "isCorrect": true
+    },
+    {
+     "id": "u3q8o1",
+     "text": "Is correct?",
+     "isCorrect": false
+    },
+    {
+     "id": "u3q8o2",
+     "text": "Are you correct that?",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u3q8o0",
+   "explanation": "\"Is that correct?\" — Está correcto?",
+   "points": 10
+  },
+  {
+   "id": "u3q9",
+   "question": "Em que palavra a sílaba forte é a última?",
+   "options": [
+    {
+     "id": "u3q9o0",
+     "text": "engineer",
+     "isCorrect": true
+    },
+    {
+     "id": "u3q9o1",
+     "text": "manager",
+     "isCorrect": false
+    },
+    {
+     "id": "u3q9o2",
+     "text": "hospital",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u3q9o0",
+   "explanation": "engiNEER.",
+   "points": 10
+  },
+  {
+   "id": "u3q10",
+   "question": "\"I work at night\" quer dizer:",
+   "options": [
+    {
+     "id": "u3q10o0",
+     "text": "Trabalho à noite.",
+     "isCorrect": true
+    },
+    {
+     "id": "u3q10o1",
+     "text": "Trabalho até à noite.",
+     "isCorrect": false
+    },
+    {
+     "id": "u3q10o2",
+     "text": "Não trabalho à noite.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u3q10o0",
+   "explanation": "\"At night\" = à noite.",
+   "points": 10
+  },
+  {
+   "id": "u3q11",
+   "question": "Reciclagem (unidades 1 e 3). Na recepção perguntam \"Can you spell your surname?\". O que faz?",
+   "options": [
+    {
+     "id": "u3q11o0",
+     "text": "Diz as letras do apelido.",
+     "isCorrect": true
+    },
+    {
+     "id": "u3q11o1",
+     "text": "Diz o número de telefone.",
+     "isCorrect": false
+    },
+    {
+     "id": "u3q11o2",
+     "text": "Diz o nome da empresa.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u3q11o0",
+   "explanation": "\"Spell\" = soletrar.",
+   "points": 10
+  },
+  {
+   "id": "u3q12",
+   "question": "Reciclagem (unidade 2). Como apresenta uma colega?",
+   "options": [
+    {
+     "id": "u3q12o0",
+     "text": "This is Rosa. She's a receptionist.",
+     "isCorrect": true
+    },
+    {
+     "id": "u3q12o1",
+     "text": "This is Rosa. She receptionist.",
+     "isCorrect": false
+    },
+    {
+     "id": "u3q12o2",
+     "text": "Here Rosa. Is receptionist.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "u3q12o0",
+   "explanation": "\"This is…\" e \"she's\" com a profissão.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

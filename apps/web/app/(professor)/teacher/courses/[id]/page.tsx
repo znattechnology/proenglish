@@ -129,7 +129,7 @@ function Editor() {
         />
         <div id="aula" className="flex min-w-0 flex-1 scroll-mt-20">
           {actual ? (
-            <PainelAula key={actual.a.id} aula={actual.a} seccao={actual.s} seccoes={seccoes} aoGuardar={guardou} aoApagada={() => escolher(null)} />
+            <PainelAula key={actual.a.id} cursoId={id} aula={actual.a} seccao={actual.s} seccoes={seccoes} aoGuardar={guardou} aoApagada={() => escolher(null)} />
           ) : (
             <div className="flex flex-1 flex-col items-start gap-2 rounded-pe-md bg-pe-fundo-suave p-6">
               <h2 className="m-0 font-pe-titulo text-[22px] font-semibold leading-7">{seccoes.length ? "Crie a primeira aula" : "Comece por uma secção"}</h2>

@@ -197,7 +197,13 @@ class FormatoErrosTests(Base):
         self.assertIn('Fez muitos pedidos seguidos', r.data['error'])
         self.assertEqual(r.data['code'], 'throttled')
 
-    def test_ratelimit_real_no_pedido_de_recuperacao(self):
+    # core.test_settings desliga o django_ratelimit (RATELIMIT_ENABLE = False) para os outros
+    # testes não esbarrarem nos limites; este liga-o só aqui para provar o 429 a sério.
+    # O relógio do django_ratelimit fica parado para os 4 pedidos caírem na mesma janela.
+    @override_settings(RATELIMIT_ENABLE=True)
+    @mock.patch('django_ratelimit.core.time')
+    def test_ratelimit_real_no_pedido_de_recuperacao(self, relogio):
+        relogio.time.return_value = 1_800_000_000
         for _ in range(3):
             self.assertEqual(self.client.post(f'{U}password-reset/', {'email': 'ninguem@example.com'},
                                               format='json').status_code, 200)

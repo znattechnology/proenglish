@@ -25,13 +25,13 @@ class TestCourseModelBasic(TestCase):
             title='Basic English',
             description='A simple English course',
             teacher=teacher,
-            level='Beginner',
+            level='A2',
             status='Draft'
         )
         
         self.assertEqual(course.title, 'Basic English')
         self.assertEqual(course.teacher, teacher)
-        self.assertEqual(course.level, 'Beginner')
+        self.assertEqual(course.level, 'A2')
         self.assertEqual(course.status, 'Draft')
         self.assertIsNotNone(course.id)
     
@@ -48,7 +48,7 @@ class TestCourseModelBasic(TestCase):
         self.assertIsNotNone(course.title)
         self.assertIsNotNone(course.teacher)
         self.assertIsNotNone(course.teacherName)
-        self.assertIn(course.level, ['Beginner', 'Intermediate', 'Advanced'])
+        self.assertIn(course.level, ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'])
     
     def test_course_auto_populate_teacher_name(self):
         """Test that teacherName is auto-populated from teacher."""
@@ -56,7 +56,7 @@ class TestCourseModelBasic(TestCase):
         course = Course.objects.create(
             title='Test Course',
             teacher=teacher,
-            level='Beginner'
+            level='A2'
         )
         
         self.assertEqual(course.teacherName, 'Jane Smith')
@@ -172,7 +172,7 @@ class TestCourseFactoryBatch(TestCase):
     def test_factory_with_custom_data(self):
         """Test factories with custom data."""
         custom_title = 'Custom Course Title'
-        course = CourseFactory(title=custom_title, level='Advanced')
+        course = CourseFactory(title=custom_title, level='B2')
         
         self.assertEqual(course.title, custom_title)
-        self.assertEqual(course.level, 'Advanced')
+        self.assertEqual(course.level, 'B2')

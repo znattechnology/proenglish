@@ -1,0 +1,86 @@
+{
+ "exame": "C1.1",
+ "formato": "apps/practice/models.py Situacao (situações próprias do exame; extras.exame = true; carregar com manage.py carregar_exame_curso)",
+ "situacoes": [
+  {
+   "slug": "c1-1-exame-proposta",
+   "nome": "C1.1 exam · Make the case",
+   "papel_tutor": "A sceptical finance director of the student's company, who only accepts numbers and good answers to objections.",
+   "descricao": "The examiner is a sceptical finance director. The student makes the case for a proposal: their own, or this one: a six-month trial of a four-day week for the customer service team, with two extra staff costing 9 million kwanzas. Difficulty: the examiner raises two objections, one at a time (the cost now; the risk that clients complain), and asks once for a guarantee that no client will complain, which the student should not give. Decision: approve or not, and on what condition. Discussion: Should employees have a say in how a company spends its money? Opposite view 1: managers are paid to decide and to take the risk. Opposite view 2: the people who do the work know best where money is wasted.",
+   "nivel": "C1",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. I'm the finance director, and I'm not easy to convince. You have a proposal for me. Go ahead."
+   },
+   "frases": [
+    "What we need is…",
+    "That's a fair point. But consider this…",
+    "All I'm asking for is…",
+    "I'm afraid I'd rather not…"
+   ]
+  },
+  {
+   "slug": "c1-1-exame-estrategia",
+   "nome": "C1.1 exam · Choose a strategy",
+   "papel_tutor": "A board member of a chain of pharmacies, who prefers a different option and asks \"what if\" questions.",
+   "descricao": "The examiner is a board member of a chain of three pharmacies in Luanda, with 60 million kwanzas to grow. Options: open a fourth pharmacy in Huambo; a home-delivery service in Luanda; or a small health check service (blood pressure, diabetes) inside the existing pharmacies. The student presents the options with scenarios and recommends one. Difficulty: the examiner prefers another option, asks two \"what if\" questions, one at a time, and asks once for a guaranteed profit in year one, which the student should soften. Decision: agree on one option and one condition. Discussion: Is it better for a business to grow fast or slowly? Opposite view 1: if you grow slowly, a competitor takes the market. Opposite view 2: many companies fail because they grow faster than their cash.",
+   "nivel": "C1",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. I'm on the board of a chain of three pharmacies in Luanda. We have sixty million kwanzas to grow, and three ideas: Huambo, home delivery, or health checks in our pharmacies. Which would you recommend?"
+   },
+   "frases": [
+    "In the most likely scenario…",
+    "Supposing…, in which case…",
+    "Were it not for…, … would be the obvious choice.",
+    "On balance…"
+   ]
+  },
+  {
+   "slug": "c1-1-exame-mediar",
+   "nome": "C1.1 exam · Mediate",
+   "papel_tutor": "Two colleagues in conflict, Edson (IT) and Yara (events); the examiner plays both and always says the name before speaking.",
+   "descricao": "The examiner plays two colleagues and always says the name before each line. EDSON (IT) needs the big meeting room on Saturday for a system migration planned for two months. YARA (events) has booked it for a client launch on the same Saturday, confirmed last week. Each blames the other for not checking. Hidden interests: Edson cannot move the migration without stopping the company on a weekday; Yara cannot lose face with the client. Difficulty: YARA says once: Under no circumstances will I cancel my client. EDSON asks once: You are the manager, just decide for us. The student mediates: ground rules, both sides, interests, options. Decision: a concrete agreement. Discussion: Should a manager always try to avoid conflict in a team? Opposite view 1: conflict wastes time and energy. Opposite view 2: teams without conflict often hide problems.",
+   "nivel": "C1",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. You're the manager of two colleagues who are arguing. I'll play both of them. EDSON: I booked that room for Saturday two months ago! YARA: And my client launch was confirmed last week. It's in the system!"
+   },
+   "frases": [
+    "Before we start, a few ground rules…",
+    "So what I'm hearing from both of you is…",
+    "Correct me if I'm wrong, but…",
+    "What if…? How would you feel about…?"
+   ]
+  },
+  {
+   "slug": "c1-1-exame-numeros",
+   "nome": "C1.1 exam · Explain the figures",
+   "papel_tutor": "The owner of a small hotel in Benguela, who is not a numbers person and believes every rumour.",
+   "descricao": "The examiner owns a hotel in Benguela. The student explains the quarter: occupancy 62 percent (target 70, last year 58); revenue 210 million kwanzas; online bookings 45 percent of the total; guest rating 4.3 out of 5 from 120 reviews; a new resort is said to be opening nearby next year (unconfirmed). The student summarises, explains the gap and approximates honestly. Difficulty: the examiner treats the rumour as a fact (The resort opens in June, so we are finished) and asks once to promise 70 percent next quarter. Decision: one recommendation for next quarter. Discussion: Should a company share its results with all its staff, even when they are bad? Opposite view 1: bad results can make good people leave. Opposite view 2: people work better when they know the truth.",
+   "nivel": "C1",
+   "duracao_min": 5,
+   "estado": "activo",
+   "extras": {
+    "exame": true,
+    "parte": 3,
+    "frase_inicial": "Now Part 3. I own a small hotel in Benguela, and you've looked at our figures for the quarter. Numbers aren't my thing. Tell me how we're doing."
+   },
+   "frases": [
+    "Looking at the figures, we can see…",
+    "Compared with last year, …",
+    "…is said to be… That is not confirmed.",
+    "Based on these figures, I'd recommend…"
+   ]
+  }
+ ]
+}

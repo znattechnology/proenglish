@@ -1,0 +1,409 @@
+{
+ "unidade": "B1.1 · Review 1",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "B1R1-1",
+   "titulo": "Review 1: connections, changes and opinions",
+   "aula": "R1A",
+   "objectivo": "Rever as unidades 1 a 3 do B1.1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Do you know where the station [is]?",
+     "opcoes": [
+      {
+       "texto": "is it",
+       "certa": false
+      },
+      {
+       "texto": "does it be",
+       "certa": false
+      }
+     ],
+     "explicacao": "Pergunta indirecta: a ordem da afirmação."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "You're from Lusaka, [aren't] you?",
+     "opcoes": [
+      {
+       "texto": "don't",
+       "certa": false
+      },
+      {
+       "texto": "isn't",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've been [working] here since 2020.",
+     "opcoes": [
+      {
+       "texto": "work",
+       "certa": false
+      },
+      {
+       "texto": "worked",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete (um hábito de agora).",
+     "frase": "I [usually] drink coffee in the morning.",
+     "opcoes": [
+      {
+       "texto": "use to",
+       "certa": false
+      },
+      {
+       "texto": "am used",
+       "certa": false
+      }
+     ],
+     "explicacao": "Agora → usually; used to é só para o passado."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [agree] with you.",
+     "opcoes": [
+      {
+       "texto": "'m agree",
+       "certa": false
+      },
+      {
+       "texto": "am agree",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The room isn't big [enough].",
+     "opcoes": [
+      {
+       "texto": "too",
+       "certa": false
+      },
+      {
+       "texto": "so",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Could you tell me what time the meeting starts?",
+       "certa": true
+      },
+      {
+       "texto": "Could you tell me what time does the meeting start?",
+       "certa": false
+      },
+      {
+       "texto": "Could you tell me what time starts the meeting?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Conheço a Lerato desde Janeiro.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "I've known Lerato since January.",
+       "certa": true
+      },
+      {
+       "texto": "I've been knowing Lerato since January.",
+       "certa": false
+      },
+      {
+       "texto": "I know Lerato since January.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In a meeting with a client, which is the most polite way to disagree?",
+     "opcoes": [
+      {
+       "texto": "I'm not sure I agree.",
+       "certa": true
+      },
+      {
+       "texto": "That's wrong.",
+       "certa": false
+      },
+      {
+       "texto": "I totally disagree.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Chanda. I used to work in the mines in Zambia. I've been living in Lobito for two years now.",
+     "enunciado": "How long has Chanda been living in Lobito?",
+     "opcoes": [
+      {
+       "texto": "for two years",
+       "certa": true
+      },
+      {
+       "texto": "for twelve years",
+       "certa": false
+      },
+      {
+       "texto": "since last month",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "You work on a site too, don't you?",
+     "enunciado": "Ouça e repita, com a voz a descer em \"don't you\"."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How has your job or your life changed in the last five years? Use \"used to\" and \"I've been… since…\".",
+     "frase": "used to",
+     "resposta": "Five years ago, I used to work in a small shop in Huambo. Now I work for a bank in Luanda. I've been working there since 2024, and I've been studying English since March.",
+     "contexto": "used to e present perfect continuous."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Do you think people should work from home? Give your opinion with two reasons.",
+     "frase": "reasons",
+     "resposta": "In my view, two days at home is a good idea. There are two reasons. Firstly, we lose too much time in traffic. Secondly, it's quieter at home. So, in short, a mix of home and office is the best.",
+     "contexto": "Opinião organizada."
+    }
+   ]
+  },
+  {
+   "codigo": "B1R1-2",
+   "titulo": "Review 1: solutions, processes and the exam",
+   "aula": "R1B",
+   "objectivo": "Rever as unidades 4 e 5 do B1.1 e preparar o exame oral.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I [had] more time, I'd study every day.",
+     "opcoes": [
+      {
+       "texto": "would have",
+       "certa": false
+      },
+      {
+       "texto": "will have",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It [probably won't] rain tomorrow.",
+     "opcoes": [
+      {
+       "texto": "won't probably",
+       "certa": false
+      },
+      {
+       "texto": "will probably not to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [was born] in Lubango.",
+     "opcoes": [
+      {
+       "texto": "born",
+       "certa": false
+      },
+      {
+       "texto": "am born",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "This is the report I [sent] you.",
+     "opcoes": [
+      {
+       "texto": "sent it",
+       "certa": false
+      },
+      {
+       "texto": "was sent",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The panels [are] cleaned every two weeks.",
+     "opcoes": [
+      {
+       "texto": "is",
+       "certa": false
+      },
+      {
+       "texto": "be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "If customs accepts the certificate, we'll start on Monday.",
+       "certa": true
+      },
+      {
+       "texto": "If customs accepts the certificate, we'd start on Monday.",
+       "certa": false
+      },
+      {
+       "texto": "If customs will accept the certificate, we'll start on Monday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In part 2 of the B1.1 exam, you…",
+     "opcoes": [
+      {
+       "texto": "explain a process alone for about one minute",
+       "certa": true
+      },
+      {
+       "texto": "describe a photo",
+       "certa": false
+      },
+      {
+       "texto": "ask the examiner questions",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In part 4, the examiner disagrees with you. The best answer starts with…",
+     "opcoes": [
+      {
+       "texto": "I see your point, but…",
+       "certa": true
+      },
+      {
+       "texto": "That's wrong.",
+       "certa": false
+      },
+      {
+       "texto": "OK, you are right. Next question.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "You can't find a word. You say:",
+     "opcoes": [
+      {
+       "texto": "What I mean is, …",
+       "certa": true
+      },
+      {
+       "texto": "Sorry, finish.",
+       "certa": false
+      },
+      {
+       "texto": "I can't, sorry.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Lurdes. First, the client's documents are checked at the branch. Then the application is sent to our department.",
+     "enunciado": "Where are the documents checked?",
+     "opcoes": [
+      {
+       "texto": "at the branch",
+       "certa": true
+      },
+      {
+       "texto": "in the accounts department",
+       "certa": false
+      },
+      {
+       "texto": "at the client's home",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "There are two reasons. Firstly, it's faster. Secondly, it's cheaper.",
+     "enunciado": "Ouça e repita, com uma pausa depois de cada razão."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Explain a process or a procedure at your work or in your studies, step by step. Use the passive and sequence words.",
+     "frase": "First",
+     "resposta": "In my school, a new student is registered in four steps. First, the documents are checked at the office. Then the student is given a number. After that, the classes are chosen with a teacher. Finally, the card is printed, and the student can start.",
+     "contexto": "Turno longo (45 segundos)."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should companies pay for their staff's English lessons? Then answer this: \"Some people say staff leave after the company pays for their lessons.\"",
+     "frase": "I see your point",
+     "resposta": "In my view, yes. Firstly, staff who speak English can work with foreign clients. Secondly, people feel valued. I see your point about people leaving, but what I mean is: if the company is a good place to work, most people stay.",
+     "contexto": "Opinião e resposta ao argumento contrário."
+    }
+   ]
+  }
+ ]
+}

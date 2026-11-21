@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AreaTexto, Aviso, Botao, Campo, Escolha, Interruptor } from "@/components/pe";
+import { DESCRICAO_NIVEL, OPCOES_NIVEL, normalizarNivel } from "@/src/domains/shared/niveis";
 import { mensagemErro } from "@/src/domains/student/subscricao/api";
 import { useMudarCursoMutation, useOpcoesQuery, type DefinicoesCurso, type DetalheCurso } from "@/src/domains/teacher/professor/api";
 import { DialogoArquivar } from "./Arquivar";
@@ -15,7 +16,7 @@ export function FormDefinicoes({ curso }: { curso: DetalheCurso }) {
   const [titulo, setTitulo] = useState(curso.titulo);
   const [descricao, setDescricao] = useState(curso.descricao ?? "");
   const [area, setArea] = useState(curso.categoria);
-  const [nivel, setNivel] = useState(curso.nivel_codigo);
+  const [nivel, setNivel] = useState(normalizarNivel(curso.nivel_codigo) ?? "A2");
   const [acesso, setAcesso] = useState(curso.acesso);
   const [d, setD] = useState<DefinicoesCurso>(curso.definicoes);
   const [maximo, setMaximo] = useState(curso.definicoes.maximo_alunos?.toString() ?? "");
@@ -32,6 +33,7 @@ export function FormDefinicoes({ curso }: { curso: DetalheCurso }) {
     if (!titulo.trim()) er.titulo = "Escreva o título do curso.";
     else if (titulo.trim().length > 60) er.titulo = "O título tem mais de 60 caracteres.";
     if (d.nota_minima < 50 || d.nota_minima > 100) er.nota = "Escolha um valor entre 50 e 100.";
+    if (d.exame_oral && (d.nota_minima_exame < 40 || d.nota_minima_exame > 100)) er.notaExame = "Escolha um valor entre 40 e 100.";
     const max = maximo.trim() ? Number(maximo) : null;
     if (max != null && (!Number.isInteger(max) || max < 1)) er.maximo = "Escreva um número inteiro, ou deixe vazio para não ter limite.";
     setErros(er);
@@ -59,8 +61,8 @@ export function FormDefinicoes({ curso }: { curso: DetalheCurso }) {
               </option>
             ))}
           </Escolha>
-          <Escolha rotulo="Nível" value={nivel} onChange={(e) => setNivel(e.target.value)} disabled={!opcoes}>
-            {(opcoes?.niveis ?? [{ valor: curso.nivel_codigo, nome: curso.nivel ?? curso.nivel_codigo }]).map((n) => (
+          <Escolha rotulo="Nível" value={nivel} onChange={(e) => setNivel(normalizarNivel(e.target.value) ?? nivel)} ajuda={DESCRICAO_NIVEL[nivel]}>
+            {OPCOES_NIVEL.map((n) => (
               <option key={n.valor} value={n.valor}>
                 {n.nome}
               </option>
@@ -118,6 +120,26 @@ export function FormDefinicoes({ curso }: { curso: DetalheCurso }) {
           erro={erros.nota}
           ajuda="Em percentagem, entre 50 e 100."
         />
+        <Interruptor
+          rotulo="Exame oral obrigatório"
+          descricao={`O aluno faz uma conversa de 8 a 10 minutos com o tutor sobre as situações do curso.${d.peso_exame != null ? ` Vale ${d.peso_exame}% da nota.` : ""} Desligado, a nota vem das frases, das conversas e do estudo.`}
+          ligado={d.exame_oral}
+          aoMudar={(v) => muda({ exame_oral: v })}
+        />
+        {d.exame_oral ? (
+          <Campo
+            className="max-w-[240px]"
+            rotulo="Nota mínima do exame oral"
+            type="number"
+            min={40}
+            max={100}
+            step={5}
+            value={d.nota_minima_exame}
+            onChange={(e) => muda({ nota_minima_exame: Number(e.target.value) })}
+            erro={erros.notaExame}
+            ajuda="Em percentagem, entre 40 e 100. Com menos, o aluno pode repetir ao fim de 7 dias."
+          />
+        ) : null}
         <Interruptor
           rotulo="Certificado automático"
           descricao="Emitido quando o aluno chega à nota mínima. Desligado, o aluno pede-o na página do curso."

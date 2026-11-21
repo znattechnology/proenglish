@@ -25,7 +25,7 @@ isso recusa-se (409 code "quebra_curso", details.problemas = [texto]) o que deix
 uma lição que os alunos vêem: apagar a última lição de uma unidade ou a última unidade, ficar com
 menos de 3 exercícios, guardar um exercício inválido (p.ex. escuta sem áudio: nesses cursos tenta-se
 gerar o áudio da frase automaticamente). Lições novas ficam escondidas aos alunos até estarem
-completas (apps.practice.acesso_licoes). Exercícios de conversa já não se criam (400).
+completas (apps.practice.acesso_licoes). Exercícios "responder" e "conversa" (curta, no fim da lição) também se criam aqui.
 O formato dos exercícios e a tradução para o modelo estão em pratica_formato.py; a geração com
 o Claude em gerar_licao.py.
 """

@@ -1,0 +1,1246 @@
+{
+ "unidade": "A1.2 · Unit 7 — Around town",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "7A",
+   "titulo": "There is, there are",
+   "aula": "7A",
+   "objectivo": "Dizer o que há e não há num lugar e perguntar com Is there…? / Are there any…?",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[There's] a bank near the office.",
+     "opcoes": [
+      {
+       "texto": "There are",
+       "certa": false
+      },
+      {
+       "texto": "It has",
+       "certa": false
+      }
+     ],
+     "explicacao": "Uma coisa: \"there's\" (there is)."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"school\"",
+     "opcoes": [
+      {
+       "texto": "school",
+       "certa": true,
+       "imagem": "school"
+      },
+      {
+       "texto": "cinema",
+       "certa": false,
+       "imagem": "cinema"
+      },
+      {
+       "texto": "hospital",
+       "certa": false,
+       "imagem": "hospital"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"pharmacy\"",
+     "opcoes": [
+      {
+       "texto": "park",
+       "certa": false,
+       "imagem": "park"
+      },
+      {
+       "texto": "bank",
+       "certa": false,
+       "imagem": "bank"
+      },
+      {
+       "texto": "pharmacy",
+       "certa": true,
+       "imagem": "pharmacy"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[There are] two pharmacies in our street.",
+     "opcoes": [
+      {
+       "texto": "There is",
+       "certa": false
+      },
+      {
+       "texto": "Have",
+       "certa": false
+      }
+     ],
+     "explicacao": "Várias coisas: \"there are\"."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Como se diz \"Tem um banco aqui perto\"?",
+     "opcoes": [
+      {
+       "texto": "There's a bank near here.",
+       "certa": true
+      },
+      {
+       "texto": "It has a bank near here.",
+       "certa": false
+      },
+      {
+       "texto": "Have a bank near here.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Em inglês não se usa \"have\" para dizer que existe: \"There's…\"."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "There [aren't] any cinemas.",
+     "opcoes": [
+      {
+       "texto": "isn't",
+       "certa": false
+      },
+      {
+       "texto": "not",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Is there an ATM near here? — Yes, ...",
+     "opcoes": [
+      {
+       "texto": "there is.",
+       "certa": true
+      },
+      {
+       "texto": "there's.",
+       "certa": false
+      },
+      {
+       "texto": "it is.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Resposta curta: \"Yes, there is.\" (sem contracção)."
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Há algum restaurante?",
+     "resposta": "Are there any restaurants?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "No, there isn't. But there's a park near the church.",
+     "enunciado": "Há ginásio perto do escritório?",
+     "opcoes": [
+      {
+       "texto": "Não, mas há um parque.",
+       "certa": true
+      },
+      {
+       "texto": "Sim, perto da igreja.",
+       "certa": false
+      },
+      {
+       "texto": "Sim, no parque.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "There's a bank near here. There are a lot of restaurants.",
+     "enunciado": "Ouça e repita: o \"th\" de \"there\" é suave, com a língua entre os dentes."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Is there an ATM near here?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What is there near your home?",
+     "frase": "There's",
+     "resposta": "There's a school and a pharmacy near my home. There are two shops.",
+     "contexto": "Diga duas ou três coisas."
+    }
+   ]
+  },
+  {
+   "codigo": "7B",
+   "titulo": "Where is it?",
+   "aula": "7B",
+   "objectivo": "Dizer onde fica um lugar com preposições e perguntar Where's…?",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada preposição à tradução.",
+     "pares": [
+      {
+       "a": "next to",
+       "b": "ao lado de"
+      },
+      {
+       "a": "opposite",
+       "b": "do outro lado de, em frente de"
+      },
+      {
+       "a": "between",
+       "b": "entre"
+      },
+      {
+       "a": "behind",
+       "b": "atrás de"
+      },
+      {
+       "a": "near",
+       "b": "perto de"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"corner\"",
+     "opcoes": [
+      {
+       "texto": "corner",
+       "certa": true,
+       "imagem": "corner"
+      },
+      {
+       "texto": "street",
+       "certa": false,
+       "imagem": "street"
+      },
+      {
+       "texto": "building",
+       "certa": false,
+       "imagem": "building"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "O banco fica do outro lado da rua, virado para o escritório. Qual é a frase certa?",
+     "opcoes": [
+      {
+       "texto": "The bank is opposite the office.",
+       "certa": true
+      },
+      {
+       "texto": "The bank is in front of the office.",
+       "certa": false
+      },
+      {
+       "texto": "The bank is behind the office.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Do outro lado da rua: \"opposite\". \"In front of\" é mesmo diante, junto à porta."
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The pharmacy is [between] the office and the hospital.",
+     "opcoes": [
+      {
+       "texto": "next",
+       "certa": false
+      },
+      {
+       "texto": "opposite",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The café is next [to] the bank.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The bus stop is [on] the corner.",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Em \"opposite\", qual é a sílaba forte?",
+     "opcoes": [
+      {
+       "texto": "OP",
+       "certa": true
+      },
+      {
+       "texto": "PO",
+       "certa": false
+      },
+      {
+       "texto": "SITE",
+       "certa": false
+      }
+     ],
+     "explicacao": "OP-po-site."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Ground floor\" é:",
+     "opcoes": [
+      {
+       "texto": "rés-do-chão",
+       "certa": true
+      },
+      {
+       "texto": "primeiro andar",
+       "certa": false
+      },
+      {
+       "texto": "cave",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The bank is opposite our building — on the other side of the street.",
+     "enunciado": "Onde fica o banco?",
+     "opcoes": [
+      {
+       "texto": "do outro lado da rua",
+       "certa": true
+      },
+      {
+       "texto": "ao lado do prédio",
+       "certa": false
+      },
+      {
+       "texto": "atrás do prédio",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "The bank is opposite the office. The café is next to the bank.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Where's your office or your home? Is it near a landmark?",
+     "frase": "near",
+     "resposta": "My office is near the airport, next to a big supermarket.",
+     "contexto": "Use near, next to ou opposite."
+    }
+   ]
+  },
+  {
+   "codigo": "7C",
+   "titulo": "Excuse me, where is…?",
+   "aula": "7C",
+   "objectivo": "Pedir direcções com educação e dar e entender direcções simples.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Quer perguntar o caminho a uma pessoa na rua. Como começa?",
+     "opcoes": [
+      {
+       "texto": "Excuse me…",
+       "certa": true
+      },
+      {
+       "texto": "Hey, you!",
+       "certa": false
+      },
+      {
+       "texto": "Sorry me…",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"traffic lights\"",
+     "opcoes": [
+      {
+       "texto": "road",
+       "certa": false,
+       "imagem": "road"
+      },
+      {
+       "texto": "street",
+       "certa": false,
+       "imagem": "street"
+      },
+      {
+       "texto": "traffic lights",
+       "certa": true,
+       "imagem": "traffic-lights"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"road\"",
+     "opcoes": [
+      {
+       "texto": "roundabout",
+       "certa": false,
+       "imagem": "roundabout"
+      },
+      {
+       "texto": "street",
+       "certa": false,
+       "imagem": "street"
+      },
+      {
+       "texto": "road",
+       "certa": true,
+       "imagem": "road"
+      }
+     ]
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "go straight on",
+       "b": "siga em frente"
+      },
+      {
+       "a": "turn left",
+       "b": "vire à esquerda"
+      },
+      {
+       "a": "go past",
+       "b": "passe por"
+      },
+      {
+       "a": "traffic lights",
+       "b": "semáforos"
+      },
+      {
+       "a": "roundabout",
+       "b": "rotunda"
+      }
+     ]
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Turn] left at the traffic lights.",
+     "opcoes": [
+      {
+       "texto": "Turns",
+       "certa": false
+      },
+      {
+       "texto": "You turn to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Take the [second] street on the right.",
+     "opcoes": [
+      {
+       "texto": "two",
+       "certa": false
+      },
+      {
+       "texto": "secondary",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Don't] turn right. Go straight on.",
+     "opcoes": [
+      {
+       "texto": "Not",
+       "certa": false
+      },
+      {
+       "texto": "No",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Desculpe, onde ficam os correios?",
+     "resposta": "Excuse me, where's the post office?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Go straight on. Go past the church. Then turn left at the traffic lights.",
+     "enunciado": "Onde vira à esquerda?",
+     "opcoes": [
+      {
+       "texto": "nos semáforos",
+       "certa": true
+      },
+      {
+       "texto": "na igreja",
+       "certa": false
+      },
+      {
+       "texto": "na rotunda",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The post office is on the left. It's five minutes on foot.",
+     "enunciado": "Quanto tempo leva a pé?",
+     "opcoes": [
+      {
+       "texto": "5 minutos",
+       "certa": true
+      },
+      {
+       "texto": "15 minutos",
+       "certa": false
+      },
+      {
+       "texto": "50 minutos",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Excuse me. Is there a pharmacy near here?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Excuse me, where's the bank, please?",
+     "frase": "Go",
+     "resposta": "Go straight on and take the first street on the left. The bank is on the right. It's two minutes on foot.",
+     "contexto": "Dê duas ou três direcções (pode inventar)."
+    }
+   ]
+  },
+  {
+   "codigo": "7D",
+   "titulo": "Places in town",
+   "aula": "7D",
+   "objectivo": "Nomear lugares da cidade e pronunciar /θ/ e /ð/.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada lugar à tradução.",
+     "pares": [
+      {
+       "a": "pharmacy",
+       "b": "farmácia"
+      },
+      {
+       "a": "petrol station",
+       "b": "bomba de gasolina"
+      },
+      {
+       "a": "post office",
+       "b": "correios"
+      },
+      {
+       "a": "car park",
+       "b": "parque de estacionamento"
+      },
+      {
+       "a": "police station",
+       "b": "esquadra"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"hotel\"",
+     "opcoes": [
+      {
+       "texto": "hotel",
+       "certa": true,
+       "imagem": "hotel"
+      },
+      {
+       "texto": "bank",
+       "certa": false,
+       "imagem": "bank"
+      },
+      {
+       "texto": "church",
+       "certa": false,
+       "imagem": "church"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"police station\"",
+     "opcoes": [
+      {
+       "texto": "church",
+       "certa": false,
+       "imagem": "church"
+      },
+      {
+       "texto": "police station",
+       "certa": true,
+       "imagem": "police-station"
+      },
+      {
+       "texto": "toilets",
+       "certa": false,
+       "imagem": "toilets"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Em inglês britânico, a bomba de gasolina é:",
+     "opcoes": [
+      {
+       "texto": "petrol station",
+       "certa": true
+      },
+      {
+       "texto": "gas station",
+       "certa": false
+      },
+      {
+       "texto": "fuel house",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Landmark\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "ponto de referência",
+       "certa": true
+      },
+      {
+       "texto": "marca no chão",
+       "certa": false
+      },
+      {
+       "texto": "terreno",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Que palavra tem o som /θ/ (sem voz)?",
+     "opcoes": [
+      {
+       "texto": "three",
+       "certa": true
+      },
+      {
+       "texto": "there",
+       "certa": false
+      },
+      {
+       "texto": "this",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Three\" tem /θ/, só ar; \"there\" e \"this\" têm /ð/, com voz."
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Three.",
+     "enunciado": "Que palavra ouve?",
+     "opcoes": [
+      {
+       "texto": "three",
+       "certa": true
+      },
+      {
+       "texto": "tree",
+       "certa": false
+      },
+      {
+       "texto": "free",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Em \"university\", qual é a sílaba forte?",
+     "opcoes": [
+      {
+       "texto": "VER",
+       "certa": true
+      },
+      {
+       "texto": "U",
+       "certa": false
+      },
+      {
+       "texto": "TY",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "three, think, Thursday, thank you",
+     "enunciado": "Ouça e repita /θ/: língua entre os dentes, só ar."
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "there, this, the other",
+     "enunciado": "Ouça e repita /ð/: a mesma posição, com voz."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What places are there near your office or your home? Say three.",
+     "frase": "There's",
+     "resposta": "There's a pharmacy, a bus stop and a church near my home.",
+     "contexto": "Diga três lugares."
+    }
+   ]
+  },
+  {
+   "codigo": "7E",
+   "titulo": "Real English: Finding the way",
+   "aula": "7E",
+   "objectivo": "Seguir direcções dadas a velocidade quase natural.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "Go straight on, past the supermarket. It's on the corner, opposite the bus stop. Two minutes.",
+     "enunciado": "Where's the pharmacy?",
+     "opcoes": [
+      {
+       "texto": "on the corner, opposite the bus stop",
+       "certa": true
+      },
+      {
+       "texto": "next to the supermarket",
+       "certa": false
+      },
+      {
+       "texto": "behind the bus stop",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Then cross the road at the roundabout. The beach is just there.",
+     "enunciado": "Where do you cross the road to the beach?",
+     "opcoes": [
+      {
+       "texto": "at the roundabout",
+       "certa": true
+      },
+      {
+       "texto": "at the traffic lights",
+       "certa": false
+      },
+      {
+       "texto": "at the hotel",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "It's about ten minutes on foot.",
+     "enunciado": "How far is the beach?",
+     "opcoes": [
+      {
+       "texto": "about ten minutes on foot",
+       "certa": true
+      },
+      {
+       "texto": "two minutes by car",
+       "certa": false
+      },
+      {
+       "texto": "an hour",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm at the blue building, next to the supermarket.",
+     "enunciado": "What's next to the blue building?",
+     "opcoes": [
+      {
+       "texto": "the supermarket",
+       "certa": true
+      },
+      {
+       "texto": "the bank",
+       "certa": false
+      },
+      {
+       "texto": "the hotel",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Take the first street on the left after the petrol station.",
+     "enunciado": "Where does the taxi turn?",
+     "opcoes": [
+      {
+       "texto": "first street on the left after the petrol station",
+       "certa": true
+      },
+      {
+       "texto": "second street on the right",
+       "certa": false
+      },
+      {
+       "texto": "at the roundabout",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"How do I get to the beach?\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Como chego à praia?",
+       "certa": true
+      },
+      {
+       "texto": "Quando vou à praia?",
+       "certa": false
+      },
+      {
+       "texto": "Onde fica a minha praia?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "How do I get to the beach? It's about ten minutes on foot.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "How do I get to the nearest bank from your office?",
+     "frase": "Go",
+     "resposta": "Go straight on and turn left at the traffic lights. The bank is on the right. It's five minutes on foot.",
+     "contexto": "Dê duas ou três direcções."
+    }
+   ]
+  },
+  {
+   "codigo": "7F",
+   "titulo": "Finding our office",
+   "aula": "7F",
+   "objectivo": "Explicar a um visitante, ao telefone, como chegar ao escritório.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "Atende o telefone no trabalho. O que diz?",
+     "opcoes": [
+      {
+       "texto": "Kalandula Tech, good morning. Paulo speaking.",
+       "certa": true
+      },
+      {
+       "texto": "Hello, I am Paulo, who is?",
+       "certa": false
+      },
+      {
+       "texto": "Yes? Paulo here, what?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"lift\"",
+     "opcoes": [
+      {
+       "texto": "lift",
+       "certa": true,
+       "imagem": "lift"
+      },
+      {
+       "texto": "entrance",
+       "certa": false,
+       "imagem": "entrance"
+      },
+      {
+       "texto": "reception",
+       "certa": false,
+       "imagem": "reception"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Escolha a imagem: \"entrance\"",
+     "opcoes": [
+      {
+       "texto": "entrance",
+       "certa": true,
+       "imagem": "entrance"
+      },
+      {
+       "texto": "reception",
+       "certa": false,
+       "imagem": "reception"
+      },
+      {
+       "texto": "stairs",
+       "certa": false,
+       "imagem": "stairs"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Ao telefone, como se identifica o Sr. Okafor?",
+     "opcoes": [
+      {
+       "texto": "This is Mr Okafor.",
+       "certa": true
+      },
+      {
+       "texto": "I am Mr Okafor speaking you.",
+       "certa": false
+      },
+      {
+       "texto": "Here is Mr Okafor.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Onde está agora?",
+     "resposta": "Where are you now?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We're [on] the second floor.",
+     "opcoes": [
+      {
+       "texto": "in",
+       "certa": false
+      },
+      {
+       "texto": "at",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Em inglês britânico, o elevador é:",
+     "opcoes": [
+      {
+       "texto": "the lift",
+       "certa": true
+      },
+      {
+       "texto": "the elevator",
+       "certa": false
+      },
+      {
+       "texto": "the ascensor",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "We're number fifteen, a blue building, opposite the bank. There's a car park behind the building.",
+     "enunciado": "Onde é o parque de estacionamento?",
+     "opcoes": [
+      {
+       "texto": "atrás do prédio",
+       "certa": true
+      },
+      {
+       "texto": "em frente do banco",
+       "certa": false
+      },
+      {
+       "texto": "ao lado do prédio",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Take the lift, and the reception is on the right. Is that clear?",
+     "enunciado": "Onde fica a recepção?",
+     "opcoes": [
+      {
+       "texto": "à direita",
+       "certa": true
+      },
+      {
+       "texto": "à esquerda",
+       "certa": false
+      },
+      {
+       "texto": "no rés-do-chão",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Take the first street on the left after the petrol station. We're opposite the bank. Is that clear?",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hello, this is your visitor. I'm at the bus stop. How do I get to your office?",
+     "frase": "Go",
+     "resposta": "Go straight on and take the second street on the right. We're opposite the school, on the first floor. Is that clear?",
+     "contexto": "Explique o caminho com um ponto de referência e o andar."
+    }
+   ]
+  },
+  {
+   "codigo": "7R",
+   "titulo": "Unit 7 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 7 e reciclar unidades anteriores.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Is there] a pharmacy near here? — Yes, [there is].",
+     "opcoes": [
+      {
+       "texto": "Are there",
+       "certa": false
+      },
+      {
+       "texto": "it is",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "There are a lot of shops in Talatona.",
+       "certa": true
+      },
+      {
+       "texto": "There is a lot of shops in Talatona.",
+       "certa": false
+      },
+      {
+       "texto": "Have a lot of shops in Talatona.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "O café fica entre o banco e o hotel. Qual é a frase certa?",
+     "opcoes": [
+      {
+       "texto": "The café is between the bank and the hotel.",
+       "certa": true
+      },
+      {
+       "texto": "The café is between the bank or the hotel.",
+       "certa": false
+      },
+      {
+       "texto": "The café is in between of the bank and hotel.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Go [past] the church and turn right.",
+     "opcoes": [
+      {
+       "texto": "by",
+       "certa": false
+      },
+      {
+       "texto": "pass",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Take the second street on the right. It's opposite the school.",
+     "enunciado": "Onde fica?",
+     "opcoes": [
+      {
+       "texto": "em frente da escola, na segunda rua à direita",
+       "certa": true
+      },
+      {
+       "texto": "ao lado da escola, na primeira rua à direita",
+       "certa": false
+      },
+      {
+       "texto": "atrás da escola",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (unidade 6). Num café perto do escritório, como pede um sumo?",
+     "opcoes": [
+      {
+       "texto": "I'd like a mango juice, please.",
+       "certa": true
+      },
+      {
+       "texto": "I want juice of mango.",
+       "certa": false
+      },
+      {
+       "texto": "Give a juice mango.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (unidade 5). Qual é a frase correcta?",
+     "opcoes": [
+      {
+       "texto": "She takes the bus to work.",
+       "certa": true
+      },
+      {
+       "texto": "She take the bus to work.",
+       "certa": false
+      },
+      {
+       "texto": "She taking the bus to work.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Há uma bomba de gasolina na esquina.",
+     "resposta": "There's a petrol station on the corner.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Excuse me, is there an ATM near here? Thank you very much!",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Hello! I'm new here. Is there a good café near the office?",
+     "frase": "There's",
+     "resposta": "Yes, there is. There's a café opposite the office, next to the bank. It's very good.",
+     "contexto": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Go straight on, turn left at the roundabout, and it's on the right.",
+     "enunciado": "Ouça e repita em voz alta."
+    }
+   ]
+  }
+ ]
+}

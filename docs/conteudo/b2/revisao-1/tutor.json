@@ -1,0 +1,82 @@
+{
+ "unidade": "B2.1 · Review 1",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "b2-r1-ensaio",
+   "nome": "B2 Review 1 · Exam rehearsal: the team retreat",
+   "tipo": "livre",
+   "depois_da_aula": "R1B",
+   "descricao": "Ensaio do exame oral do B2.1: o tutor é Casey, novo director de recursos humanos da empresa do aluno. Pergunta pela equipa e pelos planos do aluno; pede-lhe que compare dois tipos de escritório; decide com ele o local e o programa do retiro anual da equipa, com um orçamento apertado; no fim, faz uma pergunta abstracta e discorda duas vezes.",
+   "papel_tutor": "Casey, novo director de recursos humanos da empresa do aluno.",
+   "nivel": "B2",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "…, who… / …, which…",
+    "By the end of the year, I'll have…",
+    "The first option… The second, on the other hand,…",
+    "If you could…, we could… / Shall we go for…?",
+    "That's an interesting question. On the one hand…"
+   ],
+   "extras": {
+    "brief": "Exam rehearsal for an upper-intermediate learner (B2.1, units 1-5). You are Casey (a neutral name; never mention a husband or wife), the new human resources director of the student's company. Have a conversation in four parts, one question at a time. 1) The team and plans: the people the student works or studies with; what they will have achieved by the end of the year; how their work will change in the next few years. 2) Long turn: ask the student to compare two kinds of office — an open-plan office, or small offices for two or three people — for about one minute and a half, and to choose; then ask what could go wrong with their choice. 3) Decision: you and the student must plan the team's annual two-day retreat with a budget of two million kwanzas: a hotel by the sea (more expensive, comfortable) or a farm near Luanda (cheaper, simple). Disagree once and ask for something; reach a decision and ask the student to sum it up. 4) Discussion: ask \"Should managers be chosen by their teams?\"; whatever the student says, give two different opposite views, one at a time, and ask the student to answer each. If the student answers with one word, ask \"Could you say a bit more about that?\" once. Do not correct during the conversation, except by repeating once, correctly: \"that\" in a non-defining clause, \"will bound to\", \"until June we will have\", \"consider to\". Use any A1, A2 and B1 language and B2 units 1 to 5. Do NOT use: \"needn't have\", \"was supposed to\", \"whereas / admittedly / even if / nevertheless\", reporting verbs like suggest, insist, deny or warn, the reporting passive, \"wish / if only\", \"would\" for past habits, the past perfect continuous, or mixed conditionals.",
+    "primeira_fala": "Hi, {nome}! I'm Casey, the new HR director. I'm meeting everyone this week. To start, tell me about the people you work or study with.",
+    "primeira_fala_simples": "Hi, {nome}! I'm Casey. Tell me about your team.",
+    "guiao": [
+     "Thanks. What will you have achieved by the end of this year?",
+     "And how do you think your work will change in the next few years?",
+     "Now, two kinds of office: one big open-plan office, or small offices for two or three people. Could you compare them for a minute or so, and tell me which you would choose?",
+     "What could go wrong with your choice?",
+     "Let's plan the team retreat: two days, two million kwanzas. A hotel by the sea, or a farm near Luanda. What do you think?",
+     "Hmm, I'm not sure. What could you give up to make it work?",
+     "So, what have we agreed?",
+     "Last question: should managers be chosen by their teams?",
+     "I see it differently. What do you say to people who think a team would always choose the easiest manager?",
+     "And some people say managers need the trust of the directors, not just the team. What do you think?",
+     "Thank you, {nome}. That was a very good conversation."
+    ],
+    "frases": [
+     {
+      "en": "My manager, who joined last year, is very organised.",
+      "pt": "A minha chefe, que entrou no ano passado, é muito organizada."
+     },
+     {
+      "en": "By December, I'll have finished my course.",
+      "pt": "Até Dezembro, terei acabado o meu curso."
+     },
+     {
+      "en": "The first option is more social. The second, on the other hand, is quieter.",
+      "pt": "A primeira opção é mais social. A segunda, por outro lado, é mais calma."
+     },
+     {
+      "en": "Shall we go for the farm, provided that we keep the dinner by the sea?",
+      "pt": "Ficamos com a quinta, desde que mantenhamos o jantar junto ao mar?"
+     },
+     {
+      "en": "I see your point, but a team knows who listens to them.",
+      "pt": "Percebo o seu ponto de vista, mas uma equipa sabe quem a ouve."
+     }
+    ],
+    "palavras": [
+     "who",
+     "will have",
+     "on the other hand",
+     "shall we",
+     "agreed",
+     "I see your point"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Descreve pessoas com relativas explicativas e fala de planos com o future perfect ou previsões graduadas.",
+    "Compara as duas opções do escritório (The first… The second, on the other hand,… The main difference is…) e escolhe com razões, falando pelo menos 1 minuto sem ajuda.",
+    "Na decisão sobre o retiro, negoceia com linguagem tentativa e concessões em troca, e leva a conversa até uma decisão com um resumo.",
+    "Organiza a opinião na discussão e responde aos dois contra-argumentos com razões.",
+    "Usa uma variedade de estruturas do B2.1 (passiva, condições, futuros) com erros que não impedem a compreensão.",
+    "É compreendido sem o tutor ter de pedir para repetir mais de duas vezes."
+   ]
+  }
+ ]
+}

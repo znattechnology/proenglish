@@ -25,6 +25,8 @@ de verificação passar.
 """
 from django.db.models import Count, Q
 
+from apps.courses import niveis
+
 RASCUNHO = 'Draft'
 EM_REVISAO = 'InReview'
 PUBLICADO = 'Published'
@@ -78,16 +80,8 @@ AREAS = {
 }
 AREAS_SEM_VALOR = {'', 'Sem categoria'}
 
-NIVEIS = {
-    'Beginner': 'Iniciante (A1–A2)',
-    'Intermediate': 'Intermédio (B1)',
-    'Advanced': 'Avançado (B2–C1)',
-}
-NIVEIS_ENTRADA = {
-    'beginner': 'Beginner', 'iniciante': 'Beginner',
-    'intermediate': 'Intermediate', 'intermédio': 'Intermediate', 'intermedio': 'Intermediate',
-    'advanced': 'Advanced', 'avançado': 'Advanced', 'avancado': 'Advanced',
-}
+# Níveis: escala CEFR única (ver apps/courses/niveis.py). Valor -> nome curto para selects.
+NIVEIS = {c: f'{c} ({niveis.NOMES[c]})' for c in niveis.CEFR}
 
 TITULOS_POR_OMISSAO = {'', 'Curso sem título', 'Novo Curso'}
 
@@ -101,7 +95,8 @@ TIPOS_EXERCICIO = {
     'TRUE_FALSE': 'Verdadeiro ou falso',
     'LISTENING': 'Ouvir',
     'SPEAKING': 'Falar',
-    'VAPI_CONVERSATION': 'Conversa',
+    'RESPONDER': 'Responder',
+    'VAPI_CONVERSATION': 'Conversa curta',
 }
 
 
@@ -165,15 +160,13 @@ def categoria_de_entrada(valor, course_type='video'):
 
 
 def nivel_pt(nivel):
-    return NIVEIS.get(nivel) if nivel else None
+    """'Nível B1' (aceita valores antigos guardados); None sem nível."""
+    return niveis.rotulo(nivel)
 
 
 def nivel_de_entrada(valor):
-    valor = (valor or '').strip()
-    if valor in NIVEIS:
-        return valor
-    base = valor.split('(')[0].strip().lower()
-    return NIVEIS_ENTRADA.get(base)
+    """Só códigos CEFR (A1..C2, qualquer caixa); os nomes antigos são recusados."""
+    return niveis.cefr_de_entrada(valor)
 
 
 def definicoes(course):
@@ -282,6 +275,19 @@ def bloqueio_pratica(user, course):
     return None
 
 
+def bloqueio_requisito_pratica(user, course):
+    """
+    Cursos de sector no laboratório: quem ainda não fazia o curso precisa do nível básico para
+    começar a jogar (ver o curso continua a ser possível). None ou (codigo, mensagem).
+    """
+    from apps.courses import teste_basico
+    if e_dono_ou_staff(user, course) or not teste_basico.curso_de_sector(course):
+        return None
+    if participou_pratica(user, course) or teste_basico.tem_nivel_basico(user):
+        return None
+    return (teste_basico.CODIGO, teste_basico.MENSAGEM)
+
+
 def alunos_pratica(course):
     from apps.practice.models import ChallengeProgress
     return (ChallengeProgress.objects.filter(challenge__lesson__unit__course=course)
@@ -309,6 +315,10 @@ def bloqueio_inscricao(user, course):
         inscritos = CourseEnrollment.objects.filter(course=course, is_active=True).count()
         if inscritos >= course.maximo_alunos:
             return ('curso_cheio', 'Este curso já atingiu o número máximo de alunos.', 400)
+    # Cursos de sector: nível básico (curso geral concluído ou teste aprovado).
+    from apps.courses import teste_basico
+    if teste_basico.falta_requisito(user, course):
+        return (teste_basico.CODIGO, teste_basico.MENSAGEM, 403)
     return None
 
 
@@ -354,7 +364,7 @@ def _item_dados(course):
     if falta:
         detalhe = 'Falta preencher: ' + ', '.join(falta) + '.'
     else:
-        detalhe = f'{area_pt(course.category)}, {nivel_pt(course.level) or course.level}.'
+        detalhe = f'{area_pt(course.category)}, nível {niveis.normalizar(course.level) or course.level}.'
     return _item('dados', 'Título, área e nível preenchidos', not falta, detalhe)
 
 
@@ -430,9 +440,21 @@ def exercicio_valido(challenge, opcoes):
     """opcoes: lista de ChallengeOption do exercício. Devolve (ok, motivo)."""
     certas = [o for o in opcoes if o.is_correct]
     tipo = challenge.type
+    contexto = challenge.conversation_context if isinstance(challenge.conversation_context, dict) else {}
     if tipo == 'VAPI_CONVERSATION':
-        # A conversa dentro da lição está desligada: o aluno salta-a e o professor não a pode criar.
-        return False, 'conversa indisponível: apague este exercício'
+        # Conversa curta no fim da lição: situação e 2 a 3 frases-alvo.
+        from apps.courses.api.teacher.pratica_formato import MIN_FRASES_CONVERSA, frases_da_conversa
+        if not (challenge.question or '').strip():
+            return False, 'sem situação'
+        if len(frases_da_conversa(contexto)) < MIN_FRASES_CONVERSA:
+            return False, f'menos de {MIN_FRASES_CONVERSA} frases para o aluno usar'
+        return True, ''
+    if tipo == 'RESPONDER':
+        if not (challenge.question or '').strip():
+            return False, 'sem pergunta'
+        if not str(contexto.get('frase_alvo') or '').strip():
+            return False, 'sem frase-alvo'
+        return True, ''
     if not (challenge.question or '').strip() and tipo != 'SPEAKING':
         return False, 'sem enunciado'
     if tipo == 'LISTENING' and not (challenge.reference_audio_url or '').strip():
@@ -519,9 +541,32 @@ def verificar_pratica(course):
     return itens
 
 
-def verificar(course, so_visiveis=False):
+def avisos_video(course):
+    """
+    Recomendações que não impedem a publicação (fase 5): aulas com vídeo sem frases aprovadas
+    (os alunos não têm o "Repetir em voz alta" nem a conversa no fim da aula).
+    """
+    from apps.courses.models import Chapter, FraseAula, CourseSection
+    seccoes = list(CourseSection.objects.filter(course=course).order_by('order', 'created_at').values_list('id', flat=True))
+    numero = {s: i for i, s in enumerate(seccoes, start=1)}
+    com_frases = set(FraseAula.objects.filter(chapter__section__course=course, estado=FraseAula.APROVADA)
+                     .values_list('chapter_id', flat=True))
+    sem = [(numero.get(a.section_id), a.title) for a in
+           Chapter.objects.filter(section__course=course).exclude(video='').exclude(type='Quiz')
+           .order_by('section__order', 'section__created_at', 'order', 'created_at').only('id', 'title', 'section_id')
+           if a.id not in com_frases]
+    if not sem:
+        return []
+    return [{'chave': 'frases_aula', 'titulo': 'Frases da aula aprovadas (recomendado)',
+             'detalhe': (f'{_plural(len(sem), "aula com vídeo sem frases aprovadas", "aulas com vídeo sem frases aprovadas")}: '
+                         f'{_agrupar(sem, "Secção")}. Sem frases, os alunos não repetem em voz alta nem conversam '
+                         'sobre a aula. Não impede a publicação.')}]
+
+
+def verificar(course, so_visiveis=False, com_avisos=True):
     itens = verificar_pratica(course) if course.course_type == 'practice' else verificar_video(course, so_visiveis)
-    return {'itens': itens, 'pode_submeter': all(i['ok'] for i in itens)}
+    avisos = avisos_video(course) if com_avisos and course.course_type != 'practice' else []
+    return {'itens': itens, 'pode_submeter': all(i['ok'] for i in itens), 'avisos': avisos}
 
 
 # ---------------------------------------------------------------------------

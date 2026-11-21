@@ -110,6 +110,10 @@ class RespostasNaoChegamAoAlunoTests(CursoPublicado):
 
 
 class ConversaDesligadaTests(CursoPublicado):
+    """
+    A conversa dentro da lição voltou como "conversa curta" (fase 4): o professor cria-a com 2 a 3
+    frases; as antigas (só um objectivo) não passam a lista de verificação; o aluno pode sempre saltá-la.
+    """
     def setUp(self):
         super().setUp()
         # Exercício de conversa antigo, numa lição que os alunos já viam.
@@ -117,29 +121,31 @@ class ConversaDesligadaTests(CursoPublicado):
             lesson_id=self.l1['id'], type='VAPI_CONVERSATION', question='Passagem de turno', order=50,
             conversation_context={'scenario': 'Passagem de turno', 'goal': 'Explicar'})
 
-    def test_professor_nao_cria_nem_muda_para_conversa(self):
+    def test_professor_cria_conversa_curta(self):
         Course.objects.filter(pk=self.curso.pk).update(status=ciclo.RASCUNHO)
         r = self.client.post(f'{P}licoes/{self.l1["id"]}/exercicios/', CONVERSA, format='json')
+        self.assertEqual(r.status_code, 201, r.content)
+        self.assertEqual(r.json()['frases_alvo'], CONVERSA['frases_alvo'])
+        ch = PracticeChallenge.objects.get(id=r.json()['id'])
+        self.assertEqual(ch.type, 'VAPI_CONVERSATION')
+        self.assertEqual(ch.conversation_context['frases'], CONVERSA['frases_alvo'])
+        self.assertEqual(ciclo.exercicio_valido(ch, []), (True, ''))
+        r = self.client.put(f'{P}exercicios/{self.ex1[0]["id"]}/', {**CONVERSA, 'frases_alvo': []}, format='json')
         self.assertEqual(r.status_code, 400)
-        self.assertIn('conversa não está disponível', r.json()['message'])
-        r = self.client.put(f'{P}exercicios/{self.ex1[0]["id"]}/', CONVERSA, format='json')
-        self.assertEqual(r.status_code, 400)
-        r = self.client.post(f'{P}unidades/{self.u1["id"]}/licoes/com-exercicios/',
-                             {'titulo': 'Com conversa', 'exercicios': [EXEMPLOS['escolher'], CONVERSA]}, format='json')
-        self.assertEqual(r.status_code, 400)
-        self.assertNotIn('conversa', pratica_formato.TIPOS_CRIAVEIS)
+        self.assertIn('frases_alvo', r.json()['details'])
+        self.assertIn('conversa', pratica_formato.TIPOS_CRIAVEIS)
 
     def test_ia_nunca_gera_conversa(self):
         self.assertNotIn('conversa', gerar_licao.TIPOS_GERADOS)
-        self.assertNotIn('conversa', json.dumps(gerar_licao.ESQUEMA))
+        self.assertNotIn('"conversa"', json.dumps(gerar_licao.ESQUEMA))
         self.assertNotIn('- conversa', gerar_licao.SYSTEM)
         exercicios, descartados = gerar_licao.limpar_gerados(GERADO, 12)
         self.assertNotIn('conversa', [e['tipo'] for e in exercicios])
 
-    def test_lista_de_verificacao_recusa(self):
+    def test_lista_de_verificacao_recusa_a_antiga(self):
         ok, motivo = ciclo.exercicio_valido(self.conversa, [])
         self.assertFalse(ok)
-        self.assertIn('conversa', motivo)
+        self.assertIn('frases', motivo)
         r = self.client.get(f'{PROF}cursos/{self.curso.id}/verificacao/').json()
         self.assertFalse(r['pode_submeter'])
 
@@ -148,11 +154,13 @@ class ConversaDesligadaTests(CursoPublicado):
         UserProgress.objects.update_or_create(user=self.aluno, defaults={'hearts': 3, 'points': 7})
         jogo = self.client.get(f'{ALUNO}lessons/{self.l1["id"]}/jogar/').json()
         ex = next(e for e in jogo['exercicios'] if e['id'] == str(self.conversa.id))
-        self.assertEqual((ex['modo'], ex['motivo']), ('indisponivel', 'conversa'))
-        # Responder não conta: só saltar.
+        self.assertEqual((ex['modo'], ex['frases']), ('conversa', ['Explicar']))
+        # Sem conversa terminada não conta (nem tira vidas): só saltar.
         r = self.client.post(f'{ALUNO}challenge-progress/', {'challenge_id': str(self.conversa.id),
-                                                             'session_id': 'x'}, format='json')
+                                                             'sessao_id': 'x'}, format='json')
         self.assertEqual(r.status_code, 400)
+        self.assertEqual(r.json()['codigo'], 'conversa_incompleta')
+        self.assertTrue(r.json()['pode_saltar'])
         r = self.client.post(f'{ALUNO}challenge-progress/', {'challenge_id': str(self.conversa.id), 'saltar': True},
                              format='json')
         self.assertEqual(r.status_code, 200, r.content)

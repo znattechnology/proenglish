@@ -1,0 +1,142 @@
+{
+ "unidade": "C1.1 · Unit 4 — Conflict",
+ "formato": "apps/practice/models.py Situacao",
+ "cenarios": [
+  {
+   "slug": "c1-u4-guiada",
+   "nome": "C1 Unit 4 · Say it differently",
+   "tipo": "guiada",
+   "depois_da_aula": "4C",
+   "descricao": "O tutor é Alex, colega de escrita. Dá seis frases normais de uma queixa ou de uma história e pede ao aluno que as diga com inversão negativa (never, not once, at no time, not only, no sooner, only when), para dar ênfase formal; no fim, pede uma frase sem inversão, para lembrar que não se usa sempre.",
+   "papel_tutor": "Alex, colega que ajuda a escrever queixas e relatórios formais.",
+   "nivel": "C1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Never have I…",
+    "Not once has / did…",
+    "At no time did…",
+    "Not only did…, but… also…",
+    "Only when… did I…"
+   ],
+   "extras": {
+    "brief": "Guided practice for an advanced learner (C1.1, unit 4). You are Alex (a neutral name; never mention a husband or wife), a colleague who helps write formal complaints and reports. Give the student six normal sentences, one at a time, and ask them to say each with negative inversion for formal emphasis: (1) \"I have never received such poor service.\" (Never) (2) \"The company didn't call me once.\" (Not once) (3) \"I didn't agree to this at any time.\" (At no time) (4) \"They were late, and they also lost my documents.\" (Not only) (5) \"I had just paid when the price went down.\" (No sooner… than) (6) \"I understood the problem only when I read the contract.\" (Only when). If the order is wrong (\"Never I have…\", \"Only when I read it I understood\"), give the correct version once and ask them to repeat it. If it is correct, say so briefly and move on. At the end, ask: \"Now tell me, in one normal sentence, what you had for lunch.\" If they use inversion, laugh kindly and say it would sound theatrical. Use any language from A1 to B2, plus C1 units 1 to 4: cleft sentences, hedging, degrees of certainty, diplomatic refusals, mixed conditionals, conditional inversion, negative inversion (Never have I…, Not once…, Not only did…, No sooner… than…, Only when… did I…) and mediation language (So what you're saying is…, Correct me if I'm wrong…, What would need to change…?). Speak at natural speed. Do NOT teach or use systematically: participle clauses (Having analysed…), reporting passives (is thought to…), or fronting. Short turns; never more than three sentences.",
+    "primeira_fala": "Hi, {nome}! I'm writing a very formal complaint, and I need more force. Say it with inversion: \"I have never received such poor service.\"",
+    "primeira_fala_simples": "Hi, {nome}! Say it with \"Never have I…\": I have never received such poor service.",
+    "guiao": [
+     "Next, with \"Not once\": \"The company didn't call me once.\"",
+     "Next, with \"At no time\": \"I didn't agree to this at any time.\"",
+     "Next, with \"Not only\": \"They were late, and they also lost my documents.\"",
+     "Next, with \"No sooner… than\": \"I had just paid when the price went down.\"",
+     "Last, with \"Only when\": \"I understood the problem only when I read the contract.\"",
+     "Now tell me, in one normal sentence, what you had for lunch.",
+     "Perfect, {nome}. Strong inversions for complaints — and normal English for lunch."
+    ],
+    "frases": [
+     {
+      "en": "Never have I received such poor service.",
+      "pt": "Nunca recebi um serviço tão mau."
+     },
+     {
+      "en": "Not once did the company call me.",
+      "pt": "A empresa não me ligou uma única vez."
+     },
+     {
+      "en": "At no time did I agree to this.",
+      "pt": "Em momento algum concordei com isto."
+     },
+     {
+      "en": "Not only were they late, but they also lost my documents.",
+      "pt": "Não só chegaram atrasados, como também perderam os meus documentos."
+     },
+     {
+      "en": "Only when I read the contract did I understand the problem.",
+      "pt": "Só quando li o contrato é que percebi o problema."
+     }
+    ],
+    "palavras": [
+     "never have",
+     "not once",
+     "at no time",
+     "not only",
+     "no sooner",
+     "only when"
+    ],
+    "minutos_sugeridos": 7
+   },
+   "criterios": null
+  },
+  {
+   "slug": "c1-u4-livre",
+   "nome": "C1 Unit 4 · The mediator",
+   "tipo": "livre",
+   "depois_da_aula": "4F",
+   "descricao": "O tutor faz de duas pessoas em conflito e diz sempre o nome antes de falar: Chris, das vendas, promete aos clientes prazos de entrega; Pat, do armazém, não os consegue cumprir. O aluno ouve as duas, reformula, encontra o interesse comum e conduz até um acordo.",
+   "papel_tutor": "Chris (vendas) e Pat (armazém), em conflito; o tutor diz sempre o nome antes de falar.",
+   "nivel": "C1",
+   "duracao_min": 10,
+   "correccao": "suave",
+   "area": "general",
+   "frases": [
+    "Before we start, a few ground rules…",
+    "So what I'm hearing from both of you is…",
+    "Correct me if I'm wrong, but…",
+    "What if…? How would you feel about…?",
+    "So, to sum up, we've agreed…"
+   ],
+   "extras": {
+    "brief": "Role-play for an advanced learner (C1.1, unit 4). You play TWO people in a conflict, and the student is the mediator. ALWAYS say the name before each line, like this: \"CHRIS: …\" or \"PAT: …\". Never mention a husband or wife. CHRIS works in sales: promises clients delivery in three days because the competition does; angry that the warehouse \"always fails\". Hidden interest: losing clients and the sales bonus. PAT runs the warehouse: has four people for work that needs six; angry that sales \"promise the impossible\" without asking. Hidden interest: not being blamed, and a realistic workload. Both, without knowing it, want the same thing: to know realistic dates before the client does, and to stop being blamed. Start with both talking at once and interrupting each other. Calm down only if the student sets ground rules. Reveal the hidden interests only if the student asks good questions (What matters most to you? What would need to change?). If the student takes sides, the other person becomes defensive (\"PAT: So it's my fault again.\"). Accept options that answer both interests; reject ones that serve only one. At the end, if the student sums up an agreement, both accept it, each with one small condition. Use any language from A1 to B2, plus C1 units 1 to 4: cleft sentences, hedging, degrees of certainty, diplomatic refusals, mixed conditionals, conditional inversion, negative inversion (Never have I…, Not once…, Not only did…, No sooner… than…, Only when… did I…) and mediation language (So what you're saying is…, Correct me if I'm wrong…, What would need to change…?). Speak at natural speed. Do NOT teach or use systematically: participle clauses (Having analysed…), reporting passives (is thought to…), or fronting. Short turns; never more than two sentences per character per turn.",
+    "primeira_fala": "CHRIS: {nome}, thank goodness. Three clients cancelled this month because the warehouse is always late! PAT: Always late? Because sales promise dates nobody asked us about!",
+    "primeira_fala_simples": "CHRIS: {nome}, the warehouse is always late! PAT: Because sales promise impossible dates!",
+    "guiao": [
+     "CHRIS: Every time I promise three days, it becomes five. PAT: Every time you promise three days, nobody asks me first!",
+     "PAT: I have four people for the work of six. Nobody listens.",
+     "CHRIS: If I don't promise three days, the client goes to the competition. I lose the client and my bonus.",
+     "PAT: What I really want is to stop being blamed for promises I never made.",
+     "CHRIS: All right… a quick check with the warehouse before I promise. If it's really quick. PAT: And I tell sales every morning what's realistic.",
+     "CHRIS: Agreed — if we review it in a month. PAT: Agreed. Thank you, {nome}."
+    ],
+    "frases": [
+     {
+      "en": "Before we start: one person at a time, and we finish with an agreement.",
+      "pt": "Antes de começarmos: uma pessoa de cada vez, e terminamos com um acordo."
+     },
+     {
+      "en": "So what I'm hearing from both of you is that you find out about problems too late.",
+      "pt": "O que ouço de ambos é que descobrem os problemas tarde de mais."
+     },
+     {
+      "en": "Correct me if I'm wrong, but you both want to stop being blamed.",
+      "pt": "Corrijam-me se estiver enganado, mas ambos querem deixar de ser culpados."
+     },
+     {
+      "en": "What if sales checked dates with the warehouse before promising them?",
+      "pt": "E se as vendas confirmassem as datas com o armazém antes de as prometer?"
+     },
+     {
+      "en": "So, to sum up, we've agreed on a morning update and a review in a month.",
+      "pt": "Resumindo, acordámos uma actualização de manhã e uma revisão daqui a um mês."
+     }
+    ],
+    "palavras": [
+     "ground rules",
+     "hearing",
+     "correct me",
+     "what if",
+     "feel about",
+     "sum up"
+    ],
+    "minutos_sugeridos": 10
+   },
+   "criterios": [
+    "Estabelece regras para a conversa e não toma partido.",
+    "Reformula com justiça a posição de cada pessoa (So what you're saying is…, What I'm hearing is…) e valida sem concordar.",
+    "Faz perguntas que revelam os interesses por trás das posições e nomeia o terreno comum.",
+    "Propõe opções em forma de pergunta (What if…?, How would you feel about…?) e resume um acordo concreto no fim.",
+    "Mantém um tom calmo e neutro e desenvolve pelo menos uma vez uma intervenção de 1 minuto e meio ou mais.",
+    "É compreendido sem esforço; o tom ajuda a baixar a tensão."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,403 @@
+{
+ "unidade": "B2.2 · Review 2",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "B2R2-1",
+   "titulo": "Review 2: risks, cities and reviews",
+   "aula": "R2A",
+   "objectivo": "Rever as unidades 6 a 8 do B2.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "We needn't [have] booked the hotel.",
+     "opcoes": [
+      {
+       "texto": "to have",
+       "certa": false
+      },
+      {
+       "texto": "had",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "It was [supposed] to be ready on Monday.",
+     "opcoes": [
+      {
+       "texto": "suppose",
+       "certa": false
+      },
+      {
+       "texto": "supposing",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "The sling must have [been] worn for weeks.",
+     "opcoes": [
+      {
+       "texto": "be",
+       "certa": false
+      },
+      {
+       "texto": "being",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[Although] it was late, we kept working.",
+     "opcoes": [
+      {
+       "texto": "Despite",
+       "certa": false
+      },
+      {
+       "texto": "Whereas",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Even though he is my boss, he never listens.",
+       "certa": true
+      },
+      {
+       "texto": "Even if he is my boss yesterday, he never listens.",
+       "certa": false
+      },
+      {
+       "texto": "Despite he is my boss, he never listens.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "The concert was absolutely fantastic.",
+       "certa": true
+      },
+      {
+       "texto": "The concert was very fantastic.",
+       "certa": false
+      },
+      {
+       "texto": "The concert was a bit fantastic.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct order.",
+     "opcoes": [
+      {
+       "texto": "a small Portuguese restaurant",
+       "certa": true
+      },
+      {
+       "texto": "a Portuguese small restaurant",
+       "certa": false
+      },
+      {
+       "texto": "a restaurant small Portuguese",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Não foi preciso pagar ao despachante.\" Em inglês:",
+     "opcoes": [
+      {
+       "texto": "We didn't need to pay the agent.",
+       "certa": true
+      },
+      {
+       "texto": "We needn't have paid the agent.",
+       "certa": false
+      },
+      {
+       "texto": "We didn't need paying the agent.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "É verdade que é caro. Mesmo assim, vale a pena.",
+     "resposta": "Admittedly, it's expensive. Even so, it's worth it.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm Paulo. Remember March? The container on the sand. I still think the sling must have been worn for weeks.",
+     "enunciado": "What does Paulo think about the sling?",
+     "opcoes": [
+      {
+       "texto": "It must have been worn for weeks.",
+       "certa": true
+      },
+      {
+       "texto": "It was new.",
+       "certa": false
+      },
+      {
+       "texto": "It was the wind only.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "You needn't have organised all this.",
+     "enunciado": "Ouça e repita: \"needn't have\" curto."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about something that went wrong last year (at work, at school or at home): what may have caused it, what was supposed to happen, and what you needn't have done.",
+     "frase": "supposed to",
+     "resposta": "Last year, our office party was supposed to start at seven, but the caterer arrived at nine. He may have had the wrong address. Admittedly, the food was absolutely delicious. Even so, we needn't have paid in advance. Next time, I'll pay on the day.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Review a place or an event you went to recently, with the right intensifiers and one comment adverb. Would you recommend it?",
+     "frase": "recommend",
+     "resposta": "Last month I went to a lovely little seafood restaurant in Benguela. Surprisingly, it was quite cheap. The grilled fish was absolutely delicious, but the service was rather slow. All in all, I'd recommend it — just don't go hungry!",
+     "contexto": "Uma crítica."
+    }
+   ]
+  },
+  {
+   "codigo": "B2R2-2",
+   "titulo": "Review 2: reports, choices and the exam",
+   "aula": "R2B",
+   "objectivo": "Rever as unidades 9 e 10 do B2 e preparar o exame oral.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "She suggested [waiting] until Monday.",
+     "opcoes": [
+      {
+       "texto": "to wait",
+       "certa": false
+      },
+      {
+       "texto": "us to wait",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "He denied [causing] the delay.",
+     "opcoes": [
+      {
+       "texto": "to cause",
+       "certa": false
+      },
+      {
+       "texto": "cause",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I wish I [knew] the answer.",
+     "opcoes": [
+      {
+       "texto": "know",
+       "certa": false
+      },
+      {
+       "texto": "would know",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "As a child, I [used to] be very shy.",
+     "opcoes": [
+      {
+       "texto": "would",
+       "certa": false
+      },
+      {
+       "texto": "use to",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "If I hadn't moved to Luanda, I [wouldn't be] here now.",
+     "opcoes": [
+      {
+       "texto": "wouldn't have been",
+       "certa": false
+      },
+      {
+       "texto": "won't be",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "In the debate, the examiner disagrees. The best answer starts:",
+     "opcoes": [
+      {
+       "texto": "That may be true, but…",
+       "certa": true
+      },
+      {
+       "texto": "No, you are wrong.",
+       "certa": false
+      },
+      {
+       "texto": "OK, you are right. I change my mind.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"To some extent, yes.\" This means…",
+     "opcoes": [
+      {
+       "texto": "partly yes",
+       "certa": true
+      },
+      {
+       "texto": "completely yes",
+       "certa": false
+      },
+      {
+       "texto": "not at all",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which sentence summarises a meeting with a reporting verb?",
+     "opcoes": [
+      {
+       "texto": "The manager admitted that the doors had not arrived.",
+       "certa": true
+      },
+      {
+       "texto": "The manager said things about doors.",
+       "certa": false
+      },
+      {
+       "texto": "The doors, the manager, the meeting.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"I'd been working there for ten years when I changed jobs.\" This is the…",
+     "opcoes": [
+      {
+       "texto": "past perfect continuous",
+       "certa": true
+      },
+      {
+       "texto": "present perfect continuous",
+       "certa": false
+      },
+      {
+       "texto": "future perfect continuous",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Percebo o seu ponto de vista, mas não concordo.",
+     "resposta": "I see where you're coming from, but I don't agree.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "This is Lurdes. I see where you're coming from. To some extent, yes. Even so, young people learn a lot from experienced colleagues.",
+     "enunciado": "What does Lurdes do in her answer?",
+     "opcoes": [
+      {
+       "texto": "She accepts part of the point and then defends her view.",
+       "certa": true
+      },
+      {
+       "texto": "She changes her mind completely.",
+       "certa": false
+      },
+      {
+       "texto": "She refuses to answer.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Compare two ways to learn a new skill (a weekend course with a teacher, or videos online) and choose one, with a concession.",
+     "frase": "on the other hand",
+     "resposta": "The first option, a weekend course, gives you a teacher who corrects you. The second, on the other hand, is free and you can watch it anytime. Admittedly, videos can't answer your questions. Even so, I'd start with videos, and pay for a course later if I need it.",
+     "contexto": "Resposta longa: até 90 segundos."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Should people be paid more for working at night? Give your view, then answer this: \"Some people say they choose the job, so they accept the hours.\"",
+     "frase": "That may be true",
+     "resposta": "Yes, I think so, because night work is harder on your health and your family. That may be true, but many people have no choice: it's the only job they can find. To some extent, they accept the hours. Even so, the extra pay is fair.",
+     "contexto": "Opinião e contra-argumento."
+    }
+   ]
+  }
+ ]
+}

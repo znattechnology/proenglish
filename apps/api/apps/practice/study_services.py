@@ -11,7 +11,7 @@ import logging
 from datetime import timedelta
 
 from django.db import transaction
-from django.db.models import Count, F, Max, Q, Sum, Avg
+from django.db.models import Count, F, Max, Min, Q, Sum, Avg
 from django.utils import timezone
 
 from apps.practice.models import (
@@ -51,42 +51,35 @@ def _get_subscription(user):
 
 
 def get_hearts_state(user):
-    """Return the user's hearts state (recharging first if due)."""
-    sub = _get_subscription(user)
-    if sub is not None and sub.plan is not None:
-        if sub.plan.hearts_limit == 0 and sub.is_active():
-            return {
-                'current': UNLIMITED_HEARTS_VALUE,
-                'maximum': UNLIMITED_HEARTS_VALUE,
-                'unlimited': True,
-                'recharge_hours': None,
-                'next_heart_at': None,
-            }
-        maximum = sub.plan.hearts_limit if sub.plan.hearts_limit > 0 else DEFAULT_MAX_HEARTS
-        if sub.plan.hearts_limit > 0:
-            sub.recharge_hearts_if_needed()
-        current = min(sub.current_hearts, maximum)
-        recharge_hours = sub.plan.hearts_recharge_hours or None
-        next_heart_at = None
-        if current < maximum and recharge_hours:
-            next_heart_at = sub.last_heart_recharge + timedelta(hours=recharge_hours)
+    """
+    Estado das vidas (recarrega primeiro, se for altura). Sem assinatura (contas antigas) passa a
+    ter a do Gratuito; uma assinatura paga que terminou segue as regras do Gratuito
+    (UserSubscription.plano_das_vidas).
+    """
+    from apps.subscriptions.services import obter_ou_criar_assinatura
+    sub = obter_ou_criar_assinatura(user)
+    plano = sub.plano_das_vidas()
+    sub.recharge_hearts_if_needed()
+    if plano.hearts_limit == 0:
         return {
-            'current': current,
-            'maximum': maximum,
-            'unlimited': False,
-            'recharge_hours': recharge_hours,
-            'next_heart_at': next_heart_at,
+            'current': UNLIMITED_HEARTS_VALUE,
+            'maximum': UNLIMITED_HEARTS_VALUE,
+            'unlimited': True,
+            'recharge_hours': None,
+            'next_heart_at': None,
         }
-
-    # No subscription: legacy hearts on UserProgress, no automatic recharge
-    progress = UserProgress.objects.filter(user=user).first()
-    current = progress._hearts_legacy if progress else DEFAULT_MAX_HEARTS
+    maximum = plano.hearts_limit
+    current = min(sub.current_hearts, maximum)
+    recharge_hours = plano.hearts_recharge_hours or None
+    next_heart_at = None
+    if current < maximum and recharge_hours:
+        next_heart_at = sub.last_heart_recharge + timedelta(hours=recharge_hours)
     return {
-        'current': min(current, DEFAULT_MAX_HEARTS),
-        'maximum': DEFAULT_MAX_HEARTS,
+        'current': current,
+        'maximum': maximum,
         'unlimited': False,
-        'recharge_hours': None,
-        'next_heart_at': None,
+        'recharge_hours': recharge_hours,
+        'next_heart_at': next_heart_at,
     }
 
 
@@ -109,7 +102,15 @@ def build_hearts_status(user):
         'points': points,
         # Lições novas de hoje (dia de Angola) e o limite do plano (None = ilimitado).
         'licoes_hoje': licoes_hoje(user),
+        # Sem vidas: o plano que as torna ilimitadas (a última vida pode perder-se numa resposta
+        # normal, que não traz oferta).
+        'oferta': _oferta_vidas(user) if not state['unlimited'] and state['current'] <= 0 else None,
     }
+
+
+def _oferta_vidas(user):
+    from apps.subscriptions.oferta import VIDAS, oferta_segura
+    return oferta_segura(user, VIDAS)
 
 
 def licoes_hoje(user):
@@ -239,6 +240,30 @@ class LessonNotCompleted(Exception):
         super().__init__(f"{completed}/{total}")
 
 
+FOLGA_LICAO_SEGUNDOS = 60  # ler o primeiro exercício antes da primeira resposta
+
+
+def duracao_medida(user, lesson, duracao_cliente, agora=None):
+    """
+    Segundos de estudo a creditar por uma lição: o que o cliente diz, mas nunca mais do que o tempo
+    que o servidor viu passar desde a primeira resposta desta volta da lição (mais uma folga para ler
+    o primeiro exercício) nem mais de MAX_LESSON_DURATION_SECONDS. Sem isto, o cliente podia declarar
+    60 min por cada lição de 5 min e encher a meta diária e a sequência.
+    """
+    agora = agora or timezone.now()
+    try:
+        pedido = max(0, int(duracao_cliente or 0))
+    except (TypeError, ValueError):
+        pedido = 0
+    respostas = ChallengeProgress.objects.filter(user=user, challenge__lesson=lesson, completed=True)
+    anterior = LessonCompletion.objects.filter(user=user, lesson=lesson).values_list('last_completed_at', flat=True).first()
+    if anterior is not None:
+        respostas = respostas.filter(updated_at__gt=anterior)  # só a volta actual ("praticar de novo")
+    inicio = respostas.aggregate(inicio=Min('updated_at'))['inicio']
+    medido = int((agora - inicio).total_seconds()) + FOLGA_LICAO_SEGUNDOS if inicio else 0
+    return max(0, min(pedido, medido, MAX_LESSON_DURATION_SECONDS))
+
+
 def complete_lesson(user, lesson, duration_seconds):
     """
     Record a lesson completion.
@@ -261,8 +286,8 @@ def complete_lesson(user, lesson, duration_seconds):
     if limit_error:
         raise LessonLimitReached(limit_error)
 
-    duration_seconds = max(0, min(int(duration_seconds or 0), MAX_LESSON_DURATION_SECONDS))
     now = timezone.now()
+    duration_seconds = duracao_medida(user, lesson, duration_seconds, now)
     points_awarded = 0
     hearts_awarded = 0
     recorded = True
@@ -427,6 +452,7 @@ CATEGORY_BY_TYPE = {
     'TRANSLATION': 'Tradução',
     'LISTENING': 'Compreensão',
     'SPEAKING': 'Pronúncia',
+    'RESPONDER': 'Conversação',
     'VAPI_CONVERSATION': 'Conversação',
 }
 
@@ -654,3 +680,23 @@ def build_student_analytics(user):
         },
         'recommendations': recommendations,
     }
+
+
+MENSAGEM_SEM_VIDAS = 'Ficou sem vidas. Espere pela recarga ou recarregue com pontos.'
+
+
+def corpo_sem_vidas(user):
+    """Corpo do 400 «sem vidas» das lições: o código, quando volta a próxima vida e o plano que
+    as torna ilimitadas (oferta). Mantém 'error': 'hearts' para os clientes antigos."""
+    from apps.subscriptions.oferta import VIDAS, oferta_segura
+    corpo = {'error': 'hearts', 'codigo': 'sem_vidas', 'message': MENSAGEM_SEM_VIDAS,
+             'mensagem': MENSAGEM_SEM_VIDAS}
+    try:
+        estado = build_hearts_status(user)
+        corpo['proxima_vida_em'] = estado['next_heart_at']
+        corpo['pode_recarregar_com_pontos'] = estado['can_refill_with_points']
+        corpo['custo_recarga_pontos'] = estado['refill_cost_points']
+    except Exception:
+        logger.exception('sem vidas: falha ao ler o estado das vidas')
+    corpo['oferta'] = oferta_segura(user, VIDAS)
+    return corpo

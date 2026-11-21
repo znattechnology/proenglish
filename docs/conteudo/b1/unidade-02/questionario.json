@@ -1,0 +1,301 @@
+{
+ "title": "B1.1 Unit 2 quiz — Then and now",
+ "description": "used to, present perfect continuous e simple, adjectivos em -ed / -ing, retire e deception.",
+ "questions": [
+  {
+   "id": "b1u2q1",
+   "question": "\"Costumo trabalhar ao sábado.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u2q1o0",
+     "text": "I usually work on Saturdays.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u2q1o1",
+     "text": "I use to work on Saturdays.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u2q1o2",
+     "text": "I used to work on Saturdays.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u2q1o0",
+   "explanation": "Hábito de agora → usually; used to é só passado.",
+   "points": 10
+  },
+  {
+   "id": "b1u2q2",
+   "question": "Complete: \"I didn't ___ to speak English at school.\"",
+   "options": [
+    {
+     "id": "b1u2q2o0",
+     "text": "use",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u2q2o1",
+     "text": "used",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u2q2o2",
+     "text": "using",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u2q2o0",
+   "explanation": "Com did: use to, sem d.",
+   "points": 10
+  },
+  {
+   "id": "b1u2q3",
+   "question": "Complete: \"How long have you ___ working here?\"",
+   "options": [
+    {
+     "id": "b1u2q3o0",
+     "text": "been",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u2q3o1",
+     "text": "be",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u2q3o2",
+     "text": "being",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u2q3o0",
+   "explanation": "have + been + -ing.",
+   "points": 10
+  },
+  {
+   "id": "b1u2q4",
+   "question": "\"Conheço a Thandi desde 2026.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u2q4o0",
+     "text": "I've known Thandi since 2026.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u2q4o1",
+     "text": "I've been knowing Thandi since 2026.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u2q4o2",
+     "text": "I know Thandi since 2026.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u2q4o0",
+   "explanation": "know não tem forma contínua.",
+   "points": 10
+  },
+  {
+   "id": "b1u2q5",
+   "question": "Complete: \"I've ___ the client three times today.\"",
+   "options": [
+    {
+     "id": "b1u2q5o0",
+     "text": "called",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u2q5o1",
+     "text": "been calling",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u2q5o2",
+     "text": "calling",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u2q5o0",
+   "explanation": "Com um número → present perfect simple.",
+   "points": 10
+  },
+  {
+   "id": "b1u2q6",
+   "question": "\"I've been writing the report.\" O relatório está…",
+   "options": [
+    {
+     "id": "b1u2q6o0",
+     "text": "talvez ainda por acabar",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u2q6o1",
+     "text": "acabado",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u2q6o2",
+     "text": "por começar",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u2q6o0",
+   "explanation": "O continuous fala da actividade.",
+   "points": 10
+  },
+  {
+   "id": "b1u2q7",
+   "question": "Complete: \"The instructions were ___.\"",
+   "options": [
+    {
+     "id": "b1u2q7o0",
+     "text": "confusing",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u2q7o1",
+     "text": "confused",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u2q7o2",
+     "text": "confuse",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u2q7o0",
+   "explanation": "-ing: o que causa o sentimento.",
+   "points": 10
+  },
+  {
+   "id": "b1u2q8",
+   "question": "\"Foi uma grande decepção.\" Em inglês:",
+   "options": [
+    {
+     "id": "b1u2q8o0",
+     "text": "It was a big disappointment.",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u2q8o1",
+     "text": "It was a big deception.",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u2q8o2",
+     "text": "It was a big deceiving.",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u2q8o0",
+   "explanation": "Falso amigo: deception = engano.",
+   "points": 10
+  },
+  {
+   "id": "b1u2q9",
+   "question": "Uma boa resposta sobre o seu ano de trabalho tem…",
+   "options": [
+    {
+     "id": "b1u2q9o0",
+     "text": "antes, agora e o passo seguinte",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u2q9o1",
+     "text": "só os problemas",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u2q9o2",
+     "text": "só o salário",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u2q9o0",
+   "explanation": "As três partes da 2E e da 2F.",
+   "points": 10
+  },
+  {
+   "id": "b1u2q10",
+   "question": "Reciclagem (B1, unidade 1). Complete: \"Do you know ___ the bus leaves?\"",
+   "options": [
+    {
+     "id": "b1u2q10o0",
+     "text": "what time",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u2q10o1",
+     "text": "what time does",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u2q10o2",
+     "text": "at what time does",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u2q10o0",
+   "explanation": "Pergunta indirecta: ordem da afirmação.",
+   "points": 10
+  },
+  {
+   "id": "b1u2q11",
+   "question": "Reciclagem (B1, unidade 1). Complete: \"Let's get a coffee, ___?\"",
+   "options": [
+    {
+     "id": "b1u2q11o0",
+     "text": "shall we",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u2q11o1",
+     "text": "don't we",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u2q11o2",
+     "text": "do we",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u2q11o0",
+   "explanation": "Let's… → shall we?",
+   "points": 10
+  },
+  {
+   "id": "b1u2q12",
+   "question": "Reciclagem (A2, unidade 6). Complete: \"I ___ to Namibe last month.\"",
+   "options": [
+    {
+     "id": "b1u2q12o0",
+     "text": "went",
+     "isCorrect": true
+    },
+    {
+     "id": "b1u2q12o1",
+     "text": "have been",
+     "isCorrect": false
+    },
+    {
+     "id": "b1u2q12o2",
+     "text": "'ve gone",
+     "isCorrect": false
+    }
+   ],
+   "correctOptionId": "b1u2q12o0",
+   "explanation": "last month → past simple.",
+   "points": 10
+  }
+ ],
+ "settings": {
+  "pointsPerQuestion": 10,
+  "heartsPerError": 0,
+  "timeLimit": null,
+  "passingScore": 70,
+  "maxAttempts": 3
+ }
+}

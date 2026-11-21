@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Check, Flame, Heart, RotateCcw, Star, Trophy, Zap } from "lucide-react";
+import { Check, Flame, Heart, Lock, RotateCcw, Star, Trophy, Zap } from "lucide-react";
 import { BarraProgresso, Botao, Osso } from "@/components/pe";
 import { Dialogo } from "@/components/pe/Dialogo";
+import { DisponivelNosPlanos } from "@/components/pe/curso/Amostra";
 import { cnPe } from "@/lib/pe";
 import type { EstadoVidas, Sequencia, Trilho as TTrilho } from "@/src/domains/student/laboratorio/api";
 
@@ -69,7 +70,7 @@ export function TrilhoLicoes({ trilho }: { trilho: TTrilho }) {
     <>
       <div className="flex flex-col gap-2">
         {trilho.unidades.map((u) => {
-          const aberta = u.licoes.some((l) => l.estado !== "bloqueada");
+          const aberta = !u.bloqueada && u.licoes.some((l) => l.estado !== "bloqueada");
           return (
             <section key={u.id} aria-labelledby={`unidade-${u.id}`} className="flex flex-col gap-2 pb-6">
               <header
@@ -84,6 +85,7 @@ export function TrilhoLicoes({ trilho }: { trilho: TTrilho }) {
                     {u.titulo}
                   </h2>
                   {u.descricao ? <p className="m-0 mt-1 hidden text-[15px] leading-[22px] md:block">{u.descricao}</p> : null}
+                  {u.bloqueada ? <DisponivelNosPlanos className="self-start" /> : null}
                 </div>
               </header>
               <ol className="m-0 flex list-none flex-col items-center gap-[18px] p-0 pt-3.5 md:gap-5">
@@ -107,8 +109,9 @@ export function TrilhoLicoes({ trilho }: { trilho: TTrilho }) {
 
 function No({ licao, ultima, aoPraticar }: { licao: Licao; ultima: boolean; aoPraticar: () => void }) {
   const { estado } = licao;
-  const nome = { feita: "concluída, praticar outra vez", actual: "lição actual", bloqueada: "por abrir" }[estado];
-  const Icone = estado === "feita" ? Check : ultima ? Trophy : Star;
+  const plano = !!licao.bloqueada_plano && estado !== "feita";
+  const nome = plano ? "disponível nos planos pagos" : { feita: "concluída, praticar outra vez", actual: "lição actual", bloqueada: "por abrir" }[estado];
+  const Icone = estado === "feita" ? Check : plano ? Lock : ultima ? Trophy : Star;
   const disco = cnPe(
     "flex size-[68px] items-center justify-center rounded-full no-underline md:size-[76px] [&_svg]:size-8 md:[&_svg]:size-9",
     estado === "feita" && "bg-pe-azul-marca text-pe-sobre-marca shadow-[0_6px_0_#00003d] hover:bg-pe-azul-vivo",

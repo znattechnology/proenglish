@@ -13,13 +13,17 @@ export type Situacao = {
   duracao_min: 3 | 5 | 10;
   correccao: "suave" | "directa";
   estado: "rascunho" | "activo";
+  /** A aula depois da qual o aluno faz a conversa, no percurso do curso (só com curso). */
+  aula?: { id: string; titulo: string } | null;
+  tipo_conversa?: "guiada" | "livre" | null;
   sessoes?: number;
   pontuacao_media?: number | null;
   minha?: boolean;
 };
 export type LinhaSituacao = Pick<Situacao, "id" | "nome" | "curso" | "nivel" | "estado"> & { tipo: "conversa"; sessoes: number; pontuacao_media: number | null; minha: boolean };
-export type NovaSituacao = Omit<Situacao, "id" | "curso" | "sessoes" | "pontuacao_media" | "minha"> & { curso: string | null };
-export type OpcoesSituacao = { cursos: { id: string; titulo: string }[]; niveis: { valor: string; nome: string }[]; duracoes: number[] };
+export type NovaSituacao = Omit<Situacao, "id" | "curso" | "aula" | "tipo_conversa" | "sessoes" | "pontuacao_media" | "minha"> & { curso: string | null; aula: string | null; tipo_conversa: "guiada" | "livre" | "" };
+export type AulaDoCurso = { id: string; titulo: string; unidade: string };
+export type OpcoesSituacao = { cursos: { id: string; titulo: string }[]; aulas?: Record<string, AulaDoCurso[]>; niveis: { valor: string; nome: string }[]; duracoes: number[] };
 
 export type ResultadosFala = {
   minutos: number;

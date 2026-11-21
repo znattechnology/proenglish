@@ -1,0 +1,1524 @@
+{
+ "unidade": "A2.2 · Unit 6 — Travelling for work",
+ "formato": "apps/courses/api/teacher/pratica_formato.py (validar)",
+ "licoes": [
+  {
+   "codigo": "6A",
+   "titulo": "Have you ever been to Lagos?",
+   "aula": "6A",
+   "objectivo": "Perguntar e responder sobre experiências com o present perfect e ever / never.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "[I've been] to Johannesburg twice.",
+     "opcoes": [
+      {
+       "texto": "I been",
+       "certa": false
+      },
+      {
+       "texto": "I've went",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've never [flown].",
+     "opcoes": [
+      {
+       "texto": "flew",
+       "certa": false
+      },
+      {
+       "texto": "flied",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Have you ever [eaten] bunny chow?",
+     "opcoes": [
+      {
+       "texto": "ate",
+       "certa": false
+      },
+      {
+       "texto": "eat",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I've never been abroad.",
+       "certa": true
+      },
+      {
+       "texto": "I haven't never been abroad.",
+       "certa": false
+      },
+      {
+       "texto": "I've never went abroad.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Have you ever been to Lagos?\" — Choose the answer.",
+     "opcoes": [
+      {
+       "texto": "No, I haven't.",
+       "certa": true
+      },
+      {
+       "texto": "No, I didn't.",
+       "certa": false
+      },
+      {
+       "texto": "No, I haven't been never.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Já estiveste em Lisboa?\" (alguma vez na vida). Em inglês:",
+     "opcoes": [
+      {
+       "texto": "Have you ever been to Lisbon?",
+       "certa": true
+      },
+      {
+       "texto": "Did you ever be in Lisbon?",
+       "certa": false
+      },
+      {
+       "texto": "Are you ever in Lisbon?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Match each verb to its past participle.",
+     "pares": [
+      {
+       "a": "see",
+       "b": "seen"
+      },
+      {
+       "a": "do",
+       "b": "done"
+      },
+      {
+       "a": "take",
+       "b": "taken"
+      },
+      {
+       "a": "drink",
+       "b": "drunk"
+      },
+      {
+       "a": "meet",
+       "b": "met"
+      }
+     ]
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Nunca andei de avião.",
+     "resposta": "I've never flown.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Yes, I have. I've been there twice. It's a great city.",
+     "enunciado": "How many times has Mateus been to Johannesburg?",
+     "opcoes": [
+      {
+       "texto": "twice",
+       "certa": true
+      },
+      {
+       "texto": "once",
+       "certa": false
+      },
+      {
+       "texto": "never",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I've been to Johannesburg twice. I've never flown.",
+     "enunciado": "Ouça e repita: I've, been (\"bin\")."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Have you ever been abroad? Where?",
+     "frase": "I've",
+     "resposta": "Yes, I have. I've been to Namibia and to Portugal. I've never been to Brazil.",
+     "contexto": "Use I've been / I've never been."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Ask me two questions with \"Have you ever…?\"",
+     "frase": "Have you ever",
+     "resposta": "Have you ever been to Benguela? Have you ever eaten muamba?",
+     "contexto": "Duas perguntas."
+    }
+   ]
+  },
+  {
+   "codigo": "6B",
+   "titulo": "When did you go?",
+   "aula": "6B",
+   "objectivo": "Passar da experiência (present perfect) para os pormenores (past simple).",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've been to Lisbon. I [went] there in 2023.",
+     "opcoes": [
+      {
+       "texto": "have been",
+       "certa": false
+      },
+      {
+       "texto": "have gone",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Have you ever [lost] your luggage?",
+     "opcoes": [
+      {
+       "texto": "lose",
+       "certa": false
+      },
+      {
+       "texto": "losted",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I've never [forgotten] my passport.",
+     "opcoes": [
+      {
+       "texto": "forgot",
+       "certa": false
+      },
+      {
+       "texto": "forget",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I went to Lisbon in 2019.",
+       "certa": true
+      },
+      {
+       "texto": "I've been to Lisbon in 2019.",
+       "certa": false
+      },
+      {
+       "texto": "I've gone to Lisbon in 2019.",
+       "certa": false
+      }
+     ],
+     "explicacao": "Com uma data, past simple."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Have you ever missed a flight?\" — \"Yes, I have.\" Choose the best follow-up question.",
+     "opcoes": [
+      {
+       "texto": "When did it happen?",
+       "certa": true
+      },
+      {
+       "texto": "When has it happened?",
+       "certa": false
+      },
+      {
+       "texto": "When it happened?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Thandi has lost her luggage once. It happened in Lisbon.",
+       "certa": true
+      },
+      {
+       "texto": "Thandi lost her luggage once. It has happened in Lisbon in 2019.",
+       "certa": false
+      },
+      {
+       "texto": "Thandi has lose her luggage once.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Match each verb to its past participle.",
+     "pares": [
+      {
+       "a": "speak",
+       "b": "spoken"
+      },
+      {
+       "a": "break",
+       "b": "broken"
+      },
+      {
+       "a": "drive",
+       "b": "driven"
+      },
+      {
+       "a": "write",
+       "b": "written"
+      },
+      {
+       "a": "give",
+       "b": "given"
+      }
+     ]
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Quando é que isso aconteceu?",
+     "resposta": "When did it happen?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Two years ago, in Cabinda. I was talking to a client on the phone, and I forgot the time. I slept at the airport!",
+     "enunciado": "Why did Mateus miss his flight?",
+     "opcoes": [
+      {
+       "texto": "He was talking to a client and forgot the time.",
+       "certa": true
+      },
+      {
+       "texto": "He forgot his passport.",
+       "certa": false
+      },
+      {
+       "texto": "The flight was cancelled.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Have you ever lost your luggage? — Yes, I have.",
+     "enunciado": "Ouça e repita: \"have you\" fraco na pergunta, \"have\" forte na resposta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Have you ever had a problem on a trip? What happened?",
+     "frase": "happened",
+     "resposta": "Yes, I have. Last year my bus to Lubango broke down. It happened at night. We waited for four hours, and in the end another bus came.",
+     "contexto": "Present perfect e depois os pormenores no past simple."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Have you ever met a famous person? Tell me about it.",
+     "frase": "met",
+     "resposta": "Yes, I have. I met a famous singer at the airport in 2022. She was very friendly, and we took a photo.",
+     "contexto": "Ou: No, I haven't. I've never…"
+    }
+   ]
+  },
+  {
+   "codigo": "6C",
+   "titulo": "She's gone to Lobito",
+   "aula": "6C",
+   "objectivo": "Distinguir been e gone e dizer que um colega está fora e quando volta.",
+   "exercicios": [
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Paulo's gone to Lobito\" means...",
+     "opcoes": [
+      {
+       "texto": "Paulo is in Lobito now.",
+       "certa": true
+      },
+      {
+       "texto": "Paulo went to Lobito and came back.",
+       "certa": false
+      },
+      {
+       "texto": "Paulo is going to Lobito next week.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Mr Okafor has been to Johannesburg many times\" means...",
+     "opcoes": [
+      {
+       "texto": "He went there and came back, many times.",
+       "certa": true
+      },
+      {
+       "texto": "He's in Johannesburg now.",
+       "certa": false
+      },
+      {
+       "texto": "He lives in Johannesburg.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Sílvia isn't here. She's [gone] to the bank.",
+     "opcoes": [
+      {
+       "texto": "been",
+       "certa": false
+      },
+      {
+       "texto": "went",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I know Cabinda well. I've [been] there five times.",
+     "opcoes": [
+      {
+       "texto": "gone",
+       "certa": false
+      },
+      {
+       "texto": "went",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"He's away\" — \"he's\" means...",
+     "opcoes": [
+      {
+       "texto": "he is",
+       "certa": true
+      },
+      {
+       "texto": "he has",
+       "certa": false
+      },
+      {
+       "texto": "he was",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"He's gone to Lobito\" — \"he's\" means...",
+     "opcoes": [
+      {
+       "texto": "he has",
+       "certa": true
+      },
+      {
+       "texto": "he is",
+       "certa": false
+      },
+      {
+       "texto": "he was",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Someone calls for your manager. She's in Benguela until Friday. Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "I'm sorry, she's gone to Benguela. She's back on Friday.",
+       "certa": true
+      },
+      {
+       "texto": "I'm sorry, she's been to Benguela. She's back on Friday.",
+       "certa": false
+      },
+      {
+       "texto": "I'm sorry, she goes to Benguela on Friday.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Ele está fora em viagem de serviço.",
+     "resposta": "He's on a business trip.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm afraid he's out of the office. He's gone to Lobito — he's visiting a client. He's back tomorrow afternoon.",
+     "enunciado": "When is Paulo back?",
+     "opcoes": [
+      {
+       "texto": "tomorrow afternoon",
+       "certa": true
+      },
+      {
+       "texto": "on Monday",
+       "certa": false
+      },
+      {
+       "texto": "this afternoon",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm sorry, he's gone to Johannesburg. He's back on Monday.",
+     "enunciado": "Ouça e repita."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Can I speak to your manager, please? (Your manager is in Cabinda until Thursday.)",
+     "frase": "gone",
+     "resposta": "I'm sorry, she's gone to Cabinda. She's on a business trip. She's back on Thursday. Can I take a message?",
+     "contexto": "gone, back e a oferta de recado."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a place you've been to many times.",
+     "frase": "been",
+     "resposta": "I've been to Benguela many times. My grandparents live there. The last time, I went for Christmas.",
+     "contexto": "been e depois um pormenor no past simple."
+    }
+   ]
+  },
+  {
+   "codigo": "6D",
+   "titulo": "Along the corridor, through the door",
+   "aula": "6D",
+   "objectivo": "Pedir, dar e perceber direcções dentro de um aeroporto ou de um edifício.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Walk [along] the corridor to the end.",
+     "opcoes": [
+      {
+       "texto": "across",
+       "certa": false
+      },
+      {
+       "texto": "into",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Go [through] the big glass doors.",
+     "opcoes": [
+      {
+       "texto": "along",
+       "certa": false
+      },
+      {
+       "texto": "up",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Go [past] the shops — don't stop.",
+     "opcoes": [
+      {
+       "texto": "into",
+       "certa": false
+      },
+      {
+       "texto": "up",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Go out of the building and [across] the road.",
+     "opcoes": [
+      {
+       "texto": "through",
+       "certa": false
+      },
+      {
+       "texto": "up",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "Excuse me, how do I get to gate 12?",
+       "certa": true
+      },
+      {
+       "texto": "Excuse me, how I get to gate 12?",
+       "certa": false
+      },
+      {
+       "texto": "Excuse me, how do I go gate 12?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Go up the stairs\" means...",
+     "opcoes": [
+      {
+       "texto": "Suba as escadas.",
+       "certa": true
+      },
+      {
+       "texto": "Desça as escadas.",
+       "certa": false
+      },
+      {
+       "texto": "Passe pelas escadas.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is a direction in the right order?",
+     "opcoes": [
+      {
+       "texto": "First, go through passport control. Then go down the escalator.",
+       "certa": true
+      },
+      {
+       "texto": "Then go down the escalator. First, go through passport control.",
+       "certa": false
+      },
+      {
+       "texto": "Go first then down passport escalator.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Siga por este corredor e passe pelas lojas.",
+     "resposta": "Go along this corridor and past the shops.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Go out of the building and across the road. The shuttle buses stop in front of the car park.",
+     "enunciado": "Where do the shuttle buses stop?",
+     "opcoes": [
+      {
+       "texto": "in front of the car park",
+       "certa": true
+      },
+      {
+       "texto": "inside the building",
+       "certa": false
+      },
+      {
+       "texto": "next to the shops",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "Go along the corridor, through the doors and up the stairs.",
+     "enunciado": "Ouça e repita, com as palavras importantes fortes."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "I'm at the entrance of your office building. How do I get to your desk?",
+     "frase": "along",
+     "resposta": "Go through the main doors and along the corridor. Go past the lift and up the stairs. My desk is on the left, next to the window.",
+     "contexto": "Use pelo menos três preposições de movimento."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You're lost in an airport. Ask for directions to the exit.",
+     "frase": "how do I get",
+     "resposta": "Excuse me, how do I get to the exit? Is it far?",
+     "contexto": "Peça a direcção e pergunte se é longe."
+    }
+   ]
+  },
+  {
+   "codigo": "6E",
+   "titulo": "At the airport and the hotel",
+   "aula": "6E",
+   "objectivo": "Usar as palavras do aeroporto, do hotel e do tempo; contracções; large e parents.",
+   "exercicios": [
+    {
+     "tipo": "pares",
+     "enunciado": "Ligue cada expressão à tradução.",
+     "pares": [
+      {
+       "a": "boarding pass",
+       "b": "cartão de embarque"
+      },
+      {
+       "a": "gate",
+       "b": "porta de embarque"
+      },
+      {
+       "a": "delayed",
+       "b": "atrasado"
+      },
+      {
+       "a": "cancelled",
+       "b": "cancelado"
+      },
+      {
+       "a": "hand luggage",
+       "b": "bagagem de mão"
+      }
+     ]
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "My luggage is in the car.",
+       "certa": true
+      },
+      {
+       "texto": "My luggages are in the car.",
+       "certa": false
+      },
+      {
+       "texto": "My luggages is in the car.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Luggage\" é incontável."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "A room for one person is...",
+     "opcoes": [
+      {
+       "texto": "a single room",
+       "certa": true
+      },
+      {
+       "texto": "a double room",
+       "certa": false
+      },
+      {
+       "texto": "a large room",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct question.",
+     "opcoes": [
+      {
+       "texto": "What's the weather like?",
+       "certa": true
+      },
+      {
+       "texto": "How is the weather like?",
+       "certa": false
+      },
+      {
+       "texto": "What the weather is like?",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Tenho parentes em Joanesburgo\" em inglês é...",
+     "opcoes": [
+      {
+       "texto": "I have relatives in Johannesburg.",
+       "certa": true
+      },
+      {
+       "texto": "I have parents in Johannesburg.",
+       "certa": false
+      },
+      {
+       "texto": "I have parentes in Johannesburg.",
+       "certa": false
+      }
+     ],
+     "explicacao": "\"Parents\" = pai e mãe."
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"A large room\" is...",
+     "opcoes": [
+      {
+       "texto": "a big room",
+       "certa": true
+      },
+      {
+       "texto": "a wide room",
+       "certa": false
+      },
+      {
+       "texto": "a long room",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pares",
+     "enunciado": "Match each verb to its past participle.",
+     "pares": [
+      {
+       "a": "come",
+       "b": "come"
+      },
+      {
+       "a": "swim",
+       "b": "swum"
+      },
+      {
+       "a": "sing",
+       "b": "sung"
+      },
+      {
+       "a": "win",
+       "b": "won"
+      },
+      {
+       "a": "teach",
+       "b": "taught"
+      }
+     ]
+    },
+    {
+     "tipo": "escuta",
+     "frase": "His flight is from gate 14. Boarding is at seven twenty. The departure is at eight.",
+     "enunciado": "What time is boarding?",
+     "opcoes": [
+      {
+       "texto": "7:20",
+       "certa": true
+      },
+      {
+       "texto": "8:00",
+       "certa": false
+      },
+      {
+       "texto": "7:14",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Warm in the day, cool in the evening, and storms in the afternoon. It's the rainy season.",
+     "enunciado": "What's the weather like in Johannesburg in January?",
+     "opcoes": [
+      {
+       "texto": "warm days, cool evenings, storms",
+       "certa": true
+      },
+      {
+       "texto": "cold and dry",
+       "certa": false
+      },
+      {
+       "texto": "hot and humid all day",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "She's flown many times, but I've never been abroad.",
+     "enunciado": "Ouça e repita as contracções."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "What's the weather like in your city at this time of the year?",
+     "frase": "It's",
+     "resposta": "It's very hot and humid. In the afternoon there are storms sometimes. It's the rainy season.",
+     "contexto": "Diga como está o tempo."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "You're at check-in. What do you say?",
+     "frase": "boarding pass",
+     "resposta": "Good morning. Here's my passport. I have one suitcase and a small bag as hand luggage. Can I have my boarding pass, please?",
+     "contexto": "Passaporte, bagagem e o cartão de embarque."
+    }
+   ]
+  },
+  {
+   "codigo": "6F",
+   "titulo": "Real English: Travel stories",
+   "aula": "6F",
+   "objectivo": "Identificar onde cada pessoa esteve, quando foi e o que correu mal.",
+   "exercicios": [
+    {
+     "tipo": "escuta",
+     "frase": "I've been to São Paulo four times.",
+     "enunciado": "How many times has Rita been to São Paulo?",
+     "opcoes": [
+      {
+       "texto": "four times",
+       "certa": true
+      },
+      {
+       "texto": "twice",
+       "certa": false
+      },
+      {
+       "texto": "never",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Last year, my flight to São Paulo was cancelled because of a storm. I slept at the airport, on a chair.",
+     "enunciado": "Why was Rita's flight cancelled?",
+     "opcoes": [
+      {
+       "texto": "There was a storm.",
+       "certa": true
+      },
+      {
+       "texto": "The plane was broken.",
+       "certa": false
+      },
+      {
+       "texto": "She was late.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "But once, in 2021, my car broke down near Huambo.",
+     "enunciado": "Where did Tunde's car break down?",
+     "opcoes": [
+      {
+       "texto": "near Huambo",
+       "certa": true
+      },
+      {
+       "texto": "near Malanje",
+       "certa": false
+      },
+      {
+       "texto": "in Benguela",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "A farmer saw me and gave me a lift to the next town. I've never forgotten him.",
+     "enunciado": "Who helped Tunde?",
+     "opcoes": [
+      {
+       "texto": "a farmer",
+       "certa": true
+      },
+      {
+       "texto": "a police officer",
+       "certa": false
+      },
+      {
+       "texto": "a colleague",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "The bus left Huambo at four in the morning, and it arrived eleven hours later.",
+     "enunciado": "How long was Fátima's bus trip?",
+     "opcoes": [
+      {
+       "texto": "eleven hours",
+       "certa": true
+      },
+      {
+       "texto": "four hours",
+       "certa": false
+      },
+      {
+       "texto": "seven hours",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I sold all my cakes on the first day!",
+     "enunciado": "What happened at the food fair?",
+     "opcoes": [
+      {
+       "texto": "She sold all her cakes on the first day.",
+       "certa": true
+      },
+      {
+       "texto": "She missed the bus.",
+       "certa": false
+      },
+      {
+       "texto": "Nobody bought her cakes.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"My car broke down\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "O meu carro avariou.",
+       "certa": true
+      },
+      {
+       "texto": "O meu carro partiu-se em dois.",
+       "certa": false
+      },
+      {
+       "texto": "Vendi o meu carro.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"He gave me a lift\" quer dizer:",
+     "opcoes": [
+      {
+       "texto": "Deu-me boleia.",
+       "certa": true
+      },
+      {
+       "texto": "Deu-me um elevador.",
+       "certa": false
+      },
+      {
+       "texto": "Levantou-me do chão.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I've been to São Paulo four times. My car broke down near Huambo.",
+     "enunciado": "Ouça e repita em voz alta."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Tell me about a trip. Where have you been? When did you go? What happened?",
+     "frase": "I've been",
+     "resposta": "I've been to Lubango three times. The last time, in July, I went by bus with my family. It was very cold at night, but we saw the Tundavala gap. It was beautiful.",
+     "contexto": "Present perfect e depois o past simple."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Have you ever had a problem with a bus, a car or a plane?",
+     "frase": "happened",
+     "resposta": "Yes, I have. In 2020 our taxi broke down on the way to the airport. It happened at five in the morning! In the end, we took another taxi and we arrived on time.",
+     "contexto": "Conte o que aconteceu."
+    }
+   ]
+  },
+  {
+   "codigo": "6G",
+   "titulo": "Work & Life: There's a problem with my room",
+   "aula": "6G",
+   "objectivo": "Fazer o check-in, explicar um problema com a reserva e chegar a uma solução; explicar como apanhar um táxi no aeroporto.",
+   "exercicios": [
+    {
+     "tipo": "ordenar",
+     "enunciado": "Tenho uma reserva em nome de Nuno Kapinga.",
+     "resposta": "I have a reservation for Nuno Kapinga.",
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I'm sorry, there's a problem. The reservation is [for] four nights.",
+     "opcoes": [
+      {
+       "texto": "of",
+       "certa": false
+      },
+      {
+       "texto": "during",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Which is the best order to solve a hotel problem?",
+     "opcoes": [
+      {
+       "texto": "say there's a problem → explain → show the confirmation → ask for a solution",
+       "certa": true
+      },
+      {
+       "texto": "shout → leave the hotel → call your manager",
+       "certa": false
+      },
+      {
+       "texto": "ask for a solution → say goodbye → explain",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "The receptionist says: \"It's our mistake.\" What does it mean?",
+     "opcoes": [
+      {
+       "texto": "The hotel made the mistake.",
+       "certa": true
+      },
+      {
+       "texto": "Nuno made the mistake.",
+       "certa": false
+      },
+      {
+       "texto": "There's no mistake.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the most polite way to ask for a solution.",
+     "opcoes": [
+      {
+       "texto": "What can we do?",
+       "certa": true
+      },
+      {
+       "texto": "You have to fix this now!",
+       "certa": false
+      },
+      {
+       "texto": "This is terrible. Bye.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I can give you a double room for the same price. It's larger, and it has a view of the park.",
+     "enunciado": "What does the receptionist offer?",
+     "opcoes": [
+      {
+       "texto": "a double room for the same price",
+       "certa": true
+      },
+      {
+       "texto": "a single room for one night",
+       "certa": false
+      },
+      {
+       "texto": "a discount on breakfast",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "Yes, from six thirty to ten, on the first floor.",
+     "enunciado": "When is breakfast?",
+     "opcoes": [
+      {
+       "texto": "from 6:30 to 10",
+       "certa": true
+      },
+      {
+       "texto": "from 6 to 10:30",
+       "certa": false
+      },
+      {
+       "texto": "from 7 to 10",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Táxis oficiais com preço fixo para o centro: 15 000 Kz.\" Nuno tells Lerato:",
+     "opcoes": [
+      {
+       "texto": "The official taxis have a fixed price to the centre: fifteen thousand kwanzas.",
+       "certa": true
+      },
+      {
+       "texto": "The taxis are official and fifteen.",
+       "certa": false
+      },
+      {
+       "texto": "Táxis oficiais cost fifteen thousand.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "\"Não aceite boleias de desconhecidos.\" Nuno tells Lerato:",
+     "opcoes": [
+      {
+       "texto": "Don't accept a lift from strangers.",
+       "certa": true
+      },
+      {
+       "texto": "Don't accept the official taxis.",
+       "certa": false
+      },
+      {
+       "texto": "Accept a lift from strangers.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "pronuncia",
+     "frase": "I'm sorry, there's a problem. The reservation is for four nights, from Monday to Friday.",
+     "enunciado": "Ouça e repita, com calma e clareza."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "I'm the receptionist. \"A double room for two nights.\" (Your reservation is for a single room, three nights.)",
+     "frase": "reservation",
+     "resposta": "I'm sorry, there's a problem. The reservation is for a single room, for three nights. I have the confirmation here, on my phone.",
+     "contexto": "Explique o problema e mostre a confirmação."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "A foreign colleague asks: \"How do I get from the airport to the city?\"",
+     "frase": "taxi",
+     "resposta": "The taxi rank is at the exit, after arrivals. Take an official taxi: it has a fixed price. You can also use an app.",
+     "contexto": "Onde, o quê e como."
+    }
+   ]
+  },
+  {
+   "codigo": "6R",
+   "titulo": "Unit 6 review",
+   "aula": null,
+   "objectivo": "Rever a unidade 6 e reciclar o A2.1.",
+   "exercicios": [
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "Have you ever [been] to Windhoek?",
+     "opcoes": [
+      {
+       "texto": "went",
+       "certa": false
+      },
+      {
+       "texto": "go",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "completar",
+     "enunciado": "Complete a frase.",
+     "frase": "I [visited] Lisbon in 2023.",
+     "opcoes": [
+      {
+       "texto": "have visited",
+       "certa": false
+      },
+      {
+       "texto": "have been visited",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Paulo's gone to Lobito. He's back tomorrow.",
+       "certa": true
+      },
+      {
+       "texto": "Paulo's been to Lobito. He's back tomorrow.",
+       "certa": false
+      },
+      {
+       "texto": "Paulo goes to Lobito. He was back tomorrow.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I've never spoken to the director.",
+       "certa": true
+      },
+      {
+       "texto": "I've never spoke to the director.",
+       "certa": false
+      },
+      {
+       "texto": "I haven't never spoken to the director.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "Go through the doors and up the stairs.",
+       "certa": true
+      },
+      {
+       "texto": "Go across the doors and along the stairs.",
+       "certa": false
+      },
+      {
+       "texto": "Go past the doors and through the stairs.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 5). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "You should take your passport.",
+       "certa": true
+      },
+      {
+       "texto": "You should to take your passport.",
+       "certa": false
+      },
+      {
+       "texto": "You must to take your passport.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 4). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "This hotel is much cheaper than the other one.",
+       "certa": true
+      },
+      {
+       "texto": "This hotel is very cheaper than the other one.",
+       "certa": false
+      },
+      {
+       "texto": "This hotel is more cheaper than the other one.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 3). \"Your suitcase is very heavy!\" — Choose the best answer.",
+     "opcoes": [
+      {
+       "texto": "Thanks. I'll take a taxi.",
+       "certa": true
+      },
+      {
+       "texto": "Thanks. I take a taxi tomorrow yesterday.",
+       "certa": false
+      },
+      {
+       "texto": "Thanks. I'm going to take a taxi last week.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "escolher",
+     "enunciado": "Reciclagem (A2, unidade 2). Choose the correct sentence.",
+     "opcoes": [
+      {
+       "texto": "I was waiting at the gate when they called my name.",
+       "certa": true
+      },
+      {
+       "texto": "I waited at the gate when they were calling my name.",
+       "certa": false
+      },
+      {
+       "texto": "I was wait at the gate when they called my name.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "ordenar",
+     "enunciado": "Já esteve em Luanda?",
+     "resposta": "Have you ever been to Luanda?",
+     "explicacao": ""
+    },
+    {
+     "tipo": "escuta",
+     "frase": "I'm afraid we don't have any single rooms after tonight. The hotel is full for a conference.",
+     "enunciado": "Why doesn't the hotel have single rooms?",
+     "opcoes": [
+      {
+       "texto": "There's a conference.",
+       "certa": true
+      },
+      {
+       "texto": "The hotel is closed.",
+       "certa": false
+      },
+      {
+       "texto": "The rooms are dirty.",
+       "certa": false
+      }
+     ],
+     "explicacao": ""
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Have you ever travelled for work? Tell me about it.",
+     "frase": "I've",
+     "resposta": "Yes, I have. I've travelled to Benguela and Cabinda for work. Last month I went to Cabinda for two days. The flight was delayed, but the meeting went well.",
+     "contexto": "A experiência e os pormenores."
+    },
+    {
+     "tipo": "responder",
+     "enunciado": "Where's your colleague? (She's on a business trip in Huambo until Wednesday.)",
+     "frase": "gone",
+     "resposta": "She's gone to Huambo. She's on a business trip, and she's back on Wednesday.",
+     "contexto": "gone e back."
+    }
+   ]
+  }
+ ]
+}

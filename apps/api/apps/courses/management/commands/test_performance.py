@@ -90,7 +90,7 @@ class Command(BaseCommand):
                         defaults={
                             'description': f'Test course description for {i}-{j}',
                             'category': 'Test Category',
-                            'level': 'Beginner',
+                            'level': 'A2',
                             'status': 'Published',
                             'price': 50.00
                         }
@@ -239,7 +239,7 @@ class Command(BaseCommand):
         filters_to_test = [
             {'status': 'Published'},
             {'category': 'Test Category'},
-            {'level': 'Beginner'},
+            {'level': 'A2'},
             {'status': 'Published', 'category': 'Test Category'},
             {'teacher__role': 'teacher', 'status': 'Published'}
         ]
