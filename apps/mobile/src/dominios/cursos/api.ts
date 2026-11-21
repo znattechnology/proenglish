@@ -7,6 +7,7 @@
 import type { Href } from "expo-router";
 import type { OfertaPlano } from "@/dominios/subscricao/api";
 import { api } from "@/api/base";
+import type { PraticaAnterior } from "./praticaAnterior";
 
 const BASE = "/student/video-courses";
 
@@ -258,7 +259,7 @@ export type Percurso = {
   curso: { id: string; titulo: string };
   acesso?: Acesso;
   unidades_amostra?: number;
-  unidades: { id: string; titulo: string; bloqueada?: boolean; aulas: { id: string; titulo: string; bloqueada?: boolean; passos: Passo[] }[] }[];
+  unidades: { id: string; titulo: string; bloqueada?: boolean; aulas: { id: string; titulo: string; bloqueada?: boolean; passos: Passo[]; pratica_anterior?: PraticaAnterior | null }[] }[];
   proximo: Passo | null;
   /** Só faltam passos fechados pelo plano. */
   plano_necessario?: boolean;

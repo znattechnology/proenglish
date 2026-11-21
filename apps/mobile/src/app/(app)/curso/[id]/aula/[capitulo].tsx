@@ -13,6 +13,8 @@ import { urlAbsoluto } from "@/api/config";
 import { mensagemErro } from "@/api/erros";
 import { RepetirEmVozAlta, UsarNumaConversa } from "@/componentes/cursos/FalaDaAula";
 import { ASeguir } from "@/componentes/cursos/Percurso";
+import { AvisoPraticaAnterior } from "@/componentes/cursos/AvisoPraticaAnterior";
+import { praticaAnterior } from "@/dominios/cursos/praticaAnterior";
 import { TEXTO_PLANOS_PAGOS } from "@/componentes/cursos/Amostra";
 import { SeparadoresCursos } from "@/componentes/cursos/Pecas";
 import { TextoRico } from "@/componentes/cursos/TextoRico";
@@ -134,6 +136,8 @@ function Conteudo({
   // o seu botão no rodapé, por isso só se mostra quando o passo é outro (laboratório, conversa, outra aula).
   const percurso = usePercursoCursoQuery(courseId, { refetchOnMountOrArgChange: true });
   const passo = percurso.data?.proximo ?? null;
+  // O laboratório da aula anterior por fazer: recomenda-se praticar primeiro (não bloqueia).
+  const pratica = praticaAnterior(percurso.data, cap.chapterId);
   const mostrarSeguinte = !!passo && !(passo.aula_id === cap.chapterId && (passo.tipo === "aula" || passo.tipo === "questionario"));
   const [erro, setErro] = useState<string | null>(null);
   // O progresso pode chegar depois de a aula abrir: conta o que vem do servidor e o que se marcou agora.
@@ -211,6 +215,7 @@ function Conteudo({
       }
       style={{ gap: 16 }}
     >
+      {pratica ? <AvisoPraticaAnterior aulaId={cap.chapterId} pratica={pratica} /> : null}
       <View style={{ gap: 4 }}>
         <Titulo v="tituloM">{cap.title}</Titulo>
         <Texto v="legenda" suave>
