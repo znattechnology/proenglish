@@ -304,3 +304,6 @@ data,id,variante,modelo,tamanho,proporcao,referencias,custo_usd,ficheiro,uso
 2026-11-19T10:29:52,clip-paulo-apresenta,1,gemini-3-pro-image,2K,16:9,3,0.1373,clip-paulo-apresenta/clip-paulo-apresenta-1.png,
 2026-11-19T10:30:48,clip-marginal,1,gemini-3-pro-image,2K,16:9,7,0.1417,clip-marginal/clip-marginal-1.png,
 2026-11-19T10:31:46,clip-equipa-entrada,2,gemini-3-pro-image,2K,16:9,7,0.1417,clip-equipa-entrada/clip-equipa-entrada-2.png,
+2026-11-19T13:17:53,vclip-recepcao,1,gemini-3-pro-image,2K,9:16,3,0.1373,vclip-recepcao/vclip-recepcao-1.png,
+2026-11-20T23:34:03,aula1a-recepcao,1,gemini-3-pro-image,2K,16:9,3,0.1373,aula1a-recepcao/aula1a-recepcao-1.png,
+2026-11-20T23:35:19,aula1a-recepcao,2,gemini-3-pro-image,2K,16:9,3,0.1373,aula1a-recepcao/aula1a-recepcao-2.png,

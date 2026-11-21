@@ -1,0 +1,19 @@
+{
+ "nota": "Imagens da vídeo-aula 1A (diálogo da Ana e do Paulo na recepção), 21/11/2026.",
+ "estilo": "Cinematic photographic film still for an English course video, shot on a cinema camera, natural soft morning light, realistic warm colour grading with deep navy blue and golden yellow accents of the office, true-to-life skin tones, shallow depth of field, calm and professional.",
+ "regras": "Do not include any text, letters, numbers, logos, watermarks or captions anywhere in the image; screens are blurred or seen from the side. Contemporary Angola, 2026. Respectful, natural, non-stereotyped depiction of African professionals. No real people, no real brands. Every character from a reference sheet keeps exactly the same face, hair, body and clothes as in the sheet.",
+ "imagens": [
+  {
+   "id": "aula1a-recepcao",
+   "modelo": "pro",
+   "proporcao": "16:9",
+   "tamanho": "2K",
+   "referencias": [
+    "ficha-ana",
+    "ficha-paulo",
+    "clip-ana-recepcao"
+   ],
+   "descricao": "The same reception as the last reference image (navy blue wall with a golden yellow stripe, light wooden desk, plants), at eight in the morning. Ana from her reference sheet stands behind the reception desk; Paulo from his sheet has just arrived in front of the desk, holding a laptop bag on his shoulder. They greet each other politely with calm, friendly smiles, looking at each other, as on a first day at work, mouths closed or slightly open as if talking. Medium-wide shot from the side of the desk, both faces clearly visible, natural and relaxed, not excited."
+  }
+ ]
+}
