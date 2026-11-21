@@ -176,7 +176,62 @@ class PercursoTests(Base):
         self.assertEqual((dados['feitos'], dados['total']), (6, 6))
 
 
+class PraticaAnteriorTests(Base):
+    """O aviso «pratique primeiro»: o laboratório da aula anterior por fazer (recomenda, não bloqueia)."""
+
+    def aulas(self, dados):
+        return {a['id']: a for u in dados['unidades'] for a in u['aulas']}
+
+    def test_aula_seguinte_traz_o_laboratorio_por_fazer_da_anterior(self):
+        self.ver_aula(self.a1)
+        aulas = self.aulas(percurso.percurso(self.aluno, self.curso))
+        self.assertIsNone(aulas[str(self.a1.id)]['pratica_anterior'])
+        self.assertEqual(aulas[str(self.a2.id)]['pratica_anterior'], {
+            'aula_id': str(self.a1.id), 'aula_titulo': '1A — What we need is…', 'licao_id': self.licao.id,
+            'curso_pratica_id': str(self.lab.id), 'minutos': percurso.MINUTOS_PRATICA})
+        # Só a aula imediatamente anterior: a 2A não fala do laboratório da 1A.
+        self.assertIsNone(aulas[str(self.a3.id)]['pratica_anterior'])
+
+    def test_tambem_sem_ter_visto_o_video_e_nunca_bloqueia_a_aula(self):
+        aulas = self.aulas(percurso.percurso(self.aluno, self.curso))
+        self.assertEqual(aulas[str(self.a2.id)]['pratica_anterior']['licao_id'], self.licao.id)
+        self.assertFalse(aulas[str(self.a2.id)]['bloqueada'])
+
+    def test_laboratorio_feito_tira_o_aviso(self):
+        ChallengeProgress.objects.create(user=self.aluno, challenge=self.exercicios[0], completed=True)
+        aulas = self.aulas(percurso.percurso(self.aluno, self.curso))
+        self.assertIsNotNone(aulas[str(self.a2.id)]['pratica_anterior'])  # meio feito ainda conta
+        self.fazer_licao()
+        aulas = self.aulas(percurso.percurso(self.aluno, self.curso))
+        self.assertIsNone(aulas[str(self.a2.id)]['pratica_anterior'])
+
+    def test_passa_de_uma_unidade_para_a_outra(self):
+        self.a1.practice_lesson = None
+        self.a1.save(update_fields=['practice_lesson'])
+        self.a2.practice_lesson = self.licao
+        self.a2.save(update_fields=['practice_lesson'])
+        aulas = self.aulas(percurso.percurso(self.aluno, self.curso))
+        self.assertEqual(aulas[str(self.a3.id)]['pratica_anterior']['aula_titulo'], '1C — I take your point')
+
+    def test_laboratorio_fechado_pelo_plano_nao_gera_aviso(self):
+        from unittest import mock
+        with mock.patch.object(percurso, '_licao_fechada', return_value=True):
+            aulas = self.aulas(percurso.percurso(self.aluno, self.curso))
+        self.assertIsNone(aulas[str(self.a2.id)]['pratica_anterior'])
+
+    def test_cada_aluno_ve_o_seu(self):
+        self.fazer_licao(user=self.outro)
+        aulas = self.aulas(percurso.percurso(self.aluno, self.curso))
+        self.assertIsNotNone(aulas[str(self.a2.id)]['pratica_anterior'])
+
+
 class ApiTests(Base):
+
+    def test_percurso_traz_a_pratica_anterior(self):
+        self.entrar(self.aluno)
+        r = self.client.get(f'{V}/{self.curso.id}/percurso/')
+        aula2 = next(a for u in r.data['unidades'] for a in u['aulas'] if a['id'] == str(self.a2.id))
+        self.assertEqual(str(aula2['pratica_anterior']['licao_id']), str(self.licao.id))
 
     def test_percurso_do_curso(self):
         self.entrar(self.aluno)

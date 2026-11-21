@@ -9,6 +9,7 @@ import type { ConversaLicao } from "@/src/domains/student/laboratorio/api";
 import type { Oferta } from "@/src/domains/student/subscricao/api";
 import { aposCurso, quandoCorrerBem } from "@/src/domains/student/sincronizar";
 import { sharedBaseQuery } from "@/src/domains/shared/api/baseQuery";
+import type { PraticaAnterior } from "@/components/pe/curso/praticaAnterior";
 
 const BASE = "/student/video-courses";
 
@@ -174,6 +175,8 @@ export type NotasDeTodos = {
 };
 
 /* Percurso do curso (apps/api/apps/courses/percurso.py): o servidor decide a ordem e o que está feito. */
+/** Laboratório da aula anterior por fazer (aviso «pratique primeiro»). */
+export type { PraticaAnterior } from "@/components/pe/curso/praticaAnterior";
 export type TipoPasso = "aula" | "questionario" | "pratica" | "conversa";
 export type Passo = {
   chave: string;
@@ -194,7 +197,7 @@ export type Percurso = {
   curso: { id: string; titulo: string };
   acesso?: Acesso;
   unidades_amostra?: number;
-  unidades: { id: string; titulo: string; bloqueada?: boolean; aulas: { id: string; titulo: string; bloqueada?: boolean; passos: Passo[] }[] }[];
+  unidades: { id: string; titulo: string; bloqueada?: boolean; aulas: { id: string; titulo: string; bloqueada?: boolean; passos: Passo[]; pratica_anterior?: PraticaAnterior | null }[] }[];
   proximo: Passo | null;
   /** Só faltam passos fechados pelo plano. */
   plano_necessario?: boolean;

@@ -107,6 +107,28 @@ def _licao_fechada(user, licao, cache):
     return licao.unit_id in cache[curso.id]
 
 
+def _marcar_pratica_anterior(unidades):
+    """
+    Em cada aula, 'pratica_anterior': o laboratório da aula imediatamente anterior (na ordem do curso,
+    mesmo de outra unidade), se ainda está por fazer e o aluno o pode abrir; senão None. Serve para o
+    aviso «pratique primeiro» ao abrir a aula seguinte: recomenda, nunca bloqueia. Só a aula anterior,
+    para não acumular avisos de aulas antigas.
+    """
+    anterior = None
+    for unidade in unidades:
+        for item in unidade['aulas']:
+            item['pratica_anterior'] = None
+            if anterior is not None:
+                passo = next((p for p in anterior['passos'] if p['tipo'] == PRATICA), None)
+                if passo and passo['estado'] != FEITO and not passo['bloqueado']:
+                    item['pratica_anterior'] = {
+                        'aula_id': anterior['id'], 'aula_titulo': anterior['titulo'],
+                        'licao_id': passo['licao_id'], 'curso_pratica_id': passo['curso_pratica_id'],
+                        'minutos': passo['minutos'],
+                    }
+            anterior = item
+
+
 def percurso(user, curso):
     """O percurso do curso para este aluno (ver o topo do módulo)."""
     from apps.courses import amostra
@@ -186,6 +208,7 @@ def percurso(user, curso):
             passo['estado'] = POR_FAZER
             if passo['bloqueado'] and proximo is None:
                 plano_necessario = True
+    _marcar_pratica_anterior(unidades)
     feitos = sum(1 for p in passos_todos if p['estado'] == FEITO)
     return {
         'curso': {'id': str(curso.id), 'titulo': curso.title},

@@ -9,6 +9,8 @@ import { Questionario } from "@/components/pe/curso/Questionario";
 import { TextoRico } from "@/components/pe/curso/TextoRico";
 import { ConversaDaAula, RepetirEmVozAlta } from "@/components/pe/curso/FalaDaAula";
 import { ASeguir } from "@/components/pe/curso/Percurso";
+import { AvisoPraticaAnterior } from "@/components/pe/curso/AvisoPraticaAnterior";
+import { praticaAnterior } from "@/components/pe/curso/praticaAnterior";
 import { cnPe } from "@/lib/pe";
 import { useDjangoAuth } from "@/hooks/useDjangoAuth";
 import { mensagemErro } from "@/src/domains/student/subscricao/api";
@@ -195,6 +197,8 @@ function Conteudo({
   // O passo seguinte do percurso (o servidor decide); volta a ser lido quando a aula fica vista.
   const { data: percurso } = usePercursoQuery(courseId, { refetchOnMountOrArgChange: true });
   const passo = percurso?.proximo ?? null;
+  // O laboratório da aula anterior por fazer: recomenda-se praticar primeiro (não bloqueia).
+  const pratica = praticaAnterior(percurso, cap.chapterId);
   // O vídeo desta aula e a lição de laboratório dela já têm o seu lugar nesta página.
   const mostrarSeguinte = !!passo && !(passo.aula_id === cap.chapterId && (passo.tipo === "aula" || passo.tipo === "pratica" || passo.tipo === "questionario"));
   const [erro, setErro] = useState<string | null>(null);
@@ -251,6 +255,7 @@ function Conteudo({
 
   return (
     <>
+      {pratica ? <AvisoPraticaAnterior aulaId={cap.chapterId} pratica={pratica} /> : null}
       {cap.type === "Video" && cap.video ? (
         <Video videoRef={video} src={cap.video} titulo={cap.title} linhas={linhas} aoAvancar={(s) => (segundos.current += s)} aoTerminar={() => !visto && !(comQuiz && videoFeito) && void concluir()} />
       ) : null}
